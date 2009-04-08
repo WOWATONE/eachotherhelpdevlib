@@ -1,0 +1,1029 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Demos Name="ASPxGridView" ColumnCount="3" Title="DevExpress ASPxGridView" TitleFormatString="{2} - {0}">
+    <DemoGroup Text="Introduction" Caption="Build Your Best - Without Limits or Compromise" BeginCategory="true">
+        <Demo Text="About" NavigateUrl="~/Default.aspx" UseFullTitle="false" Title="ASP.NET Grid Control Demo - DevExpress Grid View for ASP.NET AJAX">
+            <GeneralTerms ShowHeader="false">
+                <p>
+                    <b>Fast, Lightweight, Fully Configurable, Feature-Rich</b>
+                </p>
+
+                <p>
+                    These adjectives help describe our new <b>ASPxGridView</b> but you will find that our competitors use the same phrases to describe their product offerings. So how do you decide who's telling the truth and which product delivers on its promises? How can you be certain that the hassles and frustrations you've encountered in the past with ASP.NET controls will not be repeated just because a tool vendor tells you their approach is better?
+                </p>
+
+                <p>Fact is that no amount of marketing can hide the limitations of a product and as such, the best way to determine whether a given product addresses your business needs and those of your customers is to try it. If you currently own a competing ASP.NET grid and data editors library or if you are in the evaluation process, we invite you to download and evaluate the ASPxGridView Suite - and decide for yourself.</p>
+
+                <p>
+                    The demos contained within these web pages lay out our evidence - that the <b>ASPxGridView</b> has no equal in the marketplace…but you are both the judge and jury and we welcome your thoughts and look forward to your feedback.
+                </p>
+                <br/>
+                <hr noshade="noshade" />
+                <p>
+                    Below you will find hot-button features that frankly every single one of our competitors claims they offer. We'd be remiss if we did not mention them as well, but before you read about these features, please indulge us for a brief moment so we can mention the two attributes we feel to be most important - SPEED and MEMORY FOOTPRINT.
+                </p>
+
+                <p>When we set out to re-write our ASP.NET grid and data editors library, our mission was rather simple: Create a grid control that is fast - really fast and not a memory hog. A grid that will not choke and collapse on itself when the dataset contains 50,000 or more rows... A grid that will not make end-users cringe as they load a page and then attempt to navigate from page to page... A grid that fully exploits data operations against the database server, so features such as sorting, grouping, filtering and summary computations can actually be responsive rather than atrociously slow.</p>
+
+                <p>
+                    YES, the <b>ASPxGridView</b> is all about maximizing SPEED and conserving MEMORY. All the big ticket features a company claims to have in their grid are worthless without these. With that said, here is a general overview of all features you can expect to find when evaluating the <b>ASPxGridView and Editors Library</b>:
+                </p>
+            </GeneralTerms>
+            <Description>
+                To view any of the demos within these web pages, use the menu on the left hand side of this page. If you would like to explore the capabilities of these libraries further, we offer a free evaluation version and all of our products are backed by a 60 day no questions asked money back guarantee. For assistance, feel free to contact us at <a href="mailto:support@devexpress.com">support@devexpress.com</a>.
+            </Description>
+        </Demo>
+    </DemoGroup>
+
+    <DemoGroup Text="Speed and Memory Use" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px" BeginCategory="true">
+        <Demo Text="Initial Page Load" NavigateUrl="~/DataBinding/XPOLargeDB.aspx?Section=1" Section="1" Title="Blazing Fast Data Loading - ASP.NET Grid Control">
+            <GeneralTerms ShowHeader="false">
+                <p>As we've described, initial and subsequent page load speed for an ASP.NET web application is dependant upon the number of records in the dataset bound to the controls on the page. The larger the number, the slower the web page.</p>
+                <p>In this demo we compare our grid's page load performance with those of our competitors when loading 300,000 records.</p>
+                <p>
+                    The numbers do not lie - when exploiting the new capabilities of ASPxGridView along with our dataset providers, nothing can match the speed and memory footprint of the ASPxGridView.
+                </p>
+                <br/>
+            </GeneralTerms>
+            <Description>
+            </Description>
+        </Demo>
+        <Demo Text="Navigation" NavigateUrl="~/DataBinding/XPOLargeDB.aspx?Section=2" Section="2" Title="Blazing Fast Navigation - ASP.NET AJAX Grid">
+            <GeneralTerms ShowHeader="false">
+                <p>Navigating from one grid page to the next sucks up server resources and can negatively impact the usability of your application.</p>
+                <p>Simply navigate from one page to the next using the pager control at the bottom of the following grid control and compare the performance of the ASPxGridView to our competition - the numbers don't lie - nothing comes close to the ASPxGridView.</p>
+                <br/>
+            </GeneralTerms>
+            <Description>
+            </Description>
+        </Demo>
+        <Demo Text="Sorting and Grouping" NavigateUrl="~/DataBinding/XPOLargeDB.aspx?Section=3" Section="3" Title="Blazing Fast Data Sorting and Grouping - ASP.NET DataGrid Control">
+            <GeneralTerms ShowHeader="false">
+                <p>Data analysis and manipulation options such as grouping and sorting are both useful and in high demand...</p>
+                <p>but when performed against large datasets, competing grid controls fail to deliver results in a reasonable amount of time - making your web application less responsive. </p>
+                <p>Give it a shot and compare - see how we stack up when grouping and or sorting rows....</p>
+                <br/>
+            </GeneralTerms>
+            <Description>
+            </Description>
+        </Demo>
+        <Demo Text="Data Summaries" NavigateUrl="~/DataBinding/XPOLargeDB.aspx?Section=4" Section="4" Title="Blazing Fast Summary Calculation - Grid and Editors for ASP.NET">
+            <GeneralTerms ShowHeader="false">
+                <p>Because competing grid controls do not properly compute summary values for grouped rows any discussion on performance is useless - but were they able to actually compute the correct summaries, you would find that as in all other test metrics, they cannot come close to the speed and responsiveness of the ASPxGridView.</p>
+                <p>To see this in action, select the From field and drag it into the grouping pane.</p>
+                <br/>
+            </GeneralTerms>
+            <Description>
+            </Description>
+        </Demo>
+        <Demo Text="Filtering" NavigateUrl="~/DataBinding/XPOLargeDB.aspx?Section=5" Section="5" Title="Blazing Fast Data Filtering - ASP.NET Grid and Data Editors">
+            <GeneralTerms ShowHeader="false">
+                <p>Like all other tests, you will find that filtering against a large dataset creates numerous problems for competing grid controls including both the massive allocation of memory to render the result set as well as the time required to return the result set.</p>
+                <p>Again, nothing comes close to the ASPxGridView when it comes to filtering performance.</p>
+                <br/>
+            </GeneralTerms>
+            <Description>
+            </Description>
+        </Demo>
+    </DemoGroup>
+
+    <DemoGroup Text="Sorting and Grouping" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px">
+        <Demo Text="Grouping" NavigateUrl="~/GroupingSorting/Grouping.aspx" Title="Outlook Style Data Grouping - AJAX Grid Control for ASP.NET">
+            <Description>
+                <p>
+                    The ASPxGridView supports data grouping against one or more columns.
+                </p>
+                <p>
+                    Grouping is allowed if the following properties are set to <b>true</b>:
+                </p>
+                <ul>
+                    <li>
+                        <b>SettingsBehavior.AllowGroup</b>
+                    </li>
+                    <li>
+                        <b>SettingsBehavior.AllowSort</b>
+                    </li>
+                </ul>
+
+                <p>
+                    End-users can group data by dragging column headers to the <b>Group Panel</b>. This panel's visibility is controlled by the <b>Settings.ShowGroupPanel</b> option.
+                </p>
+                <p>
+                    Use the <b>GroupCount</b> property to lookup the number of columns used to group data. These columns can be obtained using the <b>GetSortedColumns()</b> method.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Interval Grouping" NavigateUrl="~/GroupingSorting/IntervalGrouping.aspx" Title="Advanced Data Grouping - AJAX DataGrid for ASP.NET">
+            <Description>
+                <p>
+                    The <b>ASPxGridView</b> control supports interval grouping. This allows you to group text columns by the first characters. Date-time columns can be grouped by month, year, etc. This behavior is controlled by the column's <b>Settings.GroupInterval</b> property.
+                </p>
+                <p>
+                    In this demo, use the 'Date Group Interval' combo box to specify how data rows are grouped when grouping by the <b>Order Date</b> column is applied.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Sorting" NavigateUrl="~/GroupingSorting/Sorting.aspx" Title="Data Sorting - ASP.NET Grid Control">
+            <Description>
+                <p>
+                    The ASPxGridView allows you to sort data displayed within an unlimited number of columns. The column's current sort order is indicated by a sort glyph displayed at the column header's right edge. If the column isn't sorted, the sort glyph is hidden.
+                </p>
+                <p>Click the column's header to sort data against a data column or change the column's sort order. To sort data against multiple columns, click column headers with the SHIFT key pressed down.</p>
+                <p>
+                    Set the <b>AllowSort</b> option to <b>true</b> to enable end-user sorting.
+                </p>
+            </Description>
+        </Demo>
+    </DemoGroup>
+    <DemoGroup Text="Data Binding" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px">
+        <Demo Text="Live Data" NavigateUrl="~/DataBinding/Live.aspx" Title="Real-time Data Processing - ASP.NET AJAX Grid and Editors">
+            <Description>
+                <p>This demo shows how to dynamically change images displayed within data cells.</p>
+                <p>
+                    The <b>HtmlRowCreated</b> event is handled to change images displayed within the <b>Change</b> column’s cells. These images are contained within the column’s <b>DataItemTemplate</b> and indicate how symbol values are changed on a market.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Using LinqDataSource" NavigateUrl="~/DataBinding/LinqDataSource.aspx" Title="Bind to Data Using LINQ Sources - ASP.NET DataGrid Control">
+            <Description>
+            </Description>
+        </Demo>
+        <Demo Text="300,000 Records via LINQ Data Sources" NavigateUrl="~/DataBinding/LinqDataSourceServerMode.aspx" Title="Handle Large Datasets, Bind Using LINQ - Grid and Editors for ASP.NET">
+            <Description>
+            </Description>
+        </Demo>
+    </DemoGroup>
+    <DemoGroup Text="Filtering" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px"  IsUpdated="true">
+        <Demo Text="Filter Row" NavigateUrl="~/Filtering/FilterRow.aspx" Title="Filter Row - ASP.NET Grid and Data Editors">
+            <Description>
+                <p>
+                    The <b>Filter Row</b> allows end-users to filter data by entering text within its cells.
+                </p>
+                <p>
+                    Set the <b>Settings.ShowFilterRow</b> property to <b>true</b> to display a filter row within the ASPxGridView.
+                </p>
+                <p>
+                    Enable the 'Show Filter Row Menu' check box to allow end-users select one of the nine filter conditions via the context menu, which is invoked by clicking a filter row button.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Header Filter" NavigateUrl="~/Filtering/HeaderFilter.aspx" Title="Excel Style Data Filtering - AJAX Grid Control for ASP.NET">
+            <Description>
+                <p> Column headers can display filter buttons. Clicking a filter button invokes a filter dropdown, which lists unique values within a column, and enables you to apply filter criteria against this column.</p>
+                <p>
+                    By default, these buttons are hidden. To show filter buttons, set the <b>Settings.ShowHeaderFilterButton</b> property to <b>true</b>.
+                </p>
+                <p>
+                    The ASPxGridView allows you to create custom filter values, define a filter criteria for them and display these values within a column's filter dropdown. To do this, handle the <b>HeaderFilterFillItems</b> event. In this demo, custom filter values are displayed within the 'Total' and 'Quantity' columns' filter dropdowns.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Filter Control" NavigateUrl="~/Filtering/FilterBuilder.aspx" Title="Filter Control - ASP.NET AJAX Grid Control" IsNew="true">
+            <Description>
+							<p>
+								The <b>Filter Control</b> allows end-users to build complex filter criteria with an unlimited number of filter conditions, combined by logical operators.
+								End-users can open the <b>Filter Control</b> by clicking the image or filter expression link displayed within the Filter Bar.
+							</p>
+							<p>
+								<b>Add/Remove Conditions</b>
+								<br />
+								To create and customize filter criteria, use the 
+								<img src="../App_Themes/Glass/Editors/fcadd.png" alt="(+)" title="" />
+								and
+								<img src="../App_Themes/Glass/Editors/fcremove.png" alt="(x)" title="" />
+								buttons.
+							</p>
+							<p>
+								<b>Change a Column in a Filter Condition</b>
+								<br />
+								To change a condition's column, invoke the column list and choose the required column.
+							</p>
+							<p>
+								<b>Change an Operator in a Filter Condition</b>
+								<br />
+								To change a condition's operator, invoke the operator list and choose the required operator.
+							</p>
+							<p>
+								<b>Edit a Condition's Value</b>
+								<br />
+								To edit a condition's value, click the operand value and type text. To discard changes to the value and close the active edit box, press ESC.
+							</p>
+						</Description>
+        </Demo>
+    </DemoGroup>
+    <DemoGroup Text="Data Summary" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px">
+        <Demo Text="Total Summary" NavigateUrl="~/Summary/Total.aspx" Title="Total Summary Calculation - AJAX DataGrid for ASP.NET">
+            <Description>
+                <p>
+                    <b>Total summaries</b> are aggregate function values calculated over all the rows within the ASPxGridView and displayed within the <b>Footer</b>.
+                </p>
+                <p>
+                    The Footer is displayed if the <b>Settings.ShowFooter</b> property is set to <b>true</b>.
+                </p>
+                <p>
+                    The ASPxGridView stores its total summary items within the <b>TotalSummary</b> collection. Individual items are represented by <b>ASPxSummaryItem</b> objects.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Group Summary" NavigateUrl="~/Summary/Group.aspx" Title="Group Summary Calculation - ASP.NET Grid Control">
+            <Description>
+                <p>
+                    A <b>Group summary</b> represents a value of an aggregate function calculated across all data rows within a group.
+                </p>
+                <p>
+                    <b>Group summaries</b> are displayed within group rows.
+                </p>
+                <p>
+                    The ASPxGridView stores its group summaries within the <b>GroupSummary</b> collection. Individual items are represented by <b>ASPxSummaryItem</b> objects.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Group Footer Summary" NavigateUrl="~/Summary/GroupFooter.aspx" Title="Group Footer Summary - ASP.NET AJAX Grid and Editors">
+            <Description>
+                <p>
+                    <b>Group footers</b> display group summaries. Group footers contain footer cells that correspond to data columns. Footer cells display formatted summary values.
+                </p>
+                <p>
+                    Group footers can be displayed for all or only for expanded group rows. To specify when the <b>ASPxGridView</b> displays group footers, use the <b>Settings.ShowGroupFooter</b> property.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Sort By Summary" NavigateUrl="~/Summary/GroupSortBySummary.aspx" Title="Sort by Summary - ASP.NET DataGrid Control">
+            <Description>
+                <p>The ASPxGridView provides an API to sort groups by their summary values.</p>
+                <p>In this demo, the ASPxGridView is grouped by countries. Use the ‘Sort by summary mode’ combo box to select the required sort order. For instance, select Descending to sort grouped rows, so that countries having the maximum sales amount appear on top of the view.</p>
+                <p>
+                    Group rows are sorted by summary values based upon the information provided by <b>ASPxGroupSummarySortInfo</b> objects. Properties introduced by this objects represent the sort order, summary item used to calculate summary values, etc. These properties are read-only and initialized by the constructor.
+                </p>
+                <p>
+                    To sort group rows by summary values, create a new <b>ASPxGroupSummarySortInfo</b> object and add it to the ASPxGridView's <b>GroupSummarySortInfo</b> collection using the <b>GroupSummarySortInfoCollection.Add</b> method. After the <b>ASPxGroupSummarySortInfo</b> object has been added to the collection, group rows are automatically sorted by their summary values.
+                </p>
+            </Description>
+        </Demo>
+    </DemoGroup>
+    <DemoGroup Text="Grid Editing" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px">
+        <Demo Text="Edit Modes" NavigateUrl="~/GridEditing/EditModes.aspx" Title="Data Editing UI - Grid and Editors for ASP.NET">
+            <Description>
+                <p>
+                    This demo describes the ASPxGridView's built-in <b>edit modes</b>.
+                </p>
+                <p>
+                    Use the '<b>Edit Mode</b>' combo box to select the edit mode you desire.
+                </p>
+                <p>
+                    The <b>KeyFieldName</b> property must be specified to enable data editing/inserting/deleting operations.
+                </p>
+                <p>
+                    The following members can be used to manipulate data:
+                </p>
+                <ul>
+                    <li>
+                        <b>StartEdit()</b> - starts editing.
+                    </li>
+                    <li>
+                        <b>UpdateEdit()</b> - saves changes.
+                    </li>
+                    <li>
+                        <b>CancelEdit()</b> - cancels changes.
+                    </li>
+                    <li>
+                        <b>AddNew()</b> - adds a new row.
+                    </li>
+                    <li>
+                        <b>DeleteRow()</b> - deletes a row.
+                    </li>
+                </ul>
+                <p>
+                    To allow end-users to manipulate data, add a <b>Command column</b> to the view's <b>Columns</b> collection and specify which commands can be used by end-users. There are six command items:
+                </p>
+
+                <ul>
+                    <li>
+                        New
+                    </li>
+                    <li>
+                        Edit
+                    </li>
+                    <li>
+                        Delete
+                    </li>
+                    <li>
+                        Select
+                    </li>
+                    <li>
+                        Update
+                    </li>
+                    <li>
+                        Cancel
+                    </li>
+                </ul>
+                <p>
+                    By default, a command item is represented by a link. It can also be represented by a button or image. Its representation is specified by the column's <b>ButtonType</b> property.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Edit Form" NavigateUrl="~/GridEditing/EditForm.aspx" Title="Edit Form - ASP.NET Grid and Data Editors">
+            <Description>
+                <p>
+                    This demo shows our <b>Edit Form</b> that allows end-users to edit cell values. To learn how to make this form available, review the <b>Edit Modes</b> demo.
+                </p>
+                <p>
+                    The <b>Edit Form</b> displays edit cells that correspond to data columns. Each cell displays a column caption and the corresponding editor.
+                </p>
+                <p>
+                    Use the data column's <b>EditFormSettings</b> property to specify the corresponding edit cell's position within the <b>Edit Form</b>.
+                </p>
+                <p>
+                    In this demo, the 'Show Memo at Bottom' check box controls the position of an edit cell that displays an employee's details. Note this edit cell corresponds to the data column, which is hidden from the ASPxGridView.
+                </p>
+                <p>The New Item row can be displayed below data rows. Toggle the 'Show new item row at bottom' check box to change the row’s position within the ASPxGridView.</p>
+            </Description>
+        </Demo>
+        <Demo Text="Edit Form Template" NavigateUrl="~/GridEditing/EditFormTemplate.aspx" Title="ASP.NET Template for Edit Form - AJAX Grid Control for ASP.NET">
+            <Description>
+                <p>
+                    The ASPxGridView allows you to provide any possible layout for its Edit Form using the appropriate template.
+                </p>
+                <p>
+                    In this demo, we are using our ASPxPageControl to reduce the space occupied by the <b>Edit Form</b>.
+                </p>
+                <p>
+                    <b>Important Note</b>
+                </p>
+                <p>
+                    To display the edit cells, within the regular <b>Edit Form</b>, create an ASPxGridViewTemplateReplacement control and set its <b>ReplacementType</b> to 'EditFormEditors'.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Popup Edit Form" NavigateUrl="~/GridEditing/PopupEditForm.aspx" Title="Data Editing via Popup Window - AJAX DataGrid for ASP.NET">
+            <Description>
+                <p>
+                    The <b>Popup Edit Form</b> allows end-users to edit cell values. In this mode, you can display images and memo data together with in-line editing. As such, page constraints are used more effectively.
+                </p>
+                <p>
+                    To enable the <b>Popup Edit Form</b> mode, set the ASPxGridView's <b>Settings.Mode</b> option to <b>PopupEditForm</b>.
+                </p>
+                <p>
+                    The Popup Edit Form can also be displayed as a modal dialog. In this mode, the edit form must be closed before you can continue working with the application. This is controlled by the <b>SettingsEditing.PopupEditFormModal</b> option.
+                </p>
+                <p>In this demo, this behavior is controlled by the 'Show popup edit form in modal mode' check box.</p>
+            </Description>
+        </Demo>
+        <Demo Text="Popup Edit Form Template" NavigateUrl="~/GridEditing/PopupEditFormTemplate.aspx" Title="ASP.NET Template for Popup Edit Form - ASP.NET Grid Control">
+            <Description>
+                <p>
+                    The ASPxGridView allows you to provide any possible layout for its <b>Popup Edit Form</b> using the appropriate template.
+                </p>
+                <p>
+                    In this demo, we are using our ASPxPageControl to reduce the space occupied by the <b>Popup Edit Form</b>.
+                </p>
+                <p>
+                    <b>Important Note</b>:
+                </p>
+                <p>
+                    To display the edit cells, within the <b>Popup Edit Form</b>, create an <b>ASPxGridViewTemplateReplacement</b> control and set its <b>ReplacementType</b> to 'EditFormEditors'.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Two-Way Binding" NavigateUrl="~/GridEditing/TwoWayBinding.aspx" Title="Two-Way Template Binding - ASP.NET AJAX Grid and Editors">
+            <Description>
+                <p>
+                    This demo shows how you can implement "Two-Way Data Binding" - a new data access model introduced in ASP.NET 2.0. This model allows you to both read and update data.
+                </p>
+                <p>
+                    In this demo, editors contained within the Edit Form's template use the Bind method to retrieve and update the values of data-bound fields. This method takes the name of a data field to associate with a bound property.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Populate a Combo Box on the Fly" NavigateUrl="~/GridEditing/FillComboOnFly.aspx" Title="Dynamically Populate Combo Box - Grid and Editors for ASP.NET">
+            <Description>
+                <p>
+                    In this demo, the City column's combo box is populated dynamically (via callbacks) with city names, depending upon the country selected within the Country column's combo box. Note that only the City combo box' content is updated during round-trips to the server - not the content of the entire page or ASPxGridView control.
+                </p>
+                <p>
+                    The Country combo box' <b>SelectedIndexChanged</b> client-side event is handled to send a request for updating the City combo box. On the server side the <b>Callback</b> event is handled to populate the City combo box with required items.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Validation" NavigateUrl="~/GridEditing/Validation.aspx" Title="Input Validation - ASP.NET Grid and Data Editors">
+            <Description>
+                <p>
+                    The ASPxGridView allows you to manually validate the edited row and display errors for invalid fields.
+                </p>
+                <p>
+                    This demo illustrates ways in which you can include data validation in your next ASP.NET project. Validation is implemented within the RowValidating event handler. Invalid values are indicated via error icons. Hovering your mouse over the icon displays a hint along with a description of the error.
+                </p>
+                <p>
+                    To indicate rows with invalid data, the <b>HtmlRowPrepared</b> event is handled. This event is raised for each data row when the corresponding row within the table has been created. In this sample, rows with invalid data are painted red.
+                </p>
+            </Description>
+        </Demo>
+    </DemoGroup>
+    <DemoGroup Text="Master-Detail" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px">
+        <Demo Text="Master-Detail" NavigateUrl="~/MasterDetail/MasterDetail.aspx" Title="Master-Detail Grid - AJAX Grid Control for ASP.NET">
+            <GeneralTerms>
+            </GeneralTerms>
+            <Description>
+                <p>
+                    The <b>ASPxGridView</b> supports master-detail data presentation of any complexity.
+                </p>
+                <p>This demo shows how to create a simple master-detail relationship between two tables. All you have to do is to:</p>
+                <ul>
+                    <li>
+                        Create two ASPxGridView controls
+                    </li>
+                    <li>
+                        Bind the first grid (master grid) to the master data source and enable its <b>SettingsDetail.ShowDetailRow</b> option.
+                    </li>
+                    <li>
+                        Bind the second grid (detail grid) to the detail data source and enable its <b>SettingsDetail.IsDetailGrid</b> option.
+                    </li>
+                    <li>
+                        Create the <b>DatailRow</b> template for the master grid and place the detail grid onto it.
+                    </li>
+                    <li>
+                        Finally handle the detail grid's <b>BeforePerformDataSelect</b> event and specify session values.
+                    </li>
+                </ul>
+                <p>
+                    By default, end-users can expand several master rows simultaneously. This behavior is controlled by the <b>SettingsDetail.AllowOnlyOneMasterRowExpanded</b> option. In this demo, this option is enabled via the <i>Keep a single expanded row at a time</i> box. Once enabled, only one detail row can be displayed at a time.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Detail Tabs" NavigateUrl="~/MasterDetail/DetailTabs.aspx" Title="Multiple Details in a Master-Detail Grid - AJAX DataGrid for ASP.NET">
+            <GeneralTerms>
+            </GeneralTerms>
+            <Description>
+                <p>In this demo end-users can switch between sibling detail grids via detail tabs.</p>
+                <p>
+                    To provide this functionality, we’ve placed our <b>ASPxPageControl</b> in the master grid's <b>DetailRow</b> template. For each detail grid we've created a tab page. When an end-user clicks a detail tab, the corresponding detail grid is displayed while hiding the one opened previously.
+                </p>
+            </Description>
+        </Demo>
+    </DemoGroup>
+    <DemoGroup Text="Templates" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px">
+        <Demo Text="Cell" NavigateUrl="~/Templates/Template.aspx" Title="ASP.NET Template for Data Cell - ASP.NET Grid Control">
+            <GeneralTerms>
+                <p>
+
+                </p>
+            </GeneralTerms>
+            <Description>
+                <p>
+                    The ASPxGridView provides a set of templates that allow you to create custom layouts for its visual elements (column headers, data cells, Edit Form, preview rows, etc.).
+                </p>
+                <p>
+                    This demo shows how to create a template to display cells within the 'Details' column.
+                </p>
+                <p>
+                    The template contains a link labeled 'More Info'. Clicking this link displays a window with additional information about an employee.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Preview" NavigateUrl="~/Templates/Preview.aspx" Title="ASP.NET Template for Row Preview Section - ASP.NET AJAX Grid and Editors">
+            <GeneralTerms>
+                <p></p>
+            </GeneralTerms>
+            <Description>
+                <p>
+                    <b>Preview Rows</b> are designed to display large memo fields.
+                </p>
+                <p>
+                    This demo shows how to create a template to display images within preview rows.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Card View" NavigateUrl="~/Templates/CardView.aspx" Title="Card View, Contacts View - ASP.NET DataGrid Control">
+            <GeneralTerms>
+                <p></p>
+            </GeneralTerms>
+            <Description>
+                <p>
+                    This demo shows how to use data row templates to create a custom cell layout within rows.
+                </p>
+                <p>
+                    The <b>Eval</b> function is used to define one-way (read-only) binding. The <b>Eval</b> method takes the name of a data field, and returns a string containing the value of that field from the current record in the data source.
+                </p>
+            </Description>
+        </Demo>
+    </DemoGroup>
+    <DemoGroup Text="Exporting Data" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px">
+        <Demo Text="Exporting to PDF, XLS and RTF" NavigateUrl="~/Exporting/Exporting.aspx" Title="Export Data to PDF, XLS, RTF - Grid and Editors for ASP.NET">
+            <Description>
+                <p>
+                    The ASPxGridView allows you to export data with ease.
+                </p>
+                <p>Data can be exported to a file or stream in the following formats:</p>
+                <ul>
+                    <li>
+                        PDF (<b>WritePdf</b>, <b>WritePdfToResponse</b>)
+                    </li>
+                    <li>
+                        XLS (<b>WriteXls</b>, <b>WriteXlsToResponse</b>)
+                    </li>
+                    <li>
+                        RTF (<b>WriteRtf</b>, <b>WriteRtfToResponse</b>)
+                    </li>
+                </ul>
+            </Description>
+        </Demo>
+        <Demo Text="Export Selected Records" NavigateUrl="~/Exporting/ExportSelected.aspx" Title="Export Selected Records - ASP.NET Grid and Data Editors">
+            <Description>
+                <p>
+                    This demo shows how to only export selected records. To do this, set the <b>ASPxGridViewExporter’s ExportedRowType</b> property to 'Selected'.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Export Detail Grid" NavigateUrl="~/Exporting/ExportDetails.aspx" Title="Export Detail Grid - AJAX Grid Control for ASP.NET">
+            <Description>
+                <p>
+                    The <b>ASPxGridView</b> allows both master and detail data to be exported.
+                    Use the <b>ASPxGridViewDetailSettings.ExportMode</b> property to specify which detail rows can be exported.
+                </p>
+                <p>In this demo, use the 'Details Export Mode' combo box to select the required mode. For instance, select 'Expanded' to export only master rows and expanded detail rows.</p>
+            </Description>
+        </Demo>
+    </DemoGroup>
+    <DemoGroup Text="Grid Columns" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px">
+        <Demo Text="Customization Window" NavigateUrl="~/Columns/CustomizationWindow.aspx" Title="Field Chooser Window - AJAX DataGrid for ASP.NET">
+            <Description>
+                <p>
+                    The <b>customization window</b> displays hidden column headers.
+                </p>
+                <ul>
+                    <li>
+                        To hide a grid column, drag its header to the customization window.
+                    </li>
+                    <li>
+                        To make a column visible, drag its header from the customization window back to the ASPxGridView's header panel.
+                    </li>
+                </ul>
+                <p>
+                    Use the <b>ASPxGridView.SettingsCustomizationWindow</b> property to specify the customization window's availability and position.
+                </p>
+                <p>The following self-explanatory client-side methods allow you to manage the customization window:</p>
+
+                <ul>
+                    <li>
+                        ShowCustomizationWindow()
+                    </li>
+                    <li>
+                        HideCustomizationWindow()
+                    </li>
+                    <li>
+                        IsCustomizationWindowVisible()
+                    </li>
+                </ul>
+            </Description>
+        </Demo>
+        <Demo Text="Resizing Columns" NavigateUrl="~/Columns/ColumnResizing.aspx" Title="End-User Column Resizing - ASP.NET Grid Control">
+            <Description>
+                <p>
+                    Your End-users can easily resize columns by dragging the appropriate column header.
+                </p>
+                <p>
+                    The <b>SettingsBehavior.ColumnResizeMode</b> property specifies how the ASPxGridView behaves when an end-user resizes a column. Use the 'Column Resizing Mode' combo box to see how different property values affect resizing behavior.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Custom Buttons" NavigateUrl="~/Columns/CommandColumnCustomButtons.aspx" Title="Custom Command Buttons - ASP.NET AJAX Grid and Editors">
+            <Description>
+                <p>This demo shows how to create and display custom command buttons.</p>
+                <p>Command columns can display custom buttons within command cells, a filter row, browsable row, etc. You can create your own buttons, and define custom actions for them.</p>
+                <p>
+                    A command column holds custom buttons within the <b>CustomButtons</b> collection. Each button has a unique identifier (ID). Buttons can display an image or text.
+                </p>
+                <p>
+                    To define an action for a custom button, handle the ASPxGridView’s <b>CustomButtonCallback</b> event. This event is raised after a custom button has been clicked by an end-user. Use the event parameter’s <b>ButtonID</b> property to identify a button currently being clicked.
+                </p>
+            </Description>
+        </Demo>
+    </DemoGroup>
+    <DemoGroup Text="Grid Rows" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px">
+        <Demo Text="Focused Row" NavigateUrl="~/Rows/FocusedRow.aspx" Title="Focused Row - ASP.NET DataGrid Control">
+            <Description>
+                <p>
+                    By default, our  <b>Focused Row</b> feature is disabled. To enable it, set the <b>SettingsBehavior.AllowFocusedRow</b> property to <b>true</b>.
+                </p>
+                <p>
+                    The focused row's appearance can be specified using the style settings provided by the <b>Styles.FocusedRow</b> property.
+                </p>
+                <p>
+                    <b>Server Side</b>
+                </p>
+                <p>
+                    The focused row is identified by the <b>FocusedRowIndex</b> property. Use this property to move row focus in code. Changing this property raises the <b>FocusedRowChanged</b> event.
+                </p>
+                <p>
+                    <b>Client Side</b>
+                </p>
+                <p>
+                    End-users move row focus by clicking rows they desire.
+                </p>
+                <p>
+                    To respond to a change in row focus, handle the <b>ASPxClientGridView.FocusedRowChanged</b> event.
+                </p>
+                <p>
+                    To identify a row currently being focused, use the <b>GetFocusedRowIndex()</b> client method.
+                </p>
+                <p>
+                    This demo shows how to dynamically display a focused employee's photo and details outside the ASPxGridView.
+                </p>
+                <p>
+                    The <b>FocusedRowChanged</b> event is handled to call the <b>OnGridFocusedRowChanged()</b> function. This function queries the server to return the employee's ID and Notes. The returned array is passed to the <b>OnGetRowValues()</b> function that specifies values for corresponding HTML elements.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Alternating Row Style" NavigateUrl="~/Rows/AlternatingRows.aspx" Title="Alternating Row Style - Grid and Editors for ASP.NET">
+            <Description>
+                <p>
+                    To enhance the grid's readability, you can highlight alternating (odd) rows with a different style. To do so, set the   <b>
+                        Styles.AlternatingRow.Enabled
+                    </b> property to <b>true</b> and then specify the desired style settings via the <b>Styles.AlternatingRow</b> property.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Grid Lines" NavigateUrl="~/Rows/GridLines.aspx" Title="Grid Line Visibility - ASP.NET Grid and Data Editors">
+            <Description>
+                <p>
+                    The <b>ASPxGridView</b> allows you to display the following grid lines:
+                </p>
+                <ul>
+                    <li>
+                        Horizontal
+                    </li>
+                    <li>
+                        Vertical
+                    </li>
+                    <li>
+                        Both horizontal and vertical
+                    </li>
+                    <li>
+                        No grid lines
+                    </li>
+                </ul>
+                <p>
+                    Use the <b>GridLines</b> property to specify the gridline style for the <b>ASPxGridView</b>.
+                </p>
+                <p>
+                    In this demo, this can be done using the 'Grid Lines' combo box.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Preview Row" NavigateUrl="~/Rows/PreviewRow.aspx" Title="Outlook Style Row Preview - AJAX Grid Control for ASP.NET">
+            <Description>
+                <p>
+                    The ASPxGridView provides a <b>preview</b> feature that allows each data row to display a preview row.
+                </p>
+                <p>
+                    <b>Preview rows</b> are non-editable rows that allow large memo fields or custom data to be displayed across all the columns within the ASPxGridView.
+                </p>
+                <p>
+                    Preview rows are displayed if the <b>Settings.ShowPreview</b> option is set to <b>true</b>.
+                </p>
+                <p>
+                    By default, preview rows are empty. Set the <b>PreviewFieldName</b> property to the required field in the data source to bind the preview rows with data.
+                </p>
+                <p>
+                    Use the <b>GetPreviewText()</b> method to get the text displayed within the specified preview row.
+                </p>
+                <p>
+                    Use the <b>Styles.PreviewRow</b> property to access the style settings used to paint preview rows.
+                </p>
+                <p>
+                    Use the <b>Templates.PreviewTemplate</b> property to provide a template used for rendering preview rows.
+                </p>
+            </Description>
+        </Demo>
+    </DemoGroup>
+    <DemoGroup Text="Row Selection" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px">
+        <Demo Text="Simple Selection" NavigateUrl="~/Selection/Selection.aspx" Title="Row Selection Check Boxes - AJAX DataGrid for ASP.NET">
+            <Description>
+                <p>
+                    This demo shows how to display contact names selected in the ASPxGridView within the 'Selected values' list box.
+                </p>
+                <p>
+                    To allow end-users to select rows, add a command column to the ASPxGridView and set its <b>ShowSelectCheckBox</b> property to <b>true</b>. The column will display check boxes within its cells. End-users can check or uncheck these check boxes to select or de-select the corresponding data rows.
+                </p>
+                <p>
+                    In this demo, the <b>SelectionChanged</b> client-side event is handled to display selected contacts within the list box and the number of selected contacts below it. Contact names are obtained using the <b>GetSeletedFieldValues</b>() function. The number of selected rows is returned by the <b>GetSelectedRowCount()</b> client function.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Advanced Selection" NavigateUrl="~/Selection/SelectionAdv.aspx" Title="Select All Rows on Page - ASP.NET Grid Control">
+            <Description>
+                <p>
+                    This demo shows how to select and de-select all rows displayed on the active page.
+                </p>
+                <p>
+                    Simply use the following client functions:
+                </p>
+                <ul>
+                    <li>
+                        <b>SelectAllRowsOnPage()/SelectAllRowsOnPage(true)</b>
+                    </li>
+                    <li>
+                        <b>UnselectAllRowsOnPage()/SelectAllRowsOnPage(false)</b>
+                    </li>
+                </ul>
+            </Description>
+        </Demo>
+        <Demo Text="Multi Selection" NavigateUrl="~/Selection/MultiSelection.aspx" Title="Multiple Row Selection - ASP.NET AJAX Grid and Editors">
+            <Description>
+                <p>
+                    This demo describes the multiple row selection feature available within the ASPxGridView. Click a row holding the CTRL key pressed. This toggles the row's selected state preserving the previous selection. To select rows between the clicked row and the previously focused row, click a row holding the SHIFT key pressed. In this instance, the previous selection is cleared.
+                </p>
+                <p>
+                    To enable multiple row selection, set the <b>SettingsBehavior.AllowMultiSelect</b> property to <b>true</b>.
+                </p>
+            </Description>
+        </Demo>
+    </DemoGroup>
+    <DemoGroup Text="Data Paging and Scrolling" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px">
+        <Demo Text="Vertical Scrolling" NavigateUrl="~/PagingAndScrolling/VertScrolling.aspx" Title="Vertical Scrolling - ASP.NET DataGrid Control">
+            <Description>
+                <p>
+                    By default, the ASPxGridView's height is determined by the number rows displayed within a page.
+                </p>
+                <p>
+                    The maximum number of rows that can be displayed within a page is specified by the <b>SettingsPager.PageSize</b> property.
+                </p>
+                <p>
+                    To reduce the grid's height, you can display its vertical scrollbar and specify the height of the scrollable area, in pixels. Simply set the following properties:
+                </p>
+                <ul>
+                    <li>
+                        The scrollbar's visibility is specified by the <b>Settings.ShowVerticalScrollBar</b> property.
+                    </li>
+                    <li>
+                        The scrollable area's height is specified by the <b>Settings.VerticalScrollableHeight</b> property.
+                    </li>
+                </ul>
+            </Description>
+        </Demo>
+        <Demo Text="SEO Friendly" NavigateUrl="~/PagingAndScrolling/SEOFriendly.aspx" Title="SEO Friendly Paging - Grid and Editors for ASP.NET">
+            <Description>
+                <p>A known problem with grid controls is that search engines simply ignore pagers. When indexing a site, they only use the information contained within the first page. The reason for this is that pager's links are usually not represented as hyperlinks to other pages. Instead, they simply respond to click events to raise data update callbacks.</p>
+                <p>
+                    The ASPxGridView allows you to make a SEO-friendly pager. Use the <b>SettingsPager.SEOFriendly</b> property for this purpose.
+                </p>
+                <p>
+                    If this property is set to <b>SEOFriendlyMode.CrawlerOnly</b>, the ASPxGridView renders hyperlinks in the pager when a web-crawler is detected. For other visitors, standard pager links are generated. So, search engines can index the entire grid content, and site visitors experience the same callback functionality.
+                </p>
+                <p>
+                    If the property is set to <b>SEOFriendlyMode.Enabled</b> or <b>SEOFriendlyMode.Disabled</b>, automatic web crawler detection is disabled. The pager renders either SEO-friendly or standard links, respectively.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Pager Position" NavigateUrl="~/PagingAndScrolling/PagerPosition.aspx" Title="Data Pager Position - ASP.NET Grid and Data Editors">
+            <Description>
+
+                <p>In this demo, use the 'Pager Position' combo box to specify pager position within the ASPxGridView.</p>
+            </Description>
+        </Demo>
+    </DemoGroup>
+    <DemoGroup Text="ASP.NET AJAX">
+        <Demo Text="Update Panel" NavigateUrl="~/MSAjax/UpdatePanel.aspx" Title="Use Grid in AJAX Update Panel - AJAX Grid Control for ASP.NET">
+            <Description>
+                This demo illustrates the compatibility of the ASPxGridView with the MS Ajax Update Panel.
+            </Description>
+        </Demo>
+    </DemoGroup>
+    <DemoGroup IsUpdated="true" Text="Data Editors">
+        <Demo Text="Filter Control" NavigateUrl="~/Editors/FilterBuilder.aspx" Title="ASP.NET Filter Control - ASP.NET AJAX Controls and Editors" IsNew="true">
+            <Description>
+							<p>This demo demonstrates a stand-alone emulation of the ASPxGridView’s built-in <b>Filter Control</b>, which can also be used to create complex criteria.</p>
+							<p>In this demo, to apply the filter, click the 'Apply' button. This calls the Filter Control's <b>Apply()</b> method. When applied, the Filter Control's Applied client-side event is handled to filter the ASPxGridView's data.</p>
+							<p><b>End-User Capabilities</b>:</p>
+							<p>
+								<b>Add/Remove Conditions</b><br/>
+								To create and customize filter criteria, use the
+								<img src="../App_Themes/Glass/Editors/fcadd.png" alt="(+)" title="" />
+								and
+								<img src="../App_Themes/Glass/Editors/fcremove.png" alt="(x)" title="" />
+								buttons.
+							</p>
+							<p>
+								<b>Change a Column in a Filter Condition</b><br/>
+								To change a condition's column, invoke the column list and choose the required column.
+							</p>
+							<p>
+								<b>Change an Operator in a Filter Condition</b><br/>
+								To change a condition's operator, invoke the operator list and choose the required operator.
+							</p>
+							<p>
+								<b>Edit a Condition's Value</b><br/>							
+								To edit a condition's value, click the operand value and type text. To discard changes to the value and close the active edit box, press ESC.
+							</p>
+						</Description>
+        </Demo>
+        <Demo Text="ASPxCalendar (Day Rendering)" NavigateUrl="~/Editors/Calendar.aspx" Title="ASP.NET Calendar, Day Template - Data Editors for ASP.NET AJAX">
+            <Description>
+                <p>
+                    This sample demonstrates the use of the ASPxCalendar's <strong>DayRender</strong> server-side event. This event allows you to customize the appearance of individual calendar days. By handling the <strong>DayRender</strong> event, you can provide your own content for days instead of displaying a standard day text. In this demo, each calendar day is rendered using a specific custom control that displays weather information.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="ASPxCalendar (Blog Archive)" NavigateUrl="~/Editors/CalendarNotes.aspx" Title="ASP.NET Calendar, Blog Archive - Data Editors for ASP.NET AJAX">
+            <Description>
+                <p>
+                    This demo illustrates how the ASPxCalendar's <strong>DayRender</strong> event can be used to conditionally change the manner of rendering calendar days within a single month. In this sample, a calendar represents information about notes scheduled on October. A list of October notes is stored within an xml file. Calendar days, which correspond to one or more associated notes, are represented as hyperlinks. A click on a hyperlink sends a callback to the server to obtain the corresponding note information. The obtained information is then displayed within a popup window.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="ASPxCombobox Features" NavigateUrl="~/Editors/ComboboxFeatures.aspx" Title="ASP.NET Combo Box - ASP.NET AJAX Editors">
+            <Description>
+                <p>
+                    This demo describes some of the features provided by the <b>ASPxCombobox</b> editor.
+                </p>
+                <p>
+                    If the <b>EnableIncrementalFiltering</b> property is set to true, the ASPxCombobox filters its items dynamically, based upon the first letters entered by an end-user into the editor's input box on the client side.
+
+                </p>
+                <p>
+                    The ASPxCombobox enables its items to be loaded from the server on demand, via callbacks if its <b>EnableCallbackMode</b> property is set to true. In this mode, the <b>CallBackPageSize</b> property defines the number of items to be obtained from the server each time it's required.
+                </p>
+
+            </Description>
+        </Demo>
+        <Demo Text="ASPxCombobox (Populating on the Fly)" NavigateUrl="~/Editors/ComboboxClientAPI.aspx" Title="Programmatically Populate a Combo Box - ASP.NET Combobox Editor">
+            <Description>
+                <p>
+                    The <b>APSxCombobox</b> control allows its content (item list) to be updated via callbacks by using the <b>PerformCallback</b> client method. In this demo, the <b>City</b> combo box is populated on the fly with city names that correspond to the currently selected country from the <b>Country</b> combo box.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="ASPxButton Appearances" NavigateUrl="~/Editors/Button.aspx" Title="ASP.NET Button Appearance - Data Editors and Controls for ASP.NET">
+            <Description>
+                <p>
+                    The ASPxButton control allows its contents to be represented by an image, or text, or image with text. This sample demonstrates the following different kinds of ASPxButton's content representation:
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>Image</strong> - The whole button is represented by a single image. The image is specified by the <strong>Image.Url</strong> property; its size is controlled by the <strong>Image.Width</strong> and <strong>Image.Height</strong> properties. The <strong>Text</strong> property of a button control is not set.
+                    </li>
+
+                    <li>
+                        <strong>Image and Text</strong> - A button's content is represented using the combination of an image and text. The image is defined via the <strong>Image.Url</strong> property; the text is specified by the <strong>Text</strong> property. The <strong>ImagePosition</strong> property is used to control the image's position with respect to the text.
+                    </li>
+
+                    <li>
+                        <strong>Background Image and Text</strong> - The <strong>Text</strong> property is used to specify a button's display text. The background image of the button is defined using the <strong>BackgroundImage.ImageUrl</strong> property. In this case, the button's <strong>Cursor</strong> and <strong>ForeColor</strong> properties are additionally used to specify the cursor displayed when the mouse hovers over the button and the displayed text's color.
+                    </li>
+
+                    <li>
+                        <strong>Native</strong> - The ASPxButton control is rendered as a native HTML button input element. This mode is controlled by the button's <strong>Native</strong> property set to true. The button's text is defined via the <strong>Text</strong> property.
+                    </li>
+                </ul>
+            </Description>
+        </Demo>
+        <Demo Text="ASPxButton Features" NavigateUrl="~/Editors/ButtonFeatures.aspx" Title="ASP.NET Button Features - Controls and Editors for ASP.NET">
+            <Description>
+                <p>
+                    This sample demonstrates the ASPxButton's client-side support for the checked and disabled states.
+                </p>
+
+                <p>
+                    The checked state of the ASPxButton is initially controlled by the server <strong>Checked</strong> property and can be changed on the client side via the <strong>SetChecked</strong> client method. To specify a grouping of button controls to create a mutually exclusive set of buttons, the <strong>GroupName</strong> property can be used. When this property is set, only one ASPxButton in the specified group can be checked at a time.
+                </p>
+
+                <p>
+                    The availability of the ASPxButton to end-users, which is initially set via the server-side <strong>Enabled</strong> property, can be dynamically changed on the client using the <strong>SetEnabled</strong> client method.
+                </p>
+            </Description>
+        </Demo>
+
+        <Demo Text="ASPxSpinEdit" NavigateUrl="~/Editors/SpinEdit.aspx" Title="ASP.NET Spin Editor - Data Editors for ASP.NET AJAX">
+            <Description>
+                <p>
+                    This demo illustrates the primary features of the ASPxSpinEdit.
+                </p>
+
+                <p>
+                    The ASPxSpinEdit control enables your end-users to edit numeric values with ease by clicking small or large increment buttons. The visibility of these spin buttons is controlled by the <strong>SpinButtons.ShowIncrementButtons</strong> and <strong>SpinButtons.ShowLargeIncrementButtons</strong> properties. To define the position of spin button within the editor, the <strong>SpinButtons.Position</strong> property can be used. The increments with which the editor's value is changed when a small or large spin button is clicked can be defined by using the <strong>Increment</strong> and <strong>LargeIncrement</strong> properties respectively.
+                </p>
+
+                <p>
+                    The ASPxSpinEdit can function in float or integer editing mode, which is controlled by the <strong>NumberType</strong> property. In integer mode (when the <strong>NumberType</strong> property is set to <strong>Integer</strong>), float value input is disabled and float values displayed within the editor are automatically rounded after they has been modified. In float mode, culture specific separators are supported, allowing decimal separators to display uniquely in various cultures. The number of decimal places can be defined using the <strong>DecimalPlaces</strong> property.
+                </p>
+
+                <p>
+                    The minimum and maximum allowed values can be defined via the <strong>MinValue</strong> and <strong>MaxValue</strong> properties, which enables end-user input to be limited by the specified range.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Data Binding" NavigateUrl="~/Editors/DataBinding.aspx" Title="Bind Editors to Data - ASP.NET Data Editors">
+            <Description>
+                <p>
+                    This demo illustrates how different types of editors can be bound to data using standard data-binding
+                    expressions when residing within a <b>Detail View</b> control's templates. In the binding expressions,
+                    the <b>Eval</b> and <b>Bind</b> methods are used to bind editors to specific data field values
+                    and submit data changes made within the editor back to the database.
+                </p>
+                <p>
+                    Note that combobox editors used in this demo are additionally bound to separate data sources from which their item lists are obtained dynamically.
+                </p>
+                <p>
+                    The <b>City</b> editor's item list is populated via callbacks based upon the value selected within the <b>Country</b> editor.
+                </p>
+                <p>
+                    Determine the manner in which editors are validated, using their built-in validation means.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Validation" NavigateUrl="~/Editors/Validation.aspx" Title="Client-side and Server-side Data Validation - ASP.NET Data Editors" IsUpdated="true">
+            <Description>
+                <p>
+                    The ASPxGridView and Editors Library provide a powerful and seamless way to perform data validation both on the client and server.
+                </p>
+
+                <p>
+                    Different validation settings can be customized for an editor using specific properties available via the editor's <strong>ValidationSettings</strong> property.
+                </p>
+
+                <p>
+                    To define editor validation logic, the following easy-to-use means are provided (which can be combined together, if required):
+                </p>
+
+                <ul>
+                    <li>
+                        The <strong>ValidationSettings.RequiredField</strong> property can be used to force an editor to require input, and give you the ability to display an error message if input is not received.
+                    </li>
+
+                    <li>
+                        The <strong>ValidationSettings.RegularExpression</strong> property allows you to validate an editor's value based upon a regular expression.
+                    </li>
+
+                    <li>
+                        An editor's <strong>Validation</strong> event can be handled on either the client or server (or both) to setup editor validation. Review the code sample tabs within this demo to learn how easy this really is.
+                    </li>
+                </ul>
+                <p>
+                    In this demo the validation check is triggered by clicking on the 'OK' ASPxButton control or
+                    by moving input focus out of the editor (if the <strong>ValidationSettings.ValidateOnLeave</strong>
+                    option is enabled).
+                </p>
+
+                <p>
+                    When an editor fails validation logic, the following can be displayed:
+                </p>
+
+                <ul>
+                    <li>
+                        Error image - To define an error image, use the <strong>ValidationSettings.ErrorImage</strong> property.
+                    </li>
+
+                    <li>
+                        Error text - The text can be specified by using either the <strong>ValidationSettings.ErrorText</strong> property or in the <strong>Validation</strong> event's handler.
+                    </li>
+
+                    <li>
+                        A specific error frame near the editor -  The error frame's appearance is customized via the
+                        <strong>ValidationSettings.ErrorFrameStyle</strong> property. You can also use the
+                        <strong>ValidationSettings.Display</strong> property to control how the error frame
+                        occupies its space around the editor.
+                    </li>
+
+                    <li>
+                        Other similar settings can also be customized via the <strong>ValidationSettings</strong> property.
+                    </li>
+                </ul>
+
+                <p>
+                    Input focus can be forced back to the editor's input region. The <strong>ValidationSettings.SetFocusOnError</strong> property controls the change in input focus.
+                </p>
+
+                <p>
+                    This demo illustrates the built-in flexibility and efficiency of our validation engine, allowing you to easily implement different validation scenarios without using additional validator controls.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Native Mode" NavigateUrl="~/Editors/NativeMode.aspx" Title="Native Rendering - ASP.NET Data Editors">
+            <Description>
+                <p>
+                    By default, most editors from the ASPxGridView and Editor Library are rendered using a specifically designed custom layout implemented with the help of standard HTML elements, such as HTML TABLEs, DIVs, SPANs, etc. This allows an editor's appearance to be fully customized by applying a specific style to each composite element of the editor.
+                </p>
+                <p>
+                    In some cases, the application logic might require representing editors as native HTML INPUT elements of the corresponding types. This demo illustrates how our editors (such as the ASPxTextBox, ASPxMemo, ASPxListBox, ASPxComboBox and ASPxButton) support native rendering. In order to use an editor in native mode, set the Native property to true. In native mode, an editor's render size may be significantly reduced, which improves the editor's overall performance.
+                </p>
+            </Description>
+        </Demo>
+        <Demo Text="Enable On Client" NavigateUrl="~/Editors/EnableOnClient.aspx" Title="Disable Editors on the Client Side - ASP.NET AJAX Data Editors">
+            <Description>
+                <p>
+                    This demo illustrates how an editor's availability to an end-user can be controlled on the client side, using the client SetEnabled method.
+                </p>
+                <p>
+                    In this sample, the Product combo box becomes enabled when any technology is selected within the Technology combo box. And appropriately, the Version combo is enabled after selecting any product within the Product combo.
+                </p>
+            </Description>
+        </Demo>
+    </DemoGroup>
+
+    <DemoGroup Text="" Visible="false">
+        <Demo Text="Site Map" NavigateUrl="~/SiteMap.aspx" UseFullTitle="false" Title="Developer Express - ASP.NET GridView Control - Demo Center Site Map">
+            <GeneralTerms ShowHeader="false" />
+            <Description ShowHeader="false" />
+        </Demo>
+    </DemoGroup>
+</Demos>
