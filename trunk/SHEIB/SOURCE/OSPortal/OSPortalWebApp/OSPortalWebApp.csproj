@@ -167,6 +167,7 @@
     <Content Include="images\left_bg_01.gif" />
     <Content Include="images\left_bg_02.gif" />
     <Content Include="images\left_pic_01.gif" />
+    <Content Include="images\left_pic_01.jpg" />
     <Content Include="images\left_pic_02.gif" />
     <Content Include="images\left_pic_03.gif" />
     <Content Include="images\left_pic_04.gif" />
@@ -208,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DevExpress.DLL\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
