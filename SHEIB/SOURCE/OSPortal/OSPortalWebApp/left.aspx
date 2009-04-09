@@ -289,90 +289,99 @@
 		<li>
 			<a href="#">客户关系</a>
 			<ul>
-				<li><a id="anchor_customer" href="http://www.google.cn">客户列表</a></li>
-				<li><a id="anchor_contact" href="http://www.wordpress.org/">联系人</a></li>
-				<li><a id="anchor_businessfollow" href="http://www.textpattern.com/">业务跟进</a></li>
-				<li><a id="anchor_servicenotice" href="http://typosphere.org/">服务提醒</a></li>
-				<li><a id="anchor_areasetting" href="http://www.textpattern.com/">区域设置</a></li>
-				<li><a id="anchor_customerlevel" href="http://typosphere.org/">客户级别</a></li>
+				<li><a id="Customer" href="http://www.google.cn">客户列表</a></li>
+				<li><a id="CustContact" href="http://www.wordpress.org/">联系人</a></li>
+				<li><a id="CustomerPtFollow" href="http://www.textpattern.com/">业务跟进</a></li>
+				<li><a id="CustAlert" href="http://typosphere.org/">服务提醒</a></li>
+				<li><a id="Areasetting" href="http://www.textpattern.com/">区域设置</a></li>
 			</ul>
 		</li>
 		<li>
 			<a href="#">非车险保单管理</a>
 			<ul>
-				<li><a id="anchor_otheriteminput" href="http://www.php.net/">保单录入</a></li>
-				<li><a id="anchor_otheritemmodify" href="http://www.ruby-lang.org/en/">保单批改</a></li>
-				<li><a id="anchor_otheritemcheck" href="http://www.python.org/">保单审核</a></li>
-				<li><a id="anchor_otheritemsearch" href="http://www.perl.org/">保单查询</a></li>
+				<li><a id="PolicyInput" href="http://www.php.net/">保单录入</a></li>
+				<li><a id="PolicyAlter" href="http://www.ruby-lang.org/en/">保单批改</a></li>
+				<li><a id="PolicyCheck" href="http://www.python.org/">保单审核</a></li>
+				<li><a id="PolicySearch" href="http://www.perl.org/">保单查询</a></li>
 			</ul>
 		</li>
 		<li>
 			<a href="#">车险保单管理</a>
 			<ul>
-				<li><a id="anchor_iteminput" href="http://www.php.net/">保单录入</a></li>
-				<li><a id="anchor_itemmodify" href="http://www.ruby-lang.org/en/">保单批改</a></li>
-				<li><a id="anchor_itemcheck" href="http://www.python.org/">保单审核</a></li>
-				<li><a id="anchor_itemsearch" href="http://www.perl.org/">保单查询</a></li>
+			    <li><a id="AskPriceInput" href="http://www.php.net/">询价单录入</a></li>
+			    <li><a id="AskPriceCheck" href="http://www.php.net/">询价单审核</a></li>
+			    <li><a id="AskPriceSearch" href="http://www.php.net/">询价单查询</a></li>
+				<li><a id="CarPolicyInput" href="http://www.php.net/">保单录入</a></li>
+				<li><a id="CarPolicyAlter" href="http://www.ruby-lang.org/en/">保单批改</a></li>
+				<li><a id="CarPolicyCheck" href="http://www.python.org/">保单审核</a></li>
+				<li><a id="CarPolicySearch" href="http://www.perl.org/">保单查询</a></li>
 			</ul>
 		</li>
 		<li>
 			<a href="#">客户理赔</a>
 			<ul>
-				<li><a id="anchor_payoffcheckin" href="http://search.yahoo.com/">理赔登记</a></li>
-				<li><a id="anchor_payoffinfomanager" href="http://www.google.com/">理赔资料管理</a></li>
+				<li><a id="NotifyClaim" href="http://search.yahoo.com/">理赔登记</a></li>
+				<li><a id="NotifyClaimDoc" href="http://www.google.com/">理赔资料管理</a></li>
 			</ul>
 		</li>
-		<li><a id="anchor_businessconsult" href="http://www.i-marco.nl/weblog/">业务咨询</a></li>
+		<li>
+			<a href="#">业务咨询</a>
+			<ul>
+				<li><a id="BusinessConsult" href="http://search.yahoo.com/">业务咨询</a></li>
+			</ul>
+		</li>		
 		<li>
 			<a href="#">收付结算</a>
 			<ul>
-				<li><a id="anchor_noticebook" href="http://search.yahoo.com/">保费通知书</a></li>
-				<li><a id="anchor_customerfee" href="http://www.google.com/">客户收费</a></li>
-				<li><a id="anchor_cutofffee" href="http://www.ask.com/">解付保费</a></li>
-				<li><a id="anchor_cutofffeebook" href="http://www.live.com/?searchonly=true">解付保费开票</a></li>
-				<li><a id="anchor_middlefeecount" href="http://www.google.com/">经纪费结算</a></li>
-				<li><a id="anchor_sheetcolumnmanager" href="http://www.ask.com/">台帐管理</a></li>
+				<li><a id="FeeNotice" href="http://search.yahoo.com/">保费通知书</a></li>
+				<li><a id="FeeCustomer" href="http://www.google.com/">客户收费</a></li>
+				<li><a id="FeePayin" href="http://www.ask.com/">解付保费</a></li>
+				<li><a id="FeePayinInvoice" href="http://www.live.com/?searchonly=true">解付保费开票</a></li>
+				<li><a id="ProcessFee" href="http://www.google.com/">经纪费结算</a></li>
+				<li><a id="SheetcolumnManager" href="http://www.ask.com/">台帐管理</a></li>
 			</ul>
 		</li>
 		<li>
 			<a href="#">产品设置</a>
 			<ul>
-				<li><a id="anchor_ensurecompany" href="http://search.yahoo.com/">保险公司!</a></li>
-				<li><a id="anchor_ensurebranch" href="http://www.google.com/">分支机构</a></li>
-				<li><a id="anchor_categorydefinition" href="http://www.ask.com/">险种定义</a></li>
-				<li><a id="anchor_otherinfodefinition" href="http://www.live.com/?searchonly=true">标的定义</a></li>
+				<li><a id="Carrier" href="http://search.yahoo.com/">保险公司!</a></li>
+				<li><a id="Branch" href="http://www.google.com/">分支机构</a></li>
+				<li><a id="ProductType" href="http://www.ask.com/">险种定义</a></li>
+				<li><a id="TargetType" href="http://www.live.com/?searchonly=true">标的定义</a></li>
 			</ul>
 		</li>
 		<li>
 			<a href="#">组织设置</a>
 			<ul>
-				<li><a id="anchor_employeemanager" href="http://search.yahoo.com/">员工管理</a></li>
-				<li><a id="anchor_titlesetting" href="http://www.google.com/">职位设置</a></li>
-				<li><a id="anchor_companytree" href="http://www.ask.com/">组织机构</a></li>
-				<li><a id="anchor_permissionmanager" href="http://www.live.com/?searchonly=true">权限管理</a></li>
+				<li><a id="UserManager" href="http://search.yahoo.com/">员工管理</a></li>
+				<li><a id="RoleManager" href="http://www.google.com/">角色管理</a></li>
+				<li><a id="DepartmentManager" href="http://www.ask.com/">组织机构</a></li>
 			</ul>
 		</li>
-		<li><a id="anchor_infocenter" href="http://www.i-marco.nl/weblog/">信息中心</a></li>
+		<li><a id="InfoCenter" href="http://www.i-marco.nl/weblog/">信息中心</a></li>
 		<li>
 			<a href="#">系统设置</a>
 			<ul>
-				<li><a id="anchor_losscategory" href="http://search.yahoo.com/">损失性质</a></li>
-				<li><a id="anchor_ofreason" href="http://www.google.com/">出险原因</a></li>
-				<li><a id="anchor_itemstate" href="http://www.ask.com/">保单状态</a></li>
-				<li><a id="anchor_businessclass" href="http://www.live.com/?searchonly=true">行业分类</a></li>
-				<li><a id="anchor_unittype" href="http://www.ask.com/">币种设置</a></li>
-				<li><a id="anchor_systemoption" href="http://www.ask.com/">系统选项</a></li>
-				<li><a id="anchor_systemlog" href="http://www.ask.com/">系统日志</a></li>
-				<li><a id="anchor_changepass" href="http://www.ask.com/">修改口令</a></li>
-				<li><a id="anchor_printsetting" href="http://www.ask.com/">打印设置</a></li>
+				<li><a id="CodeManager" href="http://search.yahoo.com/">数据字典</a></li>
+				<li><a id="SystemOption" href="http://www.ask.com/">系统选项</a></li>
+				<li><a id="Systemlog" href="http://www.ask.com/">系统日志</a></li>
+				<li><a id="ChangePass" href="http://www.ask.com/">修改口令</a></li>
 			</ul>
 		</li>
-		<li><a id="anchor_messagenotice" href="http://www.i-marco.nl/weblog/">消息提醒</a></li>
+		<li><a id="MessageNotice" href="http://www.i-marco.nl/weblog/">消息提醒</a></li>
+		<li>
+			<a href="#">综合查询</a>
+			<ul>
+				<li><a id="GeneralSearch" href="http://search.yahoo.com/">业绩报表</a></li>
+			</ul>
+		</li>
 		<li>
 			<a href="#">统计报表</a>
 			<ul>
-				<li><a id="anchor_achievementreport" href="http://search.yahoo.com/">业绩报表</a></li>
-				<li><a id="anchor_balancereport" href="http://www.live.com/?searchonly=true">结算报表</a></li>
+				<li><a id="AchievementReport" href="http://search.yahoo.com/">业绩报表</a></li>
+				<li><a id="BalanceReport" href="http://www.live.com/?searchonly=true">结算报表</a></li>
+				<li><a id="GeneralReport" href="http://www.live.com/?searchonly=true">常规报表</a></li>
+				<li><a id="NotifyClaimReport" href="http://www.live.com/?searchonly=true">理赔报表</a></li>
 			</ul>
 		</li>
 	</ul>
