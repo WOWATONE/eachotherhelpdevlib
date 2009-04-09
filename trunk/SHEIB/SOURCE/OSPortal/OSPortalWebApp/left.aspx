@@ -289,11 +289,11 @@
 		<li>
 			<a href="#">客户关系</a>
 			<ul>
-				<li><a id="Customer" href="http://www.google.cn">客户列表</a></li>
-				<li><a id="CustContact" href="http://www.wordpress.org/">联系人</a></li>
-				<li><a id="CustomerPtFollow" href="http://www.textpattern.com/">业务跟进</a></li>
-				<li><a id="CustAlert" href="http://typosphere.org/">服务提醒</a></li>
-				<li><a id="Areasetting" href="http://www.textpattern.com/">区域设置</a></li>
+				<li><a id="Customer" href="Customer.aspx">客户列表</a></li>
+				<li><a id="CustContact" href="CustContact.aspx">联系人</a></li>
+				<li><a id="CustomerPtFollow" href="CustomerPtFollow.aspx">业务跟进</a></li>
+				<li><a id="CustAlert" href="CustAlert.aspx">服务提醒</a></li>
+				<li><a id="AreaSetting" href="AreaSetting.aspx">区域设置</a></li>
 			</ul>
 		</li>
 		<li>
@@ -333,7 +333,7 @@
 		<li>
 			<a href="#">收付结算</a>
 			<ul>
-				<li><a id="FeeNotice" href="http://search.yahoo.com/">保费通知书</a></li>
+				<li><a id="FeeNotice" href="FeeNotice.aspx>保费通知书</a></li>
 				<li><a id="FeeCustomer" href="http://www.google.com/">客户收费</a></li>
 				<li><a id="FeePayin" href="http://www.ask.com/">解付保费</a></li>
 				<li><a id="FeePayinInvoice" href="http://www.live.com/?searchonly=true">解付保费开票</a></li>
