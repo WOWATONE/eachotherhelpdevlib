@@ -1,0 +1,74 @@
+
+--修改所有Char空值
+select 'update '+table_name+' set '+Column_Name+' = dbo.trim('+Column_Name+');'
+from all_tab_columns where data_type='char' ;
+
+create view AccountType as select CodeID AccountTypeID,CodeName AccountTypeName,SortNo from code where codeType='AccountType' 
+create view AlterType as select CodeID AltTypeID,CodeName AltTypeName,SortNo from code where codeType='AccountType' 
+create view Curency as select CodeID CurID,CodeName CurencyCode,Content1 CurrencyName,Content2 Rate,Content3 FlagBase,SortNo from code where codeType='Currency' 
+create view FeeType as select CodeID FeeTypeID,CodeName FeeTypeName,SortNo from code where codeType='FeeType' 
+create view TradeName as select CodeID TradeNo,CodeName TradeName,SortNo from code where codeType='TradeName' 
+create view Calamity as select CodeID CalamityNo,CodeName CalamityName,SortNo from code where codeType='Calamity' 
+create view GatheringType as select CodeID GatheringTypeID,CodeName GatheringTypeName,SortNo from code where codeType='GatheringType' 
+create view OperationType as select CodeID OperationTypeID,CodeName OperationTypeName,SortNo from code where codeType='OperationType' 
+
+
+
+delete from code where codeType='AccountType';
+insert Into code(ID,CodeType,CodeID,CodeName,ParentCodeID,SortNo,Content1,Content2,Content3,Content4,Content5,Layer)
+select dbo.GetNewID32(newid()),'AccountType',AccountTypeID,AccountTypeName,
+  null ParentCodeID, AccountTypeID SortNo,
+  null Content1,
+  null Content2,  null Content3,
+  null Content4,
+  null Content5,
+  null Layer
+from C_AccountType;
+
+
+delete from code where codeType='AltType';
+insert Into code(ID,CodeType,CodeID,CodeName,SortNo,Content1,Content2,Content3)
+select dbo.GetNewID32(newid()),'AltType',AltTypeID,AltTypeName,
+  AltTypeID SortNo,
+  null Content1,
+  null Content2,  null Content3
+from C_AlterType;
+
+delete from code where codeType='Currency';
+insert Into code(ID,CodeType,CodeID,CodeName,SortNo,Content1,Content2,Content3)
+select dbo.GetNewID32(newid()),'Currency',CurID,CurrencyCode,
+  CurID SortNo,
+  CurrencyName Content1,
+  Rate Content2,
+  FlagBase Content3
+from C_Currency;
+
+delete from code where codeType='FeeType';
+insert Into code(ID,CodeType,CodeID,CodeName,SortNo,Content1,Content2,Content3)
+select dbo.GetNewID32(newid()),'FeeType',FeeTypeID,FeeTypeName,
+  FeeTypeID SortNo,
+  null Content1,
+  null Content2,
+  null Content3
+from C_FeeType;
+
+delete from code where codeType='TradeName';
+insert Into code(ID,CodeType,CodeID,CodeName,SortNo,Content1,Content2,Content3)
+select dbo.GetNewID32(newid()),'TradeName',TradeNo,TradeName,
+  TradeNo SortNo,
+  null Content1,
+  null Content2,
+  null Content3
+from C_TradeName;
+
+
+delete from code where codeType='Calamity';
+insert Into code(ID,CodeType,CodeID,CodeName,SortNo,Content1,Content2,Content3)
+select dbo.GetNewID32(newid()),'Calamity',CalamityNo,CalamityName,
+  null SortNo,
+  null Content1,
+  null Content2,
+  null Content3
+from Calamity;
+
+select * from 
