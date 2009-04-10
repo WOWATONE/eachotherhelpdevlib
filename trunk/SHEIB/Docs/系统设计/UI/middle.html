@@ -1,0 +1,29 @@
+<!-- saved from url=(0044)-->
+<HTML>
+<HEAD>
+<TITLE>改变左边栏</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META content=zh-CN http-equiv=Content-Language>
+</HEAD>
+
+<BODY leftMargin=0 rightMargin=0 topMargin=0 background=images/middle_bg_01.gif style="background-repeat: repeat-y; background-position: left" style="padding-top:160">
+
+<SCRIPT language=javascript>
+function HideLeft(){
+	if(parent.frame_left.cols=="0,15,*"){
+		parent.frame_left.cols="171,15,*";
+		menuSwitch.innerHTML = "<img src=images/middle_pic_01.gif>";
+	}else{
+		parent.frame_left.cols="0,15,*";
+		menuSwitch.innerHTML = "<img src=images/middle_pic_02.gif>";
+	}
+}
+</SCRIPT>
+
+<TABLE style="CURSOR: hand" onclick=HideLeft() height="100" cellSpacing=0 cellPadding=0 border=0>
+  <TR>
+    <TD id=menuSwitch><img src=images/middle_pic_01.gif width="15" height="76"></TD>
+  </TR>
+</TABLE>
+</BODY>
+</HTML>

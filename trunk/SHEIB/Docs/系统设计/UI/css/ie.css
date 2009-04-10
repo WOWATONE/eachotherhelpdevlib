@@ -1,0 +1,43 @@
+<style type='text/css'>
+<!--
+body 		{ font-family: "宋体",'Verdana','Arial','Helvetica','sans-serif'; font-size: 9pt;margin:0}
+td 		    { font-family: "宋体",'Verdana','Arial','Helvetica','sans-serif'; font-size: 9pt;font:9pt/14pt}
+.white    	{ font-family: "宋体",'Verdana','Arial','Helvetica','sans-serif'; font-size: 9pt ; color: #FFFFFF}
+.blue    	{ font-family: "宋体",'Verdana','Arial','Helvetica','sans-serif'; font-size: 9pt ; color: #333399}
+.black  	{ font-family: "宋体",'Verdana','Arial','Helvetica','sans-serif'; font-size: 14px ; color: #000000; font-weight:900}
+.black_s  	{ font-family: "宋体",'Verdana','Arial','Helvetica','sans-serif'; font-size: 12px ; color: #000000}
+.red    	{ font-family: "宋体",'Verdana','Arial','Helvetica','sans-serif'; font-size: 9pt ; color: #1732BB}
+.red    	{ font-family: "宋体",'Verdana','Arial','Helvetica','sans-serif'; font-size: 9pt ; color: #FF0000}
+a        	{ font-family: "宋体"; color: #1732BB; text-decoration: none; }
+a:active 	{ font-family: "宋体"; color: #1732BB; text-decoration: none;	}
+a:hover  	{ font-family: "宋体"; color: #666666; text-decoration: underline;}
+a:link   	{ font-family: "宋体"; color: #000099; text-decoration: none;}
+a.white     { font-family: "宋体"; color: #ffffff; text-decoration: none; }
+a.white:hover  	{ font-family: "宋体"; color: #99ccee; text-decoration: underline;}
+.input      { font-size:12px; height:20px;width:153px}
+.input_1    { border:0px; font-size:12px; color: #ffffff; background-image:url(../images/input_bg_01.gif); height:19px;width:66px}
+.input_2    { border:0px; font-size:12px; color: #ffffff; background-image:url(../images/input_bg_02.gif); height:18px;width:52px}
+.input_3    { border:0px; font-size:12px; color: #ffffff; background-image:url(../images/input_bg_03.gif); height:18px;width:52px}
+.input_4    { border:1px solid #74ABDE; font-size:12px; color: #000000; background-color:#D6EAFF; height:20px;width:47px}
+.input_5    { border:1px solid #4984C5; font-size:12px; color: #000000; background-color:#ffffff; height:17px;width:22px}
+.input_6    { font-size:12px; color: #000000; height:20px;width:140px}
+.input_7    { font-size:12px; color: #000000; height:20px;width:450px}
+.input_8    { font-size:12px; color: #000000; height:90px;width:490px}
+.input_9    { border:0px; font-size:12px; color: #ffffff; background-color:#01679A; height:18px}
+.input_10    { font-size:12px; color: #000000; height:20px;width:120px}
+
+.bgout   	{ font-size: 12px ; color: #000000;background-color:#F1F0F0;}
+.bgon    	{ font-size: 12px ; color: #FFFFFF:900;background-color:#BDBEBF;}
+.bgout_1   	{ font-size: 12px ; color: #000000;}
+.bgon_1   	{ font-size: 12px ; color: #FFFFFF:900;background-color:#5DA6CA;}
+
+.as1		{ COLOR: #000000}
+.as2		{ COLOR: #000000}
+.sec0		{ BACKGROUND-IMAGE: url(../images/table_bg_09.gif);CURSOR: hand;vertical-align:bottom}
+.sec1 		{ BACKGROUND-IMAGE: url(../images/table_bg_09.gif);CURSOR: hand;vertical-align:bottom}
+.sec2 		{ BACKGROUND-IMAGE: url(../images/table_bg_09.gif);CURSOR: hand;vertical-align:bottom}
+.sec		{ BACKGROUND-IMAGE: url(../images/table_bg_08.gif);vertical-align:bottom}
+.gctd {  background-image:url(../images/table_bg_14.gif); background-repeat: repeat-x; background-position: top ;BORDER-LEFT:#999999 1px solid; BORDER-BOTTOM:#999999 1px solid}
+.gcbodytd {   background-repeat: repeat-x; background-position: top ;BORDER-LEFT:#999999 1px solid; BORDER-BOTTOM:#999999 1px solid}
+-->	
+</style>
