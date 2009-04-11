@@ -337,7 +337,7 @@
 				<li><a id="FeeCustomer" href="http://www.google.com/">客户收费</a></li>
 				<li><a id="FeePayin" href="http://www.ask.com/">解付保费</a></li>
 				<li><a id="FeePayinInvoice" href="http://www.live.com/?searchonly=true">解付保费开票</a></li>
-				<li><a id="ProcessFee" href="http://www.google.com/">经纪费结算</a></li>
+				<li><a id="FeeProcess" href="http://www.google.com/">经纪费结算</a></li>
 				<li><a id="SheetcolumnManager" href="http://www.ask.com/">台帐管理</a></li>
 			</ul>
 		</li>
@@ -375,6 +375,15 @@
 				<li><a id="GeneralSearch" href="http://search.yahoo.com/">业绩报表</a></li>
 			</ul>
 		</li>
+		<li>
+			<a href="#">预算管理</a>
+			<ul>
+				<li><a id="SignPremiumBudget" href="http://search.yahoo.com/">签单保费预算</a></li>
+				<li><a id="IncomePremiumBudget" href="http://search.yahoo.com/">实收保费预算</a></li>
+				<li><a id="SignPremiumBudgetAnalyse" href="http://search.yahoo.com/">签单保费预算分析报表</a></li>
+				<li><a id="IncomePremiumBudgetAnalyse" href="http://search.yahoo.com/">实收保费预算分析报表</a></li>
+			</ul>
+		</li>		
 		<li>
 			<a href="#">统计报表</a>
 			<ul>
