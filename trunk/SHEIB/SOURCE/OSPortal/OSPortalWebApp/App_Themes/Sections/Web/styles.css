@@ -1,0 +1,207 @@
+﻿/* -- ASPxSiteMapControl -- */
+.dxsmControl_Sections a:hover
+{
+    text-decoration:underline!important;
+}
+.dxsmControl_Sections a:visited
+{
+    color: #D42300;
+}
+.dxsmControl_Sections 
+{	
+	color: #1E3695;
+	background-color: white;
+	font-family: Verdana, Tahoma, Arial;
+	font-size: 11px;
+}
+/* - Category Level - */
+.dxsmCategoryLevel_Sections, .dxsmCategoryLevel_Sections a
+{
+    color: #1E3695;    
+    font-weight: bold;
+    font-size: 13.5pt;
+    font-family: Verdana;
+    text-decoration: none;
+}
+.dxsmCategoryLevel_Sections
+{
+    white-space: nowrap;
+    padding: 0px 0px 5px 0px;
+}
+.dxsmCategoryLevel_Sections
+{
+    border-bottom: solid 1px #B8B8B8;    
+}
+ /*flow layout*/
+.dxsmLevelCategoryFlow_Sections, .dxsmLevelCategoryFlow_Sections a
+{
+    color: #1E3695;    
+    font-weight: bold;
+    font-size: 13.5pt;
+    font-family: Tahoma, Verdana, Arial;	
+	text-decoration: underline;
+}
+/* - Level 0 - */
+
+.dxsmLevel0_Sections, .dxsmLevel0_Sections a, .dxsmLevel0Categorized_Sections a, .dxsmLevel0Categorized_Sections
+{
+    color: #002BB8;    
+    font-weight: bold;
+    font-size: 9pt;
+    font-family: Arial;
+    text-decoration: none;
+    text-align: center;
+}
+.dxsmLevel0_Sections, .dxsmLevel0Categorized_Sections
+{
+    white-space: nowrap;
+    padding: 0px 0px 2px 0px;
+}
+.dxsmLevel0_Sections
+{
+    background-color: #D1D1FF;
+    padding: 4px 0px 4px 0px;
+}
+ /*flow layout*/
+.dxsmLevel0Flow_Sections, .dxsmLevel0Flow_Sections a, .dxsmLevel0CategorizedFlow_Sections a, .dxsmLevel0CategorizedFlow_Sections
+{
+    color: #002BB8;    
+    font-family: Tahoma, Verdana, Arial;	
+    font-weight: bold;
+    font-size: 9pt;
+	text-decoration: underline;
+}
+.dxsmLevel0Flow_Sections
+{
+    padding: 0px 0px 0px 0px;    
+}
+.dxsmLevel0Flow_Sections
+{
+    text-decoration: none;    
+}
+
+/* - Level 1 - */
+.dxsmLevel1_Sections, .dxsmLevel1_Sections a, .dxsmLevel1Categorized_Sections a, .dxsmLevel1Categorized_Sections
+{    
+    font-family: Verdana;
+    color: #002BB8;  
+    font-size: 8pt;
+    text-decoration: none;    
+}
+.dxsmLevel1_Sections, .dxsmLevel1Categorized_Sections
+{
+    white-space: nowrap;  
+    padding: 0px 0px 0px 0px;
+}
+
+/*flow layout*/
+.dxsmLevel1Flow_Sections, .dxsmLevel1Flow_Sections a, .dxsmLevel1CategorizedFlow_Sections, .dxsmLevel1CategorizedFlow_Sections a
+{    
+    color:  Black;    
+    font-family: Tahoma, Verdana, Arial;	
+    font-size: 8pt;
+	text-decoration: none;
+	text-align: center;
+}
+.dxsmLevel1Flow_Sections a, .dxsmLevel1CategorizedFlow_Sections a
+{
+    color:  #002BB8;    
+}
+.dxsmLevel1Flow_Sections
+{
+    background-color:  #f9f9f9;
+    padding: 0px 0px 0px 0px;
+}
+
+/* - Level 2 - */
+.dxsmLevel2_Sections, .dxsmLevel2_Sections a, .dxsmLevel2Categorized_Sections a, .dxsmLevel2Categorized_Sections
+{    
+    font-size: 10px;
+    font-family: Verdana;
+    color: #5078DC;
+    text-decoration: none;    
+}
+.dxsmLevel2_Sections, .dxsmLevel2Categorized_Sections
+{
+    white-space:nowrap;
+    padding: 0px 0px 0px 0px;    
+}
+/*flow layout*/
+.dxsmLevel2Flow_Sections, .dxsmLevel2Flow_Sections a
+{
+    color: #5078DC;
+    font-size: 10px;    
+    font-family: Tahoma, Verdana, Arial;	
+	text-decoration:underline;    
+}
+.dxsmLevel2Flow_Sections
+{
+    padding: 0px 0px 0px 0px;
+}
+/* - Level 3 - */
+.dxsmLevel3_Sections, .dxsmLevel3_Sections a
+{    
+    font-size: 9px;
+    font-family: Verdana;
+    color: #999999;
+    text-decoration: none;
+}
+.dxsmLevel3_Sections
+{
+    white-space: nowrap;        
+    padding: 0px 0px 0px 0px;    
+}
+/*flow layout*/
+.dxsmLevel3Flow_Sections, .dxsmLevel3Flow_Sections a
+{    
+    color: #999999;
+    font-size: 9px;
+    font-family: Tahoma, Verdana, Arial;	
+	text-decoration: underline;    
+}
+/* - Level 4 - */
+.dxsmLevel4_Sections, .dxsmLevel4_Sections a
+{    
+    font-size: 9px;
+    font-family: Verdana;
+    color: #A8A8A8;
+    text-decoration: none;
+}
+.dxsmLevel4_Sections
+{
+    white-space: nowrap;
+    padding: 0px 0px 0px 0px;    
+}
+/*flow layout*/
+.dxsmLevel4Flow_Sections, .dxsmLevel4Flow_Sections a
+{
+    color: #A8A8A8;
+    font-family: Tahoma, Verdana, Arial;	
+    font-size: 9px;
+	text-decoration: underline;        
+}
+.dxsmLevel4Flow_Sections
+{
+    padding: 0px 0px 0px 0px;        
+}
+/* - Other Levels - */
+.dxsmLevelOther_Sections
+{    
+    font-size: 9px;
+    font-family: Verdana;
+    color: #A8A8A8;
+    text-decoration: none;
+}
+.dxsmLevelOther_Sections
+{
+    white-space:nowrap;
+    padding: 0px 0px 0px 0px;            
+}
+/*flow layout*/
+.dxsmLevelOtherFlow_Sections, .dxsmLevelOtherFlow_Sections a
+{
+    color: #A8A8A8;
+    font-family: Tahoma, Verdana, Arial;	
+    font-size: 9pt;
+	text-decoration: underline;            
+}
