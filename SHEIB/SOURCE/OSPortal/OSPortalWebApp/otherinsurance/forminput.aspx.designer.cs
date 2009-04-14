@@ -14,13 +14,13 @@ namespace OSPortalWebApp.otherinsurance {
     public partial class forminput {
         
         /// <summary>
-        /// rpGrayPanel control.
+        /// rpbasic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel rpGrayPanel;
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel rpbasic;
         
         /// <summary>
         /// PanelContent2 control.
@@ -59,13 +59,22 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.Button btnReinsurance;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtpeoplefrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtpeoplefrom;
+        
+        /// <summary>
+        /// btnpeoplesearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnpeoplesearch;
         
         /// <summary>
         /// chkTogether control.
@@ -86,13 +95,13 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.Button btnTogether;
         
         /// <summary>
-        /// TextBox2 control.
+        /// ddlpeopleto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.DropDownList ddlpeopleto;
         
         /// <summary>
         /// chkStage control.
@@ -113,21 +122,93 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.Button btnStage;
         
         /// <summary>
-        /// TextBox3 control.
+        /// ddlCompany control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCompany;
         
         /// <summary>
-        /// TextBox4 control.
+        /// DropDownList1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        
+        /// <summary>
+        /// txtagent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtagent;
+        
+        /// <summary>
+        /// ddlCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
+        
+        /// <summary>
+        /// dtfrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtfrom;
+        
+        /// <summary>
+        /// dtto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtto;
+        
+        /// <summary>
+        /// rpinsuranceitem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel rpinsuranceitem;
+        
+        /// <summary>
+        /// PanelContent1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.PanelContent PanelContent1;
+        
+        /// <summary>
+        /// rpother control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel rpother;
+        
+        /// <summary>
+        /// PanelContent3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.PanelContent PanelContent3;
     }
 }
