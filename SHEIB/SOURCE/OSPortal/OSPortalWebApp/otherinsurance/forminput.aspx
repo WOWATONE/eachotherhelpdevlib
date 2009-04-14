@@ -121,8 +121,133 @@
                          <dxrp:PanelContent ID="PanelContent3" runat="server">
                             <table style="width:100%">
                                 <tr>
-                                    <td style="width:8%;text-align:right;">保单：</td>                                    
+                                    <td style="width:8%;text-align:right;">保额：</td>
+                                    <td style="width:25%;text-align:left;">
+                                        <asp:TextBox ID="txtprice" runat="server" Width="140px"></asp:TextBox>
+                                    </td>
+                                    <td style="width:8%;text-align:right;">费率：</td>
+                                    <td style="width:25%;text-align:left;">
+                                        <asp:TextBox ID="txtrate" runat="server" Width="140px"></asp:TextBox>
+                                    </td>
+                                    <td style="width:8%;text-align:right;">保费（原）：</td>
+                                    <td style="width:23%;text-align:left;">
+                                        <asp:TextBox ID="txtoriginalfee" runat="server" Width="140px"></asp:TextBox>
+                                    </td>                                  
                                 </tr> 
+                                <tr>
+                                    <td style="width:8%;text-align:right;">币种：</td>
+                                    <td style="width:25%;text-align:left;">
+                                        <asp:DropDownList ID="DropDownList2" runat="server">
+                                            <asp:ListItem Text="人民币" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="美元" Value="2"></asp:ListItem>
+                                            <asp:ListItem Text="英镑" Value="3"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td style="width:8%;text-align:right;">换算汇率：</td>
+                                    <td style="width:25%;text-align:left;">
+                                        <asp:TextBox ID="txtchange" runat="server" Width="140px"></asp:TextBox>
+                                    </td>
+                                    <td style="width:8%;text-align:right;">保费（本）：</td>
+                                    <td style="width:23%;text-align:left;">
+                                        <asp:TextBox ID="txtlocalfee" runat="server" Width="140px"></asp:TextBox>
+                                    </td>                                  
+                                </tr> 
+                                <tr>
+                                    <td style="width:8%;text-align:right;">经纪费率：</td>
+                                    <td style="width:25%;text-align:left;">
+                                        <asp:TextBox ID="txtmiddlerate" runat="server" Width="140px"></asp:TextBox>
+                                    </td>
+                                    <td style="width:8%;text-align:right;">经纪费：</td>
+                                    <td style="width:25%;text-align:left;">
+                                        <asp:TextBox ID="txtmiddlefee" runat="server" Width="140px"></asp:TextBox>
+                                    </td>
+                                    <td style="width:8%;text-align:right;">保费（本）：</td>
+                                    <td style="width:23%;text-align:left;">
+                                        
+                                    </td>                                  
+                                </tr> 
+                                <tr>
+                                    <td style="width:8%;text-align:right;">原件链接：</td>
+                                    <td style="width:25%;text-align:left;">
+                                        <asp:TextBox ID="txtfile" runat="server" Width="140px"></asp:TextBox>
+                                    </td>
+                                    <td style="width:8%;text-align:right;"></td>
+                                    <td style="width:25%;text-align:left;">
+                                        
+                                    </td>
+                                    <td style="width:8%;text-align:right;"></td>
+                                    <td style="width:23%;text-align:left;">
+                                        
+                                    </td>                                  
+                                </tr> 
+                                <tr>
+                                    <td style="width:8%;text-align:right;">部门：</td>
+                                    <td style="width:25%;text-align:left;">
+                                        <asp:DropDownList ID="ddlDeptId" runat="server">
+                                            <asp:ListItem Text="部门1" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="部门2" Value="2"></asp:ListItem>
+                                            <asp:ListItem Text="部门3" Value="3"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td style="width:8%;text-align:right;">客户经理：</td>
+                                    <td style="width:25%;text-align:left;">
+                                        <asp:DropDownList ID="ddlcustomermanager" runat="server">
+                                            <asp:ListItem Text="经理1" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="经理2" Value="2"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td style="width:8%;text-align:right;"></td>
+                                    <td style="width:23%;text-align:left;">
+                                        
+                                    </td>                                  
+                                </tr> 
+                                <tr>
+                                    <td style="width:8%;text-align:right;">业务来源：</td>
+                                    <td style="width:25%;text-align:left;">
+                                        <asp:DropDownList ID="ddlSourceTypeID" runat="server">
+                                            <asp:ListItem Text="来源1" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="来源2" Value="2"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td style="width:8%;text-align:right;">业务性质：</td>
+                                    <td style="width:25%;text-align:left;">
+                                        <asp:DropDownList ID="ddlKind" runat="server">
+                                            <asp:ListItem Text="业务性质1" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="业务性质2" Value="2"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td style="width:8%;text-align:right;">收款方式：</td>
+                                    <td style="width:23%;text-align:left;">
+                                        <asp:DropDownList ID="ddlGatheringType" runat="server">
+                                            <asp:ListItem Text="收款方式1" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="收款方式2" Value="2"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>                                  
+                                </tr> 
+                                <tr>
+                                    <td style="width:8%;text-align:right;">录单人：</td>
+                                    <td style="width:25%;text-align:left;">
+                                        <asp:TextBox ID="txtCreatePerson" runat="server" Width="140px"></asp:TextBox>
+                                    </td>
+                                    <td style="width:8%;text-align:right;">录单日期：</td>
+                                    <td style="width:25%;text-align:left;">
+                                        <asp:TextBox ID="txtCreateTime" runat="server" Width="140px"></asp:TextBox>
+                                    </td>
+                                    <td style="width:8%;text-align:right;"></td>
+                                    <td style="width:23%;text-align:left;">
+                                        
+                                    </td>                                  
+                                </tr>
+                                <tr>
+                                    <td style="width:100%;text-align:right;" colspan=5>
+                                        <asp:Button ID="btnadd" runat="server" Text="新增" />&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <asp:Button ID="btnsave" runat="server" Text="保存" />&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <asp:Button ID="btncancel" runat="server" Text="取消" />
+                                    </td>  
+                                    <td style="width:20%;text-align:left;">
+                                        
+                                    </td>                                                                  
+                                </tr>
                             </table>
                             
                           </dxrp:PanelContent>
