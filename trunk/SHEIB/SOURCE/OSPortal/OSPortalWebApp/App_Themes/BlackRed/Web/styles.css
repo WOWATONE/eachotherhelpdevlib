@@ -1,0 +1,168 @@
+﻿/* -- ASPxTitleIndex -- */
+.dxtiControl_BlackRed a
+{
+    text-decoration: underline!important;
+    font-weight: normal;
+}
+.dxtiControl_BlackRed a:hover
+{
+    text-decoration: underline!important;
+    font-weight: normal;
+}
+.dxtiControl_BlackRed a:visited
+{
+    color: #4F5557!important;
+    text-decoration: underline;
+    font-weight: normal;
+}
+.dxtiControl_BlackRed 
+{
+	font: 11px Verdana;
+	color: #4F5557;
+	background-color: white;
+	/*font-family: Trebuchet MS,Arial;*/
+	border-style: none;
+}
+.dxtiLoadingPanel_BlackRed
+{
+	font: 8pt Tahoma;
+	color: #303030;
+}
+.dxtiLoadingPanel_BlackRed td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+.dxtiItem_BlackRed, .dxtiItem_BlackRed a
+{
+	font: 8pt Trebuchet MS; 
+	font-family: Trebuchet MS,Arial;
+	color: #4F5557;
+	text-decoration: none;	
+}
+.dxtiItem_BlackRed
+{
+	white-space: normal;
+}
+.dxtiGroupHeader_BlackRed, .dxtiGroupHeaderCategorized_BlackRed
+{
+	color: Red;
+	font: 14px Verdana;
+	text-decoration: none;
+	font-weight: normal;
+}
+.dxtiGroupHeader_BlackRed, .dxtiGroupHeaderCategorized_BlackRed
+{
+	white-space:nowrap;
+	padding: 0px;
+}
+.dxtiGroupHeaderCategorized_BlackRed
+{
+    border-bottom: Solid 1px #C0C0C0;
+    padding-bottom: 2px;
+}
+/* - GroupHeaderText - */
+.dxtiGroupHeaderText_BlackRed, .dxtiGroupHeaderText_BlackRed a
+{
+    color: Red;    
+}
+.dxtiGroupHeaderText_BlackRed
+{
+    padding: 0px 7px 3px 0px;
+}
+.dxtiGroupHeaderTextCategorized_BlackRed
+{
+    color: Red;
+    font-size: 14px;
+}
+.dxtiGroupHeaderTextCategorized_BlackRed
+{
+    padding: 0px;
+}
+/* - FilterBox - */
+.dxtiFilterBoxInfoText_BlackRed
+{
+    font: 7pt Verdana;
+    color: #000000;
+    font-weight: normal;
+    padding-top: 0px;
+    padding-bottom: 4px;    
+}
+.dxtiFilterBoxEdit_BlackRed
+{
+    color: Black;
+    font-size: 9pt;
+    width: 158px;
+    border: Solid 1px #4F5557;
+    padding-left: 3px;
+}
+.dxtiFilterBox_BlackRed, .dxtiFilterBox_BlackRed table
+{
+    color: #000000;
+    font: 9pt Verdana;
+    font-weight: normal;        
+}
+.dxtiFilterBox_BlackRed
+{
+    background-color: transparent;
+    padding: 10px 0px 0px 0px;        
+}
+/* - IndexPanel - */
+.dxtiIndexPanel_BlackRed
+{
+    padding: 0px 2px 10px 2px;
+    text-decoration: none;
+}
+.dxtiIndexPanelItem_BlackRed, .dxtiIndexPanelItem_BlackRed a, 
+.dxtiCurrentIndexPanelItem_BlackRed, .dxtiCurrentIndexPanelItem_BlackRed a
+{
+    color: Red;
+    font: 11px Verdana;
+    text-decoration: underline;
+    font-weight: normal;
+}
+.dxtiCurrentIndexPanelItem_BlackRed,
+.dxtiCurrentIndexPanelItem_BlackRed a
+{
+    background-color: transparent;
+    color: Black;    
+    font-weight: bold;
+    text-decoration: none;    
+}
+.dxtiCurrentIndexPanelItem_BlackRed
+{
+    border-style: none;
+}
+/*HyperLink*/
+.dxtiIndexPanelItem_BlackRed a:visited 
+{
+    color: Red!important;    
+}
+.dxtiIndexPanelItem_BlackRed a:hover
+{
+    text-decoration: none!important;
+}
+
+.dxtiIndexPanelItem_BlackRed, .dxtiCurrentIndexPanelItem_BlackRed
+{
+    padding: 2px 2px 2px 2px;
+}
+/* - BackToTop - */
+.dxtiBackToTop_BlackRed, .dxtiBackToTop_BlackRed a
+{
+    font-size: 7pt;
+    text-decoration: none;
+    color: Red;
+}
+.dxtiBackToTop_BlackRed
+{
+    padding: 0px 0px 12px 0px;
+
+}
+/* Disabled */
+.dxtiDisabled_BlackRed
+{
+	color: #808080;
+	cursor: default;
+}
