@@ -1,0 +1,14 @@
+﻿/* -- ASPxCloudControl -- */
+.dxccControl_Strict a:hover {
+    text-decoration: underline!important;
+    color: #767676!important;
+}
+.dxccControl_Strict a {
+	text-decoration: none!important;
+}
+.dxccControl_Strict {
+	font-family: Times New Roman;
+	text-decoration: none;
+	background-color: #F0F0E7;
+	font-size: 25px;
+}

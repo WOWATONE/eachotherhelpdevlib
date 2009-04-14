@@ -1,0 +1,8 @@
+<%@ Register TagPrefix="dxhl" Namespace="DevExpress.Web.ASPxHeadline" Assembly="DevExpress.Web.v8.3" %>
+<dxhl:ASPxHeadline runat="server" CssFilePath="~/App_Themes/Youthful/{0}/styles.css" CssPostfix="Youthful" DateHorizontalPosition="OutsideLeft" TailPosition="KeepWithLastWord">
+<DateStyle Spacing="10px" />
+<LeftPanelStyle Spacing="7px" />
+<RightPanelStyle Spacing="7px" />
+<HeaderStyle Spacing="2px" />
+<TailImage Width="16px" Height="11px" Url="~/App_Themes/Youthful/Web/hlTailImage.png" Align="Bottom" />
+</dxhl:ASPxHeadline>

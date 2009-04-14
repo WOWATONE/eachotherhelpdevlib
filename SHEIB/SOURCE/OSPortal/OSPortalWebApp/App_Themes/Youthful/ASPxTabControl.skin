@@ -1,0 +1,17 @@
+<%@ Register TagPrefix="dxtc" Namespace="DevExpress.Web.ASPxTabControl" Assembly="DevExpress.Web.v8.3" %>
+<dxtc:ASPxTabControl runat="server" CssPostfix="Youthful" CssFilePath="~/App_Themes/Youthful/{0}/styles.css">
+    <Paddings PaddingLeft="5px" PaddingRight="5px" />
+    <ContentStyle>
+        <Border BorderColor="White" />
+    </ContentStyle>
+    <ActiveTabStyle>
+        <HoverStyle>
+            <BorderTop BorderColor="#F4921B" />
+        </HoverStyle>
+    </ActiveTabStyle>
+    <TabStyle>
+        <HoverStyle>
+            <BorderTop BorderColor="#F4BD17" />
+        </HoverStyle>
+    </TabStyle>
+</dxtc:ASPxTabControl>
