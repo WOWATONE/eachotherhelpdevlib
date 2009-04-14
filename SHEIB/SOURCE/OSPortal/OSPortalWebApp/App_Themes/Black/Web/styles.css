@@ -1,0 +1,22 @@
+﻿/* -- ASPxRoundPanel -- */
+.dxrpControl_Black td.dxrp
+{
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Arial, Tahoma;
+	color: #FFFF99;	
+}
+/* Header */
+.dxrpHeader_Black td.dxrp
+{
+    font-size: 12px;
+	font-family: Arial, Tahoma;
+    font-weight: bold;
+	color: White;
+}
+/* Disabled */
+.dxrpDisabled_Black, .dxrpDisabled_Black td.dxrp
+{
+	color: #808080;
+	cursor: default;
+}
