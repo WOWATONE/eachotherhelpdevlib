@@ -1,0 +1,85 @@
+﻿body {
+    background-color: #EEF1FA;
+    color: #171d2d;
+
+    background-image: url('Gradient.jpg'); 
+    background-position: left top;
+    background-repeat: repeat-x;
+}
+.Form  {
+    background-image: url('Background.jpg');
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+
+.BannerLime a { color: Black; }
+.BannerLime { color: Black; }
+.BannerVersion { color: White; }
+.Copyright { color: #69A7D5; }
+
+.Features b * { font-weight: normal; color: #00669B; font-size: 16px; font-family: Tahoma; }
+.RootPage {
+    color: #171D2D;
+}
+.RootPage a { color: #171D2D; }
+/* Label for Appearance combobox */
+.lblSkins { color: #FFFFFF; }
+.Title h1.h1Blue { color: #0E5ED5; }
+.Slogan { color: White!important; }
+.MainBanner { margin-right: 45px; margin-top: 38px!important; padding-bottom: 25px; }
+.MiniSlogan { color: #FFF4CC!important; }
+.ContentMargin { margin-left: 0px!important; }
+.HeaderPanel { padding-bottom: 45px!important; }
+
+/* Icon menu */
+.dxmMenu_Demo
+{
+	color: #FFFFFF;
+}
+.dxmMenuSeparator_Demo
+{
+    width: 1px!important;
+    height: 15px!important;
+	background-color: #FFFFFF;
+}
+.dxmMenu_Demo a
+{
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+/* Header for TitleImage Area*/
+.DetailsPageHeader 
+{
+    border: Solid 1px #AECAF0;
+    background-color: #C7DDFD;
+    padding: 10px 26px;
+    width: 100%;
+}
+.DetailsPageHeaderBottom {
+    height: 0px;
+    border-left: Solid 1px #AECAF0;
+    border-right: Solid 1px #AECAF0;
+    background-color: #D8E8FF;
+}
+.DetailsPageLeftEdgeHeader { display: none; }
+.DetailsPageRightEdgeHeader { display: none; }
+.DetailsPageLeftEdge { display: none; }
+.DetailsPageRightEdge {	display: none; }
+.DetailsPageEdge { width: 3px!important; }
+
+.DetailsPageContent 
+{
+	color: #171D2D;
+    background-color: White;
+    border-left: Solid 1px #AECAF0;
+    border-right: Solid 1px #AECAF0;
+    padding: 30px;
+}
+.DetailsPageFooter {
+    width: 100%; 
+    background-color: #AECAF0;
+}
+.DetailsSorceCodeArea {
+    width: 100%; 
+    padding-top: 21px;
+}

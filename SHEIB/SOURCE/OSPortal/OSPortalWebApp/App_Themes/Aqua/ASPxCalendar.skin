@@ -1,0 +1,13 @@
+<%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
+<dxe:ASPxCalendar runat="server" ImageFolder="~/App_Themes/Aqua/{0}/" CssFilePath="~/App_Themes/Aqua/{0}/styles.css" CssPostfix="Aqua">
+    <FastNavPrevYearImage Height="19px" Url="~/App_Themes/Aqua/Editors/edtCalendarFNPrevYear.png" Width="19px" />
+    <FastNavNextYearImage Height="19px" Url="~/App_Themes/Aqua/Editors/edtCalendarFNNextYear.png" Width="19px" />
+    <FooterStyle Spacing="17px"></FooterStyle>
+    <HeaderStyle Spacing="1px"></HeaderStyle>
+    <ValidationSettings>
+        <ErrorFrameStyle ImageSpacing="4px">
+        <ErrorTextPaddings PaddingLeft="4px"></ErrorTextPaddings>
+        </ErrorFrameStyle>
+        <ErrorImage Height="14px" Width="14px" Url="~/App_Themes/RedVine/Editors/edtError.png"></ErrorImage>
+    </ValidationSettings>
+</dxe:ASPxCalendar>

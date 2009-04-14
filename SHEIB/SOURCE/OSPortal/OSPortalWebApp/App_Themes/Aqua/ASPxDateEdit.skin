@@ -1,0 +1,16 @@
+<%@ Register TagPrefix="dxe" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.ASPxEditors.v8.3" %>
+<dxe:ASPxDateEdit runat="server" ImageFolder="~/App_Themes/Aqua/{0}/" CssFilePath="~/App_Themes/Aqua/{0}/styles.css" CssPostfix="Aqua" ShowShadow="False">
+<CalendarProperties>
+    <FooterStyle Spacing="17px"></FooterStyle>
+    <HeaderStyle Spacing="1px"></HeaderStyle>
+</CalendarProperties>
+<DropDownButton>
+    <Image Width="9px" Height="7px" Url="~/App_Themes/Aqua/Editors/edtDropDown.png" UrlHottracked="~/App_Themes/Aqua/Editors/edtDropDownHottracked.png" UrlPressed="~/App_Themes/Aqua/Editors/edtDropDownHottracked.png" UrlDisabled="~/App_Themes/Aqua/Editors/edtDropDownDisabled.png" />
+</DropDownButton>
+<ValidationSettings>
+<ErrorFrameStyle ImageSpacing="4px">
+<ErrorTextPaddings PaddingLeft="4px"></ErrorTextPaddings>
+</ErrorFrameStyle>
+<ErrorImage Url="~/App_Themes/Aqua/Editors/edtError.png" Height="14px" Width="14px"></ErrorImage>
+</ValidationSettings>
+</dxe:ASPxDateEdit>

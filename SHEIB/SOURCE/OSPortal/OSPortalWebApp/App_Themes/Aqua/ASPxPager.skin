@@ -1,0 +1,19 @@
+<%@ Register TagPrefix="dxpg" Namespace="DevExpress.Web.ASPxPager" Assembly="DevExpress.Web.v8.3" %>
+<dxpg:ASPxPager runat="server" CssFilePath="~/App_Themes/Aqua/{0}/styles.css" CssPostfix="Aqua" ImageFolder="~/App_Themes/Aqua/{0}/" CurrentPageNumberFormat="{0}" ShowNumericButtons="True">
+<Summary Visible="False" />
+<AllButton>
+<Image Height="19px" Width="27px" ></Image>
+</AllButton>
+<NextPageButton Visible="True">
+<Image Height="19px" Width="19px"></Image>
+</NextPageButton>
+<PrevPageButton Visible="True">
+<Image Height="19px" Width="19px"></Image>
+</PrevPageButton>
+<FirstPageButton Visible="True">
+<Image Height="19px" Width="23px"></Image>
+</FirstPageButton>
+<LastPageButton Visible="True">
+<Image Height="19px" Width="23px"></Image>
+</LastPageButton>
+</dxpg:ASPxPager>

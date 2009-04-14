@@ -1,0 +1,111 @@
+﻿/* -- ASPxMenu -- */
+.dxmControl_AquaChartDemoToolbar 
+{
+	font: 9pt Tahoma;
+	color: #283B56;
+}
+.dxmControl_AquaChartDemoToolbar a, .dxmMenu_AquaChartDemoToolbar a
+{
+	color: #283B56;
+	text-decoration: none;
+}
+.dxmMenu_AquaChartDemoToolbar
+{
+	font: 9pt Tahoma;
+	color: #283B56;
+	background-color: #E2F0FF;
+	border: Solid 1px #AECAF0;
+	padding: 2px;
+}
+.dxmMenu_AquaChartDemoToolbar
+{
+	background-image: url('../../Web/mBack.gif');	
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxmMenuGutter_AquaChartDemoToolbar
+{
+}
+.dxmMenuSeparator_AquaChartDemoToolbar
+{
+    width: 2px!important;
+    background-image: url('../../Web/mSeparator.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.dxmMenuItem_AquaChartDemoToolbar, .dxmMenuItemWithImage_AquaChartDemoToolbar
+{
+	font: 9pt Tahoma;
+	white-space: nowrap;
+}
+.dxmMenuItem_AquaChartDemoToolbar, .dxmMenuItemWithImage_AquaChartDemoToolbar
+{
+	color: #283B56;
+	background-color: #E2F0FF;
+
+	background-image: url('../../Web/mItemBack.gif');	
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxmMenuItem_AquaChartDemoToolbar a, .dxmMenuItemWithImage_AquaChartDemoToolbar a
+{
+	color: #283B56;
+}
+.dxmMenuItem_AquaChartDemoToolbar, .dxmMenuItemWithImage_AquaChartDemoToolbar
+{
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+}
+.dxmMenuItemWithImage_AquaChartDemoToolbar
+{
+	padding-right: 6px;
+	padding-left: 6px;
+}
+.dxmMenuItemSelected_AquaChartDemoToolbar, .dxmMenuItemSelectedWithImage_AquaChartDemoToolbar
+{
+	border: Solid 1px #AECAF0;
+}
+.dxmMenuItemSelected_AquaChartDemoToolbar, .dxmMenuItemSelectedWithImage_AquaChartDemoToolbar
+{
+	background-color: #FEE385;
+
+	background-image: url('../../Web/mItemSBack.gif');	
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxmMenuItemSelected_AquaChartDemoToolbar, .dxmMenuItemSelectedWithImage_AquaChartDemoToolbar,
+.dxmMenuItemChecked_AquaChartDemoToolbar, .dxmMenuItemCheckedWithImage_AquaChartDemoToolbar,
+.dxmMenuItemHover_AquaChartDemoToolbar, .dxmMenuItemHoverWithImage_AquaChartDemoToolbar
+{
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+}
+.dxmMenuItemSelectedWithImage_AquaChartDemoToolbar, .dxmMenuItemCheckedWithImage_AquaChartDemoToolbar,
+.dxmMenuItemHoverWithImage_AquaChartDemoToolbar
+{
+	padding-right: 5px;
+	padding-left: 5px;
+}
+.dxmMenuItemHover_AquaChartDemoToolbar, .dxmMenuItemHoverWithImage_AquaChartDemoToolbar
+{
+	border: Solid 1px #AECAF0;
+}
+.dxmMenuItemHover_AquaChartDemoToolbar, .dxmMenuItemHoverWithImage_AquaChartDemoToolbar
+{
+	background-color: #FEE899;
+
+	background-image: url('../../Web/mItemHBack.gif');	
+    background-repeat: repeat-x;
+    background-position: top;
+}
+
+/* Disabled */
+.dxmDisabled_AquaChartDemoToolbar
+{
+	color: #A1A1A1;
+	cursor: default;
+}
