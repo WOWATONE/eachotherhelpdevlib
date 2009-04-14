@@ -1,0 +1,10 @@
+<%@ Register TagPrefix="dxm" Namespace="DevExpress.Web.ASPxMenu" Assembly="DevExpress.Web.v8.3" %>
+<dxm:ASPxMenu runat="server" CssFilePath="~/App_Themes/Aqua/{0}/styles.css" ItemSpacing="0px" GutterImageSpacing="7px" ShowPopOutImages="True" CssPostfix="Aqua" SeparatorHeight="100%" ImageFolder="~/App_Themes/Aqua/{0}/" SeparatorWidth="1px" SeparatorColor="#AECAF0" AutoSeparators="RootOnly">
+<Border BorderStyle="Solid" BorderWidth="1px" BorderColor="#AECAF0" />
+<SubMenuStyle BackColor="#F9F9F9" GutterWidth="0px" SeparatorColor="#AECAF0" ></SubMenuStyle>
+<RootItemSubMenuOffset FirstItemX="-1" X="-1" FirstItemY="-1" Y="-1"/>
+<ItemStyle VerticalAlign="Middle" ImageSpacing="5px" PopOutImageSpacing="18px"></ItemStyle>
+<SubMenuItemStyle ImageSpacing="7px"></SubMenuItemStyle>
+<HorizontalPopOutImage Height="7px" Width="7px"></HorizontalPopOutImage>
+<VerticalPopOutImage Height="11px" Width="11px"></VerticalPopOutImage>
+</dxm:ASPxMenu>
