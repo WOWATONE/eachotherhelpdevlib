@@ -19,7 +19,7 @@
     <table style="width:100%">
         <tr>
             <td style="width:100%;">
-                <dxrp:ASPxRoundPanel EnableViewState="False" ID="rpGrayPanel" EnableDefaultAppearance="False" Width="100%" runat="server" BackColor="#F8FAFD" ShowHeader="False" HorizontalAlign="Center">
+                <dxrp:ASPxRoundPanel EnableViewState="False" HeaderText="保单基本数据" ID="rpGrayPanel" EnableDefaultAppearance="False" Width="100%" runat="server" BackColor="#F8FAFD" ShowHeader="true"  HorizontalAlign="Center">
                      <PanelCollection>
                          <dxrp:PanelContent ID="PanelContent2" runat="server">
                             <table style="width:100%">
