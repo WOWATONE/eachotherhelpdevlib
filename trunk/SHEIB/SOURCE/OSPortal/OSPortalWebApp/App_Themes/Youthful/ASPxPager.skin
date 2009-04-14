@@ -1,0 +1,18 @@
+<%@ Register TagPrefix="dxpg" Namespace="DevExpress.Web.ASPxPager" Assembly="DevExpress.Web.v8.3" %>
+<dxpg:ASPxPager runat="server" CurrentPageNumberFormat="{0}" CssFilePath="~/App_Themes/Youthful/{0}/styles.css" CssPostfix="Youthful" ImageFolder="~/App_Themes/Youthful/{0}/">
+<AllButton>
+<Image Height="15px" Width="21px" ></Image>
+</AllButton>
+<NextPageButton>
+<Image Height="15px" Width="16px"></Image>
+</NextPageButton>
+<PrevPageButton>
+<Image Height="15px" Width="16px"></Image>
+</PrevPageButton>
+<FirstPageButton>
+<Image Height="15px" Width="21px"></Image>
+</FirstPageButton>
+<LastPageButton>
+<Image Height="15px" Width="21px"></Image>
+</LastPageButton>
+</dxpg:ASPxPager>

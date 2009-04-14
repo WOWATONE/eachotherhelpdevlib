@@ -1,0 +1,183 @@
+﻿/* -- ASPxCloudControl -- */
+.dxccControl_Violet a:hover {
+    text-decoration: underline!important;
+}
+.dxccControl_Violet a {
+	text-decoration: none!important;
+}
+.dxccControl_Violet {
+	font-family: Arial,sens-serif;
+	font-weight: bold;
+	text-decoration: none;
+	background-color: White;
+}
+/* Disabled */
+.dxccDisabled_Violet
+{
+	color: #808080;
+	cursor: default;
+}
+
+/* -- ASPxTitleIndex -- */
+.dxtiControl_Violet a:hover
+{
+    text-decoration: none!important;
+}
+.dxtiControl_Violet a:visited
+{
+    color: #996085!important;
+}
+.dxtiControl_Violet 
+{
+	font: 11px Verdana;
+	color: #1E3695;
+	background-color: white;
+	font-family: Verdana, Tahoma, Arial;
+	border-style: none;
+}
+.dxtiLoadingPanel_Violet
+{
+	font: 8pt Tahoma;
+	color: #303030;
+}
+.dxtiLoadingPanel_Violet td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+
+.dxtiItem_Violet, .dxtiItem_Violet a
+{
+	font: 12px Verdana; 
+	color: #002BB8;
+	text-decoration: none;	
+}
+.dxtiItem_Violet
+{
+	white-space: nowrap;
+}
+.dxtiGroupHeader_Violet, .dxtiGroupHeaderCategorized_Violet
+{
+	font: 16pt Verdana;
+	text-decoration: none;
+	font-weight: normal;
+}
+.dxtiGroupHeader_Violet, .dxtiGroupHeaderCategorized_Violet
+{
+	border-bottom: Solid 1px #AAAAAA;
+	padding: 0px;    
+	white-space:nowrap;
+}
+.dxtiGroupHeaderCategorized_Violet
+{
+    border-bottom: Solid 1px #C0C0C0;
+    padding-bottom: 2px;
+}
+/* - GroupHeaderText - */
+.dxtiGroupHeaderText_Violet
+{
+    color: #000000;    
+}
+.dxtiGroupHeaderText_Violet
+{
+    padding: 2px 7px 1px 0px;
+}
+.dxtiGroupHeaderTextCategorized_Violet
+{
+    color: #666666;
+    font-size: 18pt;
+}
+.dxtiGroupHeaderTextCategorized_Violet
+{
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 2px;
+}
+/* - FilterBox - */
+.dxtiFilterBoxInfoText_Violet
+{
+    font: 7pt Verdana;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    padding-top: 0px;
+    padding-bottom: 4px;    
+}
+.dxtiFilterBoxEdit_Violet
+{
+    color: Black;
+    font-size: 9pt;
+    width: 158px;
+    border: Solid 1px #CCCCCC;
+    padding-left: 3px;
+}
+.dxtiFilterBox_Violet, .dxtiFilterBox_Violet table
+{
+    color: #000000;
+    font-size: 9pt;
+    font-weight: normal;
+}
+.dxtiFilterBox_Violet
+{
+    background-color: transparent;
+    padding: 15px;    
+}
+/* - IndexPanel - */
+.dxtiIndexPanel_Violet
+{
+    background-color: #F9F9F9;
+    border: Solid 1px #AAAAAA;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.dxtiIndexPanelItem_Violet, .dxtiIndexPanelItem_Violet a, 
+.dxtiCurrentIndexPanelItem_Violet, .dxtiCurrentIndexPanelItem_Violet a
+{
+    color: #002BB8;
+    font: 13px Verdana;
+    font-weight: bold;
+    text-decoration: none;
+}
+.dxtiIndexPanelItem_Violet, .dxtiCurrentIndexPanelItem_Violet
+{
+    padding: 2px 6px 2px 6px;
+}
+.dxtiCurrentIndexPanelItem_Violet
+{
+    color: #000000;
+    background-color: #E0E0E0;
+}
+/*HyperLink*/
+.dxtiIndexPanelItem_Violet a:visited 
+{
+    color: #002BB8!important;    
+}
+.dxtiIndexPanelItem_Violet a:hover
+{
+    text-decoration: none!important;
+}
+/* - BackToTop - */
+.dxtiBackToTop_Violet, .dxtiBackToTop_Violet a
+{
+    font-size: 7pt;
+    font-weight: normal;
+    text-decoration: none;
+    color: #F88500;
+}
+.dxtiBackToTop_Violet
+{
+    padding: 0px 0px 12px 0px;
+}
+/*Hyperlink*/
+.dxtiBackToTop_Violet a:visited
+{
+    color: #F88500!important;
+}
+/* Disabled */
+.dxtiDisabled_Violet
+{
+	color: #808080;
+	cursor: default;
+}

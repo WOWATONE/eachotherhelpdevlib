@@ -1,0 +1,11 @@
+<%@ Register TagPrefix="dxm" Namespace="DevExpress.Web.ASPxMenu" Assembly="DevExpress.Web.v8.3" %>
+<dxm:ASPxMenu runat="server" CssFilePath="~/App_Themes/Youthful/{0}/styles.css" ItemSpacing="0px" CssPostfix="Youthful" SeparatorHeight="100%" ImageFolder="~/App_Themes/Youthful/{0}/" AutoSeparators="RootOnly" SeparatorWidth="1px" ShowSubMenuShadow="False">
+    <SubMenuStyle GutterWidth="0px" />
+    <RootItemSubMenuOffset FirstItemX="-1" LastItemX="-1" X="-1" />
+    <VerticalPopOutImage Height="7px" Width="5px" />
+    <HorizontalPopOutImage Height="7px" Width="10px" />
+    <SeparatorBackgroundImage ImageUrl="~/App_Themes/Youthful/Web/mSeparator.gif" />
+    <ItemSubMenuOffset FirstItemX="1" FirstItemY="-1" LastItemX="1" LastItemY="-1" X="1" Y="-1" />
+    <SubMenuItemStyle ImageSpacing="5px" />
+    <ItemStyle ImageSpacing="5px" />
+</dxm:ASPxMenu>
