@@ -19,102 +19,102 @@
                     <dxnb:ASPxNavBar id="ASPxNavBar1" runat="server" AllowSelectItem="True" EnableTheming="True" EnableViewState="False" Width="155px" EnableAnimation="True">
                                 <GroupHeaderStyle HorizontalAlign="Left" VerticalAlign="Top" />
                                 <ItemStyle HorizontalAlign="Left" />
-                                <ClientSideEvents ItemClick="function(s, e) {SelectedItemChanged(e);}" Init="function(s, e) {InitNavBar();}" ExpandedChanged="function(s, e) {GroupExpandedChanged(e);}" ExpandedChanging="function(s, e) {GroupExpandedChanging(e);}">                                    
+                                <ClientSideEvents ItemClick="function(s, e) {SelectedItemChanged(s,e);}" Init="function(s, e) {InitNavBar(s,e);}" ExpandedChanged="function(s, e) {GroupExpandedChanged(s,e);}" ExpandedChanging="function(s, e) {GroupExpandedChanging(s,e);}">                                    
                                 </ClientSideEvents>
                                 <Groups>
                                     <dxnb:NavBarGroup Text="客户关系" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem ClientEnabled="true" Text="客户列表" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="联系人" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="业务跟进" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="服务提醒" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="区域设置" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem ClientEnabled="true" Text="客户列表" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="联系人" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="业务跟进" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="服务提醒" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="区域设置" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="非车险保单管理" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="保单录入" Target="mainFrame"  NavigateUrl="otherinsurance/forminput.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单批改" Target="mainFrame"  NavigateUrl="otherinsurance/formpostil.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单审核" Target="mainFrame"  NavigateUrl="otherinsurance/formauditing.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单查询" Target="mainFrame"  NavigateUrl="otherinsurance/formsearch.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保单录入" Name="otherinsurance/forminput.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保单批改" Name="otherinsurance/formpostil.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保单审核" Name="otherinsurance/formauditing.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保单查询" Name="otherinsurance/formsearch.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="车险保单管理" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="询价单录入" Target="mainFrame"  NavigateUrl="vehicleinsurance/vinquireforminput.aspx" ></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="询价单审核" Target="mainFrame"  NavigateUrl="vehicleinsurance/vinquireformauditing.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="询价单查询" Target="mainFrame"  NavigateUrl="vehicleinsurance/vinquireformsearch.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单录入" Target="mainFrame"  NavigateUrl="vehicleinsurance/vforminput.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单批改" Target="mainFrame"  NavigateUrl="vehicleinsurance/vformpostil.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单审核" Target="mainFrame"  NavigateUrl="vehicleinsurance/vformauditing.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单查询" Target="mainFrame"  NavigateUrl="vehicleinsurance/vformsearch.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="询价单录入" Name="vehicleinsurance/vinquireforminput.aspx" ></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="询价单审核" Name="vehicleinsurance/vinquireformauditing.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="询价单查询" Name="vehicleinsurance/vinquireformsearch.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保单录入" Name="vehicleinsurance/vforminput.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保单批改" Name="vehicleinsurance/vformpostil.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保单审核" Name="vehicleinsurance/vformauditing.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保单查询" Name="vehicleinsurance/vformsearch.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="客户理赔" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="理赔登记" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="理赔资料管理" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="理赔登记" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="理赔资料管理" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="业务咨询" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="业务咨询" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="业务咨询" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="收付结算" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="保费通知书" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="客户收费" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="解付保费" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="解付保费开票" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="经纪费结算" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="台帐管理" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保费通知书" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="客户收费" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="解付保费" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="解付保费开票" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="经纪费结算" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="台帐管理" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="产品设置" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="保险公司" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="分支机构" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="险种定义" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="标的定义" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保险公司" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="分支机构" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="险种定义" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="标的定义" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="组织设置" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="员工管理" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="角色管理" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="组织机构" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="员工管理" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="角色管理" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="组织机构" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
-                                    <dxnb:NavBarGroup Text="信息中心"  Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarGroup>
+                                    <dxnb:NavBarGroup Text="信息中心" Name="http://www.google.cn"></dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="系统设置" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="数据字典" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="系统选项" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="系统日志" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="修改口令" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="数据字典" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="系统选项" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="系统日志" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="修改口令" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
-                                    <dxnb:NavBarGroup Text="消息提醒" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarGroup>
+                                    <dxnb:NavBarGroup Text="消息提醒" Name="http://www.google.cn"></dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="综合查询" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="业绩报表" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="业绩报表" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="预算管理" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="签单保费预算" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="实收保费预算" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="签单保费预算分析报表" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="实收保费预算分析报表" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="签单保费预算" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="实收保费预算" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="签单保费预算分析报表" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="实收保费预算分析报表" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="统计报表" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="业绩报表" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="结算报表" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="常规报表" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="理赔报表" Target="mainFrame"  NavigateUrl="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="业绩报表" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="结算报表" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="常规报表" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="理赔报表" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                 </Groups>
