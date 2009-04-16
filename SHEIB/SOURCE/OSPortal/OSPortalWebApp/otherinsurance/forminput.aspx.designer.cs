@@ -14,6 +14,15 @@ namespace OSPortalWebApp.otherinsurance {
     public partial class forminput {
         
         /// <summary>
+        /// carTabPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTabControl.ASPxPageControl carTabPage;
+        
+        /// <summary>
         /// rpbasic control.
         /// </summary>
         /// <remarks>
@@ -158,22 +167,22 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
         
         /// <summary>
-        /// dtfrom control.
+        /// txtStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dtfrom;
+        protected global::System.Web.UI.WebControls.TextBox txtStartDate;
         
         /// <summary>
-        /// dtto control.
+        /// txtEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dtto;
+        protected global::System.Web.UI.WebControls.TextBox txtEndDate;
         
         /// <summary>
         /// rpinsuranceitem control.
