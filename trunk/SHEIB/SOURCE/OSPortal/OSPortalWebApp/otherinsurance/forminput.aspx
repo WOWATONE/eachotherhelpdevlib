@@ -2,6 +2,8 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dxwgv" %>
+<%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <meta content="zh-CN" http-equiv="Content-Language" />
@@ -74,7 +76,7 @@
                                                 <td style="width:8%;text-align:right;">被保险人：</td>
                                                 <td style="width:25%;text-align:left;">
                                                     <asp:DropDownList ID="ddlpeopleto" runat="server">
-                                                        <asp:ListItem Text="张三" Value="1" Selected></asp:ListItem>
+                                                        <asp:ListItem Text="张三" Value="1" Selected ></asp:ListItem>
                                                         <asp:ListItem Text="李四" Value="2"></asp:ListItem>
                                                         <asp:ListItem Text="王五" Value="3"></asp:ListItem>
                                                         </asp:DropDownList>
@@ -135,9 +137,40 @@
                                      <dxrp:PanelContent ID="PanelContent1" runat="server">
                                         <table style="width:100%">
                                             <tr>
-                                                <td style="width:8%;text-align:right;">保单：</td>
+                                                <td style="width:8%;text-align:right;">新增</td>
                                                 
                                             </tr> 
+                                            <tr>
+                                                <td>
+                                                    <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" KeyFieldName="CustomerID" Width="100%">
+                                                        <%-- BeginRegion Columns --%>
+                                                            <Columns>
+                                                                <dxwgv:GridViewCommandColumn VisibleIndex="0">
+                                                                    <EditButton Visible="true" />
+                                                                </dxwgv:GridViewCommandColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="序号" VisibleIndex="1">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="项目编码" VisibleIndex="2">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="项目名称" VisibleIndex="3">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="保额" VisibleIndex="4">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="费率" VisibleIndex="5">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="保费" VisibleIndex="6">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="经纪费率" VisibleIndex="7">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="经纪费" VisibleIndex="8">
+                                                                </dxwgv:GridViewDataColumn>
+                                                            </Columns>
+                                                        <%-- EndRegion --%>
+                                                        <SettingsEditing PopupEditFormWidth="600px" />
+                                                        <Settings ShowGroupPanel="false" />
+                                                    </dxwgv:ASPxGridView>
+                                                </td>
+                                            </tr>
                                         </table>
                                         
                                       </dxrp:PanelContent>
@@ -152,16 +185,16 @@
                                      <dxrp:PanelContent ID="PanelContent3" runat="server">
                                         <table style="width:100%">
                                             <tr>
-                                                <td style="width:8%;text-align:right;">保额：</td>
-                                                <td style="width:25%;text-align:left;">
+                                                <td style="width:11%;text-align:right;">保额：</td>
+                                                <td style="width:22%;text-align:left;">
                                                     <asp:TextBox ID="txtprice" runat="server" Width="140px"></asp:TextBox>
                                                 </td>
-                                                <td style="width:8%;text-align:right;">费率：</td>
-                                                <td style="width:25%;text-align:left;">
+                                                <td style="width:11%;text-align:right;">费率：</td>
+                                                <td style="width:22%;text-align:left;">
                                                     <asp:TextBox ID="txtrate" runat="server" Width="140px"></asp:TextBox>
                                                 </td>
-                                                <td style="width:8%;text-align:right;">保费（原）：</td>
-                                                <td style="width:23%;text-align:left;">
+                                                <td style="width:11%;text-align:right;">保费（原）：</td>
+                                                <td style="width:20%;text-align:left;">
                                                     <asp:TextBox ID="txtoriginalfee" runat="server" Width="140px"></asp:TextBox>
                                                 </td>                                  
                                             </tr> 
@@ -192,7 +225,7 @@
                                                 <td style="width:25%;text-align:left;">
                                                     <asp:TextBox ID="txtmiddlefee" runat="server" Width="140px"></asp:TextBox>
                                                 </td>
-                                                <td style="width:8%;text-align:right;">保费（本）：</td>
+                                                <td style="width:8%;text-align:right;"></td>
                                                 <td style="width:23%;text-align:left;">
                                                     
                                                 </td>                                  
@@ -268,17 +301,7 @@
                                                 <td style="width:23%;text-align:left;">
                                                     
                                                 </td>                                  
-                                            </tr>
-                                            <tr>
-                                                <td style="width:100%;text-align:right;" colspan=5>
-                                                    <asp:Button ID="btnadd" runat="server" Text="新增" />&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <asp:Button ID="btnsave" runat="server" Text="保存" />&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <asp:Button ID="btncancel" runat="server" Text="取消" />
-                                                </td>  
-                                                <td style="width:20%;text-align:left;">
-                                                    
-                                                </td>                                                                  
-                                            </tr>
+                                            </tr>                                            
                                         </table>
                                         
                                       </dxrp:PanelContent>
@@ -297,8 +320,31 @@
             </dxtc:TabPage>
          
         </TabPages>
+         
+        
     </dxtc:ASPxPageControl>
-
+    
+    <table style="height:5px;"><tr><td></td></tr></table>
+    
+    <dxrp:ASPxRoundPanel EnableViewState="False" HeaderText="执行动作" ID="ASPxRoundPanel1" EnableDefaultAppearance="False" Width="100%" runat="server" BackColor="#F8FAFD" ShowHeader="false"  HorizontalAlign="Center">
+         <PanelCollection>
+             <dxrp:PanelContent ID="PanelContent4" runat="server">
+                <table style="width:100%">
+                    <tr>
+                        <td style="width:100%;text-align:right;">
+                            <asp:Button ID="btnadd" runat="server" Text="新增" />&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="btnsave" runat="server" Text="保存" />&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="btncancel" runat="server" Text="取消" />
+                        </td>  
+                        <td style="width:20%;text-align:left;">
+                            
+                        </td>                                                                  
+                    </tr>
+                </table>
+                
+              </dxrp:PanelContent>
+         </PanelCollection>
+     </dxrp:ASPxRoundPanel>
                  
                  
 

@@ -2509,6 +2509,29 @@
     <Content Include="vehicleinsurance\vinquireformsearch.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\Aqua\ASPxGridView.skin" />
+    <Content Include="App_Themes\Aqua\GridView\gvCollapsedButton.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvDetailCollapsedButton.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvDetailExpandedButton.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvDragAndDropArrowDown.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvDragAndDropArrowUp.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvDragAndDropHideColumn.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvExpandedButton.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvFilterRowButton.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvGroupPanelBackground.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvHeaderBackground.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvHeaderFilter.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvHeaderFilterActive.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvHeaderSortDown.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvHeaderSortUp.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvLoadingOnStatusBar.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvPagerBottomPanelBackground.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvParentGroupRows.gif" />
+    <Content Include="App_Themes\Aqua\GridView\Loading.gif" />
+    <Content Include="App_Themes\Aqua\GridView\styles.css" />
+    <Content Include="App_Themes\Aqua\GridView\WindowResizer.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DevExpress.DLL\" />
   </ItemGroup>
