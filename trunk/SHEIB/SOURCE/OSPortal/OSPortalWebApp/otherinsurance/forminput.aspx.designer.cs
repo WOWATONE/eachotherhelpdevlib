@@ -32,22 +32,40 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxTabControl.ASPxPageControl carTabPage;
         
         /// <summary>
-        /// rpbasic control.
+        /// npbasicheader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel rpbasic;
+        protected global::System.Web.UI.WebControls.Panel npbasicheader;
         
         /// <summary>
-        /// PanelContent2 control.
+        /// lbl_npbasicheader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.PanelContent PanelContent2;
+        protected global::System.Web.UI.WebControls.Label lbl_npbasicheader;
+        
+        /// <summary>
+        /// img_npbasicheader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton img_npbasicheader;
+        
+        /// <summary>
+        /// npbasicdetail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npbasicdetail;
         
         /// <summary>
         /// txtSN control.
@@ -194,22 +212,49 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtEndDate;
         
         /// <summary>
-        /// rpinsuranceitem control.
+        /// cpeBasic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel rpinsuranceitem;
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeBasic;
         
         /// <summary>
-        /// PanelContent1 control.
+        /// npGridPolicyItemHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.PanelContent PanelContent1;
+        protected global::System.Web.UI.WebControls.Panel npGridPolicyItemHeader;
+        
+        /// <summary>
+        /// lbl_npGridPolicyItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_npGridPolicyItem;
+        
+        /// <summary>
+        /// img_npGridPolicyItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton img_npGridPolicyItem;
+        
+        /// <summary>
+        /// npGridPolicyItemDetail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npGridPolicyItemDetail;
         
         /// <summary>
         /// btnProductAdd control.
@@ -221,31 +266,58 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.Button btnProductAdd;
         
         /// <summary>
-        /// grid control.
+        /// gridPolicyItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView grid;
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridPolicyItem;
         
         /// <summary>
-        /// rpother control.
+        /// cpeGridPolicyItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel rpother;
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeGridPolicyItem;
         
         /// <summary>
-        /// PanelContent3 control.
+        /// npOtherPolicyItemHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.PanelContent PanelContent3;
+        protected global::System.Web.UI.WebControls.Panel npOtherPolicyItemHeader;
+        
+        /// <summary>
+        /// lbl_npOtherPolicyItemHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_npOtherPolicyItemHeader;
+        
+        /// <summary>
+        /// img_npOtherPolicyItemHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton img_npOtherPolicyItemHeader;
+        
+        /// <summary>
+        /// npOtherPolicyItemDetail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npOtherPolicyItemDetail;
         
         /// <summary>
         /// txtprice control.
@@ -392,6 +464,15 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtCreateTime;
         
         /// <summary>
+        /// cpeOtherPolicyItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeOtherPolicyItem;
+        
+        /// <summary>
         /// gridTargetProperty control.
         /// </summary>
         /// <remarks>
@@ -401,22 +482,13 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridTargetProperty;
         
         /// <summary>
-        /// ASPxRoundPanel1 control.
+        /// npExecuteAction control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel1;
-        
-        /// <summary>
-        /// PanelContent4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.PanelContent PanelContent4;
+        protected global::System.Web.UI.WebControls.Panel npExecuteAction;
         
         /// <summary>
         /// btnadd control.

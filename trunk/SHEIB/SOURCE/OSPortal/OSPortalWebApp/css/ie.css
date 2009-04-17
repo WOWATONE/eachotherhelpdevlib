@@ -38,3 +38,37 @@ a.white:hover  	{ font-family: "宋体"; color: #99ccee; text-decoration: underl
 .sec		{ BACKGROUND-IMAGE: url(../images/table_bg_08.gif);vertical-align:bottom}
 .gctd {  background-image:url(../images/table_bg_14.gif); background-repeat: repeat-x; background-position: top ;BORDER-LEFT:#999999 1px solid; BORDER-BOTTOM:#999999 1px solid}
 .gcbodytd {   background-repeat: repeat-x; background-position: top ;BORDER-LEFT:#999999 1px solid; BORDER-BOTTOM:#999999 1px solid}
+
+/*CollapsiblePanel*/
+.collapsePanel {
+	
+	background-color:white;
+	overflow:hidden;
+	border-style:solid;
+	border-bottom-width:1px;
+	border-left-width:1px;
+	border-right-width:1px;
+	border-top-width:0px;
+	border-color:#AECAF0;
+}
+
+.collapsePanelHeader{
+	width:100%;
+	height:30px;
+	background-color:#E0EDFF;
+	color:#2C4D79;
+	font-weight:normal;
+	border-style:solid;
+	border-width:1px;
+	border-color:#AECAF0;
+	vertical-align:middle;
+}
+
+.allborderPanel {
+	
+	background-color:white;
+	overflow:hidden;
+	border-style:solid;
+	border-width:1px;
+	border-color:#AECAF0;
+}
