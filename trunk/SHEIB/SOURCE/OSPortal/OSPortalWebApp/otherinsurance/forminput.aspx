@@ -7,6 +7,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <meta content="zh-CN" http-equiv="Content-Language" />
+    <link rel="stylesheet" type="text/css" href="../css/ie.css" />
     <script src="../js/jquery-1.3.2.js" type="text/javascript"></script>
 	<script src="../js/jquerynotice/jquery.notice.js" type="text/javascript"></script>
 	<script type="text/javascript" src="../js/jquery-ui-1.7.1.custom.min.js"></script>
@@ -47,7 +48,7 @@
 
     <dxtc:ASPxPageControl ID="carTabPage" runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%">
         <TabPages>
-            <dxtc:TabPage Text="保单录入"><ContentCollection><dxw:ContentControl runat="server">
+            <dxtc:TabPage Text="保单基本资料"><ContentCollection><dxw:ContentControl runat="server">
                 <table style="width:99%">
                     <tr>
                         <td style="width:100%;">
@@ -60,7 +61,7 @@
                                                 <td style="width:8%;text-align:right;">保单编号：</td>
                                                 <td style="width:25%;text-align:left;"><asp:TextBox ID="txtSN" runat="server" Width="200px"></asp:TextBox></td>
                                                 <td style="width:8%;text-align:right;"><asp:CheckBox ID="chkReinsurance" runat="server" /></td>
-                                                <td style="width:25%;text-align:left;"><asp:Button ID="btnReinsurance" runat="server" Text="再保险" /> </td>
+                                                <td style="width:25%;text-align:left;"><asp:Button ID="btnReinsurance" runat="server" Text="再保险" CssClass="input_2" /> </td>
                                                 <td style="width:8%;text-align:right;"></td>
                                                 <td style="width:23%;text-align:left;"></td>
                                             </tr>
@@ -68,7 +69,7 @@
                                                 <td style="width:8%;text-align:right;">投保人：</td>
                                                 <td style="width:25%;text-align:left;"><asp:TextBox ID="txtpeoplefrom" runat="server" Width="154px" Text="张三"></asp:TextBox>&nbsp;&nbsp;<asp:Button ID="btnpeoplesearch" runat="server" Text="搜索" /></td>
                                                 <td style="width:8%;text-align:right;"><asp:CheckBox ID="chkTogether" runat="server" /></td>
-                                                <td style="width:25%;text-align:left;"><asp:Button ID="btnTogether" runat="server" Text="共  保" /> </td>
+                                                <td style="width:25%;text-align:left;"><asp:Button ID="btnTogether" runat="server" Text="共  保" CssClass="input_2" /> </td>
                                                 <td style="width:8%;text-align:right;"></td>
                                                 <td style="width:23%;text-align:left;"></td>
                                             </tr>
@@ -82,7 +83,7 @@
                                                         </asp:DropDownList>
                                                 </td>
                                                 <td style="width:8%;text-align:right;"><asp:CheckBox ID="chkStage" runat="server" /></td>
-                                                <td style="width:25%;text-align:left;"><asp:Button ID="btnStage" runat="server" Text="分  期" /> </td>
+                                                <td style="width:25%;text-align:left;"><asp:Button ID="btnStage" runat="server" Text="分  期" CssClass="input_2" /> </td>
                                                 <td style="width:8%;text-align:right;"></td>
                                                 <td style="width:23%;text-align:left;"></td>
                                             </tr>
@@ -137,7 +138,7 @@
                                      <dxrp:PanelContent ID="PanelContent1" runat="server">
                                         <table style="width:100%">
                                             <tr>
-                                                <td style="width:8%;text-align:right;">新增</td>
+                                                <td style="width:8%;text-align:right;"><asp:Button ID="btnProductAdd" Text="新增保险项目" runat="server" CssClass="input_2" /></td>
                                                 
                                             </tr> 
                                             <tr>
@@ -313,9 +314,35 @@
                     
             </dxw:ContentControl></ContentCollection></dxtc:TabPage>
                     
-            <dxtc:TabPage Text="标的录入">
+            <dxtc:TabPage Text="标的描述">
                 <ContentCollection><dxw:ContentControl runat="server">
+                    <table style="width:100%">
+                        <tr>
+                            <td style="width:8%;text-align:left;">标的类别：<asp:TextBox it="txtTargetType" runat="server" ReadOnly></asp:TextBox></td>
                             
+                        </tr> 
+                        <tr>
+                            <td>
+                                <dxwgv:ASPxGridView ID="gridTargetProperty" ClientInstanceName="grid" runat="server" KeyFieldName="CustomerID" Width="100%">
+                                    <%-- BeginRegion Columns --%>
+                                        <Columns>
+                                            <dxwgv:GridViewCommandColumn VisibleIndex="0">
+                                                <EditButton Visible="false" />
+                                            </dxwgv:GridViewCommandColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="序号" VisibleIndex="1">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="项目" VisibleIndex="2">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="项目说明" VisibleIndex="3">
+                                            </dxwgv:GridViewDataColumn>
+                                        </Columns>
+                                    <%-- EndRegion --%>
+                                    <SettingsEditing PopupEditFormWidth="600px" />
+                                    <Settings ShowGroupPanel="false" />
+                                </dxwgv:ASPxGridView>
+                            </td>
+                        </tr>
+                    </table>            
                 </dxw:ContentControl></ContentCollection>
             </dxtc:TabPage>
          
@@ -332,9 +359,9 @@
                 <table style="width:100%">
                     <tr>
                         <td style="width:100%;text-align:right;">
-                            <asp:Button ID="btnadd" runat="server" Text="新增" />&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:Button ID="btnsave" runat="server" Text="保存" />&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:Button ID="btncancel" runat="server" Text="取消" />
+                            <asp:Button ID="btnadd" runat="server" Text="新增" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="btnsave" runat="server" Text="保存" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="btncancel" runat="server" Text="取消" CssClass="input_2" />
                         </td>  
                         <td style="width:20%;text-align:left;">
                             
