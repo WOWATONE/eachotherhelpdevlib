@@ -4,6 +4,7 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dxwgv" %>
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <meta content="zh-CN" http-equiv="Content-Language" />
@@ -42,18 +43,17 @@
             );
             
 	    });
-    </script>
+    </script>    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     <dxtc:ASPxPageControl ID="carTabPage" runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%">
         <TabPages>
             <dxtc:TabPage Text="保单基本资料"><ContentCollection><dxw:ContentControl runat="server">
                 <table style="width:99%">
                     <tr>
-                        <td style="width:100%;">
-         
-                            <dxrp:ASPxRoundPanel EnableViewState="False" HeaderText="保单基本数据" ID="rpbasic" EnableDefaultAppearance="False" Width="100%" runat="server" BackColor="#F8FAFD" ShowHeader="true"  HorizontalAlign="Center">
+                        <td style="width:100%;">                            
+                            <dxrp:ASPxRoundPanel EnableViewState="False" HeaderText="保单基本数据" ID="rpbasic" EnableDefaultAppearance="False" Width="100%" runat="server" BackColor="#F8FAFD" ShowHeader="false"  HorizontalAlign="Center">
                                  <PanelCollection>
                                      <dxrp:PanelContent ID="PanelContent2" runat="server">
                                         <table style="width:100%">
@@ -67,7 +67,7 @@
                                             </tr>
                                             <tr>
                                                 <td style="width:8%;text-align:right;">投保人：</td>
-                                                <td style="width:25%;text-align:left;"><asp:TextBox ID="txtpeoplefrom" runat="server" Width="154px" Text="张三"></asp:TextBox>&nbsp;&nbsp;<asp:Button ID="btnpeoplesearch" runat="server" Text="搜索" /></td>
+                                                <td style="width:25%;text-align:left;"><asp:TextBox ID="txtpeoplefrom" runat="server" Width="154px" Text="张三"></asp:TextBox>&nbsp;&nbsp;<asp:Button ID="btnpeoplesearch" runat="server" Text="搜索" CssClass="input_2" /></td>
                                                 <td style="width:8%;text-align:right;"><asp:CheckBox ID="chkTogether" runat="server" /></td>
                                                 <td style="width:25%;text-align:left;"><asp:Button ID="btnTogether" runat="server" Text="共  保" CssClass="input_2" /> </td>
                                                 <td style="width:8%;text-align:right;"></td>
@@ -138,7 +138,7 @@
                                      <dxrp:PanelContent ID="PanelContent1" runat="server">
                                         <table style="width:100%">
                                             <tr>
-                                                <td style="width:8%;text-align:right;"><asp:Button ID="btnProductAdd" Text="新增保险项目" runat="server" CssClass="input_2" /></td>
+                                                <td style="width:8%;text-align:right;"><asp:Button ID="btnProductAdd" Text="新增" runat="server" CssClass="input_2" /></td>
                                                 
                                             </tr> 
                                             <tr>
