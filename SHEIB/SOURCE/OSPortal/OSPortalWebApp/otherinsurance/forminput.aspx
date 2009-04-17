@@ -172,32 +172,52 @@
                                             </tr> 
                                             <tr>
                                                 <td>
-                                                    <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="grid" runat="server" KeyFieldName="CustomerID" Width="100%">
+                                                    <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" KeyFieldName="ID" Width="100%" AutoGenerateColumns="False" OnRowInserting="gridPolicyItem_RowInserting" OnRowUpdating="gridPolicyItem_RowUpdating">
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
                                                                 <dxwgv:GridViewCommandColumn VisibleIndex="0">
                                                                     <EditButton Visible="true" />
+                                                                    <NewButton Visible="True" />
                                                                 </dxwgv:GridViewCommandColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="序号" VisibleIndex="1">
+                                                                <dxwgv:GridViewDataColumn FieldName="ID" Caption="序号" VisibleIndex="1">
+                                                                    <EditFormSettings VisibleIndex="0" />
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="项目编码" VisibleIndex="2">
+                                                                <dxwgv:GridViewDataColumn FieldName="Code" Caption="项目编码" VisibleIndex="2">
+                                                                    <EditFormSettings VisibleIndex="1" />
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="项目名称" VisibleIndex="3">
+                                                                <dxwgv:GridViewDataColumn FieldName="Caption" Caption="项目名称" VisibleIndex="3">
+                                                                    <EditFormSettings VisibleIndex="2" />
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="保额" VisibleIndex="4">
+                                                                <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保额" VisibleIndex="4">
+                                                                    <EditFormSettings VisibleIndex="3" />
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="费率" VisibleIndex="5">
+                                                                <dxwgv:GridViewDataColumn FieldName="Rate" Caption="费率" VisibleIndex="5">
+                                                                    <EditFormSettings VisibleIndex="4" />
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="保费" VisibleIndex="6">
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="保费" VisibleIndex="6">
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="经纪费率" VisibleIndex="7">
+                                                                <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率" VisibleIndex="7">
+                                                                    <EditFormSettings VisibleIndex="5" />
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="经纪费" VisibleIndex="8">
+                                                                <dxwgv:GridViewDataColumn FieldName="ProcessFee" Caption="经纪费" VisibleIndex="8">
+                                                                    <EditFormSettings VisibleIndex="6" />
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>
-                                                        <SettingsEditing PopupEditFormWidth="600px" />
+                                                        <SettingsPager Mode="ShowAllRecords"/>
                                                         <Settings ShowGroupPanel="false" />
+                                                        <Templates>
+                                                             <EditForm>
+                                                             <div style="padding:4px 4px 3px 4px">
+                                                                <dxwgv:ASPxGridViewTemplateReplacement ID="Editors" ReplacementType="EditFormEditors" runat="server"></dxwgv:ASPxGridViewTemplateReplacement>
+                                                             </div>
+                                                             <div style="text-align:right; padding:2px 2px 2px 2px">
+                                                                 <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server"></dxwgv:ASPxGridViewTemplateReplacement>
+                                                                 <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton" runat="server"></dxwgv:ASPxGridViewTemplateReplacement>
+                                                             </div>
+                                                             </EditForm>
+                                                         </Templates>
+
                                                     </dxwgv:ASPxGridView>
                                                 </td>
                                             </tr>
