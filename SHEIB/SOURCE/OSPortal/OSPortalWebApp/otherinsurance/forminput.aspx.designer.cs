@@ -203,6 +203,15 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxRoundPanel.PanelContent PanelContent1;
         
         /// <summary>
+        /// btnProductAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnProductAdd;
+        
+        /// <summary>
         /// grid control.
         /// </summary>
         /// <remarks>
@@ -372,6 +381,15 @@ namespace OSPortalWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCreateTime;
+        
+        /// <summary>
+        /// gridTargetProperty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridTargetProperty;
         
         /// <summary>
         /// ASPxRoundPanel1 control.
