@@ -2533,6 +2533,8 @@
     <Content Include="App_Themes\Aqua\GridView\WindowResizer.png" />
     <Content Include="bin\AjaxControlToolkit.dll" />
     <Content Include="bin\zh-CHS\AjaxControlToolkit.resources.dll" />
+    <Content Include="images\collapse_blue.jpg" />
+    <Content Include="images\expand_blue.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

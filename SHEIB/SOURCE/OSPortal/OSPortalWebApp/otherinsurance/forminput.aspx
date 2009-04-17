@@ -52,10 +52,19 @@
             <dxtc:TabPage Text="保单基本资料"><ContentCollection><dxw:ContentControl runat="server">
                 <table style="width:99%">
                     <tr>
-                        <td style="width:100%;">                            
-                            <dxrp:ASPxRoundPanel EnableViewState="False" HeaderText="保单基本数据" ID="rpbasic" EnableDefaultAppearance="False" Width="100%" runat="server" BackColor="#F8FAFD" ShowHeader="false"  HorizontalAlign="Center">
-                                 <PanelCollection>
-                                     <dxrp:PanelContent ID="PanelContent2" runat="server">
+                        <td style="width:100%;"> 
+                            <asp:Panel ID="npbasicheader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
+                                <div style="padding:5px; cursor: pointer; vertical-align: middle;">
+                                    <div style="float: left;">保单基本数据</div>
+                                    <div style="float: left; margin-left: 20px;">
+                                        <asp:Label ID="lbl_npbasicheader" runat="server">(展开)</asp:Label>
+                                    </div>
+                                    <div style="float: right; vertical-align: middle;">
+                                        <asp:ImageButton ID="img_npbasicheader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
+                                    </div>
+                                </div>
+                            </asp:Panel>                           
+                            <asp:Panel ID="npbasicdetail" runat="server" CssClass="collapsePanel" Height="0">
                                         <table style="width:100%">
                                             <tr>
                                                 <td style="width:8%;text-align:right;">保单编号：</td>
@@ -126,16 +135,36 @@
 
                                         </table>
                                         
-                                      </dxrp:PanelContent>
-                                 </PanelCollection>
-                             </dxrp:ASPxRoundPanel>
+                                     
+                             </asp:Panel>
+                             <ajaxToolkit:CollapsiblePanelExtender ID="cpeBasic" runat="Server"
+                                TargetControlID="npbasicdetail"
+                                ExpandControlID="npbasicheader"
+                                CollapseControlID="npbasicheader" 
+                                Collapsed="false"
+                                TextLabelID="lbl_npbasicheader"
+                                ImageControlID="img_npbasicheader"    
+                                ExpandedText="(隐藏)"
+                                CollapsedText="(展开)"
+                                ExpandedImage="~/images/collapse_blue.jpg"
+                                CollapsedImage="~/images/expand_blue.jpg"
+                                SuppressPostBack="true" />
                         </td>
                     </tr>
                     <tr>
                         <td style="width:100%;">
-                            <dxrp:ASPxRoundPanel EnableViewState="False" HeaderText="保险项目" ID="rpinsuranceitem" EnableDefaultAppearance="False" Width="100%" runat="server" BackColor="#F8FAFD" ShowHeader="true"  HorizontalAlign="Center">
-                                 <PanelCollection>
-                                     <dxrp:PanelContent ID="PanelContent1" runat="server">
+                            <asp:Panel ID="npGridPolicyItemHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
+                                <div style="padding:5px; cursor: pointer; vertical-align: middle;">
+                                    <div style="float: left;">保险项目</div>
+                                    <div style="float: left; margin-left: 20px;">
+                                        <asp:Label ID="lbl_npGridPolicyItem" runat="server">(展开)</asp:Label>
+                                    </div>
+                                    <div style="float: right; vertical-align: middle;">
+                                        <asp:ImageButton ID="img_npGridPolicyItem" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
+                                    </div>
+                                </div>
+                            </asp:Panel>  
+                            <asp:Panel ID="npGridPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
                                         <table style="width:100%">
                                             <tr>
                                                 <td style="width:8%;text-align:right;"><asp:Button ID="btnProductAdd" Text="新增" runat="server" CssClass="input_2" /></td>
@@ -143,7 +172,7 @@
                                             </tr> 
                                             <tr>
                                                 <td>
-                                                    <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" KeyFieldName="CustomerID" Width="100%">
+                                                    <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="grid" runat="server" KeyFieldName="CustomerID" Width="100%">
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
                                                                 <dxwgv:GridViewCommandColumn VisibleIndex="0">
@@ -173,17 +202,36 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                        
-                                      </dxrp:PanelContent>
-                                 </PanelCollection>
-                             </dxrp:ASPxRoundPanel>
+       
+                             </asp:Panel>
+                             <ajaxToolkit:CollapsiblePanelExtender ID="cpeGridPolicyItem" runat="Server"
+                                TargetControlID="npGridPolicyItemDetail"
+                                ExpandControlID="npGridPolicyItemHeader"
+                                CollapseControlID="npGridPolicyItemHeader" 
+                                Collapsed="false"
+                                TextLabelID="lbl_npGridPolicyItem"
+                                ImageControlID="img_npGridPolicyItem"    
+                                ExpandedText="(隐藏)"
+                                CollapsedText="(展开)"
+                                ExpandedImage="~/images/collapse_blue.jpg"
+                                CollapsedImage="~/images/expand_blue.jpg"
+                                SuppressPostBack="true" />
                         </td>
                     </tr>
                     <tr>
                         <td style="width:100%;">
-                            <dxrp:ASPxRoundPanel EnableViewState="False" HeaderText="其它项目" ID="rpother" EnableDefaultAppearance="False" Width="100%" runat="server" BackColor="#F8FAFD" ShowHeader="true"  HorizontalAlign="Center">
-                                 <PanelCollection>
-                                     <dxrp:PanelContent ID="PanelContent3" runat="server">
+                            <asp:Panel ID="npOtherPolicyItemHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
+                                <div style="padding:5px; cursor: pointer; vertical-align: middle;">
+                                    <div style="float: left;">其它项目</div>
+                                    <div style="float: left; margin-left: 20px;">
+                                        <asp:Label ID="lbl_npOtherPolicyItemHeader" runat="server">(展开)</asp:Label>
+                                    </div>
+                                    <div style="float: right; vertical-align: middle;">
+                                        <asp:ImageButton ID="img_npOtherPolicyItemHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
+                                    </div>
+                                </div>
+                            </asp:Panel> 
+                            <asp:Panel ID="npOtherPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
                                         <table style="width:100%">
                                             <tr>
                                                 <td style="width:11%;text-align:right;">保额：</td>
@@ -305,9 +353,19 @@
                                             </tr>                                            
                                         </table>
                                         
-                                      </dxrp:PanelContent>
-                                 </PanelCollection>
-                             </dxrp:ASPxRoundPanel>
+                             </asp:Panel>
+                             <ajaxToolkit:CollapsiblePanelExtender ID="cpeOtherPolicyItem" runat="Server"
+                                TargetControlID="npOtherPolicyItemDetail"
+                                ExpandControlID="npOtherPolicyItemHeader"
+                                CollapseControlID="npOtherPolicyItemHeader" 
+                                Collapsed="false"
+                                TextLabelID="lbl_npOtherPolicyItemHeader"
+                                ImageControlID="img_npOtherPolicyItemHeader"    
+                                ExpandedText="(隐藏)"
+                                CollapsedText="(展开)"
+                                ExpandedImage="~/images/collapse_blue.jpg"
+                                CollapsedImage="~/images/expand_blue.jpg"
+                                SuppressPostBack="true" />
                             </td>
                         </tr>
                     </table>
@@ -351,27 +409,23 @@
         
     </dxtc:ASPxPageControl>
     
-    <table style="height:5px;"><tr><td></td></tr></table>
+    <table style="height:5px; background-color:#E0EDFF; width:100%; font-size:2px;"><tr><td></td></tr></table>
     
-    <dxrp:ASPxRoundPanel EnableViewState="False" HeaderText="执行动作" ID="ASPxRoundPanel1" EnableDefaultAppearance="False" Width="100%" runat="server" BackColor="#F8FAFD" ShowHeader="false"  HorizontalAlign="Center">
-         <PanelCollection>
-             <dxrp:PanelContent ID="PanelContent4" runat="server">
+    <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="25px">
                 <table style="width:100%">
                     <tr>
-                        <td style="width:100%;text-align:right;">
+                        <td style="text-align:right;">
                             <asp:Button ID="btnadd" runat="server" Text="新增" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:Button ID="btnsave" runat="server" Text="保存" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:Button ID="btncancel" runat="server" Text="取消" CssClass="input_2" />
                         </td>  
-                        <td style="width:20%;text-align:left;">
-                            
+                        <td style="width:20px;text-align:left;">
+                            &nbsp;
                         </td>                                                                  
                     </tr>
                 </table>
                 
-              </dxrp:PanelContent>
-         </PanelCollection>
-     </dxrp:ASPxRoundPanel>
+     </asp:Panel>
                  
                  
 
