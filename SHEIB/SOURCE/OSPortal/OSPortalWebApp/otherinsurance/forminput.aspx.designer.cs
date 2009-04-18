@@ -194,22 +194,22 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
         
         /// <summary>
-        /// txtStartDate control.
+        /// deStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStartDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deStartDate;
         
         /// <summary>
-        /// txtEndDate control.
+        /// deEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEndDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deEndDate;
         
         /// <summary>
         /// cpeBasic control.
@@ -273,6 +273,15 @@ namespace OSPortalWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridPolicyItem;
+        
+        /// <summary>
+        /// dsPolicyItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsPolicyItem;
         
         /// <summary>
         /// cpeGridPolicyItem control.

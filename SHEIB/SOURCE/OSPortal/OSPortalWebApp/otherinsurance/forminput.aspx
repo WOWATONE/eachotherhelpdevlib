@@ -21,27 +21,6 @@
 	            text: 'This is a notification that you have to remove',
 	            stay: true
 	        });
-
-	        $("#<%=txtStartDate.ClientID %>").datepicker(
-                {
-                    minDate: null,
-                    maxDate: null,
-                    dateFormat: "yy-mm-dd",
-                    changeMonth: true,
-                    changeYear: true
-                }
-            );
-
-                $("#<%=txtEndDate.ClientID %>").datepicker(
-                {
-                    minDate: null,
-                    maxDate: null,
-                    dateFormat: "yy-mm-dd",
-                    changeMonth: true,
-                    changeYear: true
-                }
-            );
-            
 	    });
     </script>    
 </asp:Content>
@@ -128,8 +107,13 @@
                                                 </asp:DropDownList>
                                                 </td>
                                                 <td style="width:8%;text-align:right;">保险期限：</td>
-                                                <td style="width:56%;text-align:left;" colspan=3>
-                                                    <asp:TextBox ID="txtStartDate" runat="server" Width="100px"></asp:TextBox>&nbsp;至&nbsp;<asp:TextBox ID="txtEndDate" runat="server" Width="100px"></asp:TextBox>
+                                                <td>
+                                                    <dxe:ASPxDateEdit ID="deStartDate" runat="server"></dxe:ASPxDateEdit>                                                    
+                                                </td>
+                                                <td>
+                                                </td>
+                                                <td>
+                                                    <dxe:ASPxDateEdit ID="deEndDate" runat="server"></dxe:ASPxDateEdit>
                                                 </td>
                                             </tr>
 
@@ -172,7 +156,12 @@
                                             </tr> 
                                             <tr>
                                                 <td>
-                                                    <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" KeyFieldName="ID" Width="100%" AutoGenerateColumns="False" OnRowInserting="gridPolicyItem_RowInserting" OnRowUpdating="gridPolicyItem_RowUpdating">
+                                                    <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" 
+                                                    DataSourceID="dsPolicyItem"
+                                                    KeyFieldName="ID" Width="100%" AutoGenerateColumns="False" 
+                                                    OnRowInserting="gridPolicyItem_RowInserting" 
+                                                    OnRowUpdating="gridPolicyItem_RowUpdating" 
+                                                    OnRowUpdated="gridPolicyItem_RowUpdated" >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
                                                                 <dxwgv:GridViewCommandColumn VisibleIndex="0">
@@ -206,19 +195,59 @@
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowAllRecords"/>
                                                         <Settings ShowGroupPanel="false" />
+                                                        <SettingsText 
+                                                            CommandUpdate="确定" 
+                                                            CommandCancel="取消" 
+                                                            CommandDelete="删除" 
+                                                            CommandNew="新增" 
+                                                            CommandEdit="编辑"
+                                                            EmptyDataRow="没有数据" />
                                                         <Templates>
-                                                             <EditForm>
+                                                             <EditForm>                                                             
                                                              <div style="padding:4px 4px 3px 4px">
                                                                 <dxwgv:ASPxGridViewTemplateReplacement ID="Editors" ReplacementType="EditFormEditors" runat="server"></dxwgv:ASPxGridViewTemplateReplacement>
                                                              </div>
                                                              <div style="text-align:right; padding:2px 2px 2px 2px">
-                                                                 <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server"></dxwgv:ASPxGridViewTemplateReplacement>
+                                                                 <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server">
+                                                                 </dxwgv:ASPxGridViewTemplateReplacement>
                                                                  <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton" runat="server"></dxwgv:ASPxGridViewTemplateReplacement>
                                                              </div>
                                                              </EditForm>
                                                          </Templates>
 
                                                     </dxwgv:ASPxGridView>
+                                                    <asp:ObjectDataSource ID="dsPolicyItem" Runat="server" TypeName="OSPortalWebApp.PolicyItem"
+                                                        InsertMethod="InsertPolicyItem" 
+                                                        SelectMethod="GetPolicyItems" 
+                                                        UpdateMethod="UpdatePolicyItem" 
+                                                        DataObjectTypeName="OSPortalWebApp.PolicyItem" >
+
+                                                          <UpdateParameters>
+                                                            <asp:Parameter Type="Int32" Name="ID" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="String" Name="Code" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="String" Name="Caption" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="Decimal" Name="Premium" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="Double" Name="Rate" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="Double" Name="Fee" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="Double" Name="ProcessRate" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="Double" Name="ProcessFee" Direction="Input"></asp:Parameter>
+                                                        </UpdateParameters>
+
+                                                        <SelectParameters>
+                                                        </SelectParameters>
+
+                                                        <InsertParameters>
+                                                            <asp:Parameter Type="Int32" Name="ID" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="String" Name="Code" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="String" Name="Caption" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="Decimal" Name="Premium" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="Double" Name="Rate" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="Double" Name="Fee" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="Double" Name="ProcessRate" Direction="Input"></asp:Parameter>
+                                                            <asp:Parameter Type="Double" Name="ProcessFee" Direction="Input"></asp:Parameter>
+                                                        </InsertParameters>
+
+                                                    </asp:ObjectDataSource>
                                                 </td>
                                             </tr>
                                         </table>
