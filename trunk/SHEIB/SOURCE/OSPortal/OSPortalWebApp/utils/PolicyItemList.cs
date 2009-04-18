@@ -59,6 +59,7 @@ namespace OSPortalWebApp
 
         public List<PolicyItem> GetPolicyItems()
         {
+            //ViewState["text"]
             //List<PolicyItem> list = new List<PolicyItem>();
             //PolicyItem newObj = new PolicyItem();
             //newObj.ID = 1;
