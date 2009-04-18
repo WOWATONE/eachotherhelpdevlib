@@ -151,8 +151,7 @@
                             <asp:Panel ID="npGridPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
                                         <table style="width:100%">
                                             <tr>
-                                                <td style="width:8%;text-align:right;"><asp:Button ID="btnProductAdd" Text="ÐÂÔö" runat="server" CssClass="input_2" /></td>
-                                                
+                                                <td style="width:8%;text-align:right;"></td>                                                
                                             </tr> 
                                             <tr>
                                                 <td>
@@ -161,7 +160,8 @@
                                                     KeyFieldName="ID" Width="100%" AutoGenerateColumns="False" 
                                                     OnRowInserting="gridPolicyItem_RowInserting" 
                                                     OnRowUpdating="gridPolicyItem_RowUpdating" 
-                                                    OnRowUpdated="gridPolicyItem_RowUpdated" >
+                                                    OnRowUpdated="gridPolicyItem_RowUpdated" 
+                                                    OnRowInserted="gridPolicyItem_RowInserted" >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
                                                                 <dxwgv:GridViewCommandColumn VisibleIndex="0">
