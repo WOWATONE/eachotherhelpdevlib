@@ -11,44 +11,49 @@ namespace OSPortalWebApp.otherinsurance
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            loadPolicyItems();
-            if (!IsPostBack && !IsCallback)
-            {
-                //gridPolicyItem.StartEdit(0);
-            }
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("zh-CN");
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CHS"); 
+            //DevExpress.Web.ASPxGridView.Localization.ASPxGridViewLocalizer.Active = new DevExpress.LocalizationCHS.DevExpressWebASPxGridViewLocalizationCHS();         
         }
         protected void gridPolicyItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            //e.NewValues["Notes"] = GetMemoText();
+            //
         }
+
+        protected void gridPolicyItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
+        {
+            //
+        }
+
         protected void gridPolicyItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-            //e.NewValues["Notes"] = GetMemoText();
+            //
         }
 
         private void loadPolicyItems()
         {
-            System.Data.DataTable dt = new System.Data.DataTable();
-            dt.Columns.Add(new System.Data.DataColumn("ID", typeof(System.Int32)));
-            dt.Columns.Add(new System.Data.DataColumn("Code", typeof(System.String)));
-            dt.Columns.Add(new System.Data.DataColumn("Caption", typeof(System.String)));
-            dt.Columns.Add(new System.Data.DataColumn("Premium", typeof(System.Decimal)));
-            dt.Columns.Add(new System.Data.DataColumn("Rate", typeof(System.Single)));
-            dt.Columns.Add(new System.Data.DataColumn("Fee", typeof(System.Double)));
-            dt.Columns.Add(new System.Data.DataColumn("ProcessRate", typeof(System.Single)));
-            dt.Columns.Add(new System.Data.DataColumn("ProcessFee", typeof(System.Double)));
-            System.Data.DataRow dr =  dt.NewRow();
-            dr.ItemArray[0] = 1;
-            dr.ItemArray[1] = "C1";
-            dr.ItemArray[2] = "Cap";
-            dr.ItemArray[3] = 1000;
-            dr.ItemArray[4] = 0.03;
-            dr.ItemArray[5] = 30;
-            dr.ItemArray[6] = 0.02;
-            dr.ItemArray[7] = 20;
-            dt.Rows.Add(dr);
-            this.gridPolicyItem.DataSource = dt;
-            this.gridPolicyItem.DataBind();
+            
+            //System.Data.DataTable _dt = new System.Data.DataTable();
+            //_dt.Columns.Add(new System.Data.DataColumn("ID", typeof(System.Int32)));
+            //_dt.Columns.Add(new System.Data.DataColumn("Code", typeof(System.String)));
+            //_dt.Columns.Add(new System.Data.DataColumn("Caption", typeof(System.String)));
+            //_dt.Columns.Add(new System.Data.DataColumn("Premium", typeof(System.Decimal)));
+            //_dt.Columns.Add(new System.Data.DataColumn("Rate", typeof(System.Single)));
+            //_dt.Columns.Add(new System.Data.DataColumn("Fee", typeof(System.Double)));
+            //_dt.Columns.Add(new System.Data.DataColumn("ProcessRate", typeof(System.Single)));
+            //_dt.Columns.Add(new System.Data.DataColumn("ProcessFee", typeof(System.Double)));
+            //System.Data.DataRow dr = _dt.NewRow();
+            //dr[0] = 1;
+            //dr[1] = "C1";
+            //dr[2] = "Cap";
+            //dr[3] = 1000;
+            //dr[4] = 0.03;
+            //dr[5] = 30;
+            //dr[6] = 0.02;
+            //dr[7] = 20;
+            //_dt.Rows.Add(dr);
+            //this.gridPolicyItem.DataSource = _dt;
+            //this.gridPolicyItem.DataBind();
         }
 
     }
