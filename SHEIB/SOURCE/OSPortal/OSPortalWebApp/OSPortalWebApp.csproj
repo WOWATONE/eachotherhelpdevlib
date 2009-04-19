@@ -92,6 +92,13 @@
     <Compile Include="Basecls\authenticationbasepage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Controls\PolicySearch.ascx.cs">
+      <DependentUpon>PolicySearch.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\PolicySearch.ascx.designer.cs">
+      <DependentUpon>PolicySearch.ascx</DependentUpon>
+    </Compile>
     <Compile Include="dpleft.aspx.cs">
       <DependentUpon>dpleft.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2538,6 +2545,7 @@
     <Content Include="bin\BusinessObjects.dll" />
     <Content Include="bin\BusinessObjects.pdb" />
     <Content Include="bin\zh-CHS\AjaxControlToolkit.resources.dll" />
+    <Content Include="Controls\PolicySearch.ascx" />
     <Content Include="images\collapse_blue.jpg" />
     <Content Include="images\expand_blue.jpg" />
   </ItemGroup>
