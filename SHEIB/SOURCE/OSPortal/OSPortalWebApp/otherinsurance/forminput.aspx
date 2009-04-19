@@ -50,7 +50,17 @@
                                                 <td style="width:8%;text-align:right;">保单编号：</td>
                                                 <td style="width:25%;text-align:left;"><asp:TextBox ID="txtSN" runat="server" Width="200px"></asp:TextBox></td>
                                                 <td style="width:8%;text-align:right;"><asp:CheckBox ID="chkReinsurance" runat="server" /></td>
-                                                <td style="width:25%;text-align:left;"><asp:Button ID="btnReinsurance" runat="server" Text="再保险" CssClass="input_2" /> </td>
+                                                <td style="width:25%;text-align:left;">
+                                                    <img runat="server" id="imgTogetherInsurance" alt="" src="../images/icontogether.gif" style="width:25px; height:20px; vertical-align:top;" />
+                                                    <dxpc:ASPxPopupControl ID="popuppanelTogetherInsurance" runat="server" 
+                                                        EnableClientSideAPI="True" AllowDragging="False" PopupHorizontalAlign="Center" 
+                                                        HeaderText="再保险" 
+                                                        Width="360px" Height="320px" 
+                                                        EnableTheming="true"  PopupElementID="imgTogetherInsurance"
+                                                        AllowResize="false" Modal="true">
+                                                        <Border BorderWidth="1px" />
+                                                     </dxpc:ASPxPopupControl>
+                                                </td>
                                                 <td style="width:8%;text-align:right;"></td>
                                                 <td style="width:23%;text-align:left;"></td>
                                             </tr>
@@ -58,17 +68,27 @@
                                                 <td style="width:8%;text-align:right;">投保人：</td>
                                                 <td style="width:25%;text-align:left;"><asp:TextBox ID="txtpeoplefrom" runat="server" Width="154px" Text="张三"></asp:TextBox>&nbsp;&nbsp;
                                                     <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" />
-                                                    <dxpc:ASPxPopupControl ID="poppanel" runat="server" 
+                                                    <dxpc:ASPxPopupControl ID="popuppanelpeoplesearch" runat="server" 
                                                         EnableClientSideAPI="True" AllowDragging="False" PopupHorizontalAlign="Center" 
                                                         HeaderText="查询结果页面" 
                                                         Width="360px" Height="320px" 
                                                         EnableTheming="true"  PopupElementID="imgpeoplesearch"
                                                         AllowResize="false" Modal="true">
-                                                        <Border BorderWidth="0px" />
+                                                        <Border BorderWidth="1px" />
                                                      </dxpc:ASPxPopupControl>
                                                 </td>
                                                 <td style="width:8%;text-align:right;"><asp:CheckBox ID="chkTogether" runat="server" /></td>
-                                                <td style="width:25%;text-align:left;"><asp:Button ID="btnTogether" runat="server" Text="共  保" CssClass="input_2" /> </td>
+                                                <td style="width:25%;text-align:left;">
+                                                    <img runat="server" id="imgpartnerInsurance" alt="" src="../images/iconpartner.gif" style="width:25px; height:20px; vertical-align:top;" />
+                                                    <dxpc:ASPxPopupControl ID="popupPanelpartnerInsurance" runat="server" 
+                                                        EnableClientSideAPI="True" AllowDragging="False" PopupHorizontalAlign="Center" 
+                                                        HeaderText="共保" 
+                                                        Width="360px" Height="320px" 
+                                                        EnableTheming="true"  PopupElementID="imgpartnerInsurance"
+                                                        AllowResize="false" Modal="true">
+                                                        <Border BorderWidth="1px" />
+                                                     </dxpc:ASPxPopupControl>
+                                                </td>
                                                 <td style="width:8%;text-align:right;"></td>
                                                 <td style="width:23%;text-align:left;"></td>
                                             </tr>
@@ -82,7 +102,17 @@
                                                         </asp:DropDownList>
                                                 </td>
                                                 <td style="width:8%;text-align:right;"><asp:CheckBox ID="chkStage" runat="server" /></td>
-                                                <td style="width:25%;text-align:left;"><asp:Button ID="btnStage" runat="server" Text="分  期" CssClass="input_2" /> </td>
+                                                <td style="width:25%;text-align:left;">
+                                                    <img runat="server" id="imgdividedpaymentinsurance" alt="" src="../images/icondividedpayment.gif" style="width:25px; height:20px; vertical-align:top;" />
+                                                    <dxpc:ASPxPopupControl ID="popupPaneldividedpaymentinsurance" runat="server" 
+                                                        EnableClientSideAPI="True" AllowDragging="False" PopupHorizontalAlign="Center" 
+                                                        HeaderText="分期" 
+                                                        Width="360px" Height="320px" 
+                                                        EnableTheming="true"  PopupElementID="imgdividedpaymentinsurance"
+                                                        AllowResize="false" Modal="true">
+                                                        <Border BorderWidth="1px" />
+                                                     </dxpc:ASPxPopupControl>
+                                                </td>
                                                 <td style="width:8%;text-align:right;"></td>
                                                 <td style="width:23%;text-align:left;"></td>
                                             </tr>
