@@ -106,15 +106,11 @@
                         </tr>
                     </table>
                 </asp:Panel>
-                <asp:Panel ID="npcustomerdetail" runat="server" CssClass="collapsePanel" Height="0">
+                <asp:Panel ID="npcustomerdetail" runat="server" CssClass="collapsePanel">
                 
-                    <table style="width:100%">
+                    <table style="width:100%"> 
                         <tr>
-                            <td style="width:8%;text-align:right;"></td>                                                
-                        </tr> 
-                        <tr>
-                            <td>
-                                
+                            <td>                              
                                         
                                 <dxwgv:ASPxGridView ID="gridCustomerItem" ClientInstanceName="gridPolicyItem" runat="server" 
                                     KeyFieldName="ID" Width="100%" AutoGenerateColumns="False" >
