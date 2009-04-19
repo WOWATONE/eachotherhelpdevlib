@@ -86,13 +86,13 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.CheckBox chkReinsurance;
         
         /// <summary>
-        /// imgTogetherInsurance control.
+        /// btnTogetherInsurance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgTogetherInsurance;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnTogetherInsurance;
         
         /// <summary>
         /// popuppanelTogetherInsurance control.
@@ -140,13 +140,13 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.CheckBox chkTogether;
         
         /// <summary>
-        /// imgpartnerInsurance control.
+        /// btnpartnerInsurance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgpartnerInsurance;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnpartnerInsurance;
         
         /// <summary>
         /// popupPanelpartnerInsurance control.
@@ -176,13 +176,13 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.CheckBox chkStage;
         
         /// <summary>
-        /// imgdividedpaymentinsurance control.
+        /// btndividedpaymentinsurance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgdividedpaymentinsurance;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btndividedpaymentinsurance;
         
         /// <summary>
         /// popupPaneldividedpaymentinsurance control.
