@@ -86,13 +86,22 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.CheckBox chkReinsurance;
         
         /// <summary>
-        /// btnReinsurance control.
+        /// imgTogetherInsurance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReinsurance;
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgTogetherInsurance;
+        
+        /// <summary>
+        /// popuppanelTogetherInsurance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl popuppanelTogetherInsurance;
         
         /// <summary>
         /// txtpeoplefrom control.
@@ -113,13 +122,13 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
         
         /// <summary>
-        /// poppanel control.
+        /// popuppanelpeoplesearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl poppanel;
+        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl popuppanelpeoplesearch;
         
         /// <summary>
         /// chkTogether control.
@@ -131,13 +140,22 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.CheckBox chkTogether;
         
         /// <summary>
-        /// btnTogether control.
+        /// imgpartnerInsurance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTogether;
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgpartnerInsurance;
+        
+        /// <summary>
+        /// popupPanelpartnerInsurance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl popupPanelpartnerInsurance;
         
         /// <summary>
         /// ddlpeopleto control.
@@ -158,13 +176,22 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.CheckBox chkStage;
         
         /// <summary>
-        /// btnStage control.
+        /// imgdividedpaymentinsurance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnStage;
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgdividedpaymentinsurance;
+        
+        /// <summary>
+        /// popupPaneldividedpaymentinsurance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl popupPaneldividedpaymentinsurance;
         
         /// <summary>
         /// ddlCompany control.

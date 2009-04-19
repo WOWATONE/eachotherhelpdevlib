@@ -2556,6 +2556,9 @@
     <Content Include="CustomerRelation\Customer.aspx" />
     <Content Include="images\collapse_blue.jpg" />
     <Content Include="images\expand_blue.jpg" />
+    <Content Include="images\icondividedpayment.gif" />
+    <Content Include="images\iconpartner.gif" />
+    <Content Include="images\icontogether.gif" />
     <Content Include="images\searchicon9.png" />
   </ItemGroup>
   <ItemGroup>
