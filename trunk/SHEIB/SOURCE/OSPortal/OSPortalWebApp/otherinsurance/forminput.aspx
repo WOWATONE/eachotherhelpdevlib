@@ -5,6 +5,7 @@
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dxwgv" %>
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<%@ Register assembly="DevExpress.Web.v8.3" namespace="DevExpress.Web.ASPxPopupControl" tagprefix="dxpc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <meta content="zh-CN" http-equiv="Content-Language" />
@@ -55,7 +56,17 @@
                                             </tr>
                                             <tr>
                                                 <td style="width:8%;text-align:right;">投保人：</td>
-                                                <td style="width:25%;text-align:left;"><asp:TextBox ID="txtpeoplefrom" runat="server" Width="154px" Text="张三"></asp:TextBox>&nbsp;&nbsp;<asp:Button ID="btnpeoplesearch" runat="server" Text="搜索" CssClass="input_2" /></td>
+                                                <td style="width:25%;text-align:left;"><asp:TextBox ID="txtpeoplefrom" runat="server" Width="154px" Text="张三"></asp:TextBox>&nbsp;&nbsp;
+                                                    <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" />
+                                                    <dxpc:ASPxPopupControl ID="poppanel" runat="server" 
+                                                        EnableClientSideAPI="True" AllowDragging="False" PopupHorizontalAlign="Center" 
+                                                        HeaderText="查询结果页面" 
+                                                        Width="360px" Height="320px" 
+                                                        EnableTheming="true"  PopupElementID="imgpeoplesearch"
+                                                        AllowResize="false" Modal="true">
+                                                        <Border BorderWidth="0px" />
+                                                     </dxpc:ASPxPopupControl>
+                                                </td>
                                                 <td style="width:8%;text-align:right;"><asp:CheckBox ID="chkTogether" runat="server" /></td>
                                                 <td style="width:25%;text-align:left;"><asp:Button ID="btnTogether" runat="server" Text="共  保" CssClass="input_2" /> </td>
                                                 <td style="width:8%;text-align:right;"></td>
