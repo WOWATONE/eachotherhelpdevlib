@@ -2650,6 +2650,7 @@
     <Content Include="App_Themes\Aqua\SpellChecker\Loading.gif" />
     <Content Include="App_Themes\Aqua\SpellChecker\scErrorUnderline.gif" />
     <Content Include="App_Themes\Aqua\SpellChecker\styles.css" />
+    <Content Include="js\dppopup.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

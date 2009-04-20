@@ -9,9 +9,26 @@ namespace OSPortalWebApp.otherinsurance
 {
     public partial class forminput : System.Web.UI.Page
     {
+        #region Variables
+
+        public bool DisplaySelectInsurance
+        {
+            get;
+            set;
+        }
+
+        #endregion Variables
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            //   
+            if (Page.IsPostBack || Page.IsCallback)
+            {
+                DisplaySelectInsurance = false;
+            }
+            else
+            {
+                DisplaySelectInsurance = true;
+            }
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
