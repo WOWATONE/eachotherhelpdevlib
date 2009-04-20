@@ -2,12 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 
 namespace OSPortalWebApp
 {
     public class PolicyItem
     {
-        private List<PolicyItem> _list = new List<PolicyItem>();
+        public PolicyItem()
+        {
+            _stateBag = new StateBag();
+            if (_stateBag.Count == 0)
+            {
+                _list = new List<PolicyItem>();
+                _stateBag.Add("objectlist", _list);
+            }
+            else
+            {
+                _list = (List<PolicyItem>)_stateBag["objectlist"];
+            }
+        }
+
+        private StateBag _stateBag;
+        private List<PolicyItem> _list;
 
         public Int32 ID
         {

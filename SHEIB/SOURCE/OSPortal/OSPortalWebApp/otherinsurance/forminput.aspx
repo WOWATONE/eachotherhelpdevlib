@@ -213,17 +213,21 @@
                                             <tr>
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" 
-                                                    DataSourceID="dsPolicyItem"
+                                                    DataSourceID=""
                                                     KeyFieldName="ID" Width="100%" AutoGenerateColumns="False" 
                                                     OnRowInserting="gridPolicyItem_RowInserting" 
                                                     OnRowUpdating="gridPolicyItem_RowUpdating" 
                                                     OnRowUpdated="gridPolicyItem_RowUpdated" 
-                                                    OnRowInserted="gridPolicyItem_RowInserted" >
+                                                    OnRowInserted="gridPolicyItem_RowInserted"
+                                                    OnRowDeleting="gridPolicyItem_RowDeleting" 
+                                                    OnRowDeleted="gridPolicyItem_RowDeleted"
+                                                     >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
                                                                 <dxwgv:GridViewCommandColumn VisibleIndex="0">
-                                                                    <EditButton Visible="true" />
                                                                     <NewButton Visible="True" />
+                                                                    <EditButton Visible="true" />
+                                                                    <DeleteButton Visible="true" />
                                                                 </dxwgv:GridViewCommandColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="ID" Caption="序号" VisibleIndex="1">
                                                                     <EditFormSettings VisibleIndex="0" />
@@ -273,38 +277,6 @@
                                                          </Templates>
 
                                                     </dxwgv:ASPxGridView>
-                                                    <asp:ObjectDataSource ID="dsPolicyItem" Runat="server" TypeName="OSPortalWebApp.PolicyItem"
-                                                        InsertMethod="InsertPolicyItem" 
-                                                        SelectMethod="GetPolicyItems" 
-                                                        UpdateMethod="UpdatePolicyItem" 
-                                                        DataObjectTypeName="OSPortalWebApp.PolicyItem" >
-
-                                                          <UpdateParameters>
-                                                            <asp:Parameter Type="Int32" Name="ID" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="String" Name="Code" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="String" Name="Caption" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="Decimal" Name="Premium" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="Double" Name="Rate" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="Double" Name="Fee" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="Double" Name="ProcessRate" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="Double" Name="ProcessFee" Direction="Input"></asp:Parameter>
-                                                        </UpdateParameters>
-
-                                                        <SelectParameters>
-                                                        </SelectParameters>
-
-                                                        <InsertParameters>
-                                                            <asp:Parameter Type="Int32" Name="ID" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="String" Name="Code" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="String" Name="Caption" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="Decimal" Name="Premium" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="Double" Name="Rate" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="Double" Name="Fee" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="Double" Name="ProcessRate" Direction="Input"></asp:Parameter>
-                                                            <asp:Parameter Type="Double" Name="ProcessFee" Direction="Input"></asp:Parameter>
-                                                        </InsertParameters>
-
-                                                    </asp:ObjectDataSource>
                                                 </td>
                                             </tr>
                                         </table>
@@ -535,14 +507,21 @@
                  
                  
     <dxpc:ASPxPopupControl ClientInstanceName="ASPxPopupSelectInsuranceClientControl" ID="pcSelectInsurance" runat="server" 
-                                                        EnableClientSideAPI="True" AllowDragging="True" PopupHorizontalAlign="Center" 
-                                                        HeaderText="保险公司"  PopupHorizontalOffset="300" 
-                                                        PopupVerticalAlign="Middle" PopupVerticalOffset="160"
-                                                        Width="360px" Height="320px" 
-                                                        EnableTheming="true"  
-                                                        AllowResize="false" Modal="true">
-                                                        <Border BorderWidth="1px" />
-                                            <ClientSideEvents />
-                                            </dxpc:ASPxPopupControl>
-                                            
+                EnableClientSideAPI="True" AllowDragging="True" PopupHorizontalAlign="Center" 
+                HeaderText="保险公司"  PopupHorizontalOffset="300" 
+                PopupVerticalAlign="Middle" PopupVerticalOffset="160"
+                Width="360px" Height="320px" 
+                EnableTheming="true" CloseAction="CloseButton"
+                ShowCloseButton="True" 
+                AllowResize="false" Modal="true"
+                ContentUrl="formauditing.aspx"
+                >
+                <Controls>
+                  
+                </Controls>
+                <Border BorderWidth="1px" />
+                <ClientSideEvents />
+    
+    </dxpc:ASPxPopupControl>
+                                        
 </asp:Content>

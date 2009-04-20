@@ -302,15 +302,6 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridPolicyItem;
         
         /// <summary>
-        /// dsPolicyItem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dsPolicyItem;
-        
-        /// <summary>
         /// cpeGridPolicyItem control.
         /// </summary>
         /// <remarks>
