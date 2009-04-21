@@ -25,7 +25,7 @@
                                     <dxnb:NavBarGroup Text="客户关系" Expanded="false">
                                         <Items>
                                             <dxnb:NavBarItem ClientEnabled="true" Text="客户列表" Name="CustomerRelation/Customer.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="联系人" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="联系人" Name="CustomerRelation/CustContact.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="业务跟进" Name="http://www.google.cn"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="服务提醒" Name="http://www.google.cn"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="区域设置" Name="http://www.google.cn"></dxnb:NavBarItem>
