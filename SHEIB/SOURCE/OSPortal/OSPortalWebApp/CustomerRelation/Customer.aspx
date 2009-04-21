@@ -1,8 +1,4 @@
 <%@ Page Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="Customer.aspx.cs" Inherits="OSPortalWebApp.CustomerRelation.Customer" Title="" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
-<%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register assembly="DevExpress.Web.ASPxGridView.v8.3" namespace="DevExpress.Web.ASPxGridView" tagprefix="dxwgv" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -82,7 +78,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width:8%;text-align:right;">组织机构代码号/身份证号码：</td>
+                            <td style="width:8%;text-align:right;">组织机构代码号<br/>/身份证号码：</td>
                             <td style="width:25%;text-align:left;"><asp:TextBox ID="txtIDNO" runat="server" Width="200px"></asp:TextBox></td>
                             <td style="width:8%;text-align:right;"></td>
                             <td style="width:25%;text-align:left;"></td>
@@ -96,7 +92,7 @@
                                     <asp:ListItem Text="李四" Value="2"></asp:ListItem>
                                 </asp:DropDownList>
                             </td>
-                            <td style="width:25%;text-align:right;" colspan="4">
+                            <td style="width:67%;text-align:right;" colspan="4">
                                 <asp:Button ID="btnSearch" runat="server" Text="查     询" CssClass="input_6"/>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:Button ID="btnUserDefined" runat="server" Text="自定义查询" CssClass="input_6" />
@@ -107,13 +103,11 @@
                     </table>
                 </asp:Panel>
                 <asp:Panel ID="npcustomerdetail" runat="server" CssClass="collapsePanel">
-                
                     <table style="width:100%"> 
                         <tr>
-                            <td>                              
-                                        
-                                <dxwgv:ASPxGridView ID="gridCustomerItem" ClientInstanceName="gridPolicyItem" runat="server" 
-                                    KeyFieldName="ID" Width="100%" AutoGenerateColumns="False" >
+                            <td>                               
+                                <dxwgv:ASPxGridView ID="gridCustomerItem" ClientInstanceName="gridCostumerItem" runat="server" 
+                                    KeyFieldName="CustNo" Width="100%" AutoGenerateColumns="False" >
                                     <Columns>
                                         <dxwgv:GridViewDataTextColumn Caption="客户编号" FieldName="CustNo" 
                                             VisibleIndex="0">
@@ -154,13 +148,10 @@
                                     </Columns>
                                     <SettingsPager Mode="ShowAllRecords"/>
                                     <Settings ShowGroupPanel="false" />
-                                </dxwgv:ASPxGridView>
-                                
-                                        
+                                </dxwgv:ASPxGridView>    
                             </td>
                         </tr>
                     </table>
-
                  </asp:Panel>
             </td>
         </tr>
