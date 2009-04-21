@@ -11,7 +11,7 @@
 namespace OSPortalWebApp.CustomerRelation {
     
     
-    public partial class Customer {
+    public partial class CustContact {
         
         /// <summary>
         /// ScriptManager1 控件。
@@ -77,49 +77,13 @@ namespace OSPortalWebApp.CustomerRelation {
         protected global::System.Web.UI.WebControls.Panel npsearch;
         
         /// <summary>
-        /// chkperson 控件。
+        /// txtContactName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkperson;
-        
-        /// <summary>
-        /// chkunit 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkunit;
-        
-        /// <summary>
-        /// txtCustNo 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustNo;
-        
-        /// <summary>
-        /// ddlArea 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlArea;
-        
-        /// <summary>
-        /// txtAddress 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddress;
+        protected global::System.Web.UI.WebControls.TextBox txtContactName;
         
         /// <summary>
         /// txtCustName 控件。
@@ -129,33 +93,6 @@ namespace OSPortalWebApp.CustomerRelation {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCustName;
-        
-        /// <summary>
-        /// ddlTradeType 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTradeType;
-        
-        /// <summary>
-        /// ddlPlate 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPlate;
-        
-        /// <summary>
-        /// txtIDNO 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIDNO;
         
         /// <summary>
         /// ddlCusomerManager 控件。
@@ -194,21 +131,21 @@ namespace OSPortalWebApp.CustomerRelation {
         protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
-        /// npcustomerdetail 控件。
+        /// npcontactdetail 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npcustomerdetail;
+        protected global::System.Web.UI.WebControls.Panel npcontactdetail;
         
         /// <summary>
-        /// gridCustomerItem 控件。
+        /// gridContactItem 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridCustomerItem;
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridContactItem;
     }
 }
