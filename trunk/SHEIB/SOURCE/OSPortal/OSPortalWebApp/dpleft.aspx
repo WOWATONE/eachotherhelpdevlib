@@ -34,8 +34,8 @@
                                     <dxnb:NavBarGroup Text="非车险保单管理" Expanded="false">
                                         <Items>
                                             <dxnb:NavBarItem Text="保单录入" Name="otherinsurance/forminput.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单批改" Name="otherinsurance/formpostil.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="保单审核" Name="otherinsurance/formauditing.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保单批改" Name="otherinsurance/formpostil.aspx"></dxnb:NavBarItem>                                            
                                             <dxnb:NavBarItem Text="保单查询" Name="otherinsurance/formsearch.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
@@ -44,10 +44,8 @@
                                             <dxnb:NavBarItem Text="询价单录入" Name="vehicleinsurance/vinquireforminput.aspx" ></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="询价单审核" Name="vehicleinsurance/vinquireformauditing.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="询价单查询" Name="vehicleinsurance/vinquireformsearch.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单录入" Name="vehicleinsurance/vforminput.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单批改" Name="vehicleinsurance/vformpostil.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单审核" Name="vehicleinsurance/vformauditing.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单查询" Name="vehicleinsurance/vformsearch.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="询价单批改" Name="vehicleinsurance/vforminput.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="询价单保单录入" Name="vehicleinsurance/vformpostil.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="客户理赔" Expanded="false">
