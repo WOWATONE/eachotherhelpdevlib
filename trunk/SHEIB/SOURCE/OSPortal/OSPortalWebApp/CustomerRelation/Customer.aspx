@@ -82,10 +82,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width:8%;text-align:right;">组织机构代码号：</td>
-                            <td style="width:25%;text-align:left;"><asp:TextBox ID="txtOrganizationCode" runat="server" Width="200px"></asp:TextBox></td>
-                            <td style="width:8%;text-align:right;">身份证号码：</td>
+                            <td style="width:8%;text-align:right;">组织机构代码号/身份证号码：</td>
                             <td style="width:25%;text-align:left;"><asp:TextBox ID="txtIDNO" runat="server" Width="200px"></asp:TextBox></td>
+                            <td style="width:8%;text-align:right;"></td>
+                            <td style="width:25%;text-align:left;"></td>
                             <td style="width:34%;text-align:right;" colspan="2"></td>
                         </tr>
                         <tr>
