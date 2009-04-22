@@ -16,22 +16,21 @@
     <script type="text/javascript" src="../js/ui.datepicker-zh-CN.js"></script>
     <link type="text/css" href="../js/css/smoothness/jquery-ui-1.7.1.custom.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="../js/jquerynotice/jquery.notice.css" />
-	<script type="text/javascript" src="../js/dppopup.js"></script>
 	<script type="text/javascript">
 	    $(document).ready(function() {
-	        jQuery.noticeAdd({
-	            text: 'This is a notification that you have to remove',
-	            stay: true
-	        });
-	        //var popupControl = ASPxPopupSelectInsuranceClientControl;
-	        var canDisplay = "<%=DisplaySelectInsurance %>";
-	        if (canDisplay.toLowerCase() == "true") {
-	            //popupControl.ShowWindow();
-	            SetFormInputPopUpVisible();
-	        }
-	        else {
-	            //do nothing;
-	        }
+	        //jQuery.noticeAdd({
+	        //    text: 'This is a notification that you have to remove',
+	        //    stay: true
+	        //});
+	        ////var popupControl = ASPxPopupSelectInsuranceClientControl;
+	        //var canDisplay = "<%=DisplaySelectInsurance %>";
+	        //if (canDisplay.toLowerCase() == "true") {
+	        //    //popupControl.ShowWindow();
+	        //    SetFormInputPopUpVisible();
+	        //}
+	        //else {
+	        //    //do nothing;
+	        //}
 	    });
     </script>    
 </asp:Content>
@@ -504,24 +503,5 @@
                 </table>
                 
      </asp:Panel>
-                 
-                 
-    <dxpc:ASPxPopupControl ClientInstanceName="ASPxPopupSelectInsuranceClientControl" ID="pcSelectInsurance" runat="server" 
-                EnableClientSideAPI="True" AllowDragging="True" PopupHorizontalAlign="Center" 
-                HeaderText="±£ÏÕ¹«Ë¾"  PopupHorizontalOffset="300" 
-                PopupVerticalAlign="Middle" PopupVerticalOffset="160"
-                Width="360px" Height="320px" 
-                EnableTheming="true" CloseAction="CloseButton"
-                ShowCloseButton="True" 
-                AllowResize="false" Modal="true"
-                ContentUrl="formauditing.aspx"
-                >
-                <Controls>
-                  
-                </Controls>
-                <Border BorderWidth="1px" />
-                <ClientSideEvents />
-    
-    </dxpc:ASPxPopupControl>
                                         
 </asp:Content>

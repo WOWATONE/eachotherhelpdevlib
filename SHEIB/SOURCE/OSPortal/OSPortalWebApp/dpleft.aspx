@@ -33,7 +33,7 @@
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="非车险保单管理" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="保单录入" Name="otherinsurance/forminput.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保单录入" Name="otherinsurance/forminputlist.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="保单审核" Name="otherinsurance/formauditing.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="保单批改" Name="otherinsurance/formpostil.aspx"></dxnb:NavBarItem>                                            
                                             <dxnb:NavBarItem Text="保单查询" Name="otherinsurance/formsearch.aspx"></dxnb:NavBarItem>
