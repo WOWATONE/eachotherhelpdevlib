@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ADDD279E-6700-4B92-8290-ACB05D96BE48}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -112,6 +112,13 @@
     </Compile>
     <Compile Include="CustomerRelation\Customer.aspx.designer.cs">
       <DependentUpon>Customer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerRelation\CustomerPtFollow.aspx.cs">
+      <DependentUpon>CustomerPtFollow.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerRelation\CustomerPtFollow.aspx.designer.cs">
+      <DependentUpon>CustomerPtFollow.aspx</DependentUpon>
     </Compile>
     <Compile Include="dpleft.aspx.cs">
       <DependentUpon>dpleft.aspx</DependentUpon>
@@ -2665,6 +2672,7 @@
     <Content Include="App_Themes\Aqua\SpellChecker\scErrorUnderline.gif" />
     <Content Include="App_Themes\Aqua\SpellChecker\styles.css" />
     <Content Include="CustomerRelation\CustContact.aspx" />
+    <Content Include="CustomerRelation\CustomerPtFollow.aspx" />
     <Content Include="js\dppopup.js" />
     <Content Include="otherinsurance\forminputlist.aspx" />
   </ItemGroup>
@@ -2691,9 +2699,6 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/OSPortalWebApp</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
