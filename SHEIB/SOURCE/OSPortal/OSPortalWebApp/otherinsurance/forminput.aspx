@@ -7,16 +7,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register assembly="DevExpress.Web.v8.3" namespace="DevExpress.Web.ASPxPopupControl" tagprefix="dxpc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <meta content="zh-CN" http-equiv="Content-Language" />
-    <link rel="stylesheet" type="text/css" href="../css/ie.css" />
-    <script src="../js/jquery-1.3.2.js" type="text/javascript"></script>
-	<script src="../js/jquerynotice/jquery.notice.js" type="text/javascript"></script>
-	<script type="text/javascript" src="../js/jquery-ui-1.7.1.custom.min.js"></script>
-    <script type="text/javascript" src="../js/ui.datepicker-zh-CN.js"></script>
-    <link type="text/css" href="../js/css/smoothness/jquery-ui-1.7.1.custom.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="../js/jquerynotice/jquery.notice.css" />
-	<script type="text/javascript">
+    <script type="text/javascript">
 	    $(document).ready(function() {
 	        //jQuery.noticeAdd({
 	        //    text: 'This is a notification that you have to remove',
@@ -458,17 +449,17 @@
                         </tr> 
                         <tr>
                             <td>
-                                <dxwgv:ASPxGridView ID="gridTargetProperty" ClientInstanceName="grid" runat="server" KeyFieldName="CustomerID" Width="100%">
+                                <dxwgv:ASPxGridView ID="gridTargetProperty" ClientInstanceName="gridTargetProperty" runat="server" KeyFieldName="CustomerID" Width="100%">
                                     <%-- BeginRegion Columns --%>
                                         <Columns>
                                             <dxwgv:GridViewCommandColumn VisibleIndex="0">
                                                 <EditButton Visible="false" />
                                             </dxwgv:GridViewCommandColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="序号" VisibleIndex="1">
+                                            <dxwgv:GridViewDataColumn FieldName="PropertyId" Caption="序号" VisibleIndex="1">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="项目" VisibleIndex="2">
+                                            <dxwgv:GridViewDataColumn FieldName="TargetTypeId" Caption="项目" VisibleIndex="2">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="项目说明" VisibleIndex="3">
+                                            <dxwgv:GridViewDataColumn FieldName="PropertyValue" Caption="项目说明" VisibleIndex="3">
                                             </dxwgv:GridViewDataColumn>
                                         </Columns>
                                     <%-- EndRegion --%>
@@ -480,6 +471,172 @@
                     </table>            
                 </dxw:ContentControl></ContentCollection>
             </dxtc:TabPage>
+            
+            
+            <dxtc:TabPage Text="再    保">
+                <ContentCollection><dxw:ContentControl ID="ccReinsure" runat="server">
+                    <table style="width:100%">
+                        <tr>
+                            <td colspan="2">
+                                <dxwgv:ASPxGridView ID="gridOutReinsure" ClientInstanceName="gridOutReinsure" runat="server" KeyFieldName="FID" Width="100%">
+                                    <%-- BeginRegion Columns --%>
+                                        <Columns>
+                                            <dxwgv:GridViewCommandColumn VisibleIndex="0">
+                                                <EditButton Visible="false" />
+                                            </dxwgv:GridViewCommandColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="FID" Caption="序号" VisibleIndex="1">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" VisibleIndex="2">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" VisibleIndex="3">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="保单号" VisibleIndex="4">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="份额比率" VisibleIndex="5">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" VisibleIndex="6">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="Poundage" Caption="手续费" VisibleIndex="7">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="Tax" Caption="税费" VisibleIndex="8">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率" VisibleIndex="9">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" VisibleIndex="10">
+                                            </dxwgv:GridViewDataColumn>
+                                        </Columns>
+                                    <%-- EndRegion --%>
+                                    <SettingsEditing PopupEditFormWidth="600px" />
+                                    <Settings ShowGroupPanel="false" />
+                                </dxwgv:ASPxGridView>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:50%;text-align:right;">自留保费合计：
+                                <asp:TextBox ID="txtselfKeepFee" runat="server" Width="100px"></asp:TextBox>
+                            </td>
+                            <td style="width:50%;text-align:left;">自留经纪费合计：
+                                <asp:TextBox ID="txtselfKeepRate" runat="server" Width="100px"></asp:TextBox>
+                            </td>                            
+                        </tr> 
+                        
+                        <tr>
+                            <td colspan="2">
+                                <dxwgv:ASPxGridView ID="gridInReinsure" ClientInstanceName="gridInReinsure" runat="server" KeyFieldName="FID" Width="100%">
+                                    <%-- BeginRegion Columns --%>
+                                        <Columns>
+                                            <dxwgv:GridViewCommandColumn VisibleIndex="0">
+                                                <EditButton Visible="false" />
+                                            </dxwgv:GridViewCommandColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="FID" Caption="序号" VisibleIndex="1">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" VisibleIndex="2">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" VisibleIndex="3">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="保单号" VisibleIndex="4">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="份额比率" VisibleIndex="5">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" VisibleIndex="6">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="Poundage" Caption="手续费" VisibleIndex="7">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="Tax" Caption="税费" VisibleIndex="8">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率" VisibleIndex="9">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" VisibleIndex="10">
+                                            </dxwgv:GridViewDataColumn>
+                                        </Columns>
+                                    <%-- EndRegion --%>
+                                    <SettingsEditing PopupEditFormWidth="600px" />
+                                    <Settings ShowGroupPanel="false" />
+                                </dxwgv:ASPxGridView>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:50%;text-align:right;">分出保费合计：
+                                <asp:TextBox ID="TextBox1" runat="server" Width="100px"></asp:TextBox>
+                            </td>
+                            <td style="width:50%;text-align:left;">分出经纪费合计：
+                                <asp:TextBox ID="TextBox2" runat="server" Width="100px"></asp:TextBox>
+                            </td>                            
+                        </tr> 
+                        
+                    </table>            
+                </dxw:ContentControl></ContentCollection>
+            </dxtc:TabPage>
+            
+            
+            <dxtc:TabPage Text="共    保">
+                <ContentCollection><dxw:ContentControl ID="ContentControl1" runat="server">
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                <dxwgv:ASPxGridView ID="gridTogether" ClientInstanceName="gridTogether" runat="server" KeyFieldName="FID" Width="100%">
+                                    <%-- BeginRegion Columns --%>
+                                        <Columns>
+                                            <dxwgv:GridViewCommandColumn VisibleIndex="0">
+                                                <EditButton Visible="false" />
+                                            </dxwgv:GridViewCommandColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="FID" Caption="序号" VisibleIndex="1">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" VisibleIndex="2">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" VisibleIndex="3">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="承保比例" VisibleIndex="4">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" VisibleIndex="5">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率" VisibleIndex="6">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" VisibleIndex="7">
+                                            </dxwgv:GridViewDataColumn>
+                                        </Columns>
+                                    <%-- EndRegion --%>
+                                    <SettingsEditing PopupEditFormWidth="600px" />
+                                    <Settings ShowGroupPanel="false" />
+                                </dxwgv:ASPxGridView>
+                            </td>
+                        </tr>
+                    </table>            
+                </dxw:ContentControl></ContentCollection>
+            </dxtc:TabPage>
+            
+            <dxtc:TabPage Text="分    期">
+                <ContentCollection><dxw:ContentControl ID="ContentControl2" runat="server">
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                <dxwgv:ASPxGridView ID="gridPeriod" ClientInstanceName="gridPeriod" runat="server" KeyFieldName="PolPeriodId" Width="100%">
+                                    <%-- BeginRegion Columns --%>
+                                        <Columns>
+                                            <dxwgv:GridViewCommandColumn VisibleIndex="0">
+                                                <EditButton Visible="false" />
+                                            </dxwgv:GridViewCommandColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="Period" Caption="期数" VisibleIndex="1">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="PayDate" Caption="付款日期 " VisibleIndex="2">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="PayFee" Caption="保费金额" VisibleIndex="3">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="FeeProcRate" Caption="经纪费率" VisibleIndex="4">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="FeeProcFee" Caption="经纪费" VisibleIndex="5">
+                                            </dxwgv:GridViewDataColumn>
+                                        </Columns>
+                                    <%-- EndRegion --%>
+                                    <SettingsEditing PopupEditFormWidth="600px" />
+                                    <Settings ShowGroupPanel="false" />
+                                </dxwgv:ASPxGridView>
+                            </td>
+                        </tr>
+                    </table>            
+                </dxw:ContentControl></ContentCollection>
+            </dxtc:TabPage>
+            
          
         </TabPages>
          

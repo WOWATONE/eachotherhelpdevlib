@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="forminputlist.aspx.cs" Inherits="OSPortalWebApp.otherinsurance.forminputlist" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="formauditinglist.aspx.cs" Inherits="OSPortalWebApp.otherinsurance.formauditinglist" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
@@ -16,45 +16,14 @@
 	        //    stay: true
 	        //});
 	    });
-	    function menuClick(url) {	        
-            if (url=="forminputlist.aspx")
-            {
-                //window.location.href = url;
-                gridSearchResult.PerformCallback('');
-            }
-            else
-            {
-                var myArguments="resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-                window.showModalDialog("forminput.aspx", "", myArguments);
-            }
-	    }
+	    
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     
-    <table style="width:100%">
-                    <tr>
-                        <td style="height:40px;">
-                            <dxm:ASPxMenu EnableViewState="False" EncodeHtml="False" id="dpASPxMenu" runat="server" AllowSelectItem="True" Orientation="Horizontal">
-                                <ClientSideEvents />
-                                <ClientSideEvents 
-                                    CloseUp="function(s, e) {}" 
-                                    PopUp="function(s, e) {}" 
-                                    Init="function(s, e) {}" 
-                                    ItemClick="function(s, e) { 
-                                        var name = e.item.name;
-                                        menuClick(name);
-                                    }" 
-                                    ItemMouseOut="function(s, e) {}" 
-                                    ItemMouseOver="function(s, e) {}" />
-                                <Items>
-                                    <dxm:MenuItem Text="录入列表" Selected="true" Name="forminputlist.aspx"></dxm:MenuItem>
-                                    <dxm:MenuItem Text="新    建" Name="forminput.aspx"></dxm:MenuItem>
-                                </Items>
-                            </dxm:ASPxMenu>
-                        </td>
-                    </tr>
+    <table style="width:100%">                    
                     <tr>
                         <td style="width:100%;"> 
                             <asp:Panel ID="npSearchHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
@@ -423,5 +392,8 @@
                         </td>
                     </tr>                    
      </table>
+    
+    
+    
     
 </asp:Content>
