@@ -212,6 +212,13 @@
     <Compile Include="SiteMastePages\ContentMaster.Master.designer.cs">
       <DependentUpon>ContentMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="SiteMastePages\PopupMaster.Master.cs">
+      <DependentUpon>PopupMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteMastePages\PopupMaster.Master.designer.cs">
+      <DependentUpon>PopupMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="splash.aspx.cs">
       <DependentUpon>splash.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2693,6 +2700,9 @@
     <Content Include="otherinsurance\formauditinglist.aspx" />
     <Content Include="otherinsurance\forminputlist.aspx" />
     <Content Include="otherinsurance\formpostillist.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SiteMastePages\PopupMaster.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

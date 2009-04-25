@@ -23,13 +23,13 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
-        /// carTabPage control.
+        /// insuranceDetailTabPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTabControl.ASPxPageControl carTabPage;
+        protected global::DevExpress.Web.ASPxTabControl.ASPxPageControl insuranceDetailTabPage;
         
         /// <summary>
         /// npbasicheader control.
@@ -77,31 +77,13 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtSN;
         
         /// <summary>
-        /// chkReinsurance control.
+        /// dpchkReinsurance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkReinsurance;
-        
-        /// <summary>
-        /// btnTogetherInsurance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnTogetherInsurance;
-        
-        /// <summary>
-        /// popuppanelTogetherInsurance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl popuppanelTogetherInsurance;
+        protected global::DevExpress.Web.ASPxEditors.ASPxCheckBox dpchkReinsurance;
         
         /// <summary>
         /// txtpeoplefrom control.
@@ -131,31 +113,13 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl popuppanelpeoplesearch;
         
         /// <summary>
-        /// chkTogether control.
+        /// dpchkTogether control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkTogether;
-        
-        /// <summary>
-        /// btnpartnerInsurance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnpartnerInsurance;
-        
-        /// <summary>
-        /// popupPanelpartnerInsurance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl popupPanelpartnerInsurance;
+        protected global::DevExpress.Web.ASPxEditors.ASPxCheckBox dpchkTogether;
         
         /// <summary>
         /// ddlpeopleto control.
@@ -167,31 +131,13 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.DropDownList ddlpeopleto;
         
         /// <summary>
-        /// chkStage control.
+        /// dpchkPeriod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkStage;
-        
-        /// <summary>
-        /// btndividedpaymentinsurance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btndividedpaymentinsurance;
-        
-        /// <summary>
-        /// popupPaneldividedpaymentinsurance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl popupPaneldividedpaymentinsurance;
+        protected global::DevExpress.Web.ASPxEditors.ASPxCheckBox dpchkPeriod;
         
         /// <summary>
         /// ddlCompany control.

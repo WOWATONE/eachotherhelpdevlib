@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="forminput.aspx.cs" Inherits="OSPortalWebApp.otherinsurance.forminput" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="forminput.aspx.cs" Inherits="OSPortalWebApp.otherinsurance.forminput" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
@@ -8,28 +8,61 @@
 <%@ Register assembly="DevExpress.Web.v8.3" namespace="DevExpress.Web.ASPxPopupControl" tagprefix="dxpc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
-	    $(document).ready(function() {
-	        //jQuery.noticeAdd({
-	        //    text: 'This is a notification that you have to remove',
-	        //    stay: true
-	        //});
-	        ////var popupControl = ASPxPopupSelectInsuranceClientControl;
-	        //var canDisplay = "<%=DisplaySelectInsurance %>";
-	        //if (canDisplay.toLowerCase() == "true") {
-	        //    //popupControl.ShowWindow();
-	        //    SetFormInputPopUpVisible();
-	        //}
-	        //else {
-	        //    //do nothing;
-	        //}
-	    });
+        $(document).ready(function() {
+            //jQuery.noticeAdd({
+            //    text: 'This is a notification that you have to remove',
+            //    stay: true
+            //});
+            ////var popupControl = ASPxPopupSelectInsuranceClientControl;
+            //var canDisplay = "<%=DisplaySelectInsurance %>";
+            //if (canDisplay.toLowerCase() == "true") {
+            //    //popupControl.ShowWindow();
+            //    SetFormInputPopUpVisible();
+            //}
+            //else {
+            //    //do nothing;
+            //}
+
+        });
+
+        
+        function tabItemClick() {            
+            //alert("hello");
+        }
+
+        function dpchkReinsuranceClick(sender) {
+            //debugger;
+            var mystate = sender.GetChecked();
+            var tab = insuranceDetailTabPage.GetTab(2);
+            tab.SetVisible(mystate); 
+        }
+
+        function dpchkTogetherClick(sender) {
+            var mystate = sender.GetChecked();
+            var tab = insuranceDetailTabPage.GetTab(3);
+            tab.SetVisible(mystate);
+        }
+
+        function dpchkPeriodClick(sender) {
+            var mystate = sender.GetChecked();
+            var tab = insuranceDetailTabPage.GetTab(4);
+            tab.SetVisible(mystate);
+        }
+        
+        
     </script>    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
-    <dxtc:ASPxPageControl ID="carTabPage" runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%">
+    <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage" runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%">
+        <ClientSideEvents 
+            ActiveTabChanging="function(s, e) {}" 
+            TabClick="function(s, e) { tabItemClick();}" />
         <TabPages>
-            <dxtc:TabPage Text="保单基本资料"><ContentCollection><dxw:ContentControl runat="server">
+            
+            <dxtc:TabPage Text="保单基本资料">                
+                <ContentCollection>                
+                <dxw:ContentControl runat="server">
                 <table style="width:99%">
                     <tr>
                         <td style="width:100%;"> 
@@ -49,19 +82,12 @@
                                             <tr>
                                                 <td style="width:8%;text-align:right;">保单编号：</td>
                                                 <td style="width:25%;text-align:left;"><asp:TextBox ID="txtSN" runat="server" Width="200px"></asp:TextBox></td>
-                                                <td style="width:8%;text-align:right;"><asp:CheckBox ID="chkReinsurance" runat="server" /></td>
-                                                <td style="width:25%;text-align:left;">
-                                                    <dxe:ASPxButton AutoPostBack="False" runat="server" ID="btnTogetherInsurance" Text="再  保" style="margin: 0px;">
-                                                        <ClientSideEvents Click="function(s, e) {return false;}" />
-                                                    </dxe:ASPxButton>
-                                                    <dxpc:ASPxPopupControl ID="popuppanelTogetherInsurance" runat="server" 
-                                                        EnableClientSideAPI="True" AllowDragging="False" PopupHorizontalAlign="Center" 
-                                                        HeaderText="再保险" 
-                                                        Width="360px" Height="320px" 
-                                                        EnableTheming="true"  PopupElementID="btnTogetherInsurance"
-                                                        AllowResize="false" Modal="true">
-                                                        <Border BorderWidth="1px" />
-                                                     </dxpc:ASPxPopupControl>
+                                                <td style="width:8%;text-align:right;">
+                                                    <dxe:ASPxCheckBox runat="server" ID="dpchkReinsurance" AutoPostBack="false" Text="再  保">
+                                                        <ClientSideEvents CheckedChanged="function(s, e) {dpchkReinsuranceClick(s);return false;}" />
+                                                    </dxe:ASPxCheckBox>
+                                                </td>
+                                                <td style="width:25%;text-align:left;">                                                                                                        
                                                 </td>
                                                 <td style="width:8%;text-align:right;"></td>
                                                 <td style="width:23%;text-align:left;"></td>
@@ -79,19 +105,13 @@
                                                         <Border BorderWidth="1px" />
                                                      </dxpc:ASPxPopupControl>
                                                 </td>
-                                                <td style="width:8%;text-align:right;"><asp:CheckBox ID="chkTogether" runat="server" /></td>
+                                                <td style="width:8%;text-align:right;">
+                                                    <dxe:ASPxCheckBox runat="server" ID="dpchkTogether" AutoPostBack="false" Text="共  保">
+                                                        <ClientSideEvents CheckedChanged="function(s, e) {dpchkTogetherClick(s);return false;}" />
+                                                    </dxe:ASPxCheckBox>
+                                                </td>
                                                 <td style="width:25%;text-align:left;">
-                                                    <dxe:ASPxButton AutoPostBack="False" runat="server" ID="btnpartnerInsurance" Text="共  保" style="margin: 0px;">
-                                                        <ClientSideEvents Click="function(s, e) {return false;}" />
-                                                    </dxe:ASPxButton>
-                                                    <dxpc:ASPxPopupControl ID="popupPanelpartnerInsurance" runat="server" 
-                                                        EnableClientSideAPI="True" AllowDragging="False" PopupHorizontalAlign="Center" 
-                                                        HeaderText="共保" 
-                                                        Width="360px" Height="320px" 
-                                                        EnableTheming="true"  PopupElementID="btnpartnerInsurance"
-                                                        AllowResize="false" Modal="true">
-                                                        <Border BorderWidth="1px" />
-                                                     </dxpc:ASPxPopupControl>
+                                                                                                        
                                                 </td>
                                                 <td style="width:8%;text-align:right;"></td>
                                                 <td style="width:23%;text-align:left;"></td>
@@ -100,24 +120,18 @@
                                                 <td style="width:8%;text-align:right;">被保险人：</td>
                                                 <td style="width:25%;text-align:left;">
                                                     <asp:DropDownList ID="ddlpeopleto" runat="server">
-                                                        <asp:ListItem Text="张三" Value="1" Selected ></asp:ListItem>
+                                                        <asp:ListItem Text="张三" Value="1" Selected="True" ></asp:ListItem>
                                                         <asp:ListItem Text="李四" Value="2"></asp:ListItem>
                                                         <asp:ListItem Text="王五" Value="3"></asp:ListItem>
                                                         </asp:DropDownList>
                                                 </td>
-                                                <td style="width:8%;text-align:right;"><asp:CheckBox ID="chkStage" runat="server" /></td>
+                                                <td style="width:8%;text-align:right;">
+                                                    <dxe:ASPxCheckBox runat="server" ID="dpchkPeriod" AutoPostBack="false" Text="分  期">
+                                                        <ClientSideEvents CheckedChanged="function(s, e) {dpchkPeriodClick(s);return false;}" />
+                                                    </dxe:ASPxCheckBox>                                                    
+                                                </td>
                                                 <td style="width:25%;text-align:left;">
-                                                    <dxe:ASPxButton AutoPostBack="False" runat="server" ID="btndividedpaymentinsurance" Text="分  期" style="margin: 0px;">
-                                                        <ClientSideEvents Click="function(s, e) {return false;}" />
-                                                    </dxe:ASPxButton>
-                                                    <dxpc:ASPxPopupControl ID="popupPaneldividedpaymentinsurance" runat="server" 
-                                                        EnableClientSideAPI="True" AllowDragging="False" PopupHorizontalAlign="Center" 
-                                                        HeaderText="分期" 
-                                                        Width="360px" Height="320px" 
-                                                        EnableTheming="true"  PopupElementID="btndividedpaymentinsurance"
-                                                        AllowResize="false" Modal="true">
-                                                        <Border BorderWidth="1px" />
-                                                     </dxpc:ASPxPopupControl>
+                                                    
                                                 </td>
                                                 <td style="width:8%;text-align:right;"></td>
                                                 <td style="width:23%;text-align:left;"></td>
@@ -473,7 +487,7 @@
             </dxtc:TabPage>
             
             
-            <dxtc:TabPage Text="再    保">
+            <dxtc:TabPage Text="再    保" ClientVisible="false">
                 <ContentCollection><dxw:ContentControl ID="ccReinsure" runat="server">
                     <table style="width:100%">
                         <tr>
@@ -569,7 +583,7 @@
             </dxtc:TabPage>
             
             
-            <dxtc:TabPage Text="共    保">
+            <dxtc:TabPage Text="共    保" ClientVisible="false">
                 <ContentCollection><dxw:ContentControl ID="ContentControl1" runat="server">
                     <table style="width:100%">
                         <tr>
@@ -605,7 +619,7 @@
                 </dxw:ContentControl></ContentCollection>
             </dxtc:TabPage>
             
-            <dxtc:TabPage Text="分    期">
+            <dxtc:TabPage Text="分    期" ClientVisible="false">
                 <ContentCollection><dxw:ContentControl ID="ContentControl2" runat="server">
                     <table style="width:100%">
                         <tr>
