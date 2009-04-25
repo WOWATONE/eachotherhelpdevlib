@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="forminputlist.aspx.cs" Inherits="OSPortalWebApp.otherinsurance.forminputlist" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="vinquireforminputlist.aspx.cs" Inherits="OSPortalWebApp.vehicleinsurance.vinquireforminputlist" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
@@ -9,6 +9,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
     <script type="text/javascript">
 	    $(document).ready(function() {
 	        //jQuery.noticeAdd({
@@ -16,8 +17,8 @@
 	        //    stay: true
 	        //});
 	    });
-	    function menuClick(url) {	        
-            if (url=="forminputlist.aspx")
+	    function menuClick(url) {
+	        if (url == "vinquireforminputlist.aspx")
             {
                 //window.location.href = url;
                 gridSearchResult.PerformCallback('');
@@ -25,12 +26,15 @@
             else
             {
                 var myArguments="resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-                window.showModalDialog("forminput.aspx", "", myArguments);
+                window.showModalDialog("vinquireforminput.aspx", "", myArguments);
             }
 	    }
     </script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     
     <table style="width:100%">
@@ -422,5 +426,6 @@
                         </td>
                     </tr>                    
      </table>
-    
+     
+     
 </asp:Content>
