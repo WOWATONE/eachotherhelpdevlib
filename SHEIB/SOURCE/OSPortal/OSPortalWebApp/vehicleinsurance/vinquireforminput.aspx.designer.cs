@@ -131,6 +131,15 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtpeoplefrom;
         
         /// <summary>
+        /// imgadduser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgadduser;
+        
+        /// <summary>
         /// imgpeoplesearch control.
         /// </summary>
         /// <remarks>

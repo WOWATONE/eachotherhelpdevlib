@@ -85,7 +85,8 @@
                                             </tr>
                                             <tr>
                                                 <td style="width:8%;text-align:right;">投保人：</td>
-                                                <td style="width:25%;text-align:left;"><asp:TextBox ID="txtpeoplefrom" runat="server" Width="154px" Text="张三"></asp:TextBox>&nbsp;&nbsp;
+                                                <td style="width:25%;text-align:left;"><asp:TextBox ID="txtpeoplefrom" runat="server" Width="120px" Text="张三"></asp:TextBox>&nbsp;
+                                                    <img runat="server" id="imgadduser" alt="" src="../images/add_user_icon.png" style="width:20px; height:20px; vertical-align:top;" />
                                                     <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" />
                                                     <dxpc:ASPxPopupControl ID="popuppanelpeoplesearch" runat="server" 
                                                         EnableClientSideAPI="True" AllowDragging="False" PopupHorizontalAlign="Center" 
