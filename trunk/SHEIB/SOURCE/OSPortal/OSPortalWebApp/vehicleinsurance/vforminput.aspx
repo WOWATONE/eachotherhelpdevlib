@@ -152,6 +152,77 @@
                     </tr>
                     <tr>
                         <td style="width:100%;">
+                            <asp:Panel ID="npvehicleheader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
+                                <div style="padding:5px; cursor: pointer; vertical-align: middle;">
+                                    <div style="float: left;">车辆信息</div>
+                                    <div style="float: left; margin-left: 20px;">
+                                        <asp:Label ID="lbl_npvehicleheader" runat="server">(展开)</asp:Label>
+                                    </div>
+                                    <div style="float: right; vertical-align: middle;">
+                                        <asp:ImageButton ID="img_npvehicleheader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
+                                    </div>
+                                </div>
+                            </asp:Panel>
+                            <asp:Panel ID="npvehicledetail" runat="server" CssClass="collapsePanel" Height="0">
+                                        <table style="width:100%">
+                                            <tr>
+                                                <td style="width:8%;text-align:right;">车牌号：</td>
+                                                <td style="width:25%;text-align:left;">
+                                                    <asp:TextBox ID="TextBox6" runat="server" Width="200px"></asp:TextBox>
+                                                </td>
+                                                <td style="width:8%;text-align:right;">车架号：</td>
+                                                <td style="width:25%;text-align:left;"> 
+                                                    <asp:TextBox ID="TextBox7" runat="server" Width="200px"></asp:TextBox>                                                                                                       
+                                                </td>
+                                                <td style="width:8%;text-align:right;">发动机号：</td>
+                                                <td style="width:23%;text-align:left;">
+                                                    <asp:TextBox ID="TextBox8" runat="server" Width="200px"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:8%;text-align:right;">核定载客：</td>
+                                                <td style="width:25%;text-align:left;">
+                                                    <asp:TextBox ID="TextBox9" runat="server" Width="200px"></asp:TextBox>
+                                                </td>
+                                                <td style="width:8%;text-align:right;">厂牌型号：</td>
+                                                <td style="width:25%;text-align:left;"> 
+                                                    <asp:TextBox ID="TextBox10" runat="server" Width="200px"></asp:TextBox>                                                                                                       
+                                                </td>
+                                                <td style="width:8%;text-align:right;"></td>
+                                                <td style="width:23%;text-align:left;">
+                                                    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:8%;text-align:right;">使用性质：</td>
+                                                <td style="width:25%;text-align:left;"><asp:TextBox ID="TextBox11" runat="server" Width="200px"></asp:TextBox></td>
+                                                <td style="width:8%;text-align:right;">初登日期：</td>
+                                                <td style="width:25%;text-align:left;"> 
+                                                    <asp:TextBox ID="TextBox12" runat="server" Width="200px"></asp:TextBox>                                                                                                       
+                                                </td>
+                                                <td style="width:8%;text-align:right;"></td>
+                                                <td style="width:23%;text-align:left;">
+                                                    
+                                                </td>
+                                            </tr>
+                                        </table>
+                            </asp:Panel>
+                            <ajaxToolkit:CollapsiblePanelExtender ID="cpevehicle" runat="Server"
+                                TargetControlID="npvehicledetail"
+                                ExpandControlID="npvehicleheader"
+                                CollapseControlID="npvehicleheader" 
+                                Collapsed="false"
+                                TextLabelID="lbl_npvehicleheader"
+                                ImageControlID="img_npvehicleheader"    
+                                ExpandedText="(隐藏)"
+                                CollapsedText="(展开)"
+                                ExpandedImage="~/images/collapse_blue.jpg"
+                                CollapsedImage="~/images/expand_blue.jpg"
+                                SuppressPostBack="true" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%;">
                             <asp:Panel ID="npGridPolicyItemHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                 <div style="padding:5px; cursor: pointer; vertical-align: middle;">
                                     <div style="float: left;">保险信息</div>
