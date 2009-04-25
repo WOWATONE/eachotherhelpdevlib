@@ -227,6 +227,20 @@
       <DependentUpon>splash.aspx</DependentUpon>
     </Compile>
     <Compile Include="utils\PolicyItemList.cs" />
+    <Compile Include="vehicleinsurance\AskPriceAlert.aspx.cs">
+      <DependentUpon>AskPriceAlert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vehicleinsurance\AskPriceAlert.aspx.designer.cs">
+      <DependentUpon>AskPriceAlert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vehicleinsurance\AskPriceCheck.aspx.cs">
+      <DependentUpon>AskPriceCheck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vehicleinsurance\AskPriceCheck.aspx.designer.cs">
+      <DependentUpon>AskPriceCheck.aspx</DependentUpon>
+    </Compile>
     <Compile Include="vehicleinsurance\CarPolicyInputList.aspx.cs">
       <DependentUpon>CarPolicyInputList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2701,6 +2715,8 @@
   <ItemGroup>
     <Content Include="images\add_user_icon.png" />
     <Content Include="SiteMastePages\PopupMaster.Master" />
+    <Content Include="vehicleinsurance\AskPriceAlert.aspx" />
+    <Content Include="vehicleinsurance\AskPriceCheck.aspx" />
     <Content Include="vehicleinsurance\CarPolicyInputList.aspx" />
     <Content Include="vehicleinsurance\AskPriceInputList.aspx" />
     <Content Include="vehicleinsurance\AskPriceCheckList.aspx" />
