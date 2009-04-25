@@ -37,7 +37,6 @@
                     <tr>
                         <td style="height:40px;">
                             <dxm:ASPxMenu EnableViewState="False" EncodeHtml="False" id="dpASPxMenu" runat="server" AllowSelectItem="True" Orientation="Horizontal">
-                                <ClientSideEvents />
                                 <ClientSideEvents 
                                     CloseUp="function(s, e) {}" 
                                     PopUp="function(s, e) {}" 
