@@ -8,8 +8,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <meta content="zh-CN" http-equiv="Content-Language" />    
     <link href="../css/ie.css" type="text/css" rel="stylesheet" />
-    <script language="javascript" src="../js/JsClass.js" type="text/javascript"></script>
-	<script language="javascript" src="../js/JsDate.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <meta content="zh-CN" http-equiv="Content-Language" />
     <link rel="stylesheet" type="text/css" href="../css/ie.css" />
@@ -19,16 +17,36 @@
     <script type="text/javascript" src="../js/ui.datepicker-zh-CN.js"></script>
     <link type="text/css" href="../js/css/smoothness/jquery-ui-1.7.1.custom.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="../js/jquerynotice/jquery.notice.css" />	
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var curDate = new Date();
+            var curYear = curDate.getFullYear();
+            var curMonth = curDate.getMonth() + 1;
+            var curDay = curDate.getDate();
+            var curWeek;
+            if (curDate.getDay() == 0) curWeek = "星期日"
+            if (curDate.getDay() == 1) curWeek = "星期一"
+            if (curDate.getDay() == 2) curWeek = "星期二"
+            if (curDate.getDay() == 3) curWeek = "星期三"
+            if (curDate.getDay() == 4) curWeek = "星期四"
+            if (curDate.getDay() == 5) curWeek = "星期五"
+            if (curDate.getDay() == 6) curWeek = "星期六"
+
+            lblCurrentDate.innerHTML = curYear + "年" + curMonth + "月" + curDay + "日  " + curWeek;
+        });
+        
+    </script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-    <table height="24" cellSpacing="0" cellPadding="0" width="100%" border="0">
-				<tr>
-					<td bgColor="#e3e3e3">当前位置：<A class="blue" href="#"><u>工程情况录入</u></A></td>
-					<td style="PADDING-RIGHT: 20px" align="right" bgColor="#e3e3e3"><asp:label id="LbUserNameTop" runat="server"></asp:label>，您好！欢迎使用综合平台，今天是
-						<script language="javascript">getCurDate();</script>
+    <table style="height:24; margin:0px; padding:0px; width:100%; border:0px;">
+				<tr style="width:100%;">
+					<td style="width:40%; background-color:#e3e3e3;">当前位置：<A class="blue" href="#"><u>工程情况录入</u></A></td>
+					<td style="width:60%;PADDING-RIGHT: 20px; text-align:right; background-color:#e3e3e3">
+					    <asp:label id="LbUserNameTop" runat="server"></asp:label>王六，您好！欢迎使用综合平台，今天是
+						<label id="lblCurrentDate"></label>
 					</td>
 				</tr>
 	</table>

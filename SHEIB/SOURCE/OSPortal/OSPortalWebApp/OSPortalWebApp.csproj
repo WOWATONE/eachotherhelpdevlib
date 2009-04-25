@@ -227,6 +227,13 @@
       <DependentUpon>splash.aspx</DependentUpon>
     </Compile>
     <Compile Include="utils\PolicyItemList.cs" />
+    <Compile Include="vehicleinsurance\vformauditinglist.aspx.cs">
+      <DependentUpon>vformauditinglist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vehicleinsurance\vformauditinglist.aspx.designer.cs">
+      <DependentUpon>vformauditinglist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="vehicleinsurance\vinquireforminput.aspx.cs">
       <DependentUpon>vinquireforminput.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2711,6 +2718,7 @@
   <ItemGroup>
     <Content Include="images\add_user_icon.png" />
     <Content Include="SiteMastePages\PopupMaster.Master" />
+    <Content Include="vehicleinsurance\vformauditinglist.aspx" />
     <Content Include="vehicleinsurance\vinquireforminputlist.aspx" />
   </ItemGroup>
   <ItemGroup>

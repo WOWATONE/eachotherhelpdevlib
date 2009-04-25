@@ -42,7 +42,7 @@
                                     <dxnb:NavBarGroup Text="车险保单管理" Expanded="false">
                                         <Items>
                                             <dxnb:NavBarItem Text="询价单录入" Name="vehicleinsurance/vinquireforminputlist.aspx" ></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="询价单审核" Name="vehicleinsurance/vinquireformauditing.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="询价单审核" Name="vehicleinsurance/vformauditinglist.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="询价单查询" Name="vehicleinsurance/vinquireformsearch.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="询价单批改" Name="vehicleinsurance/vforminput.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="询价单保单录入" Name="vehicleinsurance/vformpostil.aspx"></dxnb:NavBarItem>
