@@ -133,7 +133,7 @@
                                                 <td style="width:25%;text-align:left;">
                                                     <asp:TextBox ID="txtBankAccount" runat="server" Width="100px"></asp:TextBox>
                                                 </td>
-                                                <td style="width:8%;text-align:right;">缴费凭证号：</td>
+                                                <td style="width:8%;text-align:right;">缴费凭证：</td>
                                                 <td>
                                                     <asp:TextBox ID="txtBankCredenceID" runat="server" Width="100px"></asp:TextBox>                                                    
                                                 </td>
