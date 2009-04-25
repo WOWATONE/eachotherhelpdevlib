@@ -269,6 +269,13 @@
     <Compile Include="vehicleinsurance\vinquireformauditing.aspx.designer.cs">
       <DependentUpon>vinquireformauditing.aspx</DependentUpon>
     </Compile>
+    <Compile Include="vehicleinsurance\vinquireforminputlist.aspx.cs">
+      <DependentUpon>vinquireforminputlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vehicleinsurance\vinquireforminputlist.aspx.designer.cs">
+      <DependentUpon>vinquireforminputlist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="vehicleinsurance\vinquireformsearch.aspx.cs">
       <DependentUpon>vinquireformsearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2703,6 +2710,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SiteMastePages\PopupMaster.Master" />
+    <Content Include="vehicleinsurance\vinquireforminputlist.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
