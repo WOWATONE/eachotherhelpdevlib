@@ -61,12 +61,12 @@
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="收付结算" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="保费通知书" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="客户收费" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="解付保费" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="解付保费开票" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="经纪费结算" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="台帐管理" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保费通知书" Name="inoutbalance/FeeNotice.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="客户收费" Name="inoutbalance/FeeCustomer.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="解付保费" Name="inoutbalance/FeePayin.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="解付保费开票" Name="inoutbalance/FeePayinInvoice.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="经纪费结算" Name="inoutbalance/FeeProcess.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="台帐管理" Name="inoutbalance/SheetcolumnManager.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="产品设置" Expanded="false">
@@ -79,9 +79,9 @@
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="组织设置" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="员工管理" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="角色管理" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="组织机构" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="员工管理" Name="schemasetting/UserManager.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="角色管理" Name="schemasetting/RoleManager.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="组织机构" Name="schemasetting/DepartmentManager.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="信息中心" Name="http://www.google.cn"></dxnb:NavBarGroup>

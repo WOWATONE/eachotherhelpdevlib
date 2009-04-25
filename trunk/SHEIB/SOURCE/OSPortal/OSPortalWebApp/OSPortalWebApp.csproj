@@ -134,6 +134,48 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="inoutbalance\FeeCustomer.aspx.cs">
+      <DependentUpon>FeeCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeeCustomer.aspx.designer.cs">
+      <DependentUpon>FeeCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inoutbalance\FeeNotice.aspx.cs">
+      <DependentUpon>FeeNotice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeeNotice.aspx.designer.cs">
+      <DependentUpon>FeeNotice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inoutbalance\FeePayin.aspx.cs">
+      <DependentUpon>FeePayin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeePayin.aspx.designer.cs">
+      <DependentUpon>FeePayin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inoutbalance\FeePayinInvoice.aspx.cs">
+      <DependentUpon>FeePayinInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeePayinInvoice.aspx.designer.cs">
+      <DependentUpon>FeePayinInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inoutbalance\FeeProcess.aspx.cs">
+      <DependentUpon>FeeProcess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeeProcess.aspx.designer.cs">
+      <DependentUpon>FeeProcess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inoutbalance\SheetcolumnManager.aspx.cs">
+      <DependentUpon>SheetcolumnManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\SheetcolumnManager.aspx.designer.cs">
+      <DependentUpon>SheetcolumnManager.aspx</DependentUpon>
+    </Compile>
     <Compile Include="left.aspx.cs">
       <DependentUpon>left.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -204,6 +246,27 @@
     </Compile>
     <Compile Include="Sampledpgrid.aspx.designer.cs">
       <DependentUpon>Sampledpgrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="schemasetting\DepartmentManager.aspx.cs">
+      <DependentUpon>DepartmentManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\DepartmentManager.aspx.designer.cs">
+      <DependentUpon>DepartmentManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="schemasetting\RoleManager.aspx.cs">
+      <DependentUpon>RoleManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\RoleManager.aspx.designer.cs">
+      <DependentUpon>RoleManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="schemasetting\UserManager.aspx.cs">
+      <DependentUpon>UserManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\UserManager.aspx.designer.cs">
+      <DependentUpon>UserManager.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteMastePages\ContentMaster.Master.cs">
       <DependentUpon>ContentMaster.Master</DependentUpon>
@@ -2714,6 +2777,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\add_user_icon.png" />
+    <Content Include="inoutbalance\FeeCustomer.aspx" />
+    <Content Include="inoutbalance\FeeNotice.aspx" />
+    <Content Include="inoutbalance\FeePayin.aspx" />
+    <Content Include="inoutbalance\FeePayinInvoice.aspx" />
+    <Content Include="inoutbalance\FeeProcess.aspx" />
+    <Content Include="inoutbalance\SheetcolumnManager.aspx" />
+    <Content Include="schemasetting\DepartmentManager.aspx" />
+    <Content Include="schemasetting\RoleManager.aspx" />
+    <Content Include="schemasetting\UserManager.aspx" />
     <Content Include="SiteMastePages\PopupMaster.Master" />
     <Content Include="vehicleinsurance\AskPriceAlert.aspx" />
     <Content Include="vehicleinsurance\AskPriceCheck.aspx" />
