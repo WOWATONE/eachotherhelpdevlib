@@ -2709,6 +2709,7 @@
     <Content Include="otherinsurance\formpostillist.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\add_user_icon.png" />
     <Content Include="SiteMastePages\PopupMaster.Master" />
     <Content Include="vehicleinsurance\vinquireforminputlist.aspx" />
   </ItemGroup>
