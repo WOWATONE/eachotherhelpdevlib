@@ -227,12 +227,12 @@
       <DependentUpon>splash.aspx</DependentUpon>
     </Compile>
     <Compile Include="utils\PolicyItemList.cs" />
-    <Compile Include="vehicleinsurance\vformauditinglist.aspx.cs">
-      <DependentUpon>vformauditinglist.aspx</DependentUpon>
+    <Compile Include="vehicleinsurance\vforminputlist.aspx.cs">
+      <DependentUpon>vforminputlist.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="vehicleinsurance\vformauditinglist.aspx.designer.cs">
-      <DependentUpon>vformauditinglist.aspx</DependentUpon>
+    <Compile Include="vehicleinsurance\vforminputlist.aspx.designer.cs">
+      <DependentUpon>vforminputlist.aspx</DependentUpon>
     </Compile>
     <Compile Include="vehicleinsurance\vinquireforminput.aspx.cs">
       <DependentUpon>vinquireforminput.aspx</DependentUpon>
@@ -241,33 +241,12 @@
     <Compile Include="vehicleinsurance\vinquireforminput.aspx.designer.cs">
       <DependentUpon>vinquireforminput.aspx</DependentUpon>
     </Compile>
-    <Compile Include="vehicleinsurance\vformauditing.aspx.cs">
-      <DependentUpon>vformauditing.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="vehicleinsurance\vformauditing.aspx.designer.cs">
-      <DependentUpon>vformauditing.aspx</DependentUpon>
-    </Compile>
     <Compile Include="vehicleinsurance\vforminput.aspx.cs">
       <DependentUpon>vforminput.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="vehicleinsurance\vforminput.aspx.designer.cs">
       <DependentUpon>vforminput.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="vehicleinsurance\vformpostil.aspx.cs">
-      <DependentUpon>vformpostil.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="vehicleinsurance\vformpostil.aspx.designer.cs">
-      <DependentUpon>vformpostil.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="vehicleinsurance\vformsearch.aspx.cs">
-      <DependentUpon>vformsearch.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="vehicleinsurance\vformsearch.aspx.designer.cs">
-      <DependentUpon>vformsearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="vehicleinsurance\vinquireformauditing.aspx.cs">
       <DependentUpon>vinquireformauditing.aspx</DependentUpon>
@@ -282,6 +261,13 @@
     </Compile>
     <Compile Include="vehicleinsurance\vinquireforminputlist.aspx.designer.cs">
       <DependentUpon>vinquireforminputlist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vehicleinsurance\vinquireformpostillist.aspx.cs">
+      <DependentUpon>vinquireformpostillist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vehicleinsurance\vinquireformpostillist.aspx.designer.cs">
+      <DependentUpon>vinquireformpostillist.aspx</DependentUpon>
     </Compile>
     <Compile Include="vehicleinsurance\vinquireformsearch.aspx.cs">
       <DependentUpon>vinquireformsearch.aspx</DependentUpon>
@@ -2575,10 +2561,7 @@
     <Content Include="otherinsurance\formpostil.aspx" />
     <Content Include="otherinsurance\formsearch.aspx" />
     <Content Include="vehicleinsurance\vinquireforminput.aspx" />
-    <Content Include="vehicleinsurance\vformauditing.aspx" />
     <Content Include="vehicleinsurance\vforminput.aspx" />
-    <Content Include="vehicleinsurance\vformpostil.aspx" />
-    <Content Include="vehicleinsurance\vformsearch.aspx" />
     <Content Include="vehicleinsurance\vinquireformauditing.aspx" />
     <Content Include="vehicleinsurance\vinquireformsearch.aspx" />
   </ItemGroup>
@@ -2718,8 +2701,9 @@
   <ItemGroup>
     <Content Include="images\add_user_icon.png" />
     <Content Include="SiteMastePages\PopupMaster.Master" />
-    <Content Include="vehicleinsurance\vformauditinglist.aspx" />
+    <Content Include="vehicleinsurance\vforminputlist.aspx" />
     <Content Include="vehicleinsurance\vinquireforminputlist.aspx" />
+    <Content Include="vehicleinsurance\vinquireformpostillist.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
