@@ -16,6 +16,17 @@
 	        //    stay: true
 	        //});
 	    });
+
+	    function menuClick(url) {
+	        if (url == "PolicyAlterList.aspx") {
+	            //window.location.href = url;
+	            gridSearchResult.PerformCallback('');
+	        }
+	        else {
+	            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+	            window.showModalDialog("PolicyAlter.aspx", "", myArguments);
+	        }
+	    }
 	    
     </script>
 </asp:Content>
@@ -23,7 +34,26 @@
 
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     
-    <table style="width:100%">                    
+    <table style="width:100%"> 
+                    <tr>
+                        <td style="height:40px;">
+                            <dxm:ASPxMenu EnableViewState="False" EncodeHtml="False" id="dpASPxMenu" runat="server" AllowSelectItem="True" Orientation="Horizontal">
+                                <ClientSideEvents 
+                                    CloseUp="function(s, e) {}" 
+                                    PopUp="function(s, e) {}" 
+                                    Init="function(s, e) {}" 
+                                    ItemClick="function(s, e) { 
+                                        var name = e.item.name;
+                                        menuClick(name);
+                                    }" 
+                                    ItemMouseOut="function(s, e) {}" 
+                                    ItemMouseOver="function(s, e) {}" />
+                                <Items>
+                                    <dxm:MenuItem Text="批单" Name="PolicyAlter.aspx"></dxm:MenuItem>
+                                </Items>
+                            </dxm:ASPxMenu>
+                        </td>
+                    </tr>                   
                     <tr>
                         <td style="width:100%;"> 
                             <asp:Panel ID="npSearchHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 

@@ -48,8 +48,7 @@
                                     ItemMouseOut="function(s, e) {}" 
                                     ItemMouseOver="function(s, e) {}" />
                                 <Items>
-                                    <dxm:MenuItem Text="录入列表" Selected="true" Name="forminputlist.aspx"></dxm:MenuItem>
-                                    <dxm:MenuItem Text="新    建" Name="forminput.aspx"></dxm:MenuItem>
+                                    <dxm:MenuItem Text="新    建" Name="PolicyInput.aspx"></dxm:MenuItem>
                                 </Items>
                             </dxm:ASPxMenu>
                         </td>
