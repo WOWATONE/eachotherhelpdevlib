@@ -64,7 +64,6 @@
                                             <dxnb:NavBarItem Text="保费通知书" Name="inoutbalance/FeeNotice.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="客户收费" Name="inoutbalance/FeeCustomer.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="解付保费" Name="inoutbalance/FeePayin.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="解付保费开票" Name="inoutbalance/FeePayinInvoice.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="经纪费结算" Name="inoutbalance/FeeProcess.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="台帐管理" Name="inoutbalance/SheetcolumnManager.aspx"></dxnb:NavBarItem>
                                         </Items>
