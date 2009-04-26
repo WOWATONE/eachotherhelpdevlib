@@ -3,15 +3,6 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register assembly="DevExpress.Web.ASPxEditors.v8.3" namespace="DevExpress.Web.ASPxEditors" tagprefix="dxe" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <meta content="zh-CN" http-equiv="Content-Language" />
-    <link rel="stylesheet" type="text/css" href="../css/ie.css" />
-    <script src="../js/jquery-1.3.2.js" type="text/javascript"></script>
-	<script src="../js/jquerynotice/jquery.notice.js" type="text/javascript"></script>
-	<script type="text/javascript" src="../js/jquery-ui-1.7.1.custom.min.js"></script>
-    <script type="text/javascript" src="../js/ui.datepicker-zh-CN.js"></script>
-    <link type="text/css" href="../js/css/smoothness/jquery-ui-1.7.1.custom.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="../js/jquerynotice/jquery.notice.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager ID="ScriptManager1" runat="server"/>

@@ -11,7 +11,7 @@
 namespace OSPortalWebApp.CustomerRelation {
     
     
-    public partial class CustomerPtFollow {
+    public partial class AlertService {
         
         /// <summary>
         /// ScriptManager1 控件。
@@ -23,156 +23,165 @@ namespace OSPortalWebApp.CustomerRelation {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
-        /// npoperation 控件。
+        /// npalertcontent 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npoperation;
+        protected global::System.Web.UI.WebControls.Panel npalertcontent;
         
         /// <summary>
-        /// btnadd 控件。
+        /// lbAlertType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnadd;
+        protected global::System.Web.UI.WebControls.ListBox lbAlertType;
         
         /// <summary>
-        /// btndelete 控件。
+        /// deStartDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btndelete;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deStartDate;
         
         /// <summary>
-        /// btnprint 控件。
+        /// deEndDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnprint;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deEndDate;
         
         /// <summary>
-        /// btnexport 控件。
+        /// txtAlertContent 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnexport;
+        protected global::System.Web.UI.WebControls.TextBox txtAlertContent;
         
         /// <summary>
-        /// npsearch 控件。
+        /// btnCreatAlertList 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npsearch;
+        protected global::System.Web.UI.WebControls.Button btnCreatAlertList;
         
         /// <summary>
-        /// txtCustName 控件。
+        /// btnCancel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustName;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
         
         /// <summary>
-        /// txtFollowMemo 控件。
+        /// npAlertCustomHeader 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFollowMemo;
+        protected global::System.Web.UI.WebControls.Panel npAlertCustomHeader;
         
         /// <summary>
-        /// deStartFollowDate 控件。
+        /// npAlertCustom 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deStartFollowDate;
+        protected global::System.Web.UI.WebControls.Panel npAlertCustom;
         
         /// <summary>
-        /// deEndFollowDate 控件。
+        /// chkContinue 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deEndFollowDate;
+        protected global::System.Web.UI.WebControls.CheckBox chkContinue;
         
         /// <summary>
-        /// ddlFollowType 控件。
+        /// txtContinue 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFollowType;
+        protected global::System.Web.UI.WebControls.TextBox txtContinue;
         
         /// <summary>
-        /// ddlCusomerManager 控件。
+        /// chkDebt 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCusomerManager;
+        protected global::System.Web.UI.WebControls.CheckBox chkDebt;
         
         /// <summary>
-        /// btnSearch 控件。
+        /// txtDebt 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.TextBox txtDebt;
         
         /// <summary>
-        /// btnUserDefined 控件。
+        /// chkBirthday 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUserDefined;
+        protected global::System.Web.UI.WebControls.CheckBox chkBirthday;
         
         /// <summary>
-        /// btnReset 控件。
+        /// txtBirthday 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReset;
+        protected global::System.Web.UI.WebControls.TextBox txtBirthday;
         
         /// <summary>
-        /// npfollowdetail 控件。
+        /// btnRecoverAlert 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npfollowdetail;
+        protected global::System.Web.UI.WebControls.Button btnRecoverAlert;
         
         /// <summary>
-        /// gridCustomerItem 控件。
+        /// btnSaveAlert 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridCustomerItem;
+        protected global::System.Web.UI.WebControls.Button btnSaveAlert;
+        
+        /// <summary>
+        /// btnCancelAlert 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelAlert;
     }
 }
