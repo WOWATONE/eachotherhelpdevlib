@@ -143,7 +143,7 @@
                     <dxrp:PanelContent ID="PanelContent2" runat="server">                 
                     
                     <dxcp:ASPxCallbackPanel runat="server" ID="cpSchemaDetail" ClientInstanceName="cpSchemaDetail" 
-                    Height="330px" Width="455px" 
+                    Height="500px" Width="455px" 
                     OnCallback="cpSchemaDetail_Callback" 
                     OnCustomJSProperties="cpSchemaDetail_CustomJSProperties">
                      <ClientSideEvents 
@@ -151,53 +151,65 @@
                         EndCallback="cpSchemaDetail_OnEndCallback"></ClientSideEvents>
                      <PanelCollection>
                      <dxrp:PanelContent ID="PanelContent3" runat="server">
-                        <table width="100%">
-                            <tr>
-                                <td>部门(中):</td>
-                                <td>业务部</td>
-                                <td>地区:</td>
-                                <td>上海</td>
-                            </tr>
-                            <tr>
-                                <td>部门(英):</td>
-                                <td>Business deparment</td>
-                                <td>邮编:</td>
-                                <td>200000</td>
-                            </tr>
-                            <tr>
-                                <td>部门编号:</td>
-                                <td>06</td>
-                                <td>部门简称:</td>
-                                <td>Business</td>
-                            </tr>
-                            <tr>
-                                <td>详细地址:</td>
-                                <td>上海江宁</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>电话:</td>
-                                <td>88888888</td>
-                                <td>传真:</td>
-                                <td>99999999</td>
-                            </tr>
-                            <tr>
-                                <td>电子邮箱:</td>
-                                <td>test@test.com</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>负责人:</td>
-                                <td>Mr</td>
-                                <td>成立日期:</td>
-                                <td>2008-08-08</td>
-                            </tr>
-                            
+                        <dxp:ASPxPanel EnableTheming="true" runat="server">
+                            <Border BorderColor="#AECAF0" BorderWidth="1px" />
+                            <Paddings Padding="2px" />
+                            <PanelCollection>
+                                <dxp:PanelContent>
+                                    <table width="100%" cellpadding="5px" >
+                                        <tr>
+                                            <td style="text-align:right;">部门(中):</td>
+                                            <td style="text-align:left;">业务部</td>
+                                            <td style="text-align:right;">地区:</td>
+                                            <td style="text-align:left;">上海</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:right;">部门(英):</td>
+                                            <td style="text-align:left;">Business deparment</td>
+                                            <td style="text-align:right;">邮编:</td>
+                                            <td style="text-align:left;">200000</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:right;">部门编号:</td>
+                                            <td style="text-align:left;">06</td>
+                                            <td style="text-align:right;">部门简称:</td>
+                                            <td style="text-align:left;">Business</td>
+                                        </tr>                                        
+                                        <tr>
+                                            <td style="text-align:right;">电话:</td>
+                                            <td style="text-align:left;">88888888</td>
+                                            <td style="text-align:right;">传真:</td>
+                                            <td style="text-align:left;">99999999</td>
+                                        </tr>                                        
+                                        <tr>
+                                            <td style="text-align:right;">负责人:</td>
+                                            <td style="text-align:left;">Mr</td>
+                                            <td style="text-align:right;">成立日期:</td>
+                                            <td style="text-align:left;">2008-08-08</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:right;">电子邮箱:</td>
+                                            <td style="text-align:left;">test@test.com</td>
+                                            <td style="text-align:right;"></td>
+                                            <td style="text-align:left;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:right;">详细地址:</td>
+                                            <td style="text-align:left;">上海江宁</td>
+                                            <td style="text-align:right;"></td>
+                                            <td style="text-align:left;"></td>
+                                        </tr>
+                                    </table>
+                                </dxp:PanelContent>
+                            </PanelCollection>
+                        </dxp:ASPxPanel>
+                        <table width="100%">                            
                             <tr>
                                 <td colspan="4">
-                                    <dxtc:ASPxPageControl ID="carTabPage" runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True">
+                                    <dxtc:ASPxPageControl ID="carTabPage" runat="server" 
+                                    ActiveTabIndex="0" EnableHierarchyRecreation="True"
+                                    TabAlign="Left" TabPosition="Left" Width="450"
+                                    >
                                          <TabPages>
                                              <dxtc:TabPage Text="系统设置" Name="tabSystemSetting">
                                                  <ContentCollection><dxw:ContentControl ID="ContentControl1" runat="server">
@@ -292,7 +304,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td></td>
+                                <td style="width:30%;">&nbsp;</td>
                                 <td>
                                     <dxe:ASPxButton id="dpbtnSelectAll" runat="server" Text="全部选中" AutoPostBack="False" ClientInstanceName="dpbtnSelectAll">
                                      <ClientSideEvents Click="function(s, e) { dpbtnSelectAll_Click(s,e); }"></ClientSideEvents>
