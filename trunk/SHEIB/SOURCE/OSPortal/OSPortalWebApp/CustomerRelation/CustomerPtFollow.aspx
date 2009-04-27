@@ -41,8 +41,8 @@
                         </tr>
                         <tr>
                             <td style="width:8%;text-align:right;">跟进日期：</td>
-                            <td style="width:30%;text-align:left;">
-                                <dxe:ASPxDateEdit ID="deStartFollowDate" runat="server" Width="100px"></dxe:ASPxDateEdit>&nbsp;至<dxe:ASPxDateEdit ID="deEndFollowDate" runat="server" Width="100px"></dxe:ASPxDateEdit>
+                            <td style="width:30%;text-align:left;" nowrap="nowrap">
+                                <dxe:ASPxDateEdit ID="deStartFollowDate" runat="server"></dxe:ASPxDateEdit>至<dxe:ASPxDateEdit ID="deEndFollowDate" runat="server"></dxe:ASPxDateEdit>
                             </td>
                             <td style="width:8%;text-align:right;">&nbsp;</td>
                         </tr>
