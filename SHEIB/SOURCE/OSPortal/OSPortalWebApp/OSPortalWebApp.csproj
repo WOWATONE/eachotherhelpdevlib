@@ -110,6 +110,13 @@
     <Compile Include="CustomerRelation\AlertService.aspx.designer.cs">
       <DependentUpon>AlertService.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustomerRelation\AreaSetting.aspx.cs">
+      <DependentUpon>AreaSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerRelation\AreaSetting.aspx.designer.cs">
+      <DependentUpon>AreaSetting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CustomerRelation\CustContact.aspx.cs">
       <DependentUpon>CustContact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2788,6 +2795,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CustomerRelation\AlertService.aspx" />
+    <Content Include="CustomerRelation\AreaSetting.aspx" />
     <Content Include="images\add_user_icon.png" />
     <Content Include="images\treeicon\Folder.png" />
     <Content Include="inoutbalance\FeeCustomer.aspx" />
