@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Threading;
+using System.Text;
+using System.Globalization;
 
 namespace OSPortalWebApp.SiteMastePages
 {
@@ -11,7 +14,7 @@ namespace OSPortalWebApp.SiteMastePages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("zh-CN"); 
         }
     }
 }
