@@ -9,6 +9,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>保单录入列表</title>
     <script type="text/javascript">
         $(document).ready(function() {
             //jQuery.noticeAdd({
@@ -290,13 +291,7 @@
                                                         <SettingsPager Mode="ShowAllRecords"/>
                                                         <Settings ShowGroupPanel="false" />
                                                         <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
-                                                        <SettingsText 
-                                                            CommandUpdate="确定" 
-                                                            CommandCancel="取消" 
-                                                            CommandDelete="删除" 
-                                                            CommandNew="新增" 
-                                                            CommandEdit="编辑"
-                                                            EmptyDataRow="没有数据" />
+                                                        
                                                     </dxwgv:ASPxGridView>                                                    
                                                 </td>
                                             </tr>
