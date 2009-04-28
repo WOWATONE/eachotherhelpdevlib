@@ -35,4 +35,5 @@
             <Image Height="19px" Width="23px"></Image>
         </LastPageButton>
     </SettingsPager>
+    <SettingsText CommandUpdate="确定" CommandCancel="取消" CommandDelete="删除" CommandNew="新增" CommandEdit="编辑" EmptyDataRow="没有数据" />
 </dxgv:ASPxGridView>

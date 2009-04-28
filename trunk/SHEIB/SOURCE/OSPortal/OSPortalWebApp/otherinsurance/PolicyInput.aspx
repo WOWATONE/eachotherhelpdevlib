@@ -7,6 +7,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register assembly="DevExpress.Web.v8.3" namespace="DevExpress.Web.ASPxPopupControl" tagprefix="dxpc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>保单录入</title>
     <script type="text/javascript">
         $(document).ready(function() {
             //jQuery.noticeAdd({
@@ -275,14 +276,7 @@
                                                             </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowAllRecords"/>
-                                                        <Settings ShowGroupPanel="false" />
-                                                        <SettingsText 
-                                                            CommandUpdate="确定" 
-                                                            CommandCancel="取消" 
-                                                            CommandDelete="删除" 
-                                                            CommandNew="新增" 
-                                                            CommandEdit="编辑"
-                                                            EmptyDataRow="没有数据" />
+                                                        <Settings ShowGroupPanel="false" />                                                        
                                                         <Templates>
                                                              <EditForm>                                                             
                                                              <div style="padding:4px 4px 3px 4px">
