@@ -1,151 +1,184 @@
-<%@ Page Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="Customer.aspx.cs" Inherits="OSPortalWebApp.CustomerRelation.Customer" Title="" %>
+Ôªø<%@ Page Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="Customer.aspx.cs" Inherits="OSPortalWebApp.CustomerRelation.Customer" Title="" %>
+
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl"
+    TagPrefix="dxtc" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-<%@ Register assembly="DevExpress.Web.ASPxGridView.v8.3" namespace="DevExpress.Web.ASPxGridView" tagprefix="dxwgv" %>
+<%@ Register assembly="DevExpress.Web.v8.3" namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    <dxtc:ASPxPageControl ID="customerDetailTabPage" ClientInstanceName="customerDetailTabPage" runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%">
+        <TabPages>
+            <dxtc:TabPage Name="CustInfo" Text="ÂÆ¢Êà∑ËµÑÊñô">
+                <ContentCollection>
+                    <dxw:ContentControl runat="server">
+                        <table style="width:99%">
+                            <tr>
+                                <td style="width:100%;">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td style="width:15%;text-align:right;">
+                                                </td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:RadioButton ID="radPerson"
+                                    runat="server" Checked="True" Text="‰∏™‰∫∫" GroupName="PersonOrUnit" />&nbsp;&nbsp;<asp:RadioButton ID="radUnit" runat="server" Text="Âçï‰Ωç" GroupName="PersonOrUnit" /></td>
+                                            <td style="width:15%;text-align:right;">
+                                                &nbsp;</td>
+                                            <td style="width:35%;text-align:left;">
+                                                &nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:15%;text-align:right;">
+                                                ÂÆ¢Êà∑ÁºñÂè∑Ôºö</td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:TextBox ID="txtCustNo" runat="server" Width="200px"></asp:TextBox></td>
+                                            <td style="width:15%;text-align:right;">
+                                                ÊâÄÂú®Âú∞Âå∫Ôºö</td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:DropDownList ID="ddlArea" runat="server" Width="200px">
+                                                    <asp:ListItem Text="Âåó‰∫¨Â∏Ç" Value="1" Selected ></asp:ListItem>
+                                                    <asp:ListItem Text="‰∏äÊµ∑Â∏Ç" Value="2"></asp:ListItem>
+                                                </asp:DropDownList>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:15%;text-align:right;">
+                                                ÂÆ¢Êà∑ÂêçÁß∞Ôºö</td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:TextBox ID="txtCustName" runat="server" Width="200px"></asp:TextBox></td>
+                                            <td style="width:15%;text-align:right;">
+                                                Âú∞ÂùÄÔºö</td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:TextBox ID="txtAddress" runat="server" Width="200px"></asp:TextBox></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:15%;text-align:right;">
+                                                ÂÆ¢Êà∑ÂàÜÁ±ªÔºö</td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:DropDownList ID="ddlGrade" runat="server" Width="200px">
+                                                    <asp:ListItem Text="AÔºçÁ≠æÁ∫¶Â§ßÂÆ¢Êà∑" Value="1" Selected ></asp:ListItem>
+                                                    <asp:ListItem Text="B--Êú™Á≠æÁ∫¶ÂÆ¢Êà∑" Value="2"></asp:ListItem>
+                                                    <asp:ListItem Text="CÔºçÊΩúÂú®ÊÑèÂêëÂÆ¢Êà∑" Value="3"></asp:ListItem>
+                                                </asp:DropDownList>
+                                            </td>
+                                            <td style="width:15%;text-align:right;">
+                                                ÈÇÆÊîøÁºñÁ†ÅÔºö</td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:TextBox ID="txtPostCode" runat="server" Width="200px"></asp:TextBox></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:15%;text-align:right;">
+                                               ÊâÄÂ±ûË°å‰∏öÔºö</td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:DropDownList ID="ddlTradeType" runat="server" Width="200px">
+                                                    <asp:ListItem Text="ÊîøÂ∫úÊú∫ÂÖ≥" Value="1" Selected ></asp:ListItem>
+                                                    <asp:ListItem Text="ÂÖ∂‰ªñ" Value="2"></asp:ListItem>
+                                                </asp:DropDownList>
+                                            </td>
+                                            <td style="width:15%;text-align:right;">
+                                                ÁªÑÁªáÊú∫ÊûÑ‰ª£Á†ÅÂè∑<br/>/Ë∫´‰ªΩËØÅÂè∑Á†ÅÔºö</td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:TextBox ID="txtIDNO" runat="server" Width="200px"></asp:TextBox></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:15%;text-align:right;">
+                                                Á¨¨‰∏ÄËÅîÁ≥ª‰∫∫ÂßìÂêçÔºö</td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:TextBox ID="txtContact" runat="server" Width="200px"></asp:TextBox></td>
+                                            <td style="width:15%;text-align:right;">
+                                                &nbsp;</td>
+                                            <td style="width:35%;text-align:left;">
+                                                &nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:15%;text-align:right;">
+                                                Á¨¨‰∏ÄËÅîÁ≥ª‰∫∫ÁîµËØùÔºö</td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:TextBox ID="txtTel" runat="server" Width="200px"></asp:TextBox></td>
+                                            <td style="width:15%;text-align:right;">
+                                                ÈÉ®Èó®Ôºö</td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:DropDownList ID="ddlDepartment" runat="server" Width="200px">
+                                                    <asp:ListItem Text="ÂÆ¢Êà∑ÊúçÂä°ÈÉ®" Value="1" Selected ></asp:ListItem>
+                                                    <asp:ListItem Text="ÁâπÊÆäÈ£éÈô©ÈÉ®" Value="2"></asp:ListItem>
+                                                    <asp:ListItem Text="Ë¥¢Èô©ÈÉ®" Value="3"></asp:ListItem>
+                                                </asp:DropDownList>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:15%;text-align:right;">
+                                               Á¨¨‰∏ÄËÅîÁ≥ª‰∫∫ÊâãÊú∫Ôºö</td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:TextBox ID="txtMobile" runat="server" Width="200px"></asp:TextBox></td>
+                                            <td style="width:15%;text-align:right;">
+                                                ÂÆ¢Êà∑ÁªèÁêÜÔºö</td>
+                                            <td style="width:35%;text-align:left;">
+                                                <asp:DropDownList ID="ddlCusomerManager" runat="server" Width="200px">
+                                                    <asp:ListItem Text="Âº†‰∏â" Value="1" Selected ></asp:ListItem>
+                                                    <asp:ListItem Text="ÊùéÂõõ" Value="2"></asp:ListItem>
+                                                </asp:DropDownList>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </dxw:ContentControl>
+                </ContentCollection>
+            </dxtc:TabPage>
+            <dxtc:TabPage Name="AddiInfo" Text="ÈôÑÂä†ËµÑÊñô">
+                <ContentCollection>
+                    <dxw:ContentControl runat="server">
+                    </dxw:ContentControl>
+                </ContentCollection>
+            </dxtc:TabPage>
+            <dxtc:TabPage Name="CustAlert" Text="ÁâπÂà´ÊèêÈÜí">
+                <ContentCollection>
+                    <dxw:ContentControl runat="server">
+                    </dxw:ContentControl>
+                </ContentCollection>
+            </dxtc:TabPage>
+            <dxtc:TabPage Name="CustContact" Text="ËÅîÁ≥ª‰∫∫">
+                <ContentCollection>
+                    <dxw:ContentControl runat="server">
+                    </dxw:ContentControl>
+                </ContentCollection>
+            </dxtc:TabPage>
+            <dxtc:TabPage Name="PtFollow" Text="ÈîÄÂîÆË∑üËøõ">
+                <ContentCollection>
+                    <dxw:ContentControl runat="server">
+                    </dxw:ContentControl>
+                </ContentCollection>
+            </dxtc:TabPage>
+            <dxtc:TabPage Name="NotifyClaim" Text="ÁêÜËµîËÆ∞ÂΩï">
+                <ContentCollection>
+                    <dxw:ContentControl runat="server">
+                    </dxw:ContentControl>
+                </ContentCollection>
+            </dxtc:TabPage>
+            <dxtc:TabPage Name="SignPremium" Text="Á≠æÂçïËÆ∞ÂΩï">
+                <ContentCollection>
+                    <dxw:ContentControl runat="server">
+                    </dxw:ContentControl>
+                </ContentCollection>
+            </dxtc:TabPage>
+        </TabPages>
+    </dxtc:ASPxPageControl>
+    <br />
     <table style="width:99%">
         <tr>
-            <td style="width:100%;">
-                <asp:Panel ID="npoperation" runat="server" CssClass="allborderPanel" Height="25px"> 
-                    <table style="width:100%">
-                        <tr>
-                            <td style="text-align:left;">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnadd" runat="server" CssClass="input_2" Text="ÃÌº”" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btndelete" runat="server" Text="…æ≥˝" CssClass="input_2" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnprint" runat="server" Text="¥Ú”°" CssClass="input_2" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnexport" runat="server" CssClass="input_2" Text="µº≥ˆ" />
-                            </td>  
-                            <td style="width:20px;text-align:left;">
-                                &nbsp;
-                            </td>                                                                  
-                        </tr>
-                    </table>
-                </asp:Panel>
-                <asp:Panel ID="npsearch" runat="server" CssClass="allborderPanel">
-                    <table style="width:100%">
-                        <tr>
-                            <td style="width:33%;text-align:left;" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:CheckBox ID="chkperson" runat="server" />
-                                ∏ˆ»À<asp:CheckBox ID="chkunit" runat="server" />µ•Œª</td>
-                            <td style="width:8%;text-align:right;"></td>
-                            <td style="width:25%;text-align:left;"></td>
-                            <td style="width:8%;text-align:right;"></td>
-                            <td style="width:26%;text-align:left;"></td>
-                        </tr>
-                        <tr>
-                            <td style="width:8%;text-align:right;">øÕªß±‡∫≈£∫</td>
-                            <td style="width:25%;text-align:left;"><asp:TextBox ID="txtCustNo" runat="server" Width="200px"></asp:TextBox></td>
-                            <td style="width:8%;text-align:right;">À˘‘⁄µÿ«¯£∫</td>
-                            <td style="width:25%;text-align:left;">
-                                <asp:DropDownList ID="ddlArea" runat="server" Width="200px">
-                                    <asp:ListItem Text="±±æ© –" Value="1" Selected ></asp:ListItem>
-                                    <asp:ListItem Text="…œ∫£ –" Value="2"></asp:ListItem>
-                                </asp:DropDownList>
-                            </td>
-                            <td style="width:8%;text-align:right;">øÕªßµÿ÷∑£∫</td>
-                            <td style="width:26%;text-align:left;"><asp:TextBox ID="txtAddress" runat="server" Width="200px"></asp:TextBox></td>
-                        </tr>
-                        <tr>
-                            <td style="width:8%;text-align:right;">øÕªß√˚≥∆£∫</td>
-                            <td style="width:25%;text-align:left;"><asp:TextBox ID="txtCustName" runat="server" Width="200px"></asp:TextBox></td>
-                            <td style="width:8%;text-align:right;">––“µ¿‡–Õ£∫</td>
-                            <td style="width:25%;text-align:left;">
-                                <asp:DropDownList ID="ddlTradeType" runat="server" Width="200px">
-                                    <asp:ListItem Text="’˛∏Æª˙πÿ" Value="1" Selected ></asp:ListItem>
-                                    <asp:ListItem Text="∆‰À˚" Value="2"></asp:ListItem>
-                                </asp:DropDownList>
-                            </td>
-                            <td style="width:8%;text-align:right;">À˘ Ù∞ÂøÈ£∫</td>
-                            <td style="width:26%;text-align:left;">
-                                <asp:DropDownList ID="ddlPlate" runat="server" Width="200px">
-                                    <asp:ListItem Text=" Ø”ÕªØπ§" Value="1" Selected ></asp:ListItem>
-                                    <asp:ListItem Text="∆‰À˚" Value="2"></asp:ListItem>
-                                </asp:DropDownList>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width:8%;text-align:right;">◊È÷Øª˙ππ¥˙¬Î∫≈<br/>/…Ì∑›÷§∫≈¬Î£∫</td>
-                            <td style="width:25%;text-align:left;"><asp:TextBox ID="txtIDNO" runat="server" Width="200px"></asp:TextBox></td>
-                            <td style="width:8%;text-align:right;"></td>
-                            <td style="width:25%;text-align:left;"></td>
-                            <td style="width:34%;text-align:right;" colspan="2"></td>
-                        </tr>
-                        <tr>
-                            <td style="width:8%;text-align:right;">øÕªßæ≠¿Ì£∫</td>
-                            <td style="width:25%;text-align:left;">
-                                 <asp:DropDownList ID="ddlCusomerManager" runat="server" Width="200px">
-                                    <asp:ListItem Text="’≈»˝" Value="1" Selected ></asp:ListItem>
-                                    <asp:ListItem Text="¿ÓÀƒ" Value="2"></asp:ListItem>
-                                </asp:DropDownList>
-                            </td>
-                            <td style="width:67%;text-align:right;" colspan="4">
-                                <asp:Button ID="btnSearch" runat="server" Text="≤È     —Ø" CssClass="input_6"/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnUserDefined" runat="server" Text="◊‘∂®“Â≤È—Ø" CssClass="input_6" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnReset" runat="server" Text="÷ÿ     ÷√" CssClass="input_6" />
-                            </td>
-                        </tr>
-                    </table>
-                </asp:Panel>
-                <asp:Panel ID="npcustomerdetail" runat="server" CssClass="collapsePanel">
-                    <table style="width:100%"> 
-                        <tr>
-                            <td>                               
-                                <dxwgv:ASPxGridView ID="gridCustomerItem" ClientInstanceName="gridCostumerItem" runat="server" 
-                                    KeyFieldName="CustNo" Width="100%" AutoGenerateColumns="False" >
-                                    <Columns>
-                                        <dxwgv:GridViewDataTextColumn Caption="øÕªß±‡∫≈" FieldName="CustNo" 
-                                            VisibleIndex="0">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="øÕªß√˚≥∆" FieldName="CustName" 
-                                            VisibleIndex="1">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="À˘‘⁄µÿ«¯" FieldName="Area" VisibleIndex="2">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="À˘ Ù∞ÂøÈ" FieldName="Plate" VisibleIndex="3">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="øÕªßµÿ÷∑" FieldName="Address" 
-                                            VisibleIndex="4">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="” ’˛±‡¬Î" FieldName="PostCode" 
-                                            VisibleIndex="5">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="––“µ¿‡–Õ" FieldName="TradeType" 
-                                            VisibleIndex="6">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="¥˙¬Î/∫≈¬Î" FieldName="IDNO" VisibleIndex="7">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="µ⁄“ª¡™œµ»À" FieldName="Contact" 
-                                            VisibleIndex="8">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="µÁª∞" FieldName="Tel" VisibleIndex="9">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption=" ÷ª˙" FieldName="Mobile" VisibleIndex="10">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="¥´’Ê" FieldName="Fax" VisibleIndex="11">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="µÁ◊”” º˛" FieldName="Email" 
-                                            VisibleIndex="12">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="øÕªßæ≠¿Ì" FieldName="CusomerManager" 
-                                            VisibleIndex="13">
-                                        </dxwgv:GridViewDataTextColumn>
-                                    </Columns>
-                                    <SettingsPager Mode="ShowAllRecords"/>
-                                    <Settings ShowGroupPanel="false" />
-                                </dxwgv:ASPxGridView>    
-                            </td>
-                        </tr>
-                    </table>
-                 </asp:Panel>
+            <td style="width:65%;">
+            </td>
+            <td style="width:35%;">
+                <asp:Button ID="btnSave" runat="server" Text="‰øùÂ≠ò‰øÆÊîπ" CssClass="input_6"/>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btlClose" runat="server" Text="ÂÖ≥    Èó≠" CssClass="input_6"/>
             </td>
         </tr>
     </table>
-    
 </asp:Content>
