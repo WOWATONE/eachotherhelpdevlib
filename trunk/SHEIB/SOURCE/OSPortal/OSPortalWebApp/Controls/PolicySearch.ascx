@@ -11,13 +11,14 @@
                         <td style="width:100%;"> 
                             <asp:Panel ID="npSearchHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                 <div style="padding:5px; cursor: pointer; vertical-align: middle;">
-                                    <div style="float: left;">所属项目</div>
-                                    <div style="float: left; margin-left: 20px;">
-                                        <asp:Label ID="lbl_npSearchHeader" runat="server">(展开)</asp:Label>
-                                    </div>
-                                    <div style="float: right; vertical-align: middle;">
+                                    <div style="float:left; vertical-align: middle;">
                                         <asp:ImageButton ID="img_npSearchHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
                                     </div>
+                                    <div style="float:left; margin-left:5px;">所属项目</div>
+                                    <div style="float:left; margin-left:5px;">
+                                        <asp:Label ID="lbl_npSearchHeader" runat="server">(展开)</asp:Label>
+                                    </div>
+                                    
                                 </div>
                             </asp:Panel>                           
                             <asp:Panel ID="npSearchDetail" runat="server" CssClass="collapsePanel" Height="0">
@@ -264,8 +265,8 @@
                                 Collapsed="false"
                                 TextLabelID="lbl_npSearchHeader"
                                 ImageControlID="img_npSearchHeader"    
-                                ExpandedText="(隐藏)"
-                                CollapsedText="(展开)"
+                                ExpandedText="(展开)"
+                                CollapsedText="(隐藏)"
                                 ExpandedImage="~/images/collapse_blue.jpg"
                                 CollapsedImage="~/images/expand_blue.jpg"
                                 SuppressPostBack="true" />
@@ -275,13 +276,14 @@
                         <td style="width:100%;">
                             <asp:Panel ID="npSearchResultHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                 <div style="padding:5px; cursor: pointer; vertical-align: middle;">
-                                    <div style="float: left;">搜索结果</div>
-                                    <div style="float: left; margin-left: 20px;">
-                                        <asp:Label ID="lbl_npSearchResultHeader" runat="server">(展开)</asp:Label>
-                                    </div>
-                                    <div style="float: right; vertical-align: middle;">
+                                    <div style="float:left; vertical-align: middle;">
                                         <asp:ImageButton ID="img_npSearchResultHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
                                     </div>
+                                    <div style="float:left; margin-left:5px;">搜索结果</div>
+                                    <div style="float:left; margin-left:5px;">
+                                        <asp:Label ID="lbl_npSearchResultHeader" runat="server">(展开)</asp:Label>
+                                    </div>
+                                    
                                 </div>
                             </asp:Panel>  
                             <asp:Panel ID="npSearchResultDetail" runat="server" CssClass="collapsePanel" Height="0">
@@ -302,7 +304,7 @@
                                                                     <EditButton Visible="False" />                                                                    
                                                                     <DeleteButton Visible="true" />
                                                                     <CustomButtons>
-                                                                        <dxwgv:GridViewCommandColumnCustomButton Text="编辑">                                                                            
+                                                                        <dxwgv:GridViewCommandColumnCustomButton Text="查看">                                                                            
                                                                         </dxwgv:GridViewCommandColumnCustomButton>                                                                        
                                                                     </CustomButtons>                                                   
                                                                 </dxwgv:GridViewCommandColumn>                                                                
@@ -366,8 +368,8 @@
                                 Collapsed="false"
                                 TextLabelID="lbl_npSearchResultHeader"
                                 ImageControlID="img_npSearchResultHeader"    
-                                ExpandedText="(隐藏)"
-                                CollapsedText="(展开)"
+                                ExpandedText="(展开)"
+                                CollapsedText="(隐藏)"
                                 ExpandedImage="~/images/collapse_blue.jpg"
                                 CollapsedImage="~/images/expand_blue.jpg"
                                 SuppressPostBack="true" />
