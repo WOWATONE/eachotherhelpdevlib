@@ -121,6 +121,21 @@ namespace OSPortalWebApp.otherinsurance
         }
 
 
+        protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            //DataTable dt = ((DataTable)ViewState["PolicyItemGridData"]);
+            //DataRow row = dt.Rows.Find(e.Keys["ID"]);
+            //dt.Rows.Remove(row);
+            e.Cancel = true;
+            this.gridSearchResult.CancelEdit();
+        }
+
+        protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
+        {
+            this.gridSearchResult.DataBind();
+        }
+
+
 
     }
 }

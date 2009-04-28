@@ -23,6 +23,22 @@
             //    //do nothing;
             //}
 
+            window.onunload = function() {
+                var pWindow = window.dialogArguments;
+                var thegrid = pWindow.gridSearchResult;
+                
+                if (thegrid != null) {
+                    thegrid.PerformCallback('');
+                }
+                else {
+                    //do nothing
+                }
+            };
+
+
+
+
+
         });
 
         
@@ -48,7 +64,10 @@
             var tab = insuranceDetailTabPage.GetTab(4);
             tab.SetVisible(mystate);
         }
-        
+
+        //function onClose() {
+        //    alert("close");
+        //}
         
     </script>    
 </asp:Content>
