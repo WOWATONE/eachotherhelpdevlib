@@ -10,12 +10,16 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
-	    $(document).ready(function() {
-	        //jQuery.noticeAdd({
-	        //    text: 'This is a notification that you have to remove',
-	        //    stay: true
-	        //});
-	    });
+        $(document).ready(function() {
+            //jQuery.noticeAdd({
+            //    text: 'This is a notification that you have to remove',
+            //    stay: true
+            //});
+
+            lblCurrentDate.innerHTML = makewelcomeString();
+
+        });
+	    
 	    function menuClick(url) {
 	        if (url == "PolicyInputList.aspx")
             {
@@ -41,7 +45,7 @@
     
     <table style="width:100%">
                     <tr>
-                        <td style="height:40px;">
+                        <td style="height:40px; width:60%;">
                             <dxm:ASPxMenu EnableViewState="False" EncodeHtml="False" id="dpASPxMenu" runat="server" AllowSelectItem="True" Orientation="Horizontal">
                                 <ClientSideEvents 
                                     CloseUp="function(s, e) {}" 
@@ -58,9 +62,20 @@
                                 </Items>
                             </dxm:ASPxMenu>
                         </td>
+                        <td style="height:40px; width:40%;">
+                            <table style="margin:0px; padding:0px; width:100%; border:0px; text-align:right">
+				                        <tr>
+					                        <td style="width:40%; color:#0E5ED5;">当前位置：非车险保单录入</td>
+					                        <td style="width:60%;PADDING-RIGHT: 20px; text-align:right;color:#0E5ED5;">
+					                            <asp:label id="LbUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
+						                        <label id="lblCurrentDate"></label>
+					                        </td>
+				                        </tr>
+	                        </table>
+                        </td>
                     </tr>
                     <tr>
-                        <td style="width:100%;"> 
+                        <td style="width:100%;" colspan="2"> 
                             <asp:Panel ID="npSearchHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                 <div style="padding:5px; cursor: pointer; vertical-align: middle;">
                                     <div style="float: left;">所属项目</div>
@@ -157,7 +172,8 @@
                                                 <tr>
                                                     <td style="width:70px;text-align:right;">开始日期：</td>
                                                     <td style="width:200px;text-align:left;">
-                                                        <dxe:ASPxDateEdit ID="deStartDate" runat="server"></dxe:ASPxDateEdit>                                                       
+                                                        <dxe:ASPxDateEdit ID="deStartDate" runat="server">
+                                                        </dxe:ASPxDateEdit>                                                       
                                                     </td>
                                                     <td style="width:70px;text-align:right;">结束日期：</td>
                                                     <td style="width:180px;text-align:left;">
@@ -195,7 +211,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="width:100%;">
+                        <td style="width:100%;" colspan="2">
                             <asp:Panel ID="npSearchResultHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                 <div style="padding:5px; cursor: pointer; vertical-align: middle;">
                                     <div style="float: left;">搜索结果</div>
