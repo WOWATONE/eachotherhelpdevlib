@@ -23,15 +23,6 @@ namespace OSPortalWebApp.Controls {
         protected global::System.Web.UI.WebControls.Panel npSearchHeader;
         
         /// <summary>
-        /// lbl_npSearchHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_npSearchHeader;
-        
-        /// <summary>
         /// img_npSearchHeader control.
         /// </summary>
         /// <remarks>
@@ -39,6 +30,15 @@ namespace OSPortalWebApp.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton img_npSearchHeader;
+        
+        /// <summary>
+        /// lbl_npSearchHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_npSearchHeader;
         
         /// <summary>
         /// npSearchDetail control.
@@ -347,15 +347,6 @@ namespace OSPortalWebApp.Controls {
         protected global::System.Web.UI.WebControls.Panel npSearchResultHeader;
         
         /// <summary>
-        /// lbl_npSearchResultHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_npSearchResultHeader;
-        
-        /// <summary>
         /// img_npSearchResultHeader control.
         /// </summary>
         /// <remarks>
@@ -363,6 +354,15 @@ namespace OSPortalWebApp.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton img_npSearchResultHeader;
+        
+        /// <summary>
+        /// lbl_npSearchResultHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_npSearchResultHeader;
         
         /// <summary>
         /// npSearchResultDetail control.
