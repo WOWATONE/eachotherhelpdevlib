@@ -24,7 +24,7 @@
                                 <Groups>
                                     <dxnb:NavBarGroup Text="客户关系" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem ClientEnabled="true" Text="客户列表" Name="CustomerRelation/Customer.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem ClientEnabled="true" Text="客户列表" Name="CustomerRelation/CustomerList.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="联系人" Name="CustomerRelation/CustContact.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="业务跟进" Name="CustomerRelation/CustomerPtFollow.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="服务提醒" Name="CustomerRelation/AlertService.aspx"></dxnb:NavBarItem>
