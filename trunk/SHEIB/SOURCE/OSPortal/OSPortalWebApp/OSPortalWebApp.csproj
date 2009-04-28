@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ADDD279E-6700-4B92-8290-ACB05D96BE48}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -130,6 +130,13 @@
     </Compile>
     <Compile Include="CustomerRelation\Customer.aspx.designer.cs">
       <DependentUpon>Customer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerRelation\CustomerList.aspx.cs">
+      <DependentUpon>CustomerList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerRelation\CustomerList.aspx.designer.cs">
+      <DependentUpon>CustomerList.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustomerRelation\CustomerPtFollow.aspx.cs">
       <DependentUpon>CustomerPtFollow.aspx</DependentUpon>
@@ -2687,7 +2694,7 @@
     <Content Include="bin\BusinessObjects.pdb" />
     <Content Include="bin\zh-CHS\AjaxControlToolkit.resources.dll" />
     <Content Include="Controls\PolicySearch.ascx" />
-    <Content Include="CustomerRelation\Customer.aspx" />
+    <Content Include="CustomerRelation\CustomerList.aspx" />
     <Content Include="images\collapse_blue.jpg" />
     <Content Include="images\expand_blue.jpg" />
     <Content Include="images\icondividedpayment.gif" />
@@ -2796,6 +2803,7 @@
   <ItemGroup>
     <Content Include="CustomerRelation\AlertService.aspx" />
     <Content Include="CustomerRelation\AreaSetting.aspx" />
+    <Content Include="CustomerRelation\Customer.aspx" />
     <Content Include="images\add_user_icon.png" />
     <Content Include="images\treeicon\Folder.png" />
     <Content Include="inoutbalance\FeeCustomer.aspx" />
@@ -2838,9 +2846,6 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/OSPortalWebApp</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
