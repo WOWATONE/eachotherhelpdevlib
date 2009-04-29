@@ -50,15 +50,6 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.Panel npbasicheader;
         
         /// <summary>
-        /// lbl_npbasicheader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_npbasicheader;
-        
-        /// <summary>
         /// img_npbasicheader control.
         /// </summary>
         /// <remarks>
@@ -66,6 +57,15 @@ namespace OSPortalWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton img_npbasicheader;
+        
+        /// <summary>
+        /// lbl_npbasicheader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_npbasicheader;
         
         /// <summary>
         /// npbasicdetail control.
@@ -221,15 +221,6 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.Panel npGridPolicyItemHeader;
         
         /// <summary>
-        /// lbl_npGridPolicyItem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_npGridPolicyItem;
-        
-        /// <summary>
         /// img_npGridPolicyItem control.
         /// </summary>
         /// <remarks>
@@ -237,6 +228,15 @@ namespace OSPortalWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton img_npGridPolicyItem;
+        
+        /// <summary>
+        /// lbl_npGridPolicyItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_npGridPolicyItem;
         
         /// <summary>
         /// npGridPolicyItemDetail control.
@@ -275,15 +275,6 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.Panel npOtherPolicyItemHeader;
         
         /// <summary>
-        /// lbl_npOtherPolicyItemHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_npOtherPolicyItemHeader;
-        
-        /// <summary>
         /// img_npOtherPolicyItemHeader control.
         /// </summary>
         /// <remarks>
@@ -291,6 +282,15 @@ namespace OSPortalWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton img_npOtherPolicyItemHeader;
+        
+        /// <summary>
+        /// lbl_npOtherPolicyItemHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_npOtherPolicyItemHeader;
         
         /// <summary>
         /// npOtherPolicyItemDetail control.

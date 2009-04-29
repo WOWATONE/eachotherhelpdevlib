@@ -11,6 +11,7 @@
 <%@ Register src="../Controls/PolicySearch.ascx" tagname="PolicySearch" tagprefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>保单检索</title>
     <script type="text/javascript">
 	    $(document).ready(function() {
 	        

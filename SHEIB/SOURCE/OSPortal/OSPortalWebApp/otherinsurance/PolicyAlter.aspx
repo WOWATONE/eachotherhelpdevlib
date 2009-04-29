@@ -10,6 +10,7 @@
 <%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v8.3" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dxhe" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>保单批改</title>
     <script type="text/javascript">
 	    $(document).ready(function() {
 	        //jQuery.noticeAdd({
@@ -61,13 +62,13 @@
                         <td style="width:100%;"> 
                             <asp:Panel ID="npbasicheader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                 <div style="padding:5px; cursor: pointer; vertical-align: middle;">
-                                    <div style="float: left;">基本数据</div>
-                                    <div style="float: left; margin-left: 20px;">
-                                        <asp:Label ID="lbl_npbasicheader" runat="server">(展开)</asp:Label>
-                                    </div>
-                                    <div style="float: right; vertical-align: middle;">
+                                    <div style="float: left; vertical-align: middle;">
                                         <asp:ImageButton ID="img_npbasicheader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
                                     </div>
+                                    <div style="float: left; margin-left:5px;">基本数据</div>
+                                    <div style="float: left; margin-left:5px;">
+                                        <asp:Label ID="lbl_npbasicheader" runat="server">(展开)</asp:Label>
+                                    </div>                                    
                                 </div>
                             </asp:Panel>                           
                             <asp:Panel ID="npbasicdetail" runat="server" CssClass="collapsePanel" Height="0">
@@ -191,8 +192,8 @@
                                 Collapsed="false"
                                 TextLabelID="lbl_npbasicheader"
                                 ImageControlID="img_npbasicheader"    
-                                ExpandedText="(隐藏)"
-                                CollapsedText="(展开)"
+                                ExpandedText="(展开)"
+                                CollapsedText="(隐藏)"
                                 ExpandedImage="~/images/collapse_blue.jpg"
                                 CollapsedImage="~/images/expand_blue.jpg"
                                 SuppressPostBack="true" />
@@ -202,13 +203,13 @@
                         <td style="width:100%;">
                             <asp:Panel ID="nppostilecontentHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                 <div style="padding:5px; cursor: pointer; vertical-align: middle;">
-                                    <div style="float: left;">批改内容</div>
-                                    <div style="float: left; margin-left: 20px;">
-                                        <asp:Label ID="lbl_nppostilecontentHeader" runat="server">(展开)</asp:Label>
-                                    </div>
-                                    <div style="float: right; vertical-align: middle;">
+                                    <div style="float:left; vertical-align: middle;">
                                         <asp:ImageButton ID="img_nppostilecontentHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
                                     </div>
+                                    <div style="float: left; margin-left:5px;">批改内容</div>
+                                    <div style="float: left; margin-left:5px;">
+                                        <asp:Label ID="lbl_nppostilecontentHeader" runat="server">(展开)</asp:Label>
+                                    </div>                                    
                                 </div>
                             </asp:Panel>  
                             <asp:Panel ID="nppostilecontentDetail" runat="server" CssClass="collapsePanel" Height="0">
@@ -304,8 +305,8 @@
                                 Collapsed="false"
                                 TextLabelID="lbl_nppostilecontentHeader"
                                 ImageControlID="img_nppostilecontentHeader"    
-                                ExpandedText="(隐藏)"
-                                CollapsedText="(展开)"
+                                ExpandedText="(展开)"
+                                CollapsedText="(隐藏)"
                                 ExpandedImage="~/images/collapse_blue.jpg"
                                 CollapsedImage="~/images/expand_blue.jpg"
                                 SuppressPostBack="true" />
@@ -315,13 +316,14 @@
                         <td style="width:100%;">
                             <asp:Panel ID="npOtherPolicyItemHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                 <div style="padding:5px; cursor: pointer; vertical-align: middle;">
-                                    <div style="float: left;">其它项目</div>
-                                    <div style="float: left; margin-left: 20px;">
-                                        <asp:Label ID="lbl_npOtherPolicyItemHeader" runat="server">(展开)</asp:Label>
-                                    </div>
-                                    <div style="float: right; vertical-align: middle;">
+                                    <div style="float:left; vertical-align: middle;">
                                         <asp:ImageButton ID="img_npOtherPolicyItemHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
                                     </div>
+                                    <div style="float: left; margin-left:5px;">其它项目</div>
+                                    <div style="float: left; margin-left:5px;">
+                                        <asp:Label ID="lbl_npOtherPolicyItemHeader" runat="server">(展开)</asp:Label>
+                                    </div>
+                                    
                                 </div>
                             </asp:Panel> 
                             <asp:Panel ID="npOtherPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
@@ -392,8 +394,8 @@
                                 Collapsed="false"
                                 TextLabelID="lbl_npOtherPolicyItemHeader"
                                 ImageControlID="img_npOtherPolicyItemHeader"    
-                                ExpandedText="(隐藏)"
-                                CollapsedText="(展开)"
+                                ExpandedText="(展开)"
+                                CollapsedText="(隐藏)"
                                 ExpandedImage="~/images/collapse_blue.jpg"
                                 CollapsedImage="~/images/expand_blue.jpg"
                                 SuppressPostBack="true" />
@@ -413,28 +415,29 @@
                                 <dxwgv:ASPxGridView ID="gridOutReinsure" ClientInstanceName="gridOutReinsure" runat="server" KeyFieldName="FID" Width="100%">
                                     <%-- BeginRegion Columns --%>
                                         <Columns>
-                                            <dxwgv:GridViewCommandColumn VisibleIndex="0">
-                                                <EditButton Visible="false" />
+                                            <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="false" VisibleIndex="0">
+                                                <NewButton Visible="true" />
+                                                <EditButton Visible="true" />
                                             </dxwgv:GridViewCommandColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="FID" Caption="序号" VisibleIndex="1">
+                                            <dxwgv:GridViewDataColumn FieldName="FID" Caption="序号" CellStyle-Wrap="false" VisibleIndex="1">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" VisibleIndex="2">
+                                            <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="false" VisibleIndex="2">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" VisibleIndex="3">
+                                            <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="false" VisibleIndex="3">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="保单号" VisibleIndex="4">
+                                            <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="保单号" CellStyle-Wrap="false" VisibleIndex="4">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="份额比率" VisibleIndex="5">
+                                            <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="份额比率" CellStyle-Wrap="false" VisibleIndex="5">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" VisibleIndex="6">
+                                            <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" CellStyle-Wrap="false" VisibleIndex="6">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="Poundage" Caption="手续费" VisibleIndex="7">
+                                            <dxwgv:GridViewDataColumn FieldName="Poundage" Caption="手续费" CellStyle-Wrap="false" VisibleIndex="7">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="Tax" Caption="税费" VisibleIndex="8">
+                                            <dxwgv:GridViewDataColumn FieldName="Tax" Caption="税费" CellStyle-Wrap="false" VisibleIndex="8">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率" VisibleIndex="9">
+                                            <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率" CellStyle-Wrap="false" VisibleIndex="9">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" VisibleIndex="10">
+                                            <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" CellStyle-Wrap="false" VisibleIndex="10">
                                             </dxwgv:GridViewDataColumn>
                                         </Columns>
                                     <%-- EndRegion --%>
@@ -457,28 +460,29 @@
                                 <dxwgv:ASPxGridView ID="gridInReinsure" ClientInstanceName="gridInReinsure" runat="server" KeyFieldName="FID" Width="100%">
                                     <%-- BeginRegion Columns --%>
                                         <Columns>
-                                            <dxwgv:GridViewCommandColumn VisibleIndex="0">
-                                                <EditButton Visible="false" />
+                                            <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="false"  VisibleIndex="0">
+                                                <NewButton Visible="true" />
+                                                <EditButton Visible="true" />
                                             </dxwgv:GridViewCommandColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="FID" Caption="序号" VisibleIndex="1">
+                                            <dxwgv:GridViewDataColumn FieldName="FID" Caption="序号" CellStyle-Wrap="false" VisibleIndex="1">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" VisibleIndex="2">
+                                            <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="false" VisibleIndex="2">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" VisibleIndex="3">
+                                            <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="false" VisibleIndex="3">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="保单号" VisibleIndex="4">
+                                            <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="保单号" CellStyle-Wrap="false" VisibleIndex="4">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="份额比率" VisibleIndex="5">
+                                            <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="份额比率" CellStyle-Wrap="false" VisibleIndex="5">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" VisibleIndex="6">
+                                            <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" CellStyle-Wrap="false" VisibleIndex="6">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="Poundage" Caption="手续费" VisibleIndex="7">
+                                            <dxwgv:GridViewDataColumn FieldName="Poundage" Caption="手续费" CellStyle-Wrap="false" VisibleIndex="7">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="Tax" Caption="税费" VisibleIndex="8">
+                                            <dxwgv:GridViewDataColumn FieldName="Tax" Caption="税费" CellStyle-Wrap="false" VisibleIndex="8">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率" VisibleIndex="9">
+                                            <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率" CellStyle-Wrap="false" VisibleIndex="9">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" VisibleIndex="10">
+                                            <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" CellStyle-Wrap="false" VisibleIndex="10">
                                             </dxwgv:GridViewDataColumn>
                                         </Columns>
                                     <%-- EndRegion --%>
@@ -510,22 +514,23 @@
                                 <dxwgv:ASPxGridView ID="gridTogether" ClientInstanceName="gridTogether" runat="server" KeyFieldName="FID" Width="100%">
                                     <%-- BeginRegion Columns --%>
                                         <Columns>
-                                            <dxwgv:GridViewCommandColumn VisibleIndex="0">
-                                                <EditButton Visible="false" />
+                                            <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="false" VisibleIndex="0">
+                                                <NewButton Visible="true" />
+                                                <EditButton Visible="true" />
                                             </dxwgv:GridViewCommandColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="FID" Caption="序号" VisibleIndex="1">
+                                            <dxwgv:GridViewDataColumn FieldName="FID" Caption="序号" CellStyle-Wrap="false" VisibleIndex="1">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" VisibleIndex="2">
+                                            <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="false" VisibleIndex="2">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" VisibleIndex="3">
+                                            <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="false" VisibleIndex="3">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="承保比例" VisibleIndex="4">
+                                            <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="承保比例" CellStyle-Wrap="false" VisibleIndex="4">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" VisibleIndex="5">
+                                            <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" CellStyle-Wrap="false" VisibleIndex="5">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率" VisibleIndex="6">
+                                            <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率" CellStyle-Wrap="false" VisibleIndex="6">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" VisibleIndex="7">
+                                            <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" CellStyle-Wrap="false" VisibleIndex="7">
                                             </dxwgv:GridViewDataColumn>
                                         </Columns>
                                     <%-- EndRegion --%>
@@ -547,18 +552,19 @@
                                 <dxwgv:ASPxGridView ID="gridPeriod" ClientInstanceName="gridPeriod" runat="server" KeyFieldName="PolPeriodId" Width="100%">
                                     <%-- BeginRegion Columns --%>
                                         <Columns>
-                                            <dxwgv:GridViewCommandColumn VisibleIndex="0">
-                                                <EditButton Visible="false" />
+                                            <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="false" VisibleIndex="0">
+                                                <NewButton Visible="true" />
+                                                <EditButton Visible="true" />
                                             </dxwgv:GridViewCommandColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="Period" Caption="期数" VisibleIndex="1">
+                                            <dxwgv:GridViewDataColumn FieldName="Period" Caption="期数" CellStyle-Wrap="false" VisibleIndex="1">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="PayDate" Caption="付款日期 " VisibleIndex="2">
+                                            <dxwgv:GridViewDataColumn FieldName="PayDate" Caption="付款日期 " CellStyle-Wrap="false" VisibleIndex="2">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="PayFee" Caption="保费金额" VisibleIndex="3">
+                                            <dxwgv:GridViewDataColumn FieldName="PayFee" Caption="保费金额" CellStyle-Wrap="false" VisibleIndex="3">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="FeeProcRate" Caption="经纪费率" VisibleIndex="4">
+                                            <dxwgv:GridViewDataColumn FieldName="FeeProcRate" Caption="经纪费率" CellStyle-Wrap="false" VisibleIndex="4">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="FeeProcFee" Caption="经纪费" VisibleIndex="5">
+                                            <dxwgv:GridViewDataColumn FieldName="FeeProcFee" Caption="经纪费" CellStyle-Wrap="false" VisibleIndex="5">
                                             </dxwgv:GridViewDataColumn>
                                         </Columns>
                                     <%-- EndRegion --%>

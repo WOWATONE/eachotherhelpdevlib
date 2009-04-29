@@ -9,6 +9,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>保单审核列表</title>
     <script type="text/javascript">
 	    $(document).ready(function() {
 	        //jQuery.noticeAdd({
