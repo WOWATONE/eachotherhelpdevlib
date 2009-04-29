@@ -10,6 +10,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>车险保单录入</title>
     <script type="text/javascript">
         $(document).ready(function() {
             //jQuery.noticeAdd({
@@ -46,12 +47,12 @@
                         <td style="width:100%;"> 
                             <asp:Panel ID="npbasicheader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                 <div style="padding:5px; cursor: pointer; vertical-align: middle;">
-                                    <div style="float: left;">基本信息</div>
-                                    <div style="float: left; margin-left: 20px;">
-                                        <asp:Label ID="lbl_npbasicheader" runat="server">(展开)</asp:Label>
-                                    </div>
-                                    <div style="float: right; vertical-align: middle;">
+                                    <div style="float:left; vertical-align: middle;">
                                         <asp:ImageButton ID="img_npbasicheader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
+                                    </div>
+                                    <div style="float: left; margin-left:5px;">基本信息</div>
+                                    <div style="float: left; margin-left:5px;">
+                                        <asp:Label ID="lbl_npbasicheader" runat="server">(展开)</asp:Label>
                                     </div>
                                 </div>
                             </asp:Panel>                           
@@ -143,8 +144,8 @@
                                 Collapsed="false"
                                 TextLabelID="lbl_npbasicheader"
                                 ImageControlID="img_npbasicheader"    
-                                ExpandedText="(隐藏)"
-                                CollapsedText="(展开)"
+                                ExpandedText="(展开)"
+                                CollapsedText="(隐藏)"
                                 ExpandedImage="~/images/collapse_blue.jpg"
                                 CollapsedImage="~/images/expand_blue.jpg"
                                 SuppressPostBack="true" />
@@ -154,13 +155,13 @@
                         <td style="width:100%;">
                             <asp:Panel ID="npvehicleheader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                 <div style="padding:5px; cursor: pointer; vertical-align: middle;">
-                                    <div style="float: left;">车辆信息</div>
-                                    <div style="float: left; margin-left: 20px;">
-                                        <asp:Label ID="lbl_npvehicleheader" runat="server">(展开)</asp:Label>
-                                    </div>
-                                    <div style="float: right; vertical-align: middle;">
+                                    <div style="float:left; vertical-align: middle;">
                                         <asp:ImageButton ID="img_npvehicleheader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
                                     </div>
+                                    <div style="float: left; margin-left:5px;">车辆信息</div>
+                                    <div style="float: left; margin-left:5px;">
+                                        <asp:Label ID="lbl_npvehicleheader" runat="server">(展开)</asp:Label>
+                                    </div>                                    
                                 </div>
                             </asp:Panel>
                             <asp:Panel ID="npvehicledetail" runat="server" CssClass="collapsePanel" Height="0">
@@ -214,8 +215,8 @@
                                 Collapsed="false"
                                 TextLabelID="lbl_npvehicleheader"
                                 ImageControlID="img_npvehicleheader"    
-                                ExpandedText="(隐藏)"
-                                CollapsedText="(展开)"
+                                ExpandedText="(展开)"
+                                CollapsedText="(隐藏)"
                                 ExpandedImage="~/images/collapse_blue.jpg"
                                 CollapsedImage="~/images/expand_blue.jpg"
                                 SuppressPostBack="true" />
@@ -225,12 +226,12 @@
                         <td style="width:100%;">
                             <asp:Panel ID="npGridPolicyItemHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                 <div style="padding:5px; cursor: pointer; vertical-align: middle;">
-                                    <div style="float: left;">保险信息</div>
-                                    <div style="float: left; margin-left: 20px;">
-                                        <asp:Label ID="lbl_npGridPolicyItem" runat="server">(展开)</asp:Label>
-                                    </div>
-                                    <div style="float: right; vertical-align: middle;">
+                                    <div style="float:left; vertical-align: middle;">
                                         <asp:ImageButton ID="img_npGridPolicyItem" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
+                                    </div>
+                                    <div style="float: left; margin-left:5px;">保险信息</div>
+                                    <div style="float: left; margin-left:5px;">
+                                        <asp:Label ID="lbl_npGridPolicyItem" runat="server">(展开)</asp:Label>
                                     </div>
                                 </div>
                             </asp:Panel>  
@@ -253,34 +254,27 @@
                                                      >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
-                                                                <dxwgv:GridViewCommandColumn VisibleIndex="0">
+                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="false" VisibleIndex="0">
                                                                     <NewButton Visible="True" />
                                                                     <EditButton Visible="true" />
                                                                     <DeleteButton Visible="true" />
                                                                 </dxwgv:GridViewCommandColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="ID" Caption="序号" VisibleIndex="1">
+                                                                <dxwgv:GridViewDataColumn FieldName="ID" Caption="序号" CellStyle-Wrap="false" VisibleIndex="1">
                                                                     <EditFormSettings VisibleIndex="0" />
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Code" Caption="保险金额" VisibleIndex="2">
+                                                                <dxwgv:GridViewDataColumn FieldName="Code" Caption="保险金额" CellStyle-Wrap="false" VisibleIndex="2">
                                                                     <EditFormSettings VisibleIndex="1" />
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="保费" VisibleIndex="3">
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="保费" CellStyle-Wrap="false" VisibleIndex="3">
                                                                     <EditFormSettings VisibleIndex="2" />
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Caption" Caption=" 备注" VisibleIndex="4">
+                                                                <dxwgv:GridViewDataColumn FieldName="Caption" Caption=" 备注" CellStyle-Wrap="false" VisibleIndex="4">
                                                                     <EditFormSettings VisibleIndex="3" />
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowAllRecords"/>
-                                                        <Settings ShowGroupPanel="false" />
-                                                        <SettingsText 
-                                                            CommandUpdate="确定" 
-                                                            CommandCancel="取消" 
-                                                            CommandDelete="删除" 
-                                                            CommandNew="新增" 
-                                                            CommandEdit="编辑"
-                                                            EmptyDataRow="没有数据" />
+                                                        <Settings ShowGroupPanel="false" />                                                        
                                                         <Templates>
                                                              <EditForm>                                                             
                                                              <div style="padding:4px 4px 3px 4px">
@@ -307,8 +301,8 @@
                                 Collapsed="false"
                                 TextLabelID="lbl_npGridPolicyItem"
                                 ImageControlID="img_npGridPolicyItem"    
-                                ExpandedText="(隐藏)"
-                                CollapsedText="(展开)"
+                                ExpandedText="(展开)"
+                                CollapsedText="(隐藏)"
                                 ExpandedImage="~/images/collapse_blue.jpg"
                                 CollapsedImage="~/images/expand_blue.jpg"
                                 SuppressPostBack="true" />
@@ -318,13 +312,13 @@
                         <td style="width:100%;">
                             <asp:Panel ID="npOtherPolicyItemHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                 <div style="padding:5px; cursor: pointer; vertical-align: middle;">
-                                    <div style="float: left;">其它项目</div>
-                                    <div style="float: left; margin-left: 20px;">
-                                        <asp:Label ID="lbl_npOtherPolicyItemHeader" runat="server">(展开)</asp:Label>
-                                    </div>
-                                    <div style="float: right; vertical-align: middle;">
+                                    <div style="float:left; vertical-align: middle;">
                                         <asp:ImageButton ID="img_npOtherPolicyItemHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
                                     </div>
+                                    <div style="float: left; margin-left:5px;">其它项目</div>
+                                    <div style="float: left; margin-left:5px;">
+                                        <asp:Label ID="lbl_npOtherPolicyItemHeader" runat="server">(展开)</asp:Label>
+                                    </div>                                    
                                 </div>
                             </asp:Panel> 
                             <asp:Panel ID="npOtherPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
@@ -504,8 +498,8 @@
                                 Collapsed="false"
                                 TextLabelID="lbl_npOtherPolicyItemHeader"
                                 ImageControlID="img_npOtherPolicyItemHeader"    
-                                ExpandedText="(隐藏)"
-                                CollapsedText="(展开)"
+                                ExpandedText="(展开)"
+                                CollapsedText="(隐藏)"
                                 ExpandedImage="~/images/collapse_blue.jpg"
                                 CollapsedImage="~/images/expand_blue.jpg"
                                 SuppressPostBack="true" />
