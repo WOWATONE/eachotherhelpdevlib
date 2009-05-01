@@ -59,13 +59,23 @@
                                             <dxnb:NavBarItem Text="业务咨询" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
-                                    <dxnb:NavBarGroup Text="收付结算" Expanded="false">
+                                    <dxnb:NavBarGroup Text="台帐" Expanded="false">
+                                        <Items>
+                                            <dxnb:NavBarItem Text="财产险经纪业务台帐" Name="inoutbalance/FeeNotice.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="财产险经纪批改业务" Name="inoutbalance/FeeCustomer.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="人身险经纪业务台帐" Name="inoutbalance/FeePayin.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="人身险经纪批改业务台帐" Name="inoutbalance/FeeProcess.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="再保险经纪业务台帐" Name="inoutbalance/FeeProcess.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保险经纪咨询业务台帐" Name="inoutbalance/FeeProcess.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保险经纪机构人员台帐" Name="inoutbalance/FeeProcess.aspx"></dxnb:NavBarItem>
+                                        </Items>
+                                    </dxnb:NavBarGroup>
+                                     <dxnb:NavBarGroup Text="收付结算" Expanded="false">
                                         <Items>
                                             <dxnb:NavBarItem Text="保费通知书" Name="inoutbalance/FeeNotice.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="客户收费" Name="inoutbalance/FeeCustomer.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="解付保费" Name="inoutbalance/FeePayin.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="经纪费结算" Name="inoutbalance/FeeProcess.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="台帐管理" Name="inoutbalance/SheetcolumnManager.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="产品设置" Expanded="false">
@@ -95,7 +105,8 @@
                                     <dxnb:NavBarGroup Text="消息提醒" Name="http://www.google.cn"></dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="综合查询" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="业绩报表" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="非车险保单综合查询" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="车险保单综合查询" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="预算管理" Expanded="false">
@@ -108,10 +119,16 @@
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="统计报表" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="业绩报表" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="结算报表" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="常规报表" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="理赔报表" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="分险种经纪业务统计" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保费、经纪费统计表" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="客户保费佣金统计表" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="客户保费结构统计" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="集团客户佣金结构统计" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="应收帐款明细" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保监会:经纪公司业务报表(按险种分类)" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保监会:经纪公司业务报表（按签单地分类）" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保监会:持证情况与学历情况表" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保险经纪会员公司业务统计表" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                 </Groups>
