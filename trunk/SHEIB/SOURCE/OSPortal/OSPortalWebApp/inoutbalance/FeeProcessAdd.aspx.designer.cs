@@ -11,7 +11,7 @@
 namespace OSPortalWebApp.inoutbalance {
     
     
-    public partial class FeeCustomerAdd {
+    public partial class FeeProcessAdd {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -131,24 +131,6 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.DropDownList ddlFeeType;
         
         /// <summary>
-        /// ddlCurCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCurCode;
-        
-        /// <summary>
-        /// txtchange control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtchange;
-        
-        /// <summary>
         /// txtlocalfee control.
         /// </summary>
         /// <remarks>
@@ -156,15 +138,6 @@ namespace OSPortalWebApp.inoutbalance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtlocalfee;
-        
-        /// <summary>
-        /// txtJInE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtJInE;
         
         /// <summary>
         /// txtAdjust control.

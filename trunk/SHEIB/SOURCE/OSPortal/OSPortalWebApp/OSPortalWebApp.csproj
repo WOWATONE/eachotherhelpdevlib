@@ -194,6 +194,13 @@
     <Compile Include="inoutbalance\FeePayin.aspx.designer.cs">
       <DependentUpon>FeePayin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="inoutbalance\FeePayinAdd.aspx.cs">
+      <DependentUpon>FeePayinAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeePayinAdd.aspx.designer.cs">
+      <DependentUpon>FeePayinAdd.aspx</DependentUpon>
+    </Compile>
     <Compile Include="inoutbalance\FeePayinInvoice.aspx.cs">
       <DependentUpon>FeePayinInvoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -207,6 +214,13 @@
     </Compile>
     <Compile Include="inoutbalance\FeeProcess.aspx.designer.cs">
       <DependentUpon>FeeProcess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inoutbalance\FeeProcessAdd.aspx.cs">
+      <DependentUpon>FeeProcessAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeeProcessAdd.aspx.designer.cs">
+      <DependentUpon>FeeProcessAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="inoutbalance\SheetcolumnManager.aspx.cs">
       <DependentUpon>SheetcolumnManager.aspx</DependentUpon>
@@ -2825,8 +2839,10 @@
     <Content Include="inoutbalance\FeeNotice.aspx" />
     <Content Include="inoutbalance\FeeNoticeAdd.aspx" />
     <Content Include="inoutbalance\FeePayin.aspx" />
+    <Content Include="inoutbalance\FeePayinAdd.aspx" />
     <Content Include="inoutbalance\FeePayinInvoice.aspx" />
     <Content Include="inoutbalance\FeeProcess.aspx" />
+    <Content Include="inoutbalance\FeeProcessAdd.aspx" />
     <Content Include="inoutbalance\SheetcolumnManager.aspx" />
     <Content Include="js\customdefinition.js" />
     <Content Include="schemasetting\DepartmentManager.aspx" />

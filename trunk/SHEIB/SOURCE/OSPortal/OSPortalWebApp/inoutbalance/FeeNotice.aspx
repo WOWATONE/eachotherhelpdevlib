@@ -62,8 +62,8 @@
                         <td style="height:40px; width:40%;">
                             <table style="margin:0px; padding:0px; width:100%; border:0px; text-align:right">
 				                        <tr>
-					                        <td style="width:40%; color:#0E5ED5;">当前位置：非车险保单录入</td>
-					                        <td style="width:60%;PADDING-RIGHT: 20px; text-align:right;color:#0E5ED5;">
+					                        <td style="width:100%;PADDING-RIGHT: 20px; text-align:right;color:#0E5ED5;">
+					                            当前位置：保费通知书&nbsp;&nbsp;
 					                            <asp:label id="LbUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
 						                        <label id="lblCurrentDate"></label>
 					                        </td>
