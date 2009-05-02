@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="FeeCustomerAdd.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeeCustomerAdd" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="FeeProcessAdd.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeeProcessAdd" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
@@ -11,7 +11,9 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>客户收费录入</title>
+    
+    
+    <title>经纪费结算录入</title>
     <script type="text/javascript">
         $(document).ready(function() {
             //jQuery.noticeAdd({
@@ -40,9 +42,9 @@
         
     </script>
     
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
 
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     <table style="width:100%">
@@ -79,32 +81,43 @@
                              >
                                 <%-- BeginRegion Columns --%>
                                     <Columns>
-                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" VisibleIndex="0">
+                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
                                             <NewButton Visible="True" />
                                             <EditButton Visible="true" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False" VisibleIndex="1">
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="本期应收保费(本)" CellStyle-Wrap="False"  VisibleIndex="2">
+                                        <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="本期应收保费(本)" CellStyle-Wrap="False">
                                             <EditFormSettings VisibleIndex="1" />
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="本期已收保费(本)" CellStyle-Wrap="False"  VisibleIndex="3">
+                                        <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="本期已收保费(本)" CellStyle-Wrap="False">
                                             <EditFormSettings VisibleIndex="2" />
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GettingFeeBase" Caption="本期实收保费" CellStyle-Wrap="False" VisibleIndex="4">
+                                        <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费比例" CellStyle-Wrap="False">
                                             <EditFormSettings VisibleIndex="3" />
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False" VisibleIndex="5">
+                                        
+                                        <dxwgv:GridViewDataColumn FieldName="StandardProcessFeeBase" Caption="本期应收经纪费(本)" CellStyle-Wrap="False">
                                             <EditFormSettings VisibleIndex="4" />
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种名称" CellStyle-Wrap="False" VisibleIndex="6">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CarrierId" Caption="保险公司" CellStyle-Wrap="False" VisibleIndex="7">
+                                        <dxwgv:GridViewDataColumn FieldName="GotProcessFee" Caption="本期已收经纪费(本)" CellStyle-Wrap="False">
                                             <EditFormSettings VisibleIndex="5" />
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="BranchId" Caption="分支机构" CellStyle-Wrap="False" VisibleIndex="8">
+                                        <dxwgv:GridViewDataColumn FieldName="GettingProcessFee" Caption="本期实收经纪费" CellStyle-Wrap="False">
                                             <EditFormSettings VisibleIndex="6" />
+                                        </dxwgv:GridViewDataColumn>
+                                        
+                                        <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">
+                                            <EditFormSettings VisibleIndex="7" />
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种名称" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="CarrierId" Caption="保险公司" CellStyle-Wrap="False">
+                                            <EditFormSettings VisibleIndex="8" />
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="BranchId" Caption="分支机构" CellStyle-Wrap="False">
+                                            <EditFormSettings VisibleIndex="9" />
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                 <%-- EndRegion --%>
@@ -174,45 +187,27 @@
                                                         <asp:ListItem Text="支票" Value="2"></asp:ListItem>
                                                     </asp:DropDownList>
                             </td>
-                            <td style="width:11%;text-align:right;">币种：</td>
+                            <td style="width:11%;text-align:right;">实收经纪费：</td>
                             <td style="width:20%;text-align:left;">
-                                <asp:DropDownList ID="ddlCurCode" runat="server">
-                                                        <asp:ListItem Text="人民币" Value="1"></asp:ListItem>
-                                                        <asp:ListItem Text="美元" Value="2"></asp:ListItem>
-                                                        <asp:ListItem Text="英镑" Value="3"></asp:ListItem>
-                                                    </asp:DropDownList>
-                            </td>                                  
-                        </tr> 
-                        <tr>
-                            <td style="width:11%;text-align:right;">汇率：</td>
-                            <td style="width:22%;text-align:left;">
-                                <asp:TextBox ID="txtchange" runat="server" Width="140px"></asp:TextBox>
-                            </td>
-                            <td style="width:11%;text-align:right;">实收保费：</td>
-                            <td style="width:22%;text-align:left;">
                                 <asp:TextBox ID="txtlocalfee" runat="server" Width="140px"></asp:TextBox>
-                            </td>
-                            <td style="width:11%;text-align:right;">实收金额：</td>
-                            <td style="width:20%;text-align:left;">
-                                <asp:TextBox ID="txtJInE" runat="server" Width="140px"></asp:TextBox>
-                            </td>                                  
+                            </td>                                 
                         </tr>
                         <tr>
                             <td style="width:11%;text-align:right;">金额调整：</td>
                             <td style="width:22%;text-align:left;">
                                 <asp:TextBox ID="txtAdjust" runat="server" Width="140px"></asp:TextBox>
                             </td>
-                            <td style="width:11%;text-align:right;">收款日期：</td>
+                            <td style="width:11%;text-align:right;">收取日期：</td>
                             <td style="width:22%;text-align:left;">
                                 <dxe:ASPxDateEdit ID="deGotDate" runat="server"></dxe:ASPxDateEdit> 
                             </td>
-                            <td style="width:11%;text-align:right;">解款日期：</td>
+                            <td style="width:11%;text-align:right;">开票日期：：</td>
                             <td style="width:20%;text-align:left;">
                                 <dxe:ASPxDateEdit ID="deReleaseDate" runat="server"></dxe:ASPxDateEdit>
                             </td>                                  
                         </tr>  
                         <tr>
-                            <td style="width:11%;text-align:right;">实解付保费：</td>
+                            <td style="width:11%;text-align:right;">开票金额：</td>
                             <td style="width:22%;text-align:left;">
                                 <asp:TextBox ID="txtRealFee" runat="server" Width="140px"></asp:TextBox>
                             </td>
@@ -255,6 +250,5 @@
                 </table>
                 
      </asp:Panel>
-    
-    
+
 </asp:Content>

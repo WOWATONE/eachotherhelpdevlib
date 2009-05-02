@@ -39,6 +39,9 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.Columns.Add("CurCode", typeof(string));
             _dtGrid.Columns.Add("Fee", typeof(double));
             _dtGrid.Columns.Add("FeeBase", typeof(double));
+            _dtGrid.Columns.Add("FeeAdjust", typeof(double));
+            _dtGrid.Columns.Add("AccountType", typeof(string));
+
             _dtGrid.Columns.Add("SerialNo", typeof(string));
             _dtGrid.Columns.Add("PolicyNo", typeof(string));
             _dtGrid.Columns.Add("Customer", typeof(string));
@@ -49,16 +52,19 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.Columns.Add("CarrierId", typeof(string));
             _dtGrid.Columns.Add("BranchId", typeof(string));
             _dtGrid.Columns.Add("ProdTypeID", typeof(string));
-            _dtGrid.Columns.Add("AccountTypeID", typeof(string));
             _dtGrid.Columns.Add("FeeRemark", typeof(string));
             _dtGrid.Columns.Add("CreateTime", typeof(DateTime));
+            _dtGrid.Columns.Add("FeeNoticeID", typeof(string));
+            _dtGrid.Columns.Add("EnterAccountID", typeof(string));
 
             _dtGrid.Rows.Add(new object[] { 
                 Guid.NewGuid(), 
-                "方式",
+                "现金",
                 "人民币",
                 1000,
                 1000,
+                10,
+                "代收",
                 "Sn001",
                 "PN001",
                 "王怡",
@@ -69,9 +75,10 @@ namespace OSPortalWebApp.inoutbalance
                 "平安",
                 "上海",
                 "寿险",
-                "现金",
                 "备注",
-                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1)
+                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                "1",
+                "1"
             });
 
         }
