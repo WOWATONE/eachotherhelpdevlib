@@ -65,22 +65,80 @@
                             </asp:Panel>                           
                             <asp:Panel ID="npSearchDetail" runat="server" CssClass="collapsePanel" Height="0">
                                        
-                                            <table>                                                                                                
+                                            
+                                            <table>
                                                 <tr>
-                                                    <td style="width:70px;text-align:right;"></td>
-                                                    <td style="width:200px;text-align:left;">
-                                                                                                               
-                                                    </td>
-                                                    <td style="width:20px;text-align:right;"></td>
+                                                    <td style="width:70px;text-align:right;">保单编号：</td>
                                                     <td style="width:180px;text-align:left;">
-                                                        
+                                                        <asp:TextBox ID="txtPolicyNo" runat="server" Width="175px"></asp:TextBox>
+                                                    </td>                                                    
+                                                    <td style="width:90px;text-align:right;">保单签发日期：</td>
+                                                    <td style="width:20px;text-align:right;"><asp:CheckBox runat="server" ID="chkChcek" /></td>
+                                                    <td style="width:80px;text-align:left;">
+                                                        <dxe:ASPxDateEdit ID="deCheckStartDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
-                                                    <td style="text-align:right;">
+                                                    <td style="width:20px;text-align:center;">至</td>
+                                                    <td style="width:80px;text-align:left;"> 
+                                                        <dxe:ASPxDateEdit ID="deCheckEndDate" runat="server"></dxe:ASPxDateEdit>                                                       
+                                                    </td>
+                                                    <td></td>                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td style="width:70px;text-align:right;">保险公司：</td>
+                                                    <td style="width:180px;text-align:left;">
+                                                        <asp:DropDownList ID="ddlCompany" runat="server">
+                                                            <asp:ListItem Text="平安保险" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="人寿保险" Value="2"></asp:ListItem>
+                                                            <asp:ListItem Text="泰康保险" Value="3"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>                                                    
+                                                    <td style="width:90px;text-align:right;">保费代收日期：</td>
+                                                    <td style="width:20px;text-align:right;"><asp:CheckBox runat="server" ID="chkBroker" /></td>
+                                                    <td style="width:80px;text-align:left;">
+                                                        <dxe:ASPxDateEdit ID="debrokerStartDate" runat="server"></dxe:ASPxDateEdit>
+                                                    </td>
+                                                    <td style="width:20px;text-align:center;">至</td>
+                                                    <td style="width:80px;text-align:left;"> 
+                                                        <dxe:ASPxDateEdit ID="deBrokerEndDate" runat="server"></dxe:ASPxDateEdit>                                                       
+                                                    </td>
+                                                    <td></td>                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td style="width:70px;text-align:right;">分支机构：</td>
+                                                    <td style="width:180px;text-align:left;">
+                                                        <asp:DropDownList ID="ddlbranch" runat="server">
+                                                            <asp:ListItem Text="平安1" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="平安2" Value="2"></asp:ListItem>
+                                                            <asp:ListItem Text="平安3" Value="3"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>                                                    
+                                                    <td style="width:90px;text-align:right;">保费解付日期：</td>
+                                                    <td style="width:20px;text-align:right;"><asp:CheckBox runat="server" ID="chkPay" /></td>
+                                                    <td style="width:80px;text-align:left;">
+                                                        <dxe:ASPxDateEdit ID="dePayStartDate" runat="server"></dxe:ASPxDateEdit>
+                                                    </td>
+                                                    <td style="width:20px;text-align:center;">至</td>
+                                                    <td style="width:80px;text-align:left;"> 
+                                                        <dxe:ASPxDateEdit ID="dePayEndDate" runat="server"></dxe:ASPxDateEdit>                                                       
+                                                    </td>
+                                                    <td></td>                                                    
+                                                </tr>                                               
+                                                <tr>
+                                                    <td style="width:70px;text-align:right;">保险险种：</td>
+                                                    <td style="width:180px;text-align:left;">
+                                                        <asp:DropDownList ID="ddlCategory" runat="server">
+                                                            <asp:ListItem Text="保险1" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="保险2" Value="2"></asp:ListItem>
+                                                            <asp:ListItem Text="保险3" Value="3"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td> 
+                                                    <td style="text-align:right;" colspan="6">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
                                                         <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />
                                                     </td>
                                                 </tr>                                          
                                             </table>
+                 
                  
                              </asp:Panel>
                              <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearch" runat="Server"

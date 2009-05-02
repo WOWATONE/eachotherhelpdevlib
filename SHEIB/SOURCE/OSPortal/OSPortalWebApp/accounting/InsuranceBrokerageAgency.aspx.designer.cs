@@ -77,58 +77,31 @@ namespace OSPortalWebApp.accounting {
         protected global::System.Web.UI.WebControls.TextBox txtPolicyNo;
         
         /// <summary>
-        /// ddlDeptId control.
+        /// chkChcek control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDeptId;
+        protected global::System.Web.UI.WebControls.CheckBox chkChcek;
         
         /// <summary>
-        /// ddlAccountTypeID control.
+        /// deCheckStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAccountTypeID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deCheckStartDate;
         
         /// <summary>
-        /// txtCustomerID control.
+        /// deCheckEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustomerID;
-        
-        /// <summary>
-        /// txtSalesID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSalesID;
-        
-        /// <summary>
-        /// imgpeoplesearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
-        
-        /// <summary>
-        /// txtSerialNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSerialNo;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deCheckEndDate;
         
         /// <summary>
         /// ddlCompany control.
@@ -140,13 +113,67 @@ namespace OSPortalWebApp.accounting {
         protected global::System.Web.UI.WebControls.DropDownList ddlCompany;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// chkBroker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.CheckBox chkBroker;
+        
+        /// <summary>
+        /// debrokerStartDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit debrokerStartDate;
+        
+        /// <summary>
+        /// deBrokerEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deBrokerEndDate;
+        
+        /// <summary>
+        /// ddlbranch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlbranch;
+        
+        /// <summary>
+        /// chkPay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkPay;
+        
+        /// <summary>
+        /// dePayStartDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dePayStartDate;
+        
+        /// <summary>
+        /// dePayEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dePayEndDate;
         
         /// <summary>
         /// ddlCategory control.
@@ -156,69 +183,6 @@ namespace OSPortalWebApp.accounting {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
-        
-        /// <summary>
-        /// ddlSourceTypeID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSourceTypeID;
-        
-        /// <summary>
-        /// ddlCheckState control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCheckState;
-        
-        /// <summary>
-        /// deGetStartDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deGetStartDate;
-        
-        /// <summary>
-        /// deGetEndDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deGetEndDate;
-        
-        /// <summary>
-        /// chkBack control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkBack;
-        
-        /// <summary>
-        /// deBackStartDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deBackStartDate;
-        
-        /// <summary>
-        /// deBackEndDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deBackEndDate;
         
         /// <summary>
         /// btnSearch control.
