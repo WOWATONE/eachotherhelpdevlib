@@ -194,7 +194,7 @@
             <dxtc:TabPage Name="CustAlert" Text="特别提醒">
                 <ContentCollection>
                     <dxw:ContentControl runat="server">
-                        <div style="width:99%; text-align:center;">
+                        <div style="width:100%; text-align:center;">
                             <table style="width:80%;">
                                 <tr>
                                     <td style="width:65%;text-align:left;">
@@ -297,24 +297,209 @@
             <dxtc:TabPage Name="CustContact" Text="联系人">
                 <ContentCollection>
                     <dxw:ContentControl runat="server">
+                        
+                        <table style="width:100%;">
+                            <tr>
+                                <td style="text-align:left;">
+                                    联系人记录：</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <dxwgv:ASPxGridView ID="gridContactItem" ClientInstanceName="gridContactItem" runat="server"
+                                    KeyFieldName="ContactID" Width="100%" AutoGenerateColumns="False" >
+                                    <Columns>
+                                        <dxwgv:GridViewDataTextColumn Caption="姓名" FieldName="ContactName" 
+                                            VisibleIndex="0">
+                                        </dxwgv:GridViewDataTextColumn>
+                                        <dxwgv:GridViewDataTextColumn Caption="性别" FieldName="Sex" VisibleIndex="1">
+                                        </dxwgv:GridViewDataTextColumn>
+                                        <dxwgv:GridViewDataTextColumn Caption="职位" FieldName="Position" 
+                                            VisibleIndex="2">
+                                        </dxwgv:GridViewDataTextColumn>
+                                        <dxwgv:GridViewDataTextColumn Caption="电话" FieldName="Tel" VisibleIndex="3">
+                                        </dxwgv:GridViewDataTextColumn>
+                                        <dxwgv:GridViewDataTextColumn Caption="传真" FieldName="Fax" VisibleIndex="4">
+                                        </dxwgv:GridViewDataTextColumn>
+                                        <dxwgv:GridViewDataTextColumn Caption="手机" FieldName="MobilePhone" 
+                                            VisibleIndex="5">
+                                        </dxwgv:GridViewDataTextColumn>
+                                        <dxwgv:GridViewDataTextColumn Caption="电子邮件" FieldName="Email" VisibleIndex="6">
+                                        </dxwgv:GridViewDataTextColumn>
+                                    </Columns>
+                                    <SettingsPager Mode="ShowAllRecords"/>
+                                    <Settings ShowGroupPanel="false" />
+                                    </dxwgv:ASPxGridView>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:right;">
+                                    <asp:Button ID="btnAddContant" runat="server" Text="新增" CssClass="input_2" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <asp:Button ID="btnEditContant" runat="server" Text="修改" CssClass="input_2" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <asp:Button ID="btnDeleteContant" runat="server" CssClass="input_2" Text="删除" />
+                                </td>
+                            </tr>
+                        </table>
+                        
                     </dxw:ContentControl>
                 </ContentCollection>
             </dxtc:TabPage>
             <dxtc:TabPage Name="PtFollow" Text="销售跟进">
                 <ContentCollection>
                     <dxw:ContentControl runat="server">
+                        <table style="width:100%"> 
+                        <tr>
+                            <td style="text-align:left;">
+                                销售跟进记录：</td>
+                        </tr>
+                        <tr>
+                            <td> 
+                                <dxwgv:ASPxGridView ID="gridCustomerPtItem" ClientInstanceName="gridCustomerPtItem" runat="server"
+                                KeyFieldName="FollowID" Width="100%" AutoGenerateColumns="False" >
+                                    <Columns>
+                                        <dxwgv:GridViewDataTextColumn Caption="FollowID" FieldName="FollowID" 
+                                            VisibleIndex="0" Visible="False">
+                                        </dxwgv:GridViewDataTextColumn>
+                                        <dxwgv:GridViewDataTextColumn Caption="跟进日期" FieldName="FollowDate" 
+                                            VisibleIndex="0">
+                                        </dxwgv:GridViewDataTextColumn>
+                                        <dxwgv:GridViewDataTextColumn Caption="跟进类型" FieldName="FollowType" 
+                                            VisibleIndex="1">
+                                        </dxwgv:GridViewDataTextColumn>
+                                        <dxwgv:GridViewDataTextColumn Caption="跟进程度" FieldName="FollowStage" 
+                                            VisibleIndex="2">
+                                        </dxwgv:GridViewDataTextColumn>
+                                        <dxwgv:GridViewDataTextColumn Caption="跟进内容" FieldName="FollowMemo" 
+                                            VisibleIndex="3" Width="50%">
+                                        </dxwgv:GridViewDataTextColumn>
+                                    </Columns>
+                                    <SettingsPager Mode="ShowAllRecords"/>
+                                    <Settings ShowGroupPanel="false" />
+                                </dxwgv:ASPxGridView>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:right;">
+                                <asp:Button ID="btnAddPt" runat="server" Text="新增" CssClass="input_2" />
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:Button ID="btnEditPt" runat="server" Text="修改" CssClass="input_2" />
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <asp:Button ID="btnDeletePt" runat="server" CssClass="input_2" Text="删除" />
+                            </td>
+                        </tr>
+                    </table>
                     </dxw:ContentControl>
                 </ContentCollection>
             </dxtc:TabPage>
             <dxtc:TabPage Name="NotifyClaim" Text="理赔记录">
                 <ContentCollection>
                     <dxw:ContentControl runat="server">
+                        
+                        <table style="width:100%">
+                            <tr>
+                                <td>
+                                    <dxwgv:ASPxGridView ID="gridNotifyItem" ClientInstanceName="gridNotifyItem" runat="server"
+                                     KeyFieldName="NotifyID" Width="100%" AutoGenerateColumns="False" >
+                                        <Columns>
+                                            <dxwgv:GridViewDataTextColumn Caption="理赔单号" FieldName="NotifyID" 
+                                                VisibleIndex="0">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="保单编号" FieldName="PolicyID" 
+                                                VisibleIndex="1">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="保险公司" FieldName="Carrier" 
+                                                VisibleIndex="2">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="险种名称" FieldName="ProdTypeName" 
+                                                VisibleIndex="3">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="投保客户" FieldName="CustName" 
+                                                VisibleIndex="4">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="主标的值" FieldName="MainTarget" 
+                                                VisibleIndex="5">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="次标的值" FieldName="SubTarget" 
+                                                VisibleIndex="6">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="起保日期" FieldName="StartDate" 
+                                                VisibleIndex="7">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="报案日" FieldName="NotifyTime" 
+                                                VisibleIndex="8">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="上报金额" FieldName="NotifyLossFee" 
+                                                VisibleIndex="9">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="赔付比例" FieldName="LossRation" 
+                                                VisibleIndex="10">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="实赔金额" FieldName="LastPayFee" 
+                                                VisibleIndex="11">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="结案日" FieldName="CaseEndTime" 
+                                                VisibleIndex="12">
+                                            </dxwgv:GridViewDataTextColumn>
+                                        </Columns>
+                                        <SettingsPager Mode="ShowAllRecords"/>
+                                        <Settings ShowGroupPanel="false" />
+                                    </dxwgv:ASPxGridView>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:right;">
+                                    <asp:Button ID="btnNotifyContent" runat="server" Text="理赔内容" CssClass="input_2" />
+                                </td>
+                            </tr>
+                        </table>
+                        
                     </dxw:ContentControl>
                 </ContentCollection>
             </dxtc:TabPage>
             <dxtc:TabPage Name="SignPremium" Text="签单记录">
                 <ContentCollection>
                     <dxw:ContentControl runat="server">
+                        <table style="width:100%">
+                            <tr>
+                                <td>
+                                    <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
+                                     KeyFieldName="FollowID" Width="100%" AutoGenerateColumns="False" >
+                                        <Columns>
+                                            <dxwgv:GridViewDataTextColumn Caption="序号" FieldName="PolicyID" 
+                                                VisibleIndex="0">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="起保日期" FieldName="StartDate" 
+                                                VisibleIndex="1">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="终止日期" FieldName="EndDate" 
+                                                VisibleIndex="2">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="保单号" FieldName="PolicyNo" 
+                                                VisibleIndex="3">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="险种" FieldName="ProdType" 
+                                                VisibleIndex="4">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="保费" FieldName="Premium" VisibleIndex="5">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="保险公司及分支机构" FieldName="CarrierBranch" 
+                                                VisibleIndex="6">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="客户经理" FieldName="Sales" VisibleIndex="7">
+                                            </dxwgv:GridViewDataTextColumn>
+                                        </Columns>
+                                        <SettingsPager Mode="ShowAllRecords"/>
+                                        <Settings ShowGroupPanel="true" />
+                                    </dxwgv:ASPxGridView>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:right;">
+                                    <asp:Button ID="btnPolicyContent" runat="server" Text="保单内容" CssClass="input_2" />
+                                </td>
+                            </tr>
+                        </table>
                     </dxw:ContentControl>
                 </ContentCollection>
             </dxtc:TabPage>

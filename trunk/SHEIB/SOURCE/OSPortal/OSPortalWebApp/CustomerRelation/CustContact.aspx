@@ -9,25 +9,6 @@
     <table style="width:99%">
         <tr>
             <td style="width:100%;">
-                <asp:Panel ID="npoperation" runat="server" CssClass="allborderPanel" Height="25px"> 
-                    <table style="width:100%">
-                        <tr>
-                            <td style="text-align:left;">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnadd" runat="server" CssClass="input_2" Text="添加" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btndelete" runat="server" Text="删除" CssClass="input_2" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnprint" runat="server" Text="打印" CssClass="input_2" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnexport" runat="server" CssClass="input_2" Text="导出" />
-                            </td>  
-                            <td style="width:20px;text-align:left;">
-                                &nbsp;
-                            </td>                                                                  
-                        </tr>
-                    </table>
-                </asp:Panel>
                 <asp:Panel ID="npsearch" runat="server" CssClass="allborderPanel">
                     <table style="width:100%">
                         <tr>
@@ -59,7 +40,7 @@
                     <table style="width:100%"> 
                         <tr>
                             <td>
-                                <dxwgv:ASPxGridView ID="gridContactItem" name="gridContactItem" runat="server"
+                                <dxwgv:ASPxGridView ID="gridContactItem" ClientInstanceName="gridContactItem" runat="server"
                                 KeyFieldName="ContactID" Width="100%" AutoGenerateColumns="False" >
                                     <Columns>
                                         <dxwgv:GridViewDataTextColumn Caption="姓名" FieldName="ContactName" 

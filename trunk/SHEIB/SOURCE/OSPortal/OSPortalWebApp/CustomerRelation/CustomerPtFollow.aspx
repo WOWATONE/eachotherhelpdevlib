@@ -10,31 +10,12 @@
     <table style="width:99%">
         <tr>
             <td style="width:100%;">
-                <asp:Panel ID="npoperation" runat="server" CssClass="allborderPanel" Height="25px"> 
-                    <table style="width:100%">
-                        <tr>
-                            <td style="text-align:left;">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnadd" runat="server" CssClass="input_2" Text="添加" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btndelete" runat="server" Text="删除" CssClass="input_2" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnprint" runat="server" Text="打印" CssClass="input_2" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnexport" runat="server" CssClass="input_2" Text="导出" />
-                            </td>  
-                            <td style="width:20px;text-align:left;">
-                                &nbsp;
-                            </td>                                                                  
-                        </tr>
-                    </table>
-                </asp:Panel>
                 <asp:Panel ID="npsearch" runat="server" CssClass="allborderPanel">
                     <table style="width:100%">
                         <tr>
                             <td style="width:8%;text-align:right;">客户名称：</td>
                             <td style="width:30%;text-align:left;"><asp:TextBox ID="txtCustName" runat="server" Width="200px"></asp:TextBox></td>
-                            <td style="width:8%;text-align:right;">跟进内容：</td>
+                            <td style="width:8%;text-align:right;">跟进内容<br />关键字：</td>
                             <td rowspan="3" style="width:54%;text-align:left;">
                                 <asp:TextBox ID="txtFollowMemo" runat="server" TextMode="MultiLine" 
                                     style="width:100%;" Rows="8"></asp:TextBox></td>
@@ -78,9 +59,12 @@
                     <table style="width:100%"> 
                         <tr>
                             <td> 
-                                <dxwgv:ASPxGridView ID="gridCustomerItem" ClientInstanceName="gridCustomerItem" runat="server"
+                                <dxwgv:ASPxGridView ID="gridCustomerPtItem" ClientInstanceName="gridCustomerPtItem" runat="server"
                                 KeyFieldName="FollowID" Width="100%" AutoGenerateColumns="False" >
                                     <Columns>
+                                        <dxwgv:GridViewDataTextColumn Caption="FollowID" FieldName="FollowID" 
+                                            VisibleIndex="0" Visible="False">
+                                        </dxwgv:GridViewDataTextColumn>
                                         <dxwgv:GridViewDataTextColumn Caption="跟进日期" FieldName="FollowDate" 
                                             VisibleIndex="0">
                                         </dxwgv:GridViewDataTextColumn>

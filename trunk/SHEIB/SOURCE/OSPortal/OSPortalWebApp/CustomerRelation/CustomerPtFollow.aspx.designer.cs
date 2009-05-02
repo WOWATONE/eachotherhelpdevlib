@@ -23,51 +23,6 @@ namespace OSPortalWebApp.CustomerRelation {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
-        /// npoperation 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npoperation;
-        
-        /// <summary>
-        /// btnadd 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnadd;
-        
-        /// <summary>
-        /// btndelete 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btndelete;
-        
-        /// <summary>
-        /// btnprint 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnprint;
-        
-        /// <summary>
-        /// btnexport 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnexport;
-        
-        /// <summary>
         /// npsearch 控件。
         /// </summary>
         /// <remarks>
@@ -167,12 +122,12 @@ namespace OSPortalWebApp.CustomerRelation {
         protected global::System.Web.UI.WebControls.Panel npfollowdetail;
         
         /// <summary>
-        /// gridCustomerItem 控件。
+        /// gridCustomerPtItem 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridCustomerItem;
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridCustomerPtItem;
     }
 }
