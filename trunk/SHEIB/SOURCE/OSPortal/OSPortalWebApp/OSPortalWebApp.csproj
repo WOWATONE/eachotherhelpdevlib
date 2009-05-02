@@ -93,6 +93,55 @@
     <Content Include="xml\Demos.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="accounting\InsuranceBrokerageAgency.aspx.cs">
+      <DependentUpon>InsuranceBrokerageAgency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="accounting\InsuranceBrokerageAgency.aspx.designer.cs">
+      <DependentUpon>InsuranceBrokerageAgency.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="accounting\InsuranceBrokerageConsultingService.aspx.cs">
+      <DependentUpon>InsuranceBrokerageConsultingService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="accounting\InsuranceBrokerageConsultingService.aspx.designer.cs">
+      <DependentUpon>InsuranceBrokerageConsultingService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="accounting\LifeBrokerageBusiness.aspx.cs">
+      <DependentUpon>LifeBrokerageBusiness.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="accounting\LifeBrokerageBusiness.aspx.designer.cs">
+      <DependentUpon>LifeBrokerageBusiness.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="accounting\LifeBrokerageMarkBusiness.aspx.cs">
+      <DependentUpon>LifeBrokerageMarkBusiness.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="accounting\LifeBrokerageMarkBusiness.aspx.designer.cs">
+      <DependentUpon>LifeBrokerageMarkBusiness.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="accounting\PropertyBrokerageBusiness.aspx.cs">
+      <DependentUpon>PropertyBrokerageBusiness.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="accounting\PropertyBrokerageBusiness.aspx.designer.cs">
+      <DependentUpon>PropertyBrokerageBusiness.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="accounting\PropertyBrokerageMarkBusiness.aspx.cs">
+      <DependentUpon>PropertyBrokerageMarkBusiness.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="accounting\PropertyBrokerageMarkBusiness.aspx.designer.cs">
+      <DependentUpon>PropertyBrokerageMarkBusiness.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="accounting\ReinsuranceBrokerageBusiness.aspx.cs">
+      <DependentUpon>ReinsuranceBrokerageBusiness.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="accounting\ReinsuranceBrokerageBusiness.aspx.designer.cs">
+      <DependentUpon>ReinsuranceBrokerageBusiness.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Basecls\authenticationbasepage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -2829,6 +2878,13 @@
     <Content Include="otherinsurance\PolicyAlterList.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="accounting\InsuranceBrokerageAgency.aspx" />
+    <Content Include="accounting\InsuranceBrokerageConsultingService.aspx" />
+    <Content Include="accounting\LifeBrokerageBusiness.aspx" />
+    <Content Include="accounting\LifeBrokerageMarkBusiness.aspx" />
+    <Content Include="accounting\PropertyBrokerageBusiness.aspx" />
+    <Content Include="accounting\PropertyBrokerageMarkBusiness.aspx" />
+    <Content Include="accounting\ReinsuranceBrokerageBusiness.aspx" />
     <Content Include="CustomerRelation\AlertService.aspx" />
     <Content Include="CustomerRelation\AreaSetting.aspx" />
     <Content Include="CustomerRelation\Customer.aspx" />

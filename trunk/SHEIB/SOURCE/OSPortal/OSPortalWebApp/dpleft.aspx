@@ -61,13 +61,13 @@
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="台帐" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="财产险经纪业务台帐" Name="inoutbalance/FeeNotice.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="财产险经纪批改业务" Name="inoutbalance/FeeCustomer.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="人身险经纪业务台帐" Name="inoutbalance/FeePayin.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="人身险经纪批改业务台帐" Name="inoutbalance/FeeProcess.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="再保险经纪业务台帐" Name="inoutbalance/FeeProcess.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保险经纪咨询业务台帐" Name="inoutbalance/FeeProcess.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保险经纪机构人员台帐" Name="inoutbalance/FeeProcess.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="财产险经纪业务台帐" Name="accounting/PropertyBrokerageBusiness.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="财产险经纪批改业务" Name="accounting/PropertyBrokerageMarkBusiness.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="人身险经纪业务台帐" Name="accounting/LifeBrokerageBusiness.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="人身险经纪批改业务台帐" Name="accounting/LifeBrokerageMarkBusiness.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="再保险经纪业务台帐" Name="accounting/ReinsuranceBrokerageBusiness.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保险经纪咨询业务台帐" Name="accounting/InsuranceBrokerageConsultingService.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保险经纪机构人员台帐" Name="accounting/InsuranceBrokerageAgency.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                      <dxnb:NavBarGroup Text="收付结算" Expanded="false">
