@@ -80,9 +80,9 @@
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="产品设置" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="保险公司" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="分支机构" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="险种定义" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保险公司" Name="ProductSetup/CarrierList.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="分支机构" Name="ProductSetup/BranchList.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="险种定义" Name="ProductSetup/ProductTypeList.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="标的定义" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
