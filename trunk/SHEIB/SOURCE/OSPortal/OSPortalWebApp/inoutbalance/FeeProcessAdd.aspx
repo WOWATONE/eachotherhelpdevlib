@@ -43,6 +43,7 @@
         function imgSearchClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=450px;center=yes;help=no";
             window.showModalDialog("FeeCustomerPolicySelect.aspx", self, myArguments);
+            gridPolicyItem.PerformCallback('');
         }
         
     </script>
@@ -69,11 +70,16 @@
                 <asp:Panel ID="npGridPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">                        
                  <table style="width:100%">
                     <tr>
+                        <td style="width:10%;text-align:right;">
+                            <dxe:ASPxButton runat="server" ID="btnAddPolicy" AutoPostBack="false" Text="添加保单">
+                                <ClientSideEvents Click="imgSearchClick" />
+                            </dxe:ASPxButton>
+                        </td>
                         <td style="width:12%;text-align:right;">流水号：</td>  
-                        <td style="width:88%;text-align:left;">001031</td>                                              
+                        <td style="width:78%;text-align:left;">001031</td>                                              
                     </tr> 
                     <tr>
-                        <td colspan="2">
+                        <td colspan="3">
                             <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" 
                             DataSourceID=""
                             KeyFieldName="PolicyNo" Width="100%" AutoGenerateColumns="False" 
@@ -87,7 +93,6 @@
                                 <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
-                                            <NewButton Visible="True" />
                                             <EditButton Visible="true" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
@@ -135,8 +140,7 @@
                                             <tr>
                                                 <td style="white-space:nowrap; text-align:right;">保单编号:</td>
                                                 <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridPolicyNo" Text='<%# Eval("PolicyNo") %>'  ReadOnly="true"></asp:TextBox>
-                                                    <img runat="server" id="imgpeoplesearch" onclick="imgSearchClick();" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" />
+                                                    <asp:TextBox runat="server" ID="txtGridPolicyNo" Text='<%# Eval("PolicyNo") %>'  Enabled="false"></asp:TextBox>
                                                 </td>
                                                 <td style="white-space:nowrap; text-align:right;">本期应收保费(本):</td>
                                                 <td style="text-align:left;">
@@ -166,27 +170,27 @@
                                             <tr>
                                                 <td style="white-space:nowrap; text-align:right;">本期实收经纪费:</td>
                                                 <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridGettingProcessFee" Text='<%# Eval("GettingProcessFee") %>' ReadOnly="true"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txtGridGettingProcessFee" Text='<%# Eval("GettingProcessFee") %>' Enabled="false"></asp:TextBox>
                                                 </td>
                                                 <td style="white-space:nowrap; text-align:right;">险种名称:</td>
                                                 <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridProdTypeID" Text='<%# Eval("ProdTypeID") %>' ReadOnly="true"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txtGridProdTypeID" Text='<%# Eval("ProdTypeID") %>' Enabled="false"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="white-space:nowrap; text-align:right;">保险公司:</td>
                                                 <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridCarrierId" Text='<%# Eval("CarrierId") %>' ReadOnly="true"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txtGridCarrierId" Text='<%# Eval("CarrierId") %>' Enabled="false"></asp:TextBox>
                                                 </td>
                                                 <td style="white-space:nowrap; text-align:right;">分支机构:</td>
                                                 <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridBranchId" Text='<%# Eval("BranchId") %>' ReadOnly="true"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txtGridBranchId" Text='<%# Eval("BranchId") %>' Enabled="false"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr>                                                
                                                 <td style="white-space:nowrap; text-align:right;">投保客户:</td>
                                                 <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridCustomerID" Text='<%# Eval("CustomerID") %>' ReadOnly="true"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txtGridCustomerID" Text='<%# Eval("CustomerID") %>' Enabled="false"></asp:TextBox>
                                                 </td>
                                                 <td></td>
                                                 <td></td>
