@@ -50,7 +50,7 @@
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="客户理赔" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="理赔登记" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="理赔登记" Name="CustomerClaim/NotifyClaimList.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="理赔资料管理" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
