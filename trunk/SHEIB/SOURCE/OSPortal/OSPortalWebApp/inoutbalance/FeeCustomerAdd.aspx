@@ -113,7 +113,55 @@
                                 <Templates>
                                      <EditForm>                                                             
                                      <div style="padding:4px 4px 3px 4px">
-                                        <dxwgv:ASPxGridViewTemplateReplacement ID="Editors" ReplacementType="EditFormEditors" runat="server"></dxwgv:ASPxGridViewTemplateReplacement>
+                                        <table>
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align:right;">保单编号:</td>
+                                                <td style="text-align:left;">
+                                                    <asp:TextBox runat="server" ID="txtGridPolicyNo" Text='<%# Eval("PolicyNo") %>'  ReadOnly="true"></asp:TextBox>
+                                                    <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" />
+                                                    <dxpc:ASPxPopupControl ID="popuppanelpeoplesearch" runat="server" 
+                                                        EnableClientSideAPI="True" AllowDragging="False" PopupHorizontalAlign="Center" 
+                                                        HeaderText="选择保单"
+                                                        Width="450px" Height="400px" ContentUrl="FeeCustomerPolicySelect.aspx" 
+                                                        EnableTheming="true"  PopupElementID="imgpeoplesearch"
+                                                        AllowResize="false" Modal="true">
+                                                        <Border BorderWidth="1px" />
+                                                     </dxpc:ASPxPopupControl>
+                                                </td>
+                                                <td style="white-space:nowrap; text-align:right;">本期应收保费(本):</td>
+                                                <td style="text-align:left;">
+                                                    <asp:TextBox runat="server" ID="txtGridGotFeeBase" Text='<%# Eval("GotFeeBase") %>' ></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align:right;">本期实收保费:</td>
+                                                <td style="text-align:left;">
+                                                    <asp:TextBox runat="server" ID="txtGridGettingFeeBase" Text='<%# Eval("GettingFeeBase") %>' ></asp:TextBox>
+                                                </td>
+                                                <td style="white-space:nowrap; text-align:right;">投保客户:</td>
+                                                <td style="text-align:left;">
+                                                    <asp:TextBox runat="server" ID="txtGridCustomerID" Text='<%# Eval("CustomerID") %>' ReadOnly="true"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align:right;">险种名称:</td>
+                                                <td style="text-align:left;">
+                                                    <asp:TextBox runat="server" ID="txtGridProdTypeID" Text='<%# Eval("ProdTypeID") %>' ReadOnly="true"></asp:TextBox>
+                                                </td>
+                                                <td style="white-space:nowrap; text-align:right;">保险公司:</td>
+                                                <td style="text-align:left;">
+                                                    <asp:TextBox runat="server" ID="txtGridCarrierId" Text='<%# Eval("CarrierId") %>' ReadOnly="true"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align:right;">分支机构:</td>
+                                                <td style="text-align:left;">
+                                                    <asp:TextBox runat="server" ID="txtGridBranchId" Text='<%# Eval("BranchId") %>' ReadOnly="true"></asp:TextBox>
+                                                </td>
+                                                <td style="white-space:nowrap; text-align:right;"></td>
+                                                <td style="text-align:left;"></td>
+                                            </tr>
+                                        </table>                                        
                                      </div>
                                      <div style="text-align:right; padding:2px 2px 2px 2px">
                                          <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server">
