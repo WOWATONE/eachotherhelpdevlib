@@ -168,7 +168,78 @@
                             <asp:Panel ID="npSearchResultDetail" runat="server" CssClass="collapsePanel" Height="0">
                                         <table style="width:100%">
                                            <tr>
-                                                <td>                                                   
+                                                <td>  
+                                                    <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server" 
+                                                    KeyFieldName="FeeId" AutoGenerateColumns="False" 
+                                                    Settings-ShowFooter="true" Width="100%" 
+                                                    SettingsPager-AlwaysShowPager="true" 
+                                                    OnRowDeleting="gridSearchResult_RowDeleting" 
+                                                    OnRowDeleted="gridSearchResult_RowDeleted"
+                                                    >
+                                                        <%-- BeginRegion Columns --%>
+                                                            <Columns>
+                                                                <dxwgv:GridViewCommandColumn Visible="false" Caption="&nbsp;" CellStyle-Wrap="False" >
+                                                                    <NewButton Visible="False" />
+                                                                    <EditButton Visible="false" />                                                                    
+                                                                    <DeleteButton Visible="false" />                                                   
+                                                                </dxwgv:GridViewCommandColumn>                                                                
+                                                                <dxwgv:GridViewDataColumn FieldName="Field1" Caption="产险" CellStyle-Wrap="False">                                                                    
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field2" Caption="业务序号" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn> 
+                                                                <dxwgv:GridViewDataColumn FieldName="Field3" Caption="机构代码" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field4" Caption="保单号" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>   
+                                                                <dxwgv:GridViewDataColumn FieldName="Field5" Caption="保险公司" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field6" Caption="投保人" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field7" Caption="被保险人" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field8" Caption="保单签发日" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field9" Caption="保单生效日" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field10" Caption="险种类别" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field11" Caption="保费" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field12" Caption="保费代收日" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field13" Caption="保费解付日" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field14" Caption="保费解付方" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field15" Caption="业务员" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field16" Caption="经纪费率" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field17" Caption="经纪费" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field18" Caption="收取时间(经)" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field19" Caption="发票凭证" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field20" Caption="业务员佣金" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field21" Caption="领取时间(业佣)" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field22" Caption="协作单位" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field23" Caption="协作费用" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field24" Caption="支付方式(协)" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Field25" Caption="支付时间(协)" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                            </Columns>
+                                                        <%-- EndRegion --%>
+                                                        <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" Summary-Text="第{0}页,共{1}页" />
+                                                        <Settings ShowGroupPanel="false" />
+                                                        <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
+                                                        
+                                                    </dxwgv:ASPxGridView>                                                 
                                                 </td>
                                             </tr>
                                         </table>
