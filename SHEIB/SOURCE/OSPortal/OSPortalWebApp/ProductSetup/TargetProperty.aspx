@@ -13,13 +13,13 @@
         {
             if(value == 2)
             { 
-                document.getElementById("trEnumTypeNum").style.display = "none";
-                document.getElementById("trgridSearchResult").style.display = "none";
+                document.getElementById("trEnumTypeNum").style.display = "";
+                document.getElementById("trgridSearchResult").style.display = "";
             }
             else
             {
-                document.getElementById("trEnumTypeNum").style.display = "";
-                document.getElementById("trgridSearchResult").style.display = "";
+                document.getElementById("trEnumTypeNum").style.display = "none";
+                document.getElementById("trgridSearchResult").style.display = "none";
             }
         }
         
