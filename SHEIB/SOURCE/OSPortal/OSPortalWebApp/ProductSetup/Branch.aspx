@@ -6,12 +6,6 @@
 <%@ Register assembly="DevExpress.Web.v8.3" namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>保险公司分支机构</title>
-        <style type="text/css">
-            .style1
-            {
-                width: 100%;
-            }
-        </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
