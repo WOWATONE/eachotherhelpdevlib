@@ -74,7 +74,7 @@
                                 <td style="width:10px;">
                                     &nbsp;</td>
                             </tr>
-                            <tr id="trEnumTypeNum">
+                            <tr id="trEnumTypeNum" style="display:none;">
                                 <td style="width:10px;">
                                     &nbsp;</td>
                                 <td colspan="2">
@@ -82,7 +82,7 @@
                                 <td style="width:10px;">
                                     &nbsp;</td>
                             </tr>
-                            <tr id="trgridSearchResult">
+                            <tr id="trgridSearchResult" style="display:none;">
                                 <td style="width:10px;">
                                     &nbsp;</td>
                                 <td colspan="2">
