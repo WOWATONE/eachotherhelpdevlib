@@ -56,7 +56,7 @@
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="业务咨询" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="业务咨询" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="业务咨询" Name="BusinessConsult/BusinessConsultList.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="台帐" Expanded="false">
