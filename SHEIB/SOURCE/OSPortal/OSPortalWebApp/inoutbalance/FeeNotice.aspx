@@ -86,44 +86,40 @@
                                 </div>
                             </asp:Panel>                           
                             <asp:Panel ID="npSearchDetail" runat="server" CssClass="collapsePanel" Height="0">
-                                <table>
-                                    <tr>
-                                        <td>                                        
-                                            <table>
+                                <table style="width:100%;">
                                                 <tr>
-                                                    <td style="width:70px;text-align:right;">保单编号：</td>
-                                                    <td style="width:180px;text-align:left;">
-                                                        <asp:TextBox ID="txtPolicyNo" runat="server" Width="175px"></asp:TextBox>
+                                                    <td style="width:70px;text-align:right; white-space:nowrap;">保单编号：</td>
+                                                    <td style="width:100px;text-align:left;">
+                                                        <asp:TextBox ID="txtPolicyNo" runat="server" Width="95px"></asp:TextBox>
                                                     </td>
-                                                    
-                                                    <td style="width:120px;text-align:right;">保费通知书编号：</td>
-                                                    <td style="text-align:left;" colspan="2">
-                                                        <asp:TextBox ID="txtPrePolicyNo" runat="server" Width="175px"></asp:TextBox>
-                                                    </td>                                                    
+                                                    <td style="width:20px;"></td>
+                                                    <td style="width:120px;text-align:right;white-space:nowrap;">代收保费通知书编号：</td>
+                                                    <td style="width:100px;text-align:left;">
+                                                        <asp:TextBox ID="txtPrePolicyNo" runat="server" Width="95px"></asp:TextBox>
+                                                    </td>
+                                                    <td style="width:160px;text-align:right;white-space:nowrap;">直付保费入账确认单编号：</td> 
+                                                    <td style="width:100px;text-align:left;">
+                                                        <asp:TextBox ID="txtenterAccountNo" runat="server" Width="95px"></asp:TextBox>
+                                                    </td>
+                                                    <td></td>                                                   
                                                 </tr>                                                 
                                                 <tr>
                                                     <td style="width:70px;text-align:right;">开始日期：</td>
-                                                    <td style="width:200px;text-align:left;">
+                                                    <td style="width:100px;text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deStartDate" runat="server">
                                                         </dxe:ASPxDateEdit>                                                       
                                                     </td>
                                                     <td style="width:20px;text-align:right;">至</td>
-                                                    <td style="width:180px;text-align:left;">
+                                                    <td style="width:120px;text-align:left;" colspan="2">
                                                         <dxe:ASPxDateEdit ID="deEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
-                                                    <td style="text-align:right;">
+                                                    <td style="text-align:right;" colspan="2">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
                                                         <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
                                                         <asp:Button ID="btnRefresh" runat="server" Text="刷新" CssClass="input_2" />
                                                     </td>
                                                 </tr>                                          
                                             </table>
-                                        </td>
-                                        <td>
-                                        </td>
-                                    </tr>
-                                </table>
-                                        
                                      
                              </asp:Panel>
                              <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearch" runat="Server"
@@ -175,11 +171,19 @@
                                                                         </dxwgv:GridViewCommandColumnCustomButton>                                                                        
                                                                     </CustomButtons>                                                   
                                                                 </dxwgv:GridViewCommandColumn>                                                                
-                                                                <dxwgv:GridViewDataColumn FieldName="NoticeId" Visible="false" Caption="通知书GUID" VisibleIndex="1" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="NoticeId" Visible="false" Caption="通知书GUID" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书编号" VisibleIndex="2" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>   
-                                                                <dxwgv:GridViewDataColumn FieldName="NoticeDate" Caption="通知日期" VisibleIndex="3" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="CollectNoticeNo" Caption="代收保费通知书编号" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>  
+                                                                <dxwgv:GridViewDataColumn FieldName="DirectlyNoticeNo" Caption="直付保费入账确认单编号" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn> 
+                                                                <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种名称" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收保费金额" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn> 
+                                                                <dxwgv:GridViewDataColumn FieldName="NoticeDate" Caption="通知日期" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>

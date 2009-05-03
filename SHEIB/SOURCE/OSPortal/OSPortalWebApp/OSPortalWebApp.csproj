@@ -49,6 +49,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>E:\WINDOWS\system32\DevExpress.Web.ASPxGridView.v8.3.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxSpellChecker.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.ASPxTreeList.v8.3, Version=8.3.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>E:\WINDOWS\system32\DevExpress.Web.ASPxTreeList.v8.3.dll</HintPath>
