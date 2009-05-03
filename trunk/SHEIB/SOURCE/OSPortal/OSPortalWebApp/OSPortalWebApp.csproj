@@ -147,12 +147,40 @@
     <Compile Include="Basecls\authenticationbasepage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="BusinessConsult\BusinessConsult.aspx.cs">
+      <DependentUpon>BusinessConsult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BusinessConsult\BusinessConsult.aspx.designer.cs">
+      <DependentUpon>BusinessConsult.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessConsult\BusinessConsultList.aspx.cs">
+      <DependentUpon>BusinessConsultList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BusinessConsult\BusinessConsultList.aspx.designer.cs">
+      <DependentUpon>BusinessConsultList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PolicySearch.ascx.cs">
       <DependentUpon>PolicySearch.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\PolicySearch.ascx.designer.cs">
       <DependentUpon>PolicySearch.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerClaim\NotifyClaim.aspx.cs">
+      <DependentUpon>NotifyClaim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\NotifyClaim.aspx.designer.cs">
+      <DependentUpon>NotifyClaim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerClaim\NotifyClaimList.aspx.cs">
+      <DependentUpon>NotifyClaimList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\NotifyClaimList.aspx.designer.cs">
+      <DependentUpon>NotifyClaimList.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustomerRelation\AlertService.aspx.cs">
       <DependentUpon>AlertService.aspx</DependentUpon>
@@ -342,6 +370,69 @@
     </Compile>
     <Compile Include="otherinsurance\PolicySearch.aspx.designer.cs">
       <DependentUpon>PolicySearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSetup\Branch.aspx.cs">
+      <DependentUpon>Branch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductSetup\Branch.aspx.designer.cs">
+      <DependentUpon>Branch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSetup\BranchList.aspx.cs">
+      <DependentUpon>BranchList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductSetup\BranchList.aspx.designer.cs">
+      <DependentUpon>BranchList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSetup\Carrier.aspx.cs">
+      <DependentUpon>Carrier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductSetup\Carrier.aspx.designer.cs">
+      <DependentUpon>Carrier.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSetup\CarrierList.aspx.cs">
+      <DependentUpon>CarrierList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductSetup\CarrierList.aspx.designer.cs">
+      <DependentUpon>CarrierList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSetup\ProductType.aspx.cs">
+      <DependentUpon>ProductType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductSetup\ProductType.aspx.designer.cs">
+      <DependentUpon>ProductType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSetup\ProductTypeList.aspx.cs">
+      <DependentUpon>ProductTypeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductSetup\ProductTypeList.aspx.designer.cs">
+      <DependentUpon>ProductTypeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSetup\Target.aspx.cs">
+      <DependentUpon>Target.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductSetup\Target.aspx.designer.cs">
+      <DependentUpon>Target.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSetup\TargetProperty.aspx.cs">
+      <DependentUpon>TargetProperty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductSetup\TargetProperty.aspx.designer.cs">
+      <DependentUpon>TargetProperty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSetup\TargetTypeList.aspx.cs">
+      <DependentUpon>TargetTypeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductSetup\TargetTypeList.aspx.designer.cs">
+      <DependentUpon>TargetTypeList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sampledpgrid.aspx.cs">
@@ -2887,10 +2978,25 @@
     <Content Include="accounting\PropertyBrokerageBusiness.aspx" />
     <Content Include="accounting\PropertyBrokerageMarkBusiness.aspx" />
     <Content Include="accounting\ReinsuranceBrokerageBusiness.aspx" />
+    <Content Include="BusinessConsult\BusinessConsult.aspx" />
+    <Content Include="BusinessConsult\BusinessConsultList.aspx" />
+    <Content Include="CustomerClaim\NotifyClaim.aspx" />
+    <Content Include="CustomerClaim\NotifyClaimList.aspx" />
     <Content Include="CustomerRelation\AlertService.aspx" />
     <Content Include="CustomerRelation\AreaSetting.aspx" />
     <Content Include="CustomerRelation\Customer.aspx" />
     <Content Include="images\add_user_icon.png" />
+    <Content Include="images\bg.gif" />
+    <Content Include="images\button.gif" />
+    <Content Include="images\button_1.gif" />
+    <Content Include="images\c_name.gif" />
+    <Content Include="css\font.css" />
+    <Content Include="images\icon1.gif" />
+    <Content Include="images\logo.gif" />
+    <Content Include="images\menu.gif" />
+    <Content Include="images\menu_bg.gif" />
+    <Content Include="images\menu_l.gif" />
+    <Content Include="images\name.gif" />
     <Content Include="images\treeicon\Folder.png" />
     <Content Include="inoutbalance\FeeCustomer.aspx" />
     <Content Include="inoutbalance\FeeCustomerAdd.aspx" />
@@ -2903,6 +3009,15 @@
     <Content Include="inoutbalance\FeeProcess.aspx" />
     <Content Include="inoutbalance\FeeProcessAdd.aspx" />
     <Content Include="js\customdefinition.js" />
+    <Content Include="ProductSetup\Branch.aspx" />
+    <Content Include="ProductSetup\BranchList.aspx" />
+    <Content Include="ProductSetup\Carrier.aspx" />
+    <Content Include="ProductSetup\CarrierList.aspx" />
+    <Content Include="ProductSetup\ProductType.aspx" />
+    <Content Include="ProductSetup\ProductTypeList.aspx" />
+    <Content Include="ProductSetup\Target.aspx" />
+    <Content Include="ProductSetup\TargetProperty.aspx" />
+    <Content Include="ProductSetup\TargetTypeList.aspx" />
     <Content Include="schemasetting\DepartmentManager.aspx" />
     <Content Include="schemasetting\RoleManager.aspx" />
     <Content Include="schemasetting\UserManager.aspx" />
@@ -2912,6 +3027,9 @@
     <Content Include="vehicleinsurance\CarPolicyInputList.aspx" />
     <Content Include="vehicleinsurance\AskPriceInputList.aspx" />
     <Content Include="vehicleinsurance\AskPriceCheckList.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
