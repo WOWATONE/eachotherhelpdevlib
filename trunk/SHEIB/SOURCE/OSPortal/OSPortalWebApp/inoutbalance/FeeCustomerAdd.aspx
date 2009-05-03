@@ -32,11 +32,12 @@
                 }
             };
 
-
-
-
-
         });
+        
+        function imgSearchClick() {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=600px;dialogHeight=450px;center=yes;help=no";
+            window.showModalDialog("FeeCustomerPolicySelect.aspx", self, myArguments);
+        }
         
     </script>
     
@@ -118,15 +119,7 @@
                                                 <td style="white-space:nowrap; text-align:right;">保单编号:</td>
                                                 <td style="text-align:left;">
                                                     <asp:TextBox runat="server" ID="txtGridPolicyNo" Text='<%# Eval("PolicyNo") %>'  ReadOnly="true"></asp:TextBox>
-                                                    <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" />
-                                                    <dxpc:ASPxPopupControl ID="popuppanelpeoplesearch" runat="server" 
-                                                        EnableClientSideAPI="True" AllowDragging="False" PopupHorizontalAlign="Center" 
-                                                        HeaderText="选择保单"
-                                                        Width="450px" Height="400px" ContentUrl="FeeCustomerPolicySelect.aspx" 
-                                                        EnableTheming="true"  PopupElementID="imgpeoplesearch"
-                                                        AllowResize="false" Modal="true">
-                                                        <Border BorderWidth="1px" />
-                                                     </dxpc:ASPxPopupControl>
+                                                    <img runat="server" id="imgpeoplesearch" onclick="imgSearchClick();" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" />
                                                 </td>
                                                 <td style="white-space:nowrap; text-align:right;">本期应收保费(本):</td>
                                                 <td style="text-align:left;">
