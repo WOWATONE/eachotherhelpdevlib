@@ -280,13 +280,6 @@
     <Compile Include="inoutbalance\FeeProcessAdd.aspx.designer.cs">
       <DependentUpon>FeeProcessAdd.aspx</DependentUpon>
     </Compile>
-    <Compile Include="inoutbalance\SheetcolumnManager.aspx.cs">
-      <DependentUpon>SheetcolumnManager.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\SheetcolumnManager.aspx.designer.cs">
-      <DependentUpon>SheetcolumnManager.aspx</DependentUpon>
-    </Compile>
     <Compile Include="left.aspx.cs">
       <DependentUpon>left.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2909,7 +2902,6 @@
     <Content Include="inoutbalance\FeePayinInvoice.aspx" />
     <Content Include="inoutbalance\FeeProcess.aspx" />
     <Content Include="inoutbalance\FeeProcessAdd.aspx" />
-    <Content Include="inoutbalance\SheetcolumnManager.aspx" />
     <Content Include="js\customdefinition.js" />
     <Content Include="schemasetting\DepartmentManager.aspx" />
     <Content Include="schemasetting\RoleManager.aspx" />
