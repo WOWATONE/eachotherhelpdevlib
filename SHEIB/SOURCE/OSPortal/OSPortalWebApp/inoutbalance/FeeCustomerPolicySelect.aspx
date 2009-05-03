@@ -74,7 +74,8 @@
                                                             <asp:ListItem Text="类别1" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="类别2" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>                                                       
-                                                    </td>                                                    
+                                                    </td>
+                                                    <td>&nbsp;</td>                                                     
                                                 </tr>
                                                 <tr>                                                                                                        
                                                     <td style="width:70px;text-align:right;">投保客户：</td>
@@ -86,11 +87,10 @@
                                                         <asp:TextBox ID="txtSalesID" runat="server" Width="120px" Text="张三"></asp:TextBox>&nbsp;
                                                         <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" />
                                                     </td>
-                                                    <td style="width:70px;text-align:right;">流水号：</td>
+                                                    <td style="width:70px;text-align:right;"></td>
                                                     <td style="width:180px;text-align:left;">
-                                                        <asp:TextBox ID="txtSerialNo" runat="server" Width="120px" Text="张三"></asp:TextBox>&nbsp;
-                                                        
-                                                    </td>                                                    
+                                                    </td>
+                                                    <td>&nbsp;</td>                                                     
                                                 </tr>                                                 
                                                 <tr>
                                                     <td style="width:70px;text-align:right;">保险公司：</td>
@@ -116,7 +116,8 @@
                                                             <asp:ListItem Text="保险2" Value="2"></asp:ListItem>
                                                             <asp:ListItem Text="保险3" Value="3"></asp:ListItem>
                                                         </asp:DropDownList>
-                                                    </td>                                                    
+                                                    </td>
+                                                    <td>&nbsp;</td>                                                     
                                                 </tr> 
                                                 <tr>                                                     
                                                     <td style="width:70px;text-align:right;">业务来源：</td>
@@ -126,31 +127,41 @@
                                                             <asp:ListItem Text="来源2" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
-                                                    <td style="width:70px;text-align:right;">审核：</td>
+                                                    <td style="width:70px;text-align:right;">有效性：</td>
                                                     <td style="width:180px;text-align:left;">
-                                                        <asp:DropDownList ID="ddlCheckState" runat="server">
-                                                            <asp:ListItem Text="审核" Value="1"></asp:ListItem>
-                                                            <asp:ListItem Text="未审核" Value="2"></asp:ListItem>
+                                                        <asp:DropDownList ID="ddlValidState" runat="server">
+                                                            <asp:ListItem Text="有效" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="无效" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>                                                   
                                                     
-                                                    <td style="width:70px;text-align:right;"></td>
+                                                    <td style="width:70px;text-align:right;">审核：</td>
                                                     <td style="width:180px;text-align:left;">
-                                                        
-                                                    </td>                                                    
+                                                        <asp:DropDownList ID="ddlCheckState" runat="server">
+                                                            <asp:ListItem Text="已审核" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="未审核" Value="2"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                    <td>&nbsp;</td>                                                     
                                                 </tr> 
                                                 <tr>
-                                                    <td style="width:90px;text-align:right;">收付日期：</td>
+                                                    <td style="width:90px;text-align:right;">
+                                                    <asp:CheckBox runat="server" ID="CheckBox1" />
+                                                    应收日期：</td>
                                                     <td style="width:100px;text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deGetStartDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>                                                    
                                                     <td style="width:20px;text-align:right;">至</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deGetEndDate" runat="server"></dxe:ASPxDateEdit>
-                                                    </td>                                                                                                 
+                                                    </td> 
+                                                    <td style="text-align:left;">&nbsp;</td>
+                                                    <td style="text-align:left;">&nbsp;</td>
+                                                    <td>&nbsp;</td>                                                                                                 
                                                 </tr> 
                                                 <tr>
-                                                    <td style="width:90px;text-align:right;"><asp:CheckBox runat="server" ID="chkBack" /> 回执日期：</td>
+                                                    <td style="width:90px;text-align:right;">
+                                                    <asp:CheckBox runat="server" ID="chkBack" /> 投保日期：</td>
                                                     <td style="width:100px;text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deBackStartDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>                                                    
@@ -158,22 +169,20 @@
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deBackEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td> 
-                                                    <td style="width:180px;text-align:left;">&nbsp;</td>
-                                                    <td style="width:180px;text-align:left;">&nbsp;</td>                                                   
+                                                    <td style="text-align:left;">&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>                                                    
                                                 </tr>                                                
                                                 <tr>
                                                     <td style="width:70px;text-align:right;"></td>
-                                                    <td style="width:200px;text-align:left;">
-                                                                                                               
-                                                    </td>
+                                                    <td style="width:200px;text-align:left;"></td>
                                                     <td style="width:20px;text-align:right;"></td>
-                                                    <td style="width:180px;text-align:left;">
-                                                        
-                                                    </td>
-                                                    <td style="text-align:right;">
+                                                    <td style="width:180px;text-align:left;"></td>
+                                                    <td style="text-align:left;" colspan="2">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
                                                         <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />
                                                     </td>
+                                                    <td>&nbsp;</td> 
                                                 </tr>                                          
                                             </table>
                                         </td>
@@ -225,13 +234,7 @@
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
                                                                 <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
-                                                                    <NewButton Visible="False" />
-                                                                    <EditButton Visible="false" />                                                                    
-                                                                    <DeleteButton Visible="true" />
-                                                                    <CustomButtons>
-                                                                        <dxwgv:GridViewCommandColumnCustomButton Text="编辑">                                                                            
-                                                                        </dxwgv:GridViewCommandColumnCustomButton>                                                                        
-                                                                    </CustomButtons>                                                   
+                                                                    <SelectButton Visible="true" />                                                  
                                                                 </dxwgv:GridViewCommandColumn>                                                                
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeId" Visible="false" Caption="GUID" VisibleIndex="1" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>

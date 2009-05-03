@@ -113,15 +113,6 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
         
         /// <summary>
-        /// txtSerialNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSerialNo;
-        
-        /// <summary>
         /// ddlCompany control.
         /// </summary>
         /// <remarks>
@@ -158,6 +149,15 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.DropDownList ddlSourceTypeID;
         
         /// <summary>
+        /// ddlValidState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlValidState;
+        
+        /// <summary>
         /// ddlCheckState control.
         /// </summary>
         /// <remarks>
@@ -165,6 +165,15 @@ namespace OSPortalWebApp.inoutbalance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCheckState;
+        
+        /// <summary>
+        /// CheckBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
         
         /// <summary>
         /// deGetStartDate control.

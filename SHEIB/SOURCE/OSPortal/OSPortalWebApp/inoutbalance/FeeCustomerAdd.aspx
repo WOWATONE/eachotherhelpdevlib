@@ -35,7 +35,7 @@
         });
         
         function imgSearchClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=600px;dialogHeight=450px;center=yes;help=no";
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=450px;center=yes;help=no";
             window.showModalDialog("FeeCustomerPolicySelect.aspx", self, myArguments);
         }
         
