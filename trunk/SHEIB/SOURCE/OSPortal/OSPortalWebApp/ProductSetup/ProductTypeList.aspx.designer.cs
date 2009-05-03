@@ -21,5 +21,86 @@ namespace OSPortalWebApp.ProductSetup {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// npoperation 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npoperation;
+        
+        /// <summary>
+        /// ASPxRoundPanel1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel1;
+        
+        /// <summary>
+        /// Panelcontent1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPanel.PanelContent Panelcontent1;
+        
+        /// <summary>
+        /// treeList 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTreeList.ASPxTreeList treeList;
+        
+        /// <summary>
+        /// ASPxRoundPanel2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel2;
+        
+        /// <summary>
+        /// PanelContent2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.PanelContent PanelContent2;
+        
+        /// <summary>
+        /// cpSchemaDetail 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallbackPanel.ASPxCallbackPanel cpSchemaDetail;
+        
+        /// <summary>
+        /// PanelContent3 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.PanelContent PanelContent3;
+        
+        /// <summary>
+        /// gridSearchResult 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridSearchResult;
     }
 }
