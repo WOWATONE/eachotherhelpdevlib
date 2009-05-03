@@ -35,20 +35,33 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.PrimaryKey = new DataColumn[] { 
             _dtGrid.Columns.Add("NoticeId", typeof(Guid)) };
 
-            _dtGrid.Columns.Add("NoticeNo", typeof(Int32));
+            _dtGrid.Columns.Add("CollectNoticeNo", typeof(Int32));
+            _dtGrid.Columns.Add("DirectlyNoticeNo", typeof(Int32));
+            _dtGrid.Columns.Add("CustomerID", typeof(string));
+            _dtGrid.Columns.Add("ProdTypeID", typeof(string));
+            _dtGrid.Columns.Add("Fee", typeof(double));
+
             _dtGrid.Columns.Add("NoticeDate", typeof(DateTime));
 
 
             _dtGrid.Rows.Add(new object[] { 
                 Guid.NewGuid(), 
                 1,
+                1,
+                "王怡",
+                "财险1",
+                2000,
                 new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1)
             });
 
             DataRow dr = _dtGrid.NewRow();
             dr[0] = Guid.NewGuid();
-            dr[1] = 2;            
-            dr[2] = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 1, 1, 1);
+            dr[1] = 2;
+            dr[2] = 2;
+            dr[3] = "王怡";
+            dr[4] = "财险2";
+            dr[5] = 3000;
+            dr[6] = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 1, 1, 1);
             
             _dtGrid.Rows.Add(dr);
 
