@@ -8,9 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSPortalWebApp.ProductSetup {
-    
-    
+namespace OSPortalWebApp.ProductSetup
+{
     public partial class Carrier {
         
         /// <summary>
