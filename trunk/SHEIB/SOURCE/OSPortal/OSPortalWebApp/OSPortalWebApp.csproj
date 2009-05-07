@@ -322,6 +322,13 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="otherinsurance\NewCustomer.aspx.cs">
+      <DependentUpon>NewCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\NewCustomer.aspx.designer.cs">
+      <DependentUpon>NewCustomer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="otherinsurance\PolicyCheck.aspx.cs">
       <DependentUpon>PolicyCheck.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -364,12 +371,26 @@
     <Compile Include="otherinsurance\PolicyAlterList.aspx.designer.cs">
       <DependentUpon>PolicyAlterList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="otherinsurance\PolicyProdType.aspx.cs">
+      <DependentUpon>PolicyProdType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyProdType.aspx.designer.cs">
+      <DependentUpon>PolicyProdType.aspx</DependentUpon>
+    </Compile>
     <Compile Include="otherinsurance\PolicySearch.aspx.cs">
       <DependentUpon>PolicySearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="otherinsurance\PolicySearch.aspx.designer.cs">
       <DependentUpon>PolicySearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="otherinsurance\SelectCustomer.aspx.cs">
+      <DependentUpon>SelectCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\SelectCustomer.aspx.designer.cs">
+      <DependentUpon>SelectCustomer.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductSetup\Branch.aspx.cs">
       <DependentUpon>Branch.aspx</DependentUpon>
@@ -3009,6 +3030,9 @@
     <Content Include="inoutbalance\FeeProcess.aspx" />
     <Content Include="inoutbalance\FeeProcessAdd.aspx" />
     <Content Include="js\customdefinition.js" />
+    <Content Include="otherinsurance\NewCustomer.aspx" />
+    <Content Include="otherinsurance\PolicyProdType.aspx" />
+    <Content Include="otherinsurance\SelectCustomer.aspx" />
     <Content Include="ProductSetup\Branch.aspx" />
     <Content Include="ProductSetup\BranchList.aspx" />
     <Content Include="ProductSetup\Carrier.aspx" />
