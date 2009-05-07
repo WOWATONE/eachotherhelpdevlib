@@ -77,15 +77,6 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtSN;
         
         /// <summary>
-        /// dpchkReinsurance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxCheckBox dpchkReinsurance;
-        
-        /// <summary>
         /// txtpeoplefrom control.
         /// </summary>
         /// <remarks>
@@ -113,24 +104,6 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
         
         /// <summary>
-        /// popuppanelpeoplesearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl popuppanelpeoplesearch;
-        
-        /// <summary>
-        /// dpchkTogether control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxCheckBox dpchkTogether;
-        
-        /// <summary>
         /// txtpeopleto control.
         /// </summary>
         /// <remarks>
@@ -138,42 +111,6 @@ namespace OSPortalWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtpeopleto;
-        
-        /// <summary>
-        /// dpchkPeriod control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxCheckBox dpchkPeriod;
-        
-        /// <summary>
-        /// ddlCompany control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCompany;
-        
-        /// <summary>
-        /// DropDownList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-        
-        /// <summary>
-        /// txtagent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtagent;
         
         /// <summary>
         /// ddlCategory control.
@@ -203,6 +140,15 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deEndDate;
         
         /// <summary>
+        /// txtStage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtStage;
+        
+        /// <summary>
         /// cpeBasic control.
         /// </summary>
         /// <remarks>
@@ -210,6 +156,51 @@ namespace OSPortalWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeBasic;
+        
+        /// <summary>
+        /// npPolicyCompanyHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npPolicyCompanyHeader;
+        
+        /// <summary>
+        /// img_npPolicyCompanyHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton img_npPolicyCompanyHeader;
+        
+        /// <summary>
+        /// lbl_npPolicyCompanyHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_npPolicyCompanyHeader;
+        
+        /// <summary>
+        /// npPolicyCompanyDetail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npPolicyCompanyDetail;
+        
+        /// <summary>
+        /// CollapsiblePanelExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender1;
         
         /// <summary>
         /// npGridPolicyItemHeader control.
@@ -311,15 +302,6 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtprice;
         
         /// <summary>
-        /// txtrate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtrate;
-        
-        /// <summary>
         /// txtoriginalfee control.
         /// </summary>
         /// <remarks>
@@ -356,15 +338,6 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtlocalfee;
         
         /// <summary>
-        /// txtmiddlerate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmiddlerate;
-        
-        /// <summary>
         /// txtmiddlefee control.
         /// </summary>
         /// <remarks>
@@ -372,15 +345,6 @@ namespace OSPortalWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtmiddlefee;
-        
-        /// <summary>
-        /// txtfile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtfile;
         
         /// <summary>
         /// ddlDeptId control.
@@ -399,15 +363,6 @@ namespace OSPortalWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlcustomermanager;
-        
-        /// <summary>
-        /// ddlSourceTypeID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSourceTypeID;
         
         /// <summary>
         /// ddlKind control.
@@ -453,96 +408,6 @@ namespace OSPortalWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeOtherPolicyItem;
-        
-        /// <summary>
-        /// gridTargetProperty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridTargetProperty;
-        
-        /// <summary>
-        /// ccReinsure control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxClasses.ContentControl ccReinsure;
-        
-        /// <summary>
-        /// gridOutReinsure control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridOutReinsure;
-        
-        /// <summary>
-        /// txtselfKeepFee control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtselfKeepFee;
-        
-        /// <summary>
-        /// txtselfKeepRate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtselfKeepRate;
-        
-        /// <summary>
-        /// gridInReinsure control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridInReinsure;
-        
-        /// <summary>
-        /// TextBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        
-        /// <summary>
-        /// TextBox2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
-        
-        /// <summary>
-        /// ContentControl1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl1;
-        
-        /// <summary>
-        /// gridTogether control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridTogether;
         
         /// <summary>
         /// ContentControl2 control.
