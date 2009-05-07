@@ -77,6 +77,15 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtSN;
         
         /// <summary>
+        /// chkAgain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkAgain;
+        
+        /// <summary>
         /// txtpeoplefrom control.
         /// </summary>
         /// <remarks>
@@ -192,6 +201,15 @@ namespace OSPortalWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel npPolicyCompanyDetail;
+        
+        /// <summary>
+        /// gridCarrier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridCarrier;
         
         /// <summary>
         /// CollapsiblePanelExtender1 control.

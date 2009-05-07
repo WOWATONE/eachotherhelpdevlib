@@ -14,8 +14,8 @@
             //    text: 'This is a notification that you have to remove',
             //    stay: true
             //});
-            
-            
+
+
             ////var popupControl = ASPxPopupSelectInsuranceClientControl;
             //var canDisplay = "";
             //if (canDisplay.toLowerCase() == "true") {
@@ -25,11 +25,13 @@
             //else {
             //    //do nothing;
             //}
+            
 
+            //
             window.onunload = function() {
                 var pWindow = window.dialogArguments;
                 var thegrid = pWindow.gridSearchResult;
-                
+
                 if (thegrid != null) {
                     thegrid.PerformCallback('');
                 }
@@ -49,7 +51,11 @@
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
             window.showModalDialog("SelectCustomer.aspx", self, myArguments);
         }
-        
+
+        function gridGridProdIDChange() {
+            var theValue = decbGridProdID.GetText();            
+            detxtGridProdName.SetValue(theValue);
+        }
         
     </script>    
 </asp:Content>
@@ -93,7 +99,7 @@
                                             <tr>
                                                 <td style="text-align:right;">保单编号：</td>
                                                 <td style="text-align:left;">
-                                                    <asp:TextBox ID="txtSN" runat="server" Width="150px"></asp:TextBox>
+                                                    <asp:TextBox ID="txtSN" runat="server" Width="120px"></asp:TextBox>&nbsp;<asp:CheckBox runat="server" ID="chkAgain" Text="再保" />
                                                 </td>
                                                 <td style="text-align:right;">投保人：</td>
                                                 <td style="text-align:left;"> 
@@ -169,6 +175,116 @@
                                 </div>
                             </asp:Panel>
                             <asp:Panel ID="npPolicyCompanyDetail" runat="server" CssClass="collapsePanel" Height="0">
+                                <table style="width:100%">
+                                            <tr>
+                                                <td style="text-align:right;"></td>                                                
+                                            </tr> 
+                                            <tr>
+                                                <td>
+                                                <dxwgv:ASPxGridView ID="gridCarrier" ClientInstanceName="gridCarrier" runat="server" 
+                                                    KeyFieldName="CarrierNo" Width="100%" AutoGenerateColumns="False" 
+                                                    OnStartRowEditing="gridCarrier_StartRowEditing"
+                                                    OnRowInserting="gridCarrier_RowInserting" 
+                                                    OnRowUpdating="gridCarrier_RowUpdating" 
+                                                    OnRowUpdated="gridCarrier_RowUpdated" 
+                                                    OnRowInserted="gridCarrier_RowInserted"
+                                                    OnRowDeleting="gridCarrier_RowDeleting" 
+                                                    OnRowDeleted="gridCarrier_RowDeleted"
+                                                     >
+                                                        <%-- BeginRegion Columns --%>
+                                                            <Columns>
+                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;" VisibleIndex="0">
+                                                                    <NewButton Visible="True" />
+                                                                    <EditButton Visible="true" />
+                                                                    <DeleteButton Visible="true" />
+                                                                </dxwgv:GridViewCommandColumn>
+                                                                <dxwgv:GridViewDataComboBoxColumn PropertiesComboBox-TextField="CarrierNameCn" PropertiesComboBox-ValueField="CarrierNo" PropertiesComboBox-DropDownStyle="DropDownList" FieldName="CarrierNo" Caption="保险公司编号" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataComboBoxColumn>
+                                                                <dxwgv:GridViewDataTextColumn FieldName="CarrierNameCn" Caption="保险公司" CellStyle-Wrap="False">
+                                                                    <EditItemTemplate>
+                                                                        <table>
+                                                                            <tr>
+                                                                                <td>value</td>
+                                                                            </tr>                                                                            
+                                                                        </table>
+                                                                    </EditItemTemplate>
+                                                                </dxwgv:GridViewDataTextColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="ShareRate" Caption="份额" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataTextColumn FieldName="CarrierSales" Caption="业务员" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataTextColumn>                                                                 
+                                                            </Columns>
+                                                        <%-- EndRegion --%>
+                                                        <SettingsPager Mode="ShowAllRecords"/>
+                                                        <Settings ShowGroupPanel="false" />                                                        
+                                                        <Templates>
+                                                             <EditForm>                                                             
+                                                             <div style="padding:4px 4px 3px 4px">                                                                
+                                                                <table style=" width:90%;" runat="server" id="tblgridPolicyItemEditorTemplate">
+                                                                    <tr>
+                                                                        <td style="white-space:nowrap; text-align:right;">保险公司编号:</td>
+                                                                        <td style="text-align:left;">
+                                                                           <dxe:ASPxComboBox runat="server" ID="decbGridCarrierNo" 
+                                                                                AutoPostBack="false" ClientInstanceName="decbGridCarrierNo" 
+                                                                                DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="100px">
+                                                                                <Items>
+                                                                                    <dxe:ListEditItem Text="中国平安" Value="1" />
+                                                                                    <dxe:ListEditItem Text="中国泰康" Value="2" />
+                                                                                    <dxe:ListEditItem Text="中国安联" Value="3" />
+                                                                                </Items>
+                                                                                <ClientSideEvents SelectedIndexChanged="" />
+                                                                            </dxe:ASPxComboBox>
+                                                                        </td>
+                                                                        <td style="white-space:nowrap; text-align:right;">保险公司:</td>
+                                                                        <td style="text-align:left;">
+                                                                            <dxe:ASPxTextBox runat="server" ID="detxtGridCarrierNameCn" ClientInstanceName="detxtGridCarrierNameCn" Text='<%# Eval("CarrierNameCn") %>' Enabled="false"></dxe:ASPxTextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="white-space:nowrap; text-align:right;">分支机构:</td>
+                                                                        <td style="text-align:left;">
+                                                                            <dxe:ASPxComboBox runat="server" ID="decbGridBranchName" 
+                                                                                AutoPostBack="false" ClientInstanceName="decbGridBranchName" 
+                                                                                DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="100px">
+                                                                                <Items>
+                                                                                    <dxe:ListEditItem Text="平安分支1" Value="1" />
+                                                                                    <dxe:ListEditItem Text="泰康分支1" Value="2" />
+                                                                                    <dxe:ListEditItem Text="安联分支1" Value="3" />
+                                                                                </Items>
+                                                                                <ClientSideEvents SelectedIndexChanged="" />
+                                                                            </dxe:ASPxComboBox>
+                                                                        </td>
+                                                                        <td style="white-space:nowrap; text-align:right;">份额:</td>
+                                                                        <td style="text-align:left;">
+                                                                            <asp:TextBox runat="server" ID="txtGridShareRate" Text='<%# Eval("ShareRate") %>'></asp:TextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="white-space:nowrap; text-align:right;">业务员:</td>
+                                                                        <td style="text-align:left;">
+                                                                            <asp:TextBox runat="server" ID="txtGridCarrierSales" Text='<%# Eval("CarrierSales") %>'></asp:TextBox>
+                                                                        </td>
+                                                                        <td style="white-space:nowrap; text-align:right;"></td>
+                                                                        <td style="text-align:left;">
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                             </div>
+                                                             <div style="text-align:right; padding:2px 2px 2px 2px">
+                                                                 <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server">
+                                                                 </dxwgv:ASPxGridViewTemplateReplacement>
+                                                                 <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton" runat="server">
+                                                                 </dxwgv:ASPxGridViewTemplateReplacement>
+                                                             </div>
+                                                             </EditForm>
+                                                         </Templates>
+
+                                                    </dxwgv:ASPxGridView>
+                                                </td>
+                                            </tr>
+                                        </table>
                             </asp:Panel>
                             <ajaxToolkit:CollapsiblePanelExtender ID="CollapsiblePanelExtender1" runat="Server"
                                 TargetControlID="npPolicyCompanyDetail"
@@ -201,7 +317,7 @@
                             <asp:Panel ID="npGridPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
                                         <table style="width:100%">
                                             <tr>
-                                                <td style="width:8%;text-align:right;"></td>                                                
+                                                <td style="text-align:right;"></td>                                                
                                             </tr> 
                                             <tr>
                                                 <td>
@@ -250,17 +366,22 @@
                                                                         </td>
                                                                         <td style="white-space:nowrap; text-align:right;">项目编码:</td>
                                                                         <td style="text-align:left;">
-                                                                            <asp:DropDownList ID="ddlGridProdID" runat="server">
-                                                                                <asp:ListItem Text="编码三" Value="1"></asp:ListItem>
-                                                                                <asp:ListItem Text="编码四" Value="2"></asp:ListItem>
-                                                                                <asp:ListItem Text="编码五" Value="3"></asp:ListItem>
-                                                                            </asp:DropDownList>
+                                                                            <dxe:ASPxComboBox runat="server" ID="decbGridProdID" 
+                                                                                AutoPostBack="false" ClientInstanceName="decbGridProdID" 
+                                                                                DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="100px">
+                                                                                <Items>
+                                                                                    <dxe:ListEditItem Text="编码三" Value="1" />
+                                                                                    <dxe:ListEditItem Text="编码四" Value="2" />
+                                                                                    <dxe:ListEditItem Text="编码五" Value="3" />
+                                                                                </Items>
+                                                                                <ClientSideEvents SelectedIndexChanged="gridGridProdIDChange" />
+                                                                            </dxe:ASPxComboBox>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td style="white-space:nowrap; text-align:right;">项目名称:</td>
                                                                         <td style="text-align:left;">
-                                                                            <asp:TextBox runat="server" ID="txtGridProdName" Text='<%# Eval("ProdName") %>' Enabled="false"></asp:TextBox>
+                                                                            <dxe:ASPxTextBox runat="server" ID="detxtGridProdName" ClientInstanceName="detxtGridProdName" Text='<%# Eval("ProdName") %>' Enabled="false"></dxe:ASPxTextBox>
                                                                         </td>
                                                                         <td style="white-space:nowrap; text-align:right;">保额:</td>
                                                                         <td style="text-align:left;">
@@ -286,6 +407,7 @@
                                                                         <td style="text-align:left;"></td>
                                                                     </tr>
                                                                 </table>
+                                                                
                                                              </div>
                                                              <div style="text-align:right; padding:2px 2px 2px 2px">
                                                                  <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server">
