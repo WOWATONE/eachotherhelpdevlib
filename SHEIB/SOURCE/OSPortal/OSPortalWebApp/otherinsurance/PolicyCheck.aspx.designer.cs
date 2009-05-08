@@ -374,6 +374,15 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtmiddlefee;
         
         /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        
+        /// <summary>
         /// ddlDeptId control.
         /// </summary>
         /// <remarks>
@@ -437,6 +446,78 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeOtherPolicyItem;
         
         /// <summary>
+        /// npcheckmemoheader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npcheckmemoheader;
+        
+        /// <summary>
+        /// img_npcheckmemoheader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton img_npcheckmemoheader;
+        
+        /// <summary>
+        /// lbl_npcheckmemoheader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_npcheckmemoheader;
+        
+        /// <summary>
+        /// npcheckmemoDetail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npcheckmemoDetail;
+        
+        /// <summary>
+        /// TextBox2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        
+        /// <summary>
+        /// decheckDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit decheckDate;
+        
+        /// <summary>
+        /// taCheckMemo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea taCheckMemo;
+        
+        /// <summary>
+        /// CollapsiblePanelExtender2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender2;
+        
+        /// <summary>
         /// ContentControl2 control.
         /// </summary>
         /// <remarks>
@@ -489,6 +570,15 @@ namespace OSPortalWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnApplyCheck;
+        
+        /// <summary>
+        /// btnInvertCheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnInvertCheck;
         
         /// <summary>
         /// btncancel control.
