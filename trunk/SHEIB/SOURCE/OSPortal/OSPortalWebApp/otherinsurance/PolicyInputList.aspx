@@ -53,7 +53,7 @@
 				                        <tr>
 					                        <td style="width:100%; color:#0E5ED5;">
 					                            当前位置：非车险保单录入&nbsp;&nbsp;&nbsp;&nbsp;
-					                            <asp:label id="LbUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
+					                            <asp:label id="LblUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
 						                        <label id="lblCurrentDate"></label>
 					                        </td>
 				                        </tr>

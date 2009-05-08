@@ -2453,11 +2453,9 @@
     <Content Include="images\body_bg_06.gif" />
     <Content Include="images\body_bg_07.gif" />
     <Content Include="images\body_pic_01.gif" />
-    <Content Include="images\body_pic_01.jpg" />
     <Content Include="images\body_pic_02.gif" />
     <Content Include="images\body_pic_02.jpg" />
     <Content Include="images\body_pic_03.jpg" />
-    <Content Include="images\body_pic_04.JPG" />
     <Content Include="images\head_bg_01.gif" />
     <Content Include="images\head_pic_01.jpg" />
     <Content Include="images\input_bg_01.gif" />
@@ -3012,6 +3010,9 @@
     <Content Include="images\button_1.gif" />
     <Content Include="images\c_name.gif" />
     <Content Include="css\font.css" />
+    <Content Include="images\file_add.gif" />
+    <Content Include="images\file_remove.gif" />
+    <Content Include="images\file_upload.gif" />
     <Content Include="images\icon1.gif" />
     <Content Include="images\logo.gif" />
     <Content Include="images\menu.gif" />
@@ -3051,9 +3052,6 @@
     <Content Include="vehicleinsurance\CarPolicyInputList.aspx" />
     <Content Include="vehicleinsurance\AskPriceInputList.aspx" />
     <Content Include="vehicleinsurance\AskPriceCheckList.aspx" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="images\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
