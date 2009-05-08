@@ -23,22 +23,22 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
-        /// dpASPxMenu control.
+        /// debtnCreate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxMenu.ASPxMenu dpASPxMenu;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton debtnCreate;
         
         /// <summary>
-        /// LbUserNameTop control.
+        /// LblUserNameTop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LbUserNameTop;
+        protected global::System.Web.UI.WebControls.Label LblUserNameTop;
         
         /// <summary>
         /// npSearchHeader control.
@@ -149,13 +149,22 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.DropDownList ddlFlagContinue;
         
         /// <summary>
-        /// ddlProdTypeID control.
+        /// txtProdTypeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProdTypeID;
+        protected global::System.Web.UI.WebControls.TextBox txtProdTypeID;
+        
+        /// <summary>
+        /// imgpeoplesearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
         
         /// <summary>
         /// ddlCarrierId control.
