@@ -187,6 +187,162 @@
                         </td>
                     </tr>
                     
+                    
+                    <tr>
+                        <td style="width:100%;">
+                            <asp:Panel ID="npGridPolicyItemHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
+                                <div style="padding:5px; cursor: pointer; vertical-align: middle;">
+                                    <div style="float: left; vertical-align: middle;">
+                                        <asp:ImageButton ID="img_npGridPolicyItem" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
+                                    </div>
+                                    <div style="float: left; margin-left:5px;">保险项目</div>
+                                    <div style="float: left; margin-left:5px;">
+                                        <asp:Label ID="lbl_npGridPolicyItem" runat="server">(展开)</asp:Label>
+                                    </div>                                    
+                                </div>
+                            </asp:Panel>  
+                            <asp:Panel ID="npGridPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
+                                        <table style="width:100%">
+                                            <tr>
+                                                <td style="text-align:right;"></td>                                                
+                                            </tr> 
+                                            <tr>
+                                                <td>
+                                                    <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" 
+                                                    KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False" 
+                                                    >
+                                                        <%-- BeginRegion Columns --%>
+                                                            <Columns>
+                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;" Visible="false">
+                                                                    <NewButton Visible="false" />
+                                                                    <EditButton Visible="false" />
+                                                                    <DeleteButton Visible="false" />
+                                                                </dxwgv:GridViewCommandColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="ItemID" Caption="项目编号" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="ProdID" Caption="项目编码" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="ProdName" Caption="项目名称" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Coverage" Caption="保额" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="ProcRate" Caption="经纪费率" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataColumn>
+                                                            </Columns>
+                                                        <%-- EndRegion --%>
+                                                        <SettingsPager Mode="ShowAllRecords"/>
+                                                        <Settings ShowGroupPanel="false" />
+                                                    </dxwgv:ASPxGridView>
+                                                </td>
+                                            </tr>
+                                        </table>
+       
+                             </asp:Panel>
+                             <ajaxToolkit:CollapsiblePanelExtender ID="cpeGridPolicyItem" runat="Server"
+                                TargetControlID="npGridPolicyItemDetail"
+                                ExpandControlID="npGridPolicyItemHeader"
+                                CollapseControlID="npGridPolicyItemHeader" 
+                                Collapsed="false"
+                                TextLabelID="lbl_npGridPolicyItem"
+                                ImageControlID="img_npGridPolicyItem"    
+                                ExpandedText="(展开)"
+                                CollapsedText="(隐藏)"
+                                ExpandedImage="~/images/collapse_blue.jpg"
+                                CollapsedImage="~/images/expand_blue.jpg"
+                                SuppressPostBack="true" />
+                        </td>
+                    </tr>
+                    
+                    
+                    <tr>
+                        <td style="width:100%;">
+                            <asp:Panel ID="npCostSummaryHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
+                                <div style="padding:5px; cursor: pointer; vertical-align: middle;">
+                                    <div style="float: left; vertical-align: middle;">
+                                        <asp:ImageButton ID="img_npCostSummaryHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
+                                    </div>
+                                    <div style="float: left; margin-left:5px;">费用汇总</div>
+                                    <div style="float: left; margin-left:5px;">
+                                        <asp:Label ID="lbl_npCostSummaryHeader" runat="server">(展开)</asp:Label>
+                                    </div>
+                                    
+                                </div>
+                            </asp:Panel> 
+                            <asp:Panel ID="npCostSummaryDetail" runat="server" CssClass="collapsePanel" Height="0">
+                                        <table style="width:100%">
+                                            <tr>
+                                                <td style="width:11%;text-align:right;">保额：</td>
+                                                <td style="width:22%;text-align:left;">
+                                                    <asp:TextBox ID="txtprice" runat="server" Width="140px"></asp:TextBox>
+                                                </td>
+                                                <td style="width:11%;text-align:right;">保费（原）：</td>
+                                                <td style="width:22%;text-align:left;">
+                                                    <asp:TextBox ID="txtoriginalfee" runat="server" Width="140px"></asp:TextBox>
+                                                </td>
+                                                <td style="width:11%;text-align:right;">币种：</td>
+                                                <td style="width:20%;text-align:left;">
+                                                    <asp:DropDownList ID="DropDownList2" runat="server">
+                                                        <asp:ListItem Text="人民币" Value="1"></asp:ListItem>
+                                                        <asp:ListItem Text="美元" Value="2"></asp:ListItem>
+                                                        <asp:ListItem Text="英镑" Value="3"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </td> 
+                                                <td></td>                                 
+                                            </tr> 
+                                            <tr>
+                                                <td style="text-align:right;">换算汇率：</td>
+                                                <td style="text-align:left;">
+                                                    <asp:TextBox ID="txtchange" runat="server" Width="140px"></asp:TextBox>
+                                                </td>
+                                                <td style="text-align:right;">保费（本）：</td>
+                                                <td style="text-align:left;">
+                                                    <asp:TextBox ID="txtlocalfee" runat="server" Width="140px"></asp:TextBox>
+                                                </td>
+                                                <td style="text-align:right;">经纪费（原）：</td>
+                                                <td style="text-align:left;">
+                                                    <asp:TextBox ID="txtmiddlefee" runat="server" Width="120px"></asp:TextBox>
+                                                </td> 
+                                                <td></td>                                 
+                                            </tr>  
+                                            <tr>
+                                                <td style="text-align:right;">经纪费（本）：</td>
+                                                <td style="text-align:left;">
+                                                    <asp:TextBox ID="TextBox1" runat="server" Width="120px"></asp:TextBox>
+                                                </td>
+                                                <td style="text-align:right;"></td>
+                                                <td style="text-align:left;">
+                                                    
+                                                </td>
+                                                <td style="text-align:right;"></td>
+                                                <td style="text-align:left;">
+                                                   
+                                                </td>
+                                                <td></td>                                  
+                                            </tr>                                            
+                                                                                                                                    
+                                        </table>
+                                        
+                             </asp:Panel>
+                             <ajaxToolkit:CollapsiblePanelExtender ID="CollapsiblePanelExtender2" runat="Server"
+                                TargetControlID="npCostSummaryDetail"
+                                ExpandControlID="npCostSummaryHeader"
+                                CollapseControlID="npCostSummaryHeader" 
+                                Collapsed="false"
+                                TextLabelID="lbl_npCostSummaryHeader"
+                                ImageControlID="img_npCostSummaryHeader"    
+                                ExpandedText="(展开)"
+                                CollapsedText="(隐藏)"
+                                ExpandedImage="~/images/collapse_blue.jpg"
+                                CollapsedImage="~/images/expand_blue.jpg"
+                                SuppressPostBack="true" />
+                            </td>
+                        </tr>
+                    
+                    
                     <tr>
                         <td style="width:100%;">
                             <asp:Panel ID="npPolicyCompanyHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
@@ -261,74 +417,6 @@
                     
                     <tr>
                         <td style="width:100%;">
-                            <asp:Panel ID="npGridPolicyItemHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
-                                <div style="padding:5px; cursor: pointer; vertical-align: middle;">
-                                    <div style="float: left; vertical-align: middle;">
-                                        <asp:ImageButton ID="img_npGridPolicyItem" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
-                                    </div>
-                                    <div style="float: left; margin-left:5px;">保险项目</div>
-                                    <div style="float: left; margin-left:5px;">
-                                        <asp:Label ID="lbl_npGridPolicyItem" runat="server">(展开)</asp:Label>
-                                    </div>                                    
-                                </div>
-                            </asp:Panel>  
-                            <asp:Panel ID="npGridPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
-                                        <table style="width:100%">
-                                            <tr>
-                                                <td style="text-align:right;"></td>                                                
-                                            </tr> 
-                                            <tr>
-                                                <td>
-                                                    <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" 
-                                                    KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False" 
-                                                    >
-                                                        <%-- BeginRegion Columns --%>
-                                                            <Columns>
-                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;" Visible="false">
-                                                                    <NewButton Visible="false" />
-                                                                    <EditButton Visible="false" />
-                                                                    <DeleteButton Visible="false" />
-                                                                </dxwgv:GridViewCommandColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="ItemID" Caption="项目编号" CellStyle-Wrap="False">
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="ProdID" Caption="项目编码" CellStyle-Wrap="False">
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="ProdName" Caption="项目名称" CellStyle-Wrap="False">
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Coverage" Caption="保额" CellStyle-Wrap="False">
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" CellStyle-Wrap="False">
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="ProcRate" Caption="经纪费率" CellStyle-Wrap="False">
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" CellStyle-Wrap="False">
-                                                                </dxwgv:GridViewDataColumn>
-                                                            </Columns>
-                                                        <%-- EndRegion --%>
-                                                        <SettingsPager Mode="ShowAllRecords"/>
-                                                        <Settings ShowGroupPanel="false" />
-                                                    </dxwgv:ASPxGridView>
-                                                </td>
-                                            </tr>
-                                        </table>
-       
-                             </asp:Panel>
-                             <ajaxToolkit:CollapsiblePanelExtender ID="cpeGridPolicyItem" runat="Server"
-                                TargetControlID="npGridPolicyItemDetail"
-                                ExpandControlID="npGridPolicyItemHeader"
-                                CollapseControlID="npGridPolicyItemHeader" 
-                                Collapsed="false"
-                                TextLabelID="lbl_npGridPolicyItem"
-                                ImageControlID="img_npGridPolicyItem"    
-                                ExpandedText="(展开)"
-                                CollapsedText="(隐藏)"
-                                ExpandedImage="~/images/collapse_blue.jpg"
-                                CollapsedImage="~/images/expand_blue.jpg"
-                                SuppressPostBack="true" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width:100%;">
                             <asp:Panel ID="npOtherPolicyItemHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                 <div style="padding:5px; cursor: pointer; vertical-align: middle;">
                                     <div style="float: left; vertical-align: middle;">
@@ -343,58 +431,31 @@
                             </asp:Panel> 
                             <asp:Panel ID="npOtherPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
                                         <table style="width:100%">
+                                                                                        
                                             <tr>
-                                                <td style="width:11%;text-align:right;">保额：</td>
+                                                <td style="width:11%;text-align:right;">部门：</td>
                                                 <td style="width:22%;text-align:left;">
-                                                    <asp:TextBox ID="txtprice" runat="server" Width="140px"></asp:TextBox>
-                                                </td>
-                                                <td style="width:11%;text-align:right;">保费（原）：</td>
-                                                <td style="width:22%;text-align:left;">
-                                                    <asp:TextBox ID="txtoriginalfee" runat="server" Width="140px"></asp:TextBox>
-                                                </td>
-                                                <td style="width:11%;text-align:right;">币种：</td>
-                                                <td style="width:20%;text-align:left;">
-                                                    <asp:DropDownList ID="DropDownList2" runat="server">
-                                                        <asp:ListItem Text="人民币" Value="1"></asp:ListItem>
-                                                        <asp:ListItem Text="美元" Value="2"></asp:ListItem>
-                                                        <asp:ListItem Text="英镑" Value="3"></asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </td>                                  
-                                            </tr> 
-                                            <tr>
-                                                <td style="text-align:right;">换算汇率：</td>
-                                                <td style="text-align:left;">
-                                                    <asp:TextBox ID="txtchange" runat="server" Width="140px"></asp:TextBox>
-                                                </td>
-                                                <td style="text-align:right;">保费（本）：</td>
-                                                <td style="text-align:left;">
-                                                    <asp:TextBox ID="txtlocalfee" runat="server" Width="140px"></asp:TextBox>
-                                                </td>
-                                                <td style="text-align:right;">经纪费（原）：</td>
-                                                <td style="text-align:left;">
-                                                    <asp:TextBox ID="txtmiddlefee" runat="server" Width="120px"></asp:TextBox>
-                                                </td>                                  
-                                            </tr>                                             
-                                            <tr>
-                                                <td style="text-align:right;">经纪费（本）：</td>
-                                                <td style="text-align:left;">
-                                                    <asp:TextBox ID="TextBox1" runat="server" Width="120px"></asp:TextBox>
-                                                </td>
-                                                <td style="text-align:right;">部门：</td>
-                                                <td style="text-align:left;">
                                                     <asp:DropDownList ID="ddlDeptId" runat="server">
                                                         <asp:ListItem Text="部门1" Value="1"></asp:ListItem>
                                                         <asp:ListItem Text="部门2" Value="2"></asp:ListItem>
                                                         <asp:ListItem Text="部门3" Value="3"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </td>
-                                                <td style="text-align:right;">客户经理：</td>
-                                                <td style="text-align:left;">
+                                                <td style="width:11%;text-align:right;">客户经理：</td>
+                                                <td style="width:22%;text-align:left;">
                                                     <asp:DropDownList ID="ddlcustomermanager" runat="server">
                                                         <asp:ListItem Text="经理1" Value="1"></asp:ListItem>
                                                         <asp:ListItem Text="经理2" Value="2"></asp:ListItem>
                                                     </asp:DropDownList>
-                                                </td>                                  
+                                                </td>
+                                                <td style="width:11%;text-align:right;">业务来源：</td>
+                                                <td style="width:22%;text-align:left;">
+                                                    <asp:DropDownList ID="ddlFrom" runat="server">
+                                                        <asp:ListItem Text="业务来源1" Value="1"></asp:ListItem>
+                                                        <asp:ListItem Text="业务来源2" Value="2"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </td> 
+                                                <td></td>                                 
                                             </tr> 
                                             <tr>
                                                 <td style="text-align:right;">业务性质：</td>
@@ -414,10 +475,11 @@
                                                 <td style="text-align:right;">录单人：</td>
                                                 <td style="text-align:left;">
                                                     <asp:TextBox ID="txtCreatePerson" runat="server" Width="120px" Enabled="false"></asp:TextBox>
-                                                </td>                                  
+                                                </td> 
+                                                <td></td>                                 
                                             </tr>
                                             <tr>
-                                                <td style="text-align:right;">录单日期：</td>
+                                                <td style="text-align:right;">录单日期：</td> 
                                                 <td style="text-align:left;">
                                                     <asp:TextBox ID="txtCreateTime" runat="server" Width="120px" Enabled="false"></asp:TextBox>
                                                 </td>
@@ -425,7 +487,8 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                            </tr>                                                                                         
+                                                <td></td>
+                                            </tr>                                                                                        
                                         </table>
                                         
                              </asp:Panel>
@@ -443,55 +506,7 @@
                                 SuppressPostBack="true" />
                             </td>
                         </tr>
-                        
-                        <tr>
-                        <td style="width:100%;">
-                            <asp:Panel ID="npcheckmemoheader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
-                                <div style="padding:5px; cursor: pointer; vertical-align: middle;">
-                                    <div style="float: left; vertical-align: middle;">
-                                        <asp:ImageButton ID="img_npcheckmemoheader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
-                                    </div>
-                                    <div style="float: left; margin-left:5px;">其它项目</div>
-                                    <div style="float: left; margin-left:5px;">
-                                        <asp:Label ID="lbl_npcheckmemoheader" runat="server">(展开)</asp:Label>
-                                    </div>
-                                    
-                                </div>
-                            </asp:Panel> 
-                            <asp:Panel ID="npcheckmemoDetail" runat="server" CssClass="collapsePanel" Height="0">
-                                        <table style="width:100%">                                            
-                                            <tr>
-                                                <td style="width:70px;text-align:right;">审核人：</td>
-                                                <td style="width:180px;text-align:left;">
-                                                    <asp:TextBox ID="TextBox2" runat="server" Width="120px" Enabled="false"></asp:TextBox>
-                                                </td>
-                                                <td style="width:70px;text-align:right;">审核日期：</td>
-                                                <td style="width:180px;text-align:left;">
-                                                    <dxe:ASPxDateEdit ID="decheckDate" runat="server"></dxe:ASPxDateEdit>
-                                                </td>                                
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align:right; vertical-align:top;">审核备注：</td>
-                                                <td style="text-align:left;" colspan="3">
-                                                    <textarea runat="server" id="taCheckMemo" rows="5" cols="68"></textarea>
-                                                </td>                                               
-                                            </tr>                                                                                         
-                                        </table>                                        
-                             </asp:Panel>
-                             <ajaxToolkit:CollapsiblePanelExtender ID="CollapsiblePanelExtender2" runat="Server"
-                                TargetControlID="npcheckmemoDetail"
-                                ExpandControlID="npcheckmemoheader"
-                                CollapseControlID="npcheckmemoheader" 
-                                Collapsed="false"
-                                TextLabelID="lbl_npcheckmemoheader"
-                                ImageControlID="img_npcheckmemoheader"    
-                                ExpandedText="(展开)"
-                                CollapsedText="(隐藏)"
-                                ExpandedImage="~/images/collapse_blue.jpg"
-                                CollapsedImage="~/images/expand_blue.jpg"
-                                SuppressPostBack="true" />
-                            </td>
-                        </tr>
+                    
                     </table>
                     
             </dxw:ContentControl></ContentCollection></dxtc:TabPage>
