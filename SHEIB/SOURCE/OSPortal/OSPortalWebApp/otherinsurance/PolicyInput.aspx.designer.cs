@@ -428,6 +428,15 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeOtherPolicyItem;
         
         /// <summary>
+        /// filesUploadControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxUploadControl.ASPxUploadControl filesUploadControl;
+        
+        /// <summary>
         /// ContentControl2 control.
         /// </summary>
         /// <remarks>
@@ -471,6 +480,15 @@ namespace OSPortalWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnsave;
+        
+        /// <summary>
+        /// btnApplyCheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnApplyCheck;
         
         /// <summary>
         /// btncancel control.
