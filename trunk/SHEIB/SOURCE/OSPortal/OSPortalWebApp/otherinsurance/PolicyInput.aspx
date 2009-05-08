@@ -526,52 +526,62 @@
                                                 <td style="width:25%;text-align:left;">
                                                     <asp:TextBox ID="txtlocalfee" runat="server" Width="140px"></asp:TextBox>
                                                 </td>
-                                                <td style="width:8%;text-align:right;">经纪费：</td>
+                                                <td style="width:8%;text-align:right;">经纪费（原）：</td>
                                                 <td style="width:23%;text-align:left;">
                                                     <asp:TextBox ID="txtmiddlefee" runat="server" Width="120px"></asp:TextBox>
                                                 </td>                                  
                                             </tr>                                             
                                             <tr>
-                                                <td style="width:8%;text-align:right;">部门：</td>
+                                                <td style="text-align:right;">经纪费（本）：</td>
                                                 <td style="width:25%;text-align:left;">
+                                                    <asp:TextBox ID="TextBox1" runat="server" Width="120px"></asp:TextBox>
+                                                </td>
+                                                <td style="text-align:right;">部门：</td>
+                                                <td style="text-align:left;">
                                                     <asp:DropDownList ID="ddlDeptId" runat="server">
                                                         <asp:ListItem Text="部门1" Value="1"></asp:ListItem>
                                                         <asp:ListItem Text="部门2" Value="2"></asp:ListItem>
                                                         <asp:ListItem Text="部门3" Value="3"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </td>
-                                                <td style="width:8%;text-align:right;">客户经理：</td>
-                                                <td style="width:25%;text-align:left;">
+                                                <td style="text-align:right;">客户经理：</td>
+                                                <td style="text-align:left;">
                                                     <asp:DropDownList ID="ddlcustomermanager" runat="server">
                                                         <asp:ListItem Text="经理1" Value="1"></asp:ListItem>
                                                         <asp:ListItem Text="经理2" Value="2"></asp:ListItem>
                                                     </asp:DropDownList>
-                                                </td>
-                                                <td style="width:8%;text-align:right;">业务性质：</td>
-                                                <td style="width:23%;text-align:left;">
+                                                </td>                                  
+                                            </tr> 
+                                            <tr>
+                                                <td style="text-align:right;">业务性质：</td>
+                                                <td style="text-align:left;">
                                                     <asp:DropDownList ID="ddlKind" runat="server">
                                                         <asp:ListItem Text="业务性质1" Value="1"></asp:ListItem>
                                                         <asp:ListItem Text="业务性质2" Value="2"></asp:ListItem>
                                                     </asp:DropDownList>
-                                                </td>                                  
-                                            </tr> 
-                                            <tr>
-                                                <td style="width:8%;text-align:right;">收款方式：</td>
-                                                <td style="width:25%;text-align:left;">
+                                                </td>
+                                                <td style="text-align:right;">收款方式：</td>
+                                                <td style="text-align:left;">
                                                     <asp:DropDownList ID="ddlGatheringType" runat="server">
                                                         <asp:ListItem Text="收款方式1" Value="1"></asp:ListItem>
                                                         <asp:ListItem Text="收款方式2" Value="2"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </td>
-                                                <td style="width:8%;text-align:right;">录单人：</td>
-                                                <td style="width:25%;text-align:left;">
+                                                <td style="text-align:right;">录单人：</td>
+                                                <td style="text-align:left;">
                                                     <asp:TextBox ID="txtCreatePerson" runat="server" Width="120px" Enabled="false"></asp:TextBox>
-                                                </td>
-                                                <td style="width:8%;text-align:right;">录单日期：</td>
-                                                <td style="width:23%;text-align:left;">
-                                                    <asp:TextBox ID="txtCreateTime" runat="server" Width="120px" Enabled="false"></asp:TextBox>
                                                 </td>                                  
-                                            </tr>                                                                                         
+                                            </tr>
+                                                <td style="text-align:right;">录单日期：</td> 
+                                                <td style="text-align:left;">
+                                                    <asp:TextBox ID="txtCreateTime" runat="server" Width="120px" Enabled="false"></asp:TextBox>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            <tr>
+                                            </tr>                                                                                        
                                         </table>
                                         
                              </asp:Panel>
