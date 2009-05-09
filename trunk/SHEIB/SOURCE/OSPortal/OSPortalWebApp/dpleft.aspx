@@ -18,7 +18,7 @@
                 <td valign="top" style="width: 100%;">
                     <dxnb:ASPxNavBar id="ASPxNavBar1" AutoCollapse="true" runat="server" AllowSelectItem="True" EnableTheming="True" EnableViewState="False" Width="155px" EnableAnimation="True">
                                 <GroupHeaderStyle HorizontalAlign="Left" VerticalAlign="Top" />
-                                <ItemStyle HorizontalAlign="Left" / >
+                                <ItemStyle HorizontalAlign="Left" />
                                 <ClientSideEvents ItemClick="function(s, e) {SelectedItemChanged(s,e);}" Init="function(s, e) {InitNavBar(s,e);}" ExpandedChanged="function(s, e) {GroupExpandedChanged(s,e);}" ExpandedChanging="function(s, e) {GroupExpandedChanging(s,e);}">                                    
                                 </ClientSideEvents>
                                 <Groups>
