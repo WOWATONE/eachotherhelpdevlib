@@ -30,28 +30,13 @@
     
     <table style="width:100%">
                     <tr>
-                        <td style="height:40px; width:60%;">
-                            <dxm:ASPxMenu Visible="false" EnableViewState="False" EncodeHtml="False" id="dpASPxMenu" runat="server" AllowSelectItem="True" Orientation="Horizontal">
-                                <ClientSideEvents 
-                                    CloseUp="function(s, e) {}" 
-                                    PopUp="function(s, e) {}" 
-                                    Init="function(s, e) {}" 
-                                    ItemClick="function(s, e) { 
-                                        var name = e.item.name;
-                                        menuClick(name);
-                                    }" 
-                                    ItemMouseOut="function(s, e) {}" 
-                                    ItemMouseOver="function(s, e) {}" />
-                                <Items>
-                                    <dxm:MenuItem Text="新    建" Name="PolicyInput.aspx"></dxm:MenuItem>
-                                </Items>
-                            </dxm:ASPxMenu>
+                        <td style="height:40px; width:45%;">
+                            
                         </td>
-                        <td style="height:40px; width:40%;">
+                        <td style="height:40px; width:55%;">
                             <table style="margin:0px; padding:0px; width:100%; border:0px; text-align:right">
 				                        <tr>
-					                        <td style="width:40%; color:#0E5ED5;">当前位置：非车险保单检索</td>
-					                        <td style="width:60%;PADDING-RIGHT: 20px; text-align:right;color:#0E5ED5;">
+					                        <td style="width:40%; color:#0E5ED5;">当前位置：非车险保单检索&nbsp;&nbsp;
 					                            <asp:label id="LbUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
 						                        <label id="lblCurrentDate"></label>
 					                        </td>

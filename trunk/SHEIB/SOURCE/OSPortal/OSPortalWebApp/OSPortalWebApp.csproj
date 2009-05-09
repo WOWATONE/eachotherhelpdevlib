@@ -378,6 +378,13 @@
     <Compile Include="otherinsurance\PolicyProdType.aspx.designer.cs">
       <DependentUpon>PolicyProdType.aspx</DependentUpon>
     </Compile>
+    <Compile Include="otherinsurance\PolicyRead.aspx.cs">
+      <DependentUpon>PolicyRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyRead.aspx.designer.cs">
+      <DependentUpon>PolicyRead.aspx</DependentUpon>
+    </Compile>
     <Compile Include="otherinsurance\PolicySearch.aspx.cs">
       <DependentUpon>PolicySearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3033,6 +3040,7 @@
     <Content Include="js\customdefinition.js" />
     <Content Include="otherinsurance\NewCustomer.aspx" />
     <Content Include="otherinsurance\PolicyProdType.aspx" />
+    <Content Include="otherinsurance\PolicyRead.aspx" />
     <Content Include="otherinsurance\SelectCustomer.aspx" />
     <Content Include="ProductSetup\Branch.aspx" />
     <Content Include="ProductSetup\BranchList.aspx" />
