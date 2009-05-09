@@ -219,9 +219,9 @@
                                                                 <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
                                                                     <NewButton Visible="False" />
                                                                     <EditButton Visible="False" />                                                                    
-                                                                    <DeleteButton Visible="true" />
+                                                                    <DeleteButton Visible="false" />
                                                                     <CustomButtons>
-                                                                        <dxwgv:GridViewCommandColumnCustomButton Text="编辑">                                                                            
+                                                                        <dxwgv:GridViewCommandColumnCustomButton Text="审核">                                                                            
                                                                         </dxwgv:GridViewCommandColumnCustomButton>                                                                        
                                                                     </CustomButtons>                                                   
                                                                 </dxwgv:GridViewCommandColumn>                                                                

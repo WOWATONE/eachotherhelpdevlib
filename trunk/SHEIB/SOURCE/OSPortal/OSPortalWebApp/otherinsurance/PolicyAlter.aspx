@@ -178,10 +178,22 @@
                             <asp:Panel ID="nppostilecontentDetail" runat="server" CssClass="collapsePanel" Height="0">
                                         <table style="width:100%">
                                             <tr>
-                                                <td style="width:8%;text-align:right;"></td>
-                                                <td style="width:92%;text-align:left;">                                                
+                                                <td style="width:10%;text-align:right;">批改人：</td>
+                                                <td style="width:20%;text-align:left;">
+                                                    <asp:TextBox ID="TextBox2" runat="server" Width="100px" Enabled="false"></asp:TextBox>
+                                                </td>
+                                                <td style="width:10%;text-align:right;">批改日期：</td>
+                                                <td style="width:20%;text-align:left;">
+                                                    <dxe:ASPxDateEdit ID="deCheckDate" runat="server"></dxe:ASPxDateEdit>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:right;"></td>
+                                                <td style="text-align:left;" colspan="3">                                                
                                                     <textarea runat="server" id="taModifyMemo" rows="5" cols="72"></textarea>
                                                 </td>
+                                                <td></td>
                                             </tr>
                                         </table>
        

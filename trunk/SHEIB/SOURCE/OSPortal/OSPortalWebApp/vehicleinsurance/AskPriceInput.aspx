@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="AskPriceInput.aspx.cs" Inherits="OSPortalWebApp.vehicleinsurance.AskPriceInput" %>
+﻿<%@ Page Title="询价单录入" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="AskPriceInput.aspx.cs" Inherits="OSPortalWebApp.vehicleinsurance.AskPriceInput" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
@@ -172,7 +172,7 @@
                                                              >
                                                                 <%-- BeginRegion Columns --%>
                                                                     <Columns>
-                                                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" VisibleIndex="0">
+                                                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;">
                                                                             <NewButton Visible="True" />
                                                                             <EditButton Visible="true" />
                                                                             <DeleteButton Visible="true" />
@@ -290,9 +290,6 @@
                                                     <asp:Panel ID="npGridPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
                                                                 <table style="width:100%">
                                                                     <tr>
-                                                                        <td style="text-align:right;"></td>                                                
-                                                                    </tr> 
-                                                                    <tr>
                                                                         <td>
                                                                             <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" 
                                                                             KeyFieldName="CarPolicyID" Width="100%" AutoGenerateColumns="False" 
@@ -305,7 +302,7 @@
                                                                              >
                                                                                 <%-- BeginRegion Columns --%>
                                                                                     <Columns>
-                                                                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" VisibleIndex="0">
+                                                                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;">
                                                                                             <NewButton Visible="True" />
                                                                                             <EditButton Visible="true" />
                                                                                             <DeleteButton Visible="true" />

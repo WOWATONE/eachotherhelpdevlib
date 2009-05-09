@@ -575,18 +575,35 @@
     
     <table style="height:5px; background-color:#E0EDFF; width:100%; font-size:2px;"><tr><td></td></tr></table>
     
-    <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="25px">
+    <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="180px">
                 <table style="width:100%">
                     <tr>
-                        <td style="text-align:right;">
+                        <td style="width:10%;text-align:right;">审核人：</td>
+                        <td style="width:20%;text-align:left;">
+                            <asp:TextBox ID="TextBox2" runat="server" Width="100px" Enabled="false"></asp:TextBox>
+                        </td>
+                        <td style="width:10%;text-align:right;">审核日期：</td>
+                        <td style="width:20%;text-align:left;">
+                            <dxe:ASPxDateEdit ID="deCheckDate" runat="server"></dxe:ASPxDateEdit>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right;vertical-align:top;">审核备注：</td>
+                        <td style="text-align:left;" colspan="3">
+                            <textarea runat="server" id="taModifyMemo" rows="5" cols="72"></textarea>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td> 
+                        <td style="text-align:right;" colspan="3">
                             <asp:Button ID="btnsave" runat="server" Text="返回修改" CssClass="input_2" />&nbsp;&nbsp;
                             <asp:Button ID="btnApplyCheck" runat="server" Text="审核通过" CssClass="input_2" />&nbsp;&nbsp;
                             <asp:Button ID="btnInvertCheck" runat="server" Text="反审核" CssClass="input_2" />&nbsp;&nbsp;
                             <asp:Button ID="btncancel" runat="server" Text="取消" CssClass="input_2" />
                         </td>  
-                        <td style="width:20px;text-align:left;">
-                            &nbsp;
-                        </td>                                                                  
+                        <td></td>                                                                  
                     </tr>
                 </table>
                 

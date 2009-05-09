@@ -161,6 +161,13 @@
     <Compile Include="BusinessConsult\BusinessConsultList.aspx.designer.cs">
       <DependentUpon>BusinessConsultList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AskPriceSearch.ascx.cs">
+      <DependentUpon>AskPriceSearch.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\AskPriceSearch.ascx.designer.cs">
+      <DependentUpon>AskPriceSearch.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PolicySearch.ascx.cs">
       <DependentUpon>PolicySearch.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -526,6 +533,13 @@
     </Compile>
     <Compile Include="vehicleinsurance\AskPriceCheck.aspx.designer.cs">
       <DependentUpon>AskPriceCheck.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vehicleinsurance\AskPriceRead.aspx.cs">
+      <DependentUpon>AskPriceRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vehicleinsurance\AskPriceRead.aspx.designer.cs">
+      <DependentUpon>AskPriceRead.aspx</DependentUpon>
     </Compile>
     <Compile Include="vehicleinsurance\CarPolicyInputList.aspx.cs">
       <DependentUpon>CarPolicyInputList.aspx</DependentUpon>
@@ -3006,6 +3020,7 @@
     <Content Include="accounting\ReinsuranceBrokerageBusiness.aspx" />
     <Content Include="BusinessConsult\BusinessConsult.aspx" />
     <Content Include="BusinessConsult\BusinessConsultList.aspx" />
+    <Content Include="Controls\AskPriceSearch.ascx" />
     <Content Include="CustomerClaim\NotifyClaim.aspx" />
     <Content Include="CustomerClaim\NotifyClaimList.aspx" />
     <Content Include="CustomerRelation\AlertService.aspx" />
@@ -3057,6 +3072,7 @@
     <Content Include="SiteMastePages\PopupMaster.Master" />
     <Content Include="vehicleinsurance\AskPriceAlert.aspx" />
     <Content Include="vehicleinsurance\AskPriceCheck.aspx" />
+    <Content Include="vehicleinsurance\AskPriceRead.aspx" />
     <Content Include="vehicleinsurance\CarPolicyInputList.aspx" />
     <Content Include="vehicleinsurance\AskPriceInputList.aspx" />
     <Content Include="vehicleinsurance\AskPriceCheckList.aspx" />
