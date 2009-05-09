@@ -54,12 +54,12 @@ namespace OSPortalWebApp.otherinsurance
             _dtGrid.Columns.Add("ProdType", typeof(String));
 
             _dtGrid.Columns.Add("Coverage", typeof(Double));
-            _dtGrid.Columns.Add("PremiumStandard", typeof(Double));
-
+            _dtGrid.Columns.Add("Premium", typeof(Double));
+            _dtGrid.Columns.Add("Process", typeof(Double));
             _dtGrid.Columns.Add("Currency", typeof(String));
             _dtGrid.Columns.Add("PremiumBase", typeof(Double));
-            _dtGrid.Columns.Add("ProcessRate", typeof(Double));
-            _dtGrid.Columns.Add("Process", typeof(Double));
+            _dtGrid.Columns.Add("ProcessBase", typeof(Double));
+            
             _dtGrid.Columns.Add("CustomerID", typeof(Int32));
             _dtGrid.Columns.Add("Customer", typeof(String));
             _dtGrid.Columns.Add("CreatePerson", typeof(String));
@@ -76,8 +76,8 @@ namespace OSPortalWebApp.otherinsurance
 
             _dtGrid.Rows.Add(new object[] { 1, 1, 1,
                 1, "王怡", 1, "平安保险", 1, "上海平安", 
-                1, "盛世寿险", 5000, 5000, "人民币",
-                5000, 0.03, 300, 1, "王五", "王海", new DateTime(DateTime.Now.Year-1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                1, "盛世寿险", 5000, 5000, 5000,"人民币",
+                500, 300, 1, "王五", "王海", new DateTime(DateTime.Now.Year-1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
                 1, "来源", 1, "新增", 1, "支票", 
                 new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1), 
                 new DateTime(DateTime.Now.Year+1,DateTime.Now.Month,DateTime.Now.Day,1,1,1)
@@ -97,10 +97,11 @@ namespace OSPortalWebApp.otherinsurance
             dr[10] = "盛世寿险";
             dr[11] = 5000;
             dr[12] = 5000;
-            dr[13] = "人民币";
+            dr[13] = 5000;
+            dr[14] = "人民币";
 
-            dr[14] = 5000;
-            dr[15] = 0.03;
+            
+            dr[15] = 500;
             dr[16] = 300;
             dr[17] = 1;
             dr[18] = "王五";

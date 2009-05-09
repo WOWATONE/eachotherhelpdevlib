@@ -162,12 +162,12 @@
                                                     <td></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align:right;">开始日期：</td>
+                                                    <td style="text-align:right;">批改日期：</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deStartDate" runat="server">
                                                         </dxe:ASPxDateEdit>                                                       
                                                     </td>
-                                                    <td style="text-align:right;">结束日期：</td>
+                                                    <td style="text-align:right;">--&gt;</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
@@ -265,15 +265,15 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Coverage" Caption="保额" VisibleIndex="8" CellStyle-Wrap="False">   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="PremiumStandard" Caption="保费（原）" VisibleIndex="9" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费（原）" VisibleIndex="9" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费（原）" VisibleIndex="9" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Currency" Caption="币种" VisibleIndex="10" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>              
                                                                 <dxwgv:GridViewDataColumn FieldName="PremiumBase" Caption="保费（本）" VisibleIndex="11" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>         
-                                                                <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率" VisibleIndex="12" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>                                                     
-                                                                <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" VisibleIndex="13" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>                                                         
+                                                                <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费（本）" VisibleIndex="13" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Customer" Caption="投保客户" VisibleIndex="14" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>                                                                
