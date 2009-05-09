@@ -45,19 +45,19 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.Columns.Add("AccountType", typeof(String));
 
             _dtGrid.Columns.Add("SerialNo", typeof(String));
-            _dtGrid.Columns.Add("PolicyNo", typeof(String));
-            _dtGrid.Columns.Add("CustomerID", typeof(String));
-            _dtGrid.Columns.Add("Customer", typeof(String));
-            _dtGrid.Columns.Add("SalesId", typeof(String));
-            _dtGrid.Columns.Add("Sales", typeof(String));
+            //_dtGrid.Columns.Add("PolicyNo", typeof(String));
+            //_dtGrid.Columns.Add("CustomerID", typeof(String));
+            //_dtGrid.Columns.Add("Customer", typeof(String));
+            //_dtGrid.Columns.Add("SalesId", typeof(String));
+            //_dtGrid.Columns.Add("Sales", typeof(String));
             _dtGrid.Columns.Add("Audited", typeof(String));
             _dtGrid.Columns.Add("CreatePerson", typeof(String));
-            _dtGrid.Columns.Add("CarrierId", typeof(String));
-            _dtGrid.Columns.Add("CarrierNameCn", typeof(String));
-            _dtGrid.Columns.Add("BranchId", typeof(String));
-            _dtGrid.Columns.Add("BranchName", typeof(String));
-            _dtGrid.Columns.Add("ProdTypeID", typeof(String));
-            _dtGrid.Columns.Add("ProdTypeName", typeof(String));
+            //_dtGrid.Columns.Add("CarrierId", typeof(String));
+            //_dtGrid.Columns.Add("CarrierNameCn", typeof(String));
+            //_dtGrid.Columns.Add("BranchId", typeof(String));
+            //_dtGrid.Columns.Add("BranchName", typeof(String));
+            //_dtGrid.Columns.Add("ProdTypeID", typeof(String));
+            //_dtGrid.Columns.Add("ProdTypeName", typeof(String));
             _dtGrid.Columns.Add("FeeRemark", typeof(String));
             
 
@@ -72,19 +72,8 @@ namespace OSPortalWebApp.inoutbalance
                 10,
                 "现金",
                 "Sn001",
-                "PN001",
-                "C001",
-                "王怡",
-                "S001",
-                "王海",
                 "已审核",
                 "王海",
-                "CM001",
-                "平安",
-                "CB001",
-                "上海",
-                "P001",
-                "寿险",
                 "备注"
             });
 

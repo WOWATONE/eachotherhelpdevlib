@@ -9,8 +9,8 @@
     <script type="text/javascript">
         $(document).ready(function() {
             jQuery.noticeAdd({
-                text: 'This is a notification that you have to remove',
-                stay: true
+                //text: 'This is a notification that you have to remove',
+                //stay: true
             });
 
             //$('button.add').click(function() {

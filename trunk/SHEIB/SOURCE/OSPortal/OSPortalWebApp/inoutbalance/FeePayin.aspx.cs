@@ -51,20 +51,19 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.Columns.Add("ProcessSS", typeof(double));
 
             _dtGrid.Columns.Add("SerialNo", typeof(string));
-            _dtGrid.Columns.Add("PolicyNo", typeof(string));
-            _dtGrid.Columns.Add("Customer", typeof(string));
-            _dtGrid.Columns.Add("SalesId", typeof(Int32));
-            _dtGrid.Columns.Add("Sales", typeof(string));
+            //_dtGrid.Columns.Add("PolicyNo", typeof(string));
+            //_dtGrid.Columns.Add("Customer", typeof(string));
+            //_dtGrid.Columns.Add("SalesId", typeof(Int32));
+            //_dtGrid.Columns.Add("Sales", typeof(string));
             _dtGrid.Columns.Add("Audited", typeof(string));
             _dtGrid.Columns.Add("CreatePerson", typeof(string));
-            _dtGrid.Columns.Add("CarrierId", typeof(string));
-            _dtGrid.Columns.Add("BranchId", typeof(string));
-            _dtGrid.Columns.Add("ProdTypeID", typeof(string));
+            //_dtGrid.Columns.Add("CarrierId", typeof(string));
+            //_dtGrid.Columns.Add("BranchId", typeof(string));
+            //_dtGrid.Columns.Add("ProdTypeID", typeof(string));
             _dtGrid.Columns.Add("FeeRemark", typeof(string));
             _dtGrid.Columns.Add("CreateTime", typeof(DateTime));
-            _dtGrid.Columns.Add("FeeNoticeID", typeof(string));
-            _dtGrid.Columns.Add("EnterAccountID", typeof(string));
-
+            _dtGrid.Columns.Add("NoticeID", typeof(string));
+            
             _dtGrid.Rows.Add(new object[] { 
                 Guid.NewGuid(), 
                 "现金",
@@ -78,18 +77,17 @@ namespace OSPortalWebApp.inoutbalance
                 1000,
                 50,
                 "Sn001",
-                "PN001",
-                "王怡",
-                1,
-                "王海",
+                //"PN001",
+                //"王怡",
+                //1,
+                //"王海",
                 "已审核",
                 "王海",
-                "平安",
-                "上海",
-                "寿险",
+                //"平安",
+                //"上海",
+                //"寿险",
                 "备注",
                 new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
-                "1",
                 "1"
             });
 
