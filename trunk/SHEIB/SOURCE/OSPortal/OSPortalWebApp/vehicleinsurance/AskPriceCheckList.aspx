@@ -47,15 +47,11 @@
                                 <ClientSideEvents Click="btnCreateClick" />
                             </dxe:ASPxButton>
                         </td>
-                        <td style="height:40px; width:40%;">
-                            <table style="margin:0px; padding:0px; width:100%; border:0px; text-align:left">
-				                        <tr>
-					                        <td style="width:40%; color:#0E5ED5;">当前位置：询价单审核&nbsp;&nbsp;
+                        <td style="height:40px; width:40%;text-align:left;color:#0E5ED5;">
+                            当前位置：询价单审核&nbsp;&nbsp;
 					                            <asp:label id="LbUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
 						                        <label id="lblCurrentDate"></label>
-					                        </td>
-				                        </tr>
-	                        </table>
+					                        
                         </td>
                     </tr>
                     <tr>
