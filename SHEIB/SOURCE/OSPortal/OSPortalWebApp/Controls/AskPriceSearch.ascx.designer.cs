@@ -8,37 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSPortalWebApp.vehicleinsurance {
+namespace OSPortalWebApp.Controls {
     
     
-    public partial class CarPolicyInputList {
-        
-        /// <summary>
-        /// ScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
-        
-        /// <summary>
-        /// debtnCreate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton debtnCreate;
-        
-        /// <summary>
-        /// LbUserNameTop control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LbUserNameTop;
+    public partial class AskPriceSearch {
         
         /// <summary>
         /// npSearchHeader control.
@@ -122,13 +95,22 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.DropDownList ddlSalesId;
         
         /// <summary>
-        /// ddlProdTypeID control.
+        /// txtProdTypeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProdTypeID;
+        protected global::System.Web.UI.WebControls.TextBox txtProdTypeID;
+        
+        /// <summary>
+        /// imgpeoplesearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
         
         /// <summary>
         /// ddlSourceTypeID control.
@@ -174,6 +156,15 @@ namespace OSPortalWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlBranchId;
+        
+        /// <summary>
+        /// ddlAaskPriceState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAaskPriceState;
         
         /// <summary>
         /// deStartDate control.

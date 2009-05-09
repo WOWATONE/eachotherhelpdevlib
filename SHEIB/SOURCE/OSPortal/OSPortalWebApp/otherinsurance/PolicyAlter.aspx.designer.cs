@@ -212,6 +212,24 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.Panel nppostilecontentDetail;
         
         /// <summary>
+        /// TextBox2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        
+        /// <summary>
+        /// deCheckDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deCheckDate;
+        
+        /// <summary>
         /// taModifyMemo control.
         /// </summary>
         /// <remarks>

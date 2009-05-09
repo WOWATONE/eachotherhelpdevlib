@@ -23,15 +23,6 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
-        /// dpASPxMenu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxMenu.ASPxMenu dpASPxMenu;
-        
-        /// <summary>
         /// LbUserNameTop control.
         /// </summary>
         /// <remarks>
@@ -41,12 +32,12 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.Label LbUserNameTop;
         
         /// <summary>
-        /// PolicySearch1 control.
+        /// AskPriceSearch1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::OSPortalWebApp.Controls.PolicySearch PolicySearch1;
+        protected global::OSPortalWebApp.Controls.AskPriceSearch AskPriceSearch1;
     }
 }

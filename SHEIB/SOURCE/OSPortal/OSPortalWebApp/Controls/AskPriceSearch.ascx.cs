@@ -6,11 +6,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 
-
-namespace OSPortalWebApp.vehicleinsurance
+namespace OSPortalWebApp.Controls
 {
-    public partial class AskPriceAlertList : System.Web.UI.Page
+    public partial class AskPriceSearch : System.Web.UI.UserControl
     {
+
         #region Variables
 
         private DataTable _dtGridAskPrice;
@@ -23,7 +23,7 @@ namespace OSPortalWebApp.vehicleinsurance
 
             this.gridSearchResult.DataSource = _dtGridAskPrice;
 
-            if (!IsPostBack && !IsCallback)
+            if (!IsPostBack)
                 this.gridSearchResult.DataBind();
         }
 
@@ -118,7 +118,6 @@ namespace OSPortalWebApp.vehicleinsurance
         {
             this.gridSearchResult.DataBind();
         }
-        
 
 
     }
