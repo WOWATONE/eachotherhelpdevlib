@@ -34,17 +34,17 @@
                                     <dxnb:NavBarGroup Text="非车险保单管理" Expanded="false">
                                         <Items>
                                             <dxnb:NavBarItem Text="保单录入" Name="otherinsurance/PolicyInputList.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单审核" Name="otherinsurance/PolicyCheckList.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保单批改" Name="otherinsurance/PolicyAlterList.aspx"></dxnb:NavBarItem>                                            
-                                            <dxnb:NavBarItem Text="保单查询" Name="otherinsurance/PolicySearch.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保单批改" Name="otherinsurance/PolicyAlterList.aspx"></dxnb:NavBarItem>   
+                                            <dxnb:NavBarItem Text="保单审核" Name="otherinsurance/PolicyCheckList.aspx"></dxnb:NavBarItem>                                                                                     
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="车险保单管理" Expanded="false">
                                         <Items>
                                             <dxnb:NavBarItem Text="询价单录入" Name="vehicleinsurance/AskPriceInputList.aspx" ></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="询价单审核" Name="vehicleinsurance/AskPriceCheckList.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="询价单查询" Name="vehicleinsurance/AskPriceSearch.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="询价单批改" Name="vehicleinsurance/AskPriceAlertList.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="询价单审核" Name="vehicleinsurance/AskPriceCheckList.aspx"></dxnb:NavBarItem>
+                                            
+                                            
                                             <dxnb:NavBarItem Text="询价单保单录入" Name="vehicleinsurance/CarPolicyInputList.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
@@ -78,43 +78,31 @@
                                             <dxnb:NavBarItem Text="经纪费结算" Name="inoutbalance/FeeProcess.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
-                                    <dxnb:NavBarGroup Text="产品设置" Expanded="false">
-                                        <Items>
-                                            <dxnb:NavBarItem Text="保险公司" Name="ProductSetup/CarrierList.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="分支机构" Name="ProductSetup/BranchList.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="险种定义" Name="ProductSetup/ProductTypeList.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="标的定义" Name="ProductSetup/TargetTypeList.aspx"></dxnb:NavBarItem>
-                                        </Items>
-                                    </dxnb:NavBarGroup>
-                                    <dxnb:NavBarGroup Text="组织设置" Expanded="false">
+                                    <dxnb:NavBarGroup Text="系统设置" Expanded="false">
                                         <Items>
                                             <dxnb:NavBarItem Text="员工管理" Name="schemasetting/UserManager.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="角色管理" Name="schemasetting/RoleManager.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="组织机构" Name="schemasetting/DepartmentManager.aspx"></dxnb:NavBarItem>
-                                        </Items>
-                                    </dxnb:NavBarGroup>
-                                    <dxnb:NavBarGroup Text="信息中心" Name="http://www.google.cn"></dxnb:NavBarGroup>
-                                    <dxnb:NavBarGroup Text="系统设置" Expanded="false">
-                                        <Items>
+                                            <dxnb:NavBarItem Text="保险公司" Name="ProductSetup/CarrierList.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="分支机构" Name="ProductSetup/BranchList.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="险种定义" Name="ProductSetup/ProductTypeList.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="数据字典" Name="http://www.google.cn"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="系统选项" Name="http://www.google.cn"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="系统日志" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="修改口令" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
-                                    <dxnb:NavBarGroup Text="消息提醒" Name="http://www.google.cn"></dxnb:NavBarGroup>
-                                    <dxnb:NavBarGroup Text="综合查询" Expanded="false">
-                                        <Items>
-                                            <dxnb:NavBarItem Text="非车险保单综合查询" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="车险保单综合查询" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                        </Items>
-                                    </dxnb:NavBarGroup>
+                                    <dxnb:NavBarGroup Text="消息提醒" Name="http://www.google.cn"></dxnb:NavBarGroup>                                    
                                     <dxnb:NavBarGroup Text="预算管理" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="签单保费预算" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="实收保费预算" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="签单保费预算分析报表" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="实收保费预算分析报表" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="签约预算清单" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="签约预算执行明细" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="签约预算完成汇总" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                        </Items>
+                                    </dxnb:NavBarGroup>
+                                    <dxnb:NavBarGroup Text="综合查询" Expanded="false">
+                                        <Items>
+                                            <dxnb:NavBarItem Text="非车险保单综合查询" Name="otherinsurance/PolicySearch.aspx"></dxnb:NavBarItem>    
+                                            <dxnb:NavBarItem Text="车险保单综合查询" Name="vehicleinsurance/AskPriceSearch.aspx"></dxnb:NavBarItem>                      
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="统计报表" Expanded="false">
