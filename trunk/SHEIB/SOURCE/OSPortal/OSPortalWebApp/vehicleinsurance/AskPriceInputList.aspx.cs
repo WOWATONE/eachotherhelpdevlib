@@ -88,7 +88,7 @@ namespace OSPortalWebApp.vehicleinsurance
             });
 
 
-            _dtGridAskPrice.Rows.Add(new object[] { "1", "1",
+            _dtGridAskPrice.Rows.Add(new object[] { "2", "2",
                 "王怡-1", "1", "平安保险", "1", "上海平安", 
                 5, 5000, 4000, 3000, 12000,
                 50, 40, 30, 120, 

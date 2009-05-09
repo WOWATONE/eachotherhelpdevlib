@@ -227,17 +227,21 @@
                                                 <td style="width:22%;text-align:left;">
                                                     <asp:TextBox ID="txtoriginalfee" runat="server" Width="140px"></asp:TextBox>
                                                 </td>
-                                                <td style="width:11%;text-align:right;">币种：</td>
+                                                <td style="width:11%;text-align:right;">经纪费（原）：</td>
                                                 <td style="width:20%;text-align:left;">
+                                                    <asp:TextBox ID="txtmiddlefee" runat="server" Width="120px"></asp:TextBox>
+                                                </td>                                                 
+                                                <td></td>                                 
+                                            </tr> 
+                                            <tr>
+                                                <td style="text-align:right;">币种：</td>
+                                                <td style="text-align:left;">
                                                     <asp:DropDownList ID="DropDownList2" runat="server">
                                                         <asp:ListItem Text="人民币" Value="1"></asp:ListItem>
                                                         <asp:ListItem Text="美元" Value="2"></asp:ListItem>
                                                         <asp:ListItem Text="英镑" Value="3"></asp:ListItem>
                                                     </asp:DropDownList>
-                                                </td> 
-                                                <td></td>                                 
-                                            </tr> 
-                                            <tr>
+                                                </td>
                                                 <td style="text-align:right;">换算汇率：</td>
                                                 <td style="text-align:left;">
                                                     <asp:TextBox ID="txtchange" runat="server" Width="140px"></asp:TextBox>
@@ -245,11 +249,7 @@
                                                 <td style="text-align:right;">保费（本）：</td>
                                                 <td style="text-align:left;">
                                                     <asp:TextBox ID="txtlocalfee" runat="server" Width="140px"></asp:TextBox>
-                                                </td>
-                                                <td style="text-align:right;">经纪费（原）：</td>
-                                                <td style="text-align:left;">
-                                                    <asp:TextBox ID="txtmiddlefee" runat="server" Width="120px"></asp:TextBox>
-                                                </td> 
+                                                </td>                                                 
                                                 <td></td>                                 
                                             </tr>  
                                             <tr>
