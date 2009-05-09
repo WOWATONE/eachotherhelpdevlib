@@ -158,13 +158,13 @@ namespace OSPortalWebApp.CustomerRelation {
         protected global::System.Web.UI.WebControls.TextBox txtMobile;
         
         /// <summary>
-        /// ddlCusomerManager 控件。
+        /// ddlSales 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCusomerManager;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSales;
         
         /// <summary>
         /// txtMainOper 控件。
@@ -338,33 +338,6 @@ namespace OSPortalWebApp.CustomerRelation {
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridContactItem;
         
         /// <summary>
-        /// btnAddContant 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddContant;
-        
-        /// <summary>
-        /// btnEditContant 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditContant;
-        
-        /// <summary>
-        /// btnDeleteContant 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDeleteContant;
-        
-        /// <summary>
         /// gridCustomerPtItem 控件。
         /// </summary>
         /// <remarks>
@@ -446,12 +419,12 @@ namespace OSPortalWebApp.CustomerRelation {
         protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
-        /// btlClose 控件。
+        /// btnClose 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btlClose;
+        protected global::System.Web.UI.WebControls.Button btnClose;
     }
 }
