@@ -73,9 +73,6 @@
                             </asp:Panel>                           
                             <asp:Panel ID="npSearchDetail" runat="server" CssClass="collapsePanel" Height="0">
                                 <table>
-                                    <tr>
-                                        <td>                                        
-                                            <table>
                                                 <tr>
                                                     <td style="width:70px;text-align:right;">交易号：</td>
                                                     <td style="width:180px;text-align:left;">
@@ -172,12 +169,7 @@
                                                 </tr>
                                                     
                                                                                                
-                                            </table>
-                                        </td>
-                                        <td>
-                                        </td>
-                                    </tr>
-                                </table>
+                                            </table>                                       
                                         
                                      
                              </asp:Panel>

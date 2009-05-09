@@ -23,13 +23,13 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
-        /// dpASPxMenu control.
+        /// debtnCreate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxMenu.ASPxMenu dpASPxMenu;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton debtnCreate;
         
         /// <summary>
         /// LbUserNameTop control.
@@ -77,15 +77,6 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.Panel npSearchDetail;
         
         /// <summary>
-        /// txtPolicyNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPolicyNo;
-        
-        /// <summary>
         /// txtPrePolicyNo control.
         /// </summary>
         /// <remarks>
@@ -95,13 +86,22 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtPrePolicyNo;
         
         /// <summary>
-        /// txtPolicyCheckNo control.
+        /// txtPolicyNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPolicyCheckNo;
+        protected global::System.Web.UI.WebControls.TextBox txtPolicyNo;
+        
+        /// <summary>
+        /// ddlCustomerID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCustomerID;
         
         /// <summary>
         /// ddlDeptId control.
@@ -122,13 +122,13 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.DropDownList ddlSalesId;
         
         /// <summary>
-        /// ddlCustomerID control.
+        /// ddlProdTypeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCustomerID;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProdTypeID;
         
         /// <summary>
         /// ddlSourceTypeID control.
@@ -149,13 +149,13 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.DropDownList ddlFlagContinue;
         
         /// <summary>
-        /// ddlProdTypeID control.
+        /// txtCreatePerson control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProdTypeID;
+        protected global::System.Web.UI.WebControls.TextBox txtCreatePerson;
         
         /// <summary>
         /// ddlCarrierId control.
@@ -176,15 +176,6 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.DropDownList ddlBranchId;
         
         /// <summary>
-        /// ddlFlagAudited control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFlagAudited;
-        
-        /// <summary>
         /// deStartDate control.
         /// </summary>
         /// <remarks>
@@ -201,15 +192,6 @@ namespace OSPortalWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deEndDate;
-        
-        /// <summary>
-        /// txtCreatePerson control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCreatePerson;
         
         /// <summary>
         /// btnSearch control.
