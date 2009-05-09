@@ -11,7 +11,7 @@
 namespace OSPortalWebApp.vehicleinsurance {
     
     
-    public partial class AskPriceCheck {
+    public partial class CarPolicyItemInputRead {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -21,24 +21,6 @@ namespace OSPortalWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
-        
-        /// <summary>
-        /// insuranceDetailTabPage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTabControl.ASPxPageControl insuranceDetailTabPage;
-        
-        /// <summary>
-        /// ContentControl1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl1;
         
         /// <summary>
         /// npbasicheader control.
@@ -77,103 +59,76 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.Panel npbasicdetail;
         
         /// <summary>
-        /// txtSN control.
+        /// txtGridPolicyCarInfoCarNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSN;
+        protected global::System.Web.UI.WebControls.TextBox txtGridPolicyCarInfoCarNo;
         
         /// <summary>
-        /// txtFee control.
+        /// txtGridPolicyCarInfoCarcaseNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFee;
+        protected global::System.Web.UI.WebControls.TextBox txtGridPolicyCarInfoCarcaseNo;
         
         /// <summary>
-        /// txtNumber control.
+        /// txtGridPolicyCarInfoEngineNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtGridPolicyCarInfoEngineNo;
         
         /// <summary>
-        /// txtPeople control.
+        /// txtGridPolicyCarInfoCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPeople;
+        protected global::System.Web.UI.WebControls.TextBox txtGridPolicyCarInfoCapacity;
         
         /// <summary>
-        /// txtBank control.
+        /// txtGridPolicyCarInfoCarModel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBank;
+        protected global::System.Web.UI.WebControls.TextBox txtGridPolicyCarInfoCarModel;
         
         /// <summary>
-        /// txtpeoplefrom control.
+        /// txtGridPolicyCarInfoCharacter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtpeoplefrom;
+        protected global::System.Web.UI.WebControls.TextBox txtGridPolicyCarInfoCharacter;
         
         /// <summary>
-        /// imgadduser control.
+        /// txtGridPolicyCarInfoRegisterDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgadduser;
+        protected global::System.Web.UI.WebControls.TextBox txtGridPolicyCarInfoRegisterDate;
         
         /// <summary>
-        /// imgpeoplesearch control.
+        /// txtGridPolicyCarInfoCarValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
-        
-        /// <summary>
-        /// txtBankAccount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBankAccount;
-        
-        /// <summary>
-        /// txtBankCredenceID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBankCredenceID;
-        
-        /// <summary>
-        /// txtStage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStage;
+        protected global::System.Web.UI.WebControls.TextBox txtGridPolicyCarInfoCarValue;
         
         /// <summary>
         /// cpeBasic control.
@@ -383,60 +338,6 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender2;
         
         /// <summary>
-        /// npPolicyCompanyHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npPolicyCompanyHeader;
-        
-        /// <summary>
-        /// img_npPolicyCompanyHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton img_npPolicyCompanyHeader;
-        
-        /// <summary>
-        /// lbl_npPolicyCompanyHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_npPolicyCompanyHeader;
-        
-        /// <summary>
-        /// npPolicyCompanyDetail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npPolicyCompanyDetail;
-        
-        /// <summary>
-        /// gridCarrier control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridCarrier;
-        
-        /// <summary>
-        /// CollapsiblePanelExtender1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender1;
-        
-        /// <summary>
         /// npOtherPolicyItemHeader control.
         /// </summary>
         /// <remarks>
@@ -473,51 +374,6 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.Panel npOtherPolicyItemDetail;
         
         /// <summary>
-        /// ddlDeptId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDeptId;
-        
-        /// <summary>
-        /// ddlcustomermanager control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcustomermanager;
-        
-        /// <summary>
-        /// ddlFrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFrom;
-        
-        /// <summary>
-        /// ddlKind control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlKind;
-        
-        /// <summary>
-        /// ddlGatheringType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGatheringType;
-        
-        /// <summary>
         /// txtCreatePerson control.
         /// </summary>
         /// <remarks>
@@ -527,76 +383,13 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtCreatePerson;
         
         /// <summary>
-        /// txtCreateTime control.
+        /// deCreateTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCreateTime;
-        
-        /// <summary>
-        /// cpeOtherPolicyItem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeOtherPolicyItem;
-        
-        /// <summary>
-        /// ContentControl2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl2;
-        
-        /// <summary>
-        /// ContentControl3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl3;
-        
-        /// <summary>
-        /// gridPeriod control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridPeriod;
-        
-        /// <summary>
-        /// npExecuteAction control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npExecuteAction;
-        
-        /// <summary>
-        /// TextBox2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
-        
-        /// <summary>
-        /// deCheckDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deCheckDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deCreateTime;
         
         /// <summary>
         /// taModifyMemo control.
@@ -608,39 +401,12 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea taModifyMemo;
         
         /// <summary>
-        /// btnsave control.
+        /// cpeOtherPolicyItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnsave;
-        
-        /// <summary>
-        /// btnApplyCheck control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnApplyCheck;
-        
-        /// <summary>
-        /// btnInvertCheck control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnInvertCheck;
-        
-        /// <summary>
-        /// btncancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btncancel;
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeOtherPolicyItem;
     }
 }

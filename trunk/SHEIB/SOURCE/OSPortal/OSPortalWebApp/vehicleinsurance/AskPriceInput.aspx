@@ -85,7 +85,7 @@
                                                     <asp:Panel ID="npbasicdetail" runat="server" CssClass="collapsePanel" Height="0">
                                                                 <table style="width:100%">
                                                                     <tr>
-                                                                        <td style="width:10%;text-align:right;">投保编号：</td>
+                                                                        <td style="width:10%;text-align:right;">投保单号：</td>
                                                                         <td style="width:20%;text-align:left;">
                                                                             <asp:TextBox ID="txtSN" runat="server" Width="150px"></asp:TextBox>
                                                                         </td>

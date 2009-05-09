@@ -194,60 +194,6 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeBasic;
         
         /// <summary>
-        /// npvehicleheader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npvehicleheader;
-        
-        /// <summary>
-        /// img_npvehicleheader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton img_npvehicleheader;
-        
-        /// <summary>
-        /// lbl_npvehicleheader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_npvehicleheader;
-        
-        /// <summary>
-        /// npvehicledetail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npvehicledetail;
-        
-        /// <summary>
-        /// gridPolicyCarInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridPolicyCarInfo;
-        
-        /// <summary>
-        /// cpevehicle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpevehicle;
-        
-        /// <summary>
         /// npGridPolicyItemHeader control.
         /// </summary>
         /// <remarks>
@@ -338,67 +284,103 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.Panel npCostSummaryDetail;
         
         /// <summary>
-        /// txtprice control.
+        /// txtCiPremium control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtprice;
+        protected global::System.Web.UI.WebControls.TextBox txtCiPremium;
         
         /// <summary>
-        /// txtoriginalfee control.
+        /// txtAciPremium control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtoriginalfee;
+        protected global::System.Web.UI.WebControls.TextBox txtAciPremium;
         
         /// <summary>
-        /// txtmiddlefee control.
+        /// txtCstPremium control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtmiddlefee;
+        protected global::System.Web.UI.WebControls.TextBox txtCstPremium;
         
         /// <summary>
-        /// DropDownList2 control.
+        /// txtCiProcessRate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.TextBox txtCiProcessRate;
         
         /// <summary>
-        /// txtchange control.
+        /// txtAciProcessRate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtchange;
+        protected global::System.Web.UI.WebControls.TextBox txtAciProcessRate;
         
         /// <summary>
-        /// txtlocalfee control.
+        /// txtCstProcessRate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtlocalfee;
+        protected global::System.Web.UI.WebControls.TextBox txtCstProcessRate;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtCiProcess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtCiProcess;
+        
+        /// <summary>
+        /// txtAciProcess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAciProcess;
+        
+        /// <summary>
+        /// txtCstProcess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCstProcess;
+        
+        /// <summary>
+        /// txtPremiumTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPremiumTotal;
+        
+        /// <summary>
+        /// txtProcessTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtProcessTotal;
         
         /// <summary>
         /// CollapsiblePanelExtender2 control.
