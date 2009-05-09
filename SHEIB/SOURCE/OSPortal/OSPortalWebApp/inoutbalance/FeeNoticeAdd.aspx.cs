@@ -104,8 +104,9 @@ namespace OSPortalWebApp.inoutbalance
         {
             _dtGrid = new DataTable();
             _dtGrid.PrimaryKey = new DataColumn[] { 
-            _dtGrid.Columns.Add("PolicyNo", typeof(Int32)) };
+            _dtGrid.Columns.Add("PolicyID", typeof(Guid)) };
 
+            _dtGrid.Columns.Add("PolicyNo", typeof(String));
             _dtGrid.Columns.Add("CustomerID", typeof(String));
             _dtGrid.Columns.Add("AccountTypeID", typeof(String));
 
@@ -113,16 +114,9 @@ namespace OSPortalWebApp.inoutbalance
 
             
 
-            _dtGrid.Rows.Add(new object[] { 1, "王怡", "现金", 1000 });
-
-            DataRow dr = _dtGrid.NewRow();
-            dr[0] = 2;
-            dr[1] = "王怡";
-            dr[2] = "现金";
-            dr[3] = 2000;
-            _dtGrid.Rows.Add(dr);
-
-            _dtGrid.Rows.Add(new object[] { 3, "王怡", "现金", 3000});
+            _dtGrid.Rows.Add(new object[] { Guid.NewGuid(), "PA0001", "王怡", "现金", 1000 });
+            _dtGrid.Rows.Add(new object[] { Guid.NewGuid(), "PA0003", "王怡", "现金", 2000 });
+            _dtGrid.Rows.Add(new object[] { Guid.NewGuid(), "PA0002", "王怡", "现金", 3000 });
 
 
         }

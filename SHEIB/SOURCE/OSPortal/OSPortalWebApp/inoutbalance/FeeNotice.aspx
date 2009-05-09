@@ -21,8 +21,8 @@
             lblCurrentDate.innerHTML = makewelcomeString();
 
         });
-	    
-	    function menuClick(url) {
+
+        function btnCreateClick() {
 	        
                 var myArguments="resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
                 window.showModalDialog("FeeNoticeAdd.aspx", self, myArguments);
@@ -42,25 +42,13 @@
     
     <table style="width:100%">
                     <tr>
-                        <td style="height:40px; width:60%;">
-                            <dxm:ASPxMenu EnableViewState="False" EncodeHtml="False" id="dpASPxMenu" runat="server" AllowSelectItem="True" Orientation="Horizontal">
-                                <ClientSideEvents 
-                                    CloseUp="function(s, e) {}" 
-                                    PopUp="function(s, e) {}" 
-                                    Init="function(s, e) {}" 
-                                    ItemClick="function(s, e) { 
-                                        var name = e.item.name;
-                                        menuClick(name);
-                                    }" 
-                                    ItemMouseOut="function(s, e) {}" 
-                                    ItemMouseOver="function(s, e) {}" />
-                                <Items>
-                                    <dxm:MenuItem Text="新    建" Name="PolicyInput.aspx"></dxm:MenuItem>
-                                </Items>
-                            </dxm:ASPxMenu>
+                        <td style="height:40px; width:45%;">
+                            <dxe:ASPxButton ID="debtnCreate" runat="server" Text="新建" AutoPostBack="false">
+                                <ClientSideEvents Click="btnCreateClick" />
+                            </dxe:ASPxButton>
                         </td>
-                        <td style="height:40px; width:40%;">
-                            <table style="margin:0px; padding:0px; width:100%; border:0px; text-align:right">
+                        <td style="height:40px; width:55%;">
+                            <table style="margin:0px; padding:0px; width:100%; border:0px; text-align:left">
 				                        <tr>
 					                        <td style="width:100%;PADDING-RIGHT: 20px; text-align:right;color:#0E5ED5;">
 					                            当前位置：保费通知书&nbsp;&nbsp;
@@ -93,13 +81,16 @@
                                                         <asp:TextBox ID="txtPolicyNo" runat="server" Width="95px"></asp:TextBox>
                                                     </td>
                                                     <td style="width:20px;"></td>
-                                                    <td style="width:120px;text-align:right;white-space:nowrap;">代收保费通知书编号：</td>
+                                                    <td style="width:120px;text-align:right;white-space:nowrap;">通知书编号：</td>
                                                     <td style="width:100px;text-align:left;">
                                                         <asp:TextBox ID="txtPrePolicyNo" runat="server" Width="95px"></asp:TextBox>
                                                     </td>
-                                                    <td style="width:160px;text-align:right;white-space:nowrap;">直付保费入账确认单编号：</td> 
-                                                    <td style="width:100px;text-align:left;">
-                                                        <asp:TextBox ID="txtenterAccountNo" runat="server" Width="95px"></asp:TextBox>
+                                                    <td style="width:160px;text-align:right;white-space:nowrap;">收费方式：</td> 
+                                                    <td style="width:100px;text-align:left;">                                                        
+                                                        <asp:DropDownList ID="ddlFeeType" runat="server">
+                                                            <asp:ListItem Text="代收" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="直付" Value="2"></asp:ListItem>
+                                                        </asp:DropDownList>
                                                     </td>
                                                     <td></td>                                                   
                                                 </tr>                                                 
@@ -173,9 +164,9 @@
                                                                 </dxwgv:GridViewCommandColumn>                                                                
                                                                 <dxwgv:GridViewDataColumn FieldName="NoticeId" Visible="false" Caption="通知书GUID" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CollectNoticeNo" Caption="代收保费通知书编号" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书编号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>  
-                                                                <dxwgv:GridViewDataColumn FieldName="DirectlyNoticeNo" Caption="直付保费入账确认单编号" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="FeeTypeName" Caption="收费方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn> 
@@ -187,7 +178,7 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>
-                                                        <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" Summary-Text="第{0}页,共{1}页" />
+                                                        <SettingsPager Mode="ShowPager"   />
                                                         <Settings ShowGroupPanel="false" />
                                                         <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                                         
