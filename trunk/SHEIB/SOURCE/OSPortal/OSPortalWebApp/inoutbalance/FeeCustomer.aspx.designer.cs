@@ -23,13 +23,13 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
-        /// dpASPxMenu control.
+        /// debtnCreate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxMenu.ASPxMenu dpASPxMenu;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton debtnCreate;
         
         /// <summary>
         /// LbUserNameTop control.

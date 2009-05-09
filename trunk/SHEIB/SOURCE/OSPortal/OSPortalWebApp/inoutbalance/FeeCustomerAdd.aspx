@@ -205,66 +205,55 @@
                 <asp:Panel ID="npOtherPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
                     <table style="width:100%">
                         <tr>
-                            <td style="width:11%;text-align:right;">收费形式：</td>
-                            <td style="width:22%;text-align:left;">
-                                <asp:DropDownList ID="ddlAccountType" runat="server">
-                                                        <asp:ListItem Text="代收" Value="1"></asp:ListItem>
-                                                        <asp:ListItem Text="直付" Value="2"></asp:ListItem>
-                                                    </asp:DropDownList>
-                            </td>
-                            <td style="width:11%;text-align:right;">收费方式：</td>
-                            <td style="width:22%;text-align:left;">
-                                <asp:DropDownList ID="ddlFeeType" runat="server">
-                                                        <asp:ListItem Text="现金" Value="1"></asp:ListItem>
-                                                        <asp:ListItem Text="支票" Value="2"></asp:ListItem>
-                                                    </asp:DropDownList>
-                            </td>
-                            <td style="width:11%;text-align:right;">币种：</td>
+                            <td style="width:10%;text-align:right;">收费形式：</td>
                             <td style="width:20%;text-align:left;">
-                                <asp:DropDownList ID="ddlCurCode" runat="server">
-                                                        <asp:ListItem Text="人民币" Value="1"></asp:ListItem>
-                                                        <asp:ListItem Text="美元" Value="2"></asp:ListItem>
-                                                        <asp:ListItem Text="英镑" Value="3"></asp:ListItem>
-                                                    </asp:DropDownList>
-                            </td>                                  
-                        </tr> 
-                        <tr>
-                            <td style="width:11%;text-align:right;">汇率：</td>
-                            <td style="width:22%;text-align:left;">
-                                <asp:TextBox ID="txtchange" runat="server" Width="140px"></asp:TextBox>
+                                <asp:DropDownList ID="ddlAccountType" runat="server">
+                                    <asp:ListItem Text="代收" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="直付" Value="2"></asp:ListItem>
+                                </asp:DropDownList>
                             </td>
-                            <td style="width:11%;text-align:right;">实收保费：</td>
-                            <td style="width:22%;text-align:left;">
+                            <td style="width:10%;text-align:right;">收费方式：</td>
+                            <td style="width:20%;text-align:left;">
+                                <asp:DropDownList ID="ddlFeeType" runat="server">
+                                    <asp:ListItem Text="现金" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="支票" Value="2"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td style="width:10%;text-align:right;">实收保费：</td>
+                            <td style="width:20%;text-align:left;">
                                 <asp:TextBox ID="txtlocalfee" runat="server" Width="140px"></asp:TextBox>
                             </td>
-                            <td style="width:11%;text-align:right;">实收金额：</td>
-                            <td style="width:20%;text-align:left;">
-                                <asp:TextBox ID="txtJInE" runat="server" Width="140px"></asp:TextBox>
-                            </td>                                  
-                        </tr>
+                            <td></td>                                  
+                        </tr> 
                         <tr>
-                            <td style="width:11%;text-align:right;">金额调整：</td>
-                            <td style="width:22%;text-align:left;">
+                            <td style="text-align:right;">实收金额：</td>
+                            <td style="text-align:left;">
+                                <asp:TextBox ID="txtJInE" runat="server" Width="140px"></asp:TextBox>
+                            </td> 
+                            <td style="text-align:right;">金额调整：</td>
+                            <td style="text-align:left;">
                                 <asp:TextBox ID="txtAdjust" runat="server" Width="140px"></asp:TextBox>
                             </td>
-                            <td style="width:11%;text-align:right;">收款日期：</td>
-                            <td style="width:22%;text-align:left;">
+                            <td style="text-align:right;">实解付保费：</td>
+                            <td style="text-align:left;">
+                                <asp:TextBox ID="txtRealFee" runat="server" Width="140px"></asp:TextBox>
+                            </td>                          
+                            <td></td>                                 
+                        </tr>
+                        <tr>                            
+                            <td style="text-align:right;">收款日期：</td>
+                            <td style="text-align:left;">
                                 <dxe:ASPxDateEdit ID="deGotDate" runat="server"></dxe:ASPxDateEdit> 
                             </td>
-                            <td style="width:11%;text-align:right;">解款日期：</td>
-                            <td style="width:20%;text-align:left;">
+                            <td style="text-align:right;">解款日期：</td>
+                            <td style="text-align:left;">
                                 <dxe:ASPxDateEdit ID="deReleaseDate" runat="server"></dxe:ASPxDateEdit>
-                            </td>                                  
-                        </tr>  
-                        <tr>
-                            <td style="width:11%;text-align:right;">实解付保费：</td>
-                            <td style="width:22%;text-align:left;">
-                                <asp:TextBox ID="txtRealFee" runat="server" Width="140px"></asp:TextBox>
                             </td>
-                            <td style="width:11%;text-align:right;">备注：</td>
-                            <td style="width:56%;text-align:left;" colspan="3">
-                                <asp:TextBox ID="txtMemo" runat="server" Width="300px"></asp:TextBox>
-                            </td>                                  
+                            <td style="text-align:right;">备注：</td>
+                            <td style="text-align:left;">
+                                <asp:TextBox ID="txtMemo" runat="server" Width="140px"></asp:TextBox>
+                            </td>
+                            <td></td>                                  
                         </tr>                                      
                     </table>
                 </asp:Panel>

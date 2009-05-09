@@ -34,51 +34,58 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid = new DataTable();
             _dtGrid.PrimaryKey = new DataColumn[] { 
             _dtGrid.Columns.Add("FeeId", typeof(Guid)) };
-
-            _dtGrid.Columns.Add("FeeType", typeof(string));
-            _dtGrid.Columns.Add("CurCode", typeof(string));
-            _dtGrid.Columns.Add("Fee", typeof(double));
-            _dtGrid.Columns.Add("FeeBase", typeof(double));
-            _dtGrid.Columns.Add("FeeAdjust", typeof(double));
-            _dtGrid.Columns.Add("AccountType", typeof(string));
-
-            _dtGrid.Columns.Add("SerialNo", typeof(string));
-            _dtGrid.Columns.Add("PolicyNo", typeof(string));
-            _dtGrid.Columns.Add("Customer", typeof(string));
-            _dtGrid.Columns.Add("SalesId", typeof(Int32));
-            _dtGrid.Columns.Add("Sales", typeof(string));
-            _dtGrid.Columns.Add("Audited", typeof(string));
-            _dtGrid.Columns.Add("CreatePerson", typeof(string));
-            _dtGrid.Columns.Add("CarrierId", typeof(string));
-            _dtGrid.Columns.Add("BranchId", typeof(string));
-            _dtGrid.Columns.Add("ProdTypeID", typeof(string));
-            _dtGrid.Columns.Add("FeeRemark", typeof(string));
+            _dtGrid.Columns.Add("NoticeNo", typeof(String));
             _dtGrid.Columns.Add("CreateTime", typeof(DateTime));
-            _dtGrid.Columns.Add("FeeNoticeID", typeof(string));
-            _dtGrid.Columns.Add("EnterAccountID", typeof(string));
+
+            _dtGrid.Columns.Add("FeeType", typeof(String));
+            _dtGrid.Columns.Add("CurCode", typeof(String));
+            _dtGrid.Columns.Add("Fee", typeof(Double));
+            _dtGrid.Columns.Add("FeeBase", typeof(Double));
+            _dtGrid.Columns.Add("FeeAdjust", typeof(Double));
+            _dtGrid.Columns.Add("AccountType", typeof(String));
+
+            _dtGrid.Columns.Add("SerialNo", typeof(String));
+            _dtGrid.Columns.Add("PolicyNo", typeof(String));
+            _dtGrid.Columns.Add("CustomerID", typeof(String));
+            _dtGrid.Columns.Add("Customer", typeof(String));
+            _dtGrid.Columns.Add("SalesId", typeof(String));
+            _dtGrid.Columns.Add("Sales", typeof(String));
+            _dtGrid.Columns.Add("Audited", typeof(String));
+            _dtGrid.Columns.Add("CreatePerson", typeof(String));
+            _dtGrid.Columns.Add("CarrierId", typeof(String));
+            _dtGrid.Columns.Add("CarrierNameCn", typeof(String));
+            _dtGrid.Columns.Add("BranchId", typeof(String));
+            _dtGrid.Columns.Add("BranchName", typeof(String));
+            _dtGrid.Columns.Add("ProdTypeID", typeof(String));
+            _dtGrid.Columns.Add("ProdTypeName", typeof(String));
+            _dtGrid.Columns.Add("FeeRemark", typeof(String));
+            
 
             _dtGrid.Rows.Add(new object[] { 
                 Guid.NewGuid(), 
-                "现金",
+                "1",
+                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                "直付",                
                 "人民币",
                 1000,
                 1000,
                 10,
-                "代收",
+                "现金",
                 "Sn001",
                 "PN001",
+                "C001",
                 "王怡",
-                1,
+                "S001",
                 "王海",
                 "已审核",
                 "王海",
+                "CM001",
                 "平安",
+                "CB001",
                 "上海",
+                "P001",
                 "寿险",
-                "备注",
-                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
-                "1",
-                "1"
+                "备注"
             });
 
         }
