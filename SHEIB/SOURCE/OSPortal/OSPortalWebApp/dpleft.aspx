@@ -18,7 +18,7 @@
                 <td valign="top" style="width: 100%;">
                     <dxnb:ASPxNavBar id="ASPxNavBar1" AutoCollapse="true" runat="server" AllowSelectItem="True" EnableTheming="True" EnableViewState="False" Width="155px" EnableAnimation="True">
                                 <GroupHeaderStyle HorizontalAlign="Left" VerticalAlign="Top" />
-                                <ItemStyle HorizontalAlign="Left" />
+                                <ItemStyle HorizontalAlign="Left" / >
                                 <ClientSideEvents ItemClick="function(s, e) {SelectedItemChanged(s,e);}" Init="function(s, e) {InitNavBar(s,e);}" ExpandedChanged="function(s, e) {GroupExpandedChanged(s,e);}" ExpandedChanging="function(s, e) {GroupExpandedChanging(s,e);}">                                    
                                 </ClientSideEvents>
                                 <Groups>
@@ -27,8 +27,7 @@
                                             <dxnb:NavBarItem ClientEnabled="true" Text="客户列表" Name="CustomerRelation/CustomerList.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="联系人" Name="CustomerRelation/CustContact.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="业务跟进" Name="CustomerRelation/CustomerPtFollow.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="服务提醒" Name="CustomerRelation/AlertService.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="区域设置" Name="CustomerRelation/AreaSetting.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="服务提醒" Name="CustomerRelation/AlertService.aspx"></dxnb:NavBarItem>                                            
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="非车险保单管理" Expanded="false">
@@ -42,9 +41,7 @@
                                         <Items>
                                             <dxnb:NavBarItem Text="询价单录入" Name="vehicleinsurance/AskPriceInputList.aspx" ></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="询价单批改" Name="vehicleinsurance/AskPriceAlertList.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="询价单审核" Name="vehicleinsurance/AskPriceCheckList.aspx"></dxnb:NavBarItem>
-                                            
-                                            
+                                            <dxnb:NavBarItem Text="询价单审核" Name="vehicleinsurance/AskPriceCheckList.aspx"></dxnb:NavBarItem>                                                                                       
                                             <dxnb:NavBarItem Text="询价单保单录入" Name="vehicleinsurance/CarPolicyInputList.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
@@ -58,8 +55,7 @@
                                         <Items>
                                             <dxnb:NavBarItem Text="业务咨询" Name="BusinessConsult/BusinessConsultList.aspx"></dxnb:NavBarItem>
                                         </Items>
-                                    </dxnb:NavBarGroup>
-                                    
+                                    </dxnb:NavBarGroup>                                    
                                      <dxnb:NavBarGroup Text="收付结算" Expanded="false">
                                         <Items>
                                             <dxnb:NavBarItem Text="保费通知书" Name="inoutbalance/FeeNotice.aspx"></dxnb:NavBarItem>
@@ -90,6 +86,7 @@
                                             <dxnb:NavBarItem Text="分支机构" Name="ProductSetup/BranchList.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="险种定义" Name="ProductSetup/ProductTypeList.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="数据字典" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="企业目录" Name="CustomerRelation/AreaSetting.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="系统选项" Name="http://www.google.cn"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="系统日志" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
@@ -106,7 +103,7 @@
                                             <dxnb:NavBarItem Text="保险经纪机构人员台帐" Name="accounting/InsuranceBrokerageAgency.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
-                                    <dxnb:NavBarGroup Text="统计报表" Expanded="false">
+                                    <dxnb:NavBarGroup Text="统计报表" Expanded="false"  >
                                         <Items>
                                             <dxnb:NavBarItem Text="分险种经纪业务统计" Name="http://www.google.cn"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="保费、经纪费统计表" Name="http://www.google.cn"></dxnb:NavBarItem>
