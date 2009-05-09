@@ -45,12 +45,6 @@
 
     <table style="width:100%">
         <tr>
-            <td style="width:18%;text-align:right;">确认单号：</td>
-            <td style="width:82%;text-align:left;" colspan="2">
-                <asp:TextBox ID="txtNoticeNo" runat="server" Width="250px"></asp:TextBox> 
-            </td>
-        </tr>
-        <tr>
             <td style="width:18%;text-align:right;">收费方式：</td>
             <td style="width:82%;text-align:left;" colspan="2">
                 <asp:DropDownList ID="ddlFeeType" runat="server">
@@ -60,13 +54,19 @@
             </td>
         </tr>
         <tr>
+            <td style="width:18%;text-align:right;">确认单号：</td>
+            <td style="width:82%;text-align:left;" colspan="2">
+                <asp:TextBox ID="txtNoticeNo" runat="server" Width="250px"></asp:TextBox> 
+            </td>
+        </tr>        
+        <tr>
             <td style="width:18%;text-align:right;">通知日期：</td>
             <td style="width:82%;text-align:left;" colspan="2">
                 <dxe:ASPxDateEdit ID="deNoticeDate" runat="server"></dxe:ASPxDateEdit> 
             </td>
         </tr>
         <tr>
-            <td style="width:18%;text-align:right; vertical-align:top;">相关保单：</td>
+            <td style="width:18%;text-align:right; vertical-align:top;">对应保单：</td>
             <td style="width:82%;text-align:left;" colspan="2">
                 
                                                     <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" 
@@ -118,14 +118,6 @@
             <td colspan="3">&nbsp;</td>
         </tr>
         <tr>
-            <td style="width:18%;text-align:right; vertical-align:top;">&nbsp;</td>
-            <td style="width:18%;text-align:left; vertical-align:top;">
-                <dxe:ASPxButton runat="server" ID="btnMake" Text="生成保费通知书" AutoPostBack="false"></dxe:ASPxButton>
-            </td>
-            <td style="width:64%;text-align:left; vertical-align:top;">                
-            </td>
-        </tr>
-        <tr>
             <td style="width:18%;text-align:right;"></td>
             <td style="width:82%;text-align:left;" colspan="2">                                                
                 <textarea runat="server" id="taModifyMemo" rows="25" cols="72"></textarea>
@@ -134,21 +126,31 @@
         
         
         <tr>
-            <td style="width:18%;text-align:right; vertical-align:top;">&nbsp;</td>
-            <td style="width:82%;text-align:left;" colspan="2">
-                <table style="margin:0 0 0 0; padding:0 0 0 0; width:100%;">
+            <td style="width:100%;text-align:center;" colspan="3">
+                <table style="margin:0 0 0 0; padding:0 0 0 0; width:90%;">
                     <tr>
                         <td style="width:120px;text-align:left;">
                             <dxe:ASPxButton runat="server" ID="btnSave" Text="保存保费通知书" AutoPostBack="false"></dxe:ASPxButton>
                         </td>
+                        <td style="width:150px;text-align:left;">
+                            <dxe:ASPxButton runat="server" ID="ASPxButton1" Text="打印代收保费通知书" AutoPostBack="false"></dxe:ASPxButton>
+                        </td>
+                        <td style="width:150px;text-align:left;">
+                            <dxe:ASPxButton runat="server" ID="ASPxButton2" Text="打印代收保费入账单" AutoPostBack="false"></dxe:ASPxButton>
+                        </td>
+                        <td style="width:150px;text-align:left;">
+                            <dxe:ASPxButton runat="server" ID="ASPxButton3" Text="打印保费入账通知单" AutoPostBack="false"></dxe:ASPxButton>
+                        </td>
+                        <td style="width:160px;text-align:left;">
+                            <dxe:ASPxButton runat="server" ID="ASPxButton4" Text="打印直付保费入帐确认单" AutoPostBack="false"></dxe:ASPxButton>
+                        </td>
                         <td style="width:60px;text-align:left;">
                             <dxe:ASPxButton runat="server" ID="btnClose" Text="退出" AutoPostBack="false"></dxe:ASPxButton>
                         </td>
-                        <td></td>
                     </tr>
                 </table>
             </td>
         </tr>
-    
+    </table>
     
 </asp:Content>

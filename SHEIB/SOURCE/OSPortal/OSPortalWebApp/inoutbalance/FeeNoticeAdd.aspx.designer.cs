@@ -14,15 +14,6 @@ namespace OSPortalWebApp.inoutbalance {
     public partial class FeeNoticeAdd {
         
         /// <summary>
-        /// txtNoticeNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNoticeNo;
-        
-        /// <summary>
         /// ddlFeeType control.
         /// </summary>
         /// <remarks>
@@ -30,6 +21,15 @@ namespace OSPortalWebApp.inoutbalance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlFeeType;
+        
+        /// <summary>
+        /// txtNoticeNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNoticeNo;
         
         /// <summary>
         /// deNoticeDate control.
@@ -50,15 +50,6 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridPolicyItem;
         
         /// <summary>
-        /// btnMake control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnMake;
-        
-        /// <summary>
         /// taModifyMemo control.
         /// </summary>
         /// <remarks>
@@ -75,6 +66,42 @@ namespace OSPortalWebApp.inoutbalance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSave;
+        
+        /// <summary>
+        /// ASPxButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton1;
+        
+        /// <summary>
+        /// ASPxButton2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton2;
+        
+        /// <summary>
+        /// ASPxButton3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton3;
+        
+        /// <summary>
+        /// ASPxButton4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton4;
         
         /// <summary>
         /// btnClose control.

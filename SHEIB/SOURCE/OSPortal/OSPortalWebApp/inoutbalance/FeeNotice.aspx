@@ -168,12 +168,8 @@
                                                                 </dxwgv:GridViewDataColumn>  
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeTypeName" Caption="收费方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn> 
-                                                                <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种名称" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收保费金额" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn> 
+                                                                </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="NoticeDate" Caption="通知日期" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>

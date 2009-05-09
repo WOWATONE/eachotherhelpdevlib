@@ -44,15 +44,8 @@ namespace OSPortalWebApp.inoutbalance
            _dtGrid.Columns.Add("AccountType", typeof(string));
 
             _dtGrid.Columns.Add("SerialNo", typeof(string));
-            _dtGrid.Columns.Add("PolicyNo", typeof(string));
-            _dtGrid.Columns.Add("Customer", typeof(string));
-            _dtGrid.Columns.Add("SalesId", typeof(Int32));
-            _dtGrid.Columns.Add("Sales", typeof(string));
             _dtGrid.Columns.Add("Audited", typeof(string));
             _dtGrid.Columns.Add("CreatePerson", typeof(string));
-            _dtGrid.Columns.Add("CarrierId", typeof(string));
-            _dtGrid.Columns.Add("BranchId", typeof(string));
-            _dtGrid.Columns.Add("ProdTypeID", typeof(string));
             _dtGrid.Columns.Add("FeeRemark", typeof(string));
             _dtGrid.Columns.Add("CreateTime", typeof(DateTime));
             
@@ -63,16 +56,9 @@ namespace OSPortalWebApp.inoutbalance
                 "人民币",
                10,
                 "代收",
-                "Sn001",
-                "PN001",
-                "王怡",
-                1,
-                "王海",
+                "Sn001",                
                 "已审核",
-                "王海",
-                "平安",
-                "上海",
-                "寿险",
+                "王海",                
                 "备注",
                 new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1)
             });

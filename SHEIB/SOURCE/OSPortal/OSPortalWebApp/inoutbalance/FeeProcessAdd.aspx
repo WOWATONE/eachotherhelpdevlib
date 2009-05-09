@@ -301,23 +301,42 @@
                                 SuppressPostBack="true" />                        
             </td>
         </tr>
+        
+        <tr>
+            <td style="height:5px; background-color:#E0EDFF; width:100%; font-size:2px;"></td>
+        </tr>
+        
+        <tr>
+            <td style="width:100%">
+                <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="30px" Width="100%">
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="width:180px;text-align:left;"></td>
+                                    <td style="width:60px;text-align:left;">
+                                        <dxe:ASPxButton runat="server" ID="ASPxButton5" Text="审核" AutoPostBack="false"></dxe:ASPxButton>
+                                    </td>
+                                    <td style="width:100px;text-align:left;">
+                                        <dxe:ASPxButton runat="server" ID="ASPxButton1" Text="提交审核" AutoPostBack="false"></dxe:ASPxButton>
+                                    </td>
+                                    <td style="width:100px;text-align:left;">
+                                        <dxe:ASPxButton runat="server" ID="ASPxButton2" Text="反审核" AutoPostBack="false"></dxe:ASPxButton>
+                                    </td>
+                                    <td style="width:60px;text-align:left;">
+                                        <dxe:ASPxButton runat="server" ID="ASPxButton3" Text="保存" AutoPostBack="false"></dxe:ASPxButton>
+                                    </td>
+                                    <td style="width:60px;text-align:left;">
+                                        <dxe:ASPxButton runat="server" ID="btnClose" Text="退出" AutoPostBack="false"></dxe:ASPxButton>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                 </asp:Panel>
+            </td>
+        </tr>
+        
     </table>
      
-    <table style="height:5px; background-color:#E0EDFF; width:100%; font-size:2px;"><tr><td></td></tr></table>
     
-    <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="25px">
-                <table style="width:100%">
-                    <tr>
-                        <td style="text-align:right;">
-                            <asp:Button ID="btnsave" runat="server" Text="保存" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:Button ID="btncancel" runat="server" Text="取消" CssClass="input_2" />
-                        </td>  
-                        <td style="width:20px;text-align:left;">
-                            &nbsp;
-                        </td>                                                                  
-                    </tr>
-                </table>
-                
-     </asp:Panel>
 
 </asp:Content>

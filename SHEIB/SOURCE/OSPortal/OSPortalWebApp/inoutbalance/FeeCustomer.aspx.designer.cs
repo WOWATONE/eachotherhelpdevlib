@@ -203,33 +203,6 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deGetEndDate;
         
         /// <summary>
-        /// chkBack control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkBack;
-        
-        /// <summary>
-        /// deBackStartDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deBackStartDate;
-        
-        /// <summary>
-        /// deBackEndDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deBackEndDate;
-        
-        /// <summary>
         /// btnSearch control.
         /// </summary>
         /// <remarks>
