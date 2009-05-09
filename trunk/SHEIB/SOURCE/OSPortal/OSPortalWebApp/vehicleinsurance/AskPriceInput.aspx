@@ -40,6 +40,11 @@
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
             window.showModalDialog("../otherinsurance/SelectCustomer.aspx", self, myArguments);
         }
+
+        function hlCarPolicyItemClick(params) {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
+            window.showModalDialog("CarPolicyItemInput.aspx", self, myArguments);
+        }
         
     </script> 
     
@@ -80,7 +85,7 @@
                                                     <asp:Panel ID="npbasicdetail" runat="server" CssClass="collapsePanel" Height="0">
                                                                 <table style="width:100%">
                                                                     <tr>
-                                                                        <td style="width:10%;text-align:right;">交易号：</td>
+                                                                        <td style="width:10%;text-align:right;">投保编号：</td>
                                                                         <td style="width:20%;text-align:left;">
                                                                             <asp:TextBox ID="txtSN" runat="server" Width="150px"></asp:TextBox>
                                                                         </td>
@@ -148,134 +153,6 @@
                                             
                                             <tr>
                                                 <td style="width:100%;">
-                                                    <asp:Panel ID="npvehicleheader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
-                                                        <div style="padding:5px; cursor: pointer; vertical-align: middle;">
-                                                            <div style="float:left; vertical-align: middle;">
-                                                                <asp:ImageButton ID="img_npvehicleheader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
-                                                            </div>
-                                                            <div style="float: left; margin-left:5px;">车辆信息</div>
-                                                            <div style="float: left; margin-left:5px;">
-                                                                <asp:Label ID="lbl_npvehicleheader" runat="server">(展开)</asp:Label>
-                                                            </div>                                    
-                                                        </div>
-                                                    </asp:Panel>
-                                                    <asp:Panel ID="npvehicledetail" runat="server" CssClass="collapsePanel" Height="0">
-                                                             
-                                                        <dxwgv:ASPxGridView ID="gridPolicyCarInfo" ClientInstanceName="gridPolicyCarInfo" runat="server" 
-                                                            KeyFieldName="CarPolicyID" Width="100%" AutoGenerateColumns="False" 
-                                                            OnRowInserting="gridPolicyCarInfo_RowInserting" 
-                                                            OnRowUpdating="gridPolicyCarInfo_RowUpdating" 
-                                                            OnRowUpdated="gridPolicyCarInfo_RowUpdated" 
-                                                            OnRowInserted="gridPolicyCarInfo_RowInserted"
-                                                            OnRowDeleting="gridPolicyCarInfo_RowDeleting" 
-                                                            OnRowDeleted="gridPolicyCarInfo_RowDeleted"
-                                                             >
-                                                                <%-- BeginRegion Columns --%>
-                                                                    <Columns>
-                                                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;">
-                                                                            <NewButton Visible="True" />
-                                                                            <EditButton Visible="true" />
-                                                                            <DeleteButton Visible="true" />
-                                                                        </dxwgv:GridViewCommandColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="CarNo" Caption="车牌号" CellStyle-Wrap="False">
-                                                                        </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="CarcaseNo" Caption="车架号" CellStyle-Wrap="False">
-                                                                        </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="EngineNo" Caption="发动机号" CellStyle-Wrap="False">
-                                                                        </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="Capacity" Caption="核定载客" CellStyle-Wrap="False">
-                                                                        </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="CarModel" Caption="厂牌型号" CellStyle-Wrap="False">
-                                                                        </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="Character" Caption="使用性质" CellStyle-Wrap="False">
-                                                                        </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="RegisterDate" Caption="初登日期" CellStyle-Wrap="False">
-                                                                        </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="CarValue" Caption="车辆价值" CellStyle-Wrap="False">
-                                                                        </dxwgv:GridViewDataColumn>
-                                                                    </Columns>
-                                                                <%-- EndRegion --%>
-                                                                <SettingsPager Mode="ShowAllRecords"/>
-                                                                <Settings ShowGroupPanel="false" />                                                        
-                                                                <Templates>
-                                                                     <EditForm>                                                             
-                                                                     <div style="padding:4px 4px 3px 4px">
-                                                                        <table style=" width:90%;" runat="server" id="tblgridPolicyItemEditorTemplate">
-                                                                            <tr>
-                                                                                <td style="white-space:nowrap; text-align:right;">车牌号:</td>
-                                                                                <td style="text-align:left;">
-                                                                                    <asp:TextBox runat="server" ID="txtGridPolicyCarInfoCarNo" Text='<%# Eval("CarNo") %>'  Enabled="false"></asp:TextBox>
-                                                                                </td>
-                                                                                <td style="white-space:nowrap; text-align:right;">车架号:</td>
-                                                                                <td style="text-align:left;">
-                                                                                    <asp:TextBox runat="server" ID="txtGridPolicyCarInfoCarcaseNo" Text='<%# Eval("CarcaseNo") %>'></asp:TextBox>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td style="white-space:nowrap; text-align:right;">发动机号:</td>
-                                                                                <td style="text-align:left;">
-                                                                                    <asp:TextBox runat="server" ID="txtGridPolicyCarInfoEngineNo" Text='<%# Eval("EngineNo") %>'></asp:TextBox>
-                                                                                </td>
-                                                                                <td style="white-space:nowrap; text-align:right;">核定载客:</td>
-                                                                                <td style="text-align:left;">
-                                                                                    <asp:TextBox runat="server" ID="txtGridPolicyCarInfoCapacity" Text='<%# Eval("Capacity") %>'></asp:TextBox>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td style="white-space:nowrap; text-align:right;">厂牌型号:</td>
-                                                                                <td style="text-align:left;">
-                                                                                    <asp:TextBox runat="server" ID="txtGridPolicyCarInfoCarModel" Text='<%# Eval("CarModel") %>'></asp:TextBox>
-                                                                                </td>
-                                                                                <td style="white-space:nowrap; text-align:right;">使用性质:</td>
-                                                                                <td style="text-align:left;">
-                                                                                    <asp:TextBox runat="server" ID="txtGridPolicyCarInfoCharacter" Text='<%# Eval("Character") %>'></asp:TextBox>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td style="white-space:nowrap; text-align:right;">初登日期:</td>
-                                                                                <td style="text-align:left;">
-                                                                                    <asp:TextBox runat="server" ID="txtGridPolicyCarInfoRegisterDate" Text='<%# Eval("RegisterDate") %>'></asp:TextBox>
-                                                                                </td>
-                                                                                <td style="white-space:nowrap; text-align:right;">车辆价值:</td>
-                                                                                <td style="text-align:left;">
-                                                                                    <asp:TextBox runat="server" ID="txtGridPolicyCarInfoCarValue" Text='<%# Eval("CarValue") %>'></asp:TextBox>
-                                                                                </td>
-                                                                            </tr>                                                                                            
-                                                                        </table>
-                                                                        
-                                                                     </div>
-                                                                     <div style="text-align:right; padding:2px 2px 2px 2px">
-                                                                         <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server">
-                                                                         </dxwgv:ASPxGridViewTemplateReplacement>
-                                                                         <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton" runat="server">
-                                                                         </dxwgv:ASPxGridViewTemplateReplacement>
-                                                                     </div>
-                                                                     </EditForm>
-                                                                 </Templates>
-
-                                                            </dxwgv:ASPxGridView>   
-                                                                
-                                                    </asp:Panel>
-                                                    <ajaxToolkit:CollapsiblePanelExtender ID="cpevehicle" runat="Server"
-                                                        TargetControlID="npvehicledetail"
-                                                        ExpandControlID="npvehicleheader"
-                                                        CollapseControlID="npvehicleheader" 
-                                                        Collapsed="false"
-                                                        TextLabelID="lbl_npvehicleheader"
-                                                        ImageControlID="img_npvehicleheader"    
-                                                        ExpandedText="(展开)"
-                                                        CollapsedText="(隐藏)"
-                                                        ExpandedImage="~/images/collapse_blue.jpg"
-                                                        CollapsedImage="~/images/expand_blue.jpg"
-                                                        SuppressPostBack="true" />
-                                                </td>
-                                            </tr>
-                                            
-                                            
-                                            
-                                            
-                                            <tr>
-                                                <td style="width:100%;">
                                                     <asp:Panel ID="npGridPolicyItemHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                                                         <div style="padding:5px; cursor: pointer; vertical-align: middle;">
                                                             <div style="float: left; vertical-align: middle;">
@@ -302,11 +179,21 @@
                                                                              >
                                                                                 <%-- BeginRegion Columns --%>
                                                                                     <Columns>
-                                                                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;">
-                                                                                            <NewButton Visible="True" />
-                                                                                            <EditButton Visible="true" />
-                                                                                            <DeleteButton Visible="true" />
-                                                                                        </dxwgv:GridViewCommandColumn>
+                                                                                        <dxwgv:GridViewDataColumn Caption="&nbsp;" CellStyle-Wrap="False">
+                                                                                            <DataItemTemplate>
+                                                                                                <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_New" Text="新增" NavigateUrl="#">
+                                                                                                    <ClientSideEvents Click="hlCarPolicyItemClick" />
+                                                                                                </dxe:ASPxHyperLink>
+                                                                                                <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_Update" Text="编辑" NavigateUrl="#">
+                                                                                                    <ClientSideEvents Click="hlCarPolicyItemClick" />
+                                                                                                </dxe:ASPxHyperLink>                                                                                                
+                                                                                            </DataItemTemplate>
+                                                                                        </dxwgv:GridViewDataColumn>                                                                                        
+                                                                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
+                                                                                            <NewButton Visible="False" />
+                                                                                            <EditButton Visible="False" />
+                                                                                            <DeleteButton Visible="true" />                                                            
+                                                                                        </dxwgv:GridViewCommandColumn>                                                                                        
                                                                                         <dxwgv:GridViewDataColumn FieldName="CarNo" Caption="车牌号" CellStyle-Wrap="False">
                                                                                         </dxwgv:GridViewDataColumn>
                                                                                         <dxwgv:GridViewDataColumn FieldName="CiPremium" Caption="商业险保费" CellStyle-Wrap="False">
@@ -325,12 +212,13 @@
                                                                                         </dxwgv:GridViewDataColumn>
                                                                                         <dxwgv:GridViewDataColumn FieldName="CstProcessRate" Caption="车船税经纪费率" CellStyle-Wrap="False">
                                                                                         </dxwgv:GridViewDataColumn>
-                                                                                        <dxwgv:GridViewDataColumn FieldName="CstProcess" Caption="车船税经纪费率" CellStyle-Wrap="False">
+                                                                                        <dxwgv:GridViewDataColumn FieldName="CstProcess" Caption="车船税经纪费" CellStyle-Wrap="False">
                                                                                         </dxwgv:GridViewDataColumn>
                                                                                     </Columns>
                                                                                 <%-- EndRegion --%>
                                                                                 <SettingsPager Mode="ShowAllRecords"/>
-                                                                                <Settings ShowGroupPanel="false" />                                                        
+                                                                                <Settings ShowGroupPanel="false" /> 
+                                                                                <SettingsBehavior />                                                       
                                                                                 <Templates>
                                                                                      <EditForm>                                                             
                                                                                      <div style="padding:4px 4px 3px 4px">
@@ -436,52 +324,63 @@
                                                 <asp:Panel ID="npCostSummaryDetail" runat="server" CssClass="collapsePanel" Height="0">
                                                             <table style="width:100%">
                                                                 <tr>
-                                                                    <td style="width:11%;text-align:right;">保额：</td>
+                                                                    <td style="width:11%;text-align:right;">商业险保费：</td>
                                                                     <td style="width:22%;text-align:left;">
-                                                                        <asp:TextBox ID="txtprice" runat="server" Width="140px"></asp:TextBox>
+                                                                        <asp:TextBox ID="txtCiPremium" runat="server" Width="100px"></asp:TextBox>
                                                                     </td>
-                                                                    <td style="width:11%;text-align:right;">保费（原）：</td>
+                                                                    <td style="width:11%;text-align:right;">交强险保费：</td>
                                                                     <td style="width:22%;text-align:left;">
-                                                                        <asp:TextBox ID="txtoriginalfee" runat="server" Width="140px"></asp:TextBox>
+                                                                        <asp:TextBox ID="txtAciPremium" runat="server" Width="100px"></asp:TextBox>
                                                                     </td>
                                                                     
-                                                                    <td style="width:11%;text-align:right;">经纪费（原）：</td>
+                                                                    <td style="width:11%;text-align:right;">车船税：</td>
                                                                     <td style="width:20%;text-align:left;">
-                                                                        <asp:TextBox ID="txtmiddlefee" runat="server" Width="120px"></asp:TextBox>
+                                                                        <asp:TextBox ID="txtCstPremium" runat="server" Width="100px"></asp:TextBox>
                                                                     </td>
                                                                     <td></td>                                 
                                                                 </tr> 
                                                                 <tr>
-                                                                    <td style="text-align:right;">币种：</td>
+                                                                    <td style="text-align:right;">经纪费率：</td>
                                                                     <td style="text-align:left;">
-                                                                        <asp:DropDownList ID="DropDownList2" runat="server">
-                                                                            <asp:ListItem Text="人民币" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="美元" Value="2"></asp:ListItem>
-                                                                            <asp:ListItem Text="英镑" Value="3"></asp:ListItem>
-                                                                        </asp:DropDownList>
+                                                                        <asp:TextBox ID="txtCiProcessRate" runat="server" Width="100px"></asp:TextBox>
                                                                     </td> 
-                                                                    <td style="text-align:right;">换算汇率：</td>
+                                                                    <td style="text-align:right;">经纪费率：</td>
                                                                     <td style="text-align:left;">
-                                                                        <asp:TextBox ID="txtchange" runat="server" Width="140px"></asp:TextBox>
+                                                                        <asp:TextBox ID="txtAciProcessRate" runat="server" Width="100px"></asp:TextBox>
                                                                     </td>
-                                                                    <td style="text-align:right;">保费（本）：</td>
+                                                                    <td style="text-align:right;">经纪费率：</td>
                                                                     <td style="text-align:left;">
-                                                                        <asp:TextBox ID="txtlocalfee" runat="server" Width="140px"></asp:TextBox>
+                                                                        <asp:TextBox ID="txtCstProcessRate" runat="server" Width="100px"></asp:TextBox>
                                                                     </td> 
                                                                     <td></td>                               
                                                                 </tr>  
                                                                 <tr>
-                                                                    <td style="text-align:right;">经纪费（本）：</td>
+                                                                    <td style="text-align:right;">经纪费：</td>
                                                                     <td style="text-align:left;">
-                                                                        <asp:TextBox ID="TextBox1" runat="server" Width="120px"></asp:TextBox>
+                                                                        <asp:TextBox ID="txtCiProcess" runat="server" Width="100px"></asp:TextBox>
+                                                                    </td>
+                                                                    <td style="text-align:right;">经纪费：</td>
+                                                                    <td style="text-align:left;">
+                                                                        <asp:TextBox ID="txtAciProcess" runat="server" Width="100px"></asp:TextBox>
+                                                                    </td>
+                                                                    <td style="text-align:right;">经纪费：</td>
+                                                                    <td style="text-align:left;">
+                                                                        <asp:TextBox ID="txtCstProcess" runat="server" Width="100px"></asp:TextBox>
+                                                                    </td>
+                                                                    <td></td>                                  
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="text-align:right;">保费合计：</td>
+                                                                    <td style="text-align:left;">
+                                                                        <asp:TextBox ID="txtPremiumTotal" runat="server" Width="100px"></asp:TextBox>
+                                                                    </td>
+                                                                    <td style="text-align:right;">经纪费合计：</td>
+                                                                    <td style="text-align:left;">
+                                                                        <asp:TextBox ID="txtProcessTotal" runat="server" Width="100px"></asp:TextBox>
                                                                     </td>
                                                                     <td style="text-align:right;"></td>
                                                                     <td style="text-align:left;">
                                                                         
-                                                                    </td>
-                                                                    <td style="text-align:right;"></td>
-                                                                    <td style="text-align:left;">
-                                                                       
                                                                     </td>
                                                                     <td></td>                                  
                                                                 </tr>                                            

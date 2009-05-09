@@ -21,8 +21,7 @@ namespace OSPortalWebApp.vehicleinsurance
                 
         private DataTable _dtGridPolicyItem;
         private DataTable _dtGridCarrier;
-        private DataTable _dtGridPolicyCarInfo;
-
+        
         private DataTable _dtGridPeriod;
 
         private const string UploadDirectory = "~/UploadControl/UploadImages/";
@@ -62,18 +61,7 @@ namespace OSPortalWebApp.vehicleinsurance
 
 
 
-            //GridPolicyCarInfo
-            if (ViewState["GridPolicyCarInfo"] == null)
-            {
-                GetPolicyCarInfoDataForGrid();
-                ViewState["GridPolicyCarInfo"] = _dtGridPolicyCarInfo;
-            }
-
-            this.gridPolicyCarInfo.DataSource = ViewState["GridPolicyCarInfo"];
-
-            if (!IsPostBack && !IsCallback)
-                this.gridPolicyCarInfo.DataBind();
-
+            
 
 
             //GridPeriod
@@ -149,14 +137,29 @@ namespace OSPortalWebApp.vehicleinsurance
             _dtGridPolicyItem.Columns.Add("CstProcessRate", typeof(Decimal));
             _dtGridPolicyItem.Columns.Add("CstProcess", typeof(Decimal));
 
+            //_dtGridPolicyItem.Columns.Add("CarcaseNo", typeof(String));
+            //_dtGridPolicyItem.Columns.Add("EngineNo", typeof(String));
+            //_dtGridPolicyItem.Columns.Add("Capacity", typeof(String));
+            //_dtGridPolicyItem.Columns.Add("CarModel", typeof(String));
+            //_dtGridPolicyItem.Columns.Add("Character", typeof(String));
+            //_dtGridPolicyItem.Columns.Add("RegisterDate", typeof(DateTime));
+            //_dtGridPolicyItem.Columns.Add("CarValue", typeof(String));
+            //, "C-001", "E-001", "4", "A-01", "CT", DateTime.Now, "40"
+            //,"C-002", "E-002", "6", "A-02", "CT", DateTime.Now, "50"
+            //,"C-003", "E-003", "8", "A-03", "CT", DateTime.Now, "60"
 
-            _dtGridPolicyItem.Rows.Add(new object[] { "1", "T001", 1000, 0.03, 30, 1000, 0.03, 30, 1000, 0.03, 30 });
+            _dtGridPolicyItem.Rows.Add(new object[] { 
+                "1", "T001", 1000, 0.03, 30, 1000, 0.03, 30, 1000, 0.03, 30
+            });
 
-            _dtGridPolicyItem.Rows.Add(new object[] { "2", "S001", 2000, 0.03, 30, 2000, 0.03, 30, 2000, 0.03, 30 });
+            _dtGridPolicyItem.Rows.Add(new object[] { 
+                "2", "S001", 2000, 0.03, 30, 2000, 0.03, 30, 2000, 0.03, 30
+            });
 
-            _dtGridPolicyItem.Rows.Add(new object[] { "3", "S002", 3000, 0.03, 30, 3000, 0.03, 30, 3000, 0.03, 30 });
-
-
+            _dtGridPolicyItem.Rows.Add(new object[] { 
+                "3", "S002", 3000, 0.03, 30, 3000, 0.03, 30, 3000, 0.03, 30
+            });
+            
         }
 
 
@@ -231,72 +234,7 @@ namespace OSPortalWebApp.vehicleinsurance
 
 
 
-        protected void gridPolicyCarInfo_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
-        {
-            //
-        }
-
-        protected void gridPolicyCarInfo_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
-        {
-            //
-            e.Cancel = true;
-            this.gridPolicyCarInfo.CancelEdit();
-
-        }
-
-        protected void gridPolicyCarInfo_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
-        {
-            this.gridPolicyCarInfo.DataBind();
-        }
-
-        protected void gridPolicyCarInfo_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
-        {
-            //
-            e.Cancel = true;
-            this.gridPolicyCarInfo.CancelEdit();
-        }
-
-        protected void gridPolicyCarInfo_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
-        {
-            this.gridPolicyCarInfo.DataBind();
-        }
-
-        protected void gridPolicyCarInfo_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
-        {
-            //
-            e.Cancel = true;
-            this.gridPolicyCarInfo.CancelEdit();
-        }
-
-        protected void gridPolicyCarInfo_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
-        {
-            this.gridPolicyCarInfo.DataBind();
-        }
-
-        private void GetPolicyCarInfoDataForGrid()
-        {
-            _dtGridPolicyCarInfo = new DataTable();
-            _dtGridPolicyCarInfo.PrimaryKey = new DataColumn[] { 
-            _dtGridPolicyCarInfo.Columns.Add("CarrierID", typeof(Guid)) };
-
-            _dtGridPolicyCarInfo.Columns.Add("CarNo", typeof(String));
-            _dtGridPolicyCarInfo.Columns.Add("CarcaseNo", typeof(String));
-            _dtGridPolicyCarInfo.Columns.Add("EngineNo", typeof(String));
-            _dtGridPolicyCarInfo.Columns.Add("Capacity", typeof(String));
-
-            _dtGridPolicyCarInfo.Columns.Add("CarModel", typeof(String));
-            _dtGridPolicyCarInfo.Columns.Add("Character", typeof(String));
-            _dtGridPolicyCarInfo.Columns.Add("RegisterDate", typeof(DateTime));
-            _dtGridPolicyCarInfo.Columns.Add("CarValue", typeof(String));
-
-
-            _dtGridPolicyCarInfo.Rows.Add(new object[] { Guid.NewGuid(), "0011", "C-001", "E-001", "4", "A-01", "CT", DateTime.Now, "40" });
-
-            _dtGridPolicyCarInfo.Rows.Add(new object[] { Guid.NewGuid(), "0012", "C-002", "E-002", "6", "A-02", "CT", DateTime.Now, "50" });
-
-            _dtGridPolicyCarInfo.Rows.Add(new object[] { Guid.NewGuid(), "0013", "C-003", "E-003", "8", "A-03", "CT", DateTime.Now, "60" });
-
-        }
+        
 
 
 
