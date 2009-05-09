@@ -6,6 +6,17 @@
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
+    <script type="text/javascript">
+
+        function searchGridCustomButtonClick(s, e) {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+            window.showModalDialog("PolicyRead.aspx", self, myArguments);
+        }
+
+
+        
+    </script>
+    
     <table style="width:100%">
                     <tr>
                         <td style="width:100%;"> 
@@ -302,7 +313,7 @@
                                                                 <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
                                                                     <NewButton Visible="False" />
                                                                     <EditButton Visible="False" />                                                                    
-                                                                    <DeleteButton Visible="true" />
+                                                                    <DeleteButton Visible="false" />
                                                                     <CustomButtons>
                                                                         <dxwgv:GridViewCommandColumnCustomButton Text="查看">                                                                            
                                                                         </dxwgv:GridViewCommandColumnCustomButton>                                                                        
@@ -352,7 +363,7 @@
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" Summary-Text="第{0}页,共{1}页" />
                                                         <Settings ShowGroupPanel="false" />                                                        
-                                                        <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
+                                                        <ClientSideEvents CustomButtonClick="function(s, e) {searchGridCustomButtonClick(s,e);return false;}" />
                                                         
                                                     </dxwgv:ASPxGridView>                                                    
                                                 
