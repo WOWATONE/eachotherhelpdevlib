@@ -140,24 +140,6 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.DropDownList ddlFeeType;
         
         /// <summary>
-        /// ddlCurCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCurCode;
-        
-        /// <summary>
-        /// txtchange control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtchange;
-        
-        /// <summary>
         /// txtlocalfee control.
         /// </summary>
         /// <remarks>
@@ -185,6 +167,15 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.TextBox txtAdjust;
         
         /// <summary>
+        /// txtRealFee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRealFee;
+        
+        /// <summary>
         /// deGotDate control.
         /// </summary>
         /// <remarks>
@@ -201,15 +192,6 @@ namespace OSPortalWebApp.inoutbalance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deReleaseDate;
-        
-        /// <summary>
-        /// txtRealFee control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRealFee;
         
         /// <summary>
         /// txtMemo control.
