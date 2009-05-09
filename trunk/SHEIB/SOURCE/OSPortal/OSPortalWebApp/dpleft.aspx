@@ -59,23 +59,26 @@
                                             <dxnb:NavBarItem Text="业务咨询" Name="BusinessConsult/BusinessConsultList.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
-                                    <dxnb:NavBarGroup Text="台帐" Expanded="false">
-                                        <Items>
-                                            <dxnb:NavBarItem Text="财产险经纪业务台帐" Name="accounting/PropertyBrokerageBusiness.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="财产险经纪批改业务" Name="accounting/PropertyBrokerageMarkBusiness.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="人身险经纪业务台帐" Name="accounting/LifeBrokerageBusiness.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="人身险经纪批改业务台帐" Name="accounting/LifeBrokerageMarkBusiness.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="再保险经纪业务台帐" Name="accounting/ReinsuranceBrokerageBusiness.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保险经纪咨询业务台帐" Name="accounting/InsuranceBrokerageConsultingService.aspx"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="保险经纪机构人员台帐" Name="accounting/InsuranceBrokerageAgency.aspx"></dxnb:NavBarItem>
-                                        </Items>
-                                    </dxnb:NavBarGroup>
+                                    
                                      <dxnb:NavBarGroup Text="收付结算" Expanded="false">
                                         <Items>
                                             <dxnb:NavBarItem Text="保费通知书" Name="inoutbalance/FeeNotice.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="客户收费" Name="inoutbalance/FeeCustomer.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="解付保费" Name="inoutbalance/FeePayin.aspx"></dxnb:NavBarItem>
                                             <dxnb:NavBarItem Text="经纪费结算" Name="inoutbalance/FeeProcess.aspx"></dxnb:NavBarItem>
+                                        </Items>
+                                    </dxnb:NavBarGroup>
+                                    <dxnb:NavBarGroup Text="综合查询" Expanded="false">
+                                        <Items>
+                                            <dxnb:NavBarItem Text="非车险保单综合查询" Name="otherinsurance/PolicySearch.aspx"></dxnb:NavBarItem>    
+                                            <dxnb:NavBarItem Text="车险保单综合查询" Name="vehicleinsurance/AskPriceSearch.aspx"></dxnb:NavBarItem>                      
+                                        </Items>
+                                    </dxnb:NavBarGroup>                                                                                                      
+                                    <dxnb:NavBarGroup Text="预算管理" Expanded="false">
+                                        <Items>
+                                            <dxnb:NavBarItem Text="签约预算清单" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="签约预算执行明细" Name="http://www.google.cn"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="签约预算完成汇总" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="系统设置" Expanded="false">
@@ -91,18 +94,16 @@
                                             <dxnb:NavBarItem Text="系统日志" Name="http://www.google.cn"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
-                                    <dxnb:NavBarGroup Text="消息提醒" Name="http://www.google.cn"></dxnb:NavBarGroup>                                    
-                                    <dxnb:NavBarGroup Text="预算管理" Expanded="false">
+                                    <dxnb:NavBarGroup Text="消息提醒" Name="http://www.google.cn"></dxnb:NavBarGroup>     
+                                    <dxnb:NavBarGroup Text="台帐" Expanded="false">
                                         <Items>
-                                            <dxnb:NavBarItem Text="签约预算清单" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="签约预算执行明细" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                            <dxnb:NavBarItem Text="签约预算完成汇总" Name="http://www.google.cn"></dxnb:NavBarItem>
-                                        </Items>
-                                    </dxnb:NavBarGroup>
-                                    <dxnb:NavBarGroup Text="综合查询" Expanded="false">
-                                        <Items>
-                                            <dxnb:NavBarItem Text="非车险保单综合查询" Name="otherinsurance/PolicySearch.aspx"></dxnb:NavBarItem>    
-                                            <dxnb:NavBarItem Text="车险保单综合查询" Name="vehicleinsurance/AskPriceSearch.aspx"></dxnb:NavBarItem>                      
+                                            <dxnb:NavBarItem Text="财产险经纪业务台帐" Name="accounting/PropertyBrokerageBusiness.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="财产险经纪批改业务" Name="accounting/PropertyBrokerageMarkBusiness.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="人身险经纪业务台帐" Name="accounting/LifeBrokerageBusiness.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="人身险经纪批改业务台帐" Name="accounting/LifeBrokerageMarkBusiness.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="再保险经纪业务台帐" Name="accounting/ReinsuranceBrokerageBusiness.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保险经纪咨询业务台帐" Name="accounting/InsuranceBrokerageConsultingService.aspx"></dxnb:NavBarItem>
+                                            <dxnb:NavBarItem Text="保险经纪机构人员台帐" Name="accounting/InsuranceBrokerageAgency.aspx"></dxnb:NavBarItem>
                                         </Items>
                                     </dxnb:NavBarGroup>
                                     <dxnb:NavBarGroup Text="统计报表" Expanded="false">
