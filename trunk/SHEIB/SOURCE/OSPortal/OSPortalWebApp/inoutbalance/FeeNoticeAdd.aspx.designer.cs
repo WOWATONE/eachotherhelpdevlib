@@ -23,13 +23,13 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.TextBox txtNoticeNo;
         
         /// <summary>
-        /// TextBox1 control.
+        /// ddlFeeType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFeeType;
         
         /// <summary>
         /// deNoticeDate control.
@@ -59,31 +59,13 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnMake;
         
         /// <summary>
-        /// btnMakeAccount control.
+        /// taModifyMemo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnMakeAccount;
-        
-        /// <summary>
-        /// htmlEditorpostilecontent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxHtmlEditor.ASPxHtmlEditor htmlEditorpostilecontent;
-        
-        /// <summary>
-        /// btnSaveAccount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSaveAccount;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea taModifyMemo;
         
         /// <summary>
         /// btnSave control.

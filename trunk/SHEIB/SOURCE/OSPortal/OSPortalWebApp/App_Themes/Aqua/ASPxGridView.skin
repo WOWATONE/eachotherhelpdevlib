@@ -18,7 +18,7 @@
 		<CalendarFastNavNextYear Url="~/App_Themes/Aqua/Editors/edtCalendarFNNextYear.png" Width="19px" Height="19px" />        
 	</ImagesEditors>    
     <SettingsLoadingPanel Text="" />
-    <SettingsPager CurrentPageNumberFormat="{0}">
+    <SettingsPager CurrentPageNumberFormat="{0}" PageSize="20" Summary-Visible="true" Summary-Text="µÚ{0}Ò³,¹²{1}Ò³">
         <AllButton>
             <Image Height="19px" Width="27px" ></Image>
         </AllButton>
