@@ -15,9 +15,37 @@ namespace OSPortalWebApp.BusinessConsult
 {
     public partial class BusinessConsult : System.Web.UI.Page
     {
+        #region Variables
+        /// <summary>
+        /// 咨询费
+        /// </summary>
+        private DataTable _dtConsultFeeGrid;
+        #endregion Variables
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (ViewState["ConsultFeeGridData"] == null)
+            {
+                GetConsultFeeDataForGrid();
+                ViewState["ConsultFeeGridData"] = _dtConsultFeeGrid;
+            }
+            this.gridConsultFeeItem.DataSource = ViewState["ConsultFeeGridData"];
 
+            if (!IsPostBack && !IsCallback)
+            {
+                this.gridConsultFeeItem.DataBind();
+            }
+        }
+
+        private void GetConsultFeeDataForGrid()
+        {
+            _dtConsultFeeGrid = new DataTable();
+            _dtConsultFeeGrid.PrimaryKey = new DataColumn[] { _dtConsultFeeGrid.Columns.Add("ConsultFeeID", typeof(String)) };
+            _dtConsultFeeGrid.Columns.Add("Product", typeof(String));
+            _dtConsultFeeGrid.Columns.Add("ConsultFee", typeof(Double));
+
+            _dtConsultFeeGrid.Rows.Add(new object[] { "1", "项目A", 1000 });
+            _dtConsultFeeGrid.Rows.Add(new object[] { "2", "项目B", 2000 });
         }
 
         protected void gridConsultFeeItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
