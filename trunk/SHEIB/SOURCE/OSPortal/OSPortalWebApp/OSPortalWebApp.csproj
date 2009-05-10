@@ -328,6 +328,13 @@
     <Compile Include="inoutbalance\FeePayinAdd.aspx.designer.cs">
       <DependentUpon>FeePayinAdd.aspx</DependentUpon>
     </Compile>
+    <Compile Include="inoutbalance\FeePayinAddSelect.aspx.cs">
+      <DependentUpon>FeePayinAddSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeePayinAddSelect.aspx.designer.cs">
+      <DependentUpon>FeePayinAddSelect.aspx</DependentUpon>
+    </Compile>
     <Compile Include="inoutbalance\FeePayinInvoice.aspx.cs">
       <DependentUpon>FeePayinInvoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -341,6 +348,13 @@
     </Compile>
     <Compile Include="inoutbalance\FeePayinInvoiceAdd.aspx.designer.cs">
       <DependentUpon>FeePayinInvoiceAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inoutbalance\FeePayinInvoiceAddSelect.aspx.cs">
+      <DependentUpon>FeePayinInvoiceAddSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeePayinInvoiceAddSelect.aspx.designer.cs">
+      <DependentUpon>FeePayinInvoiceAddSelect.aspx</DependentUpon>
     </Compile>
     <Compile Include="inoutbalance\FeePolicySearchByInvoice.aspx.cs">
       <DependentUpon>FeePolicySearchByInvoice.aspx</DependentUpon>
@@ -362,6 +376,13 @@
     </Compile>
     <Compile Include="inoutbalance\FeeProcessAdd.aspx.designer.cs">
       <DependentUpon>FeeProcessAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inoutbalance\FeeProcessAddSelect.aspx.cs">
+      <DependentUpon>FeeProcessAddSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeeProcessAddSelect.aspx.designer.cs">
+      <DependentUpon>FeeProcessAddSelect.aspx</DependentUpon>
     </Compile>
     <Compile Include="left.aspx.cs">
       <DependentUpon>left.aspx</DependentUpon>
@@ -3115,11 +3136,14 @@
     <Content Include="inoutbalance\FeeNoticeAdd.aspx" />
     <Content Include="inoutbalance\FeePayin.aspx" />
     <Content Include="inoutbalance\FeePayinAdd.aspx" />
+    <Content Include="inoutbalance\FeePayinAddSelect.aspx" />
     <Content Include="inoutbalance\FeePayinInvoice.aspx" />
     <Content Include="inoutbalance\FeePayinInvoiceAdd.aspx" />
+    <Content Include="inoutbalance\FeePayinInvoiceAddSelect.aspx" />
     <Content Include="inoutbalance\FeePolicySearchByInvoice.aspx" />
     <Content Include="inoutbalance\FeeProcess.aspx" />
     <Content Include="inoutbalance\FeeProcessAdd.aspx" />
+    <Content Include="inoutbalance\FeeProcessAddSelect.aspx" />
     <Content Include="js\customdefinition.js" />
     <Content Include="otherinsurance\NewCustomer.aspx" />
     <Content Include="otherinsurance\PolicyProdType.aspx" />
