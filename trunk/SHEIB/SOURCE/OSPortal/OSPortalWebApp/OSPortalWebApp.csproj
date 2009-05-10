@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ADDD279E-6700-4B92-8290-ACB05D96BE48}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -49,8 +49,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>E:\WINDOWS\system32\DevExpress.Web.ASPxGridView.v8.3.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.ASPxSpellChecker.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v8.3, Version=8.3.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\WINDOWS\system32\DevExpress.Web.ASPxHtmlEditor.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxSpellChecker.v8.3, Version=8.3.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\WINDOWS\system32\DevExpress.Web.ASPxSpellChecker.v8.3.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Web.ASPxTreeList.v8.3, Version=8.3.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>E:\WINDOWS\system32\DevExpress.Web.ASPxTreeList.v8.3.dll</HintPath>
@@ -175,6 +181,13 @@
     <Compile Include="Controls\PolicySearch.ascx.designer.cs">
       <DependentUpon>PolicySearch.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CustomerClaim\CaseEnd.aspx.cs">
+      <DependentUpon>CaseEnd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\CaseEnd.aspx.designer.cs">
+      <DependentUpon>CaseEnd.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CustomerClaim\NotifyClaim.aspx.cs">
       <DependentUpon>NotifyClaim.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -188,6 +201,13 @@
     </Compile>
     <Compile Include="CustomerClaim\NotifyClaimList.aspx.designer.cs">
       <DependentUpon>NotifyClaimList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerClaim\SelectPolicyNo.aspx.cs">
+      <DependentUpon>SelectPolicyNo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\SelectPolicyNo.aspx.designer.cs">
+      <DependentUpon>SelectPolicyNo.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustomerRelation\AlertService.aspx.cs">
       <DependentUpon>AlertService.aspx</DependentUpon>
@@ -3056,8 +3076,10 @@
     <Content Include="BusinessConsult\BusinessConsult.aspx" />
     <Content Include="BusinessConsult\BusinessConsultList.aspx" />
     <Content Include="Controls\AskPriceSearch.ascx" />
+    <Content Include="CustomerClaim\CaseEnd.aspx" />
     <Content Include="CustomerClaim\NotifyClaim.aspx" />
     <Content Include="CustomerClaim\NotifyClaimList.aspx" />
+    <Content Include="CustomerClaim\SelectPolicyNo.aspx" />
     <Content Include="CustomerRelation\AlertService.aspx" />
     <Content Include="CustomerRelation\AreaSetting.aspx" />
     <Content Include="CustomerRelation\Customer.aspx" />
@@ -3140,9 +3162,6 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/OSPortalWebApp</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
