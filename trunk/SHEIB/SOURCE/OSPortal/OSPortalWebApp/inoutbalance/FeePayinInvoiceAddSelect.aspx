@@ -76,7 +76,7 @@
                                                     <td style="width:160px;text-align:right;white-space:nowrap;">付费方式：</td> 
                                                     <td style="width:100px;text-align:left;">                                                        
                                                         <asp:DropDownList ID="ddlFeeType" runat="server">
-                                                            <asp:ListItem Text="内扣经纪费 Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="内扣经纪费" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="不内扣经纪费" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>

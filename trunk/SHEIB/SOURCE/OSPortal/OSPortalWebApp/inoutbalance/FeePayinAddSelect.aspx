@@ -158,7 +158,7 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="NoticeDate" Caption="收费日期" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="NoticeDate" Caption="单据状态" CellStyle-Wrap="False"/>  
+                                                                <dxwgv:GridViewDataColumn FieldName="InvoiceState" Caption="单据状态" CellStyle-Wrap="False"/>  
                                                             </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowPager"   />

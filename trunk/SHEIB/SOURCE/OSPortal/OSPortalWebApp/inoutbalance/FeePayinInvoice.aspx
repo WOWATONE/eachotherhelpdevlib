@@ -248,7 +248,6 @@
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="账号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>                                                                
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeYJF" Caption="已解付保费" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>                                                                                                                                  
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Audited" Caption="审核" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>

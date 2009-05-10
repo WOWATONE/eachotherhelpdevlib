@@ -240,8 +240,6 @@
                                                                 <dxwgv:GridViewDataColumn FieldName="CreateTime" Caption="收款日期" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn> 
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeType" Caption="收费形式" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CurCode" Caption="币种" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>   
                                                                 <dxwgv:GridViewDataColumn FieldName="Fee" Caption="实收保费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
