@@ -239,13 +239,49 @@ namespace OSPortalWebApp.BusinessConsult {
         protected global::System.Web.UI.WebControls.DropDownList ddlCreatePerson;
         
         /// <summary>
-        /// txtCreateDate 控件。
+        /// txtCreateTime 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCreateDate;
+        protected global::System.Web.UI.WebControls.TextBox txtCreateTime;
+        
+        /// <summary>
+        /// ddlAuditPerson 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAuditPerson;
+        
+        /// <summary>
+        /// deAuditTime 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deAuditTime;
+        
+        /// <summary>
+        /// ddlFeePersion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFeePersion;
+        
+        /// <summary>
+        /// deFeeDate 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deFeeDate;
         
         /// <summary>
         /// cpeCreate 控件。
