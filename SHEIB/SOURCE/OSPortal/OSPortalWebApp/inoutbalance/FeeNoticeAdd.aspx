@@ -135,8 +135,7 @@
         <tr>
             <td style="width:18%;text-align:right;"></td>
             <td style="width:82%;text-align:left;" colspan="2">                                                
-                <textarea runat="server" id="taModifyMemo" rows="25" cols="72"></textarea>
-            </td>
+                &nbsp;</td>
         </tr>
         
         

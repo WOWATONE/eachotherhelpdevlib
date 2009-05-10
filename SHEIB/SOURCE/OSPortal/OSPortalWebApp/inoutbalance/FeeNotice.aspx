@@ -95,7 +95,7 @@
                                                     <td></td>                                                   
                                                 </tr>                                                 
                                                 <tr>
-                                                    <td style="text-align:right;">开始日期：</td>
+                                                    <td style="text-align:right;">通知日期：</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deStartDate" runat="server">
                                                         </dxe:ASPxDateEdit>                                                       
