@@ -28,6 +28,11 @@ namespace OSPortalWebApp.CustomerClaim
                 ViewState["MaterialGridData"] = _dtMaterialGrid;
             }
             this.gridMaterial.DataSource = ViewState["MaterialGridData"];
+
+            if (!IsPostBack && !IsCallback)
+            {
+                this.gridMaterial.DataBind();
+            }
         }
 
         private void GetMaterialDataForGrid()
@@ -35,7 +40,7 @@ namespace OSPortalWebApp.CustomerClaim
             _dtMaterialGrid = new DataTable();
             _dtMaterialGrid.PrimaryKey = new DataColumn[] { _dtMaterialGrid.Columns.Add("ID", typeof(String)) };
             _dtMaterialGrid.Columns.Add("Material", typeof(String));
-            _dtMaterialGrid.Columns.Add("MaterialState", typeof(String));
+            _dtMaterialGrid.Columns.Add("MaterialStatus", typeof(String));
 
             _dtMaterialGrid.Rows.Add(new object[] { "1","索赔通知书","已提供"});
             _dtMaterialGrid.Rows.Add(new object[] { "2", "替他材料", "未提供" });
@@ -43,18 +48,10 @@ namespace OSPortalWebApp.CustomerClaim
 
         protected void gridMaterial_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            DataTable dt = ((DataTable)ViewState["ContactGridData"]);
-            DataRow row = dt.Rows.Find(e.Keys["ContactID"]);
-            row["ContactName"] = e.NewValues["ContactName"];
-            row["CustID"] = e.NewValues["CustID"];
-            row["Position"] = e.NewValues["Position"];
-            row["Sex"] = e.NewValues["Sex"];
-            row["Tel"] = e.NewValues["Tel"];
-            row["Fax"] = e.NewValues["Fax"];
-            row["MobilePhone"] = e.NewValues["MobilePhone"];
-            row["Email"] = e.NewValues["Email"];
-            row["Interest"] = e.NewValues["Interest"];
-            row["Remark"] = e.NewValues["Remark"];
+            DataTable dt = ((DataTable)ViewState["MaterialGridData"]);
+            DataRow row = dt.Rows.Find(e.Keys["ID"]);
+            row["Material"] = e.NewValues["Material"];
+            row["MaterialStatus"] = e.NewValues["MaterialStatus"];
 
             e.Cancel = true;
             this.gridMaterial.CancelEdit();
@@ -67,8 +64,8 @@ namespace OSPortalWebApp.CustomerClaim
 
         protected void gridMaterial_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-            DataTable dt = ((DataTable)ViewState["ContactGridData"]);
-            DataRow[] dr = dt.Select("", "ContactID Desc");
+            DataTable dt = ((DataTable)ViewState["MaterialGridData"]);
+            DataRow[] dr = dt.Select("", "ID Desc");
 
             Int32 rowIndex = 1;
             if (dr == null && dr.Length == 0)
@@ -80,19 +77,11 @@ namespace OSPortalWebApp.CustomerClaim
                 rowIndex = Convert.ToInt32(dr[0][0]);
             }
             //Int32 rowIndex = ((DataTable)ViewState["PolicyItemGridData"]).Rows.Count;
-            ((DataTable)ViewState["ContactGridData"]).Rows.Add(
+            ((DataTable)ViewState["MaterialGridData"]).Rows.Add(
                 new object[] {
                     rowIndex, 
-                    e.NewValues["ContactName"], 
-                    e.NewValues["CustID"],
-                    e.NewValues["Position"], 
-                    e.NewValues["Sex"],
-                    e.NewValues["Tel"], 
-                    e.NewValues["Fax"],
-                    e.NewValues["MobilePhone"], 
-                    e.NewValues["Email"],
-                    e.NewValues["Interest"], 
-                    e.NewValues["Remark"]
+                    e.NewValues["Material"], 
+                    e.NewValues["MaterialStatus"]
                 }
                 );
             e.Cancel = true;
@@ -106,8 +95,8 @@ namespace OSPortalWebApp.CustomerClaim
 
         protected void gridMaterial_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            DataTable dt = ((DataTable)ViewState["ContactGridData"]);
-            DataRow row = dt.Rows.Find(e.Keys["ContactID"]);
+            DataTable dt = ((DataTable)ViewState["MaterialGridData"]);
+            DataRow row = dt.Rows.Find(e.Keys["ID"]);
             dt.Rows.Remove(row);
             e.Cancel = true;
             this.gridMaterial.CancelEdit();

@@ -31,6 +31,11 @@
 	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
 	        window.showModalDialog("CaseEnd.aspx", self, myArguments);
 	    }
+	    
+	    function ClaimMaterialClick() {
+	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
+	        window.showModalDialog("ClaimMaterial.aspx", self, myArguments);
+	    }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -258,9 +263,9 @@
                                 状态：
                             </td>
                             <td style="width: 35%; text-align: left;">
-                                <asp:Button ID="btn1" runat="server" Text="已报案" CssClass="input_2" />&nbsp;&nbsp;
-                                <asp:Button ID="btn2" runat="server" Text="资料不全" CssClass="input_2" />&nbsp;&nbsp;
-                                <asp:Button ID="btn3" runat="server" Text="资料已齐" CssClass="input_2" />&nbsp;
+                                <input type="button" id="btn1" name="btn1" value="已报案" class="input_2" onclick="javascript:ClaimMaterialClick();"/>&nbsp;&nbsp;
+                                <input type="button" id="btn2" name="btn2" value="资料不全" class="input_2" onclick="javascript:ClaimMaterialClick();"/>&nbsp;&nbsp;
+                                <input type="button" id="btn3" name="btn3" value="资料已齐" class="input_2" onclick="javascript:ClaimMaterialClick();"/>&nbsp;&nbsp;
                                 <input type="button" id="btn4" name="btn4" value="结案" class="input_2" onclick="javascript:CaseEndClick();"/>
                             </td>
                             <td style="width: 10%; text-align: right;">
