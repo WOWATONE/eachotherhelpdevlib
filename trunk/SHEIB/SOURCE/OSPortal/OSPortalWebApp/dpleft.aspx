@@ -21,8 +21,9 @@
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td valign="top" style="width: 100%;">
-                <dxnb:ASPxNavBar ID="ASPxNavBar1" AutoCollapse="true" runat="server" AllowSelectItem="True"
-                    EnableTheming="True" EnableViewState="False" Width="155px" EnableAnimation="True">
+                <dxnb:ASPxNavBar ID="ASPxNavBar1" AutoCollapse="True" runat="server" AllowSelectItem="True"
+                    EnableTheming="True" EnableViewState="False" Width="155px" 
+                    EnableAnimation="True">
                     <GroupHeaderStyle HorizontalAlign="Left" VerticalAlign="Top" />
                     <ItemStyle HorizontalAlign="Left" />
                     <ClientSideEvents ItemClick="function(s, e) {SelectedItemChanged(s,e);}" Init="function(s, e) {InitNavBar(s,e);}"
