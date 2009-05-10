@@ -198,7 +198,7 @@
                             </dxwgv:GridViewCommandColumn>
                             <dxwgv:GridViewDataTextColumn Caption="客户编号" FieldName="CustNo" VisibleIndex="1">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="客户名称" FieldName="CustName" VisibleIndex="1">
+                            <dxwgv:GridViewDataTextColumn Caption="客户名称" FieldName="CustName" VisibleIndex="2">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="所在地区" FieldName="Area" VisibleIndex="3">
                             </dxwgv:GridViewDataTextColumn>
