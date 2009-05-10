@@ -74,7 +74,7 @@
                                 </div>
                             </asp:Panel>                           
                             <asp:Panel ID="npSearchDetail" runat="server" CssClass="collapsePanel" Height="0">
-                                <table style="width:100%;">
+                                <table>
                                                 <tr>
                                                     <td style="width:70px;text-align:right; white-space:nowrap;">保单编号：</td>
                                                     <td style="width:100px;text-align:left;">
@@ -100,7 +100,7 @@
                                                         <dxe:ASPxDateEdit ID="deStartDate" runat="server">
                                                         </dxe:ASPxDateEdit>                                                       
                                                     </td>
-                                                    <td style="text-align:right;">至</td>
+                                                    <td style="text-align:center;">--></td>
                                                     <td style="text-align:left;" colspan="2">
                                                         <dxe:ASPxDateEdit ID="deEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
@@ -109,6 +109,7 @@
                                                         <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
                                                         <asp:Button ID="btnRefresh" runat="server" Text="刷新" CssClass="input_2" />
                                                     </td>
+                                                    <td></td>
                                                 </tr>                                          
                                             </table>
                                      

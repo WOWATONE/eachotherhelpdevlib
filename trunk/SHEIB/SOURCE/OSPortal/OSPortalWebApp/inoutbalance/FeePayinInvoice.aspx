@@ -1,4 +1,4 @@
-﻿<%@ Page Title="经纪费开票" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/ContentMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="FeePayinInvoice.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeePayinInvoice" %>
+﻿<%@ Page Title="经纪费开票" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="FeePayinInvoice.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeePayinInvoice" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
@@ -25,13 +25,13 @@
         function btnCreateClick() {
 	        
                 var myArguments="resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-                window.showModalDialog("FeePayinAdd.aspx", self, myArguments);
+                window.showModalDialog("FeePayinInvoiceAdd.aspx", self, myArguments);
             
         }
 
         function gridCustomButtonClick(s, e) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            window.showModalDialog("FeePayinAdd.aspx", self, myArguments);
+            window.showModalDialog("FeePayinInvoiceAdd.aspx", self, myArguments);
         }
         
     </script>

@@ -272,10 +272,6 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种名称" VisibleIndex="18" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="FeeNoticeID" Caption="代收保费通知书编号" VisibleIndex="20" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="EnterAccountID" Caption="直付保费入账确认单编号" VisibleIndex="21" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeRemark" Caption="备注" VisibleIndex="22" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
