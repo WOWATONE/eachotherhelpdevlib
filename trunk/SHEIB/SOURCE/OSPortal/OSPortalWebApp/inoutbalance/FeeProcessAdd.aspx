@@ -98,7 +98,7 @@
                                 <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
-                                            <EditButton Visible="true" />
+                                            <EditButton Visible="false" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
