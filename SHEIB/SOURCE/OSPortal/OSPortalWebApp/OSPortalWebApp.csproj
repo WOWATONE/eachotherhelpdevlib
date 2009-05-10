@@ -308,6 +308,13 @@
     <Compile Include="inoutbalance\FeePayinInvoice.aspx.designer.cs">
       <DependentUpon>FeePayinInvoice.aspx</DependentUpon>
     </Compile>
+    <Compile Include="inoutbalance\FeePayinInvoiceAdd.aspx.cs">
+      <DependentUpon>FeePayinInvoiceAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeePayinInvoiceAdd.aspx.designer.cs">
+      <DependentUpon>FeePayinInvoiceAdd.aspx</DependentUpon>
+    </Compile>
     <Compile Include="inoutbalance\FeePolicySearchByInvoice.aspx.cs">
       <DependentUpon>FeePolicySearchByInvoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3079,6 +3086,7 @@
     <Content Include="inoutbalance\FeePayin.aspx" />
     <Content Include="inoutbalance\FeePayinAdd.aspx" />
     <Content Include="inoutbalance\FeePayinInvoice.aspx" />
+    <Content Include="inoutbalance\FeePayinInvoiceAdd.aspx" />
     <Content Include="inoutbalance\FeePolicySearchByInvoice.aspx" />
     <Content Include="inoutbalance\FeeProcess.aspx" />
     <Content Include="inoutbalance\FeeProcessAdd.aspx" />
