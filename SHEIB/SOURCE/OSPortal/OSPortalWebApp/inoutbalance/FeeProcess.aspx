@@ -239,7 +239,7 @@
                                                                 </dxwgv:GridViewCommandColumn>                                                                
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeId" Visible="false" Caption="GUID" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>                                                                
-                                                                <dxwgv:GridViewDataColumn FieldName="SerialNo" Caption="单据流水号" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="SerialNo" Caption="佣金入账编号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="CreateTime" Caption="佣金收取日期" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn> 
