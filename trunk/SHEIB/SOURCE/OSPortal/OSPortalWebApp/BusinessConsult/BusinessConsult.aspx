@@ -115,7 +115,7 @@
                                     OnRowUpdated="gridConsultFeeItem_RowUpdated" OnRowInserted="gridConsultFeeItem_RowInserted"
                                     OnRowDeleting="gridConsultFeeItem_RowDeleting" OnRowDeleted="gridConsultFeeItem_RowDeleted">
                                     <Columns>
-                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" VisibleIndex="0" Width="10%">
+                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" VisibleIndex="0" Width="15px">
                                             <NewButton Visible="True" />
                                             <EditButton Visible="true" />
                                             <DeleteButton Visible="true" />
