@@ -244,9 +244,7 @@
                                                                 <dxwgv:GridViewDataColumn FieldName="CreateTime" Caption="经纪费收取日期" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn> 
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeType" Caption="方式" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CurCode" Caption="币种" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>   
+                                                                </dxwgv:GridViewDataColumn> 
                                                                 <dxwgv:GridViewDataColumn FieldName="ProcessFee" Caption="实收经纪费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="AccountType" Caption="收费方式" CellStyle-Wrap="False">                                                                   

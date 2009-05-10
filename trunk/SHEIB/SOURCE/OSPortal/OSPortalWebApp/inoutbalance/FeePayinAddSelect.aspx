@@ -81,9 +81,10 @@
                                                         </asp:DropDownList>
                                                     </td>
                                                     <td></td>                                                   
-                                                </tr>                                                 
+                                                </tr>    
+                                             
                                                 <tr>
-                                                    <td style="text-align:right;">开始日期：</td>
+                                                    <td style="text-align:right;">收费日期：</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deStartDate" runat="server">
                                                         </dxe:ASPxDateEdit>                                                       
@@ -153,10 +154,11 @@
                                                                 </dxwgv:GridViewDataColumn>  
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeTypeName" Caption="收费方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收保费金额" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="实收金额" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="NoticeDate" Caption="通知日期" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="NoticeDate" Caption="收费日期" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="NoticeDate" Caption="单据状态" CellStyle-Wrap="False"/>  
                                                             </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowPager"   />
