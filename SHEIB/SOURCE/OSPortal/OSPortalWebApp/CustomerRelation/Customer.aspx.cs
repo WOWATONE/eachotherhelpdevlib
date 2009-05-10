@@ -10,16 +10,22 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
-using System.Data;
+using DevExpress.Web.ASPxUploadControl;
 
 namespace OSPortalWebApp.CustomerRelation
 {
     public partial class Customer : System.Web.UI.Page
     {
         #region Variables
-
+        /// <summary>
+        /// 联系人
+        /// </summary>
         private DataTable _dtContactGrid;
 
+        /// <summary>
+        /// 销售跟进
+        /// </summary>
+        private DataTable _dtCustomerPtGrid;
         #endregion Variables
 
         protected void Page_Load(object sender, EventArgs e)
@@ -29,13 +35,23 @@ namespace OSPortalWebApp.CustomerRelation
                 GetContactDataForGrid();
                 ViewState["ContactGridData"] = _dtContactGrid;
             }
-
             this.gridContactItem.DataSource = ViewState["ContactGridData"];
 
+            if (ViewState["CustomerPtGridData"] == null)
+            {
+                GetCustomerPtForGrid();
+                ViewState["CustomerPtGridData"] = _dtCustomerPtGrid;
+            }
+            this.gridCustomerPtItem.DataSource = ViewState["CustomerPtGridData"];
+
             if (!IsPostBack && !IsCallback)
+            {
                 this.gridContactItem.DataBind();
+                this.gridCustomerPtItem.DataBind();
+            }
         }
 
+        #region 联系人
         private void GetContactDataForGrid()
         {
             _dtContactGrid = new DataTable();
@@ -99,7 +115,6 @@ namespace OSPortalWebApp.CustomerRelation
                     rowIndex, 
                     e.NewValues["ContactName"], 
                     e.NewValues["CustID"],
-
                     e.NewValues["Position"], 
                     e.NewValues["Sex"],
                     e.NewValues["Tel"], 
@@ -131,6 +146,141 @@ namespace OSPortalWebApp.CustomerRelation
         protected void gridContactItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
             this.gridContactItem.DataBind();
+        }
+        #endregion
+
+        #region 销售跟进
+        private void GetCustomerPtForGrid()
+        {
+            _dtCustomerPtGrid = new DataTable();
+            _dtCustomerPtGrid.PrimaryKey = new DataColumn[] { _dtCustomerPtGrid.Columns.Add("FollowID", typeof(String)) };
+            _dtCustomerPtGrid.Columns.Add("CustID", typeof(String));
+            _dtCustomerPtGrid.Columns.Add("FollowType", typeof(String));
+            _dtCustomerPtGrid.Columns.Add("FollowStage", typeof(String));
+            _dtCustomerPtGrid.Columns.Add("FollowDate", typeof(DateTime));
+            _dtCustomerPtGrid.Columns.Add("FollowMemo", typeof(String));
+            _dtCustomerPtGrid.Columns.Add("FollowPerson", typeof(String));
+            _dtCustomerPtGrid.Columns.Add("NextFollow", typeof(DateTime));
+
+            _dtCustomerPtGrid.Rows.Add(new object[] { "1", "1", "面谈", "接触", DateTime.Today, "", "张三", DateTime.Today.AddDays(1) });
+            _dtCustomerPtGrid.Rows.Add(new object[] { "2", "2", "电话", "接触", DateTime.Today, "", "李四", DateTime.Today.AddDays(1) });
+        }
+
+        protected void gridCustomerPtItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            DataTable dt = ((DataTable)ViewState["CustomerPtGridData"]);
+            DataRow row = dt.Rows.Find(e.Keys["FollowID"]);
+            row["CustID"] = e.NewValues["CustID"];
+            row["FollowType"] = e.NewValues["FollowType"];
+            row["FollowStage"] = e.NewValues["FollowStage"];
+            row["FollowDate"] = e.NewValues["FollowDate"];
+            row["FollowMemo"] = e.NewValues["FollowMemo"];
+            row["FollowPerson"] = e.NewValues["FollowPerson"];
+            row["NextFollow"] = e.NewValues["NextFollow"];
+
+            e.Cancel = true;
+            this.gridCustomerPtItem.CancelEdit();
+        }
+
+        protected void gridCustomerPtItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
+        {
+            this.gridCustomerPtItem.DataBind();
+        }
+
+        protected void gridCustomerPtItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            DataTable dt = ((DataTable)ViewState["CustomerPtGridData"]);
+            DataRow[] dr = dt.Select("", "FollowID Desc");
+
+            Int32 rowIndex = 1;
+            if (dr == null && dr.Length == 0)
+            {
+                //do nothing;
+            }
+            else
+            {
+                rowIndex = Convert.ToInt32(dr[0][0]);
+            }
+            //Int32 rowIndex = ((DataTable)ViewState["PolicyItemGridData"]).Rows.Count;
+            ((DataTable)ViewState["CustomerPtGridData"]).Rows.Add(
+                new object[] {
+                    rowIndex, 
+                    e.NewValues["CustID"],
+                    e.NewValues["FollowType"], 
+                    e.NewValues["FollowStage"],
+                    e.NewValues["FollowDate"], 
+                    e.NewValues["FollowMemo"],
+                    e.NewValues["FollowPerson"], 
+                    e.NewValues["NextFollow"]
+                }
+                );
+            e.Cancel = true;
+            this.gridCustomerPtItem.CancelEdit();
+        }
+
+        protected void gridCustomerPtItem_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
+        {
+            this.gridCustomerPtItem.DataBind();
+        }
+
+        protected void gridCustomerPtItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            DataTable dt = ((DataTable)ViewState["CustomerPtGridData"]);
+            DataRow row = dt.Rows.Find(e.Keys["FollowID"]);
+            dt.Rows.Remove(row);
+            e.Cancel = true;
+            this.gridCustomerPtItem.CancelEdit();
+        }
+
+        protected void gridCustomerPtItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
+        {
+            this.gridCustomerPtItem.DataBind();
+        }
+
+        protected void UploadControl_CustomerPTUploadComplete(object sender, FileUploadCompleteEventArgs e)
+        {
+            try
+            {
+                e.CallbackData = SavePostedFiles(e.UploadedFile);
+            }
+            catch (Exception ex)
+            {
+                e.IsValid = false;
+                e.ErrorText = ex.Message;
+            }
+        }
+        #endregion
+
+        #region 附加资料
+        protected void UploadControl_AddInfoUploadComplete(object sender, FileUploadCompleteEventArgs e)
+        {
+            try
+            {
+                e.CallbackData = SavePostedFiles(e.UploadedFile);
+            }
+            catch (Exception ex)
+            {
+                e.IsValid = false;
+                e.ErrorText = ex.Message;
+            }
+        }
+        #endregion
+
+        protected string SavePostedFiles(UploadedFile uploadedFile)
+        {
+            string ret = "";
+            if (uploadedFile.IsValid)
+            {
+                //FileInfo fileInfo = new FileInfo(uploadedFile.FileName);
+                //string resFileName = MapPath(UploadDirectory) + fileInfo.Name;
+                //uploadedFile.SaveAs(resFileName);
+
+                //string fileLabel = fileInfo.Name;
+                //string fileType = uploadedFile.PostedFile.ContentType.ToString();
+                //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
+                //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
+            }
+            return ret;
         }
     }
 }
