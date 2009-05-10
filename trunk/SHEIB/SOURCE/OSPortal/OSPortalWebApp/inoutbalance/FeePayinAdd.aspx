@@ -44,6 +44,12 @@
             window.showModalDialog("FeeCustomerPolicySelect.aspx", self, myArguments);
             gridPolicyItem.PerformCallback('');
         }
+
+        function btnAddPolicyClick() {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
+            window.showModalDialog("FeeInvoiceSearch.aspx", self, myArguments);
+            gridPolicyItem.PerformCallback('');
+        }
         
     </script>
     
@@ -70,7 +76,7 @@
                     <tr>
                         <td style="width:10%;text-align:right;">
                             <dxe:ASPxButton runat="server" ID="btnAddPolicy" AutoPostBack="false" Text="添加保单">
-                                <ClientSideEvents Click="imgSearchClick" />
+                                <ClientSideEvents Click="btnAddPolicyClick" />
                             </dxe:ASPxButton>
                         </td>
                         <td style="width:12%;text-align:right;">流水号：</td>  

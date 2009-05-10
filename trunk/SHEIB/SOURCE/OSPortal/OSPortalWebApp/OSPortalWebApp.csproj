@@ -266,6 +266,13 @@
     <Compile Include="inoutbalance\FeeCustomerPolicySelect.aspx.designer.cs">
       <DependentUpon>FeeCustomerPolicySelect.aspx</DependentUpon>
     </Compile>
+    <Compile Include="inoutbalance\FeeInvoiceSearch.aspx.cs">
+      <DependentUpon>FeeInvoiceSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeeInvoiceSearch.aspx.designer.cs">
+      <DependentUpon>FeeInvoiceSearch.aspx</DependentUpon>
+    </Compile>
     <Compile Include="inoutbalance\FeeNotice.aspx.cs">
       <DependentUpon>FeeNotice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -300,6 +307,13 @@
     </Compile>
     <Compile Include="inoutbalance\FeePayinInvoice.aspx.designer.cs">
       <DependentUpon>FeePayinInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inoutbalance\FeePolicySearchByInvoice.aspx.cs">
+      <DependentUpon>FeePolicySearchByInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeePolicySearchByInvoice.aspx.designer.cs">
+      <DependentUpon>FeePolicySearchByInvoice.aspx</DependentUpon>
     </Compile>
     <Compile Include="inoutbalance\FeeProcess.aspx.cs">
       <DependentUpon>FeeProcess.aspx</DependentUpon>
@@ -3059,11 +3073,13 @@
     <Content Include="inoutbalance\FeeCustomer.aspx" />
     <Content Include="inoutbalance\FeeCustomerAdd.aspx" />
     <Content Include="inoutbalance\FeeCustomerPolicySelect.aspx" />
+    <Content Include="inoutbalance\FeeInvoiceSearch.aspx" />
     <Content Include="inoutbalance\FeeNotice.aspx" />
     <Content Include="inoutbalance\FeeNoticeAdd.aspx" />
     <Content Include="inoutbalance\FeePayin.aspx" />
     <Content Include="inoutbalance\FeePayinAdd.aspx" />
     <Content Include="inoutbalance\FeePayinInvoice.aspx" />
+    <Content Include="inoutbalance\FeePolicySearchByInvoice.aspx" />
     <Content Include="inoutbalance\FeeProcess.aspx" />
     <Content Include="inoutbalance\FeeProcessAdd.aspx" />
     <Content Include="js\customdefinition.js" />
