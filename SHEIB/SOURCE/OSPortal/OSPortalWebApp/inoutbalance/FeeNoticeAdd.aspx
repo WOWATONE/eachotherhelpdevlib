@@ -37,6 +37,13 @@
 
 
         });
+
+
+        function btnAddPolicyClick() {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
+            window.showModalDialog("FeeCustomerPolicySelect.aspx", self, myArguments);
+            gridPolicyItem.PerformCallback('');
+        }
         
     </script>
     
@@ -68,6 +75,14 @@
         <tr>
             <td style="width:18%;text-align:right; vertical-align:top;">对应保单：</td>
             <td style="width:82%;text-align:left;" colspan="2">
+                <dxe:ASPxButton runat="server" ID="btnAddPolicy" AutoPostBack="false" Text="添加保单">
+                    <ClientSideEvents Click="btnAddPolicyClick" />
+                </dxe:ASPxButton>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:18%;text-align:right; vertical-align:top;"></td>
+            <td style="width:82%;text-align:left;" colspan="2">
                 
                                                     <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" 
                                                     KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" 
@@ -81,8 +96,8 @@
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
                                                                 <dxwgv:GridViewCommandColumn Caption="&nbsp;">
-                                                                    <NewButton Visible="True" />
-                                                                    <EditButton Visible="true" />
+                                                                    <NewButton Visible="false" />
+                                                                    <EditButton Visible="false" />
                                                                     <DeleteButton Visible="true" />
                                                                 </dxwgv:GridViewCommandColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">                                                                    
