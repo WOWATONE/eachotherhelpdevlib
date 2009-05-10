@@ -188,6 +188,13 @@
     <Compile Include="CustomerClaim\CaseEnd.aspx.designer.cs">
       <DependentUpon>CaseEnd.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustomerClaim\ClaimMaterial.aspx.cs">
+      <DependentUpon>ClaimMaterial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\ClaimMaterial.aspx.designer.cs">
+      <DependentUpon>ClaimMaterial.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CustomerClaim\NotifyClaim.aspx.cs">
       <DependentUpon>NotifyClaim.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3077,6 +3084,7 @@
     <Content Include="BusinessConsult\BusinessConsultList.aspx" />
     <Content Include="Controls\AskPriceSearch.ascx" />
     <Content Include="CustomerClaim\CaseEnd.aspx" />
+    <Content Include="CustomerClaim\ClaimMaterial.aspx" />
     <Content Include="CustomerClaim\NotifyClaim.aspx" />
     <Content Include="CustomerClaim\NotifyClaimList.aspx" />
     <Content Include="CustomerClaim\SelectPolicyNo.aspx" />
