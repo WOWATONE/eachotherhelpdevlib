@@ -202,7 +202,51 @@
                                 制单时间：
                             </td>
                             <td style="width: 25%; text-align: left;">
-                                <asp:TextBox ID="txtCreateDate" runat="server" Width="200px"></asp:TextBox>
+                                <asp:TextBox ID="txtCreateTime" runat="server" Width="200px"></asp:TextBox>
+                            </td>
+                            <td style="width: 8%; text-align: right;">
+                            </td>
+                            <td style="width: 26%; text-align: left;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 8%; text-align: right;">
+                                审核人：
+                            </td>
+                            <td style="width: 25%; text-align: left;">
+                                <asp:DropDownList runat="server" ID="ddlAuditPerson" Width="175px">
+                                    <asp:ListItem Text="张三" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="李四" Value="2"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td style="width: 8%; text-align: right;">
+                                审核时间：
+                            </td>
+                            <td style="width: 25%; text-align: left;">
+                                <dxe:ASPxDateEdit ID="deAuditTime" runat="server">
+                                </dxe:ASPxDateEdit>
+                            </td>
+                            <td style="width: 8%; text-align: right;">
+                            </td>
+                            <td style="width: 26%; text-align: left;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 8%; text-align: right;">
+                                收费人：
+                            </td>
+                            <td style="width: 25%; text-align: left;">
+                                <asp:DropDownList runat="server" ID="ddlFeePersion" Width="175px">
+                                    <asp:ListItem Text="张三" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="李四" Value="2"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td style="width: 8%; text-align: right;">
+                                收费时间：
+                            </td>
+                            <td style="width: 25%; text-align: left;">
+                                <dxe:ASPxDateEdit ID="deFeeDate" runat="server">
+                                </dxe:ASPxDateEdit>
                             </td>
                             <td style="width: 8%; text-align: right;">
                             </td>
