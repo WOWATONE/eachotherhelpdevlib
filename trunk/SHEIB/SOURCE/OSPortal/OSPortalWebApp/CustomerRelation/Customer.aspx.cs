@@ -21,11 +21,18 @@ namespace OSPortalWebApp.CustomerRelation
         /// 联系人
         /// </summary>
         private DataTable _dtContactGrid;
-
         /// <summary>
         /// 销售跟进
         /// </summary>
         private DataTable _dtCustomerPtGrid;
+        /// <summary>
+        /// 理赔记录
+        /// </summary>
+        private DataTable _dtNotifyGrid;
+        /// <summary>
+        /// 签单记录
+        /// </summary>
+        private DataTable _dtPolicyGrid;
         #endregion Variables
 
         protected void Page_Load(object sender, EventArgs e)
@@ -44,10 +51,26 @@ namespace OSPortalWebApp.CustomerRelation
             }
             this.gridCustomerPtItem.DataSource = ViewState["CustomerPtGridData"];
 
+            if (ViewState["NotifyGridData"] == null)
+            {
+                GetNotifyForGrid();
+                ViewState["NotifyGridData"] = _dtNotifyGrid;
+            }
+            this.gridNotifyItem.DataSource = ViewState["NotifyGridData"];
+
+            if (ViewState["PolicyGridData"] == null)
+            {
+                GetPolicyForGrid();
+                ViewState["PolicyGridData"] = _dtPolicyGrid;
+            }
+            this.gridPolicyItem.DataSource = ViewState["PolicyGridData"];
+
             if (!IsPostBack && !IsCallback)
             {
                 this.gridContactItem.DataBind();
                 this.gridCustomerPtItem.DataBind();
+                this.gridNotifyItem.DataBind();
+                this.gridPolicyItem.DataBind();
             }
         }
 
@@ -263,6 +286,48 @@ namespace OSPortalWebApp.CustomerRelation
                 e.IsValid = false;
                 e.ErrorText = ex.Message;
             }
+        }
+        #endregion
+
+        #region 理赔记录
+        private void GetNotifyForGrid()
+        {
+            _dtNotifyGrid = new DataTable();
+            _dtNotifyGrid.PrimaryKey = new DataColumn[] { _dtNotifyGrid.Columns.Add("NotifyID", typeof(String)) };
+            _dtNotifyGrid.Columns.Add("PolicyID", typeof(String));
+            _dtNotifyGrid.Columns.Add("Carrier", typeof(String));
+            _dtNotifyGrid.Columns.Add("ProdTypeName", typeof(String));
+            _dtNotifyGrid.Columns.Add("CustName", typeof(String));
+            _dtNotifyGrid.Columns.Add("MainTarget", typeof(String));
+            _dtNotifyGrid.Columns.Add("SubTarget", typeof(String));
+
+            _dtNotifyGrid.Columns.Add("StartDate", typeof(DateTime));
+            _dtNotifyGrid.Columns.Add("NotifyTime", typeof(DateTime));
+            _dtNotifyGrid.Columns.Add("NotifyLossFee", typeof(Double));
+            _dtNotifyGrid.Columns.Add("LossRation", typeof(Double));
+            _dtNotifyGrid.Columns.Add("LastPayFee", typeof(Double));
+            _dtNotifyGrid.Columns.Add("CaseEndTime", typeof(DateTime));
+
+            _dtNotifyGrid.Rows.Add(new object[] { "1", "BD20090320", "中国人民保险公司", "人保财产综合险", "北京市大新服裝廠", "商业用房", "办公室", DateTime.Today, DateTime.Today, 50000, 0.12, 40000, DateTime.Today });
+            _dtNotifyGrid.Rows.Add(new object[] { "2", "BD20090340", "中国人民保险公司", "人保财产综合险", "北京市大新服裝廠", "商业用房", "办公室", DateTime.Today, DateTime.Today, 50000, 0.12, 40000, DateTime.Today });
+        }
+        #endregion
+
+        #region 签单记录
+        private void GetPolicyForGrid()
+        {
+            _dtPolicyGrid = new DataTable();
+            _dtPolicyGrid.PrimaryKey = new DataColumn[] { _dtPolicyGrid.Columns.Add("PolicyID", typeof(String)) };
+            _dtPolicyGrid.Columns.Add("StartDate", typeof(DateTime));
+            _dtPolicyGrid.Columns.Add("EndDate", typeof(DateTime));
+            _dtPolicyGrid.Columns.Add("PolicyNo", typeof(String));
+            _dtPolicyGrid.Columns.Add("ProdType", typeof(String));
+            _dtPolicyGrid.Columns.Add("Premium", typeof(Double));
+            _dtPolicyGrid.Columns.Add("CarrierBranch", typeof(String));
+            _dtPolicyGrid.Columns.Add("Sales", typeof(String));
+
+            _dtPolicyGrid.Rows.Add(new object[] { "1", DateTime.Today.AddDays(-100), DateTime.Today, "PQZA20036401905", "财产综合险", 100, "中国人民保险公司（中国人保）", "张三" });
+            _dtPolicyGrid.Rows.Add(new object[] { "2", DateTime.Today.AddDays(-100), DateTime.Today, "POL200506230002", "平安机动车辆险", 150, "中国平安保险", "李四" });
         }
         #endregion
 

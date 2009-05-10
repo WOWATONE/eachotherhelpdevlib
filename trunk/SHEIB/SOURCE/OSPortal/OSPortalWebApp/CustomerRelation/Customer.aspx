@@ -18,6 +18,7 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl"
     TagPrefix="dxuc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>客户信息</title>
 
     <script type="text/javascript">
         function CustomerPTUploadStart() {
@@ -69,8 +70,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     <dxtc:ASPxPageControl ID="customerDetailTabPage" ClientInstanceName="customerDetailTabPage"
-        runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" 
-        Width="100%">
+        runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%">
         <TabPages>
             <dxtc:TabPage Name="CustInfo" Text="客户资料">
                 <ContentCollection>
@@ -282,32 +282,30 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 10%; text-align: right; vertical-align:top;">
+                                <td style="width: 10%; text-align: right; vertical-align: top;">
                                     附件：
                                 </td>
-                                <td style="text-align: left; vertical-align:top;" colspan="3">
-                                    <dxuc:ASPxUploadControl ID="AddInfoUploadControl" runat="server" 
-                                    ShowAddRemoveButtons="True" Width="400px"
-                                    ShowUploadButton="True" AddUploadButtonsHorizontalPosition="Center" ShowProgressPanel="True"
-                                    ClientInstanceName="UploadControl" 
-                                    OnFileUploadComplete="UploadControl_AddInfoUploadComplete" 
-                                    FileInputCount="1" RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10">
-                                    <ValidationSettings MaxFileSize="4000000" AllowedContentTypes="*"></ValidationSettings>
-                                    <ClientSideEvents
-                                         fileuploadcomplete="function(s, e) { AddInfoUploaded(s, e) }"
-                                         fileuploadstart="function(s, e) { AddInfoUploadStart(); }"
-                                    />
-                                    <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px" ImagePosition="Left">
-<Image Height="25px" Width="25px" Url="../images/file_remove.gif"></Image>
+                                <td style="text-align: left; vertical-align: top;" colspan="3">
+                                    <dxuc:ASPxUploadControl ID="AddInfoUploadControl" runat="server" ShowAddRemoveButtons="True"
+                                        Width="400px" ShowUploadButton="True" AddUploadButtonsHorizontalPosition="Center"
+                                        ShowProgressPanel="True" ClientInstanceName="UploadControl" OnFileUploadComplete="UploadControl_AddInfoUploadComplete"
+                                        FileInputCount="1" RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10">
+                                        <ValidationSettings MaxFileSize="4000000" AllowedContentTypes="*">
+                                        </ValidationSettings>
+                                        <ClientSideEvents FileUploadComplete="function(s, e) { AddInfoUploaded(s, e) }" FileUploadStart="function(s, e) { AddInfoUploadStart(); }" />
+                                        <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
+                                            ImagePosition="Left">
+                                            <Image Height="25px" Width="25px" Url="../images/file_remove.gif"></Image>
                                         </RemoveButton>
-                                    <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px" ImagePosition="Left">
-<Image Height="25px" Width="25px" Url="../images/file_add.gif"></Image>
+                                        <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
+                                            ImagePosition="Left">
+                                            <Image Height="25px" Width="25px" Url="../images/file_add.gif"></Image>
                                         </AddButton>
-                                    <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px" ImagePosition="Left">
-<Image Height="25px" Width="25px" Url="../images/file_upload.gif"></Image>
-                                        </UploadButton> 
-                                                                       
-                                </dxuc:ASPxUploadControl>
+                                        <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
+                                            ImagePosition="Left">
+                                            <Image Height="25px" Width="25px" Url="../images/file_upload.gif"></Image>
+                                        </UploadButton>
+                                    </dxuc:ASPxUploadControl>
                                 </td>
                             </tr>
                         </table>
@@ -447,25 +445,25 @@
                                                 <EditButton Visible="true" />
                                                 <DeleteButton Visible="true" />
                                             </dxwgv:GridViewCommandColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="姓名" FieldName="ContactName" VisibleIndex="1">
-                                            </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="性别" FieldName="Sex" VisibleIndex="2">
-                                            </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="职位" FieldName="Position" VisibleIndex="3">
-                                            </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="电话" FieldName="Tel" VisibleIndex="4">
-                                            </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="传真" FieldName="Fax" VisibleIndex="5">
-                                            </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="手机" FieldName="MobilePhone" VisibleIndex="6">
-                                            </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="电子邮件" FieldName="Email" VisibleIndex="7">
-                                            </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="联系人GUID" FieldName="ContactID" VisibleIndex="8"
+                                            <dxwgv:GridViewDataTextColumn Caption="联系人GUID" FieldName="ContactID" VisibleIndex="1"
                                                 Visible="false">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="所属客户GUID" FieldName="CustID" VisibleIndex="9"
+                                            <dxwgv:GridViewDataTextColumn Caption="姓名" FieldName="ContactName" VisibleIndex="2">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="所属客户GUID" FieldName="CustID" VisibleIndex="3"
                                                 Visible="false">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="职位" FieldName="Position" VisibleIndex="4">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="性别" FieldName="Sex" VisibleIndex="5">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="电话" FieldName="Tel" VisibleIndex="6">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="传真" FieldName="Fax" VisibleIndex="7">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="手机" FieldName="MobilePhone" VisibleIndex="8">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="电子邮件" FieldName="Email" VisibleIndex="9">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="兴趣爱好" FieldName="Interest" VisibleIndex="10"
                                                 Visible="false">
@@ -477,10 +475,80 @@
                                         <Settings ShowGroupPanel="false" />
                                         <Templates>
                                             <EditForm>
-                                                <div style="padding: 4px 4px 3px 4px">
-                                                    <dxwgv:ASPxGridViewTemplateReplacement ID="Editors" ReplacementType="EditFormEditors"
-                                                        runat="server">
-                                                    </dxwgv:ASPxGridViewTemplateReplacement>
+                                                <div style="padding: 4px 4px 3px 4px; text-align: center;">
+                                                    <table style="width: 70%;" runat="server" id="tblgridContactItemEditorTemplate">
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                姓名：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <asp:TextBox runat="server" ID="txtContactName" Text='<%# Eval("ContactName") %>'></asp:TextBox>
+                                                            </td>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                性别：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <asp:DropDownList runat="server" ID="ddlSex">
+                                                                    <asp:ListItem Text="男" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="女" Value="2"></asp:ListItem>
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                职位：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <asp:TextBox runat="server" ID="txtPosition" Text='<%# Eval("Position") %>'></asp:TextBox>
+                                                            </td>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                电话：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <asp:TextBox runat="server" ID="txtTel" Text='<%# Eval("Tel") %>'></asp:TextBox>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                手机：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <asp:TextBox runat="server" ID="txtMobilePhone" Text='<%# Eval("MobilePhone") %>'></asp:TextBox>
+                                                            </td>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                传真：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <asp:TextBox runat="server" ID="txtFax" Text='<%# Eval("Fax") %>'></asp:TextBox>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                邮件：
+                                                            </td>
+                                                            <td style="text-align: left;" colspan="3">
+                                                                <asp:TextBox runat="server" ID="txtEmail" Text='<%# Eval("Email") %>'></asp:TextBox>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right; vertical-align: top;">
+                                                                兴趣：
+                                                            </td>
+                                                            <td style="text-align: left;" colspan="3">
+                                                                <asp:TextBox ID="txtInterest" runat="server" TextMode="MultiLine" Rows="4" Style="width: 450px"
+                                                                    Text='<%# Eval("Interest") %>'></asp:TextBox>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right; vertical-align: top;">
+                                                                备注：
+                                                            </td>
+                                                            <td style="text-align: left;" colspan="3">
+                                                                <asp:TextBox ID="txtRemark" runat="server" TextMode="MultiLine" Rows="4" Style="width: 450px"
+                                                                    Text='<%# Eval("Remark") %>'></asp:TextBox>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
                                                 </div>
                                                 <div style="text-align: right; padding: 2px 2px 2px 2px">
                                                     <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton"
@@ -504,7 +572,7 @@
                     <dxw:ContentControl runat="server">
                         <table style="width: 100%">
                             <tr>
-                                <td style="text-align: left; width=100%;">
+                                <td style="text-align: left; width: 100%;">
                                     销售跟进记录：
                                 </td>
                             </tr>
@@ -530,16 +598,16 @@
                                             <dxwgv:GridViewDataTextColumn Caption="跟进内容" FieldName="FollowMemo" VisibleIndex="4"
                                                 Width="50%">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="跟进GUID" FieldName="FollowID" VisibleIndex="4"
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进GUID" FieldName="FollowID" VisibleIndex="5"
                                                 Visible="False">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="所属客户GUID" FieldName="CustID" VisibleIndex="4"
+                                            <dxwgv:GridViewDataTextColumn Caption="所属客户GUID" FieldName="CustID" VisibleIndex="6"
                                                 Visible="False">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="跟进人" FieldName="FollowPerson" VisibleIndex="4"
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进人" FieldName="FollowPerson" VisibleIndex="7"
                                                 Visible="False">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="下次跟进日期" FieldName="NextFollow" VisibleIndex="4"
+                                            <dxwgv:GridViewDataTextColumn Caption="下次跟进日期" FieldName="NextFollow" VisibleIndex="8"
                                                 Visible="False">
                                             </dxwgv:GridViewDataTextColumn>
                                         </Columns>
@@ -547,10 +615,66 @@
                                         <Settings ShowGroupPanel="false" />
                                         <Templates>
                                             <EditForm>
-                                                <div style="padding: 4px 4px 3px 4px">
-                                                    <dxwgv:ASPxGridViewTemplateReplacement ID="Editors" ReplacementType="EditFormEditors"
-                                                        runat="server">
-                                                    </dxwgv:ASPxGridViewTemplateReplacement>
+                                                <div style="padding: 4px 4px 3px 4px; text-align: center;">
+                                                    <table style="width: 70%;" runat="server" id="tblgridContactItemEditorTemplate">
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                跟进类型：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <asp:DropDownList runat="server" ID="ddlFollowType">
+                                                                    <asp:ListItem Text="面谈" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="电话" Value="2"></asp:ListItem>
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                跟进程度：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <asp:DropDownList runat="server" ID="ddlFollowStage">
+                                                                    <asp:ListItem Text="接触" Value="1"></asp:ListItem>
+                                                                    <asp:ListItem Text="说明" Value="2"></asp:ListItem>
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                跟进时间：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <dxe:ASPxDateEdit ID="deFollowDate" runat="server">
+                                                                </dxe:ASPxDateEdit>
+                                                            </td>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                跟进人：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <asp:TextBox runat="server" ID="txtFollowPerson" Text='<%# Eval("FollowPerson") %>'></asp:TextBox>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                下次跟进：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <dxe:ASPxDateEdit ID="deNextFollow" runat="server">
+                                                                </dxe:ASPxDateEdit>
+                                                            </td>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right; vertical-align: top;">
+                                                                跟进内容：
+                                                            </td>
+                                                            <td style="text-align: left;" colspan="3">
+                                                                <asp:TextBox ID="txtFollowMemo" runat="server" TextMode="MultiLine" Rows="4" Style="width: 450px"
+                                                                    Text='<%# Eval("FollowMemo") %>'></asp:TextBox>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
                                                 </div>
                                                 <div style="text-align: right; padding: 2px 2px 2px 2px">
                                                     <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton"
@@ -618,9 +742,11 @@
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="投保客户" FieldName="CustName" VisibleIndex="4">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="主标的值" FieldName="MainTarget" VisibleIndex="5">
+                                            <dxwgv:GridViewDataTextColumn Caption="主标的值" FieldName="MainTarget" VisibleIndex="5"
+                                                Visible="false">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="次标的值" FieldName="SubTarget" VisibleIndex="6">
+                                            <dxwgv:GridViewDataTextColumn Caption="次标的值" FieldName="SubTarget" VisibleIndex="6"
+                                                Visible="false">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="起保日期" FieldName="StartDate" VisibleIndex="7">
                                             </dxwgv:GridViewDataTextColumn>
@@ -654,9 +780,9 @@
                     <dxw:ContentControl runat="server">
                         <table style="width: 100%">
                             <tr>
-                                <td>
+                                <td colspan=2>
                                     <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                        KeyFieldName="FollowID" Width="100%" AutoGenerateColumns="False">
+                                        KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False">
                                         <Columns>
                                             <dxwgv:GridViewDataTextColumn Caption="序号" FieldName="PolicyID" VisibleIndex="0">
                                             </dxwgv:GridViewDataTextColumn>
@@ -676,11 +802,14 @@
                                             </dxwgv:GridViewDataTextColumn>
                                         </Columns>
                                         <SettingsPager Mode="ShowAllRecords" />
-                                        <Settings ShowGroupPanel="true" />
+                                        <Settings ShowGroupPanel="false" />
                                     </dxwgv:ASPxGridView>
                                 </td>
                             </tr>
                             <tr>
+                                <td style="text-align: left; width:50%;">
+                                    保费合计：&nbsp;<asp:TextBox runat="server" ID="txtTotalPremium" Text="250" Enabled="false"></asp:TextBox>
+                                </td>
                                 <td style="text-align: right;">
                                     <asp:Button ID="btnPolicyContent" runat="server" Text="保单内容" CssClass="input_2" />
                                 </td>
@@ -691,12 +820,6 @@
             </dxtc:TabPage>
         </TabPages>
     </dxtc:ASPxPageControl>
-    <table style="height: 5px; background-color: #E0EDFF; width: 100%; font-size: 2px;">
-        <tr>
-            <td>
-            </td>
-        </tr>
-    </table>
     <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="25px">
         <table style="width: 100%">
             <tr>
