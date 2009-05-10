@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ADDD279E-6700-4B92-8290-ACB05D96BE48}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -286,19 +286,19 @@
     <Compile Include="inoutbalance\FeeCustomerAdd.aspx.designer.cs">
       <DependentUpon>FeeCustomerAdd.aspx</DependentUpon>
     </Compile>
-    <Compile Include="inoutbalance\FeeCustomerPolicySelect.aspx.cs">
-      <DependentUpon>FeeCustomerPolicySelect.aspx</DependentUpon>
+    <Compile Include="inoutbalance\FeeNoticeAddSelect.aspx.cs">
+      <DependentUpon>FeeNoticeAddSelect.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="inoutbalance\FeeCustomerPolicySelect.aspx.designer.cs">
-      <DependentUpon>FeeCustomerPolicySelect.aspx</DependentUpon>
+    <Compile Include="inoutbalance\FeeNoticeAddSelect.aspx.designer.cs">
+      <DependentUpon>FeeNoticeAddSelect.aspx</DependentUpon>
     </Compile>
-    <Compile Include="inoutbalance\FeeInvoiceSearch.aspx.cs">
-      <DependentUpon>FeeInvoiceSearch.aspx</DependentUpon>
+    <Compile Include="inoutbalance\FeeCustomerAddSelect.aspx.cs">
+      <DependentUpon>FeeCustomerAddSelect.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="inoutbalance\FeeInvoiceSearch.aspx.designer.cs">
-      <DependentUpon>FeeInvoiceSearch.aspx</DependentUpon>
+    <Compile Include="inoutbalance\FeeCustomerAddSelect.aspx.designer.cs">
+      <DependentUpon>FeeCustomerAddSelect.aspx</DependentUpon>
     </Compile>
     <Compile Include="inoutbalance\FeeNotice.aspx.cs">
       <DependentUpon>FeeNotice.aspx</DependentUpon>
@@ -355,13 +355,6 @@
     </Compile>
     <Compile Include="inoutbalance\FeePayinInvoiceAddSelect.aspx.designer.cs">
       <DependentUpon>FeePayinInvoiceAddSelect.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="inoutbalance\FeePolicySearchByInvoice.aspx.cs">
-      <DependentUpon>FeePolicySearchByInvoice.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeePolicySearchByInvoice.aspx.designer.cs">
-      <DependentUpon>FeePolicySearchByInvoice.aspx</DependentUpon>
     </Compile>
     <Compile Include="inoutbalance\FeeProcess.aspx.cs">
       <DependentUpon>FeeProcess.aspx</DependentUpon>
@@ -3130,8 +3123,8 @@
     <Content Include="images\treeicon\Folder.png" />
     <Content Include="inoutbalance\FeeCustomer.aspx" />
     <Content Include="inoutbalance\FeeCustomerAdd.aspx" />
-    <Content Include="inoutbalance\FeeCustomerPolicySelect.aspx" />
-    <Content Include="inoutbalance\FeeInvoiceSearch.aspx" />
+    <Content Include="inoutbalance\FeeNoticeAddSelect.aspx" />
+    <Content Include="inoutbalance\FeeCustomerAddSelect.aspx" />
     <Content Include="inoutbalance\FeeNotice.aspx" />
     <Content Include="inoutbalance\FeeNoticeAdd.aspx" />
     <Content Include="inoutbalance\FeePayin.aspx" />
@@ -3140,7 +3133,6 @@
     <Content Include="inoutbalance\FeePayinInvoice.aspx" />
     <Content Include="inoutbalance\FeePayinInvoiceAdd.aspx" />
     <Content Include="inoutbalance\FeePayinInvoiceAddSelect.aspx" />
-    <Content Include="inoutbalance\FeePolicySearchByInvoice.aspx" />
     <Content Include="inoutbalance\FeeProcess.aspx" />
     <Content Include="inoutbalance\FeeProcessAdd.aspx" />
     <Content Include="inoutbalance\FeeProcessAddSelect.aspx" />
@@ -3194,6 +3186,9 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/OSPortalWebApp</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

@@ -41,7 +41,7 @@
 
         function btnAddPolicyClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
-            window.showModalDialog("FeeCustomerPolicySelect.aspx", self, myArguments);
+            window.showModalDialog("FeeNoticeAddSelect.aspx", self, myArguments);
             gridPolicyItem.PerformCallback('');
         }
         

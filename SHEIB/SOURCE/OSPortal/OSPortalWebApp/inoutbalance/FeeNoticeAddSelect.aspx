@@ -1,4 +1,4 @@
-﻿<%@ Page Title="客户收费保单选择" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="FeeCustomerPolicySelect.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeeCustomerPolicySelect" %>
+﻿<%@ Page Title="客户收费保单选择" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="FeeNoticeAddSelect.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeeNoticeAddSelect" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
