@@ -9,7 +9,7 @@ using System.Data;
 
 namespace OSPortalWebApp.inoutbalance
 {
-    public partial class FeeCustomerPolicySelect : System.Web.UI.Page
+    public partial class FeeNoticeAddSelect : System.Web.UI.Page
     {
 
         #region Variables

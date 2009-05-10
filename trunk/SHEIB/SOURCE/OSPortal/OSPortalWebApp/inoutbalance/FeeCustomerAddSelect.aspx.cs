@@ -6,10 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 
-
 namespace OSPortalWebApp.inoutbalance
 {
-    public partial class FeePolicySearchByInvoice : System.Web.UI.Page
+    public partial class FeeCustomerAddSelect : System.Web.UI.Page
     {
 
         #region Variables
@@ -17,6 +16,7 @@ namespace OSPortalWebApp.inoutbalance
         private DataTable _dtGrid;
 
         #endregion Variables
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,6 +28,7 @@ namespace OSPortalWebApp.inoutbalance
             if (!IsPostBack && !IsCallback)
                 this.gridSearchResult.DataBind();
         }
+
 
 
         private void GetPolicyItemDataForGrid()
@@ -81,8 +82,6 @@ namespace OSPortalWebApp.inoutbalance
         {
             this.gridSearchResult.DataBind();
         }
-
-
 
     }
 }
