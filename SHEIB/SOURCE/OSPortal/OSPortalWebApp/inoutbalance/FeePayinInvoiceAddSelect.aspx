@@ -73,17 +73,41 @@
                                                     <td style="width:100px;text-align:left;">
                                                         <asp:TextBox ID="txtPrePolicyNo" runat="server" Width="95px"></asp:TextBox>
                                                     </td>
-                                                    <td style="width:160px;text-align:right;white-space:nowrap;">收费方式：</td> 
+                                                    <td style="width:160px;text-align:right;white-space:nowrap;">付费方式：</td> 
                                                     <td style="width:100px;text-align:left;">                                                        
                                                         <asp:DropDownList ID="ddlFeeType" runat="server">
-                                                            <asp:ListItem Text="代收" Value="1"></asp:ListItem>
-                                                            <asp:ListItem Text="直付" Value="2"></asp:ListItem>
+                                                            <asp:ListItem Text="内扣经纪费 Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="不内扣经纪费" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
                                                     <td></td>                                                   
-                                                </tr>                                                 
+                                                </tr>    
                                                 <tr>
-                                                    <td style="text-align:right;">开始日期：</td>
+                                                    <td style="width:90px;text-align:right; white-space:nowrap;">保险公司：</td>
+                                                    <td style="width:100px;text-align:left;">                                                        
+                                                        <asp:DropDownList ID="DropDownList2" runat="server">
+                                                            <asp:ListItem Text="中国平安" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="中国人寿" Value="2"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                    <td style="width:20px;"></td>
+                                                    <td style="width:120px;text-align:right;white-space:nowrap;">
+                                                        <span style="font-size:9.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;
+mso-bidi-language:AR-SA">投保客户：</span></td>
+                                                    <td style="width:100px;text-align:left;">
+                                                        
+                                                        <asp:TextBox ID="txtPrePolicyNo0" runat="server" Width="95px"></asp:TextBox>
+                                                        
+                                                    </td>
+                                                    <td style="width:160px;text-align:right;white-space:nowrap;">通知书编号：</td> 
+                                                    <td style="width:100px;text-align:left;">                                                        
+                                                        <asp:TextBox ID="TextBox1" runat="server" Width="95px"></asp:TextBox>
+                                                    </td>
+                                                    <td></td>                                                   
+                                                </tr>                                               
+                                                <tr>
+                                                    <td style="text-align:right;">解付日期：</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deStartDate" runat="server">
                                                         </dxe:ASPxDateEdit>                                                       
@@ -151,11 +175,11 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="解付单编号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>  
-                                                                <dxwgv:GridViewDataColumn FieldName="FeeTypeName" Caption="收费方式" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="FeeTypeName" Caption="付费方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收保费金额" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="解付金额" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="NoticeDate" Caption="通知日期" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="NoticeDate" Caption="解付日期" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>

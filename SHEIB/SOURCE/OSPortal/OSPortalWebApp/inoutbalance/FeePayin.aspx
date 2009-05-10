@@ -244,8 +244,7 @@
                                                                 </dxwgv:GridViewDataColumn> 
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeType" Caption="方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CurCode" Caption="币种" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>                                                                   
+                                                                                                                       
                                                                 <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收保费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeBase" Caption="已收保费" CellStyle-Wrap="False">                                                                   
