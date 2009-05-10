@@ -15,18 +15,62 @@
     TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPanel"
     TagPrefix="dxp" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl"
+    TagPrefix="dxuc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-        .style1
-        {
-            width: 100%;
+
+    <script type="text/javascript">
+        function CustomerPTUploadStart() {
+            //document.getElementById("uploadedListFiles").innerHTML = "";
         }
-    </style>
+
+        function CustomerPTUploaded(s, e) {
+            var fieldSeparator = "|";
+            if (e.isValid) {
+                //var linkFile = document.createElement("a");
+                //var indexSeparator = e.callbackData.indexOf(fieldSeparator);
+                //var fileName = e.callbackData.substring(0, indexSeparator);
+                //var pictureUrl = e.callbackData.substring(indexSeparator + fieldSeparator.length);
+                //var date = new Date();
+                //var imgSrc = "UploadImages/" + pictureUrl + "?dx=" + date.getTime();
+                //linkFile.innerHTML = fileName;
+                //linkFile.setAttribute("href", imgSrc);
+                //linkFile.setAttribute("target", "_blank");
+                //var container = document.getElementById("uploadedListFiles");
+                //container.appendChild(linkFile);
+                //container.appendChild(document.createElement("br"));
+            }
+        }
+        
+        function AddInfoUploadStart() {
+            //document.getElementById("uploadedListFiles").innerHTML = "";
+        }
+
+        function AddInfoUploaded(s, e) {
+            var fieldSeparator = "|";
+            if (e.isValid) {
+                //var linkFile = document.createElement("a");
+                //var indexSeparator = e.callbackData.indexOf(fieldSeparator);
+                //var fileName = e.callbackData.substring(0, indexSeparator);
+                //var pictureUrl = e.callbackData.substring(indexSeparator + fieldSeparator.length);
+                //var date = new Date();
+                //var imgSrc = "UploadImages/" + pictureUrl + "?dx=" + date.getTime();
+                //linkFile.innerHTML = fileName;
+                //linkFile.setAttribute("href", imgSrc);
+                //linkFile.setAttribute("target", "_blank");
+                //var container = document.getElementById("uploadedListFiles");
+                //container.appendChild(linkFile);
+                //container.appendChild(document.createElement("br"));
+            }
+        }
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     <dxtc:ASPxPageControl ID="customerDetailTabPage" ClientInstanceName="customerDetailTabPage"
-        runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%">
+        runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" 
+        Width="100%">
         <TabPages>
             <dxtc:TabPage Name="CustInfo" Text="客户资料">
                 <ContentCollection>
@@ -36,8 +80,8 @@
                                 <td style="width: 15%; text-align: right;">
                                 </td>
                                 <td style="width: 35%; text-align: left;">
-                                    <asp:RadioButton ID="radPerson" runat="server" Checked="True" Text="个人" GroupName="PersonOrUnit" />&nbsp;&nbsp;<asp:RadioButton
-                                        ID="radUnit" runat="server" Text="单位" GroupName="PersonOrUnit" />
+                                    <asp:RadioButton ID="radPerson" runat="server" Checked="True" Text="个人" GroupName="PersonOrUnit" />
+                                    &nbsp;&nbsp;<asp:RadioButton ID="radUnit" runat="server" Text="单位" GroupName="PersonOrUnit" />
                                 </td>
                                 <td style="width: 15%; text-align: right;">
                                     &nbsp;
@@ -167,74 +211,103 @@
                     </dxw:ContentControl>
                 </ContentCollection>
             </dxtc:TabPage>
-            <dxtc:TabPage Name="AddiInfo" Text="附加资料">
+            <dxtc:TabPage Name="AddInfo" Text="附加资料">
                 <ContentCollection>
                     <dxw:ContentControl runat="server">
                         <table style="width: 100%">
                             <tr>
-                                <td style="width: 15%; text-align: right;">
+                                <td style="width: 10%; text-align: right;">
                                     主要业务：
                                 </td>
-                                <td style="width: 35%; text-align: left;">
+                                <td style="width: 40%; text-align: left;">
                                     <asp:TextBox ID="txtMainOper" runat="server" Width="200px"></asp:TextBox>
                                 </td>
-                                <td style="width: 15%; text-align: right;">
+                                <td style="width: 10%; text-align: right;">
                                 </td>
-                                <td rowspan="3" style="width: 35%; text-align: left;">
+                                <td rowspan="3" style="width: 40%; text-align: left;">
                                     <asp:TextBox ID="txtBackground" runat="server" TextMode="MultiLine" Style="width: 300px"
                                         Rows="6"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 15%; text-align: right;">
+                                <td style="width: 10%; text-align: right;">
                                     资产规模：
                                 </td>
-                                <td style="width: 35%; text-align: left;">
+                                <td style="width: 40%; text-align: left;">
                                     <asp:TextBox ID="txtAssetSize" runat="server" Width="200px"></asp:TextBox>
                                 </td>
-                                <td style="width: 15%; text-align: right;">
+                                <td style="width: 10%; text-align: right;">
                                     背景资料：
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 15%; text-align: right;">
+                                <td style="width: 10%; text-align: right;">
                                     主要产品：
                                 </td>
-                                <td style="width: 35%; text-align: left;">
+                                <td style="width: 40%; text-align: left;">
                                     <asp:TextBox ID="txtMainProduct" runat="server" Width="200px"></asp:TextBox>
                                 </td>
-                                <td style="width: 15%; text-align: right;">
+                                <td style="width: 10%; text-align: right;">
                                     &nbsp;
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 15%; text-align: right;">
+                                <td style="width: 10%; text-align: right;">
                                     风险资料：
                                 </td>
-                                <td style="width: 35%; text-align: left;">
+                                <td style="width: 40%; text-align: left;">
                                     <asp:TextBox ID="txtRisk" runat="server" TextMode="MultiLine" Style="width: 300px"
                                         Rows="6"></asp:TextBox>
                                 </td>
-                                <td style="width: 15%; text-align: right;">
+                                <td style="width: 10%; text-align: right;">
                                     其他信息：
                                 </td>
-                                <td style="width: 35%; text-align: left;">
+                                <td style="width: 40%; text-align: left;">
                                     <asp:TextBox ID="txtOtherInfo" runat="server" TextMode="MultiLine" Style="width: 300px"
                                         Rows="6"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 15%; text-align: right;">
+                                <td style="width: 10%; text-align: right;">
                                     备注：
                                 </td>
-                                <td style="width: 35%; text-align: left;">
+                                <td style="width: 40%; text-align: left;">
                                     <asp:TextBox ID="txtRemark" runat="server" Width="200px"></asp:TextBox>
                                 </td>
-                                <td style="width: 15%; text-align: right;">
+                                <td style="width: 10%; text-align: right;">
                                     &nbsp;
                                 </td>
-                                <td style="width: 35%; text-align: left;">
+                                <td style="width: 40%; text-align: left;">
                                     &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 10%; text-align: right; vertical-align:top;">
+                                    附件：
+                                </td>
+                                <td style="text-align: left; vertical-align:top;" colspan="3">
+                                    <dxuc:ASPxUploadControl ID="AddInfoUploadControl" runat="server" 
+                                    ShowAddRemoveButtons="True" Width="400px"
+                                    ShowUploadButton="True" AddUploadButtonsHorizontalPosition="Center" ShowProgressPanel="True"
+                                    ClientInstanceName="UploadControl" 
+                                    OnFileUploadComplete="UploadControl_AddInfoUploadComplete" 
+                                    FileInputCount="1" RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10">
+                                    <ValidationSettings MaxFileSize="4000000" AllowedContentTypes="*"></ValidationSettings>
+                                    <ClientSideEvents
+                                         fileuploadcomplete="function(s, e) { AddInfoUploaded(s, e) }"
+                                         fileuploadstart="function(s, e) { AddInfoUploadStart(); }"
+                                    />
+                                    <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px" ImagePosition="Left">
+<Image Height="25px" Width="25px" Url="../images/file_remove.gif"></Image>
+                                        </RemoveButton>
+                                    <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px" ImagePosition="Left">
+<Image Height="25px" Width="25px" Url="../images/file_add.gif"></Image>
+                                        </AddButton>
+                                    <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px" ImagePosition="Left">
+<Image Height="25px" Width="25px" Url="../images/file_upload.gif"></Image>
+                                        </UploadButton> 
+                                                                       
+                                </dxuc:ASPxUploadControl>
                                 </td>
                             </tr>
                         </table>
@@ -403,22 +476,22 @@
                                         <SettingsPager Mode="ShowAllRecords" />
                                         <Settings ShowGroupPanel="false" />
                                         <Templates>
-                                        <EditForm>
-                                            <div style="padding: 4px 4px 3px 4px">
-                                                <dxwgv:ASPxGridViewTemplateReplacement ID="Editors" ReplacementType="EditFormEditors"
-                                                    runat="server">
-                                                </dxwgv:ASPxGridViewTemplateReplacement>
-                                            </div>
-                                            <div style="text-align: right; padding: 2px 2px 2px 2px">
-                                                <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton"
-                                                    runat="server">
-                                                </dxwgv:ASPxGridViewTemplateReplacement>
-                                                <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton"
-                                                    runat="server">
-                                                </dxwgv:ASPxGridViewTemplateReplacement>
-                                            </div>
-                                        </EditForm>
-                                    </Templates>
+                                            <EditForm>
+                                                <div style="padding: 4px 4px 3px 4px">
+                                                    <dxwgv:ASPxGridViewTemplateReplacement ID="Editors" ReplacementType="EditFormEditors"
+                                                        runat="server">
+                                                    </dxwgv:ASPxGridViewTemplateReplacement>
+                                                </div>
+                                                <div style="text-align: right; padding: 2px 2px 2px 2px">
+                                                    <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton"
+                                                        runat="server">
+                                                    </dxwgv:ASPxGridViewTemplateReplacement>
+                                                    <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton"
+                                                        runat="server">
+                                                    </dxwgv:ASPxGridViewTemplateReplacement>
+                                                </div>
+                                            </EditForm>
+                                        </Templates>
                                     </dxwgv:ASPxGridView>
                                 </td>
                             </tr>
@@ -431,40 +504,95 @@
                     <dxw:ContentControl runat="server">
                         <table style="width: 100%">
                             <tr>
-                                <td style="text-align: left;">
+                                <td style="text-align: left; width=100%;">
                                     销售跟进记录：
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <dxwgv:ASPxGridView ID="gridCustomerPtItem" ClientInstanceName="gridCustomerPtItem"
-                                        runat="server" KeyFieldName="FollowID" Width="100%" AutoGenerateColumns="False">
+                                        runat="server" KeyFieldName="FollowID" Width="100%" AutoGenerateColumns="False"
+                                        OnRowInserting="gridCustomerPtItem_RowInserting" OnRowUpdating="gridCustomerPtItem_RowUpdating"
+                                        OnRowUpdated="gridCustomerPtItem_RowUpdated" OnRowInserted="gridCustomerPtItem_RowInserted"
+                                        OnRowDeleting="gridCustomerPtItem_RowDeleting" OnRowDeleted="gridCustomerPtItem_RowDeleted">
                                         <Columns>
-                                            <dxwgv:GridViewDataTextColumn Caption="FollowID" FieldName="FollowID" VisibleIndex="0"
+                                            <dxwgv:GridViewCommandColumn Caption="&nbsp;" VisibleIndex="0" Width="15px">
+                                                <NewButton Visible="true" />
+                                                <EditButton Visible="true" />
+                                                <DeleteButton Visible="true" />
+                                            </dxwgv:GridViewCommandColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进日期" FieldName="FollowDate" VisibleIndex="1">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进类型" FieldName="FollowType" VisibleIndex="2">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进程度" FieldName="FollowStage" VisibleIndex="3">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进内容" FieldName="FollowMemo" VisibleIndex="4"
+                                                Width="50%">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进GUID" FieldName="FollowID" VisibleIndex="4"
                                                 Visible="False">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="跟进日期" FieldName="FollowDate" VisibleIndex="0">
+                                            <dxwgv:GridViewDataTextColumn Caption="所属客户GUID" FieldName="CustID" VisibleIndex="4"
+                                                Visible="False">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="跟进类型" FieldName="FollowType" VisibleIndex="1">
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进人" FieldName="FollowPerson" VisibleIndex="4"
+                                                Visible="False">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="跟进程度" FieldName="FollowStage" VisibleIndex="2">
-                                            </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="跟进内容" FieldName="FollowMemo" VisibleIndex="3"
-                                                Width="50%">
+                                            <dxwgv:GridViewDataTextColumn Caption="下次跟进日期" FieldName="NextFollow" VisibleIndex="4"
+                                                Visible="False">
                                             </dxwgv:GridViewDataTextColumn>
                                         </Columns>
                                         <SettingsPager Mode="ShowAllRecords" />
                                         <Settings ShowGroupPanel="false" />
+                                        <Templates>
+                                            <EditForm>
+                                                <div style="padding: 4px 4px 3px 4px">
+                                                    <dxwgv:ASPxGridViewTemplateReplacement ID="Editors" ReplacementType="EditFormEditors"
+                                                        runat="server">
+                                                    </dxwgv:ASPxGridViewTemplateReplacement>
+                                                </div>
+                                                <div style="text-align: right; padding: 2px 2px 2px 2px">
+                                                    <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton"
+                                                        runat="server">
+                                                    </dxwgv:ASPxGridViewTemplateReplacement>
+                                                    <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton"
+                                                        runat="server">
+                                                    </dxwgv:ASPxGridViewTemplateReplacement>
+                                                </div>
+                                            </EditForm>
+                                        </Templates>
                                     </dxwgv:ASPxGridView>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="text-align: right;">
-                                    <asp:Button ID="btnAddPt" runat="server" Text="新增" CssClass="input_2" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <asp:Button ID="btnEditPt" runat="server" Text="修改" CssClass="input_2" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <asp:Button ID="btnDeletePt" runat="server" CssClass="input_2" Text="删除" />
+                                <td>
+                                    附件：
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <dxuc:ASPxUploadControl ID="CustomerPTUploadControl" runat="server" ShowAddRemoveButtons="True"
+                                        Width="400px" ShowUploadButton="True" AddUploadButtonsHorizontalPosition="Center"
+                                        ShowProgressPanel="True" ClientInstanceName="UploadControl" OnFileUploadComplete="UploadControl_CustomerPTUploadComplete"
+                                        FileInputCount="1" RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10">
+                                        <ValidationSettings MaxFileSize="4000000" AllowedContentTypes="*">
+                                        </ValidationSettings>
+                                        <ClientSideEvents FileUploadComplete="function(s, e) { CustomerPTUploaded(s, e) }"
+                                            FileUploadStart="function(s, e) { CustomerPTUploadStart(); }" />
+                                        <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
+                                            ImagePosition="Left">
+                                            <Image Height="25px" Width="25px" Url="../images/file_remove.gif"></Image>
+                                        </RemoveButton>
+                                        <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
+                                            ImagePosition="Left">
+                                            <Image Height="25px" Width="25px" Url="../images/file_add.gif"></Image>
+                                        </AddButton>
+                                        <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
+                                            ImagePosition="Left">
+                                            <Image Height="25px" Width="25px" Url="../images/file_upload.gif"></Image>
+                                        </UploadButton>
+                                    </dxuc:ASPxUploadControl>
                                 </td>
                             </tr>
                         </table>
@@ -563,13 +691,23 @@
             </dxtc:TabPage>
         </TabPages>
     </dxtc:ASPxPageControl>
-    <br />
-    <table style="width: 100%">
+    <table style="height: 5px; background-color: #E0EDFF; width: 100%; font-size: 2px;">
         <tr>
-            <td style="width: 100%; text-align: center;">
-                <asp:Button ID="btnSave" runat="server" Text="保存" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button
-                    ID="btnClose" runat="server" Text="关闭" CssClass="input_2" />
+            <td>
             </td>
         </tr>
     </table>
+    <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="25px">
+        <table style="width: 100%">
+            <tr>
+                <td style="text-align: right;">
+                    <asp:Button ID="btnSave" runat="server" Text="保存" CssClass="input_2" />&nbsp;&nbsp;
+                    <asp:Button ID="btnClose" runat="server" Text="关闭" CssClass="input_2" />
+                </td>
+                <td style="width: 20px; text-align: left;">
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+    </asp:Panel>
 </asp:Content>

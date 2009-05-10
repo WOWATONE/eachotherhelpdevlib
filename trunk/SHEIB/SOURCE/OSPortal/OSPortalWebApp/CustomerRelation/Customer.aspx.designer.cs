@@ -230,6 +230,15 @@ namespace OSPortalWebApp.CustomerRelation {
         protected global::System.Web.UI.WebControls.TextBox txtRemark;
         
         /// <summary>
+        /// AddInfoUploadControl 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxUploadControl.ASPxUploadControl AddInfoUploadControl;
+        
+        /// <summary>
         /// gridAlertList 控件。
         /// </summary>
         /// <remarks>
@@ -347,31 +356,13 @@ namespace OSPortalWebApp.CustomerRelation {
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridCustomerPtItem;
         
         /// <summary>
-        /// btnAddPt 控件。
+        /// CustomerPTUploadControl 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddPt;
-        
-        /// <summary>
-        /// btnEditPt 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditPt;
-        
-        /// <summary>
-        /// btnDeletePt 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDeletePt;
+        protected global::DevExpress.Web.ASPxUploadControl.ASPxUploadControl CustomerPTUploadControl;
         
         /// <summary>
         /// gridNotifyItem 控件。
@@ -408,6 +399,15 @@ namespace OSPortalWebApp.CustomerRelation {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPolicyContent;
+        
+        /// <summary>
+        /// npExecuteAction 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npExecuteAction;
         
         /// <summary>
         /// btnSave 控件。
