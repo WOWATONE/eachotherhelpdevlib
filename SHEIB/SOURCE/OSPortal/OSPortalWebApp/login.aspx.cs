@@ -13,5 +13,10 @@ namespace OSPortalWebApp
         {
 
         }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            Page.Response.Redirect("index.aspx", false);
+        }
     }
 }
