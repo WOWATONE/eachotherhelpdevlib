@@ -96,6 +96,8 @@
                                             <EditButton Visible="false" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="通知书编号" CellStyle-Wrap="False" VisibleIndex="1">
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False" VisibleIndex="1">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="本期应收保费(本)" CellStyle-Wrap="False"  VisibleIndex="2">

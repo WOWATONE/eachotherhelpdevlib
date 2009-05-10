@@ -63,7 +63,7 @@
                             <asp:Panel ID="npSearchDetail" runat="server" CssClass="collapsePanel" Height="0">
                                 <table style="width:100%;">
                                                 <tr>
-                                                    <td style="width:90px;text-align:right; white-space:nowrap;">单据流水号：</td>
+                                                    <td style="width:90px;text-align:right; white-space:nowrap;">通知书编号：</td>
                                                     <td style="width:100px;text-align:left;">
                                                         <asp:TextBox ID="txtPolicyNo" runat="server" Width="95px"></asp:TextBox>
                                                     </td>
@@ -148,7 +148,7 @@
                                                                 </dxwgv:GridViewCommandColumn>                                                                
                                                                 <dxwgv:GridViewDataColumn FieldName="NoticeId" Visible="false" Caption="单据流水号GUID" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="单据流水号" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书编号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>  
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeTypeName" Caption="收费方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
