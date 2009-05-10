@@ -1,4 +1,4 @@
-﻿<%@ Page Title="选择保单" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" CodeBehind="FeeCustomerAddSelect.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeeCustomerAddSelect" %>
+﻿<%@ Page Title="客户收费选择" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" CodeBehind="FeeCustomerAddSelect.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeeCustomerAddSelect" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
@@ -10,7 +10,7 @@
 <%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v8.3" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dxhe" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>选择保单</title>
+    <title>客户收费选择</title>
     <script type="text/javascript">
         $(document).ready(function() {
             //jQuery.noticeAdd({
