@@ -266,33 +266,6 @@ namespace OSPortalWebApp.CustomerClaim {
         protected global::System.Web.UI.WebControls.TextBox txtContact;
         
         /// <summary>
-        /// btn1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn1;
-        
-        /// <summary>
-        /// btn2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn2;
-        
-        /// <summary>
-        /// btn3 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn3;
-        
-        /// <summary>
         /// txtAccidentProc 控件。
         /// </summary>
         /// <remarks>

@@ -38,7 +38,7 @@
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="资料" FieldName="Material" VisibleIndex="2">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="状态" FieldName="MaterialState" VisibleIndex="3">
+                            <dxwgv:GridViewDataTextColumn Caption="状态" FieldName="MaterialStatus" VisibleIndex="3">
                             </dxwgv:GridViewDataTextColumn>
                         </Columns>
                         <SettingsPager Mode="ShowAllRecords" />
@@ -58,7 +58,7 @@
                                                 状态：
                                             </td>
                                             <td style="width: 30%; text-align: left;">
-                                                <asp:DropDownList runat="server" ID="ddlMaterialState">
+                                                <asp:DropDownList runat="server" ID="ddlMaterialStatus">
                                                     <asp:ListItem Text="未提供" Value="1"></asp:ListItem>
                                                     <asp:ListItem Text="已提供" Value="2"></asp:ListItem>
                                                 </asp:DropDownList>
@@ -77,6 +77,19 @@
                             </EditForm>
                         </Templates>
                     </dxwgv:ASPxGridView>
+                </td>
+            </tr>
+        </table>
+    </asp:Panel>
+    <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="25px">
+        <table style="width: 100%">
+            <tr>
+                <td style="text-align: right;">
+                    <asp:Button ID="btnConfirm" runat="server" Text="确认" CssClass="input_2" />&nbsp;&nbsp;
+                    <asp:Button ID="btnCancel" runat="server" Text="取消" CssClass="input_2" />
+                </td>
+                <td style="width: 180px; text-align: left;">
+                    &nbsp;
                 </td>
             </tr>
         </table>
