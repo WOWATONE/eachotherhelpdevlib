@@ -33,6 +33,15 @@
     <Reference Include="AjaxControlToolkit, Version=3.0.20820.16598, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <HintPath>DevExpress.DLL\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Web, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\WINDOWS\assembly\GAC_MSIL\CrystalDecisions.Web\10.5.3700.0__692fbea5521e1304\CrystalDecisions.Web.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.v8.3, Version=8.3.2.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>E:\WINDOWS\system32\DevExpress.Data.v8.3.dll</HintPath>
@@ -152,6 +161,46 @@
     </Compile>
     <Compile Include="Basecls\authenticationbasepage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudget.aspx.cs">
+      <DependentUpon>SignPremiumBudget.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudget.aspx.designer.cs">
+      <DependentUpon>SignPremiumBudget.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudgetDetails.aspx.cs">
+      <DependentUpon>SignPremiumBudgetDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudgetDetails.aspx.designer.cs">
+      <DependentUpon>SignPremiumBudgetDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudgetList.aspx.cs">
+      <DependentUpon>SignPremiumBudgetList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudgetList.aspx.designer.cs">
+      <DependentUpon>SignPremiumBudgetList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudgetDetailsReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SignPremiumBudgetDetailsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudgetSummary.aspx.cs">
+      <DependentUpon>SignPremiumBudgetSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudgetSummary.aspx.designer.cs">
+      <DependentUpon>SignPremiumBudgetSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudgetSummaryReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SignPremiumBudgetSummaryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="BusinessConsult\BusinessConsult.aspx.cs">
       <DependentUpon>BusinessConsult.aspx</DependentUpon>
@@ -3101,6 +3150,10 @@
     <Content Include="accounting\PropertyBrokerageBusiness.aspx" />
     <Content Include="accounting\PropertyBrokerageMarkBusiness.aspx" />
     <Content Include="accounting\ReinsuranceBrokerageBusiness.aspx" />
+    <Content Include="BudgetManagement\SignPremiumBudget.aspx" />
+    <Content Include="BudgetManagement\SignPremiumBudgetDetails.aspx" />
+    <Content Include="BudgetManagement\SignPremiumBudgetList.aspx" />
+    <Content Include="BudgetManagement\SignPremiumBudgetSummary.aspx" />
     <Content Include="BusinessConsult\BusinessConsult.aspx" />
     <Content Include="BusinessConsult\BusinessConsultList.aspx" />
     <Content Include="Controls\AskPriceSearch.ascx" />
@@ -3170,6 +3223,19 @@
     <Content Include="vehicleinsurance\AskPriceCheckList.aspx" />
     <Content Include="vehicleinsurance\CarPolicyItemInput.aspx" />
     <Content Include="vehicleinsurance\CarPolicyItemInputRead.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BudgetManagement\SignPremiumBudgetDetailsReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SignPremiumBudgetDetailsReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BudgetManagement\SignPremiumBudgetSummaryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SignPremiumBudgetSummaryReport.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

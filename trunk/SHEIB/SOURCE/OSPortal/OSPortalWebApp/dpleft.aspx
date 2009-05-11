@@ -100,11 +100,11 @@
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="预算管理" Expanded="false">
                             <Items>
-                                <dxnb:NavBarItem Text="签约预算清单" Name="http://www.google.cn">
+                                <dxnb:NavBarItem Text="签约预算清单" Name="BudgetManagement/SignPremiumBudgetList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="签约预算执行明细" Name="http://www.google.cn">
+                                <dxnb:NavBarItem Text="签约预算执行明细" Name="BudgetManagement/SignPremiumBudgetDetails.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="签约预算完成汇总" Name="http://www.google.cn">
+                                <dxnb:NavBarItem Text="签约预算完成汇总" Name="BudgetManagement/SignPremiumBudgetSummary.aspx">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
