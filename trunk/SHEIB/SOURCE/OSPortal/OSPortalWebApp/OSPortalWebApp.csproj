@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ADDD279E-6700-4B92-8290-ACB05D96BE48}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -3150,6 +3150,9 @@
     <Content Include="accounting\PropertyBrokerageBusiness.aspx" />
     <Content Include="accounting\PropertyBrokerageMarkBusiness.aspx" />
     <Content Include="accounting\ReinsuranceBrokerageBusiness.aspx" />
+    <Content Include="bin\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+    <Content Include="bin\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
+    <Content Include="bin\Microsoft.Practices.ObjectBuilder.dll" />
     <Content Include="BudgetManagement\SignPremiumBudget.aspx" />
     <Content Include="BudgetManagement\SignPremiumBudgetDetails.aspx" />
     <Content Include="BudgetManagement\SignPremiumBudgetList.aspx" />
@@ -3260,6 +3263,9 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/OSPortalWebApp</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
