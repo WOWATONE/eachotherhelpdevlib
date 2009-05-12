@@ -171,6 +171,8 @@
                                                 <dxwgv:GridViewCommandColumnCustomButton Text="编辑">
                                                 </dxwgv:GridViewCommandColumnCustomButton>
                                             </CustomButtons>
+                                            <CellStyle Wrap="False">
+                                            </CellStyle>
                                         </dxwgv:GridViewCommandColumn>
                                         <dxwgv:GridViewDataTextColumn Caption="咨询号" FieldName="ConsultNO" VisibleIndex="1">
                                         </dxwgv:GridViewDataTextColumn>
@@ -190,8 +192,12 @@
                                         </dxwgv:GridViewDataTextColumn>
                                         <dxwgv:GridViewDataTextColumn Caption="制单人" FieldName="CreatePerson" VisibleIndex="9">
                                         </dxwgv:GridViewDataTextColumn>
+                                        <dxwgv:GridViewDataTextColumn Caption="审核状态" FieldName="AuditStatus" VisibleIndex="10">
+                                        </dxwgv:GridViewDataTextColumn>
                                     </Columns>
-                                    <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" Summary-Text="第{0}页,共{1}页" />
+                                    <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" Summary-Text="第{0}页,共{1}页">
+                                        <Summary Text="第{0}页,共{1}页" />
+                                    </SettingsPager>
                                     <Settings ShowGroupPanel="false" />
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>

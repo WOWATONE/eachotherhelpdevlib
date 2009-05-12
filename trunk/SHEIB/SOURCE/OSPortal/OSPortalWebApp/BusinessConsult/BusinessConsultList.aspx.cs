@@ -48,9 +48,10 @@ namespace OSPortalWebApp.BusinessConsult
             _dtGrid.Columns.Add("TotalConsultFee", typeof(Double));
             _dtGrid.Columns.Add("InvoiceNO", typeof(String));
             _dtGrid.Columns.Add("CreatePerson", typeof(String));
+            _dtGrid.Columns.Add("AuditStatus", typeof(String));
 
-            _dtGrid.Rows.Add(new object[] { 1, DateTime.Today, "张三", "李四", "王五", "手机", 13456.6, "0123456789", "严军" });
-            _dtGrid.Rows.Add(new object[] { 2, DateTime.Today, "张三", "李四", "王五", "电话", 345534, "0123456789", "严军" });
+            _dtGrid.Rows.Add(new object[] { 1, DateTime.Today, "张三", "李四", "王五", "手机", 13456.6, "0123456789", "严军", "已审核" });
+            _dtGrid.Rows.Add(new object[] { 2, DateTime.Today, "张三", "李四", "王五", "电话", 345534, "0123456789", "严军", "未审核" });
         }
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
