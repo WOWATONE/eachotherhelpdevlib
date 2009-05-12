@@ -9,6 +9,14 @@
     TagPrefix="dxe" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>联系人列表</title>
+
+    <script type="text/javascript">
+	    function imgCustNoClick() {
+	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
+	        window.showModalDialog("SelectCustomerNo.aspx", self, myArguments);
+	    }
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager ID="ScriptManager1" runat="server" />
@@ -42,6 +50,8 @@
                             </td>
                             <td style="width: 25%; text-align: left;">
                                 <asp:TextBox ID="txtCustName" runat="server" Width="200px"></asp:TextBox>
+                                <img runat="server" id="imgCustNoSearch" alt="" src="../images/searchicon9.png" style="width: 20px;
+                                    height: 20px; vertical-align: top;" onclick="javascript:imgCustNoClick();" />
                             </td>
                             <td>
                             </td>
@@ -92,40 +102,37 @@
                     </div>
                 </asp:Panel>
                 <asp:Panel ID="npSearchResultDetail" runat="server" CssClass="collapsePanel">
-                    <table style="width: 100%">
-                        <tr>
-                            <td>
-                                <dxwgv:ASPxGridView ID="gridContactItem" ClientInstanceName="gridContactItem" runat="server"
-                                    KeyFieldName="ContactID" Width="100%" AutoGenerateColumns="False">
-                                    <Columns>
-                                        <dxwgv:GridViewDataTextColumn Caption="联系人GUID" FieldName="ContactID" VisibleIndex="0"
-                                            Visible="false">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="姓名" FieldName="ContactName" VisibleIndex="1">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="性别" FieldName="Sex" VisibleIndex="2">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="客户名称" FieldName="CustName" VisibleIndex="3">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="职位" FieldName="Position" VisibleIndex="4">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="电话" FieldName="Tel" VisibleIndex="5">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="传真" FieldName="Fax" VisibleIndex="6">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="手机" FieldName="MobilePhone" VisibleIndex="7">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="电子邮件" FieldName="Email" VisibleIndex="8">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="客户经理" FieldName="Sales" VisibleIndex="9">
-                                        </dxwgv:GridViewDataTextColumn>
-                                    </Columns>
-                                    <SettingsPager Mode="ShowAllRecords" />
-                                    <Settings ShowGroupPanel="false" />
-                                </dxwgv:ASPxGridView>
-                            </td>
-                        </tr>
-                    </table>
+                    <dxwgv:ASPxGridView ID="gridContactItem" ClientInstanceName="gridContactItem" runat="server"
+                        KeyFieldName="ContactID" Width="100%" AutoGenerateColumns="False">
+                        <Columns>
+                            <dxwgv:GridViewDataTextColumn Caption="联系人GUID" FieldName="ContactID" VisibleIndex="0"
+                                Visible="false">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="姓名" FieldName="ContactName" VisibleIndex="1">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="性别" FieldName="Sex" VisibleIndex="2">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="客户名称" FieldName="CustName" VisibleIndex="3">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="职位" FieldName="Position" VisibleIndex="4">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="电话" FieldName="Tel" VisibleIndex="5">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="传真" FieldName="Fax" VisibleIndex="6">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="手机" FieldName="MobilePhone" VisibleIndex="7">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="电子邮件" FieldName="Email" VisibleIndex="8">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="客户经理" FieldName="Sales" VisibleIndex="9">
+                            </dxwgv:GridViewDataTextColumn>
+                        </Columns>
+                        <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" 
+                            Summary-Text="第{0}页,共{1}页" >
+                            <Summary Text="第{0}页,共{1}页" />
+                        </SettingsPager>
+                        <Settings ShowGroupPanel="false" />
+                    </dxwgv:ASPxGridView>
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearchResult" runat="Server" TargetControlID="npSearchResultDetail"
                     ExpandControlID="npSearchResultHeader" CollapseControlID="npSearchResultHeader"
