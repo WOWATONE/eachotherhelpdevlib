@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ADDD279E-6700-4B92-8290-ACB05D96BE48}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -272,12 +272,12 @@
     <Compile Include="CustomerRelation\AlertService.aspx.designer.cs">
       <DependentUpon>AlertService.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CustomerRelation\AreaSetting.aspx.cs">
-      <DependentUpon>AreaSetting.aspx</DependentUpon>
+    <Compile Include="CustomerRelation\EnterpriseList.aspx.cs">
+      <DependentUpon>EnterpriseList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CustomerRelation\AreaSetting.aspx.designer.cs">
-      <DependentUpon>AreaSetting.aspx</DependentUpon>
+    <Compile Include="CustomerRelation\EnterpriseList.aspx.designer.cs">
+      <DependentUpon>EnterpriseList.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustomerRelation\CustContact.aspx.cs">
       <DependentUpon>CustContact.aspx</DependentUpon>
@@ -306,6 +306,13 @@
     </Compile>
     <Compile Include="CustomerRelation\CustomerPtFollow.aspx.designer.cs">
       <DependentUpon>CustomerPtFollow.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerRelation\SelectCustomerNo.aspx.cs">
+      <DependentUpon>SelectCustomerNo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerRelation\SelectCustomerNo.aspx.designer.cs">
+      <DependentUpon>SelectCustomerNo.aspx</DependentUpon>
     </Compile>
     <Compile Include="dpleft.aspx.cs">
       <DependentUpon>dpleft.aspx</DependentUpon>
@@ -608,6 +615,13 @@
     </Compile>
     <Compile Include="schemasetting\RoleManager.aspx.designer.cs">
       <DependentUpon>RoleManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="schemasetting\Systemlog.aspx.cs">
+      <DependentUpon>Systemlog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\Systemlog.aspx.designer.cs">
+      <DependentUpon>Systemlog.aspx</DependentUpon>
     </Compile>
     <Compile Include="schemasetting\UserManager.aspx.cs">
       <DependentUpon>UserManager.aspx</DependentUpon>
@@ -3166,8 +3180,9 @@
     <Content Include="CustomerClaim\NotifyClaimList.aspx" />
     <Content Include="CustomerClaim\SelectPolicyNo.aspx" />
     <Content Include="CustomerRelation\AlertService.aspx" />
-    <Content Include="CustomerRelation\AreaSetting.aspx" />
+    <Content Include="CustomerRelation\EnterpriseList.aspx" />
     <Content Include="CustomerRelation\Customer.aspx" />
+    <Content Include="CustomerRelation\SelectCustomerNo.aspx" />
     <Content Include="images\add_user_icon.png" />
     <Content Include="images\bg.gif" />
     <Content Include="images\button.gif" />
@@ -3216,6 +3231,7 @@
     <Content Include="ProductSetup\TargetTypeList.aspx" />
     <Content Include="schemasetting\DepartmentManager.aspx" />
     <Content Include="schemasetting\RoleManager.aspx" />
+    <Content Include="schemasetting\Systemlog.aspx" />
     <Content Include="schemasetting\UserManager.aspx" />
     <Content Include="SiteMastePages\PopupMaster.Master" />
     <Content Include="vehicleinsurance\AskPriceAlert.aspx" />
@@ -3263,9 +3279,6 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/OSPortalWebApp</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

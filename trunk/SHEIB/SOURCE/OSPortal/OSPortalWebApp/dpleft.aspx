@@ -124,11 +124,11 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="数据字典" Name="ProductSetup/DataDictionary.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="企业目录" Name="CustomerRelation/AreaSetting.aspx">
+                                <dxnb:NavBarItem Text="企业目录" Name="CustomerRelation/EnterpriseList.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="系统选项" Name="http://www.google.cn">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="系统日志" Name="http://www.google.cn">
+                                <dxnb:NavBarItem Text="系统日志" Name="schemasetting/Systemlog.aspx">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
