@@ -9,6 +9,12 @@
     TagPrefix="dxe" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>销售跟进</title>
+    <script type="text/javascript">
+	    function imgCustNoClick() {
+	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
+	        window.showModalDialog("SelectCustomerNo.aspx", self, myArguments);
+	    }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager ID="ScriptManager1" runat="server" />
@@ -36,6 +42,7 @@
                             </td>
                             <td style="width: 30%; text-align: left;" colspan="3">
                                 <asp:TextBox ID="txtCustName" runat="server" Width="200px"></asp:TextBox>
+                                <img runat="server" id="imgCustNoSearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" onclick="javascript:imgCustNoClick();" /> 
                             </td>
                             <td style="width: 8%; text-align: right;">
                                 跟进内容<br />
