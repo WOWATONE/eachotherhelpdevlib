@@ -14,6 +14,11 @@
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
             window.showModalDialog("../otherinsurance/PolicyProdType.aspx", self, myArguments);
         }
+        
+        function imgCustNoClick() {
+	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
+	        window.showModalDialog("../CustomerRelation/SelectCustomerNo.aspx", self, myArguments);
+	    }
     </script>
 
 </asp:Content>
@@ -38,10 +43,11 @@
                                     </asp:DropDownList>
                                 </td>
                                 <td style="width: 20%; text-align: right;">
-                                    客户编号：
+                                    客户名称：
                                 </td>
                                 <td style="width: 20%; text-align: left;">
-                                    <asp:TextBox ID="txtCustomerID" runat="server" Width="200px"></asp:TextBox>
+                                    <asp:TextBox ID="txtCustomerID" runat="server" Width="160px"></asp:TextBox>
+                                    <img runat="server" id="imgCustNoSearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" onclick="javascript:imgCustNoClick();" /> 
                                 </td>
                                 <td style="width: 10%; text-align: left;">
                                 </td>
