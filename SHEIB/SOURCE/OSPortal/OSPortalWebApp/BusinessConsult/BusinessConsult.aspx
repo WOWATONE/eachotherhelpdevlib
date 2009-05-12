@@ -13,8 +13,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     <table style="width: 99%">
-        <tr style="height:10px;">
-            <td></td>
+        <tr style="height: 10px;">
+            <td>
+            </td>
         </tr>
         <tr>
             <td style="width: 100%;">
@@ -25,6 +26,7 @@
                                 AlternateText="" />
                         </div>
                         <div style="float: left; margin-left: 5px;">
+                            基本信息
                         </div>
                         <div style="float: left; margin-left: 5px;">
                             <asp:Label ID="lbl_npbasicheader" runat="server">(隐藏)</asp:Label>
@@ -95,7 +97,8 @@
                             <asp:ImageButton ID="img_npConsultFeeItem" runat="server" ImageUrl="~/images/expand_blue.jpg"
                                 AlternateText="" />
                         </div>
-                        <div style="float: left; margin-left: 5px;"></div>
+                        <div style="float: left; margin-left: 5px;">
+                            咨询费用</div>
                         <div style="float: left; margin-left: 5px;">
                             <asp:Label ID="lbl_npConsultFeeItem" runat="server">(隐藏)</asp:Label>
                         </div>
@@ -157,30 +160,73 @@
                         </tr>
                     </table>
                 </asp:Panel>
-                <ajaxToolkit:CollapsiblePanelExtender ID="cpeConsultFeeItem" runat="Server"
-                                TargetControlID="npConsultFeeItemDetail"
-                                ExpandControlID="npConsultFeeItemHeader"
-                                CollapseControlID="npConsultFeeItemHeader" 
-                                Collapsed="false"
-                                TextLabelID="lbl_npConsultFeeItem"
-                                ImageControlID="img_npConsultFeeItem"    
-                                ExpandedText="(隐藏)"
-                                CollapsedText="(展开)"
-                                ExpandedImage="~/images/collapse_blue.jpg"
-                                CollapsedImage="~/images/expand_blue.jpg"
-                                SuppressPostBack="true" />
+                <ajaxToolkit:CollapsiblePanelExtender ID="cpeConsultFeeItem" runat="Server" TargetControlID="npConsultFeeItemDetail"
+                    ExpandControlID="npConsultFeeItemHeader" CollapseControlID="npConsultFeeItemHeader"
+                    Collapsed="false" TextLabelID="lbl_npConsultFeeItem" ImageControlID="img_npConsultFeeItem"
+                    ExpandedText="(隐藏)" CollapsedText="(展开)" ExpandedImage="~/images/collapse_blue.jpg"
+                    CollapsedImage="~/images/expand_blue.jpg" SuppressPostBack="true" />
             </td>
         </tr>
         <tr>
             <td style="width: 100%;">
-                <asp:Panel ID="npCreateHeader" runat="server" CssClass="collapsePanelHeader"
-                    Height="25px">
+                <asp:Panel ID="npFeeHeader" runat="server" CssClass="collapsePanelHeader" Height="25px">
+                    <div style="padding: 5px; cursor: pointer; vertical-align: middle;">
+                        <div style="float: left; vertical-align: middle;">
+                            <asp:ImageButton ID="img_npFeeHeader" runat="server" ImageUrl="~/images/expand_blue.jpg"
+                                AlternateText="" />
+                        </div>
+                        <div style="float: left; margin-left: 5px;">
+                            收费信息
+                        </div>
+                        <div style="float: left; margin-left: 5px;">
+                            <asp:Label ID="lbl_npFeeHeader" runat="server">(隐藏)</asp:Label>
+                        </div>
+                    </div>
+                </asp:Panel>
+                <asp:Panel ID="npFeeDetail" runat="server" CssClass="collapsePanel" Height="0">
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 8%; text-align: right;">
+                                收费人：
+                            </td>
+                            <td style="width: 25%; text-align: left;">
+                                <asp:DropDownList runat="server" ID="ddlFeePersion" Width="175px">
+                                    <asp:ListItem Text="张三" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="李四" Value="2"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td style="width: 8%; text-align: right;">
+                                收费时间：
+                            </td>
+                            <td style="width: 25%; text-align: left;">
+                                <dxe:ASPxDateEdit ID="deFeeDate" runat="server">
+                                </dxe:ASPxDateEdit>
+                            </td>
+                            <td style="width: 8%; text-align: right;">
+                            </td>
+                            <td style="width: 26%; text-align: left;">
+                            </td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+                <ajaxToolkit:CollapsiblePanelExtender ID="coeFee" runat="Server" TargetControlID="npFeeDetail"
+                    ExpandControlID="npFeeHeader" CollapseControlID="npFeeHeader" Collapsed="false"
+                    TextLabelID="lbl_npFeeHeader" ImageControlID="img_npFeeHeader" ExpandedText="(隐藏)"
+                    CollapsedText="(展开)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
+                    SuppressPostBack="true" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 100%;">
+                <asp:Panel ID="npCreateHeader" runat="server" CssClass="collapsePanelHeader" Height="25px">
                     <div style="padding: 5px; cursor: pointer; vertical-align: middle;">
                         <div style="float: left; vertical-align: middle;">
                             <asp:ImageButton ID="img_npCreateHeader" runat="server" ImageUrl="~/images/expand_blue.jpg"
                                 AlternateText="" />
                         </div>
-                        <div style="float: left; margin-left: 5px;"></div>
+                        <div style="float: left; margin-left: 5px;">
+                            其他
+                        </div>
                         <div style="float: left; margin-left: 5px;">
                             <asp:Label ID="lbl_npCreateHeader" runat="server">(隐藏)</asp:Label>
                         </div>
@@ -231,56 +277,27 @@
                             <td style="width: 26%; text-align: left;">
                             </td>
                         </tr>
-                        <tr>
-                            <td style="width: 8%; text-align: right;">
-                                收费人：
-                            </td>
-                            <td style="width: 25%; text-align: left;">
-                                <asp:DropDownList runat="server" ID="ddlFeePersion" Width="175px">
-                                    <asp:ListItem Text="张三" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="李四" Value="2"></asp:ListItem>
-                                </asp:DropDownList>
-                            </td>
-                            <td style="width: 8%; text-align: right;">
-                                收费时间：
-                            </td>
-                            <td style="width: 25%; text-align: left;">
-                                <dxe:ASPxDateEdit ID="deFeeDate" runat="server">
-                                </dxe:ASPxDateEdit>
-                            </td>
-                            <td style="width: 8%; text-align: right;">
-                            </td>
-                            <td style="width: 26%; text-align: left;">
-                            </td>
-                        </tr>
                     </table>
                 </asp:Panel>
-                <ajaxToolkit:CollapsiblePanelExtender ID="cpeCreate" runat="Server"
-                                TargetControlID="npCreateDetail"
-                                ExpandControlID="npCreateHeader"
-                                CollapseControlID="npCreateHeader" 
-                                Collapsed="false"
-                                TextLabelID="lbl_npCreateHeader"
-                                ImageControlID="img_npCreateHeader"    
-                                ExpandedText="(隐藏)"
-                                CollapsedText="(展开)"
-                                ExpandedImage="~/images/collapse_blue.jpg"
-                                CollapsedImage="~/images/expand_blue.jpg"
-                                SuppressPostBack="true" />
+                <ajaxToolkit:CollapsiblePanelExtender ID="cpeCreate" runat="Server" TargetControlID="npCreateDetail"
+                    ExpandControlID="npCreateHeader" CollapseControlID="npCreateHeader" Collapsed="false"
+                    TextLabelID="lbl_npCreateHeader" ImageControlID="img_npCreateHeader" ExpandedText="(隐藏)"
+                    CollapsedText="(展开)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
+                    SuppressPostBack="true" />
             </td>
         </tr>
         <tr>
-            <td style="width:100%">
+            <td style="width: 100%">
                 <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="25px">
-                    <table style="width:100%">
+                    <table style="width: 100%">
                         <tr>
-                            <td style="text-align:center;">
+                            <td style="text-align: center;">
                                 <asp:Button ID="btnSave" runat="server" Text="保存" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:Button ID="btnSubmit" runat="server" Text="提交审核" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:Button ID="btnCancel" runat="server" Text="取消" CssClass="input_2" />
-                            </td>                                                                 
+                            </td>
                         </tr>
-                    </table>     
+                    </table>
                 </asp:Panel>
             </td>
         </tr>

@@ -194,6 +194,69 @@ namespace OSPortalWebApp.BusinessConsult {
         protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeConsultFeeItem;
         
         /// <summary>
+        /// npFeeHeader 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npFeeHeader;
+        
+        /// <summary>
+        /// img_npFeeHeader 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton img_npFeeHeader;
+        
+        /// <summary>
+        /// lbl_npFeeHeader 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_npFeeHeader;
+        
+        /// <summary>
+        /// npFeeDetail 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npFeeDetail;
+        
+        /// <summary>
+        /// ddlFeePersion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFeePersion;
+        
+        /// <summary>
+        /// deFeeDate 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deFeeDate;
+        
+        /// <summary>
+        /// coeFee 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender coeFee;
+        
+        /// <summary>
         /// npCreateHeader 控件。
         /// </summary>
         /// <remarks>
@@ -264,24 +327,6 @@ namespace OSPortalWebApp.BusinessConsult {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deAuditTime;
-        
-        /// <summary>
-        /// ddlFeePersion 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFeePersion;
-        
-        /// <summary>
-        /// deFeeDate 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deFeeDate;
         
         /// <summary>
         /// cpeCreate 控件。
