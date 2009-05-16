@@ -50,16 +50,10 @@
                                 <ClientSideEvents Click="btnCreateClick" />
                             </dxe:ASPxButton>                            
                         </td>
-                        <td style="height:40px; width:55%;">
-                            <table style="margin:0px; padding:0px; width:100%; border:0px; text-align:left">
-				                        <tr>
-					                        <td style="width:100%; color:#0E5ED5;">
-					                            当前位置：非车险保单批改&nbsp;&nbsp;&nbsp;&nbsp;
-					                            <asp:label id="LblUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
-						                        <label id="lblCurrentDate"></label>
-					                        </td>
-				                        </tr>
-	                        </table>
+                        <td style="height:40px; width:55%; color:#0E5ED5;text-align:left;">
+                            当前位置：非车险保单批改&nbsp;&nbsp;
+                            <asp:label id="LblUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
+	                        <label id="lblCurrentDate"></label>					                        
                         </td>
                     </tr>                   
                     <tr>
@@ -112,11 +106,7 @@
                                                     </td>
                                                     <td style="text-align:right;">投保客户：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList ID="ddlCustomerID" runat="server">
-                                                            <asp:ListItem Text="张三" Value="1"></asp:ListItem>
-                                                            <asp:ListItem Text="李四" Value="2"></asp:ListItem>
-                                                            <asp:ListItem Text="王五" Value="3"></asp:ListItem>
-                                                        </asp:DropDownList>                                                        
+                                                        <asp:TextBox ID="txtCustomer" runat="server" Width="175px"></asp:TextBox>                                                        
                                                     </td>
                                                     <td></td>
                                                 </tr>
@@ -133,7 +123,7 @@
                                                             <asp:ListItem Text="新增" Value="1"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
-                                                    <td style="text-align:right;">险种：</td>
+                                                    <td style="text-align:right;">保险险种：</td>
                                                     <td style="text-align:left;">
                                                         <asp:TextBox ID="txtProdTypeID" runat="server" Width="120px"></asp:TextBox>
                                                         <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" onclick="imgPolicyProdTypeClick();" />                                                       
@@ -167,7 +157,7 @@
                                                         <dxe:ASPxDateEdit ID="deStartDate" runat="server">
                                                         </dxe:ASPxDateEdit>                                                       
                                                     </td>
-                                                    <td style="text-align:right;">--&gt;</td>
+                                                    <td style="text-align:center;">至</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
@@ -279,21 +269,23 @@
                                                                 </dxwgv:GridViewDataColumn>                                                                
                                                                 <dxwgv:GridViewDataColumn FieldName="CreatePerson" Caption="录单人" VisibleIndex="15" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CreateTime" Caption="录单日期" VisibleIndex="16" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>                                        
+                                                                <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="录单日期" VisibleIndex="16" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                </dxwgv:GridViewDataDateColumn>                                        
                                                                 <dxwgv:GridViewDataColumn FieldName="SourceType" Caption="业务来源" VisibleIndex="17" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>          
                                                                 <dxwgv:GridViewDataColumn FieldName="FlagContinue" Caption="业务性质" VisibleIndex="18" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>   
                                                                 <dxwgv:GridViewDataColumn FieldName="GatheringType" Caption="收款方式" VisibleIndex="19" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>                                                        
-                                                                <dxwgv:GridViewDataColumn FieldName="StartDate" Caption="保单开始日期" VisibleIndex="20" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="EndDate" Caption="保单结束日期" VisibleIndex="21" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataDateColumn FieldName="StartDate" Caption="保单开始日期" VisibleIndex="20" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                </dxwgv:GridViewDataDateColumn>
+                                                                <dxwgv:GridViewDataDateColumn FieldName="EndDate" Caption="保单结束日期" VisibleIndex="21" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                </dxwgv:GridViewDataDateColumn>                                                                
+                                                                <dxwgv:GridViewDataColumn FieldName="CheckMemo" Caption="审核备注" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>
-                                                        <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" Summary-Text="第{0}页,共{1}页" />
+                                                        <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" />
                                                         <Settings ShowGroupPanel="false" />
                                                         <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                                         

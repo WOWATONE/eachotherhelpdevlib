@@ -72,7 +72,7 @@ namespace OSPortalWebApp.otherinsurance
             _dtGrid.Columns.Add("GatheringType", typeof(String));
             _dtGrid.Columns.Add("StartDate", typeof(DateTime));
             _dtGrid.Columns.Add("EndDate", typeof(DateTime));
-
+            _dtGrid.Columns.Add("CheckMemo", typeof(String));
 
             _dtGrid.Rows.Add(new object[] { 1, 1,
                 1, "王怡", 1, "平安保险", 1, "上海平安", 
@@ -80,7 +80,8 @@ namespace OSPortalWebApp.otherinsurance
                 500, 300, 1, "王五", "王海", new DateTime(DateTime.Now.Year-1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
                 1, "来源", 1, "新增", 1, "支票", 
                 new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1), 
-                new DateTime(DateTime.Now.Year+1,DateTime.Now.Month,DateTime.Now.Day,1,1,1)
+                new DateTime(DateTime.Now.Year+1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                "备注"
             });
 
             DataRow dr = _dtGrid.NewRow();
@@ -115,7 +116,7 @@ namespace OSPortalWebApp.otherinsurance
             dr[25] = "支票";
             dr[26] = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 1, 1, 1);
             dr[27] = new DateTime(DateTime.Now.Year + 1, DateTime.Now.Month, DateTime.Now.Day, 1, 1, 1);
-
+            dr[28] = "备注";
             _dtGrid.Rows.Add(dr);
 
 
