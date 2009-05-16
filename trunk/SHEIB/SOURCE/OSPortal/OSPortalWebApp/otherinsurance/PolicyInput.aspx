@@ -86,6 +86,12 @@
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
             window.showModalDialog("PolicyProdType.aspx", self, myArguments);
         }
+
+        function hlPolicyItemTogetherClick(params) {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
+            window.showModalDialog("NewCustomer.aspx", self, myArguments);
+
+        }
         
     </script>    
 </asp:Content>
@@ -427,7 +433,14 @@
                                                                     <NewButton Visible="True" />
                                                                     <EditButton Visible="true" />
                                                                     <DeleteButton Visible="true" />
-                                                                </dxwgv:GridViewCommandColumn>
+                                                                </dxwgv:GridViewCommandColumn>                                                                
+                                                                <dxwgv:GridViewDataColumn Caption="&nbsp;" CellStyle-Wrap="False">
+                                                                    <DataItemTemplate>
+                                                                        <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_Together" Text="再保" NavigateUrl="#">
+                                                                            <ClientSideEvents Click="hlPolicyItemTogetherClick" />
+                                                                        </dxe:ASPxHyperLink>                                                                                               
+                                                                    </DataItemTemplate>
+                                                                </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataTextColumn FieldName="CarrierNameCn" Caption="保险公司" CellStyle-Wrap="False">
                                                                 </dxwgv:GridViewDataTextColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="False">
