@@ -37,8 +37,11 @@ namespace OSPortalWebApp.otherinsurance
                 GetPolicyItemDataForGrid();
                 ViewState["GridPolicyItem"] = _dtGridPolicyItem;
             }
+            else {
+                _dtGridPolicyItem = ViewState["GridPolicyItem"] as DataTable;
+            }
 
-            this.gridPolicyItem.DataSource = ViewState["GridPolicyItem"];
+            this.gridPolicyItem.DataSource = _dtGridPolicyItem;
 
             if (!IsPostBack && !IsCallback)
                 this.gridPolicyItem.DataBind();
@@ -88,12 +91,12 @@ namespace OSPortalWebApp.otherinsurance
             
             ASPxComboBox decbGridProdID = tblEditorTemplate.FindControl("decbGridProdID") as ASPxComboBox;
             row["ProdID"] = decbGridProdID.SelectedItem.Text;//ddlGridProdID.SelectedValue;
-
-            ASPxTextBox detxtGridProdName = tblEditorTemplate.FindControl("detxtGridProdName") as ASPxTextBox;
-            row["ProdName"] = detxtGridProdName.Text;
-
+                        
             TextBox txtGridCoverage = tblEditorTemplate.FindControl("txtGridCoverage") as TextBox;
             row["Coverage"] = txtGridCoverage.Text;
+
+            TextBox txtGridPremiumRate = tblEditorTemplate.FindControl("txtGridPremiumRate") as TextBox;
+            row["PremiumRate"] = txtGridPremiumRate.Text;
 
             TextBox txtGridPremium = tblEditorTemplate.FindControl("txtGridPremium") as TextBox;
             row["Premium"] = txtGridPremium.Text;
@@ -136,13 +139,17 @@ namespace OSPortalWebApp.otherinsurance
             TextBox txtGridItemID = tblEditorTemplate.FindControl("txtGridItemID") as TextBox;
 
             ASPxComboBox decbGridProdID = tblEditorTemplate.FindControl("decbGridProdID") as ASPxComboBox;
-            string theProdID = decbGridProdID.SelectedItem.Text;//ddlGridProdID.SelectedValue;
+            string theProdID = decbGridProdID.SelectedItem.Value.ToString();//ddlGridProdID.SelectedValue;
 
-            ASPxTextBox detxtGridProdName = tblEditorTemplate.FindControl("detxtGridProdName") as ASPxTextBox;
-            string theProdName = detxtGridProdName.Text;
+            ASPxComboBox decbGridProdName = tblEditorTemplate.FindControl("decbGridProdID") as ASPxComboBox;
+            string theProdName = decbGridProdID.SelectedItem.Text;//ddlGridProdID.SelectedValue;
 
+            
             TextBox txtGridCoverage = tblEditorTemplate.FindControl("txtGridCoverage") as TextBox;
             string theCoverage = txtGridCoverage.Text;
+
+            TextBox txtGridPremiumRate = tblEditorTemplate.FindControl("txtGridPremiumRate") as TextBox;
+            string thePremiumRate = txtGridPremiumRate.Text;
 
             TextBox txtGridPremium = tblEditorTemplate.FindControl("txtGridPremium") as TextBox;
             string thePremium = txtGridPremium.Text;
@@ -156,9 +163,10 @@ namespace OSPortalWebApp.otherinsurance
             _dtGridPolicyItem.Rows.Add(
                 new object[] {
                     rowIndex, 
-                    theProdID, 
-                    theProdName, 
+                    theProdID,
+                    theProdName,
                     theCoverage,
+                    thePremiumRate,
                     thePremium,
                     theProcRate,
                     theProcess
@@ -202,25 +210,17 @@ namespace OSPortalWebApp.otherinsurance
             _dtGridPolicyItem.Columns.Add("ProdName", typeof(String));
 
             _dtGridPolicyItem.Columns.Add("Coverage", typeof(Decimal));
+            _dtGridPolicyItem.Columns.Add("PremiumRate", typeof(Double));
             _dtGridPolicyItem.Columns.Add("Premium", typeof(Decimal));
 
             _dtGridPolicyItem.Columns.Add("ProcRate", typeof(Double));
             _dtGridPolicyItem.Columns.Add("Process", typeof(Decimal));
 
 
-            _dtGridPolicyItem.Rows.Add(new object[] { 1, "Prod1", "Prod1", 1000, 800, 0.01, 10 });
+            _dtGridPolicyItem.Rows.Add(new object[] { 1, "Prod1", "Prod1", 1000, 0.01, 800, 0.01, 10 });
 
-            DataRow dr = _dtGridPolicyItem.NewRow();
-            dr[0] = 2;
-            dr[1] = "Prod2";
-            dr[2] = "Prod2";
-            dr[3] = 2000;
-            dr[4] = 1800;
-            dr[5] = 0.02;
-            dr[6] = 20;
-            _dtGridPolicyItem.Rows.Add(dr);
-
-            _dtGridPolicyItem.Rows.Add(new object[] { 3, "Prod3", "Prod3", 3000, 2700, 0.03, 30 });
+            
+            _dtGridPolicyItem.Rows.Add(new object[] { 3, "Prod3", "Prod3", 3000, 0.01, 2700, 0.03, 30 });
 
             
         }
