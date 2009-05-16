@@ -428,23 +428,17 @@
                                                                     <EditButton Visible="true" />
                                                                     <DeleteButton Visible="true" />
                                                                 </dxwgv:GridViewCommandColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CarrierNo" Caption="保险公司编号" CellStyle-Wrap="False" Visible="false">
-                                                                </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataTextColumn FieldName="CarrierNameCn" Caption="保险公司" CellStyle-Wrap="False">
                                                                 </dxwgv:GridViewDataTextColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="False">
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="份额比率" CellStyle-Wrap="False">
+                                                                <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="份额比例(%)" CellStyle-Wrap="False">
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" CellStyle-Wrap="False">
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费比例" CellStyle-Wrap="False" Visible="false">
+                                                                <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率" CellStyle-Wrap="False">
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" CellStyle-Wrap="False">
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Poundage" Caption="手续费" CellStyle-Wrap="False">
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Tax" Caption="税费" CellStyle-Wrap="False" Visible="false">
                                                                 </dxwgv:GridViewDataColumn>                                                                 
                                                             </Columns>
                                                         <%-- EndRegion --%>
@@ -483,7 +477,7 @@
                                                                         </td>
                                                                     </tr>
                                                                     <tr>                                                                        
-                                                                        <td style="white-space:nowrap; text-align:right;">份额比率:</td>
+                                                                        <td style="white-space:nowrap; text-align:right;">份额比例:</td>
                                                                         <td style="text-align:left;">
                                                                             <asp:TextBox runat="server" ID="txtGridPolicyRate" Text='<%# Eval("PolicyRate") %>'></asp:TextBox>
                                                                         </td>
@@ -492,15 +486,16 @@
                                                                             <asp:TextBox runat="server" ID="txtGridPremium" Text='<%# Eval("Premium") %>'></asp:TextBox>
                                                                         </td>
                                                                     </tr>
-                                                                    <tr>                                                                        
+                                                                    <tr>  
+                                                                        <td style="white-space:nowrap; text-align:right;">经纪费率:</td>
+                                                                        <td style="text-align:left;">
+                                                                            <asp:TextBox runat="server" ID="txtGridPoundage" Text='<%# Eval("ProcessRate") %>'></asp:TextBox>
+                                                                        </td>                                                                      
                                                                         <td style="white-space:nowrap; text-align:right;">经纪费:</td>
                                                                         <td style="text-align:left;">
                                                                             <asp:TextBox runat="server" ID="txtGridProcess" Text='<%# Eval("Process") %>'></asp:TextBox>
                                                                         </td>
-                                                                        <td style="white-space:nowrap; text-align:right;">手续费:</td>
-                                                                        <td style="text-align:left;">
-                                                                            <asp:TextBox runat="server" ID="txtGridPoundage" Text='<%# Eval("Poundage") %>'></asp:TextBox>
-                                                                        </td>
+                                                                        
                                                                     </tr>                                                                    
                                                                 </table>
                                                              </div>
@@ -682,12 +677,12 @@
                                                 <EditButton Visible="true" />
                                             </dxwgv:GridViewCommandColumn>
                                             <dxwgv:GridViewDataColumn FieldName="Period" Caption="期次" CellStyle-Wrap="false">
-                                            </dxwgv:GridViewDataColumn>
+                                            </dxwgv:GridViewDataColumn>                                            
+                                            <dxwgv:GridViewDataDateColumn FieldName="PayDate" Caption="付款日期" CellStyle-Wrap="false" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd" >
+                                            </dxwgv:GridViewDataDateColumn>
                                             <dxwgv:GridViewDataColumn FieldName="CarrierNameCn" Caption="保险公司" CellStyle-Wrap="false">
                                             </dxwgv:GridViewDataColumn>
                                             <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="false">
-                                            </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="PayDate" Caption="付款日期" CellStyle-Wrap="false">
                                             </dxwgv:GridViewDataColumn>
                                             <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="保费" CellStyle-Wrap="false">
                                             </dxwgv:GridViewDataColumn>                                            
@@ -707,20 +702,21 @@
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodPeriod" ClientInstanceName="detxtGridPeriodPeriod" Text='<%# Eval("Period") %>' Enabled="false"></dxe:ASPxTextBox>
                                                     </td>
-                                                    <td style="white-space:nowrap; text-align:right;">保险公司:</td>
-                                                    <td style="text-align:left;">
-                                                       <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodCarrierNameCn" ClientInstanceName="detxtGridPeriodCarrierNameCn" Text='<%# Eval("CarrierNameCn") %>' Enabled="false"></dxe:ASPxTextBox>
-                                                    </td>                                                    
-                                                </tr>
-                                                <tr>
-                                                    <td style="white-space:nowrap; text-align:right;">分支机构:</td>
-                                                    <td style="text-align:left;">
-                                                       <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodBranchName" ClientInstanceName="detxtGridPeriodBranchName" Text='<%# Eval("BranchName") %>' Enabled="false"></dxe:ASPxTextBox> 
-                                                    </td>
                                                     <td style="white-space:nowrap; text-align:right;">付款日期:</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="detxtGridPeriodPayDate" ClientInstanceName="detxtGridPeriodPayDate" runat="server"></dxe:ASPxDateEdit> 
                                                     </td>
+                                                                                                        
+                                                </tr>
+                                                <tr>
+                                                    <td style="white-space:nowrap; text-align:right;">保险公司:</td>
+                                                    <td style="text-align:left;">
+                                                       <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodCarrierNameCn" ClientInstanceName="detxtGridPeriodCarrierNameCn" Text='<%# Eval("CarrierNameCn") %>' Enabled="false"></dxe:ASPxTextBox>
+                                                    </td>
+                                                    <td style="white-space:nowrap; text-align:right;">分支机构:</td>
+                                                    <td style="text-align:left;">
+                                                       <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodBranchName" ClientInstanceName="detxtGridPeriodBranchName" Text='<%# Eval("BranchName") %>' Enabled="false"></dxe:ASPxTextBox> 
+                                                    </td>                                                    
                                                 </tr>
                                                 <tr>                                                    
                                                     <td style="white-space:nowrap; text-align:right;">保费:</td>
@@ -754,8 +750,19 @@
                 <ContentCollection><dxw:ContentControl ID="ContentControl1" runat="server">
                     <table style="width:100%">
                         <tr>
+                            <td style="width:10%;text-align:right;">审核人：</td>
+                            <td style="width:20%;text-align:left;">
+                                <asp:TextBox ID="TextBox2" runat="server" Width="100px" Enabled="false"></asp:TextBox>
+                            </td>
+                            <td style="width:10%;text-align:right;">审核日期：</td>
+                            <td style="width:20%;text-align:left;">
+                                <dxe:ASPxDateEdit ID="deCheckDate" runat="server"></dxe:ASPxDateEdit>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
                             <td style="text-align:right; vertical-align:top;">审核备注：</td>
-                            <td style="text-align:left;">                                                
+                            <td style="text-align:left;" colspan="3">                                                
                                 <textarea runat="server" id="taModifyMemo" rows="5" cols="72"></textarea>
                             </td>
                             <td></td>
