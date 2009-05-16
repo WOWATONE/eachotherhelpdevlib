@@ -235,7 +235,7 @@
                                                      >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
-                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;" VisibleIndex="0">
+                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left" Width="81" AllowDragDrop="false">
                                                                     <NewButton Visible="True" />
                                                                     <EditButton Visible="true" />
                                                                     <DeleteButton Visible="true" />
@@ -418,7 +418,7 @@
                                             <tr>
                                                 <td>
                                                 <dxwgv:ASPxGridView ID="gridCarrier" ClientInstanceName="gridCarrier" runat="server" 
-                                                    KeyFieldName="CarrierID" Width="100%" AutoGenerateColumns="False" 
+                                                    KeyFieldName="CarrierID" Width="100%" AutoGenerateColumns="False"
                                                     OnStartRowEditing="gridCarrier_StartRowEditing"
                                                     OnRowInserting="gridCarrier_RowInserting" 
                                                     OnRowUpdating="gridCarrier_RowUpdating" 
@@ -429,12 +429,12 @@
                                                      >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
-                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;">
+                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left" Width="81" HeaderStyle-Wrap="False" AllowDragDrop="false">
                                                                     <NewButton Visible="True" />
                                                                     <EditButton Visible="true" />
                                                                     <DeleteButton Visible="true" />
                                                                 </dxwgv:GridViewCommandColumn>                                                                
-                                                                <dxwgv:GridViewDataColumn Caption="&nbsp;" CellStyle-Wrap="False">
+                                                                <dxwgv:GridViewDataColumn Caption="&nbsp;" CellStyle-Wrap="False" Width="25" Settings-AllowDragDrop="false">
                                                                     <DataItemTemplate>
                                                                         <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_Together" Text="ÔÙ±£" NavigateUrl="#">
                                                                             <ClientSideEvents Click="hlPolicyItemTogetherClick" />
@@ -455,7 +455,7 @@
                                                                 </dxwgv:GridViewDataColumn>                                                                 
                                                             </Columns>
                                                         <%-- EndRegion --%>
-                                                        <SettingsPager Mode="ShowAllRecords"/>
+                                                        <SettingsPager Mode="ShowAllRecords"/>                                                        
                                                         <Settings ShowGroupPanel="false" />                                                        
                                                         <Templates>
                                                              <EditForm>                                                             
