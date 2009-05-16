@@ -80,7 +80,7 @@
                                     <td style="text-align:left;">
                                         <asp:TextBox runat="server" ID="txtGridPolicyCarInfoEngineNo" Text='<%# Eval("EngineNo") %>'></asp:TextBox>
                                     </td>
-                                    <td style="white-space:nowrap; text-align:right;">核定载客:</td>
+                                    <td style="white-space:nowrap; text-align:right;">核定载客/质量:</td>
                                     <td style="text-align:left;">
                                         <asp:TextBox runat="server" ID="txtGridPolicyCarInfoCapacity" Text='<%# Eval("Capacity") %>'></asp:TextBox>
                                     </td>
@@ -152,14 +152,12 @@
                                          >
                                             <%-- BeginRegion Columns --%>
                                                 <Columns>                                                                                                                                           
-                                                    <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
+                                                    <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left" Width="81" HeaderStyle-Wrap="False" AllowDragDrop="false">
                                                         <NewButton Visible="true" />
                                                         <EditButton Visible="true" />
                                                         <DeleteButton Visible="true" />                                                            
-                                                    </dxwgv:GridViewCommandColumn>                                                                                        
-                                                    <dxwgv:GridViewDataColumn FieldName="CarPolicyItemID" Caption="险种编号" CellStyle-Wrap="False">
-                                                    </dxwgv:GridViewDataColumn>
-                                                    <dxwgv:GridViewDataColumn FieldName="CarPolicyItemName" Caption="险种" CellStyle-Wrap="False">
+                                                    </dxwgv:GridViewCommandColumn>
+                                                    <dxwgv:GridViewDataColumn FieldName="CarPolicyItemName" Caption="保险险种" CellStyle-Wrap="False">
                                                     </dxwgv:GridViewDataColumn>
                                                     <dxwgv:GridViewDataColumn FieldName="Coverage" Caption="保险金额 " CellStyle-Wrap="False">
                                                     </dxwgv:GridViewDataColumn>
@@ -177,7 +175,7 @@
                                                  <div style="padding:4px 4px 3px 4px">
                                                     <table style=" width:90%;" runat="server" id="tblgridPolicyItemEditorTemplate">
                                                         <tr>
-                                                            <td style="white-space:nowrap; text-align:right;">险种编号:</td>
+                                                            <td style="white-space:nowrap; text-align:right;">险种:</td>
                                                             <td style="text-align:left;">
                                                                 <dxe:ASPxComboBox runat="server" ID="decbPolicyCarPolicyItemID" 
                                                                     AutoPostBack="false" ClientInstanceName="decbPolicyCarPolicyItemID" 
@@ -190,31 +188,21 @@
                                                                     <ClientSideEvents SelectedIndexChanged="" />
                                                                 </dxe:ASPxComboBox>                                                                
                                                             </td>
-                                                            <td style="white-space:nowrap; text-align:right;">险种:</td>
-                                                            <td style="text-align:left;">
-                                                                <dxe:ASPxTextBox runat="server" ID="detxtGridPolicyCarPolicyItemName" ClientInstanceName="detxtGridPolicyCarPolicyItemName" Text='<%# Eval("CarPolicyItemName") %>' Enabled="false"></dxe:ASPxTextBox>                                                                
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
                                                             <td style="white-space:nowrap; text-align:right;">保险金额:</td>
                                                             <td style="text-align:left;">
                                                                 <asp:TextBox runat="server" ID="txtGridPolicyCoverage" Text='<%# Eval("Coverage") %>'></asp:TextBox>
                                                             </td>
+                                                        </tr>
+                                                        <tr>                                                            
                                                             <td style="white-space:nowrap; text-align:right;">保费:</td>
                                                             <td style="text-align:left;">
                                                                 <asp:TextBox runat="server" ID="txtGridPolicyPremium" Text='<%# Eval("Premium") %>'></asp:TextBox>
                                                             </td>
-                                                        </tr>
-                                                        <tr>
                                                             <td style="white-space:nowrap; text-align:right;">备注:</td>
                                                             <td style="text-align:left;">
                                                                 <asp:TextBox runat="server" ID="txtGridPolicyMemo" Text='<%# Eval("Memo") %>'></asp:TextBox>
                                                             </td>
-                                                            <td style="white-space:nowrap; text-align:right;"></td>
-                                                            <td style="text-align:left;">
-                                                                
-                                                            </td>
-                                                        </tr>                                                       
+                                                        </tr>                                                                                                            
                                                         
                                                     </table>
                                                     
@@ -292,10 +280,8 @@
                                 <td style="text-align:left;">
                                     <asp:TextBox ID="txtAciProcessRate" runat="server" Width="100px"></asp:TextBox>
                                 </td>
-                                <td style="text-align:right;">经纪费率：</td>
-                                <td style="text-align:left;">
-                                    <asp:TextBox ID="txtCstProcessRate" runat="server" Width="100px"></asp:TextBox>
-                                </td> 
+                                <td style="text-align:right;"></td>
+                                <td style="text-align:left;"></td> 
                                 <td></td>                               
                             </tr>  
                             <tr>
@@ -307,10 +293,8 @@
                                 <td style="text-align:left;">
                                     <asp:TextBox ID="txtAciProcess" runat="server" Width="100px"></asp:TextBox>
                                 </td>
-                                <td style="text-align:right;">经纪费：</td>
-                                <td style="text-align:left;">
-                                    <asp:TextBox ID="txtCstProcess" runat="server" Width="100px"></asp:TextBox>
-                                </td>
+                                <td style="text-align:right;"></td>
+                                <td style="text-align:left;"></td>
                                 <td></td>                                  
                             </tr>
                             <tr>
@@ -365,19 +349,15 @@
                 <asp:Panel ID="npOtherPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
                             <table style="width:100%">
                                 <tr>
-                                    <td style="width:10%;text-align:right;">录单人：</td>
-                                    <td style="width:20%;text-align:left;">
-                                        <asp:TextBox ID="txtCreatePerson" runat="server" Width="100px" Enabled="false"></asp:TextBox>
-                                    </td>
                                     <td style="width:10%;text-align:right;">录单日期：</td>
-                                    <td style="width:20%;text-align:left;">
+                                    <td style="width:90%;text-align:left;">
                                         <dxe:ASPxDateEdit ID="deCreateTime" runat="server"></dxe:ASPxDateEdit>
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td style="width:10%;text-align:right;"></td>
-                                    <td style="text-align:left;" colspan="3">                                                
+                                    <td style="text-align:right;"></td>
+                                    <td style="text-align:left;">                                                
                                         <textarea runat="server" id="taModifyMemo" rows="5" cols="72"></textarea>
                                     </td>
                                     <td></td>
