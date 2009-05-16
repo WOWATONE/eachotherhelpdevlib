@@ -75,6 +75,7 @@ namespace OSPortalWebApp.vehicleinsurance
 
             _dtGridAskPrice.Columns.Add("StartDate", typeof(DateTime));
             _dtGridAskPrice.Columns.Add("EndDate", typeof(DateTime));
+            _dtGridAskPrice.Columns.Add("CheckMemo", typeof(String));
 
 
             _dtGridAskPrice.Rows.Add(new object[] { "1", "1",
@@ -86,7 +87,8 @@ namespace OSPortalWebApp.vehicleinsurance
                 new DateTime(DateTime.Now.Year-1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
                 "1", "来源", "1", "新增", "1", "支票", 
                 new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1), 
-                new DateTime(DateTime.Now.Year+1,DateTime.Now.Month,DateTime.Now.Day,1,1,1)
+                new DateTime(DateTime.Now.Year+1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                "备注"
             });
 
 
@@ -99,7 +101,8 @@ namespace OSPortalWebApp.vehicleinsurance
                 new DateTime(DateTime.Now.Year-1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
                 "1", "来源", "1", "新增", "1", "支票", 
                 new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1), 
-                new DateTime(DateTime.Now.Year+1,DateTime.Now.Month,DateTime.Now.Day,1,1,1)
+                new DateTime(DateTime.Now.Year+1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                "备注"
             });
 
         }

@@ -32,6 +32,11 @@
 	    var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
 	    window.showModalDialog("AskPriceCheck.aspx", self, myArguments);
 	}
+
+	function imgPolicyProdTypeClick() {
+	    var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
+	    //window.showModalDialog("PolicyProdType.aspx", self, myArguments);
+	}
 	
     </script>
 </asp:Content>
@@ -83,11 +88,7 @@
                                                     </td>
                                                     <td style="width:70px;text-align:right;">投保客户：</td>
                                                     <td style="width:160px;text-align:left;">
-                                                        <asp:DropDownList ID="ddlCustomerID" runat="server">
-                                                            <asp:ListItem Text="张三" Value="1"></asp:ListItem>
-                                                            <asp:ListItem Text="李四" Value="2"></asp:ListItem>
-                                                            <asp:ListItem Text="王五" Value="3"></asp:ListItem>
-                                                        </asp:DropDownList> 
+                                                        <asp:TextBox ID="txtCustomer" runat="server" Width="175px"></asp:TextBox>  
                                                     </td>
                                                     <td></td>                                                    
                                                 </tr> 
@@ -106,9 +107,8 @@
                                                     </td>
                                                     <td style="text-align:right;">险种：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList runat="server" ID="ddlProdTypeID">
-                                                            <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
-                                                        </asp:DropDownList>                                                        
+                                                        <asp:TextBox ID="txtProdTypeID" runat="server" Width="120px"></asp:TextBox>
+                                                        <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" onclick="imgPolicyProdTypeClick();" />                                                        
                                                     </td>
                                                     <td></td>
                                                 </tr>
@@ -154,7 +154,7 @@
                                                         <dxe:ASPxDateEdit ID="deStartDate" runat="server">
                                                         </dxe:ASPxDateEdit>                                                       
                                                     </td>
-                                                    <td style="text-align:right;">--&gt;</td>
+                                                    <td style="text-align:center;">至</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
@@ -242,8 +242,6 @@
                                                                 <dxwgv:GridViewDataColumn FieldName="CiProcess" Caption="商业险经纪费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>                                                     
                                                                 <dxwgv:GridViewDataColumn FieldName="AciProcess" Caption="交强险经纪费" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CstProcess" Caption="车船税经纪费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>                                                                
                                                                 <dxwgv:GridViewDataColumn FieldName="ProcessTotal" Caption="经纪费合计" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
@@ -252,21 +250,23 @@
                                                                 </dxwgv:GridViewDataColumn>   
                                                                 <dxwgv:GridViewDataColumn FieldName="CreatePerson" Caption="录单人" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>                                                        
-                                                                <dxwgv:GridViewDataColumn FieldName="CreateTime" Caption="录单日期" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="录单日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                </dxwgv:GridViewDataDateColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="SourceTypeName" Caption="业务来源" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="OperationTypeName" Caption="业务性质" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="收款方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="StartDate" Caption="保单开始日期" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="EndDate" Caption="保单结束日期" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataDateColumn FieldName="StartDate" Caption="保单开始日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                </dxwgv:GridViewDataDateColumn>
+                                                                <dxwgv:GridViewDataDateColumn FieldName="EndDate" Caption="保单结束日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                </dxwgv:GridViewDataDateColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="CheckMemo" Caption="审核备注" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>
-                                                        <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" Summary-Text="第{0}页,共{1}页" />
+                                                        <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" />
                                                         <Settings ShowGroupPanel="false" />
                                                         <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                                         

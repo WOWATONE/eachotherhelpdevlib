@@ -157,7 +157,7 @@
                                                         <dxe:ASPxDateEdit ID="deStartDate" runat="server">
                                                         </dxe:ASPxDateEdit>                                                       
                                                     </td>
-                                                    <td style="text-align:center;">至</td>
+                                                    <td style="text-align:right;">至</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
