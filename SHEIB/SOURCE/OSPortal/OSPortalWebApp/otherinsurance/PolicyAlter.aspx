@@ -341,12 +341,12 @@
                                                      >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
-                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;">
+                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left" Width="81" HeaderStyle-Wrap="False" AllowDragDrop="False">
                                                                     <NewButton Visible="True" />
                                                                     <EditButton Visible="true" />
                                                                     <DeleteButton Visible="true" />
                                                                 </dxwgv:GridViewCommandColumn>
-                                                                <dxwgv:GridViewDataColumn Caption="&nbsp;" CellStyle-Wrap="False">
+                                                                <dxwgv:GridViewDataColumn Caption="&nbsp;" CellStyle-Wrap="False" Width="25" HeaderStyle-Wrap="False" Settings-AllowDragDrop="False">
                                                                     <DataItemTemplate>
                                                                         <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_Together" Text="再保" NavigateUrl="#">
                                                                             <ClientSideEvents Click="hlPolicyItemTogetherClick" />
