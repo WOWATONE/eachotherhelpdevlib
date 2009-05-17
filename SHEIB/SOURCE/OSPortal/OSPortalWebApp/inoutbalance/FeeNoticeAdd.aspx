@@ -102,18 +102,22 @@
                                                                 </dxwgv:GridViewCommandColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="投保单号" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单号" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应收保费" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="AccountTypeID" Caption="逾期天数" CellStyle-Wrap="False">                                                                    
-                                                                </dxwgv:GridViewDataColumn>
+                                                                </dxwgv:GridViewDataColumn>                                                                
                                                             </Columns>
+                                                            <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleIfExpanded" />
+                                                            <TotalSummary>
+                                                                 <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" DisplayFormat="#"/>
+                                                                 <dxwgv:ASPxSummaryItem FieldName="Fee" SummaryType="Sum" DisplayFormat="c" />
+                                                            </TotalSummary>
                                                         <%-- EndRegion --%>
-                                                        <SettingsPager Mode="ShowAllRecords"/>
-                                                        <Settings ShowGroupPanel="false" />                                                        
+                                                        <SettingsPager Mode="ShowAllRecords"/>                                                  
                                                         <Templates>
                                                              <EditForm>                                                             
                                                              <div style="padding:4px 4px 3px 4px">
