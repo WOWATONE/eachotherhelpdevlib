@@ -198,18 +198,19 @@
                                                     >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
-                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
-                                                                    <NewButton Visible="False" />
-                                                                    <EditButton Visible="False" />                                                                    
-                                                                    <DeleteButton Visible="false" />
-                                                                    <CustomButtons>
-                                                                        <dxwgv:GridViewCommandColumnCustomButton Text="查看">                                                                            
-                                                                        </dxwgv:GridViewCommandColumnCustomButton>                                                                        
-                                                                    </CustomButtons>                                                   
-                                                                </dxwgv:GridViewCommandColumn>                                                                
-                                                                <dxwgv:GridViewDataColumn FieldName="F1" Caption="投保单号" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn Caption="投保单号" FieldName="F1" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Center">
+                                                                    <DataItemTemplate>
+                                                                        <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_TBDH" Text='<%# (string)DataBinder.Eval(Container.DataItem, "F1")%>' NavigateUrl="#">
+                                                                            
+                                                                        </dxe:ASPxHyperLink>                                                                                               
+                                                                    </DataItemTemplate>
                                                                 </dxwgv:GridViewDataColumn>   
-                                                                <dxwgv:GridViewDataColumn FieldName="F2" Caption="保单编号" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="F2" Caption="保单编号" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Center">                                                                   
+                                                                    <DataItemTemplate>
+                                                                        <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_BDBH" Text='<%# (string)DataBinder.Eval(Container.DataItem, "F2")%>' NavigateUrl="#">
+                                                                            
+                                                                        </dxe:ASPxHyperLink>                                                                                               
+                                                                    </DataItemTemplate>
                                                                 </dxwgv:GridViewDataColumn>      
                                                                 <dxwgv:GridViewDataColumn FieldName="F3" Caption="保险公司" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
