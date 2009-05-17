@@ -263,21 +263,21 @@
             <asp:Panel ID="npCostSummaryDetail" runat="server" CssClass="collapsePanel" Height="0">
                         <table style="width:100%">
                             <tr>
-                                <td style="width:10%;text-align:right;">商业险保费：</td>
-                                <td style="width:15%;text-align:left;">
+                                <td style="width:14%;text-align:right;">商业险保费：</td>
+                                <td style="width:12%;text-align:left;">
                                     <asp:TextBox ID="txtCiPremium" runat="server" Width="100px"></asp:TextBox>
                                 </td>
-                                <td style="width:10%;text-align:right;">交强险保费：</td>
-                                <td style="width:15%;text-align:left;">
+                                <td style="width:14%;text-align:right;">交强险保费：</td>
+                                <td style="width:12%;text-align:left;">
                                     <asp:TextBox ID="txtAciPremium" runat="server" Width="100px"></asp:TextBox>
                                 </td>
                                 
                                 <td style="width:10%;text-align:right;">车船税：</td>
-                                <td style="width:15%;text-align:left;">
+                                <td style="width:12%;text-align:left;">
                                     <asp:TextBox ID="txtCstPremium" runat="server" Width="100px"></asp:TextBox>
                                 </td>
-                                <td style="width:10%;text-align:right;">保费合计：</td>
-                                <td style="width:15%;text-align:left;">
+                                <td style="width:14%;text-align:right;">保费合计：</td>
+                                <td style="width:12%;text-align:left;">
                                     <asp:TextBox ID="TextBox2" runat="server" Width="100px"></asp:TextBox>
                                 </td>                                 
                             </tr> 
