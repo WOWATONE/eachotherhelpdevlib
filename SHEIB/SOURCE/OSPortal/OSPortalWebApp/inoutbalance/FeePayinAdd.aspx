@@ -97,41 +97,33 @@
                                 <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
-                                            <EditButton Visible="false" />
+                                            <EditButton Visible="true" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="通知书号" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="投保编号" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="本期应收保费(本)" CellStyle-Wrap="False">
-                                            <EditFormSettings VisibleIndex="1" />
+                                        <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="本期应解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="本期已收保费(本)" CellStyle-Wrap="False">
-                                            <EditFormSettings VisibleIndex="2" />
+                                        <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="本期解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GettingFeeBase" Caption="本期实收保费" CellStyle-Wrap="False">
-                                            <EditFormSettings VisibleIndex="3" />
+                                        <dxwgv:GridViewDataColumn FieldName="GettingFeeBase" Caption="调整金额" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
                                         
-                                        <dxwgv:GridViewDataColumn FieldName="StandardProcessFeeBase" Caption="本期应解付保费(本)" CellStyle-Wrap="False">
-                                            <EditFormSettings VisibleIndex="4" />
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GotProcessFee" Caption="本期已解付保费(本)" CellStyle-Wrap="False">
-                                            <EditFormSettings VisibleIndex="5" />
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GettingProcessFee" Caption="本期实解付保费" CellStyle-Wrap="False">
-                                            <EditFormSettings VisibleIndex="6" />
+                                        <dxwgv:GridViewDataColumn FieldName="StandardProcessFeeBase" Caption="经纪费" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
                                         
-                                        <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">
-                                            <EditFormSettings VisibleIndex="7" />
+                                        <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种名称" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种名称" CellStyle-Wrap="False">                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="CarrierId" Caption="保险公司" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CarrierId" Caption="保险公司" CellStyle-Wrap="False">
-                                            <EditFormSettings VisibleIndex="8" />
+                                        <dxwgv:GridViewDataColumn FieldName="BranchId" Caption="分支机构" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="BranchId" Caption="分支机构" CellStyle-Wrap="False">
-                                            <EditFormSettings VisibleIndex="9" />
+                                        <dxwgv:GridViewDataColumn FieldName="F1" Caption="客户经理" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                 <%-- EndRegion --%>
@@ -142,55 +134,15 @@
                                      <div style="padding:4px 4px 3px 4px">
                                         <table>
                                             <tr>
-                                                <td style="white-space:nowrap; text-align:right;">保单编号:</td>
+                                                <td style="white-space:nowrap; text-align:right;">本期解付保费:</td>
                                                 <td style="text-align:left;">
                                                     <asp:TextBox runat="server" ID="txtGridPolicyNo" Text='<%# Eval("PolicyNo") %>'  Enabled="false"></asp:TextBox>
                                                 </td>
-                                                <td style="white-space:nowrap; text-align:right;">本期已收保费(本):</td>
+                                                <td style="white-space:nowrap; text-align:right;">调整金额:</td>
                                                 <td style="text-align:left;">
                                                     <asp:TextBox runat="server" ID="txtGridGotFeeBase" Text='<%# Eval("GotFeeBase") %>' ></asp:TextBox>
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="white-space:nowrap; text-align:right;">本期实收保费:</td>
-                                                <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridGettingFeeBase" Text='<%# Eval("GettingFeeBase") %>' ></asp:TextBox>
-                                                </td>
-                                                <td style="white-space:nowrap; text-align:right;">本期应解付保费(本):</td>
-                                                <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridStandardProcessFeeBase" Text='<%# Eval("StandardProcessFeeBase") %>' ></asp:TextBox>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="white-space:nowrap; text-align:right;">本期已解付保费(本):</td>
-                                                <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridGotProcessFee" Text='<%# Eval("GotProcessFee") %>' ></asp:TextBox>
-                                                </td>
-                                                <td style="white-space:nowrap; text-align:right;">本期实解付保费:</td>
-                                                <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridGettingProcessFee" Text='<%# Eval("GettingProcessFee") %>' ></asp:TextBox>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="white-space:nowrap; text-align:right;">险种名称:</td>
-                                                <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridProdTypeID" Text='<%# Eval("ProdTypeID") %>' Enabled="false"></asp:TextBox>
-                                                </td>
-                                                <td style="white-space:nowrap; text-align:right;">保险公司:</td>
-                                                <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridCarrierId" Text='<%# Eval("CarrierId") %>' Enabled="false"></asp:TextBox>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="white-space:nowrap; text-align:right;">分支机构:</td>
-                                                <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridBranchId" Text='<%# Eval("BranchId") %>' Enabled="false"></asp:TextBox>
-                                                </td>
-                                                <td style="white-space:nowrap; text-align:right;">投保客户:</td>
-                                                <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridCustomerID" Text='<%# Eval("CustomerID") %>' Enabled="false"></asp:TextBox>
-                                                </td>
-                                            </tr>
+                                            </tr>                                            
                                         </table>
                                      </div>
                                      <div style="text-align:right; padding:2px 2px 2px 2px">
@@ -238,65 +190,75 @@
                 <asp:Panel ID="npOtherPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
                     <table style="width:100%">
                         <tr>
-                            <td style="width:11%;text-align:right;">收费形式：</td>
-                            <td style="width:22%;text-align:left;">
+                            <td style="width:15%;text-align:right;">收款方式：</td>
+                            <td style="width:18%;text-align:left;">
                                 <asp:DropDownList ID="ddlAccountType" runat="server">
                                                         <asp:ListItem Text="代收" Value="1"></asp:ListItem>
                                                         <asp:ListItem Text="直付" Value="2"></asp:ListItem>
                                                     </asp:DropDownList>
                             </td>
-                            <td style="width:11%;text-align:right;">收费方式：</td>
-                            <td style="width:22%;text-align:left;">
+                            <td style="width:15%;text-align:right;">经纪费收取方式：</td>
+                            <td style="width:20%;text-align:left;">
                                 <asp:DropDownList ID="ddlFeeType" runat="server">
-                                                        <asp:ListItem Text="现金" Value="1"></asp:ListItem>
-                                                        <asp:ListItem Text="支票" Value="2"></asp:ListItem>
+                                                        <asp:ListItem Text="内扣" Value="1"></asp:ListItem>
+                                                        <asp:ListItem Text="不内扣" Value="2"></asp:ListItem>
                                                     </asp:DropDownList>
                             </td>
-                            <td style="width:11%;text-align:right;">币种：</td>
+                            <td style="width:12%;text-align:right;">经纪费金额：</td>
                             <td style="width:20%;text-align:left;">
-                                <asp:DropDownList ID="ddlCurCode" runat="server">
-                                                        <asp:ListItem Text="人民币" Value="1"></asp:ListItem>
-                                                        <asp:ListItem Text="美元" Value="2"></asp:ListItem>
-                                                        <asp:ListItem Text="英镑" Value="3"></asp:ListItem>
-                                                    </asp:DropDownList>
+                                <asp:TextBox ID="TextBox1" runat="server" Width="100px"></asp:TextBox>
                             </td>                                  
                         </tr> 
                         <tr>
-                            <td style="width:11%;text-align:right;">汇率：</td>
-                            <td style="width:22%;text-align:left;">
-                                <asp:TextBox ID="txtchange" runat="server" Width="140px"></asp:TextBox>
+                            <td style="text-align:right;">本期应解付保费：</td>
+                            <td style="text-align:left;">
+                                <asp:TextBox ID="txtchange" runat="server" Width="100px"></asp:TextBox>
                             </td>
-                            <td style="width:11%;text-align:right;">实付保费：</td>
-                            <td style="width:22%;text-align:left;">
-                                <asp:TextBox ID="txtlocalfee" runat="server" Width="140px"></asp:TextBox>
+                            <td style="text-align:right;">本期解付保费：</td>
+                            <td style="text-align:left;">
+                                <asp:TextBox ID="txtlocalfee" runat="server" Width="100px"></asp:TextBox>
                             </td>
-                            <td style="width:11%;text-align:right;">解付保费：</td>
-                            <td style="width:20%;text-align:left;">
-                                <asp:TextBox ID="txtJInE" runat="server" Width="140px"></asp:TextBox>
+                            <td style="text-align:right;">调整金额：</td>
+                            <td style="text-align:left;">
+                                <asp:TextBox ID="txtJInE" runat="server" Width="100px"></asp:TextBox>
                             </td>                                  
                         </tr>
                         <tr>
-                            <td style="width:11%;text-align:right;">金额调整：</td>
-                            <td style="width:22%;text-align:left;">
-                                <asp:TextBox ID="txtAdjust" runat="server" Width="140px"></asp:TextBox>
-                            </td>
-                            <td style="width:11%;text-align:right;">解款日期：</td>
-                            <td style="width:22%;text-align:left;">
+                            <td style="text-align:right;">解付日期：</td>
+                            <td style="text-align:left;">
                                 <dxe:ASPxDateEdit ID="deGotDate" runat="server"></dxe:ASPxDateEdit> 
                             </td>
-                            <td style="width:11%;text-align:right;">开票日期：：</td>
-                            <td style="width:20%;text-align:left;">
-                                <dxe:ASPxDateEdit ID="deReleaseDate" runat="server"></dxe:ASPxDateEdit>
-                            </td>                                  
+                            <td style="text-align:right;"></td>
+                            <td style="text-align:left;"></td>
+                            <td style="text-align:right;"></td>
+                            <td style="text-align:left;"></td>
+                                                              
+                        </tr> 
+                        <tr>
+                            <td style="text-align:right;">保险公司：</td>
+                            <td style="text-align:left;">
+                                
+                                <asp:DropDownList ID="DropDownList1" runat="server">
+                                                        <asp:ListItem Text="保险公司1" Value="1"></asp:ListItem>
+                                                        <asp:ListItem Text="保险公司2" Value="2"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                     
+                            </td>
+                            <td style="text-align:right;">分支机构：</td>
+                            <td style="text-align:left;">
+                                    <asp:DropDownList ID="DropDownList2" runat="server">
+                                                        <asp:ListItem Text="分支机构1" Value="1"></asp:ListItem>
+                                                        <asp:ListItem Text="分支机构2" Value="2"></asp:ListItem>
+                                                    </asp:DropDownList>
+                            </td>
+                            <td style="text-align:right;"></td>
+                            <td style="text-align:left;"></td>
+                                                              
                         </tr>  
                         <tr>
-                            <td style="width:11%;text-align:right;">开票金额：</td>
-                            <td style="width:22%;text-align:left;">
-                                <asp:TextBox ID="txtRealFee" runat="server" Width="140px"></asp:TextBox>
-                            </td>
-                            <td style="width:11%;text-align:right;">备注：</td>
-                            <td style="width:56%;text-align:left;" colspan="3">
-                                <asp:TextBox ID="txtMemo" runat="server" Width="300px"></asp:TextBox>
+                            <td style="text-align:right;">备注：</td>
+                            <td style="text-align:left;" colspan="5">
+                                <asp:TextBox ID="txtMemo" runat="server" Width="650px"></asp:TextBox>
                             </td>                                  
                         </tr>                                      
                     </table>
@@ -326,18 +288,21 @@
                 <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="30px" Width="100%">
                             <table style="width:100%">
                                 <tr>
-                                    <td style="width:180px;text-align:left;"></td>
+                                    <td style="width:150px;text-align:left;"></td>
+                                    <td style="width:60px;text-align:left;">
+                                        <dxe:ASPxButton runat="server" ID="ASPxButton3" Text="保存" AutoPostBack="false"></dxe:ASPxButton>
+                                    </td>
                                     <td style="width:60px;text-align:left;">
                                         <dxe:ASPxButton runat="server" ID="ASPxButton5" Text="审核" AutoPostBack="false"></dxe:ASPxButton>
                                     </td>
-                                    <td style="width:100px;text-align:left;">
-                                        <dxe:ASPxButton runat="server" ID="ASPxButton1" Text="提交审核" AutoPostBack="false"></dxe:ASPxButton>
-                                    </td>
-                                    <td style="width:100px;text-align:left;">
+                                    <td style="width:70px;text-align:left;">
                                         <dxe:ASPxButton runat="server" ID="ASPxButton2" Text="反审核" AutoPostBack="false"></dxe:ASPxButton>
                                     </td>
-                                    <td style="width:60px;text-align:left;">
-                                        <dxe:ASPxButton runat="server" ID="ASPxButton3" Text="保存" AutoPostBack="false"></dxe:ASPxButton>
+                                    <td style="width:140px;text-align:left;">
+                                        <dxe:ASPxButton runat="server" ID="ASPxButton1" Text="打印解付通知书" AutoPostBack="false"></dxe:ASPxButton>
+                                    </td>
+                                    <td style="width:80px;text-align:left;">
+                                        <dxe:ASPxButton runat="server" ID="ASPxButton4" Text="解付完成" AutoPostBack="false"></dxe:ASPxButton>
                                     </td>
                                     <td style="width:60px;text-align:left;">
                                         <dxe:ASPxButton runat="server" ID="btnClose" Text="退出" AutoPostBack="false"></dxe:ASPxButton>

@@ -729,6 +729,13 @@
     <Compile Include="vehicleinsurance\CarPolicyItemInputRead.aspx.designer.cs">
       <DependentUpon>CarPolicyItemInputRead.aspx</DependentUpon>
     </Compile>
+    <Compile Include="vehicleinsurance\CarPolicyList.aspx.cs">
+      <DependentUpon>CarPolicyList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vehicleinsurance\CarPolicyList.aspx.designer.cs">
+      <DependentUpon>CarPolicyList.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessObjects\BusinessObjects.csproj">
@@ -3234,6 +3241,7 @@
     <Content Include="vehicleinsurance\AskPriceCheckList.aspx" />
     <Content Include="vehicleinsurance\CarPolicyItemInput.aspx" />
     <Content Include="vehicleinsurance\CarPolicyItemInputRead.aspx" />
+    <Content Include="vehicleinsurance\CarPolicyList.aspx" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BudgetManagement\SignPremiumBudgetDetailsReport.rpt">

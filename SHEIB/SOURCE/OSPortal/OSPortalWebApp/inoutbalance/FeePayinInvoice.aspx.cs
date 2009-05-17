@@ -51,7 +51,11 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.Columns.Add("FeeRemark", typeof(string));
             _dtGrid.Columns.Add("CreateTime", typeof(DateTime));
             _dtGrid.Columns.Add("NoticeID", typeof(string));
-
+            _dtGrid.Columns.Add("F1", typeof(String));
+            _dtGrid.Columns.Add("F2", typeof(String));
+            _dtGrid.Columns.Add("F3", typeof(String));
+            _dtGrid.Columns.Add("F4", typeof(String));
+            
             _dtGrid.Rows.Add(new object[] { 
                 Guid.NewGuid(), 
                 "现金",
@@ -69,7 +73,12 @@ namespace OSPortalWebApp.inoutbalance
                 "王海",
                 "备注",
                 new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
-                "1"
+                "1",
+                "FP0001",
+                "保险公司",
+                "分支机构",
+                "代收"
+                
             });
 
         }
