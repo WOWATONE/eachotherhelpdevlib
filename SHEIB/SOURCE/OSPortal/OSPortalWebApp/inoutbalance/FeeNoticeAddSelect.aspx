@@ -51,66 +51,56 @@
                                 </div>
                             </asp:Panel>                           
                             <asp:Panel ID="npSearchDetail" runat="server" CssClass="collapsePanel" Height="0">
-                                <table>
-                                    <tr>
-                                        <td>                                        
-                                            <table>
+                               <table style="width:920px;">
                                                 <tr>
-                                                    <td style="width:70px;text-align:right;">保单编号：</td>
-                                                    <td style="width:180px;text-align:left;">
-                                                        <asp:TextBox ID="txtPolicyNo" runat="server" Width="175px"></asp:TextBox>
+                                                    <td style="width:100px;text-align:right;">保单号：</td>
+                                                    <td style="width:110px;text-align:left;">
+                                                        <asp:TextBox ID="txtPolicyNo" runat="server" Width="100px"></asp:TextBox>
+                                                    </td>
+                                                    <td style="width:70px;text-align:right;">投保编号：</td>
+                                                    <td style="width:110px;text-align:left;">
+                                                        <asp:TextBox ID="TextBox1" runat="server" Width="100px"></asp:TextBox>
                                                     </td>                                                    
-                                                    <td style="width:70px;text-align:right;">营业部门：</td>
-                                                    <td style="width:180px;text-align:left;">
+                                                    <td style="width:70px;text-align:right;">部门：</td>
+                                                    <td style="width:110px;text-align:left;">
                                                         <asp:DropDownList ID="ddlDeptId" runat="server">
                                                             <asp:ListItem Text="部门1" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="部门2" Value="2"></asp:ListItem>
                                                             <asp:ListItem Text="部门3" Value="3"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
-                                                    <td style="width:70px;text-align:right;">收费类别：</td>
-                                                    <td style="width:180px;text-align:left;"> 
-                                                        <asp:DropDownList ID="ddlAccountTypeID" runat="server">
-                                                            <asp:ListItem Text="类别1" Value="1"></asp:ListItem>
-                                                            <asp:ListItem Text="类别2" Value="2"></asp:ListItem>
+                                                    <td style="width:70px;text-align:right;">客户经理：</td>
+                                                    <td style="width:110px;text-align:left;"> 
+                                                        <asp:DropDownList ID="ddlSaleID" runat="server">
+                                                            <asp:ListItem Text="经理" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="经理" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>                                                       
                                                     </td>
-                                                    <td>&nbsp;</td>                                                     
+                                                    <td></td>                                                     
                                                 </tr>
                                                 <tr>                                                                                                        
-                                                    <td style="width:70px;text-align:right;">投保客户：</td>
-                                                    <td style="width:180px;text-align:left;">
-                                                        <asp:TextBox ID="txtCustomerID" runat="server" Width="175px"></asp:TextBox>
+                                                    <td style="text-align:right;">投保客户：</td>
+                                                    <td style="text-align:left;">
+                                                        <asp:TextBox ID="txtCustomerID" runat="server" Width="100px"></asp:TextBox>
                                                     </td>
-                                                    <td style="width:70px;text-align:right;">业务员：</td>
-                                                    <td style="width:180px;text-align:left;">
-                                                        <asp:TextBox ID="txtSalesID" runat="server" Width="120px" Text="张三"></asp:TextBox>&nbsp;
-                                                        <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" />
-                                                    </td>
-                                                    <td style="width:70px;text-align:right;"></td>
-                                                    <td style="width:180px;text-align:left;">
-                                                    </td>
-                                                    <td>&nbsp;</td>                                                     
-                                                </tr>                                                 
-                                                <tr>
-                                                    <td style="width:70px;text-align:right;">保险公司：</td>
-                                                    <td style="width:180px;text-align:left;">
+                                                    <td style="text-align:right;">保险公司：</td>
+                                                    <td style="text-align:left;">
                                                         <asp:DropDownList ID="ddlCompany" runat="server">
                                                             <asp:ListItem Text="平安保险" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="人寿保险" Value="2"></asp:ListItem>
                                                             <asp:ListItem Text="泰康保险" Value="3"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>                                                    
-                                                    <td style="width:70px;text-align:right;">分支机构：</td>
-                                                    <td style="width:180px;text-align:left;">
+                                                    <td style="text-align:right;">分支机构：</td>
+                                                    <td style="text-align:left;">
                                                         <asp:DropDownList ID="DropDownList1" runat="server">
                                                             <asp:ListItem Text="平安1" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="平安2" Value="2"></asp:ListItem>
                                                             <asp:ListItem Text="平安3" Value="3"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
-                                                    <td style="width:70px;text-align:right;">保险险种：</td>
-                                                    <td style="width:180px;text-align:left;">
+                                                    <td style="text-align:right;">保险险种：</td>
+                                                    <td style="text-align:left;">
                                                         <asp:DropDownList ID="ddlCategory" runat="server">
                                                             <asp:ListItem Text="保险1" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="保险2" Value="2"></asp:ListItem>
@@ -118,66 +108,63 @@
                                                         </asp:DropDownList>
                                                     </td>
                                                     <td>&nbsp;</td>                                                     
-                                                </tr> 
-                                                <tr>                                                     
-                                                    <td style="width:70px;text-align:right;">业务来源：</td>
-                                                    <td style="width:180px;text-align:left;">
-                                                        <asp:DropDownList ID="ddlSourceTypeID" runat="server">
-                                                            <asp:ListItem Text="来源1" Value="1"></asp:ListItem>
-                                                            <asp:ListItem Text="来源2" Value="2"></asp:ListItem>
-                                                        </asp:DropDownList>
-                                                    </td>
-                                                    <td style="width:70px;text-align:right;">有效性：</td>
-                                                    <td style="width:180px;text-align:left;">
-                                                        <asp:DropDownList ID="ddlValidState" runat="server">
-                                                            <asp:ListItem Text="有效" Value="1"></asp:ListItem>
-                                                            <asp:ListItem Text="无效" Value="2"></asp:ListItem>
-                                                        </asp:DropDownList>
-                                                    </td>                                                   
-                                                    
-                                                    <td style="width:70px;text-align:right;">审核：</td>
-                                                    <td style="width:180px;text-align:left;">
-                                                        <asp:DropDownList ID="ddlCheckState" runat="server">
-                                                            <asp:ListItem Text="已审核" Value="1"></asp:ListItem>
-                                                            <asp:ListItem Text="未审核" Value="2"></asp:ListItem>
-                                                        </asp:DropDownList>
-                                                    </td>
-                                                    <td>&nbsp;</td>                                                     
-                                                </tr> 
+                                                </tr>
                                                 <tr>
-                                                    <td style="width:90px;text-align:right;">
+                                                    <td style="text-align:right;">
                                                     <asp:CheckBox runat="server" ID="CheckBox1" />
                                                     应收日期：</td>
-                                                    <td style="width:100px;text-align:left;">
+                                                    <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deGetStartDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>                                                    
-                                                    <td style="width:20px;text-align:right;">至</td>
+                                                    <td style="text-align:right;">至</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deGetEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td> 
                                                     <td style="text-align:left;">&nbsp;</td>
                                                     <td style="text-align:left;">&nbsp;</td>
+                                                    <td style="text-align:left;">&nbsp;</td>
+                                                    <td style="text-align:left;">&nbsp;</td>
                                                     <td>&nbsp;</td>                                                                                                 
                                                 </tr> 
                                                 <tr>
-                                                    <td style="width:90px;text-align:right;">
-                                                    <asp:CheckBox runat="server" ID="chkBack" /> 投保日期：</td>
-                                                    <td style="width:100px;text-align:left;">
+                                                    <td style="text-align:right;">
+                                                    <asp:CheckBox runat="server" ID="chkBack" /> 起保日期：</td>
+                                                    <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deBackStartDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>                                                    
-                                                    <td style="width:20px;text-align:right;">至</td>
+                                                    <td style="text-align:right;">至</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deBackEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td> 
                                                     <td style="text-align:left;">&nbsp;</td>
                                                     <td>&nbsp;</td>
+                                                    <td style="text-align:left;">&nbsp;</td>
+                                                    <td style="text-align:left;">&nbsp;</td>
                                                     <td>&nbsp;</td>                                                    
-                                                </tr>                                                
+                                                </tr> 
                                                 <tr>
-                                                    <td style="width:70px;text-align:right;"></td>
-                                                    <td style="width:200px;text-align:left;"></td>
-                                                    <td style="width:20px;text-align:right;"></td>
-                                                    <td style="width:180px;text-align:left;"></td>
+                                                    <td style="text-align:right;">
+                                                    <asp:CheckBox runat="server" ID="CheckBox2" /> 终止日期：</td>
+                                                    <td style="text-align:left;">
+                                                        <dxe:ASPxDateEdit ID="ASPxDateEdit1" runat="server"></dxe:ASPxDateEdit>
+                                                    </td>                                                    
+                                                    <td style="text-align:right;">至</td>
+                                                    <td style="text-align:left;">
+                                                        <dxe:ASPxDateEdit ID="ASPxDateEdit2" runat="server"></dxe:ASPxDateEdit>
+                                                    </td> 
+                                                    <td style="text-align:left;">&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td style="text-align:left;">&nbsp;</td>
+                                                    <td style="text-align:left;">&nbsp;</td>
+                                                    <td>&nbsp;</td>                                                    
+                                                </tr>                                               
+                                                <tr>
+                                                    <td style="text-align:right;"></td>
+                                                    <td style="text-align:left;"></td>
+                                                    <td style="text-align:right;"></td>
+                                                    <td style="text-align:left;"></td>
+                                                    <td style="text-align:right;"></td>
+                                                    <td style="text-align:left;"></td>
                                                     <td style="text-align:left;" colspan="2">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
                                                         <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />
@@ -185,12 +172,6 @@
                                                     <td>&nbsp;</td> 
                                                 </tr>                                          
                                             </table>
-                                        </td>
-                                        <td>
-                                        </td>
-                                    </tr>
-                                </table>
-                                        
                                      
                              </asp:Panel>
                              <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearch" runat="Server"
@@ -233,50 +214,34 @@
                                                     >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
-                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
+                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
                                                                     <SelectButton Visible="true" />                                                  
                                                                 </dxwgv:GridViewCommandColumn>                                                                
-                                                                <dxwgv:GridViewDataColumn FieldName="FeeId" Visible="false" Caption="GUID" VisibleIndex="1" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="应收日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                </dxwgv:GridViewDataDateColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Customer" Caption="投保客户" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CreateTime" Caption="收款日期" VisibleIndex="2" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn> 
-                                                                <dxwgv:GridViewDataColumn FieldName="FeeType" Caption="方式" VisibleIndex="3" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="投保单号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CurCode" Caption="币种" VisibleIndex="4" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="AccountType" Caption="收款方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>   
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="实收保费" VisibleIndex="5" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收保费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="FeeBase" Caption="实收金额" VisibleIndex="6" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="Sales" Caption="客户经理" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" VisibleIndex="7" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="CarrierId" Caption="保险公司" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="AccountType" Caption="收费方式" VisibleIndex="8" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="BranchId" Caption="分支机构" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="SerialNo" Caption="单据流水号" VisibleIndex="9" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" VisibleIndex="10" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Customer" Caption="投保客户" VisibleIndex="11" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="SalesId" Caption="业务员编号" VisibleIndex="12" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Sales" Caption="业务员" VisibleIndex="13" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Audited" Caption="审核" VisibleIndex="14" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CreatePerson" Caption="收费人" VisibleIndex="15" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CarrierId" Caption="保险公司" VisibleIndex="16" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="BranchId" Caption="分支机构" VisibleIndex="17" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种名称" VisibleIndex="18" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="FeeRemark" Caption="备注" VisibleIndex="22" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Sales" Caption="业务员" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>                                                                
                                                             </Columns>
                                                         <%-- EndRegion --%>
-                                                        <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" Summary-Text="第{0}页,共{1}页" />
+                                                        <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" />
                                                         <Settings ShowGroupPanel="false" />
                                                         <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                                         

@@ -63,6 +63,9 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.Columns.Add("FeeRemark", typeof(string));
             _dtGrid.Columns.Add("CreateTime", typeof(DateTime));
             _dtGrid.Columns.Add("NoticeID", typeof(string));
+
+            _dtGrid.Columns.Add("F1", typeof(string));
+            _dtGrid.Columns.Add("F2", typeof(string));
             
             _dtGrid.Rows.Add(new object[] { 
                 Guid.NewGuid(), 
@@ -88,7 +91,9 @@ namespace OSPortalWebApp.inoutbalance
                 //"寿险",
                 "备注",
                 new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
-                "1"
+                "1",
+                "平安",
+                "上海",
             });
 
         }

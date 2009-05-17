@@ -47,16 +47,10 @@
                                 <ClientSideEvents Click="btnCreateClick" />
                             </dxe:ASPxButton>
                         </td>
-                        <td style="height:40px; width:55%;">
-                            <table style="margin:0px; padding:0px; width:100%; border:0px; text-align:left">
-				                        <tr>
-					                        <td style="width:100%;PADDING-RIGHT: 20px; text-align:right;color:#0E5ED5;">
-					                            当前位置：保费通知书&nbsp;&nbsp;
-					                            <asp:label id="LbUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
-						                        <label id="lblCurrentDate"></label>
-					                        </td>
-				                        </tr>
-	                        </table>
+                        <td style="height:40px; width:55%;color:#0E5ED5;text-align:left;">
+                            当前位置：保费通知书&nbsp;&nbsp;
+                            <asp:label id="LbUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
+	                        <label id="lblCurrentDate"></label>					                        
                         </td>
                     </tr>
                     <tr>
@@ -81,36 +75,68 @@
                                                         <asp:TextBox ID="txtPolicyNo" runat="server" Width="95px"></asp:TextBox>
                                                     </td>
                                                     <td style="width:20px;"></td>
-                                                    <td style="width:120px;text-align:right;white-space:nowrap;">通知书编号：</td>
-                                                    <td style="width:100px;text-align:left;">
-                                                        <asp:TextBox ID="txtPrePolicyNo" runat="server" Width="95px"></asp:TextBox>
-                                                    </td>
-                                                    <td style="width:160px;text-align:right;white-space:nowrap;">收费方式：</td> 
+                                                    <td style="width:120px;text-align:right;white-space:nowrap;">收款方式：</td> 
                                                     <td style="width:100px;text-align:left;">                                                        
                                                         <asp:DropDownList ID="ddlFeeType" runat="server">
                                                             <asp:ListItem Text="代收" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="直付" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
+                                                    <td style="width:120px;text-align:right;white-space:nowrap;"></td>
+                                                    <td style="width:100px;text-align:left;"></td>                                                    
                                                     <td></td>                                                   
-                                                </tr>                                                 
+                                                </tr> 
+                                                <tr>
+                                                    <td style="text-align:right;">部门：</td>
+                                                    <td style="text-align:left;">
+                                                       <asp:DropDownList runat="server" ID="ddlDeptId">
+                                                            <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
+                                                        </asp:DropDownList>                                                         
+                                                    </td>
+                                                    <td></td>
+                                                    <td style="text-align:right;">客户经理：</td>
+                                                    <td style="text-align:left;">
+                                                        <asp:DropDownList runat="server" ID="ddlSalesId">
+                                                            <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>                                                
                                                 <tr>
                                                     <td style="text-align:right;">通知日期：</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deStartDate" runat="server">
                                                         </dxe:ASPxDateEdit>                                                       
                                                     </td>
-                                                    <td style="text-align:center;">--></td>
+                                                    <td style="text-align:center;">至</td>
                                                     <td style="text-align:left;" colspan="2">
                                                         <dxe:ASPxDateEdit ID="deEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
+                                                    <td style="text-align:right;">状态：</td>
+                                                    <td style="text-align:left;">
+                                                        <asp:DropDownList runat="server" ID="ddlState">
+                                                            <asp:ListItem Text="待审核" Value=""></asp:ListItem>
+                                                            <asp:ListItem Text="未收费" Value=""></asp:ListItem>
+                                                            <asp:ListItem Text="已收费" Value=""></asp:ListItem>                                                            
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                    <td></td>
+                                                </tr> 
+                                                <tr>                                                    
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
                                                     <td style="text-align:right;" colspan="2">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
                                                         <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
                                                         <asp:Button ID="btnRefresh" runat="server" Text="刷新" CssClass="input_2" />
                                                     </td>
                                                     <td></td>
-                                                </tr>                                          
+                                                </tr>                                         
                                             </table>
                                      
                              </asp:Panel>
@@ -154,7 +180,7 @@
                                                     >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
-                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
+                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" CellStyle-Wrap="False">
                                                                     <NewButton Visible="False" />
                                                                     <EditButton Visible="false" />                                                                    
                                                                     <DeleteButton Visible="true" />
@@ -163,16 +189,18 @@
                                                                         </dxwgv:GridViewCommandColumnCustomButton>                                                                        
                                                                     </CustomButtons>                                                   
                                                                 </dxwgv:GridViewCommandColumn>                                                                
-                                                                <dxwgv:GridViewDataColumn FieldName="NoticeId" Visible="false" Caption="通知书GUID" CellStyle-Wrap="False">                                                                    
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书编号" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书号" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>  
+                                                                <dxwgv:GridViewDataColumn FieldName="Customer" Caption="投保客户" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>                                                                  
+                                                                <dxwgv:GridViewDataColumn FieldName="Sale" Caption="客户经理" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>  
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeTypeName" Caption="收费方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收保费金额" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收保费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="NoticeDate" Caption="通知日期" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataDateColumn FieldName="NoticeDate" Caption="通知日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                </dxwgv:GridViewDataDateColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowPager"   />

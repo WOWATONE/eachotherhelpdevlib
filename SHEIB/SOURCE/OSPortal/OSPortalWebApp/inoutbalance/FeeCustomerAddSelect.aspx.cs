@@ -40,11 +40,15 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.Columns.Add("NoticeNo", typeof(Int32));
             _dtGrid.Columns.Add("FeeTypeId", typeof(Int32));
             _dtGrid.Columns.Add("FeeTypeName", typeof(String));
-            //_dtGrid.Columns.Add("CustomerID", typeof(String));
-            //_dtGrid.Columns.Add("ProdTypeID", typeof(String));
+            
             _dtGrid.Columns.Add("Fee", typeof(double));
 
             _dtGrid.Columns.Add("NoticeDate", typeof(DateTime));
+            _dtGrid.Columns.Add("F1", typeof(String));
+            _dtGrid.Columns.Add("F2", typeof(String));
+            _dtGrid.Columns.Add("F3", typeof(String));
+            _dtGrid.Columns.Add("F4", typeof(String));
+            _dtGrid.Columns.Add("F5", typeof(String));
 
 
             _dtGrid.Rows.Add(new object[] { 
@@ -53,7 +57,12 @@ namespace OSPortalWebApp.inoutbalance
                 1,
                 "直付",                
                 2000,
-                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1)
+                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                "客户",
+                "经理",
+                "保险公司",
+                "分支机构",
+                "险种"
             });
 
             _dtGrid.Rows.Add(new object[] { 
@@ -62,7 +71,12 @@ namespace OSPortalWebApp.inoutbalance
                 2,
                 "代收",                
                 2000,
-                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1)
+                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                "客户",
+                "经理",
+                "保险公司",
+                "分支机构",
+                "险种"
             });
 
 
