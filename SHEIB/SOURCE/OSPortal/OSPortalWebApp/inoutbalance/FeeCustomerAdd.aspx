@@ -118,6 +118,8 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="BranchId" Caption="分支机构" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="BranchId" Caption="逾期天数" CellStyle-Wrap="False">                                            
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="客户经理" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
@@ -211,6 +213,21 @@
                                 <asp:TextBox ID="txtlocalfee" runat="server" Width="100px"></asp:TextBox>
                             </td>
                             <td></td>                                  
+                        </tr> 
+                          <tr>
+                            <td style="width:13%;text-align:right;">其中，商业险保费：</td>
+                            <td style="width:17%;text-align:left;">
+                                <asp:TextBox ID="TextBox11" runat="server" Width="100px"></asp:TextBox>
+                            </td>
+                            <td style="width:13%;text-align:right;">交强险保费：</td>
+                            <td style="width:17%;text-align:left;">
+                                <asp:TextBox ID="TextBox12" runat="server" Width="100px"></asp:TextBox>
+                            </td>
+                            <td style="width:13%;text-align:right;">车船税:</td>
+                            <td style="width:17%;text-align:left;">
+                                <asp:TextBox ID="TextBox13" runat="server" Width="100px"></asp:TextBox>
+                            </td>
+                            <td></td>                                  
                         </tr>                        
                         <tr>                            
                             <td style="text-align:right;">收款日期：</td>
@@ -230,23 +247,8 @@
                             </td>
                             <td></td>                                  
                         </tr>     
-                        <tr></tr>
             
-                          <tr>
-                            <td style="width:13%;text-align:right;">其中，商业险保费：</td>
-                            <td style="width:17%;text-align:left;">
-                                <asp:Label ID="TextBox4" runat="server" Width="100px"></asp:Label>
-                            </td>
-                            <td style="width:13%;text-align:right;">交强险保费：</td>
-                            <td style="width:17%;text-align:left;">
-                                <asp:Label ID="TextBox5" runat="server" Width="100px"></asp:Label>
-                            </td>
-                            <td style="width:13%;text-align:right;">车船税:</td>
-                            <td style="width:17%;text-align:left;">
-                                <asp:Label ID="Label" runat="server" Width="100px"></asp:Label>
-                            </td>
-                            <td></td>                                  
-                        </tr>                                
+                                                    
                     </table>
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeOtherPolicyItem" runat="Server"

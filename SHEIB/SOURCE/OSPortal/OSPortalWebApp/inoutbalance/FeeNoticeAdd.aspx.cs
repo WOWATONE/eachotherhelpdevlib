@@ -114,9 +114,9 @@ namespace OSPortalWebApp.inoutbalance
 
             
 
-            _dtGrid.Rows.Add(new object[] { Guid.NewGuid(), "PA0001", "王怡", "现金", 1000 });
-            _dtGrid.Rows.Add(new object[] { Guid.NewGuid(), "PA0003", "王怡", "现金", 2000 });
-            _dtGrid.Rows.Add(new object[] { Guid.NewGuid(), "PA0002", "王怡", "现金", 3000 });
+            _dtGrid.Rows.Add(new object[] { Guid.NewGuid(), "PA0001", "王怡", "2001-01-01", 1000 });
+            _dtGrid.Rows.Add(new object[] { Guid.NewGuid(), "PA0003", "王怡", "2001-01-01", 2000 });
+            _dtGrid.Rows.Add(new object[] { Guid.NewGuid(), "PA0002", "王怡", "2001-01-01", 3000 });
 
 
         }

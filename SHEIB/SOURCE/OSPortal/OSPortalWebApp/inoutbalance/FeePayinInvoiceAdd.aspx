@@ -105,9 +105,13 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="应收经纪费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="已解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="开票金额" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="本期应收经纪费" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="本期已收经纪费" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="本次开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="GettingFeeBase" Caption="调整金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -225,6 +229,21 @@
                                 <asp:TextBox ID="txtJInE" runat="server" Width="100px"></asp:TextBox>
                             </td>                                  
                         </tr>
+                        <tr>
+                            <td style="width:13%;text-align:right;">其中，商业险保费：</td>
+                            <td style="width:17%;text-align:left;">
+                                <asp:TextBox ID="TextBox11" runat="server" Width="100px"></asp:TextBox>
+                            </td>
+                            <td style="width:13%;text-align:right;">交强险保费：</td>
+                            <td style="width:17%;text-align:left;">
+                                <asp:TextBox ID="TextBox12" runat="server" Width="100px"></asp:TextBox>
+                            </td>
+                            <td style="width:13%;text-align:right;">车船税:</td>
+                            <td style="width:17%;text-align:left;">
+                                <asp:TextBox ID="TextBox13" runat="server" Width="100px"></asp:TextBox>
+                            </td>
+                            <td></td>                                  
+                        </tr> 
                         <tr>
                             <td style="text-align:right;">开票日期：：</td>
                             <td style="text-align:left;">
