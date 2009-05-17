@@ -108,12 +108,12 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="本期应解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="本期解付保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="本次实际解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="GettingFeeBase" Caption="调整金额" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
                                         
-                                        <dxwgv:GridViewDataColumn FieldName="StandardProcessFeeBase" Caption="经纪费" CellStyle-Wrap="False">                                            
+                                        <dxwgv:GridViewDataColumn FieldName="StandardProcessFeeBase" Caption="应收经纪费" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
                                         
                                         <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">                                            
@@ -222,11 +222,11 @@
                             </td>                                  
                         </tr> 
                         <tr>
-                            <td style="text-align:right;">本期应解付保费：</td>
+                            <td style="text-align:right;">本次应解付保费：</td>
                             <td style="text-align:left;">
                                 <asp:TextBox ID="txtchange" runat="server" Width="100px"></asp:TextBox>
                             </td>
-                            <td style="text-align:right;">本期解付保费：</td>
+                            <td style="text-align:right;">本次实际解付保费：</td>
                             <td style="text-align:left;">
                                 <asp:TextBox ID="txtlocalfee" runat="server" Width="100px"></asp:TextBox>
                             </td>
@@ -235,6 +235,22 @@
                                 <asp:TextBox ID="txtJInE" runat="server" Width="100px"></asp:TextBox>
                             </td>                                  
                         </tr>
+                        <tr>
+                            <td style="width:13%;text-align:right;">其中，商业险保费：</td>
+                            <td style="width:17%;text-align:left;">
+                                <asp:TextBox ID="TextBox11" runat="server" Width="100px"></asp:TextBox>
+                            </td>
+                            <td style="width:13%;text-align:right;">交强险保费：</td>
+                            <td style="width:17%;text-align:left;">
+                                <asp:TextBox ID="TextBox12" runat="server" Width="100px"></asp:TextBox>
+                            </td>
+                            <td style="width:13%;text-align:right;">车船税:</td>
+                            <td style="width:17%;text-align:left;">
+                                <asp:TextBox ID="TextBox13" runat="server" Width="100px"></asp:TextBox>
+                            </td>
+                            <td></td>                                  
+                        </tr> 
+                        
                         <tr>
                             <td style="text-align:right;">解付日期：</td>
                             <td style="text-align:left;">
@@ -246,6 +262,8 @@
                             <td style="text-align:left;"></td>
                                                               
                         </tr> 
+                        
+                        
                         <tr>
                             <td style="text-align:right;">保险公司：</td>
                             <td style="text-align:left;">

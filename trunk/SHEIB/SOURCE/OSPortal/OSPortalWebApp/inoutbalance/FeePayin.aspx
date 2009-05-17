@@ -229,7 +229,7 @@
                                                                 </dxwgv:GridViewDataDateColumn>                                                                                                                       
                                                                 <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应解付保费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="FeeBase" Caption="本期解付保费" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="FeeBase" Caption="本期实际解付保费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>

@@ -230,9 +230,7 @@
                                                                         <dxwgv:GridViewCommandColumnCustomButton Text="编辑">                                                                            
                                                                         </dxwgv:GridViewCommandColumnCustomButton>                                                                        
                                                                     </CustomButtons>                                                   
-                                                                </dxwgv:GridViewCommandColumn>                                                               
-                                                                <dxwgv:GridViewDataColumn FieldName="SerialNo" Caption="序号" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>                                                               
+                                                                </dxwgv:GridViewCommandColumn>                                                                                                                                                                                           
                                                                 <dxwgv:GridViewDataColumn FieldName="SerialNo" Caption="开票通知书号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="F2" Caption="保险公司" CellStyle-Wrap="False">                                                                   
@@ -243,9 +241,11 @@
                                                                 </dxwgv:GridViewDataColumn>                                                                
                                                                 <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="开票日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
                                                                 </dxwgv:GridViewDataDateColumn>                                                                                                                                  
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收经纪费" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>                                                                                                                                  
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="开票金额" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应收经纪费" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>  
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期已收经纪费" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>                                                                                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次开票金额" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>

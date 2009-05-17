@@ -108,8 +108,14 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应收保费" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="AccountTypeID" Caption="逾期天数" CellStyle-Wrap="False">                                                                    
-                                                                </dxwgv:GridViewDataColumn>                                                                
+                                                                <dxwgv:GridViewDataColumn FieldName="AccountTypeID" Caption="应收日期" CellStyle-Wrap="False">                                                                    
+                                                                </dxwgv:GridViewDataColumn>     
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="商业险保费" CellStyle-Wrap="False">                                                                    
+                                                                </dxwgv:GridViewDataColumn>   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="交强险保费" CellStyle-Wrap="False">                                                                    
+                                                                </dxwgv:GridViewDataColumn>   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="车船税" CellStyle-Wrap="False">                                                                    
+                                                                </dxwgv:GridViewDataColumn>                                                              
                                                             </Columns>
                                                             <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleIfExpanded" />
                                                             <TotalSummary>
