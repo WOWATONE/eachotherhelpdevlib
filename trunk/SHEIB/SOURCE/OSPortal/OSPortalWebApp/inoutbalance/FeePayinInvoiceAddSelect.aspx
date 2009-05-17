@@ -131,7 +131,7 @@
                                                         <dxe:ASPxDateEdit ID="deGetEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td> 
                                                     <td style="text-align:left;" colspan="2">
-                                                        <asp:CheckBox runat="server" ID="CheckBox1" Text="仅显示已收费未解付保单" />
+                                                        <asp:CheckBox runat="server" ID="CheckBox1" Text="仅显示已收费未开票保单" />
                                                     </td>
                                                     <td></td>
                                                     <td></td>                                                    

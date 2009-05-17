@@ -42,6 +42,7 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.Columns.Add("FeeTypeName", typeof(String));
             
             _dtGrid.Columns.Add("Fee", typeof(double));
+            _dtGrid.Columns.Add("FeeYs", typeof(double));
 
             _dtGrid.Columns.Add("NoticeDate", typeof(DateTime));
             _dtGrid.Columns.Add("F1", typeof(String));
@@ -57,6 +58,7 @@ namespace OSPortalWebApp.inoutbalance
                 1,
                 "直付",                
                 2000,
+                 2000,
                 new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
                 "客户",
                 "经理",
@@ -71,6 +73,7 @@ namespace OSPortalWebApp.inoutbalance
                 2,
                 "代收",                
                 2000,
+                 2000,
                 new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
                 "客户",
                 "经理",

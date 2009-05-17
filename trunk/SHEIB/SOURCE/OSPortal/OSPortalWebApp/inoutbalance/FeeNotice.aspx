@@ -71,10 +71,14 @@
                                 <table>
                                                 <tr>
                                                     <td style="width:70px;text-align:right; white-space:nowrap;">保单编号：</td>
-                                                    <td style="width:100px;text-align:left;">
-                                                        <asp:TextBox ID="txtPolicyNo" runat="server" Width="95px"></asp:TextBox>
+                                                    <td style="width:150px;text-align:left;">
+                                                        <asp:TextBox ID="txtPolicyNo" runat="server" Width="160px"></asp:TextBox>
                                                     </td>
                                                     <td style="width:20px;"></td>
+                                                     <td style="width:70px;text-align:right;white-space:nowrap;">投保单号：</td>
+                                                    <td style="width:150px;text-align:left;">
+                                                        <asp:TextBox ID="TextBox1" runat="server" Width="160px"></asp:TextBox>
+                                                    </td>  
                                                     <td style="width:120px;text-align:right;white-space:nowrap;">收款方式：</td> 
                                                     <td style="width:100px;text-align:left;">                                                        
                                                         <asp:DropDownList ID="ddlFeeType" runat="server">
@@ -82,8 +86,7 @@
                                                             <asp:ListItem Text="直付" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
-                                                    <td style="width:120px;text-align:right;white-space:nowrap;"></td>
-                                                    <td style="width:100px;text-align:left;"></td>                                                    
+                                                                                                
                                                     <td></td>                                                   
                                                 </tr> 
                                                 <tr>
@@ -133,7 +136,8 @@
                                                     <td style="text-align:right;" colspan="2">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
                                                         <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
-                                                        <asp:Button ID="btnRefresh" runat="server" Text="刷新" CssClass="input_2" />
+                                                        <asp:Button ID="btnRefresh" runat="server" Text="刷新" CssClass="input_2" />&nbsp;
+                                                        <asp:Button ID="btnExcel" runat="server" Text="Excel" CssClass="input_2" />
                                                     </td>
                                                     <td></td>
                                                 </tr>                                         
@@ -195,7 +199,7 @@
                                                                 </dxwgv:GridViewDataColumn>                                                                  
                                                                 <dxwgv:GridViewDataColumn FieldName="Sale" Caption="客户经理" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>  
-                                                                <dxwgv:GridViewDataColumn FieldName="FeeTypeName" Caption="收费方式" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="FeeTypeName" Caption="收款方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收保费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>

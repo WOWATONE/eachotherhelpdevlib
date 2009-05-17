@@ -136,7 +136,7 @@
                                                     <td></td>                                                  
                                                 </tr>                                                  
                                                 <tr>
-                                                    <td style="text-align:right;">收付日期：</td>
+                                                    <td style="text-align:right;">收款日期：</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deGetStartDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>                                                    
@@ -227,9 +227,9 @@
                                                                 </dxwgv:GridViewDataColumn>                                                                 
                                                                 <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="解付日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
                                                                 </dxwgv:GridViewDataDateColumn>                                                                                                                       
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期解付保费" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应解付保费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="FeeBase" Caption="实际解付金额" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="FeeBase" Caption="本期解付保费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>

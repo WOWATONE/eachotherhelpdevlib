@@ -67,8 +67,8 @@ namespace OSPortalWebApp.inoutbalance
         private void GetPolicyItemDataForGrid()
         {
             _dtGrid = new DataTable();
-            _dtGrid.PrimaryKey = new DataColumn[] { 
-            _dtGrid.Columns.Add("PolicyNo", typeof(Int32)) };
+
+            _dtGrid.Columns.Add("PolicyNo", typeof(Int32));
 
             _dtGrid.Columns.Add("StandardFeeBase", typeof(Double));
             _dtGrid.Columns.Add("GotFeeBase", typeof(Double));
@@ -85,6 +85,7 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.Columns.Add("BranchId", typeof(String));
 
 
+            _dtGrid.Rows.Add(new object[] { "0001", 1000, 1000, 1000, 500, 500, 500, "王怡", "寿险", "客户经理", "收取方式" });
             _dtGrid.Rows.Add(new object[] { "0001", 1000, 1000, 1000, 500, 500, 500, "王怡", "寿险", "客户经理", "收取方式" });
 
 

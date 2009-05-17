@@ -131,11 +131,11 @@
                                             <tr>
                                                 <td style="white-space:nowrap; text-align:right;">本次实收保费:</td>
                                                 <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridPolicyNo" Text='<%# Eval("GettingFeeBase") %>'  Enabled="false"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txtGridPolicyNo" Text='<%# Eval("GettingFeeBase") %>' ></asp:TextBox>
                                                 </td>
                                                 <td style="white-space:nowrap; text-align:right;">金额调整:</td>
                                                 <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridGotFeeBase" Text='<%# Eval("GettingFeeBase") %>' ></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txtGridGotFeeBase" Text='<%# Eval("GettingFeeBase") %>'  Enabled="false"></asp:TextBox>
                                                 </td>
                                             </tr>                                            
                                         </table>                                        
@@ -213,10 +213,27 @@
                         <tr>                            
                             <td style="text-align:right;">备注：</td>
                             <td style="text-align:left;" colspan="5">
-                                <asp:TextBox ID="TextBox3" runat="server" Width="540px"></asp:TextBox>
+                                <asp:TextBox ID="TextBox3" runat="server" Width="600px"></asp:TextBox>
                             </td>
                             <td></td>                                  
-                        </tr>                                        
+                        </tr>     
+                        <tr></tr>
+            
+                          <tr>
+                            <td style="width:13%;text-align:right;">其中，商业险保费：</td>
+                            <td style="width:17%;text-align:left;">
+                                <asp:Label ID="TextBox4" runat="server" Width="100px"></asp:Label>
+                            </td>
+                            <td style="width:13%;text-align:right;">交强险保费：</td>
+                            <td style="width:17%;text-align:left;">
+                                <asp:Label ID="TextBox5" runat="server" Width="100px"></asp:Label>
+                            </td>
+                            <td style="width:13%;text-align:right;">车船税:</td>
+                            <td style="width:17%;text-align:left;">
+                                <asp:Label ID="Label" runat="server" Width="100px"></asp:Label>
+                            </td>
+                            <td></td>                                  
+                        </tr>                                
                     </table>
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeOtherPolicyItem" runat="Server"
