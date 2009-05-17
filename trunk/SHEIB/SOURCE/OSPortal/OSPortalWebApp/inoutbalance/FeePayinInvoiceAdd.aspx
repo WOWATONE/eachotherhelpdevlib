@@ -90,6 +90,8 @@
                             OnRowInserted="gridPolicyItem_RowInserted"
                             OnRowDeleting="gridPolicyItem_RowDeleting" 
                             OnRowDeleted="gridPolicyItem_RowDeleted"
+                            
+                            
                              >
                                 <%-- BeginRegion Columns --%>
                                     <Columns>
@@ -118,9 +120,22 @@
                                         <dxwgv:GridViewDataColumn FieldName="BranchId" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
+                                    <TotalSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" />
+                                        <dxwgv:ASPxSummaryItem FieldName="StandardFeeBase" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="GotFeeBase" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="GettingFeeBase" SummaryType="Sum" DisplayFormat="c" />
+                                    </TotalSummary>
+                                    <Settings ShowGroupPanel="True" ShowFooter="True" ShowGroupFooter="VisibleIfExpanded" />
+                                    <GroupSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyNo" ShowInGroupFooterColumn="PolicyNo" SummaryType="Count" />
+                                        <dxwgv:ASPxSummaryItem FieldName="StandardFeeBase" ShowInGroupFooterColumn="StandardFeeBase" SummaryType="Sum" />
+                                        <dxwgv:ASPxSummaryItem FieldName="GotFeeBase" ShowInGroupFooterColumn="GotFeeBase" SummaryType="Sum"  DisplayFormat="{0:c}"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="GettingFeeBase" ShowInGroupFooterColumn="GettingFeeBase" SummaryType="Sum" />
+                                    </GroupSummary>
                                 <%-- EndRegion --%>
                                 <SettingsPager Mode="ShowAllRecords"/>
-                                <Settings ShowGroupPanel="false" />                                                        
+                                <Settings ShowGroupPanel="true" />                                                        
                                 <Templates>
                                      <EditForm>                                                             
                                      <div style="padding:4px 4px 3px 4px">
