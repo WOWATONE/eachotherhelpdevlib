@@ -96,7 +96,7 @@
                                             <EditButton Visible="true" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="通知书号" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="通知书号" CellStyle-Wrap="False" GroupIndex=0>
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="投保编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -121,9 +121,22 @@
                                         <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="客户经理" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
+                                    <TotalSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count"  DisplayFormat="#"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="StandardFeeBase" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="GotFeeBase" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="GettingFeeBase" SummaryType="Sum" DisplayFormat="c" />
+                                    </TotalSummary>
+                                    <Settings ShowGroupPanel="True" ShowFooter="True" ShowGroupFooter="VisibleIfExpanded" />
+                                    <GroupSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyNo" ShowInGroupFooterColumn="PolicyNo" SummaryType="Count" />
+                                        <dxwgv:ASPxSummaryItem FieldName="StandardFeeBase" ShowInGroupFooterColumn="StandardFeeBase" SummaryType="Sum" />
+                                        <dxwgv:ASPxSummaryItem FieldName="GotFeeBase" ShowInGroupFooterColumn="GotFeeBase" SummaryType="Sum"  DisplayFormat="{0:c}"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="GettingFeeBase" ShowInGroupFooterColumn="GettingFeeBase" SummaryType="Sum" />
+                                    </GroupSummary>
+                                    
                                 <%-- EndRegion --%>
-                                <SettingsPager Mode="ShowAllRecords"/>
-                                <Settings ShowGroupPanel="false" />                                                        
+                                <SettingsPager Mode="ShowAllRecords"/>                                                     
                                 <Templates>
                                      <EditForm>                                                             
                                      <div style="padding:4px 4px 3px 4px">
