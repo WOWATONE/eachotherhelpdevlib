@@ -70,7 +70,10 @@
                                   <td style="text-align:left;">
                                         <asp:TextBox runat="server" ID="TextBox1" Text='<%# Eval("CarNo") %>'  Enabled="false"></asp:TextBox>
                                    </td>
-                                   <td></td>
+                                   <td style="white-space:nowrap; text-align:right;">交强险保单号:</td>
+                                    <td style="text-align:left;">
+                                        <asp:TextBox runat="server" ID="TextBox4" Text='<%# Eval("CarcaseNo") %>'></asp:TextBox>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td style="white-space:nowrap; text-align:right;">车牌号:</td>
