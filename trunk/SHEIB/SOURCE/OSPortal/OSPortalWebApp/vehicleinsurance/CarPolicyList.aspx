@@ -200,14 +200,14 @@
                                                             <Columns>
                                                                 <dxwgv:GridViewDataColumn Caption="投保单号" FieldName="F1" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Center">
                                                                     <DataItemTemplate>
-                                                                        <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_TBDH" Text='<%# (string)DataBinder.Eval(Container.DataItem, "F1")%>' NavigateUrl="AskPriceInput.aspx">
+                                                                        <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_TBDH" Text='<%# (string)DataBinder.Eval(Container.DataItem, "F1")%>' NavigateUrl="AskPriceInput.aspx" Target="_blank">
                                                                             
                                                                         </dxe:ASPxHyperLink>                                                                                               
                                                                     </DataItemTemplate>
                                                                 </dxwgv:GridViewDataColumn>   
                                                                 <dxwgv:GridViewDataColumn FieldName="F2" Caption="保单编号" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Center">                                                                   
                                                                     <DataItemTemplate>
-                                                                        <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_BDBH" Text='<%# (string)DataBinder.Eval(Container.DataItem, "F2")%>' NavigateUrl="CarPolicyItemInput.aspx">
+                                                                        <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_BDBH" Text='<%# (string)DataBinder.Eval(Container.DataItem, "F2")%>' NavigateUrl="CarPolicyItemInput.aspx"  Target="_blank">
                                                                             
                                                                         </dxe:ASPxHyperLink>                                                                                               
                                                                     </DataItemTemplate>
