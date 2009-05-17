@@ -57,7 +57,7 @@
                                                     <td style="width:110px;text-align:left;">
                                                         <asp:TextBox ID="txtPolicyNo" runat="server" Width="100px"></asp:TextBox>
                                                     </td>
-                                                    <td style="width:70px;text-align:right;">投保编号：</td>
+                                                    <td style="width:70px;text-align:right;">投保单号：</td>
                                                     <td style="width:110px;text-align:left;">
                                                         <asp:TextBox ID="TextBox1" runat="server" Width="100px"></asp:TextBox>
                                                     </td>                                                    
@@ -120,10 +120,15 @@
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deGetEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td> 
+                                                    <td style="text-align:right;">保单类型：</td>
+                                                    <td style="text-align:left;">
+                                                        <asp:DropDownList ID="DropDownList2" runat="server">
+                                                            <asp:ListItem Text="非车险" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="车险" Value="2"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
                                                     <td style="text-align:left;">&nbsp;</td>
-                                                    <td style="text-align:left;">&nbsp;</td>
-                                                    <td style="text-align:left;">&nbsp;</td>
-                                                    <td style="text-align:left;">&nbsp;</td>
+                                                    <td style="text-align:left;">&nbsp;</td>                                                    
                                                     <td>&nbsp;</td>                                                                                                 
                                                 </tr> 
                                                 <tr>
@@ -223,10 +228,10 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="投保单号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>                                                                
                                                                 <dxwgv:GridViewDataColumn FieldName="AccountType" Caption="收款方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>   
                                                                 <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收保费" CellStyle-Wrap="False">                                                                   

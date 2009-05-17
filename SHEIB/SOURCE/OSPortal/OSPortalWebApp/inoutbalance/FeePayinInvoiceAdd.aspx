@@ -93,11 +93,11 @@
                              >
                                 <%-- BeginRegion Columns --%>
                                     <Columns>
-                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" >
                                             <EditButton Visible="true" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="解付单号" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="解付单号" CellStyle-Wrap="False" GroupIndex="0"  >
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="投保编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>

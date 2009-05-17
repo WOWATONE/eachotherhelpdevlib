@@ -202,6 +202,8 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收保费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>      
+                                                                <dxwgv:GridViewDataColumn FieldName="FeeYs" Caption="已收保费" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>  
                                                                 <dxwgv:GridViewDataColumn FieldName="F5" Caption="险种" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>      
                                                                 <dxwgv:GridViewDataColumn FieldName="F1" Caption="投保客户" CellStyle-Wrap="False">                                                                   

@@ -40,7 +40,7 @@
 
 
         function btnAddPolicyClick() {
-            var myArguments = "resizable:no;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
+            var myArguments = "resizable:no;scroll:yes;status:no;dialogWidth=950px;dialogHeight=500px;center=yes;help=no";
             window.showModalDialog("FeeNoticeAddSelect.aspx", self, myArguments);
             gridPolicyItem.PerformCallback('');
         }
@@ -106,7 +106,7 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单号" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应收" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应收保费" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="AccountTypeID" Caption="逾期天数" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
