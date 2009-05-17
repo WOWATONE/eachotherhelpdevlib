@@ -1,4 +1,4 @@
-Ôªø<%@ Page Title="ËØ¢‰ª∑ÂçïÂΩïÂÖ•" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="AskPriceInput.aspx.cs" Inherits="OSPortalWebApp.vehicleinsurance.AskPriceInput" %>
+<%@ Page Title="—Øº€µ•¬º»Î" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="AskPriceInput.aspx.cs" Inherits="OSPortalWebApp.vehicleinsurance.AskPriceInput" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
@@ -11,7 +11,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>ËØ¢‰ª∑ÂçïÂΩïÂÖ•</title>
+    <title>—Øº€µ•¬º»Î</title>
     <script type="text/javascript">
         $(document).ready(function() {
             //jQuery.noticeAdd({
@@ -62,7 +62,7 @@
                                     TabClick="function(s, e) {}" />
                                 <TabPages>
                                     
-                                    <dxtc:TabPage Text="Âü∫Êú¨‰ø°ÊÅØ">                
+                                    <dxtc:TabPage Text="ª˘±æ–≈œ¢">                
                                         <ContentCollection>                
                                         <dxw:ContentControl ID="ContentControl1" runat="server">
                                         <table style="width:99%">
@@ -75,9 +75,9 @@
                                                             <div style="float:left; vertical-align: middle;">
                                                                 <asp:ImageButton ID="img_npbasicheader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
                                                             </div>
-                                                            <div style="float: left; margin-left:5px;">Âü∫Êú¨‰ø°ÊÅØ</div>
+                                                            <div style="float: left; margin-left:5px;">ª˘±æ–≈œ¢</div>
                                                             <div style="float: left; margin-left:5px;">
-                                                                <asp:Label ID="lbl_npbasicheader" runat="server">(Â±ïÂºÄ)</asp:Label>
+                                                                <asp:Label ID="lbl_npbasicheader" runat="server">(’πø™)</asp:Label>
                                                             </div>
                                                             
                                                         </div>
@@ -85,59 +85,60 @@
                                                     <asp:Panel ID="npbasicdetail" runat="server" CssClass="collapsePanel" Height="0">
                                                                 <table style="width:100%">
                                                                     <tr>
-                                                                        <td style="width:10%;text-align:right;">Êäï‰øùÂçïÂè∑Ôºö</td>
+                                                                        <td style="width:10%;text-align:right;">Õ∂±£µ•∫≈£∫</td>
                                                                         <td style="width:20%;text-align:left;">
                                                                             <asp:TextBox ID="txtSN" runat="server" Width="150px"></asp:TextBox>
                                                                         </td>
-                                                                        <td style="width:10%;text-align:right;">‰øùË¥πÔºö</td>
+                                                                        <td style="width:10%;text-align:right;">≥µ¡æ ˝ƒø£∫</td>
                                                                         <td style="width:20%;text-align:left;">
                                                                             <asp:TextBox ID="txtFee" runat="server" Width="150px"></asp:TextBox>                                                                                                        
                                                                         </td>
-                                                                        <td style="width:10%;text-align:right;">ËΩ¶ËæÜÊï∞ÁõÆÔºö</td>
-                                                                        <td style="width:20%;text-align:left;">
-                                                                            <asp:TextBox ID="txtNumber" runat="server" Width="150px"></asp:TextBox>
+                                                                        <td style="width:10%;text-align:right;"></td>
+                                                                        <td style="width:20%;text-align:left;">                                                                            
                                                                         </td>
                                                                         <td></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td style="text-align:right;">‰øùÈô©ÂÖ¨Âè∏Ôºö</td>
+                                                                        <td style="text-align:right;">±£œ’π´Àæ£∫</td>
                                                                         <td style="text-align:left;">
                                                                             <dxe:ASPxComboBox runat="server" ID="decbGridCarrierNo" 
                                                                                 AutoPostBack="false" ClientInstanceName="decbGridCarrierNo" 
                                                                                 DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="100px">
                                                                                 <Items>
-                                                                                    <dxe:ListEditItem Text="‰∏≠ÂõΩÂπ≥ÂÆâ" Value="1" />
-                                                                                    <dxe:ListEditItem Text="‰∏≠ÂõΩÊ≥∞Â∫∑" Value="2" />
-                                                                                    <dxe:ListEditItem Text="‰∏≠ÂõΩÂÆâËÅî" Value="3" />
+                                                                                    <dxe:ListEditItem Text="÷–π˙∆Ω∞≤" Value="1" />
+                                                                                    <dxe:ListEditItem Text="÷–π˙Ã©øµ" Value="2" />
+                                                                                    <dxe:ListEditItem Text="÷–π˙∞≤¡™" Value="3" />
                                                                                 </Items>
                                                                                 <ClientSideEvents SelectedIndexChanged="" />
                                                                             </dxe:ASPxComboBox>
                                                                         </td>
-                                                                        <td style="text-align:right;">ÂàÜÊîØÊú∫ÊûÑÔºö</td>
+                                                                        <td style="text-align:right;">∑÷÷ßª˙ππ£∫</td>
                                                                         <td style="text-align:left;">                                                                            
                                                                             <dxe:ASPxComboBox runat="server" ID="decbGridBranchName" 
                                                                                 AutoPostBack="false" ClientInstanceName="decbGridBranchName"
                                                                                 DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="100px">
                                                                                 <Items>
-                                                                                    <dxe:ListEditItem Text="Âπ≥ÂÆâÂàÜÊîØ1" Value="1" />
-                                                                                    <dxe:ListEditItem Text="Ê≥∞Â∫∑ÂàÜÊîØ1" Value="2" />
-                                                                                    <dxe:ListEditItem Text="ÂÆâËÅîÂàÜÊîØ1" Value="3" />
+                                                                                    <dxe:ListEditItem Text="∆Ω∞≤∑÷÷ß1" Value="1" />
+                                                                                    <dxe:ListEditItem Text="Ã©øµ∑÷÷ß1" Value="2" />
+                                                                                    <dxe:ListEditItem Text="∞≤¡™∑÷÷ß1" Value="3" />
                                                                                 </Items>                                                                                
                                                                                 <ClientSideEvents SelectedIndexChanged="" />
                                                                             </dxe:ASPxComboBox>                                                                                                                                                                                                            
                                                                         </td>
-                                                                        <td style="text-align:right;"></td>
-                                                                        <td style="text-align:left;"></td>
+                                                                        <td style="width:10%;text-align:right;">“µŒÒ‘±£∫</td>
+                                                                        <td style="width:20%;text-align:left;">
+                                                                            <asp:TextBox ID="TextBox1" runat="server" Width="150px"></asp:TextBox>
+                                                                        </td>
                                                                         <td></td>
                                                                     </tr>
                                                                     <tr>                                                                        
-                                                                        <td style="text-align:right;">Êî∂Ê¨æÈì∂Ë°åÔºö</td>
+                                                                        <td style="text-align:right;"> ’øÓ“¯––£∫</td>
                                                                         <td style="text-align:left;">
                                                                             <asp:TextBox ID="txtBank" runat="server" Width="150px"></asp:TextBox>                                                                                                        
                                                                         </td>
-                                                                        <td style="text-align:right;">Êäï‰øù‰∫∫Ôºö</td>
+                                                                        <td style="text-align:right;">Õ∂±£»À£∫</td>
                                                                         <td style="text-align:left;">
-                                                                            <asp:TextBox ID="txtpeoplefrom" runat="server" Width="80px" Text="Âº†‰∏â"></asp:TextBox>&nbsp;
+                                                                            <asp:TextBox ID="txtpeoplefrom" runat="server" Width="80px" Text="’≈»˝"></asp:TextBox>&nbsp;
                                                                             <img runat="server" id="imgadduser" onclick="btnAddCustomerClick();" alt="" src="../images/add_user_icon.png" style="width:20px; height:20px; vertical-align:top;" />
                                                                             <img runat="server" id="imgpeoplesearch" onclick="btnSelectCustomerClick();" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" />                                                                            
                                                                         </td>
@@ -145,20 +146,7 @@
                                                                         <td style="text-align:left;"></td>
                                                                         <td></td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        
-                                                                        <td style="text-align:right;">Â∏êÂè∑Ôºö</td>
-                                                                        <td style="text-align:left;">
-                                                                            <asp:TextBox ID="txtBankAccount" runat="server" Width="100px"></asp:TextBox>
-                                                                        </td>
-                                                                        <td style="text-align:right;">Áº¥Ë¥πÂá≠ËØÅÔºö</td>
-                                                                        <td style="text-align:left;">
-                                                                            <asp:TextBox ID="txtBankCredenceID" runat="server" Width="100px"></asp:TextBox>                                                    
-                                                                        </td>
-                                                                        <td style="text-align:right;"></td>
-                                                                        <td style="text-align:left;"></td>
-                                                                        <td></td>
-                                                                    </tr>
+                                                              
                                                                 </table>
                                                      </asp:Panel>
                                                      <ajaxToolkit:CollapsiblePanelExtender ID="cpeBasic" runat="Server"
@@ -168,8 +156,8 @@
                                                         Collapsed="false"
                                                         TextLabelID="lbl_npbasicheader"
                                                         ImageControlID="img_npbasicheader"    
-                                                        ExpandedText="(Â±ïÂºÄ)"
-                                                        CollapsedText="(ÈöêËóè)"
+                                                        ExpandedText="(’πø™)"
+                                                        CollapsedText="(“˛≤ÿ)"
                                                         ExpandedImage="~/images/collapse_blue.jpg"
                                                         CollapsedImage="~/images/expand_blue.jpg"
                                                         SuppressPostBack="true" />
@@ -185,9 +173,9 @@
                                                             <div style="float: left; vertical-align: middle;">
                                                                 <asp:ImageButton ID="img_npGridPolicyItem" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
                                                             </div>
-                                                            <div style="float: left; margin-left:5px;">ËΩ¶Èô©È°πÁõÆ</div>
+                                                            <div style="float: left; margin-left:5px;">≥µœ’œÓƒø</div>
                                                             <div style="float: left; margin-left:5px;">
-                                                                <asp:Label ID="lbl_npGridPolicyItem" runat="server">(Â±ïÂºÄ)</asp:Label>
+                                                                <asp:Label ID="lbl_npGridPolicyItem" runat="server">(’πø™)</asp:Label>
                                                             </div>                                    
                                                         </div>
                                                     </asp:Panel>  
@@ -207,35 +195,52 @@
                                                                                 <%-- BeginRegion Columns --%>
                                                                                     <Columns>
                                                                                         <dxwgv:GridViewDataColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left" Width="55" HeaderStyle-Wrap="False" Settings-AllowDragDrop="False">
+<Settings AllowDragDrop="False"></Settings>
                                                                                             <DataItemTemplate>
-                                                                                                <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_New" Text="Êñ∞Â¢û" NavigateUrl="#">
+                                                                                                <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_New" Text="–¬‘ˆ" NavigateUrl="#">
                                                                                                     <ClientSideEvents Click="hlCarPolicyItemClick" />
                                                                                                 </dxe:ASPxHyperLink>
-                                                                                                <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_Update" Text="ÁºñËæë" NavigateUrl="#">
+                                                                                                <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_Update" Text="±‡º≠" NavigateUrl="#">
                                                                                                     <ClientSideEvents Click="hlCarPolicyItemClick" />
                                                                                                 </dxe:ASPxHyperLink>                                                                                                
                                                                                             </DataItemTemplate>
+
+<HeaderStyle Wrap="False"></HeaderStyle>
+
+<CellStyle HorizontalAlign="Left" Wrap="False"></CellStyle>
                                                                                         </dxwgv:GridViewDataColumn>                                                                                        
                                                                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left" Width="25" HeaderStyle-Wrap="False" AllowDragDrop="false">
                                                                                             <NewButton Visible="False" />
                                                                                             <EditButton Visible="False" />
                                                                                             <DeleteButton Visible="true" />                                                            
+
+<HeaderStyle Wrap="False"></HeaderStyle>
+
+<CellStyle HorizontalAlign="Left" Wrap="False"></CellStyle>
                                                                                         </dxwgv:GridViewCommandColumn>                                                                                        
-                                                                                        <dxwgv:GridViewDataColumn FieldName="CarNo" Caption="ËΩ¶ÁâåÂè∑" CellStyle-Wrap="False">
+                                                                                        <dxwgv:GridViewDataColumn FieldName="CarNo" Caption="≥µ≈∆∫≈" CellStyle-Wrap="False">
+<CellStyle Wrap="False"></CellStyle>
                                                                                         </dxwgv:GridViewDataColumn>
-                                                                                        <dxwgv:GridViewDataColumn FieldName="CiPremium" Caption="ÂïÜ‰∏öÈô©‰øùË¥π" CellStyle-Wrap="False">
+                                                                                        <dxwgv:GridViewDataColumn FieldName="CiPremium" Caption="…Ã“µœ’±£∑—" CellStyle-Wrap="False">
+<CellStyle Wrap="False"></CellStyle>
                                                                                         </dxwgv:GridViewDataColumn>
-                                                                                        <dxwgv:GridViewDataColumn FieldName="CiProcessRate" Caption="ÂïÜ‰∏öÈô©ÁªèÁ∫™Ë¥πÁéá" CellStyle-Wrap="False">
+                                                                                        <dxwgv:GridViewDataColumn FieldName="CiProcessRate" Caption="…Ã“µœ’æ≠ºÕ∑—¬ " CellStyle-Wrap="False">
+<CellStyle Wrap="False"></CellStyle>
                                                                                         </dxwgv:GridViewDataColumn>
-                                                                                        <dxwgv:GridViewDataColumn FieldName="CiProcess" Caption="ÂïÜ‰∏öÈô©ÁªèÁ∫™Ë¥π" CellStyle-Wrap="False">
+                                                                                        <dxwgv:GridViewDataColumn FieldName="CiProcess" Caption="…Ã“µœ’æ≠ºÕ∑—" CellStyle-Wrap="False">
+<CellStyle Wrap="False"></CellStyle>
                                                                                         </dxwgv:GridViewDataColumn>
-                                                                                        <dxwgv:GridViewDataColumn FieldName="AciPremium" Caption="‰∫§Âº∫Èô©‰øùË¥π" CellStyle-Wrap="False">
+                                                                                        <dxwgv:GridViewDataColumn FieldName="AciPremium" Caption="Ωª«øœ’±£∑—" CellStyle-Wrap="False">
+<CellStyle Wrap="False"></CellStyle>
                                                                                         </dxwgv:GridViewDataColumn>
-                                                                                        <dxwgv:GridViewDataColumn FieldName="AciProcessRate" Caption="‰∫§Âº∫Èô©ÁªèÁ∫™Ë¥πÁéá" CellStyle-Wrap="False">
+                                                                                        <dxwgv:GridViewDataColumn FieldName="AciProcessRate" Caption="Ωª«øœ’æ≠ºÕ∑—¬ " CellStyle-Wrap="False">
+<CellStyle Wrap="False"></CellStyle>
                                                                                         </dxwgv:GridViewDataColumn>
-                                                                                        <dxwgv:GridViewDataColumn FieldName="AciProcess" Caption="‰∫§Âº∫Èô©ÁªèÁ∫™Ë¥π" CellStyle-Wrap="False">
+                                                                                        <dxwgv:GridViewDataColumn FieldName="AciProcess" Caption="Ωª«øœ’æ≠ºÕ∑—" CellStyle-Wrap="False">
+<CellStyle Wrap="False"></CellStyle>
                                                                                         </dxwgv:GridViewDataColumn>
-                                                                                        <dxwgv:GridViewDataColumn FieldName="CstPremium" Caption="ËΩ¶ËàπÁ®é" CellStyle-Wrap="False">
+                                                                                        <dxwgv:GridViewDataColumn FieldName="CstPremium" Caption="≥µ¥¨À∞" CellStyle-Wrap="False">
+<CellStyle Wrap="False"></CellStyle>
                                                                                         </dxwgv:GridViewDataColumn>
                                                                                     </Columns>
                                                                                 <%-- EndRegion --%>
@@ -247,41 +252,41 @@
                                                                                      <div style="padding:4px 4px 3px 4px">
                                                                                         <table style=" width:90%;" runat="server" id="tblgridPolicyItemEditorTemplate">
                                                                                             <tr>
-                                                                                                <td style="white-space:nowrap; text-align:right;">ËΩ¶ÁâåÂè∑:</td>
+                                                                                                <td style="white-space:nowrap; text-align:right;">≥µ≈∆∫≈:</td>
                                                                                                 <td style="text-align:left;">
                                                                                                     <asp:TextBox runat="server" ID="txtGridPolicyCarNo" Text='<%# Eval("CarNo") %>'  Enabled="false"></asp:TextBox>
                                                                                                 </td>
-                                                                                                <td style="white-space:nowrap; text-align:right;">ÂïÜ‰∏öÈô©‰øùË¥π:</td>
+                                                                                                <td style="white-space:nowrap; text-align:right;">…Ã“µœ’±£∑—:</td>
                                                                                                 <td style="text-align:left;">
                                                                                                     <asp:TextBox runat="server" ID="txtGridPolicyCiPremium" Text='<%# Eval("CiPremium") %>'></asp:TextBox>
                                                                                                 </td>
                                                                                             </tr>
                                                                                             <tr>
-                                                                                                <td style="white-space:nowrap; text-align:right;">ÂïÜ‰∏öÈô©ÁªèÁ∫™Ë¥πÁéá:</td>
+                                                                                                <td style="white-space:nowrap; text-align:right;">…Ã“µœ’æ≠ºÕ∑—¬ :</td>
                                                                                                 <td style="text-align:left;">
                                                                                                     <asp:TextBox runat="server" ID="txtGridPolicyCiProcessRate" Text='<%# Eval("CiProcessRate") %>'></asp:TextBox>
                                                                                                 </td>
-                                                                                                <td style="white-space:nowrap; text-align:right;">ÂïÜ‰∏öÈô©ÁªèÁ∫™Ë¥π:</td>
+                                                                                                <td style="white-space:nowrap; text-align:right;">…Ã“µœ’æ≠ºÕ∑—:</td>
                                                                                                 <td style="text-align:left;">
                                                                                                     <asp:TextBox runat="server" ID="txtGridPolicyCiProcess" Text='<%# Eval("CiProcess") %>'></asp:TextBox>
                                                                                                 </td>
                                                                                             </tr>
                                                                                             <tr>
-                                                                                                <td style="white-space:nowrap; text-align:right;">‰∫§Âº∫Èô©‰øùË¥π:</td>
+                                                                                                <td style="white-space:nowrap; text-align:right;">Ωª«øœ’±£∑—:</td>
                                                                                                 <td style="text-align:left;">
                                                                                                     <asp:TextBox runat="server" ID="txtGridPolicyAciPremium" Text='<%# Eval("AciPremium") %>'></asp:TextBox>
                                                                                                 </td>
-                                                                                                <td style="white-space:nowrap; text-align:right;">‰∫§Âº∫Èô©ÁªèÁ∫™Ë¥πÁéá:</td>
+                                                                                                <td style="white-space:nowrap; text-align:right;">Ωª«øœ’æ≠ºÕ∑—¬ :</td>
                                                                                                 <td style="text-align:left;">
                                                                                                     <asp:TextBox runat="server" ID="txtGridPolicyAciProcessRate" Text='<%# Eval("AciProcessRate") %>'></asp:TextBox>
                                                                                                 </td>
                                                                                             </tr>
                                                                                             <tr>
-                                                                                                <td style="white-space:nowrap; text-align:right;">‰∫§Âº∫Èô©ÁªèÁ∫™Ë¥π:</td>
+                                                                                                <td style="white-space:nowrap; text-align:right;">Ωª«øœ’æ≠ºÕ∑—:</td>
                                                                                                 <td style="text-align:left;">
                                                                                                     <asp:TextBox runat="server" ID="txtGridPolicyAciProcess" Text='<%# Eval("AciProcess") %>'></asp:TextBox>
                                                                                                 </td>
-                                                                                                <td style="white-space:nowrap; text-align:right;">ËΩ¶ËàπÁ®é:</td>
+                                                                                                <td style="white-space:nowrap; text-align:right;">≥µ¥¨À∞:</td>
                                                                                                 <td style="text-align:left;">
                                                                                                     <asp:TextBox runat="server" ID="txtGridPolicyCstPremium" Text='<%# Eval("CstPremium") %>'></asp:TextBox>
                                                                                                 </td>
@@ -311,8 +316,8 @@
                                                         Collapsed="false"
                                                         TextLabelID="lbl_npGridPolicyItem"
                                                         ImageControlID="img_npGridPolicyItem"    
-                                                        ExpandedText="(Â±ïÂºÄ)"
-                                                        CollapsedText="(ÈöêËóè)"
+                                                        ExpandedText="(’πø™)"
+                                                        CollapsedText="(“˛≤ÿ)"
                                                         ExpandedImage="~/images/collapse_blue.jpg"
                                                         CollapsedImage="~/images/expand_blue.jpg"
                                                         SuppressPostBack="true" />
@@ -327,9 +332,9 @@
                                                         <div style="float: left; vertical-align: middle;">
                                                             <asp:ImageButton ID="img_npCostSummaryHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
                                                         </div>
-                                                        <div style="float: left; margin-left:5px;">Ë¥πÁî®Ê±áÊÄª</div>
+                                                        <div style="float: left; margin-left:5px;">∑—”√ª„◊‹</div>
                                                         <div style="float: left; margin-left:5px;">
-                                                            <asp:Label ID="lbl_npCostSummaryHeader" runat="server">(Â±ïÂºÄ)</asp:Label>
+                                                            <asp:Label ID="lbl_npCostSummaryHeader" runat="server">(’πø™)</asp:Label>
                                                         </div>
                                                         
                                                     </div>
@@ -337,66 +342,43 @@
                                                 <asp:Panel ID="npCostSummaryDetail" runat="server" CssClass="collapsePanel" Height="0">
                                                             <table style="width:100%">
                                                                 <tr>
-                                                                    <td style="width:11%;text-align:right;">ÂïÜ‰∏öÈô©‰øùË¥πÔºö</td>
-                                                                    <td style="width:22%;text-align:left;">
+                                                                    <td style="width:10%;text-align:right;">…Ã“µœ’±£∑—£∫</td>
+                                                                    <td style="width:15%;text-align:left;">
                                                                         <asp:TextBox ID="txtCiPremium" runat="server" Width="100px"></asp:TextBox>
                                                                     </td>
-                                                                    <td style="width:11%;text-align:right;">‰∫§Âº∫Èô©‰øùË¥πÔºö</td>
-                                                                    <td style="width:22%;text-align:left;">
+                                                                    <td style="width:10%;text-align:right;">Ωª«øœ’±£∑—£∫</td>
+                                                                    <td style="width:15%;text-align:left;">
                                                                         <asp:TextBox ID="txtAciPremium" runat="server" Width="100px"></asp:TextBox>
                                                                     </td>
                                                                     
-                                                                    <td style="width:11%;text-align:right;">ËΩ¶ËàπÁ®éÔºö</td>
-                                                                    <td style="width:20%;text-align:left;">
+                                                                    <td style="width:10%;text-align:right;">≥µ¥¨À∞£∫</td>
+                                                                    <td style="width:15%;text-align:left;">
                                                                         <asp:TextBox ID="txtCstPremium" runat="server" Width="100px"></asp:TextBox>
                                                                     </td>
-                                                                    <td></td>                                 
+                                                                    <td style="width:10%;text-align:right;">±£∑—∫œº∆£∫</td>
+                                                                    <td style="width:15%;text-align:left;">
+                                                                        <asp:TextBox ID="TextBox3" runat="server" Width="100px"></asp:TextBox>
+                                                                    </td>                              
                                                                 </tr> 
+                                                                 
                                                                 <tr>
-                                                                    <td style="text-align:right;">ÁªèÁ∫™Ë¥πÁéáÔºö</td>
-                                                                    <td style="text-align:left;">
-                                                                        <asp:TextBox ID="txtCiProcessRate" runat="server" Width="100px"></asp:TextBox>
-                                                                    </td> 
-                                                                    <td style="text-align:right;">ÁªèÁ∫™Ë¥πÁéáÔºö</td>
-                                                                    <td style="text-align:left;">
-                                                                        <asp:TextBox ID="txtAciProcessRate" runat="server" Width="100px"></asp:TextBox>
-                                                                    </td>
-                                                                    <td style="text-align:right;"></td>
-                                                                    <td style="text-align:left;">
-                                                                        
-                                                                    </td> 
-                                                                    <td></td>                               
-                                                                </tr>  
-                                                                <tr>
-                                                                    <td style="text-align:right;">ÁªèÁ∫™Ë¥πÔºö</td>
+                                                                    <td style="text-align:right;">æ≠ºÕ∑—£∫</td>
                                                                     <td style="text-align:left;">
                                                                         <asp:TextBox ID="txtCiProcess" runat="server" Width="100px"></asp:TextBox>
                                                                     </td>
-                                                                    <td style="text-align:right;">ÁªèÁ∫™Ë¥πÔºö</td>
+                                                                    <td style="text-align:right;">æ≠ºÕ∑—£∫</td>
                                                                     <td style="text-align:left;">
                                                                         <asp:TextBox ID="txtAciProcess" runat="server" Width="100px"></asp:TextBox>
                                                                     </td>
                                                                     <td style="text-align:right;"></td>
                                                                     <td style="text-align:left;">                                                                        
                                                                     </td>
-                                                                    <td></td>                                  
+                                                                     <td style="width:11%;text-align:right;">æ≠ºÕ∑—∫œº∆£∫</td>
+                                                                    <td style="width:20%;text-align:left;">
+                                                                        <asp:TextBox ID="TextBox4" runat="server" Width="100px"></asp:TextBox>
+                                                                    </td>                                  
                                                                 </tr>
-                                                                <tr>
-                                                                    <td style="text-align:right;">‰øùË¥πÂêàËÆ°Ôºö</td>
-                                                                    <td style="text-align:left;">
-                                                                        <asp:TextBox ID="txtPremiumTotal" runat="server" Width="100px"></asp:TextBox>
-                                                                    </td>
-                                                                    <td style="text-align:right;">ÁªèÁ∫™Ë¥πÂêàËÆ°Ôºö</td>
-                                                                    <td style="text-align:left;">
-                                                                        <asp:TextBox ID="txtProcessTotal" runat="server" Width="100px"></asp:TextBox>
-                                                                    </td>
-                                                                    <td style="text-align:right;"></td>
-                                                                    <td style="text-align:left;">
-                                                                        
-                                                                    </td>
-                                                                    <td></td>                                  
-                                                                </tr>                                            
-                                                                                                                                                        
+                                                                                                                                                
                                                             </table>
                                                             
                                                  </asp:Panel>
@@ -407,8 +389,8 @@
                                                     Collapsed="false"
                                                     TextLabelID="lbl_npCostSummaryHeader"
                                                     ImageControlID="img_npCostSummaryHeader"    
-                                                    ExpandedText="(Â±ïÂºÄ)"
-                                                    CollapsedText="(ÈöêËóè)"
+                                                    ExpandedText="(’πø™)"
+                                                    CollapsedText="(“˛≤ÿ)"
                                                     ExpandedImage="~/images/collapse_blue.jpg"
                                                     CollapsedImage="~/images/expand_blue.jpg"
                                                     SuppressPostBack="true" />
@@ -424,9 +406,9 @@
                                                             <div style="float: left; vertical-align: middle;">
                                                                 <asp:ImageButton ID="img_npOtherPolicyItemHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText=""/>
                                                             </div>
-                                                            <div style="float: left; margin-left:5px;">ÂÖ∂ÂÆÉÈ°πÁõÆ</div>
+                                                            <div style="float: left; margin-left:5px;">∆‰À¸œÓƒø</div>
                                                             <div style="float: left; margin-left:5px;">
-                                                                <asp:Label ID="lbl_npOtherPolicyItemHeader" runat="server">(Â±ïÂºÄ)</asp:Label>
+                                                                <asp:Label ID="lbl_npOtherPolicyItemHeader" runat="server">(’πø™)</asp:Label>
                                                             </div>
                                                             
                                                         </div>
@@ -435,19 +417,19 @@
                                                                 <table style="width:100%">
                                                                                                                 
                                                                     <tr>
-                                                                        <td style="width:11%;text-align:right;">ÈÉ®Èó®Ôºö</td>
+                                                                        <td style="width:11%;text-align:right;">≤ø√≈£∫</td>
                                                                         <td style="width:22%;text-align:left;">
                                                                             <asp:DropDownList ID="ddlDeptId" runat="server">
-                                                                                <asp:ListItem Text="ÈÉ®Èó®1" Value="1"></asp:ListItem>
-                                                                                <asp:ListItem Text="ÈÉ®Èó®2" Value="2"></asp:ListItem>
-                                                                                <asp:ListItem Text="ÈÉ®Èó®3" Value="3"></asp:ListItem>
+                                                                                <asp:ListItem Text="≤ø√≈1" Value="1"></asp:ListItem>
+                                                                                <asp:ListItem Text="≤ø√≈2" Value="2"></asp:ListItem>
+                                                                                <asp:ListItem Text="≤ø√≈3" Value="3"></asp:ListItem>
                                                                             </asp:DropDownList>
                                                                         </td>
-                                                                        <td style="width:11%;text-align:right;">ÂÆ¢Êà∑ÁªèÁêÜÔºö</td>
+                                                                        <td style="width:11%;text-align:right;">øÕªßæ≠¿Ì£∫</td>
                                                                         <td style="width:22%;text-align:left;">
                                                                             <asp:DropDownList ID="ddlcustomermanager" runat="server">
-                                                                                <asp:ListItem Text="ÁªèÁêÜ1" Value="1"></asp:ListItem>
-                                                                                <asp:ListItem Text="ÁªèÁêÜ2" Value="2"></asp:ListItem>
+                                                                                <asp:ListItem Text="æ≠¿Ì1" Value="1"></asp:ListItem>
+                                                                                <asp:ListItem Text="æ≠¿Ì2" Value="2"></asp:ListItem>
                                                                             </asp:DropDownList>
                                                                         </td>
                                                                         <td style="width:11%;text-align:right;"></td>
@@ -456,35 +438,35 @@
                                                                         <td></td>                                 
                                                                     </tr> 
                                                                     <tr>
-                                                                        <td style="width:11%;text-align:right;">‰∏öÂä°Êù•Ê∫êÔºö</td>
+                                                                        <td style="width:11%;text-align:right;">“µŒÒ¿¥‘¥£∫</td>
                                                                         <td style="width:22%;text-align:left;">
                                                                             <asp:DropDownList ID="ddlFrom" runat="server">
-                                                                                <asp:ListItem Text="‰∏öÂä°Êù•Ê∫ê1" Value="1"></asp:ListItem>
-                                                                                <asp:ListItem Text="‰∏öÂä°Êù•Ê∫ê2" Value="2"></asp:ListItem>
+                                                                                <asp:ListItem Text="“µŒÒ¿¥‘¥1" Value="1"></asp:ListItem>
+                                                                                <asp:ListItem Text="“µŒÒ¿¥‘¥2" Value="2"></asp:ListItem>
                                                                             </asp:DropDownList>
                                                                         </td> 
-                                                                        <td style="text-align:right;">‰∏öÂä°ÊÄßË¥®Ôºö</td>
+                                                                        <td style="text-align:right;">“µŒÒ–‘÷ £∫</td>
                                                                         <td style="text-align:left;">
                                                                             <asp:DropDownList ID="ddlKind" runat="server">
-                                                                                <asp:ListItem Text="‰∏öÂä°ÊÄßË¥®1" Value="1"></asp:ListItem>
-                                                                                <asp:ListItem Text="‰∏öÂä°ÊÄßË¥®2" Value="2"></asp:ListItem>
+                                                                                <asp:ListItem Text="“µŒÒ–‘÷ 1" Value="1"></asp:ListItem>
+                                                                                <asp:ListItem Text="“µŒÒ–‘÷ 2" Value="2"></asp:ListItem>
                                                                             </asp:DropDownList>
                                                                         </td>
-                                                                        <td style="text-align:right;">Êî∂Ê¨æÊñπÂºèÔºö</td>
+                                                                        <td style="text-align:right;"> ’øÓ∑Ω Ω£∫</td>
                                                                         <td style="text-align:left;">
                                                                             <asp:DropDownList ID="ddlGatheringType" runat="server">
-                                                                                <asp:ListItem Text="Êî∂Ê¨æÊñπÂºè1" Value="1"></asp:ListItem>
-                                                                                <asp:ListItem Text="Êî∂Ê¨æÊñπÂºè2" Value="2"></asp:ListItem>
+                                                                                <asp:ListItem Text=" ’øÓ∑Ω Ω1" Value="1"></asp:ListItem>
+                                                                                <asp:ListItem Text=" ’øÓ∑Ω Ω2" Value="2"></asp:ListItem>
                                                                             </asp:DropDownList>
                                                                         </td>                                                                         
                                                                         <td></td>                                 
                                                                     </tr>
                                                                     <tr>
-                                                                        <td style="text-align:right;">ÂΩïÂçï‰∫∫Ôºö</td>
+                                                                        <td style="text-align:right;">¬ºµ•»À£∫</td>
                                                                         <td style="text-align:left;">
                                                                             <asp:TextBox ID="txtCreatePerson" runat="server" Width="120px" Enabled="false"></asp:TextBox>
                                                                         </td>
-                                                                        <td style="text-align:right;">ÂΩïÂçïÊó•ÊúüÔºö</td> 
+                                                                        <td style="text-align:right;">¬ºµ•»’∆⁄£∫</td> 
                                                                         <td style="text-align:left;">
                                                                             <asp:TextBox ID="txtCreateTime" runat="server" Width="120px" Enabled="false"></asp:TextBox>
                                                                         </td>
@@ -502,8 +484,8 @@
                                                         Collapsed="false"
                                                         TextLabelID="lbl_npOtherPolicyItemHeader"
                                                         ImageControlID="img_npOtherPolicyItemHeader"    
-                                                        ExpandedText="(Â±ïÂºÄ)"
-                                                        CollapsedText="(ÈöêËóè)"
+                                                        ExpandedText="(’πø™)"
+                                                        CollapsedText="(“˛≤ÿ)"
                                                         ExpandedImage="~/images/collapse_blue.jpg"
                                                         CollapsedImage="~/images/expand_blue.jpg"
                                                         SuppressPostBack="true" />
@@ -517,11 +499,11 @@
                                     </dxw:ContentControl></ContentCollection></dxtc:TabPage>
                                     
                                     
-                                    <dxtc:TabPage Text="ÈôÑ‰ª∂">
+                                    <dxtc:TabPage Text="∏Ωº˛">
                                         <ContentCollection><dxw:ContentControl ID="ContentControl2" runat="server">
                                             <table style="width:100%">
                                                 <tr>
-                                                    <td style="width:100%;text-align:left;">ÈôÑ‰ª∂</td>                            
+                                                    <td style="width:100%;text-align:left;">∏Ωº˛</td>                            
                                                 </tr>
                                                 <tr>
                                                     <td style="width:100%;text-align:left;">
@@ -536,9 +518,15 @@
                                                                  fileuploadcomplete="function(s, e) { FileUploaded(s, e) }"
                                                                  fileuploadstart="function(s, e) { FileUploadStart(); }"
                                                             />
-                                                            <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px" ImagePosition="Left"></RemoveButton>
-                                                            <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px" ImagePosition="Left"></AddButton>
-                                                            <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px" ImagePosition="Left"></UploadButton> 
+                                                            <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px" ImagePosition="Left">
+<Image Height="25px" Width="25px" Url="../images/file_remove.gif"></Image>
+                                                            </RemoveButton>
+                                                            <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px" ImagePosition="Left">
+<Image Height="25px" Width="25px" Url="../images/file_add.gif"></Image>
+                                                            </AddButton>
+                                                            <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px" ImagePosition="Left">
+<Image Height="25px" Width="25px" Url="../images/file_upload.gif"></Image>
+                                                            </UploadButton> 
                                                                                                
                                                         </dxuc:ASPxUploadControl>
 
@@ -548,22 +536,22 @@
                                         </dxw:ContentControl></ContentCollection>
                                     </dxtc:TabPage>
                                             
-                                    <dxtc:TabPage Text="ÂÆ°Ê†∏‰ø°ÊÅØ">
+                                    <dxtc:TabPage Text="…Û∫À–≈œ¢">
                                         <ContentCollection><dxw:ContentControl ID="ContentControl3" runat="server">
                                             <table style="width:100%">
                                                 <tr>
-                                                    <td style="width:10%;text-align:right;">ÂÆ°Ê†∏‰∫∫Ôºö</td>
+                                                    <td style="width:10%;text-align:right;">…Û∫À»À£∫</td>
                                                     <td style="width:20%;text-align:left;">
                                                         <asp:TextBox ID="TextBox2" runat="server" Width="100px" Enabled="false"></asp:TextBox>
                                                     </td>
-                                                    <td style="width:10%;text-align:right;">ÂÆ°Ê†∏Êó•ÊúüÔºö</td>
+                                                    <td style="width:10%;text-align:right;">…Û∫À»’∆⁄£∫</td>
                                                     <td style="width:20%;text-align:left;">
                                                         <dxe:ASPxDateEdit ID="ASPxDateEdit1" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
                                                     <td></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align:right; vertical-align:top;">ÂÆ°Ê†∏Â§áÊ≥®Ôºö</td>
+                                                    <td style="text-align:right; vertical-align:top;">…Û∫À±∏◊¢£∫</td>
                                                     <td style="text-align:left;" colspan="3">                                                
                                                         <textarea runat="server" id="Textarea1" rows="5" cols="72"></textarea>
                                                     </td>
@@ -584,9 +572,9 @@
                                         <table style="width:100%">
                                             <tr>
                                                 <td style="text-align:right;">
-                                                    <asp:Button ID="btnadd" runat="server" Text="Êñ∞Â¢û" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <asp:Button ID="btnsave" runat="server" Text="‰øùÂ≠ò" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <asp:Button ID="btncancel" runat="server" Text="ÂèñÊ∂à" CssClass="input_2" />
+                                                    <asp:Button ID="btnadd" runat="server" Text="–¬‘ˆ" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <asp:Button ID="btnsave" runat="server" Text="±£¥Ê" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <asp:Button ID="btncancel" runat="server" Text="»°œ˚" CssClass="input_2" />
                                                 </td>  
                                                 <td style="width:20px;text-align:left;">
                                                     &nbsp;
