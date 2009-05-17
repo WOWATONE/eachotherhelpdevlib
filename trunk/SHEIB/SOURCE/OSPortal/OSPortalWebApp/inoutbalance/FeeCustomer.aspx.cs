@@ -46,19 +46,19 @@ namespace OSPortalWebApp.inoutbalance
 
             _dtGrid.Columns.Add("SerialNo", typeof(String));
             //_dtGrid.Columns.Add("PolicyNo", typeof(String));
-            //_dtGrid.Columns.Add("CustomerID", typeof(String));
-            //_dtGrid.Columns.Add("Customer", typeof(String));
-            //_dtGrid.Columns.Add("SalesId", typeof(String));
-            //_dtGrid.Columns.Add("Sales", typeof(String));
-            _dtGrid.Columns.Add("Audited", typeof(String));
-            _dtGrid.Columns.Add("CreatePerson", typeof(String));
+            _dtGrid.Columns.Add("CustomerID", typeof(String));
+            _dtGrid.Columns.Add("Customer", typeof(String));
+            _dtGrid.Columns.Add("SaleId", typeof(String));
+            _dtGrid.Columns.Add("Sale", typeof(String));
+            _dtGrid.Columns.Add("State", typeof(String));
+            //_dtGrid.Columns.Add("CreatePerson", typeof(String));
             //_dtGrid.Columns.Add("CarrierId", typeof(String));
             //_dtGrid.Columns.Add("CarrierNameCn", typeof(String));
             //_dtGrid.Columns.Add("BranchId", typeof(String));
             //_dtGrid.Columns.Add("BranchName", typeof(String));
             //_dtGrid.Columns.Add("ProdTypeID", typeof(String));
             //_dtGrid.Columns.Add("ProdTypeName", typeof(String));
-            _dtGrid.Columns.Add("FeeRemark", typeof(String));
+            //_dtGrid.Columns.Add("FeeRemark", typeof(String));
             
 
             _dtGrid.Rows.Add(new object[] { 
@@ -72,9 +72,11 @@ namespace OSPortalWebApp.inoutbalance
                 10,
                 "现金",
                 "Sn001",
-                "已审核",
+                "CS001",
                 "王海",
-                "备注"
+                "Sa001",
+                "王海",
+                "已审核"
             });
 
         }

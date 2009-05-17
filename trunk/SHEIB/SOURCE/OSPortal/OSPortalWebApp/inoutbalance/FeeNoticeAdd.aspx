@@ -40,7 +40,7 @@
 
 
         function btnAddPolicyClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
+            var myArguments = "resizable:no;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
             window.showModalDialog("FeeNoticeAddSelect.aspx", self, myArguments);
             gridPolicyItem.PerformCallback('');
         }
@@ -61,7 +61,7 @@
             </td>
         </tr>
         <tr>
-            <td style="width:18%;text-align:right;">确认单号：</td>
+            <td style="width:18%;text-align:right;">通知书号：</td>
             <td style="width:82%;text-align:left;" colspan="2">
                 <asp:TextBox ID="txtNoticeNo" runat="server" Width="250px"></asp:TextBox> 
             </td>
@@ -102,11 +102,13 @@
                                                                 </dxwgv:GridViewCommandColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="投保单号" CellStyle-Wrap="False">                                                                    
+                                                                </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单号" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应收保费金额" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应收" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="AccountTypeID" Caption="收费方式" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="AccountTypeID" Caption="逾期天数" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>
@@ -143,24 +145,23 @@
             <td style="width:100%;text-align:center;" colspan="3">
                 <table style="margin:0 0 0 0; padding:0 0 0 0; width:90%;">
                     <tr>
-                        <td style="width:120px;text-align:left;">
-                            <dxe:ASPxButton runat="server" ID="btnSave" Text="保存保费通知书" AutoPostBack="false"></dxe:ASPxButton>
+                        <td></td>
+                        <td style="width:60px;text-align:left;">
+                            <dxe:ASPxButton runat="server" ID="btnSave" Text="保存" AutoPostBack="false"></dxe:ASPxButton>
                         </td>
-                        <td style="width:150px;text-align:left;">
-                            <dxe:ASPxButton runat="server" ID="ASPxButton1" Text="打印代收保费通知书" AutoPostBack="false"></dxe:ASPxButton>
+                        <td style="width:60px;text-align:left;">
+                            <dxe:ASPxButton runat="server" ID="ASPxButton1" Text="审核" AutoPostBack="false"></dxe:ASPxButton>
                         </td>
-                        <td style="width:150px;text-align:left;">
-                            <dxe:ASPxButton runat="server" ID="ASPxButton2" Text="打印代收保费入账单" AutoPostBack="false"></dxe:ASPxButton>
+                        <td style="width:70px;text-align:left;">
+                            <dxe:ASPxButton runat="server" ID="ASPxButton2" Text="反审核" AutoPostBack="false"></dxe:ASPxButton>
                         </td>
-                        <td style="width:150px;text-align:left;">
-                            <dxe:ASPxButton runat="server" ID="ASPxButton3" Text="打印保费入账通知单" AutoPostBack="false"></dxe:ASPxButton>
-                        </td>
-                        <td style="width:160px;text-align:left;">
-                            <dxe:ASPxButton runat="server" ID="ASPxButton4" Text="打印直付保费入帐确认单" AutoPostBack="false"></dxe:ASPxButton>
+                        <td style="width:100px;text-align:left;">
+                            <dxe:ASPxButton runat="server" ID="ASPxButton3" Text="打印单证" AutoPostBack="false"></dxe:ASPxButton>
                         </td>
                         <td style="width:60px;text-align:left;">
                             <dxe:ASPxButton runat="server" ID="btnClose" Text="退出" AutoPostBack="false"></dxe:ASPxButton>
                         </td>
+                        <td></td>
                     </tr>
                 </table>
             </td>
