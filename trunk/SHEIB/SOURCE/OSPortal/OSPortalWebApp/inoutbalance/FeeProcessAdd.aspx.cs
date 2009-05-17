@@ -86,12 +86,24 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.Columns.Add("ProdTypeID", typeof(String));
             _dtGrid.Columns.Add("CarrierId", typeof(String));
             _dtGrid.Columns.Add("BranchId", typeof(String));
+            _dtGrid.Columns.Add("F1", typeof(String));
+            _dtGrid.Columns.Add("F2", typeof(String));
+            _dtGrid.Columns.Add("F3", typeof(String));
 
 
-            _dtGrid.Rows.Add(new object[] { "0001", 1000, 1000, 0.01, 500, 500, 500, "王怡", "寿险", "平安", "平安上海" });
+            _dtGrid.Rows.Add(new object[] { "0001", 1000, 1000, 0.01, 500, 500, 500, "王怡", "寿险", "平安", "平安上海",
+                "FP0001",
+                DateTime.Now,                
+                "代收"
+            
+            });
 
 
-            _dtGrid.Rows.Add(new object[] { "0002", 2000, 2000, 0.01, 500, 500, 500, "王怡", "寿险", "平安", "平安上海" });
+            _dtGrid.Rows.Add(new object[] { "0002", 2000, 2000, 0.01, 500, 500, 500, "王怡", "寿险", "平安", "平安上海",
+                "FP0001",
+                DateTime.Now,
+                "代收"
+            });
 
 
         }

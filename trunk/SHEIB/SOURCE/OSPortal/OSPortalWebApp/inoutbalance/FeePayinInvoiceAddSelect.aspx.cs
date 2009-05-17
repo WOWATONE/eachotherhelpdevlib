@@ -43,7 +43,10 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.Columns.Add("Fee", typeof(double));
 
             _dtGrid.Columns.Add("NoticeDate", typeof(DateTime));
-
+            _dtGrid.Columns.Add("F1", typeof(String));
+            _dtGrid.Columns.Add("F2", typeof(String));
+            _dtGrid.Columns.Add("F3", typeof(String));
+            _dtGrid.Columns.Add("F4", typeof(String));
 
             _dtGrid.Rows.Add(new object[] { 
                 Guid.NewGuid(), 
@@ -51,7 +54,11 @@ namespace OSPortalWebApp.inoutbalance
                 1,
                 "直付",                
                 2000,
-                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1)
+                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                "保险公司",
+                "分支机构",
+                "状态",
+                "客户经理"
             });
 
             _dtGrid.Rows.Add(new object[] { 
@@ -60,7 +67,11 @@ namespace OSPortalWebApp.inoutbalance
                 2,
                 "代收",                
                 2000,
-                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1)
+                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                "保险公司",
+                "分支机构",
+                "状态",
+                "客户经理"
             });
 
 

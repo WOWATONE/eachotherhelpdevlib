@@ -85,10 +85,10 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.Columns.Add("BranchId", typeof(String));
 
 
-            _dtGrid.Rows.Add(new object[] { "0001", 1000, 1000, 1000, 500, 500, 500, "王怡", "寿险", "平安", "平安上海" });
+            _dtGrid.Rows.Add(new object[] { "0001", 1000, 1000, 1000, 500, 500, 500, "王怡", "寿险", "客户经理", "收取方式" });
 
 
-            _dtGrid.Rows.Add(new object[] { "0002", 2000, 2000, 2000, 500, 500, 500, "王怡", "寿险", "平安", "平安上海" });
+            _dtGrid.Rows.Add(new object[] { "0002", 2000, 2000, 2000, 500, 500, 500, "王怡", "寿险", "客户经理", "收取方式" });
 
 
         }
