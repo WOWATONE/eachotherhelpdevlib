@@ -234,26 +234,19 @@
                                                                 </dxwgv:GridViewCommandColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="开票通知书号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="发票号码" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataDateColumn FieldName="NoticeDate" Caption="开票日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
-                                                                </dxwgv:GridViewDataDateColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="投保单号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="保单编号" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>      
-                                                                <dxwgv:GridViewDataColumn FieldName="PolicyNameCS" Caption="保险公司" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>      
-                                                                <dxwgv:GridViewDataColumn FieldName="F1" Caption="分支机构" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>    
+                                                                 <dxwgv:GridViewDataDateColumn FieldName="NoticeDate" Caption="开票日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                </dxwgv:GridViewDataDateColumn> 
+                                                                <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="发票号码" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Fee" Caption="开票金额" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>      
+                                                                </dxwgv:GridViewDataColumn>                                                                      
                                                                 <dxwgv:GridViewDataColumn FieldName="F2" Caption="经纪费收取方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>      
-                                                                <dxwgv:GridViewDataColumn FieldName="F3" Caption="收款方式" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>      
-                                                                <dxwgv:GridViewDataColumn FieldName="F4" Caption="状态" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
+                                                                
                                                             </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowPager"   />

@@ -212,21 +212,31 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataDateColumn FieldName="NoticeDate" Caption="收款日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
                                                                 </dxwgv:GridViewDataDateColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="已收保费" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应解付保费" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期已解付保费" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次应解付保费" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="经纪费比例" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>    
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收经纪费" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>   
+                                                                <dxwgv:GridViewDataColumn FieldName="FeeTypeName" Caption="收款方式" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="F4" Caption="保险公司" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>      
+                                                                <dxwgv:GridViewDataColumn FieldName="F5" Caption="分支机构" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="InvoiceState" Caption="业务员" CellStyle-Wrap="False"/>    
                                                                 <dxwgv:GridViewDataColumn FieldName="F1" Caption="险种" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>      
                                                                 <dxwgv:GridViewDataColumn FieldName="F2" Caption="投保客户" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>       
                                                                 <dxwgv:GridViewDataColumn FieldName="F3" Caption="客户经理" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>   
-                                                                <dxwgv:GridViewDataColumn FieldName="FeeTypeName" Caption="收款方式" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>                                                                       
-                                                                <dxwgv:GridViewDataColumn FieldName="F4" Caption="保险公司" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>      
-                                                                <dxwgv:GridViewDataColumn FieldName="F5" Caption="分支机构" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="InvoiceState" Caption="状态" CellStyle-Wrap="False"/>  
+                                                                 <dxwgv:GridViewDataColumn FieldName="F3" Caption="状态" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>    
                                                             </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowPager"   />

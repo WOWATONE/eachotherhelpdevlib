@@ -251,10 +251,8 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="F3" Caption="分支机构" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="F1" Caption="发票号码" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>                                                                
-                                                                <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="开票日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
-                                                                </dxwgv:GridViewDataDateColumn>                                                                                                                                  
+                                                                <dxwgv:GridViewDataColumn FieldName="F1" Caption="业务员" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>                                                                                                                                                                  
                                                                 <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应收经纪费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>  
                                                                 <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期已收经纪费" CellStyle-Wrap="False">                                                                   
@@ -263,6 +261,10 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="F1" Caption="发票号码" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>     
+                                                                <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="开票日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                </dxwgv:GridViewDataDateColumn>   
                                                                 <dxwgv:GridViewDataColumn FieldName="Audited" Caption="状态" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="F4" Caption="经纪费收取方式" CellStyle-Wrap="False">                                                                   
