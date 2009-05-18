@@ -255,22 +255,25 @@
                                                                 </dxwgv:GridViewDataColumn> 
                                                                 <dxwgv:GridViewDataColumn FieldName="F2" Caption="分支机构" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>  
+                                                                <dxwgv:GridViewDataColumn FieldName="F3" Caption="业务员" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="F3" Caption="发票号码" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="经纪费收取日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="开票日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
                                                                 </dxwgv:GridViewDataDateColumn> 
                                                                 <dxwgv:GridViewDataColumn FieldName="ProcessFee" Caption="开票金额" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn> 
+                                                                </dxwgv:GridViewDataColumn>                                                                 
                                                                 <dxwgv:GridViewDataColumn FieldName="ProcessFee" Caption="本次实收经纪费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn> 
                                                                 <dxwgv:GridViewDataColumn FieldName="ProcessFee" Caption="调整金额" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn> 
-                                                                <dxwgv:GridViewDataColumn FieldName="FeeType" Caption="方式" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="经纪费收取日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                </dxwgv:GridViewDataDateColumn> 
                                                                 <dxwgv:GridViewDataColumn FieldName="AccountType" Caption="经纪费收取方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>                                                                
                                                                 <dxwgv:GridViewDataColumn FieldName="F4" Caption="客户经理" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
+                                                                
                                                             </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" />

@@ -112,16 +112,12 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="本次实收经纪费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="F3" Caption="经纪费收取方式" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="F1" Caption="发票号码" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataDateColumn FieldName="F2" Caption="开票日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
-                                        </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CarrierId" Caption="保险公司" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="BranchId" Caption="分支机构" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="F3" Caption="经纪费收取方式" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
+                                        </dxwgv:GridViewDataDateColumn>                                        
                                     </Columns>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count"  DisplayFormat="#"/>
@@ -215,7 +211,7 @@
                             <td style="text-align:left;">
                                 <asp:TextBox ID="txtchange" runat="server" Width="100px"></asp:TextBox>
                             </td>
-                            <td style="text-align:right;">实收经纪费：</td>
+                            <td style="text-align:right;">本次实收经纪费：</td>
                             <td style="text-align:left;">
                                 <asp:TextBox ID="txtlocalfee" runat="server" Width="100px"></asp:TextBox>
                             </td>

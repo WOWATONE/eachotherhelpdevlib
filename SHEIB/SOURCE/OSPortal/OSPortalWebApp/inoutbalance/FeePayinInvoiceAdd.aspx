@@ -216,11 +216,11 @@
                             </td>                                  
                         </tr> 
                         <tr>
-                            <td style="text-align:right;">应收经纪费：</td>
+                            <td style="text-align:right;">本次应收经纪费：</td>
                             <td style="text-align:left;">
                                 <asp:TextBox ID="txtchange" runat="server" Width="100px"></asp:TextBox>
                             </td>
-                            <td style="text-align:right;">开票金额：</td>
+                            <td style="text-align:right;">本次开票金额：</td>
                             <td style="text-align:left;">
                                 <asp:TextBox ID="txtlocalfee" runat="server" Width="100px"></asp:TextBox>
                             </td>

@@ -108,23 +108,26 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="本期应解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="本期已解付保费" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="本次实际解付保费" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="StandardProcessFeeBase" Caption="本次应收经纪费" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="GettingFeeBase" Caption="调整金额" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
                                         
-                                        <dxwgv:GridViewDataColumn FieldName="StandardProcessFeeBase" Caption="应收经纪费" CellStyle-Wrap="False">                                            
-                                        </dxwgv:GridViewDataColumn>
-                                        
                                         <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种名称" CellStyle-Wrap="False">                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种名称" CellStyle-Wrap="False">     
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="F1" Caption="客户经理" CellStyle-Wrap="False">                                            
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CarrierId" Caption="保险公司" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="BranchId" Caption="分支机构" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="F1" Caption="客户经理" CellStyle-Wrap="False">                                            
-                                        </dxwgv:GridViewDataColumn>
+                                        
                                     </Columns>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count"  DisplayFormat=""/>
