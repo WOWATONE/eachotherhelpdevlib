@@ -201,7 +201,7 @@
                 <asp:Panel ID="npOtherPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
                     <table style="width:100%">
                         <tr>
-                            <td style="width:14%;text-align:right;">经纪费收取方式：</td>
+                            <td style="width:18%;text-align:right;">经纪费收取方式：</td>
                             <td style="width:16%;text-align:left;">
                                 <asp:DropDownList ID="ddlAccountType" runat="server">
                                                         <asp:ListItem Text="代收" Value="1"></asp:ListItem>
@@ -212,7 +212,7 @@
                             <td style="width:16%;text-align:left;">
                             </td>
                             <td style="width:10%;text-align:right;"></td>
-                            <td style="width:20%;text-align:left;">
+                            <td style="width:16%;text-align:left;">
                             </td>                                  
                         </tr> 
                         <tr>
@@ -230,18 +230,16 @@
                             </td>                                  
                         </tr>
                         <tr>
-                            <td style="width:13%;text-align:right;">其中，商业险保费：</td>
-                            <td style="width:17%;text-align:left;">
+                            <td style="text-align:right;">其中，商业险经纪费：</td>
+                            <td style="text-align:left;">
                                 <asp:TextBox ID="TextBox11" runat="server" Width="100px"></asp:TextBox>
                             </td>
-                            <td style="width:13%;text-align:right;">交强险保费：</td>
-                            <td style="width:17%;text-align:left;">
+                            <td style="text-align:right;">交强险经纪费：</td>
+                            <td style="text-align:left;">
                                 <asp:TextBox ID="TextBox12" runat="server" Width="100px"></asp:TextBox>
                             </td>
-                            <td style="width:13%;text-align:right;">车船税:</td>
-                            <td style="width:17%;text-align:left;">
-                                <asp:TextBox ID="TextBox13" runat="server" Width="100px"></asp:TextBox>
-                            </td>
+                            <td style="text-align:right;"></td>
+                            <td style="text-align:left;"></td>
                             <td></td>                                  
                         </tr> 
                         <tr>

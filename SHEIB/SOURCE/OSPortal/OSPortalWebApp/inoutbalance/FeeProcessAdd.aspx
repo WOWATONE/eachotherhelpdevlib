@@ -110,7 +110,7 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="实收经纪费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="本次实收经纪费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="F1" Caption="发票号码" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -143,7 +143,7 @@
                                      <div style="padding:4px 4px 3px 4px">
                                         <table>
                                             <tr>
-                                                <td style="white-space:nowrap; text-align:right;">实收经纪费:</td>
+                                                <td style="white-space:nowrap; text-align:right;">本次实收经纪费:</td>
                                                 <td style="text-align:left;">
                                                     <asp:TextBox runat="server" ID="txtGridPolicyNo" Text='<%# Eval("GotFeeBase") %>'  Enabled="false"></asp:TextBox>
                                                 </td>
@@ -198,7 +198,7 @@
                     
                     <table style="width:100%">
                         <tr>
-                            <td style="width:14%;text-align:right;">经纪费收取方式：</td>
+                            <td style="width:18%;text-align:right;">经纪费收取方式：</td>
                             <td style="width:16%;text-align:left;">
                                 <asp:DropDownList ID="ddlAccountType" runat="server">
                                                         <asp:ListItem Text="代收" Value="1"></asp:ListItem>
@@ -206,11 +206,9 @@
                                                     </asp:DropDownList>
                             </td>
                             <td style="width:14%;text-align:right;"></td>
-                            <td style="width:16%;text-align:left;">
-                            </td>
+                            <td style="width:16%;text-align:left;"></td>
                             <td style="width:10%;text-align:right;"></td>
-                            <td style="width:20%;text-align:left;">
-                            </td>                                  
+                            <td style="width:16%;text-align:left;"></td>                                  
                         </tr> 
                         <tr>
                             <td style="text-align:right;">开票金额：</td>
@@ -225,6 +223,18 @@
                             <td style="text-align:left;">
                                 <asp:TextBox ID="txtJInE" runat="server" Width="100px"></asp:TextBox>
                             </td>                                  
+                        </tr>
+                        <tr>
+                            <td style="text-align:right;">其中，商业险经纪费：</td>
+                            <td style="text-align:left;">
+                                <asp:TextBox ID="TextBox11" runat="server" Width="100px"></asp:TextBox>
+                            </td>
+                            <td style="text-align:right;">交强险经纪费：</td>
+                            <td style="text-align:left;">
+                                <asp:TextBox ID="TextBox12" runat="server" Width="100px"></asp:TextBox>
+                            </td>
+                            <td style="text-align:right;"></td>
+                            <td style="text-align:left;"></td>         
                         </tr>
                         <tr>
                             <td style="text-align:right;">经纪费收取日期：：</td>

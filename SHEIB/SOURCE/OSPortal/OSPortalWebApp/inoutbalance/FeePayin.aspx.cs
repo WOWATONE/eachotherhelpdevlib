@@ -66,6 +66,7 @@ namespace OSPortalWebApp.inoutbalance
 
             _dtGrid.Columns.Add("F1", typeof(string));
             _dtGrid.Columns.Add("F2", typeof(string));
+            _dtGrid.Columns.Add("F3", typeof(string));
             
             _dtGrid.Rows.Add(new object[] { 
                 Guid.NewGuid(), 
@@ -94,6 +95,7 @@ namespace OSPortalWebApp.inoutbalance
                 "1",
                 "平安",
                 "上海",
+                "王海"
             });
 
         }

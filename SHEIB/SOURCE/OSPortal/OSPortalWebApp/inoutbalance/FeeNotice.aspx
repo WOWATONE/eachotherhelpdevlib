@@ -33,6 +33,11 @@
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
             window.showModalDialog("FeeNoticeAdd.aspx", self, myArguments);
         }
+
+        function imgPolicyProdTypeClick() {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
+            //window.showModalDialog("PolicyProdType.aspx", self, myArguments);
+        }
         
     </script>
 </asp:Content>
@@ -71,13 +76,13 @@
                                 <table>
                                                 <tr>
                                                     <td style="width:70px;text-align:right; white-space:nowrap;">保单编号：</td>
-                                                    <td style="width:150px;text-align:left;">
-                                                        <asp:TextBox ID="txtPolicyNo" runat="server" Width="160px"></asp:TextBox>
+                                                    <td style="width:110px;text-align:left;">
+                                                        <asp:TextBox ID="txtPolicyNo" runat="server" Width="100px"></asp:TextBox>
                                                     </td>
                                                     <td style="width:20px;"></td>
                                                      <td style="width:70px;text-align:right;white-space:nowrap;">投保单号：</td>
-                                                    <td style="width:150px;text-align:left;">
-                                                        <asp:TextBox ID="TextBox1" runat="server" Width="160px"></asp:TextBox>
+                                                    <td style="width:110px;text-align:left;">
+                                                        <asp:TextBox ID="TextBox1" runat="server" Width="100px"></asp:TextBox>
                                                     </td>  
                                                     <td style="width:120px;text-align:right;white-space:nowrap;">收款方式：</td> 
                                                     <td style="width:100px;text-align:left;">                                                        
@@ -89,6 +94,24 @@
                                                                                                 
                                                     <td></td>                                                   
                                                 </tr> 
+                                                <tr>
+                                                    <td style="text-align:right;">通知书号：</td>
+                                                    <td style="text-align:left;">
+                                                       <asp:TextBox ID="TextBox2" runat="server" Width="100px"></asp:TextBox>                                                        
+                                                    </td>
+                                                    <td></td>
+                                                    <td style="text-align:right;">投保客户：</td>
+                                                    <td style="text-align:left;">
+                                                        <asp:TextBox ID="TextBox3" runat="server" Width="100px"></asp:TextBox>
+                                                    </td>
+                                                    <td style="text-align:right;">险种：</td>
+                                                    <td style="text-align:left;">
+                                                        <asp:TextBox ID="txtProdTypeID" runat="server" Width="120px"></asp:TextBox>
+                                                        <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" onclick="imgPolicyProdTypeClick();" />
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                                
                                                 <tr>
                                                     <td style="text-align:right;">部门：</td>
                                                     <td style="text-align:left;">
@@ -103,8 +126,14 @@
                                                             <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td style="text-align:right;">保单类型：</td>
+                                                    <td style="text-align:left;">
+                                                        <asp:DropDownList runat="server" ID="DropDownList3">
+                                                            <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
+                                                            <asp:ListItem Text="车险" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="非车险" Value="2"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
                                                     <td></td>
                                                 </tr>                                                
                                                 <tr>
@@ -136,7 +165,6 @@
                                                     <td style="text-align:right;" colspan="2">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
                                                         <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
-                                                        <asp:Button ID="btnRefresh" runat="server" Text="刷新" CssClass="input_2" />&nbsp;
                                                         <asp:Button ID="btnExcel" runat="server" Text="Excel" CssClass="input_2" />
                                                     </td>
                                                     <td></td>

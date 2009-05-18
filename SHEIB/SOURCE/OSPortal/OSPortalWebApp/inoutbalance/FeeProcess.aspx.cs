@@ -51,7 +51,7 @@ namespace OSPortalWebApp.inoutbalance
             _dtGrid.Columns.Add("F1", typeof(String));
             _dtGrid.Columns.Add("F2", typeof(String));
             _dtGrid.Columns.Add("F3", typeof(String));
-            
+            _dtGrid.Columns.Add("F4", typeof(String));
 
             _dtGrid.Rows.Add(new object[] { 
                 Guid.NewGuid(), 
@@ -66,7 +66,8 @@ namespace OSPortalWebApp.inoutbalance
                 new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
                 "保险公司",
                 "分支机构",
-                "FP0001"
+                "FP0001",
+                "王海"
             });
 
         }
