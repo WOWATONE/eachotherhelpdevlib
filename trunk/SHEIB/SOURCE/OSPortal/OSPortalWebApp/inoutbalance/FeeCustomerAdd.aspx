@@ -106,7 +106,7 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="本期已收保费" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GettingFeeBase" Caption="本期实收保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="GettingFeeBase" Caption="本次实收保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>                                            
                                         <dxwgv:GridViewDataColumn FieldName="GettingFeeBase" Caption="金额调整" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>

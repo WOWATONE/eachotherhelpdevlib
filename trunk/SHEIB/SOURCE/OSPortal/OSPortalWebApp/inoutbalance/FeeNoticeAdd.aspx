@@ -52,8 +52,8 @@
 
     <table style="width:100%">
         <tr>
-            <td style="width:18%;text-align:right;">收费方式：</td>
-            <td style="width:82%;text-align:left;" colspan="2">
+            <td style="width:12%;text-align:right;">收费方式：</td>
+            <td style="width:88%;text-align:left;">
                 <asp:DropDownList ID="ddlFeeType" runat="server">
                     <asp:ListItem Text="代收" Value="1"></asp:ListItem>
                     <asp:ListItem Text="直付" Value="2"></asp:ListItem>
@@ -61,28 +61,28 @@
             </td>
         </tr>
         <tr>
-            <td style="width:18%;text-align:right;">通知书号：</td>
-            <td style="width:82%;text-align:left;" colspan="2">
+            <td style="text-align:right;">通知书号：</td>
+            <td style="text-align:left;">
                 <asp:TextBox ID="txtNoticeNo" runat="server" Width="250px"></asp:TextBox> 
             </td>
         </tr>        
         <tr>
-            <td style="width:18%;text-align:right;">通知日期：</td>
-            <td style="width:82%;text-align:left;" colspan="2">
+            <td style="text-align:right;">通知日期：</td>
+            <td style="text-align:left;">
                 <dxe:ASPxDateEdit ID="deNoticeDate" runat="server"></dxe:ASPxDateEdit> 
             </td>
         </tr>
         <tr>
-            <td style="width:18%;text-align:right; vertical-align:top;">对应保单：</td>
-            <td style="width:82%;text-align:left;" colspan="2">
+            <td style="text-align:right; vertical-align:top;">对应保单：</td>
+            <td style="text-align:left;">
                 <dxe:ASPxButton runat="server" ID="btnAddPolicy" AutoPostBack="false" Text="添加保单">
                     <ClientSideEvents Click="btnAddPolicyClick" />
                 </dxe:ASPxButton>
             </td>
         </tr>
         <tr>
-            <td style="width:18%;text-align:right; vertical-align:top;"></td>
-            <td style="width:82%;text-align:left;" colspan="2">
+            <td style="text-align:right; vertical-align:top;"></td>
+            <td style="text-align:left;">
                 
                                                     <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" 
                                                     KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" 
@@ -102,11 +102,11 @@
                                                                 </dxwgv:GridViewCommandColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="投保单号" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单号" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应收保费" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次应收保费" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="AccountTypeID" Caption="应收日期" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>     
@@ -142,17 +142,16 @@
             </td>
         </tr>
         <tr>
-            <td colspan="3">&nbsp;</td>
+            <td colspan="2">&nbsp;</td>
         </tr>
         <tr>
-            <td style="width:18%;text-align:right;"></td>
-            <td style="width:82%;text-align:left;" colspan="2">                                                
-                &nbsp;</td>
+            <td style="text-align:right;"></td>
+            <td style="text-align:left;">&nbsp;</td>
         </tr>
         
         
         <tr>
-            <td style="width:100%;text-align:center;" colspan="3">
+            <td style="width:100%;text-align:center;" colspan="2">
                 <table style="margin:0 0 0 0; padding:0 0 0 0; width:90%;">
                     <tr>
                         <td></td>

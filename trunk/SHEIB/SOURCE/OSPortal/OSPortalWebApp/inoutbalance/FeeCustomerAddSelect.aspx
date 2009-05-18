@@ -38,6 +38,11 @@
             window.showModalDialog("FeeCustomerPolicySelect.aspx", self, myArguments);
             gridPolicyItem.PerformCallback('');
         }
+
+        function imgPolicyProdTypeClick() {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
+            //window.showModalDialog("PolicyProdType.aspx", self, myArguments);
+        }
         
     </script>
 </asp:Content>
@@ -69,7 +74,7 @@
                                                     </td>                                                    
                                                     <td style="width:70px;text-align:right;">部门：</td>
                                                     <td style="width:110px;text-align:left;">
-                                                        <asp:DropDownList ID="ddlDeptId" runat="server">
+                                                        <asp:DropDownList ID="ddlDeptId" runat="server" Width="100px">
                                                             <asp:ListItem Text="部门1" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="部门2" Value="2"></asp:ListItem>
                                                             <asp:ListItem Text="部门3" Value="3"></asp:ListItem>
@@ -77,7 +82,7 @@
                                                     </td>
                                                     <td style="width:70px;text-align:right;">客户经理：</td>
                                                     <td style="width:110px;text-align:left;"> 
-                                                        <asp:DropDownList ID="ddlSaleID" runat="server">
+                                                        <asp:DropDownList ID="ddlSaleID" runat="server" Width="100px">
                                                             <asp:ListItem Text="经理" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="经理" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>                                                       
@@ -95,7 +100,7 @@
                                                     </td>
                                                     <td style="text-align:right;">保单类型：</td>
                                                     <td style="text-align:left;"> 
-                                                        <asp:DropDownList ID="DropDownList3" runat="server">
+                                                        <asp:DropDownList ID="DropDownList3" runat="server" Width="100px">
                                                             <asp:ListItem Text="车险" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="非车险" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>                                                       
@@ -109,13 +114,16 @@
                                                     </td>
                                                     <td style="text-align:right;">收款方式：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList ID="ddlCompany" runat="server">
+                                                        <asp:DropDownList ID="ddlCompany" runat="server" Width="100px">
                                                             <asp:ListItem Text="代收" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="直付" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>                                                    
-                                                    <td style="text-align:right;"></td>
-                                                    <td style="text-align:left;"></td>
+                                                    <td style="text-align:right;">保险险种：</td>
+                                                    <td style="text-align:left;">
+                                                        <asp:TextBox ID="txtProdTypeID" runat="server" Width="80px"></asp:TextBox>
+                                                        <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" onclick="imgPolicyProdTypeClick();" />
+                                                    </td>
                                                     
                                                     <td>&nbsp;</td>                                                     
                                                 </tr>
@@ -141,7 +149,8 @@
                                                     <td style="text-align:left;"></td>
                                                     <td style="text-align:left;" colspan="2">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
-                                                        <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />
+                                                        <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
+                                                        <asp:Button ID="Button1" runat="server" Text="确定" CssClass="input_2" />&nbsp;
                                                     </td>
                                                     <td>&nbsp;</td> 
                                                 </tr>                                          
@@ -199,6 +208,8 @@
                                                                 <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="投保编号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="保单编号" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="保费(本)" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应收保费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>      

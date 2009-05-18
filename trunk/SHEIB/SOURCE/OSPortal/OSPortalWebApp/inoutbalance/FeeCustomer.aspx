@@ -32,7 +32,11 @@
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
             window.showModalDialog("FeeCustomerAdd.aspx", self, myArguments);
         }
-        
+
+        function imgPolicyProdTypeClick() {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
+            //window.showModalDialog("PolicyProdType.aspx", self, myArguments);
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -72,33 +76,33 @@
                                                 <tr>
                                                     <td style="width:90px;text-align:right;">通知书号：</td>
                                                     <td style="width:110px;text-align:left;">
-                                                        <asp:TextBox ID="TextBox1" runat="server" Width="120px"></asp:TextBox>
+                                                        <asp:TextBox ID="TextBox1" runat="server" Width="100px"></asp:TextBox>
                                                     </td>
                                                     <td style="width:70px;text-align:right;">保单编号：</td>
                                                     <td style="width:110px;text-align:left;">
-                                                        <asp:TextBox ID="txtPolicyNo" runat="server" Width="120px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtPolicyNo" runat="server" Width="100px"></asp:TextBox>
                                                     </td>
                                                     <td style="width:70px;text-align:right;">投保单号：</td>
                                                     <td style="width:110px;text-align:left;">
-                                                        <asp:TextBox ID="TextBox2" runat="server" Width="120px"></asp:TextBox>
+                                                        <asp:TextBox ID="TextBox2" runat="server" Width="100px"></asp:TextBox>
                                                     </td>
                                                     <td style="width:70px;text-align:right;">收款方式：</td>
                                                     <td style="width:110px;text-align:left;"> 
-                                                        <asp:DropDownList ID="ddlAccountTypeID" runat="server" Width="120px">
+                                                        <asp:DropDownList ID="ddlAccountTypeID" runat="server" Width="100px">
                                                             <asp:ListItem Text="代收" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="直付" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>                                                       
                                                     </td>
-                                                                                                       
+                                                    <td></td>                                                    
                                                 </tr>
                                                 <tr>   
                                                     <td style="text-align:right;">投保客户：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:TextBox ID="txtCustomerID" runat="server" Width="120px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtCustomerID" runat="server" Width="100px"></asp:TextBox>
                                                     </td>
                                                     <td style="text-align:right;">部门：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList ID="ddlDeptId" runat="server" Width="120px">
+                                                        <asp:DropDownList ID="ddlDeptId" runat="server" Width="100px">
                                                             <asp:ListItem Text="部门1" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="部门2" Value="2"></asp:ListItem>
                                                             <asp:ListItem Text="部门3" Value="3"></asp:ListItem>
@@ -106,40 +110,54 @@
                                                     </td>
                                                     <td style="text-align:right;">客户经理：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList runat="server" ID="ddlSalesId" Width="125px">
+                                                        <asp:DropDownList runat="server" ID="ddlSalesId" Width="100px">
                                                             <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
                                                         </asp:DropDownList>
-                                                    </td>                                                    
+                                                    </td> 
+                                                    <td style="text-align:right;">险种：</td>
+                                                    <td style="text-align:left;">
+                                                        <asp:TextBox ID="txtProdTypeID" runat="server" Width="80px"></asp:TextBox>
+                                                        <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" onclick="imgPolicyProdTypeClick();" />
+                                                    </td>                                                   
                                                     <td></td>                                                  
                                                 </tr> 
                                                 <tr>
                                                     <td style="text-align:right;">收款日期：</td>
                                                     <td style="text-align:left;">
-                                                        <dxe:ASPxDateEdit ID="deGetStartDate" runat="server" Width="130px"></dxe:ASPxDateEdit>
+                                                        <dxe:ASPxDateEdit ID="deGetStartDate" runat="server" Width="100px"></dxe:ASPxDateEdit>
                                                     </td>                                                    
                                                     <td style="text-align:center;">至</td>
                                                     <td style="text-align:left;">
-                                                        <dxe:ASPxDateEdit ID="deGetEndDate" runat="server" Width="130px"></dxe:ASPxDateEdit>
+                                                        <dxe:ASPxDateEdit ID="deGetEndDate" runat="server" Width="100px"></dxe:ASPxDateEdit>
                                                     </td> 
                                                     <td style="text-align:right;">状态：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList runat="server" ID="ddlState" Width="120px">
+                                                        <asp:DropDownList runat="server" ID="ddlState" Width="100px">
                                                             <asp:ListItem Text="待审核" Value=""></asp:ListItem>
                                                             <asp:ListItem Text="已审核" Value=""></asp:ListItem>                                                            
                                                         </asp:DropDownList>
                                                     </td> 
+                                                    <td style="text-align:right;">保单类型：</td>
+                                                    <td style="text-align:left;">
+                                                        <asp:DropDownList runat="server" ID="DropDownList3" Width="100px">
+                                                            <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
+                                                            <asp:ListItem Text="车险" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="非车险" Value="2"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
                                                     <td></td>                                                                                                
                                                 </tr>                                          
                                                 <tr>
                                                     <td style="text-align:right;"></td>
-                                                    <td style="text-align:left;">                                                                                                               
-                                                    </td>
+                                                    <td style="text-align:left;"></td>
                                                     <td style="text-align:right;"></td>
-                                                    <td style="text-align:left;">                                                        
-                                                    </td>
+                                                    <td style="text-align:left;"></td>
+                                                    <td style="text-align:right;"></td>
+                                                    <td style="text-align:left;"></td>
                                                     <td style="text-align:left;" colspan="2">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
-                                                        <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />
+                                                        <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
+                                                        <asp:Button ID="btnExcel" runat="server" Text="Excel" CssClass="input_2" />
                                                     </td>
                                                     <td></td>
                                                 </tr>                                          
@@ -204,9 +222,9 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="收款日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
                                                                 </dxwgv:GridViewDataDateColumn>   
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="实收保费" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次应收保费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="FeeBase" Caption="实收金额" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="FeeBase" Caption="本次实收保费" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>

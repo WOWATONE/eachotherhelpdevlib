@@ -28,6 +28,11 @@
 
 
         });
+
+        function imgPolicyProdTypeClick() {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
+            //window.showModalDialog("PolicyProdType.aspx", self, myArguments);
+        }
         
     </script>
 </asp:Content>
@@ -63,7 +68,7 @@
                                                     </td>                                                    
                                                     <td style="width:70px;text-align:right;">部门：</td>
                                                     <td style="width:110px;text-align:left;">
-                                                        <asp:DropDownList ID="ddlDeptId" runat="server">
+                                                        <asp:DropDownList ID="ddlDeptId" runat="server" Width="100px">
                                                             <asp:ListItem Text="部门1" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="部门2" Value="2"></asp:ListItem>
                                                             <asp:ListItem Text="部门3" Value="3"></asp:ListItem>
@@ -71,7 +76,7 @@
                                                     </td>
                                                     <td style="width:70px;text-align:right;">客户经理：</td>
                                                     <td style="width:110px;text-align:left;"> 
-                                                        <asp:DropDownList ID="ddlSaleID" runat="server">
+                                                        <asp:DropDownList ID="ddlSaleID" runat="server" Width="100px">
                                                             <asp:ListItem Text="经理" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="经理" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>                                                       
@@ -85,7 +90,7 @@
                                                     </td>
                                                     <td style="text-align:right;">保险公司：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList ID="ddlCompany" runat="server">
+                                                        <asp:DropDownList ID="ddlCompany" runat="server" Width="100px">
                                                             <asp:ListItem Text="平安保险" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="人寿保险" Value="2"></asp:ListItem>
                                                             <asp:ListItem Text="泰康保险" Value="3"></asp:ListItem>
@@ -93,7 +98,7 @@
                                                     </td>                                                    
                                                     <td style="text-align:right;">分支机构：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList ID="DropDownList1" runat="server">
+                                                        <asp:DropDownList ID="DropDownList1" runat="server" Width="100px">
                                                             <asp:ListItem Text="平安1" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="平安2" Value="2"></asp:ListItem>
                                                             <asp:ListItem Text="平安3" Value="3"></asp:ListItem>
@@ -101,11 +106,8 @@
                                                     </td>
                                                     <td style="text-align:right;">保险险种：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList ID="ddlCategory" runat="server">
-                                                            <asp:ListItem Text="保险1" Value="1"></asp:ListItem>
-                                                            <asp:ListItem Text="保险2" Value="2"></asp:ListItem>
-                                                            <asp:ListItem Text="保险3" Value="3"></asp:ListItem>
-                                                        </asp:DropDownList>
+                                                        <asp:TextBox ID="txtProdTypeID" runat="server" Width="80px"></asp:TextBox>
+                                                        <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" onclick="imgPolicyProdTypeClick();" />
                                                     </td>
                                                     <td>&nbsp;</td>                                                     
                                                 </tr>
@@ -116,13 +118,13 @@
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deGetStartDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>                                                    
-                                                    <td style="text-align:right;">至</td>
+                                                    <td style="text-align:center;">至</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deGetEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td> 
                                                     <td style="text-align:right;">保单类型：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList ID="DropDownList2" runat="server">
+                                                        <asp:DropDownList ID="DropDownList2" runat="server" Width="100px">
                                                             <asp:ListItem Text="非车险" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="车险" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>
@@ -137,7 +139,7 @@
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deBackStartDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>                                                    
-                                                    <td style="text-align:right;">至</td>
+                                                    <td style="text-align:center;">至</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deBackEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td> 
@@ -153,7 +155,7 @@
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="ASPxDateEdit1" runat="server"></dxe:ASPxDateEdit>
                                                     </td>                                                    
-                                                    <td style="text-align:right;">至</td>
+                                                    <td style="text-align:center;">至</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="ASPxDateEdit2" runat="server"></dxe:ASPxDateEdit>
                                                     </td> 
@@ -172,7 +174,8 @@
                                                     <td style="text-align:left;"></td>
                                                     <td style="text-align:left;" colspan="2">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
-                                                        <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />
+                                                        <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
+                                                        <asp:Button ID="Button1" runat="server" Text="确定" CssClass="input_2" />&nbsp;                                                        
                                                     </td>
                                                     <td>&nbsp;</td> 
                                                 </tr>                                          
