@@ -159,7 +159,7 @@
                                                     <td></td>
                                                 </tr>                                                 
                                                 <tr>
-                                                    <td style="text-align:right;">收款日期：</td>
+                                                    <td style="text-align:right;">解付日期：</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deGetStartDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>                                                    
