@@ -1,0 +1,4 @@
+<%@ Register TagPrefix="dxe" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.ASPxEditors.v8.3" %>
+<dxe:ASPxRadioButtonList runat="server" CssPostfix="Aqua" CssFilePath="~/App_Themes/Aqua/{0}/styles.css" TextSpacing="2px">
+    <Paddings Padding="7px" PaddingTop="6px" />
+</dxe:ASPxRadioButtonList>

@@ -1,0 +1,31 @@
+body{
+	font-size: 9pt;
+	color: #666666;
+	scrollbar-face-color: #515151;
+	scrollbar-shadow-color:#37B7E8;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-3dlight-color: #37B7E8;
+	scrollbar-darkshadow-color: #FFFFFF;
+	scrollbar-track-color: #F6F6F6;
+	scrollbar-arrow-color:#0AB630;
+}
+
+	
+
+td{
+font-size:9pt;
+
+}
+
+
+
+
+A:link {
+	COLOR: #FFFFFF; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #515151; TEXT-DECORATION: none
+}
+A:active{color:#FF9900}
+A:hover {
+	COLOR:#FF9900}

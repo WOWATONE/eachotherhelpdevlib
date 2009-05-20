@@ -1,0 +1,15 @@
+<%@ Register TagPrefix="dxe" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.ASPxEditors.v8.3" %>
+<dxe:ASPxButtonEdit runat="server" ImageFolder="~/App_Themes/Aqua/{0}/" CssPostfix="Aqua" CssFilePath="~/App_Themes/Aqua/{0}/styles.css">
+    <ButtonEditEllipsisImage Width="12px" Height="3px"
+        Url="~/App_Themes/Aqua/Editors/edtEllipsis.png"
+        UrlHottracked="~/App_Themes/Aqua/Editors/edtEllipsisHottracked.png"
+        UrlDisabled="~/App_Themes/Aqua/Editors/edtEllipsisDisabled.png"
+        UrlPressed="~/App_Themes/Aqua/Editors/edtEllipsisPressed.png">
+    </ButtonEditEllipsisImage>
+<ValidationSettings>
+<ErrorFrameStyle ImageSpacing="4px">
+<ErrorTextPaddings PaddingLeft="4px"></ErrorTextPaddings>
+</ErrorFrameStyle>
+<ErrorImage Url="~/App_Themes/Aqua/Editors/edtError.png" Height="14px" Width="14px"></ErrorImage>
+</ValidationSettings>
+</dxe:ASPxButtonEdit>

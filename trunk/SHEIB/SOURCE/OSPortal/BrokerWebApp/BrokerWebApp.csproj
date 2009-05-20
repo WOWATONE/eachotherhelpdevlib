@@ -30,6 +30,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.20820.16598, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.Data.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.Utils.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxEditors.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.Web.ASPxEditors.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxGridView.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.Web.ASPxGridView.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.Web.ASPxHtmlEditor.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxSpellChecker.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.Web.ASPxSpellChecker.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxTreeList.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.Web.ASPxTreeList.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.Web.v8.3.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -53,10 +89,427 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\Aqua\Demo\Background.jpg" />
+    <Content Include="App_Themes\Aqua\Demo\BannerBottomEdge.gif" />
+    <Content Include="App_Themes\Aqua\Demo\BannerBottomLeftCorner.png" />
+    <Content Include="App_Themes\Aqua\Demo\BannerBottomRightCorner.png" />
+    <Content Include="App_Themes\Aqua\Demo\BannerContent.gif" />
+    <Content Include="App_Themes\Aqua\Demo\BannerLeftEdge.gif" />
+    <Content Include="App_Themes\Aqua\Demo\BannerRightEdge.gif" />
+    <Content Include="App_Themes\Aqua\Demo\BannerTopEdge.gif" />
+    <Content Include="App_Themes\Aqua\Demo\BannerTopLeftCorner.png" />
+    <Content Include="App_Themes\Aqua\Demo\BannerTopRightCorner.png" />
+    <Content Include="App_Themes\Aqua\Demo\ChartDemoToolbar\styles.css" />
+    <Content Include="App_Themes\Aqua\Demo\Copyright.png" />
+    <Content Include="App_Themes\Aqua\Demo\Gradient.jpg" />
+    <Content Include="App_Themes\Aqua\Demo\Logotype.png" />
+    <Content Include="App_Themes\Aqua\Demo\Logotype_ASPxGridView.png" />
+    <Content Include="App_Themes\Aqua\Demo\Logotype_ASPxHtmlEditor.png" />
+    <Content Include="App_Themes\Aqua\Demo\Logotype_ASPxPivotGrid.png" />
+    <Content Include="App_Themes\Aqua\Demo\Logotype_ASPxScheduler.png" />
+    <Content Include="App_Themes\Aqua\Demo\Logotype_ASPxSpellChecker.png" />
+    <Content Include="App_Themes\Aqua\Demo\Logotype_ASPxTreeList.png" />
+    <Content Include="App_Themes\Aqua\Demo\Logotype_ChartsWebDemo.png" />
+    <Content Include="App_Themes\Aqua\Demo\Logotype_ReportWebDemo.png" />
+    <Content Include="App_Themes\Aqua\Demo\NavBarNavigation\nbBullet.gif" />
+    <Content Include="App_Themes\Aqua\Demo\NavBarNavigation\nbCollapse.png" />
+    <Content Include="App_Themes\Aqua\Demo\NavBarNavigation\nbExpand.gif" />
+    <Content Include="App_Themes\Aqua\Demo\NavBarNavigation\nbGroupContentBackground.gif" />
+    <Content Include="App_Themes\Aqua\Demo\NavBarNavigation\nbHeaderGroup.gif" />
+    <Content Include="App_Themes\Aqua\Demo\NavBarNavigation\nbHeaderGroupHover.gif" />
+    <Content Include="App_Themes\Aqua\Demo\NavBarNavigation\styles.css" />
+    <Content Include="App_Themes\Aqua\Demo\RoundPanelNavigation\rpBottomLeftCorner.png" />
+    <Content Include="App_Themes\Aqua\Demo\RoundPanelNavigation\rpBottomRightCorner.png" />
+    <Content Include="App_Themes\Aqua\Demo\RoundPanelNavigation\rpContentBottomEdge.gif" />
+    <Content Include="App_Themes\Aqua\Demo\RoundPanelNavigation\rpContentLeftEdge.gif" />
+    <Content Include="App_Themes\Aqua\Demo\RoundPanelNavigation\rpContentRightEdge.gif" />
+    <Content Include="App_Themes\Aqua\Demo\RoundPanelNavigation\rpNoHeaderTopEdge.gif" />
+    <Content Include="App_Themes\Aqua\Demo\RoundPanelNavigation\rpNoHeaderTopLeftCorner.png" />
+    <Content Include="App_Themes\Aqua\Demo\RoundPanelNavigation\rpNoHeaderTopRightCorner.png" />
+    <Content Include="App_Themes\Aqua\Demo\styles.css" />
+    <Content Include="App_Themes\Aqua\Editors\edtButtonBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtButtonBackDis.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtButtonCheckedBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtButtonHoverBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtButtonPressedBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarButtonHoverBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarButtonPressedBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarFNNextYear.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarFNNextYear.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarFNPrevYear.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarFNPrevYear.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarFooterBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarHeaderBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarNextMonth.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarNextMonthDisabled.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarNextYear.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarNextYearDisabled.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarPrevMonth.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarPrevMonthDisabled.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarPrevYear.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtCalendarPrevYearDisabled.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtDropDown.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtDropDownBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtDropDownBackDis.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtDropDownButtonHoverBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtDropDownButtonPressedBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtDropDownDisabled.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtDropDownHottracked.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtDropDownPressed.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtEllipsis.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtEllipsisDisabled.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtEllipsisHottracked.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtEllipsisPressed.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtError.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinDecBtnBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinDecButtonHoverBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinDecButtonPressedBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinEditDecrementDisabledImage.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinEditDecrementHottrackedImage.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinEditDecrementImage.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinEditIncrementDisabledImage.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinEditIncrementHottrackedImage.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinEditIncrementImage.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinEditLargeDecDisabledImage.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinEditLargeDecHottrackedImage.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinEditLargeDecImage.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinEditLargeIncDisabledImage.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinEditLargeIncHottrackedImage.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinEditLargeIncImage.png" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinIncBtnBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinIncButtonHoverBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\edtSpinIncButtonPressedBack.gif" />
+    <Content Include="App_Themes\Aqua\Editors\fcadd.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcaddhot.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcgroupaddcondition.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcgroupaddgroup.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcgroupand.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcgroupnotand.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcgroupnotor.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcgroupor.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcgroupremove.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopany.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopbegin.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopbetween.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopblank.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopcontain.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopend.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopequal.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopgreater.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopgreaterorequal.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopless.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcoplessorequal.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcoplike.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopnotany.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopnotbetween.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopnotblank.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopnotcontain.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopnotequal.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcopnotlike.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcremove.png" />
+    <Content Include="App_Themes\Aqua\Editors\fcremovehot.png" />
+    <Content Include="App_Themes\Aqua\Editors\Loading.gif" />
+    <Content Include="App_Themes\Aqua\Editors\styles.css" />
+    <Content Include="App_Themes\Aqua\GridView\gvCollapsedButton.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvDetailCollapsedButton.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvDetailExpandedButton.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvDragAndDropArrowDown.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvDragAndDropArrowUp.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvDragAndDropHideColumn.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvExpandedButton.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvFilterRowButton.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvGroupPanelBackground.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvHeaderBackground.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvHeaderFilter.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvHeaderFilterActive.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvHeaderSortDown.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvHeaderSortUp.png" />
+    <Content Include="App_Themes\Aqua\GridView\gvLoadingOnStatusBar.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvPagerBottomPanelBackground.gif" />
+    <Content Include="App_Themes\Aqua\GridView\gvParentGroupRows.gif" />
+    <Content Include="App_Themes\Aqua\GridView\Loading.gif" />
+    <Content Include="App_Themes\Aqua\GridView\styles.css" />
+    <Content Include="App_Themes\Aqua\GridView\WindowResizer.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\heConstrainProportionsBottom.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\heConstrainProportionsMiddleOff.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\heConstrainProportionsMiddleOn.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\heConstrainProportionsTop.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heBackColor.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heBackColorDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heBold.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heBoldDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heCenter.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heCenterDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heCheckSpelling.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heCheckSpellingDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heCopy.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heCopyDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heCut.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heCutDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heForeColor.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heForeColorDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heIndent.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heIndentDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heInsertImageDialog.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heInsertImageDialogDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heInsertLinkDialog.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heInsertLinkDialogDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heInsertOrderedList.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heInsertOrderedListDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heInsertUnorderedList.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heInsertUnorderedListDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heItalic.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heItalicDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heJustifyFull.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heJustifyFullDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heLeft.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heLeftDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heOutdent.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heOutdentDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\hePaste.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\hePasteDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\hePasteFromWord.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\hePasteFromWordDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\hePrint.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\hePrintDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heRedo.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heRedoDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heRemoveFormat.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heRemoveFormatDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heRight.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heRightDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heStrikethrough.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heStrikethroughDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heSubscript.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heSubscriptDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heSuperscript.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heSuperscriptDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heUnderline.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heUnderlineDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heUndo.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heUndoDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heUnlink.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Icons\heUnlinkDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\Loading.gif" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpBottomEdge.gif" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpBottomLeft.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpBottomRight.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpHeaderBackground.gif" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpHeaderLeftEdge.gif" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpHeaderRightEdge.gif" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpLeftEdge.gif" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpNoHeaderTopEdge.gif" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpNoHeaderTopLeft.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpNoHeaderTopRight.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpRightEdge.gif" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpTopEdge.gif" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpTopLeft.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\RoundPanel\herpTopRight.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\styles.css" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\tbBack.gif" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\tbDropDown.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\tbDropDownDisabled.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\tbDropDownHottracked.png" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\tbItemBack.gif" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\tbItemHBack.gif" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\tbItemSBack.gif" />
+    <Content Include="App_Themes\Aqua\HtmlEditor\tbSeparator.gif" />
+    <Content Include="App_Themes\Aqua\SpellChecker\Loading.gif" />
+    <Content Include="App_Themes\Aqua\SpellChecker\scErrorUnderline.gif" />
+    <Content Include="App_Themes\Aqua\SpellChecker\styles.css" />
+    <Content Include="App_Themes\Aqua\Web\dxpcFooterBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\Loading.gif" />
+    <Content Include="App_Themes\Aqua\Web\mBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\mGutterRightBorder.gif" />
+    <Content Include="App_Themes\Aqua\Web\mHorizontalPopOut.gif" />
+    <Content Include="App_Themes\Aqua\Web\mHorizontalPopOut.png" />
+    <Content Include="App_Themes\Aqua\Web\mHorizontalPopOutH.png" />
+    <Content Include="App_Themes\Aqua\Web\mItemBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\mItemHBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\mItemSBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\mSeparator.gif" />
+    <Content Include="App_Themes\Aqua\Web\mSubMenuItem.gif" />
+    <Content Include="App_Themes\Aqua\Web\mSubMenuItemChecked.gif" />
+    <Content Include="App_Themes\Aqua\Web\mVertBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\mVertHBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\mVerticalPopOut.gif" />
+    <Content Include="App_Themes\Aqua\Web\mVerticalPopOut.png" />
+    <Content Include="App_Themes\Aqua\Web\mVerticalSeparator.gif" />
+    <Content Include="App_Themes\Aqua\Web\mVertSBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\nbCollapse.png" />
+    <Content Include="App_Themes\Aqua\Web\nbExpand.png" />
+    <Content Include="App_Themes\Aqua\Web\nbGroupHeaderBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\nbLoading.gif" />
+    <Content Include="App_Themes\Aqua\Web\pAll.png" />
+    <Content Include="App_Themes\Aqua\Web\pAllDisabled.png" />
+    <Content Include="App_Themes\Aqua\Web\pcCloseButton.png" />
+    <Content Include="App_Themes\Aqua\Web\pcHeaderBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\pcModalBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\pcSizeGrip.png" />
+    <Content Include="App_Themes\Aqua\Web\pFirst.png" />
+    <Content Include="App_Themes\Aqua\Web\pFirstDisabled.png" />
+    <Content Include="App_Themes\Aqua\Web\pLast.png" />
+    <Content Include="App_Themes\Aqua\Web\pLastDisabled.png" />
+    <Content Include="App_Themes\Aqua\Web\pNext.png" />
+    <Content Include="App_Themes\Aqua\Web\pNextDisabled.png" />
+    <Content Include="App_Themes\Aqua\Web\pPrev.png" />
+    <Content Include="App_Themes\Aqua\Web\pPrevDisabled.png" />
+    <Content Include="App_Themes\Aqua\Web\rpBottomEdge.gif" />
+    <Content Include="App_Themes\Aqua\Web\rpBottomLeft.png" />
+    <Content Include="App_Themes\Aqua\Web\rpBottomRight.png" />
+    <Content Include="App_Themes\Aqua\Web\rpHeaderBackground.gif" />
+    <Content Include="App_Themes\Aqua\Web\rpHeaderLeftEdge.gif" />
+    <Content Include="App_Themes\Aqua\Web\rpHeaderRightEdge.gif" />
+    <Content Include="App_Themes\Aqua\Web\rpLeftEdge.gif" />
+    <Content Include="App_Themes\Aqua\Web\rpNoHeaderTopEdge.gif" />
+    <Content Include="App_Themes\Aqua\Web\rpNoHeaderTopLeft.png" />
+    <Content Include="App_Themes\Aqua\Web\rpNoHeaderTopRight.png" />
+    <Content Include="App_Themes\Aqua\Web\rpRightEdge.gif" />
+    <Content Include="App_Themes\Aqua\Web\rpTopEdge.gif" />
+    <Content Include="App_Themes\Aqua\Web\rpTopLeft.png" />
+    <Content Include="App_Themes\Aqua\Web\rpTopRight.png" />
+    <Content Include="App_Themes\Aqua\Web\smLevelBullet.gif" />
+    <Content Include="App_Themes\Aqua\Web\styles.css" />
+    <Content Include="App_Themes\Aqua\Web\tcTabBottomBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\tcTabBottomHottrackedBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\tcTabLeftBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\tcTabLeftHottrackedBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\tcTabRightBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\tcTabRightHottrackedBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\tcTabTopBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\tcTabTopHottrackedBack.gif" />
+    <Content Include="App_Themes\Aqua\Web\tiGoToTop.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseClass\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dpleft.aspx.cs">
+      <DependentUpon>dpleft.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dpleft.aspx.designer.cs">
+      <DependentUpon>dpleft.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiteMastePages\ContentMaster.Master.cs">
+      <DependentUpon>ContentMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteMastePages\ContentMaster.Master.designer.cs">
+      <DependentUpon>ContentMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SiteMastePages\PopupMaster.Master.cs">
+      <DependentUpon>PopupMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteMastePages\PopupMaster.Master.designer.cs">
+      <DependentUpon>PopupMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="splash.aspx.cs">
+      <DependentUpon>splash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="splash.aspx.designer.cs">
+      <DependentUpon>splash.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Aqua\ASPxButton.skin" />
+    <Content Include="App_Themes\Aqua\ASPxButtonEdit.skin" />
+    <Content Include="App_Themes\Aqua\ASPxCalendar.skin" />
+    <Content Include="App_Themes\Aqua\ASPxCallbackPanel.skin" />
+    <Content Include="App_Themes\Aqua\ASPxCheckBox.skin" />
+    <Content Include="App_Themes\Aqua\ASPxCloudControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxComboBox.skin" />
+    <Content Include="App_Themes\Aqua\ASPxDataView.skin" />
+    <Content Include="App_Themes\Aqua\ASPxDateEdit.skin" />
+    <Content Include="App_Themes\Aqua\ASPxFilterControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxGridView.skin" />
+    <Content Include="App_Themes\Aqua\ASPxHeadline.skin" />
+    <Content Include="App_Themes\Aqua\ASPxHtmlEditor.skin" />
+    <Content Include="App_Themes\Aqua\ASPxHyperLink.skin" />
+    <Content Include="App_Themes\Aqua\ASPxLabel.skin" />
+    <Content Include="App_Themes\Aqua\ASPxListBox.skin" />
+    <Content Include="App_Themes\Aqua\ASPxLoadingPanel.skin" />
+    <Content Include="App_Themes\Aqua\ASPxMemo.skin" />
+    <Content Include="App_Themes\Aqua\ASPxMenu.skin" />
+    <Content Include="App_Themes\Aqua\ASPxNavBar.skin" />
+    <Content Include="App_Themes\Aqua\ASPxNewsControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxPageControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxPager.skin" />
+    <Content Include="App_Themes\Aqua\ASPxPopupControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxPopupMenu.skin" />
+    <Content Include="App_Themes\Aqua\ASPxRadioButton.skin" />
+    <Content Include="App_Themes\Aqua\ASPxRadioButtonList.skin" />
+    <Content Include="App_Themes\Aqua\ASPxRoundPanel.skin" />
+    <Content Include="App_Themes\Aqua\ASPxSiteMapControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxSpinEdit.skin" />
+    <Content Include="App_Themes\Aqua\ASPxTabControl.skin" />
+    <Content Include="App_Themes\Aqua\ASPxTextBox.skin" />
+    <Content Include="App_Themes\Aqua\ASPxTitleIndex.skin" />
+    <Content Include="App_Themes\Aqua\Demo.skin" />
+    <Content Include="css\ClientSideAPI.css" />
+    <Content Include="css\font.css" />
+    <Content Include="css\ie.css" />
+    <Content Include="css\leftmenustyle.css" />
+    <Content Include="dpleft.aspx" />
+    <Content Include="head.html" />
+    <Content Include="js\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="js\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="js\css\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="js\css\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="js\css\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="js\css\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="js\css\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="js\css\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="js\css\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="js\css\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="js\css\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="js\css\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="js\css\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="js\css\smoothness\jquery-ui-1.7.1.custom.css" />
+    <Content Include="js\customdefinition.js" />
+    <Content Include="js\dpleftmenu.js" />
+    <Content Include="js\dppopup.js" />
+    <Content Include="js\jquery-1.3.2.js" />
+    <Content Include="js\jquery-ui-1.7.1.custom.min.js" />
+    <Content Include="js\jquery.validate.js" />
+    <Content Include="js\jquerynotice\jquery.notice.css" />
+    <Content Include="js\jquerynotice\jquery.notice.js" />
+    <Content Include="js\JsClass.js" />
+    <Content Include="js\JsDate.js" />
+    <Content Include="js\leftmenu.js" />
+    <Content Include="js\ui.datepicker-zh-CN.js" />
+    <Content Include="middle.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="index.aspx" />
+    <Content Include="login.aspx" />
+    <Content Include="SiteMastePages\ContentMaster.Master" />
+    <Content Include="SiteMastePages\PopupMaster.Master" />
+    <Content Include="splash.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessObjects\BusinessObjects.csproj">
+      <Project>{FD661BD4-56DB-4E99-87A1-DE84F70A0F4D}</Project>
+      <Name>BusinessObjects</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
