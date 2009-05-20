@@ -95,11 +95,14 @@
                                                     <td style="text-align:left;">
                                                         <asp:TextBox ID="txtPrePolicyNo" runat="server" Width="175px"></asp:TextBox>
                                                     </td>
+                                                    <td style="text-align:right;">批单编号：</td>
+                                                    <td style="text-align:left;">
+                                                        <asp:TextBox ID="TextBox2" runat="server" Width="175px"></asp:TextBox>
+                                                    </td>
                                                     <td style="text-align:right;">投保客户：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:TextBox ID="txtCustomer" runat="server" Width="175px"></asp:TextBox> 
-                                                    </td>
-                                                    <td></td>                                                    
+                                                        <asp:TextBox ID="TextBox1" runat="server" Width="175px"></asp:TextBox> 
+                                                    </td>                                                  
                                                 </tr> 
                                                 <tr>
                                                     <td style="text-align:right;">部门：</td>
@@ -173,12 +176,13 @@
                                                     <td style="text-align:left;" colspan="2">
                                                         <dxe:ASPxDateEdit ID="deEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
+                                                    <td>&nbsp;</td>
                                                     <td style="text-align:right;" colspan="2">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
                                                         <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
-                                                        <asp:Button ID="btnRefresh" runat="server" Text="刷新" CssClass="input_2" />
+                                                        <asp:Button ID="btnRefresh" runat="server" Text="Excel" CssClass="input_2" />
                                                     </td>
-                                                    <td>&nbsp;</td>
+                                                    
                                                 </tr>                                 
                                             </table>
                                         </td>
@@ -242,6 +246,8 @@
                                                                 <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="PrePolicyNo" Caption="投保编号" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>   
+                                                                <dxwgv:GridViewDataColumn FieldName="PrePolicyNo" Caption="批单编号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>   
                                                                 <dxwgv:GridViewDataColumn FieldName="Sales" Caption="客户经理" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>      

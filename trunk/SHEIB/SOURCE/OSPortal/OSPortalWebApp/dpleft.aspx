@@ -46,7 +46,7 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="保单批改" Name="otherinsurance/PolicyAlterList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="保单审核" Name="otherinsurance/PolicyCheckList.aspx">
+                                <dxnb:NavBarItem Text="保批单审核" Name="otherinsurance/PolicyCheckList.aspx">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
