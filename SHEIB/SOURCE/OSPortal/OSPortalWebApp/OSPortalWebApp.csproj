@@ -3275,7 +3275,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1836</DevelopmentServerPort>
+          <DevelopmentServerPort>4811</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/OSPortalWebApp</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
