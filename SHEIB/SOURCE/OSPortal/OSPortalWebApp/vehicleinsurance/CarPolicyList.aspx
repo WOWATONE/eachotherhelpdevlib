@@ -49,18 +49,7 @@
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     
     <table style="width:100%">
-                    <tr>
-                        <td style="height:40px; width:45%;">
-                            <dxe:ASPxButton ID="debtnCreate" runat="server" Text="新建" AutoPostBack="false" Visible="False">
-                                <ClientSideEvents Click="btnCreateClick" />
-                            </dxe:ASPxButton>
-                        </td>
-                        <td style="height:40px; width:55%;text-align:left;color:#0E5ED5;">
-                           当前位置：车险保单查询&nbsp;&nbsp;
-                            <asp:label id="LbUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
-	                        <label id="lblCurrentDate"></label>
-                        </td>
-                    </tr>
+                    
                     <tr>
                         <td style="width:100%;" colspan="2"> 
                             <asp:Panel ID="npSearchHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
@@ -136,12 +125,12 @@
                                                 </tr>                                              
                                                
                                                 <tr>
-                                                    <td style="text-align:right;">开始日期：</td>
+                                                    <td style="text-align:right;">录单日期：</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deStartDate" runat="server">
                                                         </dxe:ASPxDateEdit>                                                       
                                                     </td>
-                                                    <td style="text-align:right;">结束日期：</td>
+                                                    <td style="text-align:center;">至</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
