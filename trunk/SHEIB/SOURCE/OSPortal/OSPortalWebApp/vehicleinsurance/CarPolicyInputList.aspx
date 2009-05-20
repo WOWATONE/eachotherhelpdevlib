@@ -257,9 +257,9 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="收款方式" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataDateColumn FieldName="StartDate" Caption="保单开始日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                <dxwgv:GridViewDataDateColumn FieldName="StartDate" Caption="保单起保日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
                                                                 </dxwgv:GridViewDataDateColumn>
-                                                                <dxwgv:GridViewDataDateColumn FieldName="EndDate" Caption="保单结束日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                <dxwgv:GridViewDataDateColumn FieldName="EndDate" Caption="保单终止日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
                                                                 </dxwgv:GridViewDataDateColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="CheckMemo" Caption="审核备注" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
