@@ -1,0 +1,9 @@
+<%@ Register TagPrefix="dxe" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.ASPxEditors.v8.3" %>
+<dxe:ASPxListBox runat="server" CssPostfix="Aqua" CssFilePath="~/App_Themes/Aqua/{0}/styles.css" ImageFolder="~/App_Themes/Aqua/{0}/" LoadingPanelText="">
+<ValidationSettings>
+<ErrorFrameStyle ImageSpacing="4px">
+<ErrorTextPaddings PaddingLeft="4px"></ErrorTextPaddings>
+</ErrorFrameStyle>
+<ErrorImage Url="~/App_Themes/Aqua/Editors/edtError.png" Height="14px" Width="14px"></ErrorImage>
+</ValidationSettings>
+</dxe:ASPxListBox>

@@ -1,0 +1,9 @@
+<%@ Register TagPrefix="dxm" Namespace="DevExpress.Web.ASPxMenu" Assembly="DevExpress.Web.v8.3" %>
+<dxm:ASPxPopupMenu runat="server" ImageFolder="~/App_Themes/Aqua/{0}/" CssFilePath="~/App_Themes/Aqua/{0}/styles.css" CssPostfix="Aqua" ItemSpacing="1px" GutterWidth="16px" GutterImageSpacing="7px">
+    <SubMenuStyle GutterWidth="0px"  />
+    <RootItemSubMenuOffset FirstItemY="-2" LastItemY="-2" Y="-2" FirstItemX="2" LastItemX="2" X="2" />
+    <ItemSubMenuOffset FirstItemX="2" FirstItemY="-2" LastItemX="2" LastItemY="-2" X="2" Y="-2" />
+    <VerticalPopOutImage Height="11px" Width="11px" />
+    <HorizontalPopOutImage Height="11px" Width="11px" />
+    <SubMenuItemStyle ImageSpacing="4px" Width="197px" />
+</dxm:ASPxPopupMenu>
