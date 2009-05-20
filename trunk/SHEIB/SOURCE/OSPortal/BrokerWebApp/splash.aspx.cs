@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BusinessObjects;
 
 namespace BrokerWebApp
 {
@@ -11,7 +12,7 @@ namespace BrokerWebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //List<BO_P_User> datalist = BO_P_User.FetchList();
         }
     }
 }
