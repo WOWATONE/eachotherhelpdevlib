@@ -216,27 +216,27 @@ namespace BusinessObjects
                     newObj.DeptID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptID));
                     newObj.UserNameCn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
                     newObj.UserNameEn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
-                    newObj.Sex = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserID));
+                    newObj.Sex = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Sex));
 
-                    newObj.IDNo = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptID));
-                    newObj.Birthday = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
-                    newObj.JoinDate = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
-                    newObj.Title = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
-                    newObj.Status = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
+                    newObj.IDNo = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.IDNo));
+                    newObj.Birthday = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.Birthday));
+                    newObj.JoinDate = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.JoinDate));
+                    newObj.Title = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Title));
+                    newObj.Status = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Status));
 
-                    newObj.Address = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptID));
-                    newObj.PostCode = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
-                    newObj.Tel = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
-                    newObj.Fax = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
-                    newObj.Email = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
+                    newObj.Address = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Address));
+                    newObj.PostCode = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PostCode));
+                    newObj.Tel = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Tel));
+                    newObj.Fax = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Fax));
+                    newObj.Email = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Email));
 
-                    newObj.CertNo = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptID));
-                    newObj.Password = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
-                    newObj.Remark = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
-                    newObj.Mobile = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
-                    newObj.BankName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
+                    newObj.CertNo = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CertNo));
+                    newObj.Password = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Password));
+                    newObj.Remark = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Remark));
+                    newObj.Mobile = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Mobile));
+                    newObj.BankName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.BankName));
 
-                    newObj.BankAccount = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptID));
+                    newObj.BankAccount = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.BankAccount));
                     
                     list.Add(newObj);
                 }                
@@ -275,27 +275,27 @@ namespace BusinessObjects
                     this.DeptID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptID));
                     this.UserNameCn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
                     this.UserNameEn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
-                    this.Sex = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserID));
+                    this.Sex = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Sex));
 
-                    this.IDNo = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptID));
-                    this.Birthday = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
-                    this.JoinDate = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
-                    this.Title = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
-                    this.Status = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
+                    this.IDNo = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.IDNo));
+                    this.Birthday = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.Birthday));
+                    this.JoinDate = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.JoinDate));
+                    this.Title = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Title));
+                    this.Status = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Status));
 
-                    this.Address = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptID));
-                    this.PostCode = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
-                    this.Tel = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
-                    this.Fax = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
-                    this.Email = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
+                    this.Address = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Address));
+                    this.PostCode = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PostCode));
+                    this.Tel = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Tel));
+                    this.Fax = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Fax));
+                    this.Email = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Email));
 
-                    this.CertNo = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptID));
-                    this.Password = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
-                    this.Remark = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
-                    this.Mobile = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
-                    this.BankName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
+                    this.CertNo = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CertNo));
+                    this.Password = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PostCode));
+                    this.Remark = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Remark));
+                    this.Mobile = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Mobile));
+                    this.BankName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.BankName));
 
-                    this.BankAccount = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptID)); 
+                    this.BankAccount = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.BankAccount)); 
                 }
             }       
         }
@@ -340,7 +340,7 @@ namespace BusinessObjects
 
             _db.AddInParameter(dbCommand, "@CertNo", DbType.String, this.CertNo);
             _db.AddInParameter(dbCommand, "@Password", DbType.String, this.Password);
-            _db.AddInParameter(dbCommand, "@Remark", DbType.String, this.PostCode);
+            _db.AddInParameter(dbCommand, "@Remark", DbType.String, this.Remark);
             _db.AddInParameter(dbCommand, "@Mobile", DbType.String, this.Mobile);
             _db.AddInParameter(dbCommand, "@BankName", DbType.String, this.BankName);
 
@@ -386,7 +386,7 @@ namespace BusinessObjects
 
             _db.AddInParameter(dbCommand, "@CertNo", DbType.String, this.CertNo);
             _db.AddInParameter(dbCommand, "@Password", DbType.String, this.Password);
-            _db.AddInParameter(dbCommand, "@Remark", DbType.String, this.PostCode);
+            _db.AddInParameter(dbCommand, "@Remark", DbType.String, this.Remark);
             _db.AddInParameter(dbCommand, "@Mobile", DbType.String, this.Mobile);
             _db.AddInParameter(dbCommand, "@BankName", DbType.String, this.BankName);
 
