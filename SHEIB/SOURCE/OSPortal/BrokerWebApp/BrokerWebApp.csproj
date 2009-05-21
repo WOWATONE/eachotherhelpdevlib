@@ -407,6 +407,20 @@
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="schemasetting\UserEdit.aspx.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\UserEdit.aspx.designer.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="schemasetting\UserManager.aspx.cs">
+      <DependentUpon>UserManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\UserManager.aspx.designer.cs">
+      <DependentUpon>UserManager.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteMastePages\ContentMaster.Master.cs">
       <DependentUpon>ContentMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -578,6 +592,8 @@
     <Content Include="images\treeicon\Folder.png" />
     <Content Include="index.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="schemasetting\UserEdit.aspx" />
+    <Content Include="schemasetting\UserManager.aspx" />
     <Content Include="SiteMastePages\ContentMaster.Master" />
     <Content Include="SiteMastePages\PopupMaster.Master" />
     <Content Include="splash.aspx" />
