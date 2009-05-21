@@ -7,9 +7,12 @@ using System.Data.Common;
 using Microsoft.Practices.EnterpriseLibrary.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
+using System.Runtime.Serialization;
 
 namespace BusinessObjects
 {
+    [DataContract]    
+    [Serializable()]
     public class BaseObject
     {
         #region Variable

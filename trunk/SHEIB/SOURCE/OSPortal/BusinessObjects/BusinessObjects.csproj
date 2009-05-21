@@ -72,7 +72,7 @@
     <Compile Include="BaseEntity\DataService.cs" />
     <Compile Include="BaseEntity\SessionService.cs" />
     <Compile Include="BaseEntity\Utility.cs" />
-    <Compile Include="BO_P_User.cs" />
+    <Compile Include="Permission\BO_P_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
