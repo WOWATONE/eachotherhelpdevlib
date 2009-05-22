@@ -36,11 +36,7 @@
             window.showModalDialog("UserEdit.aspx", self, myArguments);
         }
 
-        function imgPolicyProdTypeClick() {
-            //var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
-            //window.showModalDialog("PolicyProdType.aspx", self, myArguments);
-        }
-        
+                
     </script>
     
 </asp:Content>
@@ -80,39 +76,38 @@
                                                 <tr>
                                                     <td style="width:70px;text-align:right; white-space:nowrap;">用户编号：</td>
                                                     <td style="width:110px;text-align:left;">
-                                                        <asp:TextBox ID="txtPolicyNo" runat="server" Width="100px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtUserID" runat="server" Width="100px"></asp:TextBox>
                                                     </td>
                                                     <td style="width:20px;"></td>
                                                      <td style="width:70px;text-align:right;white-space:nowrap;">姓名：</td>
                                                     <td style="width:110px;text-align:left;">
-                                                        <asp:TextBox ID="TextBox1" runat="server" Width="100px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtUserName" runat="server" Width="100px"></asp:TextBox>
                                                     </td>  
                                                     <td style="width:120px;text-align:right;white-space:nowrap;">部门：</td> 
                                                     <td style="width:100px;text-align:left;">                                                        
-                                                        <asp:DropDownList ID="ddlFeeType" runat="server" Width="100px">
+                                                        <asp:DropDownList ID="ddlDeptID" runat="server" Width="100px">
                                                             <asp:ListItem Text="(全部)" Value="1"></asp:ListItem>
                                                         </asp:DropDownList>
-                                                    </td>
-                                                                                                
+                                                    </td>                                                                                                
                                                     <td></td>                                                   
                                                 </tr> 
                                                 <tr>
                                                     <td style="text-align:right;">身份证号：</td>
                                                     <td style="text-align:left;">
-                                                       <asp:TextBox ID="TextBox2" runat="server" Width="100px"></asp:TextBox>                                                        
+                                                       <asp:TextBox ID="txtIDNo" runat="server" Width="100px"></asp:TextBox>                                                        
                                                     </td>
                                                     <td></td>
                                                     <td style="text-align:right;">性别：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList runat="server" ID="DropDownList2" Width="100px">
+                                                        <asp:DropDownList runat="server" ID="ddlSex" Width="100px">
                                                             <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
+                                                            <asp:ListItem Text="男" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="女" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
                                                     <td style="text-align:right;">职位：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList runat="server" ID="DropDownList1" Width="100px">
-                                                            <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
-                                                        </asp:DropDownList>
+                                                        <asp:TextBox ID="txtTitle" runat="server" Width="100px"></asp:TextBox>
                                                     </td>
                                                     <td></td>
                                                 </tr>
@@ -120,34 +115,35 @@
                                                 <tr>
                                                     <td style="text-align:right;">地址：</td>
                                                     <td style="text-align:left;">
-                                                       <asp:TextBox ID="TextBox3" runat="server" Width="100px"></asp:TextBox>                                                         
+                                                       <asp:TextBox ID="txtAddress" runat="server" Width="100px"></asp:TextBox>                                                         
                                                     </td>
                                                     <td></td>
                                                     <td style="text-align:right;">邮编：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:TextBox ID="TextBox4" runat="server" Width="100px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtPostCode" runat="server" Width="100px"></asp:TextBox>
                                                     </td>
                                                     <td style="text-align:right;">电话：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:TextBox ID="TextBox5" runat="server" Width="100px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtTel" runat="server" Width="100px"></asp:TextBox>
                                                     </td>
                                                     <td></td>
                                                 </tr>                                                
                                                 <tr>
                                                     <td style="text-align:right;">入司日期：</td>
                                                     <td style="text-align:left;">
-                                                        <dxe:ASPxDateEdit ID="deJoinDateStartDate" runat="server">
+                                                        <dxe:ASPxDateEdit ID="dtJoinDateStart" runat="server" Width="100px">
                                                         </dxe:ASPxDateEdit>                                                       
                                                     </td>
                                                     <td style="text-align:center;">至</td>
                                                     <td style="text-align:left;" colspan="2">
-                                                        <dxe:ASPxDateEdit ID="deJoinDateEndDate" runat="server"></dxe:ASPxDateEdit>
+                                                        <dxe:ASPxDateEdit ID="dtJoinDateEnd" runat="server" Width="100px"></dxe:ASPxDateEdit>
                                                     </td>
                                                     <td style="text-align:right;">状态：</td>
                                                     <td style="text-align:left;">
                                                         <asp:DropDownList runat="server" ID="ddlState" Width="100px">
-                                                            <asp:ListItem Text="在职" Value=""></asp:ListItem>
-                                                            <asp:ListItem Text="离职" Value=""></asp:ListItem>                                                            
+                                                            <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
+                                                            <asp:ListItem Text="在职" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="离职" Value="2"></asp:ListItem>                                                            
                                                         </asp:DropDownList>
                                                     </td>
                                                     <td></td>
