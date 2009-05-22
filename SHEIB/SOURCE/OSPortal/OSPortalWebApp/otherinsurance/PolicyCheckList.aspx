@@ -159,8 +159,8 @@
                                                     <td style="text-align:right;">审核状态：</td>
                                                     <td style="text-align:left;">
                                                         <asp:DropDownList ID="ddlCheckState" runat="server">
-                                                            <asp:ListItem Text="已审核" Value="1"></asp:ListItem>
-                                                            <asp:ListItem Text="待审核" Value="2"></asp:ListItem>
+                                                            <asp:ListItem Text="待审核" Value="1" Selected></asp:ListItem>
+                                                            <asp:ListItem Text="已审核" Value="2"></asp:ListItem>
                                                         </asp:DropDownList> 
                                                     </td>                                                    
                                                     <td></td>

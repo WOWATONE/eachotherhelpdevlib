@@ -68,6 +68,15 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.Panel npbasicdetail;
         
         /// <summary>
+        /// TextBox5 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        
+        /// <summary>
         /// txtSN 控件。
         /// </summary>
         /// <remarks>
@@ -93,6 +102,24 @@ namespace OSPortalWebApp.otherinsurance {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkAgain;
+        
+        /// <summary>
+        /// txtProdTypeID 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtProdTypeID;
+        
+        /// <summary>
+        /// img1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage img1;
         
         /// <summary>
         /// txtpeoplefrom 控件。
@@ -131,22 +158,49 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtpeopleto;
         
         /// <summary>
-        /// txtProdTypeID 控件。
+        /// ddlDeptId 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProdTypeID;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDeptId;
         
         /// <summary>
-        /// img1 控件。
+        /// ddlcustomermanager 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage img1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlcustomermanager;
+        
+        /// <summary>
+        /// ddlGatheringType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlGatheringType;
+        
+        /// <summary>
+        /// ddlKind 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlKind;
+        
+        /// <summary>
+        /// ddlFrom 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFrom;
         
         /// <summary>
         /// deStartDate 控件。
@@ -167,6 +221,24 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deEndDate;
         
         /// <summary>
+        /// ddlCreatePerson 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCreatePerson;
+        
+        /// <summary>
+        /// txtCreateTime 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreateTime;
+        
+        /// <summary>
         /// txtStage 控件。
         /// </summary>
         /// <remarks>
@@ -174,6 +246,15 @@ namespace OSPortalWebApp.otherinsurance {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtStage;
+        
+        /// <summary>
+        /// Button1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
         /// cpeBasic 控件。
@@ -284,6 +365,33 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtprice;
         
         /// <summary>
+        /// TextBox6 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        
+        /// <summary>
+        /// TextBox7 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        
+        /// <summary>
+        /// ddlSalesId 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSalesId;
+        
+        /// <summary>
         /// txtoriginalfee 控件。
         /// </summary>
         /// <remarks>
@@ -302,22 +410,13 @@ namespace OSPortalWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
         
         /// <summary>
-        /// ddlSalesId 控件。
+        /// TextBox8 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSalesId;
-        
-        /// <summary>
-        /// TextBox4 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox TextBox8;
         
         /// <summary>
         /// txtchange 控件。
@@ -399,114 +498,6 @@ namespace OSPortalWebApp.otherinsurance {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender1;
-        
-        /// <summary>
-        /// npOtherPolicyItemHeader 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npOtherPolicyItemHeader;
-        
-        /// <summary>
-        /// img_npOtherPolicyItemHeader 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton img_npOtherPolicyItemHeader;
-        
-        /// <summary>
-        /// lbl_npOtherPolicyItemHeader 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_npOtherPolicyItemHeader;
-        
-        /// <summary>
-        /// npOtherPolicyItemDetail 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npOtherPolicyItemDetail;
-        
-        /// <summary>
-        /// ddlDeptId 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDeptId;
-        
-        /// <summary>
-        /// ddlcustomermanager 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcustomermanager;
-        
-        /// <summary>
-        /// ddlKind 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlKind;
-        
-        /// <summary>
-        /// ddlFrom 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFrom;
-        
-        /// <summary>
-        /// ddlGatheringType 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGatheringType;
-        
-        /// <summary>
-        /// txtCreatePerson 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCreatePerson;
-        
-        /// <summary>
-        /// txtCreateTime 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCreateTime;
-        
-        /// <summary>
-        /// cpeOtherPolicyItem 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeOtherPolicyItem;
         
         /// <summary>
         /// filesUploadControl 控件。

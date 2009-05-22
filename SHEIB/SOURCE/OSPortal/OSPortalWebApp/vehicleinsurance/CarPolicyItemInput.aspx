@@ -127,6 +127,8 @@
                             <td style="text-align: left;">
                                 <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
                             </td>
+                        </tr>
+                        <tr>
                             <td style="text-align: right;">
                                 投保人：
                             </td>
@@ -137,6 +139,22 @@
                                 <img runat="server" id="imgpeoplesearch" onclick="btnSelectCustomerClick();" alt=""
                                     src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: top;" />
                             </td>
+                            <td style="text-align: right;">
+                                被保险人：
+                            </td>
+                            <td style="text-align: left;">
+                                <asp:TextBox runat="server" ID="txtpeopleto" Width="150px" Text="张三"></asp:TextBox>
+                            </td>
+                            <td style="text-align: right;">
+                                业务来源：
+                            </td>
+                            <td style="text-align: left;">
+                                <asp:DropDownList ID="ddlFrom" runat="server" Width="150px">
+                                    <asp:ListItem Text="业务来源1" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="业务来源2" Value="2"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            
                         </tr>
                         <tr>
                             <td style="text-align: right;">
@@ -159,12 +177,12 @@
                                 </asp:DropDownList>
                             </td>
                             <td style="text-align: right;">
-                                业务来源：
+                                收款方式：
                             </td>
                             <td style="text-align: left;">
-                                <asp:DropDownList ID="ddlFrom" runat="server" Width="150px">
-                                    <asp:ListItem Text="业务来源1" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="业务来源2" Value="2"></asp:ListItem>
+                                <asp:DropDownList ID="DropDownList1" runat="server" Width="150px">
+                                    <asp:ListItem Text="代收" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="直付" Value="2"></asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                             <td style="text-align: right;">
@@ -178,15 +196,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="text-align: right;">
-                                收款方式：
-                            </td>
-                            <td style="text-align: left;">
-                                <asp:DropDownList ID="DropDownList1" runat="server" Width="130px">
-                                    <asp:ListItem Text="代收" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="直付" Value="2"></asp:ListItem>
-                                </asp:DropDownList>
-                            </td>
                             <td style="text-align: right;">
                                 保险期限：
                             </td>
@@ -206,6 +215,30 @@
                                         </td>
                                     </tr>
                                 </table>
+                            </td>
+                            <td style="text-align: right;">
+                                录单人：
+                            </td>
+                            <td style="text-align: left;">
+                                <asp:DropDownList ID="DropDownList2" runat="server" Width="150px">
+                                    <asp:ListItem Text="录单人" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="录单人" Value="2"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td style="text-align: right;">
+                                录单日期：
+                            </td>
+                            <td style="text-align: left; width: 95px">
+                                <dxe:ASPxDateEdit ID="deCreateTime" runat="server" Width="150px">
+                                </dxe:ASPxDateEdit>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                特别约定：
+                            </td>
+                            <td style="text-align: left;" colspan="7">
+                                <asp:TextBox ID="TextBox11" runat="server" Width="98%"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
@@ -243,18 +276,17 @@
                                     Enabled="false"></asp:TextBox>
                             </td>
                             <td style="white-space: nowrap; text-align: right;">
-                                厂牌型号:
-                            </td>
-                            <td style="text-align: left;">
-                                <asp:TextBox runat="server" ID="txtGridPolicyCarInfoCarModel" Text='<%# Eval("CarModel") %>'></asp:TextBox>
-                            </td>
-                            <td style="white-space: nowrap; text-align: right;">
                                 车架号:
                             </td>
                             <td style="text-align: left;">
                                 <asp:TextBox runat="server" ID="txtGridPolicyCarInfoCarcaseNo" Text='<%# Eval("CarcaseNo") %>'></asp:TextBox>
                             </td>
-                            
+                            <td style="white-space: nowrap; text-align: right;">
+                                厂牌型号:
+                            </td>
+                            <td style="text-align: left;">
+                                <asp:TextBox runat="server" ID="txtGridPolicyCarInfoCarModel" Text='<%# Eval("CarModel") %>'></asp:TextBox>
+                            </td>
                             <td style="white-space: nowrap; text-align: right;">
                                 发动机号:
                             </td>
@@ -289,12 +321,19 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="white-space: nowrap; text-align: right;" colspan="8">
+                            <td style="white-space: nowrap; text-align: right;">
                                 车主:
                             </td>
                             <td style="text-align: left;">
                                 <asp:TextBox runat="server" ID="TextBox10" Text='<%# Eval("Character") %>'></asp:TextBox>
                             </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align:right"><asp:Button ID="Button2" runat="server" Text="保存" CssClass="input_2" /></td>
+                            
                         </tr>
                     </table>
                 </asp:Panel>
@@ -518,53 +557,6 @@
                     CollapsedImage="~/images/expand_blue.jpg" SuppressPostBack="true" />
             </td>
         </tr>
-        <tr>
-            <td style="width: 100%;">
-                <asp:Panel ID="npOtherPolicyItemHeader" runat="server" CssClass="collapsePanelHeader"
-                    Height="25px">
-                    <div style="padding: 5px; cursor: pointer; vertical-align: middle;">
-                        <div style="float: left; vertical-align: middle;">
-                            <asp:ImageButton ID="img_npOtherPolicyItemHeader" runat="server" ImageUrl="~/images/expand_blue.jpg"
-                                AlternateText="" />
-                        </div>
-                        <div style="float: left; margin-left: 5px;">
-                            其它项目</div>
-                        <div style="float: left; margin-left: 5px;">
-                            <asp:Label ID="lbl_npOtherPolicyItemHeader" runat="server">(展开)</asp:Label>
-                        </div>
-                    </div>
-                </asp:Panel>
-                <asp:Panel ID="npOtherPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
-                    <table style="width: 100%">
-                        <tr>
-                            <td style="width: 10%; text-align: right;">
-                                录单日期：
-                            </td>
-                            <td style="width: 90%; text-align: left;">
-                                <dxe:ASPxDateEdit ID="deCreateTime" runat="server">
-                                </dxe:ASPxDateEdit>
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
-                            </td>
-                            <td style="text-align: left;">
-                                <textarea runat="server" id="taModifyMemo" rows="3" cols="90"></textarea>
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                    </table>
-                </asp:Panel>
-                <ajaxToolkit:CollapsiblePanelExtender ID="cpeOtherPolicyItem" runat="Server" TargetControlID="npOtherPolicyItemDetail"
-                    ExpandControlID="npOtherPolicyItemHeader" CollapseControlID="npOtherPolicyItemHeader"
-                    Collapsed="false" TextLabelID="lbl_npOtherPolicyItemHeader" ImageControlID="img_npOtherPolicyItemHeader"
-                    ExpandedText="(展开)" CollapsedText="(隐藏)" ExpandedImage="~/images/collapse_blue.jpg"
-                    CollapsedImage="~/images/expand_blue.jpg" SuppressPostBack="true" />
-            </td>
-        </tr>
     </table>
     <table style="height: 5px; background-color: #E0EDFF; width: 100%; font-size: 2px;">
         <tr>
@@ -578,7 +570,8 @@
                 <td style="text-align: right;">
                     <asp:Button ID="btnadd" runat="server" Text="新增" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Button ID="btnsave" runat="server" Text="保存" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="Button1" runat="server" Text="提交审核" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="Button1" runat="server" Text="审核" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="Button3" runat="server" Text="反审核" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Button ID="btncancel" runat="server" Text="取消" CssClass="input_2" />
                 </td>
                 <td style="width: 20px; text-align: left;">
