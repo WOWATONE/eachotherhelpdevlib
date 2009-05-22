@@ -203,13 +203,13 @@ namespace BrokerWebApp.schemasetting {
         protected global::System.Web.UI.WebControls.Button btnCancel;
         
         /// <summary>
-        /// btnExcel control.
+        /// btnExport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExcel;
+        protected global::System.Web.UI.WebControls.Button btnExport;
         
         /// <summary>
         /// cpeSearch control.
@@ -264,6 +264,15 @@ namespace BrokerWebApp.schemasetting {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridSearchResult;
+        
+        /// <summary>
+        /// gridExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridExport;
         
         /// <summary>
         /// cpeSearchResult control.

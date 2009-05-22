@@ -60,5 +60,14 @@ namespace BrokerWebApp.schemasetting
         {
             _datalist = BO_P_User.FetchList();
         }
+
+
+        protected void btnXlsExport_Click(object sender, EventArgs e)
+        {
+            this.gridSearchResult.DataSource = _datalist;
+            this.gridSearchResult.DataBind();
+            this.gridExport.WriteXlsToResponse();
+        }
+
     }
 }
