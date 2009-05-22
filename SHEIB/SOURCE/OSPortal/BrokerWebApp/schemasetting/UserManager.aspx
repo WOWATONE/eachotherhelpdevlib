@@ -129,11 +129,7 @@
                                                     </td>
                                                     <td style="text-align:right;">电话：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList runat="server" ID="DropDownList3" Width="100px">
-                                                            <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
-                                                            <asp:ListItem Text="车险" Value="1"></asp:ListItem>
-                                                            <asp:ListItem Text="非车险" Value="2"></asp:ListItem>
-                                                        </asp:DropDownList>
+                                                        <asp:TextBox ID="TextBox5" runat="server" Width="100px"></asp:TextBox>
                                                     </td>
                                                     <td></td>
                                                 </tr>                                                

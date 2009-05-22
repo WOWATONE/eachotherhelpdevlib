@@ -13,5 +13,12 @@ namespace BrokerWebApp.schemasetting
         {
 
         }
+
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
     }
 }
