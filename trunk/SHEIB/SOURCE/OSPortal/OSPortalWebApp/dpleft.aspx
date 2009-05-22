@@ -54,9 +54,9 @@
                             <Items>
                                 <dxnb:NavBarItem Text="询价单录入" Name="vehicleinsurance/AskPriceInputList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="批改" Name="vehicleinsurance/AskPriceAlertList.aspx">
+                                <dxnb:NavBarItem Text="批改" Name="vehicleinsurance/CarPolicyAlertList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="审核" Name="vehicleinsurance/AskPriceCheckList.aspx">
+                                <dxnb:NavBarItem Text="审核" Name="vehicleinsurance/CarPolicyCheckList.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="保单信息补录" Name="vehicleinsurance/CarPolicyList.aspx">
                                 </dxnb:NavBarItem>

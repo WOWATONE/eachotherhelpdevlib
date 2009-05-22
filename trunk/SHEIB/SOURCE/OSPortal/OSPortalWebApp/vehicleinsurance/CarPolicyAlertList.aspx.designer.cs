@@ -11,7 +11,7 @@
 namespace OSPortalWebApp.vehicleinsurance {
     
     
-    public partial class AskPriceInput {
+    public partial class AskPriceAlertList {
         
         /// <summary>
         /// ScriptManager1 控件。
@@ -23,67 +23,85 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
-        /// insuranceDetailTabPage 控件。
+        /// debtnCreate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTabControl.ASPxPageControl insuranceDetailTabPage;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton debtnCreate;
         
         /// <summary>
-        /// ContentControl1 控件。
+        /// LbUserNameTop 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl1;
+        protected global::System.Web.UI.WebControls.Label LbUserNameTop;
         
         /// <summary>
-        /// npbasicheader 控件。
+        /// npSearchHeader 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npbasicheader;
+        protected global::System.Web.UI.WebControls.Panel npSearchHeader;
         
         /// <summary>
-        /// img_npbasicheader 控件。
+        /// img_npSearchHeader 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton img_npbasicheader;
+        protected global::System.Web.UI.WebControls.ImageButton img_npSearchHeader;
         
         /// <summary>
-        /// lbl_npbasicheader 控件。
+        /// lbl_npSearchHeader 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_npbasicheader;
+        protected global::System.Web.UI.WebControls.Label lbl_npSearchHeader;
         
         /// <summary>
-        /// npbasicdetail 控件。
+        /// npSearchDetail 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npbasicdetail;
+        protected global::System.Web.UI.WebControls.Panel npSearchDetail;
         
         /// <summary>
-        /// txtSN 控件。
+        /// txtPrePolicyNo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSN;
+        protected global::System.Web.UI.WebControls.TextBox txtPrePolicyNo;
+        
+        /// <summary>
+        /// txtPolicyNo 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPolicyNo;
+        
+        /// <summary>
+        /// txtCustomer 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCustomer;
         
         /// <summary>
         /// ddlDeptId 控件。
@@ -95,94 +113,13 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.DropDownList ddlDeptId;
         
         /// <summary>
-        /// ddlcustomermanager 控件。
+        /// ddlSalesId 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcustomermanager;
-        
-        /// <summary>
-        /// decbGridCarrierNo 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox decbGridCarrierNo;
-        
-        /// <summary>
-        /// decbGridBranchName 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox decbGridBranchName;
-        
-        /// <summary>
-        /// TextBox1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        
-        /// <summary>
-        /// txtpeoplefrom 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtpeoplefrom;
-        
-        /// <summary>
-        /// imgadduser 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgadduser;
-        
-        /// <summary>
-        /// imgpeoplesearch 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
-        
-        /// <summary>
-        /// ddlFrom 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFrom;
-        
-        /// <summary>
-        /// ddlKind 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlKind;
-        
-        /// <summary>
-        /// ddlGatheringType 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGatheringType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSalesId;
         
         /// <summary>
         /// txtCreatePerson 控件。
@@ -194,174 +131,165 @@ namespace OSPortalWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtCreatePerson;
         
         /// <summary>
-        /// txtCreateTime 控件。
+        /// ddlSourceTypeID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCreateTime;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSourceTypeID;
         
         /// <summary>
-        /// cpeBasic 控件。
+        /// ddlFlagContinue 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeBasic;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFlagContinue;
         
         /// <summary>
-        /// npGridPolicyItemHeader 控件。
+        /// txtProdTypeID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npGridPolicyItemHeader;
+        protected global::System.Web.UI.WebControls.TextBox txtProdTypeID;
         
         /// <summary>
-        /// img_npGridPolicyItem 控件。
+        /// ddlCarrierId 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton img_npGridPolicyItem;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCarrierId;
         
         /// <summary>
-        /// lbl_npGridPolicyItem 控件。
+        /// ddlBranchId 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_npGridPolicyItem;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBranchId;
         
         /// <summary>
-        /// npGridPolicyItemDetail 控件。
+        /// TextBox1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npGridPolicyItemDetail;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// gridPolicyItem 控件。
+        /// deStartDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridPolicyItem;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deStartDate;
         
         /// <summary>
-        /// cpeGridPolicyItem 控件。
+        /// deEndDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeGridPolicyItem;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deEndDate;
         
         /// <summary>
-        /// ContentControl2 控件。
+        /// btnSearch 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl2;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
-        /// filesUploadControl 控件。
+        /// btnCancel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxUploadControl.ASPxUploadControl filesUploadControl;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
         
         /// <summary>
-        /// ContentControl3 控件。
+        /// btnRefresh 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl3;
+        protected global::System.Web.UI.WebControls.Button btnRefresh;
         
         /// <summary>
-        /// TextBox2 控件。
+        /// cpeSearch 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeSearch;
         
         /// <summary>
-        /// ASPxDateEdit1 控件。
+        /// npSearchResultHeader 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit ASPxDateEdit1;
+        protected global::System.Web.UI.WebControls.Panel npSearchResultHeader;
         
         /// <summary>
-        /// Textarea1 控件。
+        /// img_npSearchResultHeader 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea Textarea1;
+        protected global::System.Web.UI.WebControls.ImageButton img_npSearchResultHeader;
         
         /// <summary>
-        /// npExecuteAction 控件。
+        /// lbl_npSearchResultHeader 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npExecuteAction;
+        protected global::System.Web.UI.WebControls.Label lbl_npSearchResultHeader;
         
         /// <summary>
-        /// btnadd 控件。
+        /// npSearchResultDetail 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnadd;
+        protected global::System.Web.UI.WebControls.Panel npSearchResultDetail;
         
         /// <summary>
-        /// btnsave 控件。
+        /// gridSearchResult 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnsave;
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridSearchResult;
         
         /// <summary>
-        /// Button1 控件。
+        /// cpeSearchResult 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// btncancel 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btncancel;
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeSearchResult;
     }
 }

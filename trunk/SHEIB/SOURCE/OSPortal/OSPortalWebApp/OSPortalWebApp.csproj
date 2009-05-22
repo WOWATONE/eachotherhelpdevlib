@@ -645,19 +645,19 @@
       <DependentUpon>splash.aspx</DependentUpon>
     </Compile>
     <Compile Include="utils\PolicyItemList.cs" />
-    <Compile Include="vehicleinsurance\AskPriceAlert.aspx.cs">
-      <DependentUpon>AskPriceAlert.aspx</DependentUpon>
+    <Compile Include="vehicleinsurance\CarPolicyAlert.aspx.cs">
+      <DependentUpon>CarPolicyAlert.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="vehicleinsurance\AskPriceAlert.aspx.designer.cs">
-      <DependentUpon>AskPriceAlert.aspx</DependentUpon>
+    <Compile Include="vehicleinsurance\CarPolicyAlert.aspx.designer.cs">
+      <DependentUpon>CarPolicyAlert.aspx</DependentUpon>
     </Compile>
-    <Compile Include="vehicleinsurance\AskPriceCheck.aspx.cs">
-      <DependentUpon>AskPriceCheck.aspx</DependentUpon>
+    <Compile Include="vehicleinsurance\CarPolicyCheck.aspx.cs">
+      <DependentUpon>CarPolicyCheck.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="vehicleinsurance\AskPriceCheck.aspx.designer.cs">
-      <DependentUpon>AskPriceCheck.aspx</DependentUpon>
+    <Compile Include="vehicleinsurance\CarPolicyCheck.aspx.designer.cs">
+      <DependentUpon>CarPolicyCheck.aspx</DependentUpon>
     </Compile>
     <Compile Include="vehicleinsurance\AskPriceRead.aspx.cs">
       <DependentUpon>AskPriceRead.aspx</DependentUpon>
@@ -687,12 +687,12 @@
     <Compile Include="vehicleinsurance\CarPolicyInput.aspx.designer.cs">
       <DependentUpon>CarPolicyInput.aspx</DependentUpon>
     </Compile>
-    <Compile Include="vehicleinsurance\AskPriceAlertList.aspx.cs">
-      <DependentUpon>AskPriceAlertList.aspx</DependentUpon>
+    <Compile Include="vehicleinsurance\CarPolicyAlertList.aspx.cs">
+      <DependentUpon>CarPolicyAlertList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="vehicleinsurance\AskPriceAlertList.aspx.designer.cs">
-      <DependentUpon>AskPriceAlertList.aspx</DependentUpon>
+    <Compile Include="vehicleinsurance\CarPolicyAlertList.aspx.designer.cs">
+      <DependentUpon>CarPolicyAlertList.aspx</DependentUpon>
     </Compile>
     <Compile Include="vehicleinsurance\AskPriceInputList.aspx.cs">
       <DependentUpon>AskPriceInputList.aspx</DependentUpon>
@@ -701,12 +701,12 @@
     <Compile Include="vehicleinsurance\AskPriceInputList.aspx.designer.cs">
       <DependentUpon>AskPriceInputList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="vehicleinsurance\AskPriceCheckList.aspx.cs">
-      <DependentUpon>AskPriceCheckList.aspx</DependentUpon>
+    <Compile Include="vehicleinsurance\CarPolicyCheckList.aspx.cs">
+      <DependentUpon>CarPolicyCheckList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="vehicleinsurance\AskPriceCheckList.aspx.designer.cs">
-      <DependentUpon>AskPriceCheckList.aspx</DependentUpon>
+    <Compile Include="vehicleinsurance\CarPolicyCheckList.aspx.designer.cs">
+      <DependentUpon>CarPolicyCheckList.aspx</DependentUpon>
     </Compile>
     <Compile Include="vehicleinsurance\AskPriceSearch.aspx.cs">
       <DependentUpon>AskPriceSearch.aspx</DependentUpon>
@@ -3020,7 +3020,7 @@
     <Content Include="otherinsurance\PolicySearch.aspx" />
     <Content Include="vehicleinsurance\AskPriceInput.aspx" />
     <Content Include="vehicleinsurance\CarPolicyInput.aspx" />
-    <Content Include="vehicleinsurance\AskPriceAlertList.aspx" />
+    <Content Include="vehicleinsurance\CarPolicyAlertList.aspx" />
     <Content Include="vehicleinsurance\AskPriceSearch.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -3233,12 +3233,12 @@
     <Content Include="schemasetting\RoleManager.aspx" />
     <Content Include="schemasetting\UserManager.aspx" />
     <Content Include="SiteMastePages\PopupMaster.Master" />
-    <Content Include="vehicleinsurance\AskPriceAlert.aspx" />
-    <Content Include="vehicleinsurance\AskPriceCheck.aspx" />
+    <Content Include="vehicleinsurance\CarPolicyAlert.aspx" />
+    <Content Include="vehicleinsurance\CarPolicyCheck.aspx" />
     <Content Include="vehicleinsurance\AskPriceRead.aspx" />
     <Content Include="vehicleinsurance\CarPolicyInputList.aspx" />
     <Content Include="vehicleinsurance\AskPriceInputList.aspx" />
-    <Content Include="vehicleinsurance\AskPriceCheckList.aspx" />
+    <Content Include="vehicleinsurance\CarPolicyCheckList.aspx" />
     <Content Include="vehicleinsurance\CarPolicyItemInput.aspx" />
     <Content Include="vehicleinsurance\CarPolicyItemInputRead.aspx" />
     <Content Include="vehicleinsurance\CarPolicyList.aspx" />
