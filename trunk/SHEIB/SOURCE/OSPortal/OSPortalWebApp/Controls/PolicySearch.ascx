@@ -87,7 +87,7 @@
                                                     <td style="width:15px;text-align:right;">
                                                         <asp:CheckBox runat="server" ID="chkSignDate" Text="" />
                                                     </td>
-                                                    <td style="width:60px;text-align:right;">投保日期：</td>
+                                                    <td style="width:60px;text-align:right;">录单日期：</td>
                                                     <td style="width:120px;text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deSignStartDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>

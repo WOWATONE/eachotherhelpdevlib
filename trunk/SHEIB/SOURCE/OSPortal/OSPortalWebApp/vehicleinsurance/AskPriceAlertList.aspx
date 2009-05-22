@@ -146,7 +146,7 @@
                                                     <td></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="text-align:right;">投保日期：</td>
+                                                    <td style="text-align:right;">录单日期：</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="deStartDate" runat="server">
                                                         </dxe:ASPxDateEdit>                                                       

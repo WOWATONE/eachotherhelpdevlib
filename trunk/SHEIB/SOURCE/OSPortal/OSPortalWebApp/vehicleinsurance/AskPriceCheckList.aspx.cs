@@ -34,6 +34,7 @@ namespace OSPortalWebApp.vehicleinsurance
             _dtGridAskPrice.PrimaryKey = new DataColumn[] { 
             _dtGridAskPrice.Columns.Add("PrePolicyNo", typeof(String)) };
 
+            _dtGridAskPrice.Columns.Add("AskPriceNo", typeof(String));
             _dtGridAskPrice.Columns.Add("SalesId", typeof(String));
             _dtGridAskPrice.Columns.Add("UserNameCn", typeof(String));
             _dtGridAskPrice.Columns.Add("CarrierID", typeof(String));
@@ -77,7 +78,20 @@ namespace OSPortalWebApp.vehicleinsurance
             _dtGridAskPrice.Columns.Add("CheckMemo", typeof(String));
 
 
-            _dtGridAskPrice.Rows.Add(new object[] { "1", "1",
+            _dtGridAskPrice.Rows.Add(new object[] { "1", "2","1",
+                "王怡", "1", "平安保险", "1", "上海平安", 
+                5, 5000, 4000, 3000, 12000,
+                50, 40, 30, 120, 
+                "人民币", 8000, "0001", "王海", 
+                "王五",
+                new DateTime(DateTime.Now.Year-1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                "1", "来源", "1", "新增", "1", "支票", 
+                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1), 
+                new DateTime(DateTime.Now.Year+1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                "备注"
+            });
+
+            _dtGridAskPrice.Rows.Add(new object[] { "2", "2","1",
                 "王怡", "1", "平安保险", "1", "上海平安", 
                 5, 5000, 4000, 3000, 12000,
                 50, 40, 30, 120, 
@@ -91,7 +105,19 @@ namespace OSPortalWebApp.vehicleinsurance
             });
 
 
-            _dtGridAskPrice.Rows.Add(new object[] { "2", "2",
+            _dtGridAskPrice.Rows.Add(new object[] { "3","22", "2",
+                "王怡-1", "1", "平安保险", "1", "上海平安", 
+                5, 5000, 4000, 3000, 12000,
+                50, 40, 30, 120, 
+                "人民币", 8000, "0001", "王海-1", 
+                "王五",
+                new DateTime(DateTime.Now.Year-1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                "1", "来源", "1", "新增", "1", "支票", 
+                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1), 
+                new DateTime(DateTime.Now.Year+1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
+                "备注"
+            });
+            _dtGridAskPrice.Rows.Add(new object[] { "4","22", "2",
                 "王怡-1", "1", "平安保险", "1", "上海平安", 
                 5, 5000, 4000, 3000, 12000,
                 50, 40, 30, 120, 
