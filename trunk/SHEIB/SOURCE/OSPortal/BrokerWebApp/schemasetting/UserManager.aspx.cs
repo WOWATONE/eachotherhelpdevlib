@@ -43,16 +43,16 @@ namespace BrokerWebApp.schemasetting
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            //DataTable dt = ((DataTable)ViewState["PolicyItemGridData"]);
-            //DataRow row = dt.Rows.Find(e.Keys["ID"]);
-            //dt.Rows.Remove(row);
+            String theUserID = e.Keys["UserID"].ToString();
+            BO_P_User.Delete(theUserID);
             e.Cancel = true;
             this.gridSearchResult.CancelEdit();
+            refreshDataForGrid();
         }
 
         protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
-            this.gridSearchResult.DataBind();
+            //  
         }
 
 
@@ -68,6 +68,21 @@ namespace BrokerWebApp.schemasetting
             this.gridSearchResult.DataBind();
             this.gridExport.WriteXlsToResponse();
         }
+
+        protected void gridSearchResult_CustomCallBack(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            refreshDataForGrid();                        
+        }
+
+
+        private void refreshDataForGrid()
+        {
+            GetSearchResultDataForGrid();
+            ViewState[viewStateDatalistName] = _datalist;
+            this.gridSearchResult.DataSource = _datalist;
+            this.gridSearchResult.DataBind();
+        }
+
 
     }
 }

@@ -22,4 +22,12 @@ namespace BusinessObjects
 
         #endregion Variable
     }
+
+
+    public enum ModifiedAction
+    {
+        Insert,
+        Update
+    }
+
 }

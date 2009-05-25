@@ -45,7 +45,8 @@ namespace BusinessObjects
             Remark, 
             Mobile, 
             BankName, 
-            BankAccount
+            BankAccount,
+            DeptName
         }
 
 
@@ -174,21 +175,27 @@ namespace BusinessObjects
             get;
             set;
         }
-        
+
+        public String DeptName
+        {
+            get;
+            set;
+        }
+
         #endregion Property
 
 
         #region Methods
 
-        public void Save()
+        public void Save(ModifiedAction action)
         {
-            if (this.UserID != "")
+            if (action == ModifiedAction.Insert)
             {
-                update();
+                add();
             }
             else
             {
-                add();
+                update();                
             }
         }
 
@@ -197,11 +204,12 @@ namespace BusinessObjects
             List<BO_P_User> list = new List<BO_P_User>();
             
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT UserID, DeptID, UserNameCn, UserNameEn,");
-            sb.Append("Sex, IDNo, Birthday, JoinDate, Title, Status,");
-            sb.Append("Address, PostCode, Tel, Fax, Email, CertNo,");
-            sb.Append("Password, Remark, Mobile, BankName, BankAccount");
-            sb.Append(" FROM P_User ");
+            sb.Append("SELECT A.UserID, A.DeptID, A.UserNameCn, A.UserNameEn,");
+            sb.Append("A.Sex, A.IDNo, A.Birthday, A.JoinDate, A.Title, A.Status,");
+            sb.Append("A.Address, A.PostCode, A.Tel, A.Fax, A.Email, A.CertNo,");
+            sb.Append("A.Password, A.Remark, A.Mobile, A.BankName, A.BankAccount, B.DeptName");
+            sb.Append(" FROM P_User A");
+            sb.Append(" LEFT JOIN P_Department B ON A.DeptID=B.DeptID ");
             
             
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
@@ -215,6 +223,7 @@ namespace BusinessObjects
 
                     newObj.UserID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserID));
                     newObj.DeptID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptID));
+                    newObj.DeptName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptName));
                     newObj.UserNameCn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
                     newObj.UserNameEn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
                     newObj.Sex = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Sex));
@@ -246,6 +255,19 @@ namespace BusinessObjects
             return list;
         }
 
+
+        public static void Delete(String userID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM P_User ");
+            sb.Append(" WHERE UserID = @UserID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@UserID", DbType.String, userID);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
                         
         #endregion Methods
 
@@ -256,12 +278,13 @@ namespace BusinessObjects
         private void fetchByID(String userID)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT UserID, DeptID, UserNameCn, UserNameEn,");
-            sb.Append("Sex, IDNo, Birthday, JoinDate, Title, Status,");
-            sb.Append("Address, PostCode, Tel, Fax, Email, CertNo,");
-            sb.Append("Password, Remark, Mobile, BankName, BankAccount");
-            sb.Append(" FROM P_User ");
-            sb.Append(" UserID = @UserID ");
+            sb.Append("SELECT A.UserID, A.DeptID, A.UserNameCn, A.UserNameEn,");
+            sb.Append("A.Sex, A.IDNo, A.Birthday, A.JoinDate, A.Title, A.Status,");
+            sb.Append("A.Address, A.PostCode, A.Tel, A.Fax, A.Email, A.CertNo,");
+            sb.Append("A.Password, A.Remark, A.Mobile, A.BankName, A.BankAccount, B.DeptName");
+            sb.Append(" FROM P_User A ");
+            sb.Append(" LEFT JOIN P_Department B ON A.DeptID=B.DeptID ");
+            sb.Append(" WHERE A.UserID = @UserID ");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
@@ -274,6 +297,8 @@ namespace BusinessObjects
                 {
                     this.UserID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserID));
                     this.DeptID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptID));
+                    this.DeptName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptName));
+                    
                     this.UserNameCn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
                     this.UserNameEn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
                     this.Sex = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Sex));
@@ -316,7 +341,7 @@ namespace BusinessObjects
             sb.Append("@UserID, @DeptID, @UserNameCn, @UserNameEn,");
             sb.Append("@Sex, @IDNo, @Birthday, @JoinDate, @Title, @Status,");
             sb.Append("@Address, @PostCode, @Tel, @Fax, @Email, @CertNo,");
-            sb.Append("@Password, @Remark, @Mobile, @BankName, @BankAccount)");
+            sb.Append("@Password, @Remark, @Mobile, @BankName, @BankAccount");
             sb.Append(" )");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
@@ -328,8 +353,18 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "@Sex", DbType.String, this.Sex);
 
             _db.AddInParameter(dbCommand, "@IDNo", DbType.String, this.IDNo);
-            _db.AddInParameter(dbCommand, "@Birthday", DbType.DateTime, this.Birthday );
-            _db.AddInParameter(dbCommand, "@JoinDate", DbType.DateTime, this.JoinDate);
+
+            if (this.Birthday == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@Birthday", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@Birthday", DbType.DateTime, this.Birthday);
+
+            if (this.JoinDate == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@JoinDate", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@JoinDate", DbType.DateTime, this.JoinDate);
+            
+
             _db.AddInParameter(dbCommand, "@Title", DbType.String, this.Title);
             _db.AddInParameter(dbCommand, "@Status", DbType.String, this.Status);
 
@@ -361,7 +396,7 @@ namespace BusinessObjects
             sb.Append(" JoinDate=@JoinDate, Title=@Title, Status=@Status, ");
             sb.Append(" Address=@Address, PostCode=@PostCode, Tel=@Tel, ");
             sb.Append(" Fax=@Fax, Email=@Email, CertNo=@CertNo, ");
-            sb.Append(" Password=@Password, Remark=@Remark, Mobile=@Mobile, )");
+            sb.Append(" Password=@Password, Remark=@Remark, Mobile=@Mobile, ");
             sb.Append(" BankName=@BankName, BankAccount=@BankAccount ");
             sb.Append(" Where UserID=@UserID;");            
             
@@ -374,8 +409,18 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "@Sex", DbType.String, this.Sex);
 
             _db.AddInParameter(dbCommand, "@IDNo", DbType.String, this.IDNo);
-            _db.AddInParameter(dbCommand, "@Birthday", DbType.DateTime, this.Birthday);
-            _db.AddInParameter(dbCommand, "@JoinDate", DbType.DateTime, this.JoinDate);
+            
+            if (this.Birthday == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@Birthday", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@Birthday", DbType.DateTime, this.Birthday);
+
+            if (this.JoinDate == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@JoinDate", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@JoinDate", DbType.DateTime, this.JoinDate);
+            
+
             _db.AddInParameter(dbCommand, "@Title", DbType.String, this.Title);
             _db.AddInParameter(dbCommand, "@Status", DbType.String, this.Status);
 

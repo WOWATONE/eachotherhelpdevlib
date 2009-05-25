@@ -74,6 +74,7 @@
     <Compile Include="BaseEntity\Utility.cs" />
     <Compile Include="Permission\BO_P_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchemaSetting\BO_P_Department.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
