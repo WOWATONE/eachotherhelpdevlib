@@ -1,5 +1,5 @@
 <%@ Register TagPrefix="dxe" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.ASPxEditors.v8.3" %>
-<dxe:ASPxDateEdit runat="server" ImageFolder="~/App_Themes/Aqua/{0}/" CssFilePath="~/App_Themes/Aqua/{0}/styles.css" CssPostfix="Aqua" ShowShadow="False" EditFormat="Custom" EditFormatString="MM-dd-yyyy" CalendarProperties-TodayButtonText="今天" CalendarProperties-ClearButtonText="清除">
+<dxe:ASPxDateEdit runat="server" ImageFolder="~/App_Themes/Aqua/{0}/" CssFilePath="~/App_Themes/Aqua/{0}/styles.css" CssPostfix="Aqua" ShowShadow="False" EditFormat="Custom" EditFormatString="yyyy-MM-dd" CalendarProperties-TodayButtonText="今天" CalendarProperties-ClearButtonText="清除">
 <CalendarProperties>
     <FooterStyle Spacing="17px"></FooterStyle>
     <HeaderStyle Spacing="1px"></HeaderStyle>

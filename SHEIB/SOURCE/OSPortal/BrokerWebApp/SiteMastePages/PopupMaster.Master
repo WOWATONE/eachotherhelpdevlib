@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
+    <base target="_self" />
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <meta content="zh-CN" http-equiv="Content-Language" />    
     <LINK href="../css/ie.css" type="text/css" rel="stylesheet">

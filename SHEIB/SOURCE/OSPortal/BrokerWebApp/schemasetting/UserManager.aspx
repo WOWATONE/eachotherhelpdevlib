@@ -33,7 +33,10 @@
 
         function gridCustomButtonClick(s, e) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            window.showModalDialog("UserEdit.aspx", self, myArguments);
+            //debugger;
+            var userid = s.GetDataRow(e.visibleIndex).cells[1].innerText;
+            var querystring = "UserEdit.aspx?userid=" + userid;
+            window.showModalDialog(querystring, self, myArguments);
         }
 
                 
@@ -72,96 +75,105 @@
                                 </div>
                             </asp:Panel>                           
                             <asp:Panel ID="npSearchDetail" runat="server" CssClass="collapsePanel" Height="0">
-                                <table>
-                                                <tr>
-                                                    <td style="width:70px;text-align:right; white-space:nowrap;">用户编号：</td>
-                                                    <td style="width:110px;text-align:left;">
-                                                        <asp:TextBox ID="txtUserID" runat="server" Width="100px"></asp:TextBox>
-                                                    </td>
-                                                    <td style="width:20px;"></td>
-                                                     <td style="width:70px;text-align:right;white-space:nowrap;">姓名：</td>
-                                                    <td style="width:110px;text-align:left;">
-                                                        <asp:TextBox ID="txtUserName" runat="server" Width="100px"></asp:TextBox>
-                                                    </td>  
-                                                    <td style="width:120px;text-align:right;white-space:nowrap;">部门：</td> 
-                                                    <td style="width:100px;text-align:left;">                                                        
-                                                        <asp:DropDownList ID="ddlDeptID" runat="server" Width="100px">
-                                                            <asp:ListItem Text="(全部)" Value="1"></asp:ListItem>
-                                                        </asp:DropDownList>
-                                                    </td>                                                                                                
-                                                    <td></td>                                                   
-                                                </tr> 
-                                                <tr>
-                                                    <td style="text-align:right;">身份证号：</td>
-                                                    <td style="text-align:left;">
-                                                       <asp:TextBox ID="txtIDNo" runat="server" Width="100px"></asp:TextBox>                                                        
-                                                    </td>
-                                                    <td></td>
-                                                    <td style="text-align:right;">性别：</td>
-                                                    <td style="text-align:left;">
-                                                        <asp:DropDownList runat="server" ID="ddlSex" Width="100px">
-                                                            <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
-                                                            <asp:ListItem Text="男" Value="1"></asp:ListItem>
-                                                            <asp:ListItem Text="女" Value="2"></asp:ListItem>
-                                                        </asp:DropDownList>
-                                                    </td>
-                                                    <td style="text-align:right;">职位：</td>
-                                                    <td style="text-align:left;">
-                                                        <asp:TextBox ID="txtTitle" runat="server" Width="100px"></asp:TextBox>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                
-                                                <tr>
-                                                    <td style="text-align:right;">地址：</td>
-                                                    <td style="text-align:left;">
-                                                       <asp:TextBox ID="txtAddress" runat="server" Width="100px"></asp:TextBox>                                                         
-                                                    </td>
-                                                    <td></td>
-                                                    <td style="text-align:right;">邮编：</td>
-                                                    <td style="text-align:left;">
-                                                        <asp:TextBox ID="txtPostCode" runat="server" Width="100px"></asp:TextBox>
-                                                    </td>
-                                                    <td style="text-align:right;">电话：</td>
-                                                    <td style="text-align:left;">
-                                                        <asp:TextBox ID="txtTel" runat="server" Width="100px"></asp:TextBox>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>                                                
-                                                <tr>
-                                                    <td style="text-align:right;">入司日期：</td>
-                                                    <td style="text-align:left;">
-                                                        <dxe:ASPxDateEdit ID="dtJoinDateStart" runat="server" Width="100px">
-                                                        </dxe:ASPxDateEdit>                                                       
-                                                    </td>
-                                                    <td style="text-align:center;">至</td>
-                                                    <td style="text-align:left;" colspan="2">
-                                                        <dxe:ASPxDateEdit ID="dtJoinDateEnd" runat="server" Width="100px"></dxe:ASPxDateEdit>
-                                                    </td>
-                                                    <td style="text-align:right;">状态：</td>
-                                                    <td style="text-align:left;">
-                                                        <asp:DropDownList runat="server" ID="ddlState" Width="100px">
-                                                            <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
-                                                            <asp:ListItem Text="在职" Value="1"></asp:ListItem>
-                                                            <asp:ListItem Text="离职" Value="2"></asp:ListItem>                                                            
-                                                        </asp:DropDownList>
-                                                    </td>
-                                                    <td></td>
-                                                </tr> 
-                                                <tr>                                                    
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td style="text-align:right;" colspan="2">
-                                                        <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
-                                                        <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
-                                                        <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" />                                                       
-                                                    </td>                                                    
-                                                    <td></td>
-                                                </tr>                                         
-                                            </table>
+								<table>
+												<tr>
+													<td style="width:70px;text-align:right; white-space:nowrap;">用户编号：</td>
+													<td style="width:110px;text-align:left;">
+														<dxe:ASPxTextBox ID="dxetxtUserID" ClientInstanceName="txtUserID" runat="server" Width="100px"></dxe:ASPxTextBox>
+													</td>
+													<td style="width:20px;"></td>
+													 <td style="width:70px;text-align:right;white-space:nowrap;">姓名：</td>
+													<td style="width:110px;text-align:left;">
+														<dxe:ASPxTextBox ID="dxetxtUserNameCn" ClientInstanceName="dxetxtUserNameCn" runat="server" Width="100px"></dxe:ASPxTextBox>
+													</td>  
+													<td style="width:120px;text-align:right;white-space:nowrap;">部门：</td> 
+													<td style="width:100px;text-align:left;">                                                        
+														<dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server" Width="100px" DropDownStyle="DropDownList">
+															<Items>
+																<dxe:ListEditItem Text="(全部)" Value="" />
+																<dxe:ListEditItem Text="业务部" Value="1" />
+															</Items>
+														</dxe:ASPxComboBox> 
+													</td>                                                                                                
+													<td></td>                                                   
+												</tr> 
+												<tr>
+													<td style="text-align:right;">身份证号：</td>
+													<td style="text-align:left;">
+													   <dxe:ASPxTextBox ID="dxetxtIDNo" ClientInstanceName="dxetxtIDNo" runat="server" Width="100px"></dxe:ASPxTextBox>                                                        
+													</td>
+													<td></td>
+													<td style="text-align:right;">性别：</td>
+													<td style="text-align:left;">
+														<dxe:ASPxComboBox ID="dxeddlSex" ClientInstanceName="dxeddlSex" runat="server" Width="100px" DropDownStyle="DropDownList">
+															<Items>
+																<dxe:ListEditItem Text="(全部)" Value="" />
+																<dxe:ListEditItem Text="男" Value="男" />
+																<dxe:ListEditItem Text="女" Value="女" />
+															</Items>
+														</dxe:ASPxComboBox>
+													</td>
+													<td style="text-align:right;">职位：</td>
+													<td style="text-align:left;">
+														<dxe:ASPxTextBox ID="dxetxtTitle" ClientInstanceName="dxetxtTitle" runat="server" Width="100px"></dxe:ASPxTextBox>
+													</td>
+													<td></td>
+												</tr>
+												
+												<tr>
+													<td style="text-align:right;">地址：</td>
+													<td style="text-align:left;">
+													   <dxe:ASPxTextBox ID="dxetxtAddress" ClientInstanceName="dxetxtAddress" runat="server" Width="100px"></dxe:ASPxTextBox>                                                         
+													</td>
+													<td></td>
+													<td style="text-align:right;">邮编：</td>
+													<td style="text-align:left;">
+														<dxe:ASPxTextBox ID="dxetxtPostCode" ClientInstanceName="dxetxtPostCode" runat="server" Width="100px"></dxe:ASPxTextBox>
+													</td>
+													<td style="text-align:right;">电话：</td>
+													<td style="text-align:left;">
+														<dxe:ASPxTextBox ID="dxetxtTel" ClientInstanceName="dxetxtTel" runat="server" Width="100px"> </dxe:ASPxTextBox>
+													</td>
+													<td></td>
+												</tr>                                                
+												<tr>
+													<td style="text-align:right;">入司日期：</td>
+													<td style="text-align:left;">
+														<dxe:ASPxDateEdit ID="dtJoinDateStart" runat="server" Width="100px">
+														</dxe:ASPxDateEdit>                                                       
+													</td>
+													<td style="text-align:center;"></td>
+													<td style="text-align:right;">至&nbsp;&nbsp;</td>
+													<td style="text-align:left;">
+														<dxe:ASPxDateEdit ID="dtJoinDateEnd" runat="server" Width="100px">
+														</dxe:ASPxDateEdit>
+													</td>
+													<td style="text-align:right;">状态：</td>
+													<td style="text-align:left;">
+														<dxe:ASPxComboBox ID="dxeddlStatus" ClientInstanceName="dxeddlStatus" runat="server" Width="100px" DropDownStyle="DropDownList">
+															<Items>
+																<dxe:ListEditItem Text="(全部)" Value="" />
+																<dxe:ListEditItem Text="在职" Value="在职" />
+																<dxe:ListEditItem Text="离职" Value="离职" />
+															</Items>
+														</dxe:ASPxComboBox>
+													</td>
+													<td></td>
+												</tr> 
+												<tr>                                                    
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td style="text-align:right;" colspan="2">
+														<asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
+														<asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
+														<asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" />                                                       
+													</td>                                                    
+													<td></td>
+												</tr>                                         
+											</table>
                                      
                              </asp:Panel>
                              <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearch" runat="Server"
@@ -200,7 +212,8 @@
                                                     Settings-ShowFooter="true" Width="100%" 
                                                     SettingsPager-AlwaysShowPager="true" 
                                                     OnRowDeleting="gridSearchResult_RowDeleting" 
-                                                    OnRowDeleted="gridSearchResult_RowDeleted"
+                                                    OnRowDeleted="gridSearchResult_RowDeleted" 
+                                                    OnCustomCallback="gridSearchResult_CustomCallBack"
                                                     >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
@@ -215,7 +228,7 @@
                                                                 </dxwgv:GridViewCommandColumn>                                                                
                                                                 <dxwgv:GridViewDataColumn FieldName="UserID" Caption="用户编号" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">                                                                   
                                                                 </dxwgv:GridViewDataColumn>  
-                                                                <dxwgv:GridViewDataColumn FieldName="DeptID" Caption="部门" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="DeptName" Caption="部门" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">                                                                   
                                                                 </dxwgv:GridViewDataColumn>                                                                  
                                                                 <dxwgv:GridViewDataColumn FieldName="UserNameCn" Caption="姓名(中)" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">                                                                   
                                                                 </dxwgv:GridViewDataColumn>  
@@ -254,7 +267,8 @@
                                                         <SettingsPager Mode="ShowPager"   />
                                                         <Settings ShowGroupPanel="false" />
                                                         <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
-                                                        
+                                                        <SettingsBehavior ConfirmDelete="true" />
+                                                        <SettingsText CustomizationWindowCaption="个性化" />
                                                     </dxwgv:ASPxGridView> 
                                                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
                                                 </td>
