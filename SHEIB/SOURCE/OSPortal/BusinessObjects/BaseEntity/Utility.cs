@@ -18,6 +18,16 @@ namespace BusinessObjects
             return value;
         }
 
+        public static Int32 GetIntFromReader(IDataReader reader, Int32 columnIndex)
+        {
+            Int32 value = 0;
+            if (!Convert.IsDBNull(reader[columnIndex]))
+            {
+                value = reader.GetInt32(columnIndex);
+            }
+            return value;
+        }
+
 
         public static DateTime GetDatetimeFromReader(IDataReader reader, Int32 columnIndex)
         {
