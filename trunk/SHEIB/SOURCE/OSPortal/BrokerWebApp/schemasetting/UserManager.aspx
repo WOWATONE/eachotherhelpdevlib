@@ -34,9 +34,24 @@
         function gridCustomButtonClick(s, e) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
             //debugger;
+            var buttonID = e.buttonID;
             var userid = s.GetDataRow(e.visibleIndex).cells[1].innerText;
-            var querystring = "UserEdit.aspx?userid=" + userid;
-            window.showModalDialog(querystring, self, myArguments);
+            
+            var querystring;
+            switch(buttonID)
+                {
+                case "编辑":
+                    querystring = "UserEdit.aspx?userid=" + userid;
+                    window.showModalDialog(querystring, self, myArguments);
+                    break
+                case "角色":
+                    querystring = "UserRole.aspx?userid=" + userid;
+                    window.showModalDialog(querystring, self, myArguments);
+                    break
+               default:
+                 //do nothing;
+               }
+            
         }
 
                 
@@ -223,6 +238,8 @@
                                                                     <DeleteButton Visible="true" />
                                                                     <CustomButtons>
                                                                         <dxwgv:GridViewCommandColumnCustomButton Text="编辑">                                                                            
+                                                                        </dxwgv:GridViewCommandColumnCustomButton>
+                                                                        <dxwgv:GridViewCommandColumnCustomButton Text="角色">
                                                                         </dxwgv:GridViewCommandColumnCustomButton>                                                                        
                                                                     </CustomButtons>                                                   
                                                                 </dxwgv:GridViewCommandColumn>                                                                

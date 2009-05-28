@@ -454,6 +454,13 @@
     <Compile Include="schemasetting\UserManager.aspx.designer.cs">
       <DependentUpon>UserManager.aspx</DependentUpon>
     </Compile>
+    <Compile Include="schemasetting\UserRole.aspx.cs">
+      <DependentUpon>UserRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\UserRole.aspx.designer.cs">
+      <DependentUpon>UserRole.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteMastePages\ContentMaster.Master.cs">
       <DependentUpon>ContentMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -630,6 +637,7 @@
     <Content Include="schemasetting\RolePermission.aspx" />
     <Content Include="schemasetting\UserEdit.aspx" />
     <Content Include="schemasetting\UserManager.aspx" />
+    <Content Include="schemasetting\UserRole.aspx" />
     <Content Include="SiteMastePages\ContentMaster.Master" />
     <Content Include="SiteMastePages\PopupMaster.Master" />
     <Content Include="splash.aspx" />
