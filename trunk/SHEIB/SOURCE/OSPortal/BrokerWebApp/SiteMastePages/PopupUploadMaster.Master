@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PopupMaster.master.cs" Inherits="BrokerWebApp.SiteMastePages.PopupMaster" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PopupUploadMaster.master.cs" Inherits="BrokerWebApp.SiteMastePages.PopupUploadMaster" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -23,7 +23,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" enctype="multipart/form-data" runat="server">
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         

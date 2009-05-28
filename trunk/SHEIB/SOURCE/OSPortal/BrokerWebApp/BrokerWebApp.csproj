@@ -475,6 +475,13 @@
     <Compile Include="SiteMastePages\PopupMaster.Master.designer.cs">
       <DependentUpon>PopupMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="SiteMastePages\PopupUploadMaster.Master.cs">
+      <DependentUpon>PopupUploadMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteMastePages\PopupUploadMaster.Master.designer.cs">
+      <DependentUpon>PopupUploadMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="splash.aspx.cs">
       <DependentUpon>splash.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -647,6 +654,9 @@
       <Project>{FD661BD4-56DB-4E99-87A1-DE84F70A0F4D}</Project>
       <Name>BusinessObjects</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SiteMastePages\PopupUploadMaster.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
