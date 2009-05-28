@@ -1,4 +1,4 @@
-﻿<%@ Page Title="用户修改" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" CodeBehind="UserEdit.aspx.cs" Inherits="BrokerWebApp.schemasetting.UserEdit" %>
+﻿<%@ Page Title="用户角色" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" CodeBehind="UserRole.aspx.cs" Inherits="BrokerWebApp.schemasetting.UserRole" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
@@ -9,7 +9,8 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>用户管理</title>
+    
+    <title>用户角色</title>
     <script type="text/javascript">
         $(document).ready(function() {
             //jQuery.noticeAdd({
@@ -33,8 +34,7 @@
         });
 
         function btnCancelClick() {
-            window.document.forms[0].reset();
-            //ASPxClientEdit.ClearEditorsInContainer(null);            
+            ASPxClientEdit.ClearEditorsInContainer(null);            
         }
 
         function gridCustomButtonClick(s, e) {
@@ -49,7 +49,7 @@
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     
     <table style="width:100%">
@@ -220,7 +220,7 @@
                         <tr>
                             <td style="width:400px;">&nbsp;</td>
                             <td style="width:75px;">
-                                <dxe:ASPxButton runat="server" id="dxebtnSave" Text="保存" OnClick="btnSave_Click" CausesValidation="true" >
+                                <dxe:ASPxButton runat="server" id="dxebtnSave" Text="保存" CausesValidation="true" >
                                 </dxe:ASPxButton> 
                             </td>
                             <td style="width:75px;">
@@ -253,5 +253,5 @@
             </td>
         </tr>
     </table>
-        
+    
 </asp:Content>
