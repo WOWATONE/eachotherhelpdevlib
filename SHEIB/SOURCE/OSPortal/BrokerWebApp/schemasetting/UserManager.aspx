@@ -283,10 +283,16 @@
                                                             </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowPager"   />
-                                                        <Settings ShowGroupPanel="false" />
+                                                        <Settings ShowGroupPanel="true" ShowVerticalScrollBar="true" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
                                                         <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
-                                                        <SettingsBehavior ConfirmDelete="true" />
+                                                        <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                                         <SettingsText CustomizationWindowCaption="个性化" />
+                                                        <GroupSummary >
+                                                            <dxwgv:ASPxSummaryItem FieldName="UserID" SummaryType="Count" ShowInGroupFooterColumn="UserID" DisplayFormat = "总计: {0}" />
+                                                        </GroupSummary>
+                                                        <TotalSummary >
+                                                            <dxwgv:ASPxSummaryItem FieldName="UserID" SummaryType="Count" ShowInGroupFooterColumn="UserID" DisplayFormat = "总计: {0}" />
+                                                        </TotalSummary>
                                                     </dxwgv:ASPxGridView> 
                                                     <asp:ObjectDataSource ID="DataSource" runat="server" 
                                                         SelectMethod="FetchList"
