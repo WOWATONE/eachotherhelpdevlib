@@ -223,6 +223,7 @@
                                            <tr>
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server" 
+                                                    DataSourceID="DataSource"
                                                     KeyFieldName="UserID" AutoGenerateColumns="False" 
                                                     Settings-ShowFooter="true" Width="100%" 
                                                     SettingsPager-AlwaysShowPager="true" 
@@ -287,6 +288,16 @@
                                                         <SettingsBehavior ConfirmDelete="true" />
                                                         <SettingsText CustomizationWindowCaption="个性化" />
                                                     </dxwgv:ASPxGridView> 
+                                                    <asp:ObjectDataSource ID="DataSource" runat="server" SelectMethod="FetchList"
+                                                        TypeName="BusinessObjects.BO_P_User" 
+                                                        EnablePaging="True" 
+                                                        MaximumRowsParameterName="PageSize" 
+                                                        StartRowIndexParameterName="StartRow" 
+                                                        >
+                                                        <SelectParameters> 
+                                                             
+                                                        </SelectParameters>
+                                                    </asp:ObjectDataSource>
                                                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
                                                 </td>
                                             </tr>
