@@ -11,7 +11,7 @@
 namespace BrokerWebApp.schemasetting {
     
     
-    public partial class RoleManager {
+    public partial class RoleEdit {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -21,24 +21,6 @@ namespace BrokerWebApp.schemasetting {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
-        
-        /// <summary>
-        /// debtnCreate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton debtnCreate;
-        
-        /// <summary>
-        /// LbUserNameTop control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LbUserNameTop;
         
         /// <summary>
         /// npSearchHeader control.
@@ -77,6 +59,15 @@ namespace BrokerWebApp.schemasetting {
         protected global::System.Web.UI.WebControls.Panel npSearchDetail;
         
         /// <summary>
+        /// tblerrmsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable tblerrmsg;
+        
+        /// <summary>
         /// dxetxtRoleNo control.
         /// </summary>
         /// <remarks>
@@ -84,6 +75,15 @@ namespace BrokerWebApp.schemasetting {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtRoleNo;
+        
+        /// <summary>
+        /// originalID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden originalID;
         
         /// <summary>
         /// dxetxtRoleName control.
@@ -95,31 +95,40 @@ namespace BrokerWebApp.schemasetting {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtRoleName;
         
         /// <summary>
-        /// btnSearch control.
+        /// dxetxtRemark control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtRemark;
         
         /// <summary>
-        /// btnCancel control.
+        /// dxebtnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnSave;
         
         /// <summary>
-        /// btnExport control.
+        /// dxebtnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExport;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnCancel;
+        
+        /// <summary>
+        /// dxeClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxeClose;
         
         /// <summary>
         /// cpeSearch control.
@@ -129,77 +138,5 @@ namespace BrokerWebApp.schemasetting {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeSearch;
-        
-        /// <summary>
-        /// npSearchResultHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npSearchResultHeader;
-        
-        /// <summary>
-        /// img_npSearchResultHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton img_npSearchResultHeader;
-        
-        /// <summary>
-        /// lbl_npSearchResultHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_npSearchResultHeader;
-        
-        /// <summary>
-        /// npSearchResultDetail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npSearchResultDetail;
-        
-        /// <summary>
-        /// gridSearchResult control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridSearchResult;
-        
-        /// <summary>
-        /// gridExport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridExport;
-        
-        /// <summary>
-        /// DataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource DataSource;
-        
-        /// <summary>
-        /// cpeSearchResult control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeSearchResult;
     }
 }
