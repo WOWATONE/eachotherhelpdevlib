@@ -35,5 +35,5 @@
             <Image Height="19px" Width="23px"></Image>
         </LastPageButton>
     </SettingsPager>
-    <SettingsText  CommandUpdate="确定" CommandCancel="取消" CommandDelete="删除" CommandNew="新增" CommandSelect="选择" CommandEdit="编辑" EmptyDataRow="没有数据" ConfirmDelete="确定删除吗？" />
+    <SettingsText  CommandUpdate="确定" CommandCancel="取消" CommandDelete="删除" CommandNew="新增" CommandSelect="选择" CommandEdit="编辑" EmptyDataRow="没有数据" ConfirmDelete="确定删除吗？" GroupPanel="拖动列进行分组" />
 </dxgv:ASPxGridView>

@@ -199,7 +199,7 @@ namespace BusinessObjects
             }
         }
 
-        public static List<BO_P_User> FetchList(int StartRow, int PageSize)
+        public static List<BO_P_User> FetchList()
         {
             List<BO_P_User> list = new List<BO_P_User>();
             
