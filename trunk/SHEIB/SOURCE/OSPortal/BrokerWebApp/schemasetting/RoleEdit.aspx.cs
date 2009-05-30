@@ -96,17 +96,21 @@ namespace BrokerWebApp.schemasetting
         
         private bool checkExist()
         {
+            Boolean vaildResult;
+            vaildResult = BO_P_Role.CheckExist(this.dxetxtRoleNo.Text.Trim(), this.dxetxtRoleName.Text.Trim());
+            
             BO_P_Role theBO_P_Role;
             theBO_P_Role = new BO_P_Role(this.dxetxtRoleName.Text.Trim());
-            if (theBO_P_Role.RoleID == null || theBO_P_Role.RoleID == this.originalID.Value)
+            
+            if (vaildResult)
             {
-                this.tblerrmsg.Visible = false;
-                return false;
+                this.tblerrmsg.Visible = true;
+                return true;                
             }
             else
             {
-                this.tblerrmsg.Visible = true;
-                return true;
+                this.tblerrmsg.Visible = false;
+                return false;
             }
         }
 
