@@ -426,6 +426,13 @@
     <Compile Include="schemasetting\DepartmentManager.aspx.designer.cs">
       <DependentUpon>DepartmentManager.aspx</DependentUpon>
     </Compile>
+    <Compile Include="schemasetting\RoleEdit.aspx.cs">
+      <DependentUpon>RoleEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\RoleEdit.aspx.designer.cs">
+      <DependentUpon>RoleEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="schemasetting\RoleManager.aspx.cs">
       <DependentUpon>RoleManager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -656,6 +663,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="schemasetting\RoleEdit.aspx" />
     <Content Include="SiteMastePages\PopupUploadMaster.Master" />
   </ItemGroup>
   <ItemGroup>

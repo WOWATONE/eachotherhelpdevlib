@@ -74,7 +74,8 @@ namespace BusinessObjects
             }
         }
 
-        public static List<BO_P_Role> FetchList()
+
+        public static List<BO_P_Role> FetchList(int StartRow, int PageSize, String RoleNoFilter)
         {
             List<BO_P_Role> list = new List<BO_P_Role>();
 
@@ -103,7 +104,8 @@ namespace BusinessObjects
             return list;
         }
 
-
+        
+                
         public static void Delete(String id)
         {
             StringBuilder sb = new StringBuilder();
@@ -128,12 +130,12 @@ namespace BusinessObjects
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT RoleID, RoleNo, RoleName, Remark ");
-            sb.Append(" FROM P_Role;");
-            sb.Append(" WHERE RoleID = @RoleID ");
+            sb.Append(" FROM P_Role ");
+            sb.Append(" WHERE RoleName = @RoleName ");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
-            _db.AddInParameter(dbCommand, "@RoleID", DbType.String, id);
+            _db.AddInParameter(dbCommand, "@RoleName", DbType.String, id);
 
 
             using (IDataReader reader = _db.ExecuteReader(dbCommand))

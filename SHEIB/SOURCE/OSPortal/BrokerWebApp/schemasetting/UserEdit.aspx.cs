@@ -56,7 +56,7 @@ namespace BrokerWebApp.schemasetting
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (!Page.IsPostBack && modifiedAction == ModifiedAction.Update)
             {
                 loadData();
             }
@@ -113,6 +113,8 @@ namespace BrokerWebApp.schemasetting
             _BO_P_User.Remark = this.dxetxtRemark.Text.Trim();
 
             _BO_P_User.Save(modifiedAction);
+
+            this.originalUserID.Value = _BO_P_User.UserID;
 
         }
 
