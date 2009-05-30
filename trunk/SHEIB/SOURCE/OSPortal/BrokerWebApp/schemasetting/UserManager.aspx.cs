@@ -23,8 +23,7 @@ namespace BrokerWebApp.schemasetting
         {
             //
         }
-
-
+        
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
@@ -40,16 +39,22 @@ namespace BrokerWebApp.schemasetting
             //  
         }
 
+        protected void gridSearchResult_CustomCallBack(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            //                       
+        }
                 
         protected void btnXlsExport_Click(object sender, EventArgs e)
         {
             this.gridExport.WriteXlsToResponse();
         }
 
-        protected void gridSearchResult_CustomCallBack(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        protected void btnSearch_Click(object sender, EventArgs e)
         {
-            //                       
+            //add filter expression
         }
+
+        
 
     }
 }

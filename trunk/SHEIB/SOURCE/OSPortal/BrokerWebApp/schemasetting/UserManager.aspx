@@ -182,8 +182,8 @@
 													<td></td>
 													<td></td>
 													<td style="text-align:right;" colspan="2">
-														<asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
-														<asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
+														<asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
+														<input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
 														<asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" />                                                       
 													</td>                                                    
 													<td></td>
@@ -288,14 +288,12 @@
                                                         <SettingsBehavior ConfirmDelete="true" />
                                                         <SettingsText CustomizationWindowCaption="个性化" />
                                                     </dxwgv:ASPxGridView> 
-                                                    <asp:ObjectDataSource ID="DataSource" runat="server" SelectMethod="FetchList"
+                                                    <asp:ObjectDataSource ID="DataSource" runat="server" 
+                                                        SelectMethod="FetchList"
                                                         TypeName="BusinessObjects.BO_P_User" 
-                                                        EnablePaging="True" 
-                                                        MaximumRowsParameterName="PageSize" 
-                                                        StartRowIndexParameterName="StartRow" 
+                                                        EnablePaging="False" 
                                                         >
-                                                        <SelectParameters> 
-                                                             
+                                                        <SelectParameters>                                                             
                                                         </SelectParameters>
                                                     </asp:ObjectDataSource>
                                                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>

@@ -110,7 +110,7 @@
 													<td></td>
 													<td style="text-align:right;" colspan="2">
 														<asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
-														<asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
+														<input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
 														<asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" />                                                       
 													</td>                                                    
 													<td></td>
@@ -150,7 +150,7 @@
                                            <tr>
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server" 
-                                                    DataSourceID="DataSource" 
+                                                    DataSourceID="DataSource"
                                                     KeyFieldName="RoleID" AutoGenerateColumns="False" 
                                                     Settings-ShowFooter="true" Width="100%" 
                                                     SettingsPager-AlwaysShowPager="true" 
@@ -184,20 +184,25 @@
                                                             </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowPager"   />
-                                                        <Settings ShowGroupPanel="false" />
+                                                        <Settings ShowGroupPanel="true" ShowVerticalScrollBar="true" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
                                                         <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
-                                                        <SettingsBehavior ConfirmDelete="true" />
-                                                        <SettingsText CustomizationWindowCaption="个性化" />                                                        
+                                                        <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
+                                                        <SettingsText CustomizationWindowCaption="个性化" />
+                                                        <GroupSummary >
+                                                            <dxwgv:ASPxSummaryItem FieldName="RoleNo" SummaryType="Count" ShowInGroupFooterColumn="RoleNo" DisplayFormat = "总计: {0}" />
+                                                        </GroupSummary>
+                                                        <TotalSummary >
+                                                            <dxwgv:ASPxSummaryItem FieldName="RoleNo" SummaryType="Count" ShowInGroupFooterColumn="RoleNo" DisplayFormat = "总计: {0}" />
+                                                        </TotalSummary>                                                      
                                                     </dxwgv:ASPxGridView> 
                                                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
-                                                    <asp:ObjectDataSource ID="DataSource" runat="server" SelectMethod="FetchList"
+                                                    <asp:ObjectDataSource ID="DataSource" runat="server" 
+                                                        SelectMethod="FetchList"
                                                         TypeName="BusinessObjects.BO_P_Role" 
-                                                        EnablePaging="True" 
-                                                        MaximumRowsParameterName="PageSize" 
-                                                        StartRowIndexParameterName="StartRow" 
+                                                        EnablePaging="False"                                                       
                                                         >
                                                         <SelectParameters> 
-                                                            <asp:ControlParameter ControlID="dxetxtRoleNo" Name="RoleNoFilter" PropertyName="Value" /> 
+                                                             
                                                         </SelectParameters>
                                                     </asp:ObjectDataSource>
                                                 </td>

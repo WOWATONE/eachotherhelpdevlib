@@ -75,7 +75,7 @@ namespace BusinessObjects
         }
 
 
-        public static List<BO_P_Role> FetchList(int StartRow, int PageSize, String RoleNoFilter)
+        public static List<BO_P_Role> FetchList()
         {
             List<BO_P_Role> list = new List<BO_P_Role>();
 
@@ -88,6 +88,7 @@ namespace BusinessObjects
             BO_P_Role newObj;
             using (IDataReader reader = _db.ExecuteReader(dbCommand))
             {
+                Int32 loop = 0;
                 while (reader.Read())
                 {
                     newObj = new BO_P_Role();
@@ -98,14 +99,14 @@ namespace BusinessObjects
                     newObj.Remark = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Remark));
                     
                     list.Add(newObj);
+                    loop += 1;
                 }
             }
 
             return list;
         }
 
-        
-                
+                                
         public static void Delete(String id)
         {
             StringBuilder sb = new StringBuilder();
