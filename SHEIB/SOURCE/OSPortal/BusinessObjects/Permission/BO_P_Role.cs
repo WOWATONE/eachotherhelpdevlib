@@ -106,6 +106,20 @@ namespace BusinessObjects
             return list;
         }
 
+        public static Int32 FetchListCount()
+        {
+            List<BO_P_Role> list = new List<BO_P_Role>();
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT COUNT(RoleID) AS TotalCount ");
+            sb.Append(" FROM P_Role;");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+                        
+            Int32 count;
+            count = Convert.ToInt32(_db.ExecuteScalar(dbCommand));
+            return count;
+        }
                                 
         public static void Delete(String id)
         {
