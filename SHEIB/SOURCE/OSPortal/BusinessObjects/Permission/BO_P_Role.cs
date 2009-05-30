@@ -108,8 +108,6 @@ namespace BusinessObjects
 
         public static Int32 FetchListCount()
         {
-            List<BO_P_Role> list = new List<BO_P_Role>();
-
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT COUNT(RoleID) AS TotalCount ");
             sb.Append(" FROM P_Role;");
@@ -131,6 +129,28 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "@RoleID", DbType.String, id);
 
             _db.ExecuteNonQuery(dbCommand);
+
+        }
+
+        public static Boolean CheckExist(String roleNo, String roleName)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT COUNT(RoleID) AS TotalCount ");
+            sb.Append(" FROM P_Role ");
+            sb.Append(" WHERE RoleNo=@RoleNo");
+            sb.Append(" OR RoleName=@RoleName;");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@RoleNo", DbType.String, roleNo);
+            _db.AddInParameter(dbCommand, "@RoleName", DbType.String, roleName);
+
+            Int32 count;
+            count = Convert.ToInt32(_db.ExecuteScalar(dbCommand));
+            if (count > 0)
+                return true;
+            else
+                return false;
 
         }
 
