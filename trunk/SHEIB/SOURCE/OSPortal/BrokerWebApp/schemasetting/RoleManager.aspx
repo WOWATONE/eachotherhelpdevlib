@@ -156,8 +156,7 @@
                                                     SettingsPager-AlwaysShowPager="true" 
                                                     OnRowDeleting="gridSearchResult_RowDeleting" 
                                                     OnRowDeleted="gridSearchResult_RowDeleted" 
-                                                    OnCustomCallback="gridSearchResult_CustomCallBack" 
-                                                    DataSourceForceStandardPaging="false" 
+                                                    OnCustomCallback="gridSearchResult_CustomCallBack"
                                                     OnPageIndexChanged="gridSearchResult_PageIndexChanged"                                                     
                                                     >
                                                         <%-- BeginRegion Columns --%>
@@ -199,7 +198,7 @@
                                                     <asp:ObjectDataSource ID="DataSource" runat="server" 
                                                         SelectMethod="FetchList"
                                                         TypeName="BusinessObjects.BO_P_Role" 
-                                                        EnablePaging="False"                                                       
+                                                        EnablePaging="false"                                                                                                                                                       
                                                         >
                                                         <SelectParameters> 
                                                              
