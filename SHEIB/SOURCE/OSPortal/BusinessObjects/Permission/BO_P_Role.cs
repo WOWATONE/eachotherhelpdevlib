@@ -16,9 +16,14 @@ namespace BusinessObjects
     {
         public BO_P_Role() { }
 
-        public BO_P_Role(String id)
+        public BO_P_Role(String id, String name)
         {
-            fetchByID(id);
+            fetchByIDOrName(id, name);
+        }
+
+        public BO_P_Role(String name)
+        {
+            fetchByID(name);
         }
 
         public enum FieldList
@@ -184,6 +189,33 @@ namespace BusinessObjects
                 }
             }
         }
+
+        private void fetchByIDOrName(String id, String name)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT RoleID, RoleNo, RoleName, Remark ");
+            sb.Append(" FROM P_Role ");
+            sb.Append(" WHERE RoleName = @RoleName ");
+            sb.Append(" OR RoleID = @RoleID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@RoleName", DbType.String, name);
+            _db.AddInParameter(dbCommand, "@RoleID", DbType.String, id);
+
+
+            using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                if (reader.Read())
+                {
+                    this.RoleID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.RoleID));
+                    this.RoleNo = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.RoleNo));
+                    this.RoleName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.RoleName));
+                    this.Remark = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Remark));
+                }
+            }
+        }
+
 
 
         private void add()
