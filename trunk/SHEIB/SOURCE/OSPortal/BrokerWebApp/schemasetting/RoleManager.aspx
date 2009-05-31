@@ -31,19 +31,20 @@
 
         function gridCustomButtonClick(s, e) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=960px;dialogHeight=700px;center=yes;help=no";
-            //debugger;
+            
             var buttonID = e.buttonID;
-            var id = s.GetDataRow(e.visibleIndex).cells[1].innerText;
+            var guid = s.keys[e.visibleIndex];
+            var noint = s.GetDataRow(e.visibleIndex).cells[1].innerText;
             
             var querystring;
             switch(buttonID)
                 {
                 case "编辑":
-                    querystring = "RoleEdit.aspx?id=" + id;
+                    querystring = "RoleEdit.aspx?id=" + noint;
                     window.showModalDialog(querystring, self, myArguments);
                     break
                 case "权限":
-                    querystring = "RolePermission.aspx?id=" + id;
+                    querystring = "RolePermission.aspx?id=" + guid;
                     window.showModalDialog(querystring, self, myArguments);
                     break
                default:
