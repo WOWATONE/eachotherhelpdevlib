@@ -283,7 +283,7 @@
                                                             </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowPager"   />
-                                                        <Settings ShowGroupPanel="true" ShowVerticalScrollBar="true" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
+                                                        <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
                                                         <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                                         <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                                         <SettingsText CustomizationWindowCaption="个性化" />
