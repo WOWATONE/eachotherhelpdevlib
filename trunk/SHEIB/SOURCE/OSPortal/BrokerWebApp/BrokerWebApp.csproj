@@ -663,8 +663,26 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\Aqua\TreeList\CollapsedButton.png" />
+    <Content Include="App_Themes\Aqua\TreeList\CssImages\HeaderBack.gif" />
+    <Content Include="App_Themes\Aqua\TreeList\CssImages\TreeLineFirst.gif" />
+    <Content Include="App_Themes\Aqua\TreeList\CssImages\TreeLineLast.gif" />
+    <Content Include="App_Themes\Aqua\TreeList\CssImages\TreeLineMiddle.gif" />
+    <Content Include="App_Themes\Aqua\TreeList\CssImages\TreeLineRoot.gif" />
+    <Content Include="App_Themes\Aqua\TreeList\DragAndDropArrowDown.gif" />
+    <Content Include="App_Themes\Aqua\TreeList\DragAndDropArrowUp.gif" />
+    <Content Include="App_Themes\Aqua\TreeList\DragAndDropHide.gif" />
+    <Content Include="App_Themes\Aqua\TreeList\DragAndDropNode.gif" />
+    <Content Include="App_Themes\Aqua\TreeList\ExpandedButton.png" />
+    <Content Include="App_Themes\Aqua\TreeList\Loading.gif" />
+    <Content Include="App_Themes\Aqua\TreeList\SortAsc.png" />
+    <Content Include="App_Themes\Aqua\TreeList\SortDesc.png" />
+    <Content Include="App_Themes\Aqua\TreeList\styles.css" />
     <Content Include="schemasetting\RoleEdit.aspx" />
     <Content Include="SiteMastePages\PopupUploadMaster.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Aqua\ASPxTreeList.skin" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

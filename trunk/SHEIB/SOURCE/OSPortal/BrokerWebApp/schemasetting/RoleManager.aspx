@@ -24,13 +24,13 @@
 
         function btnCreateClick() {
 	        
-            var myArguments="resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+            var myArguments="resizable:yes;scroll:yes;status:no;dialogWidth=960px;dialogHeight=700px;center=yes;help=no";
             window.showModalDialog("RoleEdit.aspx", self, myArguments);
             
         }
 
         function gridCustomButtonClick(s, e) {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=960px;dialogHeight=700px;center=yes;help=no";
             //debugger;
             var buttonID = e.buttonID;
             var id = s.GetDataRow(e.visibleIndex).cells[1].innerText;
