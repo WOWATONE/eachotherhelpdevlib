@@ -44,7 +44,7 @@
                             <Items>
                                 <dxnb:NavBarItem Text="保单录入" Name="otherinsurance/PolicyInputList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="保单批改" Name="otherinsurance/PolicyAlterList.aspx">
+                                <dxnb:NavBarItem Text="批改录入" Name="otherinsurance/PolicyAlterList.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="审核" Name="otherinsurance/PolicyCheckList.aspx">
                                 </dxnb:NavBarItem>
@@ -98,16 +98,6 @@
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
-                        <dxnb:NavBarGroup Text="预算管理" Expanded="false">
-                            <Items>
-                                <dxnb:NavBarItem Text="签约预算清单" Name="BudgetManagement/SignPremiumBudgetList.aspx">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="签约预算执行明细" Name="BudgetManagement/SignPremiumBudgetDetails.aspx">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="签约预算完成汇总" Name="BudgetManagement/SignPremiumBudgetSummary.aspx">
-                                </dxnb:NavBarItem>
-                            </Items>
-                        </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="系统设置" Expanded="false">
                             <Items>
                                 <dxnb:NavBarItem Text="员工管理" Name="schemasetting/UserManager.aspx">
@@ -129,6 +119,16 @@
                                 <dxnb:NavBarItem Text="系统选项" Name="http://www.google.cn">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="系统日志" Name="schemasetting/Systemlog.aspx">
+                                </dxnb:NavBarItem>
+                            </Items>
+                        </dxnb:NavBarGroup>
+                        <dxnb:NavBarGroup Text="预算管理" Expanded="false">
+                            <Items>
+                                <dxnb:NavBarItem Text="签约预算清单" Name="BudgetManagement/SignPremiumBudgetList.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="签约预算执行明细" Name="BudgetManagement/SignPremiumBudgetDetails.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="签约预算完成汇总" Name="BudgetManagement/SignPremiumBudgetSummary.aspx">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>

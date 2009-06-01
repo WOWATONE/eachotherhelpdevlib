@@ -85,6 +85,44 @@
   <ItemGroup>
     <None Include="App.Config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="EnterpriseLibrary\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Configuration.Design.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Configuration.Design.HostAdapter.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Configuration.Design.UI.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Configuration.Design.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.Configuration.Design.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF.Configuration.Design.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Logging.Configuration.Design.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Logging.Database.Configuration.Design.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Logging.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.PolicyInjection.CallHandlers.Configuration.Design.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.PolicyInjection.CallHandlers.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.PolicyInjection.Configuration.Design.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.PolicyInjection.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Security.AzMan.Configuration.Design.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Security.AzMan.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Security.Cache.CachingStore.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Security.Cache.Configuration.Design.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Security.Configuration.Design.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.Configuration.Design.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Security.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Validation.Configuration.Design.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Validation.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WinForms.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.ObjectBuilder.dll" />
+    <Content Include="EnterpriseLibrary\System.Extensions.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
