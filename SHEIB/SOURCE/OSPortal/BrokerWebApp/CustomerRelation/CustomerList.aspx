@@ -106,8 +106,8 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                组织机构代码号<br />
-                                /身份证号码：
+                                组织机构号<br />
+                                /身份证号：
                             </td>
                             <td style="text-align: left;">
                                 <asp:TextBox ID="txtIDNO" runat="server" Width="160px"></asp:TextBox>
@@ -121,8 +121,7 @@
                                     <asp:ListItem Text="李四" Value="2"></asp:ListItem>
                                 </asp:DropDownList>
                             </td>
-                            <td style="text-align: right;">
-                            </td>
+                            <td style="text-align: right;">&nbsp;</td>
                             <td style="text-align: left;">
                                 <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
                                 <asp:Button ID="btnReset" runat="server" Text="重置" CssClass="input_2" />&nbsp;
@@ -181,19 +180,19 @@
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="客户名称" FieldName="CustName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="所在地区" FieldName="Area" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="所在地区" FieldName="AreaName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="所属板块" FieldName="Plate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="所属板块" FieldName="PlateName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="客户地址" FieldName="Address" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="邮政编码" FieldName="PostCode" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="行业类型" FieldName="TradeType" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="行业类型" FieldName="TradeTypeName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="代码/号码" FieldName="IDNO" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="第一联系人" FieldName="Contact" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="第一联系人" FieldName="ContactName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="电话" FieldName="Tel" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
@@ -203,7 +202,7 @@
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="电子邮件" FieldName="Email" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="客户经理" FieldName="Sales" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="客户经理" FieldName="SalesName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                         </Columns>
                         <SettingsPager Mode="ShowPager" />
@@ -220,7 +219,7 @@
                     </dxwgv:ASPxGridView>
                     <asp:ObjectDataSource ID="DataSource" runat="server" 
                         SelectMethod="FetchList"
-                        TypeName="BusinessObjects.BO_P_User" 
+                        TypeName="BusinessObjects.BO_P_Customer" 
                         EnablePaging="False">
                         <SelectParameters>                                                             
                         </SelectParameters>
