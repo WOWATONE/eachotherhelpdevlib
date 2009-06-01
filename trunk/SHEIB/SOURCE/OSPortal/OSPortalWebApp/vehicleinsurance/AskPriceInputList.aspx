@@ -121,7 +121,7 @@
                                 </asp:DropDownList>
                             </td>
                             <td style="text-align: right;">
-                                 车牌号码：
+                                车牌号码：
                             </td>
                             <td style="text-align: left;">
                                 <asp:TextBox ID="txtProdTypeID" runat="server" Width="170px"></asp:TextBox>
@@ -253,9 +253,9 @@
                                         <dxwgv:GridViewDataColumn FieldName="CarrierNameCn" Caption="保险公司" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>           
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CarCount" Caption="车辆数目" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>                          
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CiPremium" Caption="商业险保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="AciPremium" Caption="交强险保费" CellStyle-Wrap="False">
@@ -303,7 +303,6 @@
                                         <dxwgv:ASPxSummaryItem FieldName="PremiumTotal" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="ProcessTotal" SummaryType="Sum" DisplayFormat="c" />
                                     </TotalSummary>
-                                   
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" />
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />

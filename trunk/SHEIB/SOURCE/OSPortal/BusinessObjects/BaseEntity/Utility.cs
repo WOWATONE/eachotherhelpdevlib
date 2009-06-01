@@ -39,6 +39,16 @@ namespace BusinessObjects
             return value;
         }
 
+        public static Double GetDoubleFromReader(IDataReader reader, Int32 columnIndex)
+        {
+            double value = 0;
+            if (!Convert.IsDBNull(reader[columnIndex]))
+            {
+                value = reader.GetDouble(columnIndex);
+            }
+            return value;
+        }
+
 
         public static Boolean GetBooleanFromReader(IDataReader reader, Int32 columnIndex)
         {
