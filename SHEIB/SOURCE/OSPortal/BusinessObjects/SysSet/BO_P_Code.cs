@@ -17,7 +17,7 @@ namespace BusinessObjects
 
         public BO_P_Code() { }
 
-        public enum CodeType
+        public enum PCodeType
         {
             CodeTypeID,
             AccountType,

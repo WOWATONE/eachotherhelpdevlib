@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FD661BD4-56DB-4E99-87A1-DE84F70A0F4D}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -73,6 +73,9 @@
     <Compile Include="BaseEntity\SessionService.cs" />
     <Compile Include="BaseEntity\Utility.cs" />
     <Compile Include="CustomerRelation\BO_P_Customer.cs" />
+    <Compile Include="FeeBalance\BO_Fee.cs" />
+    <Compile Include="FeeBalance\BO_Notice.cs" />
+    <Compile Include="FeeBalance\BO_Voucher.cs" />
     <Compile Include="Permission\BO_P_Menu.cs" />
     <Compile Include="Permission\BO_P_Priv.cs" />
     <Compile Include="Permission\BO_P_Role.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="Permission\BO_P_UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SchemaSetting\BO_P_Department.cs" />
+    <Compile Include="SysSet\BO_P_Code.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
