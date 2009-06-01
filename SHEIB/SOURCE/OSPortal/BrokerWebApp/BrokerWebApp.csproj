@@ -418,6 +418,27 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="inoutbalance\FeeNotice.aspx.cs">
+      <DependentUpon>FeeNotice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeeNotice.aspx.designer.cs">
+      <DependentUpon>FeeNotice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inoutbalance\FeeNoticeAdd.aspx.cs">
+      <DependentUpon>FeeNoticeAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeeNoticeAdd.aspx.designer.cs">
+      <DependentUpon>FeeNoticeAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inoutbalance\FeeNoticeAddSelect.aspx.cs">
+      <DependentUpon>FeeNoticeAddSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeeNoticeAddSelect.aspx.designer.cs">
+      <DependentUpon>FeeNoticeAddSelect.aspx</DependentUpon>
+    </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -691,10 +712,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\Aqua\ASPxTreeList.skin" />
+    <Content Include="inoutbalance\FeeNotice.aspx" />
+    <Content Include="inoutbalance\FeeNoticeAdd.aspx" />
+    <Content Include="inoutbalance\FeeNoticeAddSelect.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="inoutbalance\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
