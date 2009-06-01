@@ -86,6 +86,12 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -397,13 +403,6 @@
     <Compile Include="BaseClass\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CustomerRelation\CustomerList.aspx.cs">
-      <DependentUpon>CustomerList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CustomerRelation\CustomerList.aspx.designer.cs">
-      <DependentUpon>CustomerList.aspx</DependentUpon>
-    </Compile>
     <Compile Include="dpleft.aspx.cs">
       <DependentUpon>dpleft.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -417,27 +416,6 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="inoutbalance\FeeNotice.aspx.cs">
-      <DependentUpon>FeeNotice.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeeNotice.aspx.designer.cs">
-      <DependentUpon>FeeNotice.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="inoutbalance\FeeNoticeAdd.aspx.cs">
-      <DependentUpon>FeeNoticeAdd.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeeNoticeAdd.aspx.designer.cs">
-      <DependentUpon>FeeNoticeAdd.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="inoutbalance\FeeNoticeAddSelect.aspx.cs">
-      <DependentUpon>FeeNoticeAddSelect.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeeNoticeAddSelect.aspx.designer.cs">
-      <DependentUpon>FeeNoticeAddSelect.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -595,7 +573,6 @@
     <Content Include="middle.html" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CustomerRelation\CustomerList.aspx" />
     <Content Include="images\add_user_icon.png" />
     <Content Include="images\bg.gif" />
     <Content Include="images\body_bg_01.gif" />
@@ -712,12 +689,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\Aqua\ASPxTreeList.skin" />
-    <Content Include="inoutbalance\FeeNotice.aspx" />
-    <Content Include="inoutbalance\FeeNoticeAdd.aspx" />
-    <Content Include="inoutbalance\FeeNoticeAddSelect.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="CustomerRelation\" />
+    <Folder Include="inoutbalance\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -732,7 +708,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>8697</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
