@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +9,9 @@ using System.Web.UI.WebControls;
 using DevExpress.Web.ASPxTreeList;
 using DevExpress.Web.ASPxClasses;
 using BusinessObjects;
+using System.Data;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace BrokerWebApp.schemasetting
 {
@@ -20,23 +25,44 @@ namespace BrokerWebApp.schemasetting
             if (!IsPostBack)
             {
                 _oldID = Page.Request.QueryString["id"];
-                //this.originalID.Value = _oldID;
-
+                
                 loadTreeData();
                 //treeList.ExpandToLevel(2);
                 this.treeList.ExpandAll();
                 loadDetailData(_oldID);
+                loadMenuOrPrivilege(_oldID);
+                this.selectedRoleID.Value = _oldID;
             }
             else
             {
-                this.originalID.Value = _oldID;
+                //
             }
 
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            //
+            //List<RolePrivilege> list = new List<RolePrivilege>();
+
+            //RolePrivilege obj = new RolePrivilege();
+            //obj.MenuID = "mid";
+            //obj.RoleID = "0000000";
+            //obj.PrivID = "pid";
+            //list.Add(obj);
+
+            //obj = new RolePrivilege();
+            //obj.MenuID = "mid1";
+            //obj.RoleID = "0000001";
+            //obj.PrivID = "pid1";
+            //list.Add(obj);
+
+            //RolePrivilegeList x = new RolePrivilegeList();
+            //x.RolePrivileges = list;
+
+            //DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(RolePrivilegeList));
+            //MemoryStream ms = new MemoryStream();
+            //serializer.WriteObject(ms, x);
+            //string retVal = Encoding.Default.GetString(ms.ToArray());
         }
 
         protected void treeList_CustomDataCallback(object sender, TreeListCustomDataCallbackEventArgs e)
@@ -52,7 +78,16 @@ namespace BrokerWebApp.schemasetting
 
         protected void cpSchemaDetail_Callback(object source, CallbackEventArgsBase e)
         {
-            loadDetailData(e.Parameter);
+            String json = e.Parameter;
+            
+            MemoryStream ms = new MemoryStream(Encoding.Unicode.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Privilege));
+            Privilege obj;
+
+            obj = (Privilege)serializer.ReadObject(ms);
+            ms.Close();
+            loadDetailData(obj.RoleID);
+            loadMenuOrPrivilege(obj.RoleID);
         }
 
         protected void cpSchemaDetail_CustomJSProperties(object sender, CustomJSPropertiesEventArgs e)
@@ -60,14 +95,13 @@ namespace BrokerWebApp.schemasetting
             //
         }
 
-
-        protected void dxeSaveCallback_Callback(object source,
-            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            //chklSystemStting.Items[0].Selected;
+            saveCheckedPrivilege(e.Parameter);
+            e.Result = "complete";
         }
 
-
+                
         private void loadTreeData()
         {
             
@@ -98,11 +132,129 @@ namespace BrokerWebApp.schemasetting
             _BO_P_Role = new BO_P_Role(id, "");
             this.dxelblRoleNo.Text = _BO_P_Role.RoleNo;
             this.dxelblRoleName.Text = _BO_P_Role.RoleName;
+            this.selectedRoleID.Value = _BO_P_Role.RoleID;
+            
+        }
+
+        private void loadMenuOrPrivilege(String roleID)
+        {
+            this.tabPrivilege.TabPages.Clear();
+            DataSet ds = BO_P_Menu.FetchMenuOrPrivilege(roleID);
+            DevExpress.Web.ASPxTabControl.TabPage tp;
+            DataRow[] dr;            
+            foreach (DataRow item in ds.Tables[0].Rows)
+            {
+                tp = new DevExpress.Web.ASPxTabControl.TabPage();
+                tp.TabStyle.HorizontalAlign = HorizontalAlign.Left;
+                tp.TabStyle.VerticalAlign = VerticalAlign.Top;
+                                                
+                tp.Name = item["MenuID"].ToString();
+                tp.Text = item["MenuName"].ToString();
+                this.tabPrivilege.TabPages.Add(tp);
+
+                //add checkbox list;
+                dr = ds.Tables[1].Select("MenuID='" + tp.Name + "'");
+                CheckBox chk;
+                
+                for (int i = 0; i < dr.Length; i++)
+                {
+                    chk = new CheckBox();
+                    chk.TextAlign = TextAlign.Right;
+                    chk.ID = dr[i]["MenuID"].ToString() + "_" + dr[i]["PrivID"].ToString();
+                    chk.Text = dr[i]["PrivName"].ToString();
+                    Boolean checkedState = Convert.ToBoolean(dr[i]["Checked"]);
+                    chk.Checked = checkedState;
+                    tp.Controls.Add(chk);
+                    Literal ltl = new Literal();
+                    ltl.Text = "<br/>";
+                    tp.Controls.Add(ltl);                    
+                }             
+            }
         }
 
 
+        private void saveCheckedPrivilege(String parameter)
+        {
+            String json = parameter;
 
+            MemoryStream ms = new MemoryStream(Encoding.Unicode.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(RolePrivilegeList));
+            RolePrivilegeList obj;
+
+            obj = (RolePrivilegeList)serializer.ReadObject(ms);
+            ms.Close();
+
+            foreach (RolePrivilege item in obj.RolePrivileges)
+            {
+                if (item.Checked)
+                {
+                    BO_P_RolePriv.Add(item.RoleID, item.MenuID, item.PrivID);
+                }
+                else
+                {
+                    BO_P_RolePriv.Delete(item.RoleID, item.PrivID);
+                }
+
+            }
+            
+        }
 
 
     }
+
+
+
+    [DataContract(Namespace = "http://www.sheib.com")]
+    public class RolePrivilegeList
+    {
+        public RolePrivilegeList()
+        { }
+
+        [DataMember]
+        public List<RolePrivilege> RolePrivileges { get; set; }
+
+    }
+
+
+    [DataContract(Namespace = "http://www.sheib.com")]
+    public class RolePrivilege
+    {
+        public RolePrivilege()
+        { }
+
+        [DataMember]
+        public string RoleID { get; set; }
+
+        [DataMember]
+        public string MenuID { get; set; }
+
+        [DataMember]
+        public string PrivID { get; set; }
+
+        [DataMember]
+        public Boolean Checked { get; set; }
+
+
+    }
+
+
+
+    [DataContract(Namespace="http://www.sheib.com")]
+    public class Privilege
+    {
+        public Privilege()
+        { }
+
+        [DataMember]
+        public string Action { get; set; }
+
+        [DataMember]
+        public string RoleID { get; set; }
+
+
+    }
+
+
+
+
 }

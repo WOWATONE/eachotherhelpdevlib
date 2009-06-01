@@ -25,5 +25,40 @@ namespace BusinessObjects
             PrivID
         }
 
+
+        public static void Add(String roleID, String menuID, String privID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" DELETE FROM P_RolePriv WHERE RoleID=@RoleID AND PrivID=@PrivID; ");
+            sb.Append("INSERT INTO P_RolePriv(RolePrivID,RoleID, MenuID, PrivID)");
+            sb.Append(" VALUES( ");
+            sb.Append("@RolePrivID, @RoleID, @MenuID, @PrivID");
+            sb.Append(" );");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@RolePrivID", DbType.String, Guid.NewGuid().ToString());
+            _db.AddInParameter(dbCommand, "@RoleID", DbType.String, roleID);
+            _db.AddInParameter(dbCommand, "@MenuID", DbType.String, menuID);
+            _db.AddInParameter(dbCommand, "@PrivID", DbType.String, privID);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        public static void Delete(String roleID, String privID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" DELETE FROM P_RolePriv WHERE RoleID=@RoleID AND PrivID=@PrivID; ");
+            
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@RoleID", DbType.String, roleID);
+            _db.AddInParameter(dbCommand, "@PrivID", DbType.String, privID);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+
     }
 }

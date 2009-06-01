@@ -136,7 +136,6 @@ namespace BusinessObjects
             return list;
         }
 
-
         public static void Delete(String id)
         {
             StringBuilder sb = new StringBuilder();
@@ -150,6 +149,26 @@ namespace BusinessObjects
 
         }
 
+        public static DataSet FetchMenuOrPrivilege(String roleID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT MenuID, MenuName FROM P_Menu ");
+            sb.Append(" WHERE ParentMenuID != '0' ");
+            sb.Append(" ORDER BY ParentMenuID,SortNo,MenuID; ");
+            sb.Append(" SELECT A.PrivID, A.PrivName, A.MenuID, A.PrivType, ");
+            sb.Append(" CASE WHEN (ISNULL(B.RolePrivID,'')='') THEN 0 ");
+            sb.Append(" ELSE 1 ");
+            sb.Append(" END AS Checked ");            
+            sb.Append(" FROM P_Priv A ");
+            sb.Append(" LEFT JOIN P_RolePriv B ON A.PrivID = B.PrivID AND A.MenuID = B.MenuID ");
+            sb.Append(" AND B.RoleID = @RoleID ;");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@RoleID", DbType.String, roleID);
+
+            DataSet ds = _db.ExecuteDataSet(dbCommand);
+            return ds;
+        }
 
         #endregion Methods
 

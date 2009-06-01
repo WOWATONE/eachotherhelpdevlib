@@ -27,7 +27,9 @@
 
 
         function treeList_CustomDataCallbackComplete(s, e) {
-            cpSchemaDetailPerformCallback(e.result);
+            //add json
+            var parameter = "{\"Action\":\"change\",\"RoleID\":\"" + e.result + "\"}";
+            cpSchemaDetailPerformCallback(parameter);
         }
 
         function treeList_FocusedNodeChanged(s, e) {
@@ -36,15 +38,54 @@
         }
 
         function dxebtnSelectAll_Click(s,e) {
-            //
+            var tabClientID = tabPrivilege.mainElement.id;
+            //var inputs = $("form :checkbox");
+            //var inputs = $("#tabPrivilege :checkbox");
+            $("#" + tabClientID + " INPUT[type='checkbox']").attr('checked', true);
         }
 
         function dxebtnClearAll_Click(s, e) {
-            //
+            var tabClientID = tabPrivilege.mainElement.id;
+            $("#" + tabClientID + " INPUT[type='checkbox']").attr('checked', false);
+             
         }
 
         function dxebtnSavePermission_Click(s, e) {
-            dxeSaveCallback.PerformCallback();
+            var result = $("#<%=selectedRoleID.ClientID %>");
+            var roleID = result[0].value;
+
+            var tabClientID = tabPrivilege.mainElement.id;            
+            var inputs = $("#" + tabClientID + " INPUT[type='checkbox']");
+            var chkitem;
+            var jsonListHeader = "{\"RolePrivileges\":[";
+            var jsonListFooter = "]}";
+            var jsonList = "";
+            
+            for (i = 0; i < inputs.length; i++) {
+                chkitem = inputs[i];
+
+                var idstr = chkitem.id;
+                var sindex = idstr.lastIndexOf("_");
+                var length = idstr.length;
+                var pid = idstr.substring(sindex + 1, length);
+
+                var otherstr = idstr.substring(0, sindex);
+                sindex = otherstr.lastIndexOf("_");
+                length = otherstr.length;
+                var mid = otherstr.substring(sindex + 1, length);
+                 
+                if (i > 0) jsonList = jsonList + ",";
+                if (chkitem.checked) {
+                    jsonList = jsonList + "{\"MenuID\":\"" + mid + "\",\"PrivID\":\"" + pid + "\",\"RoleID\":\"" + roleID + "\",\"Checked\":\"true\"}";
+                }
+                else {
+                    jsonList = jsonList + "{\"MenuID\":\"" + mid + "\",\"PrivID\":\"" + pid + "\",\"RoleID\":\"" + roleID + "\",\"Checked\":\"false\"}";
+                }
+            }
+
+            //debugger;
+            jsonList = jsonListHeader + jsonList + jsonListFooter;
+            dxeSaveCallback.PerformCallback(jsonList);            
         }
 
         function cpSchemaDetailPerformCallback(parameter) {
@@ -56,7 +97,7 @@
         }
 
         function cpSchemaDetail_OnEndCallback() {
-            //do nothing;
+            //do nothing;            
         }
 
         function saveCallbackComplete(s, e) {
@@ -69,12 +110,12 @@
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     
     <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
-        <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />        
+        <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
     
-    <table style="width:100%">
+    <table style="width:99%">
         <tr>
-            <td style="width:100%;" colspan="2"> 
+            <td colspan="2"> 
                 <asp:Panel ID="npSearchHeader" runat="server" CssClass="collapsePanelHeader" Height="25px"> 
                     <div style="padding:5px; cursor: pointer; vertical-align: middle;">
                         <div style="float: left; vertical-align: middle;">
@@ -100,7 +141,7 @@
                         <tr>
                             <td style="width:20px;">&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td><input type="hidden" id="originalID" runat="server" /></td>
+                            <td></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -108,7 +149,7 @@
                             <td valign="top">
 
                             <dxrp:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" 
-                                Width="400px" Height="500px" View="GroupBox" ShowHeader="False">
+                                Width="300px" Height="500px" View="GroupBox" ShowHeader="False">
                                  <PanelCollection>
                                      <dxp:panelcontent ID="Panelcontent1" runat="server">
                                          <dxwtl:ASPxTreeList ID="treeList" ClientInstanceName="treeList" 
@@ -166,12 +207,12 @@
                         
                         
                             <td valign="top">
-                                <dxrp:ASPxRoundPanel id="ASPxRoundPanel2" runat="server" HeaderText="部门信息" Width="100%">
+                                <dxrp:ASPxRoundPanel id="ASPxRoundPanel2" runat="server" HeaderText="部门信息">
                                     <PanelCollection>
                                         <dxrp:PanelContent ID="PanelContent2" runat="server">                 
                                         
                                         <dxcp:ASPxCallbackPanel runat="server" ID="cpSchemaDetail" ClientInstanceName="cpSchemaDetail" 
-                                        Height="500px" Width="455px" 
+                                        Height="100%" Width="500px" 
                                         OnCallback="cpSchemaDetail_Callback" 
                                         OnCustomJSProperties="cpSchemaDetail_CustomJSProperties">
                                          <ClientSideEvents 
@@ -189,6 +230,7 @@
                                                                 <td style="text-align:right; width:80px;">角色编号：</td>
                                                                 <td style="text-align:left; width:200px;">
                                                                     <dxe:ASPxLabel runat="server" ID="dxelblRoleNo" ClientInstanceName="dxelblRoleNo"></dxe:ASPxLabel>
+                                                                    <input runat="server" type="hidden" id="selectedRoleID" name="selectedRoleID" value="" />
                                                                 </td>
                                                                 <td style="text-align:right;"></td>
                                                                 <td style="text-align:left;"></td>
@@ -208,99 +250,14 @@
                                             <table width="100%">                            
                                                 <tr>
                                                     <td colspan="4">
-                                                        <dxtc:ASPxPageControl ID="carTabPage" runat="server" 
-                                                        ActiveTabIndex="0" EnableHierarchyRecreation="True"
-                                                        TabAlign="Left" TabPosition="Left" Width="450"
+                                                        <dxtc:ASPxPageControl ID="tabPrivilege" ClientInstanceName="tabPrivilege" runat="server" 
+                                                        ActiveTabIndex="0" EnableHierarchyRecreation="true" 
+                                                        ContentStyle-HorizontalAlign="Left" ContentStyle-VerticalAlign="Top"
+                                                        TabAlign="Left" TabPosition="Left" Width="500px" AutoPostBack="false" 
+                                                        EnableCallBacks="false" EnableViewState="true"
                                                         >
                                                              <TabPages>
-                                                                 <dxtc:TabPage Text="系统设置" Name="tabSystemSetting">
-                                                                     <ContentCollection><dxw:ContentControl ID="ContentControl1" runat="server">
-                                                                        <asp:CheckBoxList runat="server" ID="chklSystemStting">
-                                                                            <asp:ListItem Text="数据备份" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="数据恢复" Value="2"></asp:ListItem>
-                                                                        </asp:CheckBoxList>
-                                                                     </dxw:ContentControl></ContentCollection>
-                                                                 </dxtc:TabPage>
-                                                                 <dxtc:TabPage Text="客户理赔" Name="tabCustomerPayManager">
-                                                                     <ContentCollection><dxw:ContentControl ID="ContentControl2" runat="server">
-                                                                        <asp:CheckBoxList runat="server" ID="chklCustomerPayManager">
-                                                                            <asp:ListItem Text="报案新增" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="报案修改" Value="2"></asp:ListItem>
-                                                                        </asp:CheckBoxList>
-                                                                     </dxw:ContentControl></ContentCollection>
-                                                                 </dxtc:TabPage>
-                                                                 <dxtc:TabPage Text="项目管理" Name="tabProjectManager">
-                                                                     <ContentCollection><dxw:ContentControl ID="ContentControl3" runat="server">
-                                                                        <asp:CheckBoxList runat="server" ID="chklProjectManager">
-                                                                            <asp:ListItem Text="项目设置" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="项目立项" Value="2"></asp:ListItem>
-                                                                        </asp:CheckBoxList>
-                                                                     </dxw:ContentControl></ContentCollection>
-                                                                 </dxtc:TabPage>
-                                                                 <dxtc:TabPage Text="风险数据" Name="tabRiskData">
-                                                                     <ContentCollection><dxw:ContentControl ID="ContentControl4" runat="server">
-                                                                        <asp:CheckBoxList runat="server" ID="chklRiskData">
-                                                                            <asp:ListItem Text="风险数据查看" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="风险数据设置" Value="2"></asp:ListItem>
-                                                                        </asp:CheckBoxList>
-                                                                     </dxw:ContentControl></ContentCollection>
-                                                                 </dxtc:TabPage>
-                                                                 <dxtc:TabPage Text="信息中心" Name="tabInfoCenter">
-                                                                     <ContentCollection><dxw:ContentControl ID="ContentControl5" runat="server">
-                                                                        <asp:CheckBoxList runat="server" ID="chklInfoCenter">
-                                                                            <asp:ListItem Text="法律法规查看" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="法律法规设置" Value="2"></asp:ListItem>
-                                                                        </asp:CheckBoxList>
-                                                                     </dxw:ContentControl></ContentCollection>
-                                                                 </dxtc:TabPage>
-                                                                 <dxtc:TabPage Text="保单处理" Name="tabPolicyManager">
-                                                                     <ContentCollection><dxw:ContentControl ID="ContentControl6" runat="server">
-                                                                        <asp:CheckBoxList runat="server" ID="chklPolicyManager">
-                                                                            <asp:ListItem Text="保单新增" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="保单修改" Value="2"></asp:ListItem>
-                                                                        </asp:CheckBoxList>
-                                                                     </dxw:ContentControl></ContentCollection>
-                                                                 </dxtc:TabPage>
-                                                                 <dxtc:TabPage Text="收付结算" Name="tabPayCutOff">
-                                                                     <ContentCollection><dxw:ContentControl ID="ContentControl7" runat="server">
-                                                                        <asp:CheckBoxList runat="server" ID="chklPayCutOff">
-                                                                            <asp:ListItem Text="佣金设置" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="佣金审核" Value="2"></asp:ListItem>
-                                                                        </asp:CheckBoxList>
-                                                                     </dxw:ContentControl></ContentCollection>
-                                                                 </dxtc:TabPage>
-                                                                 <dxtc:TabPage Text="客户服务" Name="tabCustomerService">
-                                                                     <ContentCollection><dxw:ContentControl ID="ContentControl8" runat="server">
-                                                                        <asp:CheckBoxList runat="server" ID="chklCustomerService">
-                                                                            <asp:ListItem Text="销售跟进维护" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="销售跟进查看" Value="2"></asp:ListItem>
-                                                                        </asp:CheckBoxList>
-                                                                     </dxw:ContentControl></ContentCollection>
-                                                                 </dxtc:TabPage>
-                                                                 <dxtc:TabPage Text="单证管理" Name="tabVioceManager">
-                                                                     <ContentCollection><dxw:ContentControl ID="ContentControl9" runat="server">
-                                                                        <asp:CheckBoxList runat="server" ID="chklVioceManager">
-                                                                            <asp:ListItem Text="单证查看" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="单证处理" Value="2"></asp:ListItem>
-                                                                        </asp:CheckBoxList>
-                                                                     </dxw:ContentControl></ContentCollection>
-                                                                 </dxtc:TabPage>
-                                                                 <dxtc:TabPage Text="组织管理" Name="tabSchemaManager">
-                                                                     <ContentCollection><dxw:ContentControl ID="ContentControl10" runat="server">
-                                                                        <asp:CheckBoxList runat="server" ID="chklSchemaManager">
-                                                                            <asp:ListItem Text="职位查看" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="职位设置" Value="2"></asp:ListItem>
-                                                                        </asp:CheckBoxList>
-                                                                     </dxw:ContentControl></ContentCollection>
-                                                                 </dxtc:TabPage>
-                                                                 <dxtc:TabPage Text="产品管理" Name="tabProductManager">
-                                                                     <ContentCollection><dxw:ContentControl ID="ContentControl11" runat="server">
-                                                                        <asp:CheckBoxList runat="server" ID="chklProductManager">
-                                                                            <asp:ListItem Text="保险公司查看" Value="1"></asp:ListItem>
-                                                                            <asp:ListItem Text="保险公司设置" Value="2"></asp:ListItem>
-                                                                        </asp:CheckBoxList>
-                                                                     </dxw:ContentControl></ContentCollection>
-                                                                 </dxtc:TabPage>
+                                                                 
                                                              </TabPages>
                                                         </dxtc:ASPxPageControl>
                                                     </td>
@@ -340,6 +297,8 @@
                                     </dxrp:PanelContent></PanelCollection>
                                 </dxrp:ASPxRoundPanel>
                             </td>
+                        
+                        
                         </tr>
                     </table>
                     
