@@ -27,7 +27,8 @@ namespace BusinessObjects
             FeeType,
             GatheringType,
             OperationType,
-            TradeName
+            TradeName,
+            Area
         }
 
         public enum FieldList
@@ -126,12 +127,12 @@ namespace BusinessObjects
         public static DataSet GetListByCodeType(string sCodetype)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("select [CodeID],[CodeName],[OrderID],[Remark] ");
+            sb.Append("select [CodeID],[CodeName],[SortNo] ");
             sb.Append(" FROM P_Code ");
             if (sCodetype.Trim() != "")
             {
 
-                sb.Append(" where CodeType = '" + sCodetype + "' ORDER BY OrderID");
+                sb.Append(" where CodeType = '" + sCodetype + "' ORDER BY SortNo");
             }
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
