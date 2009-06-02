@@ -74,7 +74,7 @@ namespace BrokerWebApp.CustomerRelation {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radPerson;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton radPerson;
         
         /// <summary>
         /// radUnit 控件。
@@ -83,79 +83,79 @@ namespace BrokerWebApp.CustomerRelation {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radUnit;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton radUnit;
         
         /// <summary>
-        /// txtCustID 控件。
+        /// dxetxtCustID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCustID;
         
         /// <summary>
-        /// ddlArea 控件。
+        /// dxeddlArea 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlArea;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlArea;
         
         /// <summary>
-        /// txtAddress 控件。
+        /// dxetxtAddress 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddress;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtAddress;
         
         /// <summary>
-        /// txtCustName 控件。
+        /// dxetxtCustName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustName;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCustName;
         
         /// <summary>
-        /// ddlTradeType 控件。
+        /// dxeddlTradeType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTradeType;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlTradeType;
         
         /// <summary>
-        /// ddlPlate 控件。
+        /// dxeddlPlate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPlate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlPlate;
         
         /// <summary>
-        /// txtIDNO 控件。
+        /// dxetxtIDNO 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIDNO;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtIDNO;
         
         /// <summary>
-        /// ddlSalesID 控件。
+        /// dxeddlSalesID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSalesID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesID;
         
         /// <summary>
         /// btnSearch 控件。
