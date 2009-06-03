@@ -69,17 +69,17 @@
                 var length = idstr.length;
                 var pid = idstr.substring(sindex + 1, length);
 
-                var otherstr = idstr.substring(0, sindex);
-                sindex = otherstr.lastIndexOf("_");
-                length = otherstr.length;
-                var mid = otherstr.substring(sindex + 1, length);
+                //var otherstr = idstr.substring(0, sindex);
+                //sindex = otherstr.lastIndexOf("_");
+                //length = otherstr.length;
+                //var mid = otherstr.substring(sindex + 1, length);
                  
                 if (i > 0) jsonList = jsonList + ",";
                 if (chkitem.checked) {
-                    jsonList = jsonList + "{\"MenuID\":\"" + mid + "\",\"PrivID\":\"" + pid + "\",\"RoleID\":\"" + roleID + "\",\"Checked\":\"true\"}";
+                    jsonList = jsonList + "{\"PrivID\":\"" + pid + "\",\"RoleID\":\"" + roleID + "\",\"Checked\":\"true\"}";
                 }
                 else {
-                    jsonList = jsonList + "{\"MenuID\":\"" + mid + "\",\"PrivID\":\"" + pid + "\",\"RoleID\":\"" + roleID + "\",\"Checked\":\"false\"}";
+                    jsonList = jsonList + "{\"PrivID\":\"" + pid + "\",\"RoleID\":\"" + roleID + "\",\"Checked\":\"false\"}";
                 }
             }
 
