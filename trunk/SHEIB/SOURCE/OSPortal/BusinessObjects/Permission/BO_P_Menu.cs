@@ -153,14 +153,15 @@ namespace BusinessObjects
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT MenuID, MenuName FROM P_Menu ");
-            sb.Append(" WHERE ParentMenuID != '0' ");
-            sb.Append(" ORDER BY ParentMenuID,SortNo,MenuID; ");
-            sb.Append(" SELECT A.PrivID, A.PrivName, A.MenuID, A.PrivType, ");
+            sb.Append(" WHERE ParentMenuID = '0' ");
+            sb.Append(" ORDER BY MenuID,SortNo; ");
+            sb.Append(" SELECT A.PrivID, A.PrivName, A.PrivType, ");
+            sb.Append(" (SELECT ParentMenuID FROM P_Menu WHERE MenuID = A.MenuID) AS ParentMenuID, ");
             sb.Append(" CASE WHEN (ISNULL(B.RolePrivID,'')='') THEN 0 ");
             sb.Append(" ELSE 1 ");
             sb.Append(" END AS Checked ");            
             sb.Append(" FROM P_Priv A ");
-            sb.Append(" LEFT JOIN P_RolePriv B ON A.PrivID = B.PrivID AND A.MenuID = B.MenuID ");
+            sb.Append(" LEFT JOIN P_RolePriv B ON A.PrivID = B.PrivID ");
             sb.Append(" AND B.RoleID = @RoleID ;");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());

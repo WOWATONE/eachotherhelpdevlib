@@ -153,14 +153,14 @@ namespace BrokerWebApp.schemasetting
                 this.tabPrivilege.TabPages.Add(tp);
 
                 //add checkbox list;
-                dr = ds.Tables[1].Select("MenuID='" + tp.Name + "'");
+                dr = ds.Tables[1].Select("ParentMenuID='" + tp.Name + "'");
                 CheckBox chk;
                 
                 for (int i = 0; i < dr.Length; i++)
                 {
                     chk = new CheckBox();
                     chk.TextAlign = TextAlign.Right;
-                    chk.ID = dr[i]["MenuID"].ToString() + "_" + dr[i]["PrivID"].ToString();
+                    chk.ID = dr[i]["PrivID"].ToString();
                     chk.Text = dr[i]["PrivName"].ToString();
                     Boolean checkedState = Convert.ToBoolean(dr[i]["Checked"]);
                     chk.Checked = checkedState;
@@ -188,7 +188,7 @@ namespace BrokerWebApp.schemasetting
             {
                 if (item.Checked)
                 {
-                    BO_P_RolePriv.Add(item.RoleID, item.MenuID, item.PrivID);
+                    BO_P_RolePriv.Add(item.RoleID, item.PrivID);
                 }
                 else
                 {
@@ -224,9 +224,6 @@ namespace BrokerWebApp.schemasetting
 
         [DataMember]
         public string RoleID { get; set; }
-
-        [DataMember]
-        public string MenuID { get; set; }
 
         [DataMember]
         public string PrivID { get; set; }
