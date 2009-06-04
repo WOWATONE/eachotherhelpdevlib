@@ -1,4 +1,4 @@
-Ôªø<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="FeeNoticeAdd.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeeNoticeAdd" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="FeeNoticeAdd.aspx.cs" Inherits="BrokerWebApp.inoutbalance.FeeNoticeAdd" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
@@ -11,7 +11,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     
-    <title>‰øùË¥πÈÄöÁü•‰π¶ÂΩïÂÖ•</title>
+    <title>±£∑—Õ®÷™ È¬º»Î</title>
     <script type="text/javascript">
         $(document).ready(function() {
             //jQuery.noticeAdd({
@@ -52,30 +52,30 @@
 
     <table style="width:100%">
         <tr>
-            <td style="width:12%;text-align:right;">Êî∂Ë¥πÊñπÂºèÔºö</td>
+            <td style="width:12%;text-align:right;"> ’∑—∑Ω Ω£∫</td>
             <td style="width:88%;text-align:left;">
                 <asp:DropDownList ID="ddlFeeType" runat="server">
-                    <asp:ListItem Text="‰ª£Êî∂" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Áõ¥‰ªò" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="¥˙ ’" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="÷±∏∂" Value="2"></asp:ListItem>
                 </asp:DropDownList> 
             </td>
         </tr>
         <tr>
-            <td style="text-align:right;">ÈÄöÁü•‰π¶Âè∑Ôºö</td>
+            <td style="text-align:right;">Õ®÷™ È∫≈£∫</td>
             <td style="text-align:left;">
                 <asp:TextBox ID="txtNoticeNo" runat="server" Width="250px"></asp:TextBox> 
             </td>
         </tr>        
         <tr>
-            <td style="text-align:right;">ÈÄöÁü•Êó•ÊúüÔºö</td>
+            <td style="text-align:right;">Õ®÷™»’∆⁄£∫</td>
             <td style="text-align:left;">
                 <dxe:ASPxDateEdit ID="deNoticeDate" runat="server"></dxe:ASPxDateEdit> 
             </td>
         </tr>
         <tr>
-            <td style="text-align:right; vertical-align:top;">ÂØπÂ∫î‰øùÂçïÔºö</td>
+            <td style="text-align:right; vertical-align:top;">∂‘”¶±£µ•£∫</td>
             <td style="text-align:left;">
-                <dxe:ASPxButton runat="server" ID="btnAddPolicy" AutoPostBack="false" Text="Ê∑ªÂä†‰øùÂçï">
+                <dxe:ASPxButton runat="server" ID="btnAddPolicy" AutoPostBack="false" Text="ÃÌº”±£µ•">
                     <ClientSideEvents Click="btnAddPolicyClick" />
                 </dxe:ASPxButton>
             </td>
@@ -100,21 +100,21 @@
                                                                     <EditButton Visible="false" />
                                                                     <DeleteButton Visible="true" />
                                                                 </dxwgv:GridViewCommandColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="Êäï‰øùÂÆ¢Êà∑" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="Õ∂±£øÕªß" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="Êäï‰øùÂçïÂè∑" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="Õ∂±£µ•∫≈" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="‰øùÂçïÂè∑" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="±£µ•∫≈" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="Êú¨Ê¨°Â∫îÊî∂‰øùË¥π" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="±æ¥Œ”¶ ’±£∑—" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="AccountTypeID" Caption="Â∫îÊî∂Êó•Êúü" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="AccountTypeID" Caption="”¶ ’»’∆⁄" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>     
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="ÂïÜ‰∏öÈô©‰øùË¥π" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="…Ã“µœ’±£∑—" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>   
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="‰∫§Âº∫Èô©‰øùË¥π" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="Ωª«øœ’±£∑—" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>   
-                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="ËΩ¶ËàπÁ®é" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="Fee" Caption="≥µ¥¨À∞" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>                                                              
                                                             </Columns>
                                                             <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleIfExpanded" />
@@ -156,19 +156,19 @@
                     <tr>
                         <td></td>
                         <td style="width:60px;text-align:left;">
-                            <dxe:ASPxButton runat="server" ID="btnSave" Text="‰øùÂ≠ò" AutoPostBack="false"></dxe:ASPxButton>
+                            <dxe:ASPxButton runat="server" ID="btnSave" Text="±£¥Ê" AutoPostBack="false"></dxe:ASPxButton>
                         </td>
                         <td style="width:60px;text-align:left;">
-                            <dxe:ASPxButton runat="server" ID="ASPxButton1" Text="ÂÆ°Ê†∏" AutoPostBack="false"></dxe:ASPxButton>
+                            <dxe:ASPxButton runat="server" ID="ASPxButton1" Text="…Û∫À" AutoPostBack="false"></dxe:ASPxButton>
                         </td>
                         <td style="width:70px;text-align:left;">
-                            <dxe:ASPxButton runat="server" ID="ASPxButton2" Text="ÂèçÂÆ°Ê†∏" AutoPostBack="false"></dxe:ASPxButton>
+                            <dxe:ASPxButton runat="server" ID="ASPxButton2" Text="∑¥…Û∫À" AutoPostBack="false"></dxe:ASPxButton>
                         </td>
                         <td style="width:100px;text-align:left;">
-                            <dxe:ASPxButton runat="server" ID="ASPxButton3" Text="ÊâìÂç∞ÂçïËØÅ" AutoPostBack="false"></dxe:ASPxButton>
+                            <dxe:ASPxButton runat="server" ID="ASPxButton3" Text="¥Ú”°µ•÷§" AutoPostBack="false"></dxe:ASPxButton>
                         </td>
                         <td style="width:60px;text-align:left;">
-                            <dxe:ASPxButton runat="server" ID="btnClose" Text="ÈÄÄÂá∫" AutoPostBack="false"></dxe:ASPxButton>
+                            <dxe:ASPxButton runat="server" ID="btnClose" Text="ÕÀ≥ˆ" AutoPostBack="false"></dxe:ASPxButton>
                         </td>
                         <td></td>
                     </tr>
