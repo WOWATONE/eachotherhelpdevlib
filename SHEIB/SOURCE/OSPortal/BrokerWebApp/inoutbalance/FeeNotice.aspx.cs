@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 
 
-namespace OSPortalWebApp.inoutbalance
+namespace BrokerWebApp.inoutbalance
 {
     public partial class FeeNotice : System.Web.UI.Page
     {
