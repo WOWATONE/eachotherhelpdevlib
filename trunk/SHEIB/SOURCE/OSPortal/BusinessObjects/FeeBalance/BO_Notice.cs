@@ -29,6 +29,10 @@ namespace BusinessObjects
             FlagAudited,
             AuditTime,
             AuditPersion,
+            CustName,
+            GathingTypeName,
+            CreatePersionName,
+            AuditPersionName
         }
 
         #region Property
@@ -42,6 +46,10 @@ namespace BusinessObjects
         public int FlagAudited { get; set; }
         public DateTime AuditTime { get; set; }
         public string AuditPersion { get; set; }
+        public string CustName { get; set; }
+        public string GathingTypeName { get; set; }
+        public string CreatePersionName { get; set; }
+        public string AuditPersionName { get; set; }
 
         #endregion Property
 
@@ -54,9 +62,15 @@ namespace BusinessObjects
 
             StringBuilder sb = new StringBuilder();
             sb.Append("select ");
-            sb.Append("NoticeNo,NoticeDate,Content,CustID,GathingType,CreatePersion,CreateTime,FlagAudited,AuditTime,AuditPersion");
-            sb.Append("FROM Notice ");
-
+            sb.Append("NoticeNo,NoticeDate,Content,CustID,");
+            sb.Append("GathingType,CreatePersion,CreateTime,FlagAudited,AuditTime,AuditPersion,");
+            sb.Append("(Select CustName From Customer Where CustID=a.CustID) CustName,");
+            sb.Append("(Select GathingTypeName From GathingType Where GatheringTypeID=a.GathingType) GathingTypeName,");
+            sb.Append("(Select UserNameCn From P_User Where UserID=a.CreatePersion) CreatePersionName,");
+            sb.Append("(Select UserNameCn From P_User Where UserID=a.AuditPersion) AuditPersionName ");
+            sb.Append("From Notice a ");
+            sb.Append("where 1=1 ") ;
+            //sb.Append(sWhere);
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
@@ -76,7 +90,10 @@ namespace BusinessObjects
                     newObj.FlagAudited = Utility.GetIntFromReader(reader, Convert.ToInt32(FieldList.FlagAudited));
                     newObj.AuditTime = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.AuditTime));
                     newObj.AuditPersion = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.AuditPersion));
-
+                    newObj.CustName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CustName));
+                    newObj.GathingTypeName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.GathingTypeName));
+                    newObj.CreatePersionName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CreatePersionName));
+                    newObj.AuditPersionName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.AuditPersionName));
 
                     list.Add(newObj);
                 }
