@@ -16,16 +16,10 @@
             //jQuery.noticeAdd({
             //    text: 'This is a notification that you have to remove',
             //    stay: true
-            //});
-            
-
+            //});          
             window.onunload = function() {
                 //
             };
-
-
-
-
 
         });
 
