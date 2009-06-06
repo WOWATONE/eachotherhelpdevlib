@@ -140,7 +140,10 @@ namespace BrokerWebApp.otherinsurance
             this.gridSearchResult.DataBind();
         }
 
-
+        protected void btnXlsExport_Click(object sender, EventArgs e)
+        {
+            //this.gridExport.WriteXlsToResponse();
+        }
 
     }
 }

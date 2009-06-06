@@ -431,6 +431,13 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="otherinsurance\PolicyInput.aspx.cs">
+      <DependentUpon>PolicyInput.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyInput.aspx.designer.cs">
+      <DependentUpon>PolicyInput.aspx</DependentUpon>
+    </Compile>
     <Compile Include="otherinsurance\PolicyInputList.aspx.cs">
       <DependentUpon>PolicyInputList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -704,6 +711,7 @@
   <ItemGroup>
     <Content Include="App_Themes\Aqua\ASPxTreeList.skin" />
     <Content Include="CustomerRelation\CustomerList.aspx" />
+    <Content Include="otherinsurance\PolicyInput.aspx" />
     <Content Include="otherinsurance\PolicyInputList.aspx" />
   </ItemGroup>
   <ItemGroup>

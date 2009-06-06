@@ -49,7 +49,7 @@
                             </dxe:ASPxButton>                            
                         </td>
                         <td style="height:40px; width:55%; color:#0E5ED5;text-align:left;">
-                            当前位置：非车险保单录入&nbsp;&nbsp;&nbsp;&nbsp;
+                            当前位置：非车险保单录入&nbsp;
                             <asp:label id="LblUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
 	                        <label id="lblCurrentDate"></label>
                         </td>
@@ -86,70 +86,84 @@
                                                 <tr>
                                                     <td style="text-align:right;">保单编号：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:TextBox ID="txtPolicyNo" runat="server" Width="175px"></asp:TextBox>
+                                                        <dxe:ASPxTextBox ID="dxetxPolicyNo" ClientInstanceName="dxetxPolicyNo" runat="server" Width="170px"></dxe:ASPxTextBox>
                                                     </td>
                                                     
                                                     <td style="text-align:right;" colspan="2">投保编号：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:TextBox ID="txtPrePolicyNo" runat="server" Width="175px"></asp:TextBox>
+                                                        <dxe:ASPxTextBox ID="dxetxtPrePolicyNo" ClientInstanceName="dxetxtPrePolicyNo" runat="server" Width="170px"></dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align:right;">投保客户：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:TextBox ID="txtCustomer" runat="server" Width="175px"></asp:TextBox>                                                        
+                                                        <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server" Width="155px"></dxe:ASPxTextBox>                                                        
                                                     </td>
                                                     <td></td>                                                    
                                                 </tr> 
                                                 <tr>
                                                     <td style="text-align:right;">部门：</td>
                                                     <td style="text-align:left;">
-                                                       <asp:DropDownList runat="server" ID="ddlDeptId">
-                                                            <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
-                                                        </asp:DropDownList>                                                         
+                                                       <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server" Width="170px" DropDownStyle="DropDownList">
+															<Items>
+																<dxe:ListEditItem Text="(全部)" Value="" />
+																<dxe:ListEditItem Text="业务部" Value="1" />
+															</Items>
+														</dxe:ASPxComboBox>                                                        
                                                     </td>
                                                     <td style="text-align:right;" colspan="2">客户经理：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList runat="server" ID="ddlSalesId">
-                                                            <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
-                                                        </asp:DropDownList>
+                                                        <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="170px" DropDownStyle="DropDownList">
+															<Items>
+																<dxe:ListEditItem Text="(全部)" Value="" />
+															</Items>
+														</dxe:ASPxComboBox>
                                                     </td>
                                                     <td style="text-align:right;">保险险种：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:TextBox ID="txtProdTypeID" runat="server" Width="120px"></asp:TextBox>
-                                                        <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:top;" onclick="imgPolicyProdTypeClick();" />                                                                                                               
+                                                        <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server" Width="155px"></dxe:ASPxTextBox>                                                                                                                                                                      
                                                     </td>
-                                                    <td></td>
+                                                    <td style="text-align:left;">
+                                                        <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:middle;" onclick="imgPolicyProdTypeClick();" /> 
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="text-align:right;">保险公司：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList runat="server" ID="ddlCarrierId">
-                                                            <asp:ListItem Text="中国平安保险公司" Value="1"></asp:ListItem>
-                                                        </asp:DropDownList>                                                       
+                                                        <dxe:ASPxComboBox ID="dxeddlCarrierId" ClientInstanceName="dxeddlCarrierId" runat="server" Width="170px" DropDownStyle="DropDownList">
+															<Items>
+																<dxe:ListEditItem Text="中国平安保险公司" Value="" />
+															</Items>
+														</dxe:ASPxComboBox>                                                       
                                                     </td>
                                                     <td style="text-align:right;" colspan="2">分支机构：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList runat="server" ID="ddlBranchId">
-                                                            <asp:ListItem Text="中国平安保险公司" Value="1"></asp:ListItem>
-                                                        </asp:DropDownList>
+                                                        <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server" Width="170px" DropDownStyle="DropDownList">
+															<Items>
+																<dxe:ListEditItem Text="中国平安保险公司" Value="" />
+															</Items>
+														</dxe:ASPxComboBox>
                                                     </td>
                                                     <td style="text-align:right;">业务员：</td>
                                                     <td style="text-align:left;"> 
-                                                        <asp:TextBox ID="txtCreatePerson" runat="server" Width="155px"></asp:TextBox>                                                                                                             
+                                                        <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="155px"></dxe:ASPxTextBox>                                                                                                             
                                                     </td>                                                    
                                                     <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="text-align:right;">业务来源：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList runat="server" ID="ddlSourceTypeID">
-                                                            <asp:ListItem Text="来源1" Value="1"></asp:ListItem>
-                                                        </asp:DropDownList>                                                       
+                                                        <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID" runat="server" Width="170px" DropDownStyle="DropDownList">
+															<Items>
+																<dxe:ListEditItem Text="来源1" Value="" />
+															</Items>
+														</dxe:ASPxComboBox>                                                      
                                                     </td>
                                                     <td style="text-align:right;" colspan="2">业务性质：</td>
                                                     <td style="text-align:left;">
-                                                        <asp:DropDownList runat="server" ID="ddlFlagContinue">
-                                                            <asp:ListItem Text="新增" Value="1"></asp:ListItem>
-                                                        </asp:DropDownList>
+                                                        <dxe:ASPxComboBox ID="dxeddlFlagContinue" ClientInstanceName="dxeddlFlagContinue" runat="server" Width="170px" DropDownStyle="DropDownList">
+															<Items>
+																<dxe:ListEditItem Text="新增" Value="" />
+															</Items>
+														</dxe:ASPxComboBox>
                                                     </td>
                                                     <td style="text-align:right;"></td>
                                                     <td style="text-align:left;"></td>
@@ -168,8 +182,8 @@
                                                     </td>
                                                     <td style="text-align:right;" colspan="2">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
-                                                        <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
-                                                        <asp:Button ID="btnRefresh" runat="server" Text="刷新" CssClass="input_2" />
+                                                        <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
+                                                        <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" /> 
                                                     </td>
                                                     <td>&nbsp;</td>
                                                 </tr>                                 

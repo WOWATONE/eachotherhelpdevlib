@@ -11,7 +11,7 @@ using DevExpress.Web.ASPxEditors;
 using System.IO;
 using DevExpress.Web.ASPxUploadControl;
 
-namespace OSPortalWebApp.otherinsurance
+namespace BrokerWebApp.otherinsurance
 {
     public partial class PolicyInput : System.Web.UI.Page
     {
