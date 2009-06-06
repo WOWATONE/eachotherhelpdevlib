@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FD661BD4-56DB-4E99-87A1-DE84F70A0F4D}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -82,6 +82,12 @@
     <Compile Include="Permission\BO_P_RolePriv.cs" />
     <Compile Include="Permission\BO_P_User.cs" />
     <Compile Include="Permission\BO_P_UserRole.cs" />
+    <Compile Include="Policy\BO_Policy.cs" />
+    <Compile Include="Policy\BO_PolicyCarrier.cs" />
+    <Compile Include="Policy\BO_PolicyClaim.cs" />
+    <Compile Include="Policy\BO_PolicyItem.cs" />
+    <Compile Include="Policy\BO_PolicyPeriod.cs" />
+    <Compile Include="Policy\BO_PolicyReinsureCarrier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SchemaSetting\BO_P_Department.cs" />
     <Compile Include="SysSet\BO_P_Code.cs" />
