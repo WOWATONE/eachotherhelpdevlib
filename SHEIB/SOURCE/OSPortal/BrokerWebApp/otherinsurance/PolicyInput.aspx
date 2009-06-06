@@ -26,18 +26,6 @@
             //    stay: true
             //});
 
-
-            ////var popupControl = ASPxPopupSelectInsuranceClientControl;
-            //var canDisplay = "";
-            //if (canDisplay.toLowerCase() == "true") {
-            //    //popupControl.ShowWindow();
-            //    SetFormInputPopUpVisible();
-            //}
-            //else {
-            //    //do nothing;
-            //}
-
-
             //
             window.onunload = function() {
                 var pWindow = window.dialogArguments;
@@ -165,7 +153,7 @@
                                             <tr>
                                                 <td style="text-align: right;">保险险种：</td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server" Width="125px"></dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtProdTypeName" ClientInstanceName="dxetxtProdTypeName" runat="server" Width="125px"></dxe:ASPxTextBox>
                                                 </td>
                                                 <td style="text-align: left;">
                                                     <img runat="server" id="img1" alt="" src="../images/searchicon9.png" style="width: 20px;
@@ -183,7 +171,7 @@
                                                 </td>
                                                 <td style="text-align: right;">被保险人：</td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="ASPxTextBox1" ClientInstanceName="dxetxtCustomer" runat="server" Width="125px"></dxe:ASPxTextBox>                                                    
+                                                    <dxe:ASPxTextBox ID="dxetxtBeneficiary" ClientInstanceName="dxetxtBeneficiary" runat="server" Width="125px"></dxe:ASPxTextBox>                                                    
                                                 </td>
                                                 <td></td>
                                             </tr>
@@ -220,7 +208,7 @@
                                             <tr>
                                                 <td style="text-align: right;">业务性质：</td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxComboBox ID="dxeddlSourceType" ClientInstanceName="dxeddlSourceType" runat="server" Width="125px" DropDownStyle="DropDownList">
+                                                    <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID" runat="server" Width="125px" DropDownStyle="DropDownList">
 															<Items>
 																<dxe:ListEditItem Text="(全部)" Value="" />
 															</Items>
@@ -229,7 +217,7 @@
                                                 <td></td>
                                                 <td style="text-align: right;">业务来源：</td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxComboBox ID="ASPxComboBox1" ClientInstanceName="dxeddlSourceType" runat="server" Width="125px" DropDownStyle="DropDownList">
+                                                    <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID" runat="server" Width="125px" DropDownStyle="DropDownList">
 															<Items>
 																<dxe:ListEditItem Text="(全部)" Value="" />
 															</Items>
@@ -241,14 +229,14 @@
                                                     <table style="margin-left:-3px;">
                                                         <tr>
                                                             <td>
-                                                                <dxe:ASPxDateEdit ID="deStartDate" runat="server" Width="95px">
+                                                                <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server" Width="95px">
                                                                 </dxe:ASPxDateEdit>
                                                             </td>
                                                             <td>
                                                                 至
                                                             </td>
                                                             <td>
-                                                                <dxe:ASPxDateEdit ID="deEndDate" runat="server" Width="95px">
+                                                                <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server" Width="95px">
                                                                 </dxe:ASPxDateEdit>
                                                             </td>
                                                         </tr>
@@ -259,16 +247,12 @@
                                             <tr>
                                                 <td style="text-align: right;">录单人：</td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxComboBox ID="ASPxComboBox2" ClientInstanceName="dxeddlSourceType" runat="server" Width="125px" DropDownStyle="DropDownList">
-															<Items>
-																<dxe:ListEditItem Text="(全部)" Value="" />
-															</Items>
-														</dxe:ASPxComboBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="125px"></dxe:ASPxTextBox>
                                                 </td>
                                                 <td></td>
                                                 <td style="text-align: right;">录单日期：</td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxDateEdit ID="ASPxDateEdit1" runat="server" Width="125px">
+                                                    <dxe:ASPxDateEdit ID="dxedtCreateTime" ClientInstanceName="dxedtCreateTime" runat="server" Width="100px">
                                                                 </dxe:ASPxDateEdit>
                                                 </td>
                                                 <td></td>
@@ -470,19 +454,19 @@
                                             <tr>
                                                 <td style="text-align: right;">保额：</td>
                                                 <td style="text-align: left;" >
-                                                    <dxe:ASPxTextBox ID="dxetxtTel" ClientInstanceName="dxetxtTel" runat="server" Width="120px"> </dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtCoverage" ClientInstanceName="dxetxtCoverage" runat="server" Width="120px"> </dxe:ASPxTextBox>
                                                 </td>
                                                 <td style="text-align: right;">
                                                     费率(%)：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="ASPxTextBox2" ClientInstanceName="dxetxtTel" runat="server" Width="120px"> </dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtPremiumRate" ClientInstanceName="dxetxtPremiumRate" runat="server" Width="120px"> </dxe:ASPxTextBox>
                                                 </td>
                                                 <td style="text-align: right;">
                                                     经纪费率(%)：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="ASPxTextBox3" ClientInstanceName="dxetxtTel" runat="server" Width="120px"> </dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtProcessRate" ClientInstanceName="dxetxtProcessRate" runat="server" Width="120px"> </dxe:ASPxTextBox>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -500,13 +484,13 @@
                                                     保费(原)：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="ASPxTextBox4" ClientInstanceName="dxetxtTel" runat="server" Width="120px"> </dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtPremium" ClientInstanceName="dxetxtPremium" runat="server" Width="120px"> </dxe:ASPxTextBox>
                                                 </td>
                                                 <td style="text-align: right;">
                                                     经纪费(原)：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="ASPxTextBox5" ClientInstanceName="dxetxtTel" runat="server" Width="120px"> </dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtProcess" ClientInstanceName="dxetxtProcess" runat="server" Width="120px"> </dxe:ASPxTextBox>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -514,19 +498,19 @@
                                                     换算汇率：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="ASPxTextBox6" ClientInstanceName="dxetxtTel" runat="server" Width="120px"> </dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtConversionRate" ClientInstanceName="dxetxtConversionRate" runat="server" Width="120px"> </dxe:ASPxTextBox>
                                                 </td>
                                                 <td style="text-align: right;">
                                                     保费(本)：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="ASPxTextBox7" ClientInstanceName="dxetxtTel" runat="server" Width="120px"> </dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtPremiumBase" ClientInstanceName="dxetxtPremiumBase" runat="server" Width="120px"> </dxe:ASPxTextBox>
                                                 </td>
                                                 <td style="text-align: right;">
                                                     经纪费(本)：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="ASPxTextBox8" ClientInstanceName="dxetxtTel" runat="server" Width="120px"> </dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtProcessBase" ClientInstanceName="dxetxtProcessBase" runat="server" Width="120px"> </dxe:ASPxTextBox>
                                                 </td>
                                             </tr>
                                             <tr>

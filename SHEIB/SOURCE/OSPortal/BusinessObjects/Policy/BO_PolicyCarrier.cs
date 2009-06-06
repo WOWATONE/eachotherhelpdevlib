@@ -2,10 +2,40 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Common;
+using Microsoft.Practices.EnterpriseLibrary.Common;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using System.Data;
+using System.Runtime.Serialization;
 
 namespace BusinessObjects.Policy
 {
-    class BO_PolicyCarrier
+    [Serializable()]
+    public class BO_PolicyCarrier : BaseObject
     {
+        public BO_PolicyCarrier() { }
+
+        #region Variables
+
+        public enum FieldList
+        {
+            DeptID,
+            DeptName,
+            ShortName,
+            Manager,
+            ParentID,
+            Tel,
+            Fax
+        }
+
+        #endregion Variables
+
+
+            #region Property
+            #endregion Property
+
+
+            #region Methods
+            #endregion Methods
     }
 }
