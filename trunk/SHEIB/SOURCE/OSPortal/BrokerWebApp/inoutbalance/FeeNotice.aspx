@@ -262,14 +262,13 @@
                                         </dxwgv:GridViewCommandColumn>
                                         <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Customer" Caption="投保客户" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CustName" Caption="投保客户" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Sale" Caption="客户经理" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="客户经理" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="FeeTypeName" Caption="收款方式" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="收款方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="应收保费" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
+                                        
                                         <dxwgv:GridViewDataDateColumn FieldName="NoticeDate" Caption="通知日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
@@ -279,7 +278,7 @@
                                     <Settings ShowGroupPanel="false" />
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:aspxgridview>
-                                <asp:ObjectDataSource ID="DataSource" runat="server" SelectMethod="FetchList" TypeName="BusinessObjects.BO_Notice"
+                                <asp:ObjectDataSource ID="DataSource" runat="server" SelectMethod="FetchList()" TypeName="BusinessObjects.BO_Notice"
                                     EnablePaging="False">
                                     <SelectParameters>
                                     </SelectParameters>
