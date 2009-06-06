@@ -311,7 +311,7 @@
                                                         EnablePaging="false"                                                                                                                                                       
                                                         >
                                                         <SelectParameters> 
-                                                             
+                                                             <asp:Parameter DbType="String" Name="policyStatus" Type="String" Direction="Input" DefaultValue="1" />
                                                         </SelectParameters>
                                                     </asp:ObjectDataSource>                                                   
                                                 </td>
