@@ -60,7 +60,7 @@ namespace BusinessObjects
 
         #region Methods
 
-        public static List<BO_Notice> FetchList(string sWhere)
+        public static List<BO_Notice> FetchList()
         {
             List<BO_Notice> list = new List<BO_Notice>();
 
@@ -75,7 +75,7 @@ namespace BusinessObjects
             sb.Append("(Select UserNameCn From P_User Where UserID=a.AuditPersion) AuditPersionName ");
             sb.Append("From Notice a ");
             sb.Append("where 1=1 ") ;
-            sb.Append(sWhere);
+            //sb.Append(sWhere);
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
@@ -107,6 +107,30 @@ namespace BusinessObjects
             }
 
             return list;
+        }
+
+
+        public static DataSet GetNoticeList(string sWhere)
+        {
+            List<BO_Notice> list = new List<BO_Notice>();
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select ");
+            sb.Append("NoticeNo,NoticeDate,Content,CustID,");
+            sb.Append("GatheringType,CreatePersion,CreateTime,FlagAudited,AuditTime,AuditPersion,CustID,SalesId,");
+            sb.Append("(Select CustName From Customer Where CustID=a.CustID) CustName,");
+            sb.Append("(Select GatheringTypeName From GatheringType Where GatheringTypeID=a.GatheringType) GatheringTypeName,");
+            sb.Append("(Select UserNameCn From P_User Where UserID=a.CreatePersion) CreatePersionName,");
+            sb.Append("(Select UserNameCn From P_User Where UserID=a.SalesId) SalesName,");
+            sb.Append("(Select UserNameCn From P_User Where UserID=a.AuditPersion) AuditPersionName ");
+            sb.Append("From Notice a ");
+            sb.Append("where 1=1 ");
+            sb.Append(sWhere);
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            return _db.ExecuteDataSet(dbCommand);
+
         }
 
 
