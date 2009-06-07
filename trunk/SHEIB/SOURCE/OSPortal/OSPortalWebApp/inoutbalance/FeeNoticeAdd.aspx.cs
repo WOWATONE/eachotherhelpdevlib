@@ -27,6 +27,7 @@ namespace OSPortalWebApp.inoutbalance
                 this.gridPolicyItem.DataBind();
         }
 
+      
 
         protected void gridPolicyItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
