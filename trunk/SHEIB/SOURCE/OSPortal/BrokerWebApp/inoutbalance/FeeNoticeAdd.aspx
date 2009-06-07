@@ -112,27 +112,30 @@
                             <EditButton Visible="false" />
                             <DeleteButton Visible="true" />
                         </dxwgv:GridViewCommandColumn>
-                        <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">
+                        <dxwgv:GridViewDataColumn FieldName="CustName" Caption="投保客户" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
-                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="投保单号" CellStyle-Wrap="False">
+                        <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单号" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
-                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次应收保费" CellStyle-Wrap="False">
+                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="本次应收保费" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
-                        <dxwgv:GridViewDataColumn FieldName="AccountTypeID" Caption="应收日期" CellStyle-Wrap="False">
+                        <dxwgv:GridViewDataColumn FieldName="PayDate" Caption="应收日期" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
-                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="商业险保费" CellStyle-Wrap="False">
+                        <dxwgv:GridViewDataColumn FieldName="CiPremium" Caption="商业险保费" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
-                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="交强险保费" CellStyle-Wrap="False">
+                        <dxwgv:GridViewDataColumn FieldName="AciPremium" Caption="交强险保费" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
-                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="车船税" CellStyle-Wrap="False">
+                        <dxwgv:GridViewDataColumn FieldName="CstPremium" Caption="车船税" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
                     </Columns>
                     <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleIfExpanded" />
                     <TotalSummary>
-                        <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" DisplayFormat="#" />
-                        <dxwgv:ASPxSummaryItem FieldName="Fee" SummaryType="Sum" DisplayFormat="c" />
+                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" DisplayFormat="保单数量:#" />
+                        <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" DisplayFormat="c" />
+                        <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" DisplayFormat="c" />
+                        <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" DisplayFormat="c" />
+                        <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" DisplayFormat="c" />
                     </TotalSummary>
                     <%-- EndRegion --%>
                     <SettingsPager Mode="ShowAllRecords" />

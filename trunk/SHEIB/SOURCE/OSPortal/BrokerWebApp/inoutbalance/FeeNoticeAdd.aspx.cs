@@ -42,6 +42,9 @@ namespace BrokerWebApp.inoutbalance
             }
             ddlFeeType.SelectedIndex = 0;
             deNoticeDate.Date = DateTime.Today;
+
+            gridPolicyItem.DataSource = BO_Notice.GetNoticePolicyList("TZSBH");
+            gridPolicyItem.DataBind();
         }
 
 
