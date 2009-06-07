@@ -269,11 +269,16 @@
                                         <dxwgv:GridViewDataDateColumn FieldName="NoticeDate" Caption="通知日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="PayFee" Caption="应收金额" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
-                                    <SettingsPager Mode="ShowPager" AlwaysShowPager="true" FirstPageButton-Text="首页"
-                                        LastPageButton-Text="尾页" NextPageButton-Text="下一页"   PrevPageButton-Text="上一页"/>
-                                    <Settings ShowGroupPanel="true" />
+                                    <SettingsPager Mode="ShowPager" AlwaysShowPager="true" />
+                                    <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleIfExpanded" />
+                                    <TotalSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="NoticeNo" SummaryType="Count" DisplayFormat="总记录:#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PayFee" SummaryType="Sum" DisplayFormat="c" />
+                                    </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
                             </td>
