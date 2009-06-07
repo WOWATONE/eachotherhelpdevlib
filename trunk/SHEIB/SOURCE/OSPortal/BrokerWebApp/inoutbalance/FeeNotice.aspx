@@ -50,13 +50,13 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <ajaxtoolkit:toolkitscriptmanager runat="Server" id="ScriptManager1" />
+    <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     <table style="width: 100%">
         <tr>
             <td style="height: 40px; width: 45%;">
-                <dxe:aspxbutton id="debtnCreate" runat="server" text="新建" autopostback="false">
+                <dxe:ASPxButton ID="debtnCreate" runat="server" Text="新建" AutoPostBack="false">
                     <ClientSideEvents Click="btnCreateClick" />
-                </dxe:aspxbutton>
+                </dxe:ASPxButton>
             </td>
             <td style="height: 40px; width: 55%; color: #0E5ED5; text-align: left;">
                 当前位置：保费通知书&nbsp;&nbsp;
@@ -172,15 +172,15 @@
                                 通知日期：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:aspxdateedit id="deStartDate" runat="server">
-                                </dxe:aspxdateedit>
+                                <dxe:ASPxDateEdit ID="deStartDate" runat="server">
+                                </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: center;">
                                 至
                             </td>
                             <td style="text-align: left;" colspan="2">
-                                <dxe:aspxdateedit id="deEndDate" runat="server">
-                                </dxe:aspxdateedit>
+                                <dxe:ASPxDateEdit ID="deEndDate" runat="server">
+                                </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">
                                 状态：
@@ -216,11 +216,11 @@
                         </tr>
                     </table>
                 </asp:Panel>
-                <ajaxtoolkit:collapsiblepanelextender id="cpeSearch" runat="Server" targetcontrolid="npSearchDetail"
-                    expandcontrolid="npSearchHeader" collapsecontrolid="npSearchHeader" collapsed="false"
-                    textlabelid="lbl_npSearchHeader" imagecontrolid="img_npSearchHeader" expandedtext="(展开)"
-                    collapsedtext="(隐藏)" expandedimage="~/images/collapse_blue.jpg" collapsedimage="~/images/expand_blue.jpg"
-                    suppresspostback="true" />
+                <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearch" runat="Server" TargetControlID="npSearchDetail"
+                    ExpandControlID="npSearchHeader" CollapseControlID="npSearchHeader" Collapsed="false"
+                    TextLabelID="lbl_npSearchHeader" ImageControlID="img_npSearchHeader" ExpandedText="(展开)"
+                    CollapsedText="(隐藏)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
+                    SuppressPostBack="true" />
             </td>
         </tr>
         <tr>
@@ -243,12 +243,10 @@
                     <table style="width: 100%">
                         <tr>
                             <td>
-                                <dxwgv:aspxgridview id="gridSearchResult" 
-                                    DataSourceID="DataSource" 
-                                    clientinstancename="gridSearchResult"
-                                    runat="server" keyfieldname="NoticeId" autogeneratecolumns="False" settings-showfooter="true"
-                                    width="100%" settingspager-alwaysshowpager="true" onrowdeleting="gridSearchResult_RowDeleting"
-                                    onrowdeleted="gridSearchResult_RowDeleted">
+                                <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
+                                    KeyFieldName="NoticeId" AutoGenerateColumns="False" Settings-ShowFooter="true"
+                                    Width="100%" SettingsPager-AlwaysShowPager="true" OnRowDeleting="gridSearchResult_RowDeleting"
+                                    OnRowDeleted="gridSearchResult_RowDeleted">
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" CellStyle-Wrap="False">
@@ -268,30 +266,25 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="收款方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        
                                         <dxwgv:GridViewDataDateColumn FieldName="NoticeDate" Caption="通知日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
-                                    <SettingsPager Mode="ShowPager" />
-                                    <Settings ShowGroupPanel="false" />
+                                    <SettingsPager Mode="ShowPager" AlwaysShowPager="true" FirstPageButton-Text="首页"
+                                        LastPageButton-Text="尾页" NextPageButton-Text="下一页"   PrevPageButton-Text="上一页"/>
+                                    <Settings ShowGroupPanel="true" />
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
-                                </dxwgv:aspxgridview>
-                                <asp:ObjectDataSource ID="DataSource" runat="server" SelectMethod="FetchList()" TypeName="BusinessObjects.BO_Notice"
-                                    EnablePaging="False">
-                                    <SelectParameters>
-                                    </SelectParameters>
-                                </asp:ObjectDataSource>
+                                </dxwgv:ASPxGridView>
                             </td>
                         </tr>
                     </table>
                 </asp:Panel>
-                <ajaxtoolkit:collapsiblepanelextender id="cpeSearchResult" runat="Server" targetcontrolid="npSearchResultDetail"
-                    expandcontrolid="npSearchResultHeader" collapsecontrolid="npSearchResultHeader"
-                    collapsed="false" textlabelid="lbl_npSearchResultHeader" imagecontrolid="img_npSearchResultHeader"
-                    expandedtext="(展开)" collapsedtext="(隐藏)" expandedimage="~/images/collapse_blue.jpg"
-                    collapsedimage="~/images/expand_blue.jpg" suppresspostback="true" />
+                <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearchResult" runat="Server" TargetControlID="npSearchResultDetail"
+                    ExpandControlID="npSearchResultHeader" CollapseControlID="npSearchResultHeader"
+                    Collapsed="false" TextLabelID="lbl_npSearchResultHeader" ImageControlID="img_npSearchResultHeader"
+                    ExpandedText="(展开)" CollapsedText="(隐藏)" ExpandedImage="~/images/collapse_blue.jpg"
+                    CollapsedImage="~/images/expand_blue.jpg" SuppressPostBack="true" />
             </td>
         </tr>
     </table>
