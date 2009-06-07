@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using BusinessObjects;
 
 
 namespace BrokerWebApp.inoutbalance
@@ -19,12 +20,28 @@ namespace BrokerWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetPolicyItemDataForGrid();
+            if (!this.Page.IsPostBack)
+            {
+                this.Initialization();
+            }
+        }
 
-            this.gridPolicyItem.DataSource = _dtGrid;
+        private void Initialization()
+        {
 
-            if (!IsPostBack && !IsCallback)
-                this.gridPolicyItem.DataBind();
+            DataSet list;
+
+            //收费类型
+            list = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.GatheringType.ToString());
+            if (list.Tables[0] != null)
+            {
+                foreach (DataRow row in list.Tables[0].Rows)
+                {
+                    this.ddlFeeType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
+            ddlFeeType.SelectedIndex = 0;
+            deNoticeDate.Date = DateTime.Today;
         }
 
 

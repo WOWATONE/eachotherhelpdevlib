@@ -20,6 +20,7 @@ namespace BrokerWebApp.inoutbalance
         protected void Page_Load(object sender, EventArgs e)
         {
             this.gridSearchResult.DataSource = BusinessObjects.BO_Notice.GetNoticeList("");
+
             if (!IsPostBack && !IsCallback)
                 this.gridSearchResult.DataBind();
         }
