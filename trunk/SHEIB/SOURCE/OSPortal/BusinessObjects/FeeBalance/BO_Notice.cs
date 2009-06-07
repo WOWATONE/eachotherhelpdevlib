@@ -132,6 +132,71 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand);
         }
 
+        public static DataSet GetNoticePolicyList(string sNoticeNo)
+        {
+            
+            //SQL
+            //select a.PolicyID,b.PolicyNo,b.CustomerID,(select CustName from  customer where custID=b.CustomerID) CustName, 
+            //CarrierID,BranchID,Period,PayDate,PayFeeBase,
+            //CiPremium,AciPremium,CstPremium
+            //from PolicyPeriod a,Policy b
+            //where a.PolicyID=b.PolicyID
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select a.PolPeriodId,a.PolicyID,b.PolicyNo,b.CustomerID,(select CustName from  customer where custID=b.CustomerID) CustName, ");
+            sb.Append("CarrierID,BranchID,Period,PayDate,PayFeeBase,");
+            sb.Append("CiPremium,AciPremium,CstPremium");
+            sb.Append(" from PolicyPeriod a,Policy b");
+            sb.Append(" where a.PolicyID=b.PolicyID ");
+            sb.Append(" and a.NoticeNo='" + sNoticeNo + "'");
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet GetCustomerFeeSelectList(string sWhere)
+        {
+            
+            //SQL
+            //        select a.PolicyID,b.PolicyNo,b.CustomerID,
+            //(select CustName from  customer where custID=b.CustomerID) CustName, 
+            //CarrierID,(select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,
+            //BranchID,(select BranchName from Branch where BranchID=a.BranchID) BranchName,
+            //Period,PayDate,
+            //b.PremiumBase,
+            //PayFeeBase,
+            //(select sum(fee) from fee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('1','6')) PayedFee,
+            //b.ProdTypeID,(select ProdTypeName from ProductType where ProdTypeID=b.ProdTypeID) ProdTypeName,
+            //b.GatheringType,(select GatheringTypeName from GatheringType where GatheringTypeID=b.GatheringType) GatheringTypeName,
+            //CiPremium,AciPremium,CstPremium,
+            //b.SalesID,(select UserNameCn from P_User where UserID=b.SalesID) SalesName,b.CarrierSales
+            //from PolicyPeriod a,Policy b
+            //where a.PolicyID=b.PolicyID
+            //  and isnull(a.NoticeNo,'')=''
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select a.PolicyID,b.PolicyNo,b.CustomerID, ");
+            sb.Append("(select CustName from  customer where custID=b.CustomerID) CustName, ");
+            sb.Append("CarrierID,(select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,");
+            sb.Append("BranchID,(select BranchName from Branch where BranchID=a.BranchID) BranchName,");
+            sb.Append("Period,PayDate,b.PremiumBase,PayFeeBase,");
+            sb.Append("(select sum(fee) from fee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('1','6')) PayedFee,");
+            sb.Append("b.ProdTypeID,(select ProdTypeName from ProductType where ProdTypeID=b.ProdTypeID) ProdTypeName,");
+            sb.Append("b.GatheringType,(select GatheringTypeName from GatheringType where GatheringTypeID=b.GatheringType) GatheringTypeName,");
+            sb.Append("CiPremium,AciPremium,CstPremium,");
+            sb.Append("b.SalesID,(select UserNameCn from P_User where UserID=b.SalesID) SalesName,b.CarrierSales");
+            sb.Append(" from PolicyPeriod a,Policy b");
+            sb.Append(" where a.PolicyID=b.PolicyID");
+            sb.Append("  and isnull(a.NoticeNo,'')='' ");
+            sb.Append( sWhere);
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+
+
+
+
+
+
 
         #endregion Methods
 
