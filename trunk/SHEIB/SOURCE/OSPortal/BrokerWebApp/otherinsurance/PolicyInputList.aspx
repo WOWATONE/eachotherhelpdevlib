@@ -230,6 +230,7 @@
                                            <tr>
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server" 
+                                                    DataSourceID="DataSource"
                                                     KeyFieldName="KeyGUID" AutoGenerateColumns="False" 
                                                     Settings-ShowFooter="true" Width="100%" 
                                                     SettingsPager-AlwaysShowPager="true" 
@@ -307,11 +308,11 @@
                                                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
                                                     <asp:ObjectDataSource ID="DataSource" runat="server" 
                                                         SelectMethod="FetchPolicyCarrierList"
-                                                        TypeName="System.Data.DataTable" 
+                                                        TypeName="BusinessObjects.Policy.BO_Policy" 
                                                         EnablePaging="false"                                                                                                                                                       
                                                         >
                                                         <SelectParameters> 
-                                                             <asp:Parameter DbType="String" Name="policyStatus" Type="String" Direction="Input" DefaultValue="1" />
+                                                             <asp:Parameter Name="policyStatus" Type="String" Direction="Input" DefaultValue="1" />
                                                         </SelectParameters>
                                                     </asp:ObjectDataSource>                                                   
                                                 </td>
