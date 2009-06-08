@@ -59,6 +59,17 @@ namespace BusinessObjects
             }
             return value;
         }
-        
+
+        public static Decimal GetDecimalFromReader(IDataReader reader, Int32 columnIndex)
+        {
+            Decimal value = 0;
+            if (!Convert.IsDBNull(reader[columnIndex]))
+            {
+                value = reader.GetDecimal(columnIndex);
+            }
+            return value;
+        }
+
+
     }
 }
