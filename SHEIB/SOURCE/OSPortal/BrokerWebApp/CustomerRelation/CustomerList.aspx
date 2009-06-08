@@ -129,7 +129,7 @@
                             <td style="text-align: left;">
                                 <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
                                 <asp:Button ID="btnReset" runat="server" Text="重置" CssClass="input_2" />&nbsp;
-                                <asp:Button ID="btnExport" runat="server" Text="导出" CssClass="input_2" />
+                                <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" /> 
                             </td>
                         </tr>
                     </table>

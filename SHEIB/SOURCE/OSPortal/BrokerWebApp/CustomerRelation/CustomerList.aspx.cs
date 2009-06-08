@@ -67,6 +67,11 @@ namespace BrokerWebApp.CustomerRelation
             }
         }
 
+        protected void btnXlsExport_Click(object sender, EventArgs e)
+        {
+            this.gridExport.WriteXlsToResponse();
+        }
+
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             //
