@@ -177,7 +177,7 @@ namespace BrokerWebApp.schemasetting
         {
             String json = parameter;
 
-            MemoryStream ms = new MemoryStream(Encoding.Unicode.GetBytes(json));
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(RolePrivilegeList));
             RolePrivilegeList obj;
 
