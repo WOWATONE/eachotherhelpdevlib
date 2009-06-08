@@ -11,6 +11,7 @@ using System.Runtime.Serialization;
 namespace BusinessObjects.Policy
 {
     [Serializable()]
+    [DataContract(Namespace = "http://www.sheib.com")]
     public class BO_Policy : BaseObject
     {
 
@@ -90,152 +91,175 @@ namespace BusinessObjects.Policy
 
 
         #region Property
-
+        [DataMember]
         public string PolicyID
         {
             get;
             set;
         }
 
+        [DataMember]
         public string PrevPolicyID
         {
             get;
             set;
         }
 
+        [DataMember]
         public string PolicyNo
         {
             get;
             set;
         }
 
+        [DataMember]
         public string PolicyType
         {
             get;
             set;
         }
 
+        [DataMember]
         public string PolicyStatus
         {
             get;
             set;
         }
 
+        [DataMember]
         public string AltNO
         {
             get;
             set;
         }
 
+        [DataMember]
         public string FlagAlt
         {
             get;
             set;
         }
 
+        [DataMember]
         public string CustomerID
         {
             get;
             set;
         }
 
+        [DataMember]
         public string Beneficiary
         {
             get;
             set;
         }
 
+        [DataMember]
         public string CarrierSales
         {
             get;
             set;
         }
 
+        [DataMember]
         public string DeptId
         {
             get;
             set;
         }
 
+        [DataMember]
         public string SalesId
         {
             get;
             set;
         }
 
+        [DataMember]
         public string ProdTypeID
         {
             get;
             set;
         }
 
-
+        [DataMember]
         public DateTime SignDate
         {
             get;
             set;
         }
 
+        [DataMember]
         public DateTime StartDate
         {
             get;
             set;
         }
 
+        [DataMember]
         public DateTime EndDate
         {
             get;
             set;
         }
 
+        [DataMember]
         public string Currency
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal Coverage
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal PremiumRate
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal Premium
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal ConversionRate
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal PremiumBase
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal Process
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal ProcessRate
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal ProcessBase
         {
             get;
@@ -243,206 +267,238 @@ namespace BusinessObjects.Policy
         }
 
 
+        [DataMember]
         public string GatheringType
         {
             get;
             set;
         }
 
+        [DataMember]
         public string OperationType
         {
             get;
             set;
         }
 
+        [DataMember]
         public string SourceTypeID
         {
             get;
             set;
         }
 
+        [DataMember]
         public string Special
         {
             get;
             set;
         }
 
+        [DataMember]
         public string Remark
         {
             get;
             set;
         }
 
+        [DataMember]
         public DateTime AuditTime
         {
             get;
             set;
         }
 
+        [DataMember]
         public string AuditPerson
         {
             get;
             set;
         }
 
+        [DataMember]
         public DateTime CreateTime
         {
             get;
             set;
         }
 
+        [DataMember]
         public string CreatePerson
         {
             get;
             set;
         }
 
+        [DataMember]
         public DateTime ModifyTime
         {
             get;
             set;
         }
 
+        [DataMember]
         public string ModifyPerson
         {
             get;
             set;
         }
 
-
+        [DataMember]
         public string VolumnNo
         {
             get;
             set;
         }
 
+        [DataMember]
         public Int32 FlagReinsure
         {
             get;
             set;
         }
 
+        [DataMember]
         public Int32 FlagTogether
         {
             get;
             set;
         }
 
+        [DataMember]
         public string AciPolicyNo
         {
             get;
             set;
         }
 
+        [DataMember]
         public string AskPriceID
         {
             get;
             set;
         }
 
+        [DataMember]
         public string BankName
         {
             get;
             set;
         }
 
+        [DataMember]
         public string BankAccount
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal CiPremium
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal CiProcessRate
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal CiProcess
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal AciPremium
         {
             get;
             set;
         }
 
-
+        [DataMember]
         public Decimal AciProcessRate
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal AciProcess
         {
             get;
             set;
         }
 
+        [DataMember]
         public Decimal CstPremium
         {
             get;
             set;
         }
 
+        [DataMember]
         public Int32 PeriodTimes
         {
             get;
             set;
         }
 
+        [DataMember]
         public string CarNo
         {
             get;
             set;
         }
 
+        [DataMember]
         public string CarcaseNo
         {
             get;
             set;
         }
 
+        [DataMember]
         public string EngineNo
         {
             get;
             set;
         }
 
+        [DataMember]
         public string Capacity
         {
             get;
             set;
         }
 
+        [DataMember]
         public string UseCharacter
         {
             get;
             set;
         }
 
+        [DataMember]
         public DateTime RegisterDate
         {
             get;
             set;
         }
 
+        [DataMember]
         public string CarValue
         {
             get;
             set;
         }
 
+        [DataMember]
         public string CarUser
         {
             get;

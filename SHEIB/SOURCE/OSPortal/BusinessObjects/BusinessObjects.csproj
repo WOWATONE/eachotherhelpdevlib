@@ -71,6 +71,7 @@
     <Compile Include="BaseEntity\ConfigurationService.cs" />
     <Compile Include="BaseEntity\DataService.cs" />
     <Compile Include="BaseEntity\SessionService.cs" />
+    <Compile Include="BaseEntity\TranUtils.cs" />
     <Compile Include="BaseEntity\Utility.cs" />
     <Compile Include="CustomerRelation\BO_Customer.cs" />
     <Compile Include="FeeBalance\BO_Fee.cs" />

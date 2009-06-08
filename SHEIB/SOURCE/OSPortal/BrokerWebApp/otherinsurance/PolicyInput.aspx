@@ -1,4 +1,4 @@
-<%@ Page Title="保单录入" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master"
+<%@ Page Title="保单录入" Language="C#" MasterPageFile="~/SiteMastePages/PopupUploadMaster.Master"
     AutoEventWireup="true" Theme="Aqua" CodeBehind="PolicyInput.aspx.cs" Inherits="BrokerWebApp.otherinsurance.PolicyInput" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
@@ -16,6 +16,8 @@
     TagPrefix="dxpc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl"
     TagPrefix="dxuc" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>保单录入</title>
 
@@ -41,15 +43,30 @@
 
         });
 
+        
+        function dxebtntopSave_Click(s, e) {
+            var plcid = getPolicyID();
+            var jsonListHeader = "{\"RolePrivileges\":[";
+            var jsonListFooter = "]}";
+            var jsonList = "";
+            //jsonList = + "{\"PrivID\":\"" + pid + "\",\"RoleID\":\"" + roleID + "\",\"Checked\":\"true\"}";
+
+            //debugger;
+            //jsonList = jsonListHeader + jsonList + jsonListFooter;
+            //dxeSaveCallback.PerformCallback(jsonList);
+        }
+
         function btnAddCustomerClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
             window.showModalDialog("NewCustomer.aspx", self, myArguments);
         }
 
+
         function btnSelectCustomerClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
             window.showModalDialog("SelectCustomer.aspx", self, myArguments);
         }
+
 
         function gridGridProdIDChange() {
             var theValue = decbGridProdID.GetText();
@@ -60,6 +77,7 @@
         function FileUploadStart() {
             //document.getElementById("uploadedListFiles").innerHTML = "";
         }
+
 
         function FileUploaded(s, e) {
             var fieldSeparator = "|";
@@ -79,22 +97,47 @@
             }
         }
 
+
         function imgPolicyProdTypeClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
             window.showModalDialog("PolicyProdType.aspx", self, myArguments);
         }
+
 
         function hlPolicyItemTogetherClick(params) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
             window.showModalDialog("NewCustomer.aspx", self, myArguments);
 
         }
-        
+
+        function getPolicyID() {
+            var result = $("#<%=plcid.ClientID %>");
+            var ID = result[0].value;
+            return ID;
+        }
+
+        function getCustomerID() {
+            var result = $("#<%=cusid.ClientID %>");
+            var ID = result[0].value;
+            return ID;
+        }
+
+        function getProductTypeID() {
+            var result = $("#<%=ptid.ClientID %>");
+            var ID = result[0].value;
+            return ID;
+        }
     </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    
+    <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
+    
     <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
         runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%">
         <ClientSideEvents ActiveTabChanging="function(s, e) {}" TabClick="function(s, e) {}" />
@@ -139,7 +182,8 @@
                                                 <td></td>
                                                 <td style="text-align: right;">保单编号：</td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server" Width="125px"></dxe:ASPxTextBox> 
+                                                    <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server" Width="125px"></dxe:ASPxTextBox>
+                                                    <input type="hidden" id="plcid" runat="server" /> 
                                                 </td>
                                                 <td></td>
                                                 <td style="text-align: right;">
@@ -154,6 +198,7 @@
                                                 <td style="text-align: right;">保险险种：</td>
                                                 <td style="text-align: left;">
                                                     <dxe:ASPxTextBox ID="dxetxtProdTypeName" ClientInstanceName="dxetxtProdTypeName" runat="server" Width="125px"></dxe:ASPxTextBox>
+                                                    <input type="hidden" id="ptid" runat="server" />
                                                 </td>
                                                 <td style="text-align: left;">
                                                     <img runat="server" id="img1" alt="" src="../images/searchicon9.png" style="width: 20px;
@@ -162,6 +207,7 @@
                                                 <td style="text-align: right;">投保人：</td>
                                                 <td style="text-align: left;">
                                                     <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server" Width="125px"></dxe:ASPxTextBox>
+                                                    <input type="hidden" id="cusid" runat="server" />
                                                 </td>
                                                 <td style="text-align: left;">
                                                     <img runat="server" id="imgadduser" onclick="btnAddCustomerClick();" alt="" src="../images/add_user_icon.png"
@@ -208,7 +254,7 @@
                                             <tr>
                                                 <td style="text-align: right;">业务性质：</td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID" runat="server" Width="125px" DropDownStyle="DropDownList">
+                                                    <dxe:ASPxComboBox ID="dxeddlFlagReinsure" ClientInstanceName="dxeddlFlagReinsure" runat="server" Width="125px" DropDownStyle="DropDownList">
 															<Items>
 																<dxe:ListEditItem Text="(全部)" Value="" />
 															</Items>
@@ -265,7 +311,8 @@
                                                             </td>
                                                             <td style="width:10px;text-align: left;"></td>
                                                             <td style="text-align: left;">
-                                                            <dxe:ASPxButton runat="server" id="dxebtnSave" Text="保存" CausesValidation="true">
+                                                            <dxe:ASPxButton runat="server" id="dxebtntopSave" Text="保存" CausesValidation="true" AutoPostBack="false">
+                                                                <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }"></ClientSideEvents>
                                                             </dxe:ASPxButton>
                                                             </td>
                                                         </tr>
