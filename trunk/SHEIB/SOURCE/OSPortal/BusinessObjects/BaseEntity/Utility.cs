@@ -31,7 +31,8 @@ namespace BusinessObjects
 
         public static DateTime GetDatetimeFromReader(IDataReader reader, Int32 columnIndex)
         {
-            DateTime value = DateTime.MinValue ;
+
+            DateTime value = DateTime.SpecifyKind(DateTime.MinValue, DateTimeKind.Utc);
             if (!Convert.IsDBNull(reader[columnIndex]))
             {
                 value = reader.GetDateTime(columnIndex);

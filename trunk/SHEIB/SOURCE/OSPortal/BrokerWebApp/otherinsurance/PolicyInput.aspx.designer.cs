@@ -23,6 +23,15 @@ namespace BrokerWebApp.otherinsurance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
+        /// dxeSaveCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeSaveCallback;
+        
+        /// <summary>
         /// insuranceDetailTabPage control.
         /// </summary>
         /// <remarks>
@@ -86,6 +95,15 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyNo;
         
         /// <summary>
+        /// plcid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden plcid;
+        
+        /// <summary>
         /// dxechkTogether control.
         /// </summary>
         /// <remarks>
@@ -113,6 +131,15 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProdTypeName;
         
         /// <summary>
+        /// ptid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden ptid;
+        
+        /// <summary>
         /// img1 control.
         /// </summary>
         /// <remarks>
@@ -129,6 +156,15 @@ namespace BrokerWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCustomer;
+        
+        /// <summary>
+        /// cusid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden cusid;
         
         /// <summary>
         /// imgadduser control.
@@ -185,6 +221,15 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlGatheringType;
         
         /// <summary>
+        /// dxeddlFlagReinsure control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlFlagReinsure;
+        
+        /// <summary>
         /// dxeddlSourceTypeID control.
         /// </summary>
         /// <remarks>
@@ -194,49 +239,40 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSourceTypeID;
         
         /// <summary>
-        /// dxeddl control.
+        /// dxeStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddl;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeStartDate;
         
         /// <summary>
-        /// deStartDate control.
+        /// dxeEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deStartDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeEndDate;
         
         /// <summary>
-        /// deEndDate control.
+        /// dxetxtCreatePerson control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deEndDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCreatePerson;
         
         /// <summary>
-        /// ASPxComboBox2 control.
+        /// dxedtCreateTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox ASPxComboBox2;
-        
-        /// <summary>
-        /// ASPxDateEdit1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit ASPxDateEdit1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxedtCreateTime;
         
         /// <summary>
         /// dxetxtStage control.
@@ -248,13 +284,13 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtStage;
         
         /// <summary>
-        /// dxebtnSave control.
+        /// dxebtntopSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnSave;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtntopSave;
         
         /// <summary>
         /// cpeBasic control.
@@ -356,31 +392,31 @@ namespace BrokerWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.Panel npCostSummaryDetail;
         
         /// <summary>
-        /// dxetxtTel control.
+        /// dxetxtCoverage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtTel;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCoverage;
         
         /// <summary>
-        /// ASPxTextBox2 control.
+        /// dxetxtPremiumRate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox ASPxTextBox2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPremiumRate;
         
         /// <summary>
-        /// ASPxTextBox3 control.
+        /// dxetxtProcessRate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox ASPxTextBox3;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProcessRate;
         
         /// <summary>
         /// dxeddlCurrency control.
@@ -392,49 +428,49 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCurrency;
         
         /// <summary>
-        /// ASPxTextBox4 control.
+        /// dxetxtPremium control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox ASPxTextBox4;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPremium;
         
         /// <summary>
-        /// ASPxTextBox5 control.
+        /// dxetxtProcess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox ASPxTextBox5;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProcess;
         
         /// <summary>
-        /// ASPxTextBox6 control.
+        /// dxetxtConversionRate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox ASPxTextBox6;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtConversionRate;
         
         /// <summary>
-        /// ASPxTextBox7 control.
+        /// dxetxtPremiumBase control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox ASPxTextBox7;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPremiumBase;
         
         /// <summary>
-        /// ASPxTextBox8 control.
+        /// dxetxtProcessBase control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox ASPxTextBox8;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProcessBase;
         
         /// <summary>
         /// CollapsiblePanelExtender2 control.
