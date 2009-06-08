@@ -170,7 +170,8 @@
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" 
                                                             onclick="btnSearch_Click" />&nbsp;
                                                         <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
-                                                        <asp:Button ID="Button1" runat="server" Text="确定" CssClass="input_2" />&nbsp;                                                        
+                                                        <asp:Button ID="btnSubmit" runat="server" Text="确定" CssClass="input_2" 
+                                                            onclick="btnSubmit_Click"/>&nbsp;                                                        
                                                     </td>
                                                     <td>&nbsp;</td> 
                                                 </tr>                                          
