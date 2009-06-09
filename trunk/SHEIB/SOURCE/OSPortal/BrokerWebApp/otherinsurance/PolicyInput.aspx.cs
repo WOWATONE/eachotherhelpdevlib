@@ -36,17 +36,17 @@ namespace BrokerWebApp.otherinsurance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Page.IsPostBack)
-            //{
-            //    theID = this.plcid.Value;
-            //}
-            //else
-            //{
-            //    theID = Page.Request.QueryString[inputQueryStringIDKey];
-            //    if (string.IsNullOrEmpty(theID))
-            //        theID = BusinessObjects.TranUtils.GetPolicyID();
-            //    this.plcid.Value = theID;
-            //}
+            if (Page.IsPostBack)
+            {
+                theID = this.plcid.Value;
+            }
+            else
+            {
+                theID = Page.Request.QueryString[inputQueryStringIDKey];
+                if (string.IsNullOrEmpty(theID))
+                    theID = BusinessObjects.TranUtils.GetPolicyID();
+                this.plcid.Value = theID;
+            }
             
             
         }
@@ -67,6 +67,19 @@ namespace BrokerWebApp.otherinsurance
 
 
         #region gridPolicyItem Events
+
+        
+        protected void gridPolicyItem_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
+        {
+            HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
+            //Page.IsCallback;
+            //Page.IsPostBack;
+            //Page.IsPostBackEventControlRegistered;
+            ASPxComboBox dxecbGridProdID = tblEditorTemplate.FindControl("dxecbGridProdID") as ASPxComboBox;
+            
+            //string theProdID = decbGridProdID.SelectedItem.Value.ToString();//ddlGridProdID.SelectedValue;
+
+        }
 
         protected void gridPolicyItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
@@ -103,11 +116,12 @@ namespace BrokerWebApp.otherinsurance
 
         protected void gridPolicyItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
         {
-            this.gridPolicyItem.DataBind();
+            //this.gridPolicyItem.DataBind();
         }
 
         protected void gridPolicyItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
+            
             //DataTable dt = _dtGridPolicyItem;
             //DataRow[] dr = dt.Select("", "ItemID Desc");
             
@@ -162,14 +176,15 @@ namespace BrokerWebApp.otherinsurance
             //    }
             //    );
             //_dtGridPolicyItem.AcceptChanges();
-            
+
+            //this.plcid.Value;
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
         }
 
         protected void gridPolicyItem_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
         {
-            this.gridPolicyItem.DataBind();           
+            //this.gridPolicyItem.DataBind();           
         }
 
         protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
