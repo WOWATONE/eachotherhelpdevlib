@@ -638,9 +638,11 @@
                                             <tr>
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                                        KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False" OnRowInserting="gridPolicyItem_RowInserting"
+                                                        KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False" 
+                                                        OnRowInserting="gridPolicyItem_RowInserting" OnRowInserted="gridPolicyItem_RowInserted"
                                                         OnRowUpdating="gridPolicyItem_RowUpdating" OnRowUpdated="gridPolicyItem_RowUpdated"
-                                                        OnRowInserted="gridPolicyItem_RowInserted" OnRowDeleting="gridPolicyItem_RowDeleting"
+                                                        OnRowDeleting="gridPolicyItem_RowDeleting" 
+                                                        OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
                                                         OnRowDeleted="gridPolicyItem_RowDeleted">
                                                         <%-- BeginRegion Columns --%>
                                                         <Columns>
@@ -686,7 +688,7 @@
                                                                                 项目名称:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxComboBox runat="server" ID="decbGridProdID" AutoPostBack="false" ClientInstanceName="decbGridProdID"
+                                                                                <dxe:ASPxComboBox runat="server" ID="dxecbGridProdID" AutoPostBack="false" ClientInstanceName="dxecbGridProdID"
                                                                                     DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="100px">
                                                                                     <Items>
                                                                                         <dxe:ListEditItem Text="编码三" Value="1" />
@@ -700,7 +702,7 @@
                                                                                 保额:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <asp:TextBox runat="server" ID="txtGridCoverage" Text='<%# Eval("Coverage") %>'></asp:TextBox>
+                                                                                <asp:TextBox runat="server" ID="txtGridCoverage" Text=''></asp:TextBox>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -708,13 +710,13 @@
                                                                                 费率:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <asp:TextBox runat="server" ID="txtGridPremiumRate" Text='<%# Eval("PremiumRate") %>'></asp:TextBox>
+                                                                                <asp:TextBox runat="server" ID="txtGridPremiumRate" Text=''></asp:TextBox>
                                                                             </td>
                                                                             <td style="white-space: nowrap; text-align: right;">
                                                                                 保费:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <asp:TextBox runat="server" ID="txtGridPremium" Text='<%# Eval("Premium") %>'></asp:TextBox>
+                                                                                <asp:TextBox runat="server" ID="txtGridPremium" Text=''></asp:TextBox>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -722,13 +724,13 @@
                                                                                 经纪费率:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <asp:TextBox runat="server" ID="txtGridProcRate" Text='<%# Eval("ProcRate") %>'></asp:TextBox>
+                                                                                <asp:TextBox runat="server" ID="txtGridProcRate" Text=''></asp:TextBox>
                                                                             </td>
                                                                             <td style="white-space: nowrap; text-align: right;">
                                                                                 经纪费:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <asp:TextBox runat="server" ID="txtGridProcess" Text='<%# Eval("Process") %>'></asp:TextBox>
+                                                                                <asp:TextBox runat="server" ID="txtGridProcess" Text=''></asp:TextBox>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
@@ -743,6 +745,7 @@
                                                                 </div>
                                                             </EditForm>
                                                         </Templates>
+                                                        <ClientSideEvents />
                                                     </dxwgv:ASPxGridView>
                                                 </td>
                                             </tr>
