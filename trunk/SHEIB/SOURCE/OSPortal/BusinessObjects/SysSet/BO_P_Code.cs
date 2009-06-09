@@ -28,7 +28,8 @@ namespace BusinessObjects
             GatheringType,
             OperationType,
             TradeName,
-            Area
+            Area,
+	    PolicyStatus
         }
 
         public enum FieldList
