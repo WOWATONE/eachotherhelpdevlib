@@ -45,15 +45,84 @@
 
         
         function dxebtntopSave_Click(s, e) {
-            var plcid = getPolicyID();
-            var jsonListHeader = "{\"RolePrivileges\":[";
-            var jsonListFooter = "]}";
-            var jsonList = "";
-            //jsonList = + "{\"PrivID\":\"" + pid + "\",\"RoleID\":\"" + roleID + "\",\"Checked\":\"true\"}";
+            
+            //dxedtCreateTime;
+            var AciPolicyNo = null;
+            var AciPremium = null;
+            var AciProcess = null;
+            var AciProcessRate = null;
+            var AltNO = null;
+            var AskPriceID = null;
+            var AuditPerson = null;
+            var AuditTime = null;
+            var BankAccount = null;
+            var BankName = null;
+            var Beneficiary = null;
+            var Capacity = null;
+            var CarNo = null;
+            var CarUser = null;
+            var CarValue = null;
+            var CarcaseNo = null;
+            var CarrierSales = null;
+            var CiPremium = null;
+            var CiProcess = null;
+            var CiProcessRate = null;
+            var ConversionRate = null;
+            var Coverage = null;
+            var CreatePerson = null;
+            var CreateTime = null;
+            var CstPremium = null;
+            var Currency = null;
+            var CustomerID = null;
+            var DeptId = null;
+            var EndDate = null;
+            var EngineNo = null;
+            var FlagAlt = null;
+            var FlagReinsure = null;
+            var FlagTogether = null;
+            var GatheringType = null;
+            var ModifyPerson = null;
+            var ModifyTime = null;
+            var OperationType = null;
+            var PolicyID = getPolicyID();
+            var PolicyNo = null;
+            var PolicyStatus = null;
+            var PolicyType = null;
+            var Premium = null;
+            var PremiumRate = null;
+            var PrevPolicyID = null;
+            var Process = null;
+            var ProcessBase = null;
+            var ProcessRate = null;
+            var ProdTypeID = null;
+            var RegisterDate = null;
+            var Remark = null;
+            var SalesId = null;
+            var SignDate = null;
+            var SourceTypeID = null;
+            var Special = null;
+            var StartDate = null;
+            var UseCharacter = null;
+            var VolumnNo = null;
 
+            var plc = new Policy(AciPolicyNo, AciPremium, AciProcess, AciProcessRate,
+            AltNO, AskPriceID, AuditPerson, AuditTime, BankAccount,
+            BankName, Beneficiary, Capacity, CarNo, CarUser,
+            CarValue, CarcaseNo, CarrierSales, CiPremium, CiProcess,
+            CiProcessRate, ConversionRate, Coverage, CreatePerson, CreateTime,
+            CstPremium, Currency, CustomerID, DeptId, EndDate,
+            EngineNo, FlagAlt, FlagReinsure, FlagTogether, GatheringType,
+            ModifyPerson, ModifyTime, OperationType, PolicyID, PolicyNo,
+            PolicyStatus, PolicyType, Premium, PremiumRate, PrevPolicyID,
+            Process, ProcessBase, ProcessRate, ProdTypeID, RegisterDate,
+            Remark, SalesId, SignDate, SourceTypeID, Special,
+            StartDate, UseCharacter, VolumnNo);
+
+            var thejsonstring = JSON.stringify(plc);
+  
             //debugger;
-            //jsonList = jsonListHeader + jsonList + jsonListFooter;
-            //dxeSaveCallback.PerformCallback(jsonList);
+            dxeSaveCallback.PerformCallback(thejsonstring);
+            
         }
 
         function btnAddCustomerClick() {
@@ -68,6 +137,11 @@
         }
 
 
+        function saveCallbackComplete(s, e) {
+            //do nothing;
+        }
+        
+        
         function gridGridProdIDChange() {
             var theValue = decbGridProdID.GetText();
             //detxtGridProdName.SetValue(theValue);
@@ -127,6 +201,215 @@
             var ID = result[0].value;
             return ID;
         }
+        
+
+        function Policy(AciPolicyNo, AciPremium, AciProcess, AciProcessRate,
+        AltNO, AskPriceID, AuditPerson, AuditTime, BankAccount,
+        BankName, Beneficiary, Capacity, CarNo, CarUser,
+        CarValue, CarcaseNo, CarrierSales, CiPremium, CiProcess,
+        CiProcessRate, ConversionRate, Coverage, CreatePerson, CreateTime,
+        CstPremium, Currency, CustomerID, DeptId, EndDate,
+        EngineNo, FlagAlt, FlagReinsure, FlagTogether, GatheringType,
+        ModifyPerson, ModifyTime, OperationType, PolicyID, PolicyNo,
+        PolicyStatus, PolicyType, Premium, PremiumRate, PrevPolicyID,
+        Process, ProcessBase, ProcessRate, ProdTypeID, RegisterDate,
+        Remark, SalesId, SignDate, SourceTypeID, Special,
+        StartDate, UseCharacter, VolumnNo) {
+            if (!isEmpty(AciPolicyNo))
+                this.AciPolicyNo = AciPolicyNo;
+
+            if (!isEmpty(AciPremium))
+                this.AciPremium = AciPremium;
+
+            if (!isEmpty(AciProcess))
+                this.AciProcess = AciProcess;
+
+            if (!isEmpty(AciProcessRate))
+                this.AciProcessRate = AciProcessRate;
+
+            if (!isEmpty(AltNO))
+                this.AltNO = AltNO;
+
+            if (!isEmpty(AskPriceID))
+                this.AskPriceID = AskPriceID;
+
+            if (!isEmpty(AuditPerson))
+                this.AuditPerson = AuditPerson;
+
+            if (!isEmpty(AuditTime))
+                this.AuditTime = AuditTime;
+
+            if (!isEmpty(BankAccount))
+                this.BankAccount = BankAccount;
+
+            if (!isEmpty(BankName))
+                this.BankName = BankName;
+
+            if (!isEmpty(Beneficiary))
+                this.Beneficiary = Beneficiary;
+
+            if (!isEmpty(Capacity))
+                this.Capacity = Capacity;
+
+            if (!isEmpty(CarNo))
+                this.CarNo = CarNo;
+
+            if (!isEmpty(CarUser))
+                this.CarUser = CarUser;
+
+            if (!isEmpty(CarValue))
+                this.CarValue = CarValue;
+
+            if (!isEmpty(CarcaseNo))
+                this.CarcaseNo = CarcaseNo;
+
+            if (!isEmpty(CarrierSales))
+                this.CarrierSales = CarrierSales;
+
+            if (!isEmpty(CiPremium))
+                this.CiPremium = CiPremium;
+
+            if (!isEmpty(CiProcess))
+                this.CiProcess = CiProcess;
+
+            if (!isEmpty(CiProcessRate))
+                this.CiProcessRate = CiProcessRate;
+
+            if (!isEmpty(ConversionRate))
+                this.ConversionRate = ConversionRate;
+
+            if (!isEmpty(Coverage))
+                this.Coverage = Coverage;
+
+            if (!isEmpty(CreatePerson))
+                this.CreatePerson = CreatePerson;
+
+            if (!isEmpty(CreateTime))
+                this.CreateTime = CreateTime;
+
+            if (!isEmpty(CstPremium))
+                this.CstPremium = CstPremium;
+
+            if (!isEmpty(Currency))
+                this.Currency = Currency;
+
+            if (!isEmpty(CustomerID))
+                this.CustomerID = CustomerID;
+
+            if (!isEmpty(DeptId))
+                this.DeptId = DeptId;
+
+            if (!isEmpty(EndDate))
+                this.EndDate = EndDate;
+
+            if (!isEmpty(EngineNo))
+                this.EngineNo = EngineNo;
+
+            if (!isEmpty(FlagAlt))
+                this.FlagAlt = FlagAlt;
+
+            if (!isEmpty(FlagReinsure))
+                this.FlagReinsure = FlagReinsure;
+
+            if (!isEmpty(FlagTogether))
+                this.FlagTogether = FlagTogether;
+
+            if (!isEmpty(GatheringType))
+                this.GatheringType = GatheringType;
+
+            if (!isEmpty(ModifyPerson))
+                this.ModifyPerson = ModifyPerson;
+
+            if (!isEmpty(ModifyTime))
+                this.ModifyTime = ModifyTime;
+
+            if (!isEmpty(OperationType))
+                this.OperationType = OperationType;
+
+            if (!isEmpty(PolicyID))
+                this.PolicyID = PolicyID;
+
+            if (!isEmpty(PolicyNo))
+                this.PolicyNo = PolicyNo;
+
+            if (!isEmpty(PolicyStatus))
+                this.PolicyStatus = PolicyStatus;
+
+            if (!isEmpty(PolicyType))
+                this.PolicyType = PolicyType;
+
+            if (!isEmpty(Premium))
+                this.Premium = Premium;
+
+            if (!isEmpty(PremiumRate))
+                this.PremiumRate = PremiumRate;
+
+            if (!isEmpty(PrevPolicyID))
+                this.PrevPolicyID = PrevPolicyID;
+
+            if (!isEmpty(Process))
+                this.Process = Process;
+
+            if (!isEmpty(ProcessBase))
+                this.ProcessBase = ProcessBase;
+
+            if (!isEmpty(ProcessRate))
+                this.ProcessRate = ProcessRate;
+
+            if (!isEmpty(ProdTypeID))
+                this.ProdTypeID = ProdTypeID;
+
+            if (!isEmpty(RegisterDate))
+                this.RegisterDate = RegisterDate;
+
+            if (!isEmpty(Remark))
+                this.Remark = Remark;
+
+            if (!isEmpty(SalesId))
+                this.SalesId = SalesId;
+
+            if (!isEmpty(SignDate))
+                this.SignDate = SignDate;
+
+            if (!isEmpty(SourceTypeID))
+                this.SourceTypeID = SourceTypeID;
+
+            if (!isEmpty(Special))
+                this.Special = Special;
+
+            if (!isEmpty(StartDate))
+                this.StartDate = StartDate;
+
+            if (!isEmpty(UseCharacter))
+                this.UseCharacter = UseCharacter;
+
+            if (!isEmpty(VolumnNo))
+                this.VolumnNo = VolumnNo;
+            
+        }
+
+
+        function isEmpty(testVar) {
+            if ((testVar == null) || (testVar.length == 0)) {
+                return true;
+            } else {
+                return false;
+            }          
+        }
+
+        function dxeStartDate_DateChanged(s, e) {
+            //http://www.w3school.com.cn/js/jsref_obj_date.asp
+            var thesource = dxeStartDate.GetDate();
+            var theYear = thesource.getFullYear();
+            var theMonth = thesource.getMonth();
+            var theDate = thesource.getDate();
+            theYear = theYear + 1;
+            theMonth = theMonth + 1;            
+            var endDateString = theMonth.toString() + "/" + theDate.toString() + "/" + theYear.toString();
+            
+            dxeEndDate.SetDate(new Date(endDateString));
+        }
+        
     </script>
 
 </asp:Content>
@@ -276,6 +559,7 @@
                                                         <tr>
                                                             <td>
                                                                 <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server" Width="95px">
+                                                                    <ClientSideEvents DateChanged="function(s, e) { dxeStartDate_DateChanged(s,e); }" />                                                                    
                                                                 </dxe:ASPxDateEdit>
                                                             </td>
                                                             <td>
