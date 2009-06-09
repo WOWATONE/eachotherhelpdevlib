@@ -13,6 +13,8 @@ using DevExpress.Web.ASPxEditors;
 using DevExpress.Web.ASPxUploadControl;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using BusinessObjects;
+
 
 namespace BrokerWebApp.otherinsurance
 {
@@ -52,7 +54,7 @@ namespace BrokerWebApp.otherinsurance
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            //saveCheckedPrivilege(e.Parameter);
+            savePolicy(e.Parameter);
             e.Result = "complete";
         }
 
@@ -319,6 +321,20 @@ namespace BrokerWebApp.otherinsurance
         }
 
         #endregion Upload File  Events
+
+
+        private void savePolicy(String parameter)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BusinessObjects.Policy.BO_Policy));
+            BusinessObjects.Policy.BO_Policy obj;
+
+            obj = (BusinessObjects.Policy.BO_Policy)serializer.ReadObject(ms);
+            ms.Close();
+
+        }
 
 
         private void toJOSN()

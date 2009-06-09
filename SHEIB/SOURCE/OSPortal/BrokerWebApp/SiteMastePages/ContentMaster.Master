@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="../js/jquery-ui-1.7.1.custom.min.js"></script>
     <script type="text/javascript" src="../js/ui.datepicker-zh-CN.js"></script>
     <script type="text/javascript" src="../js/customdefinition.js"></script>
+    <script type="text/javascript" src="../js/json2.js"></script>
     <link type="text/css" href="../js/css/smoothness/jquery-ui-1.7.1.custom.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="../js/jquerynotice/jquery.notice.css" />	
     <script type="text/javascript">
