@@ -275,6 +275,69 @@ namespace BrokerWebApp.CustomerRelation {
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridContactItem;
         
         /// <summary>
+        /// ContentControl4 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl4;
+        
+        /// <summary>
+        /// gridCustomerPtItem 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridCustomerPtItem;
+        
+        /// <summary>
+        /// CustomerPTUploadControl 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxUploadControl.ASPxUploadControl CustomerPTUploadControl;
+        
+        /// <summary>
+        /// ContentControl5 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl5;
+        
+        /// <summary>
+        /// gridNotifyItem 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridNotifyItem;
+        
+        /// <summary>
+        /// ContentControl6 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl6;
+        
+        /// <summary>
+        /// gridPolicyItem 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridPolicyItem;
+        
+        /// <summary>
         /// npExecuteAction 控件。
         /// </summary>
         /// <remarks>
