@@ -43,10 +43,8 @@
 
         });
 
+        function makePolicyJSON() {
         
-        function dxebtntopSave_Click(s, e) {
-            
-            //dxedtCreateTime;
             var AciPolicyNo = null;
             var AciPremium = null;
             var AciProcess = null;
@@ -118,13 +116,42 @@
             Remark, SalesId, SignDate, SourceTypeID, Special,
             StartDate, UseCharacter, VolumnNo);
 
-            var thejsonstring = JSON.stringify(plc);
-  
-            //debugger;
-            dxeSaveCallback.PerformCallback(thejsonstring);
-            
+            return JSON.stringify(plc);
+        }
+        
+        
+        function dxebtntopSave_Click(s, e) {
+            var thejsonstring = makePolicyJSON();
+            dxeSaveCallback.PerformCallback(thejsonstring);            
         }
 
+        function saveCallbackComplete(s, e) {
+            //do nothing;
+        }
+
+        function btnAddClick(s, e) {
+            var thejsonstring = makePolicyJSON();
+            //debugger;
+            dxeAddCallback.PerformCallback(thejsonstring);
+        }
+
+        function addCallbackComplete(s, e) {
+            //do nothing;
+            var result = $("#hrefnewpolicy");
+            var hrefPolicyNew = result[0];
+            hrefPolicyNew.click();            
+        }
+
+        function btnSaveCheckClick(s, e) {
+        }
+        
+        
+        function saveCheckCallbackComplete(s, e) {
+            //do nothing;
+        }
+        
+        
+        
         function btnAddCustomerClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
             window.showModalDialog("NewCustomer.aspx", self, myArguments);
@@ -136,10 +163,6 @@
             window.showModalDialog("SelectCustomer.aspx", self, myArguments);
         }
 
-
-        function saveCallbackComplete(s, e) {
-            //do nothing;
-        }
         
         
         function gridGridProdIDChange() {
@@ -409,6 +432,16 @@
             
             dxeEndDate.SetDate(new Date(endDateString));
         }
+
+
+        function btnCancelClick() {
+            window.document.forms[0].reset();
+            //ASPxClientEdit.ClearEditorsInContainer(null);
+        }
+
+        function btnCloseClick() {
+            window.close();
+        }
         
     </script>
 
@@ -416,8 +449,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     
+    <dxcb:ASPxCallback ID="dxeAddCallback" ClientInstanceName="dxeAddCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {addCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
     <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
+    <dxcb:ASPxCallback ID="dxeSaveAndCheckCallback" ClientInstanceName="dxeSaveAndCheckCallback" runat="server" OnCallback="dxeSaveAndCheckCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {saveCheckCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
     
     
@@ -931,7 +972,7 @@
                                                                                 保险公司:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxComboBox runat="server" ID="decbGridCarrierNo" AutoPostBack="false" ClientInstanceName="decbGridCarrierNo"
+                                                                                <dxe:ASPxComboBox runat="server" ID="dxecbGridCarrierID" AutoPostBack="false" ClientInstanceName="dxecbGridCarrierID"
                                                                                     DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="100px">
                                                                                     <Items>
                                                                                         <dxe:ListEditItem Text="中国平安" Value="1" />
@@ -945,7 +986,7 @@
                                                                                 分支机构:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxComboBox runat="server" ID="decbGridBranchName" AutoPostBack="false" ClientInstanceName="decbGridBranchName"
+                                                                                <dxe:ASPxComboBox runat="server" ID="dxecbGridBranchID" AutoPostBack="false" ClientInstanceName="dxecbGridBranchID"
                                                                                     DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="100px">
                                                                                     <Items>
                                                                                         <dxe:ListEditItem Text="平安分支1" Value="1" />
@@ -961,13 +1002,13 @@
                                                                                 份额比例(%):
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="dxetxtIDNo" ClientInstanceName="txtGridPolicyRate" runat="server" Text='<%# Eval("PolicyRate") %>'></dxe:ASPxTextBox>
+                                                                                <dxe:ASPxTextBox ID="dxetxtIDNo" ClientInstanceName="txtGridPolicyRate" runat="server"></dxe:ASPxTextBox>
                                                                             </td>
                                                                             <td style="white-space: nowrap; text-align: right;">
                                                                                 保费:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="ASPxTextBox9" ClientInstanceName="txtGridPremium" runat="server" Text='<%# Eval("Premium") %>'></dxe:ASPxTextBox>
+                                                                                <dxe:ASPxTextBox ID="ASPxTextBox9" ClientInstanceName="txtGridPremium" runat="server"></dxe:ASPxTextBox>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -975,13 +1016,13 @@
                                                                                 经纪费率(%):
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="ASPxTextBox10" ClientInstanceName="txtGridPoundage" runat="server" Text='<%# Eval("ProcessRate") %>'></dxe:ASPxTextBox>
+                                                                                <dxe:ASPxTextBox ID="ASPxTextBox10" ClientInstanceName="txtGridPoundage" runat="server"></dxe:ASPxTextBox>
                                                                             </td>
                                                                             <td style="white-space: nowrap; text-align: right;">
                                                                                 经纪费:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="ASPxTextBox11" ClientInstanceName="txtGridProcess" runat="server" Text='<%# Eval("Process") %>'></dxe:ASPxTextBox>
+                                                                                <dxe:ASPxTextBox ID="ASPxTextBox11" ClientInstanceName="txtGridProcess" runat="server"></dxe:ASPxTextBox>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
@@ -1202,18 +1243,47 @@
             </td>
         </tr>
     </table>
-    <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="25px">
+    <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="30px">
         <table style="width: 100%">
             <tr>
-                <td style="text-align: right;">
-                    <asp:Button ID="btnadd" runat="server" Text="新增" CssClass="input_2" />&nbsp;&nbsp;
-                    <asp:Button ID="btnsave" runat="server" Text="保存" CssClass="input_2" />&nbsp;&nbsp;
-                    <asp:Button ID="btnApplyCheck" runat="server" Text="提交审核" CssClass="input_2" />&nbsp;&nbsp;
-                    <asp:Button ID="btncancel" runat="server" Text="取消" CssClass="input_2" />
-                </td>
-                <td style="width: 20px; text-align: left;">
+                <td style="width: 400px; text-align: left;">
                     &nbsp;
                 </td>
+                <td style="width:50px; text-align:left;">
+                    <dxe:ASPxButton runat="server" id="dxebtnBottomAdd" Text="新增" CausesValidation="true" AutoPostBack="false">
+                        <ClientSideEvents Click="function(s, e) {btnAddClick(s,e);}" />
+                    </dxe:ASPxButton> 
+                </td>
+                <td style="width:50px; text-align:left;">
+                    <dxe:ASPxButton runat="server" id="dxebtnBottomSave" Text="保存" CausesValidation="true" AutoPostBack="false">
+                        <ClientSideEvents Click="function(s, e) {dxebtntopSave_Click(s,e);}" />
+                    </dxe:ASPxButton> 
+                </td>
+                <td style="width:70px; text-align:left;">
+                    <dxe:ASPxButton runat="server" id="dxebtnBottomCheck" Text="提交审核" CausesValidation="true" AutoPostBack="false">
+                        <ClientSideEvents Click="function(s, e) {btnSaveCheckClick(s,e);}" />
+                    </dxe:ASPxButton> 
+                </td>
+                <td style="width:50px; text-align:left;">
+                    <dxe:ASPxButton runat="server" id="dxebtnCancel" Text="重置" CausesValidation="false" AutoPostBack="false">
+                        <ClientSideEvents Click="function(s, e) {btnCancelClick();}" />
+                    </dxe:ASPxButton>
+                </td>
+                <td style="width:50px; text-align:left;">
+                    <dxe:ASPxButton runat="server" id="dxeClose" Text="关闭" CausesValidation="false" AutoPostBack="false">
+                        <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
+                    </dxe:ASPxButton>
+                </td>                
+            </tr>
+            <tr>
+                <td style="width: 400px; text-align: left;">
+                    &nbsp;
+                </td>
+                <td style="display:none;"><a id="hrefnewpolicy" href="PolicyInput.aspx">New</a></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         </table>
     </asp:Panel>

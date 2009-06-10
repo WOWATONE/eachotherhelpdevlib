@@ -47,7 +47,8 @@ namespace BrokerWebApp.otherinsurance
                     theID = BusinessObjects.TranUtils.GetPolicyID();
                 this.plcid.Value = theID;
             }
-            
+
+            this.dxetxtPolicyID.Value = theID;
             
         }
 
@@ -57,6 +58,14 @@ namespace BrokerWebApp.otherinsurance
             savePolicy(e.Parameter);
             e.Result = "complete";
         }
+
+
+        protected void dxeSaveAndCheckCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            savePolicy(e.Parameter);
+            e.Result = "complete";
+        }
+
 
         protected void Page_PreRender(object sender, EventArgs e)
         {

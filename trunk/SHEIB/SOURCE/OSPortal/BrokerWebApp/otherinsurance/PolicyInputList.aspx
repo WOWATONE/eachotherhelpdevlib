@@ -29,7 +29,10 @@
 
         function gridCustomButtonClick(s, e) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            window.showModalDialog("PolicyInput.aspx", self, myArguments);
+            var noint = s.GetDataRow(e.visibleIndex).cells[2].innerText;
+            var querystring;
+            querystring = "PolicyInput.aspx?id=" + noint;
+            window.showModalDialog(querystring, self, myArguments);
         }
 
         function imgPolicyProdTypeClick() {
