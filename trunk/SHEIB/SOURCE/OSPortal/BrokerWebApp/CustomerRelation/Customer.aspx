@@ -330,9 +330,6 @@
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="姓名" FieldName="ContactName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="所属客户GUID" FieldName="CustID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center"
-                                                Visible="false">
-                                            </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="职位" FieldName="Position" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="性别" FieldName="Sex" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
@@ -414,18 +411,6 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="white-space: nowrap; text-align: right;">
-                                                                所属客户：
-                                                            </td>
-                                                            <td style="text-align: left;">
-                                                                <dxe:ASPxTextBox ID="dxetxtCustID" ClientInstanceName="dxetxtCustID" runat="server" Text='<%# Eval("CustID") %>'></dxe:ASPxTextBox>
-                                                            </td>
-                                                            <td style="white-space: nowrap; text-align: right;"> 
-                                                            </td>
-                                                            <td style="text-align: left;">
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
                                                             <td style="white-space: nowrap; text-align: right; vertical-align: top;">
                                                                 兴趣：
                                                             </td>
@@ -462,6 +447,231 @@
                     </dxw:ContentControl>
                 </ContentCollection>
             </dxtc:TabPage>
+            <dxtc:TabPage Name="PtFollow" Text="销售跟进">
+                <ContentCollection>
+                    <dxw:ContentControl ID="ContentControl4" runat="server">
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="text-align: left; width: 100%;">
+                                    销售跟进记录：
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <dxwgv:ASPxGridView ID="gridCustomerPtItem" ClientInstanceName="gridCustomerPtItem"
+                                        runat="server" KeyFieldName="FollowID" Width="100%" AutoGenerateColumns="False"
+                                        OnRowInserting="gridCustomerPtItem_RowInserting" OnRowUpdating="gridCustomerPtItem_RowUpdating"
+                                        OnRowUpdated="gridCustomerPtItem_RowUpdated" OnRowInserted="gridCustomerPtItem_RowInserted"
+                                        OnRowDeleting="gridCustomerPtItem_RowDeleting" OnRowDeleted="gridCustomerPtItem_RowDeleted">
+                                        <Columns>
+                                            <dxwgv:GridViewCommandColumn Caption="&nbsp;" VisibleIndex="0" Width="15px">
+                                                <NewButton Visible="true" />
+                                                <EditButton Visible="true" />
+                                                <DeleteButton Visible="true" />
+                                            </dxwgv:GridViewCommandColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进GUID" FieldName="FollowID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Visible="false">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进日期" FieldName="FollowDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进类型" FieldName="FollowType" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进程度" FieldName="FollowStage" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进内容" FieldName="FollowMemo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Width="50%">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进人" FieldName="FollowPerson" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Visible="False">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="下次跟进日期" FieldName="NextFollow" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Visible="False">
+                                            </dxwgv:GridViewDataTextColumn>
+                                        </Columns>
+                                        <SettingsPager Mode="ShowAllRecords" />
+                                        <Settings ShowGroupPanel="false" />
+                                        <Templates>
+                                            <EditForm>
+                                                <div style="padding: 4px 4px 3px 4px; text-align: center;">
+                                                    <table style="width: 70%;" runat="server" id="tblgridContactItemEditorTemplate">
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                跟进GUID：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <dxe:ASPxTextBox ID="dxetxtFollowID" ClientInstanceName="dxetxtFollowID" runat="server" Text='<%# Eval("FollowID") %>'></dxe:ASPxTextBox>
+                                                            </td>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                跟进类型：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <dxe:ASPxComboBox ID="dxeddlFollowType" ClientInstanceName="dxeddlFollowType" runat="server" DropDownStyle="DropDownList" Text='<%# Eval("FollowType") %>'></dxe:ASPxComboBox>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                跟进程度：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <dxe:ASPxComboBox ID="dxeddlFollowStage" ClientInstanceName="dxeddlFollowStage" runat="server" DropDownStyle="DropDownList" Text='<%# Eval("FollowStage") %>'></dxe:ASPxComboBox>
+                                                            </td>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                跟进时间：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <dxe:ASPxDateEdit ID="dxeFollowDate" ClientInstanceName="dxeFollowDate" runat="server" Text='<%# Eval("FollowDate") %>'></dxe:ASPxDateEdit>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                跟进人：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <dxe:ASPxTextBox ID="dxetxtFollowPerson" ClientInstanceName="dxetxtFollowPerson" runat="server" Text='<%# Eval("FollowPerson") %>'></dxe:ASPxTextBox>
+                                                            </td>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                下次跟进：
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                <dxe:ASPxDateEdit ID="dxeNextFollow" ClientInstanceName="dxeNextFollow" runat="server" Text='<%# Eval("NextFollow") %>'></dxe:ASPxDateEdit>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="white-space: nowrap; text-align: right; vertical-align: top;">
+                                                                跟进内容：
+                                                            </td>
+                                                            <td style="text-align: left;" colspan="3">
+                                                                <asp:TextBox ID="txtFollowMemo" runat="server" TextMode="MultiLine" Rows="4" Style="width: 450px"
+                                                                    Text='<%# Eval("FollowMemo") %>'></asp:TextBox>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div style="text-align: right; padding: 2px 2px 2px 2px">
+                                                    <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton"
+                                                        runat="server">
+                                                    </dxwgv:ASPxGridViewTemplateReplacement>
+                                                    <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton"
+                                                        runat="server">
+                                                    </dxwgv:ASPxGridViewTemplateReplacement>
+                                                </div>
+                                            </EditForm>
+                                        </Templates>
+                                    </dxwgv:ASPxGridView>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    附件：
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <dxuc:ASPxUploadControl ID="CustomerPTUploadControl" runat="server" ShowAddRemoveButtons="True"
+                                        Width="400px" ShowUploadButton="True" AddUploadButtonsHorizontalPosition="Center"
+                                        ShowProgressPanel="True" ClientInstanceName="UploadControl" OnFileUploadComplete="UploadControl_CustomerPTUploadComplete"
+                                        FileInputCount="1" RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10">
+                                        <ValidationSettings MaxFileSize="4000000" AllowedContentTypes="*">
+                                        </ValidationSettings>
+                                        <ClientSideEvents FileUploadComplete="function(s, e) { CustomerPTUploaded(s, e) }"
+                                            FileUploadStart="function(s, e) { CustomerPTUploadStart(); }" />
+                                        <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
+                                            ImagePosition="Left">
+                                            <Image Height="25px" Width="25px" Url="../images/file_remove.gif"></Image>
+                                        </RemoveButton>
+                                        <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
+                                            ImagePosition="Left">
+                                            <Image Height="25px" Width="25px" Url="../images/file_add.gif"></Image>
+                                        </AddButton>
+                                        <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
+                                            ImagePosition="Left">
+                                            <Image Height="25px" Width="25px" Url="../images/file_upload.gif"></Image>
+                                        </UploadButton>
+                                    </dxuc:ASPxUploadControl>
+                                </td>
+                            </tr>
+                        </table>
+                    </dxw:ContentControl>
+                </ContentCollection>
+            </dxtc:TabPage>
+            <dxtc:TabPage Name="NotifyClaim" Text="理赔记录">
+                <ContentCollection>
+                    <dxw:ContentControl ID="ContentControl5" runat="server">
+                        <table style="width: 100%">
+                            <tr>
+                                <td>
+                                    <dxwgv:ASPxGridView ID="gridNotifyItem" ClientInstanceName="gridNotifyItem" runat="server"
+                                        KeyFieldName="NotifyID" Width="100%" AutoGenerateColumns="False">
+                                        <Columns>
+                                            <dxwgv:GridViewDataTextColumn Caption="理赔单号" FieldName="NotifyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="保单编号" FieldName="PolicyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="保险公司" FieldName="CarrierNameCn" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="险种名称" FieldName="ProdTypeName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="投保客户" FieldName="CustName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="起保日期" FieldName="StartDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="报案日" FieldName="NotifyTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="报损金额" FieldName="NotifyLossFee" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="赔付率" FieldName="LossRation" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="实赔金额" FieldName="LastPayFee" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="结案日" FieldName="CaseEndTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                        </Columns>
+                                        <SettingsPager Mode="ShowAllRecords" />
+                                        <Settings ShowGroupPanel="false" />
+                                    </dxwgv:ASPxGridView>
+                                </td>
+                            </tr>
+                        </table>
+                    </dxw:ContentControl>
+                </ContentCollection>
+            </dxtc:TabPage>
+            <dxtc:TabPage Name="SignPremium" Text="签单记录">
+                <ContentCollection>
+                    <dxw:ContentControl ID="ContentControl6" runat="server">
+                        <table style="width: 100%">
+                            <tr>
+                                <td colspan=2>
+                                    <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
+                                        KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False">
+                                        <Columns>
+                                            <dxwgv:GridViewDataTextColumn Caption="序号" FieldName="PolicyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="起保日期" FieldName="StartDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="终止日期" FieldName="EndDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="保单号" FieldName="PolicyNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="险种" FieldName="ProdType" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="保费" FieldName="Premium" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="保险公司及分支机构" FieldName="CarrierBranch" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="客户经理" FieldName="Sales" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                        </Columns>
+                                        <SettingsPager Mode="ShowAllRecords" />
+                                        <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
+                                        <GroupSummary >
+                                            <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" ShowInGroupFooterColumn="Premium" DisplayFormat = "保费合计: {0}" />
+                                        </GroupSummary>
+                                        <TotalSummary >
+                                            <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" ShowInGroupFooterColumn="Premium" DisplayFormat = "保费合计: {0}" />
+                                        </TotalSummary>
+                                    </dxwgv:ASPxGridView>
+                                </td>
+                            </tr>
+                        </table>
+                    </dxw:ContentControl>
+                </ContentCollection>
+            </dxtc:TabPage>
         </TabPages>
     </dxtc:ASPxPageControl>
     <table style="height: 5px; background-color: #E0EDFF; width: 100%; font-size: 2px;">
@@ -473,8 +683,8 @@
     <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="25px">
         <table style="width: 100%">
             <tr>
-                <td style="text-align: right;">
-                    <asp:Button ID="btnsave" runat="server" Text="保存" CssClass="input_2" />&nbsp;&nbsp;
+                <td style="text-align: center;">
+                    <asp:Button ID="btnsave" runat="server" Text="保存" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="button" value="取消" class="input_2" onclick="javascript:window.close();" />
                 </td>
                 <td style="width: 20px; text-align: left;">
