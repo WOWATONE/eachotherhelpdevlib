@@ -29,7 +29,7 @@ namespace BusinessObjects
             OperationType,
             TradeName,
             Area,
-	    PolicyStatus
+	        PolicyStatus
         }
 
         public enum FieldList
@@ -129,7 +129,7 @@ namespace BusinessObjects
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("select [CodeID],[CodeName],[SortNo] ");
-            sb.Append(" FROM P_Code ");
+            sb.Append(" FROM P_Code (nolock) ");
             if (sCodetype.Trim() != "")
             {
 

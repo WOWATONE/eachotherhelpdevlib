@@ -114,7 +114,25 @@ namespace BusinessObjects
             return list;
         }
 
+        /// <summary>
+        /// 根据部门编号取得用户姓名等信息
+        /// </summary>
+        /// <param name="sCodetype"></param>
+        /// <returns></returns>
+        public static DataSet GetDeptByDeptID(string sDeptID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select [DeptID], [DeptName] ");
+            sb.Append("FROM P_Department (nolock) ");
+            if (sDeptID.Trim() != "")
+            {
+                sb.Append("where DeptID = '" + sDeptID + "' ");
+            }
+            sb.Append("ORDER BY DeptID");
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
+            return _db.ExecuteDataSet(dbCommand);
+        }
         #endregion Methods
 
 
