@@ -29,13 +29,14 @@ namespace BrokerWebApp.CustomerRelation
         /// </summary>
         private void Initialization()
         {
-            DataSet list;
+            DataSet dsList;
+
             //所在地区
             this.dxeddlArea.Items.Add("(全部)", "");
-            list = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.Area.ToString());
-            if (list.Tables[0] != null)
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.Area.ToString());
+            if (dsList.Tables[0] != null)
             {
-                foreach (DataRow row in list.Tables[0].Rows)
+                foreach (DataRow row in dsList.Tables[0].Rows)
                 {
                     this.dxeddlArea.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
                 }
@@ -43,24 +44,32 @@ namespace BrokerWebApp.CustomerRelation
 
             //行业类型
             this.dxeddlTradeType.Items.Add("(全部)", "");
-            list = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.TradeName.ToString());
-            if (list.Tables[0] != null)
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.TradeName.ToString());
+            if (dsList.Tables[0] != null)
             {
-                foreach (DataRow row in list.Tables[0].Rows)
+                foreach (DataRow row in dsList.Tables[0].Rows)
                 {
                     this.dxeddlTradeType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
                 }
             }
 
-            //所属板块
-            this.dxeddlPlate.Items.Add("(全部)", "");
+            //部门
+            this.dxeddlDeprtment.Items.Add("(全部)", "");
+            dsList = BO_P_Department.GetDeptByDeptID("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlDeprtment.Items.Add(row["DeptName"].ToString().Trim(), row["DeptID"].ToString().Trim());
+                }
+            }
 
             //客户经理
             this.dxeddlSalesID.Items.Add("(全部)", "");
-            list = BO_P_User.GetUserByUserID("");
-            if (list.Tables[0] != null)
+            dsList = BO_P_User.GetUserByUserID("");
+            if (dsList.Tables[0] != null)
             {
-                foreach (DataRow row in list.Tables[0].Rows)
+                foreach (DataRow row in dsList.Tables[0].Rows)
                 {
                     this.dxeddlSalesID.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
                 }
@@ -85,6 +94,34 @@ namespace BrokerWebApp.CustomerRelation
         protected void gridSearchResult_CustomCallBack(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
             //                       
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            BO_Customer customer = new BO_Customer();
+            if (this.radPerson.Checked)
+                customer.CustTypeID = 1;
+            else
+                customer.CustTypeID = 0;
+            if (this.dxetxtCustID.Text.Trim().Length > 0)
+                customer.CustID = this.dxetxtCustID.Text.Trim();
+            if (this.dxeddlArea.SelectedItem.Value.ToString().Length > 0)
+                customer.Area = this.dxeddlArea.SelectedItem.Value.ToString();
+            if (this.dxetxtAddress.Text.Trim().Length > 0)
+                customer.Address = this.dxetxtAddress.Text.Trim();
+            if (this.dxetxtCustName.Text.Trim().Length > 0)
+                customer.CustName = this.dxetxtCustName.Text.Trim();
+            if (this.dxeddlTradeType.SelectedItem.Value.ToString().Length > 0)
+                customer.TradeTypeID = this.dxeddlTradeType.SelectedItem.Value.ToString();
+            if (this.dxeddlDeprtment.SelectedItem.Value.ToString().Length > 0)
+                customer.DeprtmentID = this.dxeddlDeprtment.SelectedItem.Value.ToString();
+            if (this.dxetxtIDNO.Text.Trim().Length > 0)
+                customer.IDNO = this.dxetxtIDNO.Text.Trim();
+            if (this.dxeddlSalesID.SelectedItem.Value.ToString().Length > 0)
+                customer.SalesID = this.dxeddlSalesID.SelectedItem.Value.ToString();
+
+            this.gridSearchResult.DataSource = BO_Customer.GetCustomerList(customer);
+            this.gridSearchResult.DataBind();
         }
     }
 }
