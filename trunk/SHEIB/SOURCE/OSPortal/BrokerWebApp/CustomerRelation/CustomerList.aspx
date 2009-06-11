@@ -106,10 +106,10 @@
                                 <dxe:ASPxComboBox ID="dxeddlTradeType" ClientInstanceName="dxeddlTradeType" runat="server" Width="160px" DropDownStyle="DropDownList"></dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                                所属板块：
+                                部门：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlPlate" ClientInstanceName="dxeddlPlate" runat="server" Width="160px" DropDownStyle="DropDownList"></dxe:ASPxComboBox>
+                                <dxe:ASPxComboBox ID="dxeddlDeprtment" ClientInstanceName="dxeddlDeprtment" runat="server" Width="160px" DropDownStyle="DropDownList"></dxe:ASPxComboBox>
                             </td>
                         </tr>
                         <tr>
@@ -127,9 +127,9 @@
                             </td>
                             <td style="text-align: right;">&nbsp;</td>
                             <td style="text-align: left;">
-                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
-                                <asp:Button ID="btnReset" runat="server" Text="重置" CssClass="input_2" />&nbsp;
-                                <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" /> 
+                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
+                                <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
+                                <asp:Button ID="btnXlsExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" /> 
                             </td>
                         </tr>
                     </table>
@@ -161,7 +161,6 @@
                     <dxwgv:ASPxGridView ID="gridSearchResult" 
                         ClientInstanceName="gridSearchResult" 
                         runat="server"
-                        DataSourceID="DataSource"
                         KeyFieldName="CustID" 
                         AutoGenerateColumns="False" 
                         Settings-ShowFooter="true"
@@ -186,7 +185,7 @@
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="所在地区" FieldName="AreaName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="所属板块" FieldName="PlateName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="部门" FieldName="DeprtmentName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="客户地址" FieldName="Address" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
@@ -221,13 +220,6 @@
                             <dxwgv:ASPxSummaryItem FieldName="CustID" SummaryType="Count" ShowInGroupFooterColumn="UserID" DisplayFormat = "总计: {0}" />
                         </TotalSummary>
                     </dxwgv:ASPxGridView>
-                    <asp:ObjectDataSource ID="DataSource" runat="server" 
-                        SelectMethod="FetchList"
-                        TypeName="BusinessObjects.BO_Customer" 
-                        EnablePaging="False">
-                        <SelectParameters>                                                             
-                        </SelectParameters>
-                    </asp:ObjectDataSource>
                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearchResult" runat="Server" TargetControlID="npSearchResultDetail"

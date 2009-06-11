@@ -131,13 +131,13 @@ namespace BrokerWebApp.CustomerRelation {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlTradeType;
         
         /// <summary>
-        /// dxeddlPlate 控件。
+        /// dxeddlDeprtment 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlPlate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlDeprtment;
         
         /// <summary>
         /// dxetxtIDNO 控件。
@@ -167,22 +167,13 @@ namespace BrokerWebApp.CustomerRelation {
         protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
-        /// btnReset 控件。
+        /// btnXlsExport 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReset;
-        
-        /// <summary>
-        /// btnExport 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExport;
+        protected global::System.Web.UI.WebControls.Button btnXlsExport;
         
         /// <summary>
         /// cpeSearch 控件。
@@ -237,15 +228,6 @@ namespace BrokerWebApp.CustomerRelation {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridSearchResult;
-        
-        /// <summary>
-        /// DataSource 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource DataSource;
         
         /// <summary>
         /// gridExport 控件。
