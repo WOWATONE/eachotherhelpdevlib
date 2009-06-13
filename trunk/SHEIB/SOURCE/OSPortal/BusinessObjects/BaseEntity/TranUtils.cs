@@ -31,7 +31,10 @@ namespace BusinessObjects
 
         }
 
-
+        /// <summary>
+        /// 取得客户编号
+        /// </summary>
+        /// <returns></returns>
         public static string GetCustomerID()
         {
             string id = "";
