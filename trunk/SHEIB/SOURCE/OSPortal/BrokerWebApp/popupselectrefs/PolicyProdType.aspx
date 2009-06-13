@@ -160,7 +160,7 @@
                                                                         </dxwgv:GridViewCommandColumnCustomButton>                                                                        
                                                                     </CustomButtons>                                                   
                                                                 </dxwgv:GridViewCommandColumn>                                                                
-                                                                <dxwgv:GridViewDataColumn FieldName="ProdID" Caption="险种编号" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="ProdID" Caption="险种编号" CellStyle-Wrap="False" Visible="false">                                                                    
                                                                 </dxwgv:GridViewDataColumn>   
                                                                 <dxwgv:GridViewDataColumn FieldName="ProdName" Caption="险种名称" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>      
@@ -173,22 +173,22 @@
                                                         <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                                         <SettingsText CustomizationWindowCaption="个性化" />
                                                         <GroupSummary >
-                                                            <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" ShowInGroupFooterColumn="PolicyNo" DisplayFormat = "总计: {0}" />
+                                                            <dxwgv:ASPxSummaryItem FieldName="ProdName" SummaryType="Count" ShowInGroupFooterColumn="ProdName" DisplayFormat = "总计: {0}" />
                                                         </GroupSummary>
                                                         <TotalSummary >
-                                                            <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" ShowInGroupFooterColumn="PolicyNo" DisplayFormat = "总计: {0}" />
+                                                            <dxwgv:ASPxSummaryItem FieldName="ProdName" SummaryType="Count" ShowInGroupFooterColumn="ProdName" DisplayFormat = "总计: {0}" />
                                                         </TotalSummary>
                                                         <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                                         
                                                     </dxwgv:ASPxGridView> 
                                                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
                                                     <asp:ObjectDataSource ID="DataSource" runat="server" 
-                                                        SelectMethod="FetchPolicyCarrierList"
-                                                        TypeName="BusinessObjects.Policy.BO_Policy" 
+                                                        SelectMethod="FetchList"
+                                                        TypeName="BusinessObjects.SchemaSetting.BO_Product" 
                                                         EnablePaging="false"                                                                                                                                                       
                                                         >
                                                         <SelectParameters> 
-                                                             <asp:Parameter Name="policyStatus" Type="String" Direction="Input" DefaultValue="1" />
+                                                             <asp:Parameter Name="whereFilter" Type="String" Direction="Input" DefaultValue="" />
                                                         </SelectParameters>
                                                     </asp:ObjectDataSource>                                                   
                                                 </td>
