@@ -74,7 +74,7 @@
                 通知书号：
             </td>
             <td style="text-align: left;">
-                <asp:TextBox ID="txtNoticeNo" runat="server" Width="250px"></asp:TextBox>
+                <dxe:ASPxTextBox ID="dxetxtNoticeNo" ClientInstanceName="dxetxtNoticeNo" runat="server" Width="160px"></dxe:ASPxTextBox>
             </td>
         </tr>
         <tr>
@@ -82,7 +82,7 @@
                 通知日期：
             </td>
             <td style="text-align: left;">
-                <dxe:ASPxDateEdit ID="deNoticeDate" runat="server">
+                <dxe:ASPxDateEdit ID="deNoticeDate" runat="server" Width="160px">
                 </dxe:ASPxDateEdit>
             </td>
         </tr>

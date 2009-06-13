@@ -12,18 +12,37 @@ namespace BrokerWebApp.inoutbalance
 {
     public partial class FeeNoticeAdd : System.Web.UI.Page
     {
+
         #region Variables
 
+        private const string inputQueryStringIDKey = "NoticeNo";
+        
         private DataTable _dtGrid;
+
+        private string theID;
 
         #endregion Variables
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Page.IsPostBack)
+            {
+                //theID = this..Value;
+            }
+            else
+            {
+                //theID = Page.Request.QueryString[inputQueryStringIDKey];
+                //if (string.IsNullOrEmpty(theID))
+                //    theID = BusinessObjects.TranUtils.GetInvoiceID();
+                
+            }
+
             if (!this.Page.IsPostBack)
             {
                 this.Initialization();
             }
+
         }
 
         private void Initialization()
