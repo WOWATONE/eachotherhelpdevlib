@@ -17,11 +17,10 @@
             //    text: 'This is a notification that you have to remove',
             //    stay: true
             //});
-            
+
 
             window.onunload = function() {
-                var pWindow = window.dialogArguments;
-                //
+                //var pWindow = window.dialogArguments;
             };
 
 
@@ -81,6 +80,23 @@
             //newstr=str.replace(/apples/gi, "oranges");
         }
 
+        function btnOk_Click() {
+            
+            gridSearchResult.GetSelectedFieldValues("ProdID;ProdName", getTheSelectedRowsValues);
+            
+        }
+
+        function getTheSelectedRowsValues(selectedValues) {
+            if (selectedValues.length == 0) {
+                alert("请先选择行");
+                return;
+            }
+            else {
+                window.returnValue = selectedValues[0][0] + ";" + selectedValues[0][1];
+                window.close();
+            }
+        }
+        
         
     </script>
 </asp:Content>
@@ -151,7 +167,8 @@
                                                     <td style="text-align:left;"></td>
                                                     <td style="text-align:right;" colspan="2">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
-                                                        <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;                                                        
+                                                        <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;  
+                                                        <input type="button" value="确定" name="btnOk" id="btnok" class="input_2" onclick="btnOk_Click();" />                                                      
                                                     </td>
                                                     <td>&nbsp;</td>
                                                 </tr>                                 
