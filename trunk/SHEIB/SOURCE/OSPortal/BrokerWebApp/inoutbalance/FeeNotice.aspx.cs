@@ -11,11 +11,13 @@ namespace BrokerWebApp.inoutbalance
 {
     public partial class FeeNotice : System.Web.UI.Page
     {
+
         #region Variables
 
         private DataTable _dtGrid;
 
         #endregion Variables
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,6 +28,10 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
+        protected void btnXlsExport_Click(object sender, EventArgs e)
+        {
+            this.gridExport.WriteXlsToResponse();
+        }
 
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -36,6 +42,7 @@ namespace BrokerWebApp.inoutbalance
             e.Cancel = true;
             this.gridSearchResult.CancelEdit();
         }
+
 
         protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
