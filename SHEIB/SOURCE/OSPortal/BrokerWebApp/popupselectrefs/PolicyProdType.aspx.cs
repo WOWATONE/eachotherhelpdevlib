@@ -25,6 +25,13 @@ namespace BrokerWebApp.popupselectrefs
             //
         }
 
+        protected void gridSearchResult_PageIndexChanged(object sender, EventArgs e)
+        {
+            //this.gridSearchResult.PageIndex;
+            //this.gridSearchResult.VisibleRowCount;
+            //this.gridSearchResult.VisibleStartIndex;
+        }
+
 
     }
 }

@@ -217,7 +217,7 @@
                                                     KeyFieldName="ProdID" AutoGenerateColumns="False" 
                                                     Settings-ShowFooter="true" Width="100%" 
                                                     SettingsPager-AlwaysShowPager="true" EnableRowsCache="false" EnableViewState="false"
-                                                    OnDataBinding="gridSearchResult_DataBinding" 
+                                                    OnDataBinding="gridSearchResult_DataBinding" OnPageIndexChanged="gridSearchResult_PageIndexChanged"
                                                     OnHtmlRowCreated="gridSearchResult_HtmlRowCreated"
                                                     >
                                                         <%-- BeginRegion Columns --%>
@@ -245,7 +245,7 @@
                                                              <CommandColumn Paddings-PaddingTop="1" Paddings-PaddingBottom="1" HorizontalAlign="Center"></CommandColumn>
                                                         </Styles>
                                                         <SettingsPager Mode="ShowPager"   />
-                                                        <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
+                                                        <Settings ShowGroupPanel="false" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
                                                         <SettingsBehavior AllowFocusedRow="false" ConfirmDelete="true" AutoExpandAllGroups="true" AllowMultiSelection="false" />
                                                         <SettingsText CustomizationWindowCaption="个性化" />
                                                         <GroupSummary >
