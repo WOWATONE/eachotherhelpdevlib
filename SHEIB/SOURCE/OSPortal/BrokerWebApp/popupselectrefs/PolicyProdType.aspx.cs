@@ -13,5 +13,19 @@ namespace BrokerWebApp.popupselectrefs
         {
 
         }
+
+        protected void gridSearchResult_DataBinding(object sender, EventArgs e)
+        {
+            //
+        }
+
+        protected void gridSearchResult_HtmlRowCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewTableRowEventArgs e)
+        {
+            //FindControl("");
+            //
+
+        }
+
+
     }
 }
