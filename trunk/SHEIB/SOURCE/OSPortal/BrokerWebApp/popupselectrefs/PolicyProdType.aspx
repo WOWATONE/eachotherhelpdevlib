@@ -30,6 +30,58 @@
 
         });
         
+        
+        function OnGridSelectionChanged(s, e) {
+            //            
+        }
+
+        
+        function OnGridRowClick(s, e) {
+            //
+        }
+        
+        function rdoSelected_onclick(theindex) {
+            
+            //Clear the text selection
+            //_aspxClearSelection();
+            //Unselect all rows
+            gridSearchResult.SelectAllRowsOnPage(false);
+            //Select the row
+            gridSearchResult.SelectRow(theindex, true);
+
+        }
+
+        function OnEndCallBack(s, e) {
+            
+            var rowvalues = gridSearchResult.GetSelectedFieldValues("ProdID", OnGetSelectedFieldValues);
+            //gridSearchResult.UnselectAllRowsOnPage(false);
+            //gridSearchResult.SelectRowOnPage(e.visibleIndex, true);
+            //var iindex = gridSearchResult.GetFocusedRowIndex();
+
+        }
+
+        function OnGetSelectedFieldValues(selectedValues) {
+            
+            if (selectedValues.length == 0) return;
+            
+            var theselectedKey = selectedValues[0];
+            var theselectedID = "rdoSelected" + theselectedKey;            
+            var theClientID = gridSearchResult.mainElement.id;
+            var inputs = $("#" + theClientID + " INPUT[type='radio']");
+
+            for (i = 0; i < inputs.length; i++) {
+                if (inputs[i].id == theselectedID) {
+                    inputs[i].checked= true;
+                }
+                else {
+                    //
+                }
+            }
+            // /g 替换所有匹配的字符， /i 忽略大小写
+            //newstr=str.replace(/apples/gi, "oranges");
+        }
+
+        
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -147,19 +199,23 @@
                                                     DataSourceID="DataSource"
                                                     KeyFieldName="ProdID" AutoGenerateColumns="False" 
                                                     Settings-ShowFooter="true" Width="100%" 
-                                                    SettingsPager-AlwaysShowPager="true"
+                                                    SettingsPager-AlwaysShowPager="true" EnableRowsCache="false" EnableViewState="false"
+                                                    OnDataBinding="gridSearchResult_DataBinding" 
+                                                    OnHtmlRowCreated="gridSearchResult_HtmlRowCreated"
                                                     >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
-                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
-                                                                    <NewButton Visible="False" />
-                                                                    <EditButton Visible="False" />                                                                    
-                                                                    <DeleteButton Visible="false" />
-                                                                    <CustomButtons>
-                                                                        <dxwgv:GridViewCommandColumnCustomButton Text="编辑">                                                                            
-                                                                        </dxwgv:GridViewCommandColumnCustomButton>                                                                        
-                                                                    </CustomButtons>                                                   
-                                                                </dxwgv:GridViewCommandColumn>                                                                
+                                                                <dxwgv:GridViewCommandColumn ShowSelectCheckbox="True" Visible="false" VisibleIndex="0">
+                                                                     <HeaderTemplate>                                                                         
+                                                                     </HeaderTemplate>                                                                     
+                                                                     <HeaderStyle Paddings-PaddingTop="1" Paddings-PaddingBottom="1" HorizontalAlign="Center"/>
+                                                                 </dxwgv:GridViewCommandColumn>
+                                                                <dxwgv:GridViewDataCheckColumn Caption="&nbsp;" FieldName="">
+                                                                    <DataItemTemplate>
+                                                                        <input type="radio" id="rdoSelected<%# Eval("ProdID") %>" name="rdoSelected" onclick="rdoSelected_onclick('<%# Container.ItemIndex %>');" />                                                                                                                                              
+                                                                    </DataItemTemplate>
+                                                                </dxwgv:GridViewDataCheckColumn>
+
                                                                 <dxwgv:GridViewDataColumn FieldName="ProdID" Caption="险种编号" CellStyle-Wrap="False" Visible="false">                                                                    
                                                                 </dxwgv:GridViewDataColumn>   
                                                                 <dxwgv:GridViewDataColumn FieldName="ProdName" Caption="险种名称" CellStyle-Wrap="False">                                                                   
@@ -168,9 +224,12 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>
+                                                        <Styles>
+                                                             <CommandColumn Paddings-PaddingTop="1" Paddings-PaddingBottom="1" HorizontalAlign="Center"></CommandColumn>
+                                                        </Styles>
                                                         <SettingsPager Mode="ShowPager"   />
                                                         <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
-                                                        <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
+                                                        <SettingsBehavior AllowFocusedRow="false" ConfirmDelete="true" AutoExpandAllGroups="true" AllowMultiSelection="false" />
                                                         <SettingsText CustomizationWindowCaption="个性化" />
                                                         <GroupSummary >
                                                             <dxwgv:ASPxSummaryItem FieldName="ProdName" SummaryType="Count" ShowInGroupFooterColumn="ProdName" DisplayFormat = "总计: {0}" />
@@ -178,7 +237,7 @@
                                                         <TotalSummary >
                                                             <dxwgv:ASPxSummaryItem FieldName="ProdName" SummaryType="Count" ShowInGroupFooterColumn="ProdName" DisplayFormat = "总计: {0}" />
                                                         </TotalSummary>
-                                                        <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
+                                                        <ClientSideEvents SelectionChanged="function(s, e) { OnGridSelectionChanged(s,e); }" RowClick="function(s, e) { OnGridRowClick(s,e); }" EndCallback="function(s, e) { OnEndCallBack(s,e); }" />
                                                         
                                                     </dxwgv:ASPxGridView> 
                                                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
