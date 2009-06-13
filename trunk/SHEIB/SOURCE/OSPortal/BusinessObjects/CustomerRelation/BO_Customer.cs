@@ -54,7 +54,7 @@ namespace BusinessObjects
             UnitCharacter,
             Background,
             OtherInfo,
-            ContactName
+            Contact
         }
 
         #region Property
@@ -125,7 +125,7 @@ namespace BusinessObjects
         /*其他信息*/
         public string OtherInfo { get; set; }
         /*第一联系人姓名*/
-        public string ContactName { get; set; }
+        public string Contact { get; set; }
         #endregion
 
         #region Methods
@@ -150,7 +150,7 @@ namespace BusinessObjects
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select C.CustID, C.CustName, CO1.CodeName As AreaName, D.DeptName As DeprtmentName, C.Address,");
-            sb.Append("C.PostCode, CO2.CodeName As TradeTypeName, C.IDNO, '' As ContactName, C.Tel, C.Mobile,");
+            sb.Append("C.PostCode, CO2.CodeName As TradeTypeName, C.IDNO, C.Contact, C.Tel, C.Mobile,");
             sb.Append("C.Fax, C.Email, U.UserNameCn As SalesName ");
             sb.Append("From Customer C (nolock) ");
             sb.Append("Left Join P_Code CO1 (nolock) On CO1.CodeType='Area' And CO1.CodeID=C.Area ");
@@ -195,8 +195,27 @@ namespace BusinessObjects
             if (!string.IsNullOrEmpty(customer.SalesID))
                 _db.AddInParameter(dbCommand, "@SalesID", DbType.AnsiString, customer.SalesID);
 
-
             return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+
+        /// <summary>
+        /// 根据客户分类ID取得客户分类信息
+        /// </summary>
+        /// <param name="sCustClassifyID"></param>
+        /// <returns></returns>
+        public static DataSet GetCustClassifyByID(string sCustClassifyID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select [CustClassifyID], [ParentID], [CustClassifyName] ");
+            sb.Append("FROM CustClassify (nolock) ");
+            if (sCustClassifyID.Trim() != "")
+            {
+                sb.Append("where CustClassifyID = '" + sCustClassifyID + "' ");
+            }
+            sb.Append("ORDER BY OrderNo");
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            return _db.ExecuteDataSet(dbCommand);
         }
         #endregion
     }
