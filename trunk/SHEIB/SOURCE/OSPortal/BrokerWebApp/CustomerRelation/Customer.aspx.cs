@@ -11,6 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
 using DevExpress.Web.ASPxUploadControl;
+using BusinessObjects;
 
 namespace BrokerWebApp.CustomerRelation
 {
@@ -21,18 +22,137 @@ namespace BrokerWebApp.CustomerRelation
         /// </summary>
         private DataTable _dtPolicyGrid;
 
+        #region 私有变量
+        /// <summary>
+        /// 客户编号
+        /// </summary>
+        private string _custID;
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (ViewState["PolicyGridData"] == null)
-            {
-                GetPolicyForGrid();
-                ViewState["PolicyGridData"] = _dtPolicyGrid;
-            }
-            this.gridPolicyItem.DataSource = ViewState["PolicyGridData"];
+            //if (ViewState["PolicyGridData"] == null)
+            //{
+            //    GetPolicyForGrid();
+            //    ViewState["PolicyGridData"] = _dtPolicyGrid;
+            //}
+            //this.gridPolicyItem.DataSource = ViewState["PolicyGridData"];
 
-            if (!IsPostBack && !IsCallback)
+            //if (!IsPostBack && !IsCallback)
+            //{
+            //    this.gridPolicyItem.DataBind();
+            //}
+            try
             {
-                this.gridPolicyItem.DataBind();
+                if (Request.QueryString["custID"] != null)
+                {
+                    this._custID = Request.QueryString["custID"].Trim();
+                }
+
+                this.Initialization();
+            }
+            catch (Exception ex)
+            { }
+        }
+
+        /// <summary>
+        /// 初始化控件
+        /// </summary>
+        private void Initialization()
+        {
+            if (String.IsNullOrEmpty(this._custID))
+            {//没有传入客户编号, 认为是新增客户
+                this.customerDetailTabPage.TabPages[2].Visible = false;
+                this.customerDetailTabPage.TabPages[3].Visible = false;
+                this.customerDetailTabPage.TabPages[4].Visible = false;
+                this.customerDetailTabPage.TabPages[5].Visible = false;
+                //客户编号
+                this.dxetxtCustID.Text = TranUtils.GetCustomerID();
+                //所在地区
+                this.SetddlArea();
+                //客户分类
+                this.SetddlCustClassify();
+                //行业分类
+                this.SetddlTradeType();
+                //部门
+                this.SetddlDeprtment();
+                //客户经理
+                this.SetddlSalesID();
+            }
+        }
+
+        /// <summary>
+        /// 设置所在地区
+        /// </summary>
+        private void SetddlArea()
+        {
+            DataSet dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.Area.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlArea.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
+        }
+
+        /// <summary>
+        /// 设置客户分类
+        /// </summary>
+        private void SetddlCustClassify()
+        {
+            DataSet dsList = BO_Customer.GetCustClassifyByID("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlCustClassify.Items.Add(row["CustClassifyName"].ToString().Trim(), row["CustClassifyID"].ToString().Trim());
+                }
+            }
+        }
+
+        /// <summary>
+        /// 设置行业分类
+        /// </summary>
+        private void SetddlTradeType()
+        {
+            DataSet dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.TradeName.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlTradeType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
+        }
+
+        /// <summary>
+        /// 设置部门
+        /// </summary>
+        private void SetddlDeprtment()
+        {
+            DataSet dsList = BO_P_Department.GetDeptByDeptID("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlDepartment.Items.Add(row["DeptName"].ToString().Trim(), row["DeptID"].ToString().Trim());
+                }
+            }
+        }
+
+        /// <summary>
+        /// 设置客户经理
+        /// </summary>
+        private void SetddlSalesID()
+        {
+            DataSet dsList = BO_P_User.GetUserByUserID("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlSalesID.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
+                }
             }
         }
 
