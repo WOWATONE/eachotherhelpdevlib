@@ -54,13 +54,13 @@ namespace BrokerWebApp.CustomerRelation
             }
 
             //部门
-            this.dxeddlDeprtment.Items.Add("(全部)", "");
+            this.dxeddlDepartment.Items.Add("(全部)", "");
             dsList = BO_P_Department.GetDeptByDeptID("");
             if (dsList.Tables[0] != null)
             {
                 foreach (DataRow row in dsList.Tables[0].Rows)
                 {
-                    this.dxeddlDeprtment.Items.Add(row["DeptName"].ToString().Trim(), row["DeptID"].ToString().Trim());
+                    this.dxeddlDepartment.Items.Add(row["DeptName"].ToString().Trim(), row["DeptID"].ToString().Trim());
                 }
             }
 
@@ -113,8 +113,8 @@ namespace BrokerWebApp.CustomerRelation
                 customer.CustName = this.dxetxtCustName.Text.Trim();
             if (this.dxeddlTradeType.SelectedItem.Value.ToString().Length > 0)
                 customer.TradeTypeID = this.dxeddlTradeType.SelectedItem.Value.ToString();
-            if (this.dxeddlDeprtment.SelectedItem.Value.ToString().Length > 0)
-                customer.DeprtmentID = this.dxeddlDeprtment.SelectedItem.Value.ToString();
+            if (this.dxeddlDepartment.SelectedItem.Value.ToString().Length > 0)
+                customer.DeprtmentID = this.dxeddlDepartment.SelectedItem.Value.ToString();
             if (this.dxetxtIDNO.Text.Trim().Length > 0)
                 customer.IDNO = this.dxetxtIDNO.Text.Trim();
             if (this.dxeddlSalesID.SelectedItem.Value.ToString().Length > 0)

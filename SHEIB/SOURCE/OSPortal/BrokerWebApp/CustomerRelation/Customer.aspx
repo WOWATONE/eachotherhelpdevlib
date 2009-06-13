@@ -86,14 +86,14 @@
                     <dxw:ContentControl ID="ContentControl1" runat="server">
                         <table style="width: 100%">
                             <tr>
-                                <td style="width: 200px; text-align: right;">
+                                <td style="width: 170px; text-align: right;">
                                     <input type="radio" id="radPerson" name="radCustType" value="1" runat="server" checked onclick="javascript:radCustTypeClick(this.value);" />个人&nbsp;
                                     <input type="radio" id="radUnit" name="radCustType" value="0" runat="server" onclick="javascript:radCustTypeClick(this.value);" />单位
                                 </td>
                                 <td style="width: 170px; text-align: left;">
                                     &nbsp;
                                 </td>
-                                <td style="width: 100px; text-align: right;">
+                                <td style="width: 170px; text-align: right;">
                                     &nbsp;
                                 </td>
                                 <td style="text-align: left;">

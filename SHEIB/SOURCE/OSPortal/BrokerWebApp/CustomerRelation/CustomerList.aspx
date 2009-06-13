@@ -30,7 +30,8 @@
         
         function gridCustomButtonClick(s, e) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            window.showModalDialog("Customer.aspx", self, myArguments);
+            var custID = s.GetDataRow(e.visibleIndex).cells[0].innerText;
+            window.showModalDialog("Customer.aspx?CustID=" + custID, self, myArguments);
         }
     -->
     </script>
@@ -109,7 +110,7 @@
                                 部门：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlDeprtment" ClientInstanceName="dxeddlDeprtment" runat="server" Width="160px" DropDownStyle="DropDownList"></dxe:ASPxComboBox>
+                                <dxe:ASPxComboBox ID="dxeddlDepartment" ClientInstanceName="dxeddlDepartment" runat="server" Width="160px" DropDownStyle="DropDownList"></dxe:ASPxComboBox>
                             </td>
                         </tr>
                         <tr>
@@ -195,7 +196,7 @@
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="代码/号码" FieldName="IDNO" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="第一联系人" FieldName="ContactName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="第一联系人" FieldName="Contact" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="电话" FieldName="Tel" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
