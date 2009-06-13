@@ -36,8 +36,8 @@
         }
 
         function imgPolicyProdTypeClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
-            window.showModalDialog("PolicyProdType.aspx", self, myArguments);
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=600px;dialogHeight=500px;center=yes;help=no";
+            window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
         }
         
     </script>

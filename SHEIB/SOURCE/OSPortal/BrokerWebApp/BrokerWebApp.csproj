@@ -557,6 +557,13 @@
     <Compile Include="otherinsurance\PolicyInputList.aspx.designer.cs">
       <DependentUpon>PolicyInputList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="popupselectrefs\PolicyProdType.aspx.cs">
+      <DependentUpon>PolicyProdType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="popupselectrefs\PolicyProdType.aspx.designer.cs">
+      <DependentUpon>PolicyProdType.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="schemasetting\DepartmentManager.aspx.cs">
       <DependentUpon>DepartmentManager.aspx</DependentUpon>
@@ -842,6 +849,7 @@
     <Content Include="js\json2.js" />
     <Content Include="otherinsurance\PolicyInput.aspx" />
     <Content Include="otherinsurance\PolicyInputList.aspx" />
+    <Content Include="popupselectrefs\PolicyProdType.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
