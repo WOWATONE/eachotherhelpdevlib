@@ -44,12 +44,15 @@ namespace BrokerWebApp.CustomerRelation
             //}
             try
             {
-                if (Request.QueryString["custID"] != null)
+                if (!this.IsPostBack)
                 {
-                    this._custID = Request.QueryString["custID"].Trim();
-                }
+                    if (Request.QueryString["custID"] != null)
+                    {
+                        this._custID = Request.QueryString["custID"].Trim();
+                    }
 
-                this.Initialization();
+                    this.Initialization();
+                }
             }
             catch (Exception ex)
             { }
@@ -69,22 +72,22 @@ namespace BrokerWebApp.CustomerRelation
                 //客户编号
                 this.dxetxtCustID.Text = TranUtils.GetCustomerID();
                 //所在地区
-                this.SetddlArea();
+                this.SetddlArea("");
                 //客户分类
-                this.SetddlCustClassify();
+                this.SetddlCustClassify("");
                 //行业分类
-                this.SetddlTradeType();
+                this.SetddlTradeType("");
                 //部门
-                this.SetddlDeprtment();
+                this.SetddlDeprtment("");
                 //客户经理
-                this.SetddlSalesID();
+                this.SetddlSalesID("");
             }
         }
 
         /// <summary>
         /// 设置所在地区
         /// </summary>
-        private void SetddlArea()
+        private void SetddlArea(string value)
         {
             DataSet dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.Area.ToString());
             if (dsList.Tables[0] != null)
@@ -93,28 +96,30 @@ namespace BrokerWebApp.CustomerRelation
                 {
                     this.dxeddlArea.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
                 }
+                this.dxeddlArea.SelectedIndex = this.dxeddlArea.Items.IndexOf(this.dxeddlArea.Items.FindByValue(value));
             }
         }
 
         /// <summary>
         /// 设置客户分类
         /// </summary>
-        private void SetddlCustClassify()
+        private void SetddlCustClassify(string value)
         {
-            DataSet dsList = BO_Customer.GetCustClassifyByID("");
+            DataSet dsList = BusinessObjects.SchemaSetting.BO_Carrier.GetCustClassifyByID("");
             if (dsList.Tables[0] != null)
             {
                 foreach (DataRow row in dsList.Tables[0].Rows)
                 {
                     this.dxeddlCustClassify.Items.Add(row["CustClassifyName"].ToString().Trim(), row["CustClassifyID"].ToString().Trim());
                 }
+                this.dxeddlCustClassify.SelectedIndex = this.dxeddlCustClassify.Items.IndexOf(this.dxeddlCustClassify.Items.FindByValue(value));
             }
         }
 
         /// <summary>
         /// 设置行业分类
         /// </summary>
-        private void SetddlTradeType()
+        private void SetddlTradeType(string value)
         {
             DataSet dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.TradeName.ToString());
             if (dsList.Tables[0] != null)
@@ -123,13 +128,14 @@ namespace BrokerWebApp.CustomerRelation
                 {
                     this.dxeddlTradeType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
                 }
+                this.dxeddlTradeType.SelectedIndex = this.dxeddlTradeType.Items.IndexOf(this.dxeddlTradeType.Items.FindByValue(value));
             }
         }
 
         /// <summary>
         /// 设置部门
         /// </summary>
-        private void SetddlDeprtment()
+        private void SetddlDeprtment(string value)
         {
             DataSet dsList = BO_P_Department.GetDeptByDeptID("");
             if (dsList.Tables[0] != null)
@@ -138,13 +144,14 @@ namespace BrokerWebApp.CustomerRelation
                 {
                     this.dxeddlDepartment.Items.Add(row["DeptName"].ToString().Trim(), row["DeptID"].ToString().Trim());
                 }
+                this.dxeddlDepartment.SelectedIndex = this.dxeddlDepartment.Items.IndexOf(this.dxeddlDepartment.Items.FindByValue(value));
             }
         }
 
         /// <summary>
         /// 设置客户经理
         /// </summary>
-        private void SetddlSalesID()
+        private void SetddlSalesID(string value)
         {
             DataSet dsList = BO_P_User.GetUserByUserID("");
             if (dsList.Tables[0] != null)
@@ -153,6 +160,56 @@ namespace BrokerWebApp.CustomerRelation
                 {
                     this.dxeddlSalesID.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
                 }
+                this.dxeddlSalesID.SelectedIndex = this.dxeddlSalesID.Items.IndexOf(this.dxeddlSalesID.Items.FindByValue(value));
+            }
+        }
+
+        protected void dxebtnBottomSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (String.IsNullOrEmpty(this._custID))
+                {//新增客户
+                    this.tblerrmsg.Visible = false;
+                    BO_Customer customer = new BO_Customer();
+                    customer.CustID = this.dxetxtCustID.Text.Trim();
+                    if (customer.IfExistsCustID(customer.CustID))
+                    {
+                        this.tblerrmsg.Visible = true;
+                        this.dxetxtCustID.ValidationSettings.Display = DevExpress.Web.ASPxEditors.Display.Dynamic;
+                        this.dxetxtCustID.ValidationSettings.ErrorDisplayMode = DevExpress.Web.ASPxEditors.ErrorDisplayMode.ImageWithText;
+                        this.dxetxtCustID.ValidationSettings.SetFocusOnError = true;
+                        this.dxetxtCustID.ValidationSettings.RequiredField.ErrorText = "编号已存在";
+                        this.dxetxtCustID.ValidationSettings.RequiredField.IsRequired = true;
+                        return;
+                    }
+                    customer.CustName = this.dxetxtCustName.Text.Trim();
+                    customer.TradeTypeID = this.dxeddlTradeType.SelectedItem.Value.ToString();
+                    customer.Area = this.dxeddlArea.SelectedItem.Value.ToString();
+                    customer.Address = this.dxetxtAddress.Text.Trim();
+                    customer.PostCode = this.dxetxtPostCode.Text.Trim();
+                    customer.CustTypeID = this.radPerson.Checked ? 1 : 0;
+                    customer.DeprtmentID = this.dxeddlDepartment.SelectedItem.Value.ToString();
+                    customer.SalesID = this.dxeddlSalesID.Value.ToString();
+                    customer.CustClassifyID = this.dxeddlCustClassify.SelectedItem.Value.ToString();
+                    customer.Tel = this.dxetxtTel.Text.Trim();
+                    customer.Mobile = this.dxetxtMobile.Text.Trim();
+                    customer.IDNO = this.dxetxtIDNO.Text.Trim();
+                    customer.MainOper = this.dxetxtMainOper.Text.Trim();
+                    customer.AssetSize = this.dxetxtAssetSize.Text.Trim();
+                    customer.MainProduct = this.dxetxtMainProduct.Text.Trim();
+                    customer.Background = this.txtBackground.Text.Trim();
+                    customer.OtherInfo = this.txtOtherInfo.Text.Trim();
+                    customer.Risk = this.txtRisk.Text.Trim();
+                    customer.Remark = this.dxetxtRemark.Text.Trim();
+                    customer.Contact = this.dxetxtContact.Text.Trim();
+                    customer.Save(ModifiedAction.Insert);
+
+                    this.Response.Redirect("Customer.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
             }
         }
 
@@ -282,5 +339,7 @@ namespace BrokerWebApp.CustomerRelation
             }
             return ret;
         }
+
+        
     }
 }
