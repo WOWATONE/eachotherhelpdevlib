@@ -942,7 +942,9 @@
                                                         KeyFieldName="CarrierID" Width="100%" AutoGenerateColumns="False" OnStartRowEditing="gridCarrier_StartRowEditing"
                                                         OnRowInserting="gridCarrier_RowInserting" OnRowUpdating="gridCarrier_RowUpdating"
                                                         OnRowUpdated="gridCarrier_RowUpdated" OnRowInserted="gridCarrier_RowInserted"
-                                                        OnRowDeleting="gridCarrier_RowDeleting" OnRowDeleted="gridCarrier_RowDeleted">
+                                                        OnRowDeleting="gridCarrier_RowDeleting" OnRowDeleted="gridCarrier_RowDeleted"
+                                                        OnHtmlEditFormCreated="gridCarrier_HtmlEditFormCreated"
+                                                        >
                                                         <%-- BeginRegion Columns --%>
                                                         <Columns>
                                                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left"
@@ -966,13 +968,13 @@
                                                             </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费(原)" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
-                                                            <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费(本)" CellStyle-Wrap="False">
+                                                            <dxwgv:GridViewDataColumn FieldName="PremiumBase" Caption="保费(本)" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率(%)" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费(原)" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
-                                                            <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费(本)" CellStyle-Wrap="False">
+                                                            <dxwgv:GridViewDataColumn FieldName="ProcessBase" Caption="经纪费(本)" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
                                                         </Columns>
                                                         <%-- EndRegion --%>
@@ -987,8 +989,8 @@
                                                                                 保险公司:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxComboBox runat="server" ID="dxecbGridCarrierID" AutoPostBack="false" ClientInstanceName="dxecbGridCarrierID"
-                                                                                    DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="100px">
+                                                                                <dxe:ASPxComboBox runat="server" ID="dxecbGridCarrierCarrierID" AutoPostBack="false" ClientInstanceName="dxecbGridCarrierID"
+                                                                                    DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="120px">
                                                                                     <Items>
                                                                                         <dxe:ListEditItem Text="中国平安" Value="1" />
                                                                                         <dxe:ListEditItem Text="中国泰康" Value="2" />
@@ -1001,8 +1003,8 @@
                                                                                 分支机构:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxComboBox runat="server" ID="dxecbGridBranchID" AutoPostBack="false" ClientInstanceName="dxecbGridBranchID"
-                                                                                    DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="100px">
+                                                                                <dxe:ASPxComboBox runat="server" ID="dxecbGridCarrierBranchID" AutoPostBack="false" ClientInstanceName="dxecbGridBranchID"
+                                                                                    DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="120px">
                                                                                     <Items>
                                                                                         <dxe:ListEditItem Text="平安分支1" Value="1" />
                                                                                         <dxe:ListEditItem Text="泰康分支1" Value="2" />
@@ -1017,27 +1019,47 @@
                                                                                 份额比例(%):
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="dxetxtIDNo" ClientInstanceName="txtGridPolicyRate" runat="server"></dxe:ASPxTextBox>
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierPolicyRate" ClientInstanceName="txtGridPolicyRate" runat="server" Width="120px">
+                                                                                </dxe:ASPxTextBox>
                                                                             </td>
                                                                             <td style="white-space: nowrap; text-align: right;">
-                                                                                保费:
+                                                                                保费(原):
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="ASPxTextBox9" ClientInstanceName="txtGridPremium" runat="server"></dxe:ASPxTextBox>
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierPremium" ClientInstanceName="txtGridPremium" runat="server" Width="120px">
+                                                                                </dxe:ASPxTextBox>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td style="white-space: nowrap; text-align: right;">
+                                                                                保费(本):
+                                                                            </td>
+                                                                            <td style="text-align: left;">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierPremiumBase" ClientInstanceName="txtGridPolicyRate" runat="server" Width="120px">
+                                                                                </dxe:ASPxTextBox>
+                                                                            </td>
+                                                                            <td style="white-space: nowrap; text-align: right;">
                                                                                 经纪费率(%):
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="ASPxTextBox10" ClientInstanceName="txtGridPoundage" runat="server"></dxe:ASPxTextBox>
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierProcessRate" ClientInstanceName="txtGridPremium" runat="server" Width="120px">
+                                                                                </dxe:ASPxTextBox>
                                                                             </td>
+                                                                        </tr>
+                                                                        <tr>
                                                                             <td style="white-space: nowrap; text-align: right;">
-                                                                                经纪费:
+                                                                                经纪费(原):
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="ASPxTextBox11" ClientInstanceName="txtGridProcess" runat="server"></dxe:ASPxTextBox>
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierProcess" ClientInstanceName="txtGridPoundage" runat="server" Width="120px">
+                                                                                </dxe:ASPxTextBox>
+                                                                            </td>
+                                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                                经纪费(本):
+                                                                            </td>
+                                                                            <td style="text-align: left;">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierProcessBase" ClientInstanceName="txtGridProcess" runat="server" Width="120px">
+                                                                                </dxe:ASPxTextBox>
                                                                             </td>
                                                                         </tr>
                                                                     </table>
