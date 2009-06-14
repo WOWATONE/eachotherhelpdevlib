@@ -243,7 +243,10 @@ namespace BusinessObjects.SchemaSetting
             sb.Append(" BranchID,BranchName,ShortName,CarrierID,Address,PostCode,Tel,Fax,EMail,Contact,Remark,Province,BankName,BankAccount,");
             sb.Append(" (Select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName");
             sb.Append(" From Branch a ");
-            sb.Append(" where a.CarrierID='" + sCarrierID + "'");
+            if (sCarrierID.Trim() != "")
+            {
+                sb.Append(" where a.CarrierID='" + sCarrierID + "'");
+            }
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
