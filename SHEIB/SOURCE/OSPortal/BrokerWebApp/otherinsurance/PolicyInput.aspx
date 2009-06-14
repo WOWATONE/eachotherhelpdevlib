@@ -143,6 +143,7 @@
         }
 
         function btnSaveCheckClick(s, e) {
+            //
         }
         
         
@@ -163,7 +164,13 @@
             window.showModalDialog("SelectCustomer.aspx", self, myArguments);
         }
 
-        
+
+
+        function GridCarrierCarrier_SelectedIndexChanged(s,e) {
+            var thejsonstring = dxecbGridCarrierCarrierID.GetSelectedItem().value;
+            dxecbGridCarrierBranchID.PerformCallback(thejsonstring);            
+        }
+
         
         function gridGridProdIDChange() {
             var theValue = decbGridProdID.GetText();
@@ -475,7 +482,7 @@
     <dxcb:ASPxCallback ID="dxeSaveAndCheckCallback" ClientInstanceName="dxeSaveAndCheckCallback" runat="server" OnCallback="dxeSaveAndCheckCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {saveCheckCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
-    
+        
     
     <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
         runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%">
@@ -939,11 +946,12 @@
                                             <tr>
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridCarrier" ClientInstanceName="gridCarrier" runat="server"
-                                                        KeyFieldName="CarrierID" Width="100%" AutoGenerateColumns="False" OnStartRowEditing="gridCarrier_StartRowEditing"
+                                                        KeyFieldName="PolicyCarrierID" Width="100%" AutoGenerateColumns="False" OnStartRowEditing="gridCarrier_StartRowEditing"
                                                         OnRowInserting="gridCarrier_RowInserting" OnRowUpdating="gridCarrier_RowUpdating"
                                                         OnRowUpdated="gridCarrier_RowUpdated" OnRowInserted="gridCarrier_RowInserted"
                                                         OnRowDeleting="gridCarrier_RowDeleting" OnRowDeleted="gridCarrier_RowDeleted"
-                                                        OnHtmlEditFormCreated="gridCarrier_HtmlEditFormCreated"
+                                                        OnHtmlEditFormCreated="gridCarrier_HtmlEditFormCreated" 
+                                                        OnRowValidating="gridCarrier_RowValidating"
                                                         >
                                                         <%-- BeginRegion Columns --%>
                                                         <Columns>
@@ -952,14 +960,11 @@
                                                                 <NewButton Visible="True" />
                                                                 <EditButton Visible="true" />
                                                                 <DeleteButton Visible="true" />
-                                                            </dxwgv:GridViewCommandColumn>
-                                                            <dxwgv:GridViewDataColumn Caption="&nbsp;" CellStyle-Wrap="False" Width="25" Settings-AllowDragDrop="false">
-                                                                <DataItemTemplate>
-                                                                    <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_Together" Text="再保" NavigateUrl="#">
-                                                                        <ClientSideEvents Click="hlPolicyItemTogetherClick" />
-                                                                    </dxe:ASPxHyperLink>
-                                                                </DataItemTemplate>
-                                                            </dxwgv:GridViewDataColumn>
+                                                                <CustomButtons>
+                                                                    <dxwgv:GridViewCommandColumnCustomButton ID="btngridCarrierTogether" Text="再保">
+                                                                    </dxwgv:GridViewCommandColumnCustomButton>
+                                                                </CustomButtons>
+                                                            </dxwgv:GridViewCommandColumn>             
                                                             <dxwgv:GridViewDataTextColumn FieldName="CarrierNameCn" Caption="保险公司" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataTextColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="False">
@@ -979,9 +984,10 @@
                                                         </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowAllRecords" />
-                                                        <Settings ShowGroupPanel="false" />
+                                                        <Settings ShowGroupPanel="false" /> 
+                                                        <ClientSideEvents CustomButtonClick="" />                                                       
                                                         <Templates>
-                                                            <EditForm>
+                                                            <EditForm>                                                                
                                                                 <div style="padding: 4px 4px 3px 4px">
                                                                     <table style="width: 90%;" runat="server" id="tblgridCarrierEditorTemplate">
                                                                         <tr>
@@ -989,28 +995,32 @@
                                                                                 保险公司:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxComboBox runat="server" ID="dxecbGridCarrierCarrierID" AutoPostBack="false" ClientInstanceName="dxecbGridCarrierID"
-                                                                                    DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="120px">
-                                                                                    <Items>
-                                                                                        <dxe:ListEditItem Text="中国平安" Value="1" />
-                                                                                        <dxe:ListEditItem Text="中国泰康" Value="2" />
-                                                                                        <dxe:ListEditItem Text="中国安联" Value="3" />
+                                                                                <dxe:ASPxComboBox runat="server" ID="dxecbGridCarrierCarrierID" AutoPostBack="false" ClientInstanceName="dxecbGridCarrierCarrierID"
+                                                                                    DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="120px" 
+                                                                                    >
+                                                                                    <Items>                                                                                        
                                                                                     </Items>
-                                                                                    <ClientSideEvents SelectedIndexChanged="" />
+                                                                                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项">
+                                                                                        <RequiredField IsRequired="true" />
+                                                                                    </ValidationSettings>
+                                                                                    <ClientSideEvents SelectedIndexChanged="GridCarrierCarrier_SelectedIndexChanged" />
                                                                                 </dxe:ASPxComboBox>
                                                                             </td>
                                                                             <td style="white-space: nowrap; text-align: right;">
                                                                                 分支机构:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxComboBox runat="server" ID="dxecbGridCarrierBranchID" AutoPostBack="false" ClientInstanceName="dxecbGridBranchID"
-                                                                                    DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="120px">
-                                                                                    <Items>
-                                                                                        <dxe:ListEditItem Text="平安分支1" Value="1" />
-                                                                                        <dxe:ListEditItem Text="泰康分支1" Value="2" />
-                                                                                        <dxe:ListEditItem Text="安联分支1" Value="3" />
+                                                                                <dxe:ASPxComboBox runat="server" ID="dxecbGridCarrierBranchID" AutoPostBack="false" ClientInstanceName="dxecbGridCarrierBranchID"
+                                                                                    DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="120px"
+                                                                                    OnCallback="dxecbGridCarrierBranchIDCallback"
+                                                                                    >
+                                                                                    <Items>                                                                                        
                                                                                     </Items>
+                                                                                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项">
+                                                                                        <RequiredField IsRequired="true" />
+                                                                                    </ValidationSettings>
                                                                                     <ClientSideEvents SelectedIndexChanged="" />
+                                                                                    
                                                                                 </dxe:ASPxComboBox>
                                                                             </td>
                                                                         </tr>
@@ -1019,14 +1029,20 @@
                                                                                 份额比例(%):
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierPolicyRate" ClientInstanceName="txtGridPolicyRate" runat="server" Width="120px">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierPolicyRate" ClientInstanceName="dxetxtGridCarrierPolicyRate" runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
                                                                                 </dxe:ASPxTextBox>
                                                                             </td>
                                                                             <td style="white-space: nowrap; text-align: right;">
                                                                                 保费(原):
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierPremium" ClientInstanceName="txtGridPremium" runat="server" Width="120px">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierPremium" ClientInstanceName="dxetxtGridCarrierPremium" runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
                                                                                 </dxe:ASPxTextBox>
                                                                             </td>
                                                                         </tr>
@@ -1035,14 +1051,20 @@
                                                                                 保费(本):
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierPremiumBase" ClientInstanceName="txtGridPolicyRate" runat="server" Width="120px">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierPremiumBase" ClientInstanceName="dxetxtGridCarrierPremiumBase" runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
                                                                                 </dxe:ASPxTextBox>
                                                                             </td>
                                                                             <td style="white-space: nowrap; text-align: right;">
                                                                                 经纪费率(%):
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierProcessRate" ClientInstanceName="txtGridPremium" runat="server" Width="120px">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierProcessRate" ClientInstanceName="dxetxtGridCarrierProcessRate" runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
                                                                                 </dxe:ASPxTextBox>
                                                                             </td>
                                                                         </tr>
@@ -1051,14 +1073,20 @@
                                                                                 经纪费(原):
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierProcess" ClientInstanceName="txtGridPoundage" runat="server" Width="120px">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierProcess" ClientInstanceName="dxetxtGridCarrierProcess" runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
                                                                                 </dxe:ASPxTextBox>
                                                                             </td>
                                                                             <td style="white-space: nowrap; text-align: right;">
                                                                                 经纪费(本):
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierProcessBase" ClientInstanceName="txtGridProcess" runat="server" Width="120px">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierProcessBase" ClientInstanceName="dxetxtGridCarrierProcessBase" runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
                                                                                 </dxe:ASPxTextBox>
                                                                             </td>
                                                                         </tr>
@@ -1066,7 +1094,7 @@
                                                                 </div>
                                                                 <div style="text-align: right; padding: 2px 2px 2px 2px">
                                                                     <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton"
-                                                                        runat="server">
+                                                                        runat="server">                                                                        
                                                                     </dxwgv:ASPxGridViewTemplateReplacement>
                                                                     <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton"
                                                                         runat="server">
