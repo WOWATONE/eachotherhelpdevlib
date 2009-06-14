@@ -480,41 +480,6 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="otherinsurance\NewCustomer.aspx.cs">
-      <DependentUpon>NewCustomer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="otherinsurance\NewCustomer.aspx.designer.cs">
-      <DependentUpon>NewCustomer.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="otherinsurance\PolicyAlter.aspx.cs">
-      <DependentUpon>PolicyAlter.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="otherinsurance\PolicyAlter.aspx.designer.cs">
-      <DependentUpon>PolicyAlter.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="otherinsurance\PolicyAlterList.aspx.cs">
-      <DependentUpon>PolicyAlterList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="otherinsurance\PolicyAlterList.aspx.designer.cs">
-      <DependentUpon>PolicyAlterList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="otherinsurance\PolicyCheck.aspx.cs">
-      <DependentUpon>PolicyCheck.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="otherinsurance\PolicyCheck.aspx.designer.cs">
-      <DependentUpon>PolicyCheck.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="otherinsurance\PolicyCheckList.aspx.cs">
-      <DependentUpon>PolicyCheckList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="otherinsurance\PolicyCheckList.aspx.designer.cs">
-      <DependentUpon>PolicyCheckList.aspx</DependentUpon>
-    </Compile>
     <Compile Include="otherinsurance\PolicyInput.aspx.cs">
       <DependentUpon>PolicyInput.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -528,34 +493,6 @@
     </Compile>
     <Compile Include="otherinsurance\PolicyInputList.aspx.designer.cs">
       <DependentUpon>PolicyInputList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="otherinsurance\PolicyProdType.aspx.cs">
-      <DependentUpon>PolicyProdType.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="otherinsurance\PolicyProdType.aspx.designer.cs">
-      <DependentUpon>PolicyProdType.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="otherinsurance\PolicyRead.aspx.cs">
-      <DependentUpon>PolicyRead.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="otherinsurance\PolicyRead.aspx.designer.cs">
-      <DependentUpon>PolicyRead.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="otherinsurance\PolicySearch.aspx.cs">
-      <DependentUpon>PolicySearch.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="otherinsurance\PolicySearch.aspx.designer.cs">
-      <DependentUpon>PolicySearch.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="otherinsurance\SelectCustomer.aspx.cs">
-      <DependentUpon>SelectCustomer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="otherinsurance\SelectCustomer.aspx.designer.cs">
-      <DependentUpon>SelectCustomer.aspx</DependentUpon>
     </Compile>
     <Compile Include="popupselectrefs\PolicyProdType.aspx.cs">
       <DependentUpon>PolicyProdType.aspx</DependentUpon>
@@ -837,17 +774,8 @@
     <Content Include="inoutbalance\FeeNotice.aspx" />
     <Content Include="inoutbalance\FeeNoticeAdd.aspx" />
     <Content Include="inoutbalance\FeeNoticeAddSelect.aspx" />
-    <Content Include="otherinsurance\NewCustomer.aspx" />
-    <Content Include="otherinsurance\PolicyAlter.aspx" />
-    <Content Include="otherinsurance\PolicyAlterList.aspx" />
-    <Content Include="otherinsurance\PolicyCheck.aspx" />
-    <Content Include="otherinsurance\PolicyCheckList.aspx" />
     <Content Include="otherinsurance\PolicyInput.aspx" />
     <Content Include="otherinsurance\PolicyInputList.aspx" />
-    <Content Include="otherinsurance\PolicyProdType.aspx" />
-    <Content Include="otherinsurance\PolicyRead.aspx" />
-    <Content Include="otherinsurance\PolicySearch.aspx" />
-    <Content Include="otherinsurance\SelectCustomer.aspx" />
     <Content Include="popupselectrefs\PolicyProdType.aspx" />
   </ItemGroup>
   <ItemGroup>
