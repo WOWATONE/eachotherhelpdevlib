@@ -133,11 +133,11 @@ namespace BusinessObjects
         {
             if (action == ModifiedAction.Insert)
             {
-                //add();
+                add();
             }
-            else
+            else if (action == ModifiedAction.Update)
             {
-                //update();
+                //update(customer);
             }
         }
 
@@ -146,7 +146,7 @@ namespace BusinessObjects
         /// </summary>
         /// <param name="customer"></param>
         /// <returns></returns>
-        public static DataTable GetCustomerList(BO_Customer customer)
+        public DataTable GetCustomerList()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select C.CustID, C.CustName, CO1.CodeName As AreaName, D.DeptName As DeprtmentName, C.Address,");
@@ -158,64 +158,116 @@ namespace BusinessObjects
             sb.Append("Left Join P_Department D (nolock) On D.DeptID=C.DeprtmentID ");
             sb.Append("Left Join P_User U (nolock) On U.UserID=C.SalesID ");
             sb.Append("Where C.CustTypeID=@CustTypeID ");
-            if (!string.IsNullOrEmpty(customer.CustID))
+            if (!string.IsNullOrEmpty(this.CustID))
                 sb.Append("And C.CustID=@CustID ");
-            if (!string.IsNullOrEmpty(customer.Area))
+            if (!string.IsNullOrEmpty(this.Area))
                 sb.Append("And C.Area=@Area ");
-            if (!string.IsNullOrEmpty(customer.Address))
+            if (!string.IsNullOrEmpty(this.Address))
                 sb.Append("And C.Address like '%'+@Address+'%' ");
-            if (!string.IsNullOrEmpty(customer.CustName))
+            if (!string.IsNullOrEmpty(this.CustName))
                 sb.Append("And C.CustName like '%'+@CustName+'%' ");
-            if (!string.IsNullOrEmpty(customer.TradeTypeID))
+            if (!string.IsNullOrEmpty(this.TradeTypeID))
                 sb.Append("And C.TradeTypeID=@TradeTypeID ");
-            if (!string.IsNullOrEmpty(customer.DeprtmentID))
+            if (!string.IsNullOrEmpty(this.DeprtmentID))
                 sb.Append("And C.DeprtmentID=@DeprtmentID ");
-            if (!string.IsNullOrEmpty(customer.IDNO))
+            if (!string.IsNullOrEmpty(this.IDNO))
                 sb.Append("And C.IDNO=@IDNO ");
-            if (!string.IsNullOrEmpty(customer.SalesID))
+            if (!string.IsNullOrEmpty(this.SalesID))
                 sb.Append("And C.SalesID=@SalesID ");
             sb.Append("Order By C.CustID");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-            _db.AddInParameter(dbCommand, "@CustTypeID", DbType.Int32, customer.CustTypeID);
-            if (!string.IsNullOrEmpty(customer.CustID))
-                _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, customer.CustID);
-            if (!string.IsNullOrEmpty(customer.Area))
-                _db.AddInParameter(dbCommand, "@Area", DbType.AnsiString, customer.Area);
-            if (!string.IsNullOrEmpty(customer.Address))
-                _db.AddInParameter(dbCommand, "@Address", DbType.AnsiString, customer.Address);
-            if (!string.IsNullOrEmpty(customer.CustName))
-                _db.AddInParameter(dbCommand, "@CustName", DbType.AnsiString, customer.CustName);
-            if (!string.IsNullOrEmpty(customer.TradeTypeID))
-                _db.AddInParameter(dbCommand, "@TradeTypeID", DbType.AnsiString, customer.TradeTypeID);
-            if (!string.IsNullOrEmpty(customer.DeprtmentID))
-                _db.AddInParameter(dbCommand, "@DeprtmentID", DbType.AnsiString, customer.DeprtmentID);
-            if (!string.IsNullOrEmpty(customer.IDNO))
-                _db.AddInParameter(dbCommand, "@IDNO", DbType.AnsiString, customer.IDNO);
-            if (!string.IsNullOrEmpty(customer.SalesID))
-                _db.AddInParameter(dbCommand, "@SalesID", DbType.AnsiString, customer.SalesID);
+            _db.AddInParameter(dbCommand, "@CustTypeID", DbType.Int32, this.CustTypeID);
+            if (!string.IsNullOrEmpty(this.CustID))
+                _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, this.CustID);
+            if (!string.IsNullOrEmpty(this.Area))
+                _db.AddInParameter(dbCommand, "@Area", DbType.AnsiString, this.Area);
+            if (!string.IsNullOrEmpty(this.Address))
+                _db.AddInParameter(dbCommand, "@Address", DbType.AnsiString, this.Address);
+            if (!string.IsNullOrEmpty(this.CustName))
+                _db.AddInParameter(dbCommand, "@CustName", DbType.AnsiString, this.CustName);
+            if (!string.IsNullOrEmpty(this.TradeTypeID))
+                _db.AddInParameter(dbCommand, "@TradeTypeID", DbType.AnsiString, this.TradeTypeID);
+            if (!string.IsNullOrEmpty(this.DeprtmentID))
+                _db.AddInParameter(dbCommand, "@DeprtmentID", DbType.AnsiString, this.DeprtmentID);
+            if (!string.IsNullOrEmpty(this.IDNO))
+                _db.AddInParameter(dbCommand, "@IDNO", DbType.AnsiString, this.IDNO);
+            if (!string.IsNullOrEmpty(this.SalesID))
+                _db.AddInParameter(dbCommand, "@SalesID", DbType.AnsiString, this.SalesID);
 
             return _db.ExecuteDataSet(dbCommand).Tables[0];
         }
 
         /// <summary>
-        /// 根据客户分类ID取得客户分类信息
+        /// 保存客户信息
         /// </summary>
-        /// <param name="sCustClassifyID"></param>
-        /// <returns></returns>
-        public static DataSet GetCustClassifyByID(string sCustClassifyID)
+        private void add()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("select [CustClassifyID], [ParentID], [CustClassifyName] ");
-            sb.Append("FROM CustClassify (nolock) ");
-            if (sCustClassifyID.Trim() != "")
-            {
-                sb.Append("where CustClassifyID = '" + sCustClassifyID + "' ");
-            }
-            sb.Append("ORDER BY OrderNo");
+            sb.Append("INSERT INTO Customer(CustID, CustName, TradeTypeID, Birthday, Area, Address, PostCode, CustTypeID, DeprtmentID, SalesID, CustClassifyID, ");
+            sb.Append("Email, Tel, Fax, Mobile, IDNO, BankName, BankAccount, Hobby, MainOper, AssetSize, MainProduct, AssetDistribute, UnitCharacter, Background, ");
+            sb.Append("OtherInfo, Risk, InsureStatus, Remark, Contact) ");
+            sb.Append(" VALUES( ");
+            sb.Append("@CustID, @CustName, @TradeTypeID, @Birthday, @Area, @Address, @PostCode, @CustTypeID, @DeprtmentID, @SalesID, @CustClassifyID, ");
+            sb.Append("@Email, @Tel, @Fax, @Mobile, @IDNO, @BankName, @BankAccount, @Hobby, @MainOper, @AssetSize, @MainProduct, @AssetDistribute, @UnitCharacter, @Background, ");
+            sb.Append("@OtherInfo, @Risk, @InsureStatus, @Remark, @Contact");
+            sb.Append(" )");
+
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
-            return _db.ExecuteDataSet(dbCommand);
+            _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, this.CustID);
+            _db.AddInParameter(dbCommand, "@CustName", DbType.AnsiString, this.CustName);
+            _db.AddInParameter(dbCommand, "@TradeTypeID", DbType.AnsiString, this.TradeTypeID);
+            _db.AddInParameter(dbCommand, "@Birthday", DbType.DateTime, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@Area", DbType.AnsiString, this.Area);
+            _db.AddInParameter(dbCommand, "@Address", DbType.AnsiString, this.Address);
+            _db.AddInParameter(dbCommand, "@PostCode", DbType.AnsiString, this.PostCode);
+            _db.AddInParameter(dbCommand, "@CustTypeID", DbType.Int32, this.CustTypeID);
+            _db.AddInParameter(dbCommand, "@DeprtmentID", DbType.AnsiString, this.DeprtmentID);
+            _db.AddInParameter(dbCommand, "@SalesID", DbType.AnsiString, this.SalesID);
+            _db.AddInParameter(dbCommand, "@CustClassifyID", DbType.AnsiString, this.CustClassifyID);
+            _db.AddInParameter(dbCommand, "@Email", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@Tel", DbType.AnsiString, this.Tel);
+            _db.AddInParameter(dbCommand, "@Fax", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@Mobile", DbType.AnsiString, this.Mobile);
+            _db.AddInParameter(dbCommand, "@IDNO", DbType.AnsiString, this.IDNO);
+            _db.AddInParameter(dbCommand, "@BankName", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@BankAccount", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@Hobby", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@MainOper", DbType.AnsiString, this.MainOper);
+            _db.AddInParameter(dbCommand, "@AssetSize", DbType.AnsiString, this.AssetSize);
+            _db.AddInParameter(dbCommand, "@MainProduct", DbType.AnsiString, this.MainProduct);
+            _db.AddInParameter(dbCommand, "@AssetDistribute", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@UnitCharacter", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@Background", DbType.AnsiString, this.Background);
+            _db.AddInParameter(dbCommand, "@OtherInfo", DbType.AnsiString, this.OtherInfo);
+            _db.AddInParameter(dbCommand, "@Risk", DbType.AnsiString, this.Risk);
+            _db.AddInParameter(dbCommand, "@InsureStatus", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@Remark", DbType.AnsiString, this.Remark);
+            _db.AddInParameter(dbCommand, "@Contact", DbType.AnsiString, this.Contact);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 判断是否存在客户编号
+        /// </summary>
+        /// <param name="custID"></param>
+        /// <returns></returns>
+        public bool IfExistsCustID(string custID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select CustID From Customer (nolock) ");
+            sb.Append("Where CustID=@CustID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, this.CustID);
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+
+            if (value != null && value.Rows.Count > 0)
+                return true;
+            else
+                return false;
         }
         #endregion
     }
