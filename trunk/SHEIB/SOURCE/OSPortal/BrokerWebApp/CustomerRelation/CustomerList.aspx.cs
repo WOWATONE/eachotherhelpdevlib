@@ -99,10 +99,7 @@ namespace BrokerWebApp.CustomerRelation
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             BO_Customer customer = new BO_Customer();
-            if (this.radPerson.Checked)
-                customer.CustTypeID = 1;
-            else
-                customer.CustTypeID = 0;
+            customer.CustTypeID = this.radPerson.Checked ? 1 : 0;
             if (this.dxetxtCustID.Text.Trim().Length > 0)
                 customer.CustID = this.dxetxtCustID.Text.Trim();
             if (this.dxeddlArea.SelectedItem.Value.ToString().Length > 0)
@@ -120,7 +117,7 @@ namespace BrokerWebApp.CustomerRelation
             if (this.dxeddlSalesID.SelectedItem.Value.ToString().Length > 0)
                 customer.SalesID = this.dxeddlSalesID.SelectedItem.Value.ToString();
 
-            this.gridSearchResult.DataSource = BO_Customer.GetCustomerList(customer);
+            this.gridSearchResult.DataSource = customer.GetCustomerList();
             this.gridSearchResult.DataBind();
         }
     }
