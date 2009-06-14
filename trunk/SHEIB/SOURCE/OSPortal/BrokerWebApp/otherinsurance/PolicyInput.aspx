@@ -197,7 +197,18 @@
 
         function imgPolicyProdTypeClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=600px;dialogHeight=500px;center=yes;help=no";
-            window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
+            var retrunval = window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
+            if (isEmpty(retrunval)) {
+                //do nothing;
+            }
+            else {
+                //split the return value;
+                var thesplit_array = retrunval.split(";");
+                dxetxtProdTypeName.SetValue(thesplit_array[1]);
+                setProductTypeID(thesplit_array[0]);
+
+                var result = $("#<%=ptid.ClientID %>");
+            }
         }
 
 
@@ -223,6 +234,10 @@
             var result = $("#<%=ptid.ClientID %>");
             var ID = result[0].value;
             return ID;
+        }
+        function setProductTypeID(thevalue) {
+            var result = $("#<%=ptid.ClientID %>");
+            result[0].value = thevalue;
         }
         
 
