@@ -279,9 +279,10 @@ namespace BusinessObjects
             StringBuilder sb = new StringBuilder();
             sb.Append("select [UserID], [UserNameCn] ");
             sb.Append("FROM P_User (nolock) ");
+            sb.Append("Where len(rtrim(UserNameCn))>0 ");
             if (sUserID.Trim() != "")
             {
-                sb.Append("where UserID = '" + sUserID + "' ");
+                sb.Append("And UserID = '" + sUserID + "' ");
             }
             sb.Append("ORDER BY UserID");
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
