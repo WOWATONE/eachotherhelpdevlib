@@ -245,6 +245,26 @@ namespace BusinessObjects.SchemaSetting
 
         #endregion Methods
 
+        /// <summary>
+        /// 根据客户分类ID取得客户分类信息
+        /// </summary>
+        /// <param name="sCustClassifyID"></param>
+        /// <returns></returns>
+        public static DataSet GetCustClassifyByID(string sCustClassifyID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select CustClassifyID, ParentID, CustClassifyName ");
+            sb.Append("FROM CustClassify (nolock) ");
+            if (sCustClassifyID.Trim() != "")
+            {
+                sb.Append("where CustClassifyID = '" + sCustClassifyID + "' ");
+            }
+            sb.Append("ORDER BY OrderNo");
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
         public static DataSet GetCarrierList(string sWhere)
         {
             StringBuilder sb = new StringBuilder();
