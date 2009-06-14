@@ -15,6 +15,11 @@ namespace BusinessObjects.Policy
     {
         public BO_PolicyCarrier() { }
 
+        public BO_PolicyCarrier(String id)
+        {
+            fetchByID(id);
+        }
+
         #region Variables
 
         public enum FieldList
@@ -172,10 +177,39 @@ namespace BusinessObjects.Policy
             return list;
         }
 
+        public static Boolean CheckPolicyCarrierBranchExist(String policyID, 
+            String carrierID, String branchID)
+        {
+            
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT COUNT(A.PolicyCarrierID) ");
+            sb.Append(" ");
+            sb.Append(" FROM PolicyCarrier A ");
+            sb.Append(" LEFT JOIN Carrier B ON A.CarrierID = B.CarrierID ");
+            sb.Append(" LEFT JOIN Branch C ON A.BranchID = C.BranchID ");
+            sb.Append(" WHERE A.PolicyID = @PolicyID ");
+            sb.Append(" AND A.CarrierID = @CarrierID ");
+            sb.Append(" AND A.BranchID = @BranchID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@PolicyID", DbType.String, policyID);
+            _db.AddInParameter(dbCommand, "@CarrierID", DbType.String, carrierID);
+            _db.AddInParameter(dbCommand, "@BranchID", DbType.String, branchID);
+
+            Int32 count = Convert.ToInt32(_db.ExecuteScalar(dbCommand));
+            if (count > 0)
+                return true ;
+            else
+                return false;
+
+        }
+
+
         #endregion Methods
 
 
         #region Procedure
+
 
         private void add()
         {
@@ -235,6 +269,52 @@ namespace BusinessObjects.Policy
             _db.ExecuteNonQuery(dbCommand);
 
         }
+
+
+
+        private void fetchByID(String policyCarrierID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT A.PolicyCarrierID, A.PolicyID, A.CarrierID, A.BranchID, A.PolicyRate, A.Premium, A.PremiumBase, A.Process, A.ProcessRate, A.ProcessBase, ");
+            sb.Append(" B.CarrierNameCn, C.BranchName");
+            sb.Append(" FROM PolicyCarrier A ");
+            sb.Append(" LEFT JOIN Carrier B ON A.CarrierID = B.CarrierID ");
+            sb.Append(" LEFT JOIN Branch C ON A.BranchID = C.BranchID ");
+            sb.Append(" WHERE A.PolicyCarrierID = @PolicyCarrierID");
+            //sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@PolicyCarrierID", DbType.String, policyCarrierID);
+
+
+            using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                if (reader.Read())
+                {
+                    this.PolicyCarrierID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PolicyCarrierID));
+                    this.PolicyID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PolicyID));
+                    this.CarrierID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CarrierID));
+                    this.BranchID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.BranchID));
+
+                    this.PolicyRate = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.PolicyRate));
+
+                    this.Premium = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Premium));
+                    this.PremiumBase = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.PremiumBase));
+                    this.Process = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Process));
+                    this.ProcessRate = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.ProcessRate));
+                    this.ProcessBase = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.ProcessBase));
+
+                    this.CarrierNameCn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CarrierNameCn));
+                    this.BranchName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.BranchName));
+                }
+            }
+        }
+
 
 
         #endregion Procedure

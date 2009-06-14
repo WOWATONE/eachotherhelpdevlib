@@ -26,6 +26,8 @@ namespace BrokerWebApp.otherinsurance
         private const string UploadDirectory = "~/UploadControl/UploadImages/";
         private const int ThumbnailSize = 100;
 
+        private Boolean gridCarrierStartEdit = false;
+
         private string theID;
         //enctype="multipart/form-data">
 
@@ -225,18 +227,18 @@ namespace BrokerWebApp.otherinsurance
 
         protected void gridCarrier_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
         {
+            
             HtmlTable tblEditorTemplate = this.gridCarrier.FindEditFormTemplateControl("tblgridCarrierEditorTemplate") as HtmlTable;
-            //Page.IsCallback;
-            //Page.IsPostBack;
-            //Page.IsPostBackEventControlRegistered;
+
             ASPxComboBox dxecbGridCarrierCarrierID = tblEditorTemplate.FindControl("dxecbGridCarrierCarrierID") as ASPxComboBox;
             dxecbGridCarrierCarrierID.DataSource = BusinessObjects.SchemaSetting.BO_Carrier.FetchList();
             dxecbGridCarrierCarrierID.TextField = "CarrierNameCn";
             dxecbGridCarrierCarrierID.ValueField = "CarrierID";
             dxecbGridCarrierCarrierID.DataBind();
 
+
             ASPxComboBox dxecbGridCarrierBranchID = tblEditorTemplate.FindControl("dxecbGridCarrierBranchID") as ASPxComboBox;
-            
+
             ASPxTextBox dxetxtGridCarrierPolicyRate = tblEditorTemplate.FindControl("dxetxtGridCarrierPolicyRate") as ASPxTextBox;
             ASPxTextBox dxetxtGridCarrierPremium = tblEditorTemplate.FindControl("dxetxtGridCarrierPremium") as ASPxTextBox;
             ASPxTextBox dxetxtGridCarrierPremiumBase = tblEditorTemplate.FindControl("dxetxtGridCarrierPremiumBase") as ASPxTextBox;
@@ -244,23 +246,134 @@ namespace BrokerWebApp.otherinsurance
             ASPxTextBox dxetxtGridCarrierProcess = tblEditorTemplate.FindControl("dxetxtGridCarrierProcess") as ASPxTextBox;
             ASPxTextBox dxetxtGridCarrierProcessBase = tblEditorTemplate.FindControl("dxetxtGridCarrierProcessBase") as ASPxTextBox;
 
-            //this.gridCarrier.Selection.SelectRow
-            //string theProdID = decbGridProdID.SelectedItem.Value.ToString();//ddlGridProdID.SelectedValue;
+            Int32 editIndex = this.gridCarrier.EditingRowVisibleIndex;
+            if (editIndex > -1)
+            {
+                object theValues = this.gridCarrier.GetRowValues(1, new String[] { "PolicyID", "CarrierID", "BranchID", "PolicyRate", "Premium", "PremiumBase", "Process", "ProcessRate", "ProcessBase" });
+                object[] theValueList = theValues as object[];
 
+                String carrierID = theValueList[1].ToString();
+                String brancheID = theValueList[2].ToString();
+                String policyRate = theValueList[3].ToString();
+                String premium = theValueList[4].ToString();
+                String premiumBase = theValueList[5].ToString();
+                String process = theValueList[6].ToString();
+                String processRate = theValueList[7].ToString();
+                String processBase = theValueList[8].ToString();
+
+                ListEditItem theselected;
+                if (this.gridCarrierStartEdit)
+                {                    
+                    theselected = dxecbGridCarrierCarrierID.Items.FindByValue(carrierID);
+                    if (theselected != null)
+                    {
+                        dxecbGridCarrierCarrierID.SelectedItem = theselected;
+                    }
+
+                    dxecbGridCarrierBranchID.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(carrierID);
+                    dxecbGridCarrierBranchID.TextField = "BranchName";
+                    dxecbGridCarrierBranchID.ValueField = "BranchID";
+                    dxecbGridCarrierBranchID.DataBind();
+
+                    theselected = dxecbGridCarrierBranchID.Items.FindByValue(brancheID);
+                    if (theselected != null)
+                    {
+                        dxecbGridCarrierBranchID.SelectedItem = theselected;
+                    }
+
+                    dxetxtGridCarrierPolicyRate.Text = policyRate;
+                    dxetxtGridCarrierPremium.Text = premium;
+                    dxetxtGridCarrierPremiumBase.Text = premiumBase;
+                    dxetxtGridCarrierProcessRate.Text = processRate;
+                    dxetxtGridCarrierProcess.Text = process;
+                    dxetxtGridCarrierProcessBase.Text = processBase;
+                }
+                else
+                {
+                    carrierID = dxecbGridCarrierCarrierID.SelectedItem.Value.ToString();
+                    dxecbGridCarrierBranchID.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(carrierID);
+                    dxecbGridCarrierBranchID.TextField = "BranchName";
+                    dxecbGridCarrierBranchID.ValueField = "BranchID";
+                    dxecbGridCarrierBranchID.DataBind();
+                }
+            }
+            
         }
 
         protected void gridCarrier_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
         {
-            //
+            this.gridCarrierStartEdit = true;
         }
 
+        
         protected void gridCarrier_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            //
+            
+            String theKey = e.Keys[0].ToString();
+            HtmlTable tblEditorTemplate = this.gridCarrier.FindEditFormTemplateControl("tblgridCarrierEditorTemplate") as HtmlTable;
+
+            ASPxComboBox dxecbGridCarrierCarrierID = tblEditorTemplate.FindControl("dxecbGridCarrierCarrierID") as ASPxComboBox;
+
+            ASPxComboBox dxecbGridCarrierBranchID = tblEditorTemplate.FindControl("dxecbGridCarrierBranchID") as ASPxComboBox;
+
+            ASPxTextBox dxetxtGridCarrierPolicyRate = tblEditorTemplate.FindControl("dxetxtGridCarrierPolicyRate") as ASPxTextBox;
+            ASPxTextBox dxetxtGridCarrierPremium = tblEditorTemplate.FindControl("dxetxtGridCarrierPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtGridCarrierPremiumBase = tblEditorTemplate.FindControl("dxetxtGridCarrierPremiumBase") as ASPxTextBox;
+            ASPxTextBox dxetxtGridCarrierProcessRate = tblEditorTemplate.FindControl("dxetxtGridCarrierProcessRate") as ASPxTextBox;
+            ASPxTextBox dxetxtGridCarrierProcess = tblEditorTemplate.FindControl("dxetxtGridCarrierProcess") as ASPxTextBox;
+            ASPxTextBox dxetxtGridCarrierProcessBase = tblEditorTemplate.FindControl("dxetxtGridCarrierProcessBase") as ASPxTextBox;
+
+            BusinessObjects.Policy.BO_PolicyCarrier newobj = new BusinessObjects.Policy.BO_PolicyCarrier(theKey);
+
+            newobj.PolicyID = this.dxetxtPolicyID.Text;
+
+            newobj.CarrierID = dxecbGridCarrierCarrierID.SelectedItem.Value.ToString();
+            newobj.BranchID = dxecbGridCarrierBranchID.SelectedItem.Value.ToString();
+
+            if (dxetxtGridCarrierPolicyRate.Text != String.Empty)
+            {
+                newobj.PolicyRate = Convert.ToDecimal(dxetxtGridCarrierPolicyRate.Text);
+            }
+            if (dxetxtGridCarrierPremium.Text != String.Empty)
+            {
+                newobj.Premium = Convert.ToDecimal(dxetxtGridCarrierPremium.Text);
+            }
+            if (dxetxtGridCarrierPremiumBase.Text != String.Empty)
+            {
+                newobj.PremiumBase = Convert.ToDecimal(dxetxtGridCarrierPremiumBase.Text);
+            }
+            if (dxetxtGridCarrierProcessRate.Text != String.Empty)
+            {
+                newobj.ProcessRate = Convert.ToDecimal(dxetxtGridCarrierProcessRate.Text);
+            }
+            if (dxetxtGridCarrierProcess.Text != String.Empty)
+            {
+                newobj.Process = Convert.ToDecimal(dxetxtGridCarrierProcess.Text);
+            }
+            if (dxetxtGridCarrierProcessBase.Text != String.Empty)
+            {
+                newobj.ProcessBase = Convert.ToDecimal(dxetxtGridCarrierProcessBase.Text);
+            }
+
+            try
+            {
+                newobj.Save(ModifiedAction.Update);
+            }
+            catch(Exception ex)
+            {
+                throw ex;                
+            }
+
+
             e.Cancel = true;
             this.gridCarrier.CancelEdit();
 
+            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(theID);
+
+            this.gridCarrier.DataBind();
+
         }
+
 
         protected void gridCarrier_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
         {
@@ -282,7 +395,6 @@ namespace BrokerWebApp.otherinsurance
             ASPxTextBox dxetxtGridCarrierProcess = tblEditorTemplate.FindControl("dxetxtGridCarrierProcess") as ASPxTextBox;
             ASPxTextBox dxetxtGridCarrierProcessBase = tblEditorTemplate.FindControl("dxetxtGridCarrierProcessBase") as ASPxTextBox;
             
-            //this.gridCarrier.Selection.SelectRow
             BusinessObjects.Policy.BO_PolicyCarrier newobj = new BusinessObjects.Policy.BO_PolicyCarrier();
             
             newobj.PolicyCarrierID = Guid.NewGuid().ToString();
@@ -346,6 +458,7 @@ namespace BrokerWebApp.otherinsurance
 
         protected void gridCarrier_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
+            String appendDes = "必需项";
             HtmlTable tblEditorTemplate = this.gridCarrier.FindEditFormTemplateControl("tblgridCarrierEditorTemplate") as HtmlTable;
 
             ASPxComboBox dxecbGridCarrierCarrierID = tblEditorTemplate.FindControl("dxecbGridCarrierCarrierID") as ASPxComboBox;
@@ -367,7 +480,7 @@ namespace BrokerWebApp.otherinsurance
             }
 
             ASPxComboBox dxecbGridCarrierBranchID = tblEditorTemplate.FindControl("dxecbGridCarrierBranchID") as ASPxComboBox;
-            dxecbGridCarrierBranchID.Validate();
+            
             if (dxecbGridCarrierBranchID.SelectedItem == null)
             {
                 e.Errors[this.gridCarrier.Columns[2]] = "必需项";
@@ -384,7 +497,21 @@ namespace BrokerWebApp.otherinsurance
                 }
             }
                         
-            if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误。";
+            Boolean exists = BusinessObjects.Policy.BO_PolicyCarrier.CheckPolicyCarrierBranchExist(
+                this.dxetxtPolicyID.Text, 
+                dxecbGridCarrierCarrierID.SelectedItem.Value.ToString(),
+                dxecbGridCarrierBranchID.SelectedItem.Value.ToString());
+            if (exists)
+            {
+                e.Errors[this.gridCarrier.Columns[2]] = "已存在";
+                dxecbGridCarrierBranchID.ValidationSettings.RegularExpression.ErrorText = "已存在";
+                dxecbGridCarrierBranchID.ValidationSettings.RegularExpression.ValidationExpression = @"^\d+";
+                dxecbGridCarrierBranchID.ValidationSettings.RegularExpression.EvaluateIsValid("abc");
+                appendDes = "此保险公司分支机构已存在";
+            }
+            dxecbGridCarrierBranchID.Validate();
+
+            if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误(" + appendDes + ")。";
         
         }
      
@@ -398,9 +525,15 @@ namespace BrokerWebApp.otherinsurance
             thecb.TextField = "BranchName";
             thecb.ValueField = "BranchID";
             thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
         }
 
 
+
+        
 
         #endregion gridCarrier Events
 

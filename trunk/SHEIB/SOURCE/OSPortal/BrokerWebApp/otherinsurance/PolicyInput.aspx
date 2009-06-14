@@ -981,6 +981,12 @@
                                                             </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="ProcessBase" Caption="经纪费(本)" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="CarrierID" Caption="CarrierID" CellStyle-Wrap="False" Visible="false">
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="BranchID" Caption="BranchID" CellStyle-Wrap="False" Visible="false">
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="PolicyID" CellStyle-Wrap="False" Visible="false">
+                                                            </dxwgv:GridViewDataColumn>
                                                         </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowAllRecords" />
