@@ -30,7 +30,8 @@ namespace BusinessObjects
             TradeName,
             Area,
 	        PolicyStatus,
-            PolicyType
+            PolicyType,
+            AuditStatus
         }
 
         public enum FieldList

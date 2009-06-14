@@ -27,13 +27,13 @@ namespace BusinessObjects
             AccountTypeId,
             CurCode,
             Fee,
-            FeeBase,
+            FeeAdjust,
             FeeRemark,
             CreateTime,
             CreatePerson,
             ModifyTime,
             ModifyPerson,
-            FlagAudited,
+            AuditStatus,
             AuditTime,
             AuditPerson
         }
@@ -57,7 +57,7 @@ namespace BusinessObjects
         /*实收费用*/
         public Double Fee { get; set; }
         /*费用本位币*/
-        public Double FeeBase { get; set; }
+        public Double FeeAdjust { get; set; }
         /*备注*/
         public string FeeRemark { get; set; }
         /*创建日期*/
@@ -69,68 +69,13 @@ namespace BusinessObjects
         /*修改人*/
         public string ModifyPerson { get; set; }
         /*是否审核*/
-        public int FlagAudited { get; set; }
+        public int AuditStatus { get; set; }
         /*审核时间*/
         public DateTime AuditTime { get; set; }
         /*审核人*/
         public string AuditPerson { get; set; }
 
         #endregion Property
-
-
-        #region Methods
-
-        public static List<BO_Fee> FetchList()
-        {
-            List<BO_Fee> list = new List<BO_Fee>();
-
-            StringBuilder sb = new StringBuilder();
-            sb.Append("select ");
-            sb.Append("FeeId,PolPeriodID,VoucherID,FeeDate,FeeTypeId,AccountTypeId,CurCode,Fee,");
-            sb.Append("FeeBase,FeeRemark,CreateTime,CreatePerson,ModifyTime,ModifyPerson,FlagAudited,AuditTime,AuditPerson ");
-            sb.Append("FROM Fee ");
-
-
-            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-
-            BO_Fee newObj;
-            using (IDataReader reader = _db.ExecuteReader(dbCommand))
-            {
-                while (reader.Read())
-                {
-                    newObj = new BO_Fee();
-
-                    newObj.FeeId = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.FeeId));
-                    newObj.PolPeriodID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PolPeriodID));
-                    newObj.VoucherID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.VoucherID));
-                    newObj.FeeDate = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.FeeDate));
-                    newObj.FeeTypeId = Utility.GetIntFromReader(reader, Convert.ToInt32(FieldList.FeeTypeId));
-
-                    newObj.AccountTypeId = Utility.GetIntFromReader(reader, Convert.ToInt32(FieldList.AccountTypeId));
-                    newObj.CurCode = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CurCode));
-                    newObj.Fee = Utility.GetDoubleFromReader(reader, Convert.ToInt32(FieldList.Fee));
-                    newObj.FeeBase = Utility.GetDoubleFromReader(reader, Convert.ToInt32(FieldList.FeeBase));
-                    newObj.FeeRemark = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.FeeRemark));
-                    newObj.CreateTime = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.CreateTime));
-                    newObj.CreatePerson = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CreatePerson));
-                    newObj.ModifyTime = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.ModifyTime));
-                    newObj.ModifyPerson = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ModifyPerson));
-                    newObj.FlagAudited = Utility.GetIntFromReader(reader, Convert.ToInt32(FieldList.FlagAudited));
-                    newObj.AuditTime = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.AuditTime));
-                    newObj.AuditPerson = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.AuditPerson));
-
-
-
-
-                    list.Add(newObj);
-                }
-            }
-
-            return list;
-        }
-
-
-        #endregion Methods
 
 
     }
