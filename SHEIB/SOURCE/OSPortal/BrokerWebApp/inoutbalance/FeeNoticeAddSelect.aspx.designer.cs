@@ -59,76 +59,76 @@ namespace BrokerWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.Panel npSearchDetail;
         
         /// <summary>
-        /// txtPolicyNo 控件。
+        /// dxetxtPolicyNo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPolicyNo;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyNo;
         
         /// <summary>
-        /// TextBox1 控件。
+        /// dxetxtPolicyID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyID;
         
         /// <summary>
-        /// ddlDeptId 控件。
+        /// dxeddlDeptId 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDeptId;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlDeptId;
         
         /// <summary>
-        /// ddlSaleID 控件。
+        /// dxeddlSalesID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSaleID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesID;
         
         /// <summary>
-        /// txtCustomerID 控件。
+        /// dxetxtCustomerID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustomerID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCustomerID;
         
         /// <summary>
-        /// ddlCompany 控件。
+        /// dxeddlCarrier 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCompany;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCarrier;
         
         /// <summary>
-        /// DropDownList1 控件。
+        /// dxeddlBranch 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlBranch;
         
         /// <summary>
-        /// txtProdTypeID 控件。
+        /// dxetxtProdTypeID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProdTypeID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProdTypeID;
         
         /// <summary>
         /// imgpeoplesearch 控件。
@@ -140,94 +140,94 @@ namespace BrokerWebApp.inoutbalance {
         protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
         
         /// <summary>
-        /// CheckBox1 控件。
+        /// ckbPayDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
+        protected global::System.Web.UI.WebControls.CheckBox ckbPayDate;
         
         /// <summary>
-        /// deGetStartDate 控件。
+        /// dxeStartPayDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deGetStartDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeStartPayDate;
         
         /// <summary>
-        /// deGetEndDate 控件。
+        /// dxeEndPayDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deGetEndDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeEndPayDate;
         
         /// <summary>
-        /// DropDownList2 控件。
+        /// dxeddlPolicyType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlPolicyType;
         
         /// <summary>
-        /// chkBack 控件。
+        /// chkPolicyStartDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkBack;
+        protected global::System.Web.UI.WebControls.CheckBox chkPolicyStartDate;
         
         /// <summary>
-        /// deBackStartDate 控件。
+        /// dxePolicyStartDateStart 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deBackStartDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxePolicyStartDateStart;
         
         /// <summary>
-        /// deBackEndDate 控件。
+        /// dxePolicyStartDateEnd 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deBackEndDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxePolicyStartDateEnd;
         
         /// <summary>
-        /// CheckBox2 控件。
+        /// chkPolicyEndDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
+        protected global::System.Web.UI.WebControls.CheckBox chkPolicyEndDate;
         
         /// <summary>
-        /// ASPxDateEdit1 控件。
+        /// dxePolicyEndDateStart 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit ASPxDateEdit1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxePolicyEndDateStart;
         
         /// <summary>
-        /// ASPxDateEdit2 控件。
+        /// dxePolicyEndDateEnd 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit ASPxDateEdit2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxePolicyEndDateEnd;
         
         /// <summary>
         /// btnSearch 控件。

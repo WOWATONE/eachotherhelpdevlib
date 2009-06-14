@@ -67,9 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntity\BaseObject.cs" />
-    <Compile Include="BaseEntity\SampleTemplate.cs" />
     <Compile Include="BaseEntity\ConfigurationService.cs" />
     <Compile Include="BaseEntity\DataService.cs" />
+    <Compile Include="BaseEntity\SampleTemplate.cs" />
     <Compile Include="BaseEntity\SessionService.cs" />
     <Compile Include="BaseEntity\TranUtils.cs" />
     <Compile Include="BaseEntity\Utility.cs" />
