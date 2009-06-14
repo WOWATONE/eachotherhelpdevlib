@@ -523,7 +523,7 @@
                                             <tr>
                                                 <td style="text-align: right;">投保单号：</td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="125px"></dxe:ASPxTextBox>                                                    
+                                                    <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="125px" ReadOnly="true"></dxe:ASPxTextBox>                                                    
                                                 </td>
                                                 <td></td>
                                                 <td style="text-align: right;">保单编号：</td>
@@ -957,7 +957,7 @@
                                                         <Columns>
                                                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left"
                                                                 Width="81" HeaderStyle-Wrap="False" AllowDragDrop="false">
-                                                                <NewButton Visible="True" />
+                                                                <NewButton Visible="true" />
                                                                 <EditButton Visible="true" />
                                                                 <DeleteButton Visible="true" />
                                                                 <CustomButtons>

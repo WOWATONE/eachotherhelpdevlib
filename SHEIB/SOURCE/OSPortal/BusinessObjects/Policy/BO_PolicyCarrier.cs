@@ -28,7 +28,9 @@ namespace BusinessObjects.Policy
             PremiumBase, 
             Process, 
             ProcessRate, 
-            ProcessBase
+            ProcessBase,
+            CarrierNameCn,
+            BranchName
         }
 
         #endregion Variables
@@ -93,8 +95,19 @@ namespace BusinessObjects.Policy
             get;
             set;
         }
-        
-        
+
+        public String CarrierNameCn
+        {
+            get;
+            set;
+        }
+
+        public String BranchName
+        {
+            get;
+            set;
+        }
+
         #endregion Property
 
 
@@ -117,9 +130,12 @@ namespace BusinessObjects.Policy
             List<BO_PolicyCarrier> list = new List<BO_PolicyCarrier>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT PolicyCarrierID, PolicyID, CarrierID, BranchID, PolicyRate, Premium, PremiumBase, Process, ProcessRate, ProcessBase ");
-            sb.Append(" FROM PolicyCarrier ");
-            sb.Append(" WHERE PolicyID = @PolicyID");
+            sb.Append("SELECT A.PolicyCarrierID, A.PolicyID, A.CarrierID, A.BranchID, A.PolicyRate, A.Premium, A.PremiumBase, A.Process, A.ProcessRate, A.ProcessBase, ");
+            sb.Append(" B.CarrierNameCn, C.BranchName");
+            sb.Append(" FROM PolicyCarrier A ");
+            sb.Append(" LEFT JOIN Carrier B ON A.CarrierID = B.CarrierID ");
+            sb.Append(" LEFT JOIN Branch C ON A.BranchID = C.BranchID ");
+            sb.Append(" WHERE A.PolicyID = @PolicyID");
             sb.Append(" ");
             sb.Append(" ");
 
@@ -145,6 +161,9 @@ namespace BusinessObjects.Policy
                     newObj.Process = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Process));
                     newObj.ProcessRate = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.ProcessRate));
                     newObj.ProcessBase = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.ProcessBase));
+
+                    newObj.CarrierNameCn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CarrierNameCn));
+                    newObj.BranchName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.BranchName));
                     
                     list.Add(newObj);
                 }
@@ -219,5 +238,7 @@ namespace BusinessObjects.Policy
 
 
         #endregion Procedure
+    
+    
     }
 }
