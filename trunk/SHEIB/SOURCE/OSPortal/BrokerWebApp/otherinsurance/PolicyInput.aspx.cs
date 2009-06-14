@@ -47,8 +47,12 @@ namespace BrokerWebApp.otherinsurance
                     theID = BusinessObjects.TranUtils.GetPolicyID();
                 this.plcid.Value = theID;
             }
+            this.dxetxtPolicyID.Text = this.plcid.Value;
+            
+            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(theID);
 
-            this.dxetxtPolicyID.Value = theID;
+            if (!IsPostBack && !IsCallback)
+                this.gridCarrier.DataBind();
             
         }
 
@@ -283,6 +287,7 @@ namespace BrokerWebApp.otherinsurance
             
             newobj.PolicyCarrierID = Guid.NewGuid().ToString();
             newobj.PolicyID = this.dxetxtPolicyID.Text;
+
             newobj.CarrierID = dxecbGridCarrierCarrierID.SelectedItem.Value.ToString();
             newobj.BranchID = dxecbGridCarrierBranchID.SelectedItem.Value.ToString();
 
@@ -315,6 +320,11 @@ namespace BrokerWebApp.otherinsurance
 
             e.Cancel = true;
             this.gridCarrier.CancelEdit();
+
+            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(theID);
+
+            this.gridCarrier.DataBind();
+
         }
 
         protected void gridCarrier_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
