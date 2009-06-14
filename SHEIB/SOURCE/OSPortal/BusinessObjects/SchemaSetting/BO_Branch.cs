@@ -220,6 +220,37 @@ namespace BusinessObjects.SchemaSetting
         }
 
 
+
+        public static DataSet GetBranchList(string sWhere)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ");
+            sb.Append(" BranchID,BranchName,ShortName,CarrierID,Address,PostCode,Tel,Fax,EMail,Contact,Remark,Province,BankName,BankAccount,");
+            sb.Append(" (Select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName");
+            sb.Append(" From Branch a ");
+            sb.Append(" where 1=1 ");
+            sb.Append(sWhere);
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet GetBranchListByCarrierID(string sCarrierID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ");
+            sb.Append(" BranchID,BranchName,ShortName,CarrierID,Address,PostCode,Tel,Fax,EMail,Contact,Remark,Province,BankName,BankAccount,");
+            sb.Append(" (Select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName");
+            sb.Append(" From Branch a ");
+            sb.Append(" where a.CarrierID='" + sCarrierID + "'");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+
         #endregion Methods
 
 
