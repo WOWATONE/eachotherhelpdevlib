@@ -473,75 +473,47 @@
     <Compile Include="inoutbalance\FeeNoticeAddSelect.aspx.designer.cs">
       <DependentUpon>FeeNoticeAddSelect.aspx</DependentUpon>
     </Compile>
-    <Compile Include="inoutbalance\FeePayin.aspx.cs">
-      <DependentUpon>FeePayin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeePayin.aspx.designer.cs">
-      <DependentUpon>FeePayin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="inoutbalance\FeePayinAdd.aspx.cs">
-      <DependentUpon>FeePayinAdd.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeePayinAdd.aspx.designer.cs">
-      <DependentUpon>FeePayinAdd.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="inoutbalance\FeePayinAddSelect.aspx.cs">
-      <DependentUpon>FeePayinAddSelect.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeePayinAddSelect.aspx.designer.cs">
-      <DependentUpon>FeePayinAddSelect.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoice.aspx.cs">
-      <DependentUpon>FeePayinInvoice.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoice.aspx.designer.cs">
-      <DependentUpon>FeePayinInvoice.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoiceAdd.aspx.cs">
-      <DependentUpon>FeePayinInvoiceAdd.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoiceAdd.aspx.designer.cs">
-      <DependentUpon>FeePayinInvoiceAdd.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoiceAddSelect.aspx.cs">
-      <DependentUpon>FeePayinInvoiceAddSelect.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoiceAddSelect.aspx.designer.cs">
-      <DependentUpon>FeePayinInvoiceAddSelect.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="inoutbalance\FeeProcess.aspx.cs">
-      <DependentUpon>FeeProcess.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeeProcess.aspx.designer.cs">
-      <DependentUpon>FeeProcess.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="inoutbalance\FeeProcessAdd.aspx.cs">
-      <DependentUpon>FeeProcessAdd.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeeProcessAdd.aspx.designer.cs">
-      <DependentUpon>FeeProcessAdd.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="inoutbalance\FeeProcessAddSelect.aspx.cs">
-      <DependentUpon>FeeProcessAddSelect.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeeProcessAddSelect.aspx.designer.cs">
-      <DependentUpon>FeeProcessAddSelect.aspx</DependentUpon>
-    </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="otherinsurance\NewCustomer.aspx.cs">
+      <DependentUpon>NewCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\NewCustomer.aspx.designer.cs">
+      <DependentUpon>NewCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyAlter.aspx.cs">
+      <DependentUpon>PolicyAlter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyAlter.aspx.designer.cs">
+      <DependentUpon>PolicyAlter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyAlterList.aspx.cs">
+      <DependentUpon>PolicyAlterList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyAlterList.aspx.designer.cs">
+      <DependentUpon>PolicyAlterList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyCheck.aspx.cs">
+      <DependentUpon>PolicyCheck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyCheck.aspx.designer.cs">
+      <DependentUpon>PolicyCheck.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyCheckList.aspx.cs">
+      <DependentUpon>PolicyCheckList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyCheckList.aspx.designer.cs">
+      <DependentUpon>PolicyCheckList.aspx</DependentUpon>
     </Compile>
     <Compile Include="otherinsurance\PolicyInput.aspx.cs">
       <DependentUpon>PolicyInput.aspx</DependentUpon>
@@ -556,6 +528,34 @@
     </Compile>
     <Compile Include="otherinsurance\PolicyInputList.aspx.designer.cs">
       <DependentUpon>PolicyInputList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyProdType.aspx.cs">
+      <DependentUpon>PolicyProdType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyProdType.aspx.designer.cs">
+      <DependentUpon>PolicyProdType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyRead.aspx.cs">
+      <DependentUpon>PolicyRead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyRead.aspx.designer.cs">
+      <DependentUpon>PolicyRead.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="otherinsurance\PolicySearch.aspx.cs">
+      <DependentUpon>PolicySearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\PolicySearch.aspx.designer.cs">
+      <DependentUpon>PolicySearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="otherinsurance\SelectCustomer.aspx.cs">
+      <DependentUpon>SelectCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\SelectCustomer.aspx.designer.cs">
+      <DependentUpon>SelectCustomer.aspx</DependentUpon>
     </Compile>
     <Compile Include="popupselectrefs\PolicyProdType.aspx.cs">
       <DependentUpon>PolicyProdType.aspx</DependentUpon>
@@ -837,18 +837,17 @@
     <Content Include="inoutbalance\FeeNotice.aspx" />
     <Content Include="inoutbalance\FeeNoticeAdd.aspx" />
     <Content Include="inoutbalance\FeeNoticeAddSelect.aspx" />
-    <Content Include="inoutbalance\FeePayin.aspx" />
-    <Content Include="inoutbalance\FeePayinAdd.aspx" />
-    <Content Include="inoutbalance\FeePayinAddSelect.aspx" />
-    <Content Include="inoutbalance\FeePayinInvoice.aspx" />
-    <Content Include="inoutbalance\FeePayinInvoiceAdd.aspx" />
-    <Content Include="inoutbalance\FeePayinInvoiceAddSelect.aspx" />
-    <Content Include="inoutbalance\FeeProcess.aspx" />
-    <Content Include="inoutbalance\FeeProcessAdd.aspx" />
-    <Content Include="inoutbalance\FeeProcessAddSelect.aspx" />
-    <Content Include="js\json2.js" />
+    <Content Include="otherinsurance\NewCustomer.aspx" />
+    <Content Include="otherinsurance\PolicyAlter.aspx" />
+    <Content Include="otherinsurance\PolicyAlterList.aspx" />
+    <Content Include="otherinsurance\PolicyCheck.aspx" />
+    <Content Include="otherinsurance\PolicyCheckList.aspx" />
     <Content Include="otherinsurance\PolicyInput.aspx" />
     <Content Include="otherinsurance\PolicyInputList.aspx" />
+    <Content Include="otherinsurance\PolicyProdType.aspx" />
+    <Content Include="otherinsurance\PolicyRead.aspx" />
+    <Content Include="otherinsurance\PolicySearch.aspx" />
+    <Content Include="otherinsurance\SelectCustomer.aspx" />
     <Content Include="popupselectrefs\PolicyProdType.aspx" />
   </ItemGroup>
   <ItemGroup>
