@@ -245,6 +245,20 @@ namespace BusinessObjects.SchemaSetting
 
         #endregion Methods
 
+        public static DataSet GetCarrierList(string sWhere)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ");
+            sb.Append(" CarrierID,CarrierNameCn,CarrierNameEn,ShortName,InsType,GrdType,Address,Postcode,Tel,Fax,Contact,Email,URL,Profile,BankName,BankAccount,PolicyNoHeader,Remark,PremiumSize,LossRation,PayoffLevel,Province ");
+            sb.Append(" From Carrier a ");
+            sb.Append(" where 1=1 ");
+            sb.Append(sWhere);
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
 
     }
 }
