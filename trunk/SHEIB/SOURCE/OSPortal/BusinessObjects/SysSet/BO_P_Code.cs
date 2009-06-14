@@ -29,7 +29,8 @@ namespace BusinessObjects
             OperationType,
             TradeName,
             Area,
-	        PolicyStatus
+	        PolicyStatus,
+            PolicyType
         }
 
         public enum FieldList

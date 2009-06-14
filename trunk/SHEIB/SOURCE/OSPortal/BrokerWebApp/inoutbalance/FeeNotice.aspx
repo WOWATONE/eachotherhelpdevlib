@@ -93,7 +93,7 @@
                                 保单编号：
                             </td>
                             <td style="width: 110px; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server" Width="180px"></dxe:ASPxTextBox>
                             </td>
                             <td style="width: 20px;">
                             </td>
@@ -101,13 +101,13 @@
                                 投保单号：
                             </td>
                             <td style="width: 110px; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="180px"></dxe:ASPxTextBox>
                             </td>
                             <td style="width: 120px; text-align: right; white-space: nowrap;">
                                 收款方式：
                             </td>
-                            <td style="width: 100px; text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlGatheringTypeID" ClientInstanceName="dxeddlGatheringTypeID" runat="server" Width="100px" DropDownStyle="DropDownList">
+                            <td style="width: 180px; text-align: left;">
+                                <dxe:ASPxComboBox ID="dxeddlGatheringTypeID" ClientInstanceName="dxeddlGatheringTypeID" runat="server" Width="180px" DropDownStyle="DropDownList">
                                     <Items>
                                         <dxe:ListEditItem Text="代收" Value="1" />
                                         <dxe:ListEditItem Text="直付" Value="2" />
@@ -122,7 +122,7 @@
                                 通知书号：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtNoticeNo" ClientInstanceName="dxetxtNoticeNo" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtNoticeNo" ClientInstanceName="dxetxtNoticeNo" runat="server" Width="180px"></dxe:ASPxTextBox>
                             </td>
                             <td>
                             </td>
@@ -130,7 +130,7 @@
                                 投保客户：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCustName" ClientInstanceName="dxetxtCustName" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtCustName" ClientInstanceName="dxetxtCustName" runat="server" Width="180px"></dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
                                 险种：
@@ -139,7 +139,7 @@
                                 <table style="margin-left:-3px;">
                                     <tr>
                                         <td style="width:105px;text-align: left;">
-                                        <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                        <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server" Width="180px"></dxe:ASPxTextBox>
                                         </td>
                                         <td style="text-align: left;">
                                         <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;
@@ -156,7 +156,7 @@
                                 部门：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlDeptId" ClientInstanceName="dxeddlDeptId" runat="server" Width="100px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlDeptId" ClientInstanceName="dxeddlDeptId" runat="server" Width="180px" DropDownStyle="DropDownList">
                                     <Items>
                                         <dxe:ListEditItem Text="(全部)" Value="" />
                                     </Items>
@@ -168,7 +168,7 @@
                                 客户经理：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="100px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="180px" DropDownStyle="DropDownList">
                                     <Items>
                                         <dxe:ListEditItem Text="(全部)" Value="" />
                                     </Items>
@@ -178,7 +178,7 @@
                                 保单类型：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlPolicyType" ClientInstanceName="dxeddlPolicyType" runat="server" Width="100px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlPolicyType" ClientInstanceName="dxeddlPolicyType" runat="server" Width="180px" DropDownStyle="DropDownList">
                                     <Items>
                                         <dxe:ListEditItem Text="(全部)" Value="" />
                                         <dxe:ListEditItem Text="非车险" Value="1" />
@@ -194,21 +194,21 @@
                                 通知日期：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="deStartDate" runat="server" Width="100px">
+                                <dxe:ASPxDateEdit ID="deStartDate" runat="server" Width="180px">
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: center;">
                                 至
                             </td>
                             <td style="text-align: left;" colspan="2">
-                                <dxe:ASPxDateEdit ID="deEndDate" runat="server" Width="100px">
+                                <dxe:ASPxDateEdit ID="deEndDate" runat="server" Width="180px">
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">
                                 状态：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlState" ClientInstanceName="dxeddlState" runat="server" Width="100px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlState" ClientInstanceName="dxeddlState" runat="server" Width="180px" DropDownStyle="DropDownList">
                                     <Items>
                                         <dxe:ListEditItem Text="待审核" Value="1" />
                                         <dxe:ListEditItem Text="未收费" Value="2" />

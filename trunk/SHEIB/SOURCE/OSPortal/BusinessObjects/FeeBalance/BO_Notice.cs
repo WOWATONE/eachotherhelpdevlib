@@ -13,8 +13,6 @@ namespace BusinessObjects
     [Serializable()]
     public class BO_Notice : BaseObject
     {
-
-
         public BO_Notice() { }
 
         public enum FieldList
@@ -184,7 +182,7 @@ namespace BusinessObjects
             sb.Append("CiPremium,AciPremium,CstPremium,");
             sb.Append("b.SalesID,(select UserNameCn from P_User where UserID=b.SalesID) SalesName,b.CarrierSales");
             sb.Append(" from PolicyPeriod a,Policy b");
-            sb.Append(" where a.PolicyID=b.PolicyID");
+            sb.Append(" where a.PolicyID=b.PolicyID ");
             sb.Append("  and isnull(a.NoticeNo,'')='' ");
             sb.Append( sWhere);
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());

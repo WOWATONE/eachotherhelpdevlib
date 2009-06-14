@@ -65,7 +65,7 @@
             </td>
             <td style="width: 88%; text-align: left;">
                 <dxe:ASPxComboBox ID="ddlFeeType" ClientInstanceName="ddlFeeType" runat="server"
-                    Width="160px" DropDownStyle="DropDownList">
+                    Width="180px" DropDownStyle="DropDownList">
                 </dxe:ASPxComboBox>
             </td>
         </tr>
@@ -74,7 +74,7 @@
                 通知书号：
             </td>
             <td style="text-align: left;">
-                <dxe:ASPxTextBox ID="dxetxtNoticeNo" ClientInstanceName="dxetxtNoticeNo" runat="server" Width="160px"></dxe:ASPxTextBox>
+                <dxe:ASPxTextBox ID="dxetxtNoticeNo" ClientInstanceName="dxetxtNoticeNo" runat="server" Width="180px"></dxe:ASPxTextBox>
             </td>
         </tr>
         <tr>
@@ -82,7 +82,7 @@
                 通知日期：
             </td>
             <td style="text-align: left;">
-                <dxe:ASPxDateEdit ID="deNoticeDate" runat="server" Width="160px">
+                <dxe:ASPxDateEdit ID="deNoticeDate" runat="server" Width="180px">
                 </dxe:ASPxDateEdit>
             </td>
         </tr>
