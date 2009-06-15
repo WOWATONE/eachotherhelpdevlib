@@ -64,14 +64,15 @@ namespace BusinessObjects.SchemaSetting
         #region Methods
 
 
-        public static List<BO_ProductType> FetchList()
+        public static List<BO_ProductType> FetchLeafList(String whereFilter)
         {
             List<BO_ProductType> list = new List<BO_ProductType>();
 
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT ProdTypeID, ProdClass, ProdTypeName, ParentId, Layer ");
             sb.Append(" FROM ProductType ");
-            sb.Append(" ORDER BY ProdClass ");
+            sb.Append(" WHERE Layer = 3 ");
+            sb.Append(" ORDER BY ProdClass ,ParentId, Layer ");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 

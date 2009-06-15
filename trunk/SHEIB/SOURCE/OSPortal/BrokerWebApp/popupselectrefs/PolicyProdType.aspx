@@ -81,8 +81,8 @@
         }
 
         function btnOk_Click() {
-            
-            gridSearchResult.GetSelectedFieldValues("ProdID;ProdName", getTheSelectedRowsValues);
+
+            gridSearchResult.GetSelectedFieldValues("ProdTypeID;ProdTypeName", getTheSelectedRowsValues);
             
         }
 
@@ -136,15 +136,12 @@
                                                     <td></td>
                                                 </tr> 
                                                 <tr>
-                                                    <td style="text-align:right;">险种编号：</td>
-                                                    <td style="text-align:left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server" Width="100px"></dxe:ASPxTextBox>
-                                                    </td>
-                                                    
                                                     <td style="text-align:right;">险种名称：</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="100px"></dxe:ASPxTextBox>
                                                     </td>
+                                                    <td style="text-align:right;"></td>
+                                                    <td style="text-align:left;"></td>
                                                     <td></td>                                                    
                                                 </tr> 
                                                 <tr>
@@ -153,7 +150,6 @@
                                                        <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server" Width="170px" DropDownStyle="DropDownList">
 															<Items>
 																<dxe:ListEditItem Text="(全部)" Value="" />
-																<dxe:ListEditItem Text="业务部" Value="1" />
 															</Items>
 														</dxe:ASPxComboBox>                                                        
                                                     </td>
@@ -214,7 +210,7 @@
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server" 
                                                     DataSourceID="DataSource"
-                                                    KeyFieldName="ProdID" AutoGenerateColumns="False" 
+                                                    KeyFieldName="ProdTypeID" AutoGenerateColumns="False" 
                                                     Settings-ShowFooter="true" Width="100%" 
                                                     SettingsPager-AlwaysShowPager="true" EnableRowsCache="false" EnableViewState="false"
                                                     OnDataBinding="gridSearchResult_DataBinding" OnPageIndexChanged="gridSearchResult_PageIndexChanged"
@@ -229,15 +225,13 @@
                                                                  </dxwgv:GridViewCommandColumn>
                                                                 <dxwgv:GridViewDataCheckColumn Caption="&nbsp;" FieldName="">
                                                                     <DataItemTemplate>
-                                                                        <input type="radio" id="rdoSelected<%# Eval("ProdID") %>" name="rdoSelected" onclick="rdoSelected_onclick('<%# Container.ItemIndex %>');" />                                                                                                                                              
+                                                                        <input type="radio" id="rdoSelected<%# Eval("ProdTypeID") %>" name="rdoSelected" onclick="rdoSelected_onclick('<%# Container.ItemIndex %>');" />                                                                                                                                              
                                                                     </DataItemTemplate>
                                                                 </dxwgv:GridViewDataCheckColumn>
 
-                                                                <dxwgv:GridViewDataColumn FieldName="ProdID" Caption="险种编号" CellStyle-Wrap="False" Visible="false">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种编号" CellStyle-Wrap="False" Visible="false">                                                                    
                                                                 </dxwgv:GridViewDataColumn>   
-                                                                <dxwgv:GridViewDataColumn FieldName="ProdName" Caption="险种名称" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>      
-                                                                <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="险种类别" CellStyle-Wrap="False">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="险种名称" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>
@@ -249,18 +243,18 @@
                                                         <SettingsBehavior AllowFocusedRow="false" ConfirmDelete="true" AutoExpandAllGroups="true" AllowMultiSelection="false" />
                                                         <SettingsText CustomizationWindowCaption="个性化" />
                                                         <GroupSummary >
-                                                            <dxwgv:ASPxSummaryItem FieldName="ProdName" SummaryType="Count" ShowInGroupFooterColumn="ProdName" DisplayFormat = "总计: {0}" />
+                                                            <dxwgv:ASPxSummaryItem FieldName="ProdTypeName" SummaryType="Count" ShowInGroupFooterColumn="ProdTypeName" DisplayFormat = "总计: {0}" />
                                                         </GroupSummary>
                                                         <TotalSummary >
-                                                            <dxwgv:ASPxSummaryItem FieldName="ProdName" SummaryType="Count" ShowInGroupFooterColumn="ProdName" DisplayFormat = "总计: {0}" />
+                                                            <dxwgv:ASPxSummaryItem FieldName="ProdTypeName" SummaryType="Count" ShowInGroupFooterColumn="ProdTypeName" DisplayFormat = "总计: {0}" />
                                                         </TotalSummary>
                                                         <ClientSideEvents SelectionChanged="function(s, e) { OnGridSelectionChanged(s,e); }" RowClick="function(s, e) { OnGridRowClick(s,e); }" EndCallback="function(s, e) { OnEndCallBack(s,e); }" />
                                                         
                                                     </dxwgv:ASPxGridView> 
                                                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
                                                     <asp:ObjectDataSource ID="DataSource" runat="server" 
-                                                        SelectMethod="FetchList"
-                                                        TypeName="BusinessObjects.SchemaSetting.BO_Product" 
+                                                        SelectMethod="FetchLeafList"
+                                                        TypeName="BusinessObjects.SchemaSetting.BO_ProductType" 
                                                         EnablePaging="false"                                                                                                                                                       
                                                         >
                                                         <SelectParameters> 
