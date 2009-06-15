@@ -1,0 +1,142 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data.Common;
+using System.Data;
+using Microsoft.Practices.EnterpriseLibrary.Common;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+
+namespace BusinessObjects
+{
+    [Serializable()]
+    public class BO_CustContact : BaseObject
+    {
+        public BO_CustContact() { }
+
+        public BO_CustContact(String id)
+        {
+            //FetchByID(id);
+        }
+
+        public enum FieldList
+        {
+            ContactID,
+            ContactName,
+            CustID,
+            Position,
+            Sex,
+            Tel,
+            Fax,
+            MobilePhone,
+            Email,
+            Interest,
+            Remark
+        }
+
+        #region Property
+        /*联系人GUID*/
+        public string ContactID { get; set; }
+        /*联系人姓名*/
+        public string ContactName { get; set; }
+        /*所属客户GUID*/
+        public string CustID { get; set; }
+        /*职位*/
+        public string Position { get; set; }
+        /*性别*/
+        public string Sex { get; set; }
+        /*电话*/
+        public string Tel { get; set; }
+        /*传真*/
+        public string Fax { get; set; }
+        /*手机*/
+        public string MobilePhone { get; set; }
+        /*电子信箱*/
+        public string Email { get; set; }
+        /*兴趣爱好*/
+        public string Interest { get; set; }
+        /*备注*/
+        public string Remark { get; set; }
+        #endregion
+
+        #region Methods
+        public void Save(ModifiedAction action)
+        {
+            if (action == ModifiedAction.Insert)
+            {
+                add();
+            }
+            else if (action == ModifiedAction.Update)
+            {
+                //update(customer);
+            }
+        }
+
+        /// <summary>
+        /// 保存联系人信息
+        /// </summary>
+        private void add()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT INTO CustContact(ContactID, ContactName, CustID, [Position], Sex, Tel, Fax, MobilePhone, Email, Interest, Remark) ");
+            sb.Append(" VALUES(@ContactID, @ContactName, @CustID, @Position, @Sex, @Tel, @Fax, @MobilePhone, @Email, @Interest, @Remark)");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ContactID", DbType.AnsiString, this.ContactID);
+            _db.AddInParameter(dbCommand, "@ContactName", DbType.AnsiString, this.ContactName);
+            _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, this.CustID);
+            _db.AddInParameter(dbCommand, "@Position", DbType.AnsiString, this.Position);
+            _db.AddInParameter(dbCommand, "@Sex", DbType.AnsiString, this.Sex);
+            _db.AddInParameter(dbCommand, "@Tel", DbType.AnsiString, this.Tel);
+            _db.AddInParameter(dbCommand, "@Fax", DbType.AnsiString, this.Fax);
+            _db.AddInParameter(dbCommand, "@MobilePhone", DbType.AnsiString, this.MobilePhone);
+            _db.AddInParameter(dbCommand, "@Email", DbType.AnsiString, this.Email);
+            _db.AddInParameter(dbCommand, "@Interest", DbType.AnsiString, this.Interest);
+            _db.AddInParameter(dbCommand, "@Remark", DbType.AnsiString, this.Remark);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 根据用户ID取得联系人信息
+        /// </summary>
+        /// <param name="custID"></param>
+        /// <returns></returns>
+        public static DataTable GetCustContactByCustID(string custID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ContactID, ContactName, Position, Sex, Tel, Fax, MobilePhone, Email, Interest, Remark ");
+            sb.Append("From CustContact (nolock) ");
+            sb.Append("Where CustID=@CustID ");
+            sb.Append("Order By ContactID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, custID);
+
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+
+        /// <summary>
+        /// 判断是否存在联系人编号
+        /// </summary>
+        /// <param name="contactID"></param>
+        /// <returns></returns>
+        public static bool IfExistsContactID(string contactID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ContactID From CustContact (nolock) ");
+            sb.Append("Where ContactID=@ContactID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ContactID", DbType.AnsiString, contactID);
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+
+            if (value != null && value.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion
+    }
+}

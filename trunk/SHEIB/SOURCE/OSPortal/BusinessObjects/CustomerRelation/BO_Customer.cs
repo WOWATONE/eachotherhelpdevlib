@@ -16,7 +16,7 @@ namespace BusinessObjects
 
         public BO_Customer(String id)
         {
-            //fetchByID(id);
+            //FetchByID(id);
         }
 
         public enum FieldList
@@ -254,20 +254,92 @@ namespace BusinessObjects
         /// </summary>
         /// <param name="custID"></param>
         /// <returns></returns>
-        public bool IfExistsCustID(string custID)
+        public static bool IfExistsCustID(string custID)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select CustID From Customer (nolock) ");
             sb.Append("Where CustID=@CustID");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-            _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, this.CustID);
+            _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, custID);
             DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
 
             if (value != null && value.Rows.Count > 0)
                 return true;
             else
                 return false;
+        }
+
+        /// <summary>
+        /// 删除客户信息
+        /// </summary>
+        /// <param name="custID"></param>
+        public static void Delete(string custID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM Customer ");
+            sb.Append(" WHERE CustID = @CustID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, custID);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 根据用户ID取得用户信息
+        /// </summary>
+        /// <param name="custID"></param>
+        /// <returns></returns>
+        public static BO_Customer GetCustomerByID(string custID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select * From Customer (nolock) ");
+            sb.Append("Where CustID=@CustID");
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, custID);
+
+            BO_Customer customer = null;
+            using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    customer = new BO_Customer();
+                    customer.CustID = Utility.GetStringFromReader(reader, FieldList.CustID.ToString());
+                    customer.CustName = Utility.GetStringFromReader(reader, FieldList.CustName.ToString());
+                    customer.TradeTypeID = Utility.GetStringFromReader(reader, FieldList.TradeTypeID.ToString());
+                    customer.Birthday = Utility.GetDatetimeFromReader(reader, FieldList.Birthday.ToString());
+                    customer.Area = Utility.GetStringFromReader(reader, FieldList.Area.ToString());
+                    customer.Address = Utility.GetStringFromReader(reader, FieldList.Address.ToString());
+                    customer.PostCode = Utility.GetStringFromReader(reader, FieldList.PostCode.ToString());
+                    customer.CustTypeID = Utility.GetIntFromReader(reader, FieldList.CustTypeID.ToString());
+                    customer.DeprtmentID = Utility.GetStringFromReader(reader, FieldList.DeprtmentID.ToString());
+                    customer.SalesID = Utility.GetStringFromReader(reader, FieldList.SalesID.ToString());
+                    customer.CustClassifyID = Utility.GetStringFromReader(reader, FieldList.CustClassifyID.ToString());
+                    customer.Email = Utility.GetStringFromReader(reader, FieldList.Email.ToString());
+                    customer.Tel = Utility.GetStringFromReader(reader, FieldList.Tel.ToString());
+                    customer.Fax = Utility.GetStringFromReader(reader, FieldList.Fax.ToString());
+                    customer.Mobile = Utility.GetStringFromReader(reader, FieldList.Mobile.ToString());
+                    customer.IDNO = Utility.GetStringFromReader(reader, FieldList.IDNO.ToString());
+                    customer.BankName = Utility.GetStringFromReader(reader, FieldList.BankName.ToString());
+                    customer.BankAccount = Utility.GetStringFromReader(reader, FieldList.BankAccount.ToString());
+                    customer.Hobby = Utility.GetStringFromReader(reader, FieldList.Hobby.ToString());
+                    customer.MainOper = Utility.GetStringFromReader(reader, FieldList.MainOper.ToString());
+                    customer.AssetSize = Utility.GetStringFromReader(reader, FieldList.AssetSize.ToString());
+                    customer.MainProduct = Utility.GetStringFromReader(reader, FieldList.MainProduct.ToString());
+                    customer.AssetDistribute = Utility.GetStringFromReader(reader, FieldList.AssetDistribute.ToString());
+                    customer.UnitCharacter = Utility.GetStringFromReader(reader, FieldList.UnitCharacter.ToString());
+                    customer.Background = Utility.GetStringFromReader(reader, FieldList.Background.ToString());
+                    customer.OtherInfo = Utility.GetStringFromReader(reader, FieldList.OtherInfo.ToString());
+                    customer.Risk = Utility.GetStringFromReader(reader, FieldList.Risk.ToString());
+                    customer.InsureStatus = Utility.GetStringFromReader(reader, FieldList.InsureStatus.ToString());
+                    customer.Remark = Utility.GetStringFromReader(reader, FieldList.Remark.ToString());
+                    customer.Contact = Utility.GetStringFromReader(reader, FieldList.Contact.ToString());
+                    break;
+                }
+            }
+
+            return customer;
         }
         #endregion
     }
