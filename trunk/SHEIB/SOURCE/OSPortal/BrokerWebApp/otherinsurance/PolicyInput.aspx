@@ -22,6 +22,72 @@
     <title>±£µ¥Â¼Èë</title>
 
     <script type="text/javascript">
+        function policyBaseCompleteEnable() {
+            var result, panel;
+            result = $("#<%=npGridPolicyItemDetail.ClientID %>");
+            panel = result[0];
+            panel.parentElement.removeAttribute('disabled');
+
+            result = $("#<%=npCostSummaryDetail.ClientID %>");
+            panel = result[0];
+            panel.parentElement.removeAttribute('disabled', 'true');
+
+            result = $("#<%=npPolicyCompanyDetail.ClientID %>");
+            panel = result[0];
+            panel.parentElement.removeAttribute('disabled', 'true');
+
+            result = $("#<%=tblNewExecuteAction.ClientID %>");
+            if (result.length > 0) {
+                panel = result[0];
+                panel.parentElement.removeAttribute('disabled', 'true');
+            }
+
+            result = $("#<%=tblCheckExecuteAction.ClientID %>");
+            if (result.length > 0) {
+                panel = result[0];
+                panel.parentElement.removeAttribute('disabled', 'true');
+            }
+            
+            
+            insuranceDetailTabPage.tabs[1].SetEnabled(true);
+            insuranceDetailTabPage.tabs[2].SetEnabled(true);
+            insuranceDetailTabPage.tabs[3].SetEnabled(true);
+        }
+
+        function policyBaseCompleteUnable() {
+            var result, panel;
+            result = $("#<%=npGridPolicyItemDetail.ClientID %>");
+            panel = result[0];
+            panel.parentElement.setAttribute('disabled', 'true');
+
+            result = $("#<%=npCostSummaryDetail.ClientID %>");
+            panel = result[0];
+            panel.parentElement.setAttribute('disabled', 'true');
+
+            result = $("#<%=npPolicyCompanyDetail.ClientID %>");
+            panel = result[0];
+            panel.parentElement.setAttribute('disabled', 'true');
+
+            result = $("#<%=tblNewExecuteAction.ClientID %>");
+            if (result.length > 0)
+            {
+                panel = result[0];
+                panel.parentElement.setAttribute('disabled', 'true');
+            }
+
+            result = $("#<%=tblCheckExecuteAction.ClientID %>");
+            if (result.length > 0) {
+                panel = result[0];
+                panel.parentElement.setAttribute('disabled', 'true');
+            }
+            
+
+            insuranceDetailTabPage.tabs[1].SetEnabled(false);
+            insuranceDetailTabPage.tabs[2].SetEnabled(false);
+            insuranceDetailTabPage.tabs[3].SetEnabled(false);
+            
+        }
+
         $(document).ready(function() {
             //jQuery.noticeAdd({
             //    text: 'This is a notification that you have to remove',
@@ -40,6 +106,8 @@
                     //do nothing
                 }
             };
+
+            policyBaseCompleteUnable();
 
         });
 
@@ -127,6 +195,26 @@
 
         function saveCallbackComplete(s, e) {
             //do nothing;
+            policyBaseCompleteEnable();
+            //var result;
+            //var panel;
+            //insuranceDetailTabPage.tabs[1].SetEnabled(true);
+            //insuranceDetailTabPage.tabs[2].SetEnabled(true);
+            //insuranceDetailTabPage.tabs[3].SetEnabled(true);
+            //debugger;
+            //insuranceDetailTabPage
+            //result = $("#<%=npGridPolicyItemDetail.ClientID %>");
+            //panel = result[0];
+            //panel.disabled = false;
+            //gridPolicyItem.enabled = true;
+            
+            //debugger;
+            //result = $("#<%=npCostSummaryDetail.ClientID %>");
+            //panel = result[0];
+            //panel.disabled = false;
+            //dxetxtCoverage.enabled = true;
+            
+            //
         }
 
         function btnAddClick(s, e) {
@@ -1326,8 +1414,8 @@
             </td>
         </tr>
     </table>
-    <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="30px">
-        <table style="width: 100%">
+    <asp:Panel ID="npNewExecuteAction" runat="server" CssClass="allborderPanel" Height="30px">
+        <table style="width: 100%" runat="server" id="tblNewExecuteAction">
             <tr>
                 <td style="width: 400px; text-align: left;">
                     &nbsp;
@@ -1363,6 +1451,21 @@
                     &nbsp;
                 </td>
                 <td style="display:none;"><a id="hrefnewpolicy" href="PolicyInput.aspx">New</a></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </asp:Panel>
+    
+    <asp:Panel ID="npCheckExecuteAction" Visible="false" runat="server" CssClass="allborderPanel" Height="30px">
+        <table style="width: 100%" runat="server" id="tblCheckExecuteAction">
+            <tr>
+                <td style="width: 400px; text-align: left;">
+                    &nbsp;
+                </td>
+                <td style="display:none;"><a id="A1" href="PolicyInput.aspx">New</a></td>
                 <td></td>
                 <td></td>
                 <td></td>

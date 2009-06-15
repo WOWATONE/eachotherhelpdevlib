@@ -74,7 +74,16 @@ namespace BrokerWebApp.otherinsurance
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            // 
+            //if (!Page.IsPostBack)
+            //{
+            //    this.npGridPolicyItemDetail.Enabled = false;
+            //    this.npCostSummaryDetail.Enabled = false;
+            //    this.npPolicyCompanyDetail.Enabled = false;
+
+            //    this.insuranceDetailTabPage.TabPages[1].Enabled = false;
+            //    this.insuranceDetailTabPage.TabPages[2].Enabled = false;
+            //    this.insuranceDetailTabPage.TabPages[3].Enabled = false;
+            //}
         }
 
         #endregion Page Events
