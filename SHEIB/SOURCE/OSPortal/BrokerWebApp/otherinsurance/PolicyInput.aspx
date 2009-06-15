@@ -715,14 +715,9 @@
                                                                 <EditButton Visible="true" />
                                                                 <DeleteButton Visible="true" />
                                                             </dxwgv:GridViewCommandColumn>
-                                                            <dxwgv:GridViewDataColumn FieldName="ItemID" Caption="序号" CellStyle-Wrap="False"
-                                                                Visible="false">
-                                                            </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="ProdName" Caption="项目名称" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="Coverage" Caption="保额" CellStyle-Wrap="False">
-                                                            </dxwgv:GridViewDataColumn>
-                                                            <dxwgv:GridViewDataColumn FieldName="PremiumRate" Caption="费率(%)" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
@@ -730,12 +725,17 @@
                                                             </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="ItemID" Caption="ItemID" CellStyle-Wrap="False" Visible="false">
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="PolicyId" Caption="PolicyId" CellStyle-Wrap="False" Visible="false">
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="ProdID" Caption="ProdID" CellStyle-Wrap="False" Visible="false">
+                                                            </dxwgv:GridViewDataColumn>
                                                         </Columns>
                                                         <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
                                                         <TotalSummary>
                                                             <dxwgv:ASPxSummaryItem FieldName="ProdName" SummaryType="Count" DisplayFormat="数量:#" />
                                                             <dxwgv:ASPxSummaryItem FieldName="Coverage" SummaryType="Sum" DisplayFormat="c" />
-                                                            <dxwgv:ASPxSummaryItem FieldName="PremiumRate" SummaryType="Average" DisplayFormat="n" />
                                                             <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" DisplayFormat="c" />
                                                             <dxwgv:ASPxSummaryItem FieldName="ProcRate" SummaryType="Average" DisplayFormat="n" />
                                                             <dxwgv:ASPxSummaryItem FieldName="Process" SummaryType="Sum" DisplayFormat="c" />
@@ -751,35 +751,39 @@
                                                                                 项目名称:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <dxe:ASPxComboBox runat="server" ID="dxecbGridProdID" AutoPostBack="false" ClientInstanceName="dxecbGridProdID"
-                                                                                    DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="100px">
+                                                                                <dxe:ASPxComboBox runat="server" ID="dxecbGridPolicyItemProdID" AutoPostBack="false" ClientInstanceName="dxecbGridPolicyItemProdID"
+                                                                                    DropDownButton-Enabled="true" DropDownStyle="DropDownList" Width="120px">
                                                                                     <Items>
-                                                                                        <dxe:ListEditItem Text="编码三" Value="1" />
-                                                                                        <dxe:ListEditItem Text="编码四" Value="2" />
-                                                                                        <dxe:ListEditItem Text="编码五" Value="3" />
                                                                                     </Items>
-                                                                                    <ClientSideEvents SelectedIndexChanged="gridGridProdIDChange" />
+                                                                                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项">
+                                                                                        <RequiredField IsRequired="true" />
+                                                                                    </ValidationSettings>
+                                                                                    <ClientSideEvents />
                                                                                 </dxe:ASPxComboBox>
                                                                             </td>
+                                                                            <td style="white-space: nowrap; text-align: right;"></td>
+                                                                            <td style="text-align: left;"></td>
+                                                                        </tr>
+                                                                        <tr>
                                                                             <td style="white-space: nowrap; text-align: right;">
                                                                                 保额:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <asp:TextBox runat="server" ID="txtGridCoverage" Text=''></asp:TextBox>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td style="white-space: nowrap; text-align: right;">
-                                                                                费率:
-                                                                            </td>
-                                                                            <td style="text-align: left;">
-                                                                                <asp:TextBox runat="server" ID="txtGridPremiumRate" Text=''></asp:TextBox>
+                                                                                <dxe:ASPxTextBox ID="dxetxtPolicyItemCoverage" ClientInstanceName="dxetxtPolicyItemCoverage" runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
+                                                                                </dxe:ASPxTextBox>
                                                                             </td>
                                                                             <td style="white-space: nowrap; text-align: right;">
                                                                                 保费:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <asp:TextBox runat="server" ID="txtGridPremium" Text=''></asp:TextBox>
+                                                                                <dxe:ASPxTextBox ID="dxetxtPolicyItemPremium" ClientInstanceName="dxetxtPolicyItemPremium" runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
+                                                                                </dxe:ASPxTextBox>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -787,13 +791,21 @@
                                                                                 经纪费率:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <asp:TextBox runat="server" ID="txtGridProcRate" Text=''></asp:TextBox>
+                                                                                <dxe:ASPxTextBox ID="dxetxtPolicyItemProcRate" ClientInstanceName="dxetxtPolicyItemProcRate" runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
+                                                                                </dxe:ASPxTextBox>
                                                                             </td>
                                                                             <td style="white-space: nowrap; text-align: right;">
                                                                                 经纪费:
                                                                             </td>
                                                                             <td style="text-align: left;">
-                                                                                <asp:TextBox runat="server" ID="txtGridProcess" Text=''></asp:TextBox>
+                                                                                <dxe:ASPxTextBox ID="dxetxtPolicyItemProcess" ClientInstanceName="dxetxtPolicyItemProcess" runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
+                                                                                </dxe:ASPxTextBox>
                                                                             </td>
                                                                         </tr>
                                                                     </table>

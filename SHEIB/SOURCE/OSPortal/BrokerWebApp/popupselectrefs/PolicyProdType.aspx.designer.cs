@@ -59,15 +59,6 @@ namespace BrokerWebApp.popupselectrefs {
         protected global::System.Web.UI.WebControls.Panel npSearchDetail;
         
         /// <summary>
-        /// dxetxtPolicyNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyNo;
-        
-        /// <summary>
         /// dxetxtPolicyID control.
         /// </summary>
         /// <remarks>
