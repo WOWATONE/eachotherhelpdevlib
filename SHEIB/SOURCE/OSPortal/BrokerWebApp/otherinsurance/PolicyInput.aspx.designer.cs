@@ -626,13 +626,22 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxMemo dxeMemo;
         
         /// <summary>
-        /// npExecuteAction control.
+        /// npNewExecuteAction control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npExecuteAction;
+        protected global::System.Web.UI.WebControls.Panel npNewExecuteAction;
+        
+        /// <summary>
+        /// tblNewExecuteAction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable tblNewExecuteAction;
         
         /// <summary>
         /// dxebtnBottomAdd control.
@@ -678,5 +687,23 @@ namespace BrokerWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxButton dxeClose;
+        
+        /// <summary>
+        /// npCheckExecuteAction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npCheckExecuteAction;
+        
+        /// <summary>
+        /// tblCheckExecuteAction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable tblCheckExecuteAction;
     }
 }
