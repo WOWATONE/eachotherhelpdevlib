@@ -11,17 +11,13 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
 using DevExpress.Web.ASPxUploadControl;
+using DevExpress.Web.ASPxEditors;
 using BusinessObjects;
 
 namespace BrokerWebApp.CustomerRelation
 {
     public partial class Customer : System.Web.UI.Page
     {
-        /// <summary>
-        /// 签单记录
-        /// </summary>
-        private DataTable _dtPolicyGrid;
-
         #region 私有变量
         /// <summary>
         /// 客户编号
@@ -31,27 +27,22 @@ namespace BrokerWebApp.CustomerRelation
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (ViewState["PolicyGridData"] == null)
-            //{
-            //    GetPolicyForGrid();
-            //    ViewState["PolicyGridData"] = _dtPolicyGrid;
-            //}
-            //this.gridPolicyItem.DataSource = ViewState["PolicyGridData"];
-
-            //if (!IsPostBack && !IsCallback)
-            //{
-            //    this.gridPolicyItem.DataBind();
-            //}
             try
             {
                 if (!this.IsPostBack)
                 {
-                    if (Request.QueryString["custID"] != null)
+                    if (Request.QueryString["custID"] != null && Request.QueryString["custID"].Trim().Length > 0)
                     {
                         this._custID = Request.QueryString["custID"].Trim();
+                        this.ViewState["CustID"] = this._custID;
                     }
 
                     this.Initialization();
+                }
+                else
+                {
+                    if (this.ViewState["CustID"] != null && this.ViewState["CustID"].ToString().Length > 0)
+                        this._custID = this.ViewState["CustID"].ToString();
                 }
             }
             catch (Exception ex)
@@ -81,6 +72,57 @@ namespace BrokerWebApp.CustomerRelation
                 this.SetddlDeprtment("");
                 //客户经理
                 this.SetddlSalesID("");
+            }
+            else
+            {//编辑客户
+                this.lblerrmsg.Visible = false;
+                BO_Customer customer = BO_Customer.GetCustomerByID(this._custID);
+                if (customer == null)
+                {
+                    this.lblerrmsg.InnerText = "没有取得该客户信息。";
+                    this.lblerrmsg.Visible = true;
+                    this.dxebtnBottomSave.Enabled = false;
+                    return;
+                }
+
+                #region 客户资料
+                if (customer.CustTypeID == 1)
+                    this.radPerson.Checked = true;
+                else
+                    this.radUnit.Checked = true;
+                this.dxetxtCustID.Text = customer.CustID;
+                this.dxetxtCustID.Enabled = false;
+                this.SetddlArea(customer.Area);
+                this.dxetxtCustName.Text = customer.CustName;
+                this.dxetxtAddress.Text = customer.Address;
+                this.SetddlCustClassify(customer.CustClassifyID);
+                this.dxetxtPostCode.Text = customer.PostCode;
+                this.SetddlTradeType(customer.TradeTypeID);
+                this.dxetxtIDNO.Text = customer.IDNO;
+                this.dxetxtContact.Text = customer.Contact;
+                this.dxetxtTel.Text = customer.Tel;
+                this.SetddlDeprtment(customer.DeprtmentID);
+                this.dxetxtMobile.Text = customer.Mobile;
+                this.SetddlSalesID(customer.SalesID);
+                #endregion
+
+                #region 附加资料
+                this.dxetxtMainOper.Text = customer.MainOper;
+                this.dxetxtAssetSize.Text = customer.AssetSize;
+                this.dxetxtMainProduct.Text = customer.MainProduct;
+                this.txtBackground.Text = customer.Background;
+                this.txtRisk.Text = customer.Risk;
+                this.txtOtherInfo.Text = customer.OtherInfo;
+                this.dxetxtRemark.Text = customer.Remark;
+                #endregion
+
+                #region 联系人
+                this.gridContactItem.DataSource = BO_CustContact.GetCustContactByCustID(this._custID);
+                this.gridContactItem.DataBind();
+                #endregion
+
+
+
             }
         }
 
@@ -164,25 +206,26 @@ namespace BrokerWebApp.CustomerRelation
             }
         }
 
+        /// <summary>
+        /// 保存客户信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void dxebtnBottomSave_Click(object sender, EventArgs e)
         {
             try
             {
                 if (String.IsNullOrEmpty(this._custID))
                 {//新增客户
-                    this.tblerrmsg.Visible = false;
-                    BO_Customer customer = new BO_Customer();
-                    customer.CustID = this.dxetxtCustID.Text.Trim();
-                    if (customer.IfExistsCustID(customer.CustID))
+                    this.lblerrmsg.Visible = false;
+                    if (BO_Customer.IfExistsCustID(this.dxetxtCustID.Text.Trim()))
                     {
-                        this.tblerrmsg.Visible = true;
-                        this.dxetxtCustID.ValidationSettings.Display = DevExpress.Web.ASPxEditors.Display.Dynamic;
-                        this.dxetxtCustID.ValidationSettings.ErrorDisplayMode = DevExpress.Web.ASPxEditors.ErrorDisplayMode.ImageWithText;
-                        this.dxetxtCustID.ValidationSettings.SetFocusOnError = true;
-                        this.dxetxtCustID.ValidationSettings.RequiredField.ErrorText = "编号已存在";
-                        this.dxetxtCustID.ValidationSettings.RequiredField.IsRequired = true;
+                        this.lblerrmsg.InnerText = "该客户编号已存在。";
+                        this.lblerrmsg.Visible = true;
                         return;
                     }
+                    BO_Customer customer = new BO_Customer();
+                    customer.CustID = this.dxetxtCustID.Text.Trim();
                     customer.CustName = this.dxetxtCustName.Text.Trim();
                     customer.TradeTypeID = this.dxeddlTradeType.SelectedItem.Value.ToString();
                     customer.Area = this.dxeddlArea.SelectedItem.Value.ToString();
@@ -232,31 +275,61 @@ namespace BrokerWebApp.CustomerRelation
         protected void gridContactItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             //
+            string a = "1";
         }
 
         protected void gridContactItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
         {
             //
+            string a = "1";
         }
 
         protected void gridContactItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-            //
+            HtmlTable tblEditorTemplate = this.gridContactItem.FindEditFormTemplateControl("tblgridContactItemEditorTemplate") as HtmlTable;
+            string contactID = (tblEditorTemplate.FindControl("dxetxtContactID") as ASPxTextBox).Text.Trim();
+            if (contactID.Length <= 0)
+                throw new Exception("联系人编号不能为空。");
+
+            if (BO_CustContact.IfExistsContactID(contactID))
+                throw new Exception("联系人编号已经存在。");
+
+            BO_CustContact custContact = new BO_CustContact();
+            custContact.ContactID = contactID;
+            custContact.ContactName = (tblEditorTemplate.FindControl("dxetxtContactName") as ASPxTextBox).Text.Trim();
+            custContact.CustID = this._custID;
+            custContact.Position = (tblEditorTemplate.FindControl("dxetxtPosition") as ASPxTextBox).Text.Trim();
+            custContact.Sex = (tblEditorTemplate.FindControl("dxeddlSex") as ASPxComboBox).SelectedItem.Value.ToString();
+            custContact.Tel = (tblEditorTemplate.FindControl("dxetxtTel") as ASPxTextBox).Text.Trim();
+            custContact.Fax = (tblEditorTemplate.FindControl("dxetxtFax") as ASPxTextBox).Text.Trim();
+            custContact.MobilePhone = (tblEditorTemplate.FindControl("dxetxtMobilePhone") as ASPxTextBox).Text.Trim();
+            custContact.Email = (tblEditorTemplate.FindControl("dxetxtEmail") as ASPxTextBox).Text.Trim();
+            custContact.Interest = (tblEditorTemplate.FindControl("txtInterest") as TextBox).Text.Trim();
+            custContact.Remark = (tblEditorTemplate.FindControl("txtRemark") as TextBox).Text.Trim();
+            custContact.Save(ModifiedAction.Insert);
+
+            e.Cancel = true;
+            this.gridContactItem.CancelEdit();
+            this.gridContactItem.DataSource = BO_CustContact.GetCustContactByCustID(this._custID);
+            this.gridContactItem.DataBind();
         }
 
         protected void gridContactItem_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
         {
             //
+            string a = "1";
         }
 
         protected void gridContactItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             //
+            string a = "1";
         }
 
         protected void gridContactItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
             //
+            string a = "1";
         }
         #endregion
 
@@ -308,18 +381,7 @@ namespace BrokerWebApp.CustomerRelation
         #region 签单记录
         private void GetPolicyForGrid()
         {
-            _dtPolicyGrid = new DataTable();
-            _dtPolicyGrid.PrimaryKey = new DataColumn[] { _dtPolicyGrid.Columns.Add("PolicyID", typeof(String)) };
-            _dtPolicyGrid.Columns.Add("StartDate", typeof(DateTime));
-            _dtPolicyGrid.Columns.Add("EndDate", typeof(DateTime));
-            _dtPolicyGrid.Columns.Add("PolicyNo", typeof(String));
-            _dtPolicyGrid.Columns.Add("ProdType", typeof(String));
-            _dtPolicyGrid.Columns.Add("Premium", typeof(Double));
-            _dtPolicyGrid.Columns.Add("CarrierBranch", typeof(String));
-            _dtPolicyGrid.Columns.Add("Sales", typeof(String));
-
-            _dtPolicyGrid.Rows.Add(new object[] { "1", DateTime.Today.AddDays(-100), DateTime.Today, "PQZA20036401905", "财产综合险", 100, "中国人民保险公司（中国人保）", "张三" });
-            _dtPolicyGrid.Rows.Add(new object[] { "2", DateTime.Today.AddDays(-100), DateTime.Today, "POL200506230002", "平安机动车辆险", 150, "中国平安保险", "李四" });
+            //
         }
         #endregion
 
@@ -340,6 +402,17 @@ namespace BrokerWebApp.CustomerRelation
             return ret;
         }
 
-        
+        /// <summary>
+        /// 取得性别编号
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        protected int GetSexIndex(object obj)
+        {
+            if (obj == null || obj.ToString() == "男")
+                return 0;
+            else
+                return 1;
+        }
     }
 }

@@ -83,7 +83,11 @@ namespace BrokerWebApp.CustomerRelation
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            //
+            String custID = e.Keys["CustID"].ToString();
+            BO_Customer.Delete(custID);
+            e.Cancel = true;
+            this.gridSearchResult.CancelEdit();
+            this.FillGridSearchResult();
         }
 
         protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
@@ -97,6 +101,14 @@ namespace BrokerWebApp.CustomerRelation
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            this.FillGridSearchResult();
+        }
+
+        /// <summary>
+        /// 填充数据
+        /// </summary>
+        private void FillGridSearchResult()
         {
             BO_Customer customer = new BO_Customer();
             customer.CustTypeID = this.radPerson.Checked ? 1 : 0;

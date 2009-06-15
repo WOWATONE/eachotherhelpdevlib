@@ -30,7 +30,7 @@
         
         function gridCustomButtonClick(s, e) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            var custID = s.GetDataRow(e.visibleIndex).cells[0].innerText;
+            var custID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
             window.showModalDialog("Customer.aspx?CustID=" + custID, self, myArguments);
         }
     -->

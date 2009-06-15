@@ -17,6 +17,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>客户信息</title>
     <script type="text/javascript">
+        $(document).ready(function() {
+            window.onunload = function() {
+                var pWindow = window.dialogArguments;
+                var thegrid = pWindow.gridSearchResult;
+
+                if (thegrid != null) {
+                    thegrid.PerformCallback('');
+                }
+                else {
+                    //do nothing
+                }
+            };
+
+
+        });
+        
         function radCustTypeClick(CustType)
         {
             if(CustType == "1")
@@ -88,12 +104,7 @@
             <dxtc:TabPage Name="CustInfo" Text="客户资料">
                 <ContentCollection>
                     <dxw:ContentControl ID="ContentControl1" runat="server">
-                        <table runat="server" id="tblerrmsg" visible="false">
-                            <tr>
-                                <td style=" width:100px;">&nbsp;</td>
-                                <td class="red">该客户编号已存在。</td>
-                            </tr>
-                        </table>
+                        <label id="lblerrmsg" name="lblerrmsg" runat="server" class="red" visible="false"></label>
                         <table style="width: 100%">
                             <tr>
                                 <td style="width: 120px; text-align: right;">
@@ -398,7 +409,7 @@
                                                     <table style="width: 70%;" runat="server" id="tblgridContactItemEditorTemplate">
                                                         <tr>
                                                             <td style="white-space: nowrap; text-align: right;">
-                                                                联系人GUID：
+                                                                联系人编号：
                                                             </td>
                                                             <td style="text-align: left;">
                                                                 <dxe:ASPxTextBox ID="dxetxtContactID" ClientInstanceName="dxetxtContactID" runat="server" Text='<%# Eval("ContactID") %>'></dxe:ASPxTextBox>
@@ -415,7 +426,12 @@
                                                                 性别：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxComboBox ID="dxeddlSex" ClientInstanceName="dxeddlSex" runat="server" DropDownStyle="DropDownList"></dxe:ASPxComboBox>
+                                                                <dxe:ASPxComboBox ID="dxeddlSex" ClientInstanceName="dxeddlSex" runat="server" DropDownStyle="DropDownList" SelectedIndex='<%# GetSexIndex(Eval("Sex"))%>'>
+                                                                    <Items>
+                                                                        <dxe:ListEditItem Text="男" Value="男" />
+                                                                        <dxe:ListEditItem Text="女" Value="女" />
+                                                                    </Items>
+                                                                </dxe:ASPxComboBox>
                                                             </td>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 职位：
@@ -443,7 +459,7 @@
                                                                 传真：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxTextBox ID="dxetxtFax" ClientInstanceName="dxedxetxtFax" runat="server" Text='<%# Eval("Fax") %>'></dxe:ASPxTextBox>
+                                                                <dxe:ASPxTextBox ID="dxetxtFax" ClientInstanceName="dxetxtFax" runat="server" Text='<%# Eval("Fax") %>'></dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 邮件：
