@@ -41,6 +41,15 @@ namespace BrokerWebApp.CustomerRelation {
         protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl1;
         
         /// <summary>
+        /// lblerrmsg 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblerrmsg;
+        
+        /// <summary>
         /// radPerson 控件。
         /// </summary>
         /// <remarks>
@@ -347,21 +356,21 @@ namespace BrokerWebApp.CustomerRelation {
         protected global::System.Web.UI.WebControls.Panel npExecuteAction;
         
         /// <summary>
-        /// btnsave 控件。
+        /// dxebtnBottomSave 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnsave;
-
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnBottomSave;
+        
         /// <summary>
-        /// tblerrmsg 控件。
+        /// dxebtnClose 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable tblerrmsg;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnClose;
     }
 }
