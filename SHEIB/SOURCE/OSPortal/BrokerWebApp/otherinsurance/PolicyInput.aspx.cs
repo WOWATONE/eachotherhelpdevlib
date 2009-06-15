@@ -23,12 +23,12 @@ namespace BrokerWebApp.otherinsurance
         #region Variables
 
         private const string inputQueryStringIDKey = "id";
+        private const string inputQueryStringPageModeKey = "pagemode";
         private const string UploadDirectory = "~/UploadControl/UploadImages/";
         private const int ThumbnailSize = 100;
 
         private Boolean gridCarrierStartEdit = false;
 
-        private string theID;
         //enctype="multipart/form-data">
 
         #endregion Variables
@@ -40,18 +40,17 @@ namespace BrokerWebApp.otherinsurance
         {
             if (Page.IsPostBack)
             {
-                theID = this.plcid.Value;
+                //
             }
             else
             {
-                theID = Page.Request.QueryString[inputQueryStringIDKey];
-                if (string.IsNullOrEmpty(theID))
-                    theID = BusinessObjects.TranUtils.GetPolicyID();
-                this.plcid.Value = theID;
+                this.dxetxtPolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
+                this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey]; 
+                //
             }
-            this.dxetxtPolicyID.Text = this.plcid.Value;
+
             
-            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(theID);
+            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
 
             if (!IsPostBack && !IsCallback)
                 this.gridCarrier.DataBind();
@@ -74,16 +73,7 @@ namespace BrokerWebApp.otherinsurance
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            //if (!Page.IsPostBack)
-            //{
-            //    this.npGridPolicyItemDetail.Enabled = false;
-            //    this.npCostSummaryDetail.Enabled = false;
-            //    this.npPolicyCompanyDetail.Enabled = false;
-
-            //    this.insuranceDetailTabPage.TabPages[1].Enabled = false;
-            //    this.insuranceDetailTabPage.TabPages[2].Enabled = false;
-            //    this.insuranceDetailTabPage.TabPages[3].Enabled = false;
-            //}
+            //
         }
 
         #endregion Page Events
@@ -377,7 +367,7 @@ namespace BrokerWebApp.otherinsurance
             e.Cancel = true;
             this.gridCarrier.CancelEdit();
 
-            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(theID);
+            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
 
             this.gridCarrier.DataBind();
 
@@ -442,7 +432,7 @@ namespace BrokerWebApp.otherinsurance
             e.Cancel = true;
             this.gridCarrier.CancelEdit();
 
-            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(theID);
+            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
 
             this.gridCarrier.DataBind();
 

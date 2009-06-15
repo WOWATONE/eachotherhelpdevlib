@@ -24,14 +24,14 @@
 
         function btnCreateClick() {
 	        var myArguments="resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            window.showModalDialog("PolicyInput.aspx", self, myArguments);
+	        window.showModalDialog("PolicyInput.aspx?pagemode=add", self, myArguments);
         }
 
         function gridCustomButtonClick(s, e) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
             var noint = s.GetDataRow(e.visibleIndex).cells[2].innerText;
             var querystring;
-            querystring = "PolicyInput.aspx?id=" + noint;
+            querystring = "PolicyInput.aspx?pagemode=add&id=" + noint;
             window.showModalDialog(querystring, self, myArguments);
         }
 
