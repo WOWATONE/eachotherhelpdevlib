@@ -22,6 +22,11 @@
     <title>保单录入</title>
 
     <script type="text/javascript">
+
+        function policyCheckNessary() {
+            return true;
+        }
+        
         function policyBaseCompleteEnable() {
             var result, panel;
             result = $("#<%=npGridPolicyItemDetail.ClientID %>");
@@ -55,6 +60,7 @@
         }
 
         function policyBaseCompleteUnable() {
+            
             var result, panel;
             result = $("#<%=npGridPolicyItemDetail.ClientID %>");
             panel = result[0];
@@ -186,35 +192,19 @@
 
             return JSON.stringify(plc);
         }
-        
-        
+
+
         function dxebtntopSave_Click(s, e) {
-            var thejsonstring = makePolicyJSON();
-            dxeSaveCallback.PerformCallback(thejsonstring);            
+            if (s.CauseValidation()) {
+                var thejsonstring = makePolicyJSON();
+                dxeSaveCallback.PerformCallback(thejsonstring);
+            }                        
         }
 
         function saveCallbackComplete(s, e) {
             //do nothing;
             policyBaseCompleteEnable();
-            //var result;
-            //var panel;
-            //insuranceDetailTabPage.tabs[1].SetEnabled(true);
-            //insuranceDetailTabPage.tabs[2].SetEnabled(true);
-            //insuranceDetailTabPage.tabs[3].SetEnabled(true);
-            //debugger;
-            //insuranceDetailTabPage
-            //result = $("#<%=npGridPolicyItemDetail.ClientID %>");
-            //panel = result[0];
-            //panel.disabled = false;
-            //gridPolicyItem.enabled = true;
             
-            //debugger;
-            //result = $("#<%=npCostSummaryDetail.ClientID %>");
-            //panel = result[0];
-            //panel.disabled = false;
-            //dxetxtCoverage.enabled = true;
-            
-            //
         }
 
         function btnAddClick(s, e) {
@@ -611,7 +601,11 @@
                                             <tr>
                                                 <td style="text-align: right;">投保单号：</td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="125px" ReadOnly="true"></dxe:ASPxTextBox>                                                    
+                                                    <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="125px" ReadOnly="true">
+                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项" CausesValidation="true" ValidationGroup="BaseGroup">
+                                                            <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                        </ValidationSettings>
+                                                    </dxe:ASPxTextBox>                                                    
                                                 </td>
                                                 <td></td>
                                                 <td style="text-align: right;">保单编号：</td>
@@ -631,7 +625,11 @@
                                             <tr>
                                                 <td style="text-align: right;">保险险种：</td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="dxetxtProdTypeName" ClientInstanceName="dxetxtProdTypeName" runat="server" Width="125px"></dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtProdTypeName" ClientInstanceName="dxetxtProdTypeName" runat="server" Width="125px" ReadOnly="true">
+                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项" CausesValidation="true" ValidationGroup="BaseGroup">
+                                                            <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                        </ValidationSettings>
+                                                    </dxe:ASPxTextBox>
                                                     <input type="hidden" id="ptid" runat="server" />
                                                 </td>
                                                 <td style="text-align: left;">
@@ -742,11 +740,16 @@
                                                     <table style="margin-left:-3px;">
                                                         <tr>
                                                             <td style="width:120px;text-align: left;">
-                                                            <dxe:ASPxTextBox ID="dxetxtStage" ClientInstanceName="dxetxtStage" runat="server" Width="125px"></dxe:ASPxTextBox>
+                                                            <dxe:ASPxTextBox ID="dxetxtStage" ClientInstanceName="dxetxtStage" runat="server" Width="125px">
+                                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="格式不对" CausesValidation="true" ValidationGroup="BaseGroup">
+                                                                    <RegularExpression ValidationExpression="^\d+(\d+)?" ErrorText="格式不对" />
+                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                </ValidationSettings>
+                                                            </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="width:10px;text-align: left;"></td>
                                                             <td style="text-align: left;">
-                                                            <dxe:ASPxButton runat="server" id="dxebtntopSave" Text="保存" CausesValidation="true" AutoPostBack="false">
+                                                            <dxe:ASPxButton runat="server" id="dxebtntopSave" ClientInstanceName="dxebtntopSave" Text="保存" CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
                                                                 <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }"></ClientSideEvents>
                                                             </dxe:ASPxButton>
                                                             </td>
