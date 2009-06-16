@@ -494,6 +494,13 @@
     <Compile Include="otherinsurance\PolicyInputList.aspx.designer.cs">
       <DependentUpon>PolicyInputList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="popupselectrefs\PolicyCustomer.aspx.cs">
+      <DependentUpon>PolicyCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="popupselectrefs\PolicyCustomer.aspx.designer.cs">
+      <DependentUpon>PolicyCustomer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="popupselectrefs\PolicyProdType.aspx.cs">
       <DependentUpon>PolicyProdType.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -776,6 +783,7 @@
     <Content Include="inoutbalance\FeeNoticeAddSelect.aspx" />
     <Content Include="otherinsurance\PolicyInput.aspx" />
     <Content Include="otherinsurance\PolicyInputList.aspx" />
+    <Content Include="popupselectrefs\PolicyCustomer.aspx" />
     <Content Include="popupselectrefs\PolicyProdType.aspx" />
   </ItemGroup>
   <ItemGroup>
