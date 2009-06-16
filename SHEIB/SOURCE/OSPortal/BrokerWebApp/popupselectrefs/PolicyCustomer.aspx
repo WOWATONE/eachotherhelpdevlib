@@ -1,22 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" CodeBehind="PolicyCustomer.aspx.cs" Inherits="BrokerWebApp.popupselectrefs.PolicyCustomer" %>
-
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
-    TagPrefix="dxrp" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl"
-    TagPrefix="dxtc" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses"
-    TagPrefix="dxw" %>
-<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView"
-    TagPrefix="dxwgv" %>
-<%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors"
-    TagPrefix="dxe" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dxwgv" %>
+<%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dxm" %>
+<%@ Register assembly="DevExpress.Web.v8.3" namespace="DevExpress.Web.ASPxPopupControl" tagprefix="dxpc" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3.Export" Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dxwgv" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl"
-    TagPrefix="dxpc" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl"
-    TagPrefix="dxuc" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
-
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>客户选择</title>
@@ -91,7 +82,7 @@
 
         function btnOk_Click() {
 
-            gridSearchResult.GetSelectedFieldValues("ProdTypeID;ProdTypeName", getTheSelectedRowsValues);
+            gridSearchResult.GetSelectedFieldValues("CustID;CustName", getTheSelectedRowsValues);
             
         }
 
@@ -147,7 +138,7 @@
                                                     <td></td>
                                                 </tr> 
                                                 <tr>
-                                                    <td style="text-align:right;">险种名称：</td>
+                                                    <td style="text-align:right;">客户名称：</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="100px"></dxe:ASPxTextBox>
                                                     </td>
@@ -155,20 +146,7 @@
                                                     <td style="text-align:left;"></td>
                                                     <td></td>                                                    
                                                 </tr> 
-                                                <tr>
-                                                    <td style="text-align:right;">险种类型：</td>
-                                                    <td style="text-align:left;">
-                                                       <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server" Width="170px" DropDownStyle="DropDownList">
-															<Items>
-																<dxe:ListEditItem Text="(全部)" Value="" />
-															</Items>
-														</dxe:ASPxComboBox>                                                        
-                                                    </td>
-                                                    <td style="text-align:right;"></td>
-                                                    <td style="text-align:left;"></td>
-                                                    <td></td>
-                                                </tr>
-                                                
+                                                                                                
                                                 <tr>
                                                     <td style="text-align:right;"></td>
                                                     <td style="text-align:left;"></td>
@@ -221,7 +199,7 @@
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server" 
                                                     DataSourceID="DataSource"
-                                                    KeyFieldName="ProdTypeID" AutoGenerateColumns="False" 
+                                                    KeyFieldName="CustID" AutoGenerateColumns="False" 
                                                     Settings-ShowFooter="true" Width="100%" 
                                                     SettingsPager-AlwaysShowPager="true" EnableRowsCache="false" EnableViewState="false"
                                                     OnDataBinding="gridSearchResult_DataBinding" OnPageIndexChanged="gridSearchResult_PageIndexChanged"
@@ -236,13 +214,15 @@
                                                                  </dxwgv:GridViewCommandColumn>
                                                                 <dxwgv:GridViewDataCheckColumn Caption="&nbsp;" FieldName="">
                                                                     <DataItemTemplate>
-                                                                        <input type="radio" id="rdoSelected<%# Eval("ProdTypeID") %>" name="rdoSelected" onclick="rdoSelected_onclick('<%# Container.ItemIndex %>');" />                                                                                                                                              
+                                                                        <input type="radio" id="rdoSelected<%# Eval("CustID") %>" name="rdoSelected" onclick="rdoSelected_onclick('<%# Container.ItemIndex %>');" />                                                                                                                                              
                                                                     </DataItemTemplate>
                                                                 </dxwgv:GridViewDataCheckColumn>
 
-                                                                <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种编号" CellStyle-Wrap="False" Visible="false">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="CustID" Caption="CustID" CellStyle-Wrap="False" Visible="false">                                                                    
                                                                 </dxwgv:GridViewDataColumn>   
-                                                                <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="险种名称" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="CustName" Caption="客户名称" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Address" Caption="客户地址" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>
@@ -254,18 +234,18 @@
                                                         <SettingsBehavior AllowFocusedRow="false" ConfirmDelete="true" AutoExpandAllGroups="true" AllowMultiSelection="false" />
                                                         <SettingsText CustomizationWindowCaption="个性化" />
                                                         <GroupSummary >
-                                                            <dxwgv:ASPxSummaryItem FieldName="ProdTypeName" SummaryType="Count" ShowInGroupFooterColumn="ProdTypeName" DisplayFormat = "总计: {0}" />
+                                                            <dxwgv:ASPxSummaryItem FieldName="CustName" SummaryType="Count" ShowInGroupFooterColumn="CustName" DisplayFormat = "总计: {0}" />
                                                         </GroupSummary>
                                                         <TotalSummary >
-                                                            <dxwgv:ASPxSummaryItem FieldName="ProdTypeName" SummaryType="Count" ShowInGroupFooterColumn="ProdTypeName" DisplayFormat = "总计: {0}" />
+                                                            <dxwgv:ASPxSummaryItem FieldName="CustName" SummaryType="Count" ShowInGroupFooterColumn="CustName" DisplayFormat = "总计: {0}" />
                                                         </TotalSummary>
                                                         <ClientSideEvents SelectionChanged="function(s, e) { OnGridSelectionChanged(s,e); }" RowClick="function(s, e) { OnGridRowClick(s,e); }" EndCallback="function(s, e) { OnEndCallBack(s,e); }" />
                                                         
                                                     </dxwgv:ASPxGridView> 
                                                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
                                                     <asp:ObjectDataSource ID="DataSource" runat="server" 
-                                                        SelectMethod="FetchLeafList"
-                                                        TypeName="BusinessObjects.SchemaSetting.BO_ProductType" 
+                                                        SelectMethod="FetchCustomerList"
+                                                        TypeName="BusinessObjects.BO_Customer" 
                                                         EnablePaging="false"                                                                                                                                                       
                                                         >
                                                         <SelectParameters> 
