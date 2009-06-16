@@ -330,15 +330,29 @@
                 var thesplit_array = retrunval.split(";");
                 dxetxtProdTypeName.SetValue(thesplit_array[1]);
                 setProductTypeID(thesplit_array[0]);
-
-                var result = $("#<%=ptid.ClientID %>");
             }
         }
 
 
-        function hlPolicyItemTogetherClick(params) {
+        function imgSelectCustomerClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
-            window.showModalDialog("NewCustomer.aspx", self, myArguments);
+            var retrunval = window.showModalDialog("../popupselectrefs/PolicyCustomer.aspx", self, myArguments);
+            if (isEmpty(retrunval)) {
+                //do nothing;
+            }
+            else {
+                //split the return value;
+                var thesplit_array = retrunval.split(";");
+                dxetxtCustomer.SetValue(thesplit_array[1]);
+                dxetxtBeneficiary.SetValue(thesplit_array[1]);
+                setCustomerID(thesplit_array[0]);
+                //
+            } 
+        }
+
+        function imgNewCustomerClick() {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
+            //window.showModalDialog("NewCustomer.aspx", self, myArguments);
 
         }
 
@@ -352,6 +366,11 @@
             var result = $("#<%=cusid.ClientID %>");
             var ID = result[0].value;
             return ID;
+        }
+
+        function setCustomerID(thevalue) {
+            var result = $("#<%=cusid.ClientID %>");
+            result[0].value = thevalue;
         }
 
         function getProductTypeID() {
@@ -688,9 +707,9 @@
                                                     <input type="hidden" id="cusid" runat="server" />
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <img runat="server" id="imgadduser" onclick="btnAddCustomerClick();" alt="" src="../images/add_user_icon.png"
+                                                    <img runat="server" id="imgNewCustomer" onclick="imgNewCustomerClick();" alt="" src="../images/add_user_icon.png"
                                                         style="width: 20px; height: 20px; vertical-align: top;" />
-                                                    <img runat="server" id="imgpeoplesearch" onclick="btnSelectCustomerClick();" alt=""
+                                                    <img runat="server" id="imgSelectCustomer" onclick="imgSelectCustomerClick();" alt=""
                                                         src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: top;" />
                                                 </td>
                                                 <td style="text-align: right;">±ª±£œ’»À£∫</td>
