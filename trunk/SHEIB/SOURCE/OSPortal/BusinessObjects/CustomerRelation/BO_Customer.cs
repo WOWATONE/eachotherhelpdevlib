@@ -198,6 +198,26 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand).Tables[0];
         }
 
+
+        public DataTable FetchCustomerList(String whereFilter)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select C.CustID, C.CustName, CO1.CodeName As AreaName, D.DeptName As DeprtmentName, C.Address,");
+            sb.Append("C.PostCode, CO2.CodeName As TradeTypeName, C.IDNO, C.Contact, C.Tel, C.Mobile,");
+            sb.Append("C.Fax, C.Email, U.UserNameCn As SalesName ");
+            sb.Append("From Customer C (nolock) ");
+            sb.Append("Left Join P_Code CO1 (nolock) On CO1.CodeType='Area' And CO1.CodeID=C.Area ");
+            sb.Append("Left Join P_Code CO2 (nolock) On CO2.CodeType='TradeName' And CO2.CodeID=C.TradeTypeID ");
+            sb.Append("Left Join P_Department D (nolock) On D.DeptID=C.DeprtmentID ");
+            sb.Append("Left Join P_User U (nolock) On U.UserID=C.SalesID ");
+            sb.Append("Where 1=1 ");            
+            sb.Append("Order By C.CustID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+
         /// <summary>
         /// 保存客户信息
         /// </summary>
