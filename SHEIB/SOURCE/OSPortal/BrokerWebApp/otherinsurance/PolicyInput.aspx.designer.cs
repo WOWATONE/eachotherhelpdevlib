@@ -194,22 +194,22 @@ namespace BrokerWebApp.otherinsurance {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden cusid;
         
         /// <summary>
-        /// imgadduser control.
+        /// imgNewCustomer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgadduser;
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgNewCustomer;
         
         /// <summary>
-        /// imgpeoplesearch control.
+        /// imgSelectCustomer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgSelectCustomer;
         
         /// <summary>
         /// dxetxtBeneficiary control.

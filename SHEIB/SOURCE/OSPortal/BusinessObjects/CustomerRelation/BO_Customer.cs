@@ -199,7 +199,7 @@ namespace BusinessObjects
         }
 
 
-        public DataTable FetchCustomerList(String whereFilter)
+        public static DataTable FetchCustomerList(String whereFilter)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select C.CustID, C.CustName, CO1.CodeName As AreaName, D.DeptName As DeprtmentName, C.Address,");
