@@ -75,6 +75,7 @@
     <Compile Include="BaseEntity\Utility.cs" />
     <Compile Include="CustomerRelation\BO_CustContact.cs" />
     <Compile Include="CustomerRelation\BO_Customer.cs" />
+    <Compile Include="CustomerRelation\BO_CustomerPtFollow.cs" />
     <Compile Include="FeeBalance\BO_Fee.cs" />
     <Compile Include="FeeBalance\BO_Notice.cs" />
     <Compile Include="FeeBalance\BO_Voucher.cs" />
