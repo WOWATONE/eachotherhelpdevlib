@@ -146,7 +146,7 @@ namespace BusinessObjects
         /// </summary>
         /// <param name="customer"></param>
         /// <returns></returns>
-        public DataTable GetCustomerList()
+        public static DataTable GetCustomerList(string sWhere)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select C.CustID, C.CustName, CO1.CodeName As AreaName, D.DeptName As DeprtmentName, C.Address,");
@@ -157,64 +157,11 @@ namespace BusinessObjects
             sb.Append("Left Join P_Code CO2 (nolock) On CO2.CodeType='TradeName' And CO2.CodeID=C.TradeTypeID ");
             sb.Append("Left Join P_Department D (nolock) On D.DeptID=C.DeprtmentID ");
             sb.Append("Left Join P_User U (nolock) On U.UserID=C.SalesID ");
-            sb.Append("Where C.CustTypeID=@CustTypeID ");
-            if (!string.IsNullOrEmpty(this.CustID))
-                sb.Append("And C.CustID=@CustID ");
-            if (!string.IsNullOrEmpty(this.Area))
-                sb.Append("And C.Area=@Area ");
-            if (!string.IsNullOrEmpty(this.Address))
-                sb.Append("And C.Address like '%'+@Address+'%' ");
-            if (!string.IsNullOrEmpty(this.CustName))
-                sb.Append("And C.CustName like '%'+@CustName+'%' ");
-            if (!string.IsNullOrEmpty(this.TradeTypeID))
-                sb.Append("And C.TradeTypeID=@TradeTypeID ");
-            if (!string.IsNullOrEmpty(this.DeprtmentID))
-                sb.Append("And C.DeprtmentID=@DeprtmentID ");
-            if (!string.IsNullOrEmpty(this.IDNO))
-                sb.Append("And C.IDNO=@IDNO ");
-            if (!string.IsNullOrEmpty(this.SalesID))
-                sb.Append("And C.SalesID=@SalesID ");
-            sb.Append("Order By C.CustID");
+            sb.Append("Where 1=1 ");
+            sb.Append(sWhere);
+            sb.Append(" Order By C.CustID");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-            _db.AddInParameter(dbCommand, "@CustTypeID", DbType.Int32, this.CustTypeID);
-            if (!string.IsNullOrEmpty(this.CustID))
-                _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, this.CustID);
-            if (!string.IsNullOrEmpty(this.Area))
-                _db.AddInParameter(dbCommand, "@Area", DbType.AnsiString, this.Area);
-            if (!string.IsNullOrEmpty(this.Address))
-                _db.AddInParameter(dbCommand, "@Address", DbType.AnsiString, this.Address);
-            if (!string.IsNullOrEmpty(this.CustName))
-                _db.AddInParameter(dbCommand, "@CustName", DbType.AnsiString, this.CustName);
-            if (!string.IsNullOrEmpty(this.TradeTypeID))
-                _db.AddInParameter(dbCommand, "@TradeTypeID", DbType.AnsiString, this.TradeTypeID);
-            if (!string.IsNullOrEmpty(this.DeprtmentID))
-                _db.AddInParameter(dbCommand, "@DeprtmentID", DbType.AnsiString, this.DeprtmentID);
-            if (!string.IsNullOrEmpty(this.IDNO))
-                _db.AddInParameter(dbCommand, "@IDNO", DbType.AnsiString, this.IDNO);
-            if (!string.IsNullOrEmpty(this.SalesID))
-                _db.AddInParameter(dbCommand, "@SalesID", DbType.AnsiString, this.SalesID);
-
-            return _db.ExecuteDataSet(dbCommand).Tables[0];
-        }
-
-
-        public static DataTable FetchCustomerList(String whereFilter)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("Select C.CustID, C.CustName, CO1.CodeName As AreaName, D.DeptName As DeprtmentName, C.Address,");
-            sb.Append("C.PostCode, CO2.CodeName As TradeTypeName, C.IDNO, C.Contact, C.Tel, C.Mobile,");
-            sb.Append("C.Fax, C.Email, U.UserNameCn As SalesName ");
-            sb.Append("From Customer C (nolock) ");
-            sb.Append("Left Join P_Code CO1 (nolock) On CO1.CodeType='Area' And CO1.CodeID=C.Area ");
-            sb.Append("Left Join P_Code CO2 (nolock) On CO2.CodeType='TradeName' And CO2.CodeID=C.TradeTypeID ");
-            sb.Append("Left Join P_Department D (nolock) On D.DeptID=C.DeprtmentID ");
-            sb.Append("Left Join P_User U (nolock) On U.UserID=C.SalesID ");
-            sb.Append("Where 1=1 ");            
-            sb.Append("Order By C.CustID");
-
-            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-            
             return _db.ExecuteDataSet(dbCommand).Tables[0];
         }
 

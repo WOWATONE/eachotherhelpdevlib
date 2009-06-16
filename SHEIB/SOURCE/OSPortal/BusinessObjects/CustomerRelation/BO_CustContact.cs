@@ -31,7 +31,8 @@ namespace BusinessObjects
             MobilePhone,
             Email,
             Interest,
-            Remark
+            Remark,
+            NewContactID
         }
 
         #region Property
@@ -57,6 +58,8 @@ namespace BusinessObjects
         public string Interest { get; set; }
         /*备注*/
         public string Remark { get; set; }
+        /*新联系人GUID*/
+        public string NewContactID { get; set; }
         #endregion
 
         #region Methods
@@ -68,7 +71,7 @@ namespace BusinessObjects
             }
             else if (action == ModifiedAction.Update)
             {
-                //update(customer);
+                update();
             }
         }
 
@@ -94,6 +97,35 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "@Email", DbType.AnsiString, this.Email);
             _db.AddInParameter(dbCommand, "@Interest", DbType.AnsiString, this.Interest);
             _db.AddInParameter(dbCommand, "@Remark", DbType.AnsiString, this.Remark);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 修改联系人信息
+        /// </summary>
+        private void update()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Update CustContact ");
+            sb.Append("Set ContactID=@NewContactID, ContactName=@ContactName, CustID=@CustID, Position=@Position, Sex=@Sex, Tel=@Tel, ");
+            sb.Append("Fax=@Fax, MobilePhone=@MobilePhone, Email=@Email, Interest=@Interest, Remark=@Remark  ");
+            sb.Append("Where ContactID=@ContactID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ContactID", DbType.AnsiString, this.ContactID);
+            _db.AddInParameter(dbCommand, "@ContactName", DbType.AnsiString, this.ContactName);
+            _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, this.CustID);
+            _db.AddInParameter(dbCommand, "@Position", DbType.AnsiString, this.Position);
+            _db.AddInParameter(dbCommand, "@Sex", DbType.AnsiString, this.Sex);
+            _db.AddInParameter(dbCommand, "@Tel", DbType.AnsiString, this.Tel);
+            _db.AddInParameter(dbCommand, "@Fax", DbType.AnsiString, this.Fax);
+            _db.AddInParameter(dbCommand, "@MobilePhone", DbType.AnsiString, this.MobilePhone);
+            _db.AddInParameter(dbCommand, "@Email", DbType.AnsiString, this.Email);
+            _db.AddInParameter(dbCommand, "@Interest", DbType.AnsiString, this.Interest);
+            _db.AddInParameter(dbCommand, "@Remark", DbType.AnsiString, this.Remark);
+            _db.AddInParameter(dbCommand, "@NewContactID", DbType.AnsiString, this.NewContactID);
 
             _db.ExecuteNonQuery(dbCommand);
         }
@@ -136,6 +168,22 @@ namespace BusinessObjects
                 return true;
             else
                 return false;
+        }
+
+        /// <summary>
+        /// 删除联系人信息
+        /// </summary>
+        /// <param name="contactID"></param>
+        public static void Delete(string contactID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM CustContact ");
+            sb.Append(" WHERE ContactID = @ContactID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ContactID", DbType.AnsiString, contactID);
+
+            _db.ExecuteNonQuery(dbCommand);
         }
         #endregion
     }
