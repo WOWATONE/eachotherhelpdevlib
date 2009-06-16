@@ -87,7 +87,7 @@ namespace BrokerWebApp.CustomerRelation
             BO_Customer.Delete(custID);
             e.Cancel = true;
             this.gridSearchResult.CancelEdit();
-            this.FillGridSearchResult();
+            this.BindGrid();
         }
 
         protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
@@ -102,34 +102,37 @@ namespace BrokerWebApp.CustomerRelation
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            this.FillGridSearchResult();
+            this.BindGrid();
         }
 
         /// <summary>
         /// 填充数据
         /// </summary>
-        private void FillGridSearchResult()
+        private void BindGrid()
         {
-            BO_Customer customer = new BO_Customer();
-            customer.CustTypeID = this.radPerson.Checked ? 1 : 0;
+            System.Text.StringBuilder sbWhere = new System.Text.StringBuilder();
+            if (this.radPerson.Checked)
+                sbWhere.Append(" And C.CustTypeID=1");
+            else
+                sbWhere.Append(" And C.CustTypeID=0");
             if (this.dxetxtCustID.Text.Trim().Length > 0)
-                customer.CustID = this.dxetxtCustID.Text.Trim();
+                sbWhere.Append(" And C.CustID=" + this.dxetxtCustID.Text.Trim());
             if (this.dxeddlArea.SelectedItem.Value.ToString().Length > 0)
-                customer.Area = this.dxeddlArea.SelectedItem.Value.ToString();
+                sbWhere.Append(" And C.Area=" + this.dxeddlArea.SelectedItem.Value.ToString());
             if (this.dxetxtAddress.Text.Trim().Length > 0)
-                customer.Address = this.dxetxtAddress.Text.Trim();
+                sbWhere.Append(" And C.Address like '%" + this.dxetxtAddress.Text.Trim() + "%'");
             if (this.dxetxtCustName.Text.Trim().Length > 0)
-                customer.CustName = this.dxetxtCustName.Text.Trim();
+                sbWhere.Append(" And C.CustName like '%" + this.dxetxtCustName.Text.Trim() + "%'");
             if (this.dxeddlTradeType.SelectedItem.Value.ToString().Length > 0)
-                customer.TradeTypeID = this.dxeddlTradeType.SelectedItem.Value.ToString();
+                sbWhere.Append(" And C.TradeTypeID=" + this.dxeddlTradeType.SelectedItem.Value.ToString());
             if (this.dxeddlDepartment.SelectedItem.Value.ToString().Length > 0)
-                customer.DeprtmentID = this.dxeddlDepartment.SelectedItem.Value.ToString();
+                sbWhere.Append(" And C.DeprtmentID=" + this.dxeddlDepartment.SelectedItem.Value.ToString());
             if (this.dxetxtIDNO.Text.Trim().Length > 0)
-                customer.IDNO = this.dxetxtIDNO.Text.Trim();
+                sbWhere.Append(" And And C.IDNO=" + this.dxetxtIDNO.Text.Trim());
             if (this.dxeddlSalesID.SelectedItem.Value.ToString().Length > 0)
-                customer.SalesID = this.dxeddlSalesID.SelectedItem.Value.ToString();
+                sbWhere.Append(" And C.SalesID=" + this.dxeddlSalesID.SelectedItem.Value.ToString());
 
-            this.gridSearchResult.DataSource = customer.GetCustomerList();
+            this.gridSearchResult.DataSource = BO_Customer.GetCustomerList(sbWhere.ToString());
             this.gridSearchResult.DataBind();
         }
     }

@@ -121,7 +121,12 @@ namespace BrokerWebApp.CustomerRelation
                 this.gridContactItem.DataBind();
                 #endregion
 
+                #region 销售跟进
+                this.gridCustomerPtItem.DataSource = BO_CustomerPtFollow.GetCustPtFollowByCustID(this._custID);
+                this.gridCustomerPtItem.DataBind();
 
+
+                #endregion
 
             }
         }
@@ -274,14 +279,40 @@ namespace BrokerWebApp.CustomerRelation
         #region 联系人
         protected void gridContactItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            //
-            string a = "1";
+            HtmlTable tblEditorTemplate = this.gridContactItem.FindEditFormTemplateControl("tblgridContactItemEditorTemplate") as HtmlTable;
+            string contactID = e.Keys["ContactID"].ToString();
+            string newContactID = (tblEditorTemplate.FindControl("dxetxtContactID") as ASPxTextBox).Text.Trim();
+
+            if (newContactID.Length <= 0)
+                throw new Exception("联系人编号不能为空。");
+
+            if (contactID != newContactID && BO_CustContact.IfExistsContactID(newContactID))
+                throw new Exception("联系人编号已经存在。");
+
+            BO_CustContact custContact = new BO_CustContact();
+            custContact.ContactID = contactID;
+            custContact.ContactName = (tblEditorTemplate.FindControl("dxetxtContactName") as ASPxTextBox).Text.Trim();
+            custContact.CustID = this._custID;
+            custContact.Position = (tblEditorTemplate.FindControl("dxetxtPosition") as ASPxTextBox).Text.Trim();
+            custContact.Sex = (tblEditorTemplate.FindControl("dxeddlSex") as ASPxComboBox).SelectedItem.Value.ToString();
+            custContact.Tel = (tblEditorTemplate.FindControl("dxetxtTel") as ASPxTextBox).Text.Trim();
+            custContact.Fax = (tblEditorTemplate.FindControl("dxetxtFax") as ASPxTextBox).Text.Trim();
+            custContact.MobilePhone = (tblEditorTemplate.FindControl("dxetxtMobilePhone") as ASPxTextBox).Text.Trim();
+            custContact.Email = (tblEditorTemplate.FindControl("dxetxtEmail") as ASPxTextBox).Text.Trim();
+            custContact.Interest = (tblEditorTemplate.FindControl("txtInterest") as TextBox).Text.Trim();
+            custContact.Remark = (tblEditorTemplate.FindControl("txtRemark") as TextBox).Text.Trim();
+            custContact.NewContactID = newContactID;
+            custContact.Save(ModifiedAction.Update);
+
+            e.Cancel = true;
+            this.gridContactItem.CancelEdit();
+            this.gridContactItem.DataSource = BO_CustContact.GetCustContactByCustID(this._custID);
+            this.gridContactItem.DataBind();
         }
 
         protected void gridContactItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
         {
             //
-            string a = "1";
         }
 
         protected void gridContactItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -317,26 +348,54 @@ namespace BrokerWebApp.CustomerRelation
         protected void gridContactItem_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
         {
             //
-            string a = "1";
         }
 
         protected void gridContactItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            //
-            string a = "1";
+            String contactID = e.Keys["ContactID"].ToString();
+            BO_CustContact.Delete(contactID);
+            e.Cancel = true;
+            this.gridContactItem.CancelEdit();
+            this.gridContactItem.DataSource = BO_CustContact.GetCustContactByCustID(this._custID);
+            this.gridContactItem.DataBind();
         }
 
         protected void gridContactItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
             //
-            string a = "1";
         }
         #endregion
 
         #region 销售跟进
         protected void gridCustomerPtItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            //
+            HtmlTable tblEditorTemplate = this.gridCustomerPtItem.FindEditFormTemplateControl("tblgridPtFollowItemEditorTemplate") as HtmlTable;
+            string followID = e.Keys["FollowID"].ToString();
+            string newFollowID = (tblEditorTemplate.FindControl("dxetxtFollowID") as ASPxTextBox).Text.Trim();
+            if (newFollowID.Length <= 0)
+                throw new Exception("销售跟进编号不能为空。");
+
+            if (followID != newFollowID && BO_CustomerPtFollow.IfExistsFollowID(newFollowID))
+                throw new Exception("销售跟进编号已经存在。");
+
+            BO_CustomerPtFollow customerPtFollow = new BO_CustomerPtFollow();
+            customerPtFollow.FollowID = followID;
+            customerPtFollow.CustID = this._custID;
+            customerPtFollow.FollowType = (tblEditorTemplate.FindControl("dxeddlFollowType") as ASPxComboBox).SelectedItem.Value.ToString();
+            customerPtFollow.FollowStage = (tblEditorTemplate.FindControl("dxeddlFollowStage") as ASPxComboBox).SelectedItem.Value.ToString();
+            if ((tblEditorTemplate.FindControl("dxeFollowDate") as ASPxDateEdit).Text.Trim().Length > 0)
+                customerPtFollow.FollowDate = Convert.ToDateTime((tblEditorTemplate.FindControl("dxeFollowDate") as ASPxDateEdit).Text.Trim());
+            customerPtFollow.FollowMemo = (tblEditorTemplate.FindControl("txtFollowMemo") as TextBox).Text.Trim();
+            customerPtFollow.FollowPerson = (tblEditorTemplate.FindControl("dxetxtFollowPerson") as ASPxTextBox).Text.Trim();
+            if ((tblEditorTemplate.FindControl("dxeNextFollow") as ASPxDateEdit).Text.Trim().Length > 0)
+                customerPtFollow.NextFollow = Convert.ToDateTime((tblEditorTemplate.FindControl("dxeNextFollow") as ASPxDateEdit).Text.Trim());
+            customerPtFollow.NewFollowID = newFollowID;
+            customerPtFollow.Save(ModifiedAction.Update);
+
+            e.Cancel = true;
+            this.gridCustomerPtItem.CancelEdit();
+            this.gridCustomerPtItem.DataSource = BO_CustomerPtFollow.GetCustPtFollowByCustID(this._custID);
+            this.gridCustomerPtItem.DataBind();
         }
 
         protected void gridCustomerPtItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
@@ -346,7 +405,31 @@ namespace BrokerWebApp.CustomerRelation
 
         protected void gridCustomerPtItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-            //
+            HtmlTable tblEditorTemplate = this.gridCustomerPtItem.FindEditFormTemplateControl("tblgridPtFollowItemEditorTemplate") as HtmlTable;
+            string followID = (tblEditorTemplate.FindControl("dxetxtFollowID") as ASPxTextBox).Text.Trim();
+            if (followID.Length <= 0)
+                throw new Exception("销售跟进编号不能为空。");
+
+            if (BO_CustomerPtFollow.IfExistsFollowID(followID))
+                throw new Exception("销售跟进编号已经存在。");
+
+            BO_CustomerPtFollow customerPtFollow = new BO_CustomerPtFollow();
+            customerPtFollow.FollowID = followID;
+            customerPtFollow.CustID = this._custID;
+            customerPtFollow.FollowType = (tblEditorTemplate.FindControl("dxeddlFollowType") as ASPxComboBox).SelectedItem.Value.ToString();
+            customerPtFollow.FollowStage = (tblEditorTemplate.FindControl("dxeddlFollowStage") as ASPxComboBox).SelectedItem.Value.ToString();
+            if ((tblEditorTemplate.FindControl("dxeFollowDate") as ASPxDateEdit).Text.Trim().Length > 0)
+                customerPtFollow.FollowDate = Convert.ToDateTime((tblEditorTemplate.FindControl("dxeFollowDate") as ASPxDateEdit).Text.Trim());
+            customerPtFollow.FollowMemo = (tblEditorTemplate.FindControl("txtFollowMemo") as TextBox).Text.Trim();
+            customerPtFollow.FollowPerson = (tblEditorTemplate.FindControl("dxetxtFollowPerson") as ASPxTextBox).Text.Trim();
+            if ((tblEditorTemplate.FindControl("dxeNextFollow") as ASPxDateEdit).Text.Trim().Length > 0)
+                customerPtFollow.NextFollow = Convert.ToDateTime((tblEditorTemplate.FindControl("dxeNextFollow") as ASPxDateEdit).Text.Trim());
+            customerPtFollow.Save(ModifiedAction.Insert);
+
+            e.Cancel = true;
+            this.gridCustomerPtItem.CancelEdit();
+            this.gridCustomerPtItem.DataSource = BO_CustomerPtFollow.GetCustPtFollowByCustID(this._custID);
+            this.gridCustomerPtItem.DataBind();
         }
 
         protected void gridCustomerPtItem_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
@@ -356,7 +439,12 @@ namespace BrokerWebApp.CustomerRelation
 
         protected void gridCustomerPtItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            //
+            String followID = e.Keys["FollowID"].ToString();
+            BO_CustomerPtFollow.Delete(followID);
+            e.Cancel = true;
+            this.gridCustomerPtItem.CancelEdit();
+            this.gridCustomerPtItem.DataSource = BO_CustomerPtFollow.GetCustPtFollowByCustID(this._custID);
+            this.gridCustomerPtItem.DataBind();
         }
 
         protected void gridCustomerPtItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
@@ -413,6 +501,42 @@ namespace BrokerWebApp.CustomerRelation
                 return 0;
             else
                 return 1;
+        }
+
+        /// <summary>
+        /// 取得跟进类型编号
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        protected int GetFollowTypeIndex(object obj)
+        {
+            if (obj == null || obj.ToString() == "面谈")
+                return 0;
+            else if (obj.ToString() == "电话")
+                return 1;
+            else if (obj.ToString() == "Email")
+                return 2;
+            else
+                return 3;
+        }
+
+        /// <summary>
+        /// 取得跟进程度编号
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        protected int GetFollowStageIndex(object obj)
+        {
+            if (obj == null || obj.ToString() == "接触")
+                return 0;
+            else if (obj.ToString() == "说明")
+                return 1;
+            else if (obj.ToString() == "促成")
+                return 2;
+            else if (obj.ToString() == "签单")
+                return 3;
+            else
+                return 4;
         }
     }
 }
