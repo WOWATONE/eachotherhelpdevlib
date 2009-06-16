@@ -29,8 +29,6 @@
                     //do nothing
                 }
             };
-
-
         });
         
         function radCustTypeClick(CustType)
@@ -378,8 +376,7 @@
                                                 <EditButton Visible="true" />
                                                 <DeleteButton Visible="true" />
                                             </dxwgv:GridViewCommandColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="联系人GUID" FieldName="ContactID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center"
-                                                Visible="false">
+                                            <dxwgv:GridViewDataTextColumn Caption="联系人编号" FieldName="ContactID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="姓名" FieldName="ContactName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
@@ -403,6 +400,8 @@
                                         </Columns>
                                         <SettingsPager Mode="ShowAllRecords" />
                                         <Settings ShowGroupPanel="false" />
+                                        <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
+                                        <SettingsText CustomizationWindowCaption="个性化" />
                                         <Templates>
                                             <EditForm>
                                                 <div style="padding: 4px 4px 3px 4px; text-align: center;">
@@ -527,7 +526,7 @@
                                                 <EditButton Visible="true" />
                                                 <DeleteButton Visible="true" />
                                             </dxwgv:GridViewCommandColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="跟进GUID" FieldName="FollowID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Visible="false">
+                                            <dxwgv:GridViewDataTextColumn Caption="销售跟进编号" FieldName="FollowID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="跟进日期" FieldName="FollowDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
@@ -537,20 +536,22 @@
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="跟进内容" FieldName="FollowMemo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Width="50%">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="跟进人" FieldName="FollowPerson" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Visible="False">
+                                            <dxwgv:GridViewDataTextColumn Caption="跟进人" FieldName="FollowPerson" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Visible="false">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="下次跟进日期" FieldName="NextFollow" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Visible="False">
+                                            <dxwgv:GridViewDataTextColumn Caption="下次跟进日期" FieldName="NextFollow" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Visible="false">
                                             </dxwgv:GridViewDataTextColumn>
                                         </Columns>
                                         <SettingsPager Mode="ShowAllRecords" />
                                         <Settings ShowGroupPanel="false" />
+                                        <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
+                                        <SettingsText CustomizationWindowCaption="个性化" />
                                         <Templates>
                                             <EditForm>
                                                 <div style="padding: 4px 4px 3px 4px; text-align: center;">
-                                                    <table style="width: 70%;" runat="server" id="tblgridContactItemEditorTemplate">
+                                                    <table style="width: 70%;" runat="server" id="tblgridPtFollowItemEditorTemplate">
                                                         <tr>
                                                             <td style="white-space: nowrap; text-align: right;">
-                                                                跟进GUID：
+                                                                跟进编号：
                                                             </td>
                                                             <td style="text-align: left;">
                                                                 <dxe:ASPxTextBox ID="dxetxtFollowID" ClientInstanceName="dxetxtFollowID" runat="server" Text='<%# Eval("FollowID") %>'></dxe:ASPxTextBox>
@@ -559,7 +560,14 @@
                                                                 跟进类型：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxComboBox ID="dxeddlFollowType" ClientInstanceName="dxeddlFollowType" runat="server" DropDownStyle="DropDownList" Text='<%# Eval("FollowType") %>'></dxe:ASPxComboBox>
+                                                                <dxe:ASPxComboBox ID="dxeddlFollowType" ClientInstanceName="dxeddlFollowType" runat="server" DropDownStyle="DropDownList" SelectedIndex='<%# GetFollowTypeIndex(Eval("FollowType"))%>'>
+                                                                    <Items>
+                                                                        <dxe:ListEditItem Text="面谈" Value="面谈" />
+                                                                        <dxe:ListEditItem Text="电话" Value="电话" />
+                                                                        <dxe:ListEditItem Text="Email" Value="Email" />
+                                                                        <dxe:ListEditItem Text="其他" Value="其他" />
+                                                                    </Items>
+                                                                </dxe:ASPxComboBox>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -567,13 +575,21 @@
                                                                 跟进程度：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxComboBox ID="dxeddlFollowStage" ClientInstanceName="dxeddlFollowStage" runat="server" DropDownStyle="DropDownList" Text='<%# Eval("FollowStage") %>'></dxe:ASPxComboBox>
+                                                                <dxe:ASPxComboBox ID="dxeddlFollowStage" ClientInstanceName="dxeddlFollowStage" runat="server" DropDownStyle="DropDownList" SelectedIndex='<%# GetFollowStageIndex(Eval("FollowStage"))%>'>
+                                                                    <Items>
+                                                                        <dxe:ListEditItem Text="接触" Value="接触" />
+                                                                        <dxe:ListEditItem Text="说明" Value="说明" />
+                                                                        <dxe:ListEditItem Text="促成" Value="促成" />
+                                                                        <dxe:ListEditItem Text="签单" Value="签单" />
+                                                                        <dxe:ListEditItem Text="其他" Value="其他" />
+                                                                    </Items>
+                                                                </dxe:ASPxComboBox>
                                                             </td>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 跟进时间：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxDateEdit ID="dxeFollowDate" ClientInstanceName="dxeFollowDate" runat="server" Text='<%# Eval("FollowDate") %>'></dxe:ASPxDateEdit>
+                                                                <dxe:ASPxDateEdit ID="dxeFollowDate" ClientInstanceName="dxeFollowDate" runat="server" Text='<%# Eval("FollowDate")==null ? "" : Convert.ToDateTime(Eval("FollowDate")).ToString("yyyy-MM-dd") %>'></dxe:ASPxDateEdit>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -587,7 +603,7 @@
                                                                 下次跟进：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxDateEdit ID="dxeNextFollow" ClientInstanceName="dxeNextFollow" runat="server" Text='<%# Eval("NextFollow") %>'></dxe:ASPxDateEdit>
+                                                                <dxe:ASPxDateEdit ID="dxeNextFollow" ClientInstanceName="dxeNextFollow" runat="server" Text='<%# Eval("NextFollow")==null ? "" : Convert.ToDateTime(Eval("NextFollow")).ToString("yyyy-MM-dd") %>'></dxe:ASPxDateEdit>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -595,8 +611,7 @@
                                                                 跟进内容：
                                                             </td>
                                                             <td style="text-align: left;" colspan="3">
-                                                                <asp:TextBox ID="txtFollowMemo" runat="server" TextMode="MultiLine" Rows="4" Style="width: 450px"
-                                                                    Text='<%# Eval("FollowMemo") %>'></asp:TextBox>
+                                                                <asp:TextBox ID="txtFollowMemo" runat="server" TextMode="MultiLine" Rows="4" Style="width: 450px" Text='<%# Eval("FollowMemo") %>'></asp:TextBox>
                                                             </td>
                                                         </tr>
                                                     </table>
