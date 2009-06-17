@@ -425,7 +425,7 @@
                                                                 性别：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxComboBox ID="dxeddlSex" ClientInstanceName="dxeddlSex" runat="server" DropDownStyle="DropDownList" SelectedIndex='<%# GetSexIndex(Eval("Sex"))%>'>
+                                                                <dxe:ASPxComboBox ID="dxeddlSex" ClientInstanceName="dxeddlSex" runat="server" DropDownStyle="DropDownList" SelectedIndex='<%# GetSelectedIndex(Eval("Sex"), "Sex")%>'>
                                                                     <Items>
                                                                         <dxe:ListEditItem Text="男" Value="男" />
                                                                         <dxe:ListEditItem Text="女" Value="女" />
@@ -560,7 +560,7 @@
                                                                 跟进类型：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxComboBox ID="dxeddlFollowType" ClientInstanceName="dxeddlFollowType" runat="server" DropDownStyle="DropDownList" SelectedIndex='<%# GetFollowTypeIndex(Eval("FollowType"))%>'>
+                                                                <dxe:ASPxComboBox ID="dxeddlFollowType" ClientInstanceName="dxeddlFollowType" runat="server" DropDownStyle="DropDownList" SelectedIndex='<%# GetSelectedIndex(Eval("FollowType"), "FollowType")%>'>
                                                                     <Items>
                                                                         <dxe:ListEditItem Text="面谈" Value="面谈" />
                                                                         <dxe:ListEditItem Text="电话" Value="电话" />
@@ -575,7 +575,7 @@
                                                                 跟进程度：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxComboBox ID="dxeddlFollowStage" ClientInstanceName="dxeddlFollowStage" runat="server" DropDownStyle="DropDownList" SelectedIndex='<%# GetFollowStageIndex(Eval("FollowStage"))%>'>
+                                                                <dxe:ASPxComboBox ID="dxeddlFollowStage" ClientInstanceName="dxeddlFollowStage" runat="server" DropDownStyle="DropDownList" SelectedIndex='<%# GetSelectedIndex(Eval("FollowStage"), "FollowStage")%>'>
                                                                     <Items>
                                                                         <dxe:ListEditItem Text="接触" Value="接触" />
                                                                         <dxe:ListEditItem Text="说明" Value="说明" />
@@ -589,7 +589,7 @@
                                                                 跟进时间：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxDateEdit ID="dxeFollowDate" ClientInstanceName="dxeFollowDate" runat="server" Text='<%# Eval("FollowDate")==null ? "" : Convert.ToDateTime(Eval("FollowDate")).ToString("yyyy-MM-dd") %>'></dxe:ASPxDateEdit>
+                                                                <dxe:ASPxDateEdit ID="dxeFollowDate" ClientInstanceName="dxeFollowDate" runat="server" Text='<%# GetDate(Eval("FollowDate"))%>'></dxe:ASPxDateEdit>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -603,7 +603,7 @@
                                                                 下次跟进：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxDateEdit ID="dxeNextFollow" ClientInstanceName="dxeNextFollow" runat="server" Text='<%# Eval("NextFollow")==null ? "" : Convert.ToDateTime(Eval("NextFollow")).ToString("yyyy-MM-dd") %>'></dxe:ASPxDateEdit>
+                                                                <dxe:ASPxDateEdit ID="dxeNextFollow" ClientInstanceName="dxeNextFollow" runat="server" Text='<%# GetDate(Eval("NextFollow"))%>'></dxe:ASPxDateEdit>
                                                             </td>
                                                         </tr>
                                                         <tr>

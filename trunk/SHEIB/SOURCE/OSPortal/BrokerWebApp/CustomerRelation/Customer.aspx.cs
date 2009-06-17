@@ -124,8 +124,6 @@ namespace BrokerWebApp.CustomerRelation
                 #region 销售跟进
                 this.gridCustomerPtItem.DataSource = BO_CustomerPtFollow.GetCustPtFollowByCustID(this._custID);
                 this.gridCustomerPtItem.DataBind();
-
-
                 #endregion
 
             }
@@ -254,6 +252,34 @@ namespace BrokerWebApp.CustomerRelation
                     customer.Save(ModifiedAction.Insert);
 
                     this.Response.Redirect("Customer.aspx");
+                }
+                else
+                {//修改客户
+                    BO_Customer customer = new BO_Customer();
+                    customer.CustID = this._custID;
+                    customer.CustName = this.dxetxtCustName.Text.Trim();
+                    customer.TradeTypeID = this.dxeddlTradeType.SelectedItem.Value.ToString();
+                    customer.Area = this.dxeddlArea.SelectedItem.Value.ToString();
+                    customer.Address = this.dxetxtAddress.Text.Trim();
+                    customer.PostCode = this.dxetxtPostCode.Text.Trim();
+                    customer.CustTypeID = this.radPerson.Checked ? 1 : 0;
+                    customer.DeprtmentID = this.dxeddlDepartment.SelectedItem.Value.ToString();
+                    customer.SalesID = this.dxeddlSalesID.Value.ToString();
+                    customer.CustClassifyID = this.dxeddlCustClassify.SelectedItem.Value.ToString();
+                    customer.Tel = this.dxetxtTel.Text.Trim();
+                    customer.Mobile = this.dxetxtMobile.Text.Trim();
+                    customer.IDNO = this.dxetxtIDNO.Text.Trim();
+                    customer.MainOper = this.dxetxtMainOper.Text.Trim();
+                    customer.AssetSize = this.dxetxtAssetSize.Text.Trim();
+                    customer.MainProduct = this.dxetxtMainProduct.Text.Trim();
+                    customer.Background = this.txtBackground.Text.Trim();
+                    customer.OtherInfo = this.txtOtherInfo.Text.Trim();
+                    customer.Risk = this.txtRisk.Text.Trim();
+                    customer.Remark = this.dxetxtRemark.Text.Trim();
+                    customer.Contact = this.dxetxtContact.Text.Trim();
+                    customer.Save(ModifiedAction.Update);
+
+                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Message", "<script language=\"javascript\">alert(\"完成修改。\");window.close();</script>", false);
                 }
             }
             catch (Exception ex)
@@ -491,52 +517,58 @@ namespace BrokerWebApp.CustomerRelation
         }
 
         /// <summary>
-        /// 取得性别编号
+        /// 取得下拉列表编号
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        protected int GetSexIndex(object obj)
+        protected int GetSelectedIndex(object obj, string fieldName)
         {
-            if (obj == null || obj.ToString() == "男")
-                return 0;
+            if (fieldName == "Sex")
+            {
+                if (obj == null || obj.ToString().Trim() == "" || obj.ToString() == "男")
+                    return 0;
+                else
+                    return 1;
+            }
+            else if (fieldName == "FollowType")
+            {
+                if (obj == null || obj.ToString().Trim() == "" || obj.ToString() == "面谈")
+                    return 0;
+                else if (obj.ToString() == "电话")
+                    return 1;
+                else if (obj.ToString() == "Email")
+                    return 2;
+                else
+                    return 3;
+            }
+            else if (fieldName == "FollowStage")
+            {
+                if (obj == null || obj.ToString().Trim() == "" || obj.ToString() == "接触")
+                    return 0;
+                else if (obj.ToString() == "说明")
+                    return 1;
+                else if (obj.ToString() == "促成")
+                    return 2;
+                else if (obj.ToString() == "签单")
+                    return 3;
+                else
+                    return 4;
+            }
             else
-                return 1;
+                return 0;
         }
 
         /// <summary>
-        /// 取得跟进类型编号
+        /// 取得日期
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        protected int GetFollowTypeIndex(object obj)
+        protected string GetDate(object obj)
         {
-            if (obj == null || obj.ToString() == "面谈")
-                return 0;
-            else if (obj.ToString() == "电话")
-                return 1;
-            else if (obj.ToString() == "Email")
-                return 2;
+            if (obj == null || obj == DBNull.Value)
+                return "";
             else
-                return 3;
-        }
-
-        /// <summary>
-        /// 取得跟进程度编号
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        protected int GetFollowStageIndex(object obj)
-        {
-            if (obj == null || obj.ToString() == "接触")
-                return 0;
-            else if (obj.ToString() == "说明")
-                return 1;
-            else if (obj.ToString() == "促成")
-                return 2;
-            else if (obj.ToString() == "签单")
-                return 3;
-            else
-                return 4;
+                return Convert.ToDateTime(obj).ToString("yyyy-MM-dd");
         }
     }
 }
