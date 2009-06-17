@@ -244,12 +244,12 @@
                                                     </dxwgv:ASPxGridView> 
                                                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
                                                     <asp:ObjectDataSource ID="DataSource" runat="server" 
-                                                        SelectMethod="FetchCustomerList"
+                                                        SelectMethod="GetCustomerList"
                                                         TypeName="BusinessObjects.BO_Customer" 
                                                         EnablePaging="false"                                                                                                                                                       
                                                         >
                                                         <SelectParameters> 
-                                                             <asp:Parameter Name="whereFilter" Type="String" Direction="Input" DefaultValue="" />
+                                                             <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue="" />
                                                         </SelectParameters>
                                                     </asp:ObjectDataSource>                                                   
                                                 </td>
