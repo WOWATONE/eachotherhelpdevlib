@@ -202,30 +202,42 @@
                         <tr>
                             <td style="width:13%;text-align:right;">本次应收保费：</td>
                             <td style="width:17%;text-align:left;">
-                                <asp:TextBox ID="TextBox2" runat="server" Width="100px"></asp:TextBox>
+                                <dxe:ASPxTextBox ID="dxetxtPayFee" ClientInstanceName="dxetxtPayFee" runat="server"
+                                    Width="160px">
+                                </dxe:ASPxTextBox>
                             </td>
                             <td style="width:13%;text-align:right;">本次实收保费：</td>
                             <td style="width:17%;text-align:left;">
-                                <asp:TextBox ID="TextBox1" runat="server" Width="100px"></asp:TextBox>
+                                <dxe:ASPxTextBox ID="dxetxtFee" ClientInstanceName="dxetxtFee" runat="server"
+                                    Width="160px">
+                                </dxe:ASPxTextBox>
                             </td>
                             <td style="width:13%;text-align:right;">金额调整：</td>
                             <td style="width:17%;text-align:left;">
-                                <asp:TextBox ID="txtlocalfee" runat="server" Width="100px"></asp:TextBox>
+                                 <dxe:ASPxTextBox ID="dxetxtFeeAdjust" ClientInstanceName="dxetxtFeeAdjust" runat="server"
+                                    Width="160px">
+                                </dxe:ASPxTextBox>
                             </td>
                             <td></td>                                  
                         </tr> 
                           <tr>
                             <td style="width:13%;text-align:right;">其中，商业险保费：</td>
                             <td style="width:17%;text-align:left;">
-                                <asp:TextBox ID="TextBox11" runat="server" Width="100px"></asp:TextBox>
+                                <dxe:ASPxTextBox ID="dxetxtCiPremium" ClientInstanceName="dxetxtCiPremium" runat="server"
+                                    Width="160px">
+                                </dxe:ASPxTextBox>
                             </td>
                             <td style="width:13%;text-align:right;">交强险保费：</td>
                             <td style="width:17%;text-align:left;">
-                                <asp:TextBox ID="TextBox12" runat="server" Width="100px"></asp:TextBox>
+                                <dxe:ASPxTextBox ID="dxetxtAciPremium" ClientInstanceName="dxetxtAciPremium" runat="server"
+                                    Width="160px">
+                                </dxe:ASPxTextBox>
                             </td>
                             <td style="width:13%;text-align:right;">车船税:</td>
                             <td style="width:17%;text-align:left;">
-                                <asp:TextBox ID="TextBox13" runat="server" Width="100px"></asp:TextBox>
+                                <dxe:ASPxTextBox ID="dxetxtCstPremium" ClientInstanceName="dxetxtCstPremium" runat="server"
+                                    Width="160px">
+                                </dxe:ASPxTextBox>
                             </td>
                             <td></td>                                  
                         </tr>                        
@@ -243,7 +255,9 @@
                         <tr>                            
                             <td style="text-align:right;">备注：</td>
                             <td style="text-align:left;" colspan="5">
-                                <asp:TextBox ID="TextBox3" runat="server" Width="600px"></asp:TextBox>
+                                 <dxe:ASPxTextBox ID="dxetxtRemark" ClientInstanceName="dxetxtRemark" runat="server"
+                                    Width="160px">
+                                </dxe:ASPxTextBox>
                             </td>
                             <td></td>                                  
                         </tr>     

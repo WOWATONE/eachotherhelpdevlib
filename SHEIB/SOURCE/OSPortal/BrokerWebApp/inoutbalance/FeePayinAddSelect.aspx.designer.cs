@@ -59,85 +59,85 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.Panel npSearchDetail;
         
         /// <summary>
-        /// txtPolicyNo 控件。
+        /// dxetxtNoticeNo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPolicyNo;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtNoticeNo;
         
         /// <summary>
-        /// ddlDeptId 控件。
+        /// dxeddlDeptId 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDeptId;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlDeptId;
         
         /// <summary>
-        /// ddlSaleID 控件。
+        /// dxeddlSalesID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSaleID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesID;
         
         /// <summary>
-        /// TextBox1 控件。
+        /// dxetxtPolicyID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyID;
         
         /// <summary>
-        /// TextBox2 控件。
+        /// dxetxtPolicyNo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyNo;
         
         /// <summary>
-        /// DropDownList3 控件。
+        /// dxeddlPolicyType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlPolicyType;
         
         /// <summary>
-        /// txtCustomerID 控件。
+        /// dxetxtCustomerID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustomerID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCustomerID;
         
         /// <summary>
-        /// ddlCompany 控件。
+        /// dxeddlGatheringType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCompany;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlGatheringType;
         
         /// <summary>
-        /// txtProdTypeID 控件。
+        /// dxetxtProdTypeID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProdTypeID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProdTypeID;
         
         /// <summary>
         /// imgpeoplesearch 控件。

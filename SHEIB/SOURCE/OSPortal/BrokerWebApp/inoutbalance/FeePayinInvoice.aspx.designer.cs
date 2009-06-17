@@ -86,22 +86,22 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// txtPolicyNo 控件。
+        /// dxetxtPolicyNo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPolicyNo;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyNo;
         
         /// <summary>
-        /// ddlAccountTypeID 控件。
+        /// dxeddlGatheringType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAccountTypeID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlGatheringType;
         
         /// <summary>
         /// DropDownList1 控件。

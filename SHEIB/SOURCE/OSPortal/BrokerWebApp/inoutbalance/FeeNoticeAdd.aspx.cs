@@ -51,15 +51,15 @@ namespace BrokerWebApp.inoutbalance
             DataSet list;
 
             //收费类型
-            list = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.GatheringType.ToString());
-            if (list.Tables[0] != null)
-            {
-                foreach (DataRow row in list.Tables[0].Rows)
-                {
-                    this.ddlFeeType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
-                }
-            }
-            ddlFeeType.SelectedIndex = 0;
+            //list = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.GatheringType.ToString());
+            //if (list.Tables[0] != null)
+            //{
+            //    foreach (DataRow row in list.Tables[0].Rows)
+            //    {
+            //        this.ddlFeeType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+            //    }
+            //}
+            //ddlFeeType.SelectedIndex = 0;
             deNoticeDate.Date = DateTime.Today;
 
             gridPolicyItem.DataSource = BO_Notice.GetNoticePolicyList("TZSBH");
