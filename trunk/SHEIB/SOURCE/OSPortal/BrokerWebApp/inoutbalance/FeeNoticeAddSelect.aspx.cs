@@ -16,15 +16,11 @@ namespace BrokerWebApp.inoutbalance
 
         #region Variables
 
-        private DataTable _dtGrid;
-
         #endregion Variables
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             if (!IsPostBack && !IsCallback)
             {
                 Initialization();
@@ -89,7 +85,6 @@ namespace BrokerWebApp.inoutbalance
                 lsWhere = lsWhere + " and (convert(char(10), A.EndDate,21)) >='" + lsStartDate + "'";
                 lsWhere = lsWhere + " and (convert(char(10), A.EndDate,21)) <='" + lsEndDate + "'";
             }
-
 
             this.gridSearchResult.DataSource = BO_Notice.GetCustomerFeeSelectList(lsWhere);
             this.gridSearchResult.DataBind();

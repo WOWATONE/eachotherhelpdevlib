@@ -31,7 +31,8 @@ namespace BusinessObjects
             Area,
 	        PolicyStatus,
             PolicyType,
-            AuditStatus
+            AuditStatus,
+            ProcessFeeType
         }
 
         public enum FieldList

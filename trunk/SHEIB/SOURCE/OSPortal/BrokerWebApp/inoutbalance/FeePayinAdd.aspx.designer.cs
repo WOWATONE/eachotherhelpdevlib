@@ -122,85 +122,85 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.Panel npOtherPolicyItemDetail;
         
         /// <summary>
-        /// ddlAccountType 控件。
+        /// dxeddlGatheringType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAccountType;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlGatheringType;
         
         /// <summary>
-        /// ddlFeeType 控件。
+        /// dxeddlProcessFeeType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFeeType;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlProcessFeeType;
         
         /// <summary>
-        /// TextBox1 控件。
+        /// dxetxtProcessFee 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProcessFee;
         
         /// <summary>
-        /// txtchange 控件。
+        /// dxetxtPayinFeeNeed 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtchange;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPayinFeeNeed;
         
         /// <summary>
-        /// txtlocalfee 控件。
+        /// dxetxtPayinFee 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtlocalfee;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPayinFee;
         
         /// <summary>
-        /// txtJInE 控件。
+        /// dxetxtFeeAdjust 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtJInE;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtFeeAdjust;
         
         /// <summary>
-        /// TextBox11 控件。
+        /// dxetxtCiPremium 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox11;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCiPremium;
         
         /// <summary>
-        /// TextBox12 控件。
+        /// dxetxtAciPremium 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox12;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtAciPremium;
         
         /// <summary>
-        /// TextBox13 控件。
+        /// dxetxtCstPremium 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCstPremium;
         
         /// <summary>
         /// deGotDate 控件。
@@ -212,22 +212,22 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deGotDate;
         
         /// <summary>
-        /// DropDownList1 控件。
+        /// dxeddlCarrier 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCarrier;
         
         /// <summary>
-        /// DropDownList2 控件。
+        /// dxeddlBranch 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlBranch;
         
         /// <summary>
         /// txtMemo 控件。

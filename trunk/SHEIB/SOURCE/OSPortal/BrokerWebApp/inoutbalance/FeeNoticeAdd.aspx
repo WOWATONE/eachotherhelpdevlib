@@ -64,7 +64,7 @@
                 收费方式：
             </td>
             <td style="width: 88%; text-align: left;">
-                <dxe:ASPxComboBox ID="ddlFeeType" ClientInstanceName="ddlFeeType" runat="server"
+                <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType" runat="server"
                     Width="180px" DropDownStyle="DropDownList">
                 </dxe:ASPxComboBox>
             </td>

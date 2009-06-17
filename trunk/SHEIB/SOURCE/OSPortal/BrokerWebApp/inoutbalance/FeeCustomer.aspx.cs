@@ -24,6 +24,7 @@ namespace OSPortalWebApp.inoutbalance
             if (!IsPostBack && !IsCallback)
             {
                 Initialization();
+                dxeddlAuditStauts.SelectedIndex = 0;
                 BindGrid();
             }
 
@@ -132,7 +133,7 @@ namespace OSPortalWebApp.inoutbalance
 
             string lsStartDate = dxeStartFeeDate.Date.ToString("yyyy-MM-dd");
             string lsEndDate = dxeEndFeeDate.Date.ToString("yyyy-MM-dd");
-            if ((lsStartDate != "") && (lsEndDate != ""))
+            if ((dxeStartFeeDate.Text.Trim() != "") && (dxeStartFeeDate.Text.Trim() != ""))
             {
                 lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) >='" + lsStartDate + "'";
                 lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) <='" + lsEndDate + "'";
