@@ -630,6 +630,15 @@ namespace BrokerWebApp.otherinsurance
             obj = (BusinessObjects.Policy.BO_Policy)serializer.ReadObject(ms);
             ms.Close();
 
+            if (String.IsNullOrEmpty(obj.PolicyID))
+            {
+                obj.Save(ModifiedAction.Insert);
+            }
+            else
+            {
+                obj.Save(ModifiedAction.Update);
+            }
+
         }
 
 
