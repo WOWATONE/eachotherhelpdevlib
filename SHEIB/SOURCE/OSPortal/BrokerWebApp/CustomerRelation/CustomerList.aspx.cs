@@ -90,11 +90,6 @@ namespace BrokerWebApp.CustomerRelation
             this.BindGrid();
         }
 
-        protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
-        {
-            //  
-        }
-
         protected void gridSearchResult_CustomCallBack(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
             //                       
