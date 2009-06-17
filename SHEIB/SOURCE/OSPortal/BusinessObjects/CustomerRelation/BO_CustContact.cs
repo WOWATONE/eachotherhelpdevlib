@@ -138,7 +138,7 @@ namespace BusinessObjects
         public static DataTable GetCustContactByCustID(string custID)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("Select ContactID, ContactName, Position, Sex, Tel, Fax, MobilePhone, Email, Interest, Remark ");
+            sb.Append("Select ContactID, ContactName, Position, isnull(Sex,'') as Sex, Tel, Fax, MobilePhone, Email, Interest, Remark ");
             sb.Append("From CustContact (nolock) ");
             sb.Append("Where CustID=@CustID ");
             sb.Append("Order By ContactID");

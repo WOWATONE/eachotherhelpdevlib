@@ -135,7 +135,7 @@ namespace BusinessObjects
         public static DataTable GetCustPtFollowByCustID(string custID)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("Select FollowID, FollowType, FollowStage, FollowDate, FollowMemo, FollowPerson, NextFollow ");
+            sb.Append("Select FollowID, isnull(FollowType, '') as FollowType, isnull(FollowStage, '') as FollowStage, FollowDate, FollowMemo, FollowPerson, NextFollow ");
             sb.Append("From CustomerPtFollow (nolock) ");
             sb.Append("Where CustID=@CustID ");
             sb.Append("Order By FollowID");

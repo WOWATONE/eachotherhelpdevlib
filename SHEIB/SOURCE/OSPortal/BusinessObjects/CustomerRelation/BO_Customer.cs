@@ -137,7 +137,7 @@ namespace BusinessObjects
             }
             else if (action == ModifiedAction.Update)
             {
-                //update(customer);
+                update();
             }
         }
 
@@ -179,6 +179,54 @@ namespace BusinessObjects
             sb.Append("@Email, @Tel, @Fax, @Mobile, @IDNO, @BankName, @BankAccount, @Hobby, @MainOper, @AssetSize, @MainProduct, @AssetDistribute, @UnitCharacter, @Background, ");
             sb.Append("@OtherInfo, @Risk, @InsureStatus, @Remark, @Contact");
             sb.Append(" )");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, this.CustID);
+            _db.AddInParameter(dbCommand, "@CustName", DbType.AnsiString, this.CustName);
+            _db.AddInParameter(dbCommand, "@TradeTypeID", DbType.AnsiString, this.TradeTypeID);
+            _db.AddInParameter(dbCommand, "@Birthday", DbType.DateTime, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@Area", DbType.AnsiString, this.Area);
+            _db.AddInParameter(dbCommand, "@Address", DbType.AnsiString, this.Address);
+            _db.AddInParameter(dbCommand, "@PostCode", DbType.AnsiString, this.PostCode);
+            _db.AddInParameter(dbCommand, "@CustTypeID", DbType.Int32, this.CustTypeID);
+            _db.AddInParameter(dbCommand, "@DeprtmentID", DbType.AnsiString, this.DeprtmentID);
+            _db.AddInParameter(dbCommand, "@SalesID", DbType.AnsiString, this.SalesID);
+            _db.AddInParameter(dbCommand, "@CustClassifyID", DbType.AnsiString, this.CustClassifyID);
+            _db.AddInParameter(dbCommand, "@Email", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@Tel", DbType.AnsiString, this.Tel);
+            _db.AddInParameter(dbCommand, "@Fax", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@Mobile", DbType.AnsiString, this.Mobile);
+            _db.AddInParameter(dbCommand, "@IDNO", DbType.AnsiString, this.IDNO);
+            _db.AddInParameter(dbCommand, "@BankName", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@BankAccount", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@Hobby", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@MainOper", DbType.AnsiString, this.MainOper);
+            _db.AddInParameter(dbCommand, "@AssetSize", DbType.AnsiString, this.AssetSize);
+            _db.AddInParameter(dbCommand, "@MainProduct", DbType.AnsiString, this.MainProduct);
+            _db.AddInParameter(dbCommand, "@AssetDistribute", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@UnitCharacter", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@Background", DbType.AnsiString, this.Background);
+            _db.AddInParameter(dbCommand, "@OtherInfo", DbType.AnsiString, this.OtherInfo);
+            _db.AddInParameter(dbCommand, "@Risk", DbType.AnsiString, this.Risk);
+            _db.AddInParameter(dbCommand, "@InsureStatus", DbType.AnsiString, DBNull.Value);
+            _db.AddInParameter(dbCommand, "@Remark", DbType.AnsiString, this.Remark);
+            _db.AddInParameter(dbCommand, "@Contact", DbType.AnsiString, this.Contact);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 修改客户信息
+        /// </summary>
+        private void update()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Update Customer ");
+            sb.Append("Set CustName=@CustName, TradeTypeID=@TradeTypeID, Birthday=@Birthday, Area=@Area, Address=@Address, PostCode=@PostCode, CustTypeID=@CustTypeID, DeprtmentID=@DeprtmentID, SalesID=@SalesID, CustClassifyID=@CustClassifyID, ");
+            sb.Append("Email=@Email, Tel=@Tel, Fax=@Fax, Mobile=@Mobile, IDNO=@IDNO, BankName=@BankName, BankAccount=@BankAccount, Hobby=@Hobby,MainOper=@MainOper, AssetSize=@AssetSize, MainProduct=@MainProduct, AssetDistribute=@AssetDistribute, UnitCharacter=@UnitCharacter, Background=@Background, ");
+            sb.Append("OtherInfo=@OtherInfo, Risk=@Risk, InsureStatus=@InsureStatus, Remark=@Remark, Contact=@Contact ");
+            sb.Append("Where CustID=@CustID");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
