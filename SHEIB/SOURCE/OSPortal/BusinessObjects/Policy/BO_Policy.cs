@@ -770,11 +770,18 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@SourceTypeID", DbType.String, this.SourceTypeID);
             _db.AddInParameter(dbCommand, "@Special", DbType.String, this.Special);
             _db.AddInParameter(dbCommand, "@Remark", DbType.String, this.Remark);
-            _db.AddInParameter(dbCommand, "@AuditTime", DbType.String, this.AuditTime);
+
+            if (this.AuditTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
+
+            
+
             _db.AddInParameter(dbCommand, "@AuditPerson", DbType.String, this.AuditPerson);
 
             if (this.CreateTime == DateTime.MinValue)
-                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, null);
+                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, DateTime.Now);
             else
                 _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
 
@@ -806,7 +813,12 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@EngineNo", DbType.String, this.EngineNo);
             _db.AddInParameter(dbCommand, "@Capacity", DbType.String, this.Capacity);
             _db.AddInParameter(dbCommand, "@UseCharacter", DbType.String, this.UseCharacter);
-            _db.AddInParameter(dbCommand, "@RegisterDate", DbType.DateTime, this.RegisterDate);
+            
+            if (this.RegisterDate == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@RegisterDate", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@RegisterDate", DbType.DateTime, this.RegisterDate);
+
             _db.AddInParameter(dbCommand, "@CarValue", DbType.String, this.CarValue);
             _db.AddInParameter(dbCommand, "@CarUser", DbType.String, this.CarUser);
 
@@ -883,7 +895,13 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@SourceTypeID", DbType.String, this.SourceTypeID);
             _db.AddInParameter(dbCommand, "@Special", DbType.String, this.Special);
             _db.AddInParameter(dbCommand, "@Remark", DbType.String, this.Remark);
-            _db.AddInParameter(dbCommand, "@AuditTime", DbType.String, this.AuditTime);
+
+            if (this.AuditTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
+
+            
             _db.AddInParameter(dbCommand, "@AuditPerson", DbType.String, this.AuditPerson);
 
             if (this.CreateTime == DateTime.MinValue)
@@ -894,7 +912,7 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@CreatePerson", DbType.String, this.CreatePerson);
 
             if (this.ModifyTime == DateTime.MinValue)
-                _db.AddInParameter(dbCommand, "@ModifyTime", DbType.DateTime, null);
+                _db.AddInParameter(dbCommand, "@ModifyTime", DbType.DateTime, DateTime.Now);
             else
                 _db.AddInParameter(dbCommand, "@ModifyTime", DbType.DateTime, this.ModifyTime);
 
@@ -919,12 +937,26 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@EngineNo", DbType.String, this.EngineNo);
             _db.AddInParameter(dbCommand, "@Capacity", DbType.String, this.Capacity);
             _db.AddInParameter(dbCommand, "@UseCharacter", DbType.String, this.UseCharacter);
-            _db.AddInParameter(dbCommand, "@RegisterDate", DbType.DateTime, this.RegisterDate);
+
+            if (this.RegisterDate == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@RegisterDate", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@RegisterDate", DbType.DateTime, this.RegisterDate);
+
+            
             _db.AddInParameter(dbCommand, "@CarValue", DbType.String, this.CarValue);
             _db.AddInParameter(dbCommand, "@CarUser", DbType.String, this.CarUser);
 
+            try
+            {
+                _db.ExecuteNonQuery(dbCommand);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
-            _db.ExecuteNonQuery(dbCommand);
+            
 
         }
 

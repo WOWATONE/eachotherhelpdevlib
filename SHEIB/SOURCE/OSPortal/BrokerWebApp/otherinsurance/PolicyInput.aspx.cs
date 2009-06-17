@@ -60,8 +60,8 @@ namespace BrokerWebApp.otherinsurance
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            savePolicy(e.Parameter);
-            e.Result = "complete";
+            String thePolicyID =  savePolicy(e.Parameter);
+            e.Result = thePolicyID;
         }
 
 
@@ -619,7 +619,7 @@ namespace BrokerWebApp.otherinsurance
         #endregion Upload File  Events
 
 
-        private void savePolicy(String parameter)
+        private string savePolicy(String parameter)
         {
             String json = parameter;
 
@@ -632,12 +632,15 @@ namespace BrokerWebApp.otherinsurance
 
             if (String.IsNullOrEmpty(obj.PolicyID))
             {
+                obj.PolicyID = TranUtils.GetPolicyID();
                 obj.Save(ModifiedAction.Insert);
             }
             else
             {
                 obj.Save(ModifiedAction.Update);
             }
+
+            return obj.PolicyID;
 
         }
 
