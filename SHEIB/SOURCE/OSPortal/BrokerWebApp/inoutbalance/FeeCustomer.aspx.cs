@@ -146,6 +146,7 @@ namespace OSPortalWebApp.inoutbalance
 
             this.gridSearchResult.DataSource = BO_FeeCustomer.GetCustomerFeeList(lsWhere);
             this.gridSearchResult.DataBind();
+            //取应收保费
 
         }
 

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using BusinessObjects;
 
 namespace OSPortalWebApp.inoutbalance
 {
@@ -17,13 +18,11 @@ namespace OSPortalWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            GetPolicyItemDataForGrid();
-
-            this.gridPolicyItem.DataSource = _dtGrid;
 
             if (!IsPostBack && !IsCallback)
-                this.gridPolicyItem.DataBind();
+            {      
+                BindGrid();
+            }
         }
 
 
@@ -64,30 +63,17 @@ namespace OSPortalWebApp.inoutbalance
             this.gridPolicyItem.DataBind();
         }
 
-        private void GetPolicyItemDataForGrid()
+
+        private void BindGrid()
         {
-            _dtGrid = new DataTable();
-            _dtGrid.PrimaryKey = new DataColumn[] { 
-            _dtGrid.Columns.Add("PolicyNo", typeof(Int32)) };            
+            string sVocherID = "";
 
-            _dtGrid.Columns.Add("StandardFeeBase", typeof(Double));
-            _dtGrid.Columns.Add("GotFeeBase", typeof(Double));
-            _dtGrid.Columns.Add("GettingFeeBase", typeof(Double));
-
-            _dtGrid.Columns.Add("CustomerID", typeof(String));
-            _dtGrid.Columns.Add("ProdTypeID", typeof(String));
-            _dtGrid.Columns.Add("CarrierId", typeof(String));
-            _dtGrid.Columns.Add("BranchId", typeof(String));
-
-
-            _dtGrid.Rows.Add(new object[] { "0001", 1000, 1000, 1000, "王怡", "寿险", "平安", "平安上海" });
-
-
-            _dtGrid.Rows.Add(new object[] { "0002", 2000, 2000, 2000, "王怡", "寿险", "平安", "平安上海" });
-
+            sVocherID = "0903052101";
+            this.gridPolicyItem.DataSource = BO_FeeCustomer.GetFeeCustomerAdd(sVocherID);
+            this.gridPolicyItem.DataBind();
 
         }
-        
+
 
     }
 }
