@@ -28,7 +28,7 @@
             var pt = dxetxtStage.GetValueString();
             var bf = dxetxtBeneficiary.GetValueString();
             var cid = getCustomerID();
-            if (isEmpty(pid) || isEmpty(pt) || isEmpty(bf) || isEmpty(cid)) {
+            if (isEmpty(pt) || isEmpty(bf) || isEmpty(cid)) {
                 return true;
             }
             else {
@@ -241,7 +241,14 @@
             Remark, SalesId, SignDate, SourceTypeID, Special,
             StartDate, UseCharacter, VolumnNo);
 
-            return JSON.stringify(plc);
+            //deserialize JSON string, make a JSON object
+            //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
+
+            //serialize a JOSN object，make a JSON string.
+            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
+
+            return jsonStringClient;
+            
         }
 
 
@@ -256,7 +263,11 @@
         function saveCallbackComplete(s, e) {
             //do nothing;
             policyBaseCompleteEnable();
-            
+            //
+            var pid = dxetxtPolicyID.GetValueString();
+            if (isEmpty(pid)) {
+                dxetxtPolicyID.SetValue(e.result);
+            }            
         }
 
         function btnAddClick(s, e) {
@@ -680,9 +691,7 @@
                                                 <td style="text-align: right;">投保单号：</td>
                                                 <td style="text-align: left;">
                                                     <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="125px" ReadOnly="true">
-                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项" CausesValidation="true" ValidationGroup="BaseGroup">
-                                                            <RequiredField IsRequired="true" ErrorText="必需项" />
-                                                        </ValidationSettings>
+                                                        
                                                     </dxe:ASPxTextBox> 
                                                     <input type="hidden" id="plcid" runat="server" />                                                   
                                                 </td>
