@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using BusinessObjects;
+using System.Drawing;
 
 namespace OSPortalWebApp.inoutbalance
 {
@@ -20,11 +21,29 @@ namespace OSPortalWebApp.inoutbalance
         {
 
             if (!IsPostBack && !IsCallback)
-            {      
+            {
+                init();
                 BindGrid();
             }
         }
 
+        private void init()
+        {
+            dxetxtPayFee.BackColor = Color.LightGray;
+            dxetxtFeeAdjust.BackColor = Color.LightGray;
+            dxetxtFee.BackColor = Color.LightGray;
+            dxetxtCiPremium.BackColor = Color.LightGray;
+            dxetxtAciPremium.BackColor = Color.LightGray;
+            dxetxtCstPremium.BackColor = Color.LightGray;
+
+            dxetxtPayFee.ReadOnly = true;
+            dxetxtFeeAdjust.ReadOnly = true;
+            dxetxtFee.ReadOnly = true;
+            dxetxtCiPremium.ReadOnly = true;
+            dxetxtAciPremium.ReadOnly = true;
+            dxetxtCstPremium.ReadOnly = true;
+
+        }
 
         protected void gridPolicyItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
@@ -61,16 +80,25 @@ namespace OSPortalWebApp.inoutbalance
         protected void gridPolicyItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
             this.gridPolicyItem.DataBind();
+            
         }
 
 
         private void BindGrid()
         {
             string sVocherID = "";
-
             sVocherID = "0903052101";
-            this.gridPolicyItem.DataSource = BO_FeeCustomer.GetFeeCustomerAdd(sVocherID);
+            DataTable dt =  BO_FeeCustomer.GetFeeCustomerAdd(sVocherID).Tables[0];
+            this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
+
+            //取应收.
+            dxetxtPayFee.Text = dt.Compute("Sum(PayFeeBase)", "").ToString();
+            dxetxtFeeAdjust.Text = dt.Compute("Sum(FeeAdjust)", "").ToString();
+            dxetxtFee.Text = dt.Compute("Sum(Fee)", "").ToString();
+            dxetxtCiPremium.Text = dt.Compute("Sum(CiPremium)", "").ToString();
+            dxetxtAciPremium.Text = dt.Compute("Sum(AciPremium)", "").ToString();
+            dxetxtCstPremium.Text = dt.Compute("Sum(CstPremium)", "").ToString();
 
         }
 

@@ -143,11 +143,10 @@ namespace OSPortalWebApp.inoutbalance
             //{
             //    lsWhere = lsWhere + " and a.AuditStatus ='" + dxeddlAuditStauts.SelectedItem.Value.ToString() + "'";
             //}
-
-            this.gridSearchResult.DataSource = BO_FeeCustomer.GetCustomerFeeList(lsWhere);
+            DataTable dt = BO_FeeCustomer.GetCustomerFeeList(lsWhere).Tables[0];
+            this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
-            //取应收保费
-
+            
         }
 
 
