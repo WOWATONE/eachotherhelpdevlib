@@ -319,11 +319,23 @@ namespace BrokerWebApp.otherinsurance
 
         protected void gridPolicyItem_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
+            String theWhere="";
+            if (e.Keys.Count > 0)
+            {
+                theWhere = " AND ItemID !='" + e.Keys[0].ToString() + "'";
+                theWhere = theWhere + " AND PolicyId = '" + this.dxetxtPolicyID.Text + "'";
+            }
+            else
+            {
+                theWhere = " AND PolicyId = '" + this.dxetxtPolicyID.Text + "'";
+            }
             String appendDes = "必需项";
             HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
-
+                        
             ASPxComboBox dxecbGridPolicyItemProdID = tblEditorTemplate.FindControl("dxecbGridPolicyItemProdID") as ASPxComboBox;
-                       
+
+            theWhere = theWhere + " AND PolicyId = '" + dxecbGridPolicyItemProdID.SelectedItem.Value.ToString() + "'";
+
             if (dxecbGridPolicyItemProdID.SelectedItem == null)
             {
                 e.Errors[this.gridPolicyItem.Columns[1]] = "必需项";
@@ -342,9 +354,7 @@ namespace BrokerWebApp.otherinsurance
             }
 
 
-            Boolean exists = BusinessObjects.Policy.BO_PolicyItem.CheckPolicyProdtExist(
-                this.dxetxtPolicyID.Text,
-                dxecbGridPolicyItemProdID.SelectedItem.Value.ToString());
+            Boolean exists = BusinessObjects.Policy.BO_PolicyItem.CheckPolicyProdtExist(theWhere);
             if (exists)
             {
                 e.Errors[this.gridCarrier.Columns[2]] = "已存在";
@@ -613,6 +623,17 @@ namespace BrokerWebApp.otherinsurance
 
         protected void gridCarrier_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
+            String theWhere = "";
+            if (e.Keys.Count > 0)
+            {
+                theWhere = " AND A.PolicyCarrierID !='" + e.Keys[0].ToString() + "'";
+                theWhere = theWhere + " AND A.PolicyID = '" + this.dxetxtPolicyID.Text + "'";
+            }
+            else
+            {
+                theWhere = " AND A.PolicyID = '" + this.dxetxtPolicyID.Text + "'";
+            }
+
             String appendDes = "必需项";
             HtmlTable tblEditorTemplate = this.gridCarrier.FindEditFormTemplateControl("tblgridCarrierEditorTemplate") as HtmlTable;
 
@@ -651,11 +672,12 @@ namespace BrokerWebApp.otherinsurance
                     //do nothing;
                 }
             }
-                        
-            Boolean exists = BusinessObjects.Policy.BO_PolicyCarrier.CheckPolicyCarrierBranchExist(
-                this.dxetxtPolicyID.Text, 
-                dxecbGridCarrierCarrierID.SelectedItem.Value.ToString(),
-                dxecbGridCarrierBranchID.SelectedItem.Value.ToString());
+
+            theWhere = theWhere + " AND A.CarrierID = '" + dxecbGridCarrierCarrierID.SelectedItem.Value.ToString() + "'";
+            theWhere = theWhere + " AND A.BranchID = '" + dxecbGridCarrierBranchID.SelectedItem.Value.ToString() + "'";
+
+            Boolean exists = BusinessObjects.Policy.BO_PolicyCarrier.CheckPolicyCarrierBranchExist(theWhere);
+            
             if (exists)
             {
                 e.Errors[this.gridCarrier.Columns[2]] = "已存在";

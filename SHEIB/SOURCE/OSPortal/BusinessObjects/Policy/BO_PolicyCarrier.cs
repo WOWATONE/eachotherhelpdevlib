@@ -177,8 +177,7 @@ namespace BusinessObjects.Policy
             return list;
         }
 
-        public static Boolean CheckPolicyCarrierBranchExist(String policyID, 
-            String carrierID, String branchID)
+        public static Boolean CheckPolicyCarrierBranchExist(String where)
         {
             
             StringBuilder sb = new StringBuilder();
@@ -187,15 +186,11 @@ namespace BusinessObjects.Policy
             sb.Append(" FROM PolicyCarrier A ");
             sb.Append(" LEFT JOIN Carrier B ON A.CarrierID = B.CarrierID ");
             sb.Append(" LEFT JOIN Branch C ON A.BranchID = C.BranchID ");
-            sb.Append(" WHERE A.PolicyID = @PolicyID ");
-            sb.Append(" AND A.CarrierID = @CarrierID ");
-            sb.Append(" AND A.BranchID = @BranchID ");
+            sb.Append(" WHERE 1=1 ");
+            sb.Append(where);
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-            _db.AddInParameter(dbCommand, "@PolicyID", DbType.String, policyID);
-            _db.AddInParameter(dbCommand, "@CarrierID", DbType.String, carrierID);
-            _db.AddInParameter(dbCommand, "@BranchID", DbType.String, branchID);
-
+            
             Int32 count = Convert.ToInt32(_db.ExecuteScalar(dbCommand));
             if (count > 0)
                 return true ;

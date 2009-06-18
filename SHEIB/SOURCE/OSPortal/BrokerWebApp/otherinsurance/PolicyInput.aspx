@@ -611,7 +611,19 @@
                 return true;
             } else {
                 return false;
-            }          
+            }
+        }
+
+        function isDecimal(str) {
+            if (isEmpty(str)) {
+                return false;
+            }
+            else {
+                if (/[^d.]/i.test(str)) {
+                    return true;
+                }
+                return false;
+            }
         }
 
         function dxeStartDate_DateChanged(s, e) {
@@ -639,6 +651,34 @@
 
         function gridPolicyItem_EndCallback(s,e) {
             //sum
+            //debugger;
+            
+            var itemVal;
+            var sumCoverageVal = 0;
+            var sumPremiumVal = 0;
+            var sumProcessVal = 0;
+            for (i = 0; i < gridPolicyItem.pageRowCount; i++) {
+                //Coverage
+                itemVal = gridPolicyItem.GetDataRow(i).cells[2].innerText;
+                if (isDecimal(itemVal)) {
+                    sumCoverageVal = parseFloat(sumCoverageVal) + parseFloat(itemVal);
+                }
+                //Premium
+                itemVal = gridPolicyItem.GetDataRow(i).cells[3].innerText;
+                if (isDecimal(itemVal)) {
+                    sumPremiumVal = parseFloat(sumPremiumVal) + parseFloat(itemVal);
+                }
+                //ProcRate
+                itemVal = gridPolicyItem.GetDataRow(i).cells[4].innerText;
+                //Process
+                itemVal = gridPolicyItem.GetDataRow(i).cells[5].innerText;
+                if (isDecimal(itemVal)) {
+                    sumProcessVal = parseFloat(sumProcessVal) + parseFloat(itemVal);
+                }
+            }
+            dxetxtCoverage.SetValue(sumCoverageVal);
+            dxetxtPremium.SetValue(sumPremiumVal);
+            dxetxtProcess.SetValue(sumProcessVal);
         }
         
         
