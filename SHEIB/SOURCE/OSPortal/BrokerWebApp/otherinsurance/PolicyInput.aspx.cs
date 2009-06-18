@@ -28,6 +28,7 @@ namespace BrokerWebApp.otherinsurance
         private const int ThumbnailSize = 100;
 
         private Boolean gridCarrierStartEdit = false;
+        private Boolean gridPolicyItemStartEdit = false;
 
         //enctype="multipart/form-data">
 
@@ -96,44 +97,115 @@ namespace BrokerWebApp.otherinsurance
         protected void gridPolicyItem_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
         {
             HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
-            //Page.IsCallback;
-            //Page.IsPostBack;
-            //Page.IsPostBackEventControlRegistered;
-            ASPxComboBox dxecbGridProdID = tblEditorTemplate.FindControl("dxecbGridProdID") as ASPxComboBox;
-            //this.gridPolicyItem.Selection.SelectRow
-            //string theProdID = decbGridProdID.SelectedItem.Value.ToString();//ddlGridProdID.SelectedValue;
 
+            ASPxComboBox dxecbGridPolicyItemProdID = tblEditorTemplate.FindControl("dxecbGridPolicyItemProdID") as ASPxComboBox;
+            String prouctType = this.ptid.Value;
+            String sqlfilter = " AND A.ProdTypeID ='" + prouctType + "' ";
+            dxecbGridPolicyItemProdID.DataSource = BusinessObjects.SchemaSetting.BO_Product.FetchList(sqlfilter);
+            dxecbGridPolicyItemProdID.TextField = "ProdName";
+            dxecbGridPolicyItemProdID.ValueField = "ProdID";
+            dxecbGridPolicyItemProdID.DataBind();
+
+            ASPxTextBox dxetxtPolicyItemCoverage = tblEditorTemplate.FindControl("dxetxtPolicyItemCoverage") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemPremium = tblEditorTemplate.FindControl("dxetxtPolicyItemPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemProcRate = tblEditorTemplate.FindControl("dxetxtPolicyItemProcRate") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemProcess = tblEditorTemplate.FindControl("dxetxtPolicyItemProcess") as ASPxTextBox;
+            
+
+            Int32 editIndex = this.gridPolicyItem.EditingRowVisibleIndex;
+            if (editIndex > -1)
+            {
+                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "ItemID", "PolicyId", "ProdID", "Coverage", "Premium", "ProcRate", "Process" });
+                object[] theValueList = theValues as object[];
+
+                //String itemID = theValueList[1].ToString();
+                //String policyId = theValueList[1].ToString();
+                String prodID = theValueList[2].ToString();
+                String coverage = theValueList[3].ToString();
+                String premium = theValueList[4].ToString();
+                String procRate = theValueList[5].ToString();
+                String process = theValueList[6].ToString();
+                
+
+                ListEditItem theselected;
+                if (this.gridPolicyItemStartEdit)
+                {
+                    theselected = dxecbGridPolicyItemProdID.Items.FindByValue(prodID);
+                    if (theselected != null)
+                    {
+                        dxecbGridPolicyItemProdID.SelectedItem = theselected;
+                    }
+
+
+                    dxetxtPolicyItemCoverage.Text = coverage;
+                    dxetxtPolicyItemPremium.Text = premium;
+                    dxetxtPolicyItemProcRate.Text = procRate;
+                    dxetxtPolicyItemProcess.Text = process;
+
+                }
+                
+            }
+            
+        }
+
+        protected void gridPolicyItem_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
+        {
+            this.gridPolicyItemStartEdit = true;
         }
 
         protected void gridPolicyItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            //DataTable dt = _dtGridPolicyItem;
-            //DataRow row = dt.Rows.Find(e.Keys["ItemID"]);
-            ////
-            //HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
+            String theKey = e.Keys[0].ToString();
+            HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
 
-            //TextBox txtGridItemID = tblEditorTemplate.FindControl("txtGridItemID") as TextBox;
+            ASPxComboBox dxecbGridPolicyItemProdID = tblEditorTemplate.FindControl("dxecbGridPolicyItemProdID") as ASPxComboBox;
+            //
+            ASPxTextBox dxetxtPolicyItemCoverage = tblEditorTemplate.FindControl("dxetxtPolicyItemCoverage") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemPremium = tblEditorTemplate.FindControl("dxetxtPolicyItemPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemProcRate = tblEditorTemplate.FindControl("dxetxtPolicyItemProcRate") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemProcess = tblEditorTemplate.FindControl("dxetxtPolicyItemProcess") as ASPxTextBox;
+
+
+            BusinessObjects.Policy.BO_PolicyItem newobj = new BusinessObjects.Policy.BO_PolicyItem(theKey);
+
+            newobj.PolicyId = this.dxetxtPolicyID.Text;
+
+            newobj.ProdID = dxecbGridPolicyItemProdID.SelectedItem.Value.ToString();
+
+            if (dxetxtPolicyItemCoverage.Text != String.Empty)
+            {
+                newobj.Coverage = Convert.ToDecimal(dxetxtPolicyItemCoverage.Text);
+            }
+            if (dxetxtPolicyItemPremium.Text != String.Empty)
+            {
+                newobj.Premium = Convert.ToDecimal(dxetxtPolicyItemPremium.Text);
+            }
+            if (dxetxtPolicyItemProcRate.Text != String.Empty)
+            {
+                newobj.ProcRate = Convert.ToDecimal(dxetxtPolicyItemProcRate.Text);
+            }
+            if (dxetxtPolicyItemProcess.Text != String.Empty)
+            {
+                newobj.Process = Convert.ToDecimal(dxetxtPolicyItemProcess.Text);
+            }
             
-            //ASPxComboBox decbGridProdID = tblEditorTemplate.FindControl("decbGridProdID") as ASPxComboBox;
-            //row["ProdID"] = decbGridProdID.SelectedItem.Text;//ddlGridProdID.SelectedValue;
-                        
-            //TextBox txtGridCoverage = tblEditorTemplate.FindControl("txtGridCoverage") as TextBox;
-            //row["Coverage"] = txtGridCoverage.Text;
 
-            //TextBox txtGridPremiumRate = tblEditorTemplate.FindControl("txtGridPremiumRate") as TextBox;
-            //row["PremiumRate"] = txtGridPremiumRate.Text;
+            try
+            {
+                newobj.Save(ModifiedAction.Update);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
-            //TextBox txtGridPremium = tblEditorTemplate.FindControl("txtGridPremium") as TextBox;
-            //row["Premium"] = txtGridPremium.Text;
 
-            //TextBox txtGridProcRate = tblEditorTemplate.FindControl("txtGridProcRate") as TextBox;
-            //row["ProcRate"] = txtGridProcRate.Text;
-
-            //TextBox txtGridProcess = tblEditorTemplate.FindControl("txtGridProcess") as TextBox;
-            //row["Process"] = txtGridProcess.Text;
-            
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
+
+            rebindGridPolicyItem();
+            
+            
             
         }
 
@@ -145,65 +217,56 @@ namespace BrokerWebApp.otherinsurance
 
         protected void gridPolicyItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-            
-            //DataTable dt = _dtGridPolicyItem;
-            //DataRow[] dr = dt.Select("", "ItemID Desc");
-            
-            //Int32 rowIndex = 1;
-            //if (dr == null && dr.Length == 0)
-            //{
-            //    //do nothing;
-            //}
-            //else
-            //{
-            //    rowIndex = Convert.ToInt32(dr[0][0]);
-            //}
-            ////Int32 rowIndex = _dtGrid.Rows.Count;
-            //rowIndex += 1;
 
-            //HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
+            HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
 
-            //TextBox txtGridItemID = tblEditorTemplate.FindControl("txtGridItemID") as TextBox;
+            ASPxComboBox dxecbGridPolicyItemProdID = tblEditorTemplate.FindControl("dxecbGridPolicyItemProdID") as ASPxComboBox;
+            //
+            ASPxTextBox dxetxtPolicyItemCoverage = tblEditorTemplate.FindControl("dxetxtPolicyItemCoverage") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemPremium = tblEditorTemplate.FindControl("dxetxtPolicyItemPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemProcRate = tblEditorTemplate.FindControl("dxetxtPolicyItemProcRate") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemProcess = tblEditorTemplate.FindControl("dxetxtPolicyItemProcess") as ASPxTextBox;
 
-            //ASPxComboBox decbGridProdID = tblEditorTemplate.FindControl("decbGridProdID") as ASPxComboBox;
-            //string theProdID = decbGridProdID.SelectedItem.Value.ToString();//ddlGridProdID.SelectedValue;
 
-            //ASPxComboBox decbGridProdName = tblEditorTemplate.FindControl("decbGridProdID") as ASPxComboBox;
-            //string theProdName = decbGridProdID.SelectedItem.Text;//ddlGridProdID.SelectedValue;
+            BusinessObjects.Policy.BO_PolicyItem newobj = new BusinessObjects.Policy.BO_PolicyItem();
 
-            
-            //TextBox txtGridCoverage = tblEditorTemplate.FindControl("txtGridCoverage") as TextBox;
-            //string theCoverage = txtGridCoverage.Text;
+            newobj.ItemID = Guid.NewGuid().ToString();
+            newobj.PolicyId = this.dxetxtPolicyID.Text;
 
-            //TextBox txtGridPremiumRate = tblEditorTemplate.FindControl("txtGridPremiumRate") as TextBox;
-            //string thePremiumRate = txtGridPremiumRate.Text;
+            newobj.ProdID = dxecbGridPolicyItemProdID.SelectedItem.Value.ToString();
 
-            //TextBox txtGridPremium = tblEditorTemplate.FindControl("txtGridPremium") as TextBox;
-            //string thePremium = txtGridPremium.Text;
+            if (dxetxtPolicyItemCoverage.Text != String.Empty)
+            {
+                newobj.Coverage = Convert.ToDecimal(dxetxtPolicyItemCoverage.Text);
+            }
+            if (dxetxtPolicyItemPremium.Text != String.Empty)
+            {
+                newobj.Premium = Convert.ToDecimal(dxetxtPolicyItemPremium.Text);
+            }
+            if (dxetxtPolicyItemProcRate.Text != String.Empty)
+            {
+                newobj.ProcRate = Convert.ToDecimal(dxetxtPolicyItemProcRate.Text);
+            }
+            if (dxetxtPolicyItemProcess.Text != String.Empty)
+            {
+                newobj.Process = Convert.ToDecimal(dxetxtPolicyItemProcess.Text);
+            }
 
-            //TextBox txtGridProcRate = tblEditorTemplate.FindControl("txtGridProcRate") as TextBox;
-            //string theProcRate = txtGridProcRate.Text;
 
-            //TextBox txtGridProcess = tblEditorTemplate.FindControl("txtGridProcess") as TextBox;
-            //string theProcess = txtGridProcess.Text;
+            try
+            {
+                newobj.Save(ModifiedAction.Insert);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
-            //_dtGridPolicyItem.Rows.Add(
-            //    new object[] {
-            //        rowIndex, 
-            //        theProdID,
-            //        theProdName,
-            //        theCoverage,
-            //        thePremiumRate,
-            //        thePremium,
-            //        theProcRate,
-            //        theProcess
-            //    }
-            //    );
-            //_dtGridPolicyItem.AcceptChanges();
-
-            //this.plcid.Value;
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
+
+            rebindGridPolicyItem();
+
         }
 
         protected void gridPolicyItem_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
@@ -213,20 +276,76 @@ namespace BrokerWebApp.otherinsurance
 
         protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            //DataTable dt = _dtGridPolicyItem;
-            //DataRow row = dt.Rows.Find(e.Keys["ItemID"]);
-            //if (row != null)
-            //{
-            //    dt.Rows.Remove(row);
-            //    _dtGridPolicyItem.AcceptChanges();
-            //}
+            String theKey = e.Keys[0].ToString();
+            
+            try
+            {
+                BusinessObjects.Policy.BO_PolicyItem.Delete(theKey);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
+
+            rebindGridPolicyItem();
+
         }
 
 
         protected void gridPolicyItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
+            //
+        }
+
+        protected void gridPolicyItem_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
+        {
+            String appendDes = "必需项";
+            HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
+
+            ASPxComboBox dxecbGridPolicyItemProdID = tblEditorTemplate.FindControl("dxecbGridPolicyItemProdID") as ASPxComboBox;
+                       
+            if (dxecbGridPolicyItemProdID.SelectedItem == null)
+            {
+                e.Errors[this.gridPolicyItem.Columns[1]] = "必需项";
+                
+            }
+            else
+            {
+                if (dxecbGridPolicyItemProdID.SelectedItem.Value.ToString() == String.Empty)
+                {
+                    e.Errors[this.gridPolicyItem.Columns[1]] = "必需项";
+                }
+                else
+                {
+                    //do nothing;
+                }
+            }
+
+
+            Boolean exists = BusinessObjects.Policy.BO_PolicyItem.CheckPolicyProdtExist(
+                this.dxetxtPolicyID.Text,
+                dxecbGridPolicyItemProdID.SelectedItem.Value.ToString());
+            if (exists)
+            {
+                e.Errors[this.gridCarrier.Columns[2]] = "已存在";
+                dxecbGridPolicyItemProdID.ValidationSettings.RegularExpression.ErrorText = "已存在";
+                dxecbGridPolicyItemProdID.ValidationSettings.RegularExpression.ValidationExpression = @"^\d+";
+                dxecbGridPolicyItemProdID.ValidationSettings.RegularExpression.EvaluateIsValid("abc");
+                appendDes = "此保险项目已存在";
+            }
+            dxecbGridPolicyItemProdID.Validate();
+
+            if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误(" + appendDes + ")。";
+
+        }
+     
+
+        private void rebindGridPolicyItem()
+        {
+            this.gridPolicyItem.DataSource = BusinessObjects.Policy.BO_PolicyItem.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridPolicyItem.DataBind();
         }
 
@@ -259,7 +378,7 @@ namespace BrokerWebApp.otherinsurance
             Int32 editIndex = this.gridCarrier.EditingRowVisibleIndex;
             if (editIndex > -1)
             {
-                object theValues = this.gridCarrier.GetRowValues(1, new String[] { "PolicyID", "CarrierID", "BranchID", "PolicyRate", "Premium", "PremiumBase", "Process", "ProcessRate", "ProcessBase" });
+                object theValues = this.gridCarrier.GetRowValues(editIndex, new String[] { "PolicyID", "CarrierID", "BranchID", "PolicyRate", "Premium", "PremiumBase", "Process", "ProcessRate", "ProcessBase" });
                 object[] theValueList = theValues as object[];
 
                 String carrierID = theValueList[1].ToString();
@@ -378,9 +497,7 @@ namespace BrokerWebApp.otherinsurance
             e.Cancel = true;
             this.gridCarrier.CancelEdit();
 
-            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-
-            this.gridCarrier.DataBind();
+            rebindGridCarrier();
 
         }
 
@@ -443,9 +560,7 @@ namespace BrokerWebApp.otherinsurance
             e.Cancel = true;
             this.gridCarrier.CancelEdit();
 
-            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-
-            this.gridCarrier.DataBind();
+            rebindGridCarrier();
 
         }
 
@@ -456,14 +571,27 @@ namespace BrokerWebApp.otherinsurance
 
         protected void gridCarrier_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            //
+            String theKey = e.Keys[0].ToString();
+
+            try
+            {
+                BusinessObjects.Policy.BO_PolicyCarrier.Delete(theKey);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
             e.Cancel = true;
             this.gridCarrier.CancelEdit();
+
+            rebindGridCarrier();
+
         }
 
         protected void gridCarrier_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
-            this.gridCarrier.DataBind();
+            //
         }
 
         protected void gridCarrier_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
@@ -542,7 +670,11 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
-
+        private void rebindGridCarrier()
+        {
+            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
+            this.gridCarrier.DataBind();
+        }
         
 
         #endregion gridCarrier Events

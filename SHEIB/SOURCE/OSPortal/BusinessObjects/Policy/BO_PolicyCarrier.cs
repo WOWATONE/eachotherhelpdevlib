@@ -205,6 +205,19 @@ namespace BusinessObjects.Policy
         }
 
 
+        public static void Delete(String id)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM PolicyCarrier ");
+            sb.Append(" WHERE PolicyCarrierID = @PolicyCarrierID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@PolicyCarrierID", DbType.String, id);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
+
         #endregion Methods
 
 

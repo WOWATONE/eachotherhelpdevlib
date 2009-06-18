@@ -16,6 +16,10 @@ namespace BusinessObjects.Policy
 
         public BO_PolicyItem() { }
 
+        public BO_PolicyItem(String id) {
+            fetchByID(id);
+        }
+
         #region Variables
 
         public enum FieldList
@@ -89,6 +93,21 @@ namespace BusinessObjects.Policy
 
         #region Methods
 
+
+        public void Save(ModifiedAction action)
+        {
+            if (action == ModifiedAction.Insert)
+            {
+                add();
+            }
+            else
+            {
+                update();
+            }
+        }
+
+
+
         public static List<BO_PolicyItem> FetchListByPolicy(String policyID)
         {
             List<BO_PolicyItem> list = new List<BO_PolicyItem>();
@@ -128,6 +147,148 @@ namespace BusinessObjects.Policy
             return list;
         }
 
+
+        public static Boolean CheckPolicyProdtExist(String policyID,
+            String prodID)
+        {
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT COUNT(A.ItemID) ");
+            sb.Append(" ");
+            sb.Append(" FROM PolicyItem A ");
+            sb.Append(" WHERE A.PolicyId = @PolicyId ");
+            sb.Append(" AND A.ProdID = @ProdID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@PolicyID", DbType.String, policyID);
+            _db.AddInParameter(dbCommand, "@ProdID", DbType.String, prodID);
+
+            Int32 count = Convert.ToInt32(_db.ExecuteScalar(dbCommand));
+            if (count > 0)
+                return true;
+            else
+                return false;
+
+        }
+
+
+
+        public static void Delete(String id)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM PolicyItem ");
+            sb.Append(" WHERE ItemID = @ItemID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ItemID", DbType.String, id);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
+
        #endregion Methods
+
+
+        #region Procedure
+
+
+        private void add()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT INTO PolicyItem ( ");
+            sb.Append(" ItemID, PolicyId, ProdID, Coverage, Premium, ProcRate, Process ");
+            sb.Append(")");
+            sb.Append(" VALUES( ");
+            sb.Append(" @ItemID, @PolicyId, @ProdID, @Coverage, @Premium, @ProcRate, @Process ");
+            sb.Append(" )");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ItemID", DbType.String, this.ItemID);
+            _db.AddInParameter(dbCommand, "@PolicyId", DbType.String, this.PolicyId);
+            _db.AddInParameter(dbCommand, "@ProdID", DbType.String, this.ProdID);
+
+
+            _db.AddInParameter(dbCommand, "@Coverage", DbType.Decimal, this.Coverage);
+            _db.AddInParameter(dbCommand, "@Premium", DbType.Decimal, this.Premium);
+            _db.AddInParameter(dbCommand, "@ProcRate", DbType.Decimal, this.ProcRate);
+            _db.AddInParameter(dbCommand, "@Process", DbType.Decimal, this.Process);
+
+            //ExecuteScalar return the value of first column in first row.
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+
+        private void update()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("UPDATE PolicyItem SET ");
+            sb.Append("PolicyId=@PolicyId, ProdID=@ProdID, Coverage=@Coverage, Premium=@Premium,");
+            sb.Append("ProcRate=@ProcRate, Process=@Process ");
+            sb.Append(" Where ItemID=@ItemID;");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ItemID", DbType.String, this.ItemID);
+            _db.AddInParameter(dbCommand, "@PolicyId", DbType.String, this.PolicyId);
+            _db.AddInParameter(dbCommand, "@ProdID", DbType.String, this.ProdID);
+
+
+            _db.AddInParameter(dbCommand, "@Coverage", DbType.Decimal, this.Coverage);
+            _db.AddInParameter(dbCommand, "@Premium", DbType.Decimal, this.Premium);
+            _db.AddInParameter(dbCommand, "@ProcRate", DbType.Decimal, this.ProcRate);
+            _db.AddInParameter(dbCommand, "@Process", DbType.Decimal, this.Process);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
+
+
+
+        private void fetchByID(String id)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT A.ItemID, A.PolicyId, A.ProdID, B.ProdName, A.Coverage, A.Premium, A.ProcRate, A.Process ");
+            sb.Append(" FROM PolicyItem A ");
+            sb.Append(" LEFT JOIN Product B ON A.ProdID = B.ProdID ");
+            sb.Append(" WHERE A.ItemID = @ItemID");
+            sb.Append(" ");
+            sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ItemID", DbType.String, id);
+
+
+            using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                if (reader.Read())
+                {
+                    this.ItemID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ItemID));
+                    this.PolicyId = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PolicyId));
+                    this.ProdID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ProdID));
+                    this.ProdName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ProdName));
+
+                    this.Coverage = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Coverage));
+                    this.Premium = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Premium));
+                    this.ProcRate = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.ProcRate));
+                    this.Process = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Process));
+                    
+                }
+            }
+        }
+
+
+
+        #endregion Procedure
+    
+
+
+
     }
 }
