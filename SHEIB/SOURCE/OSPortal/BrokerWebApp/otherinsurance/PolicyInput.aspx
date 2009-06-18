@@ -153,7 +153,7 @@
                 var thegrid = pWindow.gridSearchResult;
 
                 if (thegrid != null) {
-                    thegrid.PerformCallback('');
+                    thegrid.PerformCallback('refresh');
                 }
                 else {
                     //do nothing
