@@ -263,7 +263,8 @@
                                                     Settings-ShowFooter="true" Width="100%" 
                                                     SettingsPager-AlwaysShowPager="true" 
                                                     OnRowDeleting="gridSearchResult_RowDeleting" 
-                                                    OnRowDeleted="gridSearchResult_RowDeleted"
+                                                    OnRowDeleted="gridSearchResult_RowDeleted" 
+                                                    OnCustomCallback="gridSearchResult_CustomCallback"
                                                     >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
@@ -337,7 +338,7 @@
                                                     <asp:ObjectDataSource ID="DataSource" runat="server" 
                                                         SelectMethod="FetchPolicyCarrierList"
                                                         TypeName="BusinessObjects.Policy.BO_Policy" 
-                                                        EnablePaging="false"                                                                                                                                                       
+                                                        EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
                                                         >
                                                         <SelectParameters> 
                                                              <asp:Parameter Name="policyStatus" Type="String" Direction="Input" DefaultValue="1" />
