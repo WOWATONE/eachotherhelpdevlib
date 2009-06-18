@@ -148,21 +148,18 @@ namespace BusinessObjects.Policy
         }
 
 
-        public static Boolean CheckPolicyProdtExist(String policyID,
-            String prodID)
+        public static Boolean CheckPolicyProdtExist(String where)
         {
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT COUNT(A.ItemID) ");
+            sb.Append("SELECT COUNT(ItemID) ");
             sb.Append(" ");
-            sb.Append(" FROM PolicyItem A ");
-            sb.Append(" WHERE A.PolicyId = @PolicyId ");
-            sb.Append(" AND A.ProdID = @ProdID ");
+            sb.Append(" FROM PolicyItem ");
+            sb.Append(" WHERE 1=1 ");
+            sb.Append(where);
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-            _db.AddInParameter(dbCommand, "@PolicyID", DbType.String, policyID);
-            _db.AddInParameter(dbCommand, "@ProdID", DbType.String, prodID);
-
+            
             Int32 count = Convert.ToInt32(_db.ExecuteScalar(dbCommand));
             if (count > 0)
                 return true;
