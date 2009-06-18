@@ -636,6 +636,25 @@
         function btnCloseClick() {
             window.close();
         }
+
+        function gridPolicyItem_EndCallback(s,e) {
+            //sum
+        }
+        
+        
+        function policyTab_Changing(s, e) {
+            //insuranceDetailTabPage
+            if (e.tab.index == 2) {
+                //refresh perieodtime grid
+                gridPeriod.PerformCallback();
+                //var element = s.GetContentElement(e.tab.index);
+                //if (element != null) element.loaded = false;                             
+            }
+        }
+
+        function policyTab_Click(s, e) {
+            //
+        }
         
     </script>
 
@@ -658,8 +677,10 @@
         
     
     <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
-        runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%">
-        <ClientSideEvents ActiveTabChanging="function(s, e) {}" TabClick="function(s, e) {}" />
+        runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%" AutoPostBack="false"
+        
+        >
+        <ClientSideEvents ActiveTabChanging="function(s, e) {policyTab_Changing(s,e);}" TabClick="function(s, e) {policyTab_Click(s,e);}" />
         <TabPages>
             <dxtc:TabPage Text="保单基本资料">
                 <ContentCollection>
@@ -925,6 +946,7 @@
                                                         </TotalSummary>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowAllRecords" />
+                                                        <ClientSideEvents EndCallback="function(s, e) {gridPolicyItem_EndCallback();}" />
                                                         <Templates>
                                                             <EditForm>
                                                                 <div style="padding: 4px 4px 3px 4px">
@@ -1355,8 +1377,10 @@
                 </ContentCollection>
             </dxtc:TabPage>
             <dxtc:TabPage Text="分    期" ClientVisible="true">
-                <ContentCollection>
+                
+                <ContentCollection>                
                     <dxw:ContentControl ID="ContentControl2" runat="server">
+                        
                         <table style="width: 100%">
                             <tr>
                                 <td>
@@ -1364,11 +1388,14 @@
                                         KeyFieldName="PolPeriodId" Width="100%" OnStartRowEditing="gridPeriod_StartRowEditing"
                                         OnRowInserting="gridPeriod_RowInserting" OnRowUpdating="gridPeriod_RowUpdating"
                                         OnRowUpdated="gridPeriod_RowUpdated" OnRowInserted="gridPeriod_RowInserted" OnRowDeleting="gridPeriod_RowDeleting"
-                                        OnRowDeleted="gridPeriod_RowDeleted">
+                                        OnRowDeleted="gridPeriod_RowDeleted" OnCustomCallback="gridPeriod_CustomCallback"
+                                        >
                                         <%-- BeginRegion Columns --%>
                                         <Columns>
                                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="false">
                                                 <EditButton Visible="true" />
+                                                <NewButton Visible="true" />                                                                   
+                                                <DeleteButton Visible="true" />
                                             </dxwgv:GridViewCommandColumn>
                                             <dxwgv:GridViewDataColumn FieldName="Period" Caption="期次" CellStyle-Wrap="false">
                                             </dxwgv:GridViewDataColumn>
@@ -1385,10 +1412,15 @@
                                             </dxwgv:GridViewDataColumn>
                                         </Columns>
                                         <%-- EndRegion --%>
-                                        <SettingsEditing PopupEditFormWidth="600px" />
-                                        <Settings ShowGroupPanel="false" />
-                                        <SettingsPager Mode="ShowAllRecords">
-                                        </SettingsPager>
+                                        <SettingsEditing Mode="EditForm" />
+                                        <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
+                                        <SettingsPager Mode="ShowAllRecords"></SettingsPager>
+                                        <SettingsDetail ExportMode="All" />
+                                        <SettingsLoadingPanel Mode="ShowAsPopup" ImagePosition="Top"  ShowImage="true" Text="Loading" />
+                                        <Styles>
+                                            <LoadingDiv></LoadingDiv>
+                                            <LoadingPanel></LoadingPanel>
+                                        </Styles>
                                         <Templates>
                                             <EditForm>
                                                 <div style="padding: 4px 4px 3px 4px">
@@ -1399,7 +1431,7 @@
                                                             </td>
                                                             <td style="text-align: left;">
                                                                 <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodPeriod" ClientInstanceName="detxtGridPeriodPeriod"
-                                                                    Text='<%# Eval("Period") %>' Enabled="false">
+                                                                    Enabled="false">
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="white-space: nowrap; text-align: right;">
@@ -1417,7 +1449,7 @@
                                                             </td>
                                                             <td style="text-align: left;">
                                                                 <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodCarrierNameCn" ClientInstanceName="detxtGridPeriodCarrierNameCn"
-                                                                    Text='<%# Eval("CarrierNameCn") %>' Enabled="false">
+                                                                    Enabled="false">
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="white-space: nowrap; text-align: right;">
@@ -1425,7 +1457,7 @@
                                                             </td>
                                                             <td style="text-align: left;">
                                                                 <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodBranchName" ClientInstanceName="detxtGridPeriodBranchName"
-                                                                    Text='<%# Eval("BranchName") %>' Enabled="false">
+                                                                    Enabled="false">
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                         </tr>
@@ -1435,7 +1467,7 @@
                                                             </td>
                                                             <td style="text-align: left;">
                                                                 <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodPayFeeBase" ClientInstanceName="detxtGridPeriodPayFeeBase"
-                                                                    Text='<%# Eval("PayFeeBase") %>'>
+                                                                    >
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="white-space: nowrap; text-align: right;">
@@ -1443,7 +1475,7 @@
                                                             </td>
                                                             <td style="text-align: left;">
                                                                 <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodPayProcBase" ClientInstanceName="detxtGridPeriodPayProcBase"
-                                                                    Text='<%# Eval("PayProcBase") %>'>
+                                                                    >
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                         </tr>
@@ -1463,8 +1495,10 @@
                                 </td>
                             </tr>
                         </table>
+                        
                     </dxw:ContentControl>
-                </ContentCollection>
+                    
+                </ContentCollection>                
             </dxtc:TabPage>
             <dxtc:TabPage Text="审核信息">
                 <ContentCollection>

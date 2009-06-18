@@ -103,6 +103,8 @@ namespace BrokerWebApp.otherinsurance
             
         }
 
+               
+
         #endregion Page Events
 
 
@@ -735,7 +737,12 @@ namespace BrokerWebApp.otherinsurance
 
         protected void gridPeriod_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
-            this.gridPeriod.DataBind();
+            //this.gridPeriod.DataBind();
+        }
+
+        protected void gridPeriod_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            //this.gridPeriod.DataBind();
         }
 
         #endregion gridPeriod Events
