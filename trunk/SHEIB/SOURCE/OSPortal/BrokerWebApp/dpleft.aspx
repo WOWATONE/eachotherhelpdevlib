@@ -117,7 +117,7 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="组织机构" Name="schemasetting/DepartmentManager.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="保险公司" Name="ProductSetup/CarrierList.aspx">
+                                <dxnb:NavBarItem Text="保险公司" Name="schemasetting/CarrierList.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="分支机构" Name="ProductSetup/BranchList.aspx">
                                 </dxnb:NavBarItem>

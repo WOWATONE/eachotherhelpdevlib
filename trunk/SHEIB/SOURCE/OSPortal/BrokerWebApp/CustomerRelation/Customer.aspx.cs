@@ -126,6 +126,15 @@ namespace BrokerWebApp.CustomerRelation
                 this.gridCustomerPtItem.DataBind();
                 #endregion
 
+                #region 理赔记录
+                this.gridNotifyClaimItem.DataSource = BO_NotifyClaim.GetCustContactByCustID(this._custID);
+                this.gridNotifyClaimItem.DataBind();
+                #endregion
+
+                #region 签单记录
+                this.gridPolicyItem.DataSource = BusinessObjects.Policy.BO_Policy.GetPolicyByCustID(this._custID);
+                this.gridPolicyItem.DataBind();
+                #endregion
             }
         }
 
@@ -279,7 +288,7 @@ namespace BrokerWebApp.CustomerRelation
                     customer.Contact = this.dxetxtContact.Text.Trim();
                     customer.Save(ModifiedAction.Update);
 
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Message", "<script language=\"javascript\">alert(\"完成修改。\");window.close();</script>", false);
+                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Message", "<script language=\"javascript\">alert(\"修改完成。\");window.close();</script>", false);
                 }
             }
             catch (Exception ex)

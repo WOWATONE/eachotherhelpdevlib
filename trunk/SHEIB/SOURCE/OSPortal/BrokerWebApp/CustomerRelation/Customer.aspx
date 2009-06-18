@@ -669,22 +669,22 @@
                         <table style="width: 100%">
                             <tr>
                                 <td>
-                                    <dxwgv:ASPxGridView ID="gridNotifyItem" ClientInstanceName="gridNotifyItem" runat="server"
+                                    <dxwgv:ASPxGridView ID="gridNotifyClaimItem" ClientInstanceName="gridNotifyClaimItem" runat="server"
                                         KeyFieldName="NotifyID" Width="100%" AutoGenerateColumns="False">
                                         <Columns>
-                                            <dxwgv:GridViewDataTextColumn Caption="理赔单号" FieldName="NotifyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="理赔编号" FieldName="NotifyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="保单编号" FieldName="PolicyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="保单编号" FieldName="PolicyNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="保险公司" FieldName="CarrierNameCn" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="险种名称" FieldName="ProdTypeName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="投保客户" FieldName="CustName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
-                                            </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="起保日期" FieldName="StartDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="报案日" FieldName="NotifyTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="截止日期" FieldName="EndDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="报案时间" FieldName="NotifyTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="报损金额" FieldName="NotifyLossFee" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
@@ -711,23 +711,25 @@
                             <tr>
                                 <td colspan=2>
                                     <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                        KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False">
+                                        KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" Settings-ShowFooter="true" SettingsPager-AlwaysShowPager="true">
                                         <Columns>
-                                            <dxwgv:GridViewDataTextColumn Caption="序号" FieldName="PolicyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="投保编号" FieldName="PolicyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="保单编号" FieldName="PolicyNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="起保日期" FieldName="StartDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="终止日期" FieldName="EndDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="保单号" FieldName="PolicyNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
-                                            </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="险种" FieldName="ProdType" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="险种名称" FieldName="ProdTypeName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="保费" FieldName="Premium" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="保险公司及分支机构" FieldName="CarrierBranch" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="保险公司" FieldName="CarrierNameCn" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="客户经理" FieldName="Sales" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="分支机构" FieldName="BranchName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="客户经理" FieldName="UserNameCn" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                         </Columns>
                                         <SettingsPager Mode="ShowAllRecords" />

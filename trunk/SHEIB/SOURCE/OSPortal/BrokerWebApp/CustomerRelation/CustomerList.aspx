@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="CustomerList.aspx.cs" Inherits="BrokerWebApp.CustomerRelation.CustomerList" Title="客户列表" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3.Export" Namespace="DevExpress.Web.ASPxGridView.Export"
-    TagPrefix="dxwgv" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3.Export" Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dxwgv" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dxwgv" %>
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
@@ -24,7 +23,7 @@
         }
         
         function btnCreateClick() {
-	        var myArguments="resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
             window.showModalDialog("Customer.aspx", self, myArguments);
         } 
         
@@ -54,8 +53,7 @@
                             <asp:ImageButton ID="img_npSearchHeader" runat="server" ImageUrl="~/images/expand_blue.jpg"
                                 AlternateText="" />
                         </div>
-                        <div style="float: left; margin-left: 5px;">
-                            所属项目</div>
+                        <div style="float: left; margin-left: 5px;">所属项目</div>
                         <div style="float: left; margin-left: 5px;">
                             <asp:Label ID="lbl_npSearchHeader" runat="server">(隐藏)</asp:Label>
                         </div>
@@ -151,8 +149,7 @@
                             <asp:ImageButton ID="img_npSearchResultHeader" runat="server" ImageUrl="~/images/expand_blue.jpg"
                                 AlternateText="" />
                         </div>
-                        <div style="float: left; margin-left: 5px;">
-                            搜索结果</div>
+                        <div style="float: left; margin-left: 5px;">搜索结果</div>
                         <div style="float: left; margin-left: 5px;">
                             <asp:Label ID="lbl_npSearchResultHeader" runat="server">(隐藏)</asp:Label>
                         </div>
@@ -214,10 +211,10 @@
                         <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                         <SettingsText CustomizationWindowCaption="个性化" />
                         <GroupSummary >
-                            <dxwgv:ASPxSummaryItem FieldName="CustID" SummaryType="Count" ShowInGroupFooterColumn="UserID" DisplayFormat = "总计: {0}" />
+                            <dxwgv:ASPxSummaryItem FieldName="CustID" SummaryType="Count" ShowInGroupFooterColumn="CustID" DisplayFormat = "总计: {0}" />
                         </GroupSummary>
                         <TotalSummary >
-                            <dxwgv:ASPxSummaryItem FieldName="CustID" SummaryType="Count" ShowInGroupFooterColumn="UserID" DisplayFormat = "总计: {0}" />
+                            <dxwgv:ASPxSummaryItem FieldName="CustID" SummaryType="Count" ShowInGroupFooterColumn="CustID" DisplayFormat = "总计: {0}" />
                         </TotalSummary>
                     </dxwgv:ASPxGridView>
                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>

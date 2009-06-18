@@ -572,6 +572,20 @@
       <DependentUpon>PolicyProdType.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="schemasetting\Carrier.aspx.cs">
+      <DependentUpon>Carrier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\Carrier.aspx.designer.cs">
+      <DependentUpon>Carrier.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="schemasetting\CarrierList.aspx.cs">
+      <DependentUpon>CarrierList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\CarrierList.aspx.designer.cs">
+      <DependentUpon>CarrierList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="schemasetting\DepartmentManager.aspx.cs">
       <DependentUpon>DepartmentManager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -857,6 +871,8 @@
     <Content Include="otherinsurance\PolicyInputList.aspx" />
     <Content Include="popupselectrefs\PolicyCustomer.aspx" />
     <Content Include="popupselectrefs\PolicyProdType.aspx" />
+    <Content Include="schemasetting\Carrier.aspx" />
+    <Content Include="schemasetting\CarrierList.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
