@@ -225,6 +225,8 @@
             var StartDate = dxeStartDate.GetValue();
             var UseCharacter = null;
             var VolumnNo = null;
+            var CustomerName = dxetxtCustomer.GetValueString();
+            var ProdTypeName = dxetxtProdTypeName.GetValueString();
             
             
 
@@ -596,7 +598,7 @@
 
             if (!isEmpty(VolumnNo))
                 this.VolumnNo = VolumnNo;
-            
+                
         }
 
 
@@ -813,13 +815,13 @@
                                             <tr>
                                                 <td style="text-align: right;">录单人：</td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="125px"></dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="125px" ReadOnly="true"></dxe:ASPxTextBox>
                                                 </td>
                                                 <td></td>
                                                 <td style="text-align: right;">录单日期：</td>
                                                 <td style="text-align: left;">
                                                     <dxe:ASPxDateEdit ID="dxedtCreateTime" ClientInstanceName="dxedtCreateTime" runat="server" Width="100px">
-                                                                </dxe:ASPxDateEdit>
+                                                    </dxe:ASPxDateEdit>
                                                 </td>
                                                 <td></td>
                                                 <td style="text-align: right;">缴费次数：</td>

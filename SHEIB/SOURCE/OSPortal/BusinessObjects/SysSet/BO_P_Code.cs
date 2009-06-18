@@ -144,6 +144,51 @@ namespace BusinessObjects
         }
 
 
+        public static DataSet GetGatheringTypeList()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT * ");
+            sb.Append(" FROM GatheringType ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet GetOperationTypeList()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT * ");
+            sb.Append(" FROM OperationType ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet GetSourceTypeList()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT * ");
+            sb.Append(" FROM SourceType ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+
+        public static DataSet GetCurencyList()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT * ");
+            sb.Append(" FROM Curency ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
         #endregion Methods
 
 

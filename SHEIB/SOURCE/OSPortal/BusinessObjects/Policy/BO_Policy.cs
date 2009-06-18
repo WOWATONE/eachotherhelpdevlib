@@ -118,6 +118,7 @@ namespace BusinessObjects.Policy
             get;
             set;
         }
+                
 
         [DataMember]
         public string PolicyStatus
@@ -146,6 +147,20 @@ namespace BusinessObjects.Policy
             get;
             set;
         }
+
+        public string CustomerName
+        {
+            get
+            {
+                BusinessObjects.BO_Customer theObj;
+                theObj = BusinessObjects.BO_Customer.GetCustomerByID(this.CustomerID);
+                if (theObj == null)
+                    return "";
+                else
+                    return theObj.CustName;
+            }
+        }
+
 
         [DataMember]
         public string Beneficiary
@@ -180,6 +195,16 @@ namespace BusinessObjects.Policy
         {
             get;
             set;
+        }
+
+        public string ProdTypeName
+        {
+            get
+            {
+                BusinessObjects.SchemaSetting.BO_ProductType thePt;
+                thePt = new BusinessObjects.SchemaSetting.BO_ProductType(this.ProdTypeID);
+                return thePt.ProdTypeName;
+            }
         }
 
         [DataMember]
