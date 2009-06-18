@@ -591,6 +591,29 @@ namespace BusinessObjects.Policy
             return ds.Tables[0];
         }
 
+        /// <summary>
+        /// 根据用户ID取得保单信息
+        /// </summary>
+        /// <param name="custID"></param>
+        /// <returns></returns>
+        public static DataTable GetPolicyByCustID(string custID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select P.PolicyID, P.PolicyNo, P.StartDate, P.EndDate, PT.ProdTypeName, isnull(P.Premium, 0) as Premium, C.CarrierNameCn, B.BranchName, U.UserNameCn ");
+            sb.Append("From Policy P (nolock) ");
+            sb.Append("Inner Join ProductType PT (nolock) On PT.ProdTypeID=P.ProdTypeID ");
+            sb.Append("Inner Join PolicyCarrier PC (nolock) On PC.PolicyID=P.PolicyID ");
+            sb.Append("Inner Join Carrier C (nolock) On C.CarrierID=PC.CarrierId ");
+            sb.Append("Inner Join Branch B (nolock) On B.BranchID=PC.BranchId ");
+            sb.Append("Inner Join P_User U (nolock) On U.UserID=P.SalesID ");
+            sb.Append("Where P.CustomerID=@CustID ");
+            sb.Append("Order By P.PolicyID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, custID);
+
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
         #endregion Methods
 
 
