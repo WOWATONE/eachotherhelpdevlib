@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="FeeProcessAdd.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeeProcessAdd" %>
+﻿k    u<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="FeeProcessAdd.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeeProcessAdd" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
@@ -196,10 +196,9 @@
                         <tr>
                             <td style="width:18%;text-align:right;">经纪费收取方式：</td>
                             <td style="width:16%;text-align:left;">
-                                <asp:DropDownList ID="ddlAccountType" runat="server">
-                                                        <asp:ListItem Text="代收" Value="1"></asp:ListItem>
-                                                        <asp:ListItem Text="直付" Value="2"></asp:ListItem>
-                                                    </asp:DropDownList>
+                                 <dxe:ASPxComboBox ID="dxeddlProcessFeeType" ClientInstanceName="dxeddlProcessFeeType"
+                                    runat="server" Width="180px" DropDownStyle="DropDownList">
+                                </dxe:ASPxComboBox>
                             </td>
                             <td style="width:14%;text-align:right;"></td>
                             <td style="width:16%;text-align:left;"></td>

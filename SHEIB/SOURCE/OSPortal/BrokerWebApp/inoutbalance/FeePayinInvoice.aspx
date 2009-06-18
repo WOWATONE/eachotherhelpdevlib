@@ -30,10 +30,10 @@
         });
 
         function btnCreateClick() {
-	        
-                var myArguments="resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-                window.showModalDialog("FeePayinInvoiceAdd.aspx", self, myArguments);
-            
+
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+            window.showModalDialog("FeePayinInvoiceAdd.aspx", self, myArguments);
+
         }
 
         function gridCustomButtonClick(s, e) {
@@ -86,7 +86,9 @@
                                 开票通知书号：
                             </td>
                             <td style="width: 110px; text-align: left;">
-                                <asp:TextBox ID="TextBox1" runat="server" Width="100px"></asp:TextBox>
+                                <dxe:ASPxTextBox ID="dxetxtPayinInvoiceNoticeID" ClientInstanceName="dxetxtPayinInvoiceVoucherID"
+                                    runat="server" Width="160px">
+                                </dxe:ASPxTextBox>
                             </td>
                             <td style="width: 70px; text-align: right;">
                                 保单编号：
@@ -100,18 +102,17 @@
                                 收款方式：
                             </td>
                             <td style="width: 110px; text-align: left;">
-                                 <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
+                                    runat="server" Width="160px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="width: 110px; text-align: right;">
                                 经纪费收取方式：
                             </td>
                             <td style="width: 110px; text-align: left;">
-                                <asp:DropDownList ID="DropDownList1" runat="server" Width="100px">
-                                    <asp:ListItem Text="方式1" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="方式2" Value="2"></asp:ListItem>
-                                </asp:DropDownList>
+                                <dxe:ASPxComboBox ID="dxeddlProcessFeeType" ClientInstanceName="dxeddlProcessFeeType"
+                                    runat="server" Width="180px" DropDownStyle="DropDownList">
+                                </dxe:ASPxComboBox>
                             </td>
                             <td>
                             </td>
@@ -121,31 +122,33 @@
                                 投保客户：
                             </td>
                             <td style="text-align: left;">
-                                <asp:TextBox ID="txtCustomerID" runat="server" Width="100px"></asp:TextBox>
+                                <dxe:ASPxTextBox ID="dxetxtCustomerID" ClientInstanceName="dxetxtCustomerID" runat="server"
+                                    Width="160px">
+                                </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
                                 部门：
                             </td>
                             <td style="text-align: left;">
-                                <asp:DropDownList ID="ddlDeptId" runat="server" Width="100px">
-                                    <asp:ListItem Text="部门1" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="部门2" Value="2"></asp:ListItem>
-                                    <asp:ListItem Text="部门3" Value="3"></asp:ListItem>
-                                </asp:DropDownList>
+                                <dxe:ASPxComboBox ID="dxeddlDeptId" ClientInstanceName="dxeddlDeptId" runat="server"
+                                    Width="160px" DropDownStyle="DropDownList">
+                                </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
                                 客户经理：
                             </td>
                             <td style="text-align: left;">
-                                <asp:DropDownList runat="server" ID="ddlSalesId" Width="100px">
-                                    <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
-                                </asp:DropDownList>
+                                <dxe:ASPxComboBox ID="dxeddlSalesID" ClientInstanceName="dxeddlSalesID" runat="server"
+                                    Width="160px" DropDownStyle="DropDownList">
+                                </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
                                 险种：
                             </td>
                             <td style="text-align: left;">
-                                <asp:TextBox ID="txtProdTypeID" runat="server" Width="80px"></asp:TextBox>
+                                <dxe:ASPxComboBox ID="dxeddlPolicyType" ClientInstanceName="dxeddlPolicyType" runat="server"
+                                    Width="160px" DropDownStyle="DropDownList">
+                                </dxe:ASPxComboBox>
                                 <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;
                                     height: 20px; vertical-align: top;" onclick="imgPolicyProdTypeClick();" />
                             </td>
@@ -157,37 +160,33 @@
                                 保险公司：
                             </td>
                             <td style="text-align: left;">
-                                <asp:DropDownList ID="ddlCompany" runat="server" Width="100px">
-                                    <asp:ListItem Text="平安保险" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="人寿保险" Value="2"></asp:ListItem>
-                                    <asp:ListItem Text="泰康保险" Value="3"></asp:ListItem>
-                                </asp:DropDownList>
+                                <dxe:ASPxComboBox ID="dxeddlCarrier" ClientInstanceName="dxeddlCarrier" runat="server"
+                                    Width="160px" DropDownStyle="DropDownList">
+                                </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
                                 分支机构：
                             </td>
                             <td style="text-align: left;">
-                                <asp:DropDownList ID="DropDownList2" runat="server" Width="100px">
-                                    <asp:ListItem Text="平安1" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="平安2" Value="2"></asp:ListItem>
-                                    <asp:ListItem Text="平安3" Value="3"></asp:ListItem>
-                                </asp:DropDownList>
+                                <dxe:ASPxComboBox ID="dxeddlBranch" ClientInstanceName="dxeddlBranch" runat="server"
+                                    Width="160px" DropDownStyle="DropDownList">
+                                </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
                                 业务员：
                             </td>
                             <td style="text-align: left;">
-                                <asp:TextBox ID="TextBox2" runat="server" Width="100px"></asp:TextBox>
+                                <dxe:ASPxTextBox ID="dxetxtCarrierSales" ClientInstanceName="dxetxtCarrierSales"
+                                    runat="server" Width="160px">
+                                </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
                                 保单类型：
                             </td>
                             <td style="text-align: left;">
-                                <asp:DropDownList runat="server" ID="DropDownList3" Width="100px">
-                                    <asp:ListItem Text="(全部)" Value=""></asp:ListItem>
-                                    <asp:ListItem Text="车险" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="非车险" Value="2"></asp:ListItem>
-                                </asp:DropDownList>
+                                <dxe:ASPxComboBox ID="dxeddlPolicyType" ClientInstanceName="dxeddlPolicyType" runat="server"
+                                    Width="160px" DropDownStyle="DropDownList">
+                                </dxe:ASPxComboBox>
                             </td>
                             <td>
                             </td>
@@ -211,10 +210,9 @@
                                 状态：
                             </td>
                             <td style="text-align: left;">
-                                <asp:DropDownList runat="server" ID="ddlState" Width="100px">
-                                    <asp:ListItem Text="待审核" Value=""></asp:ListItem>
-                                    <asp:ListItem Text="已审核" Value=""></asp:ListItem>
-                                </asp:DropDownList>
+                                <dxe:ASPxComboBox ID="dxeddlAuditStauts" ClientInstanceName="dxeddlAuditStauts" runat="server"
+                                    Width="160px" DropDownStyle="DropDownList">
+                                </dxe:ASPxComboBox>
                             </td>
                             <td>
                             </td>
