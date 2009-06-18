@@ -32,7 +32,9 @@ namespace BusinessObjects
 	        PolicyStatus,
             PolicyType,
             AuditStatus,
-            ProcessFeeType
+            ProcessFeeType,
+            InsType,     //业务类型
+            GrdType      //行政级别
         }
 
         public enum FieldList
