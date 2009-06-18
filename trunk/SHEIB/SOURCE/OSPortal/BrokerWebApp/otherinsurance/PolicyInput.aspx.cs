@@ -49,11 +49,22 @@ namespace BrokerWebApp.otherinsurance
                 //
             }
 
-            
+
+            bindDropDownLists();
+
             this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
+            this.gridPolicyItem.DataSource = BusinessObjects.Policy.BO_PolicyItem.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
 
             if (!IsPostBack && !IsCallback)
+            {
+                this.dxedtCreateTime.Date = DateTime.Today;
                 this.gridCarrier.DataBind();
+                this.gridPolicyItem.DataBind();
+                if (!string.IsNullOrEmpty(this.dxetxtPolicyID.Text.Trim()))
+                {
+                    loadPolicyValue(this.dxetxtPolicyID.Text.Trim());
+                }
+            }
             
         }
 
@@ -642,6 +653,144 @@ namespace BrokerWebApp.otherinsurance
 
             return obj.PolicyID;
 
+        }
+
+
+        private void bindDropDownLists()
+        {
+            this.dxeddlDeptID.DataSource = BusinessObjects.BO_P_Department.FetchList();
+            this.dxeddlDeptID.TextField = "DeptName";
+            this.dxeddlDeptID.ValueField = "DeptID";
+            this.dxeddlDeptID.DataBind();
+
+            this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
+            this.dxeddlSalesId.TextField = "UserNameCn";
+            this.dxeddlSalesId.ValueField = "UserID";
+            this.dxeddlSalesId.DataBind();
+
+            this.dxeddlGatheringType.DataSource = BusinessObjects.BO_P_Code.GetGatheringTypeList();
+            this.dxeddlGatheringType.TextField = "GatheringTypeName";
+            this.dxeddlGatheringType.ValueField = "GatheringTypeID";
+            this.dxeddlGatheringType.DataBind();
+
+            this.dxeddlOperationType.DataSource = BusinessObjects.BO_P_Code.GetOperationTypeList();
+            this.dxeddlOperationType.TextField = "OperationTypeName";
+            this.dxeddlOperationType.ValueField = "OperationTypeID";
+            this.dxeddlOperationType.DataBind();
+
+            this.dxeddlSourceTypeID.DataSource = BusinessObjects.BO_P_Code.GetSourceTypeList();
+            this.dxeddlSourceTypeID.TextField = "SourceTypeName";
+            this.dxeddlSourceTypeID.ValueField = "SourceTypeID";
+            this.dxeddlSourceTypeID.DataBind();
+
+            this.dxeddlCurrency.DataSource = BusinessObjects.BO_P_Code.GetCurencyList();
+            this.dxeddlCurrency.TextField = "CurrencyName";
+            this.dxeddlCurrency.ValueField = "CurID";
+            this.dxeddlCurrency.DataBind();
+
+            //DateTime.Today.ToString("yyyy-MM-dd");
+        }
+
+
+        private void loadPolicyValue(String poliicyID)
+        {
+
+            ListEditItem theselected;
+            BusinessObjects.Policy.BO_Policy obj;
+
+            obj = new BusinessObjects.Policy.BO_Policy(poliicyID);
+
+            this.dxetxtPolicyNo.Text = obj.PolicyNo;
+            //dxechkTogether
+            //dxechkFlagReinsure
+
+            this.dxetxtProdTypeName.Text = obj.ProdTypeName;
+            this.ptid.Value = obj.ProdTypeID;
+
+            this.dxetxtCustomer.Text = obj.CustomerName;
+            this.cusid.Value = obj.CustomerID;
+
+            this.dxetxtBeneficiary.Text = obj.Beneficiary;
+
+            //dxeddlDeptID
+            if (!String.IsNullOrEmpty(obj.DeptId))
+            {
+                theselected = dxeddlDeptID.Items.FindByValue(obj.DeptId);
+                if (theselected != null)
+                {
+                    dxeddlDeptID.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlSalesId
+            if (!String.IsNullOrEmpty(obj.SalesId))
+            {
+                theselected = dxeddlSalesId.Items.FindByValue(obj.SalesId);
+                if (theselected != null)
+                {
+                    dxeddlSalesId.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlGatheringType
+            if (!String.IsNullOrEmpty(obj.GatheringType))
+            {
+                theselected = dxeddlGatheringType.Items.FindByValue(obj.GatheringType);
+                if (theselected != null)
+                {
+                    dxeddlGatheringType.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlOperationType
+            if (!String.IsNullOrEmpty(obj.OperationType))
+            {
+                theselected = dxeddlOperationType.Items.FindByValue(obj.OperationType);
+                if (theselected != null)
+                {
+                    dxeddlOperationType.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlSourceTypeID
+            if (!String.IsNullOrEmpty(obj.SourceTypeID))
+            {
+                theselected = dxeddlSourceTypeID.Items.FindByValue(obj.SourceTypeID);
+                if (theselected != null)
+                {
+                    dxeddlSourceTypeID.SelectedItem = theselected;
+                }
+            }
+
+            this.dxeStartDate.Date = obj.StartDate;
+            this.dxeEndDate.Date = obj.EndDate;
+            this.dxetxtCreatePerson.Text = obj.CreatePerson;
+
+            this.dxedtCreateTime.Date = obj.CreateTime;
+
+            this.dxetxtStage.Text = obj.PeriodTimes.ToString();
+
+
+            this.dxetxtCoverage.Text = obj.Coverage.ToString();
+            this.dxetxtPremiumRate.Text = obj.PremiumRate.ToString();
+            this.dxetxtProcessRate.Text = obj.ProcessRate.ToString();
+
+            //dxeddlCurrency
+            if (!String.IsNullOrEmpty(obj.Currency))
+            {
+                theselected = dxeddlCurrency.Items.FindByValue(obj.Currency);
+                if (theselected != null)
+                {
+                    dxeddlCurrency.SelectedItem = theselected;
+                }
+            }
+                        
+            this.dxetxtPremium.Text = obj.Premium.ToString();
+            this.dxetxtProcess.Text = obj.Process.ToString();
+            this.dxetxtConversionRate.Text = obj.ConversionRate.ToString();
+            this.dxetxtPremiumBase.Text = obj.PremiumBase.ToString();
+            this.dxetxtProcessBase.Text = obj.ProcessBase.ToString();
+            
         }
 
 

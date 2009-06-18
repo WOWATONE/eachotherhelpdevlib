@@ -15,6 +15,13 @@ namespace BusinessObjects.SchemaSetting
     {
         public BO_ProductType() { }
 
+
+        public BO_ProductType(String id)
+        {
+            fetchByID(id);
+        }
+
+
         public enum FieldList
         {
             ProdTypeID, 
@@ -100,5 +107,39 @@ namespace BusinessObjects.SchemaSetting
         #endregion Methods
 
 
+        #region Procedure
+
+        private void fetchByID(String id)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT ProdTypeID, ProdClass, ProdTypeName, ParentId, Layer ");
+            sb.Append(" FROM ProductType ");
+            sb.Append(" WHERE ProdTypeID = @ProdTypeID");
+            //sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ProdTypeID", DbType.String, id);
+
+
+            using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                if (reader.Read())
+                {
+                    this.ProdTypeID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ProdTypeID));
+                    this.ProdClass = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ProdClass));
+                    this.ProdTypeName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ProdTypeName));
+                    this.ParentId = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ParentId));
+                    this.Layer = Utility.GetIntFromReader(reader, Convert.ToInt32(FieldList.Layer));
+
+                }
+            }
+        }
+
+        #endregion Procedure
     }
 }

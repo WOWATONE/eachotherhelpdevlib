@@ -101,9 +101,12 @@ namespace BusinessObjects.SchemaSetting
             sb.Append(" A.PremiumRate, A.FlagMain, A.Remark, A.ProcRate ");
             sb.Append(" FROM Product A ");
             sb.Append(" LEFT JOIN ProductType B ON A.ProdTypeID = B.ProdTypeID ");
+            sb.Append(" WHERE 1=1 ");
+            sb.Append(" @AnotherFilter ");
             sb.Append(" ORDER BY B.ProdTypeName,A.ProdName ");
             
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@AnotherFilter", DbType.String, whereFilter);
 
             BO_Product newObj;
             using (IDataReader reader = _db.ExecuteReader(dbCommand))
