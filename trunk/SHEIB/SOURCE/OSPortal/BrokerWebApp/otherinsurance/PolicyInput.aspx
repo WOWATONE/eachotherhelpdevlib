@@ -884,8 +884,8 @@
                                                         KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False" 
                                                         OnRowInserting="gridPolicyItem_RowInserting" OnRowInserted="gridPolicyItem_RowInserted"
                                                         OnRowUpdating="gridPolicyItem_RowUpdating" OnRowUpdated="gridPolicyItem_RowUpdated"
-                                                        OnRowDeleting="gridPolicyItem_RowDeleting" 
-                                                        OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
+                                                        OnRowDeleting="gridPolicyItem_RowDeleting" OnStartRowEditing="gridPolicyItem_StartRowEditing"
+                                                        OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated" OnRowValidating="gridPolicyItem_RowValidating"
                                                         OnRowDeleted="gridPolicyItem_RowDeleted">
                                                         <%-- BeginRegion Columns --%>
                                                         <Columns>
