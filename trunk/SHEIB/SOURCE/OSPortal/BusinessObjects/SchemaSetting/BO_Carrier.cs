@@ -269,16 +269,30 @@ namespace BusinessObjects.SchemaSetting
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select ");
-            sb.Append(" CarrierID,CarrierNameCn,CarrierNameEn,ShortName,InsType,GrdType,Address,Postcode,Tel,Fax,Contact,Email,URL,Profile,BankName,BankAccount,PolicyNoHeader,Remark,PremiumSize,LossRation,PayoffLevel,Province ");
-            sb.Append(" From Carrier a ");
-            sb.Append(" where 1=1 ");
+            sb.Append("CarrierID,CarrierNameCn,CarrierNameEn,ShortName,InsType,GrdType,Address,Postcode,Tel,Fax,Contact,Email,URL,Profile,BankName,BankAccount,PolicyNoHeader,Remark,PremiumSize,LossRation,PayoffLevel,Province ");
+            sb.Append("From Carrier (nolock) ");
+            sb.Append("Where 1=1 ");
             sb.Append(sWhere);
+            sb.Append(" Order By CarrierID");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-
             return _db.ExecuteDataSet(dbCommand);
         }
 
+        /// <summary>
+        /// 删除客户信息
+        /// </summary>
+        /// <param name="carrierID"></param>
+        public static void Delete(string carrierID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM Carrier ");
+            sb.Append(" WHERE CarrierID = @CarrierID ");
 
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CarrierID", DbType.AnsiString, carrierID);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
     }
 }
