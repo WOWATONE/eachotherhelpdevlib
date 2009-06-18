@@ -15,7 +15,7 @@
         function gridCustomButtonClick(s, e) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
             var carrierID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
-            window.showModalDialog("Carrier.aspx?Carrier=" + carrierID, self, myArguments);
+            window.showModalDialog("Carrier.aspx?CarrierID=" + carrierID, self, myArguments);
         }
     </script>
 </asp:Content>
