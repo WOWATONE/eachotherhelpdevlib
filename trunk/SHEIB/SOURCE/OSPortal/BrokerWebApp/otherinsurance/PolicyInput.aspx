@@ -320,6 +320,10 @@
             //detxtGridProdName.SetValue(theValue);
         }
 
+        function dxeddlDeptID_SelectedIndexChanged(s, e) {
+            var thejsonstring = dxeddlDeptID.GetSelectedItem().value;
+            dxeddlSalesId.PerformCallback(thejsonstring);
+        }
 
         function FileUploadStart() {
             //document.getElementById("uploadedListFiles").innerHTML = "";
@@ -747,19 +751,18 @@
                                                 <td style="text-align: left;">
                                                     <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server" Width="125px" DropDownStyle="DropDownList">
 															<Items>
-																<dxe:ListEditItem Text="(全部)" Value="" />
-																<dxe:ListEditItem Text="业务部" Value="1" />
 															</Items>
-														</dxe:ASPxComboBox>
+															<ClientSideEvents SelectedIndexChanged="dxeddlDeptID_SelectedIndexChanged" />
+													</dxe:ASPxComboBox>
                                                 </td>
                                                 <td></td>
                                                 <td style="text-align: right;">客户经理：</td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="125px" DropDownStyle="DropDownList">
+                                                    <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="125px" DropDownStyle="DropDownList"
+                                                    OnCallback="dxeddlSalesIdCallback">
 															<Items>
-																<dxe:ListEditItem Text="(全部)" Value="" />
 															</Items>
-														</dxe:ASPxComboBox>
+													</dxe:ASPxComboBox>
                                                 </td>
                                                 <td></td>
                                                 <td style="text-align: right;">收款方式：</td>

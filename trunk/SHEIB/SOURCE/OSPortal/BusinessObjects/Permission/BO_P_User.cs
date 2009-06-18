@@ -256,6 +256,65 @@ namespace BusinessObjects
         }
 
 
+        public static List<BO_P_User> FetchDeptUserList(String deptID)
+        {
+            List<BO_P_User> list = new List<BO_P_User>();
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT A.UserID, A.DeptID, A.UserNameCn, A.UserNameEn,");
+            sb.Append("A.Sex, A.IDNo, A.Birthday, A.JoinDate, A.Title, A.Status,");
+            sb.Append("A.Address, A.PostCode, A.Tel, A.Fax, A.Email, A.CertNo,");
+            sb.Append("A.Password, A.Remark, A.Mobile, A.BankName, A.BankAccount, B.DeptName");
+            sb.Append(" FROM P_User A");
+            sb.Append(" LEFT JOIN P_Department B ON A.DeptID=B.DeptID ");
+            sb.Append(" WHERE A.DeptID=@DeptID ");
+
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@DeptID", DbType.String, deptID);
+
+            BO_P_User newObj;
+            using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    newObj = new BO_P_User();
+
+                    newObj.UserID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserID));
+                    newObj.DeptID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptID));
+                    newObj.DeptName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DeptName));
+                    newObj.UserNameCn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameCn));
+                    newObj.UserNameEn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.UserNameEn));
+                    newObj.Sex = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Sex));
+
+                    newObj.IDNo = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.IDNo));
+                    newObj.Birthday = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.Birthday));
+                    newObj.JoinDate = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.JoinDate));
+                    newObj.Title = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Title));
+                    newObj.Status = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Status));
+
+                    newObj.Address = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Address));
+                    newObj.PostCode = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PostCode));
+                    newObj.Tel = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Tel));
+                    newObj.Fax = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Fax));
+                    newObj.Email = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Email));
+
+                    newObj.CertNo = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CertNo));
+                    newObj.Password = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Password));
+                    newObj.Remark = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Remark));
+                    newObj.Mobile = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Mobile));
+                    newObj.BankName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.BankName));
+
+                    newObj.BankAccount = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.BankAccount));
+
+                    list.Add(newObj);
+                }
+            }
+
+            return list;
+        }
+
+
         public static void Delete(String userID)
         {
             StringBuilder sb = new StringBuilder();
@@ -289,6 +348,7 @@ namespace BusinessObjects
 
             return _db.ExecuteDataSet(dbCommand);
         }
+        
         #endregion Methods
 
 
