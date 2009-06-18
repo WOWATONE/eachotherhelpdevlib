@@ -41,139 +41,148 @@ namespace BrokerWebApp.schemasetting {
         protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl1;
         
         /// <summary>
-        /// txtCarrierNo 控件。
+        /// lblerrmsg 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCarrierNo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblerrmsg;
         
         /// <summary>
-        /// txtShortName 控件。
+        /// dxetxtCarrierID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtShortName;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCarrierID;
         
         /// <summary>
-        /// txtCarrierNameCn 控件。
+        /// dxetxtShortName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCarrierNameCn;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtShortName;
         
         /// <summary>
-        /// txtCarrierNameEn 控件。
+        /// dxetxtCarrierNameCn 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCarrierNameEn;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCarrierNameCn;
         
         /// <summary>
-        /// ddlInsType 控件。
+        /// dxetxtCarrierNameEn 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlInsType;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCarrierNameEn;
         
         /// <summary>
-        /// ddlGrdType 控件。
+        /// dxeddlInsType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGrdType;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlInsType;
         
         /// <summary>
-        /// ddlProvince 控件。
+        /// dxeddlGrdType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProvince;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlGrdType;
         
         /// <summary>
-        /// txtAddress 控件。
+        /// dxeddlProvince 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddress;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlProvince;
         
         /// <summary>
-        /// txtTelephone 控件。
+        /// dxetxtAddress 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelephone;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtAddress;
         
         /// <summary>
-        /// txtPostcode 控件。
+        /// dxetxtTel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPostcode;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtTel;
         
         /// <summary>
-        /// txtFax 控件。
+        /// dxetxtPostcode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFax;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPostcode;
         
         /// <summary>
-        /// txtContact 控件。
+        /// dxetxtFax 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContact;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtFax;
         
         /// <summary>
-        /// txtEmail 控件。
+        /// dxetxtContact 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtContact;
         
         /// <summary>
-        /// txtURL 控件。
+        /// dxetxtEmail 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtURL;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtEmail;
         
         /// <summary>
-        /// txtPolicyNoHeader 控件。
+        /// dxetxtURL 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPolicyNoHeader;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtURL;
+        
+        /// <summary>
+        /// dxetxtPolicyNoHeader 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyNoHeader;
         
         /// <summary>
         /// ContentControl2 控件。
@@ -185,49 +194,49 @@ namespace BrokerWebApp.schemasetting {
         protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl2;
         
         /// <summary>
-        /// TextBox1 控件。
+        /// dxetxtBankName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtBankName;
         
         /// <summary>
-        /// txtBankAccount 控件。
+        /// dxetxtBankAccount 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBankAccount;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtBankAccount;
         
         /// <summary>
-        /// txtPayoffLevel 控件。
+        /// dxetxtPayoffLevel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPayoffLevel;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPayoffLevel;
         
         /// <summary>
-        /// txtLossRation 控件。
+        /// dxetxtLossRation 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLossRation;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtLossRation;
         
         /// <summary>
-        /// txtPremiumSize 控件。
+        /// dxetxtPremiumSize 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPremiumSize;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPremiumSize;
         
         /// <summary>
         /// txtProfile 控件。
@@ -257,21 +266,21 @@ namespace BrokerWebApp.schemasetting {
         protected global::System.Web.UI.WebControls.Panel npExecuteAction;
         
         /// <summary>
-        /// btnSave 控件。
+        /// dxebtnBottomSave 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnBottomSave;
         
         /// <summary>
-        /// btnCancel 控件。
+        /// dxebtnClose 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnClose;
     }
 }

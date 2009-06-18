@@ -60,7 +60,7 @@ namespace BrokerWebApp.schemasetting
         {
             System.Text.StringBuilder sbWhere = new System.Text.StringBuilder();
             if (this.dxetxtCarrierID.Text.Trim().Length > 0)
-                sbWhere.Append(" And CarrierID=" + this.dxetxtCarrierID.Text.Trim());
+                sbWhere.Append(" And CarrierID='" + this.dxetxtCarrierID.Text.Trim() + "' ");
             if (this.dxetxtCarrierNameCn.Text.Trim().Length > 0)
                 sbWhere.Append(" And CarrierNameCn like '%" + this.dxetxtCarrierNameCn.Text.Trim() + "%'");
             this.gridSearchResult.DataSource = BusinessObjects.SchemaSetting.BO_Carrier.GetCarrierList(sbWhere.ToString());
