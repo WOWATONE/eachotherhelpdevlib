@@ -244,6 +244,17 @@ namespace BusinessObjects.SchemaSetting
         }
 
         #endregion Methods
+        public void Save(ModifiedAction action)
+        {
+            if (action == ModifiedAction.Insert)
+            {
+                add();
+            }
+            else if (action == ModifiedAction.Update)
+            {
+                update();
+            }
+        }
 
         /// <summary>
         /// 根据客户分类ID取得客户分类信息
@@ -265,6 +276,90 @@ namespace BusinessObjects.SchemaSetting
             return _db.ExecuteDataSet(dbCommand);
         }
 
+        /// <summary>
+        /// 保存客户信息
+        /// </summary>
+        private void add()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT INTO Carrier(CarrierID, CarrierNameCn, CarrierNameEn, ShortName, InsType, GrdType, Address, Postcode, Tel, Fax, Contact, ");
+            sb.Append("Email, URL, Profile, BankName, BankAccount, PolicyNoHeader, Remark, PremiumSize, LossRation, PayoffLevel, Province) ");
+            sb.Append(" VALUES(@CarrierID, @CarrierNameCn, @CarrierNameEn, @ShortName, @InsType, @GrdType, @Address, @Postcode, @Tel, @Fax, @Contact, ");
+            sb.Append("@Email, @URL, @Profile, @BankName, @BankAccount, @PolicyNoHeader, @Remark, @PremiumSize, @LossRation, @PayoffLevel, @Province");
+            sb.Append(" )");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@CarrierID", DbType.AnsiString, this.CarrierID);
+            _db.AddInParameter(dbCommand, "@CarrierNameCn", DbType.AnsiString, this.CarrierNameCn);
+            _db.AddInParameter(dbCommand, "@CarrierNameEn", DbType.AnsiString, this.CarrierNameEn);
+            _db.AddInParameter(dbCommand, "@ShortName", DbType.AnsiString, this.ShortName);
+            _db.AddInParameter(dbCommand, "@InsType", DbType.AnsiString, this.InsType);
+            _db.AddInParameter(dbCommand, "@GrdType", DbType.AnsiString, this.GrdType);
+            _db.AddInParameter(dbCommand, "@Address", DbType.AnsiString, this.Address);
+            _db.AddInParameter(dbCommand, "@Postcode", DbType.AnsiString, this.Postcode);
+            _db.AddInParameter(dbCommand, "@Tel", DbType.AnsiString, this.Tel);
+            _db.AddInParameter(dbCommand, "@Fax", DbType.AnsiString, this.Fax);
+            _db.AddInParameter(dbCommand, "@Contact", DbType.AnsiString, this.Contact);
+            _db.AddInParameter(dbCommand, "@Email", DbType.AnsiString, this.Email);
+            _db.AddInParameter(dbCommand, "@URL", DbType.AnsiString, this.URL);
+            _db.AddInParameter(dbCommand, "@Profile", DbType.AnsiString, this.Profile);
+            _db.AddInParameter(dbCommand, "@BankName", DbType.AnsiString, this.BankName);
+            _db.AddInParameter(dbCommand, "@BankAccount", DbType.AnsiString, this.BankAccount);
+            _db.AddInParameter(dbCommand, "@PolicyNoHeader", DbType.AnsiString, this.PolicyNoHeader);
+            _db.AddInParameter(dbCommand, "@Remark", DbType.AnsiString, this.Remark);
+            _db.AddInParameter(dbCommand, "@PremiumSize", DbType.AnsiString, this.PremiumSize);
+            _db.AddInParameter(dbCommand, "@LossRation", DbType.AnsiString, this.LossRation);
+            _db.AddInParameter(dbCommand, "@PayoffLevel", DbType.AnsiString, this.PayoffLevel);
+            _db.AddInParameter(dbCommand, "@Province", DbType.AnsiString, this.Province);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 修改保险公司信息
+        /// </summary>
+        private void update()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Update Carrier ");
+            sb.Append("Set CarrierNameCn=@CarrierNameCn, CarrierNameEn=@CarrierNameEn, ShortName=@ShortName, InsType=@InsType, GrdType=@GrdType, Address=@Address, Postcode=@Postcode, Tel=@Tel, @Fax=Fax, Contact=@Contact, ");
+            sb.Append("Email=@Email, URL=@URL, Profile=@Profile, BankName=@BankName, BankAccount=@BankAccount, PolicyNoHeader=@PolicyNoHeader, Remark=@Remark, PremiumSize=@PremiumSize, LossRation=@LossRation, PayoffLevel=@PayoffLevel, Province=@Province ");
+            sb.Append("Where CarrierID=@CarrierID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@CarrierID", DbType.AnsiString, this.CarrierID);
+            _db.AddInParameter(dbCommand, "@CarrierNameCn", DbType.AnsiString, this.CarrierNameCn);
+            _db.AddInParameter(dbCommand, "@CarrierNameEn", DbType.AnsiString, this.CarrierNameEn);
+            _db.AddInParameter(dbCommand, "@ShortName", DbType.AnsiString, this.ShortName);
+            _db.AddInParameter(dbCommand, "@InsType", DbType.AnsiString, this.InsType);
+            _db.AddInParameter(dbCommand, "@GrdType", DbType.AnsiString, this.GrdType);
+            _db.AddInParameter(dbCommand, "@Address", DbType.AnsiString, this.Address);
+            _db.AddInParameter(dbCommand, "@Postcode", DbType.AnsiString, this.Postcode);
+            _db.AddInParameter(dbCommand, "@Tel", DbType.AnsiString, this.Tel);
+            _db.AddInParameter(dbCommand, "@Fax", DbType.AnsiString, this.Fax);
+            _db.AddInParameter(dbCommand, "@Contact", DbType.AnsiString, this.Contact);
+            _db.AddInParameter(dbCommand, "@Email", DbType.AnsiString, this.Email);
+            _db.AddInParameter(dbCommand, "@URL", DbType.AnsiString, this.URL);
+            _db.AddInParameter(dbCommand, "@Profile", DbType.AnsiString, this.Profile);
+            _db.AddInParameter(dbCommand, "@BankName", DbType.AnsiString, this.BankName);
+            _db.AddInParameter(dbCommand, "@BankAccount", DbType.AnsiString, this.BankAccount);
+            _db.AddInParameter(dbCommand, "@PolicyNoHeader", DbType.AnsiString, this.PolicyNoHeader);
+            _db.AddInParameter(dbCommand, "@Remark", DbType.AnsiString, this.Remark);
+            _db.AddInParameter(dbCommand, "@PremiumSize", DbType.AnsiString, this.PremiumSize);
+            _db.AddInParameter(dbCommand, "@LossRation", DbType.AnsiString, this.LossRation);
+            _db.AddInParameter(dbCommand, "@PayoffLevel", DbType.AnsiString, this.PayoffLevel);
+            _db.AddInParameter(dbCommand, "@Province", DbType.AnsiString, this.Province);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 根据查询条件取得保险公司列表
+        /// </summary>
+        /// <param name="sWhere"></param>
+        /// <returns></returns>
         public static DataSet GetCarrierList(string sWhere)
         {
             StringBuilder sb = new StringBuilder();
@@ -277,6 +372,27 @@ namespace BusinessObjects.SchemaSetting
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
             return _db.ExecuteDataSet(dbCommand);
+        }
+
+        /// <summary>
+        /// 判断是否存在保险公司编号
+        /// </summary>
+        /// <param name="carrierID"></param>
+        /// <returns></returns>
+        public static bool IfExistsCarrierID(string carrierID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select CarrierID From Carrier (nolock) ");
+            sb.Append("Where CarrierID=@CarrierID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CarrierID", DbType.AnsiString, carrierID);
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+
+            if (value != null && value.Rows.Count > 0)
+                return true;
+            else
+                return false;
         }
 
         /// <summary>
@@ -293,6 +409,54 @@ namespace BusinessObjects.SchemaSetting
             _db.AddInParameter(dbCommand, "@CarrierID", DbType.AnsiString, carrierID);
 
             _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 根据保险公司编号取得保险公司信息
+        /// </summary>
+        /// <param name="custID"></param>
+        /// <returns></returns>
+        public static BO_Carrier GetCarrierByID(string carrierID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select * From Carrier (nolock) ");
+            sb.Append("Where CarrierID=@CarrierID");
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CarrierID", DbType.AnsiString, carrierID);
+
+            BO_Carrier carrier = null;
+            using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    carrier = new BO_Carrier();
+                    carrier.CarrierID = Utility.GetStringFromReader(reader, FieldList.CarrierID.ToString());
+                    carrier.CarrierNameCn = Utility.GetStringFromReader(reader, FieldList.CarrierNameCn.ToString());
+                    carrier.CarrierNameEn = Utility.GetStringFromReader(reader, FieldList.CarrierNameEn.ToString());
+                    carrier.ShortName = Utility.GetStringFromReader(reader, FieldList.ShortName.ToString());
+                    carrier.InsType = Utility.GetStringFromReader(reader, FieldList.InsType.ToString());
+                    carrier.GrdType = Utility.GetStringFromReader(reader, FieldList.GrdType.ToString());
+                    carrier.Address = Utility.GetStringFromReader(reader, FieldList.Address.ToString());
+                    carrier.Postcode = Utility.GetStringFromReader(reader, FieldList.Postcode.ToString());
+                    carrier.Tel = Utility.GetStringFromReader(reader, FieldList.Tel.ToString());
+                    carrier.Fax = Utility.GetStringFromReader(reader, FieldList.Fax.ToString());
+                    carrier.Contact = Utility.GetStringFromReader(reader, FieldList.Contact.ToString());
+                    carrier.Email = Utility.GetStringFromReader(reader, FieldList.Email.ToString());
+                    carrier.URL = Utility.GetStringFromReader(reader, FieldList.URL.ToString());
+                    carrier.Profile = Utility.GetStringFromReader(reader, FieldList.Profile.ToString());
+                    carrier.BankName = Utility.GetStringFromReader(reader, FieldList.BankName.ToString());
+                    carrier.BankAccount = Utility.GetStringFromReader(reader, FieldList.BankAccount.ToString());
+                    carrier.PolicyNoHeader = Utility.GetStringFromReader(reader, FieldList.PolicyNoHeader.ToString());
+                    carrier.Remark = Utility.GetStringFromReader(reader, FieldList.Remark.ToString());
+                    carrier.PremiumSize = Utility.GetStringFromReader(reader, FieldList.PremiumSize.ToString());
+                    carrier.LossRation = Utility.GetStringFromReader(reader, FieldList.LossRation.ToString());
+                    carrier.PayoffLevel = Utility.GetStringFromReader(reader, FieldList.PayoffLevel.ToString());
+                    carrier.Province = Utility.GetStringFromReader(reader, FieldList.Province.ToString());
+                    break;
+                }
+            }
+
+            return carrier;
         }
     }
 }
