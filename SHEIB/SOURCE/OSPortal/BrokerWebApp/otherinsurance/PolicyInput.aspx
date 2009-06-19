@@ -325,8 +325,9 @@
             dxeddlSalesId.PerformCallback(thejsonstring);
         }
 
-        function FileUploadStart() {
+        function FileUploadStart(s, e) {
             //document.getElementById("uploadedListFiles").innerHTML = "";
+            //FileUploadStart
         }
 
 
@@ -1398,11 +1399,13 @@
                                 <td style="width: 100%; text-align: left;">
                                     <dxuc:ASPxUploadControl ID="filesUploadControl" runat="server" ShowAddRemoveButtons="True"
                                         Width="400px" ShowUploadButton="True" AddUploadButtonsHorizontalPosition="Center"
-                                        ShowProgressPanel="True" ClientInstanceName="UploadControl" OnFileUploadComplete="UploadControl_FileUploadComplete"
+                                        ShowProgressPanel="True" ClientInstanceName="filesUploadControl" OnFileUploadComplete="UploadControl_FileUploadComplete"
                                         FileInputCount="5" RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10">
                                         <ValidationSettings MaxFileSize="4000000" AllowedContentTypes="*">
                                         </ValidationSettings>
-                                        <ClientSideEvents FileUploadComplete="function(s, e) { FileUploaded(s, e) }" FileUploadStart="function(s, e) { FileUploadStart(); }" />
+                                        <ClientSideEvents 
+                                            FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" 
+                                            FileUploadStart="function(s, e) { FileUploadStart(s, e); }"  />
                                         <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
                                             ImagePosition="Left">
                                         </RemoveButton>
@@ -1410,7 +1413,7 @@
                                             ImagePosition="Left">
                                         </AddButton>
                                         <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
-                                            ImagePosition="Left">
+                                            ImagePosition="Left">                                            
                                         </UploadButton>
                                     </dxuc:ASPxUploadControl>
                                 </td>
