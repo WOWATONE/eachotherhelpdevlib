@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSPortalWebApp.inoutbalance {
+namespace BrokerWebApp.inoutbalance {
     
     
     public partial class FeePayinAdd {

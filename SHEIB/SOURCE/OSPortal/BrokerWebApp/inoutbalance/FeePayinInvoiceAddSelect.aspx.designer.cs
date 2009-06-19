@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSPortalWebApp.inoutbalance {
+namespace BrokerWebApp.inoutbalance {
     
     
     public partial class FeePayinInvoiceAddSelect {
@@ -59,76 +59,76 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.Panel npSearchDetail;
         
         /// <summary>
-        /// txtPolicyNo 控件。
+        /// dxetxtPolicyID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPolicyNo;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyID;
         
         /// <summary>
-        /// ddlDeptId 控件。
+        /// dxeddlDeptId 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDeptId;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlDeptId;
         
         /// <summary>
-        /// ddlSaleID 控件。
+        /// dxeddlSalesID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSaleID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesID;
         
         /// <summary>
-        /// DropDownList1 控件。
+        /// dxeddlProcessFeeType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlProcessFeeType;
         
         /// <summary>
-        /// DropDownList2 控件。
+        /// dxeddlCarrier 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCarrier;
         
         /// <summary>
-        /// DropDownList4 控件。
+        /// dxeddlBranch 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlBranch;
         
         /// <summary>
-        /// DropDownList5 控件。
+        /// dxeddlGatheringType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList5;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlGatheringType;
         
         /// <summary>
-        /// DropDownList3 控件。
+        /// dxeddlAuditStauts 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlAuditStauts;
         
         /// <summary>
         /// deGetStartDate 控件。
@@ -149,13 +149,13 @@ namespace OSPortalWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deGetEndDate;
         
         /// <summary>
-        /// txtProdTypeID 控件。
+        /// ASPxComboBox1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProdTypeID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox ASPxComboBox1;
         
         /// <summary>
         /// imgpeoplesearch 控件。

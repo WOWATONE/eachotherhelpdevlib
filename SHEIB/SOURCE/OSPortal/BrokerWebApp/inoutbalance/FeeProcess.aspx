@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master"
-    AutoEventWireup="true" Theme="Aqua" CodeBehind="FeeProcess.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeeProcess" %>
+    AutoEventWireup="true" Theme="Aqua" CodeBehind="FeeProcess.aspx.cs" Inherits="BrokerWebApp.inoutbalance.FeeProcess" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
     TagPrefix="dxrp" %>

@@ -8,7 +8,7 @@ using System.Data;
 using BusinessObjects;
 using System.Drawing;
 
-namespace OSPortalWebApp.inoutbalance
+namespace BrokerWebApp.inoutbalance
 {
     public partial class FeeCustomerAdd : System.Web.UI.Page
     {
@@ -19,7 +19,6 @@ namespace OSPortalWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack && !IsCallback)
             {
                 init();

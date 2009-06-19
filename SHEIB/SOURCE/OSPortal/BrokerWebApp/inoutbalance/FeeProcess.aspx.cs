@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 
 
-namespace OSPortalWebApp.inoutbalance
+namespace BrokerWebApp.inoutbalance
 {
     public partial class FeeProcess : System.Web.UI.Page
     {

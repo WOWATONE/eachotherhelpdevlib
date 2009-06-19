@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="经纪费结算选择" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/PopupMaster.Master"
-    AutoEventWireup="true" CodeBehind="FeeProcessAddSelect.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeeProcessAddSelect" %>
+    AutoEventWireup="true" CodeBehind="FeeProcessAddSelect.aspx.cs" Inherits="BrokerWebApp.inoutbalance.FeeProcessAddSelect" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
     TagPrefix="dxrp" %>

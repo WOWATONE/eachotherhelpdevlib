@@ -8,7 +8,7 @@ using System.Data;
 using BusinessObjects;
 using BusinessObjects.SchemaSetting;
 
-namespace OSPortalWebApp.inoutbalance
+namespace BrokerWebApp.inoutbalance
 {
     public partial class FeeCustomerAddSelect : System.Web.UI.Page
     {
