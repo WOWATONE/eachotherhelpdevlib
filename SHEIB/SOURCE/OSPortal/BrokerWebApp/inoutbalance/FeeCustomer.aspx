@@ -108,10 +108,10 @@
                             </td>
                             <td style="width: 70px; text-align: right;">
                                 收款方式：
-                            </td>                            
+                            </td>
                             <td style="width: 110px; text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
+                                    runat="server" Width="160px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td>
@@ -146,9 +146,20 @@
                                 险种：
                             </td>
                             <td style="text-align: left;">
+                                <dxe:ASPxComboBox ID="CmbCustomers" runat="server" Width="170px" DropDownWidth="550"
+                                    DropDownStyle="DropDownList" DataSourceID="dsCustomers" ValueField="CustomerID"
+                                    ValueType="System.String" TextFormatString="{0}" EnableCallbackMode="true" EnableIncrementalFiltering="True"
+                                    CallbackPageSize="30">
+                                    <columns>
+                                        <dxe:ListBoxColumn FieldName="ContactName" Width="130px" />
+                                        <dxe:ListBoxColumn FieldName="CompanyName" Width="100%" />
+                                        <dxe:ListBoxColumn FieldName="Country" Width="60px" />
+                                        <dxe:ListBoxColumn FieldName="Phone" Width="100px" />
+                                     </columns>
+                                </dxe:ASPxComboBox>
                                 <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server"
                                     Width="160px">
-                                </dxe:ASPxTextBox>                                
+                                </dxe:ASPxTextBox>
                                 <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;
                                     height: 20px; vertical-align: top;" onclick="imgPolicyProdTypeClick();" />
                             </td>
@@ -176,7 +187,7 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlAuditStauts" ClientInstanceName="dxeddlAuditStauts" runat="server"
                                     Width="160px" DropDownStyle="DropDownList">
-                                </dxe:ASPxComboBox>   
+                                </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
                                 保单类型：
@@ -184,7 +195,7 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlPolicyType" ClientInstanceName="dxeddlPolicyType" runat="server"
                                     Width="160px" DropDownStyle="DropDownList">
-                                </dxe:ASPxComboBox>          
+                                </dxe:ASPxComboBox>
                             </td>
                             <td>
                             </td>
@@ -203,8 +214,7 @@
                             <td style="text-align: left;">
                             </td>
                             <td style="text-align: left;" colspan="2">
-                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" 
-                                    onclick="btnSearch_Click" />&nbsp;
+                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
                                 <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
                                 <asp:Button ID="btnExcel" runat="server" Text="Excel" CssClass="input_2" />
                             </td>

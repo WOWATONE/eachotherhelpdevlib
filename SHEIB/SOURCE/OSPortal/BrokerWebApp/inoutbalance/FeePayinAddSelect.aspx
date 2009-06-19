@@ -98,7 +98,7 @@
                                 客户经理：
                             </td>
                             <td style="width: 110px; text-align: left;">
-                                 <dxe:ASPxComboBox ID="dxeddlSalesID" ClientInstanceName="dxeddlSalesID" runat="server"
+                                <dxe:ASPxComboBox ID="dxeddlSalesID" ClientInstanceName="dxeddlSalesID" runat="server"
                                     Width="160px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
@@ -118,7 +118,7 @@
                                 保单编号：
                             </td>
                             <td style="text-align: left;">
-                                 <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server"
+                                <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server"
                                     Width="160px">
                                 </dxe:ASPxTextBox>
                             </td>
@@ -126,9 +126,9 @@
                                 保单类型：
                             </td>
                             <td style="text-align: left;">
-                                 <dxe:ASPxComboBox ID="dxeddlPolicyType" ClientInstanceName="dxeddlPolicyType" runat="server"
+                                <dxe:ASPxComboBox ID="dxeddlPolicyType" ClientInstanceName="dxeddlPolicyType" runat="server"
                                     Width="160px" DropDownStyle="DropDownList">
-                                </dxe:ASPxComboBox>     
+                                </dxe:ASPxComboBox>
                             </td>
                             <td>
                             </td>
@@ -138,7 +138,7 @@
                                 投保客户：
                             </td>
                             <td style="text-align: left;">
-                               <dxe:ASPxTextBox ID="dxetxtCustomerID" ClientInstanceName="dxetxtCustomerID" runat="server"
+                                <dxe:ASPxTextBox ID="dxetxtCustomerID" ClientInstanceName="dxetxtCustomerID" runat="server"
                                     Width="160px">
                                 </dxe:ASPxTextBox>
                             </td>
@@ -146,15 +146,15 @@
                                 收款方式：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
+                                    runat="server" Width="160px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
                                 保险险种：
                             </td>
                             <td style="text-align: left;">
-                                 <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server"
+                                <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server"
                                     Width="160px">
                                 </dxe:ASPxTextBox>
                                 <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;
