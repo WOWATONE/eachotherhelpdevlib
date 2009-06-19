@@ -5,9 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using BusinessObjects;
 
 
-namespace OSPortalWebApp.inoutbalance
+namespace BrokerWebApp.inoutbalance
 {
     public partial class FeePayin : System.Web.UI.Page
     {
@@ -21,85 +22,124 @@ namespace OSPortalWebApp.inoutbalance
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            GetPolicyItemDataForGrid();
-
-
-            this.gridSearchResult.DataSource = _dtGrid;
-
             if (!IsPostBack && !IsCallback)
-                this.gridSearchResult.DataBind();
+            {
+                Initialization();
+                dxeddlAuditStauts.SelectedIndex = 0;
+                BindGrid();
+            }
 
         }
 
-
-        private void GetPolicyItemDataForGrid()
+        private void Initialization()
         {
-            _dtGrid = new DataTable();
-            _dtGrid.PrimaryKey = new DataColumn[] { 
-            _dtGrid.Columns.Add("FeeId", typeof(Guid)) };
+            DataSet dsList;
 
-            _dtGrid.Columns.Add("FeeType", typeof(string));
-            _dtGrid.Columns.Add("CurCode", typeof(string));
-            _dtGrid.Columns.Add("Fee", typeof(double));
-            _dtGrid.Columns.Add("FeeBase", typeof(double));
-            _dtGrid.Columns.Add("FeeAdjust", typeof(double));
-            _dtGrid.Columns.Add("AccountType", typeof(string));
+            //GatheringType
+            this.dxeddlGatheringType.Items.Add("(全部)", "");
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.GatheringType.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlGatheringType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
 
-            _dtGrid.Columns.Add("FeeYJF", typeof(double));
-            _dtGrid.Columns.Add("FeeBCSF", typeof(double));
-            _dtGrid.Columns.Add("FeeBCJF", typeof(double));
-            _dtGrid.Columns.Add("ProcessSS", typeof(double));
+            //AuditStatus
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.AuditStatus.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlAuditStauts.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
 
-            _dtGrid.Columns.Add("SerialNo", typeof(string));
-            //_dtGrid.Columns.Add("PolicyNo", typeof(string));
-            //_dtGrid.Columns.Add("Customer", typeof(string));
-            //_dtGrid.Columns.Add("SalesId", typeof(Int32));
-            //_dtGrid.Columns.Add("Sales", typeof(string));
-            _dtGrid.Columns.Add("Audited", typeof(string));
-            _dtGrid.Columns.Add("CreatePerson", typeof(string));
-            //_dtGrid.Columns.Add("CarrierId", typeof(string));
-            //_dtGrid.Columns.Add("BranchId", typeof(string));
-            //_dtGrid.Columns.Add("ProdTypeID", typeof(string));
-            _dtGrid.Columns.Add("FeeRemark", typeof(string));
-            _dtGrid.Columns.Add("CreateTime", typeof(DateTime));
-            _dtGrid.Columns.Add("NoticeID", typeof(string));
 
-            _dtGrid.Columns.Add("F1", typeof(string));
-            _dtGrid.Columns.Add("F2", typeof(string));
-            _dtGrid.Columns.Add("F3", typeof(string));
-            
-            _dtGrid.Rows.Add(new object[] { 
-                Guid.NewGuid(), 
-                "现金",
-                "人民币",
-                1000,
-                1000,
-                10,
-                "代收",
-                1000,
-                1000,
-                1000,
-                50,
-                "Sn001",
-                //"PN001",
-                //"王怡",
-                //1,
-                //"王海",
-                "已审核",
-                "王海",
-                //"平安",
-                //"上海",
-                //"寿险",
-                "备注",
-                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
-                "1",
-                "平安",
-                "上海",
-                "王海"
-            });
+            //部门
+            this.dxeddlDeptId.Items.Add("(全部)", "");
+            dsList = BO_P_Department.GetDeptByDeptID("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlDeptId.Items.Add(row["DeptName"].ToString().Trim(), row["DeptID"].ToString().Trim());
+                }
+            }
 
+            //客户经理
+            this.dxeddlSalesID.Items.Add("(全部)", "");
+            dsList = BO_P_User.GetUserByUserID("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlSalesID.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
+                }
+            }
+
+
+            //PolicyType
+            this.dxeddlPolicyType.Items.Add("(全部)", "");
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.PolicyType.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlPolicyType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
         }
 
+
+
+        private void BindGrid()
+        {
+            string lsWhere = "";
+            if (dxetxtPayinVoucherID.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and c.VoucherID ='" + dxetxtPayinVoucherID.Text + "'";
+            }
+
+            if (dxetxtPolicyNo.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and c.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+            }
+            if (dxeddlGatheringType.SelectedItem.Value.ToString().Trim() != "")
+            {
+                lsWhere = lsWhere + " and  d.GatheringType= ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
+            }
+            if (dxeddlDeptId.SelectedItem.Value.ToString().Trim() != "")
+            {
+                lsWhere = lsWhere + " and c.DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
+            }
+            if (dxeddlSalesID.SelectedItem.Value.ToString().Trim() != "")
+            {
+                lsWhere = lsWhere + " and c.SalesId ='" + dxeddlSalesID.SelectedItem.Value.ToString() + "'";
+            }
+            if (dxetxtCustomerID.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=c.CustomerID) ";
+            }
+            if (dxetxtProdTypeID.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and  exists( select 1 from ProductType where ProdTypeName like '%" + dxetxtProdTypeID.Text + "%' and ProdTypeID=c.ProdTypeID) ";
+            }
+
+            string lsStartDate = dxePayinStartDate.Date.ToString("yyyy-MM-dd");
+            string lsEndDate = dxePayinEndDate.Date.ToString("yyyy-MM-dd");
+            if ((dxePayinStartDate.Text.Trim() != "") && (dxePayinEndDate.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) >='" + lsStartDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) <='" + lsEndDate + "'";
+            }
+
+            DataTable dt = BO_FeeCustomer.GetCustomerFeeList(lsWhere).Tables[0];
+            this.gridSearchResult.DataSource = dt;
+            this.gridSearchResult.DataBind();
+
+        }
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master"
-    AutoEventWireup="true" Theme="Aqua" CodeBehind="FeeCustomer.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeeCustomer" %>
+    AutoEventWireup="true" Theme="Aqua" CodeBehind="FeeCustomer.aspx.cs" Inherits="BrokerWebApp.inoutbalance.FeeCustomer" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
     TagPrefix="dxrp" %>
@@ -150,12 +150,6 @@
                                     DropDownStyle="DropDownList" DataSourceID="dsCustomers" ValueField="CustomerID"
                                     ValueType="System.String" TextFormatString="{0}" EnableCallbackMode="true" EnableIncrementalFiltering="True"
                                     CallbackPageSize="30">
-                                    <columns>
-                                        <dxe:ListBoxColumn FieldName="ContactName" Width="130px" />
-                                        <dxe:ListBoxColumn FieldName="CompanyName" Width="100%" />
-                                        <dxe:ListBoxColumn FieldName="Country" Width="60px" />
-                                        <dxe:ListBoxColumn FieldName="Phone" Width="100px" />
-                                     </columns>
                                 </dxe:ASPxComboBox>
                                 <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server"
                                     Width="160px">

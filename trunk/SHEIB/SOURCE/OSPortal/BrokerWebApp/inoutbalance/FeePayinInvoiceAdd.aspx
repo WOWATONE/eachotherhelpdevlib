@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="经纪费开票录入" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/PopupMaster.Master"
-    AutoEventWireup="true" CodeBehind="FeePayinInvoiceAdd.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeePayinInvoiceAdd" %>
+    AutoEventWireup="true" CodeBehind="FeePayinInvoiceAdd.aspx.cs" Inherits="BrokerWebApp.inoutbalance.FeePayinInvoiceAdd" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
     TagPrefix="dxrp" %>

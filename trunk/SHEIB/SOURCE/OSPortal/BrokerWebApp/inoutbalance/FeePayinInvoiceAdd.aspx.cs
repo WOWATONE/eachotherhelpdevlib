@@ -5,8 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using BusinessObjects;
 
-namespace OSPortalWebApp.inoutbalance
+namespace BrokerWebApp.inoutbalance
 {
     public partial class FeePayinInvoiceAdd : System.Web.UI.Page
     {
@@ -18,12 +19,12 @@ namespace OSPortalWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetPolicyItemDataForGrid();
-
-            this.gridPolicyItem.DataSource = _dtGrid;
 
             if (!IsPostBack && !IsCallback)
-                this.gridPolicyItem.DataBind();
+            {
+                init();
+                BindGrid();
+            }
         }
 
 
@@ -64,35 +65,43 @@ namespace OSPortalWebApp.inoutbalance
             this.gridPolicyItem.DataBind();
         }
 
-        private void GetPolicyItemDataForGrid()
+        private void init()
         {
-            _dtGrid = new DataTable();
+            //dxetxtPayFee.BackColor = Color.LightGray;
+            //dxetxtFeeAdjust.BackColor = Color.LightGray;
+            //dxetxtFee.BackColor = Color.LightGray;
+            //dxetxtCiPremium.BackColor = Color.LightGray;
+            //dxetxtAciPremium.BackColor = Color.LightGray;
+            //dxetxtCstPremium.BackColor = Color.LightGray;
 
-            _dtGrid.Columns.Add("PolicyNo", typeof(Int32));
-
-            _dtGrid.Columns.Add("StandardFeeBase", typeof(Double));
-            _dtGrid.Columns.Add("GotFeeBase", typeof(Double));
-            _dtGrid.Columns.Add("GettingFeeBase", typeof(Double));
-
-            _dtGrid.Columns.Add("StandardProcessFeeBase", typeof(Double));
-            _dtGrid.Columns.Add("GotProcessFee", typeof(Double));
-            _dtGrid.Columns.Add("GettingProcessFee", typeof(Double));
-
-
-            _dtGrid.Columns.Add("CustomerID", typeof(String));
-            _dtGrid.Columns.Add("ProdTypeID", typeof(String));
-            _dtGrid.Columns.Add("CarrierId", typeof(String));
-            _dtGrid.Columns.Add("BranchId", typeof(String));
-
-
-            _dtGrid.Rows.Add(new object[] { "0001", 1000, 1000, 1000, 500, 500, 500, "王怡", "寿险", "客户经理", "收取方式" });
-            _dtGrid.Rows.Add(new object[] { "0001", 1000, 1000, 1000, 500, 500, 500, "王怡", "寿险", "客户经理", "收取方式" });
-
-
-            _dtGrid.Rows.Add(new object[] { "0002", 2000, 2000, 2000, 500, 500, 500, "王怡", "寿险", "客户经理", "收取方式" });
-
+            //dxetxtPayFee.ReadOnly = true;
+            //dxetxtFeeAdjust.ReadOnly = true;
+            //dxetxtFee.ReadOnly = true;
+            //dxetxtCiPremium.ReadOnly = true;
+            //dxetxtAciPremium.ReadOnly = true;
+            //dxetxtCstPremium.ReadOnly = true;
 
         }
+
+
+        private void BindGrid()
+        {
+            string sVocherID = "";
+            sVocherID = "0903052101";
+            DataTable dt = BO_FeeCustomer.GetFeeCustomerAdd(sVocherID).Tables[0];
+            this.gridPolicyItem.DataSource = dt;
+            this.gridPolicyItem.DataBind();
+
+            //取应收.
+            //dxetxtPayFee.Text = dt.Compute("Sum(PayFeeBase)", "").ToString();
+            //dxetxtFeeAdjust.Text = dt.Compute("Sum(FeeAdjust)", "").ToString();
+            //dxetxtFee.Text = dt.Compute("Sum(Fee)", "").ToString();
+            //dxetxtCiPremium.Text = dt.Compute("Sum(CiPremium)", "").ToString();
+            //dxetxtAciPremium.Text = dt.Compute("Sum(AciPremium)", "").ToString();
+            //dxetxtCstPremium.Text = dt.Compute("Sum(CstPremium)", "").ToString();
+
+        }
+
 
 
 

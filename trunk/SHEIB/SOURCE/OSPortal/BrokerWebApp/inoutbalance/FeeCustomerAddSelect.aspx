@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="客户收费选择" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/PopupMaster.Master"
-    AutoEventWireup="true" CodeBehind="FeeCustomerAddSelect.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeeCustomerAddSelect" %>
+    AutoEventWireup="true" CodeBehind="FeeCustomerAddSelect.aspx.cs" Inherits="BrokerWebApp.inoutbalance.FeeCustomerAddSelect" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
     TagPrefix="dxrp" %>
@@ -18,6 +18,7 @@
     TagPrefix="dxwsc" %>
 <%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v8.3" Namespace="DevExpress.Web.ASPxHtmlEditor"
     TagPrefix="dxhe" %>
+    
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>客户收费选择</title>
 

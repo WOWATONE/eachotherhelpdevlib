@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="解付保费选择" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/PopupMaster.Master"
-    AutoEventWireup="true" CodeBehind="FeePayinAddSelect.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeePayinAddSelect" %>
+    AutoEventWireup="true" CodeBehind="FeePayinAddSelect.aspx.cs" Inherits="BrokerWebApp.inoutbalance.FeePayinAddSelect" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
     TagPrefix="dxrp" %>

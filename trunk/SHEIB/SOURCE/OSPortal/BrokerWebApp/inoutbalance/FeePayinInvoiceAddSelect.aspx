@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="经纪费开票选择" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/PopupMaster.Master"
-    AutoEventWireup="true" CodeBehind="FeePayinInvoiceAddSelect.aspx.cs" Inherits="OSPortalWebApp.inoutbalance.FeePayinInvoiceAddSelect" %>
+    AutoEventWireup="true" CodeBehind="FeePayinInvoiceAddSelect.aspx.cs" Inherits="BrokerWebApp.inoutbalance.FeePayinInvoiceAddSelect" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
     TagPrefix="dxrp" %>
@@ -18,6 +18,7 @@
     TagPrefix="dxwsc" %>
 <%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v8.3" Namespace="DevExpress.Web.ASPxHtmlEditor"
     TagPrefix="dxhe" %>
+    
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>经纪费开票选择</title>
 
@@ -57,7 +58,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    <ajaxToolkit:ToolkitScriptManager runat="Server" id ="ScriptManager1" />
     <table style="width: 100%">
         <tr>
             <td style="width: 100%;" colspan="2">
