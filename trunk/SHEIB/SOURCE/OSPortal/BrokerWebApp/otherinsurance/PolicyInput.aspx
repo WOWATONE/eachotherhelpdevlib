@@ -676,9 +676,12 @@
                     sumProcessVal = parseFloat(sumProcessVal) + parseFloat(itemVal);
                 }
             }
-            dxetxtCoverage.SetValue(sumCoverageVal);
-            dxetxtPremium.SetValue(sumPremiumVal);
-            dxetxtProcess.SetValue(sumProcessVal);
+            var rtn = sumCoverageVal.toFixed(2);
+            dxetxtCoverage.SetValue(rtn);
+            rtn = sumPremiumVal.toFixed(2);
+            dxetxtPremium.SetValue(rtn);
+            rtn = sumProcessVal.toFixed(2);
+            dxetxtProcess.SetValue(rtn);
         }
         
         
