@@ -1384,40 +1384,65 @@
                         <table style="width: 100%">
                             <tr>
                                 <td style="width: 100%; text-align: left;">
-                                    附件
+                                    上传附件                                                                        
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl" 
+                                            runat="server" ShowAddRemoveButtons="True"
+                                            Width="400px" ShowUploadButton="True" 
+                                            AddUploadButtonsHorizontalPosition="Center"
+                                            ShowProgressPanel="True" 
+                                            FileInputCount="5" RemoveButtonSpacing="8px" 
+                                            AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
+                                            OnPreRender="UploadControl_PreRender" 
+                                            OnFileUploadComplete="UploadControl_FileUploadComplete"
+                                            >
+                                            <ValidationSettings MaxFileSize="4000000" 
+                                            FileDoesNotExistErrorText="文件不存在" 
+                                            GeneralErrorText="上传发生错误" 
+                                            MaxFileSizeErrorText="文件太大" 
+                                            NotAllowedContentTypeErrorText="不允许上传此类型文件">
+                                            </ValidationSettings>
+                                            <ClientSideEvents 
+                                                FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" 
+                                                FileUploadStart="function(s, e) { FileUploadStart(s, e); }"  />
+                                            <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
+                                                ImagePosition="Left">
+                                            </RemoveButton>
+                                            <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
+                                                ImagePosition="Left">
+                                            </AddButton>
+                                            <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
+                                                ImagePosition="Left">                                            
+                                            </UploadButton>                                        
+                                        </dxuc:ASPxUploadControl>    
                                 </td>
                             </tr>
                             <tr>
                                 <td style="width: 100%; text-align: left;">
-                                    <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl" 
-                                        runat="server" ShowAddRemoveButtons="True"
-                                        Width="400px" ShowUploadButton="True" 
-                                        AddUploadButtonsHorizontalPosition="Center"
-                                        ShowProgressPanel="True" 
-                                        FileInputCount="5" RemoveButtonSpacing="8px" 
-                                        AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
-                                        OnPreRender="UploadControl_PreRender" 
-                                        OnFileUploadComplete="UploadControl_FileUploadComplete"
+                                    文件列表                                                                        
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100%; text-align: left;">
+                                    <dxwgv:ASPxGridView ID="gridDocList" ClientInstanceName="gridDocList" runat="server"
+                                        KeyFieldName="PolicyDocID" Width="100%" AutoGenerateColumns="False" 
                                         >
-                                        <ValidationSettings MaxFileSize="4000000" 
-                                        FileDoesNotExistErrorText="文件不存在" 
-                                        GeneralErrorText="上传发生错误" 
-                                        MaxFileSizeErrorText="文件太大" 
-                                        NotAllowedContentTypeErrorText="不允许上传此类型文件">
-                                        </ValidationSettings>
-                                        <ClientSideEvents 
-                                            FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" 
-                                            FileUploadStart="function(s, e) { FileUploadStart(s, e); }"  />
-                                        <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
-                                            ImagePosition="Left">
-                                        </RemoveButton>
-                                        <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
-                                            ImagePosition="Left">
-                                        </AddButton>
-                                        <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
-                                            ImagePosition="Left">                                            
-                                        </UploadButton>                                        
-                                    </dxuc:ASPxUploadControl>
+                                        <%-- BeginRegion Columns --%>
+                                        <Columns>
+                                            <dxwgv:GridViewDataTextColumn FieldName="DocName" Caption="文件名" CellStyle-Wrap="False">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="DocURL" Caption="链接地址" CellStyle-Wrap="False">
+                                            </dxwgv:GridViewDataColumn>                                                            
+                                        </Columns>
+                                        <%-- EndRegion --%>
+                                        <SettingsPager Mode="ShowAllRecords" />
+                                        <Settings ShowGroupPanel="false" /> 
+                                        <ClientSideEvents CustomButtonClick="" />
+                                    </dxwgv:ASPxGridView>
+                                                
                                 </td>
                             </tr>
                         </table>

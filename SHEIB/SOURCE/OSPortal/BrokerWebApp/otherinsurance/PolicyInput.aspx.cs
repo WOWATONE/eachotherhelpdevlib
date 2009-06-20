@@ -31,7 +31,7 @@ namespace BrokerWebApp.otherinsurance
         private Boolean gridCarrierStartEdit = false;
         private Boolean gridPolicyItemStartEdit = false;
         private Boolean gridPolicyPeriodStartEdit = false;
-
+        
         //enctype="multipart/form-data">
 
         public enum PageMode
@@ -83,13 +83,16 @@ namespace BrokerWebApp.otherinsurance
             this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridPolicyItem.DataSource = BusinessObjects.Policy.BO_PolicyItem.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridPeriod.DataSource = BusinessObjects.Policy.BO_PolicyPeriod.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
+            this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             
+
             if (!IsPostBack && !IsCallback)
             {
                 this.dxedtCreateTime.Date = DateTime.Today;
                 this.gridCarrier.DataBind();
                 this.gridPolicyItem.DataBind();
                 this.gridPeriod.DataBind();
+                this.gridDocList.DataBind();
 
                 if (!string.IsNullOrEmpty(this.dxetxtPolicyID.Text.Trim()))
                 {
@@ -141,7 +144,7 @@ namespace BrokerWebApp.otherinsurance
             //
         }
 
-
+        
         protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
             ASPxComboBox thecb = (ASPxComboBox)source;
@@ -1033,6 +1036,14 @@ namespace BrokerWebApp.otherinsurance
             return ret;
         }
 
+
+
+        private void rebindGridDocList()
+        {
+            this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
+            this.gridDocList.DataBind();
+        }
+        
 
         #endregion Upload File  Events
 
