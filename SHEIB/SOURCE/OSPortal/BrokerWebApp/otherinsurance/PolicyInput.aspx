@@ -1435,8 +1435,10 @@
                                     <dxwgv:ASPxGridView ID="gridPeriod" ClientInstanceName="gridPeriod" runat="server"
                                         KeyFieldName="PolPeriodId" Width="100%" OnStartRowEditing="gridPeriod_StartRowEditing"
                                         OnRowInserting="gridPeriod_RowInserting" OnRowUpdating="gridPeriod_RowUpdating"
-                                        OnRowUpdated="gridPeriod_RowUpdated" OnRowInserted="gridPeriod_RowInserted" OnRowDeleting="gridPeriod_RowDeleting"
+                                        OnRowUpdated="gridPeriod_RowUpdated" OnRowInserted="gridPeriod_RowInserted" 
+                                        OnRowDeleting="gridPeriod_RowDeleting" OnHtmlEditFormCreated="gridPeriod_HtmlEditFormCreated"
                                         OnRowDeleted="gridPeriod_RowDeleted" OnCustomCallback="gridPeriod_CustomCallback"
+                                        OnRowValidating="gridPeriod_RowValidating"
                                         >
                                         <%-- BeginRegion Columns --%>
                                         <Columns>
@@ -1458,6 +1460,12 @@
                                             </dxwgv:GridViewDataColumn>
                                             <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="经纪费" CellStyle-Wrap="false">
                                             </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="PolicyId" Caption="PolicyId" CellStyle-Wrap="false" Visible="false">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="CarrierID" Caption="CarrierID" CellStyle-Wrap="false" Visible="false">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="BranchID" Caption="BranchID" CellStyle-Wrap="false" Visible="false">
+                                            </dxwgv:GridViewDataColumn>
                                         </Columns>
                                         <%-- EndRegion --%>
                                         <SettingsEditing Mode="EditForm" />
@@ -1478,16 +1486,22 @@
                                                                 期次:
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodPeriod" ClientInstanceName="detxtGridPeriodPeriod"
-                                                                    Enabled="false">
+                                                                <dxe:ASPxTextBox runat="server" 
+                                                                ID="detxtGridPeriodPeriod" ClientInstanceName="detxtGridPeriodPeriod"
+                                                                Enabled="false" ReadOnly="true">
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 付款日期:
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxDateEdit ID="detxtGridPeriodPayDate" ClientInstanceName="detxtGridPeriodPayDate"
+                                                                <dxe:ASPxDateEdit 
+                                                                    ID="detxtGridPeriodPayDate" 
+                                                                    ClientInstanceName="detxtGridPeriodPayDate"
                                                                     runat="server">
+                                                                    <ValidationSettings RequiredField-IsRequired="true"  CausesValidation="true" ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项">
+                                                                        <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                    </ValidationSettings>
                                                                 </dxe:ASPxDateEdit>
                                                             </td>
                                                         </tr>
@@ -1496,16 +1510,19 @@
                                                                 保险公司:
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodCarrierNameCn" ClientInstanceName="detxtGridPeriodCarrierNameCn"
-                                                                    Enabled="false">
+                                                                <dxe:ASPxTextBox runat="server" 
+                                                                    ID="detxtGridPeriodCarrierNameCn" 
+                                                                    ClientInstanceName="detxtGridPeriodCarrierNameCn"
+                                                                    Enabled="false" ReadOnly="true">
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 分支机构:
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodBranchName" ClientInstanceName="detxtGridPeriodBranchName"
-                                                                    Enabled="false">
+                                                                <dxe:ASPxTextBox runat="server" 
+                                                                    ID="detxtGridPeriodBranchName" ClientInstanceName="detxtGridPeriodBranchName"
+                                                                    Enabled="false" ReadOnly="true">
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                         </tr>
@@ -1514,16 +1531,26 @@
                                                                 保费:
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodPayFeeBase" ClientInstanceName="detxtGridPeriodPayFeeBase"
-                                                                    >
+                                                                <dxe:ASPxTextBox runat="server" 
+                                                                    ID="detxtGridPeriodPayFeeBase" ClientInstanceName="detxtGridPeriodPayFeeBase"
+                                                                    ReadOnly="false">
+                                                                    <ValidationSettings RequiredField-IsRequired="true"  CausesValidation="true" ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项">
+                                                                        <RequiredField  IsRequired="true" ErrorText="必需项"  />
+                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                    </ValidationSettings>
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 经纪费:
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodPayProcBase" ClientInstanceName="detxtGridPeriodPayProcBase"
-                                                                    >
+                                                                <dxe:ASPxTextBox runat="server" 
+                                                                    ID="detxtGridPeriodPayProcBase" ClientInstanceName="detxtGridPeriodPayProcBase"
+                                                                    ReadOnly="false">
+                                                                    <ValidationSettings RequiredField-IsRequired="true" CausesValidation="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                        <RequiredField  IsRequired="true" ErrorText="必需项"  />
+                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                    </ValidationSettings>
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                         </tr>

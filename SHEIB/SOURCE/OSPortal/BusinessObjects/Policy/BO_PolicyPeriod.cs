@@ -292,7 +292,7 @@ namespace BusinessObjects.Policy
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE PolicyPeriod SET ");
-            sb.Append(" PolicyId=@PolicyId, CarrierID=@PolicyId, BranchID=@PolicyId, Period=@PolicyId,  ");
+            sb.Append(" PolicyId=@PolicyId, CarrierID=@CarrierID, BranchID=@BranchID, Period=@Period,  ");
             sb.Append(" PayDate=@PayDate, PayFeeBase=@PayFeeBase, PayProcBase=@PayProcBase, NoticeNo=@NoticeNo ");
             sb.Append(" Where PolPeriodId=@PolPeriodId;");
 
