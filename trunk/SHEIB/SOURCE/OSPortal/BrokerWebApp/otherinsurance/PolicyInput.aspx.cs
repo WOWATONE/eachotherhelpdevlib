@@ -24,7 +24,7 @@ namespace BrokerWebApp.otherinsurance
 
         private const string inputQueryStringIDKey = "id";
         private const string inputQueryStringPageModeKey = "pagemode";
-        private const string UploadDirectory = "~/UploadControl/UploadImages/";
+        private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
         private const int ThumbnailSize = 100;
 
         private Boolean gridCarrierStartEdit = false;
@@ -65,6 +65,11 @@ namespace BrokerWebApp.otherinsurance
                 {
                     loadPolicyValue(this.dxetxtPolicyID.Text.Trim());
                 }
+                
+            }
+            else
+            {
+                //
             }
             
         }
@@ -106,6 +111,20 @@ namespace BrokerWebApp.otherinsurance
                
 
         #endregion Page Events
+
+
+        #region Tab Events
+        
+
+        protected void insuranceDetailTabPage_ActiveTabChanged(object source, DevExpress.Web.ASPxTabControl.TabControlEventArgs e)
+        {
+            if (this.insuranceDetailTabPage.ActiveTabIndex == 2)
+            {
+            }
+        }
+
+
+        #endregion Tab Events
 
 
         #region gridPolicyItem Events
@@ -772,28 +791,16 @@ namespace BrokerWebApp.otherinsurance
 
         #region Upload File Events
 
-        protected string SavePostedFiles(UploadedFile uploadedFile)
+        protected void UploadControl_PreRender(object sender, EventArgs e)
         {
-            string ret = "";
-            if (uploadedFile.IsValid)
-            {
-                //FileInfo fileInfo = new FileInfo(uploadedFile.FileName);
-                //string resFileName = MapPath(UploadDirectory) + fileInfo.Name;
-                //uploadedFile.SaveAs(resFileName);
-
-                //string fileLabel = fileInfo.Name;
-                //string fileType = uploadedFile.PostedFile.ContentType.ToString();
-                //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
-                //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
-            }
-            return ret;
+            //
         }
-
+                      
 
         protected void UploadControl_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
         {
             try
-            {
+            {                
                 e.CallbackData = SavePostedFiles(e.UploadedFile);
             }
             catch (Exception ex)
@@ -802,6 +809,46 @@ namespace BrokerWebApp.otherinsurance
                 e.ErrorText = ex.Message;
             }
         }
+
+
+        protected string SavePostedFiles(UploadedFile uploadedFile)
+        {
+            string ret = "";
+            string policyFolder = this.dxetxtPolicyID.Text.Trim();
+            string policyFolderPath;
+            if (uploadedFile.IsValid)
+            {
+                DirectoryInfo drtInfo = new DirectoryInfo(MapPath(UploadDirectory));
+                if (drtInfo.Exists)
+                {
+                    policyFolderPath = System.IO.Path.Combine(MapPath(UploadDirectory), policyFolder);
+                    drtInfo = new DirectoryInfo(policyFolder);
+                    if (drtInfo.Exists)
+                    {
+                        FileInfo fileInfo = new FileInfo(uploadedFile.FileName);
+                        string resFileName = System.IO.Path.Combine(policyFolderPath,fileInfo.Name);
+                        uploadedFile.SaveAs(resFileName);
+
+                        //string fileLabel = fileInfo.Name;
+                        //string fileType = uploadedFile.PostedFile.ContentType.ToString();
+                        //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
+                        //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
+                    }
+                    else
+                    {
+                        //create folder
+                        drtInfo = System.IO.Directory.CreateDirectory(policyFolderPath);
+                        FileInfo fileInfo = new FileInfo(uploadedFile.FileName);
+                        string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
+                        uploadedFile.SaveAs(resFileName);
+                    }
+                }
+
+                
+            }
+            return ret;
+        }
+
 
         #endregion Upload File  Events
 

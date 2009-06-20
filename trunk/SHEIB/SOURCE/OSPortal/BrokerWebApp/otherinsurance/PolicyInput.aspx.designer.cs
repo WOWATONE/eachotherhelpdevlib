@@ -59,6 +59,15 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeSaveAndCheckCallback;
         
         /// <summary>
+        /// nppagecontent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel nppagecontent;
+        
+        /// <summary>
         /// insuranceDetailTabPage control.
         /// </summary>
         /// <remarks>
@@ -113,13 +122,13 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyID;
         
         /// <summary>
-        /// plcid control.
+        /// pplcid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden plcid;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden pplcid;
         
         /// <summary>
         /// dxetxtPolicyNo control.
