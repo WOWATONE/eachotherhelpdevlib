@@ -22,6 +22,12 @@ namespace BusinessObjects.Policy
             fetchByID(id);
         }
 
+        public enum PolicyStatusEnum{
+            Input,
+            AppealAudit, 
+            Audit
+        }
+
         #region Variables
         
         public enum FieldList

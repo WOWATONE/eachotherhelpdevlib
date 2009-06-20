@@ -1442,8 +1442,8 @@
                                         <Columns>
                                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="false">
                                                 <EditButton Visible="true" />
-                                                <NewButton Visible="true" />                                                                   
-                                                <DeleteButton Visible="true" />
+                                                <NewButton Visible="false" />                                                                   
+                                                <DeleteButton Visible="false" />
                                             </dxwgv:GridViewCommandColumn>
                                             <dxwgv:GridViewDataColumn FieldName="Period" Caption="ÆÚ´Î" CellStyle-Wrap="false">
                                             </dxwgv:GridViewDataColumn>
