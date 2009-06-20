@@ -30,6 +30,7 @@ namespace BrokerWebApp.otherinsurance
 
         private Boolean gridCarrierStartEdit = false;
         private Boolean gridPolicyItemStartEdit = false;
+        private Boolean gridPolicyPeriodStartEdit = false;
 
         //enctype="multipart/form-data">
 
@@ -81,12 +82,15 @@ namespace BrokerWebApp.otherinsurance
 
             this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridPolicyItem.DataSource = BusinessObjects.Policy.BO_PolicyItem.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-
+            this.gridPeriod.DataSource = BusinessObjects.Policy.BO_PolicyPeriod.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
+            
             if (!IsPostBack && !IsCallback)
             {
                 this.dxedtCreateTime.Date = DateTime.Today;
                 this.gridCarrier.DataBind();
                 this.gridPolicyItem.DataBind();
+                this.gridPeriod.DataBind();
+
                 if (!string.IsNullOrEmpty(this.dxetxtPolicyID.Text.Trim()))
                 {
                     loadPolicyValue(this.dxetxtPolicyID.Text.Trim());
@@ -131,6 +135,7 @@ namespace BrokerWebApp.otherinsurance
             e.Result = "complete";
         }
 
+
         protected void Page_PreRender(object sender, EventArgs e)
         {
             //
@@ -163,6 +168,7 @@ namespace BrokerWebApp.otherinsurance
         {
             if (this.insuranceDetailTabPage.ActiveTabIndex == 2)
             {
+                rebindGridPeriod();
             }
         }
 
@@ -783,17 +789,106 @@ namespace BrokerWebApp.otherinsurance
 
         #region gridPeriod Events
 
+        protected void gridPeriod_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
+        {
+            DevExpress.Web.ASPxGridView.ASPxGridView refObj = this.gridPeriod;
+            HtmlTable tblEditorTemplate = refObj.FindEditFormTemplateControl("tblgridPeriodEditorTemplate") as HtmlTable;
+
+            ASPxTextBox detxtGridPeriodPeriod = tblEditorTemplate.FindControl("detxtGridPeriodPeriod") as ASPxTextBox;
+            ASPxDateEdit detxtGridPeriodPayDate = tblEditorTemplate.FindControl("detxtGridPeriodPayDate") as ASPxDateEdit;
+            ASPxTextBox detxtGridPeriodCarrierNameCn = tblEditorTemplate.FindControl("detxtGridPeriodCarrierNameCn") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodBranchName = tblEditorTemplate.FindControl("detxtGridPeriodBranchName") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodPayFeeBase = tblEditorTemplate.FindControl("detxtGridPeriodPayFeeBase") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodPayProcBase = tblEditorTemplate.FindControl("detxtGridPeriodPayProcBase") as ASPxTextBox;
+
+            Int32 editIndex = refObj.EditingRowVisibleIndex;
+            if (editIndex > -1)
+            {
+                object theValues = refObj.GetRowValues(editIndex, new String[] { "PolPeriodId", "Period", "CarrierNameCn", "BranchName", "PayDate", "PayFeeBase", "PayProcBase" });
+                object[] theValueList = theValues as object[];
+
+                String period = theValueList[1].ToString();
+                String carrierNameCn = theValueList[2].ToString();
+                String branchName = theValueList[3].ToString();
+                DateTime payDate;
+                if ((theValueList[4] != null) && (theValueList[4].ToString() != ""))
+                    payDate = Convert.ToDateTime(theValueList[4]);
+                else
+                    payDate = DateTime.Now;
+
+                String payFeeBase = theValueList[5].ToString();
+                String payProcBase = theValueList[6].ToString();
+                
+
+                if (this.gridPolicyPeriodStartEdit)
+                {
+                    detxtGridPeriodPeriod.Text = period;
+                    detxtGridPeriodPayDate.Date = payDate;
+                    detxtGridPeriodCarrierNameCn.Text = carrierNameCn;
+                    detxtGridPeriodBranchName.Text = branchName;
+                    detxtGridPeriodPayFeeBase.Text = payFeeBase;
+                    detxtGridPeriodPayProcBase.Text = payProcBase;
+                }
+                else
+                {
+                    detxtGridPeriodPeriod.Text = period;
+                    detxtGridPeriodCarrierNameCn.Text = carrierNameCn;
+                    detxtGridPeriodBranchName.Text = branchName;
+                }
+            }
+
+        }
+
+
         protected void gridPeriod_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
         {
-            //
+            this.gridPolicyPeriodStartEdit = true;
         }
+
+
         protected void gridPeriod_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
+            String theKey = e.Keys[0].ToString();
+            DevExpress.Web.ASPxGridView.ASPxGridView refObj = this.gridPeriod;
+            HtmlTable tblEditorTemplate = refObj.FindEditFormTemplateControl("tblgridPeriodEditorTemplate") as HtmlTable;
+
+            ASPxTextBox detxtGridPeriodPeriod = tblEditorTemplate.FindControl("detxtGridPeriodPeriod") as ASPxTextBox;
+            ASPxDateEdit detxtGridPeriodPayDate = tblEditorTemplate.FindControl("detxtGridPeriodPayDate") as ASPxDateEdit;
+            ASPxTextBox detxtGridPeriodCarrierNameCn = tblEditorTemplate.FindControl("detxtGridPeriodCarrierNameCn") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodBranchName = tblEditorTemplate.FindControl("detxtGridPeriodBranchName") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodPayFeeBase = tblEditorTemplate.FindControl("detxtGridPeriodPayFeeBase") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodPayProcBase = tblEditorTemplate.FindControl("detxtGridPeriodPayProcBase") as ASPxTextBox;
+
+            BusinessObjects.Policy.BO_PolicyPeriod newobj = new BusinessObjects.Policy.BO_PolicyPeriod(theKey);
+
+            newobj.PayDate = detxtGridPeriodPayDate.Date;
+
+            if (detxtGridPeriodPayFeeBase.Text != String.Empty)
+            {
+                newobj.PayFeeBase = Convert.ToDecimal(detxtGridPeriodPayFeeBase.Text);
+            }
+            if (detxtGridPeriodPayProcBase.Text != String.Empty)
+            {
+                newobj.PayProcBase = Convert.ToDecimal(detxtGridPeriodPayProcBase.Text);
+            }
+            
+            try
+            {
+                newobj.Save(ModifiedAction.Update);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
             //
             e.Cancel = true;
             this.gridPeriod.CancelEdit();
 
+            rebindGridPeriod();
+
         }
+
 
         protected void gridPeriod_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
         {
@@ -809,7 +904,7 @@ namespace BrokerWebApp.otherinsurance
 
         protected void gridPeriod_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
         {
-            this.gridPeriod.DataBind();
+            //
         }
 
         protected void gridPeriod_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -821,14 +916,60 @@ namespace BrokerWebApp.otherinsurance
 
         protected void gridPeriod_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
-            //this.gridPeriod.DataBind();
+            //
         }
 
         protected void gridPeriod_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
-            //this.gridPeriod.DataBind();
+            //
         }
 
+
+        protected void gridPeriod_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
+        {
+
+            DevExpress.Web.ASPxGridView.ASPxGridView refObj = this.gridPeriod;
+            HtmlTable tblEditorTemplate = refObj.FindEditFormTemplateControl("tblgridPeriodEditorTemplate") as HtmlTable;
+
+            
+            ASPxDateEdit detxtGridPeriodPayDate = tblEditorTemplate.FindControl("detxtGridPeriodPayDate") as ASPxDateEdit;
+            
+            ASPxTextBox detxtGridPeriodPayFeeBase = tblEditorTemplate.FindControl("detxtGridPeriodPayFeeBase") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodPayProcBase = tblEditorTemplate.FindControl("detxtGridPeriodPayProcBase") as ASPxTextBox;
+
+            if (detxtGridPeriodPayDate.Value  == null)
+            {
+                e.Errors[refObj.Columns[2]] = "必需项";
+            }
+            if (detxtGridPeriodPayFeeBase.Text.Trim()  == "")
+            {
+                e.Errors[refObj.Columns[5]] = "必需项";
+            }
+            if (detxtGridPeriodPayFeeBase.Text.Trim() == "")
+            {
+                e.Errors[refObj.Columns[6]] = "必需项";
+            }
+
+            detxtGridPeriodPayDate.Validate();            
+            detxtGridPeriodPayFeeBase.Validate();
+            detxtGridPeriodPayProcBase.Validate();
+
+            if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0)
+            {
+                //this.gridPolicyPeriodStartEdit = true;
+                e.RowError = "请修正所有的错误。";
+            }
+                
+
+        }
+     
+
+        private void rebindGridPeriod()
+        {
+            this.gridPeriod.DataSource = BusinessObjects.Policy.BO_PolicyPeriod.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
+            this.gridPeriod.DataBind();
+        }
+        
         #endregion gridPeriod Events
 
 

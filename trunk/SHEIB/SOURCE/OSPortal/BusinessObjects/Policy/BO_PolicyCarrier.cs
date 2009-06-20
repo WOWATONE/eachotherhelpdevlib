@@ -331,8 +331,8 @@ namespace BusinessObjects.Policy
 
         private void dealWithPolicyPeriod()
         {
-            String where = " AND PolicyId ='" + this.PolicyID + "'";
-            where += " AND BranchID ='" + this.BranchID + "'";
+            String where = " AND A.PolicyId ='" + this.PolicyID + "'";
+            where += " AND A.BranchID ='" + this.BranchID + "'";
             Boolean exist = BO_PolicyPeriod.CheckPolicyBranchExist(where);
             if (exist)
             {
@@ -344,16 +344,19 @@ namespace BusinessObjects.Policy
                 BO_Policy objPolicy = new BO_Policy(this.PolicyID);
                 Int32 times = objPolicy.PeriodTimes;
 
+                if (times < 1) times = 1;
+
                 for (int i = 1; i <= times; i++)
                 {
                     objNew = new BO_PolicyPeriod();
                     objNew.PolPeriodId = Guid.NewGuid().ToString();
+                    objNew.PolicyId = this.PolicyID;
                     objNew.CarrierID = this.CarrierID;
                     objNew.BranchID = this.BranchID;
                     objNew.Period = i;
                     objNew.PayDate = DateTime.Now;
-                    objNew.PayFeeBase = this.PremiumBase / i;
-                    objNew.PayProcBase = this.ProcessBase / i;
+                    objNew.PayFeeBase = this.PremiumBase / times;
+                    objNew.PayProcBase = this.ProcessBase / times;
                     objNew.NoticeNo = "";
                     objNew.Save(ModifiedAction.Insert);
                 }

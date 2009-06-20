@@ -90,6 +90,7 @@
     <Compile Include="Policy\BO_Policy.cs" />
     <Compile Include="Policy\BO_PolicyCarrier.cs" />
     <Compile Include="Policy\BO_PolicyClaim.cs" />
+    <Compile Include="Policy\BO_PolicyDoc.cs" />
     <Compile Include="Policy\BO_PolicyItem.cs" />
     <Compile Include="Policy\BO_PolicyPeriod.cs" />
     <Compile Include="Policy\BO_PolicyReinsureCarrier.cs" />
