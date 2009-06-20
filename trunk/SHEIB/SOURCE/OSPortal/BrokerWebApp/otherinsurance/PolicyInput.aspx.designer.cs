@@ -590,6 +590,15 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxUploadControl.ASPxUploadControl filesUploadControl;
         
         /// <summary>
+        /// gridDocList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridDocList;
+        
+        /// <summary>
         /// ContentControl2 control.
         /// </summary>
         /// <remarks>
