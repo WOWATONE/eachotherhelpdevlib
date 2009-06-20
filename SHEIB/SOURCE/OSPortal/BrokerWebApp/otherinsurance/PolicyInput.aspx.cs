@@ -22,6 +22,7 @@ namespace BrokerWebApp.otherinsurance
     {
         #region Variables
 
+        private const string currentPageModeKey = "CurrentPagePolicyMode";
         private const string inputQueryStringIDKey = "id";
         private const string inputQueryStringPageModeKey = "pagemode";
         private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
@@ -32,6 +33,15 @@ namespace BrokerWebApp.otherinsurance
 
         //enctype="multipart/form-data">
 
+        public enum PageMode
+        {
+            Input, 
+            Alt, 
+            Audit
+        }
+
+        private Nullable<PageMode> pm;
+
         #endregion Variables
 
 
@@ -41,13 +51,29 @@ namespace BrokerWebApp.otherinsurance
         {
             if (Page.IsPostBack)
             {
-                //
+                pm = ViewState[currentPageModeKey] as Nullable<PageMode>;
             }
             else
             {
                 this.dxetxtPolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey]; 
-                //
+
+                switch (this.pagemode.Value.ToLower().Trim())
+                {
+                    case "input":
+                        pm = PageMode.Input;
+                        break;
+                    case "alt":
+                        pm = PageMode.Alt;
+                        break;
+                    case "audit":
+                        pm = PageMode.Audit;
+                        break;
+                    default:
+                        pm = PageMode.Input;
+                        break;
+                }
+                ViewState[currentPageModeKey] = pm;   
             }
 
 
@@ -77,14 +103,31 @@ namespace BrokerWebApp.otherinsurance
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            String thePolicyID =  savePolicy(e.Parameter);
+            //switch (this.pm)
+            //{
+            //    case PageMode.Input :
+            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+            //        break;
+            //    case PageMode.Alt:
+            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+            //        break;
+            //    case PageMode.Audit:
+            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+            //        break;
+            //    default:
+            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+            //        break;
+            //}
+            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+            String thePolicyID = savePolicy(e.Parameter, policystatus);
             e.Result = thePolicyID;
         }
 
 
         protected void dxeSaveAndCheckCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            savePolicy(e.Parameter);
+            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString();
+            savePolicy(e.Parameter, policystatus);
             e.Result = "complete";
         }
 
@@ -853,7 +896,7 @@ namespace BrokerWebApp.otherinsurance
         #endregion Upload File  Events
 
 
-        private string savePolicy(String parameter)
+        private string savePolicy(String parameter,String policyState)
         {
             String json = parameter;
 
@@ -867,10 +910,12 @@ namespace BrokerWebApp.otherinsurance
             if (String.IsNullOrEmpty(obj.PolicyID))
             {
                 obj.PolicyID = TranUtils.GetPolicyID();
+                obj.PolicyStatus = policyState;
                 obj.Save(ModifiedAction.Insert);
             }
             else
             {
+                obj.PolicyStatus = policyState;
                 obj.Save(ModifiedAction.Update);
             }
 
