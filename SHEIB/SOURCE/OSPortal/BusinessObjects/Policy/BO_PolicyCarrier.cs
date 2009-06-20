@@ -199,7 +199,6 @@ namespace BusinessObjects.Policy
 
         }
 
-
         public static void Delete(String id)
         {
             StringBuilder sb = new StringBuilder();
@@ -210,6 +209,8 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@PolicyCarrierID", DbType.String, id);
 
             _db.ExecuteNonQuery(dbCommand);
+
+            BO_PolicyPeriod.DeleteByPolicyCarrier(id);
 
         }
 
@@ -248,6 +249,8 @@ namespace BusinessObjects.Policy
                         
             //ExecuteScalar return the value of first column in first row.
             _db.ExecuteNonQuery(dbCommand);
+
+            dealWithPolicyPeriod();
         }
 
 
@@ -275,6 +278,8 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@ProcessBase", DbType.Decimal, this.ProcessBase);
             
             _db.ExecuteNonQuery(dbCommand);
+
+            dealWithPolicyPeriod();
 
         }
 
@@ -323,6 +328,38 @@ namespace BusinessObjects.Policy
             }
         }
 
+
+        private void dealWithPolicyPeriod()
+        {
+            String where = " AND PolicyId ='" + this.PolicyID + "'";
+            where += " AND BranchID ='" + this.BranchID + "'";
+            Boolean exist = BO_PolicyPeriod.CheckPolicyBranchExist(where);
+            if (exist)
+            {
+                //do nothing
+            }
+            else
+            {
+                BO_PolicyPeriod objNew;
+                BO_Policy objPolicy = new BO_Policy(this.PolicyID);
+                Int32 times = objPolicy.PeriodTimes;
+
+                for (int i = 1; i <= times; i++)
+                {
+                    objNew = new BO_PolicyPeriod();
+                    objNew.PolPeriodId = Guid.NewGuid().ToString();
+                    objNew.CarrierID = this.CarrierID;
+                    objNew.BranchID = this.BranchID;
+                    objNew.Period = i;
+                    objNew.PayDate = DateTime.Now;
+                    objNew.PayFeeBase = this.PremiumBase / i;
+                    objNew.PayProcBase = this.ProcessBase / i;
+                    objNew.NoticeNo = "";
+                    objNew.Save(ModifiedAction.Insert);
+                }
+                
+            }
+        }
 
 
         #endregion Procedure

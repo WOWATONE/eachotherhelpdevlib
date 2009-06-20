@@ -861,7 +861,12 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@AciProcessRate", DbType.Decimal, this.AciProcessRate);
             _db.AddInParameter(dbCommand, "@AciProcess", DbType.Decimal, this.AciProcess);
             _db.AddInParameter(dbCommand, "@CstPremium", DbType.Decimal, this.CstPremium);
-            _db.AddInParameter(dbCommand, "@PeriodTimes", DbType.Int32, this.PeriodTimes);
+
+            if (this.PeriodTimes < 1)
+                _db.AddInParameter(dbCommand, "@PeriodTimes", DbType.Int32, 1);
+            else
+                _db.AddInParameter(dbCommand, "@PeriodTimes", DbType.Int32, this.PeriodTimes);
+            
             _db.AddInParameter(dbCommand, "@CarNo", DbType.String, this.CarNo);
             _db.AddInParameter(dbCommand, "@CarcaseNo", DbType.String, this.CarcaseNo);
             _db.AddInParameter(dbCommand, "@EngineNo", DbType.String, this.EngineNo);
@@ -985,7 +990,12 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@AciProcessRate", DbType.Decimal, this.AciProcessRate);
             _db.AddInParameter(dbCommand, "@AciProcess", DbType.Decimal, this.AciProcess);
             _db.AddInParameter(dbCommand, "@CstPremium", DbType.Decimal, this.CstPremium);
-            _db.AddInParameter(dbCommand, "@PeriodTimes", DbType.Int32, this.PeriodTimes);
+
+            if (this.PeriodTimes < 1)
+                _db.AddInParameter(dbCommand, "@PeriodTimes", DbType.Int32, 1);
+            else
+                _db.AddInParameter(dbCommand, "@PeriodTimes", DbType.Int32, this.PeriodTimes);
+            
             _db.AddInParameter(dbCommand, "@CarNo", DbType.String, this.CarNo);
             _db.AddInParameter(dbCommand, "@CarcaseNo", DbType.String, this.CarcaseNo);
             _db.AddInParameter(dbCommand, "@EngineNo", DbType.String, this.EngineNo);

@@ -17,7 +17,7 @@ namespace BusinessObjects.Policy
         
 
         public BO_PolicyPeriod(String id) {
-            //fetchByID(id);
+            fetchByID(id);
         }
 
 
@@ -182,6 +182,28 @@ namespace BusinessObjects.Policy
         }
 
 
+        public static Boolean CheckPolicyBranchExist(String where)
+        {
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT COUNT(A.PolPeriodId) ");
+            sb.Append(" ");
+            sb.Append(" FROM PolicyPeriod A ");
+            sb.Append(" LEFT JOIN Carrier B ON A.CarrierID = B.CarrierID ");
+            sb.Append(" LEFT JOIN Branch C ON A.BranchID = C.BranchID ");
+            sb.Append(" WHERE 1=1 ");
+            sb.Append(where);
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            Int32 count = Convert.ToInt32(_db.ExecuteScalar(dbCommand));
+            if (count > 0)
+                return true;
+            else
+                return false;
+
+        }
+
         
 
         public static void Delete(String id)
@@ -197,6 +219,38 @@ namespace BusinessObjects.Policy
 
         }
 
+
+        public static void Delete(String policyId, String branchID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM PolicyPeriod ");
+            sb.Append(" WHERE PolicyId = @PolicyId ");
+            sb.Append(" AND BranchID = @BranchID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@PolicyId", DbType.String, policyId);
+            _db.AddInParameter(dbCommand, "@BranchID", DbType.String, branchID);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
+
+
+        public static void DeleteByPolicyCarrier(String policyCarrierID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM PolicyPeriod ");
+            sb.Append(" WHERE PolicyId IN ");
+            sb.Append("  (SELECT PolicyID FROM PolicyCarrier WHERE PolicyCarrierID=@PolicyCarrierID)  ");
+            sb.Append(" AND BranchID IN ");
+            sb.Append("  (SELECT BranchID FROM PolicyCarrier WHERE PolicyCarrierID=@PolicyCarrierID)  ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@PolicyCarrierID", DbType.String, policyCarrierID);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
 
         #endregion Methods
 
