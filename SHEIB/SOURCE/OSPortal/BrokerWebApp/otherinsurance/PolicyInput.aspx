@@ -211,7 +211,7 @@
             var Premium = dxetxtPremium.GetValueString();
             var PremiumBase = dxetxtPremiumBase.GetValueString();
             var PremiumRate = dxetxtPremiumRate.GetValueString();
-            var PrevPolicyID = getPolicyID();
+            var PrevPolicyID = getPrePolicyID();
             var Process = dxetxtProcess.GetValueString();
             var ProcessBase = dxetxtProcessBase.GetValueString();
             var ProcessRate = dxetxtProcessRate.GetValueString();
@@ -274,7 +274,7 @@
 
         function btnAddClick(s, e) {
             var thejsonstring = makePolicyJSON();
-            //debugger;
+            
             dxeAddCallback.PerformCallback(thejsonstring);
         }
 
@@ -326,27 +326,13 @@
         }
 
         function FileUploadStart(s, e) {
-            //document.getElementById("uploadedListFiles").innerHTML = "";
-            //FileUploadStart
+            //var refplcid = dxetxtPolicyID.GetValueString();
+            //filesUploadControl;            
         }
 
 
         function FileUploaded(s, e) {
-            var fieldSeparator = "|";
-            if (e.isValid) {
-                //var linkFile = document.createElement("a");
-                //var indexSeparator = e.callbackData.indexOf(fieldSeparator);
-                //var fileName = e.callbackData.substring(0, indexSeparator);
-                //var pictureUrl = e.callbackData.substring(indexSeparator + fieldSeparator.length);
-                //var date = new Date();
-                //var imgSrc = "UploadImages/" + pictureUrl + "?dx=" + date.getTime();
-                //linkFile.innerHTML = fileName;
-                //linkFile.setAttribute("href", imgSrc);
-                //linkFile.setAttribute("target", "_blank");
-                //var container = document.getElementById("uploadedListFiles");
-                //container.appendChild(linkFile);
-                //container.appendChild(document.createElement("br"));
-            }
+            //
         }
 
 
@@ -387,8 +373,8 @@
 
         }
 
-        function getPolicyID() {
-            var result = $("#<%=plcid.ClientID %>");
+        function getPrePolicyID() {
+            var result = $("#<%=pplcid.ClientID %>");
             var ID = result[0].value;
             return ID;
         }
@@ -412,6 +398,11 @@
         function setProductTypeID(thevalue) {
             var result = $("#<%=ptid.ClientID %>");
             result[0].value = thevalue;
+        }
+
+        function getPageContentPanel() {
+            var result = $("#<%=nppagecontent.ClientID %>");
+            return result[0];
         }
         
 
@@ -690,7 +681,7 @@
             //insuranceDetailTabPage
             if (e.tab.index == 2) {
                 //refresh perieodtime grid
-                gridPeriod.PerformCallback();
+                //gridPeriod.PerformCallback();
                 //var element = s.GetContentElement(e.tab.index);
                 //if (element != null) element.loaded = false;                             
             }
@@ -718,11 +709,12 @@
     <dxcb:ASPxCallback ID="dxeSaveAndCheckCallback" ClientInstanceName="dxeSaveAndCheckCallback" runat="server" OnCallback="dxeSaveAndCheckCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {saveCheckCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
-        
+    
+    <asp:Panel ID="nppagecontent" runat="server">    
     
     <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
-        runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%" AutoPostBack="false"
-        
+        runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%" 
+        AutoPostBack="false" EnableCallBacks="true" EnableViewState="true" OnActiveTabChanged="insuranceDetailTabPage_ActiveTabChanged"
         >
         <ClientSideEvents ActiveTabChanging="function(s, e) {policyTab_Changing(s,e);}" TabClick="function(s, e) {policyTab_Click(s,e);}" />
         <TabPages>
@@ -764,7 +756,7 @@
                                                     <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="125px" ReadOnly="true">
                                                         
                                                     </dxe:ASPxTextBox> 
-                                                    <input type="hidden" id="plcid" runat="server" />                                                   
+                                                    <input type="hidden" id="pplcid" runat="server" />                                                   
                                                 </td>
                                                 <td></td>
                                                 <td style="text-align: right;">保单编号：</td>
@@ -1397,11 +1389,21 @@
                             </tr>
                             <tr>
                                 <td style="width: 100%; text-align: left;">
-                                    <dxuc:ASPxUploadControl ID="filesUploadControl" runat="server" ShowAddRemoveButtons="True"
-                                        Width="400px" ShowUploadButton="True" AddUploadButtonsHorizontalPosition="Center"
-                                        ShowProgressPanel="True" ClientInstanceName="filesUploadControl" OnFileUploadComplete="UploadControl_FileUploadComplete"
-                                        FileInputCount="5" RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10">
-                                        <ValidationSettings MaxFileSize="4000000" AllowedContentTypes="*">
+                                    <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl" 
+                                        runat="server" ShowAddRemoveButtons="True"
+                                        Width="400px" ShowUploadButton="True" 
+                                        AddUploadButtonsHorizontalPosition="Center"
+                                        ShowProgressPanel="True" 
+                                        FileInputCount="5" RemoveButtonSpacing="8px" 
+                                        AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
+                                        OnPreRender="UploadControl_PreRender" 
+                                        OnFileUploadComplete="UploadControl_FileUploadComplete"
+                                        >
+                                        <ValidationSettings MaxFileSize="4000000" 
+                                        FileDoesNotExistErrorText="文件不存在" 
+                                        GeneralErrorText="上传发生错误" 
+                                        MaxFileSizeErrorText="文件太大" 
+                                        NotAllowedContentTypeErrorText="不允许上传此类型文件">
                                         </ValidationSettings>
                                         <ClientSideEvents 
                                             FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" 
@@ -1414,7 +1416,7 @@
                                         </AddButton>
                                         <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
                                             ImagePosition="Left">                                            
-                                        </UploadButton>
+                                        </UploadButton>                                        
                                     </dxuc:ASPxUploadControl>
                                 </td>
                             </tr>
@@ -1648,4 +1650,7 @@
             </tr>
         </table>
     </asp:Panel>
+
+    </asp:Panel>
+
 </asp:Content>
