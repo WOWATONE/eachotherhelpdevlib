@@ -744,6 +744,13 @@
 
             this.AuditOrNot = AuditOrNot;
         }
+
+        function hlPolicyItemTogetherClick(params) {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
+            var url = params;
+            window.open(url);
+        }
+        
         
     </script>
 
@@ -1491,10 +1498,13 @@
                                         >
                                         <%-- BeginRegion Columns --%>
                                         <Columns>
-                                            <dxwgv:GridViewDataTextColumn FieldName="DocName" Caption="文件名" CellStyle-Wrap="False">
-                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="DocName" Caption="文件名" CellStyle-Wrap="False" Width="25" Settings-AllowDragDrop="false">
+                                                <DataItemTemplate>
+                                                    <a id="fileurl <%# Eval("PolicyDocID") %>" onclick="hlPolicyItemTogetherClick('<%# Eval("DocURL") %>');" href="#"><%# Eval("DocName")%></a>
+                                                </DataItemTemplate>
+                                            </dxwgv:GridViewDataColumn>
                                             <dxwgv:GridViewDataColumn FieldName="DocURL" Caption="链接地址" CellStyle-Wrap="False">
-                                            </dxwgv:GridViewDataColumn>                                                            
+                                            </dxwgv:GridViewDataColumn>                                                                                                        
                                         </Columns>
                                         <%-- EndRegion --%>
                                         <SettingsPager Mode="ShowAllRecords" />
