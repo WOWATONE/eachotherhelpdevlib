@@ -22,6 +22,12 @@ namespace BusinessObjects.Policy
             fetchByID(id);
         }
 
+        public enum PolicyTypeEnum
+        {
+            Other,
+            Vehicle
+        }
+
         public enum PolicyStatusEnum{
             Input,
             AppealAudit, 
