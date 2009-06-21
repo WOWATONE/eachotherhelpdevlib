@@ -133,7 +133,7 @@ namespace BrokerWebApp.otherinsurance
 
         protected void dxeSaveAndCheckCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString();
+            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
             savePolicy(e.Parameter, policystatus);
             e.Result = "complete";
         }
