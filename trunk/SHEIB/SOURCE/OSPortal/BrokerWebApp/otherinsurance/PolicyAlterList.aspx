@@ -26,7 +26,7 @@
 
 	    function gridCustomButtonClick(s, e) {
 	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-	        var noint = s.GetDataRow(e.visibleIndex).cells[2].innerText;
+	        var noint = s.GetDataRow(e.visibleIndex).cells[3].innerText;
 	        var querystring;
 	        querystring = "PolicyInput.aspx?pagemode=alt&pid=" + noint;
 	        window.showModalDialog(querystring, self, myArguments);

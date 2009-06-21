@@ -28,7 +28,7 @@
             var pt = dxetxtStage.GetValueString();
             var bf = dxetxtBeneficiary.GetValueString();
             var cid = getCustomerID();
-            if (isEmpty(pt) || isEmpty(bf) || isEmpty(cid)) {
+            if (isEmpty(pid) || isEmpty(pt) || isEmpty(bf) || isEmpty(cid)) {
                 return true;
             }
             else {
@@ -72,16 +72,50 @@
                 insuranceDetailTabPage.tabs[2].SetEnabled(true);
                 insuranceDetailTabPage.tabs[3].SetEnabled(true);
             }
+            
+            //alt
+            if (pagemode.value == "alt") {
+                result = $("#<%=npGridPolicyItemDetail.ClientID %>");
+                panel = result[0];
+                panel.parentElement.removeAttribute('disabled');
+
+                result = $("#<%=npCostSummaryDetail.ClientID %>");
+                panel = result[0];
+                panel.parentElement.removeAttribute('disabled', 'true');
+
+                result = $("#<%=npPolicyCompanyDetail.ClientID %>");
+                panel = result[0];
+                panel.parentElement.removeAttribute('disabled', 'true');
+
+                result = $("#<%=tblNewExecuteAction.ClientID %>");
+                if (result.length > 0) {
+                    panel = result[0];
+                    panel.parentElement.removeAttribute('disabled', 'true');
+                }
+
+                //result = $("#<%=tbltrAuditExecuteAction.ClientID %>");
+                //if (result.length > 0) {
+                //    panel = result[0];
+                //panel.parentElement.removeAttribute('disabled', 'true');
+                //}
+
+
+                insuranceDetailTabPage.tabs[1].SetEnabled(true);
+                insuranceDetailTabPage.tabs[2].SetEnabled(true);
+                insuranceDetailTabPage.tabs[3].SetEnabled(true);
+            }
         }
+
+
 
         function policyBaseCompleteUnable() {
 
             var pagemode;
             pagemode = $("#<%=pagemode.ClientID %>")[0];
-
+            //debugger;
 
             var result, panel;
-            //
+            //input
             if (pagemode.value == "input") {
                 if (policyCheckNessary()) {
                     result = $("#<%=npGridPolicyItemDetail.ClientID %>");
@@ -113,9 +147,7 @@
                     insuranceDetailTabPage.tabs[2].SetEnabled(false);
                     insuranceDetailTabPage.tabs[3].SetEnabled(false);
                 }
-                else {
-                    //
-                }
+                
                 
             }
 
@@ -139,10 +171,47 @@
 
                                 
             }
-            
-            //copy
+
+            //alt
+            if (pagemode.value == "alt") {
+                if (policyCheckNessary()) {
+                    result = $("#<%=npGridPolicyItemDetail.ClientID %>");
+                    panel = result[0];
+                    panel.parentElement.setAttribute('disabled', 'true');
+
+                    result = $("#<%=npCostSummaryDetail.ClientID %>");
+                    panel = result[0];
+                    panel.parentElement.setAttribute('disabled', 'true');
+
+                    result = $("#<%=npPolicyCompanyDetail.ClientID %>");
+                    panel = result[0];
+                    panel.parentElement.setAttribute('disabled', 'true');
+
+                    result = $("#<%=tblNewExecuteAction.ClientID %>");
+                    if (result.length > 0) {
+                        panel = result[0];
+                        panel.parentElement.setAttribute('disabled', 'true');
+                    }
+
+                    result = $("#<%=tbltrAuditExecuteAction.ClientID %>");
+                    if (result.length > 0) {
+                        panel = result[0];
+                        panel.parentElement.setAttribute('disabled', 'true');
+                    }
+
+
+                    insuranceDetailTabPage.tabs[1].SetEnabled(false);
+                    insuranceDetailTabPage.tabs[2].SetEnabled(false);
+                    insuranceDetailTabPage.tabs[3].SetEnabled(false);
+                }
+
+            }
+               
             
         }
+
+
+
 
         $(document).ready(function() {
             //jQuery.noticeAdd({
@@ -292,14 +361,24 @@
             var thejsonstring = makePolicyJSON();
             dxeSaveAndCheckCallback.PerformCallback(thejsonstring);            
         }
-        
-        
+
+
         function saveCheckCallbackComplete(s, e) {
-            dxebtnBottomAdd.SetEnabled(false);
-            dxebtnBottomSave.SetEnabled(false);
-            dxebtnBottomCheck.SetEnabled(false);
-            dxebtnCancel.SetEnabled(false);
-            dxeClose.SetEnabled(true);
+            if (dxebtnBottomAdd != null) {
+                dxebtnBottomAdd.SetEnabled(false);
+            }
+            if (dxebtnBottomSave != null) {
+                dxebtnBottomSave.SetEnabled(false);
+            }
+            if (dxebtnBottomCheck != null) {
+                dxebtnBottomCheck.SetEnabled(false);
+            }
+            if (dxebtnCancel != null) {
+                dxebtnCancel.SetEnabled(false);
+            }
+            if (dxeClose != null) {
+                dxeClose.SetEnabled(true);
+            }
         }
         
         

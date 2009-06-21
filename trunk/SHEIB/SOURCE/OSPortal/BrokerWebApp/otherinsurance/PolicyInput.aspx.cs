@@ -77,7 +77,9 @@ namespace BrokerWebApp.otherinsurance
                         pm = PageMode.Input;
                         break;
                 }
-                ViewState[currentPageModeKey] = pm;   
+                ViewState[currentPageModeKey] = pm;
+
+                loadPrePolicyValue(this.pplcid.Value);
             }
 
 
@@ -1126,6 +1128,7 @@ namespace BrokerWebApp.otherinsurance
             {
                 obj.PolicyID = TranUtils.GetPolicyID();
                 obj.PolicyStatus = policyState;
+                obj.PolicyType = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyTypeEnum.Other).ToString();
                 obj.Save(ModifiedAction.Insert);
             }
             else
@@ -1311,6 +1314,88 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
+        private void loadPrePolicyValue(String prePoliicyID)
+        {
+            ListEditItem theselected;
+            BusinessObjects.Policy.BO_Policy obj;
+
+            obj = new BusinessObjects.Policy.BO_Policy(prePoliicyID);
+
+            this.dxetxtPolicyNo.Text = "";
+            //dxechkTogether
+            //dxechkFlagReinsure
+
+            this.dxetxtProdTypeName.Text = obj.ProdTypeName;
+            this.ptid.Value = obj.ProdTypeID;
+
+            this.dxetxtCustomer.Text = obj.CustomerName;
+            this.cusid.Value = obj.CustomerID;
+
+            this.dxetxtBeneficiary.Text = obj.Beneficiary;
+
+            //dxeddlDeptID
+            if (!String.IsNullOrEmpty(obj.DeptId))
+            {
+                theselected = dxeddlDeptID.Items.FindByValue(obj.DeptId);
+                if (theselected != null)
+                {
+                    dxeddlDeptID.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlSalesId
+            if (!String.IsNullOrEmpty(obj.SalesId))
+            {
+                theselected = dxeddlSalesId.Items.FindByValue(obj.SalesId);
+                if (theselected != null)
+                {
+                    dxeddlSalesId.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlGatheringType
+            if (!String.IsNullOrEmpty(obj.GatheringType))
+            {
+                theselected = dxeddlGatheringType.Items.FindByValue(obj.GatheringType);
+                if (theselected != null)
+                {
+                    dxeddlGatheringType.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlOperationType
+            if (!String.IsNullOrEmpty(obj.OperationType))
+            {
+                theselected = dxeddlOperationType.Items.FindByValue(obj.OperationType);
+                if (theselected != null)
+                {
+                    dxeddlOperationType.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlSourceTypeID
+            if (!String.IsNullOrEmpty(obj.SourceTypeID))
+            {
+                theselected = dxeddlSourceTypeID.Items.FindByValue(obj.SourceTypeID);
+                if (theselected != null)
+                {
+                    dxeddlSourceTypeID.SelectedItem = theselected;
+                }
+            }
+
+            this.dxeStartDate.Date = obj.StartDate;
+            this.dxeEndDate.Date = obj.EndDate;
+
+            this.dxetxtCreatePerson.Text = this.CurrentUserName;
+
+            this.dxedtCreateTime.Date = DateTime.Now;
+
+            this.dxetxtStage.Text = obj.PeriodTimes.ToString();
+
+                        
+        }
+
+
         private void toJOSN()
         {
             //MemoryStream ms = new MemoryStream();
@@ -1342,4 +1427,7 @@ namespace BrokerWebApp.otherinsurance
 
 
     }
+
+
+
 }
