@@ -29,14 +29,14 @@
 
 	    function btnCreateClick() {
 	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-	        window.showModalDialog("PolicyInput.aspx?pagemode=check", self, myArguments);
+	        window.showModalDialog("PolicyInput.aspx?pagemode=audit", self, myArguments);
 	    }
 
 	    function gridCustomButtonClick(s, e) {
 	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
 	        var noint = s.GetDataRow(e.visibleIndex).cells[2].innerText;
 	        var querystring;
-	        querystring = "PolicyInput.aspx?pagemode=check&id=" + noint;
+	        querystring = "PolicyInput.aspx?pagemode=audit&id=" + noint;
 	        window.showModalDialog(querystring, self, myArguments);
 	    }
 
