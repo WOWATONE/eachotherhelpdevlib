@@ -172,11 +172,15 @@ namespace BrokerWebApp.otherinsurance
             if (this.insuranceDetailTabPage.ActiveTabIndex == 1)
             {
                 rebindGridDocList();
+                if (this.pm == PageMode.Audit)
+                    filesUploadControl.Enabled = false;
             }
 
             if (this.insuranceDetailTabPage.ActiveTabIndex == 2)
             {
                 rebindGridPeriod();
+                if (this.pm == PageMode.Audit)
+                    gridPeriod.Enabled = false;
             }
         }
 

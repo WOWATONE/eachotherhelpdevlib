@@ -42,7 +42,7 @@
             pagemode = $("#<%=pagemode.ClientID %>")[0];
 
             var result, panel;
-            if (pagemode.value == "add") {
+            if (pagemode.value == "input") {
                 result = $("#<%=npGridPolicyItemDetail.ClientID %>");
                 panel = result[0];
                 panel.parentElement.removeAttribute('disabled');
@@ -82,7 +82,7 @@
 
             var result, panel;
             //
-            if (pagemode.value == "add") {
+            if (pagemode.value == "input") {
                 if (policyCheckNessary()) {
                     result = $("#<%=npGridPolicyItemDetail.ClientID %>");
                     panel = result[0];
@@ -116,8 +116,8 @@
                 
             }
 
-            //check
-            if (pagemode.value == "check") {
+            //audit
+            if (pagemode.value == "audit") {
                 result = $("#<%=npbasicdetail.ClientID %>");
                 panel = result[0];
                 panel.parentElement.setAttribute('disabled', 'true');
@@ -134,7 +134,7 @@
                 panel = result[0];
                 panel.parentElement.setAttribute('disabled', 'true');
 
-
+                                
             }
             
             //copy
@@ -1391,7 +1391,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td runat="server" id="tblcellfilesUploadControl">
                                     <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl" 
                                             runat="server" ShowAddRemoveButtons="True"
                                             Width="400px" ShowUploadButton="True" 
@@ -1429,7 +1429,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 100%; text-align: left;">
+                                <td style="width: 100%; text-align: left;" runat="server" id="tblcellgridDocList">
                                     <dxwgv:ASPxGridView ID="gridDocList" ClientInstanceName="gridDocList" runat="server"
                                         KeyFieldName="PolicyDocID" Width="100%" AutoGenerateColumns="False" 
                                         OnCustomCallback="gridDocList_CustomCallback"
@@ -1460,7 +1460,7 @@
                         
                         <table style="width: 100%">
                             <tr>
-                                <td>
+                                <td runat="server" id="tblcellgridPeriod">
                                     <dxwgv:ASPxGridView ID="gridPeriod" ClientInstanceName="gridPeriod" runat="server"
                                         KeyFieldName="PolPeriodId" Width="100%" OnStartRowEditing="gridPeriod_StartRowEditing"
                                         OnRowInserting="gridPeriod_RowInserting" OnRowUpdating="gridPeriod_RowUpdating"
