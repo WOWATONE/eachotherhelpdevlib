@@ -132,6 +132,22 @@ namespace BusinessObjects.SchemaSetting
             return list;
         }
 
+        /// <summary>
+        /// 根据险种编号取得项目信息
+        /// </summary>
+        /// <param name="prodTypeID"></param>
+        /// <returns></returns>
+        public static DataTable GetProductByProdTypeID(string prodTypeID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ProdID, ProdName, PremiumRate, ProcRate ");
+            sb.Append("From Product (nolock) ");
+            sb.Append("Where ProdTypeID=@ProdTypeID ");
+            sb.Append("Order By ProdID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
         #endregion Methods
 
 

@@ -28,7 +28,9 @@ namespace BusinessObjects.SchemaSetting
             ProdClass, 
             ProdTypeName, 
             ParentId, 
-            Layer
+            Layer,
+            ParentName,
+            ProdClassName
         }
 
 
@@ -64,7 +66,23 @@ namespace BusinessObjects.SchemaSetting
             set;
         }
 
+        /// <summary>
+        /// 上级险种名称
+        /// </summary>
+        public string ParentName
+        {
+            get;
+            set;
+        }
 
+        /// <summary>
+        /// 大类名称
+        /// </summary>
+        public string ProdClassName
+        {
+            get;
+            set;
+        }
         #endregion Property
 
 
@@ -103,7 +121,24 @@ namespace BusinessObjects.SchemaSetting
             return list;
         }
 
-        
+        /// <summary>
+        /// 得到所有险种信息
+        /// </summary>
+        /// <param name="whereFilter"></param>
+        /// <returns></returns>
+        public static DataSet GetProductType()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select Layer ");
+            sb.Append("From ProductType (nolock) ");
+            sb.Append("Group By Layer ");
+            sb.Append("Order By Layer ");
+            sb.Append("Select ProdTypeID, ProdClass, ProdTypeName, ParentId, Layer ");
+            sb.Append("From ProductType (nolock) ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            return _db.ExecuteDataSet(dbCommand);
+        }
         #endregion Methods
 
 
@@ -112,8 +147,10 @@ namespace BusinessObjects.SchemaSetting
         private void fetchByID(String id)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT ProdTypeID, ProdClass, ProdTypeName, ParentId, Layer ");
-            sb.Append(" FROM ProductType ");
+            sb.Append("SELECT PT.ProdTypeID, PT.ProdClass, PT.ProdTypeName, PT.ParentId, PT.Layer, isnull(PT1.ProdTypeName, '') as ParentName, isnull(PC.ProdClassName,'') as ProdClassName ");
+            sb.Append(" FROM ProductType PT (nolock) ");
+            sb.Append(" Left Join ProductType PT1 (nolock) On PT1.ProdTypeID=PT.ParentId ");
+            sb.Append(" Left Join ProdClass PC (nolock) On PC.ProdClassNo=PT.ProdClass ");
             sb.Append(" WHERE ProdTypeID = @ProdTypeID");
             //sb.Append(" ");
             //sb.Append(" ");
@@ -135,7 +172,8 @@ namespace BusinessObjects.SchemaSetting
                     this.ProdTypeName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ProdTypeName));
                     this.ParentId = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ParentId));
                     this.Layer = Utility.GetIntFromReader(reader, Convert.ToInt32(FieldList.Layer));
-
+                    this.ParentName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ParentName));
+                    this.ProdClassName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ProdClassName));
                 }
             }
         }
