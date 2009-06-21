@@ -160,6 +160,10 @@ namespace BrokerWebApp.otherinsurance
             }
             else
             {
+                if (this.pm == PageMode.Alt)
+                {
+                    dxebtnBottomAdd.Visible = false;
+                }
                 tbltrAuditExecuteAction.Visible = false;
                 npNewExecuteAction.Visible = true;
             }
