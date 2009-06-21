@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BrokerWebApp.BaseClass;
+using BrokerWebApp;
 using System.Data;
 using BusinessObjects;
 
 namespace BrokerWebApp.schemasetting
 {
-    public partial class RoleManager : System.Web.UI.Page
+    public partial class RoleManager : BasePage
     {
 
         #region Variables
