@@ -121,7 +121,7 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="分支机构" Name="ProductSetup/BranchList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="险种定义" Name="ProductSetup/ProductTypeList.aspx">
+                                <dxnb:NavBarItem Text="险种定义" Name="schemasetting/ProductTypeList.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="数据字典" Name="ProductSetup/DataDictionary.aspx">
                                 </dxnb:NavBarItem>
