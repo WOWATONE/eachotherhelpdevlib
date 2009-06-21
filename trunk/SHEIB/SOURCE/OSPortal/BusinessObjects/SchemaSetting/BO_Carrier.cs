@@ -367,7 +367,10 @@ namespace BusinessObjects.SchemaSetting
             sb.Append("CarrierID,CarrierNameCn,CarrierNameEn,ShortName,InsType,GrdType,Address,Postcode,Tel,Fax,Contact,Email,URL,Profile,BankName,BankAccount,PolicyNoHeader,Remark,PremiumSize,LossRation,PayoffLevel,Province ");
             sb.Append("From Carrier (nolock) ");
             sb.Append("Where 1=1 ");
-            sb.Append(sWhere);
+            if (sWhere != "")
+            {
+                sb.Append(sWhere);
+            }
             sb.Append(" Order By CarrierID");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
