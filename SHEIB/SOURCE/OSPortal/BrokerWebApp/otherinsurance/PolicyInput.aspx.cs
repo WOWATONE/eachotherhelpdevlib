@@ -25,6 +25,7 @@ namespace BrokerWebApp.otherinsurance
         private const string currentPageModeKey = "CurrentPagePolicyMode";
         private const string inputQueryStringIDKey = "id";
         private const string inputQueryStringPageModeKey = "pagemode";
+        private const string inputQueryStringPreIDKey = "pid";
         private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
         private const int ThumbnailSize = 100;
 
@@ -57,7 +58,9 @@ namespace BrokerWebApp.otherinsurance
             else
             {
                 this.dxetxtPolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
-                this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey]; 
+                this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey];
+
+                this.pplcid.Value = Page.Request.QueryString[inputQueryStringPreIDKey]; 
 
                 switch (this.pagemode.Value.ToLower().Trim())
                 {
