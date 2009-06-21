@@ -366,7 +366,8 @@
                             <tr>
                                 <td>
                                     <dxwgv:ASPxGridView ID="gridContactItem" ClientInstanceName="gridContactItem" runat="server"
-                                        KeyFieldName="ContactID" Width="100%" AutoGenerateColumns="False" OnRowInserting="gridContactItem_RowInserting"
+                                        KeyFieldName="ContactID" Width="100%" AutoGenerateColumns="False" SettingsBehavior-AllowSort="false" 
+                                        OnRowInserting="gridContactItem_RowInserting"
                                         OnRowUpdating="gridContactItem_RowUpdating" OnRowUpdated="gridContactItem_RowUpdated"
                                         OnRowInserted="gridContactItem_RowInserted" OnRowDeleting="gridContactItem_RowDeleting"
                                         OnRowDeleted="gridContactItem_RowDeleted">
@@ -516,7 +517,7 @@
                             <tr>
                                 <td>
                                     <dxwgv:ASPxGridView ID="gridCustomerPtItem" ClientInstanceName="gridCustomerPtItem"
-                                        runat="server" KeyFieldName="FollowID" Width="100%" AutoGenerateColumns="False"
+                                        runat="server" KeyFieldName="FollowID" Width="100%" AutoGenerateColumns="False" SettingsBehavior-AllowSort="false"
                                         OnRowInserting="gridCustomerPtItem_RowInserting" OnRowUpdating="gridCustomerPtItem_RowUpdating"
                                         OnRowUpdated="gridCustomerPtItem_RowUpdated" OnRowInserted="gridCustomerPtItem_RowInserted"
                                         OnRowDeleting="gridCustomerPtItem_RowDeleting" OnRowDeleted="gridCustomerPtItem_RowDeleted">
@@ -670,7 +671,7 @@
                             <tr>
                                 <td>
                                     <dxwgv:ASPxGridView ID="gridNotifyClaimItem" ClientInstanceName="gridNotifyClaimItem" runat="server"
-                                        KeyFieldName="NotifyID" Width="100%" AutoGenerateColumns="False">
+                                        KeyFieldName="NotifyID" Width="100%" AutoGenerateColumns="False" SettingsBehavior-AllowSort="false">
                                         <Columns>
                                             <dxwgv:GridViewDataTextColumn Caption="理赔编号" FieldName="NotifyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
@@ -710,7 +711,7 @@
                         <table style="width: 100%">
                             <tr>
                                 <td colspan=2>
-                                    <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
+                                    <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" SettingsBehavior-AllowSort="false"
                                         KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" Settings-ShowFooter="true" SettingsPager-AlwaysShowPager="true">
                                         <Columns>
                                             <dxwgv:GridViewDataTextColumn Caption="投保编号" FieldName="PolicyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
