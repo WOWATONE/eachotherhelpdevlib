@@ -274,28 +274,28 @@
                                                 </dxwgv:GridViewCommandColumnCustomButton>
                                             </CustomButtons>
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="SerialNo" Caption="解付单号" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="解付单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="F1" Caption="保险公司" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="F2" Caption="分支机构" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="解付日期" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="FeeDate" Caption="解付日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期应解付保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="本期应解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="FeeBase" Caption="本期实际解付保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期实际解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="AccountType" Caption="收款方式" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="收款方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Audited" Caption="状态" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="AuditStautsName" Caption="状态" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="AccountType" Caption="佣金收取方式" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="ProcessFeeType" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="F3" Caption="客户经理" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="客户经理" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>

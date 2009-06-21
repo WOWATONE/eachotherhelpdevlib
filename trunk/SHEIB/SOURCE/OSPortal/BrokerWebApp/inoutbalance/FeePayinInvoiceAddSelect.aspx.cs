@@ -137,8 +137,5 @@ namespace BrokerWebApp.inoutbalance
         {
             this.gridSearchResult.DataBind();
         }
-
-
     }
 }
-\
