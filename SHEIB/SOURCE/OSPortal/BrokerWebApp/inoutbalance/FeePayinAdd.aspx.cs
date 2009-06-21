@@ -81,6 +81,52 @@ namespace BrokerWebApp.inoutbalance
             dxetxtAciPremium.ReadOnly = true;
             dxetxtCstPremium.ReadOnly = true;
 
+
+
+            DataSet dsList;
+
+            //GatheringType
+            this.dxeddlGatheringType.Items.Add("(全部)", "");
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.GatheringType.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlGatheringType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
+
+            this.dxeddlProcessFeeType.Items.Add("(全部)", "");
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.ProcessFeeType.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlProcessFeeType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
+
+
+            this.dxeddlCarrier.Items.Add("(全部)", "");
+            dsList = BusinessObjects.SchemaSetting.BO_Carrier.GetCarrierList("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlCarrier.Items.Add(row["CarrierNameCn"].ToString().Trim(), row["CarrierID"].ToString().Trim());
+                }
+            }
+
+            this.dxeddlBranch.Items.Add("(全部)", "");
+            dsList = BusinessObjects.SchemaSetting.BO_Branch.GetBranchList("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlBranch.Items.Add(row["BranchName"].ToString().Trim(), row["BranchID"].ToString().Trim());
+                }
+            }
+
         }
 
 
