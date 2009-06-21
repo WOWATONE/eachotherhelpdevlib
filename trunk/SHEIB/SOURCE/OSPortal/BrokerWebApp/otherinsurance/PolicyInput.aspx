@@ -286,7 +286,7 @@
         }
 
         function btnSaveCheckClick(s, e) {
-            //
+            debugger;
         }
         
         
@@ -332,7 +332,7 @@
 
 
         function FileUploaded(s, e) {
-            //
+            gridDocList.PerformCallback();
         }
 
 
@@ -1429,6 +1429,7 @@
                                 <td style="width: 100%; text-align: left;">
                                     <dxwgv:ASPxGridView ID="gridDocList" ClientInstanceName="gridDocList" runat="server"
                                         KeyFieldName="PolicyDocID" Width="100%" AutoGenerateColumns="False" 
+                                        OnCustomCallback="gridDocList_CustomCallback"
                                         >
                                         <%-- BeginRegion Columns --%>
                                         <Columns>
