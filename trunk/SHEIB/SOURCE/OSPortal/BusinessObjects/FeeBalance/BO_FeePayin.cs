@@ -139,8 +139,8 @@ namespace BusinessObjects
             //(
             //select a.NoticeNo,a.PolicyID,b.PolicyNo,b.DeptID,b.CustomerID,b.ProdTypeID,
             //B.GatheringType,PremiumBase,a.PayFeeBase,
-            //(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID) PayedFee,
-            //CarrierID,BranchID,Period,PayDate,CiPremium,AciPremium,CstPremium,c.NoticeDate,
+            //(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4')) PayedFee,
+            //a.PayProcBase,CarrierID,BranchID,Period,PayDate,CiPremium,AciPremium,CstPremium,c.NoticeDate,
             //(select CustName from  customer where custID=b.CustomerID) CustName, 
             //(select ProdTypeName from ProductType where ProdTypeID=b.ProdTypeID) ProdTypeName,
             //(select GatheringTypeName from GatheringType where GatheringTypeID=b.GatheringType) GatheringTypeName,
@@ -158,8 +158,8 @@ namespace BusinessObjects
             sSql = sSql + "(";
             sSql = sSql + "select a.NoticeNo,a.PolicyID,b.PolicyNo,b.DeptID,b.CustomerID,b.ProdTypeID,";
             sSql = sSql + "B.GatheringType,PremiumBase,a.PayFeeBase,";
-            sSql = sSql + "(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID) PayedFee,";
-            sSql = sSql + "CarrierID,BranchID,Period,PayDate,CiPremium,AciPremium,CstPremium,c.NoticeDate,";
+            sSql = sSql + "(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4')) PayedFee,";
+            sSql = sSql + "a.PayProcBase,CarrierID,BranchID,Period,PayDate,CiPremium,AciPremium,CstPremium,c.NoticeDate,";
             sSql = sSql + "(select CustName from  customer where custID=b.CustomerID) CustName, ";
             sSql = sSql + "(select ProdTypeName from ProductType where ProdTypeID=b.ProdTypeID) ProdTypeName,";
             sSql = sSql + "(select GatheringTypeName from GatheringType where GatheringTypeID=b.GatheringType) GatheringTypeName,";
@@ -170,7 +170,7 @@ namespace BusinessObjects
             sSql = sSql + "  where a.PolicyID=b.PolicyID";
             sSql = sSql + "    and a.NoticeNo=c.NoticeNo";
             sSql = sSql + ") a";
-            sSql = sSql + " where 1=1 ";
+            sSql = sSql + " where 1=1";
             if (sWhere != "")
             {
                 sSql = sSql + sWhere;
