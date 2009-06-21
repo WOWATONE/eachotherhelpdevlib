@@ -169,6 +169,11 @@ namespace BrokerWebApp.otherinsurance
 
         protected void insuranceDetailTabPage_ActiveTabChanged(object source, DevExpress.Web.ASPxTabControl.TabControlEventArgs e)
         {
+            if (this.insuranceDetailTabPage.ActiveTabIndex == 1)
+            {
+                rebindGridDocList();
+            }
+
             if (this.insuranceDetailTabPage.ActiveTabIndex == 2)
             {
                 rebindGridPeriod();
@@ -1010,9 +1015,10 @@ namespace BrokerWebApp.otherinsurance
                 {
                     policyFolderPath = System.IO.Path.Combine(MapPath(UploadDirectory), policyFolder);
                     drtInfo = new DirectoryInfo(policyFolder);
+                    FileInfo fileInfo;
                     if (drtInfo.Exists)
                     {
-                        FileInfo fileInfo = new FileInfo(uploadedFile.FileName);
+                        fileInfo = new FileInfo(uploadedFile.FileName);
                         string resFileName = System.IO.Path.Combine(policyFolderPath,fileInfo.Name);
                         uploadedFile.SaveAs(resFileName);
 
@@ -1025,10 +1031,20 @@ namespace BrokerWebApp.otherinsurance
                     {
                         //create folder
                         drtInfo = System.IO.Directory.CreateDirectory(policyFolderPath);
-                        FileInfo fileInfo = new FileInfo(uploadedFile.FileName);
+                        fileInfo = new FileInfo(uploadedFile.FileName);
                         string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
                         uploadedFile.SaveAs(resFileName);
                     }
+
+                    //BO_PolicyDoc
+                    BusinessObjects.Policy.BO_PolicyDoc.Delete(this.dxetxtPolicyID.Text.Trim(), fileInfo.Name);
+
+                    BusinessObjects.Policy.BO_PolicyDoc pdoc = new BusinessObjects.Policy.BO_PolicyDoc();
+                    pdoc.PolicyDocID = Guid.NewGuid().ToString();
+                    pdoc.DocName = fileInfo.Name;
+                    pdoc.PolicyID = this.dxetxtPolicyID.Text.Trim();
+                    pdoc.DocURL = UploadDirectory.Replace("~", "") + policyFolder + "/" + fileInfo.Name;
+                    pdoc.Save(ModifiedAction.Insert);
                 }
 
                 
@@ -1037,6 +1053,11 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
+
+        protected void gridDocList_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            rebindGridDocList();
+        }
 
         private void rebindGridDocList()
         {
