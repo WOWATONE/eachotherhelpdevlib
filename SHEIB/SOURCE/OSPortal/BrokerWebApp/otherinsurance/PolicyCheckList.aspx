@@ -22,15 +22,6 @@
 	    
 	    });
 
-//	    function gridCustomButtonClick(s, e) {
-//	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-//	        window.showModalDialog("PolicyCheck.aspx", self, myArguments);
-//	    }
-
-	    function btnCreateClick() {
-	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-	        window.showModalDialog("PolicyInput.aspx?pagemode=audit", self, myArguments);
-	    }
 
 	    function gridCustomButtonClick(s, e) {
 	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
@@ -79,9 +70,7 @@
     <table style="width:100%">                    
                     <tr>
                         <td style="height:40px; width:45%;">
-                            <dxe:ASPxButton ID="debtnCreate" runat="server" Text="新建" Visible="false" AutoPostBack="false">
-                                <ClientSideEvents Click="btnCreateClick" />
-                            </dxe:ASPxButton>                            
+                                                        
                         </td>
                         <td style="height:40px; width:55%;color:#0E5ED5;text-align:left;">
                             当前位置：非车险保单审核&nbsp;&nbsp;&nbsp;&nbsp;
@@ -231,8 +220,8 @@
                                                     <td>&nbsp;</td>
                                                     <td style="text-align:right;" colspan="2">
                                                         <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
-                                                        <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
-                                                        <asp:Button ID="btnRefresh" runat="server" Text="Excel" CssClass="input_2" />
+                                                        <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
+                                                        <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" /> 
                                                     </td>
                                                     
                                                 </tr>                                 
