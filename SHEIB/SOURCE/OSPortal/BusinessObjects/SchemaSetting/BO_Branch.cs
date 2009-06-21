@@ -229,7 +229,10 @@ namespace BusinessObjects.SchemaSetting
             sb.Append(" (Select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName");
             sb.Append(" From Branch a ");
             sb.Append(" where 1=1 ");
-            sb.Append(sWhere);
+            if (sWhere != "")
+            {
+                sb.Append(sWhere);
+            }
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
