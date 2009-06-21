@@ -73,11 +73,12 @@ namespace BrokerWebApp.inoutbalance
             //    lsWhere = lsWhere + " and (convert(char(10), a.NoticeDate,21)) <='" + lsEndDate + "'";
             //}
 
-            //if (ckbNeedPayFeePolicy.Checked)
-            //{
-            //    lsWhere = lsWhere + " and (PayFeeBase-PayedFee)<>0";
-            //}
-            this.gridSearchResult.DataSource = BO_FeeCustomer.GetFeeCustomerAddSelectList(lsWhere);
+            if (ckbPayedNeedPayin.Checked)
+            {
+                lsWhere = lsWhere + " and (PayFeeBase-PayedFee)<>0";
+            }
+           
+            this.gridSearchResult.DataSource = BO_FeePayin.GetFeePayinAddSelectList(lsWhere);
             this.gridSearchResult.DataBind();
 
         }

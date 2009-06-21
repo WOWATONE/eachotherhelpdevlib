@@ -180,7 +180,7 @@
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: left;" colspan="2">
-                                <asp:CheckBox runat="server" ID="CheckBox1" Text="仅显示已收费未解付保单" />
+                                <asp:CheckBox runat="server" ID="ckbPayedNeedPayin" Text="仅显示已收费未解付保单" />
                             </td>
                             <td>
                                 &nbsp;
