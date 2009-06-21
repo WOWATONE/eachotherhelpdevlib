@@ -587,7 +587,7 @@ namespace BusinessObjects.Policy
             sb.Append(" LEFT JOIN SourceType I ON I.SourceTypeID = B.SourceTypeID ");
             sb.Append(" LEFT JOIN GatheringType J ON J.GatheringTypeID = B.GatheringType ");
             sb.Append(" LEFT JOIN P_Department K ON B.DeptID = K.DeptID ");
-            sb.Append(" WHERE ISNULL(B.PolicyStatus,'1') = @PolicyStatus ");
+            sb.Append(" WHERE ISNULL(B.PolicyStatus,'0') = @PolicyStatus ");
             //sb.Append("  ");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
@@ -620,6 +620,7 @@ namespace BusinessObjects.Policy
 
             return _db.ExecuteDataSet(dbCommand).Tables[0];
         }
+        
         #endregion Methods
 
 
