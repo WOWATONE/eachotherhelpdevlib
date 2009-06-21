@@ -57,25 +57,27 @@ namespace BusinessObjects
 
             string sSql = "";
 
-            //select a.* from (
-            // select a.VoucherID,a.FeeId,b.NoticeNo,c.CustomerID,c.ProdTypeID,b.CarrierID,b.BranchID,c.PolicyID,c.PolicyNo,
-            // a.FeeDate,b.PayFeeBase,(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID) PayedFee,
-            // a.Fee,a.FeeAdjust,d.GatheringType,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,
-            // (select AuditStautsName from AuditStauts where AuditStautsID=a.AuditStatus) AuditStautsName,
-            // (select GatheringTypeName from GatheringType where GatheringTypeID=d.GatheringType) GatheringTypeName,
-            // (select CustName from Customer where CustID=c.CustomerID) CustomerName,
-            // (select UserNameCn from P_User where UserID=c.SalesID) SalesName,
-            // (select ProdTypeName from ProductType where ProdTypeID=c.ProdTypeID) ProdTypeName,
-            // (select CarrierNameCn from Carrier where CarrierID=b.CarrierID) CarrierName,
-            // (select BranchName from Branch where BranchID=b.BranchID) BranchName
-            //  from fee a,PolicyPeriod b,Policy c,Notice d
-            //  where a.PolPeriodID=b.PolPeriodID
-            //   and b.PolicyID=c.PolicyID
-            //   and b.NoticeNo*=d.NoticeNo
-            //   and a.AccountTypeID in ('1','6')
-            //) a
-            //where 1=1
-
+            sSql = sSql + "select a.* from (";
+            sSql = sSql + "select a.VoucherID,a.FeeId,c.CustomerID,c.ProdTypeID,b.CarrierID,b.BranchID,c.PolicyID,c.PolicyNo,b.NoticeNo,";
+            sSql = sSql + "a.FeeDate,b.PayFeeBase,";
+            sSql = sSql + "(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4')) PayedFee,";
+            sSql = sSql + "b.PayProcBase,";
+            sSql = sSql + "a.Fee,a.FeeAdjust,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,";
+            sSql = sSql + "d.ProcessFeeType,";
+            sSql = sSql + "(select AuditStautsName from AuditStauts where AuditStautsID=a.AuditStatus) AuditStautsName,";
+            sSql = sSql + "(select GatheringTypeName from GatheringType where GatheringTypeID=d.GatheringType) GatheringTypeName,";
+            sSql = sSql + "(select CustName from Customer where CustID=c.CustomerID) CustomerName,";
+            sSql = sSql + "(select UserNameCn from P_User where UserID=c.SalesID) SalesName,";
+            sSql = sSql + "(select ProdTypeName from ProductType where ProdTypeID=c.ProdTypeID) ProdTypeName,";
+            sSql = sSql + "(select CarrierNameCn from Carrier where CarrierID=b.CarrierID) CarrierName,";
+            sSql = sSql + "(select BranchName from Branch where BranchID=b.BranchID) BranchName,";
+            sSql = sSql + " (select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=d.ProcessFeeType) ProcessFeeTypeName";
+            sSql = sSql + " from fee a,PolicyPeriod b,Policy c,Voucher d";
+            sSql = sSql + " where a.PolPeriodID=b.PolPeriodID";
+            sSql = sSql + "  and a.VoucherId=d.VoucherId";
+            sSql = sSql + "  and b.PolicyID=c.PolicyID";
+            sSql = sSql + "  and a.AccountTypeID in ('3','4')";
+            sSql = sSql + " ) a";
 
 
             sSql = sSql + "select a.* from (";
