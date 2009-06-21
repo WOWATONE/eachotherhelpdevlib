@@ -18,7 +18,7 @@ using BusinessObjects;
 
 namespace BrokerWebApp.otherinsurance
 {
-    public partial class PolicyInput : System.Web.UI.Page
+    public partial class PolicyInput : BasePage
     {
         #region Variables
 
@@ -139,9 +139,28 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
+        protected void dxeAuditOkCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            //String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+            //savePolicy(e.Parameter, policystatus);
+            auditPolicy(e.Parameter);
+            e.Result = "complete";
+        }
+
+
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            //
+            if (this.pm == PageMode.Audit)
+            {
+                tbltrAuditExecuteAction.Visible = true;
+                npNewExecuteAction.Visible = false;
+            }
+            else
+            {
+                tbltrAuditExecuteAction.Visible = false;
+                npNewExecuteAction.Visible = true;
+            }
+                
         }
 
         
@@ -181,6 +200,18 @@ namespace BrokerWebApp.otherinsurance
                 rebindGridPeriod();
                 if (this.pm == PageMode.Audit)
                     gridPeriod.Enabled = false;
+            }
+
+            if (this.insuranceDetailTabPage.ActiveTabIndex == 3)
+            {
+                rebindGridPeriod();
+                if (this.pm != PageMode.Audit)
+                {
+                    dxetxtIDNo.Enabled = false;
+                    dxeCheckDate.Enabled = false;
+                    dxeMemo.Enabled = false;
+                }
+
             }
         }
 
@@ -1101,6 +1132,36 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
+        private void auditPolicy(String parameter)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(PolicyAuditInfo));
+            PolicyAuditInfo obj;
+
+            obj = (PolicyAuditInfo)serializer.ReadObject(ms);
+            ms.Close();
+
+            String thePolicyID=this.dxetxtPolicyID.Text.Trim();
+            BusinessObjects.Policy.BO_Policy objPolicy;
+            objPolicy = new BusinessObjects.Policy.BO_Policy(thePolicyID);
+
+            if (obj.AuditOrNot)
+                objPolicy.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString();
+            else
+                objPolicy.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+
+            objPolicy.ModifyTime = DateTime.Now;
+            objPolicy.AuditTime = DateTime.Now;
+            objPolicy.ModifyPerson = this.CurrentUserID;
+            objPolicy.AuditPerson = this.CurrentUserID;
+            objPolicy.Remark = obj.Memo;
+            objPolicy.Save(ModifiedAction.Update);
+            
+        }
+
+
         private void bindDropDownLists()
         {
             this.dxeddlDeptID.DataSource = BusinessObjects.BO_P_Department.FetchList();
@@ -1235,6 +1296,10 @@ namespace BrokerWebApp.otherinsurance
             this.dxetxtConversionRate.Text = obj.ConversionRate.ToString();
             this.dxetxtPremiumBase.Text = obj.PremiumBase.ToString();
             this.dxetxtProcessBase.Text = obj.ProcessBase.ToString();
+
+            this.dxeCheckDate.Date = obj.AuditTime;
+            this.dxetxtIDNo.Text = obj.AuditPerson;
+            this.dxeMemo.Text = obj.Remark;
             
         }
 
@@ -1251,6 +1316,23 @@ namespace BrokerWebApp.otherinsurance
 
             //ms.Close(); 
         }
+
+    }
+
+
+    [DataContract(Namespace = "http://www.sheib.com")]
+    public class PolicyAuditInfo
+    {
+        public PolicyAuditInfo()
+        { }
+
+        
+        [DataMember]
+        public string Memo { get; set; }
+
+        [DataMember]
+        public Boolean AuditOrNot { get; set; }
+
 
     }
 }

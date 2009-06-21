@@ -61,11 +61,11 @@
                     panel.parentElement.removeAttribute('disabled', 'true');
                 }
 
-                result = $("#<%=tblCheckExecuteAction.ClientID %>");
-                if (result.length > 0) {
-                    panel = result[0];
-                    panel.parentElement.removeAttribute('disabled', 'true');
-                }
+                //result = $("#<%=tbltrAuditExecuteAction.ClientID %>");
+                //if (result.length > 0) {
+                //    panel = result[0];
+                    //panel.parentElement.removeAttribute('disabled', 'true');
+                //}
 
 
                 insuranceDetailTabPage.tabs[1].SetEnabled(true);
@@ -102,7 +102,7 @@
                         panel.parentElement.setAttribute('disabled', 'true');
                     }
 
-                    result = $("#<%=tblCheckExecuteAction.ClientID %>");
+                    result = $("#<%=tbltrAuditExecuteAction.ClientID %>");
                     if (result.length > 0) {
                         panel = result[0];
                         panel.parentElement.setAttribute('disabled', 'true');
@@ -112,6 +112,9 @@
                     insuranceDetailTabPage.tabs[1].SetEnabled(false);
                     insuranceDetailTabPage.tabs[2].SetEnabled(false);
                     insuranceDetailTabPage.tabs[3].SetEnabled(false);
+                }
+                else {
+                    //
                 }
                 
             }
@@ -693,6 +696,54 @@
         function policyTab_Click(s, e) {
             //
         }
+
+
+        function dxebtnAuditOkClick(s, e) {
+            //debugger;
+            var buttonID = s.GetText();
+            var AuditOrNot;
+            switch (buttonID) {
+                case "…Û∫À":
+                    AuditOrNot = true;
+                    break
+                case "∑¥…Û∫À":
+                    AuditOrNot = false;
+                    break
+                default:
+                    //do nothing;
+            }
+            var Memo = dxeMemo.GetValueString();
+
+            var plcAuditInfo = new PolicyAuditInfo(Memo, AuditOrNot);
+
+            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plcAuditInfo);
+
+            dxeAuditOkCallback.PerformCallback(jsonStringClient);
+            
+        }
+
+        function auditOkCallbackComplete(s, e) {
+            
+            var buttonID = dxebtnAuditOk.GetText();
+            switch (buttonID) {
+                case "…Û∫À":
+                    dxebtnAuditOk.SetText("∑¥…Û∫À");
+                    break
+                case "∑¥…Û∫À":
+                    dxebtnAuditOk.SetText("…Û∫À");
+                    break
+                default:
+                    //do nothing;
+            }
+            
+        }
+
+        function PolicyAuditInfo(Memo, AuditOrNot) {
+            if (!isEmpty(Memo))
+                this.Memo = Memo;
+
+            this.AuditOrNot = AuditOrNot;
+        }
         
     </script>
 
@@ -711,6 +762,10 @@
     
     <dxcb:ASPxCallback ID="dxeSaveAndCheckCallback" ClientInstanceName="dxeSaveAndCheckCallback" runat="server" OnCallback="dxeSaveAndCheckCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {saveCheckCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
+    <dxcb:ASPxCallback ID="dxeAuditOkCallback" ClientInstanceName="dxeAuditOkCallback" runat="server" OnCallback="dxeAuditOkCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {auditOkCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
     
     <asp:Panel ID="nppagecontent" runat="server">    
@@ -1619,7 +1674,7 @@
                                     …Û∫À»’∆⁄£∫
                                 </td>
                                 <td style="width: 20%; text-align: left;">
-                                    <dxe:ASPxDateEdit ID="deCheckDate" runat="server" Width="120px">
+                                    <dxe:ASPxDateEdit ID="dxeCheckDate" ClientInstanceName="dxeCheckDate" runat="server" Width="120px">
                                     </dxe:ASPxDateEdit>
                                 </td>
                                 <td>
@@ -1630,10 +1685,28 @@
                                     …Û∫À±∏◊¢£∫
                                 </td>
                                 <td style="text-align: left;" colspan="3">
-                                    <dxe:ASPxMemo runat="server" id="dxeMemo" Rows="10" Columns="72"></dxe:ASPxMemo>
+                                    <dxe:ASPxMemo runat="server" id="dxeMemo" ClientInstanceName="dxeMemo" Rows="10" Columns="72"></dxe:ASPxMemo>
                                 </td>
                                 <td>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5"></td>
+                            </tr>
+                            <tr runat="server" id="tbltrAuditExecuteAction">
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>                                
+                                <td>
+                                    <dxe:ASPxButton runat="server" id="dxebtnAuditOk" ClientInstanceName="dxebtnAuditOk" Text="…Û∫À" CausesValidation="false" AutoPostBack="false">
+                                        <ClientSideEvents Click="function(s, e) {dxebtnAuditOkClick(s,e);}" />
+                                    </dxe:ASPxButton>
+                                </td>
+                                <td>
+                                    <dxe:ASPxButton runat="server" id="dxebtnAuditClose" ClientInstanceName="dxebtnAuditClose" Text="πÿ±’" CausesValidation="false" AutoPostBack="false">
+                                        <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
+                                    </dxe:ASPxButton>
+                                </td>
+                                <td>&nbsp;</td>
                             </tr>
                         </table>
                     </dxw:ContentControl>
@@ -1692,21 +1765,7 @@
         </table>
     </asp:Panel>
     
-    <asp:Panel ID="npCheckExecuteAction" Visible="false" runat="server" CssClass="allborderPanel" Height="30px">
-        <table style="width: 100%" runat="server" id="tblCheckExecuteAction">
-            <tr>
-                <td style="width: 400px; text-align: left;">
-                    &nbsp;
-                </td>
-                <td style="display:none;"><a id="A1" href="PolicyInput.aspx">New</a></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
-    </asp:Panel>
-
+    
     </asp:Panel>
 
 </asp:Content>
