@@ -543,6 +543,13 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="otherinsurance\PolicyCheckList.aspx.cs">
+      <DependentUpon>PolicyCheckList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="otherinsurance\PolicyCheckList.aspx.designer.cs">
+      <DependentUpon>PolicyCheckList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="otherinsurance\PolicyInput.aspx.cs">
       <DependentUpon>PolicyInput.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -867,6 +874,7 @@
     <Content Include="inoutbalance\FeeProcess.aspx" />
     <Content Include="inoutbalance\FeeProcessAdd.aspx" />
     <Content Include="inoutbalance\FeeProcessAddSelect.aspx" />
+    <Content Include="otherinsurance\PolicyCheckList.aspx" />
     <Content Include="otherinsurance\PolicyInput.aspx" />
     <Content Include="otherinsurance\PolicyInputList.aspx" />
     <Content Include="popupselectrefs\PolicyCustomer.aspx" />
