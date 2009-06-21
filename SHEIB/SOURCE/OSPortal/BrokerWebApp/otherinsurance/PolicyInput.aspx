@@ -286,12 +286,17 @@
         }
 
         function btnSaveCheckClick(s, e) {
-            debugger;
+            var thejsonstring = makePolicyJSON();
+            dxeSaveAndCheckCallback.PerformCallback(thejsonstring);            
         }
         
         
         function saveCheckCallbackComplete(s, e) {
-            //do nothing;
+            dxebtnBottomAdd.SetEnabled(false);
+            dxebtnBottomSave.SetEnabled(false);
+            dxebtnBottomCheck.SetEnabled(false);
+            dxebtnCancel.SetEnabled(false);
+            dxeClose.SetEnabled(true);
         }
         
         
@@ -642,9 +647,7 @@
         }
 
         function gridPolicyItem_EndCallback(s,e) {
-            //sum
-            //debugger;
-            
+            //sum                        
             var itemVal;
             var sumCoverageVal = 0;
             var sumPremiumVal = 0;
@@ -1651,27 +1654,27 @@
                     &nbsp;
                 </td>
                 <td style="width:50px; text-align:left;">
-                    <dxe:ASPxButton runat="server" id="dxebtnBottomAdd" Text="新增" CausesValidation="true" AutoPostBack="false">
+                    <dxe:ASPxButton runat="server" id="dxebtnBottomAdd" ClientInstanceName="dxebtnBottomAdd" Text="新增" CausesValidation="true" AutoPostBack="false">
                         <ClientSideEvents Click="function(s, e) {btnAddClick(s,e);}" />
                     </dxe:ASPxButton> 
                 </td>
                 <td style="width:50px; text-align:left;">
-                    <dxe:ASPxButton runat="server" id="dxebtnBottomSave" Text="保存" CausesValidation="true" AutoPostBack="false">
+                    <dxe:ASPxButton runat="server" id="dxebtnBottomSave" ClientInstanceName="dxebtnBottomSave" Text="保存" CausesValidation="true" AutoPostBack="false">
                         <ClientSideEvents Click="function(s, e) {dxebtntopSave_Click(s,e);}" />
                     </dxe:ASPxButton> 
                 </td>
                 <td style="width:70px; text-align:left;">
-                    <dxe:ASPxButton runat="server" id="dxebtnBottomCheck" Text="提交审核" CausesValidation="true" AutoPostBack="false">
+                    <dxe:ASPxButton runat="server" id="dxebtnBottomCheck" ClientInstanceName="dxebtnBottomCheck" Text="提交审核" CausesValidation="true" AutoPostBack="false">
                         <ClientSideEvents Click="function(s, e) {btnSaveCheckClick(s,e);}" />
                     </dxe:ASPxButton> 
                 </td>
                 <td style="width:50px; text-align:left;">
-                    <dxe:ASPxButton runat="server" id="dxebtnCancel" Text="重置" CausesValidation="false" AutoPostBack="false">
+                    <dxe:ASPxButton runat="server" id="dxebtnCancel" ClientInstanceName="dxebtnCancel" Text="重置" CausesValidation="false" AutoPostBack="false">
                         <ClientSideEvents Click="function(s, e) {btnCancelClick();}" />
                     </dxe:ASPxButton>
                 </td>
                 <td style="width:50px; text-align:left;">
-                    <dxe:ASPxButton runat="server" id="dxeClose" Text="关闭" CausesValidation="false" AutoPostBack="false">
+                    <dxe:ASPxButton runat="server" id="dxeClose" ClientInstanceName="dxeClose" Text="关闭" CausesValidation="false" AutoPostBack="false">
                         <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
                     </dxe:ASPxButton>
                 </td>                
