@@ -140,13 +140,30 @@ namespace BusinessObjects.SchemaSetting
         public static DataTable GetProductByProdTypeID(string prodTypeID)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("Select ProdID, ProdName, PremiumRate, ProcRate ");
+            sb.Append("Select ProdTypeID, ProdID, ProdName, PremiumRate, ProcRate ");
             sb.Append("From Product (nolock) ");
             sb.Append("Where ProdTypeID=@ProdTypeID ");
             sb.Append("Order By ProdID");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ProdTypeID", DbType.AnsiString, prodTypeID);
             return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+
+        /// <summary>
+        /// 删除险种项目
+        /// </summary>
+        /// <param name="prodID"></param>
+        public static void Delete(string prodID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM Product ");
+            sb.Append(" WHERE ProdID = @ProdID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ProdID", DbType.AnsiString, prodID);
+
+            _db.ExecuteNonQuery(dbCommand);
         }
         #endregion Methods
 
