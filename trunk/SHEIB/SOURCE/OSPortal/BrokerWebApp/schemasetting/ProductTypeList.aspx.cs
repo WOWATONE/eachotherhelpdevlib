@@ -16,26 +16,26 @@ namespace BrokerWebApp.schemasetting
 {
     public partial class ProductTypeList : System.Web.UI.Page
     {
+        #region 私有变量
+        /// <summary>
+        /// 险种编号
+        /// </summary>
+        private string _prodTypeID;
+        #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 if (!this.IsPostBack)
                 {
-                    this.Initialization();
+                    this.SetProductInfo("");
                 }
+
+                this.SetProductTypeInfo("");
             }
             catch (Exception ex)
             { }
-        }
-
-        /// <summary>
-        /// 初始化控件
-        /// </summary>
-        private void Initialization()
-        {
-            this.SetProductTypeInfo("");
-            this.SetProductInfo("");
         }
 
         /// <summary>
@@ -67,6 +67,15 @@ namespace BrokerWebApp.schemasetting
             }
         }
 
+        private TreeListNode CreateNodeCore(object key, string iconName, string text, TreeListNode parentNode)
+        {
+            TreeListNode node = this.treeList.AppendNode(key, parentNode);
+            node["IconName"] = iconName;
+            node["Name"] = text;
+            node["Text"] = text;
+            return node;
+        }
+
         /// <summary>
         /// 设置项目信息
         /// </summary>
@@ -83,25 +92,15 @@ namespace BrokerWebApp.schemasetting
                 this.lblProdTypeName.InnerText = productType.ProdTypeName;
                 this.lblProdClassName.InnerText = productType.ProdClassName;
             }
+            this.hidProdTypeID.Value = prodTypeID;
 
-            DataTable dtProduct = BusinessObjects.SchemaSetting.BO_Product.GetProductByProdTypeID(prodTypeID);
-            this.gridSearchResult.DataSource = dtProduct;
+            this.gridSearchResult.DataSource = BusinessObjects.SchemaSetting.BO_Product.GetProductByProdTypeID(prodTypeID);
             this.gridSearchResult.DataBind();
-        }
-
-        private TreeListNode CreateNodeCore(object key, string iconName, string text, TreeListNode parentNode)
-        {
-            TreeListNode node = this.treeList.AppendNode(key, parentNode);
-            node["IconName"] = iconName;
-            node["Name"] = text;
-            node["Text"] = text;
-            return node;
         }
 
         protected void treeList_CustomDataCallback(object sender, TreeListCustomDataCallbackEventArgs e)
         {
-            string key = e.Argument.ToString();
-            e.Result = key;
+            //
         }
 
         protected void treeList_HtmlDataCellPrepared(object sender, TreeListHtmlDataCellEventArgs e)
@@ -111,34 +110,23 @@ namespace BrokerWebApp.schemasetting
 
         protected void cpSchemaDetail_Callback(object source, CallbackEventArgsBase e)
         {
-            //string[] parameters = e.Parameter.Split(':');
-            //int currentPageIndex = int.Parse(parameters[0]);
-            //bool isNext = parameters[1] == "next";
-
-            //if (isNext)
-            //{
-            //    currentPageIndex += 1;
-            //    if (currentPageIndex >= MultiView.Views.Count)
-            //        currentPageIndex = MultiView.Views.Count - 1;
-            //}
-            //else
-            //{
-            //    currentPageIndex -= 1;
-            //    if (currentPageIndex < 0)
-            //        currentPageIndex = 0;
-            //}
-            //MultiView.ActiveViewIndex = currentPageIndex;
+            string key = e.Parameter;
+            this.SetProductInfo(key);
         }
 
         protected void cpSchemaDetail_CustomJSProperties(object sender, CustomJSPropertiesEventArgs e)
         {
-            //e.Properties["cpPageIndex"] = 1;
-            //e.Properties["cpPageCount"] = 4;
+            //
         }
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            //
+            String prodID = e.Keys["ProdID"].ToString();
+            BusinessObjects.SchemaSetting.BO_Product.Delete(prodID);
+            e.Cancel = true;
+            this.gridSearchResult.CancelEdit();
+            this.gridSearchResult.DataSource = BusinessObjects.SchemaSetting.BO_Product.GetProductByProdTypeID(this.hidProdTypeID.Value);
+            this.gridSearchResult.DataBind();
         }
 
         protected void gridSearchResult_CustomCallBack(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)

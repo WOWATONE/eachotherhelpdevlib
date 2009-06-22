@@ -113,15 +113,6 @@ namespace BrokerWebApp.schemasetting {
         protected global::DevExpress.Web.ASPxRoundPanel.PanelContent PanelContent3;
         
         /// <summary>
-        /// ASPxPanel1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel.ASPxPanel ASPxPanel1;
-        
-        /// <summary>
         /// lblParent 控件。
         /// </summary>
         /// <remarks>
@@ -138,6 +129,15 @@ namespace BrokerWebApp.schemasetting {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblProdTypeID;
+        
+        /// <summary>
+        /// hidProdTypeID 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidProdTypeID;
         
         /// <summary>
         /// lblProdTypeName 控件。
