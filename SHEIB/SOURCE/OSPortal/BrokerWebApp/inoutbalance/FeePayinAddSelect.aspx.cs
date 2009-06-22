@@ -23,7 +23,7 @@ namespace BrokerWebApp.inoutbalance
             if (!IsPostBack && !IsCallback)
             {
                 Initialization();
-                //ckbNeedPayFeePolicy.Checked = true;
+                ckbPayedNeedPayin.Checked = true;
                 BindGrid();
             }
         }
@@ -75,7 +75,7 @@ namespace BrokerWebApp.inoutbalance
 
             if (ckbPayedNeedPayin.Checked)
             {
-                lsWhere = lsWhere + " and (PayFeeBase-PayedFee)<>0";
+                lsWhere = lsWhere + "  and not exists(select 1 from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('5'))";
             }
            
             this.gridSearchResult.DataSource = BO_FeePayin.GetFeePayinAddSelectList(lsWhere);
