@@ -724,7 +724,6 @@
     <Content Include="css\font.css" />
     <Content Include="css\ie.css" />
     <Content Include="css\leftmenustyle.css" />
-    <Content Include="dpleft.aspx" />
     <Content Include="head.html" />
     <Content Include="js\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="js\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -873,6 +872,7 @@
     <Content Include="App_Themes\Aqua\ASPxTreeList.skin" />
     <Content Include="CustomerRelation\Customer.aspx" />
     <Content Include="CustomerRelation\CustomerList.aspx" />
+    <Content Include="dpleft.aspx" />
     <Content Include="inoutbalance\FeeCustomer.aspx" />
     <Content Include="inoutbalance\FeeCustomerAdd.aspx" />
     <Content Include="inoutbalance\FeeCustomerAddSelect.aspx" />
