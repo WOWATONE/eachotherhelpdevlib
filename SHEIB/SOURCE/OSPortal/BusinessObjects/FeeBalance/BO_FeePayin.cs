@@ -56,7 +56,7 @@ namespace BusinessObjects
             sSql = sSql + "(select CarrierNameCn from Carrier where CarrierID=b.CarrierID) CarrierName,";
             sSql = sSql + "(select BranchName from Branch where BranchID=b.BranchID) BranchName,";
             sSql = sSql + " (select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=d.ProcessFeeType) ProcessFeeTypeName";
-            sSql = sSql + " from fee a,PolicyPeriod b,Policy c,Voucher d";
+            sSql = sSql + " from VoucherFee a,PolicyPeriod b,Policy c";
             sSql = sSql + " where a.PolPeriodID=b.PolPeriodID";
             sSql = sSql + "  and a.VoucherId=d.VoucherId";
             sSql = sSql + "  and b.PolicyID=c.PolicyID";
@@ -117,7 +117,7 @@ namespace BusinessObjects
             sSql = sSql + "(select CarrierNameCn from Carrier where CarrierID=b.CarrierID) CarrierName,";
             sSql = sSql + "(select BranchName from Branch where BranchID=b.BranchID) BranchName,";
             sSql = sSql + " (select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=d.ProcessFeeType) ProcessFeeTypeName";
-            sSql = sSql + " from fee a,PolicyPeriod b,Policy c,Voucher d";
+            sSql = sSql + " from VoucherFee a,PolicyPeriod b,Policy c,Voucher d";
             sSql = sSql + " where a.PolPeriodID=b.PolPeriodID";
             sSql = sSql + "  and a.VoucherId=d.VoucherId";
             sSql = sSql + "  and b.PolicyID=c.PolicyID";
@@ -178,6 +178,7 @@ namespace BusinessObjects
             DbCommand dbCommand = _db.GetSqlStringCommand(sSql);
             return _db.ExecuteDataSet(dbCommand);
         }
+
     }
 
 
