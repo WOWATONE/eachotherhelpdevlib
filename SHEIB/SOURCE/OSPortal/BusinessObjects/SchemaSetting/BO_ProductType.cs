@@ -151,7 +151,7 @@ namespace BusinessObjects.SchemaSetting
             sb.Append(" FROM ProductType PT (nolock) ");
             sb.Append(" Left Join ProductType PT1 (nolock) On PT1.ProdTypeID=PT.ParentId ");
             sb.Append(" Left Join ProdClass PC (nolock) On PC.ProdClassNo=PT.ProdClass ");
-            sb.Append(" WHERE ProdTypeID = @ProdTypeID");
+            sb.Append(" WHERE PT.ProdTypeID = @ProdTypeID");
             //sb.Append(" ");
             //sb.Append(" ");
             //sb.Append(" ");
