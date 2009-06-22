@@ -145,12 +145,7 @@
                             <td style="text-align: right;">
                                 险种：
                             </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="CmbCustomers" runat="server" Width="170px" DropDownWidth="550"
-                                    DropDownStyle="DropDownList" DataSourceID="dsCustomers" ValueField="CustomerID"
-                                    ValueType="System.String" TextFormatString="{0}" EnableCallbackMode="true" EnableIncrementalFiltering="True"
-                                    CallbackPageSize="30">
-                                </dxe:ASPxComboBox>
+                            <td style="text-align: left;">                           
                                 <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server"
                                     Width="160px">
                                 </dxe:ASPxTextBox>

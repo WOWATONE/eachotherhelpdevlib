@@ -167,7 +167,7 @@ namespace BrokerWebApp.inoutbalance
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            BindGrid();
+           BindGrid();
         }
 
 
