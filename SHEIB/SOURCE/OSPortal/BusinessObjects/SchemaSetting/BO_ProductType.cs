@@ -139,6 +139,88 @@ namespace BusinessObjects.SchemaSetting
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
             return _db.ExecuteDataSet(dbCommand);
         }
+
+        /// <summary>
+        /// 判断保单中是否有指定险种
+        /// </summary>
+        /// <param name="prodTypeID"></param>
+        /// <returns></returns>
+        public static bool IfExistsInPolicy(string prodTypeID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select top 1 ProdTypeID ");
+            sb.Append("From Policy (nolock) ");
+            sb.Append("Where ProdTypeID=@ProdTypeID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ProdTypeID", DbType.AnsiString, prodTypeID);
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+
+            if (value != null && value.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// 判断险种项目中是否有指定险种
+        /// </summary>
+        /// <param name="prodTypeID"></param>
+        /// <returns></returns>
+        public static bool IfExistsInProduct(string prodTypeID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select top 1 ProdTypeID ");
+            sb.Append("From Product (nolock) ");
+            sb.Append("Where ProdTypeID=@ProdTypeID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ProdTypeID", DbType.AnsiString, prodTypeID);
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+
+            if (value != null && value.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// 判断指定险种是否有子险种
+        /// </summary>
+        /// <param name="prodTypeID"></param>
+        /// <returns></returns>
+        public static bool IfHasChildProductType(string prodTypeID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select top 1 ProdTypeID ");
+            sb.Append("From ProductType (nolock) ");
+            sb.Append("Where ParentId=@ProdTypeID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ProdTypeID", DbType.AnsiString, prodTypeID);
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+
+            if (value != null && value.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// 删除险种信息
+        /// </summary>
+        /// <param name="prodTypeID"></param>
+        public static void Delete(string prodTypeID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM ProductType ");
+            sb.Append(" WHERE ProdTypeID = @ProdTypeID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ProdTypeID", DbType.AnsiString, prodTypeID);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
         #endregion Methods
 
 
