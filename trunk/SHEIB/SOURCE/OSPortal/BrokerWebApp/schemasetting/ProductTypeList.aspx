@@ -14,6 +14,7 @@
     TagPrefix="dxe" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView"
     TagPrefix="dxwgv" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>险种</title>
 
@@ -45,6 +46,25 @@
 
         }
 
+        function dxebtnDelete_Click(s, e) {
+            var prodTypeID = treeList.GetFocusedNodeKey();
+
+            if (prodTypeID == "" || prodTypeID == "L0")
+                return false;
+
+            if (!confirm("确定删除选中的险种?"))
+                return false;
+
+            dxeDeleteProductTypeCallback.PerformCallback(prodTypeID);
+        }
+
+        function deleteProductTypeCallbackComplete(s, e) {
+            if (e.result != "") {
+                alert(e.result);
+                return false;
+            }
+        }
+
         function treeList_CustomDataCallbackComplete(s, e) {
             //
         }
@@ -67,23 +87,27 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    <dxcb:ASPxCallback ID="dxeDeleteProductTypeCallback" ClientInstanceName="dxeDeleteProductTypeCallback" runat="server" OnCallback="dxeDeleteProductTypeCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) { deleteProductTypeCallbackComplete(s, e); }" />
+    </dxcb:ASPxCallback>
     <table style="height: 600px;" border="0" cellpadding="0" cellspacing="0">
         <tr>
             <td style="width: 100%;" colspan="3">
                 <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0">
                     <tr style="height: 40px;">
                         <td style="text-align: left; width: 80px;">
-                            <dxe:ASPxButton ID="debtnCreate" runat="server" Text="增加险种" AutoPostBack="False">
+                            <dxe:ASPxButton ID="dxebtnCreate" ClientInstanceName="dxebtnCreate" runat="server" Text="增加险种" AutoPostBack="False">
                                 <ClientSideEvents Click="btnCreateProductType" />
                             </dxe:ASPxButton>
                         </td>
                         <td style="text-align: left; width: 80px;">
-                            <dxe:ASPxButton ID="debtnEdit" runat="server" Text="修改险种" AutoPostBack="False">
+                            <dxe:ASPxButton ID="dxebtnEdit" ClientInstanceName="dxebtnEdit" runat="server" Text="修改险种" AutoPostBack="False">
                                 <ClientSideEvents Click="btnEditProductType" />
                             </dxe:ASPxButton>
                         </td>
                         <td style="text-align: left;">
-                            <dxe:ASPxButton ID="ASPxButton1" runat="server" Text="删除险种" AutoPostBack="False">
+                            <dxe:ASPxButton ID="dxebtnDelete" ClientInstanceName="dxebtnDelete" runat="server" Text="删除险种" AutoPostBack="False">
+                                <ClientSideEvents Click="function(s, e) { dxebtnDelete_Click(s,e); }"></ClientSideEvents>
                             </dxe:ASPxButton>
                         </td>
                     </tr>
@@ -147,8 +171,7 @@
                         <dxrp:PanelContent ID="PanelContent2" runat="server">
                             <dxcp:ASPxCallbackPanel runat="server" ID="cpSchemaDetail" ClientInstanceName="cpSchemaDetail"
                                 Height="500px" Width="455px" OnCallback="cpSchemaDetail_Callback" OnCustomJSProperties="cpSchemaDetail_CustomJSProperties">
-                                <ClientSideEvents Init="function(s, e) { cpSchemaDetail_Init(s,e); }" EndCallback="cpSchemaDetail_OnEndCallback">
-                                </ClientSideEvents>
+                                <ClientSideEvents Init="function(s, e) { cpSchemaDetail_Init(s,e); }" EndCallback="cpSchemaDetail_OnEndCallback"></ClientSideEvents>
                                 <PanelCollection>
                                     <dxrp:PanelContent ID="PanelContent3" runat="server">
                                         <table width="100%" cellpadding="5px">
