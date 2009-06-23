@@ -16,13 +16,6 @@ namespace BrokerWebApp.schemasetting
 {
     public partial class ProductTypeList : System.Web.UI.Page
     {
-        #region 私有变量
-        /// <summary>
-        /// 险种编号
-        /// </summary>
-        private string _prodTypeID;
-        #endregion
-
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -49,8 +42,8 @@ namespace BrokerWebApp.schemasetting
             prodTypeNode.Expanded = true;
 
             DataSet dsProductType = BusinessObjects.SchemaSetting.BO_ProductType.GetProductType();
-            DataTable dtLayer=dsProductType.Tables[0];
-            DataTable dtProductType=dsProductType.Tables[1];
+            DataTable dtLayer = dsProductType.Tables[0];
+            DataTable dtProductType = dsProductType.Tables[1];
             if (dtLayer != null && dtLayer.Rows.Count > 0)
             {
                 foreach (DataRow rowLayer in dtLayer.Rows)
@@ -117,6 +110,32 @@ namespace BrokerWebApp.schemasetting
         protected void cpSchemaDetail_CustomJSProperties(object sender, CustomJSPropertiesEventArgs e)
         {
             //
+        }
+
+        protected void dxeDeleteProductTypeCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            string key = e.Parameter;
+            e.Result = "";
+
+            if (BusinessObjects.SchemaSetting.BO_ProductType.IfExistsInPolicy(key))
+            {
+                e.Result = "该保险险种有相关保单存在，不能删除！";
+                return;
+            }
+
+            if (BusinessObjects.SchemaSetting.BO_ProductType.IfExistsInProduct(key))
+            {
+                e.Result = "该保险险种有相关保险项目存在，不能删除！";
+                return;
+            }
+
+            if (BusinessObjects.SchemaSetting.BO_ProductType.IfHasChildProductType(key))
+            {
+                e.Result = "保险险种删除错误！";
+                return;
+            }
+
+            BusinessObjects.SchemaSetting.BO_ProductType.Delete(key);
         }
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
