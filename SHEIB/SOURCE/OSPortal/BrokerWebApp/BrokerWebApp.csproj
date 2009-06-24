@@ -614,6 +614,13 @@
     <Compile Include="schemasetting\DepartmentManager.aspx.designer.cs">
       <DependentUpon>DepartmentManager.aspx</DependentUpon>
     </Compile>
+    <Compile Include="schemasetting\ProductType.aspx.cs">
+      <DependentUpon>ProductType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\ProductType.aspx.designer.cs">
+      <DependentUpon>ProductType.aspx</DependentUpon>
+    </Compile>
     <Compile Include="schemasetting\ProductTypeList.aspx.cs">
       <DependentUpon>ProductTypeList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -904,6 +911,7 @@
     <Content Include="popupselectrefs\PolicyProdType.aspx" />
     <Content Include="schemasetting\Carrier.aspx" />
     <Content Include="schemasetting\CarrierList.aspx" />
+    <Content Include="schemasetting\ProductType.aspx" />
     <Content Include="schemasetting\ProductTypeList.aspx" />
   </ItemGroup>
   <ItemGroup>
