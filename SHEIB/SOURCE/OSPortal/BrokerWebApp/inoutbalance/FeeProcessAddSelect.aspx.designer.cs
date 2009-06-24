@@ -68,58 +68,58 @@ namespace BrokerWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.TextBox txtPolicyNo;
         
         /// <summary>
-        /// ddlDeptId 控件。
+        /// dxeddlDeptId 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDeptId;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlDeptId;
         
         /// <summary>
-        /// ddlSaleID 控件。
+        /// dxeddlSalesID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSaleID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesID;
         
         /// <summary>
-        /// DropDownList1 控件。
+        /// dxeddlProcessFeeType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlProcessFeeType;
         
         /// <summary>
-        /// TextBox1 控件。
+        /// dxetxtInvoiceNO 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtInvoiceNO;
         
         /// <summary>
-        /// TextBox2 控件。
+        /// dxetxtPolicyNo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyNo;
         
         /// <summary>
-        /// TextBox3 控件。
+        /// dxetxtPolicyID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyID;
         
         /// <summary>
         /// txtProdTypeID 控件。
@@ -140,40 +140,40 @@ namespace BrokerWebApp.inoutbalance {
         protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
         
         /// <summary>
-        /// DropDownList2 控件。
+        /// dxeddlCarrier 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCarrier;
         
         /// <summary>
-        /// DropDownList4 控件。
+        /// dxeddlBranch 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlBranch;
         
         /// <summary>
-        /// DropDownList5 控件。
+        /// dxeddlGatheringType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList5;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlGatheringType;
         
         /// <summary>
-        /// DropDownList3 控件。
+        /// dxeddlPolicyType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlPolicyType;
         
         /// <summary>
         /// deGetStartDate 控件。
@@ -194,22 +194,22 @@ namespace BrokerWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deGetEndDate;
         
         /// <summary>
-        /// TextBox4 控件。
+        /// dxetxtCustName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCustName;
         
         /// <summary>
-        /// CheckBox1 控件。
+        /// ckbInvoicedNeedProc 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
+        protected global::System.Web.UI.WebControls.CheckBox ckbInvoicedNeedProc;
         
         /// <summary>
         /// btnSearch 控件。

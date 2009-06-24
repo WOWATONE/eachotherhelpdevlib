@@ -12,8 +12,7 @@
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors"
     TagPrefix="dxe" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dxm" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl"
-    TagPrefix="dxpc" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dxpc" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>经纪费结算列表</title>
@@ -93,7 +92,7 @@
                             </td>
                             <td style="width: 110px; text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server"
-                                    Width="160px">
+                                    Width="160px" >
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="width: 70px; text-align: right;">
@@ -283,34 +282,32 @@
                                                 <dxwgv:GridViewCommandColumnCustomButton Text="编辑">
                                                 </dxwgv:GridViewCommandColumnCustomButton>
                                             </CustomButtons>
-                                        </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="FeeId" Visible="false" Caption="GUID" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewCommandColumn>                                        
+                                        <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="经纪费入账单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="SerialNo" Caption="经纪费入账单号" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="F1" Caption="保险公司" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="F2" Caption="分支机构" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CarrierSales" Caption="业务员" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="F3" Caption="业务员" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="InvoiceNO" Caption="发票号码" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="F3" Caption="发票号码" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="开票日期" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="PayinInvoiceDate" Caption="开票日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="ProcessFee" Caption="开票金额" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayinInvoiceFee" Caption="开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="ProcessFee" Caption="本次实收经纪费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次实收经纪费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="ProcessFee" Caption="调整金额" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="经纪费收取日期" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="FeeDate" Caption="经纪费收取日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="AccountType" Caption="经纪费收取方式" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="ProcessFeeTypeName" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="F4" Caption="客户经理" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="客户经理" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>

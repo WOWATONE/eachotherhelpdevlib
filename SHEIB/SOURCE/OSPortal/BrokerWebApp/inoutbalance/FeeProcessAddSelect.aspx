@@ -223,7 +223,8 @@
                             <td>
                             </td>
                             <td style="text-align: left;" colspan="2">
-                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
+                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" 
+                                    onclick="btnSearch_Click" />&nbsp;
                                 <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />
                             </td>
                             <td>
@@ -273,20 +274,20 @@
                                             <SelectButton Visible="true">
                                             </SelectButton>
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="开票通知书号" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayinInvoiceID" Caption="开票通知书号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="投保单号" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="保单编号" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="NoticeDate" Caption="开票日期" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="Payininvoicedate" Caption="开票日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="发票号码" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Invoiceno" Caption="发票号码" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="开票金额" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Payininvoicefee" Caption="开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="F2" Caption="经纪费收取方式" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Processfeetypename" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>

@@ -88,7 +88,7 @@ namespace BrokerWebApp.inoutbalance
         {
             string sVocherID = "";
             sVocherID = "0903052101";
-            DataTable dt = BO_FeeCustomer.GetFeeCustomerAdd(sVocherID).Tables[0];
+            DataTable dt = Bo_FeePayinInvoice.GetFeePayinInvoiceAdd(sVocherID).Tables[0];
             this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
 
