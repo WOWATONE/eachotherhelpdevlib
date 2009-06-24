@@ -221,6 +221,26 @@ namespace BusinessObjects.SchemaSetting
 
             _db.ExecuteNonQuery(dbCommand);
         }
+
+        /// <summary>
+        /// 取得险种大类
+        /// </summary>
+        /// <param name="sCodetype"></param>
+        /// <returns></returns>
+        public static DataSet GetProdClassList(string sProdClassNo)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select ProdClassNo, ProdClassName ");
+            sb.Append("FROM ProdClass (nolock) ");
+            if (sProdClassNo.Trim() != "")
+            {
+                sb.Append("And ProdClassNo = '" + sProdClassNo + "' ");
+            }
+            sb.Append("ORDER BY ProdClassNo");
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            return _db.ExecuteDataSet(dbCommand);
+        }
         #endregion Methods
 
 
@@ -247,7 +267,7 @@ namespace BusinessObjects.SchemaSetting
 
             using (IDataReader reader = _db.ExecuteReader(dbCommand))
             {
-                if (reader.Read())
+                while(reader.Read())
                 {
                     this.ProdTypeID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ProdTypeID));
                     this.ProdClass = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ProdClass));
@@ -256,6 +276,7 @@ namespace BusinessObjects.SchemaSetting
                     this.Layer = Utility.GetIntFromReader(reader, Convert.ToInt32(FieldList.Layer));
                     this.ParentName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ParentName));
                     this.ProdClassName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.ProdClassName));
+                    break;
                 }
             }
         }
