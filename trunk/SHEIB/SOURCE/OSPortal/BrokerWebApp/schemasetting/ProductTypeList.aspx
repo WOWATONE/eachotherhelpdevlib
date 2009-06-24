@@ -22,31 +22,40 @@
     <!--
         function btnCreateProductType() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            window.showModalDialog("ProductType.aspx?Type=AddProductType", self, myArguments);
+            var prodTypeID = treeList.GetFocusedNodeKey();
+            if (prodTypeID != "")
+                window.showModalDialog("ProductType.aspx?type=ProductType&action=Add&ID=" + prodTypeID, self, myArguments);
         }
 
         function btnEditProductType() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            window.showModalDialog("ProductType.aspx?Type=EditProductType", self, myArguments);
+            var prodTypeID = treeList.GetFocusedNodeKey();
+            if (prodTypeID != "" && prodTypeID != "L0")
+                window.showModalDialog("ProductType.aspx?type=ProductType&action=Edit&ID=" + prodTypeID, self, myArguments);
         }
 
         function gridCustomButtonClick(s, e) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=960px;dialogHeight=700px;center=yes;help=no";
+ 
             switch (e.buttonID) {
                 case "增加":
-                    window.showModalDialog("ProductType.aspx?Type=AddProduct", self, myArguments);
+                    var prodTypeID = treeList.GetFocusedNodeKey();
+                    if (prodTypeID == "" || prodTypeID=="L0")
+                        return false;
+                    window.showModalDialog("ProductType.aspx?type=Product&action=Add&ID=" + prodTypeID, self, myArguments);
                     break
                 case "修改":
-                    var prodTypeID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
-                    window.showModalDialog("ProductType.aspx?Type=EditProduct&ProdTypeID=" + prodTypeID, self, myArguments);
+                    var prodID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
+                    if (prodID == "")
+                        return false;
+                    window.showModalDialog("ProductType.aspx?type=Product&action=Edit&ID=" + prodID, self, myArguments);
                     break
                 default:
                     //do nothing;
             }
-
         }
 
-        function dxebtnDelete_Click(s, e) {
+        function btnDeleteProductType() {
             var prodTypeID = treeList.GetFocusedNodeKey();
 
             if (prodTypeID == "" || prodTypeID == "L0")
@@ -59,27 +68,19 @@
         }
 
         function deleteProductTypeCallbackComplete(s, e) {
-            if (e.result != "") {
+            if (e.result != "" && e.result != "ok") {
                 alert(e.result);
                 return false;
             }
-        }
 
-        function treeList_CustomDataCallbackComplete(s, e) {
-            //
+            if (e.result == "ok") {
+                window.location.reload();
+            }
         }
 
         function treeList_FocusedNodeChanged(s, e) {
             var key = treeList.GetFocusedNodeKey();
             cpSchemaDetail.PerformCallback(key);
-        }
-
-        function cpSchemaDetail_Init(s, e) {
-            //do not ini.
-        }
-
-        function cpSchemaDetail_OnEndCallback() {
-            //do nothing;            
         }
     -->
     </script>
@@ -107,7 +108,7 @@
                         </td>
                         <td style="text-align: left;">
                             <dxe:ASPxButton ID="dxebtnDelete" ClientInstanceName="dxebtnDelete" runat="server" Text="删除险种" AutoPostBack="False">
-                                <ClientSideEvents Click="function(s, e) { dxebtnDelete_Click(s,e); }"></ClientSideEvents>
+                                <ClientSideEvents Click="btnDeleteProductType"></ClientSideEvents>
                             </dxe:ASPxButton>
                         </td>
                     </tr>
@@ -121,8 +122,7 @@
                     <PanelCollection>
                         <dxp:PanelContent ID="Panelcontent1" runat="server">
                             <dxwtl:ASPxTreeList ID="treeList" ClientInstanceName="treeList" runat="server" Width="100%"
-                                SummaryText="Summary" DataCacheMode="Enabled" OnCustomDataCallback="treeList_CustomDataCallback"
-                                OnHtmlDataCellPrepared="treeList_HtmlDataCellPrepared">
+                                SummaryText="Summary" DataCacheMode="Enabled" >
                                 <Columns>
                                     <dxwtl:TreeListTextColumn FieldName="Name">
                                         <PropertiesTextEdit EncodeHtml="True" />
@@ -130,9 +130,7 @@
                                 </Columns>
                                 <Settings ShowColumnHeaders="false" />
                                 <SettingsBehavior AllowFocusedNode="True" ExpandCollapseAction="NodeDblClick" />
-                                <ClientSideEvents CustomDataCallback="function(s, e) { 
-                                                    treeList_CustomDataCallbackComplete(s, e); 
-                                                    }" FocusedNodeChanged="function(s, e) { 
+                                <ClientSideEvents FocusedNodeChanged="function(s, e) { 
                                                     treeList_FocusedNodeChanged(s,e);
                                                 }" />
                                 <Styles>
@@ -170,8 +168,7 @@
                     <PanelCollection>
                         <dxrp:PanelContent ID="PanelContent2" runat="server">
                             <dxcp:ASPxCallbackPanel runat="server" ID="cpSchemaDetail" ClientInstanceName="cpSchemaDetail"
-                                Height="500px" Width="455px" OnCallback="cpSchemaDetail_Callback" OnCustomJSProperties="cpSchemaDetail_CustomJSProperties">
-                                <ClientSideEvents Init="function(s, e) { cpSchemaDetail_Init(s,e); }" EndCallback="cpSchemaDetail_OnEndCallback"></ClientSideEvents>
+                                Height="500px" Width="455px" OnCallback="cpSchemaDetail_Callback">
                                 <PanelCollection>
                                     <dxrp:PanelContent ID="PanelContent3" runat="server">
                                         <table width="100%" cellpadding="5px">
@@ -219,7 +216,7 @@
                                                     <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                                                         KeyFieldName="ProdID" AutoGenerateColumns="False" Settings-ShowFooter="true"
                                                         SettingsBehavior-AllowSort="false" Width="100%" SettingsPager-AlwaysShowPager="true"
-                                                        OnRowDeleting="gridSearchResult_RowDeleting" OnCustomCallback="gridSearchResult_CustomCallBack">
+                                                        OnRowDeleting="gridSearchResult_RowDeleting">
                                                         <Columns>
                                                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" Width="15px" CellStyle-Wrap="False"
                                                                 HeaderStyle-HorizontalAlign="Center">
@@ -248,7 +245,7 @@
                                                         </Columns>
                                                         <SettingsPager Mode="ShowAllRecords" />
                                                         <Settings ShowGroupPanel="false" />
-                                                        <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
+                                                        <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}"  />
                                                         <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                                         <SettingsText CustomizationWindowCaption="个性化" />
                                                     </dxwgv:ASPxGridView>

@@ -91,25 +91,10 @@ namespace BrokerWebApp.schemasetting
             this.gridSearchResult.DataBind();
         }
 
-        protected void treeList_CustomDataCallback(object sender, TreeListCustomDataCallbackEventArgs e)
-        {
-            //
-        }
-
-        protected void treeList_HtmlDataCellPrepared(object sender, TreeListHtmlDataCellEventArgs e)
-        {
-            //
-        }
-
         protected void cpSchemaDetail_Callback(object source, CallbackEventArgsBase e)
         {
             string key = e.Parameter;
             this.SetProductInfo(key);
-        }
-
-        protected void cpSchemaDetail_CustomJSProperties(object sender, CustomJSPropertiesEventArgs e)
-        {
-            //
         }
 
         protected void dxeDeleteProductTypeCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
@@ -134,8 +119,9 @@ namespace BrokerWebApp.schemasetting
                 e.Result = "保险险种删除错误！";
                 return;
             }
-
+            
             BusinessObjects.SchemaSetting.BO_ProductType.Delete(key);
+            e.Result = "ok";
         }
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -146,11 +132,6 @@ namespace BrokerWebApp.schemasetting
             this.gridSearchResult.CancelEdit();
             this.gridSearchResult.DataSource = BusinessObjects.SchemaSetting.BO_Product.GetProductByProdTypeID(this.hidProdTypeID.Value);
             this.gridSearchResult.DataBind();
-        }
-
-        protected void gridSearchResult_CustomCallBack(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
-        {
-            //                       
         }
     }
 }
