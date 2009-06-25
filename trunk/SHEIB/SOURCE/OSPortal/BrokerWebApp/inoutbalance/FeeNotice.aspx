@@ -207,7 +207,7 @@
                                 状态：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlAuditStauts" ClientInstanceName="dxeddlAuditStauts" runat="server"
+                                <dxe:ASPxComboBox ID="dxeddlAuditStatus" ClientInstanceName="dxeddlAuditStatus" runat="server"
                                     Width="160px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
