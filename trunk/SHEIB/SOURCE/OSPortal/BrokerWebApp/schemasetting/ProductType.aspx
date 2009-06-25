@@ -7,8 +7,23 @@
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors"
     TagPrefix="dxe" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title></title>
+    <title><%=pageTitle %></title>
     <script type="text/javascript">
+        $(document).ready(function() {
+            window.onunload = function() {
+                var pWindow = window.dialogArguments;
+                var treeList = pWindow.treeList;
+                var cpSchemaDetail = pWindow.cpSchemaDetail;
+
+                if (treeList != null && cpSchemaDetail != null) {
+                    cpSchemaDetail.PerformCallback(treeList.GetFocusedNodeKey());
+                }
+                else {
+                    //do nothing
+                }
+            };
+        });
+    
         function btnCloseClick() {
             window.close();
         }
@@ -27,14 +42,15 @@
                             
                             <table style="width:100%;">
                                 <tr>
-                                    <td style="width:20%;">
+                                    <td style="width:20%; text-align:right;">
+                                        &nbsp;
                                         </td>
                                     <td style="width:20%; text-align:right;">
                                        上级险种：</td>
                                     <td style="width:40%; text-align:left;">
                                         <dxe:ASPxTextBox ID="dxetxtParent" ClientInstanceName="dxetxtParent" runat="server" Width="200px" Enabled="false"></dxe:ASPxTextBox></td>
-                                    <td style="width:20%; text-align:right;">
-                                        &nbsp;</td>
+                                    <td style="width:20%; text-align:left;">
+                                        <label id="lblerrmsg" name="lblerrmsg" runat="server" class="red" visible="false"></label></td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -47,7 +63,7 @@
 										        <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                             </ValidationSettings>
                                         </dxe:ASPxTextBox></td>
-                                    <td style="text-align:right;">
+                                    <td>
                                         &nbsp;</td>
                                 </tr>
                                 <tr>
@@ -61,7 +77,7 @@
 										        <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                             </ValidationSettings>
                                         </dxe:ASPxTextBox></td>
-                                    <td style="text-align:right;">
+                                    <td>
                                         &nbsp;</td>
                                 </tr>
                                 <tr>
@@ -75,7 +91,7 @@
 										        <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                             </ValidationSettings>
                                         </dxe:ASPxComboBox></td>
-                                    <td style="text-align:right;">
+                                    <td>
                                         &nbsp;</td>
                                 </tr>
                             </table>
@@ -93,8 +109,8 @@
                                     所属险种：</td>
                                 <td style="width:40%; text-align:left;">
                                     <dxe:ASPxTextBox ID="dxetxtProdType" ClientInstanceName="dxetxtProdType" runat="server" Width="200px" Enabled="false"></dxe:ASPxTextBox></td>
-                                <td style="width:30%;">
-                                    &nbsp;</td>
+                                <td style="width:30%; text-align:left;">
+                                    <label id="lblerrmsg2" name="lblerrmsg2" runat="server" class="red" visible="false"></label></td>
                             </tr>
                             <tr>
                                 <td style="text-align:right;">

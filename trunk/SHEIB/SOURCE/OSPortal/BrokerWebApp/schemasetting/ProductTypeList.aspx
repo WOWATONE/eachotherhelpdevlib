@@ -34,27 +34,6 @@
                 window.showModalDialog("ProductType.aspx?type=ProductType&action=Edit&ID=" + prodTypeID, self, myArguments);
         }
 
-        function gridCustomButtonClick(s, e) {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=960px;dialogHeight=700px;center=yes;help=no";
- 
-            switch (e.buttonID) {
-                case "增加":
-                    var prodTypeID = treeList.GetFocusedNodeKey();
-                    if (prodTypeID == "" || prodTypeID=="L0")
-                        return false;
-                    window.showModalDialog("ProductType.aspx?type=Product&action=Add&ID=" + prodTypeID, self, myArguments);
-                    break
-                case "修改":
-                    var prodID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
-                    if (prodID == "")
-                        return false;
-                    window.showModalDialog("ProductType.aspx?type=Product&action=Edit&ID=" + prodID, self, myArguments);
-                    break
-                default:
-                    //do nothing;
-            }
-        }
-
         function btnDeleteProductType() {
             var prodTypeID = treeList.GetFocusedNodeKey();
 
@@ -78,6 +57,29 @@
             }
         }
 
+        function btnCreateProduct() {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=960px;dialogHeight=700px;center=yes;help=no";
+            var prodTypeID = treeList.GetFocusedNodeKey();
+            if (prodTypeID == "" || prodTypeID == "L0")
+                return false;
+            window.showModalDialog("ProductType.aspx?type=Product&action=Add&ID=" + prodTypeID, self, myArguments);
+        }
+
+        function gridCustomButtonClick(s, e) {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=960px;dialogHeight=700px;center=yes;help=no";
+ 
+            switch (e.buttonID) {
+                case "修改":
+                    var prodID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
+                    if (prodID == "")
+                        return false;
+                    window.showModalDialog("ProductType.aspx?type=Product&action=Edit&ID=" + prodID, self, myArguments);
+                    break;
+                default:
+                    //do nothing;
+            }
+        }
+
         function treeList_FocusedNodeChanged(s, e) {
             var key = treeList.GetFocusedNodeKey();
             cpSchemaDetail.PerformCallback(key);
@@ -93,26 +95,32 @@
     </dxcb:ASPxCallback>
     <table style="height: 600px;" border="0" cellpadding="0" cellspacing="0">
         <tr>
-            <td style="width: 100%;" colspan="3">
+            <td>
                 <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0">
                     <tr style="height: 40px;">
                         <td style="text-align: left; width: 80px;">
-                            <dxe:ASPxButton ID="dxebtnCreate" ClientInstanceName="dxebtnCreate" runat="server" Text="增加险种" AutoPostBack="False">
+                            <dxe:ASPxButton ID="dxebtnCreateProductType" ClientInstanceName="dxebtnCreateProductType" runat="server" Text="增加险种" AutoPostBack="False">
                                 <ClientSideEvents Click="btnCreateProductType" />
                             </dxe:ASPxButton>
                         </td>
                         <td style="text-align: left; width: 80px;">
-                            <dxe:ASPxButton ID="dxebtnEdit" ClientInstanceName="dxebtnEdit" runat="server" Text="修改险种" AutoPostBack="False">
+                            <dxe:ASPxButton ID="dxebtnEditProductType" ClientInstanceName="dxebtnEditProductType" runat="server" Text="修改险种" AutoPostBack="False">
                                 <ClientSideEvents Click="btnEditProductType" />
                             </dxe:ASPxButton>
                         </td>
                         <td style="text-align: left;">
-                            <dxe:ASPxButton ID="dxebtnDelete" ClientInstanceName="dxebtnDelete" runat="server" Text="删除险种" AutoPostBack="False">
+                            <dxe:ASPxButton ID="dxebtnDeleteProductType" ClientInstanceName="dxebtnDeleteProductType" runat="server" Text="删除险种" AutoPostBack="False">
                                 <ClientSideEvents Click="btnDeleteProductType"></ClientSideEvents>
                             </dxe:ASPxButton>
                         </td>
                     </tr>
                 </table>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+                <dxe:ASPxButton ID="dxebtnCreateProduct" ClientInstanceName="dxebtnCreateProduct" runat="server" Text="增加项目" AutoPostBack="False">
+                    <ClientSideEvents Click="btnCreateProduct" />
+                </dxe:ASPxButton>
             </td>
         </tr>
         <tr>
@@ -160,8 +168,7 @@
                 </dxrp:ASPxRoundPanel>
             </td>
             <td>
-                <div class="Spacer" style="width: 16px;">
-                </div>
+                <div class="Spacer" style="width: 16px;"></div>
             </td>
             <td valign="top">
                 <dxrp:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" ShowHeader="False" Width="100%">
@@ -173,7 +180,7 @@
                                     <dxrp:PanelContent ID="PanelContent3" runat="server">
                                         <table width="100%" cellpadding="5px">
                                             <tr>
-                                                <td style="text-align: left;">
+                                                <td style="text-align: left; width:100px;">
                                                     上级险种：&nbsp;
                                                 </td>
                                                 <td style="text-align: left;">
@@ -224,8 +231,6 @@
                                                                 <EditButton Visible="false" />
                                                                 <DeleteButton Visible="true" />
                                                                 <CustomButtons>
-                                                                    <dxwgv:GridViewCommandColumnCustomButton Text="增加">
-                                                                    </dxwgv:GridViewCommandColumnCustomButton>
                                                                     <dxwgv:GridViewCommandColumnCustomButton Text="修改">
                                                                     </dxwgv:GridViewCommandColumnCustomButton>
                                                                 </CustomButtons>

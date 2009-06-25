@@ -32,31 +32,40 @@ namespace BrokerWebApp.schemasetting {
         protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeDeleteProductTypeCallback;
         
         /// <summary>
-        /// dxebtnCreate 控件。
+        /// dxebtnCreateProductType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnCreate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnCreateProductType;
         
         /// <summary>
-        /// dxebtnEdit 控件。
+        /// dxebtnEditProductType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnEdit;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnEditProductType;
         
         /// <summary>
-        /// dxebtnDelete 控件。
+        /// dxebtnDeleteProductType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnDelete;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnDeleteProductType;
+        
+        /// <summary>
+        /// dxebtnCreateProduct 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnCreateProduct;
         
         /// <summary>
         /// ASPxRoundPanel1 控件。

@@ -50,6 +50,15 @@ namespace BrokerWebApp.schemasetting {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtParent;
         
         /// <summary>
+        /// lblerrmsg 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblerrmsg;
+        
+        /// <summary>
         /// dxetxtProdTypeID 控件。
         /// </summary>
         /// <remarks>
@@ -93,6 +102,15 @@ namespace BrokerWebApp.schemasetting {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProdType;
+        
+        /// <summary>
+        /// lblerrmsg2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblerrmsg2;
         
         /// <summary>
         /// dxetxtProdID 控件。
