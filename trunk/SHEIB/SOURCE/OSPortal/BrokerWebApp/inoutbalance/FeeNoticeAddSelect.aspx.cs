@@ -34,11 +34,11 @@ namespace BrokerWebApp.inoutbalance
             string lsWhere = "";
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and b.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and a.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
             }
             if (dxetxtPolicyID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and b.PolicyID ='" + dxetxtPolicyID.Text + "'";
+                lsWhere = lsWhere + " and a.PolicyID ='" + dxetxtPolicyID.Text + "'";
             }
             if (dxeddlDeptId.SelectedItem.Value.ToString().Trim() != "")
             {
@@ -50,7 +50,7 @@ namespace BrokerWebApp.inoutbalance
             }
             if (dxetxtCustomerID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=b.CustomerID) ";
+                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=a.CustomerID) ";
             }
             if (dxeddlCarrier.SelectedItem.Value.ToString().Trim() != "")
             {
@@ -62,7 +62,7 @@ namespace BrokerWebApp.inoutbalance
             }
             if (dxetxtProdTypeID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from ProductType where ProdTypeName like '%" + dxetxtProdTypeID.Text + "%' and CustID=b.CustomerID) ";
+                lsWhere = lsWhere + " and  exists( select 1 from ProductType where ProdTypeName like '%" + dxetxtProdTypeID.Text + "%' and CustID=a.CustomerID) ";
             }
             if (ckbPayDate.Checked)
             {
@@ -86,7 +86,7 @@ namespace BrokerWebApp.inoutbalance
                 lsWhere = lsWhere + " and (convert(char(10), A.EndDate,21)) <='" + lsEndDate + "'";
             }
 
-            this.gridSearchResult.DataSource = BO_Notice.GetCustomerFeeSelectList(lsWhere);
+            this.gridSearchResult.DataSource = BO_Notice.GetFeeNoticeAddSelectList(lsWhere);
             this.gridSearchResult.DataBind();
 
         }
@@ -171,6 +171,17 @@ namespace BrokerWebApp.inoutbalance
             BindGrid();
         }
 
-        
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            //List<object> aa = gridSearchResult.GetSelectedFieldValues("PolicyID");
+            //for (int i = 0; i < aa.Count; i++)
+            //{
+            //    String s = (String)aa[i]; 
+            //}
+        }
+
+
+
+
     }
 }

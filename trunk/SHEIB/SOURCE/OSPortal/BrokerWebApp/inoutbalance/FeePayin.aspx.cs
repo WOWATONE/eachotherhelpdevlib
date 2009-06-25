@@ -155,6 +155,11 @@ namespace BrokerWebApp.inoutbalance
             this.gridSearchResult.DataBind();
         }
 
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindGrid();
+        }
+
 
 
     }
