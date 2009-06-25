@@ -223,7 +223,8 @@
                             <td style="text-align: left;">
                             </td>
                             <td style="text-align: left;" colspan="2">
-                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
+                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" 
+                                    onclick="btnSearch_Click" />&nbsp;
                                 <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
                                 <asp:Button ID="btnExcel" runat="server" Text="Excel" CssClass="input_2" />
                             </td>
