@@ -138,8 +138,6 @@ namespace BusinessObjects
             //               a.Accounttypeid In ('5')) a
 
 
-
-
             string sSql = "";
             sSql = sSql + "Select a.*";
             sSql = sSql + "From (Select a.Voucherid, a.Feeid, c.Customerid, c.Prodtypeid, b.Carrierid, b.Branchid, c.PolicyID, c.PolicyNo,";
