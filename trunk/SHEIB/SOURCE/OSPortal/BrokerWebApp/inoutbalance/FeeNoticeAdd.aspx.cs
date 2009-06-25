@@ -41,29 +41,40 @@ namespace BrokerWebApp.inoutbalance
             if (!this.Page.IsPostBack)
             {
                 this.Initialization();
+                BindGrid();
             }
 
         }
 
+
+
+        private void BindGrid()
+        {
+            string lsNoticeID = "TZSBH";
+
+            DataTable dt = BO_Notice.GetFeeNoticeAddList(lsNoticeID).Tables[0];
+            this.gridPolicyItem.DataSource = dt;
+            this.gridPolicyItem.DataBind();
+
+        }
+
+
         private void Initialization()
         {
 
-            DataSet list;
+            DataSet dsList;
 
             //收费类型
-            //list = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.GatheringType.ToString());
-            //if (list.Tables[0] != null)
-            //{
-            //    foreach (DataRow row in list.Tables[0].Rows)
-            //    {
-            //        this.ddlFeeType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
-            //    }
-            //}
-            //ddlFeeType.SelectedIndex = 0;
-            deNoticeDate.Date = DateTime.Today;
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.GatheringType.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlGatheringType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
 
-            gridPolicyItem.DataSource = BO_Notice.GetNoticePolicyList("TZSBH");
-            gridPolicyItem.DataBind();
+            deNoticeDate.Date = DateTime.Today;
         }
 
 
@@ -139,27 +150,6 @@ namespace BrokerWebApp.inoutbalance
             this.gridPolicyItem.DataBind();
         }
 
-        private void GetPolicyItemDataForGrid()
-        {
-            _dtGrid = new DataTable();
-            _dtGrid.PrimaryKey = new DataColumn[] { 
-            _dtGrid.Columns.Add("PolicyID", typeof(Guid)) };
-
-            _dtGrid.Columns.Add("PolicyNo", typeof(String));
-            _dtGrid.Columns.Add("CustomerID", typeof(String));
-            _dtGrid.Columns.Add("AccountTypeID", typeof(String));
-
-            _dtGrid.Columns.Add("Fee", typeof(Decimal));
-
-            
-
-            _dtGrid.Rows.Add(new object[] { Guid.NewGuid(), "PA0001", "王怡", "2001-01-01", 1000 });
-            _dtGrid.Rows.Add(new object[] { Guid.NewGuid(), "PA0003", "王怡", "2001-01-01", 2000 });
-            _dtGrid.Rows.Add(new object[] { Guid.NewGuid(), "PA0002", "王怡", "2001-01-01", 3000 });
-
-
-        }
-        
 
 
     }
