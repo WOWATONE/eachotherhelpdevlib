@@ -34,9 +34,41 @@
         });
 
         function imgPolicyProdTypeClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
-            //window.showModalDialog("PolicyProdType.aspx", self, myArguments);
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=700px;dialogHeight=500px;center=yes;help=no";
+            var retrunval = window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
+            if (isEmpty(retrunval)) {
+                //do nothing;
+            }
+            else {
+                //split the return value;
+                var thesplit_array = retrunval.split(";");
+                dxetxtProdTypeID.SetValue(thesplit_array[1]);
+                setProductTypeID(thesplit_array[0]);
+
+                var result = $("#<%=ptid.ClientID %>");
+            }
+
         }
+
+        function setProductTypeID(thevalue) {
+            var result = $("#<%=ptid.ClientID %>");
+            result[0].value = thevalue;
+        }
+
+        function isEmpty(testVar) {
+            if ((testVar == null) || (testVar.length == 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function btnOk_Click() {
+
+            //gridSearchResult.GetSelectedFieldValues("ProdTypeID;ProdTypeName", getTheSelectedRowsValues);
+
+        }
+        
         
     </script>
 
@@ -62,40 +94,39 @@
                 <asp:Panel ID="npSearchDetail" runat="server" CssClass="collapsePanel" Height="0">
                     <table style="width: 980px;">
                         <tr>
-                            <td style="width: 100px; text-align: right;">
+                            <td style="width: 90px; text-align: right;">
                                 保单号：
                             </td>
                             <td style="width: 110px; text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server"
-                                    Width="160px">
+                                    Width="100px">
                                 </dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 100px; text-align: right;">
+                            <td style="width: 70px; text-align: right;">
                                 投保单号：
                             </td>
                             <td style="width: 110px; text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server"
-                                    Width="160px">
+                                    Width="100px">
                                 </dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 100px; text-align: right;">
+                            <td style="width: 70px; text-align: right;">
                                 部门：
                             </td>
                             <td style="width: 110px; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlDeptId" ClientInstanceName="dxeddlDeptId" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
+                                    Width="100px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
-                            <td style="width: 100px; text-align: right;">
+                            <td style="width: 70px; text-align: right;">
                                 客户经理：
                             </td>
-                            <td style="width: 110px; text-align: left;">
+                            <td style="width: 120px; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlSalesID" ClientInstanceName="dxeddlSalesID" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
+                                    Width="100px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
-                            <td>
-                            </td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
@@ -103,7 +134,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCustomerID" ClientInstanceName="dxetxtCustomerID" runat="server"
-                                    Width="160px">
+                                    Width="100px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
@@ -111,7 +142,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlCarrier" ClientInstanceName="dxeddlCarrier" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
+                                    Width="100px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
@@ -119,110 +150,132 @@
                             </td>
                             <td style="text-align: left;">                                
                                 <dxe:ASPxComboBox ID="dxeddlBranch" ClientInstanceName="dxeddlBranch" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
+                                    Width="100px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
                                 保险险种：
                             </td>
                             <td style="text-align: left;">
-                                 <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server"
-                                    Width="160px">
-                                </dxe:ASPxTextBox>                                
-                                <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;
-                                    height: 20px; vertical-align: top;" onclick="imgPolicyProdTypeClick();" />
+                                <table style="margin-left:-3px;">
+                                    <tr>
+                                    <td>
+                                        <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server" Width="100px">
+                                        </dxe:ASPxTextBox> 
+                                        <input type="hidden" id="ptid" runat="server" />
+                                    </td>
+                                    <td>                                                                   
+                                    <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;
+                                        height: 20px; vertical-align: top;" onclick="imgPolicyProdTypeClick();" />
+                                    </td>
+                                    </tr> 
+                                </table>
                             </td>
-                            <td>
-                                &nbsp;
-                            </td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
                                 <asp:CheckBox runat="server" ID="ckbPayDate" />
                                 应收日期：
                             </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="dxeStartPayDate" runat="server">
-                                </dxe:ASPxDateEdit>
-                            </td>
-                            <td style="text-align: center;">
-                                至
-                            </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="dxeEndPayDate" runat="server">
-                                </dxe:ASPxDateEdit>
-                            </td>
+                            <td style="text-align: left;" colspan="3">
+                                <table style="margin-left:-3px;">
+                                    <tr>
+                                        <td style="text-align: left;">
+                                            <dxe:ASPxDateEdit ID="dxeStartPayDate" Width="100" runat="server">
+                                            </dxe:ASPxDateEdit>
+                                        </td>
+                                        <td style="text-align: center; width:20px;">
+                                            至
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <dxe:ASPxDateEdit ID="dxeEndPayDate" Width="100" runat="server">
+                                            </dxe:ASPxDateEdit>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>                            
                             <td style="text-align: right;">
                                 保单类型：
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlPolicyType" ClientInstanceName="dxeddlPolicyType" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
+                                    Width="100px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>                                
                             </td>
-                            <td style="text-align: left;">
-                                &nbsp;
-                            </td>
-                            <td style="text-align: left;">
-                                &nbsp;
-                            </td>
-                            <td>
-                                &nbsp;
-                            </td>
+                            <td style="text-align: right;"></td>
+                            <td style="text-align: left;"></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
                                 <asp:CheckBox runat="server" ID="chkPolicyStartDate" />
                                 起保日期：
                             </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="dxePolicyStartDateStart" runat="server">
-                                </dxe:ASPxDateEdit>
-                            </td>
-                            <td style="text-align: center;">
-                                至
-                            </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="dxePolicyStartDateEnd" runat="server">
-                                </dxe:ASPxDateEdit>
-                            </td>
+                            <td style="text-align: left;" colspan="3">
+                                <table style="margin-left:-3px;">
+                                    <tr>
+                                        <td style="text-align: left;">
+                                            <dxe:ASPxDateEdit ID="dxePolicyStartDateStart" Width="100" runat="server">
+                                            </dxe:ASPxDateEdit>
+                                        </td>
+                                        <td style="text-align: center; width:20px;">
+                                            至
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <dxe:ASPxDateEdit ID="dxePolicyStartDateEnd" Width="100"  runat="server">
+                                            </dxe:ASPxDateEdit>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>                             
+                            <td style="text-align: right;"></td>
+                            <td style="text-align: left;"></td>
+                            <td style="text-align: right;"></td>
+                            <td style="text-align: left;"></td>
+                            <td></td>                           
+                        </tr>
+                        <tr>
                             <td style="text-align: right;">
                                 <asp:CheckBox runat="server" ID="chkPolicyEndDate" />
                                 终止日期：
                             </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="dxePolicyEndDateStart" runat="server">
-                                </dxe:ASPxDateEdit>
-                            </td>
-                            <td style="text-align: center;">
-                                至
-                            </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="dxePolicyEndDateEnd" runat="server">
-                                </dxe:ASPxDateEdit>
-                            </td>
+                            <td style="text-align: left;" colspan="3">
+                                <table style="margin-left:-3px;">
+                                    <tr>
+                                        <td style="text-align: left;">
+                                            <dxe:ASPxDateEdit ID="dxePolicyEndDateStart" Width="100" runat="server">
+                                            </dxe:ASPxDateEdit>
+                                        </td>
+                                        <td style="text-align: center; width:20px;">
+                                            至
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <dxe:ASPxDateEdit ID="dxePolicyEndDateEnd" Width="100" runat="server">
+                                            </dxe:ASPxDateEdit>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>                            
+                            <td style="text-align: right;"></td>
+                            <td style="text-align: left;"></td>
+                            <td style="text-align: right;"></td>
+                            <td style="text-align: left;"></td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td style="text-align: right;">
-                            </td>
-                            <td style="text-align: left;">
-                            </td>
-                            <td style="text-align: right;">
-                            </td>
-                            <td style="text-align: left;">
-                            </td>
-                            <td style="text-align: right;">
-                            </td>
-                            <td style="text-align: left;">
-                            </td>
+                            <td style="text-align: right;"></td>
+                            <td style="text-align: left;"></td>
+                            <td style="text-align: right;"></td>
+                            <td style="text-align: left;"></td>
+                            <td style="text-align: right;"></td>
+                            <td style="text-align: left;"></td>
                             <td style="text-align: left;" colspan="2">
                                 <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
-                                <asp:Button ID="btnCancel" runat="server" Text="重置" CssClass="input_2" />&nbsp;
-                                <asp:Button ID="btnSubmit" runat="server" Text="确定" CssClass="input_2" OnClick="btnSubmit_Click" />&nbsp;
+                                <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp; 
+                                <input type="button" value="确定" name="btnOk" id="btnok" class="input_2" onclick="btnOk_Click();" />
                             </td>
-                            <td>
-                                &nbsp;
-                            </td>
+                            <td></td>
                         </tr>
                     </table>
                 </asp:Panel>
@@ -259,9 +312,9 @@
                                     OnRowDeleted="gridSearchResult_RowDeleted">
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
-                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
-                                            <SelectButton Visible="true" />
-                                        </dxwgv:GridViewCommandColumn>
+                                        <dxwgv:GridViewCommandColumn ShowSelectCheckbox="true"  Caption="&nbsp;" CellStyle-Wrap="False">
+                                            <SelectButton Visible="false" />
+                                        </dxwgv:GridViewCommandColumn>                                        
                                         <dxwgv:GridViewDataDateColumn FieldName="PayDate" Caption="应收日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
