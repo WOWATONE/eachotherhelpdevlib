@@ -47,9 +47,36 @@
             window.showModalDialog(querystring, self, myArguments);
         }
 
+        
+
         function imgPolicyProdTypeClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
-            //window.showModalDialog("PolicyProdType.aspx", self, myArguments);
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=700px;dialogHeight=500px;center=yes;help=no";
+            var retrunval = window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
+            if (isEmpty(retrunval)) {
+                //do nothing;
+            }
+            else {
+                //split the return value;
+                var thesplit_array = retrunval.split(";");
+                dxetxtProdTypeID.SetValue(thesplit_array[1]);
+                setProductTypeID(thesplit_array[0]);
+
+                var result = $("#<%=ptid.ClientID %>");
+            }
+
+        }
+
+        function setProductTypeID(thevalue) {
+            var result = $("#<%=ptid.ClientID %>");
+            result[0].value = thevalue;
+        }
+
+        function isEmpty(testVar) {
+            if ((testVar == null) || (testVar.length == 0)) {
+                return true;
+            } else {
+                return false;
+            }
         }
         
     </script>
@@ -139,7 +166,8 @@
                                 <table style="margin-left:-3px;">
                                     <tr>
                                         <td style="width:105px;text-align: left;">
-                                        <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server" Width="180px"></dxe:ASPxTextBox>
+                                            <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server" Width="180px"></dxe:ASPxTextBox>
+                                            <input type="hidden" id="ptid" runat="server" /> 
                                         </td>
                                         <td style="text-align: left;">
                                         <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;
