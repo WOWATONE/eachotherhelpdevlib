@@ -24,7 +24,7 @@ namespace BusinessObjects
             //b.PayProcBase,
             //a.Fee,a.FeeAdjust,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,
             //a.ProcessFeeType,
-            //(select AuditStautsName from AuditStauts where AuditStautsID=a.AuditStatus) AuditStautsName,
+            //(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,
             //(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,
             //(select CustName from Customer where CustID=c.CustomerID) CustomerName,
             //(select UserNameCn from P_User where UserID=c.SalesID) SalesName,
@@ -46,7 +46,7 @@ namespace BusinessObjects
             sSql = sSql + "b.PayProcBase,";
             sSql = sSql + "a.Fee,a.FeeAdjust,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,";
             sSql = sSql + "a.ProcessFeeType,";
-            sSql = sSql + "(select AuditStautsName from AuditStauts where AuditStautsID=a.AuditStatus) AuditStautsName,";
+            sSql = sSql + "(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,";
             sSql = sSql + "(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,";
             sSql = sSql + "(select CustName from Customer where CustID=c.CustomerID) CustomerName,";
             sSql = sSql + "(select UserNameCn from P_User where UserID=c.SalesID) SalesName,";
@@ -80,7 +80,7 @@ namespace BusinessObjects
             //b.PayProcBase,
             //a.Fee,a.FeeAdjust,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,
             //a.ProcessFeeType,
-            //(select AuditStautsName from AuditStauts where AuditStautsID=a.AuditStatus) AuditStautsName,
+            //(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,
             //(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,
             //(select CustName from Customer where CustID=c.CustomerID) CustomerName,
             //(select UserNameCn from P_User where UserID=c.SalesID) SalesName,
@@ -105,7 +105,7 @@ namespace BusinessObjects
             sSql = sSql + "b.PayProcBase,";
             sSql = sSql + "a.Fee,a.FeeAdjust,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,";
             sSql = sSql + "a.ProcessFeeType,";
-            sSql = sSql + "(select AuditStautsName from AuditStauts where AuditStautsID=a.AuditStatus) AuditStautsName,";
+            sSql = sSql + "(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,";
             sSql = sSql + "(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,";
             sSql = sSql + "(select CustName from Customer where CustID=c.CustomerID) CustomerName,";
             sSql = sSql + "(select UserNameCn from P_User where UserID=c.SalesID) SalesName,";

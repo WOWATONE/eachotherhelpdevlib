@@ -24,7 +24,7 @@ namespace BrokerWebApp.inoutbalance
             if (!IsPostBack && !IsCallback)
             {
                 Initialization();
-                dxeddlAuditStauts.SelectedIndex = 0;
+                dxeddlAuditStatus.SelectedIndex = 0;
                 BindGrid();
             }
 
@@ -51,7 +51,7 @@ namespace BrokerWebApp.inoutbalance
             {
                 foreach (DataRow row in dsList.Tables[0].Rows)
                 {
-                    this.dxeddlAuditStauts.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                    this.dxeddlAuditStatus.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
                 }
             }
 
@@ -139,9 +139,9 @@ namespace BrokerWebApp.inoutbalance
                 lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) <='" + lsEndDate + "'";
             }
 
-            //if (dxeddlAuditStauts.SelectedItem.Value.ToString().Trim() != "")
+            //if (dxeddlAuditStatus.SelectedItem.Value.ToString().Trim() != "")
             //{
-            //    lsWhere = lsWhere + " and a.AuditStatus ='" + dxeddlAuditStauts.SelectedItem.Value.ToString() + "'";
+            //    lsWhere = lsWhere + " and a.AuditStatus ='" + dxeddlAuditStatus.SelectedItem.Value.ToString() + "'";
             //}
             DataTable dt = BO_FeeCustomer.GetCustomerFeeList(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;

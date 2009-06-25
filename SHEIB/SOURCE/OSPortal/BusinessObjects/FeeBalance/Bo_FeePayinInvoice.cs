@@ -23,7 +23,7 @@ namespace BusinessObjects
             //a.FeeDate,b.PayProcBase,CarrierSales,
             //(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('7')) PayedFee,
             //a.Fee,a.FeeAdjust,a.InvoiceNO,a.AuditStatus,c.SalesID,a.ProcessFeeType,
-            //(select AuditStautsName from AuditStauts where AuditStautsID=a.AuditStatus) AuditStautsName,
+            //(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,
             //(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,
             //(select CustName from Customer where CustID=c.CustomerID) CustomerName,
             //(select UserNameCn from P_User where UserID=c.SalesID) SalesName,
@@ -45,7 +45,7 @@ namespace BusinessObjects
             sSql = sSql + "a.FeeDate,b.PayProcBase,CarrierSales,";
             sSql = sSql + "(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('7')) PayedFee,";
             sSql = sSql + "a.Fee,a.FeeAdjust,a.InvoiceNO,a.AuditStatus,c.SalesID,a.ProcessFeeType,";
-            sSql = sSql + "(select AuditStautsName from AuditStauts where AuditStautsID=a.AuditStatus) AuditStautsName,";
+            sSql = sSql + "(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,";
             sSql = sSql + "(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,";
             sSql = sSql + "(select CustName from Customer where CustID=c.CustomerID) CustomerName,";
             sSql = sSql + "(select UserNameCn from P_User where UserID=c.SalesID) SalesName,";
@@ -80,7 +80,7 @@ namespace BusinessObjects
             //b.PayProcBase,
             //a.Fee,a.FeeAdjust,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,
             //a.ProcessFeeType,
-            //(select AuditStautsName from AuditStauts where AuditStautsID=a.AuditStatus) AuditStautsName,
+            //(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,
             //(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,
             //(select CustName from Customer where CustID=c.CustomerID) CustomerName,
             //(select UserNameCn from P_User where UserID=c.SalesID) SalesName,
@@ -105,7 +105,7 @@ namespace BusinessObjects
             sSql = sSql + "b.PayProcBase,";
             sSql = sSql + "a.Fee,a.FeeAdjust,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,";
             sSql = sSql + "a.ProcessFeeType,";
-            sSql = sSql + "(select AuditStautsName from AuditStauts where AuditStautsID=a.AuditStatus) AuditStautsName,";
+            sSql = sSql + "(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,";
             sSql = sSql + "(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,";
             sSql = sSql + "(select CustName from Customer where CustID=c.CustomerID) CustomerName,";
             sSql = sSql + "(select UserNameCn from P_User where UserID=c.SalesID) SalesName,";
@@ -138,7 +138,7 @@ namespace BusinessObjects
             //(select sum(fee) from fee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4')) PayinedFee,
             //(select sum(fee) from fee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('7')) PayedProc,
             //a.Fee,a.FeeAdjust,a.InvoiceNO,a.AuditStatus,b.SalesID,a.ProcessFeeType,
-            //(select AuditStautsName from AuditStauts where AuditStautsID=a.AuditStatus) AuditStautsName,
+            //(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,
             //(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,
             //(select CustName from Customer where CustID=b.CustomerID) CustomerName,
             //(select UserNameCn from P_User where UserID=b.SalesID) SalesName,
@@ -163,7 +163,7 @@ namespace BusinessObjects
             sSql = sSql + "(select sum(fee) from fee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4')) PayinedFee,";
             sSql = sSql + "(select sum(fee) from fee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('7')) PayedProc,";
             sSql = sSql + "a.Fee,a.FeeAdjust,a.InvoiceNO,a.AuditStatus,b.SalesID,a.ProcessFeeType,";
-            sSql = sSql + "(select AuditStautsName from AuditStauts where AuditStautsID=a.AuditStatus) AuditStautsName,";
+            sSql = sSql + "(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,";
             sSql = sSql + "(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,";
             sSql = sSql + "(select CustName from Customer where CustID=b.CustomerID) CustomerName,";
             sSql = sSql + "(select UserNameCn from P_User where UserID=b.SalesID) SalesName,";

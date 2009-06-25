@@ -184,7 +184,7 @@
                                 状态：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlAuditStauts" ClientInstanceName="dxeddlAuditStauts" runat="server"
+                                <dxe:ASPxComboBox ID="dxeddlAuditStatus" ClientInstanceName="dxeddlAuditStatus" runat="server"
                                     Width="160px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
@@ -275,7 +275,7 @@
                                                 </dxwgv:GridViewCommandColumnCustomButton>
                                             </CustomButtons>
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="解付单号" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="解付单号" CellStyle-Wrap="False" GroupIndex="0">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -292,7 +292,7 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="收款方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="AuditStautsName" Caption="状态" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="AuditStatusName" Caption="状态" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="ProcessFeeType" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -301,7 +301,25 @@
                                     </Columns>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" />
-                                    <Settings ShowGroupPanel="false" />
+                                    <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways"
+                                        ShowGroupedColumns="true" ShowFilterRow="false" />
+                                    <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
+                                    <GroupSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="VoucherID" SummaryType="Count" ShowInGroupFooterColumn="VoucherID"
+                                            DisplayFormat="总计: {0}" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" ShowInGroupFooterColumn="PayFeeBase"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="Fee" SummaryType="Sum" ShowInGroupFooterColumn="Fee"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="FeeAdjust" SummaryType="Sum" ShowInGroupFooterColumn="FeeAdjust"
+                                            DisplayFormat="c" />
+                                    </GroupSummary>
+                                    <TotalSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="VoucherID" SummaryType="Count" DisplayFormat="总记录:#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="Fee" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="FeeAdjust" SummaryType="Sum" DisplayFormat="c" />
+                                    </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
                             </td>

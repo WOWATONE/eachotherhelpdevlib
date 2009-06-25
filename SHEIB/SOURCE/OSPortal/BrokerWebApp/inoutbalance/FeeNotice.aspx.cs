@@ -55,7 +55,7 @@ namespace BrokerWebApp.inoutbalance
             {
                 foreach (DataRow row in dsList.Tables[0].Rows)
                 {
-                    this.dxeddlAuditStauts.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                    this.dxeddlAuditStatus.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
                 }
             }
 
