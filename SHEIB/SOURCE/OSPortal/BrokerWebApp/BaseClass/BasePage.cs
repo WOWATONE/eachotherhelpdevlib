@@ -7,11 +7,26 @@ namespace BrokerWebApp
 {
     public class BasePage : System.Web.UI.Page
     {
-        public static string UserIDCookieName = "UserID";
+        public static String UserIDCookieName = "UserID";
 
-        public string CurrentUserID = "";
+        public String CurrentUserID
+        {
+            get
+            {
+                return "";
+            }
+        }
 
-        public String CurrentUserName = "";
+
+        public String CurrentUserName
+        {
+            get
+            {
+                return "";                
+            }
+        }
+
+
 
     }
 }
