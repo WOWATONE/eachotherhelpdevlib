@@ -17,7 +17,7 @@ namespace BusinessObjects
         public BO_FeeCustomer() { }
 
         //FeeCustomer列表
-        public static DataSet GetCustomerFeeList(string sWhere)
+        public static DataSet GetFeeCustomerList(string sWhere)
         {
             //select a.VoucherID,a.FeeId,b.NoticeNo,c.CustomerID,
             //a.FeeDate,b.PayFeeBase,a.Fee,a.FeeAdjust,d.GatheringType,a.AuditStatus,c.SalesID,
@@ -92,7 +92,7 @@ namespace BusinessObjects
             sSql = sSql + "  from VoucherFee a,PolicyPeriod b,Policy c,Notice d";
             sSql = sSql + "  where a.PolPeriodID=b.PolPeriodID";
             sSql = sSql + "   and b.PolicyID=c.PolicyID";
-            sSql = sSql + "   and b.NoticeNo*=d.NoticeNo";
+            sSql = sSql + "   and b.NoticeNo=d.NoticeNo";
             sSql = sSql + "   and a.AccountTypeID in ('1','6')";
             sSql = sSql + ") a";
             sSql = sSql + " where VoucherID ='" + sVoucherID + "'";
@@ -130,7 +130,7 @@ namespace BusinessObjects
             sSql = sSql + "(";
             sSql = sSql + "select a.NoticeNo,a.PolicyID,b.PolicyNo,b.DeptID,b.CustomerID,b.ProdTypeID,";
             sSql = sSql + "B.GatheringType,PremiumBase,a.PayFeeBase,";
-            sSql = sSql + "(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID) PayedFee,";
+            sSql = sSql + "(select sum(Fee) from VoucherFee where PolPeriodID=a.PolPeriodID and AccountID in ('1','6')) PayedFee,";
             sSql = sSql + "CarrierID,BranchID,Period,PayDate,CiPremium,AciPremium,CstPremium,c.NoticeDate,";
             sSql = sSql + "(select CustName from  customer where custID=b.CustomerID) CustName, ";
             sSql = sSql + "(select ProdTypeName from ProductType where ProdTypeID=b.ProdTypeID) ProdTypeName,";

@@ -143,7 +143,7 @@ namespace BrokerWebApp.inoutbalance
             //{
             //    lsWhere = lsWhere + " and a.AuditStatus ='" + dxeddlAuditStatus.SelectedItem.Value.ToString() + "'";
             //}
-            DataTable dt = BO_FeeCustomer.GetCustomerFeeList(lsWhere).Tables[0];
+            DataTable dt = BO_FeeCustomer.GetFeeCustomerList(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
             
