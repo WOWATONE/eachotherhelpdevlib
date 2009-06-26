@@ -93,8 +93,7 @@
                             OnRowUpdated="gridPolicyItem_RowUpdated" 
                             OnRowInserted="gridPolicyItem_RowInserted"
                             OnRowDeleting="gridPolicyItem_RowDeleting" 
-                            OnRowDeleted="gridPolicyItem_RowDeleted"
-                            
+                            OnRowDeleted="gridPolicyItem_RowDeleted"                            
                              >
                                 <%-- BeginRegion Columns --%>
                                     <Columns>

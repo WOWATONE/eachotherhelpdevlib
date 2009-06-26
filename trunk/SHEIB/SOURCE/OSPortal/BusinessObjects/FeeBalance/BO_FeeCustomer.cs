@@ -125,24 +125,40 @@ namespace BusinessObjects
             //) a
             // where 1=1
 
+            //string sSql = "";
+            //sSql = sSql + "select a.*,(PayFeeBase-PayedFee) PayFee from ";
+            //sSql = sSql + "(";
+            //sSql = sSql + "select a.NoticeNo,a.PolicyID,b.PolicyNo,b.DeptID,b.CustomerID,b.ProdTypeID,";
+            //sSql = sSql + "B.GatheringType,PremiumBase,a.PayFeeBase,";
+            //sSql = sSql + "(select sum(Fee) from VoucherFee where PolPeriodID=a.PolPeriodID and AccountID in ('1','6')) PayedFee,";
+            //sSql = sSql + "CarrierID,BranchID,Period,PayDate,CiPremium,AciPremium,CstPremium,c.NoticeDate,";
+            //sSql = sSql + "(select CustName from  customer where custID=b.CustomerID) CustName, ";
+            //sSql = sSql + "(select ProdTypeName from ProductType where ProdTypeID=b.ProdTypeID) ProdTypeName,";
+            //sSql = sSql + "(select GatheringTypeName from GatheringType where GatheringTypeID=b.GatheringType) GatheringTypeName,";
+            //sSql = sSql + "(select UserNameCn from P_User where UserID=b.SalesID) SalesName,";
+            //sSql = sSql + "(select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,";
+            //sSql = sSql + "(select BranchName from Branch where BranchID=a.BranchID) BranckName";
+            //sSql = sSql + "  from PolicyPeriod a,Policy b,Notice c";
+            //sSql = sSql + "  where a.PolicyID=b.PolicyID";
+            //sSql = sSql + "    and a.NoticeNo=c.NoticeNo";
+            //sSql = sSql + ") a";
+
             string sSql = "";
-            sSql = sSql + "select a.*,(PayFeeBase-PayedFee) PayFee from ";
-            sSql = sSql + "(";
-            sSql = sSql + "select a.NoticeNo,a.PolicyID,b.PolicyNo,b.DeptID,b.CustomerID,b.ProdTypeID,";
-            sSql = sSql + "B.GatheringType,PremiumBase,a.PayFeeBase,";
-            sSql = sSql + "(select sum(Fee) from VoucherFee where PolPeriodID=a.PolPeriodID and AccountID in ('1','6')) PayedFee,";
-            sSql = sSql + "CarrierID,BranchID,Period,PayDate,CiPremium,AciPremium,CstPremium,c.NoticeDate,";
-            sSql = sSql + "(select CustName from  customer where custID=b.CustomerID) CustName, ";
-            sSql = sSql + "(select ProdTypeName from ProductType where ProdTypeID=b.ProdTypeID) ProdTypeName,";
-            sSql = sSql + "(select GatheringTypeName from GatheringType where GatheringTypeID=b.GatheringType) GatheringTypeName,";
-            sSql = sSql + "(select UserNameCn from P_User where UserID=b.SalesID) SalesName,";
-            sSql = sSql + "(select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,";
-            sSql = sSql + "(select BranchName from Branch where BranchID=a.BranchID) BranckName";
-            sSql = sSql + "  from PolicyPeriod a,Policy b,Notice c";
-            sSql = sSql + "  where a.PolicyID=b.PolicyID";
-            sSql = sSql + "    and a.NoticeNo=c.NoticeNo";
+            sSql = sSql + "select * from (";
+            sSql = sSql + "Select a.NoticeNo, a.Payfee, a.Feedate, a.Payedfee, (a.Payfee - a.Payedfee) Fee, ";
+            sSql = sSql + "       a.PolperiodID, a.Period,a.PolicyID,a.CarrierID, a.CarrierName, a.BranchID, a.BranchName, a.Paydate,";
+            sSql = sSql + "       a.Payfeebase, a.Payprocbase,a.NoticeDate,";
+            sSql = sSql + "       b.PolicyNo,b.DeptID,b.CustomerID,b.ProdTypeID,b.SalesID,b.CarrierSales,b.CiPremium,b.AciPremium,b.CstPremium,b.GatheringType,b.PremiumBase,";
+            sSql = sSql + "       (select CustName from  customer where custID=b.CustomerID) CustName, ";
+            sSql = sSql + "       (select ProdTypeName from ProductType where ProdTypeID=b.ProdTypeID) ProdTypeName,";
+            sSql = sSql + "       (select GatheringTypeName from GatheringType where GatheringTypeID=b.GatheringType) GatheringTypeName,";
+            sSql = sSql + "       (select UserNameCn from P_User where UserID=b.SalesID) SalesName";
+            sSql = sSql + " From Policyperiodfee a, Policy b";
+            sSql = sSql + " Where a.Policyid = b.Policyid ";
+            sSql = sSql + "      And Payfee <> Payedfee ";
+            sSql = sSql + "      And Payinfee <> Payinedfee";
             sSql = sSql + ") a";
-            sSql = sSql + " where 1=1 ";
+            sSql = sSql + " where 1=1";
             if (sWhere != "")
             {
                 sSql = sSql + sWhere;

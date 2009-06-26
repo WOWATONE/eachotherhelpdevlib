@@ -155,9 +155,9 @@ namespace BusinessObjects
 
 
             //select * from (
-            //Select a.Noticeno, a.Payfee, a.Feedate, a.Payedfee, a.Payinfee, a.Payinid, a.Payindate, a.Payinedfee, a.Payininvoicefee,
-            //       a.Payininvoiceid, a.Payininvoicedate, a.Payininvoiceedfee, a.Payproc, a.Payprocid, a.Payprocdate, a.Payedproc,
-            //       a.Polperiodid, a.Period, a.Policyid, a.Carrierid, a.Carriername, a.Branchid, a.Branchname, a.Paydate,
+            //Select a.NoticeNo, a.Payfee, a.Feedate, a.Payedfee, a.Payinfee, a.PayinID, a.Payindate, a.Payinedfee, a.Payininvoicefee,
+            //       a.PayininvoiceID, a.Payininvoicedate, a.Payininvoiceedfee, a.Payproc, a.PayprocID, a.Payprocdate, a.Payedproc,
+            //       a.PolperiodID, a.Period, a.PolicyID, a.CarrierID, a.CarrierName, a.BranchID, a.BranchName, a.Paydate,
             //       a.Payfeebase, a.Payprocbase,a.NoticeDate,
             //       b.PolicyNo,b.DeptID,b.CustomerID,b.ProdTypeID,b.SalesID,b.CarrierSales,b.CiPremium,b.AciPremium,b.CstPremium,b.GatheringType,b.PremiumBase,
             //      (select CustName from  customer where custID=b.CustomerID) CustName, 
@@ -172,8 +172,8 @@ namespace BusinessObjects
 
             string sSql = "";
             sSql = sSql + "select * from (";
-            sSql = sSql + "Select a.Noticeno, a.Payfee, a.Feedate, a.Payedfee, a.Payinfee, a.Payinedfee,(a.Payinfee - a.Payinedfee) Fee,a.Payproc, ";
-            sSql = sSql + "       a.Polperiodid, a.Period, a.Policyid, a.Carrierid, a.Carriername, a.Branchid, a.Branchname, a.Paydate,";
+            sSql = sSql + "Select a.NoticeNo, a.Payfee, a.Feedate, a.Payedfee, a.Payinfee, a.Payinedfee,(a.Payinfee - a.Payinedfee) Fee,a.Payproc, ";
+            sSql = sSql + "       a.PolperiodID, a.Period,a.CarrierID, a.CarrierName, a.BranchID, a.BranchName, a.Paydate,";
             sSql = sSql + "       a.Payfeebase, a.Payprocbase,a.NoticeDate,";
             sSql = sSql + "       b.PolicyNo,b.DeptID,b.CustomerID,b.ProdTypeID,b.SalesID,b.CarrierSales,b.CiPremium,b.AciPremium,b.CstPremium,b.GatheringType,b.PremiumBase,";
             sSql = sSql + "       (select CustName from  customer where custID=b.CustomerID) CustName, ";

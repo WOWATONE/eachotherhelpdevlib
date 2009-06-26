@@ -256,11 +256,11 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PremiumBase" Caption="保费(本)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="本期应收保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Payfee" Caption="本期应收保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="本期已收保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Payedfee" Caption="本期已收保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayFee" Caption="本次应收保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次应收保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="险种" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -275,7 +275,7 @@
                                         </dxwgv:GridViewDataDateColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="BranckName" Caption="分支机构" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
