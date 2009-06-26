@@ -44,8 +44,7 @@
                 var thesplit_array = retrunval.split(";");
                 dxetxtProdTypeID.SetValue(thesplit_array[1]);
                 setProductTypeID(thesplit_array[0]);
-
-                var result = $("#<%=ptid.ClientID %>");
+                
             }
 
         }
@@ -65,10 +64,31 @@
 
         function btnOk_Click() {
 
-            //gridSearchResult.GetSelectedFieldValues("ProdTypeID;ProdTypeName", getTheSelectedRowsValues);
+            gridSearchResult.GetSelectedFieldValues("PolPeriodId", getTheSelectedRowsValues);
 
         }
-        
+
+        function getTheSelectedRowsValues(selectedValues) {
+            if (selectedValues.length == 0) {
+                alert("请先选择行");
+                return;
+            }
+            else {
+                var thevalues="";
+                
+                for (i = 0; i < selectedValues.length; i++) {
+                    if (thevalues == "") {
+                        thevalues = selectedValues[i];
+                    }
+                    else {
+                        thevalues = thevalues + ";" + selectedValues[i];
+                    }
+                }
+                
+                window.returnValue = thevalues;
+                window.close();
+            }
+        }
         
     </script>
 
@@ -307,7 +327,7 @@
                         <tr>
                             <td>
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
-                                    KeyFieldName="FeeId" AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%"
+                                    KeyFieldName="PolPeriodId" AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%"
                                     SettingsPager-AlwaysShowPager="true" OnRowDeleting="gridSearchResult_RowDeleting"
                                     OnRowDeleted="gridSearchResult_RowDeleted">
                                     <%-- BeginRegion Columns --%>
