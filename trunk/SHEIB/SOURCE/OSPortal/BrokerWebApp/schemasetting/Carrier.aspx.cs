@@ -25,7 +25,7 @@ namespace BrokerWebApp.schemasetting
         {
             try
             {
-                if (!this.IsPostBack)
+                if (!this.Page.IsPostBack)
                 {
                     if (Request.QueryString["CarrierID"] != null && Request.QueryString["CarrierID"].Trim().Length > 0)
                     {
@@ -205,7 +205,7 @@ namespace BrokerWebApp.schemasetting
                     this.Response.Redirect("Carrier.aspx");
                 }
                 else
-                {//修改客户
+                {//修改保险公司
                     BusinessObjects.SchemaSetting.BO_Carrier carrier = new BusinessObjects.SchemaSetting.BO_Carrier();
                     carrier.CarrierID = this._carrierID;
                     carrier.ShortName = this.dxetxtShortName.Text.Trim();
