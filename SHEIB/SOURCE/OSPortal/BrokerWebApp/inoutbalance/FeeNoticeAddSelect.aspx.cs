@@ -171,17 +171,6 @@ namespace BrokerWebApp.inoutbalance
             BindGrid();
         }
 
-        protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-            //List<object> aa = gridSearchResult.GetSelectedFieldValues("PolicyID");
-            //for (int i = 0; i < aa.Count; i++)
-            //{
-            //    String s = (String)aa[i]; 
-            //}
-        }
-
-
-
-
+        
     }
 }
