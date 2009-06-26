@@ -593,6 +593,20 @@
       <DependentUpon>PolicyProdType.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="schemasetting\Branch.aspx.cs">
+      <DependentUpon>Branch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\Branch.aspx.designer.cs">
+      <DependentUpon>Branch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="schemasetting\BranchList.aspx.cs">
+      <DependentUpon>BranchList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\BranchList.aspx.designer.cs">
+      <DependentUpon>BranchList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="schemasetting\Carrier.aspx.cs">
       <DependentUpon>Carrier.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -909,6 +923,8 @@
     <Content Include="otherinsurance\PolicyRead.aspx" />
     <Content Include="popupselectrefs\PolicyCustomer.aspx" />
     <Content Include="popupselectrefs\PolicyProdType.aspx" />
+    <Content Include="schemasetting\Branch.aspx" />
+    <Content Include="schemasetting\BranchList.aspx" />
     <Content Include="schemasetting\Carrier.aspx" />
     <Content Include="schemasetting\CarrierList.aspx" />
     <Content Include="schemasetting\ProductType.aspx" />
