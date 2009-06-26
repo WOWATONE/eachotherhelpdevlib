@@ -139,22 +139,41 @@ namespace BusinessObjects
 
 
             string sSql = "";
-            sSql = sSql + "Select a.*";
-            sSql = sSql + "From (Select a.Voucherid, a.Feeid, c.Customerid, c.Prodtypeid, b.Carrierid, b.Branchid, c.PolicyID, c.PolicyNo,";
-            sSql = sSql + "  b.Noticeno, a.Feedate, b.Payprocbase, Carriersales, b.Payininvoicedate, b.Payininvoicefee,PayinInvoiceID,";
-            sSql = sSql + "  (Select Sum(Fee) From Fee Where Polperiodid = a.Polperiodid And Accounttypeid In ('7')) Payedfee, a.Fee,";
-            sSql = sSql + "  a.Feeadjust, a.Invoiceno, a.Auditstatus, c.Salesid, a.Processfeetype,";
-            sSql = sSql + "  (Select AuditStatusname From AuditStatus Where AuditStatusid = a.Auditstatus) AuditStatusname,";
-            sSql = sSql + "  (Select Gatheringtypename From Gatheringtype Where Gatheringtypeid = a.Gatheringtype) Gatheringtypename,";
-            sSql = sSql + "  (Select Custname From Customer Where Custid = c.Customerid) Customername,";
-            sSql = sSql + "  (Select Usernamecn From p_User Where Userid = c.Salesid) Salesname,";
-            sSql = sSql + "  (Select Prodtypename From Producttype Where Prodtypeid = c.Prodtypeid) Prodtypename,";
-            sSql = sSql + "  (Select Carriernamecn From Carrier Where Carrierid = b.Carrierid) Carriername,";
-            sSql = sSql + "  (Select Branchname From Branch Where Branchid = b.Branchid) Branchname,";
-            sSql = sSql + "  (Select Processfeetypename From Processfeetype Where Processfeetypeid = a.Processfeetype) Processfeetypename";
-            sSql = sSql + "   From Voucherfee a, Policyperiodfee b, Policy c";
-            sSql = sSql + "   Where a.Polperiodid = b.Polperiodid And a.Voucherid = a.Voucherid And b.Policyid = c.Policyid ";
-            sSql = sSql + "            And a.Accounttypeid In ('5')) a";
+            //sSql = sSql + "Select a.*";
+            //sSql = sSql + "From (Select a.Voucherid, a.Feeid, c.Customerid, c.Prodtypeid, b.Carrierid, b.Branchid, c.PolicyID, c.PolicyNo,";
+            //sSql = sSql + "  b.Noticeno, a.Feedate, b.Payprocbase, Carriersales, b.Payininvoicedate, b.Payininvoicefee,PayinInvoiceID,";
+            //sSql = sSql + "  (Select Sum(Fee) From Fee Where Polperiodid = a.Polperiodid And Accounttypeid In ('7')) Payedfee, a.Fee,";
+            //sSql = sSql + "  a.Feeadjust, a.Invoiceno, a.Auditstatus, c.Salesid, a.Processfeetype,";
+            //sSql = sSql + "  (Select AuditStatusname From AuditStatus Where AuditStatusid = a.Auditstatus) AuditStatusname,";
+            //sSql = sSql + "  (Select Gatheringtypename From Gatheringtype Where Gatheringtypeid = a.Gatheringtype) Gatheringtypename,";
+            //sSql = sSql + "  (Select Custname From Customer Where Custid = c.Customerid) Customername,";
+            //sSql = sSql + "  (Select Usernamecn From p_User Where Userid = c.Salesid) Salesname,";
+            //sSql = sSql + "  (Select Prodtypename From Producttype Where Prodtypeid = c.Prodtypeid) Prodtypename,";
+            //sSql = sSql + "  (Select Carriernamecn From Carrier Where Carrierid = b.Carrierid) Carriername,";
+            //sSql = sSql + "  (Select Branchname From Branch Where Branchid = b.Branchid) Branchname,";
+            //sSql = sSql + "  (Select Processfeetypename From Processfeetype Where Processfeetypeid = a.Processfeetype) Processfeetypename";
+            //sSql = sSql + "   From Voucherfee a, Policyperiodfee b, Policy c";
+            //sSql = sSql + "   Where a.Polperiodid = b.Polperiodid And a.Voucherid = a.Voucherid And b.Policyid = c.Policyid ";
+            //sSql = sSql + "            And a.Accounttypeid In ('5')) a";
+            //sSql = sSql + " where 1=1";
+            sSql = sSql + "select * from (";
+            sSql = sSql + "Select a.PolperiodID,a.NoticeNo, a.Payfee, a.Feedate, a.Payedfee, a.Payinfee, a.PayinID, a.Payindate, a.Payinedfee, a.PayinInvoicefee,";
+            sSql = sSql + "       a.PayinInvoiceID,a.Payininvoicedate, a.Payininvoiceedfee, a.Payproc, a.PayprocID, a.Payprocdate, a.Payedproc,";
+            sSql = sSql + "       a.Period, a.PolicyID, a.CarrierID, a.CarrierName, a.BranchID, a.BranchName, a.Paydate,a.ProcessFeeType,";
+            sSql = sSql + "       a.Payfeebase, a.Payprocbase,a.NoticeDate,a.InvoiceNo,";
+            sSql = sSql + "       b.PolicyNo,b.DeptID,b.CustomerID,b.ProdTypeID,b.SalesID,b.CarrierSales,b.CiPremium,b.AciPremium,b.CstPremium,b.GatheringType,b.PremiumBase,";
+            sSql = sSql + "      (select CustName from  customer where custID=b.CustomerID) CustName, ";
+            sSql = sSql + "      (select ProdTypeName from ProductType where ProdTypeID=b.ProdTypeID) ProdTypeName,";
+            sSql = sSql + "      (select GatheringTypeName from GatheringType where GatheringTypeID=b.GatheringType) GatheringTypeName,";
+            sSql = sSql + "      (select UserNameCn from P_User where UserID=b.SalesID) SalesName,";
+            sSql = sSql + "      (select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=a.ProcessFeeType) ProcessFeeTypeName";
+            sSql = sSql + " From PolicyperiodFee a, Policy b";
+            sSql = sSql + " Where a.Policyid = b.Policyid ";
+            sSql = sSql + "      And Payfee = Payedfee ";
+            sSql = sSql + "      And Payinfee = Payinedfee";
+            sSql = sSql + "      And PayinInvoiceFee = PayinInvoiceedFee";
+            sSql = sSql + "      And Payproc <> Payedproc";
+            sSql = sSql + ") a";
             sSql = sSql + " where 1=1";
             if (sWhere != "")
             {

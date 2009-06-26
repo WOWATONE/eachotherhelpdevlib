@@ -242,23 +242,25 @@
                                             <DeleteButton Visible="false" />
                                             <SelectButton Visible="true">
                                             </SelectButton>
-                                        </dxwgv:GridViewCommandColumn>                                        
-                                        <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="解付单号" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewCommandColumn>        
+                                        <dxwgv:GridViewDataColumn FieldName="PolperiodID" Caption="PolperiodID" CellStyle-Wrap="False" Visible ="false">
+                                        </dxwgv:GridViewDataColumn>                                
+                                        <dxwgv:GridViewDataColumn FieldName="PayinID" Caption="解付单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="FeeDate" Caption="解付日期" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="Payindate" Caption="解付日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayinedFee" Caption="已解付保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Payinedfee" Caption="已解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>                                
-                                        <dxwgv:GridViewDataColumn FieldName="PayinInvoiceFee" Caption="本期应收经纪费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayinInvoicefee" Caption="本期应收经纪费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayedProc" Caption="本期已收经纪费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Payininvoiceedfee" Caption="本期已开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayProcFee" Caption="本次应收经纪费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次应开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="ProcessFeeTypeName" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>

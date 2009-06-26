@@ -76,7 +76,7 @@ namespace BrokerWebApp.inoutbalance
 
             if (ckbNeedPayFeePolicy.Checked)
             {
-                lsWhere = lsWhere + " and (PayFeeBase-PayedFee)<>0";       
+                lsWhere = lsWhere + " and (Payfee-PayedFee)<>0";       
             }
             this.gridSearchResult.DataSource = BO_FeeCustomer.GetFeeCustomerAddSelectList(lsWhere);
             this.gridSearchResult.DataBind();

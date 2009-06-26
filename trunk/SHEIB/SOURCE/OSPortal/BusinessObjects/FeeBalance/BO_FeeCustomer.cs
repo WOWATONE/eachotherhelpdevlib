@@ -156,7 +156,6 @@ namespace BusinessObjects
             sSql = sSql + " From Policyperiodfee a, Policy b";
             sSql = sSql + " Where a.Policyid = b.Policyid ";
             sSql = sSql + "      And Payfee <> Payedfee ";
-            sSql = sSql + "      And Payinfee <> Payinedfee";
             sSql = sSql + ") a";
             sSql = sSql + " where 1=1";
             if (sWhere != "")
