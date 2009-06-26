@@ -122,58 +122,58 @@ namespace BrokerWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.Panel npOtherPolicyItemDetail;
         
         /// <summary>
-        /// ddlAccountType 控件。
+        /// dxeddlProcessFeeType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAccountType;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlProcessFeeType;
         
         /// <summary>
-        /// txtchange 控件。
+        /// dxetxtPayProcBase 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtchange;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPayProcBase;
         
         /// <summary>
-        /// txtlocalfee 控件。
+        /// dxetxtInvoiceProc 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtlocalfee;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtInvoiceProc;
         
         /// <summary>
-        /// txtJInE 控件。
+        /// dxetxtInvoiceProcAdjust 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtJInE;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtInvoiceProcAdjust;
         
         /// <summary>
-        /// TextBox11 控件。
+        /// dxetxtCiPremium 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox11;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCiPremium;
         
         /// <summary>
-        /// TextBox12 控件。
+        /// dxetxtAciPremium 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox12;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtAciPremium;
         
         /// <summary>
         /// deReleaseDate 控件。
@@ -185,40 +185,40 @@ namespace BrokerWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deReleaseDate;
         
         /// <summary>
-        /// txtAdjust 控件。
+        /// dxetxtInvoiceNO 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAdjust;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtInvoiceNO;
         
         /// <summary>
-        /// DropDownList1 控件。
+        /// dxeddlCarrier 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCarrier;
         
         /// <summary>
-        /// DropDownList2 控件。
+        /// dxeddlBranch 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlBranch;
         
         /// <summary>
-        /// TextBox1 控件。
+        /// dxetxtRemark 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtRemark;
         
         /// <summary>
         /// cpeOtherPolicyItem 控件。

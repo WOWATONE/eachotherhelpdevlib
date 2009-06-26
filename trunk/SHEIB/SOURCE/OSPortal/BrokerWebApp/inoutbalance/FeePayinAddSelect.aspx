@@ -255,13 +255,13 @@
                                         <dxwgv:GridViewDataDateColumn FieldName="FeeDate" Caption="收款日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="本期应解付保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Payinfee" Caption="本期应解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="本期已解付保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Payinedfee" Caption="本期已解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayFee" Caption="本次应解付保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次应解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>                     
-                                        <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="应收经纪费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Payproc" Caption="应收经纪费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="收款方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -280,6 +280,12 @@
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowPager" />
                                     <Settings ShowGroupPanel="false" />
+                                    <TotalSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="NoticeNo" SummaryType="Count"  DisplayFormat="记录数:#"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="Payinfee" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="Payinedfee" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="Fee" SummaryType="Sum" DisplayFormat="c" />
+                                    </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
                             </td>
