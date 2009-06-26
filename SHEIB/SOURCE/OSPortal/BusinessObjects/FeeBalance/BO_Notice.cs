@@ -112,7 +112,7 @@ namespace BusinessObjects
             string sSql = "";
             sSql = sSql + "select * from ";
             sSql = sSql + "(";
-            sSql = sSql + " select a.PolicyID,b.PolicyNo,b.CustomerID,";
+            sSql = sSql + " select a.PolPeriodId, a.PolicyID,b.PolicyNo,b.CustomerID,";
             sSql = sSql + "(select CustName from  customer where custID=b.CustomerID) CustName, ";
             sSql = sSql + "CarrierID,(select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,";
             sSql = sSql + "BranchID,(select BranchName from Branch where BranchID=a.BranchID) BranchName,";

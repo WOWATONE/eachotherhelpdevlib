@@ -50,9 +50,25 @@
 
         function btnAddPolicyClick() {
             var myArguments = "resizable:no;scroll:yes;status:no;dialogWidth=950px;dialogHeight=500px;center=yes;help=no";
-            window.showModalDialog("FeeNoticeAddSelect.aspx", self, myArguments);
-            gridPolicyItem.PerformCallback('');
+            var retrunval = window.showModalDialog("FeeNoticeAddSelect.aspx", self, myArguments);
+            var result = $("#<%=txtSelectedPolPeriodIds.ClientID %>");
+            if (isEmpty(retrunval)) {
+                //do nothing;
+            }
+            else {                
+                result[0].value = retrunval;
+            }
+            gridPolicyItem.PerformCallback('');            
         }
+
+        function isEmpty(testVar) {
+            if ((testVar == null) || (testVar.length == 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
         
     </script>
 
@@ -98,6 +114,7 @@
         </tr>
         <tr>
             <td style="text-align: right; vertical-align: top;">
+                <input type="hidden" id="txtSelectedPolPeriodIds" runat="server" />
             </td>
             <td style="text-align: left;">
                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
@@ -108,8 +125,6 @@
                     <%-- BeginRegion Columns --%>
                     <Columns>
                         <dxwgv:GridViewCommandColumn Caption="&nbsp;">
-                            <NewButton Visible="false" />
-                            <EditButton Visible="false" />
                             <DeleteButton Visible="true" />
                         </dxwgv:GridViewCommandColumn>
                         <dxwgv:GridViewDataColumn FieldName="CustName" Caption="投保客户" CellStyle-Wrap="False">
