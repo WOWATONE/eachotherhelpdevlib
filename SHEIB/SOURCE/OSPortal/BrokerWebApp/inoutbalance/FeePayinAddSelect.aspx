@@ -252,7 +252,7 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="FeeDate" Caption="收款日期" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="Feedate" Caption="收款日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
                                         <dxwgv:GridViewDataColumn FieldName="Payinfee" Caption="本期应解付保费" CellStyle-Wrap="False">

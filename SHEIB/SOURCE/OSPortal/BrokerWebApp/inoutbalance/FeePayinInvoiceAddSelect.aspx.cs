@@ -73,10 +73,10 @@ namespace BrokerWebApp.inoutbalance
             //    lsWhere = lsWhere + " and (convert(char(10), a.NoticeDate,21)) <='" + lsEndDate + "'";
             //}
 
-            if (ckbPayinedNeedInvoice.Checked)
-            {
-                lsWhere = lsWhere + " and not exists(select 1 from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('5'))";
-            }
+            //if (ckbPayinedNeedInvoice.Checked)
+            //{
+            //    lsWhere = lsWhere + " and not exists(select 1 from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('5'))";
+            //}
             this.gridSearchResult.DataSource = Bo_FeePayinInvoice.GetFeePayinInvoiceSelectList(lsWhere);
             this.gridSearchResult.DataBind();
 

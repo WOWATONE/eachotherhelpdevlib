@@ -274,6 +274,8 @@
                                             <SelectButton Visible="true">
                                             </SelectButton>
                                         </dxwgv:GridViewCommandColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="PolperiodID" Caption="PolperiodID" CellStyle-Wrap="False" Visible ="false">
+                                        </dxwgv:GridViewDataColumn>     
                                         <dxwgv:GridViewDataColumn FieldName="PayinInvoiceID" Caption="开票通知书号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False">
@@ -283,11 +285,11 @@
                                         <dxwgv:GridViewDataDateColumn FieldName="Payininvoicedate" Caption="开票日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Invoiceno" Caption="发票号码" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="InvoiceNo" Caption="发票号码" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Payininvoicefee" Caption="开票金额" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayinInvoicefee" Caption="开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Processfeetypename" Caption="经纪费收取方式" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="ProcessFeeTypeName" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>

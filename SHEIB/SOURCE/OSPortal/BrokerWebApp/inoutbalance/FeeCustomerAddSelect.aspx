@@ -247,7 +247,9 @@
                                             <DeleteButton Visible="false" />
                                             <SelectButton Visible="true">
                                             </SelectButton>
-                                        </dxwgv:GridViewCommandColumn>
+                                        </dxwgv:GridViewCommandColumn>                                        
+                                        <dxwgv:GridViewDataColumn FieldName="PolperiodID" Caption="PolperiodID" CellStyle-Wrap="False" Visible ="false">
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False">
@@ -281,6 +283,12 @@
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowPager" />
                                     <Settings ShowGroupPanel="false" />
+                                    <TotalSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="NoticeNo" SummaryType="Count"  DisplayFormat="记录数:#"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="Payfee" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="Fee" SummaryType="Sum" DisplayFormat="c" />
+                                    </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
                             </td>
