@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using System.Data;
 using BusinessObjects;
 
-
 namespace BrokerWebApp.inoutbalance
 {
     public partial class FeeNotice : System.Web.UI.Page
@@ -27,17 +26,13 @@ namespace BrokerWebApp.inoutbalance
                 Initialization();
                 BindGrid();
             }
-
-            
-
         }
-
 
         private void Initialization()
         {
             DataSet dsList;
 
-            
+
             //GatheringType
             this.dxeddlGatheringType.Items.Add("(全部)", "");
             dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.GatheringType.ToString());
@@ -93,6 +88,7 @@ namespace BrokerWebApp.inoutbalance
                     this.dxeddlPolicyType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
                 }
             }
+
         }
 
 
@@ -116,6 +112,7 @@ namespace BrokerWebApp.inoutbalance
             {
                 lsWhere = lsWhere + " and a.DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
             }
+            
             if (dxeddlSalesID.SelectedItem.Value.ToString().Trim() != "")
             {
                 lsWhere = lsWhere + " and a.SalesId ='" + dxeddlSalesID.SelectedItem.Value.ToString() + "'";
@@ -143,7 +140,6 @@ namespace BrokerWebApp.inoutbalance
             this.gridSearchResult.DataBind();
 
         }
-
 
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
