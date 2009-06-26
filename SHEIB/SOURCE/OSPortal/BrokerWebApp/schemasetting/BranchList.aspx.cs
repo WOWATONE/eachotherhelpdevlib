@@ -7,11 +7,12 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
+using System.Data;
 using BusinessObjects;
 
 namespace BrokerWebApp.schemasetting
 {
-    public partial class CarrierList : System.Web.UI.Page
+    public partial class BranchList : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,7 +32,18 @@ namespace BrokerWebApp.schemasetting
         /// </summary>
         private void Initialization()
         {
-            //
+            DataSet dsList;
+
+            //保险公司
+            this.dxeddlCarrier.Items.Add("(全部)", "");
+            dsList = BusinessObjects.SchemaSetting.BO_Carrier.GetCarrierList("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlCarrier.Items.Add(row["CarrierNameCn"].ToString().Trim(), row["CarrierID"].ToString().Trim());
+                }
+            }
         }
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
@@ -41,8 +53,8 @@ namespace BrokerWebApp.schemasetting
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            String carrierID = e.Keys["CarrierID"].ToString();
-            BusinessObjects.SchemaSetting.BO_Carrier.Delete(carrierID);
+            String branchID = e.Keys["BranchID"].ToString();
+            BusinessObjects.SchemaSetting.BO_Branch.Delete(branchID);
             e.Cancel = true;
             this.gridSearchResult.CancelEdit();
             this.BindGrid();
@@ -64,11 +76,11 @@ namespace BrokerWebApp.schemasetting
         private void BindGrid()
         {
             System.Text.StringBuilder sbWhere = new System.Text.StringBuilder();
-            if (this.dxetxtCarrierID.Text.Trim().Length > 0)
-                sbWhere.Append(" And CarrierID='" + this.dxetxtCarrierID.Text.Trim() + "' ");
-            if (this.dxetxtCarrierNameCn.Text.Trim().Length > 0)
-                sbWhere.Append(" And CarrierNameCn like '%" + this.dxetxtCarrierNameCn.Text.Trim() + "%' ");
-            this.gridSearchResult.DataSource = BusinessObjects.SchemaSetting.BO_Carrier.GetCarrierList(sbWhere.ToString()).Tables[0];
+            if (this.dxeddlCarrier.SelectedItem.Value.ToString().Length > 0)
+                sbWhere.Append(" And CarrierID='" + this.dxeddlCarrier.SelectedItem.Value.ToString() + "' ");
+            if (this.dxetxtBranchName.Text.Trim().Length > 0)
+                sbWhere.Append(" And BranchName like '%" + this.dxetxtBranchName.Text.Trim() + "%' ");
+            this.gridSearchResult.DataSource = BusinessObjects.SchemaSetting.BO_Branch.GetBranchList(sbWhere.ToString());
             this.gridSearchResult.DataBind();
         }
     }
