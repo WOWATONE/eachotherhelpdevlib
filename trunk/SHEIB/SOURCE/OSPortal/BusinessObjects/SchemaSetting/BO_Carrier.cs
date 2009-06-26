@@ -243,7 +243,6 @@ namespace BusinessObjects.SchemaSetting
             return list;
         }
 
-        #endregion Methods
         public void Save(ModifiedAction action)
         {
             if (action == ModifiedAction.Insert)
@@ -461,5 +460,7 @@ namespace BusinessObjects.SchemaSetting
 
             return carrier;
         }
+        #endregion Methods
+        
     }
 }
