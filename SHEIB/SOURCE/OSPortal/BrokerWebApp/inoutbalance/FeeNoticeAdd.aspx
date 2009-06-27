@@ -18,6 +18,9 @@
     TagPrefix="dxwsc" %>
 <%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v8.3" Namespace="DevExpress.Web.ASPxHtmlEditor"
     TagPrefix="dxhe" %>
+
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>保费通知书录入</title>
 
@@ -56,7 +59,15 @@
                 //do nothing;
             }
             else {
-                result[0].value = result[0].value + ";" + retrunval;
+                var temp = new Array();
+                temp = retrunval.split(';');
+                for (i = 0; i < temp.length; i++) {
+                    //lastIndexOf
+                    if (result[0].value.lastIndexOf(temp[i]) == -1) {
+                        result[0].value = result[0].value + ";" + temp[i];
+                    }
+                }
+                //result[0].value = result[0].value + ";" + retrunval;
             }
             gridPolicyItem.PerformCallback('');            
         }
@@ -68,12 +79,34 @@
                 return false;
             }
         }
+
+
+        function dxebtntopSave_Click(s, e) {
+            //
+            if (s.CauseValidation()) {
+                //var thejsonstring = makePolicyJSON();
+                //dxeSaveCallback.PerformCallback(thejsonstring);
+            }
+        }
         
+        function saveCallbackComplete(s, e) {
+            //do nothing;
+            //policyBaseCompleteEnable();
+            //
+            //var pid = dxetxtPolicyID.GetValueString();
+            //if (isEmpty(pid)) {
+            //    dxetxtPolicyID.SetValue(e.result);
+            //}
+        }
         
     </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
     <table style="width: 100%">
         <tr>
             <td style="width: 12%; text-align: right;">
@@ -82,6 +115,9 @@
             <td style="width: 88%; text-align: left;">
                 <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType" runat="server"
                     Width="180px" DropDownStyle="DropDownList">
+                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项" CausesValidation="true" ValidationGroup="BaseGroup">
+                        <RequiredField IsRequired="true" ErrorText="必需项" />
+                    </ValidationSettings>
                 </dxe:ASPxComboBox>
             </td>
         </tr>
@@ -193,7 +229,9 @@
                         <td>
                         </td>
                         <td style="width: 60px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="btnSave" Text="保存" AutoPostBack="false">
+                            <dxe:ASPxButton runat="server" ID="btnSave" Text="保存" 
+                            CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
+                            <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
                             </dxe:ASPxButton>
                         </td>
                         <td style="width: 60px; text-align: left;">
