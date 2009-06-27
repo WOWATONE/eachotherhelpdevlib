@@ -100,7 +100,7 @@
 
         function makeNoticeInfoJSON() {
 
-            var GatheringType = dxeddlSourceTypeID.GetValue();
+            var GatheringType = dxeddlGatheringType.GetValue();
             var NoticeNo = dxetxtNoticeNo.GetValueString();
             var NoticeDate = dxeNoticeDate.GetValue();
             var plc = new NoticeInfo(GatheringType, NoticeNo, NoticeDate);
@@ -132,6 +132,8 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    
     <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
@@ -155,7 +157,7 @@
                 通知书号：
             </td>
             <td style="text-align: left;">
-                <dxe:ASPxTextBox ID="dxetxtNoticeNo" ClientInstanceName="dxetxtNoticeNo" runat="server" Width="180px"></dxe:ASPxTextBox>
+                <dxe:ASPxTextBox ID="dxetxtNoticeNo" ClientInstanceName="dxetxtNoticeNo" runat="server" Width="180px" ReadOnly="true"></dxe:ASPxTextBox>
             </td>
         </tr>
         <tr>
@@ -164,6 +166,9 @@
             </td>
             <td style="text-align: left;">
                 <dxe:ASPxDateEdit ID="dxeNoticeDate" ClientInstanceName="dxeNoticeDate" runat="server" Width="180px">
+                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项" CausesValidation="true" ValidationGroup="BaseGroup">
+                        <RequiredField IsRequired="true" ErrorText="必需项" />
+                    </ValidationSettings>
                 </dxe:ASPxDateEdit>
             </td>
         </tr>
