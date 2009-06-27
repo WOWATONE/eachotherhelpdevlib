@@ -23,6 +23,12 @@ namespace BusinessObjects
             Direct=2            
         }
 
+        public enum AuditStatus
+        {
+            Appeal = 0,
+            AuditOk = 1
+        }
+
         public enum PCodeType
         {
             CodeTypeID,
