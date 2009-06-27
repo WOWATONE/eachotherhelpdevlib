@@ -118,9 +118,9 @@
             </td>
             <td style="text-align: left;">
                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                    KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" OnRowInserting="gridPolicyItem_RowInserting"
-                    OnRowUpdating="gridPolicyItem_RowUpdating" OnRowUpdated="gridPolicyItem_RowUpdated"
-                    OnRowInserted="gridPolicyItem_RowInserted" OnRowDeleting="gridPolicyItem_RowDeleting"
+                    KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False"
+                    OnCustomCallback="gridPolicyItem_CustomCallback"
+                    OnRowDeleting="gridPolicyItem_RowDeleting"
                     OnRowDeleted="gridPolicyItem_RowDeleted">
                     <%-- BeginRegion Columns --%>
                     <Columns>

@@ -39,17 +39,44 @@ namespace BrokerWebApp.inoutbalance
 
             if (!IsPostBack && !IsCallback)
             {
-                BindGrid("");
+                BindGrid();
             }
 
         }
 
-        private void BindGrid(String otherWhere)
+        private void BindGrid()
         {
+            Boolean includePolPeriodId = false;
+            String sBefore = " and (";
+            String sAfter = " ) ";
+            String sWhere=" 1=1 ";
+            if (String.IsNullOrEmpty(this.dxetxtNoticeNo.Text.Trim()))
+            {
+                String strPolPeriodIds= this.txtSelectedPolPeriodIds.Value;
+                String[] ppids;
+                //ppids = strPolPeriodIds.Split(new Char[] { ';' });
+                ppids = strPolPeriodIds.Split(new String[] { ";" }, StringSplitOptions.None);
+                
+                foreach (string s in ppids)
+                {
+                    if (s.Trim() != "")
+                    {
+                        sWhere += " or a.PolPeriodId = '" + s.Trim() + "' ";
+                        if (s.Trim().Length == 36)
+                            includePolPeriodId = true;                        
+                    }                        
+                }
 
-            String lsNoticeID = this.dxetxtNoticeNo.Text;
-            lsNoticeID = lsNoticeID + otherWhere;
-            DataTable dt = BO_Notice.GetFeeNoticeAddList(lsNoticeID).Tables[0];
+                if (includePolPeriodId)
+                    sWhere = sBefore + sWhere + sAfter;
+                else
+                    sWhere = " and a.NoticeNo !='' ";
+            }
+            else
+            {
+                sWhere = " and a.NoticeNo ='" + this.dxetxtNoticeNo.Text.Trim()  + "'"; ;
+            }
+            DataTable dt = BO_Notice.GetFeeNoticeAddList(sWhere).Tables[0];
             this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
 
@@ -73,31 +100,11 @@ namespace BrokerWebApp.inoutbalance
 
             
         }
-        
 
-        protected void gridPolicyItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+
+        protected void gridPolicyItem_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
-            
-            e.Cancel = true;
-            this.gridPolicyItem.CancelEdit();
-
-        }
-
-        protected void gridPolicyItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
-        {
-            //this.gridPolicyItem.DataBind();
-        }
-
-        protected void gridPolicyItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
-        {
-            
-            e.Cancel = true;
-            this.gridPolicyItem.CancelEdit();
-        }
-
-        protected void gridPolicyItem_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
-        {
-            //this.gridPolicyItem.DataBind();
+            BindGrid();
         }
 
         protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
