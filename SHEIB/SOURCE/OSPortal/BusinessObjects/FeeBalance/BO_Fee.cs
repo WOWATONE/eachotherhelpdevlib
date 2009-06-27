@@ -58,6 +58,25 @@ namespace BusinessObjects
         }
 
 
+        public static Boolean PolPeriodExist(string polPeriodId)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT COUNT(PolPeriodID) ");
+            sb.Append(" ");
+            sb.Append(" FROM Fee ");
+            sb.Append(" WHERE PolPeriodID=@PolPeriodID ");
+            
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@PolPeriodID", DbType.String, polPeriodId);
+            
+            Int32 count = Convert.ToInt32(_db.ExecuteScalar(dbCommand));
+            if (count > 0)
+                return true;
+            else
+                return false;
+        }
+
         #endregion Methods
 
 

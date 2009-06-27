@@ -82,6 +82,10 @@ namespace BrokerWebApp.inoutbalance
             
         }
 
+        protected void gridPolicyItem_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            BindGrid();
+        }
 
         private void BindGrid()
         {

@@ -33,7 +33,7 @@
 
             window.onunload = function() {
                 var pWindow = window.dialogArguments;
-                var thegrid = pWindow.gridSearchResult;
+                var thegrid = pWindow.gridPolicyItem;
 
                 if (thegrid != null) {
                     thegrid.PerformCallback('');
@@ -70,7 +70,7 @@
 
         function btnOk_Click() {
 
-            gridSearchResult.GetSelectedFieldValues("NoticeNo", getTheSelectedRowsValues);
+            gridSearchResult.GetSelectedFieldValues("PolperiodID", getTheSelectedRowsValues);
 
         }
 
