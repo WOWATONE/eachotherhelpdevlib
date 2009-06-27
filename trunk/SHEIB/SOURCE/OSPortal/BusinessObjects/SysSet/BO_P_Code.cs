@@ -19,10 +19,11 @@ namespace BusinessObjects
 
         public enum AccountType
         {
-            FeeCustomer_Direct=1,
-            FeeCustomer_Agent=2,
+            FeeCustomer_Agent=1,
+            FeeCustomer_Direct = 6,            
             PayIn_Agent = 3,
-            PayIn_Direct = 4            
+            PayIn_Direct = 4,
+            Process = 7
         }
 
 
