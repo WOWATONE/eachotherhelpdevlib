@@ -39,13 +39,10 @@
 
         function cusCompleteEnable() {
             //debugger;
-            if (cusCheckNessary()) {
-                dxebtnSave.SetEnabled(true);
-                dxebtnAddPolicy.SetEnabled(true);
-                dxebtnAudit.SetEnabled(true);
-            }
-
-
+            dxebtnSave.SetEnabled(true);
+            dxebtnAddPolicy.SetEnabled(true);
+            dxebtnAudit.SetEnabled(true);
+            
         }
         
         
@@ -75,7 +72,8 @@
         
         function imgSearchClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=450px;center=yes;help=no";
-            var retrunval = window.showModalDialog("FeeCustomerAddSelect.aspx", self, myArguments);
+            var url = "FeeCustomerAddSelect.aspx?ID=" + getVoucherId();
+            var retrunval = window.showModalDialog(url, self, myArguments);
             var result = $("#<%=txtSelectedIds.ClientID %>");
             if (isEmpty(retrunval)) {
                 //do nothing;
@@ -110,6 +108,63 @@
             return id;
         }
 
+
+        function setVoucherId(value) {
+            var result = $("#<%=lblVoucherId.ClientID %>");
+            result[0].innerHTML = value;
+        }
+
+
+        function dxebtntopSave_Click(s, e) {
+            //
+            if (s.CauseValidation()) {
+                var thejsonstring = makeNoticeInfoJSON("0");
+                dxeSaveCallback.PerformCallback(thejsonstring);
+            }
+        }
+
+        function saveCallbackComplete(s, e) {
+            //do nothing;
+            var pid = getVoucherId();
+            if (isEmpty(pid)) {
+                setVoucherId(e.result);
+                cusCompleteEnable();
+            }
+        }
+
+        function makeNoticeInfoJSON(AuditStatus) {
+
+            var ID = getVoucherId();
+            var Remark = dxetxtRemark.GetValueString();
+            var GotDate = dxeGotDate.GetValue();
+            var plc = new InfoJSON(ID, Remark, GotDate, AuditStatus);
+
+            //deserialize JSON string, make a JSON object
+            //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
+
+            //serialize a JOSN object，make a JSON string.
+            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
+
+            return jsonStringClient;
+
+        }
+
+
+        function InfoJSON(ID, Remark, GotDate, AuditStatus) {
+            if (!isEmpty(ID))
+                this.ID = ID;
+
+            if (!isEmpty(Remark))
+                this.Remark = Remark;
+
+            if (!isEmpty(GotDate))
+                this.GotDate = GotDate;
+
+            if (!isEmpty(AuditStatus))
+                this.AuditStatus = AuditStatus;
+
+        }
+        
         function isEmpty(testVar) {
             if ((testVar == null) || (testVar.length == 0)) {
                 return true;
@@ -163,10 +218,6 @@
                             <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" 
                             DataSourceID=""
                             KeyFieldName="PolicyNo" Width="100%" AutoGenerateColumns="False" 
-                            OnRowInserting="gridPolicyItem_RowInserting" 
-                            OnRowUpdating="gridPolicyItem_RowUpdating" 
-                            OnRowUpdated="gridPolicyItem_RowUpdated" 
-                            OnRowInserted="gridPolicyItem_RowInserted"
                             OnRowDeleting="gridPolicyItem_RowDeleting" 
                             OnRowDeleted="gridPolicyItem_RowDeleted"
                              >

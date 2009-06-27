@@ -12,6 +12,7 @@ namespace BusinessObjects
 {
     public class DataService
     {
-        public static readonly Database DB = DatabaseFactory.CreateDatabase();        
+        public static readonly Database DB = DatabaseFactory.CreateDatabase();
+        public static readonly DbConnection DBCon = DB.CreateConnection(); 
     }
 }

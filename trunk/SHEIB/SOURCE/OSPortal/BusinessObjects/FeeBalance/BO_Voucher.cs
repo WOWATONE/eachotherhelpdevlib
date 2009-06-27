@@ -124,10 +124,25 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "@BranchID", DbType.String, this.BranchID);
             _db.AddInParameter(dbCommand, "@GatheringType", DbType.String, this.GatheringType);
 
-            _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, this.FeeDate);
-            _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
-            _db.AddInParameter(dbCommand, "@ModifyTime", DbType.DateTime, this.ModifyTime);
-            _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
+            if (this.FeeDate == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, this.FeeDate);
+
+            if (this.CreateTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
+
+            if (this.ModifyTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@ModifyTime", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@ModifyTime", DbType.DateTime, this.ModifyTime);
+
+            if (this.AuditTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
 
             //ExecuteScalar return the value of first column in first row.
             _db.ExecuteNonQuery(dbCommand);
@@ -161,10 +176,26 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "@BranchID", DbType.String, this.BranchID);
             _db.AddInParameter(dbCommand, "@GatheringType", DbType.String, this.GatheringType);
 
-            _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, this.FeeDate);
-            _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
-            _db.AddInParameter(dbCommand, "@ModifyTime", DbType.DateTime, this.ModifyTime);
-            _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
+            
+            if (this.FeeDate == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, this.FeeDate);
+
+            if (this.CreateTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
+
+            if (this.ModifyTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@ModifyTime", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@ModifyTime", DbType.DateTime, this.ModifyTime);
+
+            if (this.AuditTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
 
             _db.ExecuteNonQuery(dbCommand);
 
