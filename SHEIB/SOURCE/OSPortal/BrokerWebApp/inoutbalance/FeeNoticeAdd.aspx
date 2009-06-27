@@ -55,8 +55,8 @@
             if (isEmpty(retrunval)) {
                 //do nothing;
             }
-            else {                
-                result[0].value = retrunval;
+            else {
+                result[0].value = result[0].value + ";" + retrunval;
             }
             gridPolicyItem.PerformCallback('');            
         }
@@ -114,7 +114,7 @@
         </tr>
         <tr>
             <td style="text-align: right; vertical-align: top;">
-                <input type="hidden" id="txtSelectedPolPeriodIds" runat="server" />
+                <input type="hidden" id="txtSelectedPolPeriodIds" runat="server" value="-1" />
             </td>
             <td style="text-align: left;">
                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
