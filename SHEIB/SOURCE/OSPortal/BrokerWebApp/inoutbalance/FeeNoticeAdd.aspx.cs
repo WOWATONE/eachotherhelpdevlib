@@ -10,6 +10,9 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.IO;
 using System.Text;
+using DevExpress.Web.ASPxHtmlEditor;
+using DevExpress.Web.ASPxEditors;
+using DevExpress.Web.ASPxUploadControl;
 
 namespace BrokerWebApp.inoutbalance
 {
@@ -19,26 +22,27 @@ namespace BrokerWebApp.inoutbalance
         #region Variables
 
         private const string inputQueryStringIDKey = "NoticeNo";
-                
-        private string theID;
-
+           
+        
         #endregion Variables
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.Initialization();
 
             if (!this.Page.IsPostBack)
             {                
+                
                 dxeNoticeDate.Date = DateTime.Today;
                 this.dxetxtNoticeNo.Text = Page.Request.QueryString[inputQueryStringIDKey];
+                loadValue(this.dxetxtNoticeNo.Text);
             }
             else
             {
                 //do nothing;
             }
-
-            this.Initialization();
+                        
 
             if (!IsPostBack && !IsCallback)
             {
@@ -47,6 +51,10 @@ namespace BrokerWebApp.inoutbalance
 
         }
 
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            //
+        }
 
         private void BindGrid()
         {
@@ -222,7 +230,43 @@ namespace BrokerWebApp.inoutbalance
             }
         }
 
+
+
+        private void loadValue(String noticeNO)
+        {
+            if (String.IsNullOrEmpty(noticeNO.Trim())) return;
+
+            ListEditItem theselected;
+            BusinessObjects.BO_Notice obj;
+
+            obj = new BusinessObjects.BO_Notice(noticeNO);
+
+            
+
+            //dxeddlDeptID
+            if (!String.IsNullOrEmpty(obj.GatheringType))
+            {
+                theselected = this.dxeddlGatheringType.Items.FindByValue(obj.GatheringType);
+                if (theselected != null)
+                {
+                    dxeddlGatheringType.SelectedItem = theselected;
+                }
+            }
+
+            this.dxeNoticeDate.Date = obj.NoticeDate;
+            
+        }
+
+
+    
+    
     }
+
+
+    
+
+
+
 
     [DataContract(Namespace = "http://www.sheib.com")]
     public class NoticeInfo

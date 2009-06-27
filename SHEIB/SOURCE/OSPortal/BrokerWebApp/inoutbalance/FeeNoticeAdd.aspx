@@ -25,6 +25,40 @@
     <title>保费通知书录入</title>
 
     <script type="text/javascript">
+        function cusCheckNessary() {
+            var pid = dxetxtNoticeNo.GetValueString();
+            if (isEmpty(pid)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+
+        }
+
+        function cusNotCompleteUnable() {
+            //debugger;
+            if (cusCheckNessary()) {
+                dxebtnSave.SetEnabled(true);
+                dxebtnAudit.SetEnabled(false);
+                dxebtnPrint.SetEnabled(false);
+            }
+
+
+        }
+
+        function cusCompleteEnable() {
+            //debugger;
+            if (cusCheckNessary()) {
+                dxebtnSave.SetEnabled(true);
+                dxebtnAudit.SetEnabled(true);
+                dxebtnPrint.SetEnabled(true);
+            }
+
+
+        }
+
+
         $(document).ready(function() {
             //jQuery.noticeAdd({
             //    text: 'This is a notification that you have to remove',
@@ -44,8 +78,7 @@
                 }
             };
 
-
-
+            cusNotCompleteUnable();
 
 
         });
@@ -97,6 +130,7 @@
                 dxetxtNoticeNo.SetValue(e.result);
                 var result = $("#<%=txtSelectedPolPeriodIds.ClientID %>");
                 result[0].value = "-1";
+                cusCompleteEnable();
             }
         }
 
@@ -128,6 +162,10 @@
             if (!isEmpty(NoticeDate))
                 this.NoticeDate = NoticeDate;           
 
+        }
+
+        function btnCloseClick() {
+            window.close();
         }
         
     </script>
@@ -265,25 +303,22 @@
                         <td>
                         </td>
                         <td style="width: 60px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="btnSave" Text="保存" 
+                            <dxe:ASPxButton runat="server" ID="dxebtnSave" ClientInstanceName="dxebtnSave" Text="保存" 
                             CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
                             <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
                             </dxe:ASPxButton>
                         </td>
                         <td style="width: 60px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="ASPxButton1" Text="审核" AutoPostBack="false">
-                            </dxe:ASPxButton>
-                        </td>
-                        <td style="width: 70px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="ASPxButton2" Text="反审核" AutoPostBack="false">
+                            <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit" Text="审核" AutoPostBack="false">
                             </dxe:ASPxButton>
                         </td>
                         <td style="width: 100px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="ASPxButton3" Text="打印单证" AutoPostBack="false">
+                            <dxe:ASPxButton runat="server" ID="dxebtnPrint" ClientInstanceName="dxebtnPrint" Text="打印单证" AutoPostBack="false">
                             </dxe:ASPxButton>
                         </td>
                         <td style="width: 60px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="btnClose" Text="退出" AutoPostBack="false">
+                            <dxe:ASPxButton runat="server" ID="dxebtnClose" ClientInstanceName="dxebtnClose" Text="关闭" AutoPostBack="false">
+                                <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
                             </dxe:ASPxButton>
                         </td>
                         <td>
