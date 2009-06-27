@@ -66,7 +66,7 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand);
         }
 
-        public static DataSet GetFeeNoticeAddList(string sNoticeNo)
+        public static DataSet GetFeeNoticeAddList(string sWhere)
         {
 
             //SQL
@@ -81,7 +81,9 @@ namespace BusinessObjects
             sb.Append("CiPremium,AciPremium,CstPremium");
             sb.Append(" from PolicyPeriod a,Policy b");
             sb.Append(" where a.PolicyID=b.PolicyID ");
-            sb.Append(" and a.NoticeNo='" + sNoticeNo + "'");
+            sb.Append(" and a.NoticeNo!= '' ");
+            sb.Append(sWhere);
+
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
             return _db.ExecuteDataSet(dbCommand);
         }

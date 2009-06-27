@@ -16,9 +16,7 @@ namespace BrokerWebApp.inoutbalance
         #region Variables
 
         private const string inputQueryStringIDKey = "NoticeNo";
-        
-        private DataTable _dtGrid;
-
+                
         private string theID;
 
         #endregion Variables
@@ -26,30 +24,31 @@ namespace BrokerWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-            {
-                //theID = this..Value;
+
+            if (!this.Page.IsPostBack)
+            {                
+                deNoticeDate.Date = DateTime.Today;
+                this.dxetxtNoticeNo.Text = Page.Request.QueryString[inputQueryStringIDKey];
             }
             else
             {
-                //theID = Page.Request.QueryString[inputQueryStringIDKey];
-                //if (string.IsNullOrEmpty(theID))
-                //    theID = BusinessObjects.TranUtils.GetInvoiceID();
-                
+                //do nothing;
             }
 
-            if (!this.Page.IsPostBack)
+            this.Initialization();
+
+            if (!IsPostBack && !IsCallback)
             {
-                this.Initialization();
-                BindGrid();
+                BindGrid("");
             }
 
         }
 
-        private void BindGrid()
+        private void BindGrid(String otherWhere)
         {
-            string lsNoticeID = "TZSBH";
 
+            String lsNoticeID = this.dxetxtNoticeNo.Text;
+            lsNoticeID = lsNoticeID + otherWhere;
             DataTable dt = BO_Notice.GetFeeNoticeAddList(lsNoticeID).Tables[0];
             this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
@@ -72,7 +71,7 @@ namespace BrokerWebApp.inoutbalance
                 }
             }
 
-            deNoticeDate.Date = DateTime.Today;
+            
         }
         
 
