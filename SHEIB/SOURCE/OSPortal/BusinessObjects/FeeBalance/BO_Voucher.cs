@@ -73,6 +73,18 @@ namespace BusinessObjects
 
         #region Methods
 
+        public void Save(ModifiedAction action)
+        {
+            if (action == ModifiedAction.Insert)
+            {
+                add();
+            }
+            else
+            {
+                update();
+            }
+        }
+
 
         #endregion Methods
 
