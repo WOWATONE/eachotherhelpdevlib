@@ -13,7 +13,7 @@ using System.Text;
 
 namespace BrokerWebApp.inoutbalance
 {
-    public partial class FeeNoticeAdd : System.Web.UI.Page
+    public partial class FeeNoticeAdd : BasePage
     {
 
         #region Variables
@@ -147,13 +147,13 @@ namespace BrokerWebApp.inoutbalance
                     obj.NoticeNo = TranUtils.GetNoticeIDDirect();
                 else
                     obj.NoticeNo = TranUtils.GetNoticeIDAgent();
-                //obj.PolicyStatus = policyState;
-                //obj.PolicyType = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyTypeEnum.Other).ToString();
-                //obj.Save(ModifiedAction.Insert);
+                obj.CreateTime = DateTime.Now ;
+                obj.CreatePersion = this.CurrentUserID;
+                
+                obj.Save(ModifiedAction.Insert);
             }
             else
-            {
-                //obj.PolicyStatus = policyState;
+            {                
                 obj.Save(ModifiedAction.Update);
             }
 
