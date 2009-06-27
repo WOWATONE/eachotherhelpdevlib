@@ -102,6 +102,14 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
+        protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {            
+            //String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+            //String thePolicyID = savePolicy(e.Parameter, policystatus);
+            //e.Result = thePolicyID;
+        }
+
+
         protected void gridPolicyItem_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
             BindGrid();
