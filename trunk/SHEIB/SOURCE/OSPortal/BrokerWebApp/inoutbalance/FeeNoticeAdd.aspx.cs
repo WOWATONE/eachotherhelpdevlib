@@ -107,9 +107,8 @@ namespace BrokerWebApp.inoutbalance
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {            
-            //String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
-            //String thePolicyID = saveNotice(e.Parameter, policystatus);
-            //e.Result = thePolicyID;
+            String thePolicyID = saveNotice(e.Parameter);
+            e.Result = thePolicyID;
         }
 
 
@@ -130,34 +129,40 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
-        private string savePolicy(String parameter, String policyState)
+        private string saveNotice(String parameter)
         {
             String json = parameter;
 
             MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BusinessObjects.BO_Notice));
-            BusinessObjects.BO_Notice obj;
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(NoticeInfo));
+            NoticeInfo obj;
 
-            obj = (BusinessObjects.BO_Notice)serializer.ReadObject(ms);
+            obj = (NoticeInfo)serializer.ReadObject(ms);
             ms.Close();
 
+            BusinessObjects.BO_Notice objLoad;
             if (String.IsNullOrEmpty(obj.NoticeNo))
             {
+                objLoad = new BO_Notice();
                 if (obj.GatheringType == Convert.ToInt32(BO_P_Code.GatheringType.Agent).ToString())
-                    obj.NoticeNo = TranUtils.GetNoticeIDDirect();
+                    objLoad.NoticeNo = TranUtils.GetNoticeIDDirect();
                 else
-                    obj.NoticeNo = TranUtils.GetNoticeIDAgent();
-                obj.CreateTime = DateTime.Now ;
-                obj.CreatePersion = this.CurrentUserID;
-                
-                obj.Save(ModifiedAction.Insert);
+                    objLoad.NoticeNo = TranUtils.GetNoticeIDAgent();
+                objLoad.CreateTime = DateTime.Now;
+                objLoad.CreatePersion = this.CurrentUserID;
+                objLoad.GatheringType = obj.GatheringType;
+                objLoad.NoticeDate = obj.NoticeDate;
+                objLoad.Save(ModifiedAction.Insert);
             }
             else
             {                
-                obj.Save(ModifiedAction.Update);
+                objLoad = new BO_Notice(obj.NoticeNo);
+                objLoad.NoticeDate = obj.NoticeDate;
+                objLoad.GatheringType = obj.GatheringType; 
+                objLoad.Save(ModifiedAction.Update);
             }
 
-            return obj.NoticeNo;
+            return objLoad.NoticeNo;
 
         }
 
@@ -178,7 +183,7 @@ namespace BrokerWebApp.inoutbalance
         public string NoticeNo { get; set; }
 
         [DataMember]
-        public string NoticeDate { get; set; }
+        public DateTime NoticeDate { get; set; }
 
 
     }
