@@ -15,7 +15,7 @@ namespace BrokerWebApp.inoutbalance
 
         #region Variables
 
-        private DataTable _dtGrid;
+        //
 
         #endregion Variables
 

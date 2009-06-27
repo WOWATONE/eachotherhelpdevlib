@@ -36,7 +36,22 @@
         
         function imgSearchClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=450px;center=yes;help=no";
-            window.showModalDialog("FeeCustomerAddSelect.aspx", self, myArguments);
+            var retrunval = window.showModalDialog("FeeCustomerAddSelect.aspx", self, myArguments);
+            var result = $("#<%=txtSelectedIds.ClientID %>");
+            if (isEmpty(retrunval)) {
+                //do nothing;
+            }
+            else {
+                var temp = new Array();
+                temp = retrunval.split(';');
+                for (i = 0; i < temp.length; i++) {
+                    //lastIndexOf
+                    if (result[0].value.lastIndexOf(temp[i]) == -1) {
+                        result[0].value = result[0].value + ";" + temp[i];
+                    }
+                }
+                //result[0].value = result[0].value + ";" + retrunval;
+            }
             gridPolicyItem.PerformCallback('');
         }
 
@@ -74,6 +89,7 @@
                             <dxe:ASPxButton runat="server" ID="btnAddPolicy" AutoPostBack="false" Text="添加保单">
                                 <ClientSideEvents Click="btnAddPolicyClick" />
                             </dxe:ASPxButton>
+                            <input type="hidden" id="txtSelectedIds" runat="server" value="-1" />
                         </td>
                         <td style="width:12%;text-align:right;">流水号：</td>  
                         <td style="width:78%;text-align:left;">001031</td>                                              
