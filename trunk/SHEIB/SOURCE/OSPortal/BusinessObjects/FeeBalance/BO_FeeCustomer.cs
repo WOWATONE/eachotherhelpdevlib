@@ -145,17 +145,17 @@ namespace BusinessObjects
 
             string sSql = "";
             sSql = sSql + "select * from (";
-            sSql = sSql + "Select a.NoticeNo, a.Payfee, a.Feedate, a.Payedfee, (a.Payfee - a.Payedfee) Fee, ";
-            sSql = sSql + "       a.PolperiodID, a.Period,a.PolicyID,a.CarrierID, a.CarrierName, a.BranchID, a.BranchName, a.Paydate,";
-            sSql = sSql + "       a.Payfeebase, a.Payprocbase,a.NoticeDate,";
-            sSql = sSql + "       b.PolicyNo,b.DeptID,b.CustomerID,b.ProdTypeID,b.SalesID,b.CarrierSales,b.CiPremium,b.AciPremium,b.CstPremium,b.GatheringType,b.PremiumBase,";
-            sSql = sSql + "       (select CustName from  customer where custID=b.CustomerID) CustName, ";
-            sSql = sSql + "       (select ProdTypeName from ProductType where ProdTypeID=b.ProdTypeID) ProdTypeName,";
-            sSql = sSql + "       (select GatheringTypeName from GatheringType where GatheringTypeID=b.GatheringType) GatheringTypeName,";
-            sSql = sSql + "       (select UserNameCn from P_User where UserID=b.SalesID) SalesName";
+            sSql = sSql + "Select a.NoticeNo, a.Payfee, a.Feedate, ISNULL(a.Payedfee,0) Payedfee, (a.Payfee - ISNULL(a.Payedfee,0)) Fee, ";
+            sSql = sSql + " a.PolperiodID, a.Period,a.PolicyID,a.CarrierID, a.CarrierName, a.BranchID, a.BranchName, a.Paydate,";
+            sSql = sSql + " a.Payfeebase, a.Payprocbase,a.NoticeDate,";
+            sSql = sSql + " b.PolicyNo,b.DeptID,b.CustomerID,b.ProdTypeID,b.SalesID,b.CarrierSales,b.CiPremium,b.AciPremium,b.CstPremium,b.GatheringType,b.PremiumBase,";
+            sSql = sSql + " (select CustName from  customer where custID=b.CustomerID) CustName, ";
+            sSql = sSql + " (select ProdTypeName from ProductType where ProdTypeID=b.ProdTypeID) ProdTypeName,";
+            sSql = sSql + " (select GatheringTypeName from GatheringType where GatheringTypeID=b.GatheringType) GatheringTypeName,";
+            sSql = sSql + " (select UserNameCn from P_User where UserID=b.SalesID) SalesName";
             sSql = sSql + " From Policyperiodfee a, Policy b";
-            sSql = sSql + " Where a.Policyid = b.Policyid ";
-            sSql = sSql + "      And Payfee <> Payedfee ";
+            sSql = sSql + " Where a.Policyid = b.Policyid AND a.NoticeNo !='' ";
+            sSql = sSql + " And Payfee <> ISNULL(Payedfee,0) ";
             sSql = sSql + ") a";
             sSql = sSql + " where 1=1";
             if (sWhere != "")
