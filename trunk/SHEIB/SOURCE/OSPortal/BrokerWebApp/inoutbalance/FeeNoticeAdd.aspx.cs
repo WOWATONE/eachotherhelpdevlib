@@ -130,8 +130,15 @@ namespace BrokerWebApp.inoutbalance
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {            
-            String thePolicyID = saveNotice(e.Parameter);
-            e.Result = thePolicyID;
+            String thenoticeNo = saveNotice(e.Parameter);
+            e.Result = thenoticeNo;
+        }
+
+
+        protected void dxeAuditCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            auditNotice(e.Parameter);
+            e.Result = "ok";
         }
 
 
@@ -142,8 +149,22 @@ namespace BrokerWebApp.inoutbalance
 
         protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
+            String theKey = e.Keys[0].ToString();
+
+            try
+            {
+                BusinessObjects.Policy.BO_PolicyPeriod obj;
+                obj = new BusinessObjects.Policy.BO_PolicyPeriod(theKey);
+                obj.NoticeNo = "";
+                obj.Save(ModifiedAction.Update);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
+            BindGrid();
         }
 
         protected void gridPolicyItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
@@ -175,6 +196,7 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.CreatePersion = this.CurrentUserID;
                 objLoad.GatheringType = obj.GatheringType;
                 objLoad.NoticeDate = obj.NoticeDate;
+                objLoad.AuditStatus = Convert.ToInt32(BO_P_Code.AuditStatus.Appeal).ToString();
                 objLoad.Save(ModifiedAction.Insert);
             }
             else
@@ -231,6 +253,30 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
+        private void auditNotice(String parameter)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(NoticeInfo));
+            NoticeInfo obj;
+
+            obj = (NoticeInfo)serializer.ReadObject(ms);
+            ms.Close();
+
+            BusinessObjects.BO_Notice objLoad;
+            if (String.IsNullOrEmpty(obj.NoticeNo))
+            {
+                //
+            }
+            else
+            {
+                objLoad = new BO_Notice(obj.NoticeNo);
+                objLoad.AuditStatus = obj.AuditStatus;
+                objLoad.Save(ModifiedAction.Update);
+            }
+
+        }
 
         private void loadValue(String noticeNO)
         {
@@ -254,6 +300,14 @@ namespace BrokerWebApp.inoutbalance
             }
 
             this.dxeNoticeDate.Date = obj.NoticeDate;
+            if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
+            {
+                this.dxebtnAudit.Text = "反审核"; 
+            }
+            else
+            {
+                this.dxebtnAudit.Text = "审核"; 
+            }
             
         }
 
@@ -283,6 +337,9 @@ namespace BrokerWebApp.inoutbalance
 
         [DataMember]
         public DateTime NoticeDate { get; set; }
+
+        [DataMember]
+        public string AuditStatus { get; set; }
 
 
     }

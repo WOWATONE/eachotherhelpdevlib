@@ -292,8 +292,11 @@
                             <td>
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                                     KeyFieldName="NoticeNo" AutoGenerateColumns="False" Settings-ShowFooter="true"
-                                    Width="100%" SettingsPager-AlwaysShowPager="true" OnRowDeleting="gridSearchResult_RowDeleting"
-                                    OnRowDeleted="gridSearchResult_RowDeleted">
+                                    Width="100%" SettingsPager-AlwaysShowPager="true" 
+                                    OnRowDeleting="gridSearchResult_RowDeleting"
+                                    OnRowDeleted="gridSearchResult_RowDeleted"
+                                    OnCustomCallback="gridSearchResult_CustomCallback"
+                                    >
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False">

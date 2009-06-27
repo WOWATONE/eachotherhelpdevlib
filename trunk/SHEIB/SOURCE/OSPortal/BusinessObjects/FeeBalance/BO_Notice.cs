@@ -216,7 +216,7 @@ namespace BusinessObjects
         private void update()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("UPDATE PolicyDoc SET ");
+            sb.Append("UPDATE Notice SET ");
             sb.Append(" NoticeDate=@NoticeDate, [Content]=@Content, GatheringType=@GatheringType, CreatePersion=@CreatePersion, ");
             sb.Append(" CreateTime=@CreateTime, AuditTime=@AuditTime, AuditPersion=@AuditPersion, AuditStatus=@AuditStatus  ");
             sb.Append(" Where NoticeNo=@NoticeNo;");

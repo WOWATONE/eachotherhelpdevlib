@@ -117,7 +117,7 @@
         function dxebtntopSave_Click(s, e) {
             //
             if (s.CauseValidation()) {
-                var thejsonstring = makeNoticeInfoJSON();
+                var thejsonstring = makeNoticeInfoJSON("0");
                 dxeSaveCallback.PerformCallback(thejsonstring);
             }
         }
@@ -134,12 +134,12 @@
             }
         }
 
-        function makeNoticeInfoJSON() {
+        function makeNoticeInfoJSON(AuditStatus) {
 
             var GatheringType = dxeddlGatheringType.GetValue();
             var NoticeNo = dxetxtNoticeNo.GetValueString();
             var NoticeDate = dxeNoticeDate.GetValue();
-            var plc = new NoticeInfo(GatheringType, NoticeNo, NoticeDate);
+            var plc = new NoticeInfo(GatheringType, NoticeNo, NoticeDate, AuditStatus);
 
             //deserialize JSON string, make a JSON object
             //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
@@ -150,9 +150,9 @@
             return jsonStringClient;
 
         }
-        
-        
-        function NoticeInfo(GatheringType, NoticeNo, NoticeDate) {
+
+
+        function NoticeInfo(GatheringType, NoticeNo, NoticeDate, AuditStatus) {
             if (!isEmpty(GatheringType))
                 this.GatheringType = GatheringType;
 
@@ -160,13 +160,52 @@
                 this.NoticeNo = NoticeNo;
 
             if (!isEmpty(NoticeDate))
-                this.NoticeDate = NoticeDate;           
+                this.NoticeDate = NoticeDate;
+
+            if (!isEmpty(AuditStatus))
+                this.AuditStatus = AuditStatus;         
 
         }
 
         function btnCloseClick() {
             window.close();
         }
+
+
+        function btnAudit_Click(s, e) {
+            //
+            var buttonID = s.GetText();
+            var AuditOrNot = "1";
+            switch (buttonID) {
+                    case "…Û∫À":
+                        AuditOrNot = "1";
+                        break
+                    case "∑¥…Û∫À":
+                        AuditOrNot = "0";
+                        break
+                    default:
+                        AuditOrNot = "1";
+             }
+             var thejsonstring = makeNoticeInfoJSON(AuditOrNot);
+             dxeAuditCallback.PerformCallback(thejsonstring);
+            
+        }
+        
+        function auditCallbackComplete(s, e) {
+            //do nothing;
+            var buttonID = dxebtnAudit.GetText();
+            switch (buttonID) {
+                case "…Û∫À":
+                    dxebtnAudit.SetText("∑¥…Û∫À");
+                    break
+                case "∑¥…Û∫À":
+                    dxebtnAudit.SetText("…Û∫À");
+                    break
+                default:
+                    //do nothing;
+            }            
+        }
+        
         
     </script>
 
@@ -176,6 +215,10 @@
     
     <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
+    <dxcb:ASPxCallback ID="dxeAuditCallback" ClientInstanceName="dxeAuditCallback" runat="server" OnCallback="dxeAuditCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {auditCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
     
     <table style="width: 100%">
@@ -308,8 +351,9 @@
                             <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
                             </dxe:ASPxButton>
                         </td>
-                        <td style="width: 60px; text-align: left;">
+                        <td style="width: 100px; text-align: left;">
                             <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit" Text="…Û∫À" AutoPostBack="false">
+                                <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
                             </dxe:ASPxButton>
                         </td>
                         <td style="width: 100px; text-align: left;">

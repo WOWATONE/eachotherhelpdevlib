@@ -92,7 +92,7 @@ namespace BrokerWebApp.inoutbalance {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnSave;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnSave;
         
         /// <summary>
         /// ASPxButton1 control.
@@ -101,7 +101,7 @@ namespace BrokerWebApp.inoutbalance {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnAudit;
         
         /// <summary>
         /// ASPxButton2 control.
@@ -110,16 +110,8 @@ namespace BrokerWebApp.inoutbalance {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnPrint;
         
-        /// <summary>
-        /// ASPxButton3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton3;
         
         /// <summary>
         /// btnClose control.
@@ -128,6 +120,6 @@ namespace BrokerWebApp.inoutbalance {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnClose;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnClose;
     }
 }
