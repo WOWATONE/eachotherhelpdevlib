@@ -21,9 +21,10 @@ namespace BrokerWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Initialization();
+
             if (!IsPostBack && !IsCallback)
             {
-                Initialization();
                 ckbNeedPayFeePolicy.Checked = true;
                 BindGrid();
             }
@@ -121,27 +122,14 @@ namespace BrokerWebApp.inoutbalance
                 }
             }
         }
-
-
-
-        protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
-        {
-            //DataTable dt = ((DataTable)ViewState["PolicyItemGridData"]);
-            //DataRow row = dt.Rows.Find(e.Keys["ID"]);
-            //dt.Rows.Remove(row);
-            e.Cancel = true;
-            this.gridSearchResult.CancelEdit();
-        }
-
-        protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
-        {
-            this.gridSearchResult.DataBind();
-        }
+                       
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             BindGrid();
         }
+
+
 
     }
 }
