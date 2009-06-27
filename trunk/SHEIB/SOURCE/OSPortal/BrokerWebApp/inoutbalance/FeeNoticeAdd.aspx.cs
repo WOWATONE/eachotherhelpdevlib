@@ -47,27 +47,36 @@ namespace BrokerWebApp.inoutbalance
 
         }
 
+
         private void BindGrid()
+        {
+            DataTable dt = getGridData();
+            this.gridPolicyItem.DataSource = dt;
+            this.gridPolicyItem.DataBind();
+        }
+
+
+        private DataTable getGridData()
         {
             Boolean includePolPeriodId = false;
             String sBefore = " and (";
             String sAfter = " ) ";
-            String sWhere=" 1=1 ";
+            String sWhere = " 1=1 ";
             if (String.IsNullOrEmpty(this.dxetxtNoticeNo.Text.Trim()))
             {
-                String strPolPeriodIds= this.txtSelectedPolPeriodIds.Value;
+                String strPolPeriodIds = this.txtSelectedPolPeriodIds.Value;
                 String[] ppids;
                 //ppids = strPolPeriodIds.Split(new Char[] { ';' });
                 ppids = strPolPeriodIds.Split(new String[] { ";" }, StringSplitOptions.None);
-                
+
                 foreach (string s in ppids)
                 {
                     if (s.Trim() != "")
                     {
                         sWhere += " or a.PolPeriodId = '" + s.Trim() + "' ";
                         if (s.Trim().Length == 36)
-                            includePolPeriodId = true;                        
-                    }                        
+                            includePolPeriodId = true;
+                    }
                 }
 
                 if (includePolPeriodId)
@@ -77,12 +86,11 @@ namespace BrokerWebApp.inoutbalance
             }
             else
             {
-                sWhere = " and a.NoticeNo ='" + this.dxetxtNoticeNo.Text.Trim()  + "'"; ;
+                sWhere = " and a.NoticeNo ='" + this.dxetxtNoticeNo.Text.Trim() + "'"; ;
             }
             DataTable dt = BO_Notice.GetFeeNoticeAddList(sWhere).Tables[0];
-            this.gridPolicyItem.DataSource = dt;
-            this.gridPolicyItem.DataBind();
 
+            return dt;
         }
 
 
@@ -162,8 +170,23 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.Save(ModifiedAction.Update);
             }
 
+            savePolicyPeriod();
+
             return objLoad.NoticeNo;
 
+        }
+
+
+        private void savePolicyPeriod()
+        {
+            DataRow dr;
+            Int32 rowCount = this.gridPolicyItem.VisibleRowCount;
+            for (Int32 i = 0; i < rowCount; i++)
+            {
+                dr = this.gridPolicyItem.GetDataRow(i);
+                //this.gridPolicyItem.GetRow(i);
+                //this.gridPolicyItem.GetRowValues(i, new String[] { "PolPeriodId", "PolicyID" });
+            }
         }
 
 
