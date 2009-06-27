@@ -143,59 +143,47 @@ namespace BrokerWebApp.inoutbalance
 
         private void auditNotice(String parameter)
         {
-            //String json = parameter;
+            String json = parameter;
 
-            //MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
-            //DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(NoticeInfo));
-            //NoticeInfo obj;
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(InfoJSON));
+            InfoJSON obj;
 
-            //obj = (NoticeInfo)serializer.ReadObject(ms);
-            //ms.Close();
+            obj = (InfoJSON)serializer.ReadObject(ms);
+            ms.Close();
 
-            //BusinessObjects.BO_Notice objLoad;
-            //if (String.IsNullOrEmpty(obj.NoticeNo))
-            //{
-            //    //
-            //}
-            //else
-            //{
-            //    objLoad = new BO_Notice(obj.NoticeNo);
-            //    objLoad.AuditStatus = obj.AuditStatus;
-            //    objLoad.Save(ModifiedAction.Update);
-            //}
+            BusinessObjects.BO_Voucher objLoad;
+            if (String.IsNullOrEmpty(obj.ID))
+            {
+                //
+            }
+            else
+            {
+                objLoad = new BO_Voucher(obj.ID);
+                objLoad.AuditStatus = obj.AuditStatus;
+                objLoad.Save(ModifiedAction.Update);
+            }
 
         }
 
-        private void loadValue(String noticeNO)
+        private void loadValue(String id)
         {
-            //if (String.IsNullOrEmpty(noticeNO.Trim())) return;
+            if (String.IsNullOrEmpty(id.Trim())) return;
 
-            //ListEditItem theselected;
-            //BusinessObjects.BO_Notice obj;
+            
+            BusinessObjects.BO_Voucher obj;
 
-            //obj = new BusinessObjects.BO_Notice(noticeNO);
+            obj = new BusinessObjects.BO_Voucher(id);
 
-
-
-            ////dxeddlDeptID
-            //if (!String.IsNullOrEmpty(obj.GatheringType))
-            //{
-            //    theselected = this.dxeddlGatheringType.Items.FindByValue(obj.GatheringType);
-            //    if (theselected != null)
-            //    {
-            //        dxeddlGatheringType.SelectedItem = theselected;
-            //    }
-            //}
-
-            //this.dxeNoticeDate.Date = obj.NoticeDate;
-            //if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
-            //{
-            //    this.dxebtnAudit.Text = "反审核";
-            //}
-            //else
-            //{
-            //    this.dxebtnAudit.Text = "审核";
-            //}
+            this.dxeGotDate.Date = obj.FeeDate;
+            if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
+            {
+                this.dxebtnAudit.Text = "反审核";
+            }
+            else
+            {
+                this.dxebtnAudit.Text = "审核";
+            }
 
         }
 
