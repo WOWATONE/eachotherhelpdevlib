@@ -70,31 +70,11 @@
 
         });
         
-        function imgSearchClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=450px;center=yes;help=no";
-            var url = "FeeCustomerAddSelect.aspx?ID=" + getVoucherId();
-            var retrunval = window.showModalDialog(url, self, myArguments);
-            var result = $("#<%=txtSelectedIds.ClientID %>");
-            if (isEmpty(retrunval)) {
-                //do nothing;
-            }
-            else {
-                var temp = new Array();
-                temp = retrunval.split(';');
-                for (i = 0; i < temp.length; i++) {
-                    //lastIndexOf
-                    if (result[0].value.lastIndexOf(temp[i]) == -1) {
-                        result[0].value = result[0].value + ";" + temp[i];
-                    }
-                }
-                
-            }
-            gridPolicyItem.PerformCallback('');
-        }
-
+        
         function btnAddPolicyClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
-            window.showModalDialog("FeeCustomerAddSelect.aspx", self, myArguments);
+            var url = "FeeCustomerAddSelect.aspx?ID=" + getVoucherId();
+            window.showModalDialog(url, self, myArguments);
             gridPolicyItem.PerformCallback('');
         }
 
@@ -219,7 +199,7 @@
                             DataSourceID=""
                             KeyFieldName="PolicyNo" Width="100%" AutoGenerateColumns="False" 
                             OnRowDeleting="gridPolicyItem_RowDeleting" 
-                            OnRowDeleted="gridPolicyItem_RowDeleted"
+                            OnRowDeleted="gridPolicyItem_RowDeleted" OnCustomCallback="gridPolicyItem_CustomCallback"
                              >
                                 <%-- BeginRegion Columns --%>
                                     <Columns>

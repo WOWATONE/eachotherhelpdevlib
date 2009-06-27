@@ -134,9 +134,43 @@ namespace BrokerWebApp.inoutbalance
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            //String thenoticeNo = saveVoucher(e.Parameter);
-            //e.Result = thenoticeNo;
+            String thenoticeNo = e.Parameter;
+            saveFee(thenoticeNo);
+            e.Result = thenoticeNo;
         }
+
+        private void saveFee(String polPeriodIds)
+        {
+            BusinessObjects.BO_Fee objLoad;
+            BusinessObjects.Policy.BO_PolicyPeriod obj;
+            String[] ppids;
+            ppids = polPeriodIds.Split(new String[] { "," }, StringSplitOptions.None);
+
+            Boolean exist = false;
+            foreach (String s in ppids)
+            {
+                if (s.Trim() != "")
+                {
+                    if (s.Trim().Length == 36)
+                    {
+                        exist = BusinessObjects.BO_Fee.PolPeriodExist(s);
+                        if (!exist)
+                        {
+                            obj = new BusinessObjects.Policy.BO_PolicyPeriod(s);
+                            objLoad = new BusinessObjects.BO_Fee();
+                            objLoad.FeeId = Guid.NewGuid().ToString();
+                            objLoad.PolPeriodID = s;
+                            objLoad.VoucherID = this.txtVoucherId.Value;
+                            objLoad.Fee = obj.PayFeeBase;
+                            objLoad.FeeAdjust = obj.PayFeeBase;
+                            objLoad.Save(ModifiedAction.Insert);
+                        }
+                    }
+                }
+            }
+            
+        }
+
 
     }
 }
