@@ -88,10 +88,11 @@ namespace BrokerWebApp.inoutbalance
                 if (includePolPeriodId)
                     sWhere = sBefore + sWhere + sAfter;
                 else
-                    sWhere = " and a.NoticeNo !='' ";
+                    sWhere = " and a.NoticeNo !='' and a.NoticeNo ='-1' ";
             }
             else
             {
+                savePolicyPeriod(this.dxetxtNoticeNo.Text.Trim(),this.txtSelectedPolPeriodIds.Value);
                 sWhere = " and a.NoticeNo ='" + this.dxetxtNoticeNo.Text.Trim() + "'"; ;
             }
             DataTable dt = BO_Notice.GetFeeNoticeAddList(sWhere).Tables[0];
@@ -200,6 +201,26 @@ namespace BrokerWebApp.inoutbalance
             }
         }
 
+
+        private void savePolicyPeriod(String noticeNo, String polPeriodIds)
+        {
+            BusinessObjects.Policy.BO_PolicyPeriod obj;
+            String[] ppids;
+            ppids = polPeriodIds.Split(new String[] { ";" }, StringSplitOptions.None);
+
+            foreach (String s in ppids)
+            {
+                if (s.Trim() != "")
+                {
+                    if (s.Trim().Length == 36)
+                    {
+                        obj = new BusinessObjects.Policy.BO_PolicyPeriod(s);
+                        obj.NoticeNo = noticeNo;
+                        obj.Save(ModifiedAction.Update);
+                    }
+                }
+            }
+        }
 
     }
 
