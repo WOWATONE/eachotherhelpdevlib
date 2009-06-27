@@ -19,7 +19,7 @@ namespace BusinessObjects
 
         public BO_Fee(String id)
         {
-            //fetchByID(id);
+            fetchByID(id);
         }
 
         public enum FieldList
