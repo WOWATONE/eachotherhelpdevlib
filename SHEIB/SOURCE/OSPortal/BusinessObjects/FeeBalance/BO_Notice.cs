@@ -138,13 +138,123 @@ namespace BusinessObjects
         }
 
 
-
+        public void Save(ModifiedAction action)
+        {
+            if (action == ModifiedAction.Insert)
+            {
+                add();
+            }
+            else
+            {
+                update();
+            }
+        }
 
 
 
 
 
         #endregion Methods
+
+
+        #region Procedure
+
+
+        private void add()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT INTO Notice ( ");
+            sb.Append(" NoticeNo, NoticeDate, [Content], GatheringType, ");
+            sb.Append(" CreatePersion, CreateTime, AuditTime, AuditPersion, AuditStatus ");
+            
+            sb.Append(")");
+            sb.Append(" VALUES( ");
+            sb.Append(" @NoticeNo, @NoticeDate, @Content, @GatheringType, ");
+            sb.Append(" @CreatePersion, @CreateTime, @AuditTime, @AuditPersion, @AuditStatus ");
+            
+            sb.Append(" )");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@NoticeNo", DbType.String, this.NoticeNo);
+            _db.AddInParameter(dbCommand, "@NoticeDate", DbType.DateTime, this.NoticeDate);
+            _db.AddInParameter(dbCommand, "@Content", DbType.String, this.Content);
+            _db.AddInParameter(dbCommand, "@GatheringType", DbType.String, this.GatheringType);
+            _db.AddInParameter(dbCommand, "@CreatePersion", DbType.String, this.CreatePersion);
+            _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
+            _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
+            _db.AddInParameter(dbCommand, "@AuditPersion", DbType.String, this.AuditPersion);
+            _db.AddInParameter(dbCommand, "@AuditStatus", DbType.String, this.AuditStatus);
+
+            //ExecuteScalar return the value of first column in first row.
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+
+        private void update()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("UPDATE PolicyDoc SET ");
+            sb.Append(" NoticeDate=@NoticeDate, [Content]=@Content, GatheringType=@GatheringType, CreatePersion=@CreatePersion, ");
+            sb.Append(" CreateTime=@CreateTime, AuditTime=@AuditTime, AuditPersion=@AuditPersion, AuditStatus=@AuditStatus  ");
+            sb.Append(" Where NoticeNo=@NoticeNo;");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@NoticeNo", DbType.String, this.NoticeNo);
+            _db.AddInParameter(dbCommand, "@NoticeDate", DbType.DateTime, this.NoticeDate);
+            _db.AddInParameter(dbCommand, "@Content", DbType.String, this.Content);
+            _db.AddInParameter(dbCommand, "@GatheringType", DbType.String, this.GatheringType);
+            _db.AddInParameter(dbCommand, "@CreatePersion", DbType.String, this.CreatePersion);
+            _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
+            _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
+            _db.AddInParameter(dbCommand, "@AuditPersion", DbType.String, this.AuditPersion);
+            _db.AddInParameter(dbCommand, "@AuditStatus", DbType.String, this.AuditStatus);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
+
+
+
+        private void fetchByID(String id)
+        {
+            //StringBuilder sb = new StringBuilder();
+            //sb.Append("SELECT PolicyDocID, PolicyID, DocName, DocURL ");
+            //sb.Append(" FROM PolicyDoc ");
+            //sb.Append("  ");
+            //sb.Append(" WHERE A.PolicyDocID = @PolicyDocID");
+            //sb.Append(" ");
+            //sb.Append(" ");
+            ////sb.Append(" ");
+            ////sb.Append(" ");
+            ////sb.Append(" ");
+            ////sb.Append(" ");
+            ////sb.Append(" ");
+
+            //DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            //_db.AddInParameter(dbCommand, "@PolicyDocID", DbType.String, id);
+
+
+            //using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            //{
+            //    if (reader.Read())
+            //    {
+            //        this.PolicyDocID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PolicyDocID));
+            //        this.PolicyID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PolicyID));
+            //        this.DocName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DocName));
+            //        this.DocURL = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DocURL));
+
+            //    }
+            //}
+
+        }
+
+
+
+        #endregion Procedure
+
 
 
     }
