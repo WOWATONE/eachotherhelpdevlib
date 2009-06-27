@@ -148,6 +148,28 @@ namespace BusinessObjects
 
         }
 
+        
+        public static string GetVoucherNo()
+        {
+            string id = "";
+            StringBuilder sb = new StringBuilder();
+            sb.Append("EXEC GetVoucherNo @VoucherNo OUTPUT;");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddOutParameter(dbCommand, "@VoucherNo", DbType.String, 10);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+            id = _db.GetParameterValue(dbCommand, "@VoucherNo").ToString();
+
+            return id;
+
+        }
+
+
+
+
 
     }
 }
