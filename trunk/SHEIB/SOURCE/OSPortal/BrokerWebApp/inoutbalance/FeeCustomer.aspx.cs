@@ -12,6 +12,7 @@ namespace BrokerWebApp.inoutbalance
 {
     public partial class FeeCustomer : System.Web.UI.Page
     {
+
         #region Variables
 
         private DataTable _dtGrid;
@@ -21,9 +22,9 @@ namespace BrokerWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Initialization();
             if (!IsPostBack && !IsCallback)
-            {
-                Initialization();
+            {                
                 dxeddlAuditStatus.SelectedIndex = 0;
                 BindGrid();
             }
@@ -168,6 +169,16 @@ namespace BrokerWebApp.inoutbalance
         protected void btnSearch_Click(object sender, EventArgs e)
         {
            BindGrid();
+        }
+
+        protected void gridSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            BindGrid();
+        }
+
+        protected void btnXlsExport_Click(object sender, EventArgs e)
+        {
+            this.gridExport.WriteXlsToResponse();
         }
 
 
