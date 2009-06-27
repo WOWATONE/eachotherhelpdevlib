@@ -80,8 +80,7 @@ namespace BusinessObjects
             sb.Append("CarrierID,BranchID,Period,PayDate,PayFeeBase,");
             sb.Append("CiPremium,AciPremium,CstPremium");
             sb.Append(" from PolicyPeriod a,Policy b");
-            sb.Append(" where a.PolicyID=b.PolicyID ");
-            sb.Append(" and a.NoticeNo!= '' ");
+            sb.Append(" where a.PolicyID=b.PolicyID ");            
             sb.Append(sWhere);
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
