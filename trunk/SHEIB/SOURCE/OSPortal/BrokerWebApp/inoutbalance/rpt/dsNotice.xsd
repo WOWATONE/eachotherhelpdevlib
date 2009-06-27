@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsNotice" targetNamespace="http://tempuri.org/dsNotice.xsd" xmlns:mstns="http://tempuri.org/dsNotice.xsd" xmlns="http://tempuri.org/dsNotice.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsNotice" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsNotice" msprop:Generator_UserDSName="dsNotice" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Notice" msprop:Generator_UserTableName="Notice" msprop:Generator_RowDeletedName="NoticeRowDeleted" msprop:Generator_TableClassName="NoticeDataTable" msprop:Generator_RowChangedName="NoticeRowChanged" msprop:Generator_RowClassName="NoticeRow" msprop:Generator_RowChangingName="NoticeRowChanging" msprop:Generator_RowEvArgName="NoticeRowChangeEvent" msprop:Generator_RowEvHandlerName="NoticeRowChangeEventHandler" msprop:Generator_TablePropName="Notice" msprop:Generator_TableVarName="tableNotice" msprop:Generator_RowDeletingName="NoticeRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NoticeNo" msprop:Generator_UserColumnName="NoticeNo" msprop:Generator_ColumnPropNameInRow="NoticeNo" msprop:Generator_ColumnVarNameInTable="columnNoticeNo" msprop:Generator_ColumnPropNameInTable="NoticeNoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="NoticeDate" msprop:Generator_UserColumnName="NoticeDate" msprop:Generator_ColumnPropNameInRow="NoticeDate" msprop:Generator_ColumnVarNameInTable="columnNoticeDate" msprop:Generator_ColumnPropNameInTable="NoticeDateColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CustomerName" msprop:Generator_UserColumnName="CustomerName" msprop:Generator_ColumnPropNameInRow="CustomerName" msprop:Generator_ColumnVarNameInTable="columnCustomerName" msprop:Generator_ColumnPropNameInTable="CustomerNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Carrier" msprop:Generator_UserColumnName="Carrier" msprop:Generator_ColumnPropNameInRow="Carrier" msprop:Generator_ColumnVarNameInTable="columnCarrier" msprop:Generator_ColumnPropNameInTable="CarrierColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PayFee" msprop:Generator_UserColumnName="PayFee" msprop:Generator_ColumnPropNameInRow="PayFee" msprop:Generator_ColumnVarNameInTable="columnPayFee" msprop:Generator_ColumnPropNameInTable="PayFeeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PayFeeUpper" msprop:Generator_UserColumnName="PayFeeUpper" msprop:Generator_ColumnPropNameInRow="PayFeeUpper" msprop:Generator_ColumnVarNameInTable="columnPayFeeUpper" msprop:Generator_ColumnPropNameInTable="PayFeeUpperColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AciPremium" msprop:Generator_UserColumnName="AciPremium" msprop:Generator_ColumnPropNameInRow="AciPremium" msprop:Generator_ColumnVarNameInTable="columnAciPremium" msprop:Generator_ColumnPropNameInTable="AciPremiumColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CstPremium" msprop:Generator_UserColumnName="CstPremium" msprop:Generator_ColumnPropNameInRow="CstPremium" msprop:Generator_ColumnVarNameInTable="columnCstPremium" msprop:Generator_ColumnPropNameInTable="CstPremiumColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CiPremium" msprop:Generator_UserColumnName="CiPremium" msprop:Generator_ColumnPropNameInRow="CiPremium" msprop:Generator_ColumnVarNameInTable="columnCiPremium" msprop:Generator_ColumnPropNameInTable="CiPremiumColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FeeCompany" msprop:Generator_UserColumnName="FeeCompany" msprop:Generator_ColumnPropNameInRow="FeeCompany" msprop:Generator_ColumnVarNameInTable="columnFeeCompany" msprop:Generator_ColumnPropNameInTable="FeeCompanyColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FeeAccount" msprop:Generator_UserColumnName="FeeAccount" msprop:Generator_ColumnPropNameInRow="FeeAccount" msprop:Generator_ColumnVarNameInTable="columnFeeAccount" msprop:Generator_ColumnPropNameInTable="FeeAccountColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FeeBankName" msprop:Generator_UserColumnName="FeeBankName" msprop:Generator_ColumnPropNameInRow="FeeBankName" msprop:Generator_ColumnVarNameInTable="columnFeeBankName" msprop:Generator_ColumnPropNameInTable="FeeBankNameColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="NoticePolicy" msprop:Generator_UserTableName="NoticePolicy" msprop:Generator_RowDeletedName="NoticePolicyRowDeleted" msprop:Generator_TableClassName="NoticePolicyDataTable" msprop:Generator_RowChangedName="NoticePolicyRowChanged" msprop:Generator_RowClassName="NoticePolicyRow" msprop:Generator_RowChangingName="NoticePolicyRowChanging" msprop:Generator_RowEvArgName="NoticePolicyRowChangeEvent" msprop:Generator_RowEvHandlerName="NoticePolicyRowChangeEventHandler" msprop:Generator_TablePropName="NoticePolicy" msprop:Generator_TableVarName="tableNoticePolicy" msprop:Generator_RowDeletingName="NoticePolicyRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProdTypeName" msdata:Caption="NoticeNo" msprop:Generator_UserColumnName="ProdTypeName" msprop:Generator_ColumnPropNameInRow="ProdTypeName" msprop:Generator_ColumnVarNameInTable="columnProdTypeName" msprop:Generator_ColumnPropNameInTable="ProdTypeNameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PolicyNo" msdata:Caption="NoticeDate" msprop:Generator_UserColumnName="PolicyNo" msprop:Generator_ColumnPropNameInRow="PolicyNo" msprop:Generator_ColumnVarNameInTable="columnPolicyNo" msprop:Generator_ColumnPropNameInTable="PolicyNoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PolicyID" msdata:Caption="CustomerName" msprop:Generator_UserColumnName="PolicyID" msprop:Generator_ColumnPropNameInRow="PolicyID" msprop:Generator_ColumnVarNameInTable="columnPolicyID" msprop:Generator_ColumnPropNameInTable="PolicyIDColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PayFee" msprop:Generator_UserColumnName="PayFee" msprop:Generator_ColumnPropNameInRow="PayFee" msprop:Generator_ColumnVarNameInTable="columnPayFee" msprop:Generator_ColumnPropNameInTable="PayFeeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="NoticeNo" msprop:Generator_UserColumnName="NoticeNo" msprop:Generator_ColumnPropNameInRow="NoticeNo" msprop:Generator_ColumnVarNameInTable="columnNoticeNo" msprop:Generator_ColumnPropNameInTable="NoticeNoColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
