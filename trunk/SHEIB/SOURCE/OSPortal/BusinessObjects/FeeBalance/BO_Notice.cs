@@ -15,6 +15,11 @@ namespace BusinessObjects
     {
         public BO_Notice() { }
 
+        public BO_Notice(String id)
+        {
+            fetchByID(id);
+        }
+
         public enum FieldList
         {
             NoticeNo,
@@ -25,7 +30,10 @@ namespace BusinessObjects
             CreateTime,
             AuditStatus,
             AuditTime,
-            AuditPersion
+            AuditPersion,
+            GatheringTypeName,
+            CreatePersionName,
+            AuditPersionName
         }
 
         #region Property
@@ -177,12 +185,26 @@ namespace BusinessObjects
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
             _db.AddInParameter(dbCommand, "@NoticeNo", DbType.String, this.NoticeNo);
-            _db.AddInParameter(dbCommand, "@NoticeDate", DbType.DateTime, this.NoticeDate);
+
+            if (this.NoticeDate == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@NoticeDate", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@NoticeDate", DbType.DateTime, this.NoticeDate);
+
+            
             _db.AddInParameter(dbCommand, "@Content", DbType.String, this.Content);
             _db.AddInParameter(dbCommand, "@GatheringType", DbType.String, this.GatheringType);
             _db.AddInParameter(dbCommand, "@CreatePersion", DbType.String, this.CreatePersion);
-            _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
-            _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
+
+            if (this.CreateTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
+
+            if (this.AuditTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
             _db.AddInParameter(dbCommand, "@AuditPersion", DbType.String, this.AuditPersion);
             _db.AddInParameter(dbCommand, "@AuditStatus", DbType.String, this.AuditStatus);
 
@@ -202,12 +224,26 @@ namespace BusinessObjects
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
             _db.AddInParameter(dbCommand, "@NoticeNo", DbType.String, this.NoticeNo);
-            _db.AddInParameter(dbCommand, "@NoticeDate", DbType.DateTime, this.NoticeDate);
+
+            if (this.NoticeDate == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@NoticeDate", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@NoticeDate", DbType.DateTime, this.NoticeDate);
+            
             _db.AddInParameter(dbCommand, "@Content", DbType.String, this.Content);
             _db.AddInParameter(dbCommand, "@GatheringType", DbType.String, this.GatheringType);
             _db.AddInParameter(dbCommand, "@CreatePersion", DbType.String, this.CreatePersion);
-            _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
-            _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
+
+            if (this.CreateTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
+
+            if (this.AuditTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, null);
+            else
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
+            
             _db.AddInParameter(dbCommand, "@AuditPersion", DbType.String, this.AuditPersion);
             _db.AddInParameter(dbCommand, "@AuditStatus", DbType.String, this.AuditStatus);
 
@@ -219,35 +255,40 @@ namespace BusinessObjects
 
         private void fetchByID(String id)
         {
-            //StringBuilder sb = new StringBuilder();
-            //sb.Append("SELECT PolicyDocID, PolicyID, DocName, DocURL ");
-            //sb.Append(" FROM PolicyDoc ");
-            //sb.Append("  ");
-            //sb.Append(" WHERE A.PolicyDocID = @PolicyDocID");
-            //sb.Append(" ");
-            //sb.Append(" ");
-            ////sb.Append(" ");
-            ////sb.Append(" ");
-            ////sb.Append(" ");
-            ////sb.Append(" ");
-            ////sb.Append(" ");
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ");
+            sb.Append("NoticeNo,NoticeDate,Content,");
+            sb.Append("GatheringType,CreatePersion,CreateTime,AuditStatus,AuditTime,AuditPersion,");
+            sb.Append("(Select GatheringTypeName From GatheringType Where GatheringTypeID=a.GatheringType) GatheringTypeName,");
+            sb.Append("CreatePersionName,AuditPersionName");
+            sb.Append(" From NoticePolicyPeriod a ");
+            sb.Append(" where NoticeNo=@NoticeNo ");
 
-            //DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
-            //_db.AddInParameter(dbCommand, "@PolicyDocID", DbType.String, id);
+            _db.AddInParameter(dbCommand, "@NoticeNo", DbType.String, id);
 
 
-            //using (IDataReader reader = _db.ExecuteReader(dbCommand))
-            //{
-            //    if (reader.Read())
-            //    {
-            //        this.PolicyDocID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PolicyDocID));
-            //        this.PolicyID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PolicyID));
-            //        this.DocName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DocName));
-            //        this.DocURL = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DocURL));
+            using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                if (reader.Read())
+                {
+                    this.NoticeNo = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.NoticeNo));
+                    this.NoticeDate = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.NoticeDate));
+                    this.Content = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Content));
+                    this.GatheringType = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.GatheringType));
 
-            //    }
-            //}
+                    this.CreatePersion = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CreatePersion));
+                    this.CreateTime = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.CreateTime));
+                    this.AuditStatus = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.AuditStatus));
+                    this.AuditTime = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.AuditTime));
+                    this.AuditPersion = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.AuditPersion));
+                    this.GatheringTypeName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.GatheringTypeName));
+                    this.CreatePersionName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CreatePersionName));
+                    this.AuditPersionName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.AuditPersionName));
+                    
+                }
+            }
 
         }
 
