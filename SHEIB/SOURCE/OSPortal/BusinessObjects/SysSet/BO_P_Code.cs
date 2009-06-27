@@ -17,6 +17,12 @@ namespace BusinessObjects
 
         public BO_P_Code() { }
 
+        public enum GatheringType
+        {
+            Agent=1,
+            Direct=2            
+        }
+
         public enum PCodeType
         {
             CodeTypeID,
