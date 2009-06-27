@@ -69,7 +69,7 @@
 
         function btnOk_Click() {
 
-            gridSearchResult.GetSelectedFieldValues("PolPeriodId", getTheSelectedRowsValues);
+            gridSearchResult.GetSelectedFieldValues("NoticeNo", getTheSelectedRowsValues);
 
         }
 
@@ -290,7 +290,7 @@
                         <tr>
                             <td>
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
-                                    KeyFieldName="NoticeId" AutoGenerateColumns="False" Settings-ShowFooter="true"
+                                    KeyFieldName="NoticeNo" AutoGenerateColumns="False" Settings-ShowFooter="true"
                                     Width="100%" SettingsPager-AlwaysShowPager="true" 
                                     >
                                     <%-- BeginRegion Columns --%>
