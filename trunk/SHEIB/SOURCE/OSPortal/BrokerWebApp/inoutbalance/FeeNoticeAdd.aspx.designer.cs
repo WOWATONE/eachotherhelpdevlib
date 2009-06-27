@@ -41,13 +41,13 @@ namespace BrokerWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtNoticeNo;
         
         /// <summary>
-        /// deNoticeDate control.
+        /// dxeNoticeDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deNoticeDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeNoticeDate;
         
         /// <summary>
         /// btnAddPolicy control.

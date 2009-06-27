@@ -84,19 +84,48 @@
         function dxebtntopSave_Click(s, e) {
             //
             if (s.CauseValidation()) {
-                //var thejsonstring = makePolicyJSON();
-                //dxeSaveCallback.PerformCallback(thejsonstring);
+                var thejsonstring = makeNoticeInfoJSON();
+                dxeSaveCallback.PerformCallback(thejsonstring);
             }
         }
         
         function saveCallbackComplete(s, e) {
             //do nothing;
-            //policyBaseCompleteEnable();
-            //
-            //var pid = dxetxtPolicyID.GetValueString();
-            //if (isEmpty(pid)) {
-            //    dxetxtPolicyID.SetValue(e.result);
-            //}
+            
+            var pid = dxetxtNoticeNo.GetValueString();
+            if (isEmpty(pid)) {
+                dxetxtNoticeNo.SetValue(e.result);
+            }
+        }
+
+        function makeNoticeInfoJSON() {
+
+            var GatheringType = dxeddlSourceTypeID.GetValue();
+            var NoticeNo = dxetxtNoticeNo.GetValueString();
+            var NoticeDate = dxeNoticeDate.GetValue();
+            var plc = new NoticeInfo(GatheringType, NoticeNo, NoticeDate);
+
+            //deserialize JSON string, make a JSON object
+            //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
+
+            //serialize a JOSN object，make a JSON string.
+            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
+
+            return jsonStringClient;
+
+        }
+        
+        
+        function NoticeInfo(GatheringType, NoticeNo, NoticeDate) {
+            if (!isEmpty(GatheringType))
+                this.GatheringType = GatheringType;
+
+            if (!isEmpty(NoticeNo))
+                this.NoticeNo = NoticeNo;
+
+            if (!isEmpty(NoticeDate))
+                this.NoticeDate = NoticeDate;           
+
         }
         
     </script>
@@ -134,7 +163,7 @@
                 通知日期：
             </td>
             <td style="text-align: left;">
-                <dxe:ASPxDateEdit ID="deNoticeDate" runat="server" Width="180px">
+                <dxe:ASPxDateEdit ID="dxeNoticeDate" ClientInstanceName="dxeNoticeDate" runat="server" Width="180px">
                 </dxe:ASPxDateEdit>
             </td>
         </tr>

@@ -6,7 +6,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using BusinessObjects;
-
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
+using System.IO;
+using System.Text;
 
 namespace BrokerWebApp.inoutbalance
 {
@@ -27,7 +30,7 @@ namespace BrokerWebApp.inoutbalance
 
             if (!this.Page.IsPostBack)
             {                
-                deNoticeDate.Date = DateTime.Today;
+                dxeNoticeDate.Date = DateTime.Today;
                 this.dxetxtNoticeNo.Text = Page.Request.QueryString[inputQueryStringIDKey];
             }
             else
@@ -105,7 +108,7 @@ namespace BrokerWebApp.inoutbalance
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {            
             //String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
-            //String thePolicyID = savePolicy(e.Parameter, policystatus);
+            //String thePolicyID = saveNotice(e.Parameter, policystatus);
             //e.Result = thePolicyID;
         }
 
@@ -126,7 +129,59 @@ namespace BrokerWebApp.inoutbalance
             this.gridPolicyItem.DataBind();
         }
 
-        
+
+        private string savePolicy(String parameter, String policyState)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BusinessObjects.BO_Notice));
+            BusinessObjects.BO_Notice obj;
+
+            obj = (BusinessObjects.BO_Notice)serializer.ReadObject(ms);
+            ms.Close();
+
+            if (String.IsNullOrEmpty(obj.NoticeNo))
+            {
+                if (obj.GatheringType == Convert.ToInt32(BO_P_Code.GatheringType.Agent).ToString())
+                    obj.NoticeNo = TranUtils.GetNoticeIDDirect();
+                else
+                    obj.NoticeNo = TranUtils.GetNoticeIDAgent();
+                //obj.PolicyStatus = policyState;
+                //obj.PolicyType = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyTypeEnum.Other).ToString();
+                //obj.Save(ModifiedAction.Insert);
+            }
+            else
+            {
+                //obj.PolicyStatus = policyState;
+                obj.Save(ModifiedAction.Update);
+            }
+
+            return obj.NoticeNo;
+
+        }
+
 
     }
+
+    [DataContract(Namespace = "http://www.sheib.com")]
+    public class NoticeInfo
+    {
+        public NoticeInfo()
+        { }
+
+
+        [DataMember]
+        public string GatheringType { get; set; }
+
+        [DataMember]
+        public string NoticeNo { get; set; }
+
+        [DataMember]
+        public string NoticeDate { get; set; }
+
+
+    }
+
+
 }
