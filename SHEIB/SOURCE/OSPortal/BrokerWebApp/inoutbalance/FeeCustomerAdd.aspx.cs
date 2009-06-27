@@ -57,14 +57,14 @@ namespace BrokerWebApp.inoutbalance
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            String thenoticeNo = saveNotice(e.Parameter);
+            String thenoticeNo = saveVoucher(e.Parameter);
             e.Result = thenoticeNo;
         }
 
 
         protected void dxeAuditCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            auditNotice(e.Parameter);
+            auditVoucher(e.Parameter);
             e.Result = "ok";
         }
 
@@ -102,7 +102,7 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
-        private string saveNotice(String parameter)
+        private string saveVoucher(String parameter)
         {
             String json = parameter;
 
@@ -141,7 +141,7 @@ namespace BrokerWebApp.inoutbalance
 
         }
 
-        private void auditNotice(String parameter)
+        private void auditVoucher(String parameter)
         {
             String json = parameter;
 

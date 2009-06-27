@@ -18,6 +18,7 @@
     TagPrefix="dxwsc" %>
 <%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v8.3" Namespace="DevExpress.Web.ASPxHtmlEditor"
     TagPrefix="dxhe" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
     
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>客户收费选择</title>
@@ -79,20 +80,24 @@
                 return;
             }
             else {
-                var thevalues = "";
+                //var thevalues = "";
 
-                for (i = 0; i < selectedValues.length; i++) {
-                    if (thevalues == "") {
-                        thevalues = selectedValues[i];
-                    }
-                    else {
-                        thevalues = thevalues + ";" + selectedValues[i];
-                    }
-                }
+                //for (i = 0; i < selectedValues.length; i++) {
+                //    if (thevalues == "") {
+                //        thevalues = selectedValues[i];
+                //    }
+                //    else {
+                //        thevalues = thevalues + ";" + selectedValues[i];
+                //    }
+                //}
 
-                window.returnValue = thevalues;
-                window.close();
+                dxeSaveCallback.PerformCallback(selectedValues);
             }
+        }
+
+        function saveCallbackComplete(s, e) {
+            window.returnValue = e.result;
+            window.close();
         }
         
         function isEmpty(testVar) {
@@ -108,6 +113,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
+    <input type="hidden" id="txtVoucherId" runat="server" value="" />
     <table style="width: 100%">
         <tr>
             <td style="width: 100%;" colspan="2">

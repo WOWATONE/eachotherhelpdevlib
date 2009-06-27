@@ -15,7 +15,8 @@ namespace BrokerWebApp.inoutbalance
 
         #region Variables
 
-        //
+        private const string inputQueryStringIDKey = "ID";
+        //url
 
         #endregion Variables
 
@@ -27,6 +28,7 @@ namespace BrokerWebApp.inoutbalance
             {
                 ckbNeedPayFeePolicy.Checked = true;
                 BindGrid();
+                this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
             }
         }
 
@@ -130,6 +132,11 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
+        protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            //String thenoticeNo = saveVoucher(e.Parameter);
+            //e.Result = thenoticeNo;
+        }
 
     }
 }
