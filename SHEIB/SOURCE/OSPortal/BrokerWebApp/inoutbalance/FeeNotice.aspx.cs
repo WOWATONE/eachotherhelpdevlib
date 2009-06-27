@@ -163,7 +163,10 @@ namespace BrokerWebApp.inoutbalance
             this.gridSearchResult.DataBind();
         }
 
-
+        protected void gridSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            BindGrid();
+        }
 
     }
 }
