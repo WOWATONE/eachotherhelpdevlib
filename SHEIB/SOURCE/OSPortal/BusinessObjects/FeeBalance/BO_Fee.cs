@@ -17,6 +17,11 @@ namespace BusinessObjects
 
         public BO_Fee() { }
 
+        public BO_Fee(String id)
+        {
+            //fetchByID(id);
+        }
+
         public enum FieldList
         {
             FeeId,
@@ -27,14 +32,123 @@ namespace BusinessObjects
         }
 
         #region Property
+
         public string FeeId { get; set; }
         public string VoucherID { get; set; }
         public string PolPeriodID { get; set; }
-        public Double Fee { get; set; }
-        public Double FeeAdjust { get; set; }
+        public Decimal  Fee { get; set; }
+        public Decimal FeeAdjust { get; set; }
 
 
         #endregion Property
+
+
+        #region Methods
+
+        public void Save(ModifiedAction action)
+        {
+            if (action == ModifiedAction.Insert)
+            {
+                add();
+            }
+            else
+            {
+                update();
+            }
+        }
+
+
+        #endregion Methods
+
+
+        #region Procedure
+
+
+        private void add()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT INTO Fee ( ");
+            sb.Append("  FeeId, PolPeriodID, VoucherID, Fee, FeeAdjust ");
+            sb.Append(")");
+            sb.Append(" VALUES( ");
+            sb.Append("  @FeeId, @PolPeriodID, @VoucherID, @Fee, @FeeAdjust ");
+            sb.Append(" )");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@FeeId", DbType.String, this.FeeId);
+            _db.AddInParameter(dbCommand, "@PolPeriodID", DbType.String, this.PolPeriodID);
+            _db.AddInParameter(dbCommand, "@VoucherID", DbType.String, this.VoucherID);
+            
+            _db.AddInParameter(dbCommand, "@Fee", DbType.Decimal, this.Fee);
+            _db.AddInParameter(dbCommand, "@FeeAdjust", DbType.Decimal, this.FeeAdjust);
+
+            //ExecuteScalar return the value of first column in first row.
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+
+        private void update()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("UPDATE Fee SET ");
+            sb.Append(" PolPeriodID=@PolPeriodID, VoucherID=@VoucherID, Fee=@Fee, FeeAdjust=@FeeAdjust ");
+            sb.Append(" Where FeeId=@FeeId;");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@FeeId", DbType.String, this.FeeId);
+            _db.AddInParameter(dbCommand, "@PolPeriodID", DbType.String, this.PolPeriodID);
+            _db.AddInParameter(dbCommand, "@VoucherID", DbType.String, this.VoucherID);
+
+            _db.AddInParameter(dbCommand, "@Fee", DbType.Decimal, this.Fee);
+            _db.AddInParameter(dbCommand, "@FeeAdjust", DbType.Decimal, this.FeeAdjust);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
+
+
+
+        private void fetchByID(String id)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT  FeeId, PolPeriodID, VoucherID, Fee, FeeAdjust ");
+            sb.Append(" FROM Fee ");
+            sb.Append(" WHERE FeeId = @FeeId");
+            sb.Append(" ");
+            sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+            //sb.Append(" ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@FeeId", DbType.String, id);
+
+
+            using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                if (reader.Read())
+                {
+                    this.FeeId = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.FeeId));
+                    this.PolPeriodID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PolPeriodID));
+                    this.VoucherID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.VoucherID));
+                    
+                    this.Fee = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Fee));
+
+                    this.FeeAdjust = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.FeeAdjust));
+
+                }
+            }
+        }
+
+
+
+        #endregion Procedure
+
 
 
     }
