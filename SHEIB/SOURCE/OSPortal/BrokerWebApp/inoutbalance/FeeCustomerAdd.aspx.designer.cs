@@ -221,39 +221,30 @@ namespace BrokerWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.Panel npExecuteAction;
         
         /// <summary>
-        /// ASPxButton3 control.
+        /// dxebtnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton3;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnSave;
         
         /// <summary>
-        /// ASPxButton5 control.
+        /// dxebtnAudit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton5;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnAudit;
         
         /// <summary>
-        /// ASPxButton2 control.
+        /// dxebtnClose control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton2;
-        
-        /// <summary>
-        /// btnClose control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnClose;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnClose;
     }
 }
