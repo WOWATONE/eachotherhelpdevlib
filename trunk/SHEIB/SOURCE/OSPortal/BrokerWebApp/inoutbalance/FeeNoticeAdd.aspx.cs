@@ -61,7 +61,7 @@ namespace BrokerWebApp.inoutbalance
             Boolean includePolPeriodId = false;
             String sBefore = " and (";
             String sAfter = " ) ";
-            String sWhere = " 1=1 ";
+            String sWhere = " ";
             if (String.IsNullOrEmpty(this.dxetxtNoticeNo.Text.Trim()))
             {
                 String strPolPeriodIds = this.txtSelectedPolPeriodIds.Value;
@@ -73,9 +73,15 @@ namespace BrokerWebApp.inoutbalance
                 {
                     if (s.Trim() != "")
                     {
-                        sWhere += " or a.PolPeriodId = '" + s.Trim() + "' ";
                         if (s.Trim().Length == 36)
+                        {
+                            if (sWhere.Trim() != "")
+                                sWhere += " or a.PolPeriodId = '" + s.Trim() + "' ";
+                            else
+                                sWhere += " a.PolPeriodId = '" + s.Trim() + "' ";
+                            
                             includePolPeriodId = true;
+                        }
                     }
                 }
 
@@ -170,22 +176,27 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.Save(ModifiedAction.Update);
             }
 
-            savePolicyPeriod();
+            savePolicyPeriod(objLoad.NoticeNo);
 
             return objLoad.NoticeNo;
 
         }
 
 
-        private void savePolicyPeriod()
+        private void savePolicyPeriod(String noticeNo)
         {
+            DataTable dt = getGridData();
             DataRow dr;
-            Int32 rowCount = this.gridPolicyItem.VisibleRowCount;
+            String thePolPeriodId;
+            BusinessObjects.Policy.BO_PolicyPeriod obj;
+            Int32 rowCount = dt.Rows.Count;
             for (Int32 i = 0; i < rowCount; i++)
             {
-                dr = this.gridPolicyItem.GetDataRow(i);
-                //this.gridPolicyItem.GetRow(i);
-                //this.gridPolicyItem.GetRowValues(i, new String[] { "PolPeriodId", "PolicyID" });
+                dr = dt.Rows[i];
+                thePolPeriodId = dr[0].ToString();
+                obj = new BusinessObjects.Policy.BO_PolicyPeriod(thePolPeriodId);
+                obj.NoticeNo = noticeNo;
+                obj.Save(ModifiedAction.Update);
             }
         }
 

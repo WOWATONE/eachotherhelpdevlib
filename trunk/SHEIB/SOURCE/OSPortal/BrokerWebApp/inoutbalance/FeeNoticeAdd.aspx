@@ -95,6 +95,8 @@
             var pid = dxetxtNoticeNo.GetValueString();
             if (isEmpty(pid)) {
                 dxetxtNoticeNo.SetValue(e.result);
+                var result = $("#<%=txtSelectedPolPeriodIds.ClientID %>");
+                result[0].value = "-1";
             }
         }
 
@@ -188,7 +190,7 @@
             </td>
             <td style="text-align: left;">
                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                    KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False"
+                    KeyFieldName="PolPeriodId" Width="100%" AutoGenerateColumns="False"
                     OnCustomCallback="gridPolicyItem_CustomCallback"
                     OnRowDeleting="gridPolicyItem_RowDeleting"
                     OnRowDeleted="gridPolicyItem_RowDeleted">
