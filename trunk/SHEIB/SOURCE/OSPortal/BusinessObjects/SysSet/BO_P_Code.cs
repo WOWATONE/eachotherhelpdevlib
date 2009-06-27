@@ -17,6 +17,15 @@ namespace BusinessObjects
 
         public BO_P_Code() { }
 
+        public enum AccountType
+        {
+            FeeCustomer_Direct=1,
+            FeeCustomer_Agent=2,
+            PayIn_Agent = 3,
+            PayIn_Direct = 4            
+        }
+
+
         public enum GatheringType
         {
             Agent=1,

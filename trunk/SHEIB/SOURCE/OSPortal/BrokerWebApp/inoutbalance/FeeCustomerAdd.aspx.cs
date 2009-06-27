@@ -6,22 +6,31 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using BusinessObjects;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Drawing;
+using System.IO;
+using System.Text;
+using DevExpress.Web.ASPxHtmlEditor;
+using DevExpress.Web.ASPxEditors;
+using DevExpress.Web.ASPxUploadControl;
 
 namespace BrokerWebApp.inoutbalance
 {
-    public partial class FeeCustomerAdd : System.Web.UI.Page
+    public partial class FeeCustomerAdd : BasePage
     {
+
         #region Variables
 
-        private DataTable _dtGrid;
+        
         #endregion Variables
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            init();
             if (!IsPostBack && !IsCallback)
-            {
-                init();
+            {                
                 BindGrid();
             }
         }
@@ -44,30 +53,21 @@ namespace BrokerWebApp.inoutbalance
 
         }
 
-        protected void gridPolicyItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
-        {
-            
-            e.Cancel = true;
-            this.gridPolicyItem.CancelEdit();
 
+
+        protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            String thenoticeNo = saveNotice(e.Parameter);
+            e.Result = thenoticeNo;
         }
 
-        protected void gridPolicyItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
+
+        protected void dxeAuditCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            this.gridPolicyItem.DataBind();
+            auditNotice(e.Parameter);
+            e.Result = "ok";
         }
 
-        protected void gridPolicyItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
-        {
-            
-            e.Cancel = true;
-            this.gridPolicyItem.CancelEdit();
-        }
-
-        protected void gridPolicyItem_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
-        {
-            this.gridPolicyItem.DataBind();
-        }
 
         protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
@@ -100,6 +100,128 @@ namespace BrokerWebApp.inoutbalance
             dxetxtCstPremium.Text = dt.Compute("Sum(CstPremium)", "").ToString();
 
         }
+
+
+        private string saveNotice(String parameter)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(InfoJSON));
+            InfoJSON obj;
+
+            obj = (InfoJSON)serializer.ReadObject(ms);
+            ms.Close();
+
+            BusinessObjects.BO_Voucher objLoad;
+            if (String.IsNullOrEmpty(obj.ID))
+            {
+                objLoad = new BO_Voucher();
+                
+                objLoad.VoucherId = TranUtils.GetVoucherNo();
+                objLoad.InvoiceNO = "";
+                objLoad.CreateTime = DateTime.Now;
+                objLoad.CreatePerson = this.CurrentUserID;
+                objLoad.AccountTypeID = Convert.ToInt32(BO_P_Code.AccountType.FeeCustomer_Direct);
+                objLoad.FeeDate = obj.GotDate;
+                objLoad.AuditStatus = Convert.ToInt32(BO_P_Code.AuditStatus.Appeal).ToString();
+                objLoad.Remark = obj.Remark;
+                objLoad.Save(ModifiedAction.Insert);
+            }
+            else
+            {
+                objLoad = new BO_Voucher(obj.ID);
+                objLoad.FeeDate = obj.GotDate;
+                objLoad.Remark  = obj.Remark;
+                objLoad.Save(ModifiedAction.Update);
+            }                      
+
+            return objLoad.VoucherId;
+            
+
+        }
+
+        private void auditNotice(String parameter)
+        {
+            //String json = parameter;
+
+            //MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            //DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(NoticeInfo));
+            //NoticeInfo obj;
+
+            //obj = (NoticeInfo)serializer.ReadObject(ms);
+            //ms.Close();
+
+            //BusinessObjects.BO_Notice objLoad;
+            //if (String.IsNullOrEmpty(obj.NoticeNo))
+            //{
+            //    //
+            //}
+            //else
+            //{
+            //    objLoad = new BO_Notice(obj.NoticeNo);
+            //    objLoad.AuditStatus = obj.AuditStatus;
+            //    objLoad.Save(ModifiedAction.Update);
+            //}
+
+        }
+
+        private void loadValue(String noticeNO)
+        {
+            //if (String.IsNullOrEmpty(noticeNO.Trim())) return;
+
+            //ListEditItem theselected;
+            //BusinessObjects.BO_Notice obj;
+
+            //obj = new BusinessObjects.BO_Notice(noticeNO);
+
+
+
+            ////dxeddlDeptID
+            //if (!String.IsNullOrEmpty(obj.GatheringType))
+            //{
+            //    theselected = this.dxeddlGatheringType.Items.FindByValue(obj.GatheringType);
+            //    if (theselected != null)
+            //    {
+            //        dxeddlGatheringType.SelectedItem = theselected;
+            //    }
+            //}
+
+            //this.dxeNoticeDate.Date = obj.NoticeDate;
+            //if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
+            //{
+            //    this.dxebtnAudit.Text = "反审核";
+            //}
+            //else
+            //{
+            //    this.dxebtnAudit.Text = "审核";
+            //}
+
+        }
+
+
+        [DataContract(Namespace = "http://www.sheib.com")]
+        public class InfoJSON
+        {
+            public InfoJSON()
+            { }
+
+
+            [DataMember]
+            public string Remark { get; set; }
+
+            [DataMember]
+            public string ID { get; set; }
+
+            [DataMember]
+            public DateTime GotDate { get; set; }
+
+            [DataMember]
+            public string AuditStatus { get; set; }
+
+
+        }
+
 
 
     }

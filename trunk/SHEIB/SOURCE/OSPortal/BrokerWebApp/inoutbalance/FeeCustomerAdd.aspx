@@ -8,11 +8,47 @@
 <%@ Register assembly="DevExpress.Web.v8.3" namespace="DevExpress.Web.ASPxPopupControl" tagprefix="dxpc" %>
 <%@ Register Assembly="DevExpress.Web.ASPxSpellChecker.v8.3" Namespace="DevExpress.Web.ASPxSpellChecker" TagPrefix="dxwsc" %>
 <%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v8.3" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dxhe" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>客户收费录入</title>
     <script type="text/javascript">
+        function cusCheckNessary() {
+            var id = getVoucherId();
+            if (isEmpty(id)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+
+        }
+
+        function cusNotCompleteUnable() {
+            //debugger;
+            if (cusCheckNessary()) {
+                dxebtnSave.SetEnabled(true);
+                dxebtnAddPolicy.SetEnabled(false);
+                dxebtnAudit.SetEnabled(false);
+            }
+
+
+        }
+
+
+        function cusCompleteEnable() {
+            //debugger;
+            if (cusCheckNessary()) {
+                dxebtnSave.SetEnabled(true);
+                dxebtnAddPolicy.SetEnabled(true);
+                dxebtnAudit.SetEnabled(true);
+            }
+
+
+        }
+        
+        
         $(document).ready(function() {
             //jQuery.noticeAdd({
             //    text: 'This is a notification that you have to remove',
@@ -31,6 +67,9 @@
                     //do nothing
                 }
             };
+
+            cusNotCompleteUnable();
+            
 
         });
         
@@ -64,14 +103,35 @@
         function btnCloseClick() {
             window.close();
         }
+
+        function getVoucherId() {
+            var result = $("#<%=lblVoucherId.ClientID %>");
+            var id = result[0].innerHTML;
+            return id;
+        }
+
+        function isEmpty(testVar) {
+            if ((testVar == null) || (testVar.length == 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         
     </script>
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
+    <dxcb:ASPxCallback ID="dxeAuditCallback" ClientInstanceName="dxeAuditCallback" runat="server" OnCallback="dxeAuditCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {auditCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
     <table style="width:100%">
         <tr>
             <td>
@@ -90,13 +150,13 @@
                  <table style="width:100%">
                     <tr>
                         <td style="width:10%;text-align:right;">
-                            <dxe:ASPxButton runat="server" ID="btnAddPolicy" AutoPostBack="false" Text="添加保单">
+                            <dxe:ASPxButton runat="server" ID="dxebtnAddPolicy" ClientInstanceName="dxebtnAddPolicy" AutoPostBack="false" Text="添加保单">
                                 <ClientSideEvents Click="btnAddPolicyClick" />
                             </dxe:ASPxButton>
                             <input type="hidden" id="txtSelectedIds" runat="server" value="-1" />
                         </td>
                         <td style="width:12%;text-align:right;">流水号：</td>  
-                        <td style="width:78%;text-align:left;">001031</td>                                              
+                        <td style="width:78%;text-align:left;"><label id="lblVoucherId" runat="server" /></td>                                              
                     </tr> 
                     <tr>
                         <td colspan="3">
@@ -220,22 +280,22 @@
                 <asp:Panel ID="npOtherPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
                     <table style="width:100%">
                         <tr>
-                            <td style="width:13%;text-align:right;">本次应收保费：</td>
-                            <td style="width:17%;text-align:left;">
+                            <td style="width:15%;text-align:right;">本次应收保费：</td>
+                            <td style="width:15%;text-align:left;">
                                 <dxe:ASPxTextBox ID="dxetxtPayFee" ClientInstanceName="dxetxtPayFee" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="width:13%;text-align:right;">本次实收保费：</td>
                             <td style="width:17%;text-align:left;">
                                 <dxe:ASPxTextBox ID="dxetxtFee" ClientInstanceName="dxetxtFee" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="width:13%;text-align:right;">金额调整：</td>
                             <td style="width:17%;text-align:left;">
                                  <dxe:ASPxTextBox ID="dxetxtFeeAdjust" ClientInstanceName="dxetxtFeeAdjust" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td></td>                                  
@@ -244,19 +304,19 @@
                             <td style="width:13%;text-align:right;">其中，商业险保费：</td>
                             <td style="width:17%;text-align:left;">
                                 <dxe:ASPxTextBox ID="dxetxtCiPremium" ClientInstanceName="dxetxtCiPremium" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="width:13%;text-align:right;">交强险保费：</td>
                             <td style="width:17%;text-align:left;">
                                 <dxe:ASPxTextBox ID="dxetxtAciPremium" ClientInstanceName="dxetxtAciPremium" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="width:13%;text-align:right;">车船税:</td>
                             <td style="width:17%;text-align:left;">
                                 <dxe:ASPxTextBox ID="dxetxtCstPremium" ClientInstanceName="dxetxtCstPremium" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td></td>                                  
@@ -264,7 +324,7 @@
                         <tr>                            
                             <td style="text-align:right;">收款日期：</td>
                             <td style="text-align:left;">
-                                <dxe:ASPxDateEdit ID="deGotDate" runat="server"></dxe:ASPxDateEdit> 
+                                <dxe:ASPxDateEdit ID="dxeGotDate" ClientInstanceName="dxeGotDate" Width="120" runat="server"></dxe:ASPxDateEdit> 
                             </td>
                             <td style="text-align:right;"></td>
                             <td style="text-align:left;"></td>
@@ -276,7 +336,7 @@
                             <td style="text-align:right;">备注：</td>
                             <td style="text-align:left;" colspan="5">
                                  <dxe:ASPxTextBox ID="dxetxtRemark" ClientInstanceName="dxetxtRemark" runat="server"
-                                    Width="160px">
+                                    Width="655px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td></td>                                  

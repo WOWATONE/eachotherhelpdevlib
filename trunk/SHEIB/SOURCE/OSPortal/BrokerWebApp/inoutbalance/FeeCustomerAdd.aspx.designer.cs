@@ -23,6 +23,24 @@ namespace BrokerWebApp.inoutbalance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
+        /// dxeSaveCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeSaveCallback;
+        
+        /// <summary>
+        /// dxeAuditCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeAuditCallback;
+        
+        /// <summary>
         /// npGridPolicyItemHeader control.
         /// </summary>
         /// <remarks>
@@ -59,13 +77,13 @@ namespace BrokerWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.Panel npGridPolicyItemDetail;
         
         /// <summary>
-        /// btnAddPolicy control.
+        /// dxebtnAddPolicy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnAddPolicy;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnAddPolicy;
         
         /// <summary>
         /// txtSelectedIds control.
@@ -75,6 +93,15 @@ namespace BrokerWebApp.inoutbalance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden txtSelectedIds;
+        
+        /// <summary>
+        /// lblVoucherId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblVoucherId;
         
         /// <summary>
         /// gridPolicyItem control.
@@ -185,13 +212,13 @@ namespace BrokerWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCstPremium;
         
         /// <summary>
-        /// deGotDate control.
+        /// dxeGotDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deGotDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeGotDate;
         
         /// <summary>
         /// dxetxtRemark control.
