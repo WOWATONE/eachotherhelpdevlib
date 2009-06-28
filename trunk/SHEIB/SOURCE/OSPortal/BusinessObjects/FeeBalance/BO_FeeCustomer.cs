@@ -19,30 +19,37 @@ namespace BusinessObjects
         //FeeCustomer列表
         public static DataSet GetFeeCustomerList(string sWhere)
         {
-            //select a.VoucherID,a.FeeId,b.NoticeNo,c.CustomerID,
-            //a.FeeDate,b.PayFeeBase,a.Fee,a.FeeAdjust,d.GatheringType,a.AuditStatus,c.SalesID,
+
+            //select * from (
+            //select a.VoucherID,a.AccountTypeID,a.FeeId,a.NoticeNo,c.CustomerID,
+            //a.FeeDate,a.PayFeeBase,a.Fee,a.FeeAdjust,d.GatheringType,a.AuditStatus,c.SalesID,
             //(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,
             //(select GatheringTypeName from GatheringType where GatheringTypeID=d.GatheringType) GatheringTypeName,
             //(select CustName from Customer where CustID=c.CustomerID) CustomerName,
-            //(select UserNameCn from P_User where UserID=c.SalesID) SalesName
-            //from VoucherFee a,PolicyPeriod b,Policy c,Notice d
-            //where a.PolPeriodID=b.PolPeriodID
-            //  and b.PolicyID=c.PolicyID
-            //  and b.NoticeNo=d.NoticeNo
-            //  and a.AccountTypeID in ('1','6')
+            //(select UserNameCn from P_User where UserID=c.SalesID) SalesName,c.DeptID,c.ProdTypeID
+            // from VoucherFee a
+            // left join Policy c
+            // on a.PolicyID=c.PolicyID
+            // left join notice d
+            // on a.NoticeNo=d.NoticeNo
+            //) a
+            //where AccountTypeID in ('1','6')
 
             string sSql = "";
-            sSql = " select a.VoucherID,a.FeeId,b.NoticeNo,c.CustomerID,";
-            sSql = sSql + "a.FeeDate,b.PayFeeBase,a.Fee,a.FeeAdjust,d.GatheringType,a.AuditStatus,c.SalesID,";
+            sSql = sSql + "select * from (";
+            sSql = sSql + "select a.VoucherID,a.FeeId,a.AccountTypeID,a.NoticeNo,c.CustomerID,";
+            sSql = sSql + "a.FeeDate,a.PayFeeBase,a.Fee,a.FeeAdjust,d.GatheringType,a.AuditStatus,c.SalesID,";
             sSql = sSql + "(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,";
             sSql = sSql + "(select GatheringTypeName from GatheringType where GatheringTypeID=d.GatheringType) GatheringTypeName,";
             sSql = sSql + "(select CustName from Customer where CustID=c.CustomerID) CustomerName,";
-            sSql = sSql + "(select UserNameCn from P_User where UserID=c.SalesID) SalesName";
-            sSql = sSql + " from VoucherFee a,PolicyPeriod b,Policy c,Notice d";
-            sSql = sSql + " where a.PolPeriodID=b.PolPeriodID";
-            sSql = sSql + "  and b.PolicyID=c.PolicyID";
-            sSql = sSql + "  and b.NoticeNo=d.NoticeNo";
-            sSql = sSql + "  and a.AccountTypeID in ('1','6')";
+            sSql = sSql + "(select UserNameCn from P_User where UserID=c.SalesID) SalesName,c.DeptID,c.ProdTypeID";
+            sSql = sSql + " from VoucherFee a";
+            sSql = sSql + " left join Policy c";
+            sSql = sSql + " on a.PolicyID=c.PolicyID";
+            sSql = sSql + " left join notice d";
+            sSql = sSql + " on a.NoticeNo=d.NoticeNo";
+            sSql = sSql + ") a";
+            sSql = sSql + "  where a.AccountTypeID in ('1','6')";
             if (sWhere != "")
             {
                 sSql = sSql + sWhere;
