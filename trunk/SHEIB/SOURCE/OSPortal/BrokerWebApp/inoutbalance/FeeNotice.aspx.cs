@@ -21,12 +21,13 @@ namespace BrokerWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Initialization();
+            
             if (!IsPostBack && !IsCallback)
-            {                
-                
+            {
+                Initialization();               
             }
             BindGrid();
+            
         }
 
         private void Initialization()
