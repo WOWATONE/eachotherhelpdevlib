@@ -58,6 +58,20 @@ namespace BusinessObjects
         }
 
 
+        public static void Delete(String id)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM Fee ");
+            sb.Append(" WHERE FeeId = @FeeId ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@FeeId", DbType.String, id);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
+
+
         public static Boolean PolPeriodExist(string polPeriodId)
         {
             StringBuilder sb = new StringBuilder();

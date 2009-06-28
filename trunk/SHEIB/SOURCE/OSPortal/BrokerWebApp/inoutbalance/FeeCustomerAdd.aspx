@@ -196,8 +196,7 @@
                     <tr>
                         <td colspan="3">
                             <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" 
-                            DataSourceID=""
-                            KeyFieldName="PolicyNo" Width="100%" AutoGenerateColumns="False" 
+                            KeyFieldName="FeeId" Width="100%" AutoGenerateColumns="False" 
                             OnRowDeleting="gridPolicyItem_RowDeleting" 
                             OnRowDeleted="gridPolicyItem_RowDeleted" OnCustomCallback="gridPolicyItem_CustomCallback"
                              >
@@ -206,7 +205,7 @@
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" VisibleIndex="0">
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="FeeID" Caption="FeeID" CellStyle-Wrap="False" Visible="false" >
+                                        <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False" Visible="false" >
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书号" CellStyle-Wrap="False" >
                                         </dxwgv:GridViewDataColumn>
@@ -266,8 +265,7 @@
                                         </table>                                        
                                      </div>
                                      <div style="text-align:right; padding:2px 2px 2px 2px">
-                                         <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server">
-                                         </dxwgv:ASPxGridViewTemplateReplacement>
+                                         <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server"></dxwgv:ASPxGridViewTemplateReplacement>
                                          <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton" runat="server"></dxwgv:ASPxGridViewTemplateReplacement>
                                      </div>
                                      </EditForm>
