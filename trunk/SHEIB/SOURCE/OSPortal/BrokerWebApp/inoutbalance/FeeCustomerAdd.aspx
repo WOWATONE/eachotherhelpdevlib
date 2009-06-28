@@ -187,6 +187,68 @@
                 return false;
             }
         }
+
+        function gridPolicyItem_EndCallback(s, e) {
+            //sum
+            var itemVal;
+            var indexPayFeeBase = getOColumnIndex("本期应收保费");
+            var indexFee = getOColumnIndex("本次实收保费");
+            var indexFeeAdjust = getOColumnIndex("金额调整");
+            
+            var sumPayFeeBase = 0;
+            var sumFee = 0;
+            var sumFeeAdjust = 0;
+            
+            for (i = 0; i < gridPolicyItem.pageRowCount; i++) {
+                //PayFeeBase
+                itemVal = gridPolicyItem.GetDataRow(i).cells[indexPayFeeBase].innerText;
+                if (isDecimal(itemVal)) {
+                    sumPayFeeBase = parseFloat(sumPayFeeBase) + parseFloat(itemVal);
+                }
+                //sumFee
+                itemVal = gridPolicyItem.GetDataRow(i).cells[indexFee].innerText;
+                if (isDecimal(itemVal)) {
+                    sumFee = parseFloat(sumFee) + parseFloat(itemVal);
+                }
+
+                //sumFeeAdjust
+                itemVal = gridPolicyItem.GetDataRow(i).cells[indexFeeAdjust].innerText;
+                if (isDecimal(itemVal)) {
+                    sumFeeAdjust = parseFloat(sumFeeAdjust) + parseFloat(itemVal);
+                }
+            }
+
+            var rtn = sumPayFeeBase.toFixed(2);
+            dxetxtPayFee.SetValue(rtn);
+            rtn = sumFee.toFixed(2);
+            dxetxtFee.SetValue(rtn);
+            rtn = sumFeeAdjust.toFixed(2);
+            dxetxtFeeAdjust.SetValue(rtn);
+        }
+
+        function getOColumnIndex(fieldName) {
+            var headerCap;
+            for (i = 0; i < gridPolicyItem.GetHeadersRow().cells.length; i++) {
+                headerCap = gridPolicyItem.GetHeadersRow().cells[i].innerText;
+                if (!isEmpty(headerCap)) {
+                    if (headerCap == fieldName) {
+                        return i;
+                    }
+                }
+            }
+        }
+
+        function isDecimal(str) {
+            if (isEmpty(str)) {
+                return false;
+            }
+            else {
+                if (/[^d.]/i.test(str)) {
+                    return true;
+                }
+                return false;
+            }
+        }
         
     </script>
     
@@ -288,7 +350,8 @@
                                     </GroupSummary>
                                     
                                 <%-- EndRegion --%>
-                                <SettingsPager Mode="ShowAllRecords"/>                                                     
+                                <SettingsPager Mode="ShowAllRecords"/>   
+                                <ClientSideEvents EndCallback="function(s, e) {gridPolicyItem_EndCallback();}" />                                                  
                                 <Templates>
                                      <EditForm>                                                             
                                      <div style="padding:4px 4px 3px 4px">
