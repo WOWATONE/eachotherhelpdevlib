@@ -182,6 +182,30 @@ namespace BusinessObjects
 
             _db.ExecuteNonQuery(dbCommand);
         }
+
+        /// <summary>
+        /// 根据查询条件取得销售跟进列表
+        /// </summary>
+        /// <param name="sWhere"></param>
+        /// <returns></returns>
+        public static DataSet GetCustomerPtFollowList(string sWhere)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ");
+            sb.Append("CP.FollowID, isnull(CP.FollowDate, '') as FollowDate, C.CustName, P.UserNameCn as SalesName, CP.FollowType, CP.FollowStage, CP.FollowMemo, CP.FollowPerson, isnull(CP.NextFollow,'') as NextFollow ");
+            sb.Append("From CustomerPtFollow CP (nolock) ");
+            sb.Append("Left Join Customer C (nolock) On C.CustID=CP.CustID ");
+            sb.Append("Left Join P_User P (nolock) On P.UserID=C.SalesID ");
+            sb.Append("Where 1=1 ");
+            if (sWhere != "")
+            {
+                sb.Append(sWhere);
+            }
+            sb.Append(" Order By CP.FollowID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            return _db.ExecuteDataSet(dbCommand);
+        }
         #endregion
     }
 }

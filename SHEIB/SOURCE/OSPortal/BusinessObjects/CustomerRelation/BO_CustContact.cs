@@ -187,7 +187,7 @@ namespace BusinessObjects
         }
 
         /// <summary>
-        /// 根据查询条件取得保险公司列表
+        /// 根据查询条件取得联系人列表
         /// </summary>
         /// <param name="sWhere"></param>
         /// <returns></returns>
