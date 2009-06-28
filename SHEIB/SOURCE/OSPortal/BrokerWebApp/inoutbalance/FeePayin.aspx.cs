@@ -15,20 +15,17 @@ namespace BrokerWebApp.inoutbalance
 
         #region Variables
 
-        private DataTable _dtGrid;
 
         #endregion Variables
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Initialization();
             if (!IsPostBack && !IsCallback)
-            {
-                Initialization();
-                dxeddlAuditStatus.SelectedIndex = 0;
-                BindGrid();
+            {                
+                dxeddlAuditStatus.SelectedIndex = 0;                
             }
-
+            BindGrid();
         }
 
         private void Initialization()
@@ -160,6 +157,10 @@ namespace BrokerWebApp.inoutbalance
             BindGrid();
         }
 
+        protected void btnXlsExport_Click(object sender, EventArgs e)
+        {
+            this.gridExport.WriteXlsToResponse();
+        }
 
 
     }

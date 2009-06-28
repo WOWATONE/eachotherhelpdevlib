@@ -18,10 +18,47 @@
     TagPrefix="dxwsc" %>
 <%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v8.3" Namespace="DevExpress.Web.ASPxHtmlEditor"
     TagPrefix="dxhe" %>
+
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
+
+    
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>解付保费录入</title>
 
     <script type="text/javascript">
+        
+        function cusCheckNessary() {
+            var id = getVoucherId();
+            if (isEmpty(id)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        function cusNotCompleteUnable() {
+            if (cusCheckNessary()) {
+                dxebtnSave.SetEnabled(true);
+                dxebtnAddPolicy.SetEnabled(false);
+                dxebtnAudit.SetEnabled(false);
+                dxebtnPrint.SetEnabled(false);
+                dxebtnComplete.SetEnabled(false);
+            }
+
+
+        }
+
+        function cusCompleteEnable() {
+            //debugger;
+            dxebtnSave.SetEnabled(true);
+            dxebtnAddPolicy.SetEnabled(true);
+            dxebtnAudit.SetEnabled(true);
+            dxebtnPrint.SetEnabled(true);
+            dxebtnComplete.SetEnabled(true);
+
+        }
+        
         $(document).ready(function() {
             //jQuery.noticeAdd({
             //    text: 'This is a notification that you have to remove',
@@ -42,21 +79,140 @@
             };
 
 
+            cusNotCompleteUnable();
 
 
 
         });
 
-        function imgSearchClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=450px;center=yes;help=no";
+        
+        function btnAddPolicyClick() {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
+            var url = "FeePayinAddSelect.aspx?ID=" + getVoucherId();
+            
             window.showModalDialog("FeePayinAddSelect.aspx", self, myArguments);
             gridPolicyItem.PerformCallback('');
         }
 
-        function btnAddPolicyClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
-            window.showModalDialog("FeePayinAddSelect.aspx", self, myArguments);
-            gridPolicyItem.PerformCallback('');
+        function btnCloseClick() {
+            window.close();
+        }
+
+        function getVoucherId() {
+            var result = $("#<%=lblVoucherId.ClientID %>");
+            var id = result[0].innerHTML;
+            return id;
+        }
+
+
+        function setVoucherId(value) {
+            var result = $("#<%=lblVoucherId.ClientID %>");
+            result[0].innerHTML = value;
+        }
+
+        function dxebtntopSave_Click(s, e) {
+            //
+            if (s.CauseValidation()) {
+                var thejsonstring = makeInfoJSON("0");
+                dxeSaveCallback.PerformCallback(thejsonstring);
+            }
+        }
+
+        function saveCallbackComplete(s, e) {
+            //do nothing;
+            var pid = getVoucherId();
+            if (isEmpty(pid)) {
+                setVoucherId(e.result);
+                cusCompleteEnable();
+            }
+        }
+
+        function makeInfoJSON(AuditStatus) {
+
+            var ID = getVoucherId();
+            var Remark = dxetxtRemark.GetValueString();
+            var GotDate = dxeGotDate.GetValue();
+            var plc = new InfoJSON(ID, Remark, GotDate, AuditStatus);
+
+            //deserialize JSON string, make a JSON object
+            //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
+
+            //serialize a JOSN object，make a JSON string.
+            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
+
+            return jsonStringClient;
+
+        }
+
+
+        function InfoJSON(ID, Remark, GotDate, AuditStatus) {
+            if (!isEmpty(ID))
+                this.ID = ID;
+
+            if (!isEmpty(Remark))
+                this.Remark = Remark;
+
+            if (!isEmpty(GotDate))
+                this.GotDate = GotDate;
+
+            if (!isEmpty(AuditStatus))
+                this.AuditStatus = AuditStatus;
+
+        }
+
+
+        function btnAudit_Click(s, e) {
+            //
+            var buttonID = s.GetText();
+            var AuditOrNot = "1";
+            switch (buttonID) {
+                case "审核":
+                    AuditOrNot = "1";
+                    break
+                case "反审核":
+                    AuditOrNot = "0";
+                    break
+                default:
+                    AuditOrNot = "1";
+            }
+            var thejsonstring = makeInfoJSON(AuditOrNot);
+            dxeAuditCallback.PerformCallback(thejsonstring);
+
+        }
+
+        function auditCallbackComplete(s, e) {
+            //do nothing;
+            var buttonID = dxebtnAudit.GetText();
+            switch (buttonID) {
+                case "审核":
+                    dxebtnAudit.SetText("反审核");
+                    break
+                case "反审核":
+                    dxebtnAudit.SetText("审核");
+                    break
+                default:
+                    //do nothing;
+            }
+        }
+
+        function isEmpty(testVar) {
+            if ((testVar == null) || (testVar.length == 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function isDecimal(str) {
+            if (isEmpty(str)) {
+                return false;
+            }
+            else {
+                if (/[^d.]/i.test(str)) {
+                    return true;
+                }
+                return false;
+            }
         }
         
     </script>
@@ -64,6 +220,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    
+    <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
+    <dxcb:ASPxCallback ID="dxeAuditCallback" ClientInstanceName="dxeAuditCallback" runat="server" OnCallback="dxeAuditCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {auditCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
     <table style="width: 100%">
         <tr>
             <td>
@@ -85,7 +250,7 @@
                     <table style="width: 100%">
                         <tr>
                             <td style="width: 10%; text-align: right;">
-                                <dxe:ASPxButton runat="server" ID="btnAddPolicy" AutoPostBack="false" Text="添加保单">
+                                <dxe:ASPxButton runat="server" ID="dxebtnAddPolicy" ClientInstanceName="dxebtnAddPolicy" AutoPostBack="false" Text="添加保单">
                                     <ClientSideEvents Click="btnAddPolicyClick" />
                                 </dxe:ASPxButton>
                             </td>
@@ -93,16 +258,22 @@
                                 流水号：
                             </td>
                             <td style="width: 78%; text-align: left;">
-                                001031
+                                <label id="lblVoucherId" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
                                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                    DataSourceID="" KeyFieldName="PolicyNo" Width="100%" AutoGenerateColumns="False"
-                                    OnRowInserting="gridPolicyItem_RowInserting" OnRowUpdating="gridPolicyItem_RowUpdating"
-                                    OnRowUpdated="gridPolicyItem_RowUpdated" OnRowInserted="gridPolicyItem_RowInserted"
-                                    OnRowDeleting="gridPolicyItem_RowDeleting" OnRowDeleted="gridPolicyItem_RowDeleted">
+                                    DataSourceID="" KeyFieldName="FeeId" Width="100%" AutoGenerateColumns="False"
+                                    OnRowUpdating="gridPolicyItem_RowUpdating"
+                                    OnRowUpdated="gridPolicyItem_RowUpdated"
+                                    OnRowDeleting="gridPolicyItem_RowDeleting" 
+                                    OnRowDeleted="gridPolicyItem_RowDeleted"
+                                    OnCustomCallback="gridPolicyItem_CustomCallback"                                    
+                                    OnStartRowEditing="gridPolicyItem_StartRowEditing"
+                                    OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated" 
+                                    OnRowValidating="gridPolicyItem_RowValidating"
+                                    >
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
@@ -167,13 +338,23 @@
                                                             本期解付保费:
                                                         </td>
                                                         <td style="text-align: left;">
-                                                            <asp:TextBox runat="server" ID="txtGridPolicyNo" Text='<%# Eval("PolicyNo") %>' Enabled="false"></asp:TextBox>
+                                                            <dxe:ASPxTextBox ID="dxetxtPolicyItemFee" ClientInstanceName="dxetxtPolicyItemFee" runat="server" Width="120px" ReadOnly="true">
+                                                                <ValidationSettings EnableCustomValidation="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                </ValidationSettings>
+                                                            </dxe:ASPxTextBox>
                                                         </td>
                                                         <td style="white-space: nowrap; text-align: right;">
                                                             调整金额:
                                                         </td>
                                                         <td style="text-align: left;">
-                                                            <asp:TextBox runat="server" ID="txtGridGotFeeBase" Text='<%# Eval("GotFeeBase") %>'></asp:TextBox>
+                                                            <dxe:ASPxTextBox ID="dxetxtPolicyItemFeeAdjust" ClientInstanceName="dxetxtPolicyItemFeeAdjust" runat="server" Width="120px">
+                                                                <ValidationSettings EnableCustomValidation="true" ErrorDisplayMode="ImageWithTooltip" >
+                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                </ValidationSettings>
+                                                            </dxe:ASPxTextBox>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -303,7 +484,7 @@
                                 解付日期：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="deGotDate" runat="server">
+                                <dxe:ASPxDateEdit ID="dxeGotDate" ClientInstanceName="dxeGotDate" runat="server">
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">
@@ -342,7 +523,9 @@
                                 备注：
                             </td>
                             <td style="text-align: left;" colspan="5">
-                                <asp:TextBox ID="txtMemo" runat="server" Width="650px"></asp:TextBox>
+                                <dxe:ASPxTextBox ID="dxetxtRemark" ClientInstanceName="dxetxtRemark" runat="server"
+                                    Width="655px">
+                                </dxe:ASPxTextBox>
                             </td>
                         </tr>
                     </table>
@@ -367,27 +550,28 @@
                             <td style="width: 150px; text-align: left;">
                             </td>
                             <td style="width: 60px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="ASPxButton3" Text="保存" AutoPostBack="false">
-                                </dxe:ASPxButton>
+                                <dxe:ASPxButton runat="server" ID="dxebtnSave" ClientInstanceName="dxebtnSave" Text="保存" 
+                                        CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
+                                        <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
+                                        </dxe:ASPxButton>
                             </td>
-                            <td style="width: 60px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="ASPxButton5" Text="审核" AutoPostBack="false">
-                                </dxe:ASPxButton>
+                            <td style="width: 100px; text-align: left;">
+                                <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit" Text="审核" AutoPostBack="false">
+                                            <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
+                                        </dxe:ASPxButton>
                             </td>
-                            <td style="width: 70px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="ASPxButton2" Text="反审核" AutoPostBack="false">
-                                </dxe:ASPxButton>
-                            </td>
+                            
                             <td style="width: 140px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="ASPxButton1" Text="打印解付通知书" AutoPostBack="false">
+                                <dxe:ASPxButton runat="server" ID="dxebtnPrint" ClientInstanceName="dxebtnPrint" Text="打印解付通知书" AutoPostBack="false">
                                 </dxe:ASPxButton>
                             </td>
                             <td style="width: 80px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="ASPxButton4" Text="解付完成" AutoPostBack="false">
+                                <dxe:ASPxButton runat="server" ID="dxebtnComplete" ClientInstanceName="dxebtnComplete" Text="解付完成" AutoPostBack="false">
                                 </dxe:ASPxButton>
                             </td>
                             <td style="width: 60px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="btnClose" Text="退出" AutoPostBack="false">
+                                <dxe:ASPxButton runat="server" ID="dxebtnClose" ClientInstanceName="dxebtnClose" Text="关闭" AutoPostBack="false">
+                                    <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
                                 </dxe:ASPxButton>
                             </td>
                             <td>

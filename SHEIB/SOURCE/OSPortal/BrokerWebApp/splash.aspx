@@ -8,10 +8,10 @@
 	<title>Splash</title>
     <script type="text/javascript">
         $(document).ready(function() {
-            jQuery.noticeAdd({
+            //jQuery.noticeAdd({
                 //text: 'This is a notification that you have to remove',
                 //stay: true
-            });
+            //});
 
             //$('button.add').click(function() {
             //    jQuery.noticeAdd({
