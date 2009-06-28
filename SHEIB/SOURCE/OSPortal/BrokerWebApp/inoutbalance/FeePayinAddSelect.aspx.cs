@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using BusinessObjects;
+using BusinessObjects.SchemaSetting;
 
 namespace BrokerWebApp.inoutbalance
 {
@@ -14,18 +15,20 @@ namespace BrokerWebApp.inoutbalance
 
         #region Variables
 
-        private DataTable _dtGrid;
+        private const string inputQueryStringIDKey = "ID";
 
         #endregion Variables
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Initialization();
             if (!IsPostBack && !IsCallback)
-            {
-                Initialization();
+            {                
                 ckbPayedNeedPayin.Checked = true;
-                BindGrid();
+                this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
+                
             }
+            BindGrid();
         }
 
 
@@ -123,19 +126,51 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
-        protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        protected void btnSearch_Click(object sender, EventArgs e)
         {
-            //DataTable dt = ((DataTable)ViewState["PolicyItemGridData"]);
-            //DataRow row = dt.Rows.Find(e.Keys["ID"]);
-            //dt.Rows.Remove(row);
-            e.Cancel = true;
-            this.gridSearchResult.CancelEdit();
+            BindGrid();
         }
 
-        protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
+
+        protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            this.gridSearchResult.DataBind();
+            String thenoticeNo = e.Parameter;
+            saveFee(thenoticeNo);
+            e.Result = thenoticeNo;
         }
+
+        private void saveFee(String polPeriodIds)
+        {
+            BusinessObjects.BO_Fee objLoad;
+            BusinessObjects.Policy.BO_PolicyPeriod obj;
+            String[] ppids;
+            ppids = polPeriodIds.Split(new String[] { "," }, StringSplitOptions.None);
+
+            Boolean exist = false;
+            foreach (String s in ppids)
+            {
+                if (s.Trim() != "")
+                {
+                    if (s.Trim().Length == 36)
+                    {
+                        exist = BusinessObjects.BO_Fee.PolPeriodExist(s);
+                        if (!exist)
+                        {
+                            obj = new BusinessObjects.Policy.BO_PolicyPeriod(s);
+                            objLoad = new BusinessObjects.BO_Fee();
+                            objLoad.FeeId = Guid.NewGuid().ToString();
+                            objLoad.PolPeriodID = s;
+                            objLoad.VoucherID = this.txtVoucherId.Value;
+                            objLoad.Fee = obj.PayFeeBase;
+                            objLoad.FeeAdjust = obj.PayFeeBase;
+                            objLoad.Save(ModifiedAction.Insert);
+                        }
+                    }
+                }
+            }
+
+        }
+
 
 
     }

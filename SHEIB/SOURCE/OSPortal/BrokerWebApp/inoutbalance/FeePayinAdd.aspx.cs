@@ -19,7 +19,7 @@ using System.Web.UI.HtmlControls;
 
 namespace BrokerWebApp.inoutbalance
 {
-    public partial class FeePayinAdd : System.Web.UI.Page
+    public partial class FeePayinAdd : BasePage
     {
         #region Variables
 
@@ -44,14 +44,14 @@ namespace BrokerWebApp.inoutbalance
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            //String thenoticeNo = saveVoucher(e.Parameter);
-            //e.Result = thenoticeNo;
+            String id = saveVoucher(e.Parameter);
+            e.Result = id;
         }
 
 
         protected void dxeAuditCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            //auditVoucher(e.Parameter);
+            auditVoucher(e.Parameter);
             e.Result = "ok";
         }
 
@@ -235,6 +235,81 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
+        private string saveVoucher(String parameter)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(InfoJSON));
+            InfoJSON obj;
+
+            obj = (InfoJSON)serializer.ReadObject(ms);
+            ms.Close();
+
+            BusinessObjects.BO_Voucher objLoad;
+            if (String.IsNullOrEmpty(obj.ID))
+            {
+                objLoad = new BO_Voucher();
+
+                objLoad.VoucherId = TranUtils.GetVoucherNo();
+                objLoad.InvoiceNO = "";
+                objLoad.CreateTime = DateTime.Now;
+                objLoad.CreatePerson = this.CurrentUserID;
+                objLoad.AccountTypeID = Convert.ToInt32(BO_P_Code.AccountType.PayIn_Direct);
+                objLoad.FeeDate = obj.GotDate;
+                objLoad.AuditStatus = Convert.ToInt32(BO_P_Code.AuditStatus.Appeal).ToString();
+                objLoad.Remark = obj.Remark;
+
+                objLoad.CarrierID = obj.Carrier;
+                objLoad.BranchID = obj.Branch;
+                objLoad.GatheringType = obj.GatheringType;
+                objLoad.ProcessFeeType = obj.ProcessFeeType;
+
+                objLoad.Save(ModifiedAction.Insert);
+            }
+            else
+            {
+                objLoad = new BO_Voucher(obj.ID);
+                objLoad.FeeDate = obj.GotDate;
+                objLoad.Remark = obj.Remark;
+
+                objLoad.CarrierID = obj.Carrier;
+                objLoad.BranchID = obj.Branch;
+                objLoad.GatheringType = obj.GatheringType;
+                objLoad.ProcessFeeType = obj.ProcessFeeType;
+
+                objLoad.Save(ModifiedAction.Update);
+            }
+
+            return objLoad.VoucherId;
+
+
+        }
+
+        private void auditVoucher(String parameter)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(InfoJSON));
+            InfoJSON obj;
+
+            obj = (InfoJSON)serializer.ReadObject(ms);
+            ms.Close();
+
+            BusinessObjects.BO_Voucher objLoad;
+            if (String.IsNullOrEmpty(obj.ID))
+            {
+                //
+            }
+            else
+            {
+                objLoad = new BO_Voucher(obj.ID);
+                objLoad.AuditStatus = obj.AuditStatus;
+                objLoad.Save(ModifiedAction.Update);
+            }
+
+        }
 
         private void loadValue(String id)
         {
@@ -278,6 +353,17 @@ namespace BrokerWebApp.inoutbalance
             [DataMember]
             public string AuditStatus { get; set; }
 
+            [DataMember]
+            public string GatheringType { get; set; }
+
+            [DataMember]
+            public string ProcessFeeType { get; set; }
+
+            [DataMember]
+            public string Carrier { get; set; }
+
+            [DataMember]
+            public string Branch { get; set; }
 
         }
 

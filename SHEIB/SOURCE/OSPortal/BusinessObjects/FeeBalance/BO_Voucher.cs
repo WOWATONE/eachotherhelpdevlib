@@ -125,7 +125,7 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "@GatheringType", DbType.String, this.GatheringType);
 
             if (this.FeeDate == DateTime.MinValue)
-                _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, null);
+                _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, DateTime.Now);
             else
                 _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, this.FeeDate);
 
@@ -178,7 +178,7 @@ namespace BusinessObjects
 
             
             if (this.FeeDate == DateTime.MinValue)
-                _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, null);
+                _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, DateTime.Now);
             else
                 _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, this.FeeDate);
 

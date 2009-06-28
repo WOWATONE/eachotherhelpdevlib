@@ -89,8 +89,8 @@
         function btnAddPolicyClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
             var url = "FeePayinAddSelect.aspx?ID=" + getVoucherId();
-            
-            window.showModalDialog("FeePayinAddSelect.aspx", self, myArguments);
+
+            window.showModalDialog(url, self, myArguments);
             gridPolicyItem.PerformCallback('');
         }
 
@@ -132,6 +132,10 @@
             var ID = getVoucherId();
             var Remark = dxetxtRemark.GetValueString();
             var GotDate = dxeGotDate.GetValue();
+            var GatheringType = dxeddlGatheringType.GetValue();
+            var ProcessFeeType = dxeddlProcessFeeType.GetValue();
+            var Carrier = dxeddlCarrier.GetValue();
+            var Branch = dxeddlBranch.GetValue();
             var plc = new InfoJSON(ID, Remark, GotDate, AuditStatus);
 
             //deserialize JSON string, make a JSON object
@@ -145,7 +149,9 @@
         }
 
 
-        function InfoJSON(ID, Remark, GotDate, AuditStatus) {
+        function InfoJSON(ID, Remark, GotDate, AuditStatus,
+            GatheringType, ProcessFeeType, Carrier, Branch) {
+            
             if (!isEmpty(ID))
                 this.ID = ID;
 
@@ -157,6 +163,18 @@
 
             if (!isEmpty(AuditStatus))
                 this.AuditStatus = AuditStatus;
+
+            if (!isEmpty(GatheringType))
+                this.GatheringType = GatheringType;
+                
+            if (!isEmpty(ProcessFeeType))
+                this.ProcessFeeType = ProcessFeeType;
+                
+            if (!isEmpty(Carrier))
+                this.Carrier = Carrier;
+                
+            if (!isEmpty(Branch))
+                this.Branch = Branch;
 
         }
 
