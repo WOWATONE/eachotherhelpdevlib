@@ -146,7 +146,7 @@ namespace BusinessObjects
         private void fetchByID(String id)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT  FeeId, PolPeriodID, VoucherID, Fee, FeeAdjust ");
+            sb.Append("SELECT  FeeId, VoucherID, PolPeriodID, Fee, FeeAdjust ");
             sb.Append(" FROM Fee ");
             sb.Append(" WHERE FeeId = @FeeId");
             sb.Append(" ");
