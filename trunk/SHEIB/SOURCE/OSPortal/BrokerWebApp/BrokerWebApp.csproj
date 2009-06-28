@@ -403,6 +403,13 @@
     <Compile Include="BaseClass\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="CustomerRelation\CustContact.aspx.cs">
+      <DependentUpon>CustContact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerRelation\CustContact.aspx.designer.cs">
+      <DependentUpon>CustContact.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CustomerRelation\Customer.aspx.cs">
       <DependentUpon>Customer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -898,6 +905,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\Aqua\ASPxTreeList.skin" />
+    <Content Include="CustomerRelation\CustContact.aspx" />
     <Content Include="CustomerRelation\Customer.aspx" />
     <Content Include="CustomerRelation\CustomerList.aspx" />
     <Content Include="dpleft.aspx" />
