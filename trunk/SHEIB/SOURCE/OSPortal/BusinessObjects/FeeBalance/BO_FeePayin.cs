@@ -190,7 +190,7 @@ namespace BusinessObjects
 
             string sSql = "";
             sSql = sSql + "select * from (";
-            sSql = sSql + "Select a.PolperiodID,a.PolicyID,a.NoticeNo, a.Payfee, a.Feedate, a.Payedfee, a.Payinfee, a.Payinedfee,(a.Payinfee - a.Payinedfee) Fee,a.Payproc, ";
+            sSql = sSql + "Select a.PolperiodID,a.PolicyID,a.NoticeNo, a.Payfee, a.Feedate, ISNULL(a.Payedfee,0) Payedfee, ISNULL(a.Payinfee,0) Payinfee, a.Payinedfee,(a.Payinfee - ISNULL(a.Payinedfee,0)) Fee,a.Payproc, ";
             sSql = sSql + "       a.Period,a.CarrierID, a.CarrierName, a.BranchID, a.BranchName, a.Paydate,";
             sSql = sSql + "       a.Payfeebase, a.Payprocbase,a.NoticeDate,";
             sSql = sSql + "       b.PolicyNo,b.DeptID,b.CustomerID,b.ProdTypeID,b.SalesID,b.CarrierSales,b.CiPremium,b.AciPremium,b.CstPremium,b.GatheringType,b.PremiumBase,";
@@ -201,7 +201,7 @@ namespace BusinessObjects
             sSql = sSql + " From Policyperiodfee a, Policy b";
             sSql = sSql + " Where a.Policyid = b.Policyid ";
             sSql = sSql + "      And Payfee = Payedfee ";
-            sSql = sSql + "      And Payinfee <> Payinedfee";
+            sSql = sSql + "      And Payinfee <> ISNULL(Payinedfee,0)";
             sSql = sSql + ") a";
             sSql = sSql + " where 1=1";
             if (sWhere != "")

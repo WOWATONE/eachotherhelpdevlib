@@ -512,27 +512,27 @@
                 <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="30px" Width="100%">
                             <table style="width:100%">
                                 <tr>
-                        <td>
-                        </td>
-                        <td style="width: 60px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="dxebtnSave" ClientInstanceName="dxebtnSave" Text="保存" 
-                            CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
-                            <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
-                            </dxe:ASPxButton>
-                        </td>
-                        <td style="width: 100px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit" Text="审核" AutoPostBack="false">
-                                <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
-                            </dxe:ASPxButton>
-                        </td>                        
-                        <td style="width: 60px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="dxebtnClose" ClientInstanceName="dxebtnClose" Text="关闭" AutoPostBack="false">
-                                <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
-                            </dxe:ASPxButton>
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
+                                    <td>
+                                    </td>
+                                    <td style="width: 60px; text-align: left;">
+                                        <dxe:ASPxButton runat="server" ID="dxebtnSave" ClientInstanceName="dxebtnSave" Text="保存" 
+                                        CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
+                                        <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
+                                        </dxe:ASPxButton>
+                                    </td>
+                                    <td style="width: 100px; text-align: left;">
+                                        <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit" Text="审核" AutoPostBack="false">
+                                            <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
+                                        </dxe:ASPxButton>
+                                    </td>                        
+                                    <td style="width: 60px; text-align: left;">
+                                        <dxe:ASPxButton runat="server" ID="dxebtnClose" ClientInstanceName="dxebtnClose" Text="关闭" AutoPostBack="false">
+                                            <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
+                                        </dxe:ASPxButton>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
                             </table>
                             
                  </asp:Panel>
