@@ -60,6 +60,14 @@ namespace BrokerWebApp.inoutbalance
                 BindGrid();
             }
 
+
+            if (Session["Report"] != null)
+            {
+                CrSource = (CrystalReportSource)Session["REPORT"];
+                crvNotice.ReportSource = CrSource;
+                crvNotice.PrintMode = CrystalDecisions.Web.PrintMode.ActiveX;
+            }
+
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
@@ -361,7 +369,7 @@ namespace BrokerWebApp.inoutbalance
             CrSource = new CrystalReportSource();
             CrSource.Report.FileName = "rpt\\rptNoticeAgent.rpt";
             CrSource.ReportDocument.SetDataSource(dNotice);
-            //Session.Add("REPORT", CrSource);
+            Session.Add("Report", CrSource);
 
             crvNotice.ReportSource = CrSource;
 
