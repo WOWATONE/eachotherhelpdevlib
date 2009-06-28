@@ -28,7 +28,7 @@ namespace BusinessObjects
             //from VoucherFee a,PolicyPeriod b,Policy c,Notice d
             //where a.PolPeriodID=b.PolPeriodID
             //  and b.PolicyID=c.PolicyID
-            //  and b.NoticeNo*=d.NoticeNo
+            //  and b.NoticeNo=d.NoticeNo
             //  and a.AccountTypeID in ('1','6')
 
             string sSql = "";
@@ -41,7 +41,7 @@ namespace BusinessObjects
             sSql = sSql + " from VoucherFee a,PolicyPeriod b,Policy c,Notice d";
             sSql = sSql + " where a.PolPeriodID=b.PolPeriodID";
             sSql = sSql + "  and b.PolicyID=c.PolicyID";
-            sSql = sSql + "  and b.NoticeNo*=d.NoticeNo";
+            sSql = sSql + "  and b.NoticeNo=d.NoticeNo";
             sSql = sSql + "  and a.AccountTypeID in ('1','6')";
             if (sWhere != "")
             {
