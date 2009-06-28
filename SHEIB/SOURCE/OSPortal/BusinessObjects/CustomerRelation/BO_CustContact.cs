@@ -185,6 +185,30 @@ namespace BusinessObjects
 
             _db.ExecuteNonQuery(dbCommand);
         }
+
+        /// <summary>
+        /// 根据查询条件取得保险公司列表
+        /// </summary>
+        /// <param name="sWhere"></param>
+        /// <returns></returns>
+        public static DataSet GetCustContactList(string sWhere)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ");
+            sb.Append("CC.ContactID, CC.ContactName, CC.Sex, C.CustName, P.UserNameCn as SalesName, CC.Position, CC.Tel, CC.Fax, CC.MobilePhone, CC.Email, CC.Interest, CC.Remark ");
+            sb.Append("From CustContact CC (nolock) ");
+            sb.Append("Left Join Customer C (nolock) On C.CustID=CC.CustID ");
+            sb.Append("Left Join P_User P (nolock) On P.UserID=C.SalesID ");
+            sb.Append("Where 1=1 ");
+            if (sWhere != "")
+            {
+                sb.Append(sWhere);
+            }
+            sb.Append(" Order By CC.ContactID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            return _db.ExecuteDataSet(dbCommand);
+        }
         #endregion
     }
 }
