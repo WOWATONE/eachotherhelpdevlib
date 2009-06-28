@@ -23,6 +23,7 @@ namespace BusinessObjects
             FeeCustomer_Direct = 6,            
             PayIn_Agent = 3,
             PayIn_Direct = 4,
+            Invoice = 5,
             Process = 7
         }
 
