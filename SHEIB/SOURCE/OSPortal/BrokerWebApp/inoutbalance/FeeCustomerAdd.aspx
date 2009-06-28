@@ -98,7 +98,7 @@
         function dxebtntopSave_Click(s, e) {
             //
             if (s.CauseValidation()) {
-                var thejsonstring = makeNoticeInfoJSON("0");
+                var thejsonstring = makeInfoJSON("0");
                 dxeSaveCallback.PerformCallback(thejsonstring);
             }
         }
@@ -112,7 +112,7 @@
             }
         }
 
-        function makeNoticeInfoJSON(AuditStatus) {
+        function makeInfoJSON(AuditStatus) {
 
             var ID = getVoucherId();
             var Remark = dxetxtRemark.GetValueString();
@@ -143,6 +143,41 @@
             if (!isEmpty(AuditStatus))
                 this.AuditStatus = AuditStatus;
 
+        }
+
+
+        function btnAudit_Click(s, e) {
+            //
+            var buttonID = s.GetText();
+            var AuditOrNot = "1";
+            switch (buttonID) {
+                case "审核":
+                    AuditOrNot = "1";
+                    break
+                case "反审核":
+                    AuditOrNot = "0";
+                    break
+                default:
+                    AuditOrNot = "1";
+            }
+            var thejsonstring = makeInfoJSON(AuditOrNot);
+            dxeAuditCallback.PerformCallback(thejsonstring);
+
+        }
+
+        function auditCallbackComplete(s, e) {
+            //do nothing;
+            var buttonID = dxebtnAudit.GetText();
+            switch (buttonID) {
+                case "审核":
+                    dxebtnAudit.SetText("反审核");
+                    break
+                case "反审核":
+                    dxebtnAudit.SetText("审核");
+                    break
+                default:
+                    //do nothing;
+            }
         }
         
         function isEmpty(testVar) {
