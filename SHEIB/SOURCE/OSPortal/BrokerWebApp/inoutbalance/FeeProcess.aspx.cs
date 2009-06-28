@@ -14,19 +14,19 @@ namespace BrokerWebApp.inoutbalance
 
         #region Variables
 
-        private DataTable _dtGrid;
+        
 
         #endregion Variables
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Initialization();
             if (!IsPostBack && !IsCallback)
-            {
-                Initialization();
-                //dxeddlAuditStatus.SelectedIndex = 0;
-                BindGrid();
+            {                
+                //dxeddlAuditStatus.SelectedIndex = 0;                
             }
+            BindGrid();
         }
 
 
@@ -182,19 +182,25 @@ namespace BrokerWebApp.inoutbalance
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            //DataTable dt = ((DataTable)ViewState["PolicyItemGridData"]);
-            //DataRow row = dt.Rows.Find(e.Keys["ID"]);
-            //dt.Rows.Remove(row);
             e.Cancel = true;
             this.gridSearchResult.CancelEdit();
         }
 
         protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
-            this.gridSearchResult.DataBind();
+            //this.gridSearchResult.DataBind();
         }
 
- 
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindGrid();
+        }
+
+        protected void btnXlsExport_Click(object sender, EventArgs e)
+        {
+            this.gridExport.WriteXlsToResponse();
+        }
 
 
 
