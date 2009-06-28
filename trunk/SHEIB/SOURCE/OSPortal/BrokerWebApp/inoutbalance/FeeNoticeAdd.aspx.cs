@@ -333,10 +333,10 @@ namespace BrokerWebApp.inoutbalance
         protected void dxebtnPrint_Click(object sender, EventArgs e)
         {
             string sSql = "";
-     
+            string sNoticeNo = "";
             string conn = ConfigurationManager.ConnectionStrings["broker"].ConnectionString;
             inoutbalance.rpt.dsNotice dNotice = new BrokerWebApp.inoutbalance.rpt.dsNotice();
-
+            sNoticeNo = dxetxtNoticeNo.Text.Trim();
             sSql = sSql + "select NoticeNo,dbo.GetYYYYMMDDChinese(NoticeDate) NoticeDate,";
             sSql = sSql + "(select max(CustomerName) from PolicyPeriodDetail where NoticeNo=a.NoticeNo)  CustomerName,";
             sSql = sSql + "(select max(BranchName) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) Carrier,";
@@ -349,14 +349,14 @@ namespace BrokerWebApp.inoutbalance
             sSql = sSql + "(select  ParamData from SysSet where ParamName='FeeIncBankAccount') FeeAccount,";
             sSql = sSql + "(select  ParamData from SysSet where ParamName='FeeIncBankName') FeeBankName";
             sSql = sSql + " from notice a";
-            sSql = sSql + " where NoticeNo='TZSBH'";
+            sSql = sSql + " where NoticeNo='" + sNoticeNo+"'";
             SqlDataAdapter ad = new SqlDataAdapter(sSql, conn);
             ad.Fill(dNotice, "Notice");
 
             sSql = "";
             sSql = sSql + "select ProdTypeName,PolicyNo,PolicyID,PayFee,NoticeNo";
             sSql = sSql + " from NoticePolicyPeriod";
-            sSql = sSql + " where NoticeNo ='TZSBH'";
+            sSql = sSql + " where NoticeNo='" + sNoticeNo + "'";
 
             SqlDataAdapter adDetail = new SqlDataAdapter(sSql, conn);
             adDetail.Fill(dNotice, "NoticePolicy");
