@@ -111,21 +111,21 @@ namespace BrokerWebApp.CustomerRelation
             else
                 sbWhere.Append(" And C.CustTypeID=0");
             if (this.dxetxtCustID.Text.Trim().Length > 0)
-                sbWhere.Append(" And C.CustID=" + this.dxetxtCustID.Text.Trim());
+                sbWhere.Append(" And C.CustID='" + this.dxetxtCustID.Text.Trim() + "' ");
             if (this.dxeddlArea.SelectedItem.Value.ToString().Length > 0)
-                sbWhere.Append(" And C.Area=" + this.dxeddlArea.SelectedItem.Value.ToString());
+                sbWhere.Append(" And C.Area='" + this.dxeddlArea.SelectedItem.Value.ToString() + "' ");
             if (this.dxetxtAddress.Text.Trim().Length > 0)
                 sbWhere.Append(" And C.Address like '%" + this.dxetxtAddress.Text.Trim() + "%'");
             if (this.dxetxtCustName.Text.Trim().Length > 0)
                 sbWhere.Append(" And C.CustName like '%" + this.dxetxtCustName.Text.Trim() + "%'");
             if (this.dxeddlTradeType.SelectedItem.Value.ToString().Length > 0)
-                sbWhere.Append(" And C.TradeTypeID=" + this.dxeddlTradeType.SelectedItem.Value.ToString());
+                sbWhere.Append(" And C.TradeTypeID='" + this.dxeddlTradeType.SelectedItem.Value.ToString() + "' ");
             if (this.dxeddlDepartment.SelectedItem.Value.ToString().Length > 0)
-                sbWhere.Append(" And C.DeprtmentID=" + this.dxeddlDepartment.SelectedItem.Value.ToString());
+                sbWhere.Append(" And C.DeprtmentID='" + this.dxeddlDepartment.SelectedItem.Value.ToString() + "' ");
             if (this.dxetxtIDNO.Text.Trim().Length > 0)
-                sbWhere.Append(" And And C.IDNO=" + this.dxetxtIDNO.Text.Trim());
+                sbWhere.Append(" And And C.IDNO='" + this.dxetxtIDNO.Text.Trim() + "' ");
             if (this.dxeddlSalesID.SelectedItem.Value.ToString().Length > 0)
-                sbWhere.Append(" And C.SalesID=" + this.dxeddlSalesID.SelectedItem.Value.ToString());
+                sbWhere.Append(" And C.SalesID='" + this.dxeddlSalesID.SelectedItem.Value.ToString() + "' ");
 
             this.gridSearchResult.DataSource = BO_Customer.GetCustomerList(sbWhere.ToString());
             this.gridSearchResult.DataBind();
