@@ -204,7 +204,6 @@
                                 <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" VisibleIndex="0">
-                                            <EditButton Visible="true" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
                                         <dxwgv:GridViewDataColumn FieldName="FeeID" Caption="FeeID" CellStyle-Wrap="False" Visible="false" >

@@ -40,10 +40,23 @@
         }
 
         function gridCustomButtonClick(s, e) {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            window.showModalDialog("FeeCustomerAdd.aspx", self, myArguments);
+            //s.GetSelectedFieldValues("VoucherID", getTheSelectedRowsValues);
+            s.GetRowValues(e.visibleIndex, "VoucherID", getTheSelectedRowsValues)
         }
 
+        function getTheSelectedRowsValues(selectedValues) {
+            if (selectedValues.length == 0) {
+                //
+            }
+            else {
+                var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+                var querystring;
+                querystring = "FeeCustomerAdd.aspx?VoucherID=" + selectedValues;
+                window.showModalDialog(querystring, self, myArguments);
+            }
+        }
+        
+        
         function imgPolicyProdTypeClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=700px;dialogHeight=500px;center=yes;help=no";
             var retrunval = window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
@@ -278,7 +291,7 @@
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                                     KeyFieldName="FeeId" AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%"
                                     SettingsPager-AlwaysShowPager="true" OnRowDeleting="gridSearchResult_RowDeleting"
-                                    OnRowDeleted="gridSearchResult_RowDeleted" 
+                                    OnRowDeleted="gridSearchResult_RowDeleted"
                                     OnCustomCallback="gridSearchResult_CustomCallback">
                                     <%-- BeginRegion Columns --%>
                                     <Columns>

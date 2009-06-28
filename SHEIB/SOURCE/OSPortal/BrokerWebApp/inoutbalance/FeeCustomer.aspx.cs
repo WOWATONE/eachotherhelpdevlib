@@ -15,8 +15,7 @@ namespace BrokerWebApp.inoutbalance
 
         #region Variables
 
-        private DataTable _dtGrid;
-
+        
         #endregion Variables
 
 
@@ -26,9 +25,9 @@ namespace BrokerWebApp.inoutbalance
             if (!IsPostBack && !IsCallback)
             {                
                 dxeddlAuditStatus.SelectedIndex = 0;
-                BindGrid();
+                
             }
-
+            BindGrid();
         }
 
         private void Initialization()
@@ -163,7 +162,7 @@ namespace BrokerWebApp.inoutbalance
 
         protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
-            this.gridSearchResult.DataBind();
+            //this.gridSearchResult.DataBind();
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
