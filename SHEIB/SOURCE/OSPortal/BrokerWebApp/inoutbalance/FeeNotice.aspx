@@ -330,6 +330,8 @@
                                         </dxwgv:GridViewDataDateColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayFee" Caption="应收金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="AuditStatusName" Caption="状态" CellStyle-Wrap="False">                                                                               
+                                        </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowPager" AlwaysShowPager="true" />
