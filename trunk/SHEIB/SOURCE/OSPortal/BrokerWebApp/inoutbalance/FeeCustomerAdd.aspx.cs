@@ -22,6 +22,8 @@ namespace BrokerWebApp.inoutbalance
 
         #region Variables
 
+        private const string inputQueryStringIDKey = "VoucherID";
+        
         
         #endregion Variables
 
@@ -30,7 +32,9 @@ namespace BrokerWebApp.inoutbalance
         {
             init();
             if (!IsPostBack && !IsCallback)
-            {                
+            {
+                this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];
+                loadValue(this.lblVoucherId.InnerHtml);
                 BindGrid();
             }
         }
@@ -90,7 +94,7 @@ namespace BrokerWebApp.inoutbalance
         private void BindGrid()
         {
             string sVocherID = "";
-            sVocherID = "0903052101";
+            sVocherID = this.lblVoucherId.InnerHtml;
             DataTable dt =  BO_FeeCustomer.GetFeeCustomerAdd(sVocherID).Tables[0];
             this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
@@ -180,6 +184,7 @@ namespace BrokerWebApp.inoutbalance
             obj = new BusinessObjects.BO_Voucher(id);
 
             this.dxeGotDate.Date = obj.FeeDate;
+            this.dxetxtRemark.Text = obj.Remark;
             if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
             {
                 this.dxebtnAudit.Text = "反审核";

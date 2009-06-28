@@ -39,14 +39,23 @@
         }
 
         function gridCustomButtonClick(s, e) {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            var thekey = s.GetDataRow(e.visibleIndex).cells[1].innerText;
-            var querystring;
-            querystring = "FeeNoticeAdd.aspx?NoticeNo=" + thekey;
-
-            window.showModalDialog(querystring, self, myArguments);
+            s.GetRowValues(e.visibleIndex, "NoticeNo", getTheSelectedRowsValues)
+            
+            
         }
 
+        function getTheSelectedRowsValues(selectedValues) {
+            if (selectedValues.length == 0) {
+                //
+            }
+            else {
+                var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+                var querystring;
+                querystring = "FeeNoticeAdd.aspx?NoticeNo=" + selectedValues;
+
+                window.showModalDialog(querystring, self, myArguments);
+            }
+        }
         
 
         function imgPolicyProdTypeClick() {
