@@ -233,11 +233,17 @@
                             <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" 
                             KeyFieldName="FeeId" Width="100%" AutoGenerateColumns="False" 
                             OnRowDeleting="gridPolicyItem_RowDeleting" 
-                            OnRowDeleted="gridPolicyItem_RowDeleted" OnCustomCallback="gridPolicyItem_CustomCallback"
+                            OnRowDeleted="gridPolicyItem_RowDeleted" 
+                            OnCustomCallback="gridPolicyItem_CustomCallback"
+                            OnRowUpdating="gridPolicyItem_RowUpdating"
+                            OnStartRowEditing="gridPolicyItem_StartRowEditing"
+                            OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated" 
+                            OnRowValidating="gridPolicyItem_RowValidating"
                              >
                                 <%-- BeginRegion Columns --%>
                                     <Columns>
-                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" VisibleIndex="0">
+                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
+                                            <EditButton Visible="true" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
                                         <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False" Visible="false" >
@@ -286,15 +292,25 @@
                                 <Templates>
                                      <EditForm>                                                             
                                      <div style="padding:4px 4px 3px 4px">
-                                        <table>
+                                        <table runat="server" id="tblgridPolicyItemEditorTemplate">
                                             <tr>
                                                 <td style="white-space:nowrap; text-align:right;">本次实收保费:</td>
                                                 <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridPolicyNo" Text='<%# Eval("GettingFeeBase") %>' ></asp:TextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtPolicyItemFee" ClientInstanceName="dxetxtPolicyItemFee" runat="server" Width="120px" ReadOnly="true">
+                                                        <ValidationSettings EnableCustomValidation="true" ErrorDisplayMode="ImageWithTooltip">
+                                                            <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                            <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                        </ValidationSettings>
+                                                    </dxe:ASPxTextBox>
                                                 </td>
                                                 <td style="white-space:nowrap; text-align:right;">金额调整:</td>
                                                 <td style="text-align:left;">
-                                                    <asp:TextBox runat="server" ID="txtGridGotFeeBase" Text='<%# Eval("GettingFeeBase") %>'  Enabled="false"></asp:TextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtPolicyItemFeeAdjust" ClientInstanceName="dxetxtPolicyItemFeeAdjust" runat="server" Width="120px">
+                                                        <ValidationSettings EnableCustomValidation="true" ErrorDisplayMode="ImageWithTooltip" >
+                                                            <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                            <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                        </ValidationSettings>
+                                                    </dxe:ASPxTextBox>
                                                 </td>
                                             </tr>                                            
                                         </table>                                        

@@ -477,7 +477,7 @@ namespace BrokerWebApp.otherinsurance
             Boolean exists = BusinessObjects.Policy.BO_PolicyItem.CheckPolicyProdtExist(theWhere);
             if (exists)
             {
-                e.Errors[this.gridCarrier.Columns[2]] = "已存在";
+                e.Errors[this.gridPolicyItem.Columns[2]] = "已存在";
                 dxecbGridPolicyItemProdID.ValidationSettings.RegularExpression.ErrorText = "已存在";
                 dxecbGridPolicyItemProdID.ValidationSettings.RegularExpression.ValidationExpression = @"^\d+";
                 dxecbGridPolicyItemProdID.ValidationSettings.RegularExpression.EvaluateIsValid("abc");

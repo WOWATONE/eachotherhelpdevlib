@@ -14,6 +14,7 @@ using System.Text;
 using DevExpress.Web.ASPxHtmlEditor;
 using DevExpress.Web.ASPxEditors;
 using DevExpress.Web.ASPxUploadControl;
+using System.Web.UI.HtmlControls;
 
 namespace BrokerWebApp.inoutbalance
 {
@@ -23,7 +24,7 @@ namespace BrokerWebApp.inoutbalance
         #region Variables
 
         private const string inputQueryStringIDKey = "VoucherID";
-        
+        private Boolean gridPolicyItemStartEdit = false;
         
         #endregion Variables
 
@@ -73,6 +74,79 @@ namespace BrokerWebApp.inoutbalance
             e.Result = "ok";
         }
 
+        protected void gridPolicyItem_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
+        {
+            HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
+
+            ASPxTextBox dxetxtPolicyItemFee = tblEditorTemplate.FindControl("dxetxtPolicyItemFee") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemFeeAdjust = tblEditorTemplate.FindControl("dxetxtPolicyItemFeeAdjust") as ASPxTextBox;
+            
+
+            Int32 editIndex = this.gridPolicyItem.EditingRowVisibleIndex;
+            if (editIndex > -1)
+            {
+                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "NoticeNo", "PolicyID", "Fee", "FeeAdjust" });
+                object[] theValueList = theValues as object[];
+
+                //String feeId = theValueList[0].ToString();
+                String fee = theValueList[3].ToString();
+                String feeAdjust = theValueList[4].ToString();
+                
+                if (this.gridPolicyItemStartEdit)
+                {
+                    dxetxtPolicyItemFee.Text = fee;
+                    dxetxtPolicyItemFeeAdjust.Text = feeAdjust;
+                }
+
+            }
+
+        }
+
+        protected void gridPolicyItem_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
+        {
+            this.gridPolicyItemStartEdit = true;
+        }
+
+        protected void gridPolicyItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            String theKey = e.Keys[0].ToString();
+            HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
+
+            ASPxTextBox dxetxtPolicyItemFee = tblEditorTemplate.FindControl("dxetxtPolicyItemFee") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemFeeAdjust = tblEditorTemplate.FindControl("dxetxtPolicyItemFeeAdjust") as ASPxTextBox;
+
+
+            BusinessObjects.BO_Fee newobj = new BusinessObjects.BO_Fee(theKey);
+
+
+            if (dxetxtPolicyItemFee.Text != String.Empty)
+            {
+                newobj.Fee = Convert.ToDecimal(dxetxtPolicyItemFee.Text);
+            }
+            if (dxetxtPolicyItemFeeAdjust.Text != String.Empty)
+            {
+                newobj.FeeAdjust = Convert.ToDecimal(dxetxtPolicyItemFeeAdjust.Text);
+            }
+            
+
+            try
+            {
+                newobj.Save(ModifiedAction.Update);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+            e.Cancel = true;
+            this.gridPolicyItem.CancelEdit();
+
+            BindGrid();
+
+
+
+        }
 
         protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
@@ -92,6 +166,34 @@ namespace BrokerWebApp.inoutbalance
             this.gridPolicyItem.CancelEdit();
             BindGrid();
         }
+
+        protected void gridPolicyItem_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
+        {
+            
+            String appendDes = "必需项";
+            HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
+
+            ASPxTextBox dxetxtPolicyItemFee = tblEditorTemplate.FindControl("dxetxtPolicyItemFee") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemFeeAdjust = tblEditorTemplate.FindControl("dxetxtPolicyItemFeeAdjust") as ASPxTextBox;
+
+
+            if (String.IsNullOrEmpty(dxetxtPolicyItemFee.Text.Trim()))
+            {
+                e.Errors[this.gridPolicyItem.Columns[0]] = appendDes;
+            }
+
+            if (String.IsNullOrEmpty(dxetxtPolicyItemFeeAdjust.Text.Trim()))
+            {
+                e.Errors[this.gridPolicyItem.Columns[1]] = appendDes;
+            }
+
+            dxetxtPolicyItemFee.Validate();
+            dxetxtPolicyItemFeeAdjust.Validate();
+
+            if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误(" + appendDes + ")。";
+
+        }
+     
 
         protected void gridPolicyItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
