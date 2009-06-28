@@ -18,9 +18,13 @@
     TagPrefix="dxwsc" %>
 <%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v8.3" Namespace="DevExpress.Web.ASPxHtmlEditor"
     TagPrefix="dxhe" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
+    TagPrefix="dxcb" %>
+   
+<%@ Register TagPrefix="CR" Namespace="CrystalDecisions.Web" Assembly="CrystalDecisions.Web, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" %>
 
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
-
+    
+    
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>保费通知书录入</title>
 
@@ -102,7 +106,7 @@
                 }
                 //result[0].value = result[0].value + ";" + retrunval;
             }
-            gridPolicyItem.PerformCallback('');            
+            gridPolicyItem.PerformCallback('');
         }
 
         function isEmpty(testVar) {
@@ -121,10 +125,10 @@
                 dxeSaveCallback.PerformCallback(thejsonstring);
             }
         }
-        
+
         function saveCallbackComplete(s, e) {
             //do nothing;
-            
+
             var pid = dxetxtNoticeNo.GetValueString();
             if (isEmpty(pid)) {
                 dxetxtNoticeNo.SetValue(e.result);
@@ -163,7 +167,7 @@
                 this.NoticeDate = NoticeDate;
 
             if (!isEmpty(AuditStatus))
-                this.AuditStatus = AuditStatus;         
+                this.AuditStatus = AuditStatus;
 
         }
 
@@ -177,20 +181,20 @@
             var buttonID = s.GetText();
             var AuditOrNot = "1";
             switch (buttonID) {
-                    case "审核":
-                        AuditOrNot = "1";
-                        break
-                    case "反审核":
-                        AuditOrNot = "0";
-                        break
-                    default:
-                        AuditOrNot = "1";
-             }
-             var thejsonstring = makeNoticeInfoJSON(AuditOrNot);
-             dxeAuditCallback.PerformCallback(thejsonstring);
-            
+                case "审核":
+                    AuditOrNot = "1";
+                    break
+                case "反审核":
+                    AuditOrNot = "0";
+                    break
+                default:
+                    AuditOrNot = "1";
+            }
+            var thejsonstring = makeNoticeInfoJSON(AuditOrNot);
+            dxeAuditCallback.PerformCallback(thejsonstring);
+
         }
-        
+
         function auditCallbackComplete(s, e) {
             //do nothing;
             var buttonID = dxebtnAudit.GetText();
@@ -203,7 +207,7 @@
                     break
                 default:
                     //do nothing;
-            }            
+            }
         }
         
         
@@ -212,24 +216,24 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
-    
-    <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
+    <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server"
+        OnCallback="dxeSaveCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
-    
-    <dxcb:ASPxCallback ID="dxeAuditCallback" ClientInstanceName="dxeAuditCallback" runat="server" OnCallback="dxeAuditCallback_Callback">
+    <dxcb:ASPxCallback ID="dxeAuditCallback" ClientInstanceName="dxeAuditCallback" runat="server"
+        OnCallback="dxeAuditCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {auditCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
-    
     <table style="width: 100%">
         <tr>
             <td style="width: 12%; text-align: right;">
                 收费方式：
             </td>
             <td style="width: 88%; text-align: left;">
-                <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType" runat="server"
-                    Width="180px" DropDownStyle="DropDownList">
-                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项" CausesValidation="true" ValidationGroup="BaseGroup">
+                <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
+                    runat="server" Width="180px" DropDownStyle="DropDownList">
+                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项" CausesValidation="true"
+                        ValidationGroup="BaseGroup">
                         <RequiredField IsRequired="true" ErrorText="必需项" />
                     </ValidationSettings>
                 </dxe:ASPxComboBox>
@@ -240,7 +244,9 @@
                 通知书号：
             </td>
             <td style="text-align: left;">
-                <dxe:ASPxTextBox ID="dxetxtNoticeNo" ClientInstanceName="dxetxtNoticeNo" runat="server" Width="180px" ReadOnly="true"></dxe:ASPxTextBox>
+                <dxe:ASPxTextBox ID="dxetxtNoticeNo" ClientInstanceName="dxetxtNoticeNo" runat="server"
+                    Width="180px" ReadOnly="true">
+                </dxe:ASPxTextBox>
             </td>
         </tr>
         <tr>
@@ -248,8 +254,10 @@
                 通知日期：
             </td>
             <td style="text-align: left;">
-                <dxe:ASPxDateEdit ID="dxeNoticeDate" ClientInstanceName="dxeNoticeDate" runat="server" Width="180px">
-                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项" CausesValidation="true" ValidationGroup="BaseGroup">
+                <dxe:ASPxDateEdit ID="dxeNoticeDate" ClientInstanceName="dxeNoticeDate" runat="server"
+                    Width="180px">
+                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项" CausesValidation="true"
+                        ValidationGroup="BaseGroup">
                         <RequiredField IsRequired="true" ErrorText="必需项" />
                     </ValidationSettings>
                 </dxe:ASPxDateEdit>
@@ -271,10 +279,8 @@
             </td>
             <td style="text-align: left;">
                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                    KeyFieldName="PolPeriodId" Width="100%" AutoGenerateColumns="False"
-                    OnCustomCallback="gridPolicyItem_CustomCallback"
-                    OnRowDeleting="gridPolicyItem_RowDeleting"
-                    OnRowDeleted="gridPolicyItem_RowDeleted">
+                    KeyFieldName="PolPeriodId" Width="100%" AutoGenerateColumns="False" OnCustomCallback="gridPolicyItem_CustomCallback"
+                    OnRowDeleting="gridPolicyItem_RowDeleting" OnRowDeleted="gridPolicyItem_RowDeleted">
                     <%-- BeginRegion Columns --%>
                     <Columns>
                         <dxwgv:GridViewCommandColumn Caption="&nbsp;">
@@ -346,22 +352,25 @@
                         <td>
                         </td>
                         <td style="width: 60px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="dxebtnSave" ClientInstanceName="dxebtnSave" Text="保存" 
-                            CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
-                            <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
+                            <dxe:ASPxButton runat="server" ID="dxebtnSave" ClientInstanceName="dxebtnSave" Text="保存"
+                                CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
+                                <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
                             </dxe:ASPxButton>
                         </td>
                         <td style="width: 100px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit" Text="审核" AutoPostBack="false">
+                            <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit"
+                                Text="审核" AutoPostBack="false">
                                 <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
                             </dxe:ASPxButton>
                         </td>
                         <td style="width: 100px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="dxebtnPrint" ClientInstanceName="dxebtnPrint" Text="打印单证" AutoPostBack="false">
+                            <dxe:ASPxButton runat="server" ID="dxebtnPrint" ClientInstanceName="dxebtnPrint"
+                                Text="打印单证" AutoPostBack="false" OnClick="dxebtnPrint_Click">
                             </dxe:ASPxButton>
                         </td>
                         <td style="width: 60px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="dxebtnClose" ClientInstanceName="dxebtnClose" Text="关闭" AutoPostBack="false">
+                            <dxe:ASPxButton runat="server" ID="dxebtnClose" ClientInstanceName="dxebtnClose"
+                                Text="关闭" AutoPostBack="false">
                                 <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
                             </dxe:ASPxButton>
                         </td>
@@ -369,6 +378,11 @@
                         </td>
                     </tr>
                 </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+              <CR:CrystalReportViewer ID="crvNotice"  runat="server" Width="100%" Height="50px" EnableDrillDown="False"  />      
             </td>
         </tr>
     </table>

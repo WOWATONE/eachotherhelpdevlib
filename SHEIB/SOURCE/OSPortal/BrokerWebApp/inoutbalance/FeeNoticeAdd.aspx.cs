@@ -13,6 +13,16 @@ using System.Text;
 using DevExpress.Web.ASPxHtmlEditor;
 using DevExpress.Web.ASPxEditors;
 using DevExpress.Web.ASPxUploadControl;
+using System.Data.SqlClient;
+using System.Configuration;
+
+using CrystalDecisions.Web;
+using CrystalDecisions.Shared;
+using CrystalDecisions.ReportSource;
+using CrystalDecisions.CrystalReports;
+using CrystalDecisions.CrystalReports.Engine;
+
+
 
 namespace BrokerWebApp.inoutbalance
 {
@@ -22,6 +32,7 @@ namespace BrokerWebApp.inoutbalance
         #region Variables
 
         private const string inputQueryStringIDKey = "NoticeNo";
+        CrystalReportSource CrSource;
            
         
         #endregion Variables
@@ -309,6 +320,51 @@ namespace BrokerWebApp.inoutbalance
                 this.dxebtnAudit.Text = "审核"; 
             }
             
+        }
+
+        protected void dxebtnPrint_Click(object sender, EventArgs e)
+        {
+            string sSql = "";
+     
+            string conn = ConfigurationManager.ConnectionStrings["broker"].ConnectionString;
+            inoutbalance.rpt.dsNotice dNotice = new BrokerWebApp.inoutbalance.rpt.dsNotice();
+
+            sSql = sSql + "select NoticeNo,dbo.GetYYYYMMDDChinese(NoticeDate) NoticeDate,";
+            sSql = sSql + "(select max(CustomerName) from PolicyPeriodDetail where NoticeNo=a.NoticeNo)  CustomerName,";
+            sSql = sSql + "(select max(BranchName) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) Carrier,";
+            sSql = sSql + "(select SUM(PayFeeBase) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) PayFee,";
+            sSql = sSql + "(select dbo.MoneyToChinese(SUM(PayFeeBase)) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) PayFeeUpper,";
+            sSql = sSql + "(select SUM(AciPremium) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) AciPremium,";
+            sSql = sSql + "(select SUM(CstPremium) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) CstPremium,";
+            sSql = sSql + "(select SUM(CiPremium) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) CiPremium,";
+            sSql = sSql + "(select  ParamData from SysSet where ParamName='FeeInc') FeeCompany,";
+            sSql = sSql + "(select  ParamData from SysSet where ParamName='FeeIncBankAccount') FeeAccount,";
+            sSql = sSql + "(select  ParamData from SysSet where ParamName='FeeIncBankName') FeeBankName";
+            sSql = sSql + " from notice a";
+            sSql = sSql + " where NoticeNo='TZSBH'";
+            SqlDataAdapter ad = new SqlDataAdapter(sSql, conn);
+            ad.Fill(dNotice, "Notice");
+
+            sSql = "";
+            sSql = sSql + "select ProdTypeName,PolicyNo,PolicyID,PayFee,NoticeNo";
+            sSql = sSql + " from NoticePolicyPeriod";
+            sSql = sSql + " where NoticeNo ='TZSBH'";
+
+            SqlDataAdapter adDetail = new SqlDataAdapter(sSql, conn);
+            adDetail.Fill(dNotice, "NoticePolicy");
+
+
+            //inoutbalance.rpt.rptNoticeAgent crpt = new BrokerWebApp.inoutbalance.rpt.rptNoticeAgent();
+            //crpt.SetDataSource(dNotice);
+            //this.CrystalReportViewer1.ReportSource = crpt;
+
+            CrSource = new CrystalReportSource();
+            CrSource.Report.FileName = "rpt\\rptNoticeAgent.rpt";
+            CrSource.ReportDocument.SetDataSource(dNotice);
+            //Session.Add("REPORT", CrSource);
+
+            crvNotice.ReportSource = CrSource;
+
         }
 
 
