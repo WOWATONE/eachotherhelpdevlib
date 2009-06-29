@@ -18,10 +18,15 @@ namespace BrokerWebApp.CustomerRelation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.Page.IsPostBack)
+            try
             {
-                this.Initialization();
+                if (!this.Page.IsPostBack)
+                {
+                    this.Initialization();
+                }
             }
+            catch (Exception ex)
+            { }
         }
 
         /// <summary>
