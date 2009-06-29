@@ -22,14 +22,13 @@ namespace BrokerWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Initialization();
-
             if (!IsPostBack && !IsCallback)
             {
                 ckbNeedPayFeePolicy.Checked = true;
-                BindGrid();
+                Initialization();
                 this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
             }
+            BindGrid();
         }
 
 
