@@ -367,7 +367,7 @@
                                 <td>
                                     <dxwgv:ASPxGridView ID="gridContactItem" ClientInstanceName="gridContactItem" runat="server"
                                         KeyFieldName="ContactID" Width="100%" AutoGenerateColumns="False" SettingsBehavior-AllowSort="false" 
-                                        OnRowInserting="gridContactItem_RowInserting"
+                                        OnRowInserting="gridContactItem_RowInserting" SettingsBehavior-AllowDragDrop="false"
                                         OnRowUpdating="gridContactItem_RowUpdating" OnRowUpdated="gridContactItem_RowUpdated"
                                         OnRowInserted="gridContactItem_RowInserted" OnRowDeleting="gridContactItem_RowDeleting"
                                         OnRowDeleted="gridContactItem_RowDeleted">
@@ -518,6 +518,7 @@
                                 <td>
                                     <dxwgv:ASPxGridView ID="gridCustomerPtItem" ClientInstanceName="gridCustomerPtItem"
                                         runat="server" KeyFieldName="FollowID" Width="100%" AutoGenerateColumns="False" SettingsBehavior-AllowSort="false"
+                                        SettingsBehavior-AllowDragDrop="false"
                                         OnRowInserting="gridCustomerPtItem_RowInserting" OnRowUpdating="gridCustomerPtItem_RowUpdating"
                                         OnRowUpdated="gridCustomerPtItem_RowUpdated" OnRowInserted="gridCustomerPtItem_RowInserted"
                                         OnRowDeleting="gridCustomerPtItem_RowDeleting" OnRowDeleted="gridCustomerPtItem_RowDeleted">
@@ -671,7 +672,7 @@
                             <tr>
                                 <td>
                                     <dxwgv:ASPxGridView ID="gridNotifyClaimItem" ClientInstanceName="gridNotifyClaimItem" runat="server"
-                                        KeyFieldName="NotifyID" Width="100%" AutoGenerateColumns="False" SettingsBehavior-AllowSort="false">
+                                        KeyFieldName="NotifyID" Width="100%" AutoGenerateColumns="False" SettingsBehavior-AllowSort="false" SettingsBehavior-AllowDragDrop="false">
                                         <Columns>
                                             <dxwgv:GridViewDataTextColumn Caption="理赔编号" FieldName="NotifyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
@@ -712,7 +713,7 @@
                             <tr>
                                 <td colspan=2>
                                     <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" SettingsBehavior-AllowSort="false"
-                                        KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" Settings-ShowFooter="true" SettingsPager-AlwaysShowPager="true">
+                                        KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" Settings-ShowFooter="true" SettingsPager-AlwaysShowPager="true" SettingsBehavior-AllowDragDrop="false">
                                         <Columns>
                                             <dxwgv:GridViewDataTextColumn Caption="投保编号" FieldName="PolicyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
@@ -734,10 +735,6 @@
                                             </dxwgv:GridViewDataTextColumn>
                                         </Columns>
                                         <SettingsPager Mode="ShowAllRecords" />
-                                        <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
-                                        <GroupSummary >
-                                            <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" ShowInGroupFooterColumn="Premium" DisplayFormat = "保费合计: {0}" />
-                                        </GroupSummary>
                                         <TotalSummary >
                                             <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" ShowInGroupFooterColumn="Premium" DisplayFormat = "保费合计: {0}" />
                                         </TotalSummary>
