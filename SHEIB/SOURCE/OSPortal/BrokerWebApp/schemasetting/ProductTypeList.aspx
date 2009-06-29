@@ -222,7 +222,7 @@
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                                                         KeyFieldName="ProdID" AutoGenerateColumns="False" Settings-ShowFooter="true"
-                                                        SettingsBehavior-AllowSort="false" Width="100%" SettingsPager-AlwaysShowPager="true"
+                                                        SettingsBehavior-AllowSort="false" SettingsBehavior-AllowDragDrop="false" Width="100%" SettingsPager-AlwaysShowPager="true"
                                                         OnRowDeleting="gridSearchResult_RowDeleting">
                                                         <Columns>
                                                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" Width="15px" CellStyle-Wrap="False"
