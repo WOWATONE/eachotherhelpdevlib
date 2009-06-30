@@ -54,7 +54,7 @@ namespace BusinessObjects
             sSql = sSql + "(select BranchName from Branch where BranchID=b.BranchID) BranchName,";
             sSql = sSql + " (select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=a.ProcessFeeType) ProcessFeeTypeName";
             sSql = sSql + " from VoucherFee a";
-            sSql = sSql + " left join PolicyPeriod b";
+            sSql = sSql + " left join PolicyPeriodFee b";
             sSql = sSql + " on a.PolPeriodID=b.PolPeriodID";
             sSql = sSql + " left join Policy c";
             sSql = sSql + " on b.PolicyID=c.PolicyID";
