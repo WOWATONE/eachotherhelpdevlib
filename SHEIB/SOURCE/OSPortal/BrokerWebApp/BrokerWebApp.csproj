@@ -489,13 +489,6 @@
     <Compile Include="inoutbalance\FeeNotice.aspx.designer.cs">
       <DependentUpon>FeeNotice.aspx</DependentUpon>
     </Compile>
-    <Compile Include="inoutbalance\FeeNoticeAdd.aspx.cs">
-      <DependentUpon>FeeNoticeAdd.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="inoutbalance\FeeNoticeAdd.aspx.designer.cs">
-      <DependentUpon>FeeNoticeAdd.aspx</DependentUpon>
-    </Compile>
     <Compile Include="inoutbalance\FeeNoticeAddSelect.aspx.cs">
       <DependentUpon>FeeNoticeAddSelect.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -654,6 +647,13 @@
     </Compile>
     <Compile Include="schemasetting\CarrierList.aspx.designer.cs">
       <DependentUpon>CarrierList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="schemasetting\DataDictionary.aspx.cs">
+      <DependentUpon>DataDictionary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\DataDictionary.aspx.designer.cs">
+      <DependentUpon>DataDictionary.aspx</DependentUpon>
     </Compile>
     <Compile Include="schemasetting\DepartmentManager.aspx.cs">
       <DependentUpon>DepartmentManager.aspx</DependentUpon>
@@ -942,7 +942,6 @@
     <Content Include="inoutbalance\FeeCustomerAdd.aspx" />
     <Content Include="inoutbalance\FeeCustomerAddSelect.aspx" />
     <Content Include="inoutbalance\FeeNotice.aspx" />
-    <Content Include="inoutbalance\FeeNoticeAdd.aspx" />
     <Content Include="inoutbalance\FeeNoticeAddSelect.aspx" />
     <Content Include="inoutbalance\FeePayin.aspx" />
     <Content Include="inoutbalance\FeePayinAdd.aspx" />
@@ -964,6 +963,7 @@
     <Content Include="schemasetting\BranchList.aspx" />
     <Content Include="schemasetting\Carrier.aspx" />
     <Content Include="schemasetting\CarrierList.aspx" />
+    <Content Include="schemasetting\DataDictionary.aspx" />
     <Content Include="schemasetting\ProductType.aspx" />
     <Content Include="schemasetting\ProductTypeList.aspx" />
   </ItemGroup>
@@ -1008,7 +1008,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>8697</DevelopmentServerPort>
+          <DevelopmentServerPort>5308</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/BrokerWebApp</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
