@@ -123,7 +123,7 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="险种定义" Name="schemasetting/ProductTypeList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="数据字典" Name="ProductSetup/DataDictionary.aspx">
+                                <dxnb:NavBarItem Text="数据字典" Name="schemasetting/DataDictionary.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="企业目录" Name="CustomerRelation/EnterpriseList.aspx">
                                 </dxnb:NavBarItem>
