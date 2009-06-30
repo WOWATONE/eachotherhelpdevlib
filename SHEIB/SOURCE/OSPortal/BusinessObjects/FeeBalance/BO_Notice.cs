@@ -146,6 +146,14 @@ namespace BusinessObjects
         }
 
 
+        public static DataSet GetNoticeReport(string sSql)
+        {
+            DbCommand dbCommand = _db.GetSqlStringCommand(sSql);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+
+
         public void Save(ModifiedAction action)
         {
             if (action == ModifiedAction.Insert)

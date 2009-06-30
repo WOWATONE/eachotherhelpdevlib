@@ -53,11 +53,12 @@ namespace BusinessObjects
             sSql = sSql + "(select CarrierNameCn from Carrier where CarrierID=b.CarrierID) CarrierName,";
             sSql = sSql + "(select BranchName from Branch where BranchID=b.BranchID) BranchName,";
             sSql = sSql + " (select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=a.ProcessFeeType) ProcessFeeTypeName";
-            sSql = sSql + " from VoucherFee a,PolicyPeriodFee b,Policy c";
-            sSql = sSql + " where a.PolPeriodID=b.PolPeriodID";
-            sSql = sSql + "  and a.VoucherId=a.VoucherId";
-            sSql = sSql + "  and b.PolicyID=c.PolicyID";
-            sSql = sSql + "  and a.AccountTypeID in ('7')";
+            sSql = sSql + " from VoucherFee a";
+            sSql = sSql + " left join PolicyPeriod b";
+            sSql = sSql + " on a.PolPeriodID=b.PolPeriodID";
+            sSql = sSql + " left join Policy c";
+            sSql = sSql + " on b.PolicyID=c.PolicyID";
+            sSql = sSql + " where a.AccountTypeID in ('7')";
             sSql = sSql + " ) a";
             if (sWhere != "")
             {
