@@ -214,6 +214,114 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand);
         }
 
+        /// <summary>
+        /// 取得代码类型列表
+        /// </summary>
+        /// <returns></returns>
+        public static DataSet GetCodeTypeList()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select CodeTypeID, isnull(Name, '') as Name ");
+            sb.Append("From P_CodeType (nolock) ");
+            sb.Append("Order By CodeTypeID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        /// <summary>
+        /// 根据代码类型取得代码列表
+        /// </summary>
+        /// <param name="?"></param>
+        /// <returns></returns>
+        public static DataSet GetCodeListByCodeTypeID(string codeTypeID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ID, CodeType, CodeID, CodeName, SortNo, Content1, Content2, Content3 ");
+            sb.Append("From P_Code (nolock) ");
+            sb.Append("Where CodeType=@CodeType ");
+            sb.Append("Order By CodeID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CodeType", DbType.AnsiString, codeTypeID);
+
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        /// <summary>
+        /// 根据代码类型修改代码类型名称
+        /// </summary>
+        /// <param name="codeTypeID"></param>
+        /// <param name="name"></param>
+        public static void UpdatePCodeType(string codeTypeID, string name)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Update P_CodeType ");
+            sb.Append("Set Name=@Name ");
+            sb.Append("Where CodeTypeID=@CodeTypeID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CodeTypeID", DbType.AnsiString, codeTypeID);
+            _db.AddInParameter(dbCommand, "@Name", DbType.AnsiString, name);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 添加代码类型
+        /// </summary>
+        /// <param name="codeTypeID"></param>
+        /// <param name="name"></param>
+        public static void InsertPCodeType(string codeTypeID, string name)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Insert Into P_CodeType(CodeTypeID, Name) ");
+            sb.Append("Values(@CodeTypeID, @Name)");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CodeTypeID", DbType.AnsiString, codeTypeID);
+            _db.AddInParameter(dbCommand, "@Name", DbType.AnsiString, name);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 删除代码类型
+        /// </summary>
+        /// <param name="codeTypeID"></param>
+        public static void DeletePCodeType(string codeTypeID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Delete From P_CodeType Where CodeTypeID=@CodeTypeID ");
+            sb.Append("Delete From P_Code Where CodeType=@CodeTypeID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CodeTypeID", DbType.AnsiString, codeTypeID);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 判断是否存在代码类型编号
+        /// </summary>
+        /// <param name="codeTypeID"></param>
+        /// <returns></returns>
+        public static bool IfExistsCodeTypeID(string codeTypeID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select CodeTypeID From P_CodeType (nolock) ");
+            sb.Append("Where CodeTypeID=@CodeTypeID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CodeTypeID", DbType.AnsiString, codeTypeID);
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+
+            if (value != null && value.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
         #endregion Methods
 
 
