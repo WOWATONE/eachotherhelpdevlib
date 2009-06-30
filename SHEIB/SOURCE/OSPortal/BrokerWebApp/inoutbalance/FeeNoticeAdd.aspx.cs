@@ -22,6 +22,9 @@ using CrystalDecisions.ReportSource;
 using CrystalDecisions.CrystalReports;
 using CrystalDecisions.CrystalReports.Engine;
 
+using Microsoft.Reporting.WebForms;
+
+using System.Data.Common;
 
 
 namespace BrokerWebApp.inoutbalance
@@ -61,12 +64,12 @@ namespace BrokerWebApp.inoutbalance
             }
 
 
-            if (Session["Report"] != null)
-            {
-                CrSource = (CrystalReportSource)Session["REPORT"];
-                crvNotice.ReportSource = CrSource;
-                crvNotice.PrintMode = CrystalDecisions.Web.PrintMode.ActiveX;
-            }
+            //if (Session["Report"] != null)
+            //{
+            //    CrSource = (CrystalReportSource)Session["REPORT"];
+            //    crvNotice.ReportSource = CrSource;
+            //    crvNotice.PrintMode = CrystalDecisions.Web.PrintMode.ActiveX;
+            //}
 
         }
 
@@ -362,16 +365,31 @@ namespace BrokerWebApp.inoutbalance
             adDetail.Fill(dNotice, "NoticePolicy");
 
 
-            //inoutbalance.rpt.rptNoticeAgent crpt = new BrokerWebApp.inoutbalance.rpt.rptNoticeAgent();
-            //crpt.SetDataSource(dNotice);
-            //this.CrystalReportViewer1.ReportSource = crpt;
 
-            CrSource = new CrystalReportSource();
-            CrSource.Report.FileName = "rpt\\rptNoticeAgent.rpt";
-            CrSource.ReportDocument.SetDataSource(dNotice);
-            Session.Add("Report", CrSource);
+            //CrSource = new CrystalReportSource();
+            //CrSource.Report.FileName = "rpt\\rptNoticeAgent.rpt";
+            //CrSource.ReportDocument.SetDataSource(dNotice);
+            //Session.Add("Report", CrSource);
+            //crvNotice.ReportSource = CrSource;
 
-            crvNotice.ReportSource = CrSource;
+            ReportViewer1.Visible = true;
+            ReportDataSource dataSourceNotice = new ReportDataSource("dsNotice_Notice", dNotice.Tables["Notice"]);
+            ReportDataSource dataSourceNoticePolicy = new ReportDataSource("dsNotice_NoticePolicy", dNotice.Tables["NoticePolicy"]);
+            //ReportViewer1.LocalReport.ReportPath = "rptNoticeDirect.rdlc";
+            ReportViewer1.LocalReport.DataSources.Clear();
+            ReportViewer1.LocalReport.DataSources.Add(dataSourceNotice);
+            ReportViewer1.LocalReport.DataSources.Add(dataSourceNoticePolicy);
+            ReportViewer1.LocalReport.Refresh();
+
+            //DataTable dt = BO_Notice.GetNoticeReport(sSql).Tables[0];
+
+            //ReportViewer1.Visible = true;
+
+            //ReportDataSource dataSource = new ReportDataSource("dsNotice_Notice", dt);
+            //ReportViewer1.LocalReport.ReportPath = "rptNoticeDirect.rdlc";
+            //ReportViewer1.LocalReport.DataSources.Clear();
+            //ReportViewer1.LocalReport.DataSources.Add(dataSource);
+            //ReportViewer1.LocalReport.Refresh();
 
         }
 
@@ -379,11 +397,6 @@ namespace BrokerWebApp.inoutbalance
     
     
     }
-
-
-    
-
-
 
 
     [DataContract(Namespace = "http://www.sheib.com")]

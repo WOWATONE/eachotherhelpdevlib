@@ -20,11 +20,9 @@
     TagPrefix="dxhe" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
     TagPrefix="dxcb" %>
-   
 <%@ Register TagPrefix="CR" Namespace="CrystalDecisions.Web" Assembly="CrystalDecisions.Web, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" %>
-
-    
-    
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+    Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>保费通知书录入</title>
 
@@ -382,7 +380,9 @@
         </tr>
         <tr>
             <td colspan="2">
-              <CR:CrystalReportViewer ID="crvNotice"  runat="server" Width="100%" Height="50px" EnableDrillDown="False"  />      
+                <rsweb:ReportViewer ID="ReportViewer1" Width="768" runat="server">
+                    <LocalReport ReportPath="inoutbalance\rptNoticeDirect.rdlc" />
+                </rsweb:ReportViewer>
             </td>
         </tr>
     </table>
