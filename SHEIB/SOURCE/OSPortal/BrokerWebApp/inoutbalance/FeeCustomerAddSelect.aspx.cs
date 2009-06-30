@@ -150,7 +150,7 @@ namespace BrokerWebApp.inoutbalance
             {
                 if (s.Trim() != "")
                 {
-                    if (s.Trim().Length == 36)
+                    if (s.Trim().Length >= 30)
                     {
                         exist = BusinessObjects.BO_Fee.PolPeriodExist(s);
                         if (!exist)
