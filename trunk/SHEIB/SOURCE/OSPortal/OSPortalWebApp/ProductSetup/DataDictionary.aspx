@@ -27,7 +27,7 @@
                                 KeyFieldName="CodeTypeID" Width="100%" AutoGenerateColumns="False" OnRowInserting="gridCodeTypeItem_RowInserting"
                                 OnRowUpdating="gridCodeTypeItem_RowUpdating" OnRowUpdated="gridCodeTypeItem_RowUpdated"
                                 OnRowInserted="gridCodeTypeItem_RowInserted" OnRowDeleting="gridCodeTypeItem_RowDeleting"
-                                OnRowDeleted="gridCodeTypeItem_RowDeleted">
+                                OnRowDeleted="gridCodeTypeItem_RowDeleted" SettingsBehavior-AllowFocusedRow="true">
                                 <Columns>
                                     <dxwgv:GridViewCommandColumn Caption="&nbsp;" VisibleIndex="0" Width="15px">
                                         <NewButton Visible="true" />
