@@ -489,6 +489,13 @@
     <Compile Include="inoutbalance\FeeNotice.aspx.designer.cs">
       <DependentUpon>FeeNotice.aspx</DependentUpon>
     </Compile>
+    <Compile Include="inoutbalance\FeeNoticeAdd.aspx.cs">
+      <DependentUpon>FeeNoticeAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeeNoticeAdd.aspx.designer.cs">
+      <DependentUpon>FeeNoticeAdd.aspx</DependentUpon>
+    </Compile>
     <Compile Include="inoutbalance\FeeNoticeAddSelect.aspx.cs">
       <DependentUpon>FeeNoticeAddSelect.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -942,6 +949,7 @@
     <Content Include="inoutbalance\FeeCustomerAdd.aspx" />
     <Content Include="inoutbalance\FeeCustomerAddSelect.aspx" />
     <Content Include="inoutbalance\FeeNotice.aspx" />
+    <Content Include="inoutbalance\FeeNoticeAdd.aspx" />
     <Content Include="inoutbalance\FeeNoticeAddSelect.aspx" />
     <Content Include="inoutbalance\FeePayin.aspx" />
     <Content Include="inoutbalance\FeePayinAdd.aspx" />
