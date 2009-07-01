@@ -32,9 +32,10 @@ namespace BrokerWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            init();
+            
             if (!IsPostBack && !IsCallback)
             {
+                init();
                 this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];
                 loadValue(this.lblVoucherId.InnerHtml);
                 
@@ -193,6 +194,39 @@ namespace BrokerWebApp.inoutbalance
             //dxetxtAciPremium.ReadOnly = true;
             //dxetxtCstPremium.ReadOnly = true;
 
+            DataSet dsList;
+                        
+            this.dxeddlProcessFeeType.Items.Add("(全部)", "");
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.ProcessFeeType.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlProcessFeeType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
+
+
+            this.dxeddlCarrier.Items.Add("(全部)", "");
+            dsList = BusinessObjects.SchemaSetting.BO_Carrier.GetCarrierList("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlCarrier.Items.Add(row["CarrierNameCn"].ToString().Trim(), row["CarrierID"].ToString().Trim());
+                }
+            }
+
+            this.dxeddlBranch.Items.Add("(全部)", "");
+            dsList = BusinessObjects.SchemaSetting.BO_Branch.GetBranchList("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlBranch.Items.Add(row["BranchName"].ToString().Trim(), row["BranchID"].ToString().Trim());
+                }
+            }
+
         }
 
 
@@ -235,29 +269,27 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.InvoiceNO = "";
                 objLoad.CreateTime = DateTime.Now;
                 objLoad.CreatePerson = this.CurrentUserID;
-                objLoad.AccountTypeID = Convert.ToInt32(BO_P_Code.AccountType.PayIn_Direct);
-                objLoad.FeeDate = obj.GotDate;
+                objLoad.AccountTypeID = Convert.ToInt32(BO_P_Code.AccountType.Invoice);
+                objLoad.FeeDate = obj.ReleaseDate;
                 objLoad.AuditStatus = Convert.ToInt32(BO_P_Code.AuditStatus.Appeal).ToString();
                 objLoad.Remark = obj.Remark;
 
                 objLoad.CarrierID = obj.Carrier;
                 objLoad.BranchID = obj.Branch;
-                objLoad.GatheringType = obj.GatheringType;
                 objLoad.ProcessFeeType = obj.ProcessFeeType;
-
+                objLoad.VoucherNo = obj.VoiceNo;
                 objLoad.Save(ModifiedAction.Insert);
             }
             else
             {
                 objLoad = new BO_Voucher(obj.ID);
-                objLoad.FeeDate = obj.GotDate;
+                objLoad.FeeDate = obj.ReleaseDate;
                 objLoad.Remark = obj.Remark;
 
                 objLoad.CarrierID = obj.Carrier;
                 objLoad.BranchID = obj.Branch;
-                objLoad.GatheringType = obj.GatheringType;
                 objLoad.ProcessFeeType = obj.ProcessFeeType;
-
+                objLoad.VoucherNo = obj.VoiceNo;
                 objLoad.Save(ModifiedAction.Update);
             }
 
@@ -302,6 +334,7 @@ namespace BrokerWebApp.inoutbalance
 
             this.dxeReleaseDate.Date = obj.FeeDate;
             this.dxetxtRemark.Text = obj.Remark;
+            this.dxetxtInvoiceNO.Text = obj.VoucherNo;
             if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
             {
                 this.dxebtnAudit.Text = "反审核";
@@ -311,6 +344,21 @@ namespace BrokerWebApp.inoutbalance
                 this.dxebtnAudit.Text = "审核";
             }
 
+        }
+
+
+
+        protected void dxeddlBranch_Callback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
+            thecb.TextField = "BranchName";
+            thecb.ValueField = "BranchID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
         }
 
 
@@ -329,14 +377,11 @@ namespace BrokerWebApp.inoutbalance
             public string ID { get; set; }
 
             [DataMember]
-            public DateTime GotDate { get; set; }
+            public DateTime ReleaseDate { get; set; }
 
             [DataMember]
             public string AuditStatus { get; set; }
-
-            [DataMember]
-            public string GatheringType { get; set; }
-
+                        
             [DataMember]
             public string ProcessFeeType { get; set; }
 
@@ -345,6 +390,9 @@ namespace BrokerWebApp.inoutbalance
 
             [DataMember]
             public string Branch { get; set; }
+
+            [DataMember]
+            public string VoiceNo { get; set; }
 
         }
 
