@@ -19,11 +19,12 @@ namespace BrokerWebApp.inoutbalance
         #endregion Variables
 
         protected void Page_Load(object sender, EventArgs e)
-        {
-            Initialization();
+        {            
             if (!IsPostBack && !IsCallback)
-            {                
-                ckbPayinedNeedInvoice.Checked = true;                
+            {
+                Initialization();
+                ckbPayinedNeedInvoice.Checked = true;
+                this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
             }
             BindGrid();
         }
