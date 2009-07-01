@@ -335,6 +335,30 @@ namespace BrokerWebApp.inoutbalance
             this.dxeReleaseDate.Date = obj.FeeDate;
             this.dxetxtRemark.Text = obj.Remark;
             this.dxetxtInvoiceNO.Text = obj.VoucherNo;
+
+            ListEditItem theselected;
+            
+            //processtype
+            theselected = this.dxeddlProcessFeeType.Items.FindByValue(obj.ProcessFeeType);
+            if (theselected != null)
+            {
+                dxeddlProcessFeeType.SelectedItem = theselected;
+            }
+
+            //carrie
+            theselected = this.dxeddlCarrier.Items.FindByValue(obj.CarrierID);
+            if (theselected != null)
+            {
+                dxeddlCarrier.SelectedItem = theselected;
+            }
+
+            //branch
+            theselected = this.dxeddlBranch.Items.FindByValue(obj.BranchID);
+            if (theselected != null)
+            {
+                dxeddlBranch.SelectedItem = theselected;
+            }
+
             if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
             {
                 this.dxebtnAudit.Text = "反审核";
