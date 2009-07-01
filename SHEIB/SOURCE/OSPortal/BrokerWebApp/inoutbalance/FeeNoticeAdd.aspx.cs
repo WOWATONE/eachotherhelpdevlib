@@ -103,7 +103,7 @@ namespace BrokerWebApp.inoutbalance
                 {
                     if (s.Trim() != "")
                     {
-                        if (s.Trim().Length == 36)
+                        if (s.Trim().Length >= 30)
                         {
                             if (sWhere.Trim() != "")
                                 sWhere += " or a.PolPeriodId = '" + s.Trim() + "' ";
@@ -264,7 +264,7 @@ namespace BrokerWebApp.inoutbalance
             {
                 if (s.Trim() != "")
                 {
-                    if (s.Trim().Length == 36)
+                    if (s.Trim().Length >= 30)
                     {
                         obj = new BusinessObjects.Policy.BO_PolicyPeriod(s);
                         obj.NoticeNo = noticeNo;
