@@ -72,17 +72,19 @@ namespace BusinessObjects
         }
 
 
-        public static Boolean PolPeriodExist(string polPeriodId)
+        public static Boolean PolPeriodExist(string polPeriodId,BO_P_Code.AccountType accountType)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT COUNT(PolPeriodID) ");
-            sb.Append(" ");
-            sb.Append(" FROM Fee ");
-            sb.Append(" WHERE PolPeriodID=@PolPeriodID ");
+            sb.Append("SELECT COUNT(A.PolPeriodID) ");            
+            sb.Append(" FROM Fee A ");
+            sb.Append(" INNER JOIN Voucher B ON A.VoucherId = B.VoucherId ");
+            sb.Append(" WHERE A.PolPeriodID=@PolPeriodID ");
+            sb.Append(" AND B.AccountTypeID=@AccountTypeID ");
             
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
             _db.AddInParameter(dbCommand, "@PolPeriodID", DbType.String, polPeriodId);
+            _db.AddInParameter(dbCommand, "@AccountTypeID", DbType.Int32, Convert.ToInt32(accountType));
             
             Int32 count = Convert.ToInt32(_db.ExecuteScalar(dbCommand));
             if (count > 0)
