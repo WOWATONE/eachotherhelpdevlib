@@ -34,9 +34,9 @@ namespace BrokerWebApp.inoutbalance
             {
                 init();
                 this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];
-                loadValue(this.lblVoucherId.InnerHtml);
-                BindGrid();
+                loadValue(this.lblVoucherId.InnerHtml);                
             }
+            BindGrid();
         }
 
 

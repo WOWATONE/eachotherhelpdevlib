@@ -128,6 +128,114 @@
                 return false;
             }
         }
+
+        function dxebtntopSave_Click(s, e) {
+            //
+            if (s.CauseValidation()) {
+                var thejsonstring = makeInfoJSON("0");
+                dxeSaveCallback.PerformCallback(thejsonstring);
+            }
+        }
+
+        function saveCallbackComplete(s, e) {
+            //do nothing;
+            var pid = getVoucherId();
+            if (isEmpty(pid)) {
+                setVoucherId(e.result);
+                cusCompleteEnable();
+            }
+        }
+
+        function btnAudit_Click(s, e) {
+            //
+            var buttonID = s.GetText();
+            var AuditOrNot = "1";
+            switch (buttonID) {
+                case "审核":
+                    AuditOrNot = "1";
+                    break
+                case "反审核":
+                    AuditOrNot = "0";
+                    break
+                default:
+                    AuditOrNot = "1";
+            }
+            var thejsonstring = makeInfoJSON(AuditOrNot);
+            dxeAuditCallback.PerformCallback(thejsonstring);
+
+        }
+
+        function auditCallbackComplete(s, e) {
+            //do nothing;
+            var buttonID = dxebtnAudit.GetText();
+            switch (buttonID) {
+                case "审核":
+                    dxebtnAudit.SetText("反审核");
+                    break
+                case "反审核":
+                    dxebtnAudit.SetText("审核");
+                    break
+                default:
+                    //do nothing;
+            }
+        }
+        
+        function dxeddlCarrier_SelectedIndexChanged(s, e) {
+            var thejsonstring = dxeddlCarrier.GetSelectedItem().value;
+            dxeddlBranch.PerformCallback(thejsonstring);
+        }
+
+
+        function makeInfoJSON(AuditStatus) {
+
+            var ID = getVoucherId();
+            var Remark = dxetxtRemark.GetValueString();
+            var ReleaseDate = dxeReleaseDate.GetValue();
+            var VoiceNo = dxetxtInvoiceNO.GetValueString();
+            var ProcessFeeType = dxeddlProcessFeeType.GetValue();
+            var Carrier = dxeddlCarrier.GetValue();
+            var Branch = dxeddlBranch.GetValue();
+            var plc = new InfoJSON(ID, Remark, ReleaseDate, AuditStatus, VoiceNo, ProcessFeeType, Carrier, Branch);
+
+            //deserialize JSON string, make a JSON object
+            //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
+
+            //serialize a JOSN object，make a JSON string.
+            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
+
+            return jsonStringClient;
+
+        }
+
+
+        function InfoJSON(ID, Remark, ReleaseDate, AuditStatus,
+            VoiceNo, ProcessFeeType, Carrier, Branch) {
+
+            if (!isEmpty(ID))
+                this.ID = ID;
+
+            if (!isEmpty(Remark))
+                this.Remark = Remark;
+
+            if (!isEmpty(ReleaseDate))
+                this.ReleaseDate = ReleaseDate;
+
+            if (!isEmpty(AuditStatus))
+                this.AuditStatus = AuditStatus;
+
+            if (!isEmpty(VoiceNo))
+                this.VoiceNo = VoiceNo;
+
+            if (!isEmpty(ProcessFeeType))
+                this.ProcessFeeType = ProcessFeeType;
+
+            if (!isEmpty(Carrier))
+                this.Carrier = Carrier;
+
+            if (!isEmpty(Branch))
+                this.Branch = Branch;
+
+        }
         
     </script>
 
@@ -312,21 +420,21 @@
                 <asp:Panel ID="npOtherPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
                     <table style="width: 100%">
                         <tr>
-                            <td style="width: 18%; text-align: right;">
+                            <td style="width: 110; text-align: right;">
                                 经纪费收取方式：
                             </td>
-                            <td style="width: 16%; text-align: left;">
+                            <td style="width: 130; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlProcessFeeType" ClientInstanceName="dxeddlProcessFeeType"
-                                    runat="server" Width="180px" DropDownStyle="DropDownList">
+                                    runat="server" Width="120px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
-                            <td style="width: 14%; text-align: right;">
+                            <td style="width: 100; text-align: right;">
                             </td>
-                            <td style="width: 16%; text-align: left;">
+                            <td style="width: 130; text-align: left;">
                             </td>
-                            <td style="width: 10%; text-align: right;">
+                            <td style="width: 100; text-align: right;">
                             </td>
-                            <td style="width: 16%; text-align: left;">
+                            <td style="width: 130; text-align: left;">
                             </td>
                         </tr>
                         <tr>
@@ -335,7 +443,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtPayProcBase" ClientInstanceName="dxetxtPayProcBase" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
@@ -343,7 +451,7 @@
                             </td>
                             <td style="text-align: left;">                                
                                 <dxe:ASPxTextBox ID="dxetxtInvoiceProc" ClientInstanceName="dxetxtInvoiceProc" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
@@ -351,7 +459,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtInvoiceProcAdjust" ClientInstanceName="dxetxtInvoiceProcAdjust" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                         </tr>
@@ -361,7 +469,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCiPremium" ClientInstanceName="dxetxtCiPremium" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
@@ -369,7 +477,7 @@
                             </td>
                             <td style="text-align: left;">
                                  <dxe:ASPxTextBox ID="dxetxtAciPremium" ClientInstanceName="dxetxtAciPremium" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
@@ -384,7 +492,7 @@
                                 开票日期：：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="dxeReleaseDate" runat="server">
+                                <dxe:ASPxDateEdit ID="dxeReleaseDate" ClientInstanceName="dxeReleaseDate" runat="server" Width="120">
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">
@@ -392,7 +500,7 @@
                             </td>
                             <td style="text-align: left;">
                                  <dxe:ASPxTextBox ID="dxetxtInvoiceNO" ClientInstanceName="dxetxtInvoiceNO" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
@@ -406,7 +514,8 @@
                             </td>
                             <td style="text-align: left;">
                                  <dxe:ASPxComboBox ID="dxeddlCarrier" ClientInstanceName="dxeddlCarrier" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
+                                    Width="120px" DropDownStyle="DropDownList">
+                                    <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlCarrier_SelectedIndexChanged(s,e);}" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
@@ -414,7 +523,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlBranch" ClientInstanceName="dxeddlBranch" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
+                                    Width="120px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback" >
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
@@ -427,8 +536,8 @@
                                 备注：
                             </td>
                             <td style="text-align: left;" colspan="5">
-                                 <dxe:ASPxTextBox ID="dxetxtRemark" ClientInstanceName="dxetxtAciPremium" runat="server"
-                                    Width="160px">
+                                 <dxe:ASPxTextBox ID="dxetxtRemark" ClientInstanceName="dxetxtRemark" runat="server"
+                                    Width="655px">
                                 </dxe:ASPxTextBox>
                             </td>
                         </tr>
