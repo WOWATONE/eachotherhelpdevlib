@@ -70,6 +70,7 @@ namespace BusinessObjects
             Content1,
             Content2,
             Content3,
+            NewCodeID
         }
 
         #region Property
@@ -137,11 +138,92 @@ namespace BusinessObjects
             set;
             get;
         }
-
+        /// <summary>
+        /// 新代码编号
+        /// </summary>
+        public string NewCodeID
+        {
+            set;
+            get;
+        }
         #endregion Property
 
 
         #region Methods
+        public void Save(ModifiedAction action)
+        {
+            if (action == ModifiedAction.Insert)
+            {
+                add();
+            }
+            else if (action == ModifiedAction.Update)
+            {
+                update();
+            }
+        }
+
+        /// <summary>
+        /// 保存代码表信息
+        /// </summary>
+        private void add()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT INTO P_Code(CodeType, CodeID, CodeName, SortNo, Content1, Content2, Content3) ");
+            sb.Append(" VALUES(@CodeType, @CodeID, @CodeName, @SortNo, @Content1, @Content2, @Content3)");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@CodeType", DbType.AnsiString, this.CodeType);
+            _db.AddInParameter(dbCommand, "@CodeID", DbType.AnsiString, this.CodeID);
+            _db.AddInParameter(dbCommand, "@CodeName", DbType.AnsiString, this.CodeName);
+            _db.AddInParameter(dbCommand, "@SortNo", DbType.Decimal, this.SortNo);
+            _db.AddInParameter(dbCommand, "@Content1", DbType.AnsiString, this.Content1);
+            _db.AddInParameter(dbCommand, "@Content2", DbType.AnsiString, this.Content2);
+            _db.AddInParameter(dbCommand, "@Content3", DbType.AnsiString, this.Content3);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 修改代码表信息
+        /// </summary>
+        private void update()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Update P_Code ");
+            sb.Append("Set CodeID=@NewCodeID, CodeName=@CodeName, SortNo=@SortNo,Content1=@Content1, Content2=@Content2, Content3=@Content3 ");
+            sb.Append("Where CodeType=@CodeTypeID And CodeID=@CodeID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@CodeTypeID", DbType.AnsiString, this.CodeType);
+            _db.AddInParameter(dbCommand, "@CodeID", DbType.AnsiString, this.CodeID);
+            _db.AddInParameter(dbCommand, "@CodeName", DbType.AnsiString, this.CodeName);
+            _db.AddInParameter(dbCommand, "@SortNo", DbType.Decimal, this.SortNo);
+            _db.AddInParameter(dbCommand, "@Content1", DbType.AnsiString, this.Content1);
+            _db.AddInParameter(dbCommand, "@Content2", DbType.AnsiString, this.Content2);
+            _db.AddInParameter(dbCommand, "@Content3", DbType.AnsiString, this.Content3);
+            _db.AddInParameter(dbCommand, "@NewCodeID", DbType.AnsiString, this.NewCodeID);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 删除代码表信息
+        /// </summary>
+        /// <param name="contactID"></param>
+        public static void Delete(string codeTypeID, string codeID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM P_Code ");
+            sb.Append(" WHERE CodeType = @CodeTypeID And CodeID=@CodeID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CodeTypeID", DbType.AnsiString, codeTypeID);
+            _db.AddInParameter(dbCommand, "@CodeID", DbType.AnsiString, codeID);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
 
         public static List<BO_P_Code> FetchList()
         {
@@ -315,6 +397,28 @@ namespace BusinessObjects
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
             _db.AddInParameter(dbCommand, "@CodeTypeID", DbType.AnsiString, codeTypeID);
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+
+            if (value != null && value.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// 判断是否已经存在代码编号在P_Code
+        /// </summary>
+        /// <param name="codeTypeID"></param>
+        /// <returns></returns>
+        public static bool IfExistsCodeID(string codeTypeID, string codeID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select CodeType, CodeID From P_Code (nolock) ");
+            sb.Append("Where CodeType=@CodeTypeID And CodeID=@CodeID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CodeTypeID", DbType.AnsiString, codeTypeID);
+            _db.AddInParameter(dbCommand, "@CodeID", DbType.AnsiString, codeID);
             DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
 
             if (value != null && value.Rows.Count > 0)
