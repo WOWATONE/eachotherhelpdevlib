@@ -133,10 +133,20 @@ namespace BrokerWebApp.inoutbalance
         
         protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            
-            e.Cancel = true;
-            this.gridPolicyItem.CancelEdit();            
+            String theKey = e.Keys[0].ToString();
 
+            try
+            {
+                BusinessObjects.BO_Fee.Delete(theKey);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            e.Cancel = true;
+            this.gridPolicyItem.CancelEdit();
+            BindGrid();
         }
 
         protected void gridPolicyItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
