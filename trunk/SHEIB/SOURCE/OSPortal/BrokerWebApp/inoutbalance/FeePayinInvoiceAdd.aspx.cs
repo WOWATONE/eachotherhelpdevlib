@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using BusinessObjects;
-
+using System.Drawing;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 
@@ -67,12 +67,12 @@ namespace BrokerWebApp.inoutbalance
             Int32 editIndex = this.gridPolicyItem.EditingRowVisibleIndex;
             if (editIndex > -1)
             {
-                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "NoticeNo", "PolicyID", "Fee", "FeeAdjust" });
+                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "Fee", "FeeAdjust" });
                 object[] theValueList = theValues as object[];
 
                 //String feeId = theValueList[0].ToString();
-                String fee = theValueList[3].ToString();
-                String feeAdjust = theValueList[4].ToString();
+                String fee = theValueList[1].ToString();
+                String feeAdjust = theValueList[2].ToString();
 
                 if (this.gridPolicyItemStartEdit)
                 {
@@ -180,19 +180,18 @@ namespace BrokerWebApp.inoutbalance
 
         private void init()
         {
-            //dxetxtPayFee.BackColor = Color.LightGray;
-            //dxetxtFeeAdjust.BackColor = Color.LightGray;
-            //dxetxtFee.BackColor = Color.LightGray;
-            //dxetxtCiPremium.BackColor = Color.LightGray;
-            //dxetxtAciPremium.BackColor = Color.LightGray;
-            //dxetxtCstPremium.BackColor = Color.LightGray;
+            dxetxtPayProcBase.BackColor = Color.LightGray;
+            dxetxtInvoiceProc.BackColor = Color.LightGray;
+            dxetxtInvoiceProcAdjust.BackColor = Color.LightGray;
+            dxetxtCiPremium.BackColor = Color.LightGray;
+            dxetxtAciPremium.BackColor = Color.LightGray;
 
-            //dxetxtPayFee.ReadOnly = true;
-            //dxetxtFeeAdjust.ReadOnly = true;
-            //dxetxtFee.ReadOnly = true;
-            //dxetxtCiPremium.ReadOnly = true;
-            //dxetxtAciPremium.ReadOnly = true;
-            //dxetxtCstPremium.ReadOnly = true;
+            dxetxtPayProcBase.ReadOnly = true;
+            dxetxtInvoiceProc.ReadOnly = true;
+            dxetxtInvoiceProcAdjust.ReadOnly = true;
+            dxetxtCiPremium.ReadOnly = true;
+            dxetxtAciPremium.ReadOnly = true;
+            
 
             DataSet dsList;
                         

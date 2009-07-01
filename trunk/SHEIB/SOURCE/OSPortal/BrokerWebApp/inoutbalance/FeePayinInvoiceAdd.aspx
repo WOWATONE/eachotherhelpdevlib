@@ -236,6 +236,60 @@
                 this.Branch = Branch;
 
         }
+
+
+        function gridPolicyItem_EndCallback(s, e) {
+            //sum
+            
+            var itemVal;
+            var indexPayProcBase = getOColumnIndex("本期应收经纪费");
+            var indexFee = getOColumnIndex("本次开票金额");
+            var indexFeeAdjust = getOColumnIndex("调整金额");
+
+            var sumPayProcBase = 0;
+            var sumFee = 0;
+            var sumFeeAdjust = 0;
+            
+            for (i = 0; i < gridPolicyItem.pageRowCount; i++) {
+                if (gridPolicyItem.GetDataRow(i) != null) {
+                    //PayFeeBase
+                    itemVal = gridPolicyItem.GetDataRow(i).cells[indexPayProcBase].innerText;
+                    if (isDecimal(itemVal)) {
+                        sumPayProcBase = parseFloat(sumPayProcBase) + parseFloat(itemVal);
+                    }
+                    //sumFee
+                    itemVal = gridPolicyItem.GetDataRow(i).cells[indexFee].innerText;
+                    if (isDecimal(itemVal)) {
+                        sumFee = parseFloat(sumFee) + parseFloat(itemVal);
+                    }
+
+                    //sumFeeAdjust
+                    itemVal = gridPolicyItem.GetDataRow(i).cells[indexFeeAdjust].innerText;
+                    if (isDecimal(itemVal)) {
+                        sumFeeAdjust = parseFloat(sumFeeAdjust) + parseFloat(itemVal);
+                    }
+                }
+            }
+
+            var rtn = sumPayProcBase.toFixed(2);
+            dxetxtPayProcBase.SetValue(rtn);
+            rtn = sumFee.toFixed(2);
+            dxetxtInvoiceProc.SetValue(rtn);
+            rtn = sumFeeAdjust.toFixed(2);
+            dxetxtInvoiceProcAdjust.SetValue(rtn);
+        }
+
+        function getOColumnIndex(fieldName) {
+            var headerCap;
+            for (i = 0; i < gridPolicyItem.GetHeadersRow().cells.length; i++) {
+                headerCap = gridPolicyItem.GetHeadersRow().cells[i].innerText;
+                if (!isEmpty(headerCap)) {
+                    if (headerCap == fieldName) {
+                        return i;
+                    }
+                }
+            }
+        }
         
     </script>
 
@@ -286,7 +340,7 @@
                         <tr>
                             <td colspan="3">
                                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                    DataSourceID="" KeyFieldName="FeeId" Width="100%" AutoGenerateColumns="False"
+                                    DataSourceID="" KeyFieldName="FeeId" Width="100%" AutoGenerateColumns="False" 
                                     OnRowUpdating="gridPolicyItem_RowUpdating"
                                     OnRowUpdated="gridPolicyItem_RowUpdated"
                                     OnRowDeleting="gridPolicyItem_RowDeleting" 
@@ -304,7 +358,7 @@
                                         </dxwgv:GridViewCommandColumn>
                                         <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False" Visible="false" >
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="解付单号" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="解付单号" CellStyle-Wrap="False"
                                             GroupIndex="0">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False">
@@ -313,21 +367,21 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="已解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="本期应收经纪费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="本期应收经纪费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="StandardFeeBase" Caption="本期已收经纪费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="本期已收经纪费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GotFeeBase" Caption="本次开票金额" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GettingFeeBase" Caption="调整金额" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CustomerID" Caption="投保客户" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CustomerName" Caption="投保客户" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="ProdTypeID" Caption="险种名称" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="险种名称" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CarrierId" Caption="客户经理" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="客户经理" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="BranchId" Caption="经纪费收取方式" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="ProcessFeeTypeName" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <TotalSummary>
@@ -349,6 +403,8 @@
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowAllRecords" />
                                     <Settings ShowGroupPanel="true" />
+                                    <ClientSideEvents EndCallback="function(s, e) {gridPolicyItem_EndCallback();}" />                                                  
+                                    <SettingsBehavior AutoExpandAllGroups="true" />
                                     <Templates>
                                         <EditForm>
                                             <div style="padding: 4px 4px 3px 4px">
