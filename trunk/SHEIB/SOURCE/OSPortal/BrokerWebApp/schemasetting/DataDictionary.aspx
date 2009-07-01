@@ -192,11 +192,11 @@
                                                 </EditForm>
                                             </Templates>
                                         </dxwgv:ASPxGridView>
+                                        <input type="hidden" id="hidCodeTypeID" name="hidCodeTypeID" value="" runat="server" />
                                     </dxrp:PanelContent>
                                 </PanelCollection>
                             </dxcp:ASPxCallbackPanel>
-                        </dxp:PanelContent>
-                       </dxrp:PanelContent>
+                        </dxrp:PanelContent>
                     </PanelCollection>
                 </dxrp:ASPxRoundPanel>
             </td>
