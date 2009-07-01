@@ -49,7 +49,7 @@
             else {
                 var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
                 var querystring;
-                querystring = "FeePayinAdd.aspx?VoucherID=" + selectedValues;
+                querystring = "FeeProcessAdd.aspx?VoucherID=" + selectedValues;
                 window.showModalDialog(querystring, self, myArguments);
             }
         }
