@@ -19,11 +19,12 @@ namespace BrokerWebApp.inoutbalance
         #endregion Variables
 
         protected void Page_Load(object sender, EventArgs e)
-        {
-            Initialization();
+        {            
             if (!IsPostBack && !IsCallback)
-            {                
-                //ckbPayinedNeedInvoice.Checked = true;                
+            {
+                Initialization();
+                this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
+                ckbInvoicedNeedProc.Checked = true;                
             }
             BindGrid();
         }
@@ -149,7 +150,7 @@ namespace BrokerWebApp.inoutbalance
             {
                 if (s.Trim() != "")
                 {
-                    if (s.Trim().Length == 36)
+                    if (s.Trim().Length >= 30)
                     {
                         exist = BusinessObjects.BO_Fee.PolPeriodExist(s, BO_P_Code.AccountType.Process);
                         if (!exist)
