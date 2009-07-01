@@ -60,6 +60,7 @@ namespace BrokerWebApp.schemasetting
             this.gridCodeItem.Enabled = true;
             this.gridCodeItem.DataSource = BusinessObjects.BO_P_Code.GetCodeListByCodeTypeID(codeTypeID).Tables[0];
             this.gridCodeItem.DataBind();
+            this.hidCodeTypeID.Value = codeTypeID;
         }
 
         #region 代码类型
@@ -119,23 +120,125 @@ namespace BrokerWebApp.schemasetting
         #region 代码表
         protected void gridCodeItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
+            string codeTypeID = this.hidCodeTypeID.Value;
+            if (string.IsNullOrEmpty(codeTypeID))
+            {
+                e.Cancel = true;
+                this.gridCodeItem.CancelEdit();
+                return;
+            }
 
+            HtmlTable tblEditorTemplate = this.gridCodeItem.FindEditFormTemplateControl("tblgridCodeItemEditorTemplate") as HtmlTable;
+            string codeID = e.Keys["CodeID"].ToString();
+            string newCodeID = (tblEditorTemplate.FindControl("dxetxtCodeID") as ASPxTextBox).Text.Trim();
+
+            if (newCodeID.Length <= 0)
+                throw new Exception("代码编号不能为空。");
+
+            if (codeID != newCodeID && BusinessObjects.BO_P_Code.IfExistsCodeID(codeTypeID,newCodeID))
+                throw new Exception("代码编号已经存在。");
+
+            if((tblEditorTemplate.FindControl("dxetxtCodeName") as ASPxTextBox).Text.Trim().Length<=0)
+                throw new Exception("代码名称不能为空。");
+
+            if(!this.IsIntValue((tblEditorTemplate.FindControl("dxetxtSortNo") as ASPxTextBox).Text.Trim()))
+                throw new Exception("排序序号格式错误。");
+
+            BusinessObjects.BO_P_Code p_code = new BO_P_Code();
+            p_code.CodeType = codeTypeID;
+            p_code.CodeID = codeID;
+            p_code.CodeName = (tblEditorTemplate.FindControl("dxetxtCodeName") as ASPxTextBox).Text.Trim();
+            p_code.SortNo = (tblEditorTemplate.FindControl("dxetxtSortNo") as ASPxTextBox).Text.Trim() == "" ? 0 : Convert.ToDecimal((tblEditorTemplate.FindControl("dxetxtSortNo") as ASPxTextBox).Text.Trim());
+            p_code.Content1 = (tblEditorTemplate.FindControl("dxetxtContent1") as ASPxTextBox).Text.Trim();
+            p_code.Content2 = (tblEditorTemplate.FindControl("dxetxtContent2") as ASPxTextBox).Text.Trim();
+            p_code.Content3 = (tblEditorTemplate.FindControl("dxetxtContent3") as ASPxTextBox).Text.Trim();
+            p_code.NewCodeID = newCodeID;
+            p_code.Save(ModifiedAction.Update);
+
+            e.Cancel = true;
+            this.gridCodeItem.CancelEdit();
+            this.gridCodeItem.DataSource = BusinessObjects.BO_P_Code.GetCodeListByCodeTypeID(codeTypeID).Tables[0];
+            this.gridCodeItem.DataBind();
         }
 
         protected void gridCodeItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
+            string codeTypeID = this.hidCodeTypeID.Value;
+            if (string.IsNullOrEmpty(codeTypeID))
+            {
+                e.Cancel = true;
+                this.gridCodeItem.CancelEdit();
+                return;
+            }
 
+            HtmlTable tblEditorTemplate = this.gridCodeItem.FindEditFormTemplateControl("tblgridCodeItemEditorTemplate") as HtmlTable;
+            string codeID = (tblEditorTemplate.FindControl("dxetxtCodeID") as ASPxTextBox).Text.Trim();
+
+            if (codeID.Length <= 0)
+                throw new Exception("代码编号不能为空。");
+
+            if (BusinessObjects.BO_P_Code.IfExistsCodeID(codeTypeID, codeID))
+                throw new Exception("代码编号已经存在。");
+
+            if ((tblEditorTemplate.FindControl("dxetxtCodeName") as ASPxTextBox).Text.Trim().Length <= 0)
+                throw new Exception("代码名称不能为空。");
+
+            if (!this.IsIntValue((tblEditorTemplate.FindControl("dxetxtSortNo") as ASPxTextBox).Text.Trim()))
+                throw new Exception("排序序号格式错误。");
+
+            BusinessObjects.BO_P_Code p_code = new BO_P_Code();
+            p_code.CodeType = codeTypeID;
+            p_code.CodeID = codeID;
+            p_code.CodeName = (tblEditorTemplate.FindControl("dxetxtCodeName") as ASPxTextBox).Text.Trim();
+            p_code.SortNo = (tblEditorTemplate.FindControl("dxetxtSortNo") as ASPxTextBox).Text.Trim() == "" ? 0 : Convert.ToDecimal((tblEditorTemplate.FindControl("dxetxtSortNo") as ASPxTextBox).Text.Trim());
+            p_code.Content1 = (tblEditorTemplate.FindControl("dxetxtContent1") as ASPxTextBox).Text.Trim();
+            p_code.Content2 = (tblEditorTemplate.FindControl("dxetxtContent2") as ASPxTextBox).Text.Trim();
+            p_code.Content3 = (tblEditorTemplate.FindControl("dxetxtContent3") as ASPxTextBox).Text.Trim();
+            p_code.Save(ModifiedAction.Insert);
+
+            e.Cancel = true;
+            this.gridCodeItem.CancelEdit();
+            this.gridCodeItem.DataSource = BusinessObjects.BO_P_Code.GetCodeListByCodeTypeID(codeTypeID).Tables[0];
+            this.gridCodeItem.DataBind();
         }
 
         protected void gridCodeItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
+            string codeTypeID = this.hidCodeTypeID.Value;
+            if (string.IsNullOrEmpty(codeTypeID))
+            {
+                e.Cancel = true;
+                this.gridCodeItem.CancelEdit();
+                return;
+            }
 
+            string codeID = e.Keys["CodeID"].ToString();
+
+            BusinessObjects.BO_P_Code.Delete(codeTypeID, codeID);
+
+            e.Cancel = true;
+            this.gridCodeItem.CancelEdit();
+            this.gridCodeItem.DataSource = BusinessObjects.BO_P_Code.GetCodeListByCodeTypeID(codeTypeID).Tables[0];
+            this.gridCodeItem.DataBind();
         }
         #endregion
 
         protected void cpSchemaDetail_Callback(object source, CallbackEventArgsBase e)
         {
             this.SetCode(e.Parameter);
+        }
+
+        /// <summary>
+        /// 判断是否是正整数值
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private bool IsIntValue(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return false;
+            int result = 0;
+            return int.TryParse(value, out result);
         }
     }
 }
