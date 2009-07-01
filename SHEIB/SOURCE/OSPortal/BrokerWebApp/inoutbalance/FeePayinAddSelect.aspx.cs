@@ -153,7 +153,7 @@ namespace BrokerWebApp.inoutbalance
                 {
                     if (s.Trim().Length >= 20)
                     {
-                        exist = BusinessObjects.BO_Fee.PolPeriodExist(s);
+                        exist = BusinessObjects.BO_Fee.PolPeriodExist(s,BO_P_Code.AccountType.PayIn_Direct);
                         if (!exist)
                         {
                             obj = new BusinessObjects.Policy.BO_PolicyPeriod(s);

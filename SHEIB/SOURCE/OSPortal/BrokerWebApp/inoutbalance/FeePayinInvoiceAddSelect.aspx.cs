@@ -150,7 +150,7 @@ namespace BrokerWebApp.inoutbalance
                 {
                     if (s.Trim().Length == 36)
                     {
-                        exist = BusinessObjects.BO_Fee.PolPeriodExist(s);
+                        exist = BusinessObjects.BO_Fee.PolPeriodExist(s, BO_P_Code.AccountType.Invoice);
                         if (!exist)
                         {
                             obj = new BusinessObjects.Policy.BO_PolicyPeriod(s);
