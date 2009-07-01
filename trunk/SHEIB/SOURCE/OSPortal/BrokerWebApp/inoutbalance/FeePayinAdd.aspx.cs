@@ -29,12 +29,10 @@ namespace BrokerWebApp.inoutbalance
         #endregion Variables
 
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-            init();
-                
+        {      
             if (!IsPostBack && !IsCallback)
             {
+                init();
                 this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];
                 loadValue(this.lblVoucherId.InnerHtml);
                 BindGrid();
@@ -352,6 +350,37 @@ namespace BrokerWebApp.inoutbalance
 
             this.dxeGotDate.Date = obj.FeeDate;
             this.dxetxtRemark.Text = obj.Remark;
+
+            ListEditItem theselected;
+
+            //gathertype
+            theselected = this.dxeddlGatheringType.Items.FindByValue(obj.GatheringType);
+            if (theselected != null)
+            {
+                dxeddlGatheringType.SelectedItem = theselected;
+            }
+
+            //processtype
+            theselected = this.dxeddlProcessFeeType.Items.FindByValue(obj.ProcessFeeType);
+            if (theselected != null)
+            {
+                dxeddlProcessFeeType.SelectedItem = theselected;
+            }
+
+            //carrie
+            theselected = this.dxeddlCarrier.Items.FindByValue(obj.CarrierID);
+            if (theselected != null)
+            {
+                dxeddlCarrier.SelectedItem = theselected;
+            }
+
+            //branch
+            theselected = this.dxeddlBranch.Items.FindByValue(obj.BranchID);
+            if (theselected != null)
+            {
+                dxeddlBranch.SelectedItem = theselected;
+            }
+
             if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
             {
                 this.dxebtnAudit.Text = "反审核";
@@ -361,6 +390,20 @@ namespace BrokerWebApp.inoutbalance
                 this.dxebtnAudit.Text = "审核";
             }
 
+        }
+
+
+        protected void dxeddlBranch_Callback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
+            thecb.TextField = "BranchName";
+            thecb.ValueField = "BranchID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
         }
 
 

@@ -136,7 +136,7 @@
             var ProcessFeeType = dxeddlProcessFeeType.GetValue();
             var Carrier = dxeddlCarrier.GetValue();
             var Branch = dxeddlBranch.GetValue();
-            var plc = new InfoJSON(ID, Remark, GotDate, AuditStatus);
+            var plc = new InfoJSON(ID, Remark, GotDate, AuditStatus, GatheringType, ProcessFeeType, Carrier, Branch);
 
             //deserialize JSON string, make a JSON object
             //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
@@ -283,7 +283,11 @@
                 }
             }
         }
-        
+
+        function dxeddlCarrier_SelectedIndexChanged(s, e) {
+            var thejsonstring = dxeddlCarrier.GetSelectedItem().value;
+            dxeddlBranch.PerformCallback(thejsonstring);
+        }
         
     </script>
 
@@ -574,6 +578,7 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlCarrier" ClientInstanceName="dxeddlCarrier" runat="server"
                                     Width="160px" DropDownStyle="DropDownList">
+                                    <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlCarrier_SelectedIndexChanged(s,e);}" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
@@ -581,7 +586,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlBranch" ClientInstanceName="dxeddlBranch" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
+                                    Width="160px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
