@@ -11,7 +11,7 @@
 namespace BrokerWebApp.schemasetting {
     
     
-    public partial class DepartmentManager {
+    public partial class DepartmentEdit {
         
         /// <summary>
         /// ScriptManager1 控件。
@@ -23,174 +23,120 @@ namespace BrokerWebApp.schemasetting {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
-        /// dxeDeleteDepartmentCallback 控件。
+        /// departmentDetailTabPage 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeDeleteDepartmentCallback;
+        protected global::DevExpress.Web.ASPxTabControl.ASPxPageControl departmentDetailTabPage;
         
         /// <summary>
-        /// dxebtnCreateDepartment 控件。
+        /// ContentControl1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnCreateDepartment;
+        protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl1;
         
         /// <summary>
-        /// dxebtnEditDepartment 控件。
+        /// lblerrmsg 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnEditDepartment;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblerrmsg;
         
         /// <summary>
-        /// dxebtnDeleteDepartment 控件。
+        /// dxetxtParent 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnDeleteDepartment;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtParent;
         
         /// <summary>
-        /// ASPxRoundPanel1 控件。
+        /// dxetxtDeptID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtDeptID;
         
         /// <summary>
-        /// Panelcontent1 控件。
+        /// dxetxtDeptName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel.PanelContent Panelcontent1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtDeptName;
         
         /// <summary>
-        /// treeList 控件。
+        /// dxetxtShortName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTreeList.ASPxTreeList treeList;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtShortName;
         
         /// <summary>
-        /// ASPxRoundPanel2 控件。
+        /// dxetxtManager 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel ASPxRoundPanel2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtManager;
         
         /// <summary>
-        /// PanelContent2 控件。
+        /// dxetxtTel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.PanelContent PanelContent2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtTel;
         
         /// <summary>
-        /// cpSchemaDetail 控件。
+        /// dxetxtFax 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCallbackPanel.ASPxCallbackPanel cpSchemaDetail;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtFax;
         
         /// <summary>
-        /// PanelContent3 控件。
+        /// npExecuteAction 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRoundPanel.PanelContent PanelContent3;
+        protected global::System.Web.UI.WebControls.Panel npExecuteAction;
         
         /// <summary>
-        /// lblDeptID 控件。
+        /// dxebtnBottomSave 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDeptID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnBottomSave;
         
         /// <summary>
-        /// lblDeptName 控件。
+        /// dxebtnClose 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDeptName;
-        
-        /// <summary>
-        /// lblShortName 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblShortName;
-        
-        /// <summary>
-        /// lblManager 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblManager;
-        
-        /// <summary>
-        /// lblParentID 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblParentID;
-        
-        /// <summary>
-        /// lblParentName 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblParentName;
-        
-        /// <summary>
-        /// lblTel 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTel;
-        
-        /// <summary>
-        /// lblFax 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFax;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnClose;
     }
 }
