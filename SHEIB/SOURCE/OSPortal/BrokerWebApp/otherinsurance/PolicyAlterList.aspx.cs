@@ -8,7 +8,7 @@ using System.Data;
 
 namespace BrokerWebApp.otherinsurance
 {
-    public partial class PolicyAlterList : System.Web.UI.Page
+    public partial class PolicyAlterList : BasePage
     {
         #region Variables
 
@@ -22,13 +22,13 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
-        
+
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             String theID = e.Keys[gridKeyName].ToString();
             e.Cancel = true;
-            this.gridSearchResult.CancelEdit();
+            this.gridAuditSearchResult.CancelEdit();
         }
 
         protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
@@ -36,15 +36,28 @@ namespace BrokerWebApp.otherinsurance
             //this.gridSearchResult.DataBind();
         }
 
-        protected void btnXlsExport_Click(object sender, EventArgs e)
-        {
-            this.gridExport.WriteXlsToResponse();
-        }
-
         protected void gridSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
             this.gridSearchResult.DataBind();
         }
+
+
+
+        protected void btnXlsExport_Click(object sender, EventArgs e)
+        {
+            //this.gridAuditExport.WriteXlsToResponse();
+        }
+
+        protected void gridAuditSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            this.gridAuditSearchResult.DataBind();
+        }
+
+        protected void policyTabPage_ActiveTabChanged(object source, DevExpress.Web.ASPxTabControl.TabControlEventArgs e)
+        {
+            //
+        }
+
 
 
     }

@@ -284,6 +284,24 @@ namespace BrokerWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.Panel npSearchResultDetail;
         
         /// <summary>
+        /// policyTabPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTabControl.ASPxPageControl policyTabPage;
+        
+        /// <summary>
+        /// cc_alert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxClasses.ContentControl cc_alert;
+        
+        /// <summary>
         /// gridSearchResult control.
         /// </summary>
         /// <remarks>
@@ -293,13 +311,49 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridSearchResult;
         
         /// <summary>
-        /// gridExport control.
+        /// gridAlertExport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridExport;
+        protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridAlertExport;
+        
+        /// <summary>
+        /// AltDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource AltDataSource;
+        
+        /// <summary>
+        /// cc_audit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxClasses.ContentControl cc_audit;
+        
+        /// <summary>
+        /// gridAuditSearchResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridAuditSearchResult;
+        
+        /// <summary>
+        /// gridAuditExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridAuditExport;
         
         /// <summary>
         /// DataSource control.
