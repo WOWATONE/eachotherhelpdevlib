@@ -187,11 +187,16 @@ namespace BrokerWebApp.schemasetting
                         productType.ProdTypeID = this.dxetxtProdTypeID.Text.Trim();
                         productType.ProdClass = this.dxeddlProdClass.SelectedItem.Value.ToString();
                         productType.ProdTypeName = this.dxetxtProdTypeName.Text.Trim();
-                        productType.ParentId = this._ID;
                         if (this._ID == "l0")
+                        {
+                            productType.ParentId = "";
                             productType.Layer = 1;
+                        }
                         else
+                        {
+                            productType.ParentId = this._ID;
                             productType.Layer = BusinessObjects.SchemaSetting.BO_ProductType.GetLayerByProdTypeID(this._ID) + 1;
+                        }
                         productType.Save(ModifiedAction.Insert);
 
                         this.Response.Redirect("ProductType.aspx?type=" + this._type + "&action=" + this._action + "&ID=" + this._ID);
