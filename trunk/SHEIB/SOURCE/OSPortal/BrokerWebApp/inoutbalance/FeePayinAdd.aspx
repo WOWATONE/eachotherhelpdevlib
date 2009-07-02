@@ -94,6 +94,14 @@
             gridPolicyItem.PerformCallback('');
         }
 
+        function btnAddPrintClick() {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
+            var url = "FeePayinAddPrint.aspx?ID=" + getVoucherId();
+
+            window.showModalDialog(url, self, myArguments);
+            gridPolicyItem.PerformCallback('');
+        }
+        
         function btnCloseClick() {
             window.close();
         }
@@ -638,7 +646,9 @@
                             </td>
                             
                             <td style="width: 140px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="dxebtnPrint" ClientInstanceName="dxebtnPrint" Text="打印解付通知书" AutoPostBack="false">
+                                <dxe:ASPxButton runat="server" ID="dxebtnPrint" 
+                                    ClientInstanceName="dxebtnPrint" Text="打印解付通知书" AutoPostBack="false" >
+                                    <ClientSideEvents Click="btnAddPrintClick" />
                                 </dxe:ASPxButton>
                             </td>
                             <td style="width: 80px; text-align: left;">
