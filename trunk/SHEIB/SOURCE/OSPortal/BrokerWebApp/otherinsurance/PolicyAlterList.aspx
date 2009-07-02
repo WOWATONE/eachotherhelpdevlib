@@ -24,11 +24,19 @@
 
 	    
 
-	    function gridCustomButtonClick(s, e) {
+	    function gridAuditCustomButtonClick(s, e) {
 	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
 	        var noint = s.GetDataRow(e.visibleIndex).cells[3].innerText;
 	        var querystring;
 	        querystring = "PolicyInput.aspx?pagemode=alt&pid=" + noint;
+	        window.showModalDialog(querystring, self, myArguments);
+	    }
+
+	    function gridAltCustomButtonClick(s, e) {
+	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+	        var noint = s.GetDataRow(e.visibleIndex).cells[3].innerText;
+	        var querystring;
+	        querystring = "PolicyInput.aspx?input=alt&pid=" + noint;
 	        window.showModalDialog(querystring, self, myArguments);
 	    }
 
@@ -60,6 +68,17 @@
 	        } else {
 	            return false;
 	        }
+	    }
+
+	    function policyTab_Changing(s, e) {
+	        //
+	        if (e.tab.index == 1) {
+	            //                             
+	        }
+	    }
+
+	    function policyTab_Click(s, e) {
+	        //
 	    }
 	    
     </script>
@@ -275,101 +294,214 @@
                                 </div>
                             </asp:Panel>  
                             <asp:Panel ID="npSearchResultDetail" runat="server" CssClass="collapsePanel" Height="0">
-                                        <table style="width:100%">
-                                           <tr>
-                                                <td>
-                                                    <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server" 
-                                                    DataSourceID="DataSource"
-                                                    KeyFieldName="KeyGUID" AutoGenerateColumns="False" 
-                                                    Settings-ShowFooter="true" Width="100%" 
-                                                    SettingsPager-AlwaysShowPager="true" 
-                                                    OnRowDeleting="gridSearchResult_RowDeleting" 
-                                                    OnRowDeleted="gridSearchResult_RowDeleted"
-                                                    OnCustomCallback="gridSearchResult_CustomCallback"
-                                                    >
-                                                        <%-- BeginRegion Columns --%>
-                                                            <Columns>
-                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
-                                                                    <NewButton Visible="False" />
-                                                                    <EditButton Visible="False" />                                                                    
-                                                                    <DeleteButton Visible="false" />
-                                                                    <CustomButtons>
-                                                                        <dxwgv:GridViewCommandColumnCustomButton Text="批单">                                                                            
-                                                                        </dxwgv:GridViewCommandColumnCustomButton>                                                                        
-                                                                    </CustomButtons>                                                   
-                                                                </dxwgv:GridViewCommandColumn> 
-                                                                <dxwgv:GridViewDataColumn FieldName="PrevPolicyID" Caption="批单编号" VisibleIndex="1" CellStyle-Wrap="False">                                                                    
-                                                                </dxwgv:GridViewDataColumn>                                                               
-                                                                <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" VisibleIndex="2" CellStyle-Wrap="False">                                                                    
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" VisibleIndex="3" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>   
-                                                                <dxwgv:GridViewDataColumn FieldName="UserNameCn" Caption="客户经理" VisibleIndex="4" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>      
-                                                                <dxwgv:GridViewDataColumn FieldName="CarrierNameCn" Caption="保险公司" VisibleIndex="5" CellStyle-Wrap="False">                                                                    
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" VisibleIndex="6" CellStyle-Wrap="False">                                                                    
-                                                                </dxwgv:GridViewDataColumn>                                
-                                                                <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="险种" VisibleIndex="7" CellStyle-Wrap="False"> 
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Coverage" Caption="保额" VisibleIndex="8" CellStyle-Wrap="False">   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费（原）" VisibleIndex="9" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费（原）" VisibleIndex="9" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CurrencyName" Caption="币种" VisibleIndex="10" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>              
-                                                                <dxwgv:GridViewDataColumn FieldName="PremiumBase" Caption="保费（本）" VisibleIndex="11" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>                                                         
-                                                                <dxwgv:GridViewDataColumn FieldName="ProcessBase" Caption="经纪费（本）" VisibleIndex="13" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CustName" Caption="投保客户" VisibleIndex="14" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>                                                                
-                                                                <dxwgv:GridViewDataColumn FieldName="CreatePerson" Caption="录单人" VisibleIndex="15" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="录单日期" VisibleIndex="16" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
-                                                                </dxwgv:GridViewDataDateColumn>                                        
-                                                                <dxwgv:GridViewDataColumn FieldName="SourceTypeName" Caption="业务来源" VisibleIndex="17" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>          
-                                                                <dxwgv:GridViewDataColumn FieldName="FlagReinsureName" Caption="业务性质" VisibleIndex="18" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>   
-                                                                <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="收款方式" VisibleIndex="19" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>                                                        
-                                                                <dxwgv:GridViewDataDateColumn FieldName="StartDate" Caption="保单起保日期" VisibleIndex="20" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
-                                                                </dxwgv:GridViewDataDateColumn>
-                                                                <dxwgv:GridViewDataDateColumn FieldName="EndDate" Caption="保单终止日期" VisibleIndex="21" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
-                                                                </dxwgv:GridViewDataDateColumn>                                                                
-                                                                <dxwgv:GridViewDataColumn FieldName="Remark" Caption="审核备注" CellStyle-Wrap="False">                                                                   
-                                                                </dxwgv:GridViewDataColumn>
-                                                            </Columns>
-                                                        <%-- EndRegion --%>
-                                                        <SettingsPager Mode="ShowPager"   />
-                                                        <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
-                                                        <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
-                                                        <SettingsText CustomizationWindowCaption="个性化" />
-                                                        <GroupSummary >
-                                                            <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" ShowInGroupFooterColumn="PolicyNo" DisplayFormat = "总计: {0}" />
-                                                        </GroupSummary>
-                                                        <TotalSummary >
-                                                            <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" ShowInGroupFooterColumn="PolicyNo" DisplayFormat = "总计: {0}" />
-                                                        </TotalSummary>
-                                                        <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
-                                                        
-                                                    </dxwgv:ASPxGridView> 
-                                                    <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
-                                                    <asp:ObjectDataSource ID="DataSource" runat="server" 
-                                                        SelectMethod="FetchPolicyCarrierList"
-                                                        TypeName="BusinessObjects.Policy.BO_Policy" 
-                                                        EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
-                                                        >
-                                                        <SelectParameters> 
-                                                             <asp:Parameter Name="policyStatus" Type="String" Direction="Input" DefaultValue="2" />
-                                                        </SelectParameters>
-                                                    </asp:ObjectDataSource>                                                    
-                                                </td>
-                                            </tr>
-                                        </table>
+                                        
+                                        <dxtc:ASPxPageControl ID="policyTabPage" ClientInstanceName="policyTabPage"
+                                            runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%" 
+                                            AutoPostBack="false" EnableCallBacks="true" EnableViewState="true" OnActiveTabChanged="policyTabPage_ActiveTabChanged"
+                                            >
+                                            <ClientSideEvents ActiveTabChanging="function(s, e) {policyTab_Changing(s,e);}" TabClick="function(s, e) {policyTab_Click(s,e);}" />
+                                            <TabPages>
+                                                <dxtc:TabPage Text="批改单">
+                                                    <ContentCollection>
+                                                        <dxw:ContentControl ID="cc_alert" runat="server">
+			                                                <table style="width:100%">
+                                                               <tr>
+                                                                    <td>
+                                                                        <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server" 
+                                                                        DataSourceID="AltDataSource"
+                                                                        KeyFieldName="KeyGUID" AutoGenerateColumns="False" 
+                                                                        Settings-ShowFooter="true" Width="100%" 
+                                                                        SettingsPager-AlwaysShowPager="true" 
+                                                                        OnRowDeleting="gridSearchResult_RowDeleting" 
+                                                                        OnRowDeleted="gridSearchResult_RowDeleted"
+                                                                        OnCustomCallback="gridSearchResult_CustomCallback"
+                                                                        >
+                                                                            <%-- BeginRegion Columns --%>
+                                                                                <Columns>
+                                                                                    <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
+                                                                                        <CustomButtons>
+                                                                                            <dxwgv:GridViewCommandColumnCustomButton Text="修改">                                                                            
+                                                                                            </dxwgv:GridViewCommandColumnCustomButton>                                                                        
+                                                                                        </CustomButtons>                                                   
+                                                                                    </dxwgv:GridViewCommandColumn> 
+                                                                                    <dxwgv:GridViewDataColumn FieldName="PrevPolicyID" Caption="批单编号" VisibleIndex="1" CellStyle-Wrap="False">                                                                    
+                                                                                    </dxwgv:GridViewDataColumn>                                                               
+                                                                                    <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" VisibleIndex="2" CellStyle-Wrap="False">                                                                    
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" VisibleIndex="3" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>   
+                                                                                    <dxwgv:GridViewDataColumn FieldName="UserNameCn" Caption="客户经理" VisibleIndex="4" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>      
+                                                                                    <dxwgv:GridViewDataColumn FieldName="CarrierNameCn" Caption="保险公司" VisibleIndex="5" CellStyle-Wrap="False">                                                                    
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" VisibleIndex="6" CellStyle-Wrap="False">                                                                    
+                                                                                    </dxwgv:GridViewDataColumn>                                
+                                                                                    <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="险种" VisibleIndex="7" CellStyle-Wrap="False"> 
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="Coverage" Caption="保额" VisibleIndex="8" CellStyle-Wrap="False">   
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费（原）" VisibleIndex="9" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费（原）" VisibleIndex="9" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="CurrencyName" Caption="币种" VisibleIndex="10" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>              
+                                                                                    <dxwgv:GridViewDataColumn FieldName="PremiumBase" Caption="保费（本）" VisibleIndex="11" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>                                                         
+                                                                                    <dxwgv:GridViewDataColumn FieldName="ProcessBase" Caption="经纪费（本）" VisibleIndex="13" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="CustName" Caption="投保客户" VisibleIndex="14" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>                                                                
+                                                                                    <dxwgv:GridViewDataColumn FieldName="CreatePerson" Caption="录单人" VisibleIndex="15" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="录单日期" VisibleIndex="16" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                                    </dxwgv:GridViewDataDateColumn>                                        
+                                                                                    <dxwgv:GridViewDataColumn FieldName="SourceTypeName" Caption="业务来源" VisibleIndex="17" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>          
+                                                                                    <dxwgv:GridViewDataColumn FieldName="FlagReinsureName" Caption="业务性质" VisibleIndex="18" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>   
+                                                                                    <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="收款方式" VisibleIndex="19" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>                                                        
+                                                                                    <dxwgv:GridViewDataDateColumn FieldName="StartDate" Caption="保单起保日期" VisibleIndex="20" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                                    </dxwgv:GridViewDataDateColumn>
+                                                                                    <dxwgv:GridViewDataDateColumn FieldName="EndDate" Caption="保单终止日期" VisibleIndex="21" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                                    </dxwgv:GridViewDataDateColumn>                                                                
+                                                                                    <dxwgv:GridViewDataColumn FieldName="Remark" Caption="审核备注" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                </Columns>
+                                                                            <%-- EndRegion --%>
+                                                                            <SettingsPager Mode="ShowPager"   />
+                                                                            <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
+                                                                            <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
+                                                                            <SettingsText CustomizationWindowCaption="个性化" />
+                                                                            <GroupSummary >
+                                                                                <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" ShowInGroupFooterColumn="PolicyNo" DisplayFormat = "总计: {0}" />
+                                                                            </GroupSummary>
+                                                                            <TotalSummary >
+                                                                                <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" ShowInGroupFooterColumn="PolicyNo" DisplayFormat = "总计: {0}" />
+                                                                            </TotalSummary>
+                                                                            <ClientSideEvents CustomButtonClick="function(s, e) {gridAlertCustomButtonClick(s,e);return false;}" />
+                                                                            
+                                                                        </dxwgv:ASPxGridView> 
+                                                                        <dxwgv:ASPxGridViewExporter ID="gridAlertExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
+                                                                        <asp:ObjectDataSource ID="AltDataSource" runat="server" 
+                                                                            SelectMethod="FetchPolicyCarrierList"
+                                                                            TypeName="BusinessObjects.Policy.BO_Policy" 
+                                                                            EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
+                                                                            >
+                                                                            <SelectParameters> 
+                                                                                 <asp:Parameter Name="policyStatus" Type="String" Direction="Input" DefaultValue="2" />
+                                                                            </SelectParameters>
+                                                                        </asp:ObjectDataSource>                                                    
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+			                                            </dxw:ContentControl>
+                                                    </ContentCollection>
+                                                </dxtc:TabPage>
+                                                <dxtc:TabPage Text="已审核单">
+                                                    <ContentCollection>
+                                                        <dxw:ContentControl ID="cc_audit" runat="server">
+			                                            
+			                                                <table style="width:100%">
+                                                               <tr>
+                                                                    <td>
+                                                                        <dxwgv:ASPxGridView ID="gridAuditSearchResult" ClientInstanceName="gridAuditSearchResult" runat="server" 
+                                                                        DataSourceID="DataSource"
+                                                                        KeyFieldName="KeyGUID" AutoGenerateColumns="False" 
+                                                                        Settings-ShowFooter="true" Width="100%" 
+                                                                        SettingsPager-AlwaysShowPager="true"
+                                                                        OnCustomCallback="gridAuditSearchResult_CustomCallback"
+                                                                        >
+                                                                            <%-- BeginRegion Columns --%>
+                                                                                <Columns>
+                                                                                    <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
+                                                                                        <CustomButtons>
+                                                                                            <dxwgv:GridViewCommandColumnCustomButton Text="批单">                                                                            
+                                                                                            </dxwgv:GridViewCommandColumnCustomButton>                                                                        
+                                                                                        </CustomButtons>                                                   
+                                                                                    </dxwgv:GridViewCommandColumn> 
+                                                                                    <dxwgv:GridViewDataColumn FieldName="PrevPolicyID" Caption="批单编号" VisibleIndex="1" CellStyle-Wrap="False">                                                                    
+                                                                                    </dxwgv:GridViewDataColumn>                                                               
+                                                                                    <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" VisibleIndex="2" CellStyle-Wrap="False">                                                                    
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" VisibleIndex="3" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>   
+                                                                                    <dxwgv:GridViewDataColumn FieldName="UserNameCn" Caption="客户经理" VisibleIndex="4" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>      
+                                                                                    <dxwgv:GridViewDataColumn FieldName="CarrierNameCn" Caption="保险公司" VisibleIndex="5" CellStyle-Wrap="False">                                                                    
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" VisibleIndex="6" CellStyle-Wrap="False">                                                                    
+                                                                                    </dxwgv:GridViewDataColumn>                                
+                                                                                    <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="险种" VisibleIndex="7" CellStyle-Wrap="False"> 
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="Coverage" Caption="保额" VisibleIndex="8" CellStyle-Wrap="False">   
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费（原）" VisibleIndex="9" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费（原）" VisibleIndex="9" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="CurrencyName" Caption="币种" VisibleIndex="10" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>              
+                                                                                    <dxwgv:GridViewDataColumn FieldName="PremiumBase" Caption="保费（本）" VisibleIndex="11" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>                                                         
+                                                                                    <dxwgv:GridViewDataColumn FieldName="ProcessBase" Caption="经纪费（本）" VisibleIndex="13" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataColumn FieldName="CustName" Caption="投保客户" VisibleIndex="14" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>                                                                
+                                                                                    <dxwgv:GridViewDataColumn FieldName="CreatePerson" Caption="录单人" VisibleIndex="15" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                    <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="录单日期" VisibleIndex="16" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                                    </dxwgv:GridViewDataDateColumn>                                        
+                                                                                    <dxwgv:GridViewDataColumn FieldName="SourceTypeName" Caption="业务来源" VisibleIndex="17" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>          
+                                                                                    <dxwgv:GridViewDataColumn FieldName="FlagReinsureName" Caption="业务性质" VisibleIndex="18" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>   
+                                                                                    <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="收款方式" VisibleIndex="19" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>                                                        
+                                                                                    <dxwgv:GridViewDataDateColumn FieldName="StartDate" Caption="保单起保日期" VisibleIndex="20" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                                    </dxwgv:GridViewDataDateColumn>
+                                                                                    <dxwgv:GridViewDataDateColumn FieldName="EndDate" Caption="保单终止日期" VisibleIndex="21" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
+                                                                                    </dxwgv:GridViewDataDateColumn>                                                                
+                                                                                    <dxwgv:GridViewDataColumn FieldName="Remark" Caption="审核备注" CellStyle-Wrap="False">                                                                   
+                                                                                    </dxwgv:GridViewDataColumn>
+                                                                                </Columns>
+                                                                            <%-- EndRegion --%>
+                                                                            <SettingsPager Mode="ShowPager"   />
+                                                                            <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
+                                                                            <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
+                                                                            <SettingsText CustomizationWindowCaption="个性化" />
+                                                                            <GroupSummary >
+                                                                                <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" ShowInGroupFooterColumn="PolicyNo" DisplayFormat = "总计: {0}" />
+                                                                            </GroupSummary>
+                                                                            <TotalSummary >
+                                                                                <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" ShowInGroupFooterColumn="PolicyNo" DisplayFormat = "总计: {0}" />
+                                                                            </TotalSummary>
+                                                                            <ClientSideEvents CustomButtonClick="function(s, e) {gridAuditCustomButtonClick(s,e);return false;}" />
+                                                                            
+                                                                        </dxwgv:ASPxGridView> 
+                                                                        <dxwgv:ASPxGridViewExporter ID="gridAuditExport" runat="server" GridViewID="gridAuditSearchResult"></dxwgv:ASPxGridViewExporter>
+                                                                        <asp:ObjectDataSource ID="DataSource" runat="server" 
+                                                                            SelectMethod="FetchPolicyCarrierList"
+                                                                            TypeName="BusinessObjects.Policy.BO_Policy" 
+                                                                            EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
+                                                                            >
+                                                                            <SelectParameters> 
+                                                                                 <asp:Parameter Name="policyStatus" Type="String" Direction="Input" DefaultValue="2" />
+                                                                            </SelectParameters>
+                                                                        </asp:ObjectDataSource>                                                    
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            
+			                                            </dxw:ContentControl>
+                                                    </ContentCollection>
+                                                </dxtc:TabPage>
+                                            </TabPages>
+                                        </dxtc:ASPxPageControl>
+                                        
+                                        
+                                        
        
                              </asp:Panel>
                              <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearchResult" runat="Server"
