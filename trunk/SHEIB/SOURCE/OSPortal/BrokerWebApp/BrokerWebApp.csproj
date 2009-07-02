@@ -664,6 +664,13 @@
     <Compile Include="schemasetting\DataDictionary.aspx.designer.cs">
       <DependentUpon>DataDictionary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="schemasetting\DepartmentEdit.aspx.cs">
+      <DependentUpon>DepartmentEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\DepartmentEdit.aspx.designer.cs">
+      <DependentUpon>DepartmentEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="schemasetting\DepartmentManager.aspx.cs">
       <DependentUpon>DepartmentManager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -974,6 +981,7 @@
     <Content Include="schemasetting\Carrier.aspx" />
     <Content Include="schemasetting\CarrierList.aspx" />
     <Content Include="schemasetting\DataDictionary.aspx" />
+    <Content Include="schemasetting\DepartmentEdit.aspx" />
     <Content Include="schemasetting\ProductType.aspx" />
     <Content Include="schemasetting\ProductTypeList.aspx" />
   </ItemGroup>
