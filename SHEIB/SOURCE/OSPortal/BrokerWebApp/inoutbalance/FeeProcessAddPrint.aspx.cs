@@ -11,7 +11,7 @@ using Microsoft.Reporting.WebForms;
 
 namespace BrokerWebApp.inoutbalance
 {
-    public partial class FeeProcessAdd : BasePage
+    public partial class FeeProcessAddPrint : BasePage
     {
         #region Variables
 
@@ -29,6 +29,7 @@ namespace BrokerWebApp.inoutbalance
         {
             string sSql = "";
             string conn = ConfigurationManager.ConnectionStrings["broker"].ConnectionString;
+
             inoutbalance.rpt.dsPayin dPayin = new BrokerWebApp.inoutbalance.rpt.dsPayin();
 
             sSql = sSql + "select VoucherID,(select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,";
@@ -56,7 +57,7 @@ namespace BrokerWebApp.inoutbalance
 
             SqlDataAdapter adDetail = new SqlDataAdapter(sSql, conn);
             adDetail.Fill(dPayin, "PayinDetail");
-
+            
             ReportViewer1.Visible = true;
             ReportDataSource dataSourcePayin = new ReportDataSource("dsPayin_Payin", dPayin.Tables["Payin"]);
             ReportDataSource dataSourcePayinDetail = new ReportDataSource("dsPayin_PayinDetail", dPayin.Tables["PayinDetail"]);
