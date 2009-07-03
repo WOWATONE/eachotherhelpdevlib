@@ -45,7 +45,7 @@ namespace BrokerWebApp.inoutbalance
             ad.Fill(dPayin, "Payin");
 
             sSql = "";
-            sSql = sSql + "select NoticeNo+'('+dbo.GetVoucherPolicyByNoticeNo('" + sVoucherID + "',NoticeNo)+')',PayFee";
+            sSql = sSql + "select NoticeNo+'('+dbo.GetVoucherPolicyByNoticeNo('" + sVoucherID + "',NoticeNo)+')'  as NoticeNo,PayFee";
             sSql = sSql + " from ";
             sSql = sSql + " (";
             sSql = sSql + " select NoticeNo,sum(PayFee) PayFee";
