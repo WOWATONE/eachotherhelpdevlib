@@ -1099,7 +1099,7 @@
       <Table Name="table3">
         <ZIndex>2</ZIndex>
         <DataSetName>dsPayin_Payin</DataSetName>
-        <Top>6cm</Top>
+        <Top>7.5cm</Top>
         <Width>21.07572cm</Width>
         <Style>
           <FontFamily>宋体</FontFamily>
@@ -1525,7 +1525,7 @@
       <Table Name="table2">
         <ZIndex>1</ZIndex>
         <DataSetName>dsPayin_PayinDetail</DataSetName>
-        <Top>4.75cm</Top>
+        <Top>5.5cm</Top>
         <Width>21.08333cm</Width>
         <Details>
           <TableRows>

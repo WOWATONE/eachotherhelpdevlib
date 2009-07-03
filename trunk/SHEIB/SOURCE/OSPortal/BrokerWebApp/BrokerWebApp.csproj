@@ -519,6 +519,13 @@
     <Compile Include="inoutbalance\FeePayinAdd.aspx.designer.cs">
       <DependentUpon>FeePayinAdd.aspx</DependentUpon>
     </Compile>
+    <Compile Include="inoutbalance\FeePayinAddPrint.aspx.cs">
+      <DependentUpon>FeePayinAddPrint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeePayinAddPrint.aspx.designer.cs">
+      <DependentUpon>FeePayinAddPrint.aspx</DependentUpon>
+    </Compile>
     <Compile Include="inoutbalance\FeePayinAddSelect.aspx.cs">
       <DependentUpon>FeePayinAddSelect.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -539,6 +546,13 @@
     </Compile>
     <Compile Include="inoutbalance\FeePayinInvoiceAdd.aspx.designer.cs">
       <DependentUpon>FeePayinInvoiceAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inoutbalance\FeePayinInvoiceAddPrint.aspx.cs">
+      <DependentUpon>FeePayinInvoiceAddPrint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeePayinInvoiceAddPrint.aspx.designer.cs">
+      <DependentUpon>FeePayinInvoiceAddPrint.aspx</DependentUpon>
     </Compile>
     <Compile Include="inoutbalance\FeePayinInvoiceAddSelect.aspx.cs">
       <DependentUpon>FeePayinInvoiceAddSelect.aspx</DependentUpon>
@@ -561,6 +575,13 @@
     <Compile Include="inoutbalance\FeeProcessAdd.aspx.designer.cs">
       <DependentUpon>FeeProcessAdd.aspx</DependentUpon>
     </Compile>
+    <Compile Include="inoutbalance\FeeProcessAddPrint.aspx.cs">
+      <DependentUpon>FeeProcessAddPrint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeeProcessAddPrint.aspx.designer.cs">
+      <DependentUpon>FeeProcessAddPrint.aspx</DependentUpon>
+    </Compile>
     <Compile Include="inoutbalance\FeeProcessAddSelect.aspx.cs">
       <DependentUpon>FeeProcessAddSelect.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -568,7 +589,22 @@
     <Compile Include="inoutbalance\FeeProcessAddSelect.aspx.designer.cs">
       <DependentUpon>FeeProcessAddSelect.aspx</DependentUpon>
     </Compile>
+    <Compile Include="inoutbalance\rpt\dsFeePayinInvoice.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsFeePayinInvoice.xsd</DependentUpon>
+    </Compile>
     <Compile Include="inoutbalance\rpt\dsNotice.Designer.cs" />
+    <Compile Include="inoutbalance\rpt\dsPayin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPayin.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="inoutbalance\rpt\dsProcess.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsProcess.xsd</DependentUpon>
+    </Compile>
     <Compile Include="inoutbalance\rpt\rptNoticeAgent.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -962,12 +998,15 @@
     <Content Include="inoutbalance\FeeNoticeAddSelect.aspx" />
     <Content Include="inoutbalance\FeePayin.aspx" />
     <Content Include="inoutbalance\FeePayinAdd.aspx" />
+    <Content Include="inoutbalance\FeePayinAddPrint.aspx" />
     <Content Include="inoutbalance\FeePayinAddSelect.aspx" />
     <Content Include="inoutbalance\FeePayinInvoice.aspx" />
     <Content Include="inoutbalance\FeePayinInvoiceAdd.aspx" />
+    <Content Include="inoutbalance\FeePayinInvoiceAddPrint.aspx" />
     <Content Include="inoutbalance\FeePayinInvoiceAddSelect.aspx" />
     <Content Include="inoutbalance\FeeProcess.aspx" />
     <Content Include="inoutbalance\FeeProcessAdd.aspx" />
+    <Content Include="inoutbalance\FeeProcessAddPrint.aspx" />
     <Content Include="inoutbalance\FeeProcessAddSelect.aspx" />
     <Content Include="otherinsurance\PolicyAlterList.aspx" />
     <Content Include="otherinsurance\PolicyCheckList.aspx" />
@@ -989,6 +1028,17 @@
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="inoutbalance\rpt\dsFeePayinInvoice.xsc">
+      <DependentUpon>dsFeePayinInvoice.xsd</DependentUpon>
+    </None>
+    <None Include="inoutbalance\rpt\dsFeePayinInvoice.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsFeePayinInvoice.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="inoutbalance\rpt\dsFeePayinInvoice.xss">
+      <DependentUpon>dsFeePayinInvoice.xsd</DependentUpon>
+    </None>
     <None Include="inoutbalance\rpt\dsNotice.xsc">
       <DependentUpon>dsNotice.xsd</DependentUpon>
     </None>
@@ -1000,12 +1050,36 @@
     <None Include="inoutbalance\rpt\dsNotice.xss">
       <DependentUpon>dsNotice.xsd</DependentUpon>
     </None>
+    <None Include="inoutbalance\rpt\dsPayin.xsc">
+      <DependentUpon>dsPayin.xsd</DependentUpon>
+    </None>
+    <None Include="inoutbalance\rpt\dsPayin.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPayin.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="inoutbalance\rpt\dsPayin.xss">
+      <DependentUpon>dsPayin.xsd</DependentUpon>
+    </None>
+    <None Include="inoutbalance\rpt\dsProcess.xsc">
+      <DependentUpon>dsProcess.xsd</DependentUpon>
+    </None>
+    <None Include="inoutbalance\rpt\dsProcess.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsProcess.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="inoutbalance\rpt\dsProcess.xss">
+      <DependentUpon>dsProcess.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="inoutbalance\rpt\rptNoticeAgent.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptNoticeAgent1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="inoutbalance\rpt\rptNoticeDirect.rdlc" />
+    <EmbeddedResource Include="inoutbalance\rpt\rptPayin.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

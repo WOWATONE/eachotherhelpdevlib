@@ -11,7 +11,7 @@
 namespace BrokerWebApp.inoutbalance {
     
     
-    public partial class FeeProcessAdd {
+    public partial class FeeProcessAddPrint {
         
         /// <summary>
         /// form1 控件。
