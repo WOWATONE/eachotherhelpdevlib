@@ -99,15 +99,28 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>26.66667cm</Width>
+  <Width>29.46146cm</Width>
   <Body>
     <ColumnSpacing>1cm</ColumnSpacing>
     <ReportItems>
+      <Line Name="line1">
+        <Top>10cm</Top>
+        <Width>16.00529cm</Width>
+        <Style>
+          <BorderStyle>
+            <Default>Dashed</Default>
+          </BorderStyle>
+          <FontFamily>宋体</FontFamily>
+        </Style>
+        <ZIndex>6</ZIndex>
+        <Left>1.5cm</Left>
+        <Height>0cm</Height>
+      </Line>
       <Table Name="table4">
         <ZIndex>5</ZIndex>
         <DataSetName>dsPayin_Payin</DataSetName>
-        <Top>10.5cm</Top>
-        <Width>21.10979cm</Width>
+        <Top>10.45cm</Top>
+        <Width>20cm</Width>
         <Style>
           <FontFamily>宋体</FontFamily>
         </Style>
@@ -116,7 +129,7 @@
             <TableRow>
               <TableCells>
                 <TableCell>
-                  <ColSpan>6</ColSpan>
+                  <ColSpan>7</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox5">
                       <Style>
@@ -132,29 +145,13 @@
                     </Textbox>
                   </ReportItems>
                 </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox16">
-                      <Style>
-                        <FontFamily>宋体</FontFamily>
-                        <TextAlign>Center</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
               </TableCells>
               <Height>0.63492cm</Height>
             </TableRow>
             <TableRow>
               <TableCells>
                 <TableCell>
-                  <ColSpan>6</ColSpan>
+                  <ColSpan>7</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox35">
                       <Style>
@@ -167,22 +164,6 @@
                       </Style>
                       <CanGrow>true</CanGrow>
                       <Value>代收保费解付通知单</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox36">
-                      <Style>
-                        <FontFamily>宋体</FontFamily>
-                        <TextAlign>Center</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value />
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -444,25 +425,25 @@
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>0.74906cm</Width>
+            <Width>0.70968cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.9975cm</Width>
+            <Width>1.89249cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.9975cm</Width>
+            <Width>1.89249cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>4.29752cm</Width>
+            <Width>4.07159cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.49562cm</Width>
+            <Width>3.31185cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.24593cm</Width>
+            <Width>3.07528cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>5.32666cm</Width>
+            <Width>5.04663cm</Width>
           </TableColumn>
         </TableColumns>
         <Height>3.80952cm</Height>
@@ -568,32 +549,32 @@
       <Table Name="table5">
         <ZIndex>4</ZIndex>
         <DataSetName>dsPayin_Payin</DataSetName>
-        <Top>15.5cm</Top>
-        <Width>21.07572cm</Width>
+        <Top>15.53cm</Top>
+        <Width>20cm</Width>
         <Style>
           <FontFamily>宋体</FontFamily>
         </Style>
         <TableColumns>
           <TableColumn>
-            <Width>0.74906cm</Width>
+            <Width>0.71083cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2cm</Width>
+            <Width>1.89792cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.25cm</Width>
+            <Width>3.08412cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.75cm</Width>
+            <Width>3.5586cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.75cm</Width>
+            <Width>2.60964cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.25cm</Width>
+            <Width>3.08412cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>5.32666cm</Width>
+            <Width>5.05478cm</Width>
           </TableColumn>
         </TableColumns>
         <Height>2.53968cm</Height>
@@ -959,7 +940,7 @@
         <ZIndex>3</ZIndex>
         <DataSetName>dsPayin_PayinDetail</DataSetName>
         <Top>14.25cm</Top>
-        <Width>21.08333cm</Width>
+        <Width>20cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -1085,13 +1066,13 @@
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>0.75cm</Width>
+            <Width>0.71146cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>15cm</Width>
+            <Width>14.22925cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>5.33333cm</Width>
+            <Width>5.05929cm</Width>
           </TableColumn>
         </TableColumns>
         <Height>1.26984cm</Height>
@@ -1099,32 +1080,32 @@
       <Table Name="table3">
         <ZIndex>2</ZIndex>
         <DataSetName>dsPayin_Payin</DataSetName>
-        <Top>7.5cm</Top>
-        <Width>21.07572cm</Width>
+        <Top>6.75cm</Top>
+        <Width>20cm</Width>
         <Style>
           <FontFamily>宋体</FontFamily>
         </Style>
         <TableColumns>
           <TableColumn>
-            <Width>0.74906cm</Width>
+            <Width>0.71083cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2cm</Width>
+            <Width>1.89792cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.25cm</Width>
+            <Width>3.08412cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.75cm</Width>
+            <Width>3.5586cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.75cm</Width>
+            <Width>2.60964cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.25cm</Width>
+            <Width>3.08412cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>5.32666cm</Width>
+            <Width>5.05478cm</Width>
           </TableColumn>
         </TableColumns>
         <Height>2.53968cm</Height>
@@ -1526,7 +1507,7 @@
         <ZIndex>1</ZIndex>
         <DataSetName>dsPayin_PayinDetail</DataSetName>
         <Top>5.5cm</Top>
-        <Width>21.08333cm</Width>
+        <Width>20cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -1652,21 +1633,21 @@
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>0.75cm</Width>
+            <Width>0.6197cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>15cm</Width>
+            <Width>12.4121cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>5.33333cm</Width>
+            <Width>6.9682cm</Width>
           </TableColumn>
         </TableColumns>
         <Height>1.26984cm</Height>
       </Table>
       <Table Name="table1">
         <DataSetName>dsPayin_Payin</DataSetName>
-        <Top>1cm</Top>
-        <Width>21.08333cm</Width>
+        <Top>1.69cm</Top>
+        <Width>20cm</Width>
         <Style>
           <FontFamily>宋体</FontFamily>
         </Style>
@@ -1675,7 +1656,7 @@
             <TableRow>
               <TableCells>
                 <TableCell>
-                  <ColSpan>6</ColSpan>
+                  <ColSpan>7</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox40">
                       <rd:DefaultName>textbox40</rd:DefaultName>
@@ -1692,30 +1673,13 @@
                     </Textbox>
                   </ReportItems>
                 </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox46">
-                      <rd:DefaultName>textbox46</rd:DefaultName>
-                      <Style>
-                        <FontFamily>宋体</FontFamily>
-                        <TextAlign>Center</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value />
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
               </TableCells>
               <Height>0.63492cm</Height>
             </TableRow>
             <TableRow>
               <TableCells>
                 <TableCell>
-                  <ColSpan>6</ColSpan>
+                  <ColSpan>7</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox41">
                       <rd:DefaultName>textbox41</rd:DefaultName>
@@ -1729,23 +1693,6 @@
                       </Style>
                       <CanGrow>true</CanGrow>
                       <Value>代收保费解付通知单</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ReportItems>
-                    <Textbox Name="textbox47">
-                      <rd:DefaultName>textbox47</rd:DefaultName>
-                      <Style>
-                        <FontFamily>宋体</FontFamily>
-                        <TextAlign>Center</TextAlign>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value />
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -2021,25 +1968,25 @@
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>0.75cm</Width>
+            <Width>0.71146cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2cm</Width>
+            <Width>1.89723cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2cm</Width>
+            <Width>1.89723cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>4.25cm</Width>
+            <Width>4.03162cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.5cm</Width>
+            <Width>3.32016cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.25cm</Width>
+            <Width>3.083cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>5.33333cm</Width>
+            <Width>5.05929cm</Width>
           </TableColumn>
         </TableColumns>
         <Height>3.80952cm</Height>
@@ -2148,7 +2095,7 @@
         </Footer>
       </Table>
     </ReportItems>
-    <Height>20.75cm</Height>
+    <Height>29.7cm</Height>
   </Body>
   <Language>zh-CN</Language>
   <TopMargin>2.5cm</TopMargin>
