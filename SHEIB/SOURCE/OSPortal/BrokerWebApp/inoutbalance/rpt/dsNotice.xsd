@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="dsNotice" targetNamespace="http://tempuri.org/dsNotice.xsd" xmlns:mstns="http://tempuri.org/dsNotice.xsd" xmlns="http://tempuri.org/dsNotice.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="dsN" targetNamespace="http://tempuri.org/dsN.xsd" xmlns:mstns="http://tempuri.org/dsN.xsd" xmlns="http://tempuri.org/dsN.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -9,7 +9,7 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="dsNotice" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsNotice" msprop:Generator_UserDSName="dsNotice" msprop:EnableTableAdapterManager="true">
+  <xs:element name="dsN" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsN" msprop:Generator_UserDSName="dsN" msprop:EnableTableAdapterManager="true">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="Notice" msprop:Generator_UserTableName="Notice" msprop:Generator_RowDeletedName="NoticeRowDeleted" msprop:Generator_TableClassName="NoticeDataTable" msprop:Generator_RowChangedName="NoticeRowChanged" msprop:Generator_RowClassName="NoticeRow" msprop:Generator_RowChangingName="NoticeRowChanging" msprop:Generator_RowEvArgName="NoticeRowChangeEvent" msprop:Generator_RowEvHandlerName="NoticeRowChangeEventHandler" msprop:Generator_TablePropName="Notice" msprop:Generator_TableVarName="tableNotice" msprop:Generator_RowDeletingName="NoticeRowDeleting">
