@@ -333,66 +333,6 @@ namespace BrokerWebApp.inoutbalance
             
         }
 
-        protected void dxebtnPrint_Click(object sender, EventArgs e)
-        {
-            string sSql = "";
-            string sNoticeNo = "";
-            string conn = ConfigurationManager.ConnectionStrings["broker"].ConnectionString;
-            inoutbalance.rpt.dsNotice dNotice = new BrokerWebApp.inoutbalance.rpt.dsNotice();
-            sNoticeNo = dxetxtNoticeNo.Text.Trim();
-            sSql = sSql + "select NoticeNo,dbo.GetYYYYMMDDChinese(NoticeDate) NoticeDate,";
-            sSql = sSql + "(select max(CustomerName) from PolicyPeriodDetail where NoticeNo=a.NoticeNo)  CustomerName,";
-            sSql = sSql + "(select max(BranchName) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) Carrier,";
-            sSql = sSql + "(select SUM(PayFeeBase) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) PayFee,";
-            sSql = sSql + "(select dbo.MoneyToChinese(SUM(PayFeeBase)) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) PayFeeUpper,";
-            sSql = sSql + "(select SUM(AciPremium) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) AciPremium,";
-            sSql = sSql + "(select SUM(CstPremium) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) CstPremium,";
-            sSql = sSql + "(select SUM(CiPremium) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) CiPremium,";
-            sSql = sSql + "(select  ParamData from SysSet where ParamName='FeeInc') FeeCompany,";
-            sSql = sSql + "(select  ParamData from SysSet where ParamName='FeeIncBankAccount') FeeAccount,";
-            sSql = sSql + "(select  ParamData from SysSet where ParamName='FeeIncBankName') FeeBankName";
-            sSql = sSql + " from notice a";
-            sSql = sSql + " where NoticeNo='" + sNoticeNo+"'";
-            SqlDataAdapter ad = new SqlDataAdapter(sSql, conn);
-            ad.Fill(dNotice, "Notice");
-
-            sSql = "";
-            sSql = sSql + "select ProdTypeName,PolicyNo,PolicyID,PayFee,NoticeNo";
-            sSql = sSql + " from NoticePolicyPeriod";
-            sSql = sSql + " where NoticeNo='" + sNoticeNo + "'";
-
-            SqlDataAdapter adDetail = new SqlDataAdapter(sSql, conn);
-            adDetail.Fill(dNotice, "NoticePolicy");
-
-
-
-            //CrSource = new CrystalReportSource();
-            //CrSource.Report.FileName = "rpt\\rptNoticeAgent.rpt";
-            //CrSource.ReportDocument.SetDataSource(dNotice);
-            //Session.Add("Report", CrSource);
-            //crvNotice.ReportSource = CrSource;
-
-            ReportViewer1.Visible = true;
-            ReportDataSource dataSourceNotice = new ReportDataSource("dsNotice_Notice", dNotice.Tables["Notice"]);
-            ReportDataSource dataSourceNoticePolicy = new ReportDataSource("dsNotice_NoticePolicy", dNotice.Tables["NoticePolicy"]);
-            //ReportViewer1.LocalReport.ReportPath = "rptNoticeDirect.rdlc";
-            ReportViewer1.LocalReport.DataSources.Clear();
-            ReportViewer1.LocalReport.DataSources.Add(dataSourceNotice);
-            ReportViewer1.LocalReport.DataSources.Add(dataSourceNoticePolicy);
-            ReportViewer1.LocalReport.Refresh();
-
-            //DataTable dt = BO_Notice.GetNoticeReport(sSql).Tables[0];
-
-            //ReportViewer1.Visible = true;
-
-            //ReportDataSource dataSource = new ReportDataSource("dsNotice_Notice", dt);
-            //ReportViewer1.LocalReport.ReportPath = "rptNoticeDirect.rdlc";
-            //ReportViewer1.LocalReport.DataSources.Clear();
-            //ReportViewer1.LocalReport.DataSources.Add(dataSource);
-            //ReportViewer1.LocalReport.Refresh();
-
-        }
-
 
     
     
