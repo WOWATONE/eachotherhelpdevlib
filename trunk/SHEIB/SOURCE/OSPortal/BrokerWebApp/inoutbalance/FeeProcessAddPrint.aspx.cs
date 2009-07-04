@@ -29,43 +29,44 @@ namespace BrokerWebApp.inoutbalance
         {
             string sSql = "";
             string conn = ConfigurationManager.ConnectionStrings["broker"].ConnectionString;
+            inoutbalance.rpt.dsProcess dFee = new BrokerWebApp.inoutbalance.rpt.dsProcess();
 
-            inoutbalance.rpt.dsPayin dPayin = new BrokerWebApp.inoutbalance.rpt.dsPayin();
-
-            sSql = sSql + "select VoucherID,(select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,";
-            sSql = sSql + "(select SUM(Fee) from Fee where VoucherID=a.VoucherID) PayinFee,";
-            sSql = sSql + "(select dbo.MoneyToChinese(SUM(Fee)) from Fee where VoucherID=a.VoucherID) PayinFeeUpper,";
-            sSql = sSql + "(select sum(PayProcBase) from VoucherFee where VoucherID=a.VoucherID ) PayProc,";
-            sSql = sSql + "dbo.GetVoucherCustomer(a.VoucherID) Customer,";
-            sSql = sSql + "dbo.GetYYYYMMDDChinese(a.FeeDate) FeeDate";
+            sSql = "";
+            sSql = sSql + "select VoucherID,(Select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,b.BranchName,b.BankName,b.BankAccount,";
+            sSql = sSql + " (select SUM(Fee) from Fee where VoucherID=a.VoucherID) Fee,";
+            sSql = sSql + " (select dbo.MoneyToChinese(SUM(Fee)) from Fee where VoucherID=a.VoucherID) FeeUpper,";
+            sSql = sSql + " (select sum(PayProcBase) from VoucherFee where VoucherID=a.VoucherID ) PayProc";
             sSql = sSql + " from Voucher a";
             sSql = sSql + " left join branch b";
             sSql = sSql + " on a.BranchID=b.BranchID";
-            sSql = sSql + " where VoucherID='" + sVoucherID + "'";
+            sSql = sSql + " where VoucherID ='" + sVoucherID + "'";
             SqlDataAdapter ad = new SqlDataAdapter(sSql, conn);
-            ad.Fill(dPayin, "Payin");
+            ad.Fill(dFee, "Process");
 
             sSql = "";
-            sSql = sSql + "select NoticeNo+'('+dbo.GetVoucherPolicyByNoticeNo('" + sVoucherID + "',NoticeNo)+')',PayFee";
+            sSql = sSql + "select PayinInvoiceID+'('+dbo.GetVoucherPolicy('" + sVoucherID + "')+')' PolicyNo,ProcessFeeTypeName,PayinInvoiceFee,Fee";
             sSql = sSql + " from ";
             sSql = sSql + " (";
-            sSql = sSql + " select NoticeNo,sum(PayFee) PayFee";
-            sSql = sSql + " from voucherfee a";
-            sSql = sSql + " where VoucherID ='00000004' ";
-            sSql = sSql + " group by NoticeNo";
-            sSql = sSql + ") a";
+            sSql = sSql + " select b.PayinInvoiceID,sum(PayinInvoiceFee) PayinInvoiceFee,sum(a.Fee) Fee,max(b.ProcessFeeType) ProcessFeeTypeName";
+            sSql = sSql + " from VoucherFee a";
+            sSql = sSql + " left join PolicyPeriodFee b";
+            sSql = sSql + " on a.PolPeriodID=b.PolPeriodID";
+            sSql = sSql + " where a.VoucherID='" + sVoucherID + "'";
+            sSql = sSql + " group by b.PayinInvoiceID";
+            sSql = sSql + " ) a";
 
             SqlDataAdapter adDetail = new SqlDataAdapter(sSql, conn);
-            adDetail.Fill(dPayin, "PayinDetail");
-            
+            adDetail.Fill(dFee, "ProcessDetail");
+
             ReportViewer1.Visible = true;
-            ReportDataSource dataSourcePayin = new ReportDataSource("dsPayin_Payin", dPayin.Tables["Payin"]);
-            ReportDataSource dataSourcePayinDetail = new ReportDataSource("dsPayin_PayinDetail", dPayin.Tables["PayinDetail"]);
+            ReportDataSource dsFee = new ReportDataSource("dsProcess_Process", dFee.Tables["Process"]);
+            ReportDataSource dsFeeDetail = new ReportDataSource("dsProcess_ProcessDetail", dFee.Tables["ProcessDetail"]);
             //ReportViewer1.LocalReport.ReportPath = "rptNoticeDirect.rdlc";
             ReportViewer1.LocalReport.DataSources.Clear();
-            ReportViewer1.LocalReport.DataSources.Add(dataSourcePayin);
-            ReportViewer1.LocalReport.DataSources.Add(dataSourcePayinDetail);
+            ReportViewer1.LocalReport.DataSources.Add(dsFee);
+            ReportViewer1.LocalReport.DataSources.Add(dsFeeDetail);
             ReportViewer1.LocalReport.Refresh();
         }
+
     }
 }
