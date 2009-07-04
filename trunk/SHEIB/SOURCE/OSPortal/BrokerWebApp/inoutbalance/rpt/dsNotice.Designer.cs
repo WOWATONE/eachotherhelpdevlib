@@ -21,7 +21,7 @@ namespace BrokerWebApp.inoutbalance.rpt {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("dsNotice")]
+    [global::System.Xml.Serialization.XmlRootAttribute("dsN")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class dsNotice : global::System.Data.DataSet {
         
@@ -208,9 +208,9 @@ namespace BrokerWebApp.inoutbalance.rpt {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitClass() {
-            this.DataSetName = "dsNotice";
+            this.DataSetName = "dsN";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/dsNotice.xsd";
+            this.Namespace = "http://tempuri.org/dsN.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableNotice = new NoticeDataTable();

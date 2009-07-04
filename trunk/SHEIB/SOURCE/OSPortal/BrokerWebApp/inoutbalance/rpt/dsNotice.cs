@@ -1,9 +1,6 @@
-﻿namespace BrokerWebApp.css.inoutbalance.rpt
-{
-}
-namespace BrokerWebApp.css.inoutbalance.rpt
-{
-}
-namespace BrokerWebApp.css.inoutbalance.rpt
-{
+﻿namespace BrokerWebApp.inoutbalance.rpt {
+    
+    
+    public partial class dsNotice {
+    }
 }
