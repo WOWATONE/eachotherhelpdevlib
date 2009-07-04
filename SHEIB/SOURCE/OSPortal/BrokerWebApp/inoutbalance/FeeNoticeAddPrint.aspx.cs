@@ -15,56 +15,64 @@ namespace BrokerWebApp.inoutbalance
     {
         #region Variables
 
-        private const string inputQueryStringIDKey = "ID";
-        private string VoucherID = "";
+        private const string inputQueryStringIDKey = "NoticeNo";
         #endregion Variables
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            VoucherID = Page.Request.QueryString[inputQueryStringIDKey];
-            printVoucher(VoucherID);
+            string NoticeNo, GatheringType;
+            NoticeNo = Page.Request.QueryString["NoticeNo"];
+            GatheringType = Page.Request.QueryString["GatheringType"];
+            printVoucher(NoticeNo, GatheringType);
         }
 
-        private void printVoucher(string sVoucherID)
+        private void printVoucher(string sNoticeNo, string sGatheringType)
         {
             string sSql = "";
-            string conn = ConfigurationManager.ConnectionStrings["broker"].ConnectionString;
-            inoutbalance.rpt.dsPayin dPayin = new BrokerWebApp.inoutbalance.rpt.dsPayin();
 
-            sSql = sSql + "select VoucherID,(select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,";
-            sSql = sSql + "(select SUM(Fee) from Fee where VoucherID=a.VoucherID) PayinFee,";
-            sSql = sSql + "(select dbo.MoneyToChinese(SUM(Fee)) from Fee where VoucherID=a.VoucherID) PayinFeeUpper,";
-            sSql = sSql + "(select sum(PayProcBase) from VoucherFee where VoucherID=a.VoucherID ) PayProc,";
-            sSql = sSql + "dbo.GetVoucherCustomer(a.VoucherID) Customer,";
-            sSql = sSql + "dbo.GetYYYYMMDDChinese(a.FeeDate) FeeDate";
-            sSql = sSql + " from Voucher a";
-            sSql = sSql + " left join branch b";
-            sSql = sSql + " on a.BranchID=b.BranchID";
-            sSql = sSql + " where VoucherID='" + sVoucherID + "'";
+            string conn = ConfigurationManager.ConnectionStrings["broker"].ConnectionString;
+            inoutbalance.rpt.dsNotice dNotice = new BrokerWebApp.inoutbalance.rpt.dsNotice();
+
+            sSql = sSql + "select NoticeNo,dbo.GetYYYYMMDDChinese(NoticeDate) NoticeDate,";
+            sSql = sSql + "(select max(CustomerName) from PolicyPeriodDetail where NoticeNo=a.NoticeNo)  CustomerName,";
+            sSql = sSql + "(select max(BranchName) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) Carrier,";
+            sSql = sSql + "(select SUM(PayFeeBase) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) PayFee,";
+            sSql = sSql + "(select dbo.MoneyToChinese(SUM(PayFeeBase)) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) PayFeeUpper,";
+            sSql = sSql + "(select SUM(AciPremium) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) AciPremium,";
+            sSql = sSql + "(select SUM(CstPremium) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) CstPremium,";
+            sSql = sSql + "(select SUM(CiPremium) from PolicyPeriodDetail where NoticeNo=a.NoticeNo) CiPremium,";
+            sSql = sSql + "(select  ParamData from SysSet where ParamName='FeeInc') FeeCompany,";
+            sSql = sSql + "(select  ParamData from SysSet where ParamName='FeeIncBankAccount') FeeAccount,";
+            sSql = sSql + "(select  ParamData from SysSet where ParamName='FeeIncBankName') FeeBankName";
+            sSql = sSql + " from notice a";
+            sSql = sSql + " where NoticeNo='" + sNoticeNo + "'";
             SqlDataAdapter ad = new SqlDataAdapter(sSql, conn);
-            ad.Fill(dPayin, "Payin");
+            ad.Fill(dNotice, "Notice");
 
             sSql = "";
-            sSql = sSql + "select NoticeNo+'('+dbo.GetVoucherPolicyByNoticeNo('" + sVoucherID + "',NoticeNo)+')'  as NoticeNo,PayFee";
-            sSql = sSql + " from ";
-            sSql = sSql + " (";
-            sSql = sSql + " select NoticeNo,sum(PayFee) PayFee";
-            sSql = sSql + " from voucherfee a";
-            sSql = sSql + " where VoucherID ='00000004' ";
-            sSql = sSql + " group by NoticeNo";
-            sSql = sSql + ") a";
+            sSql = sSql + "select ProdTypeName,PolicyNo,PolicyID,PayFee,NoticeNo";
+            sSql = sSql + " from NoticePolicyPeriod";
+            sSql = sSql + " where NoticeNo='" + sNoticeNo + "'";
 
             SqlDataAdapter adDetail = new SqlDataAdapter(sSql, conn);
-            adDetail.Fill(dPayin, "PayinDetail");
-
+            adDetail.Fill(dNotice, "NoticePolicy");
+            //            <LocalReport ReportPath="inoutbalance\rpt\rptPayin.rdlc" />
             ReportViewer1.Visible = true;
-            ReportDataSource dataSourcePayin = new ReportDataSource("dsPayin_Payin", dPayin.Tables["Payin"]);
-            ReportDataSource dataSourcePayinDetail = new ReportDataSource("dsPayin_PayinDetail", dPayin.Tables["PayinDetail"]);
-            //ReportViewer1.LocalReport.ReportPath = "rptNoticeDirect.rdlc";
+            ReportDataSource dataSourceNotice = new ReportDataSource("dsNotice_Notice", dNotice.Tables["Notice"]);
+            ReportDataSource dataSourceNoticePolicy = new ReportDataSource("dsNotice_NoticePolicy", dNotice.Tables["NoticePolicy"]);
+            if (sGatheringType == "2")
+            {
+                ReportViewer1.LocalReport.ReportPath = "inoutbalance\\rpt\\rptNoticeDirect.rdlc";
+            }
+            else
+            {
+                ReportViewer1.LocalReport.ReportPath = "inoutbalance\\rpt\\rptNoticeAgent.rdlc";
+            }           
             ReportViewer1.LocalReport.DataSources.Clear();
-            ReportViewer1.LocalReport.DataSources.Add(dataSourcePayin);
-            ReportViewer1.LocalReport.DataSources.Add(dataSourcePayinDetail);
+            ReportViewer1.LocalReport.DataSources.Add(dataSourceNotice);
+            ReportViewer1.LocalReport.DataSources.Add(dataSourceNoticePolicy);
             ReportViewer1.LocalReport.Refresh();
+
         }
     }
 }

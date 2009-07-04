@@ -594,7 +594,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsFeePayinInvoice.xsd</DependentUpon>
     </Compile>
-    <Compile Include="inoutbalance\rpt\dsNotice.Designer.cs" />
+    <Compile Include="inoutbalance\rpt\dsNotice.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsNotice.xsd</DependentUpon>
+    </Compile>
     <Compile Include="inoutbalance\rpt\dsPayin.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1050,7 +1054,7 @@
     <None Include="inoutbalance\rpt\dsNotice.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsNotice1.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsNotice.Designer.cs</LastGenOutput>
     </None>
     <None Include="inoutbalance\rpt\dsNotice.xss">
       <DependentUpon>dsNotice.xsd</DependentUpon>
@@ -1079,7 +1083,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="inoutbalance\rptPayinInvoice.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptNoticeAgent.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptNoticeAgent1.cs</LastGenOutput>
@@ -1088,6 +1091,7 @@
     <EmbeddedResource Include="inoutbalance\rpt\rptPayin.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptPayinInvoice.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptProcess.rdlc" />
+    <EmbeddedResource Include="inoutbalance\rpt\rptNoticeAgent.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -107,6 +107,25 @@
             gridPolicyItem.PerformCallback('');
         }
 
+        function btnAddPrintClick() {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=700px;center=yes;help=no";
+            var url = "FeeNoticeAddPrint.aspx?NoticeNo=" + getNoticeNo() + "&GatheringType=" + getGatheringType();
+
+            window.showModalDialog(url, self, myArguments);
+            gridPolicyItem.PerformCallback('');
+        }
+
+        function getNoticeNo() {
+            var NoticeNo = dxetxtNoticeNo.GetValueString();
+            return NoticeNo;
+        }
+
+
+        function getGatheringType() {
+            var GatheringType = dxeddlGatheringType.GetValue();
+            return GatheringType;
+        }
+
         function isEmpty(testVar) {
             if ((testVar == null) || (testVar.length == 0)) {
                 return true;
@@ -363,7 +382,8 @@
                         </td>
                         <td style="width: 100px; text-align: left;">
                             <dxe:ASPxButton runat="server" ID="dxebtnPrint" ClientInstanceName="dxebtnPrint"
-                                Text="打印单证" AutoPostBack="false" OnClick="dxebtnPrint_Click">
+                                Text="打印单证" AutoPostBack="false">
+                                <ClientSideEvents Click="btnAddPrintClick" />
                             </dxe:ASPxButton>
                         </td>
                         <td style="width: 60px; text-align: left;">
@@ -379,11 +399,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2">
-                <rsweb:ReportViewer ID="ReportViewer1" Width="768" runat="server">
-                    <LocalReport ReportPath="inoutbalance\rptNoticeDirect.rdlc" />
-                </rsweb:ReportViewer>
-            </td>
+
         </tr>
     </table>
 </asp:Content>

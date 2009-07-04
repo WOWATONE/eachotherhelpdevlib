@@ -12,7 +12,6 @@
     <form id="form1" runat="server">
     <div>
         <rsweb:ReportViewer ID="ReportViewer1" Width="900"  Height="700" runat="server">
-            <LocalReport ReportPath="inoutbalance\rpt\rptPayin.rdlc" />
         </rsweb:ReportViewer>
     </div>
     </form>
