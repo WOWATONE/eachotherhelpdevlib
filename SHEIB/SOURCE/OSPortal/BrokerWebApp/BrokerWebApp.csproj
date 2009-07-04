@@ -605,8 +605,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsProcess.xsd</DependentUpon>
     </Compile>
-    <Compile Include="inoutbalance\rpt\rptNoticeAgent.cs">
-      <SubType>Component</SubType>
+    <Compile Include="inoutbalance\FeeNoticeAddPrint.aspx.cs">
+      <DependentUpon>FeeNoticeAddPrint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inoutbalance\FeeNoticeAddPrint.aspx.designer.cs">
+      <DependentUpon>FeeNoticeAddPrint.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -1008,6 +1012,7 @@
     <Content Include="inoutbalance\FeeProcessAdd.aspx" />
     <Content Include="inoutbalance\FeeProcessAddPrint.aspx" />
     <Content Include="inoutbalance\FeeProcessAddSelect.aspx" />
+    <Content Include="inoutbalance\FeeNoticeAddPrint.aspx" />
     <Content Include="otherinsurance\PolicyAlterList.aspx" />
     <Content Include="otherinsurance\PolicyCheckList.aspx" />
     <Content Include="otherinsurance\PolicyInput.aspx" />
@@ -1074,12 +1079,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="inoutbalance\rptPayinInvoice.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptNoticeAgent.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptNoticeAgent1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="inoutbalance\rpt\rptNoticeDirect.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptPayin.rdlc" />
+    <EmbeddedResource Include="inoutbalance\rpt\rptPayinInvoice.rdlc" />
+    <EmbeddedResource Include="inoutbalance\rpt\rptProcess.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
