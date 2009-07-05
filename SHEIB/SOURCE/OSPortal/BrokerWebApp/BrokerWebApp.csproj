@@ -616,6 +616,13 @@
     <Compile Include="inoutbalance\FeeNoticeAddPrint.aspx.designer.cs">
       <DependentUpon>FeeNoticeAddPrint.aspx</DependentUpon>
     </Compile>
+    <Compile Include="IntegrateSearch\PolicyList.aspx.cs">
+      <DependentUpon>PolicyList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IntegrateSearch\PolicyList.aspx.designer.cs">
+      <DependentUpon>PolicyList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1094,6 +1101,7 @@
     <Content Include="inoutbalance\FeeProcessAddPrint.aspx" />
     <Content Include="inoutbalance\FeeProcessAddSelect.aspx" />
     <Content Include="inoutbalance\FeeNoticeAddPrint.aspx" />
+    <Content Include="IntegrateSearch\PolicyList.aspx" />
     <Content Include="otherinsurance\PolicyAlterList.aspx" />
     <Content Include="otherinsurance\PolicyCheckList.aspx" />
     <Content Include="otherinsurance\PolicyInput.aspx" />
@@ -1171,10 +1179,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="inoutbalance\rpt\rptNoticeAgent.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptNoticeAgent1.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="inoutbalance\rpt\rptNoticeDirect.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptPayin.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptPayinInvoice.rdlc" />
@@ -1182,7 +1186,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="IntegrateSearch\" />
     <Folder Include="UploadFiles\PolicyUploadFiles\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
