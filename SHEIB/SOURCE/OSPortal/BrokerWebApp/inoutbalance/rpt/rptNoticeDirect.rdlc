@@ -120,7 +120,7 @@
     <ColumnSpacing>1cm</ColumnSpacing>
     <ReportItems>
       <Table Name="table1">
-        <DataSetName>dsNotice_Notice</DataSetName>
+        <DataSetName>dsNotice_NoticePolicy</DataSetName>
         <Top>1.75cm</Top>
         <Width>20.40156cm</Width>
         <Details>
@@ -130,8 +130,8 @@
                 <TableCell>
                   <ColSpan>2</ColSpan>
                   <ReportItems>
-                    <Textbox Name="textbox3">
-                      <rd:DefaultName>textbox3</rd:DefaultName>
+                    <Textbox Name="ProdTypeName">
+                      <rd:DefaultName>ProdTypeName</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -143,15 +143,15 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=Fields!ProdTypeName.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ColSpan>2</ColSpan>
                   <ReportItems>
-                    <Textbox Name="PolicyNo">
-                      <rd:DefaultName>PolicyNo</rd:DefaultName>
+                    <Textbox Name="PolicyNo_1">
+                      <rd:DefaultName>PolicyNo_1</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -163,15 +163,15 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=Fields!PolicyNo.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ColSpan>2</ColSpan>
                   <ReportItems>
-                    <Textbox Name="textbox5">
-                      <rd:DefaultName>textbox5</rd:DefaultName>
+                    <Textbox Name="PolicyID">
+                      <rd:DefaultName>PolicyID</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -183,14 +183,14 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=Fields!PolicyID.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox6">
-                      <rd:DefaultName>textbox6</rd:DefaultName>
+                    <Textbox Name="PayFee">
+                      <rd:DefaultName>PayFee</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -202,7 +202,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=Fields!PayFee.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -310,7 +310,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!NoticeDate.Value)</Value>
+                      <Value />
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -332,8 +332,8 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="NoticeNo">
-                      <rd:DefaultName>NoticeNo</rd:DefaultName>
+                    <Textbox Name="NoticeNo_1">
+                      <rd:DefaultName>NoticeNo_1</rd:DefaultName>
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -342,7 +342,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!NoticeNo.Value)</Value>
+                      <Value>=First(Fields!NoticeNo.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -373,8 +373,8 @@
                 <TableCell>
                   <ColSpan>6</ColSpan>
                   <ReportItems>
-                    <Textbox Name="CustomerName">
-                      <rd:DefaultName>CustomerName</rd:DefaultName>
+                    <Textbox Name="CustomerName_1">
+                      <rd:DefaultName>CustomerName_1</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -386,7 +386,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!CustomerName.Value)</Value>
+                      <Value>=First(Fields!CustomerName.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -417,8 +417,8 @@
                 <TableCell>
                   <ColSpan>6</ColSpan>
                   <ReportItems>
-                    <Textbox Name="Carrier">
-                      <rd:DefaultName>Carrier</rd:DefaultName>
+                    <Textbox Name="Carrier_1">
+                      <rd:DefaultName>Carrier_1</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -430,7 +430,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!Carrier.Value)</Value>
+                      <Value>=First(Fields!Carrier.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -611,8 +611,8 @@
                 <TableCell>
                   <ColSpan>2</ColSpan>
                   <ReportItems>
-                    <Textbox Name="PayFeeUpper_1">
-                      <rd:DefaultName>PayFeeUpper_1</rd:DefaultName>
+                    <Textbox Name="PayFeeUpper">
+                      <rd:DefaultName>PayFeeUpper</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -624,7 +624,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!PayFeeUpper.Value)</Value>
+                      <Value>=First(Fields!PayFeeUpper.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -650,8 +650,8 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="PayFee_1">
-                      <rd:DefaultName>PayFee_1</rd:DefaultName>
+                    <Textbox Name="PayFee_2">
+                      <rd:DefaultName>PayFee_2</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -663,7 +663,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!PayFee.Value)</Value>
+                      <Value>=First(Fields!PayFee.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -713,8 +713,8 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="AciPremium">
-                      <rd:DefaultName>AciPremium</rd:DefaultName>
+                    <Textbox Name="AciPremium_1">
+                      <rd:DefaultName>AciPremium_1</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -726,7 +726,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!AciPremium.Value)</Value>
+                      <Value>=First(Fields!AciPremium.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -752,8 +752,8 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="CiPremium">
-                      <rd:DefaultName>CiPremium</rd:DefaultName>
+                    <Textbox Name="CiPremium_1">
+                      <rd:DefaultName>CiPremium_1</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -765,7 +765,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!CiPremium.Value)</Value>
+                      <Value>=First(Fields!CiPremium.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -791,8 +791,8 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="CstPremium">
-                      <rd:DefaultName>CstPremium</rd:DefaultName>
+                    <Textbox Name="CstPremium_1">
+                      <rd:DefaultName>CstPremium_1</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -804,7 +804,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!CstPremium.Value)</Value>
+                      <Value>=First(Fields!CstPremium.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -990,7 +990,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>年      月    日</Value>
+                      <Value>     年      月    日</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
