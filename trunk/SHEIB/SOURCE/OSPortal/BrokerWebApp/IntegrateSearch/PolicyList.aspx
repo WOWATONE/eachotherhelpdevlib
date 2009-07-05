@@ -31,7 +31,7 @@
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
             var noint = s.GetDataRow(e.visibleIndex).cells[2].innerText;
             var querystring;
-            querystring = "../otherinsurance/PolicyInput.aspx?pagemode=input&id=" + noint;
+            querystring = "../otherinsurance/PolicyInput.aspx?pagemode=Query&id=" + noint;
             window.showModalDialog(querystring, self, myArguments);
         }
 
@@ -72,9 +72,7 @@
     <table style="width:100%">
                     <tr>
                         <td style="height:40px; width:45%;">
-                            <dxe:ASPxButton ID="debtnCreate" runat="server" Text="新建" AutoPostBack="false">
-                                <ClientSideEvents Click="btnCreateClick" />
-                            </dxe:ASPxButton>                            
+                                                
                         </td>
                         <td style="height:40px; width:55%; color:#0E5ED5;text-align:left;">
                             当前位置：非车险保单录入&nbsp;

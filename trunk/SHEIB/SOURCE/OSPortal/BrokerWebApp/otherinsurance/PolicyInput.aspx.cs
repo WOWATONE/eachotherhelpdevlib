@@ -39,7 +39,8 @@ namespace BrokerWebApp.otherinsurance
         {
             Input, 
             Alt, 
-            Audit
+            Audit,
+            Query
         }
 
         private Nullable<PageMode> pm;
@@ -72,6 +73,9 @@ namespace BrokerWebApp.otherinsurance
                         break;
                     case "audit":
                         pm = PageMode.Audit;
+                        break;
+                    case "query":
+                        pm = PageMode.Query;
                         break;
                     default:
                         pm = PageMode.Input;
@@ -155,6 +159,7 @@ namespace BrokerWebApp.otherinsurance
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
+            
             if (this.pm == PageMode.Audit)
             {
                 tbltrAuditExecuteAction.Visible = true;
@@ -168,6 +173,16 @@ namespace BrokerWebApp.otherinsurance
                 }
                 tbltrAuditExecuteAction.Visible = false;
                 npNewExecuteAction.Visible = true;
+
+                if (this.pm == PageMode.Query)
+                {
+                    dxebtnAuditOk.Visible = false;
+                    dxebtnAuditClose.Visible = false;
+                    dxebtnBottomAdd.Visible = false;
+                    dxebtnBottomCheck.Visible = false;
+                    dxebtntopSave.Visible = false;
+                    dxebtnBottomSave.Visible = false;
+                }
             }
                 
         }
