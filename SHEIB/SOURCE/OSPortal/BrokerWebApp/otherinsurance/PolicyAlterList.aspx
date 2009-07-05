@@ -22,7 +22,7 @@
 	    
 	    });
 
-	    
+
 
 	    function gridAuditCustomButtonClick(s, e) {
 	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
@@ -32,7 +32,7 @@
 	        window.showModalDialog(querystring, self, myArguments);
 	    }
 
-	    function gridAltCustomButtonClick(s, e) {
+	    function gridAlertCustomButtonClick(s, e) {
 	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
 	        var noint = s.GetDataRow(e.visibleIndex).cells[3].innerText;
 	        var querystring;
@@ -385,12 +385,12 @@
                                                                         </dxwgv:ASPxGridView> 
                                                                         <dxwgv:ASPxGridViewExporter ID="gridAlertExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
                                                                         <asp:ObjectDataSource ID="AltDataSource" runat="server" 
-                                                                            SelectMethod="FetchPolicyCarrierList"
+                                                                            SelectMethod="FetchPolicyList"
                                                                             TypeName="BusinessObjects.Policy.BO_Policy" 
                                                                             EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
                                                                             >
                                                                             <SelectParameters> 
-                                                                                 <asp:Parameter Name="policyStatus" Type="String" Direction="Input" DefaultValue="2" />
+                                                                                 <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue="AND B.PrevPolicyID !=''" />
                                                                             </SelectParameters>
                                                                         </asp:ObjectDataSource>                                                    
                                                                     </td>
