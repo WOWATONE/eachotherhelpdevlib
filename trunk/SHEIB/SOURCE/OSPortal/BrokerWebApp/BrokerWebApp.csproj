@@ -1091,7 +1091,6 @@
     <EmbeddedResource Include="inoutbalance\rpt\rptPayin.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptPayinInvoice.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptProcess.rdlc" />
-    <EmbeddedResource Include="inoutbalance\rpt\rptNoticeAgent.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
