@@ -14,7 +14,8 @@
 
         function gridCustomButtonClick(s, e) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            window.showModalDialog("BusinessConsult.aspx", self, myArguments);
+            var consultFeeNo = s.GetDataRow(e.visibleIndex).cells[2].innerText;
+            window.showModalDialog("BusinessConsult.aspx?ConsultFeeNo=" + consultFeeNo, self, myArguments);
         }
     </script>
 
@@ -155,7 +156,7 @@
                             </dxwgv:GridViewCommandColumn>
                             <dxwgv:GridViewDataTextColumn Caption="咨询GUID" FieldName="ConsultFeeID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="咨询号" FieldName="ConsultNO" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="咨询号" FieldName="ConsultFeeNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="咨询日期" FieldName="ConsultDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
@@ -163,11 +164,11 @@
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="客户经理" FieldName="SalesName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="联系人" FieldName="LinkMan" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="联系人" FieldName="Contact" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="联系方式" FieldName="ContactType" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="联系方式" FieldName="Tel" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="咨询费（总）" FieldName="TotalConsultFee" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="咨询费（总）" FieldName="ConsultFee" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="发票号" FieldName="InvoiceNO" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
@@ -179,17 +180,11 @@
                         <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                         <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                         <SettingsText CustomizationWindowCaption="个性化" />
-                        <GroupSummary >
-                            <dxwgv:ASPxSummaryItem FieldName="ConsultFeeID" SummaryType="Count" ShowInGroupFooterColumn="ConsultFeeID" DisplayFormat = "总计: {0}" />
-                        </GroupSummary>
                         <TotalSummary >
                             <dxwgv:ASPxSummaryItem FieldName="ConsultFeeID" SummaryType="Count" ShowInGroupFooterColumn="ConsultFeeID" DisplayFormat = "总计: {0}" />
                         </TotalSummary>
-                        <GroupSummary >
-                            <dxwgv:ASPxSummaryItem FieldName="TotalConsultFee" SummaryType="Sum" ShowInGroupFooterColumn="TotalConsultFee" DisplayFormat = "合计: {0}" />
-                        </GroupSummary>
                         <TotalSummary >
-                            <dxwgv:ASPxSummaryItem FieldName="TotalConsultFee" SummaryType="Sum" ShowInGroupFooterColumn="TotalConsultFee" DisplayFormat = "合计: {0}" />
+                            <dxwgv:ASPxSummaryItem FieldName="ConsultFee" SummaryType="Sum" ShowInGroupFooterColumn="ConsultFee" DisplayFormat = "咨询费合计: {0}" />
                         </TotalSummary>
                     </dxwgv:ASPxGridView>
                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
