@@ -414,6 +414,13 @@
     <Compile Include="BaseClass\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="BusinessConsult\BusinessConsult.aspx.cs">
+      <DependentUpon>BusinessConsult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BusinessConsult\BusinessConsult.aspx.designer.cs">
+      <DependentUpon>BusinessConsult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BusinessConsult\BusinessConsultList.aspx.cs">
       <DependentUpon>BusinessConsultList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1076,6 +1083,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\Aqua\ASPxTreeList.skin" />
+    <Content Include="BusinessConsult\BusinessConsult.aspx" />
     <Content Include="BusinessConsult\BusinessConsultList.aspx" />
     <Content Include="CustomerRelation\CustContact.aspx" />
     <Content Include="CustomerRelation\Customer.aspx" />
