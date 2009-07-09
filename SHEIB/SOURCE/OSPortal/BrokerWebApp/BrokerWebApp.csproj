@@ -708,11 +708,21 @@
       <DependentUpon>PolicyProdType.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Report\rpt\dsTYGH.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsTYGH.xsd</DependentUpon>
+    <Compile Include="Report\InsuranceCommission1.aspx.cs">
+      <DependentUpon>InsuranceCommission1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Report\InsuranceCommission1.aspx.designer.cs">
+      <DependentUpon>InsuranceCommission1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\InsuranceCommission2.aspx.cs">
+      <DependentUpon>InsuranceCommission2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\InsuranceCommission2.aspx.designer.cs">
+      <DependentUpon>InsuranceCommission2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpt\dsInsuranceCommissionType.Designer.cs" />
     <Compile Include="Report\TYGH.aspx.cs">
       <DependentUpon>TYGH.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1153,6 +1163,8 @@
     <Content Include="otherinsurance\PolicyRead.aspx" />
     <Content Include="popupselectrefs\PolicyCustomer.aspx" />
     <Content Include="popupselectrefs\PolicyProdType.aspx" />
+    <Content Include="Report\InsuranceCommission1.aspx" />
+    <Content Include="Report\InsuranceCommission2.aspx" />
     <Content Include="Report\TYGH.aspx" />
     <Content Include="schemasetting\Branch.aspx" />
     <Content Include="schemasetting\BranchList.aspx" />
@@ -1222,16 +1234,14 @@
     <None Include="inoutbalance\rpt\dsProcess.xss">
       <DependentUpon>dsProcess.xsd</DependentUpon>
     </None>
-    <None Include="Report\rpt\dsTYGH.xsc">
-      <DependentUpon>dsTYGH.xsd</DependentUpon>
+    <None Include="Report\rpt\dsInsuranceCommissionType.xsc">
+      <DependentUpon>dsInsuranceCommissionType.xsd</DependentUpon>
     </None>
-    <None Include="Report\rpt\dsTYGH.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsTYGH.Designer.cs</LastGenOutput>
+    <None Include="Report\rpt\dsInsuranceCommissionType.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Report\rpt\dsTYGH.xss">
-      <DependentUpon>dsTYGH.xsd</DependentUpon>
+    <None Include="Report\rpt\dsInsuranceCommissionType.xss">
+      <DependentUpon>dsInsuranceCommissionType.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -1239,7 +1249,7 @@
     <EmbeddedResource Include="inoutbalance\rpt\rptPayin.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptPayinInvoice.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptProcess.rdlc" />
-    <EmbeddedResource Include="Report\rpt\rptTYGH.rdlc" />
+    <EmbeddedResource Include="Report\rpt\rptInsuranceCommission1.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
