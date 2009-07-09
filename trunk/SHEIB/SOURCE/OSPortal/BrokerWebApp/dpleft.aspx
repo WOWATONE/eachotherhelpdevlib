@@ -136,6 +136,8 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="保监会报表2" Name="Report/InsuranceCommission2.aspx">
                                 </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="同业公会报表" Name="Report/TYGH.aspx">
+                                </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="预算管理" Expanded="false" Visible="false">
