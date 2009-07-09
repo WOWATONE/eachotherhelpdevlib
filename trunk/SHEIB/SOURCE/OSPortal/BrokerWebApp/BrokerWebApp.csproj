@@ -694,6 +694,25 @@
       <DependentUpon>PolicyProdType.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\InsuranceCommission1.aspx.cs">
+      <DependentUpon>InsuranceCommission1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\InsuranceCommission1.aspx.designer.cs">
+      <DependentUpon>InsuranceCommission1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\InsuranceCommission2.aspx.cs">
+      <DependentUpon>InsuranceCommission2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\InsuranceCommission2.aspx.designer.cs">
+      <DependentUpon>InsuranceCommission2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpt\dsInsuranceCommission11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsInsuranceCommission1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="schemasetting\Branch.aspx.cs">
       <DependentUpon>Branch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1125,6 +1144,8 @@
     <Content Include="otherinsurance\PolicyRead.aspx" />
     <Content Include="popupselectrefs\PolicyCustomer.aspx" />
     <Content Include="popupselectrefs\PolicyProdType.aspx" />
+    <Content Include="Report\InsuranceCommission1.aspx" />
+    <Content Include="Report\InsuranceCommission2.aspx" />
     <Content Include="schemasetting\Branch.aspx" />
     <Content Include="schemasetting\BranchList.aspx" />
     <Content Include="schemasetting\Carrier.aspx" />
@@ -1193,12 +1214,25 @@
     <None Include="inoutbalance\rpt\dsProcess.xss">
       <DependentUpon>dsProcess.xsd</DependentUpon>
     </None>
+    <None Include="Report\rpt\dsInsuranceCommission1.xsc">
+      <DependentUpon>dsInsuranceCommission1.xsd</DependentUpon>
+    </None>
+    <None Include="Report\rpt\dsInsuranceCommission1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInsuranceCommission11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Report\rpt\dsInsuranceCommission1.xss">
+      <DependentUpon>dsInsuranceCommission1.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="inoutbalance\rpt\rptNoticeAgent.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptNoticeDirect.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptPayin.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptPayinInvoice.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptProcess.rdlc" />
+    <EmbeddedResource Include="Report\rpt\rptInsuranceCommission1.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
