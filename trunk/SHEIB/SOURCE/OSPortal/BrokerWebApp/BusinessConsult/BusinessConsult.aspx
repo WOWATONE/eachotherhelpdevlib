@@ -117,7 +117,7 @@
                                 客户名称：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCustName" ClientInstanceName="dxetxtCustName" runat="server" Width="160px" >
+                                <dxe:ASPxTextBox ID="dxetxtCustName" ClientInstanceName="dxetxtCustName" runat="server" Width="160px" ReadOnly="true" >
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
@@ -192,10 +192,7 @@
                                         <dxwgv:GridViewDataTextColumn Caption="咨询费" FieldName="ConsultFee" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                         </dxwgv:GridViewDataTextColumn>
                                     </Columns>
-                                    <SettingsPager Mode="ShowAllRecords" />
-                                    <Settings ShowGroupPanel="false" />
-                                    <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
-                                    <SettingsText CustomizationWindowCaption="个性化" />
+                                    <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
                                     <TotalSummary >
                                         <dxwgv:ASPxSummaryItem FieldName="ConsultFee" SummaryType="Sum" ShowInGroupFooterColumn="ConsultFee" DisplayFormat = "咨询费合计: {0}" />
                                     </TotalSummary>
@@ -366,7 +363,7 @@
                                 审核时间：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="deAuditTime" ClientInstanceName="deAuditTime" runat="server" Width="160px" Enabled="false">
+                                <dxe:ASPxDateEdit ID="deAuditTime" ClientInstanceName="deAuditTime" runat="server" Width="160px">
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">&nbsp;</td>
@@ -400,7 +397,7 @@
                     </dxe:ASPxButton> 
                 </td>
                 <td style="width:50px; text-align:left;">
-                    <dxe:ASPxButton runat="server" id="dxebtnSubmit" Text="提交审核" 
+                    <dxe:ASPxButton runat="server" id="dxebtnSubmit" Text="审核" 
                         CausesValidation="true" AutoPostBack="false" onclick="dxebtnSubmit_Click">
                     </dxe:ASPxButton> 
                 </td>
