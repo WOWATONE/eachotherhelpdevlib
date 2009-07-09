@@ -335,7 +335,10 @@ namespace BrokerWebApp.CustomerClaim
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                this.lblerrmsg.InnerText = ex.Message;
+                this.lblerrmsg.Visible = true;
+            }
         }
     }
 }
