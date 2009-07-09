@@ -713,6 +713,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsInsuranceCommissionType.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Report\rpt\dsTYGH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTYGH.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\TYGH.aspx.cs">
+      <DependentUpon>TYGH.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\TYGH.aspx.designer.cs">
+      <DependentUpon>TYGH.aspx</DependentUpon>
+    </Compile>
     <Compile Include="schemasetting\Branch.aspx.cs">
       <DependentUpon>Branch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1146,6 +1158,7 @@
     <Content Include="popupselectrefs\PolicyProdType.aspx" />
     <Content Include="Report\InsuranceCommission1.aspx" />
     <Content Include="Report\InsuranceCommission2.aspx" />
+    <Content Include="Report\TYGH.aspx" />
     <Content Include="schemasetting\Branch.aspx" />
     <Content Include="schemasetting\BranchList.aspx" />
     <Content Include="schemasetting\Carrier.aspx" />
@@ -1225,6 +1238,17 @@
     <None Include="Report\rpt\dsInsuranceCommissionType.xss">
       <DependentUpon>dsInsuranceCommissionType.xsd</DependentUpon>
     </None>
+    <None Include="Report\rpt\dsTYGH.xsc">
+      <DependentUpon>dsTYGH.xsd</DependentUpon>
+    </None>
+    <None Include="Report\rpt\dsTYGH.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTYGH.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Report\rpt\dsTYGH.xss">
+      <DependentUpon>dsTYGH.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="inoutbalance\rpt\rptNoticeAgent.rdlc" />
@@ -1233,6 +1257,7 @@
     <EmbeddedResource Include="inoutbalance\rpt\rptPayinInvoice.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptProcess.rdlc" />
     <EmbeddedResource Include="Report\rpt\rptInsuranceCommission1.rdlc" />
+    <EmbeddedResource Include="Report\rpt\rptTYGH.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1251,7 +1276,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>false</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>5308</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
