@@ -100,6 +100,7 @@
     <Compile Include="Policy\BO_PolicyPeriod.cs" />
     <Compile Include="Policy\BO_PolicyReinsureCarrier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\BO_Report.cs" />
     <Compile Include="SchemaSetting\BO_Branch.cs" />
     <Compile Include="SchemaSetting\BO_Carrier.cs" />
     <Compile Include="SchemaSetting\BO_Product.cs" />
