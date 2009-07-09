@@ -93,22 +93,13 @@
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="综合查询" Expanded="false">
                             <Items>
-                                <dxnb:NavBarItem Text="非车险保单综合查询" Name="otherinsurance/PolicySearch.aspx">
+                                <dxnb:NavBarItem Text="非车险保单综合查询" Name="IntegrateSearch/PolicyList.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="车险保单综合查询" Name="vehicleinsurance/AskPriceSearch.aspx">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
-                        <dxnb:NavBarGroup Text="预算管理" Expanded="false">
-                            <Items>
-                                <dxnb:NavBarItem Text="签约预算清单" Name="BudgetManagement/SignPremiumBudgetList.aspx">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="签约预算执行明细" Name="BudgetManagement/SignPremiumBudgetDetails.aspx">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="签约预算完成汇总" Name="BudgetManagement/SignPremiumBudgetSummary.aspx">
-                                </dxnb:NavBarItem>
-                            </Items>
-                        </dxnb:NavBarGroup>
+                        
                         <dxnb:NavBarGroup Text="系统设置" Expanded="false">
                             <Items>
                                 <dxnb:NavBarItem Text="员工管理" Name="schemasetting/UserManager.aspx">
@@ -125,17 +116,35 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="数据字典" Name="schemasetting/DataDictionary.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="企业目录" Name="CustomerRelation/EnterpriseList.aspx">
+                                <dxnb:NavBarItem Text="企业目录" Name="CustomerRelation/EnterpriseList.aspx" Visible="false">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="系统选项" Name="http://www.google.cn">
+                                <dxnb:NavBarItem Text="系统选项" Name="http://www.google.cn" Visible="false">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="系统日志" Name="schemasetting/Systemlog.aspx">
+                                <dxnb:NavBarItem Text="系统日志" Name="schemasetting/Systemlog.aspx" Visible="false">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="消息提醒" Expanded="false">
                             <Items>
                                 <dxnb:NavBarItem Text="服务提醒" Name="CustomerRelation/AlertService.aspx">
+                                </dxnb:NavBarItem>
+                            </Items>
+                        </dxnb:NavBarGroup>
+                        <dxnb:NavBarGroup Text="统计报表" Expanded="false">
+                            <Items>
+                                <dxnb:NavBarItem Text="保监会报表1" Name="Report/InsuranceCommission1.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="保监会报表2" Name="Report/InsuranceCommission2.aspx">
+                                </dxnb:NavBarItem>
+                            </Items>
+                        </dxnb:NavBarGroup>
+                        <dxnb:NavBarGroup Text="预算管理" Expanded="false" Visible="false">
+                            <Items>
+                                <dxnb:NavBarItem Text="签约预算清单" Name="BudgetManagement/SignPremiumBudgetList.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="签约预算执行明细" Name="BudgetManagement/SignPremiumBudgetDetails.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="签约预算完成汇总" Name="BudgetManagement/SignPremiumBudgetSummary.aspx">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
@@ -152,35 +161,9 @@
                                 <dxnb:NavBarItem Text="再保险经纪业务台帐" Name="accounting/ReinsuranceBrokerageBusiness.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="保险经纪咨询业务台帐" Name="accounting/InsuranceBrokerageConsultingService.aspx">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="保险经纪机构人员台帐" Name="accounting/InsuranceBrokerageAgency.aspx">
-                                </dxnb:NavBarItem>
+                                </dxnb:NavBarItem>                           
                             </Items>
-                        </dxnb:NavBarGroup>
-                        <dxnb:NavBarGroup Text="统计报表" Expanded="false">
-                            <Items>
-                                <dxnb:NavBarItem Text="分险种经纪业务统计" Name="http://www.google.cn">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="保费、经纪费统计表" Name="http://www.google.cn">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="客户保费佣金统计表" Name="http://www.google.cn">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="客户保费结构统计" Name="http://www.google.cn">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="集团客户佣金结构统计" Name="http://www.google.cn">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="应收帐款明细" Name="http://www.google.cn">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="保监会:经纪公司业务报表(按险种分类)" Name="http://www.google.cn">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="保监会:经纪公司业务报表（按签单地分类）" Name="http://www.google.cn">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="保监会:持证情况与学历情况表" Name="http://www.google.cn">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="保险经纪会员公司业务统计表" Name="http://www.google.cn">
-                                </dxnb:NavBarItem>
-                            </Items>
-                        </dxnb:NavBarGroup>
+                        </dxnb:NavBarGroup>                        
                     </Groups>
                 </dxnb:ASPxNavBar>
             </td>
