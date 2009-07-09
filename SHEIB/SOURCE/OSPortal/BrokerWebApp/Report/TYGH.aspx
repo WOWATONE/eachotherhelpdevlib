@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master"
-    AutoEventWireup="true" CodeBehind="InsuranceCommission2.aspx.cs" Inherits="BrokerWebApp.Report.InsuranceCommission2" %>
+    AutoEventWireup="true" CodeBehind="TYGH.aspx.cs" Inherits="BrokerWebApp.Report.TYGH" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
     TagPrefix="dxrp" %>
@@ -17,6 +17,8 @@
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3.Export" Namespace="DevExpress.Web.ASPxGridView.Export"
     TagPrefix="dxwgv" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+    Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>保单录入列表</title>
 
@@ -126,46 +128,9 @@
                     <table style="width: 100%">
                         <tr>
                             <td>
-                                <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
-                                    AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%">
-                                    <%-- BeginRegion Columns --%>
-                                    <Columns>
-                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
-                                            <NewButton Visible="False" />
-                                            <EditButton Visible="False" />
-                                        </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="LMType" Caption="险种" CellStyle-Wrap="False"
-                                            Visible="false">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="LMMC" Caption="签单地" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="HC" Caption="行次" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyCount" Caption="保单件数(件)" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费金额(元)" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="NeedPayinPremium" Caption="未解付保费(元)" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪佣金(元)" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                      
-                                    </Columns>
-                                    <TotalSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="LMMC" SummaryType="Count" DisplayFormat="合计" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PolicyCount" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="NeedPayinPremium" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="Process" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="ConsultFee" SummaryType="Sum" DisplayFormat="c" />
-                                    </TotalSummary>
-                                    <%-- EndRegion --%>
-                                    <SettingsPager Mode="ShowAllRecords" />
-                                    <Settings ShowGroupPanel="false" ShowVerticalScrollBar="false" ShowColumnHeaders="true"
-                                        ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
-                                    <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
-                                    <SettingsText CustomizationWindowCaption="个性化" />
-                                </dxwgv:ASPxGridView>
+                                <rsweb:ReportViewer ID="ReportViewer1" Width="900" Height="700" runat="server">
+                                    <LocalReport ReportPath="Report\rpt\rptTYGH.rdlc" />
+                                </rsweb:ReportViewer>
                                 <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
                                 </dxwgv:ASPxGridViewExporter>
                             </td>
