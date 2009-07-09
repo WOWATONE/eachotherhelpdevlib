@@ -396,7 +396,7 @@ namespace BusinessObjects
                     this.Email = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Email));
 
                     this.CertNo = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CertNo));
-                    this.Password = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PostCode));
+                    this.Password = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Password));
                     this.Remark = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Remark));
                     this.Mobile = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.Mobile));
                     this.BankName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.BankName));
