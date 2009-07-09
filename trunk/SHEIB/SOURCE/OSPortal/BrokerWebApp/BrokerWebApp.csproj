@@ -463,6 +463,13 @@
     <Compile Include="dpleft.aspx.designer.cs">
       <DependentUpon>dpleft.aspx</DependentUpon>
     </Compile>
+    <Compile Include="HeaderBroker.aspx.cs">
+      <DependentUpon>HeaderBroker.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HeaderBroker.aspx.designer.cs">
+      <DependentUpon>HeaderBroker.aspx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1090,6 +1097,7 @@
     <Content Include="CustomerRelation\CustomerList.aspx" />
     <Content Include="CustomerRelation\CustomerPtFollow.aspx" />
     <Content Include="dpleft.aspx" />
+    <Content Include="HeaderBroker.aspx" />
     <Content Include="inoutbalance\FeeCustomer.aspx" />
     <Content Include="inoutbalance\FeeCustomerAdd.aspx" />
     <Content Include="inoutbalance\FeeCustomerAddSelect.aspx" />
