@@ -14,6 +14,15 @@ namespace BrokerWebApp {
     public partial class login {
         
         /// <summary>
+        /// Head1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+        
+        /// <summary>
         /// Form1 control.
         /// </summary>
         /// <remarks>
@@ -32,31 +41,31 @@ namespace BrokerWebApp {
         protected global::System.Web.UI.WebControls.Label lb_Msg;
         
         /// <summary>
-        /// TbName control.
+        /// dxetxtUserID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText TbName;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtUserID;
         
         /// <summary>
-        /// TbPsw control.
+        /// dxetxtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword TbPsw;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPassword;
         
         /// <summary>
-        /// btnLogin control.
+        /// dxebtnLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnLogin;
         
         /// <summary>
         /// CbRemUser control.
