@@ -708,10 +708,10 @@
     <Compile Include="Report\InsuranceCommission2.aspx.designer.cs">
       <DependentUpon>InsuranceCommission2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Report\rpt\dsInsuranceCommission11.Designer.cs">
+    <Compile Include="Report\rpt\dsInsuranceCommissionType.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dsInsuranceCommission1.xsd</DependentUpon>
+      <DependentUpon>dsInsuranceCommissionType.xsd</DependentUpon>
     </Compile>
     <Compile Include="schemasetting\Branch.aspx.cs">
       <DependentUpon>Branch.aspx</DependentUpon>
@@ -1214,16 +1214,16 @@
     <None Include="inoutbalance\rpt\dsProcess.xss">
       <DependentUpon>dsProcess.xsd</DependentUpon>
     </None>
-    <None Include="Report\rpt\dsInsuranceCommission1.xsc">
-      <DependentUpon>dsInsuranceCommission1.xsd</DependentUpon>
+    <None Include="Report\rpt\dsInsuranceCommissionType.xsc">
+      <DependentUpon>dsInsuranceCommissionType.xsd</DependentUpon>
     </None>
-    <None Include="Report\rpt\dsInsuranceCommission1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsInsuranceCommission11.Designer.cs</LastGenOutput>
+    <None Include="Report\rpt\dsInsuranceCommissionType.xsd">
       <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInsuranceCommissionType.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Report\rpt\dsInsuranceCommission1.xss">
-      <DependentUpon>dsInsuranceCommission1.xsd</DependentUpon>
+    <None Include="Report\rpt\dsInsuranceCommissionType.xss">
+      <DependentUpon>dsInsuranceCommissionType.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
