@@ -126,7 +126,7 @@
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="消息提醒" Expanded="false">
                             <Items>
-                                <dxnb:NavBarItem Text="服务提醒" Name="CustomerRelation/AlertService.aspx">
+                                <dxnb:NavBarItem Text="服务提醒" Name="CustomerRelation/AlertService.aspx" Visible="false">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
