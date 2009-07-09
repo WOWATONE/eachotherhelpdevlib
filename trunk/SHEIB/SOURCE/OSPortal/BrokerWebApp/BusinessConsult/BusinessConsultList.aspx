@@ -7,7 +7,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>业务咨询列表</title>
     <script type="text/javascript">
-        function btnCreateClick(url) {
+        function btnCreateClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
             window.showModalDialog("BusinessConsult.aspx", self, myArguments);
         }
