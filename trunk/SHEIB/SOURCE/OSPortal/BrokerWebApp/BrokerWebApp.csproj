@@ -428,6 +428,20 @@
     <Compile Include="BusinessConsult\BusinessConsultList.aspx.designer.cs">
       <DependentUpon>BusinessConsultList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustomerClaim\NotifyClaim.aspx.cs">
+      <DependentUpon>NotifyClaim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\NotifyClaim.aspx.designer.cs">
+      <DependentUpon>NotifyClaim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerClaim\NotifyClaimList.aspx.cs">
+      <DependentUpon>NotifyClaimList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\NotifyClaimList.aspx.designer.cs">
+      <DependentUpon>NotifyClaimList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CustomerRelation\CustContact.aspx.cs">
       <DependentUpon>CustContact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -694,25 +708,6 @@
       <DependentUpon>PolicyProdType.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Report\InsuranceCommission1.aspx.cs">
-      <DependentUpon>InsuranceCommission1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Report\InsuranceCommission1.aspx.designer.cs">
-      <DependentUpon>InsuranceCommission1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Report\InsuranceCommission2.aspx.cs">
-      <DependentUpon>InsuranceCommission2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Report\InsuranceCommission2.aspx.designer.cs">
-      <DependentUpon>InsuranceCommission2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Report\rpt\dsInsuranceCommissionType.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsInsuranceCommissionType.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Report\rpt\dsTYGH.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1123,6 +1118,8 @@
     <Content Include="App_Themes\Aqua\ASPxTreeList.skin" />
     <Content Include="BusinessConsult\BusinessConsult.aspx" />
     <Content Include="BusinessConsult\BusinessConsultList.aspx" />
+    <Content Include="CustomerClaim\NotifyClaim.aspx" />
+    <Content Include="CustomerClaim\NotifyClaimList.aspx" />
     <Content Include="CustomerRelation\CustContact.aspx" />
     <Content Include="CustomerRelation\Customer.aspx" />
     <Content Include="CustomerRelation\CustomerList.aspx" />
@@ -1156,8 +1153,6 @@
     <Content Include="otherinsurance\PolicyRead.aspx" />
     <Content Include="popupselectrefs\PolicyCustomer.aspx" />
     <Content Include="popupselectrefs\PolicyProdType.aspx" />
-    <Content Include="Report\InsuranceCommission1.aspx" />
-    <Content Include="Report\InsuranceCommission2.aspx" />
     <Content Include="Report\TYGH.aspx" />
     <Content Include="schemasetting\Branch.aspx" />
     <Content Include="schemasetting\BranchList.aspx" />
@@ -1227,17 +1222,6 @@
     <None Include="inoutbalance\rpt\dsProcess.xss">
       <DependentUpon>dsProcess.xsd</DependentUpon>
     </None>
-    <None Include="Report\rpt\dsInsuranceCommissionType.xsc">
-      <DependentUpon>dsInsuranceCommissionType.xsd</DependentUpon>
-    </None>
-    <None Include="Report\rpt\dsInsuranceCommissionType.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsInsuranceCommissionType.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Report\rpt\dsInsuranceCommissionType.xss">
-      <DependentUpon>dsInsuranceCommissionType.xsd</DependentUpon>
-    </None>
     <None Include="Report\rpt\dsTYGH.xsc">
       <DependentUpon>dsTYGH.xsd</DependentUpon>
     </None>
@@ -1251,12 +1235,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="inoutbalance\rpt\rptNoticeAgent.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptNoticeDirect.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptPayin.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptPayinInvoice.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptProcess.rdlc" />
-    <EmbeddedResource Include="Report\rpt\rptInsuranceCommission1.rdlc" />
     <EmbeddedResource Include="Report\rpt\rptTYGH.rdlc" />
   </ItemGroup>
   <ItemGroup>
