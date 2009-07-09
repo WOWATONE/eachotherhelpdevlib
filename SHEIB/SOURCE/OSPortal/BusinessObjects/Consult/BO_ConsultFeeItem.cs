@@ -46,7 +46,7 @@ namespace BusinessObjects.Consult
         {
             if (action == ModifiedAction.Insert)
             {
-                //add();
+                add();
             }
             else if (action == ModifiedAction.Update)
             {
@@ -54,7 +54,82 @@ namespace BusinessObjects.Consult
             }
         }
 
+        /// <summary>
+        /// 保存咨询费项目信息
+        /// </summary>
+        private void add()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT INTO ConsultFeeItem(ConsultFeeItemID, ConsultFeeID, SerialNumber, ConsultFeeItem, ConsultFee) ");
+            sb.Append(" VALUES(@ConsultFeeItemID, @ConsultFeeID, @SerialNumber, @ConsultFeeItem, @ConsultFee)");
 
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ConsultFeeItemID", DbType.AnsiString, this.ConsultFeeItemID);
+            _db.AddInParameter(dbCommand, "@ConsultFeeID", DbType.AnsiString, this.ConsultFeeID);
+            _db.AddInParameter(dbCommand, "@SerialNumber", DbType.Int32, this.SerialNumber);
+            _db.AddInParameter(dbCommand, "@ConsultFeeItem", DbType.AnsiString, this.ConsultFeeItem);
+            _db.AddInParameter(dbCommand, "@ConsultFee", DbType.Double, this.ConsultFee);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 根据ConsultFeeID取得咨询费项目信息
+        /// </summary>
+        /// <param name="consultFeeID"></param>
+        /// <returns></returns>
+        public static DataTable GetConsultFeeItemByConsultFeeID(string consultFeeID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ConsultFeeItemID, SerialNumber, ConsultFeeItem, ConsultFee ");
+            sb.Append("From ConsultFeeItem (nolock) ");
+            sb.Append("Where ConsultFeeID=@ConsultFeeID ");
+            sb.Append("Order By SerialNumber");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ConsultFeeID", DbType.AnsiString, consultFeeID);
+
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+            value.PrimaryKey = new DataColumn[] { value.Columns["ConsultFeeItemID"] };
+            return value;
+        }
+
+        /// <summary>
+        /// 根据ConsultFeeID清除咨询费项目信息
+        /// </summary>
+        /// <param name="consultFeeID"></param>
+        public static void ClearConsultFeeItemByConsultFeeID(string consultFeeID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Delete From ConsultFeeItem Where ConsultFeeID=@ConsultFeeID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ConsultFeeID", DbType.AnsiString, consultFeeID);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 判断是否存在咨询项目Guid
+        /// </summary>
+        /// <param name="consultFeeNo"></param>
+        /// <returns></returns>
+        public static bool IfExistsConsultFeeItemID(string consultFeeItemID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ConsultFeeItemID From ConsultFeeItem (nolock) ");
+            sb.Append("Where ConsultFeeItemID=@ConsultFeeItemID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ConsultFeeItemID", DbType.AnsiString, consultFeeItemID);
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+
+            if (value != null && value.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
         #endregion
     }
 }

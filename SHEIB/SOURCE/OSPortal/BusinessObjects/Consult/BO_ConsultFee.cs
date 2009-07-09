@@ -82,12 +82,85 @@ namespace BusinessObjects.Consult
         {
             if (action == ModifiedAction.Insert)
             {
-                //add();
+                add();
             }
             else if (action == ModifiedAction.Update)
             {
-                //update();
+                update();
             }
+        }
+
+        /// <summary>
+        /// 保存咨询信息
+        /// </summary>
+        private void add()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT INTO ConsultFee(ConsultFeeID, ConsultFeeNo, ConsultDate, SalesID, CustID, Contact, Tel, ConsultFee, InvoiceNO, AuditTime, AuditPerson, CreateTime, CreatePerson, ModifyTime, ModifyPerson, FeeDate, FeePersion) ");
+            sb.Append(" VALUES(@ConsultFeeID, @ConsultFeeNo, @ConsultDate, @SalesID, @CustID, @Contact, @Tel, @ConsultFee, @InvoiceNO, @AuditTime, @AuditPerson, @CreateTime, @CreatePerson, @ModifyTime, @ModifyPerson, @FeeDate, @FeePersion)");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ConsultFeeID", DbType.AnsiString, this.ConsultFeeID);
+            _db.AddInParameter(dbCommand, "@ConsultFeeNo", DbType.AnsiString, this.ConsultFeeNo);
+            _db.AddInParameter(dbCommand, "@ConsultDate", DbType.DateTime, this.ConsultDate);
+            _db.AddInParameter(dbCommand, "@SalesID", DbType.AnsiString, this.SalesID);
+            _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, this.CustID);
+            _db.AddInParameter(dbCommand, "@Contact", DbType.AnsiString, this.Contact);
+            _db.AddInParameter(dbCommand, "@Tel", DbType.AnsiString, this.Tel);
+            _db.AddInParameter(dbCommand, "@ConsultFee", DbType.Double, this.ConsultFee);
+            _db.AddInParameter(dbCommand, "@InvoiceNO", DbType.AnsiString, this.InvoiceNO);
+            if (this.AuditTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, DBNull.Value);
+            else
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
+            _db.AddInParameter(dbCommand, "@AuditPerson", DbType.AnsiString, this.AuditPerson);
+            _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
+            _db.AddInParameter(dbCommand, "@CreatePerson", DbType.AnsiString, this.CreatePerson);
+            _db.AddInParameter(dbCommand, "@ModifyTime", DbType.DateTime, this.ModifyTime);
+            _db.AddInParameter(dbCommand, "@ModifyPerson", DbType.AnsiString, this.ModifyPerson);
+            _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, this.FeeDate);
+            _db.AddInParameter(dbCommand, "@FeePersion", DbType.AnsiString, this.FeePersion);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        /// <summary>
+        /// 修改咨询信息
+        /// </summary>
+        private void update()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Update ConsultFee ");
+            sb.Append("Set ConsultFeeNo=@ConsultFeeNo, ConsultDate=@ConsultDate, SalesID=@SalesID, CustID=@CustID, Contact=@Contact, Tel=@Tel, ConsultFee=@ConsultFee, InvoiceNO=@InvoiceNO, ");
+            sb.Append("AuditTime=@AuditTime, AuditPerson=@AuditPerson, CreateTime=@CreateTime, CreatePerson=@CreatePerson, ModifyTime=@ModifyTime, ModifyPerson=@ModifyPerson, FeeDate=@FeeDate, FeePersion=@FeePersion ");
+            sb.Append("Where ConsultFeeID=@ConsultFeeID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ConsultFeeID", DbType.AnsiString, this.ConsultFeeID);
+            _db.AddInParameter(dbCommand, "@ConsultFeeNo", DbType.AnsiString, this.ConsultFeeNo);
+            _db.AddInParameter(dbCommand, "@ConsultDate", DbType.DateTime, this.ConsultDate);
+            _db.AddInParameter(dbCommand, "@SalesID", DbType.AnsiString, this.SalesID);
+            _db.AddInParameter(dbCommand, "@CustID", DbType.AnsiString, this.CustID);
+            _db.AddInParameter(dbCommand, "@Contact", DbType.AnsiString, this.Contact);
+            _db.AddInParameter(dbCommand, "@Tel", DbType.AnsiString, this.Tel);
+            _db.AddInParameter(dbCommand, "@ConsultFee", DbType.Double, this.ConsultFee);
+            _db.AddInParameter(dbCommand, "@InvoiceNO", DbType.AnsiString, this.InvoiceNO);
+            if (this.AuditTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, DBNull.Value);
+            else
+                _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, this.AuditTime);
+            _db.AddInParameter(dbCommand, "@AuditPerson", DbType.AnsiString, this.AuditPerson);
+            _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
+            _db.AddInParameter(dbCommand, "@CreatePerson", DbType.AnsiString, this.CreatePerson);
+            _db.AddInParameter(dbCommand, "@ModifyTime", DbType.DateTime, this.ModifyTime);
+            _db.AddInParameter(dbCommand, "@ModifyPerson", DbType.AnsiString, this.ModifyPerson);
+            _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, this.FeeDate);
+            _db.AddInParameter(dbCommand, "@FeePersion", DbType.AnsiString, this.FeePersion);
+
+
+            _db.ExecuteNonQuery(dbCommand);
         }
 
         /// <summary>
@@ -97,8 +170,8 @@ namespace BusinessObjects.Consult
         public static void Delete(string consultFeeID)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("DELETE FROM ConsultFee ");
-            sb.Append(" WHERE ConsultFeeID = @ConsultFeeID ");
+            sb.Append("DELETE FROM ConsultFee WHERE ConsultFeeID = @ConsultFeeID ");
+            sb.Append("DELETE FROM ConsultFeeItem WHERE ConsultFeeID = @ConsultFeeID ");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
             _db.AddInParameter(dbCommand, "@ConsultFeeID", DbType.AnsiString, consultFeeID);
@@ -131,17 +204,17 @@ namespace BusinessObjects.Consult
         }
 
         /// <summary>
-        /// 根据咨询号取得咨询信息
+        /// 根据咨询ID取得咨询信息
         /// </summary>
-        /// <param name="consultFeeNo"></param>
+        /// <param name="consultFeeID"></param>
         /// <returns></returns>
-        public static BO_ConsultFee GetConsultFeeByID(string consultFeeNo)
+        public static BO_ConsultFee GetConsultFeeByID(string consultFeeID)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select * From ConsultFee (nolock) ");
-            sb.Append("Where ConsultFeeNo=@ConsultFeeNo");
+            sb.Append("Where ConsultFeeID=@ConsultFeeID");
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-            _db.AddInParameter(dbCommand, "@ConsultFeeNo", DbType.AnsiString, consultFeeNo);
+            _db.AddInParameter(dbCommand, "@ConsultFeeID", DbType.AnsiString, consultFeeID);
 
             BO_ConsultFee consultFee = null;
             using (IDataReader reader = _db.ExecuteReader(dbCommand))
@@ -173,6 +246,46 @@ namespace BusinessObjects.Consult
             }
 
             return consultFee;
+        }
+
+        /// <summary>
+        /// 判断是否存在咨询号
+        /// </summary>
+        /// <param name="consultFeeNo"></param>
+        /// <returns></returns>
+        public static bool IfExistsConsultFeeNo(string consultFeeNo)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ConsultFeeNo From ConsultFee (nolock) ");
+            sb.Append("Where ConsultFeeNo=@ConsultFeeNo");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ConsultFeeNo", DbType.AnsiString, consultFeeNo);
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+
+            if (value != null && value.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// 根据ConsultFeeID取得ConsultFeeNo
+        /// </summary>
+        /// <param name="consultFeeNo"></param>
+        /// <returns></returns>
+        public static string GetConsultFeeNoByConsultFeeID(string consultFeeID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ConsultFeeNo From ConsultFee Where ConsultFeeID=@ConsultFeeID");
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ConsultFeeID", DbType.AnsiString, consultFeeID);
+
+            object value = _db.ExecuteScalar(dbCommand);
+            if (value == null || value == DBNull.Value)
+                return "";
+            else
+                return value.ToString();
         }
         #endregion
     }
