@@ -67,8 +67,7 @@
                 <asp:Panel ID="npbasicheader" runat="server" CssClass="collapsePanelHeader" Height="25px">
                     <div style="padding: 5px; cursor: pointer; vertical-align: middle;">
                         <div style="float: left; vertical-align: middle;">
-                            <asp:ImageButton ID="img_npbasicheader" runat="server" ImageUrl="~/images/expand_blue.jpg"
-                                AlternateText="" />
+                            <asp:ImageButton ID="img_npbasicheader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText="" />
                         </div>
                         <div style="float: left; margin-left: 5px;">
                             基本信息
