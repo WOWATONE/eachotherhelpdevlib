@@ -262,7 +262,7 @@
                                 出险原因：
                             </td>
                             <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlAccidentReason" ClientInstanceName="dxeddlAccidentReason" runat="server" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlAccidentReason" ClientInstanceName="dxeddlAccidentReason" runat="server" Width="160px" DropDownStyle="DropDownList">
                                     <Items>
                                         <dxe:ListEditItem Text="意外" Value="意外" />
                                         <dxe:ListEditItem Text="火灾" Value="火灾" />
