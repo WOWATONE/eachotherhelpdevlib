@@ -93,9 +93,9 @@
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="综合查询" Expanded="false">
                             <Items>
-                                <dxnb:NavBarItem Text="非车险保单综合查询" Name="IntegrateSearch/PolicyList.aspx">
+                                <dxnb:NavBarItem Text="保单综合查询" Name="IntegrateSearch/PolicyList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="车险保单综合查询" Name="vehicleinsurance/AskPriceSearch.aspx">
+                                <dxnb:NavBarItem Text="车险保单综合查询" Name="vehicleinsurance/AskPriceSearch.aspx" Visible="false">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
