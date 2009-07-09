@@ -1127,6 +1127,7 @@
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowAllRecords" />
                                                         <ClientSideEvents EndCallback="function(s, e) {gridPolicyItem_EndCallback();}" />
+                                                        <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false"  />
                                                         <Templates>
                                                             <EditForm>
                                                                 <div style="padding: 4px 4px 3px 4px">
@@ -1388,7 +1389,8 @@
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowAllRecords" />
                                                         <Settings ShowGroupPanel="false" /> 
-                                                        <ClientSideEvents CustomButtonClick="" />                                                       
+                                                        <ClientSideEvents CustomButtonClick="" /> 
+                                                        <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false"  />                                                      
                                                         <Templates>
                                                             <EditForm>                                                                
                                                                 <div style="padding: 4px 4px 3px 4px">
@@ -1589,6 +1591,7 @@
                                         <SettingsPager Mode="ShowAllRecords" />
                                         <Settings ShowGroupPanel="false" /> 
                                         <ClientSideEvents CustomButtonClick="" />
+                                        <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false"  />
                                     </dxwgv:ASPxGridView>
                                                 
                                 </td>
@@ -1646,6 +1649,7 @@
                                         <SettingsPager Mode="ShowAllRecords"></SettingsPager>
                                         <SettingsDetail ExportMode="All" />
                                         <SettingsLoadingPanel Mode="ShowAsPopup" ImagePosition="Top"  ShowImage="true" Text="Loading" />
+                                        <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false"  />
                                         <Styles>
                                             <LoadingDiv></LoadingDiv>
                                             <LoadingPanel></LoadingPanel>
