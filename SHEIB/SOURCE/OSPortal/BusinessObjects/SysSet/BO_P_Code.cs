@@ -57,7 +57,9 @@ namespace BusinessObjects
             AuditStatus,
             ProcessFeeType,
             InsType,     //业务类型
-            GrdType      //行政级别
+            GrdType,     //行政级别
+            LossType,    //理赔损失性质
+            NotifyType   //报案方式
         }
 
         public enum FieldList
