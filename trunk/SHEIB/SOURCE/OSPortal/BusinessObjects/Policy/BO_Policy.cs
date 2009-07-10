@@ -594,7 +594,7 @@ namespace BusinessObjects.Policy
             sb.Append(" LEFT JOIN GatheringType J ON J.GatheringTypeID = B.GatheringType ");
             sb.Append(" LEFT JOIN P_Department K ON B.DeptID = K.DeptID ");
             sb.Append(" WHERE ISNULL(B.PolicyStatus,'0') = @PolicyStatus ");
-            //sb.Append("  ");
+            sb.Append(" ORDER BY B.CreateTime DESC  ");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
             _db.AddInParameter(dbCommand, "@PolicyStatus", DbType.String, policyStatus);
@@ -888,7 +888,7 @@ namespace BusinessObjects.Policy
             if (this.CreateTime == DateTime.MinValue)
                 _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, DateTime.Now);
             else
-                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
+                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, DateTime.Now);
 
             _db.AddInParameter(dbCommand, "@CreatePerson", DbType.String, this.CreatePerson);
 
