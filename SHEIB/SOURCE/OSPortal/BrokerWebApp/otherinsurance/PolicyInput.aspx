@@ -763,12 +763,12 @@
         
         
         function policyTab_Changing(s, e) {
-            //insuranceDetailTabPage
-            if (e.tab.index == 2) {
+            //debugger;
+            if (e.tab.index == 1 || e.tab.index == 2) {
                 //refresh perieodtime grid
                 //gridPeriod.PerformCallback();
-                //var element = s.GetContentElement(e.tab.index);
-                //if (element != null) element.loaded = false;                             
+                var element = s.GetContentElement(e.tab.index);
+                if (element != null) element.loaded = false;                             
             }
         }
 

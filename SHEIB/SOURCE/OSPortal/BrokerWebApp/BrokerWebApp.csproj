@@ -723,6 +723,7 @@
       <DependentUpon>InsuranceCommission2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Report\rpt\dsInsuranceCommissionType.Designer.cs" />
+    <Compile Include="Report\rpt\dsTYGH.Designer.cs" />
     <Compile Include="Report\TYGH.aspx.cs">
       <DependentUpon>TYGH.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1243,6 +1244,15 @@
     <None Include="Report\rpt\dsInsuranceCommissionType.xss">
       <DependentUpon>dsInsuranceCommissionType.xsd</DependentUpon>
     </None>
+    <None Include="Report\rpt\dsTYGH.xsc">
+      <DependentUpon>dsTYGH.xsd</DependentUpon>
+    </None>
+    <None Include="Report\rpt\dsTYGH.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Report\rpt\dsTYGH.xss">
+      <DependentUpon>dsTYGH.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="inoutbalance\rpt\rptNoticeDirect.rdlc" />
@@ -1250,6 +1260,7 @@
     <EmbeddedResource Include="inoutbalance\rpt\rptPayinInvoice.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptProcess.rdlc" />
     <EmbeddedResource Include="Report\rpt\rptInsuranceCommission1.rdlc" />
+    <EmbeddedResource Include="Report\rpt\rptTYGH.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
