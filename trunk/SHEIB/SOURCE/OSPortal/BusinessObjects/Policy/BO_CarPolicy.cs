@@ -34,11 +34,7 @@ namespace BusinessObjects.Policy
             DeptId, 
             CarrierSales, 
             SalesId, 
-            SignDate, 
-            Coverage, 
-            PremiumBase, 
-            ProcessRate, 
-            ProcessBase,
+            SignDate,
             PolicyStatus, 
             GatheringType, 
             OperationType, 
@@ -132,39 +128,8 @@ namespace BusinessObjects.Policy
             get;
             set;
         }
-
+                        
                 
-        [DataMember]
-        public Decimal Coverage
-        {
-            get;
-            set;
-        }
-     
-
-        [DataMember]
-        public Decimal PremiumBase
-        {
-            get;
-            set;
-        }
-                       
-
-        [DataMember]
-        public Decimal ProcessRate
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public Decimal ProcessBase
-        {
-            get;
-            set;
-        }
-
-        
         [DataMember]
         public string PolicyStatus
         {
@@ -300,10 +265,73 @@ namespace BusinessObjects.Policy
             }
         }
 
-        public static DataTable FetchPolicyCarrierList(String policyStatus)
+
+        public static DataTable FetchCarPolicyList(String sWhere)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(" SELECT NewID() AS KeyGUID, A.Premium, A.Process, A.PremiumBase, A.ProcessBase, ");
+            sb.Append(" SELECT ");
+            sb.Append(" A1.AskPriceID, A1.TradeNo, A1.CustomerID, ");
+            sb.Append(" A1.Beneficiary, A1.DeptId,");
+            sb.Append(" A1.CarrierSales, A1.SalesId,");
+            sb.Append(" A1.SignDate, A1.PolicyStatus,");
+            sb.Append(" A1.GatheringType, A1.OperationType,");
+            sb.Append(" A1.SourceTypeID, A1.Remark,");
+            sb.Append(" A1.AuditTime, A1.AuditPerson,");
+            sb.Append(" A1.AuditContent, A1.CreateTime,");
+            sb.Append(" A1.CreatePerson, A1.ModifyTime,");
+            sb.Append(" A1.ModifyPerson, A1.VolumnNo,");
+            sb.Append(" A1.CarCount, A1.BankName,");
+            sb.Append(" A1.BankAccount,");
+            sb.Append(" C.UserID, C.UserNameCn, ");
+            sb.Append(" I.SourceTypeName, ");
+            sb.Append(" J.GatheringTypeName, ");
+            sb.Append(" D.CarrierNameCn,  ");
+            sb.Append(" E.BranchName, ");
+            sb.Append(" K.DeptName, ");
+            sb.Append(" G.CustName, ");
+            sb.Append(" FROM CarPolicy A1 ");
+            sb.Append(" LEFT JOIN P_User C ON A1.SalesId = C.UserID ");
+            sb.Append(" LEFT JOIN Carrier D ON A1.CarrierID = D.CarrierID ");
+            sb.Append(" LEFT JOIN Branch E ON A1.CarrierID = E.CarrierID AND A1.BranchID = E.BranchID ");
+
+            sb.Append(" LEFT JOIN Customer G ON A1.CustomerID = G.CustID ");
+
+            sb.Append(" LEFT JOIN SourceType I ON I.SourceTypeID = A1.SourceTypeID ");
+            sb.Append(" LEFT JOIN GatheringType J ON J.GatheringTypeID = A1.GatheringType ");
+            sb.Append(" LEFT JOIN P_Department K ON A1.DeptID = K.DeptID ");
+            sb.Append(" WHERE 1=1 ");
+            sb.Append(sWhere);
+            sb.Append(" ORDER BY A1.CreateTime DESC  ");
+            //sb.Append(" WHERE ISNULL(B.PolicyStatus,'0') = @PolicyStatus ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            
+            DataSet ds = _db.ExecuteDataSet(dbCommand);
+            return ds.Tables[0];
+        }
+
+
+
+
+
+
+        public static DataTable FetchCarPolicyCarrierList(String sWhere)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" SELECT ");
+            sb.Append(" A1.AskPriceID, A1.TradeNo AS Car_TradeNo, A1.CustomerID AS Car_CustomerID, ");
+            sb.Append(" A1.Beneficiary AS Car_Beneficiary , A1.DeptId AS Car_DeptId,");
+            sb.Append(" A1.CarrierSales AS Car_CarrierSales, A1.SalesId AS Car_SalesId,");
+            sb.Append(" A1.SignDate AS Car_SignDate, A1.PolicyStatus AS Car_PolicyStatus,");
+            sb.Append(" A1.GatheringType AS Car_GatheringType, A1.OperationType AS Car_OperationType,");
+            sb.Append(" A1.SourceTypeID AS Car_SourceTypeID, A1.Remark AS Car_Remark,");
+            sb.Append(" A1.AuditTime AS Car_AuditTime, A1.AuditPerson AS Car_AuditPerson,");
+            sb.Append(" A1.AuditContent AS Car_AuditContent, A1.CreateTime AS Car_CreateTime,");
+            sb.Append(" A1.CreatePerson AS Car_CreatePerson, A1.ModifyTime AS Car_ModifyTime,");
+            sb.Append(" A1.ModifyPerson AS Car_ModifyPerson, A1.VolumnNo AS Car_VolumnNo,");
+            sb.Append(" A1.CarCount AS Car_CarCount, A1.BankName AS Car_BankName,");
+            sb.Append(" A1.BankAccount AS Car_BankAccount,");            
+            sb.Append(" A.Premium, A.Process, A.PremiumBase, A.ProcessBase, ");
             sb.Append(" B.PolicyID, B.PrevPolicyID, B.PolicyNo, ");
             sb.Append(" B.SalesId, C.UserID, C.UserNameCn, ");
             sb.Append(" B.Coverage, B.CreatePerson, ");
@@ -323,7 +351,8 @@ namespace BusinessObjects.Policy
             sb.Append(" B.ModifyPerson,B.ModifyTime, ");
             sb.Append(" B.Remark ");
 
-            sb.Append(" FROM Policy B ");
+            sb.Append(" FROM CarPolicy A1 ");
+            sb.Append(" LEFT JOIN Policy B ON A1.AskPriceID = B.AskPriceID ");
             sb.Append(" LEFT JOIN PolicyCarrier A ON A.PolicyID = B.PolicyID ");
             sb.Append(" LEFT JOIN P_User C ON B.SalesId = C.UserID ");
             sb.Append(" LEFT JOIN Carrier D ON A.CarrierID = D.CarrierID ");
@@ -334,11 +363,13 @@ namespace BusinessObjects.Policy
             sb.Append(" LEFT JOIN SourceType I ON I.SourceTypeID = B.SourceTypeID ");
             sb.Append(" LEFT JOIN GatheringType J ON J.GatheringTypeID = B.GatheringType ");
             sb.Append(" LEFT JOIN P_Department K ON B.DeptID = K.DeptID ");
-            sb.Append(" WHERE ISNULL(B.PolicyStatus,'0') = @PolicyStatus ");
+            sb.Append(" WHERE 1=1 ");
+            sb.Append( sWhere );
             sb.Append(" ORDER BY B.CreateTime DESC  ");
+            //sb.Append(" WHERE ISNULL(B.PolicyStatus,'0') = @PolicyStatus ");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-            _db.AddInParameter(dbCommand, "@PolicyStatus", DbType.String, policyStatus);
+            //_db.AddInParameter(dbCommand, "@PolicyStatus", DbType.String, sWhere);
 
             DataSet ds = _db.ExecuteDataSet(dbCommand);
             return ds.Tables[0];
@@ -455,13 +486,7 @@ namespace BusinessObjects.Policy
                     this.SalesId = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.SalesId));
                     
                     this.SignDate = Utility.GetDatetimeFromReader(reader, Convert.ToInt32(FieldList.SignDate));
-                    
-                    
-                    this.Coverage = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Coverage));
-                    this.PremiumBase = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.PremiumBase));
-                    this.ProcessRate = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.ProcessRate));
-                    this.ProcessBase = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.ProcessBase));
-
+                                                            
                     this.GatheringType = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.GatheringType));
                     this.OperationType = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.OperationType));
                     this.SourceTypeID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.SourceTypeID));
@@ -496,8 +521,7 @@ namespace BusinessObjects.Policy
             StringBuilder sb = new StringBuilder();
                        
             sb.Append("INSERT INTO CarPolicy ( AskPriceID, TradeNo, CustomerID, Beneficiary,");
-            sb.Append("DeptId, CarrierSales, SalesId, SignDate, Coverage,");
-            sb.Append("PremiumBase, ProcessRate, ProcessBase,");
+            sb.Append("DeptId, CarrierSales, SalesId, SignDate,");
             sb.Append("PolicyStatus, GatheringType, OperationType,");
             sb.Append("SourceTypeID, Remark, AuditTime, AuditPerson,");
             sb.Append("AuditContent, CreateTime, CreatePerson, ModifyTime,");
@@ -505,8 +529,7 @@ namespace BusinessObjects.Policy
             sb.Append(")");
             sb.Append(" VALUES( ");
             sb.Append("@AskPriceID, @TradeNo, @CustomerID, @Beneficiary,");
-            sb.Append("@DeptId, @CarrierSales, @SalesId, @SignDate, @Coverage,");
-            sb.Append("@PremiumBase, @ProcessRate, @ProcessBase,");
+            sb.Append("@DeptId, @CarrierSales, @SalesId, @SignDate,");
             sb.Append("@PolicyStatus, @GatheringType, @OperationType,");
             sb.Append("@SourceTypeID, @Remark, @AuditTime, @AuditPerson,");
             sb.Append("@AuditContent, @CreateTime, @CreatePerson, @ModifyTime,");
@@ -530,10 +553,6 @@ namespace BusinessObjects.Policy
             else
                 _db.AddInParameter(dbCommand, "@SignDate", DbType.DateTime, this.SignDate);
 
-            _db.AddInParameter(dbCommand, "@Coverage", DbType.Decimal, this.Coverage);
-            _db.AddInParameter(dbCommand, "@PremiumBase", DbType.Decimal, this.PremiumBase);
-            _db.AddInParameter(dbCommand, "@ProcessRate", DbType.Decimal, this.ProcessRate);
-            _db.AddInParameter(dbCommand, "@ProcessBase", DbType.Decimal, this.ProcessBase);
             _db.AddInParameter(dbCommand, "@GatheringType", DbType.String, this.GatheringType);
             _db.AddInParameter(dbCommand, "@OperationType", DbType.String, this.OperationType);
             _db.AddInParameter(dbCommand, "@SourceTypeID", DbType.String, this.SourceTypeID);
@@ -579,8 +598,8 @@ namespace BusinessObjects.Policy
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE CarPolicy SET ");
             sb.Append("TradeNo=@TradeNo, CustomerID=@CustomerID, Beneficiary=@Beneficiary, DeptId=@DeptId,");
-            sb.Append("CarrierSales=@CarrierSales, SalesId=@,SalesId SignDate=@SignDate, Coverage=@Coverage, PremiumBase=@PremiumBase,");
-            sb.Append("ProcessRate=@ProcessRate, ProcessBase=@ProcessBase, PolicyStatus=@PolicyStatus, GatheringType=@GatheringType,");
+            sb.Append("CarrierSales=@CarrierSales, SalesId=@,SalesId SignDate=@SignDate,");
+            sb.Append("PolicyStatus=@PolicyStatus, GatheringType=@GatheringType,");
             sb.Append("OperationType=@OperationType, SourceTypeID=@SourceTypeID, Remark=@Remark, AuditTime=@AuditTime, ");
             sb.Append("AuditPerson=@AuditPerson, AuditContent=@AuditContent, CreateTime=@CreateTime, CreatePerson=@CreatePerson, ModifyTime=@ModifyTime,");
             sb.Append("ModifyPerson=@ModifyPerson, VolumnNo=@VolumnNo, CarCount=@CarCount, BankName=@BankName, BankAccount=@BankAccount");
@@ -603,10 +622,6 @@ namespace BusinessObjects.Policy
             else
                 _db.AddInParameter(dbCommand, "@SignDate", DbType.DateTime, this.SignDate);
 
-            _db.AddInParameter(dbCommand, "@Coverage", DbType.Decimal, this.Coverage);
-            _db.AddInParameter(dbCommand, "@PremiumBase", DbType.Decimal, this.PremiumBase);
-            _db.AddInParameter(dbCommand, "@ProcessRate", DbType.Decimal, this.ProcessRate);
-            _db.AddInParameter(dbCommand, "@ProcessBase", DbType.Decimal, this.ProcessBase);
             _db.AddInParameter(dbCommand, "@GatheringType", DbType.String, this.GatheringType);
             _db.AddInParameter(dbCommand, "@OperationType", DbType.String, this.OperationType);
             _db.AddInParameter(dbCommand, "@SourceTypeID", DbType.String, this.SourceTypeID);
