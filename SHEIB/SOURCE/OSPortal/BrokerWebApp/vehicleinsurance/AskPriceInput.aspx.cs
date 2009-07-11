@@ -38,17 +38,48 @@ namespace BrokerWebApp.vehicleinsurance
             Query
         }
 
+        private Nullable<PageMode> pm;
+
         #endregion Variables
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Page.IsPostBack)
+            {
+                pm = ViewState[currentPageModeKey] as Nullable<PageMode>;
+            }
+            else
+            {
+                //this.dxetxtPolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
+                this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey];
+
+                this.pkid.Value = Page.Request.QueryString[inputQueryStringPreIDKey];
+
+                switch (this.pagemode.Value.ToLower().Trim())
+                {
+                    case "input":
+                        pm = PageMode.Input;
+                        break;                    
+                    case "audit":
+                        pm = PageMode.Audit;
+                        break;
+                    case "query":
+                        pm = PageMode.Query;
+                        break;
+                    default:
+                        pm = PageMode.Input;
+                        break;
+                }
+                ViewState[currentPageModeKey] = pm;
+
+                //loadPrePolicyValue(this.pplcid.Value);
+            }
+
+            //if (!IsPostBack && !IsCallback)
+            //    this.gridPolicyItem.DataBind();
+
             
-            if (!IsPostBack && !IsCallback)
-                this.gridPolicyItem.DataBind();
-
-            this.gridPolicyItem.Enabled = true;             
-
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
