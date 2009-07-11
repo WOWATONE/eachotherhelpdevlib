@@ -45,47 +45,51 @@
     </Reference>
     <Reference Include="DevExpress.Data.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\WINDOWS\system32\DevExpress.Data.v8.3.dll</HintPath>
+      <HintPath>ReferenceDLLs\DevExpress.Data.v8.3.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Utils.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\WINDOWS\system32\DevExpress.Utils.v8.3.dll</HintPath>
+      <HintPath>ReferenceDLLs\DevExpress.Utils.v8.3.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxEditors.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\WINDOWS\system32\DevExpress.Web.ASPxEditors.v8.3.dll</HintPath>
+      <HintPath>ReferenceDLLs\DevExpress.Web.ASPxEditors.v8.3.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxGridView.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\WINDOWS\system32\DevExpress.Web.ASPxGridView.v8.3.dll</HintPath>
+      <HintPath>ReferenceDLLs\DevExpress.Web.ASPxGridView.v8.3.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxGridView.v8.3.Export, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\WINDOWS\system32\DevExpress.Web.ASPxGridView.v8.3.Export.dll</HintPath>
+      <HintPath>ReferenceDLLs\DevExpress.Web.ASPxGridView.v8.3.Export.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxHtmlEditor.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\WINDOWS\system32\DevExpress.Web.ASPxHtmlEditor.v8.3.dll</HintPath>
+      <HintPath>ReferenceDLLs\DevExpress.Web.ASPxHtmlEditor.v8.3.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxSpellChecker.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Web.ASPxPivotGrid.v8.3.Export, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\WINDOWS\system32\DevExpress.Web.ASPxSpellChecker.v8.3.dll</HintPath>
+      <HintPath>ReferenceDLLs\DevExpress.Web.ASPxPivotGrid.v8.3.Export.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxTreeList.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\WINDOWS\system32\DevExpress.Web.ASPxTreeList.v8.3.dll</HintPath>
+      <HintPath>ReferenceDLLs\DevExpress.Web.ASPxTreeList.v8.3.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\WINDOWS\system32\DevExpress.Web.v8.3.dll</HintPath>
+      <HintPath>ReferenceDLLs\DevExpress.Web.v8.3.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraPrinting.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\WINDOWS\system32\DevExpress.XtraPrinting.v8.3.dll</HintPath>
+      <HintPath>ReferenceDLLs\DevExpress.XtraPrinting.v8.3.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraRichEdit.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\WINDOWS\system32\DevExpress.XtraRichEdit.v8.3.dll</HintPath>
+      <HintPath>ReferenceDLLs\DevExpress.XtraRichEdit.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraSpellChecker.v8.3.Core, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.XtraSpellChecker.v8.3.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
