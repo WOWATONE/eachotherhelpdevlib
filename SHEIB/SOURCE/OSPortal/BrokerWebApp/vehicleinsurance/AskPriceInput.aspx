@@ -12,43 +12,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Ñ¯¼Ûµ¥Â¼Èë</title>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            //jQuery.noticeAdd({
-            //    text: 'This is a notification that you have to remove',
-            //    stay: true
-            //});
-
-
-            //if (canDisplay.toLowerCase() == "true") {
-            //    //popupControl.ShowWindow();
-            //    SetFormInputPopUpVisible();
-            //}
-            //else {
-            //    //do nothing;
-            //}
-
-        });
-
-
-        function btnAddCustomerClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
-            window.showModalDialog("../otherinsurance/NewCustomer.aspx", self, myArguments);
-        }
-
-        function btnSelectCustomerClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
-            window.showModalDialog("../otherinsurance/SelectCustomer.aspx", self, myArguments);
-        }
-
-        function hlCarPolicyItemClick(params) {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1010px;dialogHeight=680px;center=yes;help=no";
-            window.showModalDialog("CarPolicyItemInput.aspx", self, myArguments);
-        }
-        
-    </script>
-
+    <script type="text/javascript" src="../js/pagejs/AskPriceInput.js"></script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
@@ -554,7 +519,7 @@
                             <td style="width: 400px; text-align: left;">
                                 &nbsp;
                             </td>
-                            <td style="display:none;"><a id="hrefnewpolicy" href="PolicyInput.aspx">New</a></td>
+                            <td style="display:none;"><a id="hrefnewpolicy" href="AskPriceInput.aspx">New</a></td>
                             <td></td>
                             <td></td>
                             <td></td>

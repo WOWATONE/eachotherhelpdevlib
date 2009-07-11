@@ -36,7 +36,7 @@ namespace BrokerWebApp.vehicleinsurance
             if (!IsPostBack && !IsCallback)
                 this.gridPolicyItem.DataBind();
 
-                        
+            this.gridPolicyItem.Enabled = true;             
 
         }
 

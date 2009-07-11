@@ -1161,6 +1161,7 @@
     <Content Include="inoutbalance\FeeProcessAddSelect.aspx" />
     <Content Include="inoutbalance\FeeNoticeAddPrint.aspx" />
     <Content Include="IntegrateSearch\PolicyList.aspx" />
+    <Content Include="js\pagejs\AskPriceInput.js" />
     <Content Include="otherinsurance\PolicyAlterList.aspx" />
     <Content Include="otherinsurance\PolicyCheckList.aspx" />
     <Content Include="otherinsurance\PolicyInput.aspx" />
