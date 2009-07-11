@@ -92,6 +92,7 @@
     <Compile Include="Permission\BO_P_RolePriv.cs" />
     <Compile Include="Permission\BO_P_User.cs" />
     <Compile Include="Permission\BO_P_UserRole.cs" />
+    <Compile Include="Policy\BO_CarPolicy.cs" />
     <Compile Include="Policy\BO_Policy.cs" />
     <Compile Include="Policy\BO_PolicyCarrier.cs" />
     <Compile Include="Policy\BO_PolicyClaim.cs" />
