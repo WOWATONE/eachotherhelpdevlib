@@ -50,37 +50,7 @@ function policyBaseCompleteEnable() {
         insuranceDetailTabPage.tabs[3].SetEnabled(true);
     }
 
-    //alt
-    if (pagemode.value == "alt") {
-        result = $("#<%=npGridPolicyItemDetail.ClientID %>");
-        panel = result[0];
-        panel.parentElement.removeAttribute('disabled');
-
-        result = $("#<%=npCostSummaryDetail.ClientID %>");
-        panel = result[0];
-        panel.parentElement.removeAttribute('disabled', 'true');
-
-        result = $("#<%=npPolicyCompanyDetail.ClientID %>");
-        panel = result[0];
-        panel.parentElement.removeAttribute('disabled', 'true');
-
-        result = $("#<%=tblNewExecuteAction.ClientID %>");
-        if (result.length > 0) {
-            panel = result[0];
-            panel.parentElement.removeAttribute('disabled', 'true');
-        }
-
-        //result = $("#<%=tbltrAuditExecuteAction.ClientID %>");
-        //if (result.length > 0) {
-        //    panel = result[0];
-        //panel.parentElement.removeAttribute('disabled', 'true');
-        //}
-
-
-        insuranceDetailTabPage.tabs[1].SetEnabled(true);
-        insuranceDetailTabPage.tabs[2].SetEnabled(true);
-        insuranceDetailTabPage.tabs[3].SetEnabled(true);
-    }
+    
 }
 
 
@@ -146,41 +116,6 @@ function policyBaseCompleteUnable() {
         panel = result[0];
         panel.parentElement.setAttribute('disabled', 'true');
 
-
-    }
-
-    //alt
-    if (pagemode.value == "alt") {
-        if (policyCheckNessary()) {
-            result = $("#<%=npGridPolicyItemDetail.ClientID %>");
-            panel = result[0];
-            panel.parentElement.setAttribute('disabled', 'true');
-
-            result = $("#<%=npCostSummaryDetail.ClientID %>");
-            panel = result[0];
-            panel.parentElement.setAttribute('disabled', 'true');
-
-            result = $("#<%=npPolicyCompanyDetail.ClientID %>");
-            panel = result[0];
-            panel.parentElement.setAttribute('disabled', 'true');
-
-            result = $("#<%=tblNewExecuteAction.ClientID %>");
-            if (result.length > 0) {
-                panel = result[0];
-                panel.parentElement.setAttribute('disabled', 'true');
-            }
-
-            result = $("#<%=tbltrAuditExecuteAction.ClientID %>");
-            if (result.length > 0) {
-                panel = result[0];
-                panel.parentElement.setAttribute('disabled', 'true');
-            }
-
-
-            insuranceDetailTabPage.tabs[1].SetEnabled(false);
-            insuranceDetailTabPage.tabs[2].SetEnabled(false);
-            insuranceDetailTabPage.tabs[3].SetEnabled(false);
-        }
 
     }
 

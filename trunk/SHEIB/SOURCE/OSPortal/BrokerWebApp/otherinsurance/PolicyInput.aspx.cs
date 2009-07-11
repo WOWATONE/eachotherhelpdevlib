@@ -27,7 +27,7 @@ namespace BrokerWebApp.otherinsurance
         private const string inputQueryStringPageModeKey = "pagemode";
         private const string inputQueryStringPreIDKey = "pid";
         private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
-        private const int ThumbnailSize = 100;
+        //private const int ThumbnailSize = 100;
 
         private Boolean gridCarrierStartEdit = false;
         private Boolean gridPolicyItemStartEdit = false;
