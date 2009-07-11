@@ -41,7 +41,7 @@ namespace BrokerWebApp.schemasetting
 
         protected void gridSearchResult_CustomCallBack(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
-            //                       
+            this.gridSearchResult.DataBind();                      
         }
                 
         protected void btnXlsExport_Click(object sender, EventArgs e)
