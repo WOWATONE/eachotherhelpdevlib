@@ -20,12 +20,23 @@ namespace BrokerWebApp.vehicleinsurance
     {
 
         #region Variables
-                
-        
-        private const string UploadDirectory = "~/UploadControl/UploadImages/";
-        private const int ThumbnailSize = 100;
 
-        //enctype="multipart/form-data">
+
+        private const string currentPageModeKey = "CurrentPagePolicyMode";
+        private const string inputQueryStringIDKey = "id";
+        private const string inputQueryStringPageModeKey = "pagemode";
+        private const string inputQueryStringPreIDKey = "pid";
+        private const string UploadDirectory = "~/UploadFiles/CarPolicyUploadFiles/";
+        
+
+        private Boolean gridPolicyItemStartEdit = false;
+
+        public enum PageMode
+        {
+            Input,
+            Audit,
+            Query
+        }
 
         #endregion Variables
 
@@ -52,11 +63,6 @@ namespace BrokerWebApp.vehicleinsurance
 
         }
 
-        protected void gridPolicyItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
-        {
-            this.gridPolicyItem.DataBind();
-        }
-
         protected void gridPolicyItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             
@@ -64,23 +70,14 @@ namespace BrokerWebApp.vehicleinsurance
             this.gridPolicyItem.CancelEdit();
         }
 
-        protected void gridPolicyItem_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
-        {
-            this.gridPolicyItem.DataBind();
-        }
-
         protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
-        }
-
-        protected void gridPolicyItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
-        {
             this.gridPolicyItem.DataBind();
         }
 
-        
+               
 
 
         #region Upload File Events

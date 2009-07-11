@@ -11,12 +11,13 @@ using System.Runtime.Serialization;
 namespace BusinessObjects.Policy
 {
     [Serializable()]
-    public class BO_PolicyDoc : BaseObject
+    public class BO_CarPolicyDoc : BaseObject
     {
-        public BO_PolicyDoc() { }
+
+        public BO_CarPolicyDoc() { }
 
 
-        public BO_PolicyDoc(String id)
+        public BO_CarPolicyDoc(String id)
         {
             fetchByID(id);
         }
@@ -26,8 +27,8 @@ namespace BusinessObjects.Policy
 
         public enum FieldList
         {
-            PolicyDocID, 
-            PolicyID, 
+            CarPolicyDocID,
+            AskPriceID, 
             DocName, 
             DocURL
         }
@@ -38,13 +39,13 @@ namespace BusinessObjects.Policy
         #region Property
 
 
-        public String PolicyDocID
+        public String CarPolicyDocID
         {
             get;
             set;
         }
 
-        public String PolicyID
+        public String AskPriceID
         {
             get;
             set;
@@ -84,29 +85,29 @@ namespace BusinessObjects.Policy
 
 
 
-        public static List<BO_PolicyDoc> FetchListByPolicy(String policyID)
+        public static List<BO_CarPolicyDoc> FetchListByCarPolicy(String carPolicyID)
         {
-            List<BO_PolicyDoc> list = new List<BO_PolicyDoc>();
+            List<BO_CarPolicyDoc> list = new List<BO_CarPolicyDoc>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT PolicyDocID, PolicyID, DocName, DocURL ");
-            sb.Append(" FROM PolicyDoc ");
-            sb.Append(" WHERE PolicyID = @PolicyID");
+            sb.Append("SELECT CarPolicyDocID, AskPriceID, DocName, DocURL ");
+            sb.Append(" FROM CarPolicyDoc ");
+            sb.Append(" WHERE CarPolicyDocID = @CarPolicyDocID");
             sb.Append(" ");
             sb.Append(" ");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-            _db.AddInParameter(dbCommand, "@PolicyID", DbType.String, policyID);
+            _db.AddInParameter(dbCommand, "@CarPolicyDocID", DbType.String, carPolicyID);
 
-            BO_PolicyDoc newObj;
+            BO_CarPolicyDoc newObj;
             using (IDataReader reader = _db.ExecuteReader(dbCommand))
             {
                 while (reader.Read())
                 {
-                    newObj = new BO_PolicyDoc();
+                    newObj = new BO_CarPolicyDoc();
 
-                    newObj.PolicyDocID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PolicyDocID));
-                    newObj.PolicyID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PolicyID));
+                    newObj.CarPolicyDocID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CarPolicyDocID));
+                    newObj.AskPriceID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.AskPriceID));
                     newObj.DocName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DocName));
                     newObj.DocURL = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DocURL));
                                         
@@ -122,25 +123,25 @@ namespace BusinessObjects.Policy
         public static void Delete(String id)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("DELETE FROM PolicyDoc ");
-            sb.Append(" WHERE PolicyDocID = @PolicyDocID ");
+            sb.Append("DELETE FROM CarPolicyDoc ");
+            sb.Append(" WHERE CarPolicyDocID = @CarPolicyDocID ");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-            _db.AddInParameter(dbCommand, "@PolicyDocID", DbType.String, id);
+            _db.AddInParameter(dbCommand, "@CarPolicyDocID", DbType.String, id);
 
             _db.ExecuteNonQuery(dbCommand);
 
         }
 
-        public static void Delete(String policyID, String docName)
+        public static void Delete(String askPriceID, String docName)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("DELETE FROM PolicyDoc ");
-            sb.Append(" WHERE PolicyID = @PolicyID ");
+            sb.Append("DELETE FROM CarPolicyDoc ");
+            sb.Append(" WHERE AskPriceID = @AskPriceID ");
             sb.Append(" AND DocName = @DocName ");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-            _db.AddInParameter(dbCommand, "@PolicyID", DbType.String, policyID);
+            _db.AddInParameter(dbCommand, "@AskPriceID", DbType.String, askPriceID);
             _db.AddInParameter(dbCommand, "@DocName", DbType.String, docName);
             _db.ExecuteNonQuery(dbCommand);
 
@@ -156,17 +157,17 @@ namespace BusinessObjects.Policy
         private void add()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT INTO PolicyDoc ( ");
-            sb.Append(" PolicyDocID, PolicyID, DocName, DocURL ");
+            sb.Append("INSERT INTO CarPolicyDoc ( ");
+            sb.Append(" CarPolicyDocID, AskPriceID, DocName, DocURL ");
             sb.Append(")");
             sb.Append(" VALUES( ");
-            sb.Append(" @PolicyDocID, @PolicyID, @DocName, @DocURL ");
+            sb.Append(" @CarPolicyDocID, @AskPriceID, @DocName, @DocURL ");
             sb.Append(" )");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
-            _db.AddInParameter(dbCommand, "@PolicyDocID", DbType.String, this.PolicyDocID);
-            _db.AddInParameter(dbCommand, "@PolicyID", DbType.String, this.PolicyID);
+            _db.AddInParameter(dbCommand, "@CarPolicyDocID", DbType.String, this.CarPolicyDocID);
+            _db.AddInParameter(dbCommand, "@AskPriceID", DbType.String, this.AskPriceID);
             _db.AddInParameter(dbCommand, "@DocName", DbType.String, this.DocName);
             _db.AddInParameter(dbCommand, "@DocURL", DbType.String, this.DocURL);
 
@@ -178,14 +179,14 @@ namespace BusinessObjects.Policy
         private void update()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("UPDATE PolicyDoc SET ");
-            sb.Append(" PolicyID=@PolicyID, DocName=@DocName, DocURL=@DocURL  ");
-            sb.Append(" Where PolicyDocID=@PolicyDocID;");
+            sb.Append("UPDATE CarPolicyDoc SET ");
+            sb.Append(" AskPriceID=@AskPriceID, DocName=@DocName, DocURL=@DocURL  ");
+            sb.Append(" Where CarPolicyDocID=@CarPolicyDocID;");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
-            _db.AddInParameter(dbCommand, "@PolicyDocID", DbType.String, this.PolicyDocID);
-            _db.AddInParameter(dbCommand, "@PolicyID", DbType.String, this.PolicyID);
+            _db.AddInParameter(dbCommand, "@CarPolicyDocID", DbType.String, this.CarPolicyDocID);
+            _db.AddInParameter(dbCommand, "@AskPriceID", DbType.String, this.AskPriceID);
             _db.AddInParameter(dbCommand, "@DocName", DbType.String, this.DocName);
             _db.AddInParameter(dbCommand, "@DocURL", DbType.String, this.DocURL);
 
@@ -198,10 +199,10 @@ namespace BusinessObjects.Policy
         private void fetchByID(String id)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT PolicyDocID, PolicyID, DocName, DocURL ");
-            sb.Append(" FROM PolicyDoc ");
+            sb.Append("SELECT CarPolicyDocID, AskPriceID, DocName, DocURL ");
+            sb.Append(" FROM CarPolicyDoc ");
             sb.Append("  ");
-            sb.Append(" WHERE A.PolicyDocID = @PolicyDocID");
+            sb.Append(" WHERE A.AskPriceID = @AskPriceID");
             sb.Append(" ");
             sb.Append(" ");
             //sb.Append(" ");
@@ -212,15 +213,15 @@ namespace BusinessObjects.Policy
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
-            _db.AddInParameter(dbCommand, "@PolicyDocID", DbType.String, id);
+            _db.AddInParameter(dbCommand, "@AskPriceID", DbType.String, id);
 
 
             using (IDataReader reader = _db.ExecuteReader(dbCommand))
             {
                 if (reader.Read())
                 {
-                    this.PolicyDocID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PolicyDocID));
-                    this.PolicyID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.PolicyID));
+                    this.CarPolicyDocID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CarPolicyDocID));
+                    this.AskPriceID = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.AskPriceID));
                     this.DocName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DocName));
                     this.DocURL = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.DocURL));
                                         
@@ -231,6 +232,7 @@ namespace BusinessObjects.Policy
 
 
         #endregion Procedure
+
 
 
 
