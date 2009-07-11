@@ -202,10 +202,8 @@
                                                                     KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" 
                                                                     OnRowInserting="gridPolicyItem_RowInserting"
                                                                     OnRowUpdating="gridPolicyItem_RowUpdating" 
-                                                                    OnRowUpdated="gridPolicyItem_RowUpdated"
-                                                                    OnRowInserted="gridPolicyItem_RowInserted" 
                                                                     OnRowDeleting="gridPolicyItem_RowDeleting"
-                                                                    OnRowDeleted="gridPolicyItem_RowDeleted">
+                                                                    >
                                                                     <%-- BeginRegion Columns --%>
                                                                     <Columns>                                                                        
                                                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="center"
@@ -415,14 +413,14 @@
                                         <tr>
                                             <td style="width: 100%; text-align: left;" runat="server" id="tblcellgridDocList">
                                                 <dxwgv:ASPxGridView ID="gridDocList" ClientInstanceName="gridDocList" runat="server"
-                                                    KeyFieldName="PolicyDocID" Width="100%" AutoGenerateColumns="False" 
+                                                    KeyFieldName="CarPolicyDocID" Width="100%" AutoGenerateColumns="False" 
                                                     OnCustomCallback="gridDocList_CustomCallback"
                                                     >
                                                     <%-- BeginRegion Columns --%>
                                                     <Columns>
                                                         <dxwgv:GridViewDataColumn FieldName="DocName" Caption="文件名" CellStyle-Wrap="False" Width="25" Settings-AllowDragDrop="false">
                                                             <DataItemTemplate>
-                                                                <a id="fileurl <%# Eval("PolicyDocID") %>" onclick="hlPolicyItemTogetherClick('<%# Eval("DocURL") %>');" href="#"><%# Eval("DocName")%></a>
+                                                                <a id="fileurl <%# Eval("CarPolicyDocID") %>" onclick="hlPolicyItemTogetherClick('<%# Eval("DocURL") %>');" href="#"><%# Eval("DocName")%></a>
                                                             </DataItemTemplate>
                                                         </dxwgv:GridViewDataColumn>
                                                         <dxwgv:GridViewDataColumn FieldName="DocURL" Caption="链接地址" CellStyle-Wrap="False">
