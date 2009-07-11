@@ -10,7 +10,9 @@ using DevExpress.Web.ASPxHtmlEditor;
 using DevExpress.Web.ASPxEditors;
 using System.IO;
 using DevExpress.Web.ASPxUploadControl;
-
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
+using BusinessObjects;
 
 namespace BrokerWebApp.vehicleinsurance
 {
@@ -19,11 +21,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         #region Variables
                 
-        private DataTable _dtGridPolicyItem;
-        private DataTable _dtGridCarrier;
         
-        private DataTable _dtGridPeriod;
-
         private const string UploadDirectory = "~/UploadControl/UploadImages/";
         private const int ThumbnailSize = 100;
 
@@ -34,15 +32,7 @@ namespace BrokerWebApp.vehicleinsurance
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //GridPolicyItem
-            if (ViewState["GridPolicyItem"] == null)
-            {
-                GetPolicyItemDataForGrid();
-                ViewState["GridPolicyItem"] = _dtGridPolicyItem;
-            }
-
-            this.gridPolicyItem.DataSource = ViewState["GridPolicyItem"];
-
+            
             if (!IsPostBack && !IsCallback)
                 this.gridPolicyItem.DataBind();
 
@@ -90,77 +80,17 @@ namespace BrokerWebApp.vehicleinsurance
             this.gridPolicyItem.DataBind();
         }
 
-        private void GetPolicyItemDataForGrid()
-        {
-            _dtGridPolicyItem = new DataTable();
-            _dtGridPolicyItem.PrimaryKey = new DataColumn[] { 
-            _dtGridPolicyItem.Columns.Add("CarPolicyID", typeof(String)) };
-
-            _dtGridPolicyItem.Columns.Add("CarNo", typeof(String));
-            
-            _dtGridPolicyItem.Columns.Add("CiPremium", typeof(Decimal));
-            _dtGridPolicyItem.Columns.Add("CiProcessRate", typeof(Decimal));
-            _dtGridPolicyItem.Columns.Add("CiProcess", typeof(Decimal));
-            _dtGridPolicyItem.Columns.Add("AciPremium", typeof(Decimal));
-            _dtGridPolicyItem.Columns.Add("AciProcessRate", typeof(Decimal));
-            _dtGridPolicyItem.Columns.Add("AciProcess", typeof(Decimal));
-            _dtGridPolicyItem.Columns.Add("CstPremium", typeof(Decimal));
-            _dtGridPolicyItem.Columns.Add("CstProcessRate", typeof(Decimal));
-            _dtGridPolicyItem.Columns.Add("CstProcess", typeof(Decimal));
-
-            //_dtGridPolicyItem.Columns.Add("CarcaseNo", typeof(String));
-            //_dtGridPolicyItem.Columns.Add("EngineNo", typeof(String));
-            //_dtGridPolicyItem.Columns.Add("Capacity", typeof(String));
-            //_dtGridPolicyItem.Columns.Add("CarModel", typeof(String));
-            //_dtGridPolicyItem.Columns.Add("Character", typeof(String));
-            //_dtGridPolicyItem.Columns.Add("RegisterDate", typeof(DateTime));
-            //_dtGridPolicyItem.Columns.Add("CarValue", typeof(String));
-            //, "C-001", "E-001", "4", "A-01", "CT", DateTime.Now, "40"
-            //,"C-002", "E-002", "6", "A-02", "CT", DateTime.Now, "50"
-            //,"C-003", "E-003", "8", "A-03", "CT", DateTime.Now, "60"
-
-            _dtGridPolicyItem.Rows.Add(new object[] { 
-                "1", "T001", 1000, 0.03, 30, 1000, 0.03, 30, 1000, 0.03, 30
-            });
-
-            _dtGridPolicyItem.Rows.Add(new object[] { 
-                "2", "S001", 2000, 0.03, 30, 2000, 0.03, 30, 2000, 0.03, 30
-            });
-
-            _dtGridPolicyItem.Rows.Add(new object[] { 
-                "3", "S002", 3000, 0.03, 30, 3000, 0.03, 30, 3000, 0.03, 30
-            });
-            
-        }
-
-
-
-
-
         
 
 
+        #region Upload File Events
 
-
-
-
-
-        protected string SavePostedFiles(UploadedFile uploadedFile)
+        protected void UploadControl_PreRender(object sender, EventArgs e)
         {
-            string ret = "";
-            if (uploadedFile.IsValid)
-            {
-                //FileInfo fileInfo = new FileInfo(uploadedFile.FileName);
-                //string resFileName = MapPath(UploadDirectory) + fileInfo.Name;
-                //uploadedFile.SaveAs(resFileName);
-
-                //string fileLabel = fileInfo.Name;
-                //string fileType = uploadedFile.PostedFile.ContentType.ToString();
-                //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
-                //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
-            }
-            return ret;
+            //
         }
+
+
         protected void UploadControl_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
         {
             try
@@ -174,6 +104,71 @@ namespace BrokerWebApp.vehicleinsurance
             }
         }
 
+
+        protected string SavePostedFiles(UploadedFile uploadedFile)
+        {
+            string ret = "";
+            //string policyFolder = this.dxetxtPolicyID.Text.Trim();
+            //string policyFolderPath;
+            //if (uploadedFile.IsValid)
+            //{
+            //    DirectoryInfo drtInfo = new DirectoryInfo(MapPath(UploadDirectory));
+            //    if (drtInfo.Exists)
+            //    {
+            //        policyFolderPath = System.IO.Path.Combine(MapPath(UploadDirectory), policyFolder);
+            //        drtInfo = new DirectoryInfo(policyFolder);
+            //        FileInfo fileInfo;
+            //        if (drtInfo.Exists)
+            //        {
+            //            fileInfo = new FileInfo(uploadedFile.FileName);
+            //            string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
+            //            uploadedFile.SaveAs(resFileName);
+
+            //            //string fileLabel = fileInfo.Name;
+            //            //string fileType = uploadedFile.PostedFile.ContentType.ToString();
+            //            //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
+            //            //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
+            //        }
+            //        else
+            //        {
+            //            //create folder
+            //            drtInfo = System.IO.Directory.CreateDirectory(policyFolderPath);
+            //            fileInfo = new FileInfo(uploadedFile.FileName);
+            //            string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
+            //            uploadedFile.SaveAs(resFileName);
+            //        }
+
+            //        //BO_PolicyDoc
+            //        BusinessObjects.Policy.BO_PolicyDoc.Delete(this.dxetxtPolicyID.Text.Trim(), fileInfo.Name);
+
+            //        BusinessObjects.Policy.BO_PolicyDoc pdoc = new BusinessObjects.Policy.BO_PolicyDoc();
+            //        pdoc.PolicyDocID = Guid.NewGuid().ToString();
+            //        pdoc.DocName = fileInfo.Name;
+            //        pdoc.PolicyID = this.dxetxtPolicyID.Text.Trim();
+            //        pdoc.DocURL = UploadDirectory.Replace("~", "") + policyFolder + "/" + fileInfo.Name;
+            //        pdoc.Save(ModifiedAction.Insert);
+            //    }
+
+
+            //}
+            return ret;
+        }
+
+
+
+        protected void gridDocList_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            rebindGridDocList();
+        }
+
+        private void rebindGridDocList()
+        {
+            //this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
+            //this.gridDocList.DataBind();
+        }
+
+
+        #endregion Upload File  Events
 
 
 

@@ -1,22 +1,15 @@
-<%@ Page Title="询价单录入" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master"
-    AutoEventWireup="true" Theme="Aqua" CodeBehind="AskPriceInput.aspx.cs" Inherits="BrokerWebApp.vehicleinsurance.AskPriceInput" %>
+<%@ Page Title="询价单录入" Language="C#" MasterPageFile="~/SiteMastePages/PopupUploadMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="AskPriceInput.aspx.cs" Inherits="BrokerWebApp.vehicleinsurance.AskPriceInput" %>
 
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
-    TagPrefix="dxrp" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl"
-    TagPrefix="dxtc" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses"
-    TagPrefix="dxw" %>
-<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView"
-    TagPrefix="dxwgv" %>
-<%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors"
-    TagPrefix="dxe" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" TagPrefix="dxw" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dxwgv" %>
+<%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dxm" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl"
-    TagPrefix="dxpc" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dxpc" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl"
-    TagPrefix="dxuc" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl" TagPrefix="dxuc" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>询价单录入</title>
 
@@ -59,11 +52,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
-    <table style="width: 100%">
-        <tr>
-            <td style="width: 100%;" colspan="2">
+
                 <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
-                    runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%">
+                    runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%" AutoPostBack="false" EnableCallBacks="true">
                     <ClientSideEvents ActiveTabChanging="function(s, e) {}" TabClick="function(s, e) {}" />
                     <TabPages>
                         <dxtc:TabPage Text="基本信息">
@@ -88,107 +79,108 @@
                                                 <asp:Panel ID="npbasicdetail" runat="server" CssClass="collapsePanel" Height="0">
                                                     <table style="width: 100%">
                                                         <tr>
-                                                            <td style="width: 10%; text-align: right;">
+                                                            <td style="width: 80px; text-align: right;">
                                                                 询价单号：
                                                             </td>
-                                                            <td style="width: 20%; text-align: left;">
-                                                                <asp:TextBox ID="txtSN" runat="server" Width="150px"></asp:TextBox>
+                                                            <td style="width: 150px; text-align: left;">
+                                                                <dxe:ASPxTextBox ID="dxetxtAskPriceID" ClientInstanceName="dxetxtAskPriceID" runat="server" Width="140px"></dxe:ASPxTextBox>
                                                             </td>
-                                                            <td style="width: 11%; text-align: right;">
+                                                            <td style="width: 80px; text-align: right;">
                                                                 部门：
                                                             </td>
-                                                            <td style="width: 22%; text-align: left;">
-                                                                <asp:DropDownList ID="ddlDeptId" runat="server"  Width="150px">
-                                                                    <asp:ListItem Text="部门1" Value="1"></asp:ListItem>
-                                                                    <asp:ListItem Text="部门2" Value="2"></asp:ListItem>
-                                                                    <asp:ListItem Text="部门3" Value="3"></asp:ListItem>
-                                                                </asp:DropDownList>
+                                                            <td style="width: 150px; text-align: left;">
+                                                                <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server" Width="140px" DropDownStyle="DropDownList">
+									                                <Items>
+										                                <dxe:ListEditItem Text="(全部)" Value="" />
+										                                <dxe:ListEditItem Text="业务部" Value="1" />
+									                                </Items>
+								                                </dxe:ASPxComboBox>
                                                             </td>
-                                                            <td style="width: 11%; text-align: right;">
+                                                            <td style="width: 80px; text-align: right;">
                                                                 客户经理：
                                                             </td>
-                                                            <td style="width: 22%; text-align: left;">
-                                                                <asp:DropDownList ID="ddlcustomermanager" runat="server"  Width="150px">
-                                                                    <asp:ListItem Text="经理1" Value="1"></asp:ListItem>
-                                                                    <asp:ListItem Text="经理2" Value="2"></asp:ListItem>
-                                                                </asp:DropDownList>
+                                                            <td style="width: 150px; text-align: left;">
+                                                                <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="140px" DropDownStyle="DropDownList">
+									                                <Items>
+										                                <dxe:ListEditItem Text="(全部)" Value="" />
+									                                </Items>
+								                                </dxe:ASPxComboBox>
                                                             </td>
+                                                            <td></td>
                                                         </tr>
                                                         <tr>
                                                             <td style="text-align: right;">
                                                                 保险公司：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxComboBox runat="server" ID="decbGridCarrierNo" AutoPostBack="false" ClientInstanceName="decbGridCarrierNo"
-                                                                    DropDownButton-Enabled="true" DropDownStyle="DropDownList"  Width="150px">
-                                                                    <Items>
-                                                                        <dxe:ListEditItem Text="中国平安" Value="1" />
-                                                                        <dxe:ListEditItem Text="中国泰康" Value="2" />
-                                                                        <dxe:ListEditItem Text="中国安联" Value="3" />
-                                                                    </Items>
-                                                                    <ClientSideEvents SelectedIndexChanged="" />
-                                                                </dxe:ASPxComboBox>
+                                                                <dxe:ASPxComboBox ID="dxeddlCarrierId" ClientInstanceName="dxeddlCarrierId" runat="server" Width="140px" DropDownStyle="DropDownList">
+									                                <Items>
+										                                <dxe:ListEditItem Text="中国平安保险公司" Value="" />
+									                                </Items>
+								                                </dxe:ASPxComboBox>
                                                             </td>
                                                             <td style="text-align: right;">
                                                                 分支机构：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxComboBox runat="server" ID="decbGridBranchName" AutoPostBack="false" ClientInstanceName="decbGridBranchName"
-                                                                    DropDownButton-Enabled="true" DropDownStyle="DropDownList"  Width="150px">
-                                                                    <Items>
-                                                                        <dxe:ListEditItem Text="平安分支1" Value="1" />
-                                                                        <dxe:ListEditItem Text="泰康分支1" Value="2" />
-                                                                        <dxe:ListEditItem Text="安联分支1" Value="3" />
-                                                                    </Items>
-                                                                    <ClientSideEvents SelectedIndexChanged="" />
-                                                                </dxe:ASPxComboBox>
+                                                                <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server" Width="140px" DropDownStyle="DropDownList">
+									                                <Items>
+										                                <dxe:ListEditItem Text="中国平安保险公司" Value="" />
+									                                </Items>
+								                                </dxe:ASPxComboBox>
                                                             </td>
-                                                            <td style="width: 10%; text-align: right;">
+                                                            <td style="text-align: right;">
                                                                 业务员：
                                                             </td>
-                                                            <td style="width: 20%; text-align: left;">
-                                                                <asp:TextBox ID="TextBox1" runat="server"  Width="150px"></asp:TextBox>
+                                                            <td style="text-align: left;">
+                                                                <dxe:ASPxTextBox ID="dxetxtSalesID" ClientInstanceName="dxetxtSalesID" runat="server" Width="140px"></dxe:ASPxTextBox>
                                                             </td>
-                                                            <td>
-                                                            </td>
+                                                            <td></td>
                                                         </tr>
                                                         <tr>                                                           
                                                             <td style="text-align: right;">
                                                                 投保人：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <asp:TextBox ID="txtpeoplefrom" runat="server" Width="100px" Text="张三"></asp:TextBox>&nbsp;
-                                                                <img runat="server" id="imgadduser" onclick="btnAddCustomerClick();" alt="" src="../images/add_user_icon.png"
-                                                                    style="width: 20px; height: 20px; vertical-align: top;" />
-                                                                <img runat="server" id="imgpeoplesearch" onclick="btnSelectCustomerClick();" alt=""
-                                                                    src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: top;" />
+                                                                <table style="margin-left:-3px;">
+                                                                    <tr>
+                                                                            <td style="text-align: right;">
+                                                                                <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server" Width="125px"></dxe:ASPxTextBox>
+                                                                                <input type="hidden" id="cusid" runat="server" />
+                                                                            </td>
+                                                                            <td style="text-align: left;">
+                                                                                <img runat="server" id="imgNewCustomer" onclick="imgNewCustomerClick();" alt="" src="../images/add_user_icon.png"
+                                                                                    style="width: 20px; height: 20px; vertical-align: top;" />
+                                                                                <img runat="server" id="imgSelectCustomer" onclick="imgSelectCustomerClick();" alt=""
+                                                                                    src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: top;" />
+                                                                            </td>
+                                                                    </tr>
+                                                                </table>
                                                             </td>
                                                             <td style="text-align: right;">
-                                                            </td>
-                                                            <td style="text-align: left;">
-                                                            </td>
-                                                            <td>
-                                                            </td>
-                                                        </tr>                                                        
-                                                        <tr>
-                                                            <td style="width: 11%; text-align: right;">
                                                                 业务来源：
                                                             </td>
-                                                            <td style="width: 22%; text-align: left;">
-                                                                <asp:DropDownList ID="ddlFrom" runat="server"  Width="150px">
-                                                                    <asp:ListItem Text="业务来源1" Value="1"></asp:ListItem>
-                                                                    <asp:ListItem Text="业务来源2" Value="2"></asp:ListItem>
-                                                                </asp:DropDownList>
+                                                            <td style="text-align: left;">
+                                                                <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID" runat="server" Width="140px" DropDownStyle="DropDownList">
+									                                <Items>
+										                                <dxe:ListEditItem Text="来源1" Value="" />
+									                                </Items>
+								                                </dxe:ASPxComboBox>
                                                             </td>
                                                             <td style="text-align: right;">
                                                                 业务性质：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <asp:DropDownList ID="ddlKind" runat="server"  Width="150px">
-                                                                    <asp:ListItem Text="业务性质1" Value="1"></asp:ListItem>
-                                                                    <asp:ListItem Text="业务性质2" Value="2"></asp:ListItem>
-                                                                </asp:DropDownList>
+                                                                <dxe:ASPxComboBox ID="dxeddlFlagReinsure" ClientInstanceName="dxeddlFlagReinsure" runat="server" Width="140px" DropDownStyle="DropDownList">
+									                                <Items>
+										                                <dxe:ListEditItem Text="新增" Value="1" />
+										                                <dxe:ListEditItem Text="再保" Value="2" />
+									                                </Items>
+								                                </dxe:ASPxComboBox>
                                                             </td>
+                                                            <td></td>
+                                                        </tr>                                                        
+                                                        <tr>                                                            
                                                             <td style="text-align: right;">
                                                                 收款方式：
                                                             </td>
@@ -198,29 +190,20 @@
                                                                     <asp:ListItem Text="收款方式2" Value="2"></asp:ListItem>
                                                                 </asp:DropDownList>
                                                             </td>
-                                                            <td>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
                                                             <td style="text-align: right;">
                                                                 录单人：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <asp:TextBox ID="txtCreatePerson" runat="server" Width="150px" Enabled="false"></asp:TextBox>
+                                                                <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="140px"></dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="text-align: right;">
                                                                 录单日期：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <asp:TextBox ID="txtCreateTime" runat="server" Width="150px" Enabled="false"></asp:TextBox>
+                                                                <dxe:ASPxDateEdit ID="dxeCreateTime" runat="server" Width="140px"></dxe:ASPxDateEdit>
                                                             </td>
-                                                            <td>
-                                                            </td>
-                                                            <td>
-                                                            </td>
-                                                            <td>
-                                                            </td>
-                                                        </tr>
+                                                            <td></td>
+                                                        </tr>                                                        
                                                     </table>
                                                 </asp:Panel>
                                                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeBasic" runat="Server" TargetControlID="npbasicdetail"
@@ -251,71 +234,38 @@
                                                         <tr>
                                                             <td>
                                                                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                                                    KeyFieldName="CarPolicyID" Width="100%" AutoGenerateColumns="False" OnRowInserting="gridPolicyItem_RowInserting"
-                                                                    OnRowUpdating="gridPolicyItem_RowUpdating" OnRowUpdated="gridPolicyItem_RowUpdated"
-                                                                    OnRowInserted="gridPolicyItem_RowInserted" OnRowDeleting="gridPolicyItem_RowDeleting"
+                                                                    KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" 
+                                                                    OnRowInserting="gridPolicyItem_RowInserting"
+                                                                    OnRowUpdating="gridPolicyItem_RowUpdating" 
+                                                                    OnRowUpdated="gridPolicyItem_RowUpdated"
+                                                                    OnRowInserted="gridPolicyItem_RowInserted" 
+                                                                    OnRowDeleting="gridPolicyItem_RowDeleting"
                                                                     OnRowDeleted="gridPolicyItem_RowDeleted">
                                                                     <%-- BeginRegion Columns --%>
-                                                                    <Columns>
-                                                                        <dxwgv:GridViewDataColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left"
-                                                                            Width="55" HeaderStyle-Wrap="False" Settings-AllowDragDrop="False">
-                                                                            <Settings AllowDragDrop="False"></Settings>
-                                                                            <DataItemTemplate>
-                                                                                <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_New" Text="新增" NavigateUrl="#">
-                                                                                    <ClientSideEvents Click="hlCarPolicyItemClick" />
-                                                                                </dxe:ASPxHyperLink>
-                                                                                <dxe:ASPxHyperLink runat="server" ID="deGridPolicyItemhl_Update" Text="编辑" NavigateUrl="#">
-                                                                                    <ClientSideEvents Click="hlCarPolicyItemClick" />
-                                                                                </dxe:ASPxHyperLink>
-                                                                            </DataItemTemplate>
-                                                                            <HeaderStyle Wrap="False"></HeaderStyle>
-                                                                            <CellStyle HorizontalAlign="Left" Wrap="False">
-                                                                            </CellStyle>
-                                                                        </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left"
-                                                                            Width="25" HeaderStyle-Wrap="False" AllowDragDrop="false">
-                                                                            <NewButton Visible="False" />
-                                                                            <EditButton Visible="False" />
+                                                                    <Columns>                                                                        
+                                                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="center"
+                                                                            HeaderStyle-Wrap="False" AllowDragDrop="false">
+                                                                            <NewButton Visible="true" />
+                                                                            <EditButton Visible="true" />
                                                                             <DeleteButton Visible="true" />
-                                                                            <HeaderStyle Wrap="False"></HeaderStyle>
-                                                                            <CellStyle HorizontalAlign="Left" Wrap="False">
-                                                                            </CellStyle>
                                                                         </dxwgv:GridViewCommandColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="CarNo" Caption="投保单号" CellStyle-Wrap="False">
-                                                                            <CellStyle Wrap="False">
-                                                                            </CellStyle>
+                                                                        <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False">                                                                            
                                                                         </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="CarNo" Caption="车牌号" CellStyle-Wrap="False">
-                                                                            <CellStyle Wrap="False">
-                                                                            </CellStyle>
+                                                                        <dxwgv:GridViewDataColumn FieldName="CarNo" Caption="车牌号" CellStyle-Wrap="False">                                                                            
                                                                         </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="CiPremium" Caption="商业险保费" CellStyle-Wrap="False">
-                                                                            <CellStyle Wrap="False">
-                                                                            </CellStyle>
+                                                                        <dxwgv:GridViewDataColumn FieldName="CiPremium" Caption="商业险保费" CellStyle-Wrap="False">                                                                            
                                                                         </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="CiProcessRate" Caption="商业险经纪费率(%)" CellStyle-Wrap="False">
-                                                                            <CellStyle Wrap="False">
-                                                                            </CellStyle>
+                                                                        <dxwgv:GridViewDataColumn FieldName="CiProcessRate" Caption="商业险经纪费率(%)" CellStyle-Wrap="False">                                                                            
                                                                         </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="CiProcess" Caption="商业险经纪费" CellStyle-Wrap="False">
-                                                                            <CellStyle Wrap="False">
-                                                                            </CellStyle>
+                                                                        <dxwgv:GridViewDataColumn FieldName="CiProcess" Caption="商业险经纪费" CellStyle-Wrap="False">                                                                            
                                                                         </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="AciPremium" Caption="交强险保费" CellStyle-Wrap="False">
-                                                                            <CellStyle Wrap="False">
-                                                                            </CellStyle>
+                                                                        <dxwgv:GridViewDataColumn FieldName="AciPremium" Caption="交强险保费" CellStyle-Wrap="False">                                                                            
                                                                         </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="AciProcessRate" Caption="交强险经纪费率(%)" CellStyle-Wrap="False">
-                                                                            <CellStyle Wrap="False">
-                                                                            </CellStyle>
+                                                                        <dxwgv:GridViewDataColumn FieldName="AciProcessRate" Caption="交强险经纪费率(%)" CellStyle-Wrap="False">                                                                            
                                                                         </dxwgv:GridViewDataColumn>
                                                                         <dxwgv:GridViewDataColumn FieldName="AciProcess" Caption="交强险经纪费" CellStyle-Wrap="False">
-                                                                            <CellStyle Wrap="False">
-                                                                            </CellStyle>
                                                                         </dxwgv:GridViewDataColumn>
                                                                         <dxwgv:GridViewDataColumn FieldName="CstPremium" Caption="车船税" CellStyle-Wrap="False">
-                                                                            <CellStyle Wrap="False">
-                                                                            </CellStyle>
                                                                         </dxwgv:GridViewDataColumn>
                                                                     </Columns>
                                                                     <TotalSummary>
@@ -341,27 +291,43 @@
                                                                                             车牌号:
                                                                                         </td>
                                                                                         <td style="text-align: left;">
-                                                                                            <asp:TextBox runat="server" ID="txtGridPolicyCarNo" Text='<%# Eval("CarNo") %>' Enabled="false"></asp:TextBox>
+                                                                                            <dxe:ASPxTextBox ID="dxetxtGridPolicyItemCarNo" ClientInstanceName="dxetxtGridPolicyItemCarNo" runat="server" Width="120px">
+                                                                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项">
+                                                                                                    <RequiredField IsRequired="true" />
+                                                                                                </ValidationSettings>
+                                                                                            </dxe:ASPxTextBox>
                                                                                         </td>
                                                                                         <td style="white-space: nowrap; text-align: right;">
                                                                                             商业险保费:
                                                                                         </td>
                                                                                         <td style="text-align: left;">
-                                                                                            <asp:TextBox runat="server" ID="txtGridPolicyCiPremium" Text='<%# Eval("CiPremium") %>'></asp:TextBox>
+                                                                                            <dxe:ASPxTextBox ID="dxetxtGridPolicyItemCiPremium" ClientInstanceName="dxetxtGridPolicyItemCiPremium" runat="server" Width="120px">
+                                                                                                <ValidationSettings>
+                                                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                                </ValidationSettings>
+                                                                                            </dxe:ASPxTextBox>
                                                                                         </td>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td style="white-space: nowrap; text-align: right;">
-                                                                                            商业险经纪费率:
+                                                                                            商业险经纪费率(%):
                                                                                         </td>
                                                                                         <td style="text-align: left;">
-                                                                                            <asp:TextBox runat="server" ID="txtGridPolicyCiProcessRate" Text='<%# Eval("CiProcessRate") %>'></asp:TextBox>
+                                                                                            <dxe:ASPxTextBox ID="dxetxtGridPolicyItemCiProcessRate" ClientInstanceName="dxetxtGridPolicyItemCiProcessRate" runat="server" Width="120px">
+                                                                                                <ValidationSettings>
+                                                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                                </ValidationSettings>
+                                                                                            </dxe:ASPxTextBox>
                                                                                         </td>
                                                                                         <td style="white-space: nowrap; text-align: right;">
-                                                                                            商业险经纪费(%):
+                                                                                            商业险经纪费:
                                                                                         </td>
                                                                                         <td style="text-align: left;">
-                                                                                            <asp:TextBox runat="server" ID="txtGridPolicyCiProcess" Text='<%# Eval("CiProcess") %>'></asp:TextBox>
+                                                                                            <dxe:ASPxTextBox ID="dxetxtGridPolicyItemCiProcess" ClientInstanceName="dxetxtGridPolicyItemCiProcess" runat="server" Width="120px">
+                                                                                                <ValidationSettings>
+                                                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                                </ValidationSettings>
+                                                                                            </dxe:ASPxTextBox>
                                                                                         </td>
                                                                                     </tr>
                                                                                     <tr>
@@ -369,13 +335,21 @@
                                                                                             交强险保费:
                                                                                         </td>
                                                                                         <td style="text-align: left;">
-                                                                                            <asp:TextBox runat="server" ID="txtGridPolicyAciPremium" Text='<%# Eval("AciPremium") %>'></asp:TextBox>
+                                                                                            <dxe:ASPxTextBox ID="dxetxtGridPolicyItemAciPremium" ClientInstanceName="dxetxtGridPolicyItemAciPremium" runat="server" Width="120px">
+                                                                                                <ValidationSettings>
+                                                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                                </ValidationSettings>
+                                                                                            </dxe:ASPxTextBox>
                                                                                         </td>
                                                                                         <td style="white-space: nowrap; text-align: right;">
                                                                                             交强险经纪费率(%):
                                                                                         </td>
                                                                                         <td style="text-align: left;">
-                                                                                            <asp:TextBox runat="server" ID="txtGridPolicyAciProcessRate" Text='<%# Eval("AciProcessRate") %>'></asp:TextBox>
+                                                                                            <dxe:ASPxTextBox ID="dxetxtGridPolicyItemAciProcessRate" ClientInstanceName="dxetxtGridPolicyItemAciProcessRate" runat="server" Width="120px">
+                                                                                                <ValidationSettings>
+                                                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                                </ValidationSettings>
+                                                                                            </dxe:ASPxTextBox>
                                                                                         </td>
                                                                                     </tr>
                                                                                     <tr>
@@ -383,23 +357,29 @@
                                                                                             交强险经纪费:
                                                                                         </td>
                                                                                         <td style="text-align: left;">
-                                                                                            <asp:TextBox runat="server" ID="txtGridPolicyAciProcess" Text='<%# Eval("AciProcess") %>'></asp:TextBox>
+                                                                                            <dxe:ASPxTextBox ID="dxetxtGridPolicyItemAciProcess" ClientInstanceName="dxetxtGridPolicyItemAciProcess" runat="server" Width="120px">
+                                                                                                <ValidationSettings>
+                                                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                                </ValidationSettings>
+                                                                                            </dxe:ASPxTextBox>
                                                                                         </td>
                                                                                         <td style="white-space: nowrap; text-align: right;">
                                                                                             车船税:
                                                                                         </td>
                                                                                         <td style="text-align: left;">
-                                                                                            <asp:TextBox runat="server" ID="txtGridPolicyCstPremium" Text='<%# Eval("CstPremium") %>'></asp:TextBox>
+                                                                                            <dxe:ASPxTextBox ID="dxetxtGridPolicyItemCstPremium" ClientInstanceName="dxetxtGridPolicyItemCstPremium" runat="server" Width="120px">
+                                                                                                <ValidationSettings>
+                                                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                                </ValidationSettings>
+                                                                                            </dxe:ASPxTextBox>
                                                                                         </td>
                                                                                     </tr>
                                                                                 </table>
                                                                             </div>
                                                                             <div style="text-align: right; padding: 2px 2px 2px 2px">
-                                                                                <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton"
-                                                                                    runat="server">
+                                                                                <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server">
                                                                                 </dxwgv:ASPxGridViewTemplateReplacement>
-                                                                                <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton"
-                                                                                    runat="server">
+                                                                                <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton" runat="server">
                                                                                 </dxwgv:ASPxGridViewTemplateReplacement>
                                                                             </div>
                                                                         </EditForm>
@@ -426,31 +406,69 @@
                                     <table style="width: 100%">
                                         <tr>
                                             <td style="width: 100%; text-align: left;">
-                                                附件
+                                                上传附件
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="width: 100%; text-align: left;">
-                                                <dxuc:ASPxUploadControl ID="filesUploadControl" runat="server" ShowAddRemoveButtons="True"
-                                                    Width="400px" ShowUploadButton="True" AddUploadButtonsHorizontalPosition="Center"
-                                                    ShowProgressPanel="True" ClientInstanceName="UploadControl" OnFileUploadComplete="UploadControl_FileUploadComplete"
-                                                    FileInputCount="5" RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10">
-                                                    <ValidationSettings MaxFileSize="4000000" AllowedContentTypes="*">
+                                                <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl" 
+                                                    runat="server" ShowAddRemoveButtons="True"
+                                                    Width="400px" ShowUploadButton="True" 
+                                                    AddUploadButtonsHorizontalPosition="Center"
+                                                    ShowProgressPanel="True" 
+                                                    FileInputCount="5" RemoveButtonSpacing="8px" 
+                                                    AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
+                                                    OnPreRender="UploadControl_PreRender" 
+                                                    OnFileUploadComplete="UploadControl_FileUploadComplete"
+                                                    >
+                                                    <ValidationSettings MaxFileSize="4000000" 
+                                                    FileDoesNotExistErrorText="文件不存在" 
+                                                    GeneralErrorText="上传发生错误" 
+                                                    MaxFileSizeErrorText="文件太大" 
+                                                    NotAllowedContentTypeErrorText="不允许上传此类型文件">
                                                     </ValidationSettings>
-                                                    <ClientSideEvents FileUploadComplete="function(s, e) { FileUploaded(s, e) }" FileUploadStart="function(s, e) { FileUploadStart(); }" />
+                                                    <ClientSideEvents 
+                                                        FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" 
+                                                        FileUploadStart="function(s, e) { FileUploadStart(s, e); }"  />
                                                     <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
                                                         ImagePosition="Left">
-                                                        <Image Height="25px" Width="25px" Url="../images/file_remove.gif"></Image>
                                                     </RemoveButton>
                                                     <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
                                                         ImagePosition="Left">
-                                                        <Image Height="25px" Width="25px" Url="../images/file_add.gif"></Image>
                                                     </AddButton>
                                                     <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
-                                                        ImagePosition="Left">
-                                                        <Image Height="25px" Width="25px" Url="../images/file_upload.gif"></Image>
-                                                    </UploadButton>
+                                                        ImagePosition="Left">                                            
+                                                    </UploadButton>                                        
                                                 </dxuc:ASPxUploadControl>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100%; text-align: left;">
+                                                文件列表                                                                        
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100%; text-align: left;" runat="server" id="tblcellgridDocList">
+                                                <dxwgv:ASPxGridView ID="gridDocList" ClientInstanceName="gridDocList" runat="server"
+                                                    KeyFieldName="PolicyDocID" Width="100%" AutoGenerateColumns="False" 
+                                                    OnCustomCallback="gridDocList_CustomCallback"
+                                                    >
+                                                    <%-- BeginRegion Columns --%>
+                                                    <Columns>
+                                                        <dxwgv:GridViewDataColumn FieldName="DocName" Caption="文件名" CellStyle-Wrap="False" Width="25" Settings-AllowDragDrop="false">
+                                                            <DataItemTemplate>
+                                                                <a id="fileurl <%# Eval("PolicyDocID") %>" onclick="hlPolicyItemTogetherClick('<%# Eval("DocURL") %>');" href="#"><%# Eval("DocName")%></a>
+                                                            </DataItemTemplate>
+                                                        </dxwgv:GridViewDataColumn>
+                                                        <dxwgv:GridViewDataColumn FieldName="DocURL" Caption="链接地址" CellStyle-Wrap="False">
+                                                        </dxwgv:GridViewDataColumn>                                                                                                        
+                                                    </Columns>
+                                                    <%-- EndRegion --%>
+                                                    <SettingsPager Mode="ShowAllRecords" />
+                                                    <Settings ShowGroupPanel="false" /> 
+                                                    <ClientSideEvents CustomButtonClick="" />
+                                                    <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false"  />
+                                                </dxwgv:ASPxGridView>                                                            
                                             </td>
                                         </tr>
                                     </table>
@@ -466,13 +484,13 @@
                                                 审核人：
                                             </td>
                                             <td style="width: 20%; text-align: left;">
-                                                <asp:TextBox ID="TextBox2" runat="server" Width="100px" Enabled="false"></asp:TextBox>
+                                                <dxe:ASPxTextBox ID="dxetxtAuditPerson" ClientInstanceName="dxetxtAuditPerson" runat="server" Width="100px"></dxe:ASPxTextBox>
                                             </td>
                                             <td style="width: 10%; text-align: right;">
                                                 审核日期：
                                             </td>
                                             <td style="width: 20%; text-align: left;">
-                                                <dxe:ASPxDateEdit ID="ASPxDateEdit1" runat="server">
+                                                <dxe:ASPxDateEdit ID="dxeAuditTime" ClientInstanceName="dxeAuditTime" runat="server" Width="120px">
                                                 </dxe:ASPxDateEdit>
                                             </td>
                                             <td>
@@ -483,7 +501,7 @@
                                                 审核备注：
                                             </td>
                                             <td style="text-align: left;" colspan="3">
-                                                <textarea runat="server" id="Textarea1" rows="5" cols="72"></textarea>
+                                                <dxe:ASPxMemo runat="server" id="dxeMemo" ClientInstanceName="dxeMemo" Rows="10" Columns="72"></dxe:ASPxMemo>
                                             </td>
                                             <td>
                                             </td>
@@ -500,22 +518,49 @@
                         </td>
                     </tr>
                 </table>
-                <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="25px">
-                    <table style="width: 100%">
+                <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="30px">
+                    <table style="width: 100%" runat="server" id="tblNewExecuteAction">
                         <tr>
-                            <td style="text-align: right;">
-                                <asp:Button ID="btnadd" runat="server" Text="新增" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnsave" runat="server" Text="保存" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="Button1" runat="server" Text="提交审核" CssClass="input_2" />&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btncancel" runat="server" Text="取消" CssClass="input_2" />
-                            </td>
-                            <td style="width: 20px; text-align: left;">
+                            <td style="width: 400px; text-align: left;">
                                 &nbsp;
                             </td>
+                            <td style="width:50px; text-align:left;">
+                                <dxe:ASPxButton runat="server" id="dxebtnBottomAdd" ClientInstanceName="dxebtnBottomAdd" Text="新增" CausesValidation="true" AutoPostBack="false">
+                                    <ClientSideEvents Click="function(s, e) {btnAddClick(s,e);}" />
+                                </dxe:ASPxButton> 
+                            </td>
+                            <td style="width:50px; text-align:left;">
+                                <dxe:ASPxButton runat="server" id="dxebtnBottomSave" ClientInstanceName="dxebtnBottomSave" Text="保存" CausesValidation="true" AutoPostBack="false">
+                                    <ClientSideEvents Click="function(s, e) {dxebtntopSave_Click(s,e);}" />
+                                </dxe:ASPxButton> 
+                            </td>
+                            <td style="width:70px; text-align:left;">
+                                <dxe:ASPxButton runat="server" id="dxebtnBottomCheck" ClientInstanceName="dxebtnBottomCheck" Text="提交审核" CausesValidation="true" AutoPostBack="false">
+                                    <ClientSideEvents Click="function(s, e) {btnSaveCheckClick(s,e);}" />
+                                </dxe:ASPxButton> 
+                            </td>
+                            <td style="width:50px; text-align:left;">
+                                <dxe:ASPxButton runat="server" id="dxebtnCancel" ClientInstanceName="dxebtnCancel" Text="重置" CausesValidation="false" AutoPostBack="false">
+                                    <ClientSideEvents Click="function(s, e) {btnCancelClick();}" />
+                                </dxe:ASPxButton>
+                            </td>
+                            <td style="width:50px; text-align:left;">
+                                <dxe:ASPxButton runat="server" id="dxeClose" ClientInstanceName="dxeClose" Text="关闭" CausesValidation="false" AutoPostBack="false">
+                                    <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
+                                </dxe:ASPxButton>
+                            </td>                
+                        </tr>
+                        <tr>
+                            <td style="width: 400px; text-align: left;">
+                                &nbsp;
+                            </td>
+                            <td style="display:none;"><a id="hrefnewpolicy" href="PolicyInput.aspx">New</a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </table>
                 </asp:Panel>
-            </td>
-        </tr>
-    </table>
+
 </asp:Content>
