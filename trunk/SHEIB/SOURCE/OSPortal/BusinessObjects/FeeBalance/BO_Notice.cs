@@ -59,17 +59,28 @@ namespace BusinessObjects
         public static DataSet GetFeeNoticeList(string sWhere)
         {
             //NoticePolicyPeriod 未视图
-            StringBuilder sb = new StringBuilder();
-            sb.Append("Select ");
-            sb.Append("NoticeNo,NoticeDate,Content,CustID,");
-            sb.Append("GatheringType,CreatePersion,CreateTime,AuditStatus,AuditTime,AuditPersion,CustID,SalesId,CustName,SalesName,");
-            sb.Append("(Select GatheringTypeName From GatheringType Where GatheringTypeID=a.GatheringType) GatheringTypeName,");
-            sb.Append("CreatePersionName,AuditPersionName,AuditStatusName,PayFee");
-            sb.Append(" From NoticePolicyPeriod a ");
-            sb.Append(" where 1=1 ");
-            sb.Append(sWhere);
 
-            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            //sb.Append("Select ");
+            //sb.Append("NoticeNo,NoticeDate,Content,CustID,");
+            //sb.Append("GatheringType,CreatePersion,CreateTime,AuditStatus,AuditTime,AuditPersion,CustID,SalesId,CustName,SalesName,");
+            //sb.Append("(Select GatheringTypeName From GatheringType Where GatheringTypeID=a.GatheringType) GatheringTypeName,");
+            //sb.Append("CreatePersionName,AuditPersionName,AuditStatusName,PayFee");
+            //sb.Append(" From NoticePolicyPeriod a ");
+
+
+            string sSql = "";
+            sSql = sSql + "select NoticeNo, ";
+            sSql = sSql + "dbo.GetNoticeCustomer(a.NoticeNo) CustomerName,";
+            sSql = sSql + "dbo.GetNoticeSales(a.NoticeNo) SalesName,GatheringType,NoticeDate,";
+            sSql = sSql + "(Select GatheringTypeName From GatheringType Where GatheringTypeID=a.GatheringType) GatheringTypeName,";
+            sSql = sSql + "(select sum(PayFeeBase) from PolicyPeriod where NoticeNo=a.NoticeNo) PayFee,AuditStatus,";
+            sSql = sSql + "(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,";
+            sSql = sSql + "AuditTime,AuditPersion,(select count(1) from PolicyPeriod where NoticeNo=a.NoticeNo) PolicyCount";
+            sSql = sSql + " from Notice a";
+            sSql = sSql + " where 1=1 ";
+            sSql = sSql + sWhere;
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sSql);
 
             return _db.ExecuteDataSet(dbCommand);
         }
