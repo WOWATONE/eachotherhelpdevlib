@@ -8,10 +8,11 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        <rsweb:ReportViewer ID="ReportViewer1" Width="900"  Height="700" runat="server">
+<body >
+    <form id="form1" runat="server" >
+    <div style="width: 800px; height:700px;">
+        <rsweb:ReportViewer ID="ReportViewer1" Width="800px"  Height="650px" 
+            runat="server" ExportContentDisposition="AlwaysInline" >
         </rsweb:ReportViewer>
     </div>
     </form>

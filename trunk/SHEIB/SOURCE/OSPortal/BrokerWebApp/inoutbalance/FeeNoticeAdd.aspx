@@ -51,7 +51,7 @@
 
         function cusCompleteEnable() {
             //debugger;
-            if (cusCheckNessary()) {
+            if (!cusCheckNessary()) {
                 dxebtnSave.SetEnabled(true);
                 dxebtnAudit.SetEnabled(true);
                 dxebtnPrint.SetEnabled(true);
@@ -108,7 +108,7 @@
         }
 
         function btnAddPrintClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=700px;center=yes;help=no";
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=850px;dialogHeight=700px;center=yes;help=no";
             var url = "FeeNoticeAddPrint.aspx?NoticeNo=" + getNoticeNo() + "&GatheringType=" + getGatheringType();
 
             window.showModalDialog(url, self, myArguments);
@@ -145,7 +145,7 @@
 
         function saveCallbackComplete(s, e) {
             //do nothing;
-
+            //debugger;
             var pid = dxetxtNoticeNo.GetValueString();
             if (isEmpty(pid)) {
                 dxetxtNoticeNo.SetValue(e.result);
