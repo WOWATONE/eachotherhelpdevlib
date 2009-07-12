@@ -34,7 +34,7 @@
 
         function btnCreateClick() {
 
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=700px;center=yes;help=no";
             window.showModalDialog("FeePayinAdd.aspx", self, myArguments);
 
         }
@@ -50,7 +50,7 @@
                 //
             }
             else {
-                var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+                var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=700px;center=yes;help=no";
                 var querystring;
                 querystring = "FeePayinAdd.aspx?VoucherID=" + selectedValues;
                 window.showModalDialog(querystring, self, myArguments);

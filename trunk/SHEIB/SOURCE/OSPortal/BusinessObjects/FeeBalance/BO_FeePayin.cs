@@ -103,7 +103,7 @@ namespace BusinessObjects
             sSql = sSql + "select a.* from (";
             sSql = sSql + "select a.VoucherID,a.FeeId,c.CustomerID,c.ProdTypeID,b.CarrierID,b.BranchID,c.PolicyID,c.PolicyNo,b.NoticeNo,";
             sSql = sSql + "a.FeeDate,b.PayFeeBase,";
-            sSql = sSql + "(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4')) PayedFee,";
+            sSql = sSql + "(select isnull(Sum(Fee),0) from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4') and VoucherID<>a.VoucherID) PayedFee,";
             sSql = sSql + "b.PayProcBase,";
             sSql = sSql + "a.Fee,a.FeeAdjust,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,";
             sSql = sSql + "a.ProcessFeeType,";
@@ -114,14 +114,14 @@ namespace BusinessObjects
             sSql = sSql + "(select ProdTypeName from ProductType where ProdTypeID=c.ProdTypeID) ProdTypeName,";
             sSql = sSql + "(select CarrierNameCn from Carrier where CarrierID=b.CarrierID) CarrierName,";
             sSql = sSql + "(select BranchName from Branch where BranchID=b.BranchID) BranchName,";
-            sSql = sSql + " (select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=a.ProcessFeeType) ProcessFeeTypeName";
+            sSql = sSql + "(select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=a.ProcessFeeType) ProcessFeeTypeName";
             sSql = sSql + " from VoucherFee a,PolicyPeriod b,Policy c";
             sSql = sSql + " where a.PolPeriodID=b.PolPeriodID";
             sSql = sSql + "  and b.PolicyID=c.PolicyID";
             sSql = sSql + "  and a.AccountTypeID in ('3','4')";
+            sSql = sSql + "  and VoucherID ='" + sVoucherID + "'";
             sSql = sSql + " ) a";
-            sSql = sSql + " where VoucherID ='" + sVoucherID + "'";
-
+            sSql = sSql + " where 1=1";
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sSql);
             return _db.ExecuteDataSet(dbCommand);

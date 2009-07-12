@@ -162,7 +162,7 @@ namespace BrokerWebApp.inoutbalance
                             objLoad.PolPeriodID = s;
                             objLoad.VoucherID = this.txtVoucherId.Value;
                             objLoad.Fee = obj.PayFeeBase;
-                            objLoad.FeeAdjust = obj.PayFeeBase;
+                            objLoad.FeeAdjust = 0;
                             objLoad.Save(ModifiedAction.Insert);
                         }
                     }
