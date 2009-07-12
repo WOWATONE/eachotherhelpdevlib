@@ -56,7 +56,6 @@
             dxebtnAudit.SetEnabled(true);
             dxebtnPrint.SetEnabled(true);
             dxebtnComplete.SetEnabled(true);
-
         }
         
         $(document).ready(function() {
@@ -296,6 +295,24 @@
             var thejsonstring = dxeddlCarrier.GetSelectedItem().value;
             dxeddlBranch.PerformCallback(thejsonstring);
         }
+
+        function dxeddlProcessFeeType_OnProcessFeeTypeChanged(s, e) {
+            var thejsonstring = dxeddlProcessFeeType.GetSelectedItem().value;
+            if (thejsonstring == "1") {
+                dxetxtProcessFee.SetValue("0");
+            }
+        }
+
+        function dxeddlGatheringType_OnddlGatheringTypeChanged(s, e) {
+            //debugger;
+            var sGatheringType = dxeddlGatheringType.GetSelectedItem().value;
+            if (sGatheringType == "2") {
+                dxeddlProcessFeeType.Enabled = false;
+                //dxeddlProcessFeeType.BackColor = Color.LightGray;
+                dxeddlProcessFeeType.SetValue("2");           
+            } 
+            
+        }
         
     </script>
 
@@ -362,7 +379,7 @@
                                             <EditButton Visible="true" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="FeeID" Caption="FeeID" CellStyle-Wrap="False" Visible="false" >
+                                        <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False" Visible="false" >
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -489,6 +506,7 @@
                             <td style="width: 18%; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
                                     runat="server" Width="180px" DropDownStyle="DropDownList">
+                                    <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlGatheringType_OnddlGatheringTypeChanged(s,e);}" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="width: 15%; text-align: right;">
@@ -496,7 +514,8 @@
                             </td>
                             <td style="width: 20%; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlProcessFeeType" ClientInstanceName="dxeddlProcessFeeType"
-                                    runat="server" Width="180px" DropDownStyle="DropDownList">
+                                    runat="server" Width="180px" DropDownStyle="DropDownList" > 
+                                    <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlProcessFeeType_OnProcessFeeTypeChanged(s,e);}" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="width: 12%; text-align: right;">
@@ -639,11 +658,6 @@
                                         <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
                                         </dxe:ASPxButton>
                             </td>
-                            <td style="width: 100px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit" Text="审核" AutoPostBack="false">
-                                            <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
-                                        </dxe:ASPxButton>
-                            </td>
                             
                             <td style="width: 140px; text-align: left;">
                                 <dxe:ASPxButton runat="server" ID="dxebtnPrint" 
@@ -651,6 +665,14 @@
                                     <ClientSideEvents Click="btnAddPrintClick" />
                                 </dxe:ASPxButton>
                             </td>
+                            
+                            <td style="width: 100px; text-align: left;">
+                                <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit" Text="审核" AutoPostBack="false">
+                                            <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
+                                        </dxe:ASPxButton>
+                            </td>
+                            
+                            
                             <td style="width: 80px; text-align: left;">
                                 <dxe:ASPxButton runat="server" ID="dxebtnComplete" ClientInstanceName="dxebtnComplete" Text="解付完成" AutoPostBack="false">
                                 </dxe:ASPxButton>

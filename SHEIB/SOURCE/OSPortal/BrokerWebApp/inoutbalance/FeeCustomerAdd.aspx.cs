@@ -30,14 +30,14 @@ namespace BrokerWebApp.inoutbalance
 
 
         protected void Page_Load(object sender, EventArgs e)
-        {
-            init();
+        {           
             if (!IsPostBack && !IsCallback)
             {
+                init();
                 this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];
                 loadValue(this.lblVoucherId.InnerHtml);
-                BindGrid();
             }
+            BindGrid();
             
         }
 
@@ -143,8 +143,6 @@ namespace BrokerWebApp.inoutbalance
             this.gridPolicyItem.CancelEdit();
 
             BindGrid();
-
-
 
         }
 

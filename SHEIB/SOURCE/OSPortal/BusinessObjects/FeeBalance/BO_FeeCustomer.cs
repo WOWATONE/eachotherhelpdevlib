@@ -66,7 +66,7 @@ namespace BusinessObjects
 
             //select a.* from (
             // select a.VoucherID,a.FeeId,b.NoticeNo,c.CustomerID,c.ProdTypeID,b.CarrierID,b.BranchID,c.PolicyID,c.PolicyNo,
-            // a.FeeDate,b.PayFeeBase,(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID) PayedFee,
+            // a.FeeDate,b.PayFeeBase,(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID and VoucherID<>a.VoucherID) PayedFee,
             // a.Fee,a.FeeAdjust,d.GatheringType,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,
             // (select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,
             // (select GatheringTypeName from GatheringType where GatheringTypeID=d.GatheringType) GatheringTypeName,
@@ -87,7 +87,7 @@ namespace BusinessObjects
 
             sSql = sSql + "select a.* from (";
             sSql = sSql + " select a.VoucherID,a.FeeId,b.NoticeNo,c.CustomerID,c.ProdTypeID,b.CarrierID,b.BranchID,c.PolicyID,c.PolicyNo,";
-            sSql = sSql + " a.FeeDate,b.PayFeeBase,(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID) PayedFee,";
+            sSql = sSql + " a.FeeDate,b.PayFeeBase,(select ISNull(sum(Fee),0) from fee where PolPeriodID=a.PolPeriodID and VoucherID<>a.VoucherID) PayedFee,";
             sSql = sSql + " a.Fee,a.FeeAdjust,d.GatheringType,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,";
             sSql = sSql + " (select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,";
             sSql = sSql + " (select GatheringTypeName from GatheringType where GatheringTypeID=d.GatheringType) GatheringTypeName,";

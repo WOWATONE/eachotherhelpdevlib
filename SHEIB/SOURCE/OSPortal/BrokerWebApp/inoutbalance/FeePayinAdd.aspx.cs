@@ -43,7 +43,7 @@ namespace BrokerWebApp.inoutbalance
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
             String id = saveVoucher(e.Parameter);
-            e.Result = id;
+            e.Result = id;       
         }
 
 
@@ -52,6 +52,8 @@ namespace BrokerWebApp.inoutbalance
             auditVoucher(e.Parameter);
             e.Result = "ok";
         }
+
+        
 
         protected void gridPolicyItem_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
         {
@@ -191,16 +193,19 @@ namespace BrokerWebApp.inoutbalance
 
         private void init()
         {
-            //dxetxtPayFee.BackColor = Color.LightGray;
-            //dxetxtFeeAdjust.BackColor = Color.LightGray;
-            //dxetxtFee.BackColor = Color.LightGray;
-            dxetxtCiPremium.BackColor = Color.LightGray;
+            dxetxtPayinFeeNeed.BackColor = Color.LightGray;
+            dxetxtPayinFee.BackColor = Color.LightGray;
+            dxetxtFeeAdjust.BackColor = Color.LightGray;
+            dxetxtProcessFee.BackColor = Color.LightGray;
+            dxetxtCiPremium.BackColor = Color.LightGray;            
             dxetxtAciPremium.BackColor = Color.LightGray;
             dxetxtCstPremium.BackColor = Color.LightGray;
 
-            //dxetxtPayFee.ReadOnly = true;
-            //dxetxtFeeAdjust.ReadOnly = true;
-            //dxetxtFee.ReadOnly = true;
+            
+            dxetxtPayinFeeNeed.ReadOnly = true;
+            dxetxtPayinFee.ReadOnly = true;
+            dxetxtFeeAdjust.ReadOnly = true;
+            dxetxtProcessFee.ReadOnly = true;
             dxetxtCiPremium.ReadOnly = true;
             dxetxtAciPremium.ReadOnly = true;
             dxetxtCstPremium.ReadOnly = true;
@@ -263,9 +268,19 @@ namespace BrokerWebApp.inoutbalance
             this.gridPolicyItem.DataBind();
 
             //取应收.
-            //dxetxtPayFee.Text = dt.Compute("Sum(PayFeeBase)", "").ToString();
-            //dxetxtFeeAdjust.Text = dt.Compute("Sum(FeeAdjust)", "").ToString();
-            //dxetxtFee.Text = dt.Compute("Sum(Fee)", "").ToString();
+
+            dxetxtPayinFeeNeed.Text = dt.Compute("Sum(PayFeeBase)", "").ToString();
+            dxetxtPayinFee.Text = dt.Compute("Sum(Fee)", "").ToString();
+            dxetxtFeeAdjust.Text = dt.Compute("Sum(FeeAdjust)", "").ToString();
+            
+            if (dxeddlProcessFeeType.SelectedItem.Value.ToString() == "1")
+            {
+                dxetxtProcessFee.Text = dt.Compute("Sum(PayProcBase)", "").ToString();  
+            }
+            else
+            {
+                dxetxtProcessFee.Text = "0.00";
+            }
             dxetxtCiPremium.Text = dt.Compute("Sum(CiPremium)", "").ToString();
             dxetxtAciPremium.Text = dt.Compute("Sum(AciPremium)", "").ToString();
             dxetxtCstPremium.Text = dt.Compute("Sum(CstPremium)", "").ToString();

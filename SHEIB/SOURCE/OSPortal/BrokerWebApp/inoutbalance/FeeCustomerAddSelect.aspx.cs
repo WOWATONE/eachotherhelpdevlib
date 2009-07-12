@@ -133,9 +133,9 @@ namespace BrokerWebApp.inoutbalance
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            String thenoticeNo = e.Parameter;
-            saveFee(thenoticeNo);
-            e.Result = thenoticeNo;
+            String polPeriodIds = e.Parameter;
+            saveFee(polPeriodIds);
+            e.Result = polPeriodIds;
         }
 
         private void saveFee(String polPeriodIds)
@@ -161,7 +161,7 @@ namespace BrokerWebApp.inoutbalance
                             objLoad.PolPeriodID = s;
                             objLoad.VoucherID = this.txtVoucherId.Value;
                             objLoad.Fee = obj.PayFeeBase;
-                            objLoad.FeeAdjust = obj.PayFeeBase;
+                            objLoad.FeeAdjust = 0;
                             objLoad.Save(ModifiedAction.Insert);
                         }
                     }
