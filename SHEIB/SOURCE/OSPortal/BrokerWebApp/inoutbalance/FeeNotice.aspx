@@ -317,9 +317,9 @@
                                                 </dxwgv:GridViewCommandColumnCustomButton>
                                             </CustomButtons>
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书号" CellStyle-Wrap="False" GroupIndex="0">
+                                        <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书号" CellStyle-Wrap="False" >
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CustName" Caption="投保客户" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CustomerName" Caption="投保客户" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="客户经理" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -329,6 +329,8 @@
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayFee" Caption="应收金额" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>                                        
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyCount" Caption="保单分期数量" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="AuditStatusName" Caption="状态" CellStyle-Wrap="False">                                                                               
                                         </dxwgv:GridViewDataColumn>
@@ -337,13 +339,10 @@
                                     <SettingsPager Mode="ShowPager" AlwaysShowPager="true" />
                                     <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
                                     <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
-                                    <SettingsText CustomizationWindowCaption="个性化" />
-                                    <GroupSummary>                                        
-                                        <dxwgv:ASPxSummaryItem FieldName="NoticeNo" SummaryType="Count" ShowInGroupFooterColumn="NoticeNo" DisplayFormat = "总计: {0}" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayFee" SummaryType="Sum" ShowInGroupFooterColumn="PayFee" DisplayFormat="c" />
-                                    </GroupSummary>                                             
+                                    <SettingsText CustomizationWindowCaption="个性化" />                                         
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="NoticeNo" SummaryType="Count" DisplayFormat="总记录:#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyCount" SummaryType="Sum" DisplayFormat="#" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayFee" SummaryType="Sum" DisplayFormat="c" />
                                     </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />

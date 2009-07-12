@@ -14,9 +14,9 @@
   <InteractiveWidth>21cm</InteractiveWidth>
   <rd:GridSpacing>0.25cm</rd:GridSpacing>
   <rd:SnapToGrid>true</rd:SnapToGrid>
-  <RightMargin>2.5cm</RightMargin>
-  <LeftMargin>2.5cm</LeftMargin>
-  <BottomMargin>2.5cm</BottomMargin>
+  <RightMargin>0.5cm</RightMargin>
+  <LeftMargin>0.5cm</LeftMargin>
+  <BottomMargin>0.5cm</BottomMargin>
   <rd:ReportID>c45fcc6f-31c9-4cbb-9ac7-deb832f13a15</rd:ReportID>
   <PageWidth>21cm</PageWidth>
   <DataSets>
@@ -115,7 +115,8 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>24cm</Width>
+  <Code />
+  <Width>20cm</Width>
   <Body>
     <ColumnSpacing>1cm</ColumnSpacing>
     <ReportItems>
@@ -128,28 +129,15 @@
           </BorderStyle>
           <FontFamily>宋体</FontFamily>
         </Style>
-        <ZIndex>5</ZIndex>
+        <ZIndex>3</ZIndex>
         <Left>2cm</Left>
         <Height>0cm</Height>
       </Line>
-      <Line Name="line2">
-        <Top>14.85cm</Top>
-        <Width>17.25cm</Width>
-        <Style>
-          <BorderStyle>
-            <Default>Dashed</Default>
-          </BorderStyle>
-          <FontFamily>宋体</FontFamily>
-        </Style>
-        <ZIndex>4</ZIndex>
-        <Left>3.375cm</Left>
-        <Height>0cm</Height>
-      </Line>
       <Table Name="table3">
-        <ZIndex>3</ZIndex>
+        <ZIndex>2</ZIndex>
         <DataSetName>dsNotice_NoticePolicy</DataSetName>
         <Top>19.75cm</Top>
-        <Width>22.20078cm</Width>
+        <Width>19cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -277,7 +265,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>代收保费入帐单</Value>
+                      <Value>代收保费入帐单(系统录入联)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -533,25 +521,25 @@
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>3.5cm</Width>
+            <Width>2.99539cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.25cm</Width>
+            <Width>1.92561cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.25cm</Width>
+            <Width>1.92561cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.10039cm</Width>
+            <Width>2.65339cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.10039cm</Width>
+            <Width>2.65339cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.25cm</Width>
+            <Width>1.92561cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>5.75cm</Width>
+            <Width>4.921cm</Width>
           </TableColumn>
         </TableColumns>
         <Height>9.00396cm</Height>
@@ -815,6 +803,9 @@
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
+                          <Bottom>None</Bottom>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -838,7 +829,8 @@
                     <Textbox Name="textbox101">
                       <Style>
                         <BorderStyle>
-                          <Default>Solid</Default>
+                          <Left>Solid</Left>
+                          <Right>Solid</Right>
                           <Top>None</Top>
                           <Bottom>None</Bottom>
                         </BorderStyle>
@@ -1016,6 +1008,10 @@
                   <ReportItems>
                     <Textbox Name="textbox103">
                       <Style>
+                        <BorderStyle>
+                          <Left>Solid</Left>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
                         <FontFamily>宋体</FontFamily>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -1033,6 +1029,9 @@
                   <ReportItems>
                     <Textbox Name="textbox104">
                       <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
                         <FontFamily>宋体</FontFamily>
                         <FontWeight>700</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -1049,6 +1048,9 @@
                   <ReportItems>
                     <Textbox Name="textbox105">
                       <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
                         <FontFamily>宋体</FontFamily>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Right</TextAlign>
@@ -1066,6 +1068,9 @@
                   <ReportItems>
                     <Textbox Name="textbox106">
                       <Style>
+                        <BorderStyle>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
                         <FontFamily>宋体</FontFamily>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1081,6 +1086,10 @@
                   <ReportItems>
                     <Textbox Name="textbox107">
                       <Style>
+                        <BorderStyle>
+                          <Right>Solid</Right>
+                          <Bottom>Solid</Bottom>
+                        </BorderStyle>
                         <FontFamily>宋体</FontFamily>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1097,12 +1106,14 @@
             </TableRow>
           </TableRows>
         </Footer>
+        <Left>0.5cm</Left>
       </Table>
       <Table Name="table2">
-        <ZIndex>2</ZIndex>
+        <ZIndex>1</ZIndex>
         <DataSetName>dsNotice_NoticePolicy</DataSetName>
+        <PageBreakAtStart>true</PageBreakAtStart>
         <Top>10.25cm</Top>
-        <Width>22.20078cm</Width>
+        <Width>19cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -1230,7 +1241,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>代收保费入帐单</Value>
+                      <Value>代收保费入帐单(财务凭证联)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1483,28 +1494,29 @@
               <Height>0.63492cm</Height>
             </TableRow>
           </TableRows>
+          <RepeatOnNewPage>true</RepeatOnNewPage>
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>3.5cm</Width>
+            <Width>2.99539cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.25cm</Width>
+            <Width>1.92561cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.25cm</Width>
+            <Width>1.92561cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.10039cm</Width>
+            <Width>2.65339cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.10039cm</Width>
+            <Width>2.65339cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.25cm</Width>
+            <Width>1.92561cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>5.75cm</Width>
+            <Width>4.921cm</Width>
           </TableColumn>
         </TableColumns>
         <Height>8.36904cm</Height>
@@ -1931,24 +1943,13 @@
             </TableRow>
           </TableRows>
         </Footer>
+        <Left>0.5cm</Left>
       </Table>
-      <Line Name="line1">
-        <Top>9.75cm</Top>
-        <Width>17.25cm</Width>
-        <Style>
-          <BorderStyle>
-            <Default>Dashed</Default>
-          </BorderStyle>
-          <FontFamily>宋体</FontFamily>
-        </Style>
-        <ZIndex>1</ZIndex>
-        <Left>2cm</Left>
-        <Height>0cm</Height>
-      </Line>
       <Table Name="table1">
         <DataSetName>dsNotice_NoticePolicy</DataSetName>
+        <KeepTogether>true</KeepTogether>
         <Top>0.75cm</Top>
-        <Width>22.20078cm</Width>
+        <Width>19cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -2082,7 +2083,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>代收保费通知单</Value>
+                      <Value>代收保费通知单(客户通知联)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -2351,25 +2352,25 @@
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>3.5cm</Width>
+            <Width>2.99539cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.25cm</Width>
+            <Width>1.92561cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.25cm</Width>
+            <Width>1.92561cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.10039cm</Width>
+            <Width>2.65339cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.10039cm</Width>
+            <Width>2.65339cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.25cm</Width>
+            <Width>1.92561cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>5.75cm</Width>
+            <Width>4.921cm</Width>
           </TableColumn>
         </TableColumns>
         <Height>8.36904cm</Height>
@@ -2880,11 +2881,12 @@
             </TableRow>
           </TableRows>
         </Footer>
+        <Left>0.5cm</Left>
       </Table>
     </ReportItems>
-    <Height>29.7cm</Height>
+    <Height>29cm</Height>
   </Body>
   <Language>zh-CN</Language>
-  <TopMargin>2.5cm</TopMargin>
+  <TopMargin>0.5cm</TopMargin>
   <PageHeight>29.7cm</PageHeight>
 </Report>
