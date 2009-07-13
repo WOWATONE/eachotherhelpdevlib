@@ -76,6 +76,12 @@ namespace BrokerWebApp.BusinessConsult
                 this.deConsultDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
                 //客户经理
                 this.SetddlSalesID("");
+                //收费人
+                this.SetddlFeePersion("");
+                //制单人
+                this.SetddlCreatePerson("");
+                //审核人
+                this.SetddlAuditPerson("");
                 //制单时间
                 this.deCreateTime.Text = DateTime.Today.ToString("yyyy-MM-dd");
             }
@@ -113,14 +119,14 @@ namespace BrokerWebApp.BusinessConsult
                 #endregion
 
                 #region 收费信息
-                this.dxetxtFeePersion.Text = consultFee.FeePersion;
+                this.SetddlFeePersion(consultFee.FeePersion);
                 this.deFeeDate.Text = consultFee.FeeDate.ToString("yyyy-MM-dd");
                 #endregion
 
                 #region 其他
-                this.dxetxtCreatePerson.Text = consultFee.CreatePerson;
+                this.SetddlCreatePerson(consultFee.CreatePerson);
                 this.deCreateTime.Text = consultFee.CreateTime.ToString("yyyy-MM-dd");
-                this.dxetxtAuditPerson.Text = consultFee.AuditPerson;
+                this.SetddlAuditPerson(consultFee.AuditPerson);
                 this.deAuditTime.Text = consultFee.AuditTime.ToString("yyyy-MM-dd");
                 #endregion
             }
@@ -150,6 +156,54 @@ namespace BrokerWebApp.BusinessConsult
                     this.dxeddlSalesID.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
                 }
                 this.dxeddlSalesID.SelectedIndex = this.dxeddlSalesID.Items.IndexOf(this.dxeddlSalesID.Items.FindByValue(value));
+            }
+        }
+
+        /// <summary>
+        /// 设置收费人
+        /// </summary>
+        private void SetddlFeePersion(string value)
+        {
+            DataSet dsList = BO_P_User.GetUserByUserID("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlFeePersion.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
+                }
+                this.dxeddlFeePersion.SelectedIndex = this.dxeddlFeePersion.Items.IndexOf(this.dxeddlFeePersion.Items.FindByValue(value));
+            }
+        }
+
+        /// <summary>
+        /// 设置制单人
+        /// </summary>
+        private void SetddlCreatePerson(string value)
+        {
+            DataSet dsList = BO_P_User.GetUserByUserID("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlCreatePerson.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
+                }
+                this.dxeddlCreatePerson.SelectedIndex = this.dxeddlCreatePerson.Items.IndexOf(this.dxeddlCreatePerson.Items.FindByValue(value));
+            }
+        }
+
+        /// <summary>
+        /// 设置审核人
+        /// </summary>
+        private void SetddlAuditPerson(string value)
+        {
+            DataSet dsList = BO_P_User.GetUserByUserID("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlAuditPerson.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
+                }
+                this.dxeddlAuditPerson.SelectedIndex = this.dxeddlAuditPerson.Items.IndexOf(this.dxeddlAuditPerson.Items.FindByValue(value));
             }
         }
 
@@ -266,13 +320,17 @@ namespace BrokerWebApp.BusinessConsult
                     consultFee.InvoiceNO = this.dxetxtInvoiceNO.Text.Trim();
                     if (this.deAuditTime.Text.Trim().Length > 0)
                         consultFee.AuditTime = Convert.ToDateTime(this.deAuditTime.Text.Trim());
-                    consultFee.AuditPerson = this.dxetxtAuditPerson.Text.Trim();
+                    if (this.dxeddlAuditPerson.SelectedIndex>=0 &&
+                        this.dxeddlAuditPerson.SelectedItem.Value.ToString().Length > 0)
+                        consultFee.AuditPerson = this.dxeddlAuditPerson.SelectedItem.Value.ToString();
                     consultFee.CreateTime = DateTime.Now;
-                    consultFee.CreatePerson = this.dxetxtCreatePerson.Text.Trim();
+                    if (this.dxeddlCreatePerson.SelectedItem.Value.ToString().Length > 0)
+                        consultFee.CreatePerson = this.dxeddlCreatePerson.SelectedItem.Value.ToString();
                     consultFee.ModifyTime = DateTime.Now;
                     consultFee.ModifyPerson = "";
                     consultFee.FeeDate = Convert.ToDateTime(this.deFeeDate.Text);
-                    consultFee.FeePersion = this.dxetxtFeePersion.Text.Trim();
+                    if (this.dxeddlFeePersion.SelectedItem.Value.ToString().Length > 0)
+                        consultFee.FeePersion = this.dxeddlFeePersion.SelectedItem.Value.ToString();
                     consultFee.Save(ModifiedAction.Insert);
 
                     //保存到咨询项目
@@ -322,13 +380,17 @@ namespace BrokerWebApp.BusinessConsult
                     consultFee.InvoiceNO = this.dxetxtInvoiceNO.Text.Trim();
                     if (this.deAuditTime.Text.Trim().Length > 0)
                         consultFee.AuditTime = Convert.ToDateTime(this.deAuditTime.Text.Trim());
-                    consultFee.AuditPerson = this.dxetxtAuditPerson.Text.Trim();
+                    if (this.dxeddlAuditPerson.SelectedIndex >= 0 &&
+                        this.dxeddlAuditPerson.SelectedItem.Value.ToString().Length > 0)
+                        consultFee.AuditPerson = this.dxeddlAuditPerson.SelectedItem.Value.ToString();
                     consultFee.CreateTime = DateTime.Now;
-                    consultFee.CreatePerson = this.dxetxtCreatePerson.Text.Trim();
+                    if (this.dxeddlCreatePerson.SelectedItem.Value.ToString().Length > 0)
+                        consultFee.CreatePerson = this.dxeddlCreatePerson.SelectedItem.Value.ToString();
                     consultFee.ModifyTime = DateTime.Now;
                     consultFee.ModifyPerson = "";
                     consultFee.FeeDate = Convert.ToDateTime(this.deFeeDate.Text);
-                    consultFee.FeePersion = this.dxetxtFeePersion.Text.Trim();
+                    if (this.dxeddlFeePersion.SelectedItem.Value.ToString().Length > 0)
+                        consultFee.FeePersion = this.dxeddlFeePersion.SelectedItem.Value.ToString();
                     consultFee.Save(ModifiedAction.Update);
 
                     //保存到咨询项目

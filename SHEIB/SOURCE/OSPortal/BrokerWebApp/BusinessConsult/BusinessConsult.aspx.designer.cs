@@ -248,13 +248,13 @@ namespace BrokerWebApp.BusinessConsult {
         protected global::System.Web.UI.WebControls.Panel npFeeDetail;
         
         /// <summary>
-        /// dxetxtFeePersion 控件。
+        /// dxeddlFeePersion 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtFeePersion;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlFeePersion;
         
         /// <summary>
         /// deFeeDate 控件。
@@ -311,13 +311,13 @@ namespace BrokerWebApp.BusinessConsult {
         protected global::System.Web.UI.WebControls.Panel npCreateDetail;
         
         /// <summary>
-        /// dxetxtCreatePerson 控件。
+        /// dxeddlCreatePerson 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCreatePerson;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCreatePerson;
         
         /// <summary>
         /// deCreateTime 控件。
@@ -329,13 +329,13 @@ namespace BrokerWebApp.BusinessConsult {
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deCreateTime;
         
         /// <summary>
-        /// dxetxtAuditPerson 控件。
+        /// dxeddlAuditPerson 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtAuditPerson;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlAuditPerson;
         
         /// <summary>
         /// deAuditTime 控件。

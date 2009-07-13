@@ -283,11 +283,11 @@
                                 收费人：
                             </td>
                             <td style="width: 25%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtFeePersion" ClientInstanceName="dxetxtFeePersion" runat="server" Width="160px">
+                                <dxe:ASPxComboBox ID="dxeddlFeePersion" ClientInstanceName="dxeddlFeePersion" runat="server" Width="160px" DropDownStyle="DropDownList">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
-                                </dxe:ASPxTextBox>
+                                </dxe:ASPxComboBox>
                             </td>
                             <td style="width: 8%; text-align: right;">
                                 收费时间：
@@ -334,11 +334,11 @@
                                 制单人：
                             </td>
                             <td style="width: 25%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="160px">
+                                <dxe:ASPxComboBox ID="dxeddlCreatePerson" ClientInstanceName="dxeddlCreatePerson" runat="server" Width="160px" DropDownStyle="DropDownList">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
-                                </dxe:ASPxTextBox>
+                                </dxe:ASPxComboBox>
                             </td>
                             <td style="width: 8%; text-align: right;">
                                 制单时间：
@@ -355,8 +355,8 @@
                                 审核人：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtAuditPerson" ClientInstanceName="dxetxtAuditPerson" runat="server" Width="160px">
-                                </dxe:ASPxTextBox>
+                                <dxe:ASPxComboBox ID="dxeddlAuditPerson" ClientInstanceName="dxeddlAuditPerson" runat="server" Width="160px" DropDownStyle="DropDownList">
+                                </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
                                 审核时间：
