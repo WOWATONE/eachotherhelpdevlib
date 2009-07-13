@@ -640,6 +640,10 @@ namespace BrokerWebApp.inoutbalance.rpt {
             
             private global::System.Data.DataColumn columnPayFee;
             
+            private global::System.Data.DataColumn columnPolicyNo;
+            
+            private global::System.Data.DataColumn columnPolicyID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public PayinDetailDataTable() {
                 this.TableName = "PayinDetail";
@@ -692,6 +696,20 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn PolicyNoColumn {
+                get {
+                    return this.columnPolicyNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn PolicyIDColumn {
+                get {
+                    return this.columnPolicyID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -720,12 +738,14 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PayinDetailRow AddPayinDetailRow(string VoucherID, string NoticeNo, string PayFee) {
+            public PayinDetailRow AddPayinDetailRow(string VoucherID, string NoticeNo, string PayFee, string PolicyNo, string PolicyID) {
                 PayinDetailRow rowPayinDetailRow = ((PayinDetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         VoucherID,
                         NoticeNo,
-                        PayFee};
+                        PayFee,
+                        PolicyNo,
+                        PolicyID};
                 rowPayinDetailRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPayinDetailRow);
                 return rowPayinDetailRow;
@@ -748,6 +768,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 this.columnVoucherID = base.Columns["VoucherID"];
                 this.columnNoticeNo = base.Columns["NoticeNo"];
                 this.columnPayFee = base.Columns["PayFee"];
+                this.columnPolicyNo = base.Columns["PolicyNo"];
+                this.columnPolicyID = base.Columns["PolicyID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -758,6 +780,10 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 base.Columns.Add(this.columnNoticeNo);
                 this.columnPayFee = new global::System.Data.DataColumn("PayFee", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPayFee);
+                this.columnPolicyNo = new global::System.Data.DataColumn("PolicyNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPolicyNo);
+                this.columnPolicyID = new global::System.Data.DataColumn("PolicyID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPolicyID);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1200,6 +1226,36 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string PolicyNo {
+                get {
+                    try {
+                        return ((string)(this[this.tablePayinDetail.PolicyNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“PayinDetail”中列“PolicyNo”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablePayinDetail.PolicyNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string PolicyID {
+                get {
+                    try {
+                        return ((string)(this[this.tablePayinDetail.PolicyIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“PayinDetail”中列“PolicyID”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablePayinDetail.PolicyIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsVoucherIDNull() {
                 return this.IsNull(this.tablePayinDetail.VoucherIDColumn);
             }
@@ -1227,6 +1283,26 @@ namespace BrokerWebApp.inoutbalance.rpt {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetPayFeeNull() {
                 this[this.tablePayinDetail.PayFeeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsPolicyNoNull() {
+                return this.IsNull(this.tablePayinDetail.PolicyNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetPolicyNoNull() {
+                this[this.tablePayinDetail.PolicyNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsPolicyIDNull() {
+                return this.IsNull(this.tablePayinDetail.PolicyIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetPolicyIDNull() {
+                this[this.tablePayinDetail.PolicyIDColumn] = global::System.Convert.DBNull;
             }
         }
         

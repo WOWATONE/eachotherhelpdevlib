@@ -186,6 +186,7 @@ namespace BrokerWebApp.inoutbalance
         protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
         {
             //this.gridSearchResult.DataBind();
+            
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
