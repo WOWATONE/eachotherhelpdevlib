@@ -297,8 +297,8 @@
         }
 
         function dxeddlProcessFeeType_OnProcessFeeTypeChanged(s, e) {
-            var thejsonstring = dxeddlProcessFeeType.GetSelectedItem().value;
-            if (thejsonstring == "1") {
+            var sProcessFeeType = dxeddlProcessFeeType.GetSelectedItem().value;
+            if (thejsonstring == "2") {
                 dxetxtProcessFee.SetValue("0");
             }
         }

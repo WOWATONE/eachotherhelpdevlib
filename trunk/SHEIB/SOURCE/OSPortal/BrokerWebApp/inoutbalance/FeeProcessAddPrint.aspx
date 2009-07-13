@@ -10,8 +10,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <rsweb:ReportViewer ID="ReportViewer1" Width="900" Height="700" runat="server">
+    <div style="height: 713px">
+        <rsweb:ReportViewer ID="ReportViewer1" Width="900" Height="700"  ExportContentDisposition="AlwaysInline" runat="server">
             <LocalReport ReportPath="inoutbalance\rpt\rptProcess.rdlc" />
         </rsweb:ReportViewer>
     </div>

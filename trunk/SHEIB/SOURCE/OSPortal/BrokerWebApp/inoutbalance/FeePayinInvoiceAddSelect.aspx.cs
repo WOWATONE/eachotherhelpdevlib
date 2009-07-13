@@ -149,7 +149,7 @@ namespace BrokerWebApp.inoutbalance
             {
                 if (s.Trim() != "")
                 {
-                    if (s.Trim().Length == 36)
+                    if (s.Trim().Length >= 30)
                     {
                         exist = BusinessObjects.BO_Fee.PolPeriodExist(s, BO_P_Code.AccountType.Invoice);
                         if (!exist)
@@ -159,8 +159,8 @@ namespace BrokerWebApp.inoutbalance
                             objLoad.FeeId = Guid.NewGuid().ToString();
                             objLoad.PolPeriodID = s;
                             objLoad.VoucherID = this.txtVoucherId.Value;
-                            objLoad.Fee = obj.PayFeeBase;
-                            objLoad.FeeAdjust = obj.PayFeeBase;
+                            objLoad.Fee = obj.PayProcBase;
+                            objLoad.FeeAdjust = 0;
                             objLoad.Save(ModifiedAction.Insert);
                         }
                     }

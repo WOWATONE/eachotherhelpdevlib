@@ -44,16 +44,20 @@ namespace BrokerWebApp.inoutbalance
             SqlDataAdapter ad = new SqlDataAdapter(sSql, conn);
             ad.Fill(dPayin, "Payin");
 
-            sSql = "";
-            sSql = sSql + "select NoticeNo+'('+dbo.GetVoucherPolicyByNoticeNo('" + sVoucherID + "',NoticeNo)+')'  as NoticeNo,PayFee";
-            sSql = sSql + " from ";
-            sSql = sSql + " (";
-            sSql = sSql + " select NoticeNo,sum(PayFee) PayFee";
-            sSql = sSql + " from voucherfee a";
-            sSql = sSql + " where VoucherID ='00000004' ";
-            sSql = sSql + " group by NoticeNo";
-            sSql = sSql + ") a";
 
+            //sSql = sSql + "select NoticeNo+'('+dbo.GetVoucherPolicyByNoticeNo('" + sVoucherID + "',NoticeNo)+')'  as NoticeNo,PayFee";
+            //sSql = sSql + " from ";
+            //sSql = sSql + " (";
+            //sSql = sSql + " select NoticeNo,sum(PayFee) PayFee";
+            //sSql = sSql + " from voucherfee a";
+            //sSql = sSql + " where VoucherID ='00000004' ";
+            //sSql = sSql + " group by NoticeNo";
+            //sSql = sSql + ") a";
+
+            sSql = "";
+            sSql = sSql + "select VoucherID,NoticeNo,PolicyNo,PolicyID,PayFee";
+            sSql = sSql + " from  voucherfee a ";
+            sSql = sSql + " where VoucherID='" + sVoucherID + "'";
             SqlDataAdapter adDetail = new SqlDataAdapter(sSql, conn);
             adDetail.Fill(dPayin, "PayinDetail");
 

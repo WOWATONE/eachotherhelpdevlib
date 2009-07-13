@@ -89,7 +89,8 @@
             var url = "FeePayinInvoiceAddSelect.aspx?ID=" + getVoucherId();
 
             window.showModalDialog(url, self, myArguments);
-            gridPolicyItem.PerformCallback('');
+            var sVoucherID = getVoucherId();
+            gridPolicyItem.PerformCallback(sVoucherID);
         }
 
         function btnAddPrintClick() {
@@ -108,6 +109,7 @@
 
 
         function setVoucherId(value) {
+            debugger;
             var result = $("#<%=lblVoucherId.ClientID %>");
             result[0].innerHTML = value;
         }
@@ -146,6 +148,7 @@
 
         function saveCallbackComplete(s, e) {
             //do nothing;
+            debugger;
             var pid = getVoucherId();
             if (isEmpty(pid)) {
                 setVoucherId(e.result);
@@ -361,8 +364,7 @@
                                         <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False"
                                             Visible="false">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="解付单号" CellStyle-Wrap="False"
-                                            GroupIndex="0">
+                                        <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="解付单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -372,7 +374,7 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="本期应收经纪费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="本期已收经纪费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayinInvoiceedFee" Caption="本期已开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>

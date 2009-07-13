@@ -32,15 +32,16 @@ namespace BrokerWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack && !IsCallback)
             {
                 init();
                 this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];
                 loadValue(this.lblVoucherId.InnerHtml);
-                
+
             }
-            BindGrid();
+            string sVocherID = this.lblVoucherId.InnerHtml;
+            BindGrid(sVocherID);
         }
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
@@ -122,7 +123,8 @@ namespace BrokerWebApp.inoutbalance
             }
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
-            BindGrid();
+
+            BindGrid("");
         }
 
         protected void gridPolicyItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
@@ -130,7 +132,7 @@ namespace BrokerWebApp.inoutbalance
             //this.gridPolicyItem.DataBind();
         }
 
-        
+
 
         protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
@@ -147,7 +149,7 @@ namespace BrokerWebApp.inoutbalance
             }
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
-            BindGrid();
+            BindGrid("");
         }
 
         protected void gridPolicyItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
@@ -157,7 +159,8 @@ namespace BrokerWebApp.inoutbalance
 
         protected void gridPolicyItem_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
-            BindGrid();
+            string sVoucherID = e.Parameters;
+            BindGrid(sVoucherID);
         }
 
 
@@ -202,10 +205,10 @@ namespace BrokerWebApp.inoutbalance
             dxetxtInvoiceProcAdjust.ReadOnly = true;
             dxetxtCiPremium.ReadOnly = true;
             dxetxtAciPremium.ReadOnly = true;
-            
+
 
             DataSet dsList;
-                        
+
             this.dxeddlProcessFeeType.Items.Add("(全部)", "");
             dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.ProcessFeeType.ToString());
             if (dsList.Tables[0] != null)
@@ -240,11 +243,19 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
-        private void BindGrid()
+        private void BindGrid(string sVoucherID)
         {
-            string sVocherID = "";
-            sVocherID = this.lblVoucherId.InnerHtml;
-            DataTable dt = Bo_FeePayinInvoice.GetFeePayinInvoiceAdd(sVocherID).Tables[0];
+            string lsVocherID = "";
+            if (sVoucherID == "")
+            {
+                lsVocherID = this.lblVoucherId.InnerHtml;
+            }
+            else
+            {
+                lsVocherID = sVoucherID;
+            }
+
+            DataTable dt = Bo_FeePayinInvoice.GetFeePayinInvoiceAdd(lsVocherID).Tables[0];
             this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
 
@@ -347,7 +358,7 @@ namespace BrokerWebApp.inoutbalance
             this.dxetxtInvoiceNO.Text = obj.VoucherNo;
 
             ListEditItem theselected;
-            
+
             //processtype
             theselected = this.dxeddlProcessFeeType.Items.FindByValue(obj.ProcessFeeType);
             if (theselected != null)
@@ -415,7 +426,7 @@ namespace BrokerWebApp.inoutbalance
 
             [DataMember]
             public string AuditStatus { get; set; }
-                        
+
             [DataMember]
             public string ProcessFeeType { get; set; }
 
