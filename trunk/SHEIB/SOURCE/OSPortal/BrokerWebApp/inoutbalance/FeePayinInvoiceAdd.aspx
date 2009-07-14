@@ -118,6 +118,16 @@
             window.close();
         }
 
+        function btnCompleteClick() {
+            //debugger;
+            var sInvoiceNo = dxetxtInvoiceNO.GetValue();
+            if ((sInvoiceNo == null) || (sInvoiceNo.length == 0)) {
+                alert("发票号码不能为空,请录入!");
+                return false;
+            }
+
+        }
+
         function isEmpty(testVar) {
             if ((testVar == null) || (testVar.length == 0)) {
                 return true;
@@ -148,7 +158,7 @@
 
         function saveCallbackComplete(s, e) {
             //do nothing;
-            debugger;
+            //debugger;
             var pid = getVoucherId();
             if (isEmpty(pid)) {
                 setVoucherId(e.result);
@@ -364,7 +374,7 @@
                                         <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False"
                                             Visible="false">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="解付单号" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayinID" Caption="解付单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -394,11 +404,13 @@
                                         <dxwgv:ASPxSummaryItem FieldName="PayedFee" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayProcBase" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="Fee" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="FeeAdjust" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PayinInvoiceedFee" SummaryType="Sum" DisplayFormat="c" />
                                     </TotalSummary>
                                     <Settings ShowGroupPanel="True" ShowFooter="True" ShowGroupFooter="VisibleIfExpanded" />
                                     <GroupSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" ShowInGroupFooterColumn="PolicyNo" SummaryType="Count" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayedFee" ShowInGroupFooterColumn="PayedFee" SummaryType="Sum" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PayedFee" ShowInGroupFooterColumn="PayedFee" SummaryType="Sum"  DisplayFormat="{0:c}/>
                                         <dxwgv:ASPxSummaryItem FieldName="PayProcBase" ShowInGroupFooterColumn="PayProcBase"
                                             SummaryType="Sum" DisplayFormat="{0:c}" />
                                         <dxwgv:ASPxSummaryItem FieldName="Fee" ShowInGroupFooterColumn="Fee" SummaryType="Sum" />
@@ -550,10 +562,10 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                开票日期：：
+                                开票日期：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="dxeReleaseDate" ClientInstanceName="dxeReleaseDate" runat="server"
+                                <dxe:ASPxDateEdit ID="dxeReleaseDate" ClientInstanceName="dxeReleaseDate" runat="server" 
                                     Width="120">
                                 </dxe:ASPxDateEdit>
                             </td>
@@ -561,7 +573,7 @@
                                 发票号码：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtInvoiceNO" ClientInstanceName="dxetxtInvoiceNO" runat="server"
+                                <dxe:ASPxTextBox ID="dxetxtInvoiceNO" ClientInstanceName="dxetxtInvoiceNO" runat="server" 
                                     Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
@@ -630,12 +642,6 @@
                                     <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
                                 </dxe:ASPxButton>
                             </td>
-                            <td style="width: 80px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit"
-                                    Text="审核" AutoPostBack="false">
-                                    <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
-                                </dxe:ASPxButton>
-                            </td>
                             <td style="width: 140px; text-align: left;">
                                 <dxe:ASPxButton runat="server" ID="dxebtnPrint" ClientInstanceName="dxebtnPrint"
                                     Text="打印开票通知书" AutoPostBack="false">
@@ -643,8 +649,15 @@
                                 </dxe:ASPxButton>
                             </td>
                             <td style="width: 80px; text-align: left;">
+                                <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit"
+                                    Text="审核" AutoPostBack="false">
+                                    <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
+                                </dxe:ASPxButton>
+                            </td>
+                            <td style="width: 80px; text-align: left;">
                                 <dxe:ASPxButton runat="server" ID="dxebtnComplete" ClientInstanceName="dxebtnComplete"
                                     Text="开票完成" AutoPostBack="false">
+                                    <ClientSideEvents Click="function(s, e) {btnCompleteClick();}" />
                                 </dxe:ASPxButton>
                             </td>
                             <td style="width: 60px; text-align: left;">

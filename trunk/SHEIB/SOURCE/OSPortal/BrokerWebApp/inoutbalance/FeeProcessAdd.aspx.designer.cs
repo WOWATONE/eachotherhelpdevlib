@@ -86,13 +86,13 @@ namespace BrokerWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnAddPolicy;
         
         /// <summary>
-        /// lblVoucherId 控件。
+        /// lblVoucherID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblVoucherId;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblVoucherID;
         
         /// <summary>
         /// gridPolicyItem 控件。
@@ -266,15 +266,6 @@ namespace BrokerWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnSave;
         
         /// <summary>
-        /// dxebtnAudit 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnAudit;
-        
-        /// <summary>
         /// dxebtnPrint 控件。
         /// </summary>
         /// <remarks>
@@ -282,6 +273,15 @@ namespace BrokerWebApp.inoutbalance {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnPrint;
+        
+        /// <summary>
+        /// dxebtnAudit 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnAudit;
         
         /// <summary>
         /// dxebtnComplete 控件。

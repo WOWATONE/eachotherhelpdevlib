@@ -36,9 +36,11 @@ namespace BrokerWebApp.inoutbalance
             if (!IsPostBack && !IsCallback)
             {
                 init();
-                this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];               
+                string sVoucherID = Page.Request.QueryString[inputQueryStringIDKey];
+                this.lblVoucherID.InnerHtml = sVoucherID;        
+                loadValue(sVoucherID);
             }
-            BindGrid();
+            BindGrid("");
         }
 
 
@@ -64,10 +66,10 @@ namespace BrokerWebApp.inoutbalance
             Int32 editIndex = this.gridPolicyItem.EditingRowVisibleIndex;
             if (editIndex > -1)
             {
-                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "Feeid", "Fee" });
+                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "Fee" });
                 object[] theValueList = theValues as object[];
 
-                //String feeId = theValueList[0].ToString();
+                //String FeeId = theValueList[0].ToString();
                 String fee = theValueList[1].ToString();
                 
                 if (this.gridPolicyItemStartEdit)
@@ -113,7 +115,7 @@ namespace BrokerWebApp.inoutbalance
 
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
-            BindGrid();
+            BindGrid("");
         }
 
         protected void gridPolicyItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
@@ -137,7 +139,7 @@ namespace BrokerWebApp.inoutbalance
             }
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
-            BindGrid();
+            BindGrid("");
 
         }
 
@@ -149,7 +151,8 @@ namespace BrokerWebApp.inoutbalance
 
         protected void gridPolicyItem_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
-            BindGrid();
+            string sVoucherID = e.Parameters;
+            BindGrid(sVoucherID);
         }
 
 
@@ -226,12 +229,18 @@ namespace BrokerWebApp.inoutbalance
 
         }
 
-
-        private void BindGrid()
+        private void BindGrid(string sVoucherID)
         {
-            string sVocherID = "";
-            sVocherID = this.lblVoucherId.InnerHtml;
-            DataTable dt = BO_FeeProcess.GetFeeProcessAdd(sVocherID).Tables[0];
+            string lsVocherID = "";
+            if (sVoucherID == "")
+            {
+                lsVocherID = this.lblVoucherID.InnerHtml; 
+            }
+            else
+            {
+                lsVocherID = sVoucherID;
+            }
+            DataTable dt = BO_FeeProcess.GetFeeProcessAdd(lsVocherID).Tables[0];
             this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
 

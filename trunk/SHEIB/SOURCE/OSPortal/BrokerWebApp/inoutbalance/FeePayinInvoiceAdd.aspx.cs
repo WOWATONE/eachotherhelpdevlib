@@ -287,7 +287,7 @@ namespace BrokerWebApp.inoutbalance
                 objLoad = new BO_Voucher();
 
                 objLoad.VoucherId = TranUtils.GetVoucherNo();
-                objLoad.InvoiceNO = "";
+                objLoad.InvoiceNO = obj.VoiceNo;
                 objLoad.CreateTime = DateTime.Now;
                 objLoad.CreatePerson = this.CurrentUserID;
                 objLoad.AccountTypeID = Convert.ToInt32(BO_P_Code.AccountType.Invoice);
@@ -298,7 +298,7 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.CarrierID = obj.Carrier;
                 objLoad.BranchID = obj.Branch;
                 objLoad.ProcessFeeType = obj.ProcessFeeType;
-                objLoad.VoucherNo = obj.VoiceNo;
+                objLoad.VoucherNo = "" ;
                 objLoad.Save(ModifiedAction.Insert);
             }
             else
@@ -310,7 +310,7 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.CarrierID = obj.Carrier;
                 objLoad.BranchID = obj.Branch;
                 objLoad.ProcessFeeType = obj.ProcessFeeType;
-                objLoad.VoucherNo = obj.VoiceNo;
+                objLoad.InvoiceNO = obj.VoiceNo;
                 objLoad.Save(ModifiedAction.Update);
             }
 
@@ -355,7 +355,7 @@ namespace BrokerWebApp.inoutbalance
 
             this.dxeReleaseDate.Date = obj.FeeDate;
             this.dxetxtRemark.Text = obj.Remark;
-            this.dxetxtInvoiceNO.Text = obj.VoucherNo;
+            this.dxetxtInvoiceNO.Text = obj.InvoiceNO;
 
             ListEditItem theselected;
 
