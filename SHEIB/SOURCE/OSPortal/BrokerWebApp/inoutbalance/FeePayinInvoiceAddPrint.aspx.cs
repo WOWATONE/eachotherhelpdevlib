@@ -31,10 +31,11 @@ namespace BrokerWebApp.inoutbalance
             string conn = ConfigurationManager.ConnectionStrings["broker"].ConnectionString;
             inoutbalance.rpt.dsFeePayinInvoice dFee = new BrokerWebApp.inoutbalance.rpt.dsFeePayinInvoice();
 
-            sSql = sSql + "select VoucherID,(Select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,b.BranchName,,b.BankName,b.BankAccount,";
+            sSql = sSql + "select VoucherID,(Select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,b.BranchName,b.BankName,b.BankAccount,";
             sSql = sSql + "(select SUM(Fee) from Fee where VoucherID=a.VoucherID) PayinFee,";
             sSql = sSql + "(select dbo.MoneyToChinese(SUM(Fee)) from Fee where VoucherID=a.VoucherID) PayinFeeUpper,";
-            sSql = sSql + "(select sum(PayProcBase) from VoucherFee where VoucherID=a.VoucherID ) PayProc";
+            sSql = sSql + "(select sum(PayProcBase) from VoucherFee where VoucherID=a.VoucherID ) PayProc,";
+            sSql = sSql + " dbo.GetYYYYMMDDChinese(a.FeeDate) FeeDate";
             sSql = sSql + " from Voucher a";
             sSql = sSql + " left join branch b";
             sSql = sSql + " on a.BranchID=b.BranchID";
@@ -43,17 +44,22 @@ namespace BrokerWebApp.inoutbalance
             ad.Fill(dFee, "PayinInvoice");
 
             sSql = "";
-            sSql = sSql + "select PayinID+'('+dbo.GetVoucherPolicyByPayinID('" + sVoucherID + "',PayinID)+')' PolicyNo,ProcessFeeTypeName,Fee";
-            sSql = sSql + " from ";
-            sSql = sSql + " (";
-            sSql = sSql + " select b.PayinID,sum(a.Fee) Fee,max(b.ProcessFeeType) ProcessFeeTypeName";
+            //sSql = sSql + "select PayinID+'('+dbo.GetVoucherPolicyByPayinID('" + sVoucherID + "',PayinID)+')' PolicyNo,ProcessFeeTypeName,Fee";
+            //sSql = sSql + " from ";
+            //sSql = sSql + " (";
+            //sSql = sSql + " select b.PayinID,sum(a.Fee) Fee,max(b.ProcessFeeType) ProcessFeeTypeName";
+            //sSql = sSql + " from VoucherFee a";
+            //sSql = sSql + " left join PolicyPeriodFee b";
+            //sSql = sSql + " on a.PolPeriodID=b.PolPeriodID";
+            //sSql = sSql + " where a.VoucherID='" + sVoucherID + "'";
+            //sSql = sSql + " group by b.PayinID";
+            //sSql = sSql + " ) a";
+
+            sSql = sSql + "select a.VoucherID,b.PayinID,a.PolicyNo,a.PolicyID,a.ProcessFeeTypeName,a.Fee";
             sSql = sSql + " from VoucherFee a";
             sSql = sSql + " left join PolicyPeriodFee b";
             sSql = sSql + " on a.PolPeriodID=b.PolPeriodID";
-            sSql = sSql + " where a.VoucherID='" + sVoucherID + "'";
-            sSql = sSql + " group by b.PayinID";
-            sSql = sSql + " ) a";
-
+            sSql = sSql + " where VoucherID='" + sVoucherID + "'";
             SqlDataAdapter adDetail = new SqlDataAdapter(sSql, conn);
             adDetail.Fill(dFee, "PayinInvoiceDetail");
 

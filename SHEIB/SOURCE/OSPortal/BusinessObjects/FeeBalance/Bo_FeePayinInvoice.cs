@@ -97,10 +97,11 @@ namespace BusinessObjects
 
             //where 1=1
 
-
-
+            //(select Max(v.VoucherID) From Fee f, Voucher v Where f.Voucherid = v.Voucherid  and f. PolPeriodID=a.PolPeriodID and v.AccountTypeID in ('3','4')) PayinID,
+            //(select max(VoucherID) from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4'))
             sSql = sSql + "select a.* from (";
-            sSql = sSql + "select a.VoucherID,a.FeeId,c.CustomerID,c.ProdTypeID,b.CarrierID,b.BranchID,c.PolicyID,c.PolicyNo,b.NoticeNo,";
+            sSql = sSql + "select (select max(VoucherID) from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4')) PayinID,";
+            sSql = sSql + "a.VoucherID,a.FeeId,c.CustomerID,c.ProdTypeID,b.CarrierID,b.BranchID,c.PolicyID,c.PolicyNo,b.NoticeNo,";
             sSql = sSql + "a.FeeDate,b.PayFeeBase,";
             sSql = sSql + "(select IsNull(sum(Fee),0) from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4') and VoucherID<>a.VoucherID) PayedFee,";
             sSql = sSql + "(select IsNull(sum(Fee),0) from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('5') and VoucherID<>a.VoucherID) PayinInvoiceedFee,";

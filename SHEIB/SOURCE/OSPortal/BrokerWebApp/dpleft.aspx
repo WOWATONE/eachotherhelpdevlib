@@ -67,7 +67,7 @@
                             <Items>
                                 <dxnb:NavBarItem Text="理赔登记" Name="CustomerClaim/NotifyClaimList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="理赔资料管理" Name="http://www.google.cn">
+                                <dxnb:NavBarItem Text="理赔资料管理" Name="http://www.google.cn" Visible="false">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
@@ -124,7 +124,7 @@
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
-                        <dxnb:NavBarGroup Text="消息提醒" Expanded="false">
+                        <dxnb:NavBarGroup Text="消息提醒" Visible="false">
                             <Items>
                                 <dxnb:NavBarItem Text="服务提醒" Name="CustomerRelation/AlertService.aspx" Visible="false">
                                 </dxnb:NavBarItem>

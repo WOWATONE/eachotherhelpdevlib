@@ -332,7 +332,7 @@
                         <tr>
                             <td>
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
-                                    KeyFieldName="NoticeNo" AutoGenerateColumns="False" Settings-ShowFooter="true"
+                                    KeyFieldName="PolperiodID" AutoGenerateColumns="False" Settings-ShowFooter="true"
                                     Width="100%" SettingsPager-AlwaysShowPager="true" 
                                     >
                                     <%-- BeginRegion Columns --%>

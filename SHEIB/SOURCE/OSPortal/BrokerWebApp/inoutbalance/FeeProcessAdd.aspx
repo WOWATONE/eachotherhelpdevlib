@@ -26,7 +26,7 @@
     <script type="text/javascript">
 
         function cusCheckNessary() {
-            var id = getVoucherId();
+            var id = getVoucherID();
             if (isEmpty(id)) {
                 return true;
             }
@@ -87,30 +87,31 @@
 
         function btnAddPolicyClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
-            var url = "FeeProcessAddSelect.aspx?ID=" + getVoucherId();
+            var url = "FeeProcessAddSelect.aspx?ID=" + getVoucherID();
 
             window.showModalDialog(url, self, myArguments);
-            gridPolicyItem.PerformCallback('');
+            var sVoucherID = getVoucherID();
+            gridPolicyItem.PerformCallback(sVoucherID);
         }
 
         function btnAddPrintClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=700px;center=yes;help=no";
-            var url = "FeeProcessAddPrint.aspx?ID=" + getVoucherId();
+            var url = "FeeProcessAddPrint.aspx?ID=" + getVoucherID();
 
             window.showModalDialog(url, self, myArguments);
             gridPolicyItem.PerformCallback('');
         }
 
 
-        function getVoucherId() {
-            var result = $("#<%=lblVoucherId.ClientID %>");
+        function getVoucherID() {
+            var result = $("#<%=lblVoucherID.ClientID %>");
             var id = result[0].innerHTML;
             return id;
         }
 
 
-        function setVoucherId(value) {
-            var result = $("#<%=lblVoucherId.ClientID %>");
+        function setVoucherID(value) {
+            var result = $("#<%=lblVoucherID.ClientID %>");
             result[0].innerHTML = value;
         }
 
@@ -148,9 +149,9 @@
 
         function saveCallbackComplete(s, e) {
             //do nothing;
-            var pid = getVoucherId();
+            var pid = getVoucherID();
             if (isEmpty(pid)) {
-                setVoucherId(e.result);
+                setVoucherID(e.result);
                 cusCompleteEnable();
             }
         }
@@ -197,7 +198,7 @@
 
         function makeInfoJSON(AuditStatus) {
 
-            var ID = getVoucherId();
+            var ID = getVoucherID();
             var Remark = dxetxtRemark.GetValueString();
             var ReleaseDate = dxeReleaseDate.GetValue();
             var ProcessFeeType = dxeddlProcessFeeType.GetValue();
@@ -261,7 +262,6 @@
                     if (isDecimal(itemVal)) {
                         sumFee = parseFloat(sumFee) + parseFloat(itemVal);
                     }
-
                     //sumFeeAdjust
                     itemVal = gridPolicyItem.GetDataRow(i).cells[indexFeeAdjust].innerText;
                     if (isDecimal(itemVal)) {
@@ -331,13 +331,13 @@
                                 流水号：
                             </td>
                             <td style="width: 78%; text-align: left;">
-                                <label id="lblVoucherId" runat="server" />
+                                <label id="lblVoucherID" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
                                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                    DataSourceID="" KeyFieldName="Feeid" Width="100%" AutoGenerateColumns="False"
+                                    DataSourceID="" KeyFieldName="FeeId" Width="100%" AutoGenerateColumns="False"
                                     OnRowUpdating="gridPolicyItem_RowUpdating" OnRowUpdated="gridPolicyItem_RowUpdated"
                                     OnRowDeleting="gridPolicyItem_RowDeleting" OnRowDeleted="gridPolicyItem_RowDeleted"
                                     OnCustomCallback="gridPolicyItem_CustomCallback" OnStartRowEditing="gridPolicyItem_StartRowEditing"
@@ -348,16 +348,18 @@
                                             <EditButton Visible="true" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Feeid" Caption="Feeid" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False"
                                             Visible="false">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Voucherid" Caption="开票通知书号" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayinInvoiceID" Caption="开票通知书号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayinInvoiceedFee" Caption="开票金额" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="PayedProc" Caption="已收经纪费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次实收经纪费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -596,16 +598,16 @@
                                     <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
                                 </dxe:ASPxButton>
                             </td>
-                            <td style="width: 80px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit"
-                                    Text="审核" AutoPostBack="false">
-                                    <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
-                                </dxe:ASPxButton>
-                            </td>
                             <td style="width: 140px; text-align: left;">
                                 <dxe:ASPxButton runat="server" ID="dxebtnPrint" ClientInstanceName="dxebtnPrint"
                                     Text="打印经纪费入账单" AutoPostBack="false">
                                     <ClientSideEvents Click="btnAddPrintClick" />
+                                </dxe:ASPxButton>
+                            </td>
+                            <td style="width: 80px; text-align: left;">
+                                <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit"
+                                    Text="审核" AutoPostBack="false">
+                                    <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
                                 </dxe:ASPxButton>
                             </td>
                             <td style="width: 80px; text-align: left;">
