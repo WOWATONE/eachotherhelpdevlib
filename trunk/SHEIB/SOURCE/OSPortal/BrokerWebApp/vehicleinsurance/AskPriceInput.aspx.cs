@@ -22,6 +22,7 @@ namespace BrokerWebApp.vehicleinsurance
 
 
         private const string currentPageModeKey = "CurrentPagePolicyMode";
+        
         private const string inputQueryStringIDKey = "id";
         private const string inputQueryStringPageModeKey = "pagemode";
         private const string inputQueryStringPreIDKey = "pid";
@@ -40,6 +41,9 @@ namespace BrokerWebApp.vehicleinsurance
         private Nullable<PageMode> pm;
 
         #endregion Variables
+
+
+        #region Page Events
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -75,9 +79,22 @@ namespace BrokerWebApp.vehicleinsurance
                 //loadPrePolicyValue(this.pplcid.Value);
             }
 
+
+            //load data
+            if (!IsCallback && !IsPostBack)
+            {
+                getInitPolicyData();
+            }
+            else
+            {
+                if (Page.IsCallback)
+                {
+                    getCallBackPolicyData();
+                }
+            }
             
-            this.gridPolicyItem.DataSource = null;
-            this.gridPolicyItem.DataBind();
+
+            
 
             
         }
@@ -86,6 +103,56 @@ namespace BrokerWebApp.vehicleinsurance
         {
             //  
         }
+
+
+        #endregion Page Events
+
+
+        #region CallBack Events
+
+        protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            //switch (this.pm)
+            //{
+            //    case PageMode.Input :
+            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+            //        break;
+            //    case PageMode.Alt:
+            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+            //        break;
+            //    case PageMode.Audit:
+            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+            //        break;
+            //    default:
+            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+            //        break;
+            //}
+            //String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+            //String thePolicyID = savePolicy(e.Parameter, policystatus);
+            e.Result = "";
+        }
+
+
+        protected void dxeSaveAndCheckCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            //String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+            //savePolicy(e.Parameter, policystatus);
+            e.Result = "complete";
+        }
+
+
+        protected void dxeAuditOkCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            //String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+            //savePolicy(e.Parameter, policystatus);
+            //auditPolicy(e.Parameter);
+            e.Result = "complete";
+        }
+
+        #endregion CallBack Events
+
+
+        #region gridPolicyItem Events
 
         protected void gridPolicyItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
@@ -110,24 +177,43 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void gridPolicyItem_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
-            String theParam = e.Parameters;
-
-            switch (theParam)
-            {
-                case "disabled":
-                    this.gridPolicyItem.Enabled = false;
-                    break;
-                case "enabled":
-                    this.gridPolicyItem.Enabled = true;
-                    break;
-                default:
-                    this.gridPolicyItem.Enabled = true;
-                    break;
-            }
-            
+            String theParam = e.Parameters;                        
             this.gridPolicyItem.DataBind();
         }
-               
+
+
+        private void getInitPolicyData()
+        {
+            String where = " and B.AskPriceID != '' and B.AskPriceID = '" + this.dxetxtAskPriceID.Text.Trim() + "'";
+            DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(where);
+            this.gridPolicyItem.DataSource = dt;
+            this.gridPolicyItem.DataBind();
+            if (String.IsNullOrEmpty(this.dxetxtAskPriceID.Text.Trim()))
+            {
+                //
+            }
+
+        }
+
+        private void getCallBackPolicyData()
+        {
+            String where = " and B.AskPriceID != '' and B.AskPriceID = '" + this.dxetxtAskPriceID.Text.Trim() + "'";
+            DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(where);
+            this.gridPolicyItem.DataSource = dt;
+            this.gridPolicyItem.DataBind();
+        }
+
+
+        private void getPostBackPolicyData()
+        {
+            String where = " and B.AskPriceID != '' and B.AskPriceID = '" + this.dxetxtAskPriceID.Text.Trim() + "'";
+            DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(where);
+            this.gridPolicyItem.DataSource = dt;
+            this.gridPolicyItem.DataBind();
+        }
+
+        #endregion gridPolicyItem Events
+
 
 
         #region Upload File Events

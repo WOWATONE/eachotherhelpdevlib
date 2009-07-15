@@ -41,6 +41,42 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden pkid;
         
         /// <summary>
+        /// dxeAddCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeAddCallback;
+        
+        /// <summary>
+        /// dxeSaveCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeSaveCallback;
+        
+        /// <summary>
+        /// dxeSaveAndCheckCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeSaveAndCheckCallback;
+        
+        /// <summary>
+        /// dxeAuditOkCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeAuditOkCallback;
+        
+        /// <summary>
         /// insuranceDetailTabPage control.
         /// </summary>
         /// <remarks>
