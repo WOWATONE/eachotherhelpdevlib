@@ -70,82 +70,21 @@ function policyBaseCompleteEnable() {
 
 function makePolicyJSON() {
 
-    var AciPolicyNo = null;
-    var AciPremium = null;
-    var AciProcess = null;
-    var AciProcessRate = null;
-    var AltNO = null;
-    var AskPriceID = null;
-    var AuditPerson = null;
-    var AuditTime = null;
-    var BankAccount = null;
-    var BankName = null;
-    var Beneficiary = dxetxtBeneficiary.GetValueString();
-    var Capacity = null;
-    var CarNo = null;
-    var CarUser = null;
-    var CarValue = null;
-    var CarcaseNo = null;
-    var CarrierSales = null;
-    var CiPremium = null;
-    var CiProcess = null;
-    var CiProcessRate = null;
-    var ConversionRate = dxetxtConversionRate.GetValueString();
-    var Coverage = dxetxtCoverage.GetValueString();
-    var CreatePerson = dxetxtCreatePerson.GetValueString();
-    var CreateTime = dxedtCreateTime.GetValue();
-    var CstPremium = null;
-    var Currency = dxeddlCurrency.GetValue();
+    var AskPriceID = dxetxtAskPriceID.GetValueString();
+    var CarrierID = dxeddlCarrierId.GetValue();
+    var BranchID = dxeddlBranchId.GetValue();
+    var CarrierSales = dxetxtCarrierSales.GetValueString();
     var CustomerID = getCustomerID();
-    var DeptId = dxeddlDeptID.GetValue();
-    var EndDate = dxeEndDate.GetValue();
-    var EngineNo = null;
-    var FlagAlt = null;
-    var FlagReinsure = null;
-    var FlagTogether = null;
-    var GatheringType = dxeddlGatheringType.GetValue();
-    var ModifyPerson = null;
-    var ModifyTime = null;
-    var OperationType = dxeddlOperationType.GetValue();
-    var PeriodTimes = dxetxtStage.GetValueString();
-    var PolicyID = dxetxtPolicyID.GetValueString();
-    var PolicyNo = dxetxtPolicyNo.GetValueString();
-    var PolicyStatus = null;
-    var PolicyType = null;
-    var Premium = dxetxtPremium.GetValueString();
-    var PremiumBase = dxetxtPremiumBase.GetValueString();
-    var PremiumRate = dxetxtPremiumRate.GetValueString();
-    var PrevPolicyID = getPrePolicyID();
-    var Process = dxetxtProcess.GetValueString();
-    var ProcessBase = dxetxtProcessBase.GetValueString();
-    var ProcessRate = dxetxtProcessRate.GetValueString();
-    var ProdTypeID = getProductTypeID();
-    var RegisterDate = null;
+    var SalesId = dxeddlSalesId.GetValue();      
+    var DeptId = dxeddlDeptID.GetValue();    
+    var GatheringType = dxeddlGatheringType.GetValue();    
+    var OperationType = dxeddlOperationType.GetValue();    
+    var SourceTypeID = dxeddlSourceTypeID.GetValue(); 
     var Remark = null;
-    var SalesId = dxeddlSalesId.GetValue();
-    var SignDate = null;
-    var SourceTypeID = dxeddlSourceTypeID.GetValue();
-    var Special = null;
-    var StartDate = dxeStartDate.GetValue();
-    var UseCharacter = null;
-    var VolumnNo = null;
-    var CustomerName = dxetxtCustomer.GetValueString();
-    var ProdTypeName = dxetxtProdTypeName.GetValueString();
 
-
-
-    var plc = new Policy(AciPolicyNo, AciPremium, AciProcess, AciProcessRate,
-            AltNO, AskPriceID, AuditPerson, AuditTime, BankAccount,
-            BankName, Beneficiary, Capacity, CarNo, CarUser,
-            CarValue, CarcaseNo, CarrierSales, CiPremium, CiProcess,
-            CiProcessRate, ConversionRate, Coverage, CreatePerson, CreateTime,
-            CstPremium, Currency, CustomerID, DeptId, EndDate,
-            EngineNo, FlagAlt, FlagReinsure, FlagTogether, GatheringType,
-            ModifyPerson, ModifyTime, OperationType, PeriodTimes, PolicyID, PolicyNo,
-            PolicyStatus, PolicyType, Premium, PremiumBase, PremiumRate, PrevPolicyID,
-            Process, ProcessBase, ProcessRate, ProdTypeID, RegisterDate,
-            Remark, SalesId, SignDate, SourceTypeID, Special,
-            StartDate, UseCharacter, VolumnNo);
+    var plc = new Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
+            CustomerID, SalesId, DeptId, GatheringType,
+            OperationType, SourceTypeID, Remark);
 
     //deserialize JSON string, make a JSON object
     //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
@@ -296,194 +235,43 @@ function imgNewCustomerClick() {
 
 
 
-function Policy(AciPolicyNo, AciPremium, AciProcess, AciProcessRate,
-        AltNO, AskPriceID, AuditPerson, AuditTime, BankAccount,
-        BankName, Beneficiary, Capacity, CarNo, CarUser,
-        CarValue, CarcaseNo, CarrierSales, CiPremium, CiProcess,
-        CiProcessRate, ConversionRate, Coverage, CreatePerson, CreateTime,
-        CstPremium, Currency, CustomerID, DeptId, EndDate,
-        EngineNo, FlagAlt, FlagReinsure, FlagTogether, GatheringType,
-        ModifyPerson, ModifyTime, OperationType, PeriodTimes, PolicyID, PolicyNo,
-        PolicyStatus, PolicyType, Premium, PremiumBase, PremiumRate, PrevPolicyID,
-        Process, ProcessBase, ProcessRate, ProdTypeID, RegisterDate,
-        Remark, SalesId, SignDate, SourceTypeID, Special,
-        StartDate, UseCharacter, VolumnNo) {
-    if (!isEmpty(AciPolicyNo))
-        this.AciPolicyNo = AciPolicyNo;
+function Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
+            CustomerID, SalesId, DeptId, GatheringType,
+            OperationType, SourceTypeID, Remark) {
 
-    if (!isEmpty(AciPremium))
-        this.AciPremium = AciPremium;
-
-    if (!isEmpty(AciProcess))
-        this.AciProcess = AciProcess;
-
-    if (!isEmpty(AciProcessRate))
-        this.AciProcessRate = AciProcessRate;
-
-    if (!isEmpty(AltNO))
-        this.AltNO = AltNO;
 
     if (!isEmpty(AskPriceID))
         this.AskPriceID = AskPriceID;
 
-    if (!isEmpty(AuditPerson))
-        this.AuditPerson = AuditPerson;
+    if (!isEmpty(CarrierID))
+        this.CarrierID = CarrierID;
 
-    if (!isEmpty(AuditTime))
-        this.AuditTime = AuditTime;
-
-    if (!isEmpty(BankAccount))
-        this.BankAccount = BankAccount;
-
-    if (!isEmpty(BankName))
-        this.BankName = BankName;
-
-    if (!isEmpty(Beneficiary))
-        this.Beneficiary = Beneficiary;
-
-    if (!isEmpty(Capacity))
-        this.Capacity = Capacity;
-
-    if (!isEmpty(CarNo))
-        this.CarNo = CarNo;
-
-    if (!isEmpty(CarUser))
-        this.CarUser = CarUser;
-
-    if (!isEmpty(CarValue))
-        this.CarValue = CarValue;
-
-    if (!isEmpty(CarcaseNo))
-        this.CarcaseNo = CarcaseNo;
-
+    if (!isEmpty(BranchID))
+        this.BranchID = BranchID;
+        
     if (!isEmpty(CarrierSales))
         this.CarrierSales = CarrierSales;
-
-    if (!isEmpty(CiPremium))
-        this.CiPremium = CiPremium;
-
-    if (!isEmpty(CiProcess))
-        this.CiProcess = CiProcess;
-
-    if (!isEmpty(CiProcessRate))
-        this.CiProcessRate = CiProcessRate;
-
-    if (!isEmpty(ConversionRate))
-        this.ConversionRate = ConversionRate;
-
-    if (!isEmpty(Coverage))
-        this.Coverage = Coverage;
-
-    if (!isEmpty(CreatePerson))
-        this.CreatePerson = CreatePerson;
-
-    if (!isEmpty(CreateTime))
-        this.CreateTime = CreateTime;
-
-    if (!isEmpty(CstPremium))
-        this.CstPremium = CstPremium;
-
-    if (!isEmpty(Currency))
-        this.Currency = Currency;
 
     if (!isEmpty(CustomerID))
         this.CustomerID = CustomerID;
 
+    if (!isEmpty(SalesId))
+        this.SalesId = SalesId;
+        
     if (!isEmpty(DeptId))
         this.DeptId = DeptId;
-
-    if (!isEmpty(EndDate))
-        this.EndDate = EndDate;
-
-    if (!isEmpty(EngineNo))
-        this.EngineNo = EngineNo;
-
-    if (!isEmpty(FlagAlt))
-        this.FlagAlt = FlagAlt;
-
-    if (!isEmpty(FlagReinsure))
-        this.FlagReinsure = FlagReinsure;
-
-    if (!isEmpty(FlagTogether))
-        this.FlagTogether = FlagTogether;
 
     if (!isEmpty(GatheringType))
         this.GatheringType = GatheringType;
 
-    if (!isEmpty(ModifyPerson))
-        this.ModifyPerson = ModifyPerson;
-
-    if (!isEmpty(ModifyTime))
-        this.ModifyTime = ModifyTime;
-
     if (!isEmpty(OperationType))
         this.OperationType = OperationType;
 
-    if (!isEmpty(PeriodTimes))
-        this.PeriodTimes = PeriodTimes;
-
-    if (!isEmpty(PolicyID))
-        this.PolicyID = PolicyID;
-
-    if (!isEmpty(PolicyNo))
-        this.PolicyNo = PolicyNo;
-
-    if (!isEmpty(PolicyStatus))
-        this.PolicyStatus = PolicyStatus;
-
-    if (!isEmpty(PolicyType))
-        this.PolicyType = PolicyType;
-
-    if (!isEmpty(Premium))
-        this.Premium = Premium;
-
-    if (!isEmpty(PremiumBase))
-        this.PremiumBase = PremiumBase;
-
-    if (!isEmpty(PremiumRate))
-        this.PremiumRate = PremiumRate;
-
-    if (!isEmpty(PrevPolicyID))
-        this.PrevPolicyID = PrevPolicyID;
-
-    if (!isEmpty(Process))
-        this.Process = Process;
-
-    if (!isEmpty(ProcessBase))
-        this.ProcessBase = ProcessBase;
-
-    if (!isEmpty(ProcessRate))
-        this.ProcessRate = ProcessRate;
-
-    if (!isEmpty(ProdTypeID))
-        this.ProdTypeID = ProdTypeID;
-
-    if (!isEmpty(RegisterDate))
-        this.RegisterDate = RegisterDate;
-
-    if (!isEmpty(Remark))
-        this.Remark = Remark;
-
-    if (!isEmpty(SalesId))
-        this.SalesId = SalesId;
-
-    if (!isEmpty(SignDate))
-        this.SignDate = SignDate;
-
     if (!isEmpty(SourceTypeID))
         this.SourceTypeID = SourceTypeID;
-
-    if (!isEmpty(Special))
-        this.Special = Special;
-
-    if (!isEmpty(StartDate))
-        this.StartDate = StartDate;
-
-    if (!isEmpty(UseCharacter))
-        this.UseCharacter = UseCharacter;
-
-    if (!isEmpty(VolumnNo))
-        this.VolumnNo = VolumnNo;
+        
+    if (!isEmpty(Remark))
+        this.Remark = Remark;
 
 }
 
