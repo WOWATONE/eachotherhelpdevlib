@@ -188,7 +188,7 @@
                                                     业务员：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="dxetxtSalesID" ClientInstanceName="dxetxtSalesID" runat="server" Width="140px"></dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtCarrierSales" ClientInstanceName="dxetxtCarrierSales" runat="server" Width="140px"></dxe:ASPxTextBox>
                                                 </td>
                                                 <td></td>
                                             </tr>
@@ -216,22 +216,21 @@
                                                     业务来源：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID" runat="server" Width="140px" DropDownStyle="DropDownList">
-						                                <Items>
-							                                <dxe:ListEditItem Text="来源1" Value="" />
-						                                </Items>
-					                                </dxe:ASPxComboBox>
+                                                    <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID" runat="server" Width="125px" DropDownStyle="DropDownList">
+															<Items>
+																<dxe:ListEditItem Text="(全部)" Value="" />
+															</Items>
+														</dxe:ASPxComboBox>
                                                 </td>
                                                 <td style="text-align: right;">
                                                     业务性质：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxComboBox ID="dxeddlFlagReinsure" ClientInstanceName="dxeddlFlagReinsure" runat="server" Width="140px" DropDownStyle="DropDownList">
-						                                <Items>
-							                                <dxe:ListEditItem Text="新增" Value="1" />
-							                                <dxe:ListEditItem Text="再保" Value="2" />
-						                                </Items>
-					                                </dxe:ASPxComboBox>
+                                                    <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType" runat="server" Width="125px" DropDownStyle="DropDownList">
+															<Items>
+																<dxe:ListEditItem Text="(全部)" Value="" />
+															</Items>
+														</dxe:ASPxComboBox>
                                                 </td>
                                                 <td></td>
                                             </tr>                                                        
@@ -240,10 +239,11 @@
                                                     收款方式：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <asp:DropDownList ID="ddlGatheringType" runat="server"  Width="150px">
-                                                        <asp:ListItem Text="收款方式1" Value="1"></asp:ListItem>
-                                                        <asp:ListItem Text="收款方式2" Value="2"></asp:ListItem>
-                                                    </asp:DropDownList>
+                                                    <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType" runat="server" Width="125px" DropDownStyle="DropDownList">
+															<Items>
+																<dxe:ListEditItem Text="(全部)" Value="" />
+															</Items>
+														</dxe:ASPxComboBox>
                                                 </td>
                                                 <td style="text-align: right;">
                                                     录单人：
