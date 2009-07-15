@@ -9,14 +9,12 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dxpc" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl" TagPrefix="dxuc" %>
-
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
+<%@ OutputCache Location="None" NoStore="true" %>  
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Ñ¯¼Ûµ¥Â¼Èë</title>
     <script type="text/javascript" src="../js/pagejs/AskPriceInput.js"></script>
-    
     <script type="text/javascript">
-
-
         var pagemode = null;
         var npbasicdetail = null;
         var npGridPolicyItemDetail = null;
@@ -71,8 +69,8 @@
             window.onunload = function() {
                 var pWindow = window.dialogArguments;
                 var thegrid = pWindow.gridSearchResult;
-                
-                if (thegrid != null) {                    
+
+                if (thegrid != null) {
                     thegrid.PerformCallback('refresh');
                 }
                 else {
@@ -80,14 +78,9 @@
                 }
             };
 
-            gridPolicyItem.PerformCallback('disabled');
-            
-            //getServerControlRefStubs();
+            getServerControlRefStubs();
 
-
-            //policyBaseCompleteUnable();
-
-
+            policyBaseCompleteUnable();
 
         });
     </script>
@@ -97,6 +90,23 @@
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     <input type="hidden" id="pagemode" runat="server" value="" />
     <input type="hidden" id="pkid" runat="server" />
+    
+    <dxcb:ASPxCallback ID="dxeAddCallback" ClientInstanceName="dxeAddCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {addCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
+    <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
+    <dxcb:ASPxCallback ID="dxeSaveAndCheckCallback" ClientInstanceName="dxeSaveAndCheckCallback" runat="server" OnCallback="dxeSaveAndCheckCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {saveCheckCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
+    <dxcb:ASPxCallback ID="dxeAuditOkCallback" ClientInstanceName="dxeAuditOkCallback" runat="server" OnCallback="dxeAuditOkCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {auditOkCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
     
     <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
         runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%" AutoPostBack="false" EnableCallBacks="true">

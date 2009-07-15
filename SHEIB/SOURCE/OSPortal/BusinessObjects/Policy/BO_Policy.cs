@@ -649,7 +649,10 @@ namespace BusinessObjects.Policy
             sb.Append(" B.CreatePerson,B.CreateTime, ");
             sb.Append(" B.AuditPerson,B.AuditTime, ");
             sb.Append(" B.ModifyPerson,B.ModifyTime, ");
-            sb.Append(" B.Remark ");
+            sb.Append(" B.Remark, B.AskPriceID, B.BankName, B.BankAccount, B.CiPremium, ");
+            sb.Append(" B.CiProcessRate, B.CiProcess, B.AciPremium, B.AciProcessRate,  ");
+            sb.Append(" B.AciProcess, B.CstPremium, B.PeriodTimes, B.CarNo, B.CarcaseNo, ");
+            sb.Append(" B.EngineNo, B.Capacity, B.UseCharacter, B.RegisterDate, B.CarValue, B.CarUser ");
 
             sb.Append(" FROM Policy B ");
             sb.Append(" LEFT JOIN PolicyCarrier A ON A.PolicyID = B.PolicyID ");
