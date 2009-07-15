@@ -12,15 +12,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>车险保单录入列表</title>
     <script type="text/javascript">
-	    $(document).ready(function() {
-	        //jQuery.noticeAdd({
-	        //    text: 'This is a notification that you have to remove',
-	        //    stay: true
-	        //});
+        $(document).ready(function() {
+            //jQuery.noticeAdd({
+            //    text: 'This is a notification that you have to remove',
+            //    stay: true
+            //});
 
-	        lblCurrentDate.innerHTML = makewelcomeString();
-	    
-	    });
+            lblCurrentDate.innerHTML = makewelcomeString();
+            
+        });
 	    
 	    
 

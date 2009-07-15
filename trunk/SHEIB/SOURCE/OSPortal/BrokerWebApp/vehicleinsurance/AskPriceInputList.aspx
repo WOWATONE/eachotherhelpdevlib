@@ -20,17 +20,21 @@
 
             lblCurrentDate.innerHTML = makewelcomeString();
 
+            
         });
 
 
         function btnCreateClick(url) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            window.showModalDialog("AskPriceInput.aspx", "", myArguments);
+            window.showModalDialog("AskPriceInput.aspx?pagemode=input", "", myArguments);
         }
 
         function gridCustomButtonClick(s, e) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            window.showModalDialog("AskPriceInput.aspx", self, myArguments);
+            var noint = s.GetDataRow(e.visibleIndex).cells[2].innerText;
+            var querystring;
+            querystring = "AskPriceInput.aspx?pagemode=input&id=" + noint;
+            window.showModalDialog(querystring, self, myArguments);
         }
 
         function imgPolicyProdTypeClick() {
@@ -285,6 +289,7 @@
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <Settings ShowGroupPanel="true" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
+                                    <SettingsBehavior AllowDragDrop="false" AllowGroup="false" />
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="AskPriceID" SummaryType="Count" DisplayFormat="#" />                                                                               
                                     </TotalSummary>

@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSPortalWebApp", "OSPortalWebApp\OSPortalWebApp.csproj", "{ADDD279E-6700-4B92-8290-ACB05D96BE48}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessObjects", "BusinessObjects\BusinessObjects.csproj", "{FD661BD4-56DB-4E99-87A1-DE84F70A0F4D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrokerWebApp", "BrokerWebApp\BrokerWebApp.csproj", "{5CDC9348-B169-42A3-AF38-7A48AF1E6A89}"
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ADDD279E-6700-4B92-8290-ACB05D96BE48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADDD279E-6700-4B92-8290-ACB05D96BE48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADDD279E-6700-4B92-8290-ACB05D96BE48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADDD279E-6700-4B92-8290-ACB05D96BE48}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FD661BD4-56DB-4E99-87A1-DE84F70A0F4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FD661BD4-56DB-4E99-87A1-DE84F70A0F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD661BD4-56DB-4E99-87A1-DE84F70A0F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU

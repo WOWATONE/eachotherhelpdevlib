@@ -9,11 +9,84 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dxpc" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl" TagPrefix="dxuc" %>
-
+<%@ OutputCache Location="None" NoStore="true" %> 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>询价单录入</title>
     <script type="text/javascript" src="../js/pagejs/AskPriceInput.js"></script>
-    
+    <script type="text/javascript">
+
+
+        var pagemode = null;
+        var npbasicdetail = null;
+        var npGridPolicyItemDetail = null;
+        var tblNewExecuteAction = null;
+        var tbltrAuditExecuteAction = null;
+        
+        
+        function getServerControlRefStubs() {
+            if ($("#<%=pagemode.ClientID %>").length > 0) {
+                pagemode = $("#<%=pagemode.ClientID %>")[0];
+            }
+            
+            if ($("#<%=npbasicdetail.ClientID %>").length > 0) {
+                npbasicdetail = $("#<%=npbasicdetail.ClientID %>")[0];
+            }
+        
+            if ($("#<%=npGridPolicyItemDetail.ClientID %>").length > 0) {
+                npGridPolicyItemDetail = $("#<%=npGridPolicyItemDetail.ClientID %>")[0];
+            }
+
+            if ($("#<%=tblNewExecuteAction.ClientID %>").length > 0) {
+                tblNewExecuteAction = $("#<%=tblNewExecuteAction.ClientID %>")[0];
+            }
+
+            if ($("#<%=tbltrAuditExecuteAction.ClientID %>").length > 0) {
+                tbltrAuditExecuteAction = $("#<%=tbltrAuditExecuteAction.ClientID %>")[0];
+            }
+
+        } 
+        
+              
+
+        function getCustomerID() {
+            var result = $("#<%=cusid.ClientID %>");
+            var ID = result[0].value;
+            return ID;
+        }
+
+        function setCustomerID(thevalue) {
+            var result = $("#<%=cusid.ClientID %>");
+            result[0].value = thevalue;
+        }       
+        
+        
+        $(document).ready(function() {
+            //jQuery.noticeAdd({
+            //    text: 'This is a notification that you have to remove',
+            //    stay: true
+            //});
+
+            //
+            window.onunload = function() {
+                var pWindow = window.dialogArguments;
+                var thegrid = pWindow.gridSearchResult;
+
+                if (thegrid != null) {
+                    thegrid.PerformCallback('refresh');
+                }
+                else {
+                    //do nothing
+                }
+            };
+
+
+            getServerControlRefStubs();
+
+
+            policyBaseCompleteUnable();
+
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
@@ -46,13 +119,13 @@
                                     <asp:Panel ID="npbasicdetail" runat="server" CssClass="collapsePanel" Height="0">
                                         <table style="width: 100%">
                                             <tr>
-                                                <td style="width: 80px; text-align: right;">
+                                                <td style="width: 90px; text-align: right;">
                                                     询价单号：
                                                 </td>
-                                                <td style="width: 150px; text-align: left;">
+                                                <td style="width: 180px; text-align: left;">
                                                     <dxe:ASPxTextBox ID="dxetxtAskPriceID" ClientInstanceName="dxetxtAskPriceID" runat="server" Width="140px"></dxe:ASPxTextBox>
                                                 </td>
-                                                <td style="width: 80px; text-align: right;">
+                                                <td style="width: 90px; text-align: right;">
                                                     部门：
                                                 </td>
                                                 <td style="width: 150px; text-align: left;">
@@ -63,7 +136,7 @@
 						                                </Items>
 					                                </dxe:ASPxComboBox>
                                                 </td>
-                                                <td style="width: 80px; text-align: right;">
+                                                <td style="width: 90px; text-align: right;">
                                                     客户经理：
                                                 </td>
                                                 <td style="width: 150px; text-align: left;">
@@ -109,10 +182,10 @@
                                                     投保人：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <table style="margin-left:-3px;">
+                                                    <table style="margin-left:-3px; width:175px;">
                                                         <tr>
                                                                 <td style="text-align: right;">
-                                                                    <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server" Width="125px"></dxe:ASPxTextBox>
+                                                                    <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server" Width="105px"></dxe:ASPxTextBox>
                                                                     <input type="hidden" id="cusid" runat="server" />
                                                                 </td>
                                                                 <td style="text-align: left;">
@@ -170,7 +243,19 @@
                                                     <dxe:ASPxDateEdit ID="dxeCreateTime" runat="server" Width="140px"></dxe:ASPxDateEdit>
                                                 </td>
                                                 <td></td>
-                                            </tr>                                                        
+                                            </tr> 
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td colspan="2" style="text-align: right;">
+                                                    <dxe:ASPxButton runat="server" id="dxebtntopSave" ClientInstanceName="dxebtntopSave" Text="保存" CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
+                                                        <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }"></ClientSideEvents>
+                                                    </dxe:ASPxButton>
+                                                </td>
+                                                <td></td>
+                                            </tr>                                                       
                                         </table>
                                     </asp:Panel>
                                     <ajaxToolkit:CollapsiblePanelExtender ID="cpeBasic" runat="Server" TargetControlID="npbasicdetail"
@@ -201,10 +286,11 @@
                                             <tr>
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                                        KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" 
+                                                        KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" EnableCallBacks="true" 
                                                         OnRowInserting="gridPolicyItem_RowInserting"
                                                         OnRowUpdating="gridPolicyItem_RowUpdating" 
-                                                        OnRowDeleting="gridPolicyItem_RowDeleting"
+                                                        OnRowDeleting="gridPolicyItem_RowDeleting" 
+                                                        OnCustomCallback="gridPolicyItem_CustomCallback"
                                                         >
                                                         <%-- BeginRegion Columns --%>
                                                         <Columns>                                                                        
@@ -470,6 +556,24 @@
                                 </td>
                                 <td>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5"></td>
+                            </tr>
+                            <tr runat="server" id="tbltrAuditExecuteAction">
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>                                
+                                <td>
+                                    <dxe:ASPxButton runat="server" id="dxebtnAuditOk" ClientInstanceName="dxebtnAuditOk" Text="审核" CausesValidation="false" AutoPostBack="false">
+                                        <ClientSideEvents Click="function(s, e) {dxebtnAuditOkClick(s,e);}" />
+                                    </dxe:ASPxButton>
+                                </td>
+                                <td>
+                                    <dxe:ASPxButton runat="server" id="dxebtnAuditClose" ClientInstanceName="dxebtnAuditClose" Text="关闭" CausesValidation="false" AutoPostBack="false">
+                                        <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
+                                    </dxe:ASPxButton>
+                                </td>
+                                <td>&nbsp;</td>
                             </tr>
                         </table>
                     </dxw:ContentControl>

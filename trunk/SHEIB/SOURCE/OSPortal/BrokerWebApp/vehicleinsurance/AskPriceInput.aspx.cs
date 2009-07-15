@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Web.UI.HtmlControls;
-using DevExpress.Web.ASPxHtmlEditor;
 using DevExpress.Web.ASPxEditors;
 using System.IO;
 using DevExpress.Web.ASPxUploadControl;
@@ -51,7 +50,7 @@ namespace BrokerWebApp.vehicleinsurance
             }
             else
             {
-                //this.dxetxtPolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
+                this.dxetxtAskPriceID.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey];
 
                 this.pkid.Value = Page.Request.QueryString[inputQueryStringPreIDKey];
@@ -108,6 +107,25 @@ namespace BrokerWebApp.vehicleinsurance
             this.gridPolicyItem.DataBind();
         }
 
+        protected void gridPolicyItem_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            String theParam = e.Parameters;
+
+            switch (theParam)
+            {
+                case "disabled":
+                    this.gridPolicyItem.Enabled = false;
+                    break;
+                case "enabled":
+                    this.gridPolicyItem.Enabled = true;
+                    break;
+                default:
+                    this.gridPolicyItem.Enabled = true;
+                    break;
+            }
+            
+            this.gridPolicyItem.DataBind();
+        }
                
 
 
