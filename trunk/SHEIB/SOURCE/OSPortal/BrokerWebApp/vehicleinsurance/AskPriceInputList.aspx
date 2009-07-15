@@ -24,9 +24,9 @@
         });
 
 
-        function btnCreateClick(url) {
+        function btnCreateClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            window.showModalDialog("AskPriceInput.aspx?pagemode=input", "", myArguments);
+            window.showModalDialog("AskPriceInput.aspx?pagemode=input", self, myArguments);
         }
 
         function gridCustomButtonClick(s, e) {
@@ -249,8 +249,9 @@
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                                     KeyFieldName="AskPriceID" AutoGenerateColumns="False" Settings-ShowFooter="true"
                                     Width="100%" SettingsPager-AlwaysShowPager="true" 
-                                    OnRowDeleting="gridSearchResult_RowDeleting"
-                                    OnRowDeleted="gridSearchResult_RowDeleted">
+                                    OnRowDeleting="gridSearchResult_RowDeleting" 
+                                    OnCustomCallback="gridSearchResult_CustomCallback" 
+                                    >
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">

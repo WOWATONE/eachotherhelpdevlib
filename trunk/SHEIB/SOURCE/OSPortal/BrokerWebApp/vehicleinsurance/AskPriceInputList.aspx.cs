@@ -18,10 +18,8 @@ namespace BrokerWebApp.vehicleinsurance
         #endregion Variables
 
         protected void Page_Load(object sender, EventArgs e)
-        {
-            
-            if (!IsPostBack && !IsCallback)
-                this.gridSearchResult.DataBind();
+        {            
+            //
         }
 
 
@@ -33,11 +31,7 @@ namespace BrokerWebApp.vehicleinsurance
             this.gridSearchResult.CancelEdit();
         }
 
-        protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
-        {
-            //
-        }
-
+        
         protected void gridSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
             this.gridSearchResult.DataBind();
