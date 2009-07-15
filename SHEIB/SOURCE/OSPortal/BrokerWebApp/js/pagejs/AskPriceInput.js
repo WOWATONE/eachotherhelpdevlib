@@ -1,9 +1,7 @@
 ﻿
 
 function policyCheckNessary() {
-    var pid = dxetxtPolicyID.GetValueString();
-    var pt = dxetxtStage.GetValueString();
-    var bf = dxetxtBeneficiary.GetValueString();
+    var pid = dxetxtAskPriceID.GetValueString();    
     var cid = getCustomerID();
     if (isEmpty(pid) || isEmpty(pt) || isEmpty(bf) || isEmpty(cid)) {
         return true;
@@ -14,85 +12,33 @@ function policyCheckNessary() {
 
 }
 
-function policyBaseCompleteEnable() {
-    var pagemode;
-    pagemode = $("#<%=pagemode.ClientID %>")[0];
-
-    var result, panel;
-    if (pagemode.value == "input") {
-        result = $("#<%=npGridPolicyItemDetail.ClientID %>");
-        panel = result[0];
-        panel.parentElement.removeAttribute('disabled');
-
-        result = $("#<%=npCostSummaryDetail.ClientID %>");
-        panel = result[0];
-        panel.parentElement.removeAttribute('disabled', 'true');
-
-        result = $("#<%=npPolicyCompanyDetail.ClientID %>");
-        panel = result[0];
-        panel.parentElement.removeAttribute('disabled', 'true');
-
-        result = $("#<%=tblNewExecuteAction.ClientID %>");
-        if (result.length > 0) {
-            panel = result[0];
-            panel.parentElement.removeAttribute('disabled', 'true');
-        }
-
-        //result = $("#<%=tbltrAuditExecuteAction.ClientID %>");
-        //if (result.length > 0) {
-        //    panel = result[0];
-        //panel.parentElement.removeAttribute('disabled', 'true');
-        //}
-
-
-        insuranceDetailTabPage.tabs[1].SetEnabled(true);
-        insuranceDetailTabPage.tabs[2].SetEnabled(true);
-        insuranceDetailTabPage.tabs[3].SetEnabled(true);
-    }
-
-    
-}
-
-
 
 function policyBaseCompleteUnable() {
 
-    var pagemode;
-    pagemode = $("#<%=pagemode.ClientID %>")[0];
-    //debugger;
-
-    var result, panel;
     //input
     if (pagemode.value == "input") {
         if (policyCheckNessary()) {
-            result = $("#<%=npGridPolicyItemDetail.ClientID %>");
-            panel = result[0];
-            panel.parentElement.setAttribute('disabled', 'true');
+            npGridPolicyItemDetail.parentElement.setAttribute('disabled', 'true');
 
-            result = $("#<%=npCostSummaryDetail.ClientID %>");
-            panel = result[0];
-            panel.parentElement.setAttribute('disabled', 'true');
-
-            result = $("#<%=npPolicyCompanyDetail.ClientID %>");
-            panel = result[0];
-            panel.parentElement.setAttribute('disabled', 'true');
-
-            result = $("#<%=tblNewExecuteAction.ClientID %>");
-            if (result.length > 0) {
-                panel = result[0];
-                panel.parentElement.setAttribute('disabled', 'true');
+            if (tblNewExecuteAction != null) {
+                tblNewExecuteAction.parentElement.setAttribute('disabled', 'true');
             }
-
-            result = $("#<%=tbltrAuditExecuteAction.ClientID %>");
-            if (result.length > 0) {
-                panel = result[0];
-                panel.parentElement.setAttribute('disabled', 'true');
+            
+            if (tbltrAuditExecuteAction != null) {
+                tbltrAuditExecuteAction.parentElement.setAttribute('disabled', 'true');
             }
-
 
             insuranceDetailTabPage.tabs[1].SetEnabled(false);
             insuranceDetailTabPage.tabs[2].SetEnabled(false);
-            insuranceDetailTabPage.tabs[3].SetEnabled(false);
+            debugger;
+            if ((typeof gridPolicyItem != 'undefined') && gridPolicyItem != null) {
+                //gridPolicyItem.SetClientVisible(false);
+                gridPolicyItem.PerformCallback('disabled');
+            }
+            if (typeof gridDocList != 'undefined' && gridDocList != null) {
+                //gridDocList.SetClientVisible(false);
+                gridDocList.PerformCallback('disabled');
+            }
         }
 
 
@@ -100,22 +46,9 @@ function policyBaseCompleteUnable() {
 
     //audit
     if (pagemode.value == "audit") {
-        result = $("#<%=npbasicdetail.ClientID %>");
-        panel = result[0];
-        panel.parentElement.setAttribute('disabled', 'true');
+        npbasicdetail.parentElement.setAttribute('disabled', 'true');
 
-        result = $("#<%=npGridPolicyItemDetail.ClientID %>");
-        panel = result[0];
-        panel.parentElement.setAttribute('disabled', 'true');
-
-        result = $("#<%=npCostSummaryDetail.ClientID %>");
-        panel = result[0];
-        panel.parentElement.setAttribute('disabled', 'true');
-
-        result = $("#<%=npPolicyCompanyDetail.ClientID %>");
-        panel = result[0];
-        panel.parentElement.setAttribute('disabled', 'true');
-
+        npGridPolicyItemDetail.parentElement.setAttribute('disabled', 'true');
 
     }
 
@@ -123,30 +56,43 @@ function policyBaseCompleteUnable() {
 }
 
 
+function policyBaseCompleteEnable() {
+    
+    if (pagemode.value == "input") {
+        npGridPolicyItemDetail.parentElement.removeAttribute('disabled');
 
-
-$(document).ready(function() {
-    //jQuery.noticeAdd({
-    //    text: 'This is a notification that you have to remove',
-    //    stay: true
-    //});
-
-    //
-    window.onunload = function() {
-        var pWindow = window.dialogArguments;
-        var thegrid = pWindow.gridSearchResult;
-
-        if (thegrid != null) {
-            thegrid.PerformCallback('refresh');
+        if (tblNewExecuteAction != null) {
+            tblNewExecuteAction.parentElement.setAttribute('disabled', 'true');
         }
-        else {
-            //do nothing
+
+        if (tbltrAuditExecuteAction != null) {
+            tbltrAuditExecuteAction.parentElement.setAttribute('disabled', 'true');
         }
-    };
 
-    //policyBaseCompleteUnable();
+        insuranceDetailTabPage.tabs[1].SetEnabled(true);
+        insuranceDetailTabPage.tabs[2].SetEnabled(true);
+        
+        if ((typeof gridPolicyItem != 'undefined') && gridPolicyItem != null) {
+            //gridPolicyItem.SetClientVisible(true);
+            gridPolicyItem.PerformCallback('enabled');
+        }
+        if (typeof gridDocList != 'undefined' && gridDocList != null) {
+            //gridDocList.SetClientVisible(true);
+            gridDocList.PerformCallback('enabled');
+        }
+    }
 
-});
+    
+}
+
+
+
+
+
+
+
+
+
 
 function makePolicyJSON() {
 
@@ -372,37 +318,7 @@ function imgNewCustomerClick() {
 
 }
 
-function getPrePolicyID() {
-    var result = $("#<%=pplcid.ClientID %>");
-    var ID = result[0].value;
-    return ID;
-}
 
-function getCustomerID() {
-    var result = $("#<%=cusid.ClientID %>");
-    var ID = result[0].value;
-    return ID;
-}
-
-function setCustomerID(thevalue) {
-    var result = $("#<%=cusid.ClientID %>");
-    result[0].value = thevalue;
-}
-
-function getProductTypeID() {
-    var result = $("#<%=ptid.ClientID %>");
-    var ID = result[0].value;
-    return ID;
-}
-function setProductTypeID(thevalue) {
-    var result = $("#<%=ptid.ClientID %>");
-    result[0].value = thevalue;
-}
-
-function getPageContentPanel() {
-    var result = $("#<%=nppagecontent.ClientID %>");
-    return result[0];
-}
 
 
 function Policy(AciPolicyNo, AciPremium, AciProcess, AciProcessRate,

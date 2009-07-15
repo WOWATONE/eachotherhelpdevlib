@@ -16,8 +16,6 @@
     TagPrefix="dxpc" %>
 <%@ Register Assembly="DevExpress.Web.ASPxSpellChecker.v8.3" Namespace="DevExpress.Web.ASPxSpellChecker"
     TagPrefix="dxwsc" %>
-<%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v8.3" Namespace="DevExpress.Web.ASPxHtmlEditor"
-    TagPrefix="dxhe" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>客户收费保单选择</title>
 
