@@ -75,8 +75,9 @@ namespace BrokerWebApp.vehicleinsurance
                 //loadPrePolicyValue(this.pplcid.Value);
             }
 
-            //if (!IsPostBack && !IsCallback)
-            //    this.gridPolicyItem.DataBind();
+            
+            this.gridPolicyItem.DataSource = null;
+            this.gridPolicyItem.DataBind();
 
             
         }

@@ -9,10 +9,11 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dxpc" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl" TagPrefix="dxuc" %>
-<%@ OutputCache Location="None" NoStore="true" %> 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Ñ¯¼Ûµ¥Â¼Èë</title>
     <script type="text/javascript" src="../js/pagejs/AskPriceInput.js"></script>
+    
     <script type="text/javascript">
 
 
@@ -57,9 +58,9 @@
         function setCustomerID(thevalue) {
             var result = $("#<%=cusid.ClientID %>");
             result[0].value = thevalue;
-        }       
-        
-        
+        }
+
+
         $(document).ready(function() {
             //jQuery.noticeAdd({
             //    text: 'This is a notification that you have to remove',
@@ -70,8 +71,8 @@
             window.onunload = function() {
                 var pWindow = window.dialogArguments;
                 var thegrid = pWindow.gridSearchResult;
-
-                if (thegrid != null) {
+                
+                if (thegrid != null) {                    
                     thegrid.PerformCallback('refresh');
                 }
                 else {
@@ -79,14 +80,18 @@
                 }
             };
 
+            gridPolicyItem.PerformCallback('disabled');
+            
+            //getServerControlRefStubs();
 
-            getServerControlRefStubs();
+
+            //policyBaseCompleteUnable();
 
 
-            policyBaseCompleteUnable();
 
         });
     </script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
@@ -286,7 +291,7 @@
                                             <tr>
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                                        KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" EnableCallBacks="true" 
+                                                        KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" 
                                                         OnRowInserting="gridPolicyItem_RowInserting"
                                                         OnRowUpdating="gridPolicyItem_RowUpdating" 
                                                         OnRowDeleting="gridPolicyItem_RowDeleting" 

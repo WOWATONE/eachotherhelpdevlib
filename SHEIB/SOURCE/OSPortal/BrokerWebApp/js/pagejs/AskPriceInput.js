@@ -30,14 +30,14 @@ function policyBaseCompleteUnable() {
 
             insuranceDetailTabPage.tabs[1].SetEnabled(false);
             insuranceDetailTabPage.tabs[2].SetEnabled(false);
-            debugger;
+            //debugger;
             if ((typeof gridPolicyItem != 'undefined') && gridPolicyItem != null) {
-                //gridPolicyItem.SetClientVisible(false);
-                gridPolicyItem.PerformCallback('disabled');
+                gridPolicyItem.SetClientVisible(false);
+                //gridPolicyItem.PerformCallback('disabled');
             }
             if (typeof gridDocList != 'undefined' && gridDocList != null) {
-                //gridDocList.SetClientVisible(false);
-                gridDocList.PerformCallback('disabled');
+                gridDocList.SetClientVisible(false);
+                //gridDocList.PerformCallback('disabled');
             }
         }
 
@@ -73,12 +73,12 @@ function policyBaseCompleteEnable() {
         insuranceDetailTabPage.tabs[2].SetEnabled(true);
         
         if ((typeof gridPolicyItem != 'undefined') && gridPolicyItem != null) {
-            //gridPolicyItem.SetClientVisible(true);
-            gridPolicyItem.PerformCallback('enabled');
+            gridPolicyItem.SetClientVisible(true);
+            //gridPolicyItem.PerformCallback('enabled');
         }
         if (typeof gridDocList != 'undefined' && gridDocList != null) {
-            //gridDocList.SetClientVisible(true);
-            gridDocList.PerformCallback('enabled');
+            gridDocList.SetClientVisible(true);
+            //gridDocList.PerformCallback('enabled');
         }
     }
 
