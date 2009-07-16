@@ -64,7 +64,7 @@ namespace BrokerWebApp.vehicleinsurance
                 this.dxetxtAskPriceID.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey];
 
-                this.pkid.Value = Page.Request.QueryString[inputQueryStringPreIDKey];
+                //this.pkid.Value = Page.Request.QueryString[inputQueryStringPreIDKey];
 
                 switch (this.pagemode.Value.ToLower().Trim())
                 {
@@ -86,7 +86,11 @@ namespace BrokerWebApp.vehicleinsurance
                 getInitPolicyData();
 
                 Initialization();
-                //loadPrePolicyValue(this.pplcid.Value);
+
+                this.dxetxtCreatePerson.Text = this.CurrentUserName;
+                this.dxeCreateTime.Date = DateTime.Now;
+
+                loadCarPolicyValue(this.dxetxtAskPriceID.Text);
             }
             
         }
@@ -381,6 +385,97 @@ namespace BrokerWebApp.vehicleinsurance
 
 
         #region Privates
+
+        private void loadCarPolicyValue(String carPoliicyID)
+        {
+            ListEditItem theselected;
+            BusinessObjects.Policy.BO_CarPolicy obj;
+
+            obj = new BusinessObjects.Policy.BO_CarPolicy(carPoliicyID);
+
+            this.dxetxtAskPriceID.Text = obj.AskPriceID ;
+            
+            
+                        
+            //dxeddlDeptID
+            if (!String.IsNullOrEmpty(obj.DeptId))
+            {
+                theselected = dxeddlDeptID.Items.FindByValue(obj.DeptId);
+                if (theselected != null)
+                {
+                    dxeddlDeptID.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlSalesId
+            if (!String.IsNullOrEmpty(obj.SalesId))
+            {
+                theselected = dxeddlSalesId.Items.FindByValue(obj.SalesId);
+                if (theselected != null)
+                {
+                    dxeddlSalesId.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlCarrierId
+            if (!String.IsNullOrEmpty(obj.CarrierID))
+            {
+                theselected = dxeddlCarrierId.Items.FindByValue(obj.CarrierID);
+                if (theselected != null)
+                {
+                    dxeddlCarrierId.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlBranchId
+            if (!String.IsNullOrEmpty(obj.BranchID))
+            {
+                theselected = dxeddlBranchId.Items.FindByValue(obj.BranchID);
+                if (theselected != null)
+                {
+                    dxeddlBranchId.SelectedItem = theselected;
+                }
+            }
+
+
+            this.dxetxtCarrierSales.Text = obj.CarrierSales;
+
+            this.dxetxtCustomer.Text = obj.CustomerName;
+            this.cusid.Value = obj.CustomerID;
+
+            //dxeddlSourceTypeID
+            if (!String.IsNullOrEmpty(obj.SourceTypeID))
+            {
+                theselected = dxeddlSourceTypeID.Items.FindByValue(obj.SourceTypeID);
+                if (theselected != null)
+                {
+                    dxeddlSourceTypeID.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlOperationType
+            if (!String.IsNullOrEmpty(obj.OperationType))
+            {
+                theselected = dxeddlOperationType.Items.FindByValue(obj.OperationType);
+                if (theselected != null)
+                {
+                    dxeddlOperationType.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlGatheringType
+            if (!String.IsNullOrEmpty(obj.GatheringType))
+            {
+                theselected = dxeddlGatheringType.Items.FindByValue(obj.GatheringType);
+                if (theselected != null)
+                {
+                    dxeddlGatheringType.SelectedItem = theselected;
+                }
+            }
+
+             
+        }
+
 
         private string saveCarPolicy(String parameter, String policyState)
         {

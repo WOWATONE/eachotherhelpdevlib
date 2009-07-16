@@ -279,13 +279,13 @@
                                                     录单人：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="140px"></dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="140px" ReadOnly="true"></dxe:ASPxTextBox>
                                                 </td>
                                                 <td style="text-align: right;">
                                                     录单日期：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxDateEdit ID="dxeCreateTime" runat="server" Width="140px"></dxe:ASPxDateEdit>
+                                                    <dxe:ASPxDateEdit ID="dxeCreateTime" runat="server" Width="140px" ReadOnly="true"></dxe:ASPxDateEdit>
                                                 </td>
                                                 <td></td>
                                             </tr> 
