@@ -23,6 +23,7 @@ namespace BrokerWebApp.CustomerRelation
         /// 客户编号
         /// </summary>
         private string _custID;
+        private string toadd = string.Empty;
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -160,13 +161,31 @@ namespace BrokerWebApp.CustomerRelation
         private void SetddlCustClassify(string value)
         {
             DataSet dsList = BusinessObjects.SchemaSetting.BO_Carrier.GetCustClassifyByID("");
-            if (dsList.Tables[0] != null)
+            if (dsList.Tables[0] != null && dsList.Tables[0].Rows.Count > 0)
             {
-                foreach (DataRow row in dsList.Tables[0].Rows)
+                this.SetCustClassify(dsList.Tables[0], "0", this.dxeddlCustClassify);
+                if (!string.IsNullOrEmpty(value))
                 {
-                    this.dxeddlCustClassify.Items.Add(row["CustClassifyName"].ToString().Trim(), row["CustClassifyID"].ToString().Trim());
+                    this.dxeddlCustClassify.SelectedIndex = this.dxeddlCustClassify.Items.IndexOf(this.dxeddlCustClassify.Items.FindByValue(value));
+                    if (this.dxeddlCustClassify.SelectedIndex >= 0)
+                        this.dxeddlCustClassify.Text = this.dxeddlCustClassify.SelectedItem.Text.Substring(this.dxeddlCustClassify.SelectedItem.Text.IndexOf("∟") + 1);
+                    this.hidCustClassify.Value = value;
                 }
-                this.dxeddlCustClassify.SelectedIndex = this.dxeddlCustClassify.Items.IndexOf(this.dxeddlCustClassify.Items.FindByValue(value));
+            }
+        }
+
+        private void SetCustClassify(DataTable table, string parentid, ASPxComboBox comboBox)
+        {
+            if (parentid == "0")
+                this.toadd = "";
+            else
+                this.toadd += "   ";
+            DataRow[] rows = table.Select("ParentID='" + parentid + "'", "OrderNO");
+            foreach (DataRow row in rows)
+            {
+                comboBox.Items.Add(this.toadd + (parentid == "0" ? "" : "∟") + row["CustClassifyName"].ToString(), row["CustClassifyID"].ToString());
+                this.SetCustClassify(table, row["CustClassifyID"].ToString(), comboBox);
+                this.toadd = this.toadd.Substring(0, this.toadd.Length - 3);
             }
         }
 
@@ -246,7 +265,7 @@ namespace BrokerWebApp.CustomerRelation
                     customer.CustTypeID = this.radPerson.Checked ? 1 : 0;
                     customer.DeprtmentID = this.dxeddlDepartment.SelectedItem.Value.ToString();
                     customer.SalesID = this.dxeddlSalesID.Value.ToString();
-                    customer.CustClassifyID = this.dxeddlCustClassify.SelectedItem.Value.ToString();
+                    customer.CustClassifyID = string.IsNullOrEmpty(this.hidCustClassify.Value) ? "" : this.hidCustClassify.Value;
                     customer.Tel = this.dxetxtTel.Text.Trim();
                     customer.Mobile = this.dxetxtMobile.Text.Trim();
                     customer.IDNO = this.dxetxtIDNO.Text.Trim();
@@ -274,7 +293,7 @@ namespace BrokerWebApp.CustomerRelation
                     customer.CustTypeID = this.radPerson.Checked ? 1 : 0;
                     customer.DeprtmentID = this.dxeddlDepartment.SelectedItem.Value.ToString();
                     customer.SalesID = this.dxeddlSalesID.Value.ToString();
-                    customer.CustClassifyID = this.dxeddlCustClassify.SelectedItem.Value.ToString();
+                    customer.CustClassifyID = string.IsNullOrEmpty(this.hidCustClassify.Value) ? "" : this.hidCustClassify.Value;
                     customer.Tel = this.dxetxtTel.Text.Trim();
                     customer.Mobile = this.dxetxtMobile.Text.Trim();
                     customer.IDNO = this.dxetxtIDNO.Text.Trim();

@@ -89,6 +89,19 @@
             }
         }
 
+        function SelectedIndexChanged(s, e) {
+            var hidCustClassify = $("#<%=hidCustClassify.ClientID %>");
+            hidCustClassify[0].value = s.GetValue();
+            var test = s.GetText();
+            if (test.length > 0) {
+                var index = test.lastIndexOf("∟");
+                if (index >= 0) {
+                    var testTmp = test.substr(index + 1);
+                    s.SetText(testTmp);
+                }
+            }
+        }
+
         function btnCloseClick() {
             window.close();
         }
@@ -168,7 +181,9 @@
                                         <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
 										    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                         </ValidationSettings>
+                                        <ClientSideEvents SelectedIndexChanged="function(s, e) { SelectedIndexChanged(s, e); return false;}" />
                                     </dxe:ASPxComboBox>
+                                    <input type="hidden" id="hidCustClassify" name="hidCustClassify" runat="server" value="" />
                                 </td>
                                 <td style="text-align: right;">
                                     邮政编码：
