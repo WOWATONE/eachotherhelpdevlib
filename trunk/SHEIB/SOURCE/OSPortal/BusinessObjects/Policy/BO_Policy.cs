@@ -674,6 +674,19 @@ namespace BusinessObjects.Policy
             return ds.Tables[0];
         }
 
+        public static void Delete(String id)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM Policy ");
+            sb.Append(" WHERE PolicyID = @PolicyID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@PolicyID", DbType.String, id);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
+
         #endregion Methods
 
 
