@@ -128,7 +128,7 @@ namespace BrokerWebApp.vehicleinsurance {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCarNo;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCarCount;
         
         /// <summary>
         /// dxeddlSourceTypeID control.
@@ -146,7 +146,7 @@ namespace BrokerWebApp.vehicleinsurance {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlFlagReinsure;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlOperationType;
         
         /// <summary>
         /// dxetxtCreatePerson control.

@@ -123,10 +123,10 @@
 								</dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                                车牌号码：
+                                车牌数目：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCarNo" ClientInstanceName="dxetxtCarNo" runat="server" Width="140px"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtCarCount" ClientInstanceName="dxetxtCarCount" runat="server" Width="140px"></dxe:ASPxTextBox>
                             </td>
                             <td>
                             </td>
@@ -146,7 +146,7 @@
                                 业务性质：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlFlagReinsure" ClientInstanceName="dxeddlFlagReinsure" runat="server" Width="140px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType" runat="server" Width="140px" DropDownStyle="DropDownList">
 									<Items>
 										<dxe:ListEditItem Text="新增" Value="1" />
 										<dxe:ListEditItem Text="再保" Value="2" />
@@ -211,7 +211,7 @@
                             </td>
                             
                             <td style="text-align: right;" colspan="2">
-                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
+                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
                                 <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
                                 <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" />
                             </td>
@@ -305,7 +305,7 @@
                                     EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
                                     >
                                     <SelectParameters> 
-                                         <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue="ISNULL(A1.PolicyStatus,'0') = 0" />
+                                         <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" and ISNULL(A1.PolicyStatus,'0') = '0'" />
                                     </SelectParameters>
                                 </asp:ObjectDataSource> 
                             </td>

@@ -47,5 +47,30 @@ namespace BrokerWebApp.otherinsurance
         {
             this.gridSearchResult.DataBind();
         }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            String where = "0";
+
+            //if (!String.IsNullOrEmpty(this.dxetxtPartNo.Text))
+            //{
+            //    where += " and part_no='" + this.dxetxtPartNo.Text.Trim() + "'";
+            //}
+
+            //if (!String.IsNullOrEmpty(this.dxetxtOrderNo.Text))
+            //{
+            //    where += " and sgm_order_no='" + this.dxetxtOrderNo.Text.Trim() + "'";
+            //}
+
+            Parameter pt;
+            pt = this.DataSource.SelectParameters[0];
+
+            pt.DefaultValue = where;
+
+            this.gridSearchResult.DataBind();
+
+        }
+
+
     }
 }

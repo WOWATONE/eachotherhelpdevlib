@@ -211,7 +211,7 @@
                                                         <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
                                                     <td style="text-align:right;" colspan="2">
-                                                        <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
+                                                        <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
                                                         <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
                                                         <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" /> 
                                                     </td>
