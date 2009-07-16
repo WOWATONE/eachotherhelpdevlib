@@ -1187,6 +1187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UploadFiles\CarPolicyUploadFiles\" />
     <Folder Include="UploadFiles\PolicyUploadFiles\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

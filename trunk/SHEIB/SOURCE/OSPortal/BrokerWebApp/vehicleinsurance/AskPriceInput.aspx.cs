@@ -261,9 +261,11 @@ namespace BrokerWebApp.vehicleinsurance
         #endregion CallBack Events
 
 
+
         #region gridPolicyItem Events
 
-        protected void gridPolicyItem_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
+        protected void gridPolicyItem_HtmlEditFormCreated(object sender, 
+            DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
         {
             HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
             
@@ -581,12 +583,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         #region Upload File Events
 
-        protected void UploadControl_PreRender(object sender, EventArgs e)
-        {
-            //
-        }
-
-
+        
         protected void UploadControl_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
         {
             try
@@ -604,49 +601,48 @@ namespace BrokerWebApp.vehicleinsurance
         protected string SavePostedFiles(UploadedFile uploadedFile)
         {
             string ret = "";
-            //string policyFolder = this.dxetxtPolicyID.Text.Trim();
-            //string policyFolderPath;
-            //if (uploadedFile.IsValid)
-            //{
-            //    DirectoryInfo drtInfo = new DirectoryInfo(MapPath(UploadDirectory));
-            //    if (drtInfo.Exists)
-            //    {
-            //        policyFolderPath = System.IO.Path.Combine(MapPath(UploadDirectory), policyFolder);
-            //        drtInfo = new DirectoryInfo(policyFolder);
-            //        FileInfo fileInfo;
-            //        if (drtInfo.Exists)
-            //        {
-            //            fileInfo = new FileInfo(uploadedFile.FileName);
-            //            string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
-            //            uploadedFile.SaveAs(resFileName);
+            string policyFolder = this.dxetxtAskPriceID.Text.Trim();
+            string policyFolderPath;
+            if (uploadedFile.IsValid)
+            {
+                DirectoryInfo drtInfo = new DirectoryInfo(MapPath(UploadDirectory));
+                if (drtInfo.Exists)
+                {
+                    policyFolderPath = System.IO.Path.Combine(MapPath(UploadDirectory), policyFolder);
+                    drtInfo = new DirectoryInfo(policyFolder);
+                    FileInfo fileInfo;
+                    if (drtInfo.Exists)
+                    {
+                        fileInfo = new FileInfo(uploadedFile.FileName);
+                        string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
+                        uploadedFile.SaveAs(resFileName);
 
-            //            //string fileLabel = fileInfo.Name;
-            //            //string fileType = uploadedFile.PostedFile.ContentType.ToString();
-            //            //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
-            //            //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
-            //        }
-            //        else
-            //        {
-            //            //create folder
-            //            drtInfo = System.IO.Directory.CreateDirectory(policyFolderPath);
-            //            fileInfo = new FileInfo(uploadedFile.FileName);
-            //            string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
-            //            uploadedFile.SaveAs(resFileName);
-            //        }
+                        //string fileLabel = fileInfo.Name;
+                        //string fileType = uploadedFile.PostedFile.ContentType.ToString();
+                        //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
+                        //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
+                    }
+                    else
+                    {
+                        //create folder
+                        drtInfo = System.IO.Directory.CreateDirectory(policyFolderPath);
+                        fileInfo = new FileInfo(uploadedFile.FileName);
+                        string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
+                        uploadedFile.SaveAs(resFileName);
+                    }
 
-            //        //BO_PolicyDoc
-            //        BusinessObjects.Policy.BO_PolicyDoc.Delete(this.dxetxtPolicyID.Text.Trim(), fileInfo.Name);
+                    //BO_CarPolicyDoc
+                    BusinessObjects.Policy.BO_CarPolicyDoc.Delete(this.dxetxtAskPriceID.Text.Trim(), fileInfo.Name);
 
-            //        BusinessObjects.Policy.BO_PolicyDoc pdoc = new BusinessObjects.Policy.BO_PolicyDoc();
-            //        pdoc.PolicyDocID = Guid.NewGuid().ToString();
-            //        pdoc.DocName = fileInfo.Name;
-            //        pdoc.PolicyID = this.dxetxtPolicyID.Text.Trim();
-            //        pdoc.DocURL = UploadDirectory.Replace("~", "") + policyFolder + "/" + fileInfo.Name;
-            //        pdoc.Save(ModifiedAction.Insert);
-            //    }
+                    BusinessObjects.Policy.BO_CarPolicyDoc pdoc = new BusinessObjects.Policy.BO_CarPolicyDoc();
+                    pdoc.CarPolicyDocID = Guid.NewGuid().ToString();
+                    pdoc.DocName = fileInfo.Name;
+                    pdoc.AskPriceID = this.dxetxtAskPriceID.Text.Trim();
+                    pdoc.DocURL = UploadDirectory.Replace("~", "") + policyFolder + "/" + fileInfo.Name;
+                    pdoc.Save(ModifiedAction.Insert);
+                }
+            }
 
-
-            //}
             return ret;
         }
 
