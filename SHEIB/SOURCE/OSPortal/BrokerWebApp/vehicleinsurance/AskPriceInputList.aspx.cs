@@ -56,6 +56,7 @@ namespace BrokerWebApp.vehicleinsurance
             this.gridExport.WriteXlsToResponse();
         }
 
+
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             String where = " and ISNULL(A1.PolicyStatus,'0') = '0' ";
@@ -127,13 +128,14 @@ namespace BrokerWebApp.vehicleinsurance
             }
 
             Parameter pt;
-            pt = this.DataSource.SelectParameters[0];
+            pt = this.ds_gridSearchResult.SelectParameters[0];
 
             pt.DefaultValue = where;
 
             this.gridSearchResult.DataBind();
 
         }
+
 
         protected void CarrierBranchIDCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
