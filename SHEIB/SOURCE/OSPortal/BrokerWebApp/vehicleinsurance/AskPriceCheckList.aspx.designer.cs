@@ -23,15 +23,6 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
-        /// debtnCreate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton debtnCreate;
-        
-        /// <summary>
         /// LbUserNameTop control.
         /// </summary>
         /// <remarks>
@@ -77,130 +68,121 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.Panel npSearchDetail;
         
         /// <summary>
-        /// txtPrePolicyNo control.
+        /// dxetxtAskPriceID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrePolicyNo;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtAskPriceID;
         
         /// <summary>
-        /// txtPolicyNo control.
+        /// dxetxtPolicyID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPolicyNo;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyID;
         
         /// <summary>
-        /// txtCustomer control.
+        /// dxetxtCustomer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustomer;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCustomer;
         
         /// <summary>
-        /// ddlDeptId control.
+        /// dxeddlDeptID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDeptId;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlDeptID;
         
         /// <summary>
-        /// ddlSalesId control.
+        /// dxeddlSalesId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSalesId;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesId;
         
         /// <summary>
-        /// txtProdTypeID control.
+        /// dxetxtCarCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProdTypeID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCarCount;
         
         /// <summary>
-        /// ddlSourceTypeID control.
+        /// dxeddlSourceTypeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSourceTypeID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSourceTypeID;
         
         /// <summary>
-        /// ddlFlagContinue control.
+        /// dxeddlOperationType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFlagContinue;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlOperationType;
         
         /// <summary>
-        /// txtCreatePerson control.
+        /// dxetxtCreatePerson control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCreatePerson;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCreatePerson;
         
         /// <summary>
-        /// ddlCarrierId control.
+        /// dxeddlCarrierId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCarrierId;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCarrierId;
         
         /// <summary>
-        /// ddlBranchId control.
+        /// dxeddlBranchId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBranchId;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlBranchId;
         
         /// <summary>
-        /// TextBox1 control.
+        /// dxeStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeStartDate;
         
         /// <summary>
-        /// deStartDate control.
+        /// dxeEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deStartDate;
-        
-        /// <summary>
-        /// deEndDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deEndDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeEndDate;
         
         /// <summary>
         /// btnSearch control.
@@ -212,22 +194,13 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
-        /// btnCancel control.
+        /// btnExport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
-        
-        /// <summary>
-        /// btnRefresh control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRefresh;
+        protected global::System.Web.UI.WebControls.Button btnExport;
         
         /// <summary>
         /// cpeSearch control.
@@ -282,6 +255,24 @@ namespace BrokerWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridSearchResult;
+        
+        /// <summary>
+        /// gridExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridExport;
+        
+        /// <summary>
+        /// ds_gridSearchResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ds_gridSearchResult;
         
         /// <summary>
         /// cpeSearchResult control.

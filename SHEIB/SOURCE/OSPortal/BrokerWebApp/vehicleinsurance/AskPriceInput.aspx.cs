@@ -103,6 +103,8 @@ namespace BrokerWebApp.vehicleinsurance
             {
                 tbltrAuditExecuteAction.Visible = true;
                 npExecuteAction.Visible = false;
+                this.gridPolicyItem.Enabled = false;
+                this.filesUploadControl.Enabled = false;
             }
             else
             {

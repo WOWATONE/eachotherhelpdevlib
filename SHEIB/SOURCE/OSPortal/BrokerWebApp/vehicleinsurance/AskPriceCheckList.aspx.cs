@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using Microsoft.VisualBasic;
+using BusinessObjects;
+using BusinessObjects.SchemaSetting;
+using DevExpress.Web.ASPxEditors;
 
 namespace BrokerWebApp.vehicleinsurance
 {
@@ -13,140 +17,211 @@ namespace BrokerWebApp.vehicleinsurance
 
         #region Variables
 
-        private DataTable _dtGridAskPrice;
+        private const String gridKeyName = "AskPriceID";
 
         #endregion Variables
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetAskPriceDataForGrid();
-
-            this.gridSearchResult.DataSource = _dtGridAskPrice;
-
-            if (!IsPostBack && !IsCallback)
-                this.gridSearchResult.DataBind();
+            if (Page.IsPostBack)
+            {
+                if (Page.IsCallback)
+                {
+                    //
+                }
+            }
+            else
+            {
+                Initialization();
+            }
         }
 
-
-        private void GetAskPriceDataForGrid()
-        {
-            _dtGridAskPrice = new DataTable();
-            _dtGridAskPrice.PrimaryKey = new DataColumn[] { 
-            _dtGridAskPrice.Columns.Add("PrePolicyNo", typeof(String)) };
-
-            _dtGridAskPrice.Columns.Add("AskPriceNo", typeof(String));
-            _dtGridAskPrice.Columns.Add("SalesId", typeof(String));
-            _dtGridAskPrice.Columns.Add("UserNameCn", typeof(String));
-            _dtGridAskPrice.Columns.Add("CarrierID", typeof(String));
-            _dtGridAskPrice.Columns.Add("CarrierNameCn", typeof(String));
-
-            _dtGridAskPrice.Columns.Add("BranchID", typeof(String));
-            _dtGridAskPrice.Columns.Add("BranchName", typeof(String));
-
-            _dtGridAskPrice.Columns.Add("CarCount", typeof(Int32));
-
-            _dtGridAskPrice.Columns.Add("CiPremium", typeof(Decimal));
-            _dtGridAskPrice.Columns.Add("AciPremium", typeof(Decimal));
-            _dtGridAskPrice.Columns.Add("CstPremium", typeof(Decimal));
-            _dtGridAskPrice.Columns.Add("PremiumTotal", typeof(Decimal));
-
-            _dtGridAskPrice.Columns.Add("CiProcess", typeof(Decimal));
-            _dtGridAskPrice.Columns.Add("AciProcess", typeof(Decimal));
-            _dtGridAskPrice.Columns.Add("CstProcess", typeof(Decimal));
-            _dtGridAskPrice.Columns.Add("ProcessTotal", typeof(Decimal));
-
-
-            _dtGridAskPrice.Columns.Add("Currency", typeof(String));
-            _dtGridAskPrice.Columns.Add("Premium", typeof(Decimal));
-
-            _dtGridAskPrice.Columns.Add("CustomerID", typeof(String));
-            _dtGridAskPrice.Columns.Add("CustName", typeof(String));
-            _dtGridAskPrice.Columns.Add("CreatePerson", typeof(String));
-            _dtGridAskPrice.Columns.Add("CreateTime", typeof(DateTime));
-            _dtGridAskPrice.Columns.Add("SourceTypeID", typeof(String));
-            _dtGridAskPrice.Columns.Add("SourceTypeName", typeof(String));
-
-
-            _dtGridAskPrice.Columns.Add("OperationTypeID", typeof(String));
-            _dtGridAskPrice.Columns.Add("OperationTypeName", typeof(String));
-            _dtGridAskPrice.Columns.Add("GatheringTypeID", typeof(String));
-            _dtGridAskPrice.Columns.Add("GatheringTypeName", typeof(String));
-
-
-            _dtGridAskPrice.Columns.Add("StartDate", typeof(DateTime));
-            _dtGridAskPrice.Columns.Add("EndDate", typeof(DateTime));
-            _dtGridAskPrice.Columns.Add("CheckMemo", typeof(String));
-
-
-            _dtGridAskPrice.Rows.Add(new object[] { "1", "2","1",
-                "王怡", "1", "平安保险", "1", "上海平安", 
-                5, 5000, 4000, 3000, 12000,
-                50, 40, 30, 120, 
-                "人民币", 8000, "0001", "王海", 
-                "王五",
-                new DateTime(DateTime.Now.Year-1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
-                "1", "来源", "1", "新增", "1", "支票", 
-                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1), 
-                new DateTime(DateTime.Now.Year+1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
-                "备注"
-            });
-
-            _dtGridAskPrice.Rows.Add(new object[] { "2", "2","1",
-                "王怡", "1", "平安保险", "1", "上海平安", 
-                5, 5000, 4000, 3000, 12000,
-                50, 40, 30, 120, 
-                "人民币", 8000, "0001", "王海", 
-                "王五",
-                new DateTime(DateTime.Now.Year-1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
-                "1", "来源", "1", "新增", "1", "支票", 
-                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1), 
-                new DateTime(DateTime.Now.Year+1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
-                "备注"
-            });
-
-
-            _dtGridAskPrice.Rows.Add(new object[] { "3","22", "2",
-                "王怡-1", "1", "平安保险", "1", "上海平安", 
-                5, 5000, 4000, 3000, 12000,
-                50, 40, 30, 120, 
-                "人民币", 8000, "0001", "王海-1", 
-                "王五",
-                new DateTime(DateTime.Now.Year-1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
-                "1", "来源", "1", "新增", "1", "支票", 
-                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1), 
-                new DateTime(DateTime.Now.Year+1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
-                "备注"
-            });
-            _dtGridAskPrice.Rows.Add(new object[] { "4","22", "2",
-                "王怡-1", "1", "平安保险", "1", "上海平安", 
-                5, 5000, 4000, 3000, 12000,
-                50, 40, 30, 120, 
-                "人民币", 8000, "0001", "王海-1", 
-                "王五",
-                new DateTime(DateTime.Now.Year-1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
-                "1", "来源", "1", "新增", "1", "支票", 
-                new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,1,1,1), 
-                new DateTime(DateTime.Now.Year+1,DateTime.Now.Month,DateTime.Now.Day,1,1,1),
-                "备注"
-            });
-
-        }
 
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            //DataTable dt = ((DataTable)ViewState["PolicyItemGridData"]);
-            //DataRow row = dt.Rows.Find(e.Keys["ID"]);
-            //dt.Rows.Remove(row);
+            //
             e.Cancel = true;
             this.gridSearchResult.CancelEdit();
         }
 
-        protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
+
+        protected void gridSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
             this.gridSearchResult.DataBind();
         }
 
+        protected void btnXlsExport_Click(object sender, EventArgs e)
+        {
+            this.gridExport.WriteXlsToResponse();
+        }
+
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            String where = " and ISNULL(A1.PolicyStatus,'0') = '1' ";
+
+            if (!String.IsNullOrEmpty(this.dxetxtAskPriceID.Text))
+            {
+                where += " and A1.AskPriceID='" + this.dxetxtAskPriceID.Text.Trim() + "'";
+            }
+
+            if (!String.IsNullOrEmpty(this.dxetxtPolicyID.Text))
+            {
+                //where += " and ='" + this.dxetxtPolicyID.Text.Trim() + "'";
+            }
+
+            if (!String.IsNullOrEmpty(this.dxetxtCustomer.Text))
+            {
+                where += " and G.CustName='" + this.dxetxtCustomer.Text.Trim() + "'";
+            }
+
+            if (this.dxeddlDeptID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptID.SelectedItem.Value.ToString()))
+            {
+                where += " and A1.DeptId='" + this.dxeddlDeptID.SelectedItem.Value.ToString() + "'";
+            }
+
+            if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
+            {
+                where += " and A1.SalesId='" + this.dxeddlSalesId.SelectedItem.Value.ToString() + "'";
+            }
+
+
+            if (!String.IsNullOrEmpty(this.dxetxtCarCount.Text.Trim()) && Information.IsNumeric(this.dxetxtCarCount.Text.Trim()))
+            {
+                where += " and A1.CarCount=" + this.dxetxtCarCount.Text.Trim();
+            }
+
+            if (this.dxeddlSourceTypeID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSourceTypeID.SelectedItem.Value.ToString()))
+            {
+                where += " and A1.SourceTypeID='" + this.dxeddlSourceTypeID.SelectedItem.Value.ToString() + "'";
+            }
+
+            if (this.dxeddlOperationType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlOperationType.SelectedItem.Value.ToString()))
+            {
+                where += " and A1.OperationType='" + this.dxeddlOperationType.SelectedItem.Value.ToString() + "'";
+            }
+
+            if (!String.IsNullOrEmpty(this.dxetxtCreatePerson.Text.Trim()))
+            {
+                where += " and A1.CreatePerson='" + this.dxetxtCreatePerson.Text.Trim() + "'";
+            }
+
+            if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
+            {
+                where += " and A1.CarrierID='" + this.dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
+            }
+
+            if (this.dxeddlBranchId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranchId.SelectedItem.Value.ToString()))
+            {
+                where += " and A1.BranchID='" + this.dxeddlBranchId.SelectedItem.Value.ToString() + "'";
+            }
+
+            if (this.dxeStartDate.Date > DateTime.MinValue && this.dxeStartDate.Date < DateTime.MaxValue)
+            {
+                where += " and A1.CreateTime>='" + this.dxeStartDate.Date + "'";
+            }
+
+            if (this.dxeEndDate.Date > DateTime.MinValue && this.dxeEndDate.Date < DateTime.MaxValue)
+            {
+                where += " and A1.CreateTime<='" + this.dxeEndDate.Date + "'";
+            }
+
+            Parameter pt;
+            pt = this.ds_gridSearchResult.SelectParameters[0];
+
+            pt.DefaultValue = where;
+
+            this.gridSearchResult.DataBind();
+
+        }
+
+
+        protected void CarrierBranchIDCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
+            thecb.TextField = "BranchName";
+            thecb.ValueField = "BranchID";
+            thecb.DataBind(); thecb.Items.Insert(0, new ListEditItem("", ""));
+
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+        }
+
+
+
+        private void Initialization()
+        {
+            DataSet dsList;
+
+            //dxeddlCarrierId
+            List<BO_Carrier> theCarrierList = BO_Carrier.FetchList();
+            this.dxeddlCarrierId.DataSource = theCarrierList;
+            this.dxeddlCarrierId.ValueField = "CarrierID";
+            this.dxeddlCarrierId.TextField = "CarrierNameCn";
+            this.dxeddlCarrierId.DataBind();
+            this.dxeddlCarrierId.Items.Insert(0, new ListEditItem("(全部)", ""));
+
+
+            //dxeddlBranchId
+            List<BO_Branch> theBranchList = BO_Branch.FetchList();
+            this.dxeddlBranchId.DataSource = theBranchList;
+            this.dxeddlBranchId.ValueField = "BranchID";
+            this.dxeddlBranchId.TextField = "BranchName";
+            this.dxeddlBranchId.DataBind();
+            this.dxeddlBranchId.Items.Insert(0, new ListEditItem("(全部)", ""));
+
+            //部门
+            dsList = BO_P_Department.GetDeptByDeptID("");
+            this.dxeddlDeptID.DataSource = dsList;
+            this.dxeddlDeptID.ValueField = "DeptID";
+            this.dxeddlDeptID.TextField = "DeptName";
+            this.dxeddlDeptID.DataBind();
+            this.dxeddlDeptID.Items.Insert(0, new ListEditItem("(全部)", ""));
+
+
+            //客户经理
+            dsList = BO_P_User.GetUserByUserID("");
+            this.dxeddlSalesId.DataSource = dsList;
+            this.dxeddlSalesId.ValueField = "UserID";
+            this.dxeddlSalesId.TextField = "UserNameCn";
+            this.dxeddlSalesId.DataBind();
+            this.dxeddlSalesId.Items.Insert(0, new ListEditItem("(全部)", ""));
+
+            //dxeddlSourceTypeID
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.SourceType.ToString());
+            this.dxeddlSourceTypeID.DataSource = dsList;
+            this.dxeddlSourceTypeID.ValueField = "CodeID";
+            this.dxeddlSourceTypeID.TextField = "CodeName";
+            this.dxeddlSourceTypeID.DataBind();
+            this.dxeddlSourceTypeID.Items.Insert(0, new ListEditItem("(全部)", ""));
+
+            //dxeddlOperationType
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.OperationType.ToString());
+            this.dxeddlOperationType.DataSource = dsList;
+            this.dxeddlOperationType.ValueField = "CodeID";
+            this.dxeddlOperationType.TextField = "CodeName";
+            this.dxeddlOperationType.DataBind();
+            this.dxeddlOperationType.Items.Insert(0, new ListEditItem("(全部)", ""));
+
+            ////GatheringType
+            //dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.GatheringType.ToString());
+            //this.dxeddlGatheringType.DataSource = dsList;
+            //this.dxeddlGatheringType.ValueField = "CodeID";
+            //this.dxeddlGatheringType.TextField = "CodeName";
+            //this.dxeddlGatheringType.DataBind();
+            //this.dxeddlGatheringType.Items.Insert(0, new ListEditItem("(全部)", ""));
+
+        }
+
+
+
+
+        
 
     }
 }
