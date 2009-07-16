@@ -263,13 +263,13 @@ namespace BusinessObjects.SchemaSetting
         public static DataSet GetCustClassifyByID(string sCustClassifyID)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("select CustClassifyID, ParentID, CustClassifyName ");
+            sb.Append("select CustClassifyID, isnull(ParentID, '0') as ParentID, isnull(CustClassifyName, '') as CustClassifyName, OrderNo ");
             sb.Append("FROM CustClassify (nolock) ");
             if (sCustClassifyID.Trim() != "")
             {
                 sb.Append("where CustClassifyID = '" + sCustClassifyID + "' ");
             }
-            sb.Append("ORDER BY OrderNo");
+            //sb.Append("ORDER BY OrderNo");
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
             return _db.ExecuteDataSet(dbCommand);
