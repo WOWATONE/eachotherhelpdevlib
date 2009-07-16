@@ -199,7 +199,7 @@
                                                 <td style="text-align: left;">
                                                     <table style="margin-left:-3px; width:175px;">
                                                         <tr>
-                                                                <td style="text-align: right;">
+                                                                <td style="text-align:left;">
                                                                     <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server" Width="105px"></dxe:ASPxTextBox>
                                                                     <input type="hidden" id="cusid" runat="server" />
                                                                 </td>
