@@ -59,7 +59,8 @@ namespace BusinessObjects
             InsType,     //业务类型
             GrdType,     //行政级别
             LossType,    //理赔损失性质
-            NotifyType   //报案方式
+            NotifyType,   //报案方式
+            SourceType
         }
 
         public enum FieldList

@@ -12,6 +12,7 @@ using DevExpress.Web.ASPxUploadControl;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using BusinessObjects;
+using BusinessObjects.SchemaSetting;
 
 namespace BrokerWebApp.vehicleinsurance
 {
@@ -51,6 +52,10 @@ namespace BrokerWebApp.vehicleinsurance
             if (Page.IsPostBack)
             {
                 pm = ViewState[currentPageModeKey] as Nullable<PageMode>;
+                if (Page.IsCallback)
+                {
+                    getCallBackPolicyData();
+                }
             }
             else
             {
@@ -76,26 +81,11 @@ namespace BrokerWebApp.vehicleinsurance
                 }
                 ViewState[currentPageModeKey] = pm;
 
+                getInitPolicyData();
+
+                Initialization();
                 //loadPrePolicyValue(this.pplcid.Value);
             }
-
-
-            //load data
-            if (!IsCallback && !IsPostBack)
-            {
-                getInitPolicyData();
-            }
-            else
-            {
-                if (Page.IsCallback)
-                {
-                    getCallBackPolicyData();
-                }
-            }
-            
-
-            
-
             
         }
 
@@ -104,6 +94,75 @@ namespace BrokerWebApp.vehicleinsurance
             //  
         }
 
+
+        private void Initialization()
+        {
+            DataSet dsList;
+
+            //dxeddlCarrierId
+            List<BO_Carrier> theCarrierList = BO_Carrier.FetchList();
+            this.dxeddlCarrierId.DataSource = theCarrierList;
+            this.dxeddlCarrierId.ValueField = "CarrierID";
+            this.dxeddlCarrierId.TextField = "CarrierNameCn";
+            this.dxeddlCarrierId.DataBind();
+            this.dxeddlCarrierId.Items.Insert(0, new ListEditItem("(全部)", ""));
+
+
+            //dxeddlBranchId
+            List<BO_Branch> theBranchList = BO_Branch.FetchList();
+            this.dxeddlBranchId.DataSource = theBranchList;
+            this.dxeddlBranchId.ValueField = "BranchID";
+            this.dxeddlBranchId.TextField = "BranchName";
+            this.dxeddlBranchId.DataBind();
+            this.dxeddlBranchId.Items.Insert(0, new ListEditItem("(全部)", ""));
+
+            //部门
+            dsList = BO_P_Department.GetDeptByDeptID("");
+            this.dxeddlDeptID.DataSource = dsList;
+            this.dxeddlDeptID.ValueField = "DeptID";
+            this.dxeddlDeptID.TextField = "DeptName";
+            this.dxeddlDeptID.DataBind();
+            this.dxeddlDeptID.Items.Insert(0, new ListEditItem("(全部)", ""));
+            
+
+            //客户经理
+            dsList = BO_P_User.GetUserByUserID("");
+            this.dxeddlSalesId.DataSource = dsList;
+            this.dxeddlSalesId.ValueField = "UserID";
+            this.dxeddlSalesId.TextField = "UserNameCn";
+            this.dxeddlSalesId.DataBind();
+            this.dxeddlSalesId.Items.Insert(0, new ListEditItem("(全部)", ""));
+                        
+            //dxeddlSourceTypeID
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.SourceType.ToString());
+            this.dxeddlSourceTypeID.DataSource = dsList;
+            this.dxeddlSourceTypeID.ValueField = "CodeID";
+            this.dxeddlSourceTypeID.TextField = "CodeName";
+            this.dxeddlSourceTypeID.DataBind();
+            this.dxeddlSourceTypeID.Items.Insert(0, new ListEditItem("(全部)", ""));
+              
+            //dxeddlOperationType
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.OperationType.ToString());
+            this.dxeddlOperationType.DataSource = dsList;
+            this.dxeddlOperationType.ValueField = "CodeID";
+            this.dxeddlOperationType.TextField = "CodeName";
+            this.dxeddlOperationType.DataBind();
+            this.dxeddlOperationType.Items.Insert(0, new ListEditItem("(全部)", ""));
+              
+            //GatheringType
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.GatheringType.ToString());
+            this.dxeddlGatheringType.DataSource = dsList;
+            this.dxeddlGatheringType.ValueField = "CodeID";
+            this.dxeddlGatheringType.TextField = "CodeName";
+            this.dxeddlGatheringType.DataBind();
+            this.dxeddlGatheringType.Items.Insert(0, new ListEditItem("(全部)", ""));
+                        
+
+            
+
+
+            
+        }
 
         #endregion Page Events
 
@@ -302,6 +361,7 @@ namespace BrokerWebApp.vehicleinsurance
 
 
         #endregion Upload File  Events
+
 
 
 
