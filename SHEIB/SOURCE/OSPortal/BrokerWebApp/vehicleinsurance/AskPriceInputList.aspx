@@ -30,11 +30,23 @@
         }
 
         function gridCustomButtonClick(s, e) {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            var noint = s.GetDataRow(e.visibleIndex).cells[2].innerText;
-            var querystring;
-            querystring = "AskPriceInput.aspx?pagemode=input&id=" + noint;
-            window.showModalDialog(querystring, self, myArguments);
+            //var noint = s.GetDataRow(e.visibleIndex).cells[2].innerText;
+            //var querystring;
+            //querystring = "AskPriceInput.aspx?pagemode=input&id=" + noint;
+            //window.showModalDialog(querystring, self, myArguments);
+            s.GetRowValues(e.visibleIndex, "AskPriceID", getTheSelectedRowsValues);
+        }
+
+        function getTheSelectedRowsValues(selectedValues) {
+            if (selectedValues.length == 0) {
+                //
+            }
+            else {
+                var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+                var querystring;
+                querystring = "AskPriceInput.aspx?pagemode=input&id=" + selectedValues;
+                window.showModalDialog(querystring, self, myArguments);
+            }
         }
 
         function imgPolicyProdTypeClick() {
@@ -251,6 +263,7 @@
                         <tr>
                             <td>
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
+                                    DataSourceID="ds_gridSearchResult"
                                     KeyFieldName="AskPriceID" AutoGenerateColumns="False" Settings-ShowFooter="true"
                                     Width="100%" SettingsPager-AlwaysShowPager="true" 
                                     OnRowDeleting="gridSearchResult_RowDeleting" 
@@ -286,7 +299,7 @@
                                         </dxwgv:GridViewDataDateColumn>
                                         <dxwgv:GridViewDataColumn FieldName="SourceTypeName" Caption="业务来源" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="FlagReinsureName" Caption="业务性质" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="OperationTypeName" Caption="业务性质" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="收款方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>                                        
@@ -303,7 +316,7 @@
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
                                 <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
-                                <asp:ObjectDataSource ID="DataSource" runat="server" 
+                                <asp:ObjectDataSource ID="ds_gridSearchResult" runat="server" 
                                     SelectMethod="FetchCarPolicyList"
                                     TypeName="BusinessObjects.Policy.BO_CarPolicy" 
                                     EnablePaging="false"  CacheDuration="1"                                                                                                                                                      

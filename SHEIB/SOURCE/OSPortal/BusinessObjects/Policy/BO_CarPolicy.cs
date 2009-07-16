@@ -25,6 +25,13 @@ namespace BusinessObjects.Policy
 
         #region Variables
 
+        public enum CarPolicyStatusEnum
+        {
+            Input,
+            AppealAudit,
+            Audit
+        }
+
         public enum FieldList
         {
             AskPriceID, 
@@ -296,10 +303,11 @@ namespace BusinessObjects.Policy
             sb.Append(" A1.CreatePerson, A1.ModifyTime,");
             sb.Append(" A1.ModifyPerson, A1.VolumnNo,");
             sb.Append(" A1.CarCount, A1.BankName,");
-            sb.Append(" A1.BankAccount, A1.CarrierID, A1.BranchID");
+            sb.Append(" A1.BankAccount, A1.CarrierID, A1.BranchID,");
             sb.Append(" C.UserID, C.UserNameCn, ");
             sb.Append(" I.SourceTypeName, ");
             sb.Append(" J.GatheringTypeName, ");
+            sb.Append(" L.OperationTypeName, ");
             sb.Append(" D.CarrierNameCn,  ");
             sb.Append(" E.BranchName, ");
             sb.Append(" K.DeptName, ");
@@ -314,6 +322,8 @@ namespace BusinessObjects.Policy
             sb.Append(" LEFT JOIN SourceType I ON I.SourceTypeID = A1.SourceTypeID ");
             sb.Append(" LEFT JOIN GatheringType J ON J.GatheringTypeID = A1.GatheringType ");
             sb.Append(" LEFT JOIN P_Department K ON A1.DeptID = K.DeptID ");
+            sb.Append(" LEFT JOIN OperationType L ON L.OperationTypeID = A1.OperationType ");
+            
             sb.Append(" WHERE 1=1 ");
             sb.Append(sWhere);
             sb.Append(" ORDER BY A1.CreateTime DESC  ");

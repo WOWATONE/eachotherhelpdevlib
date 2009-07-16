@@ -138,7 +138,7 @@
                                                     询价单号：
                                                 </td>
                                                 <td style="width: 180px; text-align: left;">
-                                                    <dxe:ASPxTextBox ID="dxetxtAskPriceID" ClientInstanceName="dxetxtAskPriceID" runat="server" Width="140px"></dxe:ASPxTextBox>
+                                                    <dxe:ASPxTextBox ID="dxetxtAskPriceID" ClientInstanceName="dxetxtAskPriceID" runat="server" Width="140px" ReadOnly="true"></dxe:ASPxTextBox>
                                                 </td>
                                                 <td style="width: 90px; text-align: right;">
                                                     部门：
@@ -146,19 +146,26 @@
                                                 <td style="width: 150px; text-align: left;">
                                                     <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server" Width="140px" DropDownStyle="DropDownList">
 						                                <Items>
-							                                <dxe:ListEditItem Text="(全部)" Value="" />
-							                                <dxe:ListEditItem Text="业务部" Value="1" />
 						                                </Items>
+						                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="true"
+                                                            ValidationGroup="BaseGroup">
+                                                            <RequiredField IsRequired="true" ErrorText="Required" />
+                                                        </ValidationSettings>
+                                                        <ClientSideEvents SelectedIndexChanged="dxeddlDeptID_SelectedIndexChanged" />
 					                                </dxe:ASPxComboBox>
                                                 </td>
                                                 <td style="width: 90px; text-align: right;">
                                                     客户经理：
                                                 </td>
                                                 <td style="width: 150px; text-align: left;">
-                                                    <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="140px" DropDownStyle="DropDownList">
+                                                    <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="140px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
 						                                <Items>
-							                                <dxe:ListEditItem Text="(全部)" Value="" />
 						                                </Items>
+						                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="true"
+                                                            ValidationGroup="BaseGroup">
+                                                            <RequiredField IsRequired="true" ErrorText="Required" />
+                                                        </ValidationSettings>
+                                                        
 					                                </dxe:ASPxComboBox>
                                                 </td>
                                                 <td></td>
@@ -171,6 +178,10 @@
                                                     <dxe:ASPxComboBox ID="dxeddlCarrierId" ClientInstanceName="dxeddlCarrierId" runat="server" Width="140px" DropDownStyle="DropDownList">
 						                                <Items>
 						                                </Items>
+						                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="true"
+                                                            ValidationGroup="BaseGroup">
+                                                            <RequiredField IsRequired="true" ErrorText="Required" />
+                                                        </ValidationSettings>
 						                                <ClientSideEvents SelectedIndexChanged="Carrier_SelectedIndexChanged" />
 					                                </dxe:ASPxComboBox>
                                                 </td>
@@ -181,6 +192,10 @@
                                                     <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server" Width="140px" DropDownStyle="DropDownList" OnCallback="CarrierBranchIDCallback">
 						                                <Items>
 						                                </Items>
+						                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="true"
+                                                            ValidationGroup="BaseGroup">
+                                                            <RequiredField IsRequired="true" ErrorText="Required" />
+                                                        </ValidationSettings>
 					                                </dxe:ASPxComboBox>
                                                 </td>
                                                 <td style="text-align: right;">
@@ -198,13 +213,20 @@
                                                 <td style="text-align: left;">
                                                     <table style="margin-left:-3px; width:175px;">
                                                         <tr>
-                                                                <td style="text-align:left;">
-                                                                    <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server" Width="105px"></dxe:ASPxTextBox>
-                                                                    <input type="hidden" id="cusid" runat="server" />
+                                                                <td style="text-align:left; width:135px">
+                                                                    <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server" Width="100px">
+                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="true"
+                                                                            ValidationGroup="BaseGroup">
+                                                                            <RequiredField IsRequired="true" ErrorText="Required" />
+                                                                        </ValidationSettings>
+                                                                    </dxe:ASPxTextBox>                                                                    
                                                                 </td>
-                                                                <td style="text-align: left;">
+                                                                <td><input type="hidden" id="cusid" runat="server" /></td>
+                                                                <td style="text-align:left; width:20px">
                                                                     <img runat="server" id="imgNewCustomer" onclick="imgNewCustomerClick();" alt="" src="../images/add_user_icon.png"
                                                                         style="width: 20px; height: 20px; vertical-align: top;" />
+                                                                </td>
+                                                                <td style="text-align:left; width:20px">
                                                                     <img runat="server" id="imgSelectCustomer" onclick="imgSelectCustomerClick();" alt=""
                                                                         src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: top;" />
                                                                 </td>
@@ -215,20 +237,26 @@
                                                     业务来源：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID" runat="server" Width="125px" DropDownStyle="DropDownList">
+                                                    <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID" runat="server" Width="140px" DropDownStyle="DropDownList">
 															<Items>
-																<dxe:ListEditItem Text="(全部)" Value="" />
 															</Items>
+															<ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="true"
+                                                                ValidationGroup="BaseGroup">
+                                                                <RequiredField IsRequired="true" ErrorText="Required" />
+                                                            </ValidationSettings>
 														</dxe:ASPxComboBox>
                                                 </td>
                                                 <td style="text-align: right;">
                                                     业务性质：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType" runat="server" Width="125px" DropDownStyle="DropDownList">
+                                                    <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType" runat="server" Width="140px" DropDownStyle="DropDownList">
 															<Items>
-																<dxe:ListEditItem Text="(全部)" Value="" />
 															</Items>
+															<ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="true"
+                                                                ValidationGroup="BaseGroup">
+                                                                <RequiredField IsRequired="true" ErrorText="Required" />
+                                                            </ValidationSettings>
 														</dxe:ASPxComboBox>
                                                 </td>
                                                 <td></td>
@@ -238,10 +266,13 @@
                                                     收款方式：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType" runat="server" Width="125px" DropDownStyle="DropDownList">
+                                                    <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType" runat="server" Width="140px" DropDownStyle="DropDownList">
 															<Items>
-																<dxe:ListEditItem Text="(全部)" Value="" />
 															</Items>
+															<ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="true"
+                                                                ValidationGroup="BaseGroup">
+                                                                <RequiredField IsRequired="true" ErrorText="Required" />
+                                                            </ValidationSettings>
 														</dxe:ASPxComboBox>
                                                 </td>
                                                 <td style="text-align: right;">

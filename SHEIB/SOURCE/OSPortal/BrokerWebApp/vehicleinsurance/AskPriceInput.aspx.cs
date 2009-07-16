@@ -8,11 +8,13 @@ using System.Data;
 using System.Web.UI.HtmlControls;
 using DevExpress.Web.ASPxEditors;
 using System.IO;
+using System.Text;
 using DevExpress.Web.ASPxUploadControl;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using BusinessObjects;
 using BusinessObjects.SchemaSetting;
+using BusinessObjects.Policy;
 
 namespace BrokerWebApp.vehicleinsurance
 {
@@ -109,6 +111,22 @@ namespace BrokerWebApp.vehicleinsurance
             }
         }
 
+
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            thecb.Items.Insert(0, new ListEditItem("", ""));
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+
+        }
+
         private void Initialization()
         {
             DataSet dsList;
@@ -185,24 +203,9 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            //switch (this.pm)
-            //{
-            //    case PageMode.Input :
-            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
-            //        break;
-            //    case PageMode.Alt:
-            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
-            //        break;
-            //    case PageMode.Audit:
-            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
-            //        break;
-            //    default:
-            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
-            //        break;
-            //}
-            //String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
-            //String thePolicyID = savePolicy(e.Parameter, policystatus);
-            e.Result = "";
+            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.Input).ToString();
+            String thePolicyID = saveCarPolicy(e.Parameter, policystatus);
+            e.Result = thePolicyID;
         }
 
 
@@ -377,9 +380,70 @@ namespace BrokerWebApp.vehicleinsurance
         #endregion Upload File  Events
 
 
+        #region Privates
+
+        private string saveCarPolicy(String parameter, String policyState)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(AskPriceInputInfo));
+            AskPriceInputInfo obj;
+
+            obj = (AskPriceInputInfo)serializer.ReadObject(ms);
+            ms.Close();
+
+            BO_CarPolicy carPolicy;
+            if (String.IsNullOrEmpty(obj.AskPriceID))
+            {
+                carPolicy = new BO_CarPolicy();
+                carPolicy.AskPriceID = TranUtils.GetAskPriceID();
+                carPolicy.PolicyStatus = policyState;
+
+                carPolicy.DeptId = obj.DeptId;
+                carPolicy.SalesId = obj.SalesId;
+                carPolicy.CarrierID = obj.CarrierID;
+                carPolicy.BranchID = obj.BranchID;
+                carPolicy.CarrierSales = obj.CarrierSales;
+                carPolicy.CustomerID = obj.CustomerID;
+                carPolicy.SourceTypeID = obj.SourceTypeID;
+                carPolicy.OperationType = obj.OperationTypeID;
+                carPolicy.GatheringType = obj.GatheringTypeID;
+                //carPolicy.Memo =obj.
+                //AuditOrNot
+                carPolicy.CreatePerson  = this.CurrentUserID;
+                carPolicy.CreateTime = DateTime.Now;               
+
+                carPolicy.Save(ModifiedAction.Insert);
+            }
+            else
+            {
+                carPolicy = new BO_CarPolicy(obj.AskPriceID);
+                carPolicy.PolicyStatus = policyState;
+
+                carPolicy.DeptId = obj.DeptId;
+                carPolicy.SalesId = obj.SalesId;
+                carPolicy.CarrierID = obj.CarrierID;
+                carPolicy.BranchID = obj.BranchID;
+                carPolicy.CarrierSales = obj.CarrierSales;
+                carPolicy.CustomerID = obj.CustomerID;
+                carPolicy.SourceTypeID = obj.SourceTypeID;
+                carPolicy.OperationType = obj.OperationTypeID;
+                carPolicy.GatheringType = obj.GatheringTypeID;
+
+                carPolicy.ModifyPerson = this.CurrentUserID;
+                carPolicy.ModifyTime = DateTime.Now;
+
+                carPolicy.Save(ModifiedAction.Update);
+            }
+
+            return carPolicy.AskPriceID;
+
+        }
+
+        #endregion Privates
 
 
-        
     }
 
 
@@ -414,10 +478,10 @@ namespace BrokerWebApp.vehicleinsurance
         public String SourceTypeID { get; set; }
 
         [DataMember]
-        public String OperationType { get; set; }
+        public String OperationTypeID { get; set; }
 
         [DataMember]
-        public String GatheringType { get; set; }
+        public String GatheringTypeID { get; set; }
         
         [DataMember]
         public string Memo { get; set; }
