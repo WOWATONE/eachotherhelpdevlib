@@ -12,11 +12,29 @@ function policyCheckNessary() {
 
 }
 
+function setOnlyDxeButtonsUnableOrEnable(val) {
+    if (typeof (dxebtnBottomAdd) == 'undefined' && dxebtnBottomAdd !=null)
+        dxebtnBottomAdd.SetEnabled(val);
+
+    if (typeof (dxebtnBottomSave) == 'undefined' && dxebtnBottomSave != null)
+        dxebtnBottomSave.SetEnabled(val);
+
+    if (typeof (dxebtnBottomCheck) == 'undefined' && dxebtnBottomCheck != null)
+        dxebtnBottomCheck.SetEnabled(val);
+
+    if (typeof (dxebtnCancel) == 'undefined' && dxebtnCancel != null)
+        dxebtnCancel.SetEnabled(val);
+
+    if (typeof (dxebtnAuditBack) == 'undefined' && dxebtnAuditBack != null)
+        dxebtnAuditBack.SetEnabled(val);
+
+    if (typeof (dxebtnAuditOk) == 'undefined' && dxebtnAuditOk != null)
+        dxebtnAuditOk.SetEnabled(val);
+    
+}
+
 function setDxeButtonsUnableOrEnable(val) {
-    dxebtnBottomAdd.SetEnabled(val);
-    dxebtnBottomSave.SetEnabled(val);
-    dxebtnBottomCheck.SetEnabled(val);
-    dxebtnCancel.SetEnabled(val);
+    setOnlyDxeButtonsUnableOrEnable(val);
 
     insuranceDetailTabPage.tabs[1].SetEnabled(val);
     insuranceDetailTabPage.tabs[2].SetEnabled(val);
@@ -63,11 +81,6 @@ function policyBaseCompleteEnable() {
 
 
 
-
-
-
-
-
 function makePolicyJSON() {
 
     var AskPriceID = dxetxtAskPriceID.GetValueString();
@@ -81,10 +94,11 @@ function makePolicyJSON() {
     var OperationTypeID = dxeddlOperationType.GetValue();    
     var SourceTypeID = dxeddlSourceTypeID.GetValue(); 
     var Remark = null;
+    var AuditOrNot = null;
 
     var plc = new Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
             CustomerID, SalesId, DeptId, GatheringTypeID,
-            OperationTypeID, SourceTypeID, Remark);
+            OperationTypeID, SourceTypeID, Remark, AuditOrNot);
 
     //deserialize JSON string, make a JSON object
     //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
@@ -137,36 +151,15 @@ function btnSaveCheckClick(s, e) {
 
 
 function saveCheckCallbackComplete(s, e) {
-    if (dxebtnBottomAdd != null) {
-        dxebtnBottomAdd.SetEnabled(false);
-    }
-    if (dxebtnBottomSave != null) {
-        dxebtnBottomSave.SetEnabled(false);
-    }
-    if (dxebtnBottomCheck != null) {
-        dxebtnBottomCheck.SetEnabled(false);
-    }
-    if (dxebtnCancel != null) {
-        dxebtnCancel.SetEnabled(false);
-    }
-    if (dxeClose != null) {
-        dxeClose.SetEnabled(true);
-    }
+    setOnlyDxeButtonsUnableOrEnable(false);
 }
 
 
 
 function btnAddCustomerClick() {
     var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
-    window.showModalDialog("NewCustomer.aspx", self, myArguments);
+    //window.showModalDialog("NewCustomer.aspx", self, myArguments);
 }
-
-
-function btnSelectCustomerClick() {
-    var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
-    window.showModalDialog("SelectCustomer.aspx", self, myArguments);
-}
-
 
 
 function GridCarrierCarrier_SelectedIndexChanged(s, e) {
@@ -217,8 +210,7 @@ function imgNewCustomerClick() {
 
 function Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
             CustomerID, SalesId, DeptId, GatheringTypeID,
-            OperationTypeID, SourceTypeID, Remark) {
-
+            OperationTypeID, SourceTypeID, Remark, AuditOrNot) {
 
     if (!isEmpty(AskPriceID))
         this.AskPriceID = AskPriceID;
@@ -253,7 +245,144 @@ function Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
     if (!isEmpty(Remark))
         this.Remark = Remark;
 
+    if (!isEmpty(AuditOrNot))
+        this.AuditOrNot = AuditOrNot;
+
 }
+
+
+
+
+
+function btnCancelClick() {
+    window.document.forms[0].reset();
+    //ASPxClientEdit.ClearEditorsInContainer(null);
+}
+
+function btnCloseClick() {
+    window.close();
+}
+
+function gridPolicyItem_EndCallback(s, e) {
+    //
+}
+
+
+function policyTab_Changing(s, e) {
+    //debugger;
+    if (e.tab.index == 1 || e.tab.index == 2) {
+        var element = s.GetContentElement(e.tab.index);
+        if (element != null) element.loaded = false;
+    }
+}
+
+function policyTab_Click(s, e) {
+    //
+}
+
+
+function dxebtnAuditBackClick(s, e) {
+        
+    var AuditOrNot = 0;
+    
+    var AskPriceID = dxetxtAskPriceID.GetValueString();
+    var CarrierID = null;
+    var BranchID = null;
+    var CarrierSales = null;
+    var CustomerID = null;
+    var SalesId = null;
+    var DeptId = null;
+    var GatheringTypeID = null;
+    var OperationTypeID = null;
+    var SourceTypeID = null;
+    var Remark = dxeMemo.GetValueString();
+
+    var plc = new Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
+            CustomerID, SalesId, DeptId, GatheringTypeID,
+            OperationTypeID, SourceTypeID, Remark, AuditOrNot);
+
+    var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
+
+    dxeAuditOkCallback.PerformCallback(jsonStringClient);
+
+}
+
+
+function auditBackCallbackComplete(s, e) {
+    //do nothing;
+    setOnlyDxeButtonsUnableOrEnable(false);
+}
+
+function dxebtnAuditOkClick(s, e) {
+    //debugger;
+    var buttonID = s.GetText();
+    var AuditOrNot;
+    switch (buttonID) {
+        case "通过审核":
+            AuditOrNot = true;
+            break
+        case "反审核":
+            AuditOrNot = false;
+            break
+        default:
+            //do nothing;
+    }
+
+    var AskPriceID = dxetxtAskPriceID.GetValueString();
+    var CarrierID = null;
+    var BranchID = null;
+    var CarrierSales = null;
+    var CustomerID = null;
+    var SalesId = null;
+    var DeptId = null;
+    var GatheringTypeID = null;
+    var OperationTypeID = null;
+    var SourceTypeID = null;
+    
+
+    var Remark = dxeMemo.GetValueString();
+    
+    var plc = new Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
+            CustomerID, SalesId, DeptId, GatheringTypeID,
+            OperationTypeID, SourceTypeID, Remark, AuditOrNot);
+
+    var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
+
+    dxeAuditOkCallback.PerformCallback(jsonStringClient);
+
+}
+
+function auditOkCallbackComplete(s, e) {
+
+    setOnlyDxeButtonsUnableOrEnable(false);
+    dxebtnAuditOk.SetEnabled(true);
+    var buttonID = dxebtnAuditOk.GetText();
+    switch (buttonID) {
+        case "通过审核":
+            dxebtnAuditOk.SetText("反审核");
+            break
+        case "反审核":
+            dxebtnAuditOk.SetText("通过审核");
+            break
+        default:
+            //do nothing;
+    }
+
+}
+
+
+function hlPolicyItemTogetherClick(params) {
+    var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
+    var url = params;
+    window.open(url);
+}
+
+function Carrier_SelectedIndexChanged(s, e) {
+    var thejsonstring = dxeddlCarrierId.GetSelectedItem().value;
+    dxeddlBranchId.PerformCallback(thejsonstring);
+}
+
+
 
 
 function isEmpty(testVar) {
@@ -275,95 +404,4 @@ function isDecimal(str) {
         return false;
     }
 }
-
-
-function btnCancelClick() {
-    window.document.forms[0].reset();
-    //ASPxClientEdit.ClearEditorsInContainer(null);
-}
-
-function btnCloseClick() {
-    window.close();
-}
-
-function gridPolicyItem_EndCallback(s, e) {
-    //
-}
-
-
-function policyTab_Changing(s, e) {
-    //debugger;
-    if (e.tab.index == 1 || e.tab.index == 2) {
-        //refresh perieodtime grid
-        //gridPeriod.PerformCallback();
-        var element = s.GetContentElement(e.tab.index);
-        if (element != null) element.loaded = false;
-    }
-}
-
-function policyTab_Click(s, e) {
-    //
-}
-
-
-function dxebtnAuditOkClick(s, e) {
-    //debugger;
-    var buttonID = s.GetText();
-    var AuditOrNot;
-    switch (buttonID) {
-        case "审核":
-            AuditOrNot = true;
-            break
-        case "反审核":
-            AuditOrNot = false;
-            break
-        default:
-            //do nothing;
-    }
-    var Memo = dxeMemo.GetValueString();
-
-    var plcAuditInfo = new PolicyAuditInfo(Memo, AuditOrNot);
-
-    var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plcAuditInfo);
-
-    dxeAuditOkCallback.PerformCallback(jsonStringClient);
-
-}
-
-function auditOkCallbackComplete(s, e) {
-
-    var buttonID = dxebtnAuditOk.GetText();
-    switch (buttonID) {
-        case "审核":
-            dxebtnAuditOk.SetText("反审核");
-            break
-        case "反审核":
-            dxebtnAuditOk.SetText("审核");
-            break
-        default:
-            //do nothing;
-    }
-
-}
-
-function PolicyAuditInfo(Memo, AuditOrNot) {
-    if (!isEmpty(Memo))
-        this.Memo = Memo;
-
-    this.AuditOrNot = AuditOrNot;
-}
-
-function hlPolicyItemTogetherClick(params) {
-    var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
-    var url = params;
-    window.open(url);
-}
-
-function Carrier_SelectedIndexChanged(s, e) {
-    var thejsonstring = dxeddlCarrierId.GetSelectedItem().value;
-    dxeddlBranchId.PerformCallback(thejsonstring);
-}
-
-
-
   

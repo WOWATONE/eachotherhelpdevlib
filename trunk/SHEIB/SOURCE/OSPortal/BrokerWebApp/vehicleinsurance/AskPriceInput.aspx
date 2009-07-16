@@ -107,6 +107,10 @@
         <ClientSideEvents CallbackComplete="function(s, e) {auditOkCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
     
+    <dxcb:ASPxCallback ID="dxeAuditBackCallback" ClientInstanceName="dxeAuditBackCallback" runat="server" OnCallback="dxeAuditBackCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {auditBackCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
     
     <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
         runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%" AutoPostBack="false" EnableCallBacks="true">
@@ -607,9 +611,13 @@
                             </tr>
                             <tr runat="server" id="tbltrAuditExecuteAction">
                                 <td>&nbsp;</td>
-                                <td>&nbsp;</td>                                
                                 <td>
-                                    <dxe:ASPxButton runat="server" id="dxebtnAuditOk" ClientInstanceName="dxebtnAuditOk" Text="审核" CausesValidation="false" AutoPostBack="false">
+                                    <dxe:ASPxButton runat="server" id="dxebtnAuditBack" ClientInstanceName="dxebtnAuditBack" Text="退回修改" CausesValidation="false" AutoPostBack="false">
+                                        <ClientSideEvents Click="function(s, e) {dxebtnAuditBackClick(s,e);}" />
+                                    </dxe:ASPxButton>
+                                </td>                                
+                                <td>
+                                    <dxe:ASPxButton runat="server" id="dxebtnAuditOk" ClientInstanceName="dxebtnAuditOk" Text="通过审核" CausesValidation="false" AutoPostBack="false">
                                         <ClientSideEvents Click="function(s, e) {dxebtnAuditOkClick(s,e);}" />
                                     </dxe:ASPxButton>
                                 </td>
@@ -668,7 +676,7 @@
                 <td style="width: 400px; text-align: left;">
                     &nbsp;
                 </td>
-                <td style="display:none;"><a id="hrefnewpolicy" href="AskPriceInput.aspx">New</a></td>
+                <td style="display:none;"><a id="hrefnewpolicy" href="AskPriceInput.aspx?pagemode=input">New</a></td>
                 <td></td>
                 <td></td>
                 <td></td>
