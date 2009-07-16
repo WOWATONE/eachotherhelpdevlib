@@ -85,19 +85,19 @@ namespace BusinessObjects.Policy
 
 
 
-        public static List<BO_CarPolicyDoc> FetchListByCarPolicy(String carPolicyID)
+        public static List<BO_CarPolicyDoc> FetchListByCarPolicy(String askPriceID)
         {
             List<BO_CarPolicyDoc> list = new List<BO_CarPolicyDoc>();
 
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT CarPolicyDocID, AskPriceID, DocName, DocURL ");
             sb.Append(" FROM CarPolicyDoc ");
-            sb.Append(" WHERE CarPolicyDocID = @CarPolicyDocID");
+            sb.Append(" WHERE AskPriceID = @AskPriceID");
             sb.Append(" ");
             sb.Append(" ");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-            _db.AddInParameter(dbCommand, "@CarPolicyDocID", DbType.String, carPolicyID);
+            _db.AddInParameter(dbCommand, "@AskPriceID", DbType.String, askPriceID);
 
             BO_CarPolicyDoc newObj;
             using (IDataReader reader = _db.ExecuteReader(dbCommand))
