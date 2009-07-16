@@ -30,10 +30,6 @@
         }
 
         function gridCustomButtonClick(s, e) {
-            //var noint = s.GetDataRow(e.visibleIndex).cells[2].innerText;
-            //var querystring;
-            //querystring = "AskPriceInput.aspx?pagemode=input&id=" + noint;
-            //window.showModalDialog(querystring, self, myArguments);
             s.GetRowValues(e.visibleIndex, "AskPriceID", getTheSelectedRowsValues);
         }
 
@@ -49,11 +45,7 @@
             }
         }
 
-        function imgPolicyProdTypeClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
-            //window.showModalDialog("PolicyProdType.aspx", self, myArguments);
-        }
-
+        
         function Carrier_SelectedIndexChanged(s, e) {
             var thejsonstring = dxeddlCarrierId.GetSelectedItem().value;
             dxeddlBranchId.PerformCallback(thejsonstring);
