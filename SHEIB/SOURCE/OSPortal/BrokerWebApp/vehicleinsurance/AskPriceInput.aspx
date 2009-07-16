@@ -170,17 +170,16 @@
                                                 <td style="text-align: left;">
                                                     <dxe:ASPxComboBox ID="dxeddlCarrierId" ClientInstanceName="dxeddlCarrierId" runat="server" Width="140px" DropDownStyle="DropDownList">
 						                                <Items>
-							                                <dxe:ListEditItem Text="中国平安保险公司" Value="" />
 						                                </Items>
+						                                <ClientSideEvents SelectedIndexChanged="Carrier_SelectedIndexChanged" />
 					                                </dxe:ASPxComboBox>
                                                 </td>
                                                 <td style="text-align: right;">
                                                     分支机构：
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server" Width="140px" DropDownStyle="DropDownList">
+                                                    <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server" Width="140px" DropDownStyle="DropDownList" OnCallback="CarrierBranchIDCallback">
 						                                <Items>
-							                                <dxe:ListEditItem Text="中国平安保险公司" Value="" />
 						                                </Items>
 					                                </dxe:ASPxComboBox>
                                                 </td>
