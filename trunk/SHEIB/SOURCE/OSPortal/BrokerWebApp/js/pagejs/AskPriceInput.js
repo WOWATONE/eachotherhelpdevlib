@@ -3,7 +3,7 @@
 function policyCheckNessary() {
     var pid = dxetxtAskPriceID.GetValueString();    
     var cid = getCustomerID();
-    if (isEmpty(pid) || isEmpty(pt) || isEmpty(bf) || isEmpty(cid)) {
+    if (isEmpty(pid)) {
         return true;
     }
     else {
@@ -77,14 +77,14 @@ function makePolicyJSON() {
     var CustomerID = getCustomerID();
     var SalesId = dxeddlSalesId.GetValue();      
     var DeptId = dxeddlDeptID.GetValue();    
-    var GatheringType = dxeddlGatheringType.GetValue();    
-    var OperationType = dxeddlOperationType.GetValue();    
+    var GatheringTypeID = dxeddlGatheringType.GetValue();    
+    var OperationTypeID = dxeddlOperationType.GetValue();    
     var SourceTypeID = dxeddlSourceTypeID.GetValue(); 
     var Remark = null;
 
     var plc = new Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
-            CustomerID, SalesId, DeptId, GatheringType,
-            OperationType, SourceTypeID, Remark);
+            CustomerID, SalesId, DeptId, GatheringTypeID,
+            OperationTypeID, SourceTypeID, Remark);
 
     //deserialize JSON string, make a JSON object
     //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
@@ -100,7 +100,7 @@ function makePolicyJSON() {
 function dxebtntopSave_Click(s, e) {
     //
     if (s.CauseValidation()) {
-        var thejsonstring = ""; //makePolicyJSON();
+        var thejsonstring = makePolicyJSON();
         dxeSaveCallback.PerformCallback(thejsonstring);
     }
         
@@ -109,11 +109,12 @@ function dxebtntopSave_Click(s, e) {
 function saveCallbackComplete(s, e) {
     //do nothing;
     policyBaseCompleteEnable();
+
+    var pid = dxetxtAskPriceID.GetValueString();
     
-    //var pid = dxetxtPolicyID.GetValueString();
-    //if (isEmpty(pid)) {
-    //    dxetxtPolicyID.SetValue(e.result);
-    //}
+    if (isEmpty(pid)) {
+        dxetxtAskPriceID.SetValue(e.result);
+    }
 }
 
 function btnAddClick(s, e) {
@@ -174,11 +175,6 @@ function GridCarrierCarrier_SelectedIndexChanged(s, e) {
 }
 
 
-function gridGridProdIDChange() {
-    var theValue = decbGridProdID.GetText();
-    //detxtGridProdName.SetValue(theValue);
-}
-
 function dxeddlDeptID_SelectedIndexChanged(s, e) {
     var thejsonstring = dxeddlDeptID.GetSelectedItem().value;
     dxeddlSalesId.PerformCallback(thejsonstring);
@@ -195,20 +191,6 @@ function FileUploaded(s, e) {
 }
 
 
-function imgPolicyProdTypeClick() {
-    var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=600px;dialogHeight=500px;center=yes;help=no";
-    var retrunval = window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
-    if (isEmpty(retrunval)) {
-        //do nothing;
-    }
-    else {
-        //split the return value;
-        var thesplit_array = retrunval.split(";");
-        dxetxtProdTypeName.SetValue(thesplit_array[1]);
-        setProductTypeID(thesplit_array[0]);
-    }
-}
-
 
 function imgSelectCustomerClick() {
     var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
@@ -219,10 +201,8 @@ function imgSelectCustomerClick() {
     else {
         //split the return value;
         var thesplit_array = retrunval.split(";");
-        dxetxtCustomer.SetValue(thesplit_array[1]);
-        dxetxtBeneficiary.SetValue(thesplit_array[1]);
+        dxetxtCustomer.SetValue(thesplit_array[1]);        
         setCustomerID(thesplit_array[0]);
-        //
     }
 }
 
@@ -236,8 +216,8 @@ function imgNewCustomerClick() {
 
 
 function Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
-            CustomerID, SalesId, DeptId, GatheringType,
-            OperationType, SourceTypeID, Remark) {
+            CustomerID, SalesId, DeptId, GatheringTypeID,
+            OperationTypeID, SourceTypeID, Remark) {
 
 
     if (!isEmpty(AskPriceID))
@@ -261,11 +241,11 @@ function Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
     if (!isEmpty(DeptId))
         this.DeptId = DeptId;
 
-    if (!isEmpty(GatheringType))
-        this.GatheringType = GatheringType;
+    if (!isEmpty(GatheringTypeID))
+        this.GatheringTypeID = GatheringTypeID;
 
-    if (!isEmpty(OperationType))
-        this.OperationType = OperationType;
+    if (!isEmpty(OperationTypeID))
+        this.OperationTypeID = OperationTypeID;
 
     if (!isEmpty(SourceTypeID))
         this.SourceTypeID = SourceTypeID;
@@ -296,19 +276,6 @@ function isDecimal(str) {
     }
 }
 
-function dxeStartDate_DateChanged(s, e) {
-    //http://www.w3school.com.cn/js/jsref_obj_date.asp
-    var thesource = dxeStartDate.GetDate();
-    var theYear = thesource.getFullYear();
-    var theMonth = thesource.getMonth();
-    var theDate = thesource.getDate();
-    theYear = theYear + 1;
-    theMonth = theMonth + 1;
-    var endDateString = theMonth.toString() + "/" + theDate.toString() + "/" + theYear.toString();
-
-    dxeEndDate.SetDate(new Date(endDateString));
-}
-
 
 function btnCancelClick() {
     window.document.forms[0].reset();
@@ -320,36 +287,7 @@ function btnCloseClick() {
 }
 
 function gridPolicyItem_EndCallback(s, e) {
-    //sum                        
-    var itemVal;
-    var sumCoverageVal = 0;
-    var sumPremiumVal = 0;
-    var sumProcessVal = 0;
-    for (i = 0; i < gridPolicyItem.pageRowCount; i++) {
-        //Coverage
-        itemVal = gridPolicyItem.GetDataRow(i).cells[2].innerText;
-        if (isDecimal(itemVal)) {
-            sumCoverageVal = parseFloat(sumCoverageVal) + parseFloat(itemVal);
-        }
-        //Premium
-        itemVal = gridPolicyItem.GetDataRow(i).cells[3].innerText;
-        if (isDecimal(itemVal)) {
-            sumPremiumVal = parseFloat(sumPremiumVal) + parseFloat(itemVal);
-        }
-        //ProcRate
-        itemVal = gridPolicyItem.GetDataRow(i).cells[4].innerText;
-        //Process
-        itemVal = gridPolicyItem.GetDataRow(i).cells[5].innerText;
-        if (isDecimal(itemVal)) {
-            sumProcessVal = parseFloat(sumProcessVal) + parseFloat(itemVal);
-        }
-    }
-    var rtn = sumCoverageVal.toFixed(2);
-    dxetxtCoverage.SetValue(rtn);
-    rtn = sumPremiumVal.toFixed(2);
-    dxetxtPremium.SetValue(rtn);
-    rtn = sumProcessVal.toFixed(2);
-    dxetxtProcess.SetValue(rtn);
+    //
 }
 
 
