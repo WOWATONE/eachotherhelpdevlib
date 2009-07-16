@@ -346,8 +346,7 @@ namespace BusinessObjects.Policy
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT ");            
             sb.Append("AskPriceID, TradeNo, CustomerID, Beneficiary, DeptId, ");
-            sb.Append("CarrierSales, SalesId, SignDate, Coverage, PremiumBase, ");
-            sb.Append("ProcessRate, ProcessBase, ");
+            sb.Append("CarrierSales, SalesId, SignDate,");
             sb.Append("PolicyStatus, GatheringType, OperationType, ");
             sb.Append("SourceTypeID, Remark, AuditTime, AuditPerson, AuditContent, ");
             sb.Append("CreateTime, CreatePerson, ModifyTime, ");
@@ -496,13 +495,15 @@ namespace BusinessObjects.Policy
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE CarPolicy SET ");
-            sb.Append("TradeNo=@TradeNo, CustomerID=@CustomerID, Beneficiary=@Beneficiary, DeptId=@DeptId,");
-            sb.Append("CarrierSales=@CarrierSales, SalesId=@,SalesId SignDate=@SignDate,");
-            sb.Append("PolicyStatus=@PolicyStatus, GatheringType=@GatheringType,");
-            sb.Append("OperationType=@OperationType, SourceTypeID=@SourceTypeID, Remark=@Remark, AuditTime=@AuditTime, ");
-            sb.Append("AuditPerson=@AuditPerson, AuditContent=@AuditContent, CreateTime=@CreateTime, CreatePerson=@CreatePerson, ModifyTime=@ModifyTime,");
-            sb.Append("ModifyPerson=@ModifyPerson, VolumnNo=@VolumnNo, CarCount=@CarCount, BankName=@BankName, BankAccount=@BankAccount,");
-            sb.Append("CarrierID=@CarrierID, BranchID=@BranchID");
+            sb.Append("TradeNo=@TradeNo, CustomerID=@CustomerID, Beneficiary=@Beneficiary,");
+            sb.Append("DeptId=@DeptId,CarrierSales=@CarrierSales, SalesId=@SalesId,");
+            sb.Append("SignDate=@SignDate,PolicyStatus=@PolicyStatus, GatheringType=@GatheringType,");
+            sb.Append("OperationType=@OperationType, SourceTypeID=@SourceTypeID, Remark=@Remark,");
+            sb.Append("AuditTime=@AuditTime, AuditPerson=@AuditPerson, AuditContent=@AuditContent,");
+            sb.Append("CreateTime=@CreateTime, CreatePerson=@CreatePerson, ModifyTime=@ModifyTime,");
+            sb.Append("ModifyPerson=@ModifyPerson, VolumnNo=@VolumnNo, CarCount=@CarCount,");
+            sb.Append("BankName=@BankName, BankAccount=@BankAccount,CarrierID=@CarrierID,");
+            sb.Append("BranchID=@BranchID");
             
             sb.Append(" Where AskPriceID=@AskPriceID;");
 
