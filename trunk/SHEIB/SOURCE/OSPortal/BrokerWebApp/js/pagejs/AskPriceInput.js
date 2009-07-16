@@ -421,6 +421,10 @@ function hlPolicyItemTogetherClick(params) {
     window.open(url);
 }
 
+function Carrier_SelectedIndexChanged(s, e) {
+    var thejsonstring = dxeddlCarrierId.GetSelectedItem().value;
+    dxeddlBranchId.PerformCallback(thejsonstring);
+}
 
 
 
