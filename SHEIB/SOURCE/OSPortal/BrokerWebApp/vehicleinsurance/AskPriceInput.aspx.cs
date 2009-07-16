@@ -125,7 +125,8 @@ namespace BrokerWebApp.vehicleinsurance
         }
 
 
-        protected void CarrierBranchIDCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        protected void CarrierBranchIDCallback(object source, 
+            DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
             ASPxComboBox thecb = (ASPxComboBox)source;
             thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
@@ -140,7 +141,8 @@ namespace BrokerWebApp.vehicleinsurance
         }
 
 
-        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        protected void dxeddlSalesIdCallback(object source, 
+            DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
             ASPxComboBox thecb = (ASPxComboBox)source;
             thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
@@ -261,31 +263,300 @@ namespace BrokerWebApp.vehicleinsurance
 
         #region gridPolicyItem Events
 
-        protected void gridPolicyItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        protected void gridPolicyItem_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
         {
-            e.Cancel = true;
-            this.gridPolicyItem.CancelEdit();
-
-        }
-
-        protected void gridPolicyItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
-        {
+            HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
             
-            e.Cancel = true;
-            this.gridPolicyItem.CancelEdit();
+            ASPxTextBox dxetxtGridPolicyItemCarNo = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCarNo") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiProcessRate = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiProcessRate") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiProcess = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiProcess") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciProcessRate = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciProcessRate") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciProcess = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciProcess") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCstPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCstPremium") as ASPxTextBox;
+
+
+            Int32 editIndex = this.gridPolicyItem.EditingRowVisibleIndex;
+            if (editIndex > -1)
+            {
+                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "PolicyID", "CarNo", "CiPremium", "CiProcessRate", "CiProcess", "AciPremium", "AciProcessRate", "AciProcess", "CstPremium" });
+                object[] theValueList = theValues as object[];
+                if (this.gridPolicyItemStartEdit)
+                {
+                    dxetxtGridPolicyItemCarNo.Text = theValueList[1].ToString();
+                    dxetxtGridPolicyItemCiPremium.Text = theValueList[2].ToString();
+                    dxetxtGridPolicyItemCiProcessRate.Text = theValueList[3].ToString();
+                    dxetxtGridPolicyItemCiProcess.Text = theValueList[4].ToString();
+                    dxetxtGridPolicyItemAciPremium.Text = theValueList[5].ToString();
+                    dxetxtGridPolicyItemAciProcessRate.Text = theValueList[6].ToString();
+                    dxetxtGridPolicyItemAciProcess.Text = theValueList[7].ToString();
+                    dxetxtGridPolicyItemCstPremium.Text = theValueList[8].ToString();
+                }
+            }
+
         }
 
-        protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        protected void gridPolicyItem_StartRowEditing(object sender, 
+            DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
         {
-            e.Cancel = true;
-            this.gridPolicyItem.CancelEdit();
-            this.gridPolicyItem.DataBind();
+            String theKey = e.EditingKeyValue.ToString();
+
+            HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
+
+            ASPxTextBox dxetxtGridPolicyItemCarNo = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCarNo") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiProcessRate = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiProcessRate") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiProcess = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiProcess") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciProcessRate = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciProcessRate") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciProcess = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciProcess") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCstPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCstPremium") as ASPxTextBox;
+                        
+            this.gridPolicyItemStartEdit = true;
         }
 
-        protected void gridPolicyItem_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+
+        protected void gridPolicyItem_RowUpdating(object sender, 
+            DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            String theParam = e.Parameters;                        
-            this.gridPolicyItem.DataBind();
+
+            String theKey = e.Keys[0].ToString();
+            HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
+                        
+            ASPxTextBox dxetxtGridPolicyItemCarNo = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCarNo") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiProcessRate = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiProcessRate") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiProcess = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiProcess") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciProcessRate = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciProcessRate") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciProcess = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciProcess") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCstPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCstPremium") as ASPxTextBox;
+
+
+            BusinessObjects.Policy.BO_Policy newobj = new BusinessObjects.Policy.BO_Policy(theKey);
+
+            newobj.AskPriceID  = this.dxetxtAskPriceID.Text;
+
+
+            if (dxetxtGridPolicyItemCarNo.Text != String.Empty)
+            {
+                newobj.CarNo = dxetxtGridPolicyItemCarNo.Text.Trim();
+            }
+            if (dxetxtGridPolicyItemCiPremium.Text != String.Empty)
+            {
+                newobj.CiPremium = Convert.ToDecimal(dxetxtGridPolicyItemCiPremium.Text);
+            }
+            if (dxetxtGridPolicyItemCiProcessRate.Text != String.Empty)
+            {
+                newobj.CiProcessRate = Convert.ToDecimal(dxetxtGridPolicyItemCiProcessRate.Text);
+            }
+            if (dxetxtGridPolicyItemCiProcess.Text != String.Empty)
+            {
+                newobj.CiProcess = Convert.ToDecimal(dxetxtGridPolicyItemCiProcess.Text);
+            }
+
+            if (dxetxtGridPolicyItemAciPremium.Text != String.Empty)
+            {
+                newobj.AciPremium = Convert.ToDecimal(dxetxtGridPolicyItemAciPremium.Text);
+            }
+
+            if (dxetxtGridPolicyItemAciProcessRate.Text != String.Empty)
+            {
+                newobj.AciProcessRate = Convert.ToDecimal(dxetxtGridPolicyItemAciProcessRate.Text);
+            }
+
+            if (dxetxtGridPolicyItemAciProcess.Text != String.Empty)
+            {
+                newobj.AciProcess = Convert.ToDecimal(dxetxtGridPolicyItemAciProcess.Text);
+            }
+
+            if (dxetxtGridPolicyItemCstPremium.Text != String.Empty)
+            {
+                newobj.CstPremium = Convert.ToDecimal(dxetxtGridPolicyItemCstPremium.Text);
+            }
+
+            try
+            {
+                newobj.Save(ModifiedAction.Update);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            e.Cancel = true;
+            this.gridPolicyItem.CancelEdit();
+            getInitPolicyData();
+
+        }
+
+
+        protected void gridPolicyItem_RowInserting(object sender, 
+            DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+
+            HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
+
+            ASPxTextBox dxetxtGridPolicyItemCarNo = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCarNo") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiProcessRate = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiProcessRate") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiProcess = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiProcess") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciProcessRate = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciProcessRate") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciProcess = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciProcess") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCstPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCstPremium") as ASPxTextBox;
+
+
+            BusinessObjects.Policy.BO_Policy newobj = new BusinessObjects.Policy.BO_Policy();
+
+            newobj.PolicyID = TranUtils.GetPolicyID();
+
+            newobj.AskPriceID = this.dxetxtAskPriceID.Text;
+
+            if (dxetxtGridPolicyItemCarNo.Text != String.Empty)
+            {
+                newobj.CarNo = dxetxtGridPolicyItemCarNo.Text.Trim();
+            }
+            if (dxetxtGridPolicyItemCiPremium.Text != String.Empty)
+            {
+                newobj.CiPremium = Convert.ToDecimal(dxetxtGridPolicyItemCiPremium.Text);
+            }
+            if (dxetxtGridPolicyItemCiProcessRate.Text != String.Empty)
+            {
+                newobj.CiProcessRate = Convert.ToDecimal(dxetxtGridPolicyItemCiProcessRate.Text);
+            }
+            if (dxetxtGridPolicyItemCiProcess.Text != String.Empty)
+            {
+                newobj.CiProcess = Convert.ToDecimal(dxetxtGridPolicyItemCiProcess.Text);
+            }
+
+            if (dxetxtGridPolicyItemAciPremium.Text != String.Empty)
+            {
+                newobj.AciPremium = Convert.ToDecimal(dxetxtGridPolicyItemAciPremium.Text);
+            }
+
+            if (dxetxtGridPolicyItemAciProcessRate.Text != String.Empty)
+            {
+                newobj.AciProcessRate = Convert.ToDecimal(dxetxtGridPolicyItemAciProcessRate.Text);
+            }
+
+            if (dxetxtGridPolicyItemAciProcess.Text != String.Empty)
+            {
+                newobj.AciProcess = Convert.ToDecimal(dxetxtGridPolicyItemAciProcess.Text);
+            }
+
+            if (dxetxtGridPolicyItemCstPremium.Text != String.Empty)
+            {
+                newobj.CstPremium = Convert.ToDecimal(dxetxtGridPolicyItemCstPremium.Text);
+            }
+
+            try
+            {
+                newobj.Save(ModifiedAction.Insert);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            e.Cancel = true;
+            this.gridPolicyItem.CancelEdit();
+            getInitPolicyData();
+
+        }
+
+
+        protected void gridPolicyItem_RowDeleting(object sender, 
+            DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            String theKey = e.Keys[0].ToString();
+
+            try
+            {
+                BusinessObjects.Policy.BO_Policy.Delete(theKey);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            e.Cancel = true;
+            this.gridPolicyItem.CancelEdit();
+            getInitPolicyData();
+        }
+
+
+        protected void gridPolicyItem_RowValidating(object sender, 
+            DevExpress.Web.Data.ASPxDataValidationEventArgs e)
+        {            
+            String appendDes = "必需项";
+            HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
+
+            ASPxTextBox dxetxtGridPolicyItemCarNo = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCarNo") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiProcessRate = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiProcessRate") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCiProcess = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCiProcess") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciPremium") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciProcessRate = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciProcessRate") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemAciProcess = tblEditorTemplate.FindControl("dxetxtGridPolicyItemAciProcess") as ASPxTextBox;
+            ASPxTextBox dxetxtGridPolicyItemCstPremium = tblEditorTemplate.FindControl("dxetxtGridPolicyItemCstPremium") as ASPxTextBox;
+                       
+
+            if (String.IsNullOrEmpty(dxetxtGridPolicyItemCarNo.Text))
+            {
+                e.Errors[this.gridPolicyItem.Columns[1]] = "必需项";
+                dxetxtGridPolicyItemCarNo.Validate();
+            }
+            if (String.IsNullOrEmpty(dxetxtGridPolicyItemCiPremium.Text))
+            {
+                e.Errors[this.gridPolicyItem.Columns[2]] = "必需项";
+                dxetxtGridPolicyItemCiPremium.Validate();
+            }
+            if (String.IsNullOrEmpty(dxetxtGridPolicyItemCiProcessRate.Text))
+            {
+                e.Errors[this.gridPolicyItem.Columns[3]] = "必需项";
+                dxetxtGridPolicyItemCiProcessRate.Validate();
+            }
+            if (String.IsNullOrEmpty(dxetxtGridPolicyItemCiProcess.Text))
+            {
+                e.Errors[this.gridPolicyItem.Columns[4]] = "必需项";
+                dxetxtGridPolicyItemCiProcess.Validate();
+            }
+
+            if (String.IsNullOrEmpty(dxetxtGridPolicyItemAciPremium.Text))
+            {
+                e.Errors[this.gridPolicyItem.Columns[5]] = "必需项";
+                dxetxtGridPolicyItemAciPremium.Validate();
+            }
+
+            if (String.IsNullOrEmpty(dxetxtGridPolicyItemAciProcessRate.Text))
+            {
+                e.Errors[this.gridPolicyItem.Columns[6]] = "必需项";
+                dxetxtGridPolicyItemAciProcessRate.Validate();
+            }
+
+            if (String.IsNullOrEmpty(dxetxtGridPolicyItemAciProcess.Text))
+            {
+                e.Errors[this.gridPolicyItem.Columns[7]] = "必需项";
+                dxetxtGridPolicyItemAciProcess.Validate();
+            }
+
+            if (String.IsNullOrEmpty(dxetxtGridPolicyItemCstPremium.Text))
+            {
+                e.Errors[this.gridPolicyItem.Columns[8]] = "必需项";
+                dxetxtGridPolicyItemCstPremium.Validate();
+            }
+
+            if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误(" + appendDes + ")。";
+
+        }
+
+
+        protected void gridPolicyItem_CustomCallback(object sender, 
+            DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            String theParam = e.Parameters;
+            getInitPolicyData();
         }
 
 
@@ -295,29 +566,14 @@ namespace BrokerWebApp.vehicleinsurance
             DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(where);
             this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
-            if (String.IsNullOrEmpty(this.dxetxtAskPriceID.Text.Trim()))
-            {
-                //
-            }
-
+            
         }
 
         private void getCallBackPolicyData()
         {
-            String where = " and B.AskPriceID != '' and B.AskPriceID = '" + this.dxetxtAskPriceID.Text.Trim() + "'";
-            DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(where);
-            this.gridPolicyItem.DataSource = dt;
-            this.gridPolicyItem.DataBind();
+            getInitPolicyData();
         }
 
-
-        private void getPostBackPolicyData()
-        {
-            String where = " and B.AskPriceID != '' and B.AskPriceID = '" + this.dxetxtAskPriceID.Text.Trim() + "'";
-            DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(where);
-            this.gridPolicyItem.DataSource = dt;
-            this.gridPolicyItem.DataBind();
-        }
 
         #endregion gridPolicyItem Events
 
@@ -615,6 +871,7 @@ namespace BrokerWebApp.vehicleinsurance
             objCarPolicy.Remark = obj.Memo;
             objCarPolicy.Save(ModifiedAction.Update);
         }
+
 
         #endregion Privates
 

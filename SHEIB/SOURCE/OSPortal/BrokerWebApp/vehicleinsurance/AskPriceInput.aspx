@@ -338,7 +338,10 @@
                                                         KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" 
                                                         OnRowInserting="gridPolicyItem_RowInserting"
                                                         OnRowUpdating="gridPolicyItem_RowUpdating" 
-                                                        OnRowDeleting="gridPolicyItem_RowDeleting" 
+                                                        OnRowDeleting="gridPolicyItem_RowDeleting"  
+                                                        OnStartRowEditing="gridPolicyItem_StartRowEditing" 
+                                                        OnRowValidating="gridPolicyItem_RowValidating" 
+                                                        OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
                                                         OnCustomCallback="gridPolicyItem_CustomCallback"
                                                         >
                                                         <%-- BeginRegion Columns --%>
