@@ -57,6 +57,7 @@ namespace BrokerWebApp.vehicleinsurance
                 if (Page.IsCallback)
                 {
                     getCallBackPolicyData();
+                    rebindGridDocList();
                 }
             }
             else
@@ -91,6 +92,7 @@ namespace BrokerWebApp.vehicleinsurance
                 this.dxeCreateTime.Date = DateTime.Now;
 
                 loadCarPolicyValue(this.dxetxtAskPriceID.Text);
+                rebindGridDocList();
             }
             
         }
@@ -455,6 +457,23 @@ namespace BrokerWebApp.vehicleinsurance
 
             try
             {
+                BusinessObjects.Policy.BO_CarPolicy objCarPolicy;
+
+                objCarPolicy = new BusinessObjects.Policy.BO_CarPolicy(this.dxetxtAskPriceID.Text.Trim());
+                newobj.PolicyType = Convert.ToInt32(BO_Policy.PolicyTypeEnum.Vehicle).ToString();
+                newobj.PolicyStatus = Convert.ToInt32(BO_Policy.PolicyStatusEnum.Input).ToString();
+
+                newobj.DeptId = objCarPolicy.DeptId;
+                newobj.SalesId = objCarPolicy.SalesId;
+                newobj.CarrierSales = objCarPolicy.CarrierSales;
+                newobj.CustomerID = objCarPolicy.CustomerID;
+                newobj.SourceTypeID = objCarPolicy.SourceTypeID;
+                newobj.OperationType = objCarPolicy.OperationType;
+                newobj.GatheringType = objCarPolicy.GatheringType;
+
+                newobj.CreatePerson = this.CurrentUserID;
+                newobj.CreateTime = DateTime.Now;
+
                 newobj.Save(ModifiedAction.Insert);
             }
             catch (Exception ex)
@@ -653,10 +672,11 @@ namespace BrokerWebApp.vehicleinsurance
             rebindGridDocList();
         }
 
+
         private void rebindGridDocList()
         {
-            //this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-            //this.gridDocList.DataBind();
+            this.gridDocList.DataSource = BusinessObjects.Policy.BO_CarPolicyDoc.FetchListByCarPolicy(this.dxetxtAskPriceID.Text.Trim());
+            this.gridDocList.DataBind();
         }
 
 

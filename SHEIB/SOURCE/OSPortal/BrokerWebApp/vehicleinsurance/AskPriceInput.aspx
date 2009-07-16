@@ -384,7 +384,7 @@
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowAllRecords" />
                                                         <Settings ShowGroupPanel="false" ShowFooter="True" />
-                                                        <SettingsBehavior />
+                                                        <SettingsBehavior ConfirmDelete="true" />
                                                         <Templates>
                                                             <EditForm>
                                                                 <div style="padding: 4px 4px 3px 4px">
