@@ -521,7 +521,6 @@
                                         ShowProgressPanel="True" 
                                         FileInputCount="5" RemoveButtonSpacing="8px" 
                                         AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
-                                        OnPreRender="UploadControl_PreRender" 
                                         OnFileUploadComplete="UploadControl_FileUploadComplete"
                                         >
                                         <ValidationSettings MaxFileSize="4000000" 
