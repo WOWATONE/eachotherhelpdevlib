@@ -123,11 +123,7 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="系统日志" Name="schemasetting/Systemlog.aspx" Visible="false">
                                 </dxnb:NavBarItem>
-                            </Items>
-                        </dxnb:NavBarGroup>
-                        <dxnb:NavBarGroup Text="消息提醒" Visible="false">
-                            <Items>
-                                <dxnb:NavBarItem Text="服务提醒" Name="CustomerRelation/AlertService.aspx" Visible="false">
+                                <dxnb:NavBarItem Text="服务提醒" Name="schemasetting/AlertService.aspx">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
