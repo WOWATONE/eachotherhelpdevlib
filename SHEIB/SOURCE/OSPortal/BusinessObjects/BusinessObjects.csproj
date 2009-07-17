@@ -109,6 +109,7 @@
     <Compile Include="SchemaSetting\BO_ProductType.cs" />
     <Compile Include="SchemaSetting\BO_P_Department.cs" />
     <Compile Include="SysSet\BO_P_Code.cs" />
+    <Compile Include="SysSet\BO_SysSet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
