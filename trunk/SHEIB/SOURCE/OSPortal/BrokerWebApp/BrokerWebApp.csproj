@@ -821,12 +821,19 @@
     <Compile Include="vehicleinsurance\CarPolicyList.aspx.designer.cs">
       <DependentUpon>CarPolicyList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="vehicleinsurance\CarPriceAlertList.aspx.cs">
-      <DependentUpon>CarPriceAlertList.aspx</DependentUpon>
+    <Compile Include="vehicleinsurance\CarPolicyAlertList.aspx.cs">
+      <DependentUpon>CarPolicyAlertList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="vehicleinsurance\CarPriceAlertList.aspx.designer.cs">
-      <DependentUpon>CarPriceAlertList.aspx</DependentUpon>
+    <Compile Include="vehicleinsurance\CarPolicyAlertList.aspx.designer.cs">
+      <DependentUpon>CarPolicyAlertList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vehicleinsurance\CarPolicyCheckList.aspx.cs">
+      <DependentUpon>CarPolicyCheckList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vehicleinsurance\CarPolicyCheckList.aspx.designer.cs">
+      <DependentUpon>CarPolicyCheckList.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -1067,7 +1074,8 @@
     <Content Include="vehicleinsurance\AskPriceInputList.aspx" />
     <Content Include="vehicleinsurance\CarPolicyInput.aspx" />
     <Content Include="vehicleinsurance\CarPolicyList.aspx" />
-    <Content Include="vehicleinsurance\CarPriceAlertList.aspx" />
+    <Content Include="vehicleinsurance\CarPolicyAlertList.aspx" />
+    <Content Include="vehicleinsurance\CarPolicyCheckList.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
