@@ -800,13 +800,6 @@
     <Compile Include="vehicleinsurance\AskPriceAlertList.aspx.designer.cs">
       <DependentUpon>AskPriceAlertList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="vehicleinsurance\AskPriceCheck.aspx.cs">
-      <DependentUpon>AskPriceCheck.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="vehicleinsurance\AskPriceCheck.aspx.designer.cs">
-      <DependentUpon>AskPriceCheck.aspx</DependentUpon>
-    </Compile>
     <Compile Include="vehicleinsurance\AskPriceCheckList.aspx.cs">
       <DependentUpon>AskPriceCheckList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1099,7 +1092,6 @@
     <Content Include="schemasetting\ProductTypeList.aspx" />
     <Content Include="vehicleinsurance\AskPriceAlert.aspx" />
     <Content Include="vehicleinsurance\AskPriceAlertList.aspx" />
-    <Content Include="vehicleinsurance\AskPriceCheck.aspx" />
     <Content Include="vehicleinsurance\AskPriceCheckList.aspx" />
     <Content Include="vehicleinsurance\AskPriceInput.aspx" />
     <Content Include="vehicleinsurance\AskPriceInputList.aspx" />
