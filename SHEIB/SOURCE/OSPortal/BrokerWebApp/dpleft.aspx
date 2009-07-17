@@ -53,13 +53,12 @@
                         <dxnb:NavBarGroup Text="车险保单管理" Expanded="false">
                             <Items>
                                 <dxnb:NavBarItem Text="询价单录入" Name="vehicleinsurance/AskPriceInputList.aspx">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="询价单批改" Name="vehicleinsurance/AskPriceAlertList.aspx">
-                                </dxnb:NavBarItem>
+                                </dxnb:NavBarItem>                                
                                 <dxnb:NavBarItem Text="询价单审核" Name="vehicleinsurance/AskPriceCheckList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="保单录入" Name="vehicleinsurance/CarPolicyInputList.aspx"/>
-                                <dxnb:NavBarItem Text="保单查询" Name="vehicleinsurance/CarPolicyList.aspx">
+                                <dxnb:NavBarItem Text="保单批改" Name="vehicleinsurance/CarPriceAlertList.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="保单信息补录" Name="vehicleinsurance/CarPolicyList.aspx">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
