@@ -11,7 +11,7 @@
 namespace BrokerWebApp.vehicleinsurance {
     
     
-    public partial class AskPriceCheck {
+    public partial class AskPriceAlert {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -86,6 +86,24 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.TextBox txtSN;
         
         /// <summary>
+        /// btnOriginalPolicySelect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnOriginalPolicySelect;
+        
+        /// <summary>
+        /// btnOriginalPolicyDetail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnOriginalPolicyDetail;
+        
+        /// <summary>
         /// txtFee control.
         /// </summary>
         /// <remarks>
@@ -93,15 +111,6 @@ namespace BrokerWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFee;
-        
-        /// <summary>
-        /// txtNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumber;
         
         /// <summary>
         /// decbGridCarrierNo control.
@@ -183,6 +192,69 @@ namespace BrokerWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeBasic;
+        
+        /// <summary>
+        /// nppostilecontentHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel nppostilecontentHeader;
+        
+        /// <summary>
+        /// img_nppostilecontentHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton img_nppostilecontentHeader;
+        
+        /// <summary>
+        /// lbl_nppostilecontentHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_nppostilecontentHeader;
+        
+        /// <summary>
+        /// nppostilecontentDetail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel nppostilecontentDetail;
+        
+        /// <summary>
+        /// deCheckDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deCheckDate;
+        
+        /// <summary>
+        /// taModifyMemo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea taModifyMemo;
+        
+        /// <summary>
+        /// cpepostilecontent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpepostilecontent;
         
         /// <summary>
         /// npGridPolicyItemHeader control.
@@ -491,13 +563,13 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl3;
         
         /// <summary>
-        /// TextBox1 control.
+        /// TextBox2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
         
         /// <summary>
         /// ASPxDateEdit1 control.
@@ -527,6 +599,15 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.Panel npExecuteAction;
         
         /// <summary>
+        /// btnadd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnadd;
+        
+        /// <summary>
         /// btnsave control.
         /// </summary>
         /// <remarks>
@@ -534,24 +615,6 @@ namespace BrokerWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnsave;
-        
-        /// <summary>
-        /// btnApplyCheck control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnApplyCheck;
-        
-        /// <summary>
-        /// btnInvertCheck control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnInvertCheck;
         
         /// <summary>
         /// btncancel control.
