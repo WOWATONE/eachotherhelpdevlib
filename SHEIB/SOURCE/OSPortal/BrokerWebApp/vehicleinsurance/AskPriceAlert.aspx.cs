@@ -13,9 +13,8 @@ using DevExpress.Web.ASPxUploadControl;
 
 namespace BrokerWebApp.vehicleinsurance
 {
-    public partial class AskPriceCheck : BasePage
+    public partial class AskPriceAlert : BasePage
     {
-
         #region Variables
 
         private DataTable _dtGridPolicyItem;
@@ -30,6 +29,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         #endregion Variables
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //GridPolicyItem
@@ -42,9 +42,12 @@ namespace BrokerWebApp.vehicleinsurance
             this.gridPolicyItem.DataSource = ViewState["GridPolicyItem"];
 
             if (!IsPostBack && !IsCallback)
-                this.gridPolicyItem.DataBind();            
+                this.gridPolicyItem.DataBind();
 
+
+            
         }
+
 
 
 
@@ -115,8 +118,8 @@ namespace BrokerWebApp.vehicleinsurance
 
 
         }
-   
 
 
+        
     }
 }
