@@ -12,7 +12,7 @@ using DevExpress.Web.ASPxEditors;
 
 namespace BrokerWebApp.vehicleinsurance
 {
-    public partial class CarPriceAlertList : BasePage
+    public partial class CarPolicyAlertList : BasePage
     {
 
         #region Variables
@@ -61,16 +61,16 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            String where = " and ISNULL(A1.PolicyStatus,'0') = '0' ";
+            String where = " and ISNULL(B.PolicyStatus,'0') = '0' and ISNULL(B.AskPriceID,'') != '' ";
 
             if (!String.IsNullOrEmpty(this.dxetxtAskPriceID.Text))
             {
-                where += " and A1.AskPriceID='" + this.dxetxtAskPriceID.Text.Trim() + "'";
+                where += " and B.AskPriceID='" + this.dxetxtAskPriceID.Text.Trim() + "'";
             }
 
             if (!String.IsNullOrEmpty(this.dxetxtPolicyID.Text))
             {
-                //where += " and ='" + this.dxetxtPolicyID.Text.Trim() + "'";
+                where += " and B.PolicyID ='" + this.dxetxtPolicyID.Text.Trim() + "'";
             }
 
             if (!String.IsNullOrEmpty(this.dxetxtCustomer.Text))
@@ -80,53 +80,54 @@ namespace BrokerWebApp.vehicleinsurance
 
             if (this.dxeddlDeptID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptID.SelectedItem.Value.ToString()))
             {
-                where += " and A1.DeptId='" + this.dxeddlDeptID.SelectedItem.Value.ToString() + "'";
+                where += " and B.DeptId='" + this.dxeddlDeptID.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
             {
-                where += " and A1.SalesId='" + this.dxeddlSalesId.SelectedItem.Value.ToString() + "'";
+                where += " and B.SalesId='" + this.dxeddlSalesId.SelectedItem.Value.ToString() + "'";
             }
 
 
-            if (!String.IsNullOrEmpty(this.dxetxtCarCount.Text.Trim()) && Information.IsNumeric(this.dxetxtCarCount.Text.Trim()))
+            //if (!String.IsNullOrEmpty(this.dxetxtCarCount.Text.Trim()) && Information.IsNumeric(this.dxetxtCarCount.Text.Trim()))
+            if (!String.IsNullOrEmpty(this.dxetxtCarCount.Text.Trim()))
             {
-                where += " and A1.CarCount=" + this.dxetxtCarCount.Text.Trim();
+                where += " and B.CarNo='" + this.dxetxtCarCount.Text.Trim() + "'";
             }
 
             if (this.dxeddlSourceTypeID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSourceTypeID.SelectedItem.Value.ToString()))
             {
-                where += " and A1.SourceTypeID='" + this.dxeddlSourceTypeID.SelectedItem.Value.ToString() + "'";
+                where += " and B.SourceTypeID='" + this.dxeddlSourceTypeID.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlOperationType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlOperationType.SelectedItem.Value.ToString()))
             {
-                where += " and A1.OperationType='" + this.dxeddlOperationType.SelectedItem.Value.ToString() + "'";
+                where += " and B.OperationType='" + this.dxeddlOperationType.SelectedItem.Value.ToString() + "'";
             }
 
             if (!String.IsNullOrEmpty(this.dxetxtCreatePerson.Text.Trim()))
             {
-                where += " and A1.CreatePerson='" + this.dxetxtCreatePerson.Text.Trim() + "'";
+                where += " and B.CreatePerson='" + this.dxetxtCreatePerson.Text.Trim() + "'";
             }
 
             if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
             {
-                where += " and A1.CarrierID='" + this.dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
+                where += " and B.CarrierID='" + this.dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlBranchId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranchId.SelectedItem.Value.ToString()))
             {
-                where += " and A1.BranchID='" + this.dxeddlBranchId.SelectedItem.Value.ToString() + "'";
+                where += " and B.BranchID='" + this.dxeddlBranchId.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeStartDate.Date > DateTime.MinValue && this.dxeStartDate.Date < DateTime.MaxValue)
             {
-                where += " and A1.CreateTime>='" + this.dxeStartDate.Date + "'";
+                where += " and B.CreateTime>='" + this.dxeStartDate.Date + "'";
             }
 
             if (this.dxeEndDate.Date > DateTime.MinValue && this.dxeEndDate.Date < DateTime.MaxValue)
             {
-                where += " and A1.CreateTime<='" + this.dxeEndDate.Date + "'";
+                where += " and B.CreateTime<='" + this.dxeEndDate.Date + "'";
             }
 
             Parameter pt;

@@ -1,4 +1,4 @@
-<%@ Page Title="询价单批改列表" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="CarPriceAlertList.aspx.cs" Inherits="BrokerWebApp.vehicleinsurance.CarPriceAlertList" %>
+<%@ Page Title="询价单批改列表" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="CarPolicyAlertList.aspx.cs" Inherits="BrokerWebApp.vehicleinsurance.CarPolicyAlertList" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
@@ -116,8 +116,6 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server" Width="140px" DropDownStyle="DropDownList">
 									<Items>
-										<dxe:ListEditItem Text="(全部)" Value="" />
-										<dxe:ListEditItem Text="业务部" Value="1" />
 									</Items>
 								</dxe:ASPxComboBox>
                             </td>
@@ -127,12 +125,11 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="140px" DropDownStyle="DropDownList">
 									<Items>
-										<dxe:ListEditItem Text="(全部)" Value="" />
 									</Items>
 								</dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                                车牌数目：
+                                车牌号：
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCarCount" ClientInstanceName="dxetxtCarCount" runat="server" Width="140px"></dxe:ASPxTextBox>
@@ -147,7 +144,6 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID" runat="server" Width="140px" DropDownStyle="DropDownList">
 									<Items>
-										<dxe:ListEditItem Text="来源1" Value="" />
 									</Items>
 								</dxe:ASPxComboBox>
                             </td>
@@ -157,8 +153,6 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType" runat="server" Width="140px" DropDownStyle="DropDownList">
 									<Items>
-										<dxe:ListEditItem Text="新增" Value="1" />
-										<dxe:ListEditItem Text="再保" Value="2" />
 									</Items>
 								</dxe:ASPxComboBox>
                             </td>

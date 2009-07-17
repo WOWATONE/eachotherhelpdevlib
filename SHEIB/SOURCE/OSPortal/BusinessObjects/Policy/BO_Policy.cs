@@ -569,6 +569,7 @@ namespace BusinessObjects.Policy
             sb.Append(" B.Currency, H.CurrencyName, ");
             sb.Append(" B.SourceTypeID,I.SourceTypeName, ");
             sb.Append(" B.GatheringType,J.GatheringTypeName, ");
+            sb.Append(" B.OperationType,L.OperationTypeName, ");
             sb.Append(" B.FlagReinsure,");
             sb.Append(" CASE WHEN B.FlagReinsure=1 THEN '再保' ELSE '新增' END AS FlagReinsureName,");
             sb.Append(" B.StartDate,B.EndDate,");
@@ -593,6 +594,7 @@ namespace BusinessObjects.Policy
             sb.Append(" LEFT JOIN SourceType I ON I.SourceTypeID = B.SourceTypeID ");
             sb.Append(" LEFT JOIN GatheringType J ON J.GatheringTypeID = B.GatheringType ");
             sb.Append(" LEFT JOIN P_Department K ON B.DeptID = K.DeptID ");
+            sb.Append(" LEFT JOIN OperationType L ON B.OperationType = L.OperationTypeID ");
             sb.Append(" WHERE ISNULL(B.PolicyStatus,'0') = @PolicyStatus ");
             sb.Append(" ORDER BY B.CreateTime DESC  ");
 
@@ -638,6 +640,7 @@ namespace BusinessObjects.Policy
             sb.Append(" B.Currency, H.CurrencyName, ");
             sb.Append(" B.SourceTypeID,I.SourceTypeName, ");
             sb.Append(" B.GatheringType,J.GatheringTypeName, ");
+            sb.Append(" B.OperationType,L.OperationTypeName, ");
             sb.Append(" B.FlagReinsure,");
             sb.Append(" CASE WHEN B.FlagReinsure=1 THEN '再保' ELSE '新增' END AS FlagReinsureName,");
             sb.Append(" B.StartDate,B.EndDate,");
@@ -665,6 +668,7 @@ namespace BusinessObjects.Policy
             sb.Append(" LEFT JOIN SourceType I ON I.SourceTypeID = B.SourceTypeID ");
             sb.Append(" LEFT JOIN GatheringType J ON J.GatheringTypeID = B.GatheringType ");
             sb.Append(" LEFT JOIN P_Department K ON B.DeptID = K.DeptID ");
+            sb.Append(" LEFT JOIN OperationType L ON B.OperationType = L.OperationTypeID ");
             sb.Append(" WHERE 1=1 ");
             sb.Append(sWhere);
 
