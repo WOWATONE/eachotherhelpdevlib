@@ -29,7 +29,7 @@ namespace BrokerWebApp.vehicleinsurance
         private const string inputQueryStringIDKey = "id";
         private const string inputQueryStringPageModeKey = "pagemode";
         private const string inputQueryStringAskPriceidKey = "askpriceid";
-        private const string UploadDirectory = "~/UploadFiles/CarPolicyUploadFiles/";
+        private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
 
 
         private Boolean gridPolicyItemStartEdit = false;
@@ -56,8 +56,8 @@ namespace BrokerWebApp.vehicleinsurance
                 pm = ViewState[currentPageModeKey] as Nullable<PageMode>;
                 if (Page.IsCallback)
                 {
-                    //getCallBackPolicyData();
-                    //rebindGridDocList();
+                    getCallBackPolicyData();
+                    rebindGridDocList();
                 }
             }
             else
@@ -65,9 +65,7 @@ namespace BrokerWebApp.vehicleinsurance
                 this.dxetxtPolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 this.dxetxtAskPriceID.Text = Page.Request.QueryString[inputQueryStringAskPriceidKey];
                 this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey];
-
-                //this.pkid.Value = Page.Request.QueryString[inputQueryStringPreIDKey];
-
+                                
                 switch (this.pagemode.Value.ToLower().Trim())
                 {
                     case "input":
@@ -85,15 +83,15 @@ namespace BrokerWebApp.vehicleinsurance
                 }
                 ViewState[currentPageModeKey] = pm;
 
-                //getInitPolicyData();
+                getInitPolicyData();
 
                 Initialization();
 
                 this.dxetxtCreatePerson.Text = this.CurrentUserName;
                 this.dxeCreateTime.Date = DateTime.Now;
 
-                //loadCarPolicyValue(this.dxetxtAskPriceID.Text);
-                //rebindGridDocList();
+                loadPolicyValue(this.dxetxtPolicyID.Text);
+                rebindGridDocList();
             }
 
         }
@@ -238,32 +236,37 @@ namespace BrokerWebApp.vehicleinsurance
 
         #region CallBack Events
 
-        protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        protected void dxeSaveCallback_Callback(object source, 
+            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.Input).ToString();
-            //String thePolicyID = saveCarPolicy(e.Parameter, policystatus);
-            //e.Result = thePolicyID;
+            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+            String theID = savePolicy(e.Parameter, policystatus);
+            e.Result = theID;
         }
 
 
-        protected void dxeSaveAndCheckCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        protected void dxeSaveAndCheckCallback_Callback(object source, 
+            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.AppealAudit).ToString();
-            //String thePolicyID = saveCarPolicy(e.Parameter, policystatus);
+            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+            String theID = savePolicy(e.Parameter, policystatus);
             e.Result = "complete";
         }
 
-        protected void dxeAuditBackCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        protected void dxeAuditBackCallback_Callback(object source, 
+            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            //auditBackCarPolicy(e.Parameter);
+            auditBackPolicy(e.Parameter);
             e.Result = "complete";
         }
 
-        protected void dxeAuditOkCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        protected void dxeAuditOkCallback_Callback(object source, 
+            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            //auditCarPolicy(e.Parameter);
+            auditPolicy(e.Parameter);
             e.Result = "complete";
         }
+
 
         #endregion CallBack Events
 
@@ -588,10 +591,10 @@ namespace BrokerWebApp.vehicleinsurance
 
         private void getInitPolicyData()
         {
-            String where = " and B.AskPriceID != '' and B.AskPriceID = '" + this.dxetxtAskPriceID.Text.Trim() + "'";
-            DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(where);
-            this.gridPolicyItem.DataSource = dt;
-            this.gridPolicyItem.DataBind();
+            //String where = " and B.AskPriceID != '' and B.AskPriceID = '" + this.dxetxtAskPriceID.Text.Trim() + "'";
+            //DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(where);
+            //this.gridPolicyItem.DataSource = dt;
+            //this.gridPolicyItem.DataBind();
 
         }
 
@@ -626,7 +629,7 @@ namespace BrokerWebApp.vehicleinsurance
         protected string SavePostedFiles(UploadedFile uploadedFile)
         {
             string ret = "";
-            string policyFolder = this.dxetxtAskPriceID.Text.Trim();
+            string policyFolder = this.dxetxtPolicyID.Text.Trim();
             string policyFolderPath;
             if (uploadedFile.IsValid)
             {
@@ -656,13 +659,13 @@ namespace BrokerWebApp.vehicleinsurance
                         uploadedFile.SaveAs(resFileName);
                     }
 
-                    //BO_CarPolicyDoc
-                    BusinessObjects.Policy.BO_CarPolicyDoc.Delete(this.dxetxtAskPriceID.Text.Trim(), fileInfo.Name);
+                    //BO_PolicyDoc
+                    BusinessObjects.Policy.BO_PolicyDoc.Delete(this.dxetxtPolicyID.Text.Trim(), fileInfo.Name);
 
-                    BusinessObjects.Policy.BO_CarPolicyDoc pdoc = new BusinessObjects.Policy.BO_CarPolicyDoc();
-                    pdoc.CarPolicyDocID = Guid.NewGuid().ToString();
+                    BusinessObjects.Policy.BO_PolicyDoc pdoc = new BusinessObjects.Policy.BO_PolicyDoc();
+                    pdoc.PolicyDocID = Guid.NewGuid().ToString();
                     pdoc.DocName = fileInfo.Name;
-                    pdoc.AskPriceID = this.dxetxtAskPriceID.Text.Trim();
+                    pdoc.PolicyID = this.dxetxtPolicyID.Text.Trim();
                     pdoc.DocURL = UploadDirectory.Replace("~", "") + policyFolder + "/" + fileInfo.Name;
                     pdoc.Save(ModifiedAction.Insert);
                 }
@@ -681,7 +684,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         private void rebindGridDocList()
         {
-            this.gridDocList.DataSource = BusinessObjects.Policy.BO_CarPolicyDoc.FetchListByCarPolicy(this.dxetxtAskPriceID.Text.Trim());
+            this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridDocList.DataBind();
         }
 
@@ -692,6 +695,291 @@ namespace BrokerWebApp.vehicleinsurance
 
         #region Privates
 
+
+        private void loadPolicyValue(String id)
+        {
+            ListEditItem theselected;
+            BusinessObjects.Policy.BO_Policy obj;
+            obj = new BusinessObjects.Policy.BO_Policy(id);
+            if (String.IsNullOrEmpty(obj.PolicyID)) return;
+
+            BusinessObjects.Policy.BO_CarPolicy objCar;
+            objCar = new BusinessObjects.Policy.BO_CarPolicy(obj.AskPriceID);
+
+            dxetxtPolicyID.Text = obj.PolicyID ;
+            dxetxtPolicyNo.Text = obj.PolicyNo;
+            dxetxtAciPolicyNo.Text = obj.AciPolicyNo ;
+            this.dxetxtAskPriceID.Text = obj.AskPriceID;
+
+            //dxeddlCarrierId
+            if (!String.IsNullOrEmpty(objCar.CarrierID))
+            {
+                theselected = dxeddlCarrierId.Items.FindByValue(objCar.CarrierID);
+                if (theselected != null)
+                {
+                    dxeddlCarrierId.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlBranchId
+            if (!String.IsNullOrEmpty(objCar.BranchID))
+            {
+                theselected = dxeddlBranchId.Items.FindByValue(objCar.BranchID);
+                if (theselected != null)
+                {
+                    dxeddlBranchId.SelectedItem = theselected;
+                }
+            }
+
+
+            this.dxetxtCarrierSales.Text = obj.CarrierSales;
+
+            this.dxetxtCustomer.Text = obj.CustomerName;
+            this.cusid.Value = obj.CustomerID;
+
+            dxetxtBeneficiary.Text  = obj.Beneficiary;
+
+            //dxeddlSourceTypeID
+            if (!String.IsNullOrEmpty(obj.SourceTypeID))
+            {
+                theselected = dxeddlSourceTypeID.Items.FindByValue(obj.SourceTypeID);
+                if (theselected != null)
+                {
+                    dxeddlSourceTypeID.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlDeptID
+            if (!String.IsNullOrEmpty(obj.DeptId))
+            {
+                theselected = dxeddlDeptID.Items.FindByValue(obj.DeptId);
+                if (theselected != null)
+                {
+                    dxeddlDeptID.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlSalesId
+            if (!String.IsNullOrEmpty(obj.SalesId))
+            {
+                theselected = dxeddlSalesId.Items.FindByValue(obj.SalesId);
+                if (theselected != null)
+                {
+                    dxeddlSalesId.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlOperationType
+            if (!String.IsNullOrEmpty(obj.OperationType))
+            {
+                theselected = dxeddlOperationType.Items.FindByValue(obj.OperationType);
+                if (theselected != null)
+                {
+                    dxeddlOperationType.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlGatheringType
+            if (!String.IsNullOrEmpty(obj.GatheringType))
+            {
+                theselected = dxeddlGatheringType.Items.FindByValue(obj.GatheringType);
+                if (theselected != null)
+                {
+                    dxeddlGatheringType.SelectedItem = theselected;
+                }
+            }
+
+            dxeStartDate.Date  = obj.StartDate ;
+            dxeEndDate.Date = obj.EndDate ;
+            dxetxtSpecial.Text  = obj.Special ;
+
+            dxetxtCarNo.Text = obj.CarNo;
+            dxetxtCarcaseNo.Text = obj.CarcaseNo;
+            dxetxtUseCharacter.Text = obj.UseCharacter;
+            dxetxtEngineNo.Text = obj.EngineNo;
+            dxetxtCarUser.Text = obj.CarUser;
+            dxetxtCapacity.Text = obj.Capacity;
+            dxeRegisterDate.Date  = obj.RegisterDate;
+            dxetxtCarValue.Text = obj.CarValue;
+
+            dxetxtCiPremium.Text = obj.CiPremium.ToString();
+            dxetxtAciPremium.Text = obj.AciPremium.ToString();
+            dxetxtCstPremium.Text = obj.CstPremium.ToString();
+            dxetxtCiProcessRate.Text = obj.CiProcessRate.ToString();
+            dxetxtAciProcessRate.Text = obj.AciProcessRate.ToString();
+            dxetxtCiProcess.Text = obj.CiProcess.ToString();
+            dxetxtAciProcess.Text = obj.AciProcess.ToString();
+
+            //dxetxtTotalPremium.Text = obj.;            
+            //dxetxtTotalProcess.Text = obj;
+
+        }
+
+
+        private string savePolicy(String parameter, String policyState)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CarPriceInputInfo));
+            CarPriceInputInfo obj;
+
+            obj = (CarPriceInputInfo)serializer.ReadObject(ms);
+            ms.Close();
+
+            BO_Policy theObject;
+            if (String.IsNullOrEmpty(obj.PolicyID))
+            {
+                theObject = new BO_Policy();
+                theObject.PolicyID = TranUtils.GetPolicyID();
+                theObject.AskPriceID = obj.AskPriceID;
+                theObject.PolicyStatus = policyState;
+                theObject.PolicyType = Convert.ToInt32(BO_Policy.PolicyTypeEnum.Vehicle).ToString();
+                theObject.PolicyNo = obj.PolicyNo;
+
+                theObject.AciPolicyNo  = obj.AciPolicyNo ;
+
+                theObject.CarrierSales = obj.CarrierSales;
+                theObject.CustomerID = obj.CustomerID;
+                theObject.Beneficiary   = obj.Beneficiary;
+                
+                theObject.DeptId = obj.DeptId;
+                theObject.SalesId = obj.SalesId;
+                
+                theObject.SourceTypeID = obj.SourceTypeID;
+                theObject.OperationType = obj.OperationTypeID;
+                theObject.GatheringType = obj.GatheringTypeID;
+                theObject.StartDate   = obj.StartDate  ;
+                theObject.EndDate = obj.EndDate;
+                theObject.Special = obj.Special;
+                theObject.CarNo = obj.CarNo;
+                theObject.CarcaseNo = obj.CarcaseNo;
+                theObject.UseCharacter = obj.UseCharacter;
+                theObject.EngineNo = obj.EngineNo;
+                theObject.CarUser = obj.CarUser;
+                theObject.Capacity = obj.Capacity;
+                theObject.RegisterDate = obj.RegisterDate;
+                theObject.CarValue = obj.CarValue;
+                theObject.CiPremium = obj.CiPremium;
+                theObject.AciPremium = obj.AciPremium;
+                theObject.CstPremium = obj.CstPremium;
+                
+                theObject.CiProcessRate = obj.CiProcessRate;
+                theObject.AciProcessRate = obj.AciProcessRate;
+                theObject.CiProcess = obj.CiProcess;
+                theObject.AciProcess = obj.AciProcess;
+
+                //theObject.TotalPremium = obj.TotalPremium;
+                //theObject.TotalProcess = obj.TotalProcess;
+                
+                theObject.CreatePerson = this.CurrentUserID;
+                theObject.CreateTime = DateTime.Now;
+
+                theObject.Save(ModifiedAction.Insert);
+            }
+            else
+            {
+                theObject = new BO_Policy(obj.PolicyID);
+
+                theObject.PolicyStatus = policyState;
+
+                theObject.PolicyNo = obj.PolicyNo;
+
+                theObject.AciPolicyNo = obj.AciPolicyNo;
+
+                theObject.CarrierSales = obj.CarrierSales;
+                theObject.CustomerID = obj.CustomerID;
+                theObject.Beneficiary = obj.Beneficiary;
+
+                theObject.DeptId = obj.DeptId;
+                theObject.SalesId = obj.SalesId;
+
+                theObject.SourceTypeID = obj.SourceTypeID;
+                theObject.OperationType = obj.OperationTypeID;
+                theObject.GatheringType = obj.GatheringTypeID;
+                theObject.StartDate = obj.StartDate;
+                theObject.EndDate = obj.EndDate;
+                theObject.Special = obj.Special;
+                theObject.CarNo = obj.CarNo;
+                theObject.CarcaseNo = obj.CarcaseNo;
+                theObject.UseCharacter = obj.UseCharacter;
+                theObject.EngineNo = obj.EngineNo;
+                theObject.CarUser = obj.CarUser;
+                theObject.Capacity = obj.Capacity;
+                theObject.RegisterDate = obj.RegisterDate;
+                theObject.CarValue = obj.CarValue;
+                theObject.CiPremium = obj.CiPremium;
+                theObject.AciPremium = obj.AciPremium;
+                theObject.CstPremium = obj.CstPremium;
+
+                theObject.CiProcessRate = obj.CiProcessRate;
+                theObject.AciProcessRate = obj.AciProcessRate;
+                theObject.CiProcess = obj.CiProcess;
+                theObject.AciProcess = obj.AciProcess;
+
+                theObject.ModifyPerson = this.CurrentUserID;
+                theObject.ModifyTime = DateTime.Now;
+
+                theObject.Save(ModifiedAction.Update);
+            }
+
+            return theObject.PolicyID;
+
+        }
+
+
+        private void auditPolicy(String parameter)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CarPriceInputInfo));
+            CarPriceInputInfo obj;
+
+            obj = (CarPriceInputInfo)serializer.ReadObject(ms);
+            ms.Close();
+
+            String theID = this.dxetxtPolicyID.Text.Trim();
+            BO_Policy theObject;
+            theObject = new BO_Policy(theID);
+
+            if (obj.AuditOrNot)
+                theObject.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString();
+            else
+                theObject.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+
+            theObject.AuditTime = DateTime.Now;
+            theObject.AuditPerson = this.CurrentUserID;
+            theObject.Remark = obj.Memo;
+            theObject.Save(ModifiedAction.Update);
+
+        }
+
+
+        private void auditBackPolicy(String parameter)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CarPriceInputInfo));
+            CarPriceInputInfo obj;
+
+            obj = (CarPriceInputInfo)serializer.ReadObject(ms);
+            ms.Close();
+
+            String theID = this.dxetxtPolicyID.Text.Trim();
+            BO_Policy theObject;
+            theObject = new BO_Policy(theID);
+
+            theObject.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+
+            //carPolicy.Memo =obj.
+            //AuditOrNot
+            theObject.AuditTime = DateTime.Now;
+            theObject.AuditPerson = this.CurrentUserID;
+            theObject.Remark = obj.Memo;
+            theObject.Save(ModifiedAction.Update);
+        }
 
 
         private void switchBasicInfoControlsEnable(Boolean val)

@@ -519,7 +519,7 @@
                  }
 
                  function gridCustomButtonClick(s, e) {
-                     //s.GetRowValues(e.visibleIndex, "AskPriceID", getTheSelectedRowsValues);
+                     s.GetRowValues(e.visibleIndex, "PolicyID", getTheSelectedRowsValues);
                  }
 
                  function getTheSelectedRowsValues(selectedValues) {
