@@ -43,6 +43,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         private Nullable<PageMode> pm;
 
+        private const String productType = "030709184403-23429EC"; 
         #endregion Variables
 
 
@@ -280,8 +281,8 @@ namespace BrokerWebApp.vehicleinsurance
             HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
 
             ASPxComboBox dxecbGridPolicyItemProdID = tblEditorTemplate.FindControl("dxecbGridPolicyItemProdID") as ASPxComboBox;
-            String prouctType = "C1";
-            String sqlfilter = " AND A.ProdTypeID ='" + prouctType + "' ";
+            
+            String sqlfilter = " AND A.ProdTypeID ='" + productType + "' ";
             dxecbGridPolicyItemProdID.DataSource = BusinessObjects.SchemaSetting.BO_Product.FetchList(sqlfilter);
             dxecbGridPolicyItemProdID.TextField = "ProdName";
             dxecbGridPolicyItemProdID.ValueField = "ProdID";
