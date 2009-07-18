@@ -1035,7 +1035,7 @@
                                                         初登日期:
                                                     </td>
                                                     <td style="text-align: left;">
-                                                        <dxe:ASPxDateEdit ID="dxeRegisterDate" runat="server" Width="110px"></dxe:ASPxDateEdit>
+                                                        <dxe:ASPxDateEdit ID="dxeRegisterDate" ClientInstanceName="dxeRegisterDate" runat="server" Width="110px"></dxe:ASPxDateEdit>
                                                     </td>
                                                     <td style="white-space: nowrap; text-align: right;">
                                                         车辆价值:
@@ -1362,14 +1362,14 @@
                             <tr>
                                 <td style="width: 100%; text-align: left;" runat="server" id="tblcellgridDocList">
                                     <dxwgv:ASPxGridView ID="gridDocList" ClientInstanceName="gridDocList" runat="server"
-                                        KeyFieldName="CarPolicyDocID" Width="100%" AutoGenerateColumns="False" 
+                                        KeyFieldName="PolicyDocID" Width="100%" AutoGenerateColumns="False" 
                                         OnCustomCallback="gridDocList_CustomCallback"
                                         >
                                         <%-- BeginRegion Columns --%>
                                         <Columns>
                                             <dxwgv:GridViewDataColumn FieldName="DocName" Caption="文件名" CellStyle-Wrap="False" Width="25" Settings-AllowDragDrop="false">
                                                 <DataItemTemplate>
-                                                    <a id="fileurl <%# Eval("CarPolicyDocID") %>" onclick="hlPolicyItemTogetherClick('<%# Eval("DocURL") %>');" href="#"><%# Eval("DocName")%></a>
+                                                    <a id="fileurl <%# Eval("PolicyDocID") %>" onclick="hlPolicyItemTogetherClick('<%# Eval("DocURL") %>');" href="#"><%# Eval("DocName")%></a>
                                                 </DataItemTemplate>
                                             </dxwgv:GridViewDataColumn>
                                             <dxwgv:GridViewDataColumn FieldName="DocURL" Caption="链接地址" CellStyle-Wrap="False">
