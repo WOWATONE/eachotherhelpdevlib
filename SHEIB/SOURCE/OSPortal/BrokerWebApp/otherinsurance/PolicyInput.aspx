@@ -971,8 +971,7 @@
                                                         <input type="hidden" id="ptid" runat="server" />
                                                     </td>
                                                     <td style="text-align: left;">
-                                                        <img runat="server" id="img1" alt="" src="../images/searchicon9.png" style="width: 20px;
-                                                            height: 20px; vertical-align: top;" onclick="imgPolicyProdTypeClick();" />
+                                                        
                                                     </td>
                                                     <td style="text-align: right;">
                                                         Õ∂±£»À£∫
