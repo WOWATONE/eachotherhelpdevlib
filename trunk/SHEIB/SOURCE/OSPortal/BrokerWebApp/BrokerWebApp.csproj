@@ -820,6 +820,13 @@
     <Compile Include="vehicleinsurance\CarPolicyAlert.aspx.designer.cs">
       <DependentUpon>CarPolicyAlert.aspx</DependentUpon>
     </Compile>
+    <Compile Include="vehicleinsurance\CarPolicyAppend.aspx.cs">
+      <DependentUpon>CarPolicyAppend.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vehicleinsurance\CarPolicyAppend.aspx.designer.cs">
+      <DependentUpon>CarPolicyAppend.aspx</DependentUpon>
+    </Compile>
     <Compile Include="vehicleinsurance\CarPolicyInput.aspx.cs">
       <DependentUpon>CarPolicyInput.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1087,6 +1094,7 @@
     <Content Include="vehicleinsurance\AskPriceInput.aspx" />
     <Content Include="vehicleinsurance\AskPriceInputList.aspx" />
     <Content Include="vehicleinsurance\CarPolicyAlert.aspx" />
+    <Content Include="vehicleinsurance\CarPolicyAppend.aspx" />
     <Content Include="vehicleinsurance\CarPolicyInput.aspx" />
     <Content Include="vehicleinsurance\CarPolicyList.aspx" />
     <Content Include="vehicleinsurance\CarPolicyAlertList.aspx" />

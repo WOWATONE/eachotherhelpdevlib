@@ -23,12 +23,20 @@
 
         });
 
-        function gridAlertCustomButtonClick(s, e) {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            var noint = s.GetDataRow(e.visibleIndex).cells[3].innerText;
-            var querystring;
-            querystring = "AskPriceInput.aspx?input=input&id=" + noint;
-            window.showModalDialog(querystring, self, myArguments);
+        function gridCustomButtonClick(s, e) {
+            s.GetRowValues(e.visibleIndex, "PolicyID", getTheSelectedRowsValues);
+        }
+
+        function getTheSelectedRowsValues(selectedValues) {
+            if (selectedValues.length == 0) {
+                //
+            }
+            else {
+                var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
+                var querystring;
+                querystring = "CarPolicyAppend.aspx?id=" + selectedValues;
+                window.showModalDialog(querystring, self, myArguments);
+            }
         }
 
         function Carrier_SelectedIndexChanged(s, e) {
@@ -317,7 +325,7 @@
                                                         </TotalSummary>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" />
-                                                        <ClientSideEvents CustomButtonClick="function(s, e) {gridAlertCustomButtonClick(s,e);return false;}" />
+                                                        <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                                     </dxwgv:ASPxGridView>
                                                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
                                                     <asp:ObjectDataSource ID="ds_gridSearchResult" runat="server" 

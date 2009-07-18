@@ -18,7 +18,7 @@ using BusinessObjects.Policy;
 
 namespace BrokerWebApp.vehicleinsurance
 {
-    public partial class CarPolicyAlert : BasePage
+    public partial class CarPolicyAppend: BasePage
     {
 
 
@@ -45,8 +45,7 @@ namespace BrokerWebApp.vehicleinsurance
             }
             else
             {
-                this.lblSourcePolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
-                this.dxetxtPolicyID.Text = "";
+                this.dxetxtPolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
                                            
                                 
                 Initialization();
@@ -54,7 +53,7 @@ namespace BrokerWebApp.vehicleinsurance
                 this.dxetxtCreatePerson.Text = this.CurrentUserName;
                 this.dxeCreateTime.Date = DateTime.Now;
 
-                loadPolicyValue(this.lblSourcePolicyID.Text);
+                loadPolicyValue(this.dxetxtPolicyID.Text.Trim());
                 rebindGridDocList(this.dxetxtPolicyID.Text.Trim());
             }
 
@@ -555,6 +554,7 @@ namespace BrokerWebApp.vehicleinsurance
         #endregion Privates
 
 
+
         [DataContract(Namespace = "http://www.sheib.com")]
         public class CarPriceAlertInfo
         {
@@ -673,12 +673,11 @@ namespace BrokerWebApp.vehicleinsurance
         }
 
 
-
-
-
     }
 
 
     
+
+
 
 }
