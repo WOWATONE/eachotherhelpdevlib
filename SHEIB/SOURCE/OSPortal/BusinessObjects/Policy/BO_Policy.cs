@@ -680,6 +680,13 @@ namespace BusinessObjects.Policy
 
         public static void Delete(String id)
         {
+            BO_PolicyCarrier.DeleteByPolicyId(id);
+            BO_PolicyClaim.DeleteByPolicyId(id);
+            BO_PolicyDoc.DeleteByPolicyId(id);
+            BO_PolicyItem.DeleteByPolicyId(id);
+            BO_PolicyPeriod.DeleteByPolicyId(id);
+            BO_PolicyReinsureCarrier.DeleteByPolicyId(id);
+            
             StringBuilder sb = new StringBuilder();
             sb.Append("DELETE FROM Policy ");
             sb.Append(" WHERE PolicyID = @PolicyID ");

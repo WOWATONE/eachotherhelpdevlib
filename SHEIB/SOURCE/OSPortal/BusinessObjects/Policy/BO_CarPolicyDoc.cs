@@ -146,6 +146,19 @@ namespace BusinessObjects.Policy
             _db.ExecuteNonQuery(dbCommand);
 
         }
+
+
+        public static void DeleteByAskPriceID(String askPriceID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM CarPolicyDoc ");
+            sb.Append(" WHERE AskPriceID = @AskPriceID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@AskPriceID", DbType.String, askPriceID);
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
         
 
         #endregion Methods
