@@ -77,6 +77,15 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeAuditOkCallback;
         
         /// <summary>
+        /// dxeAuditBackCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeAuditBackCallback;
+        
+        /// <summary>
         /// insuranceDetailTabPage control.
         /// </summary>
         /// <remarks>
@@ -320,6 +329,15 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.Panel npGridPolicyItemDetail;
         
         /// <summary>
+        /// dxebtnAddPolicy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnAddPolicy;
+        
+        /// <summary>
         /// gridPolicyItem control.
         /// </summary>
         /// <remarks>
@@ -417,6 +435,15 @@ namespace BrokerWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow tbltrAuditExecuteAction;
+        
+        /// <summary>
+        /// dxebtnAuditBack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnAuditBack;
         
         /// <summary>
         /// dxebtnAuditOk control.
