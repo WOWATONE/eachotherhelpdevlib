@@ -1088,7 +1088,7 @@
                                                 <tr>
                                                     <td>
                                                         <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                                            KeyFieldName="CarPolicyItemID" Width="100%" AutoGenerateColumns="False" 
+                                                            KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False" 
                                                             OnRowInserting="gridPolicyItem_RowInserting"
                                                             OnRowUpdating="gridPolicyItem_RowUpdating" 
                                                             OnRowDeleting="gridPolicyItem_RowDeleting"
@@ -1101,15 +1101,21 @@
                                                                     <EditButton Visible="true" />
                                                                     <DeleteButton Visible="true" />
                                                                 </dxwgv:GridViewCommandColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="CarPolicyItemName" Caption="保险险种" CellStyle-Wrap="False">
+                                                                <dxwgv:GridViewDataColumn FieldName="ProdName" Caption="保险险种" CellStyle-Wrap="False">
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Coverage" Caption="保险金额 " CellStyle-Wrap="False">
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataColumn>                                                                
+                                                                <dxwgv:GridViewDataColumn FieldName="ItemID" Caption="ItemID" CellStyle-Wrap="False" Visible="false">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="PolicyId" Caption="PolicyId" CellStyle-Wrap="False" Visible="false">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="ProdID" Caption="ProdID" CellStyle-Wrap="False" Visible="false">
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                             <TotalSummary>
-                                                                <dxwgv:ASPxSummaryItem FieldName="CarPolicyItemName" SummaryType="Count" DisplayFormat="数量:#" />
+                                                                <dxwgv:ASPxSummaryItem FieldName="ProdName" SummaryType="Count" DisplayFormat="数量:#" />
                                                                 <dxwgv:ASPxSummaryItem FieldName="Coverage" SummaryType="Sum" DisplayFormat="c" />
                                                                 <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" DisplayFormat="c" />
                                                             </TotalSummary>
@@ -1126,19 +1132,27 @@
                                                                                     险种:
                                                                                 </td>
                                                                                 <td style="text-align: left;">
-                                                                                    <dxe:ASPxComboBox runat="server" ID="decbPolicyCarPolicyItemID" AutoPostBack="false"
-                                                                                        ClientInstanceName="decbPolicyCarPolicyItemID" DropDownButton-Enabled="true"
+                                                                                    <dxe:ASPxComboBox runat="server" ID="dxecbGridPolicyItemProdID" AutoPostBack="false"
+                                                                                        ClientInstanceName="dxecbGridPolicyItemProdID" DropDownButton-Enabled="true"
                                                                                         DropDownStyle="DropDownList" Width="100px">
                                                                                         <Items>                                                                                            
                                                                                         </Items>
                                                                                         <ClientSideEvents SelectedIndexChanged="" />
+                                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" >
+                                                                                            <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                                        </ValidationSettings>
                                                                                     </dxe:ASPxComboBox>
                                                                                 </td>
                                                                                 <td style="white-space: nowrap; text-align: right;">
                                                                                     保险金额:
                                                                                 </td>
                                                                                 <td style="text-align: left;">
-                                                                                    <dxe:ASPxTextBox ID="dxetxtGridPolicyCoverage" ClientInstanceName="dxetxtGridPolicyCoverage" runat="server" Width="110px"></dxe:ASPxTextBox>
+                                                                                    <dxe:ASPxTextBox ID="dxetxtGridPolicyCoverage" ClientInstanceName="dxetxtGridPolicyCoverage" runat="server" Width="110px">
+                                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" >
+                                                                                            <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                                            <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                        </ValidationSettings>
+                                                                                    </dxe:ASPxTextBox>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -1146,7 +1160,12 @@
                                                                                     保费:
                                                                                 </td>
                                                                                 <td style="text-align: left;">
-                                                                                    <dxe:ASPxTextBox ID="dxetxtGridPolicyPremium" ClientInstanceName="dxetxtGridPolicyPremium" runat="server" Width="110px"></dxe:ASPxTextBox>
+                                                                                    <dxe:ASPxTextBox ID="dxetxtGridPolicyPremium" ClientInstanceName="dxetxtGridPolicyPremium" runat="server" Width="110px">
+                                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
+                                                                                            <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                                            <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                        </ValidationSettings>
+                                                                                    </dxe:ASPxTextBox>
                                                                                 </td>                                                                                
                                                                             </tr>
                                                                         </table>
