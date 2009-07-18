@@ -468,7 +468,7 @@ namespace BrokerWebApp.otherinsurance
                         
             ASPxComboBox dxecbGridPolicyItemProdID = tblEditorTemplate.FindControl("dxecbGridPolicyItemProdID") as ASPxComboBox;
 
-            theWhere = theWhere + " AND PolicyId = '" + dxecbGridPolicyItemProdID.SelectedItem.Value.ToString() + "'";
+            theWhere = theWhere + " AND ProdID = '" + dxecbGridPolicyItemProdID.SelectedItem.Value.ToString() + "'";
 
             if (dxecbGridPolicyItemProdID.SelectedItem == null)
             {
