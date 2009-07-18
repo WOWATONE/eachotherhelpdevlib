@@ -902,55 +902,58 @@ namespace BrokerWebApp.vehicleinsurance
         #endregion Privates
 
 
+        [DataContract(Namespace = "http://www.sheib.com")]
+        public class AskPriceInputInfo
+        {
+            public AskPriceInputInfo()
+            { }
+
+            [DataMember]
+            public String AskPriceID { get; set; }
+
+            [DataMember]
+            public String DeptId { get; set; }
+
+            [DataMember]
+            public String SalesId { get; set; }
+
+            [DataMember]
+            public String CarrierID { get; set; }
+
+            [DataMember]
+            public String BranchID { get; set; }
+
+            [DataMember]
+            public String CarrierSales { get; set; }
+
+            [DataMember]
+            public String CustomerID { get; set; }
+
+            [DataMember]
+            public String SourceTypeID { get; set; }
+
+            [DataMember]
+            public String OperationTypeID { get; set; }
+
+            [DataMember]
+            public String GatheringTypeID { get; set; }
+
+            [DataMember]
+            public string Remark { get; set; }
+
+            [DataMember]
+            public Boolean AuditOrNot { get; set; }
+
+
+        }
+
+
+
+
     }
 
 
-    [DataContract(Namespace = "http://www.sheib.com")]
-    public class AskPriceInputInfo
-    {
-        public AskPriceInputInfo()
-        { }
-
-        [DataMember]
-        public String AskPriceID { get; set; }
-
-        [DataMember]
-        public String DeptId { get; set; }
-
-        [DataMember]
-        public String SalesId { get; set; }
-
-        [DataMember]
-        public String CarrierID { get; set; }
-
-        [DataMember]
-        public String BranchID { get; set; }
-
-        [DataMember]
-        public String CarrierSales { get; set; }
-
-        [DataMember]
-        public String CustomerID { get; set; }
-
-        [DataMember]
-        public String SourceTypeID { get; set; }
-
-        [DataMember]
-        public String OperationTypeID { get; set; }
-
-        [DataMember]
-        public String GatheringTypeID { get; set; }
-        
-        [DataMember]
-        public string Remark { get; set; }
-
-        [DataMember]
-        public Boolean AuditOrNot { get; set; }
-
-
-    }
-
-
+   
 
 
 }
