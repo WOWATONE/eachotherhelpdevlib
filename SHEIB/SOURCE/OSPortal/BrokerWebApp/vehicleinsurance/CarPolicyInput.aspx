@@ -89,7 +89,6 @@
     
     <script type="text/javascript">
 
-
         function policyCheckNessary() {
             var pid = dxetxtPolicyID.GetValueString();
             var cid = getCustomerID();
@@ -185,22 +184,55 @@
 
         function makePolicyJSON() {
 
+            var PolicyID = dxetxtPolicyID.GetValueString();
+            var PolicyNo = dxetxtPolicyNo.GetValueString();
+            var AciPolicyNo = dxetxtAciPolicyNo.GetValueString();
             var AskPriceID = dxetxtAskPriceID.GetValueString();
+            
             var CarrierID = dxeddlCarrierId.GetValue();
             var BranchID = dxeddlBranchId.GetValue();
             var CarrierSales = dxetxtCarrierSales.GetValueString();
             var CustomerID = getCustomerID();
+            var Beneficiary = dxetxtBeneficiary.GetValueString();
+            var SourceTypeID = dxeddlSourceTypeID.GetValue();
+            
             var SalesId = dxeddlSalesId.GetValue();
             var DeptId = dxeddlDeptID.GetValue();
             var GatheringTypeID = dxeddlGatheringType.GetValue();
             var OperationTypeID = dxeddlOperationType.GetValue();
-            var SourceTypeID = dxeddlSourceTypeID.GetValue();
+            var StartDate = dxeStartDate.GetValue();
+            var EndDate = dxeEndDate.GetValue();
+            var Special = dxetxtSpecial.GetValueString();
+            var CarNo = dxetxtCarNo.GetValueString();
+            var CarcaseNo = dxetxtCarcaseNo.GetValueString();
+            var UseCharacter = dxetxtUseCharacter.GetValueString();
+            var EngineNo = dxetxtEngineNo.GetValueString();
+            var CarUser = dxetxtCarUser.GetValueString();
+            var Capacity = dxetxtCapacity.GetValueString();
+            var RegisterDate = dxeRegisterDate.GetValue();
+            var CarValue = dxetxtCarValue.GetValueString();
+            var CiPremium = dxetxtCiPremium.GetValueString();
+            var AciPremium = dxetxtAciPremium.GetValueString();
+            var CstPremium = dxetxtCstPremium.GetValueString();
+            var TotalPremium = dxetxtTotalPremium.GetValueString();
+            var CiProcessRate = dxetxtCiProcessRate.GetValueString();
+            var AciProcessRate = dxetxtAciProcessRate.GetValueString();
+            var CiProcess = dxetxtCiProcess.GetValueString();
+            var AciProcess = dxetxtAciProcess.GetValueString();        
+            var TotalProcess = dxetxtTotalProcess.GetValueString();
+
             var Remark = null;
             var AuditOrNot = null;
 
-            var plc = new Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
-            CustomerID, SalesId, DeptId, GatheringTypeID,
-            OperationTypeID, SourceTypeID, Remark, AuditOrNot);
+            var plc = new Policy(PolicyID,PolicyNo,AciPolicyNo,AskPriceID, 
+            CarrierID, BranchID, CarrierSales,
+            CustomerID, Beneficiary, SourceTypeID, DeptId, SalesId, 
+            GatheringTypeID, OperationTypeID, StartDate, EndDate,
+            Special, CarNo, CarcaseNo, UseCharacter, EngineNo, CarUser,
+            Capacity, RegisterDate, CarValue, CiPremium, AciPremium,
+            CstPremium, TotalPremium, CiProcessRate, AciProcessRate,
+            CiProcess, AciProcess, TotalProcess, 
+            Remark, AuditOrNot);
 
             //deserialize JSON string, make a JSON object
             //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
@@ -290,6 +322,7 @@
                 //split the return value;
                 var thesplit_array = retrunval.split(";");
                 dxetxtCustomer.SetValue(thesplit_array[1]);
+                dxetxtBeneficiary.SetValue(thesplit_array[1]);
                 setCustomerID(thesplit_array[0]);
             }
         }
@@ -298,10 +331,25 @@
 
 
 
-        function Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
-            CustomerID, SalesId, DeptId, GatheringTypeID,
-            OperationTypeID, SourceTypeID, Remark, AuditOrNot) {
+        function Policy(PolicyID,PolicyNo,AciPolicyNo,AskPriceID, 
+            CarrierID, BranchID, CarrierSales,
+            CustomerID, Beneficiary, SourceTypeID, DeptId, SalesId, 
+            GatheringTypeID, OperationTypeID, StartDate, EndDate,
+            Special, CarNo, CarcaseNo, UseCharacter, EngineNo, CarUser,
+            Capacity, RegisterDate, CarValue, CiPremium, AciPremium,
+            CstPremium, TotalPremium, CiProcessRate, AciProcessRate,
+            CiProcess, AciProcess, TotalProcess, 
+            Remark, AuditOrNot) {
 
+            if (!isEmpty(PolicyID))
+                this.PolicyID = PolicyID;
+                
+            if (!isEmpty(PolicyNo))
+                this.PolicyNo = PolicyNo;
+                
+            if (!isEmpty(AciPolicyNo))
+                this.AciPolicyNo = AciPolicyNo;
+                
             if (!isEmpty(AskPriceID))
                 this.AskPriceID = AskPriceID;
 
@@ -314,14 +362,21 @@
             if (!isEmpty(CarrierSales))
                 this.CarrierSales = CarrierSales;
 
+            
             if (!isEmpty(CustomerID))
                 this.CustomerID = CustomerID;
 
-            if (!isEmpty(SalesId))
-                this.SalesId = SalesId;
-
+            if (!isEmpty(Beneficiary))
+                this.Beneficiary = Beneficiary;
+                
+            if (!isEmpty(SourceTypeID))
+                this.SourceTypeID = SourceTypeID;
+                
             if (!isEmpty(DeptId))
                 this.DeptId = DeptId;
+
+            if (!isEmpty(SalesId))
+                this.SalesId = SalesId;
 
             if (!isEmpty(GatheringTypeID))
                 this.GatheringTypeID = GatheringTypeID;
@@ -329,9 +384,67 @@
             if (!isEmpty(OperationTypeID))
                 this.OperationTypeID = OperationTypeID;
 
-            if (!isEmpty(SourceTypeID))
-                this.SourceTypeID = SourceTypeID;
+            if (!isEmpty(StartDate))
+                this.StartDate = StartDate;
 
+            if (!isEmpty(EndDate))
+                this.EndDate = EndDate;
+            
+            if (!isEmpty(Special))
+                this.Special = Special;
+            
+            if (!isEmpty(CarNo))
+                this.CarNo = CarNo;
+            
+            if (!isEmpty(CarcaseNo))
+                this.CarcaseNo = CarcaseNo;
+                        
+            if (!isEmpty(UseCharacter))
+                this.UseCharacter = UseCharacter;
+            
+            if (!isEmpty(EngineNo))
+                this.EngineNo = EngineNo;
+            
+            if (!isEmpty(CarUser))
+                this.CarUser = CarUser;
+            
+            if (!isEmpty(Capacity))
+                this.Capacity = Capacity;
+            
+            if (!isEmpty(RegisterDate))
+                this.RegisterDate = RegisterDate;
+            
+            if (!isEmpty(CarValue))
+                this.CarValue = CarValue;
+            
+            if (!isEmpty(CiPremium))
+                this.CiPremium = CiPremium;
+            
+            if (!isEmpty(AciPremium))
+                this.AciPremium = AciPremium;
+            
+            if (!isEmpty(CstPremium))
+                this.CstPremium = CstPremium;
+            
+            if (!isEmpty(TotalPremium))
+                this.TotalPremium = TotalPremium;
+            
+            if (!isEmpty(CiProcessRate))
+                this.CiProcessRate = CiProcessRate;
+            
+            if (!isEmpty(AciProcessRate))
+                this.AciProcessRate = AciProcessRate;
+            
+            if (!isEmpty(CiProcess))
+                this.CiProcess = CiProcess;
+                
+            if (!isEmpty(AciProcess))
+                this.AciProcess = AciProcess;
+            
+            if (!isEmpty(TotalProcess))
+                this.TotalProcess = TotalProcess;
+            
+            
             if (!isEmpty(Remark))
                 this.Remark = Remark;
 
@@ -375,21 +488,54 @@
 
             var AuditOrNot = 0;
 
+            var PolicyID = dxetxtPolicyID.GetValueString();
+            var PolicyNo = null;
+            var AciPolicyNo = null;
             var AskPriceID = dxetxtAskPriceID.GetValueString();
+            
             var CarrierID = null;
             var BranchID = null;
             var CarrierSales = null;
             var CustomerID = null;
+            var Beneficiary = null;
+            var SourceTypeID = null;
+            
             var SalesId = null;
             var DeptId = null;
             var GatheringTypeID = null;
             var OperationTypeID = null;
-            var SourceTypeID = null;
+            var StartDate = null;
+            var EndDate = null;
+            var Special = null;
+            var CarNo = null;
+            var CarcaseNo = null;
+            var UseCharacter = null;
+            var EngineNo = null;
+            var CarUser = null;
+            var Capacity = null;
+            var RegisterDate = null;
+            var CarValue = null;
+            var CiPremium = null;
+            var AciPremium = null;
+            var CstPremium = null;
+            var TotalPremium = null;
+            var CiProcessRate = null;
+            var AciProcessRate = null;
+            var CiProcess = null;
+            var AciProcess = null;        
+            var TotalProcess = null;
+            
             var Remark = dxeMemo.GetValueString();
 
-            var plc = new Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
-            CustomerID, SalesId, DeptId, GatheringTypeID,
-            OperationTypeID, SourceTypeID, Remark, AuditOrNot);
+            var plc = new Policy(PolicyID,PolicyNo,AciPolicyNo,AskPriceID, 
+            CarrierID, BranchID, CarrierSales,
+            CustomerID, Beneficiary, SourceTypeID, DeptId, SalesId, 
+            GatheringTypeID, OperationTypeID, StartDate, EndDate,
+            Special, CarNo, CarcaseNo, UseCharacter, EngineNo, CarUser,
+            Capacity, RegisterDate, CarValue, CiPremium, AciPremium,
+            CstPremium, TotalPremium, CiProcessRate, AciProcessRate,
+            CiProcess, AciProcess, TotalProcess, 
+            Remark, AuditOrNot);
 
             var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
 
@@ -418,23 +564,55 @@
                     //do nothing;
             }
 
+            var PolicyID = dxetxtPolicyID.GetValueString();
+            var PolicyNo = null;
+            var AciPolicyNo = null;
             var AskPriceID = dxetxtAskPriceID.GetValueString();
+            
             var CarrierID = null;
             var BranchID = null;
             var CarrierSales = null;
             var CustomerID = null;
+            var Beneficiary = null;
+            var SourceTypeID = null;
+            
             var SalesId = null;
             var DeptId = null;
             var GatheringTypeID = null;
             var OperationTypeID = null;
-            var SourceTypeID = null;
+            var StartDate = null;
+            var EndDate = null;
+            var Special = null;
+            var CarNo = null;
+            var CarcaseNo = null;
+            var UseCharacter = null;
+            var EngineNo = null;
+            var CarUser = null;
+            var Capacity = null;
+            var RegisterDate = null;
+            var CarValue = null;
+            var CiPremium = null;
+            var AciPremium = null;
+            var CstPremium = null;
+            var TotalPremium = null;
+            var CiProcessRate = null;
+            var AciProcessRate = null;
+            var CiProcess = null;
+            var AciProcess = null;        
+            var TotalProcess = null;
 
 
             var Remark = dxeMemo.GetValueString();
 
-            var plc = new Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
-            CustomerID, SalesId, DeptId, GatheringTypeID,
-            OperationTypeID, SourceTypeID, Remark, AuditOrNot);
+            var plc = new Policy(PolicyID,PolicyNo,AciPolicyNo,AskPriceID, 
+            CarrierID, BranchID, CarrierSales,
+            CustomerID, Beneficiary, SourceTypeID, DeptId, SalesId, 
+            GatheringTypeID, OperationTypeID, StartDate, EndDate,
+            Special, CarNo, CarcaseNo, UseCharacter, EngineNo, CarUser,
+            Capacity, RegisterDate, CarValue, CiPremium, AciPremium,
+            CstPremium, TotalPremium, CiProcessRate, AciProcessRate,
+            CiProcess, AciProcess, TotalProcess, 
+            Remark, AuditOrNot);
 
             var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
 
@@ -495,8 +673,26 @@
             }
         }
   
+        function dxeStartDate_DateChanged(s, e) {
+            //http://www.w3school.com.cn/js/jsref_obj_date.asp
+            var thesource = dxeStartDate.GetDate();
+            var theYear = thesource.getFullYear();
+            var theMonth = thesource.getMonth();
+            var theDate = thesource.getDate() - 1;
+            theYear = theYear + 1;
+            theMonth = theMonth + 1;            
+            var endDateString = theMonth.toString() + "/" + theDate.toString() + "/" + theYear.toString();
+            
+            dxeEndDate.SetDate(new Date(endDateString));
+        }
+        
+        
     </script>
 
+    <script type="text/javascript">
+    
+    </script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
@@ -587,7 +783,7 @@
                                                                 ValidationGroup="BaseGroup">
                                                                 <RequiredField IsRequired="true" ErrorText="Required" />
                                                             </ValidationSettings>
-	                                                        <ClientSideEvents SelectedIndexChanged="Carrier_SelectedIndexChanged" />
+	                                                        <ClientSideEvents SelectedIndexChanged="function(s, e) { Carrier_SelectedIndexChanged(s,e)}" />
                                                         </dxe:ASPxComboBox>
                                                     </td>
                                                     <td style="text-align: right;">
@@ -641,7 +837,12 @@
                                                         被保险人：
                                                     </td>
                                                     <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtBeneficiary" ClientInstanceName="dxetxtBeneficiary" runat="server" Width="110px"></dxe:ASPxTextBox>
+                                                        <dxe:ASPxTextBox ID="dxetxtBeneficiary" ClientInstanceName="dxetxtBeneficiary" runat="server" Width="110px">
+                                                            <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="true"
+                                                                ValidationGroup="BaseGroup">
+                                                                <RequiredField IsRequired="true" ErrorText="Required" />
+                                                            </ValidationSettings>
+                                                        </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
                                                         业务来源：
@@ -670,7 +871,7 @@
                                                                 ValidationGroup="BaseGroup">
                                                                 <RequiredField IsRequired="true" ErrorText="Required" />
                                                             </ValidationSettings>
-                                                            <ClientSideEvents SelectedIndexChanged="dxeddlDeptID_SelectedIndexChanged" />
+                                                            <ClientSideEvents SelectedIndexChanged="function(s, e) { dxeddlDeptID_SelectedIndexChanged(s,e)}" />
                                                         </dxe:ASPxComboBox>
                                                     </td>
                                                     <td style="text-align: right;">
@@ -723,6 +924,11 @@
                                                             <tr>
                                                                 <td>
                                                                     <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server" Width="110px">
+                                                                        <ClientSideEvents DateChanged="function(s, e) { dxeStartDate_DateChanged(s,e); }" /> 
+                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="true"
+                                                                            ValidationGroup="BaseGroup">
+                                                                            <RequiredField IsRequired="true" ErrorText="Required" />
+                                                                        </ValidationSettings>
                                                                     </dxe:ASPxDateEdit>
                                                                 </td>
                                                                 <td>
@@ -730,6 +936,10 @@
                                                                 </td>
                                                                 <td>
                                                                     <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server" Width="110px">
+                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="true"
+                                                                            ValidationGroup="BaseGroup">
+                                                                            <RequiredField IsRequired="true" ErrorText="Required" />
+                                                                        </ValidationSettings>
                                                                     </dxe:ASPxDateEdit>
                                                                 </td>
                                                             </tr>
@@ -982,29 +1192,45 @@
                                         <asp:Panel ID="npCostSummaryDetail" runat="server" CssClass="collapsePanel" Height="0">
                                             <table style="width: 100%">
                                                 <tr>
-                                                    <td style="width: 14%; text-align: right;">
+                                                    <td style="width: 140px; text-align: right;">
                                                         商业险保费：
                                                     </td>
-                                                    <td style="width: 12%; text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtCiPremium" ClientInstanceName="dxetxtCiPremium" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                                    <td style="width: 130px; text-align: left;">
+                                                        <dxe:ASPxTextBox ID="dxetxtCiPremium" ClientInstanceName="dxetxtCiPremium" runat="server" Width="100px">
+                                                            <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
+                                                                <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                            </ValidationSettings>
+                                                        </dxe:ASPxTextBox>
                                                     </td>
-                                                    <td style="width: 14%; text-align: right;">
+                                                    <td style="width: 140px; text-align: right;">
                                                         交强险保费：
                                                     </td>
-                                                    <td style="width: 12%; text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtAciPremium" ClientInstanceName="dxetxtAciPremium" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                                    <td style="width: 130px; text-align: left;">
+                                                        <dxe:ASPxTextBox ID="dxetxtAciPremium" ClientInstanceName="dxetxtAciPremium" runat="server" Width="100px">
+                                                            <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
+                                                                <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                            </ValidationSettings>
+                                                        </dxe:ASPxTextBox>
                                                     </td>
-                                                    <td style="width: 10%; text-align: right;">
+                                                    <td style="width: 110px; text-align: right;">
                                                         车船税：
                                                     </td>
-                                                    <td style="width: 12%; text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtCstPremium" ClientInstanceName="dxetxtCstPremium" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                                    <td style="width: 130px; text-align: left;">
+                                                        <dxe:ASPxTextBox ID="dxetxtCstPremium" ClientInstanceName="dxetxtCstPremium" runat="server" Width="100px">
+                                                            <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
+                                                                <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                            </ValidationSettings>
+                                                        </dxe:ASPxTextBox>
                                                     </td>
-                                                    <td style="width: 14%; text-align: right;">
+                                                    <td style="width: 110px; text-align: right;">
                                                         保费合计：
                                                     </td>
-                                                    <td style="width: 12%; text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtTotalPremium" ClientInstanceName="dxetxtTotalPremium" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                                    <td style="width: 130px; text-align: left;">
+                                                        <dxe:ASPxTextBox ID="dxetxtTotalPremium" ClientInstanceName="dxetxtTotalPremium" runat="server" Width="100px">
+                                                            <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
+                                                                <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                            </ValidationSettings>
+                                                        </dxe:ASPxTextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -1012,13 +1238,21 @@
                                                         商业险经纪费率(%)：
                                                     </td>
                                                     <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtCiProcessRate" ClientInstanceName="dxetxtCiProcessRate" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                                        <dxe:ASPxTextBox ID="dxetxtCiProcessRate" ClientInstanceName="dxetxtCiProcessRate" runat="server" Width="100px">
+                                                            <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
+                                                                <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                            </ValidationSettings>
+                                                        </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
                                                         交强险经纪费率(%)：
                                                     </td>
                                                     <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtAciProcessRate" ClientInstanceName="dxetxtAciProcessRate" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                                        <dxe:ASPxTextBox ID="dxetxtAciProcessRate" ClientInstanceName="dxetxtAciProcessRate" runat="server" Width="100px">
+                                                            <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
+                                                                <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                            </ValidationSettings>
+                                                        </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
                                                     </td>
@@ -1034,13 +1268,21 @@
                                                         商业险经纪费：
                                                     </td>
                                                     <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtCiProcess" ClientInstanceName="dxetxtCiProcess" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                                        <dxe:ASPxTextBox ID="dxetxtCiProcess" ClientInstanceName="dxetxtCiProcess" runat="server" Width="100px">
+                                                            <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
+                                                                <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                            </ValidationSettings>
+                                                        </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
                                                         交强险经纪费：
                                                     </td>
                                                     <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtAciProcess" ClientInstanceName="dxetxtAciProcess" runat="server" Width="110px"></dxe:ASPxTextBox>
+                                                        <dxe:ASPxTextBox ID="dxetxtAciProcess" ClientInstanceName="dxetxtAciProcess" runat="server" Width="100px">
+                                                            <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
+                                                                <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                            </ValidationSettings>
+                                                        </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
                                                     </td>
@@ -1050,7 +1292,11 @@
                                                         经纪费合计：
                                                     </td>
                                                     <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtTotalProcess" ClientInstanceName="dxetxtTotalProcess" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                                        <dxe:ASPxTextBox ID="dxetxtTotalProcess" ClientInstanceName="dxetxtTotalProcess" runat="server" Width="100px">
+                                                            <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
+                                                                <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                            </ValidationSettings>
+                                                        </dxe:ASPxTextBox>
                                                     </td>
                                                 </tr>
                                             </table>
