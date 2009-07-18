@@ -102,28 +102,29 @@ namespace BrokerWebApp.vehicleinsurance
         {
             if (this.pm == PageMode.Audit)
             {
-                //tbltrAuditExecuteAction.Visible = true;
-                //npExecuteAction.Visible = false;
-                //this.gridPolicyItem.Enabled = false;
-                //this.filesUploadControl.Enabled = false;
+                tbltrAuditExecuteAction.Visible = true;
+                npExecuteAction.Visible = false;
+                this.gridPolicyItem.Enabled = false;
+                this.filesUploadControl.Enabled = false;
+                switchBasicInfoControlsEnable(false);
             }
             else
             {
 
-                //tbltrAuditExecuteAction.Visible = false;
-                //npExecuteAction.Visible = true;
-                //this.dxetxtAuditPerson.Enabled = false;
-                //this.dxeAuditTime.Enabled = false;
-                //this.dxeMemo.Enabled = false;
+                tbltrAuditExecuteAction.Visible = false;
+                npExecuteAction.Visible = true;
+                this.dxetxtAuditPerson.Enabled = false;
+                this.dxeAuditTime.Enabled = false;
+                this.dxeMemo.Enabled = false;
 
                 if (this.pm == PageMode.Query)
                 {
-                    //dxebtnAuditOk.Visible = false;
-                    //dxebtnAuditClose.Visible = false;
-                    //dxebtnBottomAdd.Visible = false;
-                    //dxebtnBottomCheck.Visible = false;
-                    //dxebtntopSave.Visible = false;
-                    //dxebtnBottomSave.Visible = false;
+                    dxebtnAuditOk.Visible = false;
+                    dxebtnAuditClose.Visible = false;
+                    dxebtnBottomAdd.Visible = false;
+                    dxebtnBottomCheck.Visible = false;
+                    dxebtntopSave.Visible = false;
+                    dxebtnBottomSave.Visible = false;
                 }
             }
 
@@ -686,6 +687,59 @@ namespace BrokerWebApp.vehicleinsurance
 
 
         #endregion Upload File  Events
+
+
+
+        #region Privates
+
+
+
+        private void switchBasicInfoControlsEnable(Boolean val)
+        {
+            dxetxtPolicyID.Enabled = val;
+            dxetxtPolicyNo.Enabled = val;
+            dxetxtAciPolicyNo.Enabled = val;
+            dxetxtAskPriceID.Enabled = val;
+            dxeddlCarrierId.Enabled = val;
+            dxeddlBranchId.Enabled = val;
+            dxetxtCarrierSales.Enabled = val;
+
+            dxetxtCustomer.Enabled = val;
+
+            dxetxtBeneficiary.Enabled = val;
+
+            dxeddlSourceTypeID.Enabled = val;
+            dxeddlDeptID.Enabled = val;
+            dxeddlSalesId.Enabled = val;
+            dxeddlGatheringType.Enabled = val;
+            dxeddlOperationType.Enabled = val;
+            dxeStartDate.Enabled = val;
+            dxeEndDate.Enabled = val;
+            dxetxtSpecial.Enabled = val;
+
+            dxetxtCarNo.Enabled = val;
+            dxetxtCarcaseNo.Enabled = val;
+            dxetxtUseCharacter.Enabled = val;
+            dxetxtEngineNo.Enabled = val;
+            dxetxtCarUser.Enabled = val;
+            dxetxtCapacity.Enabled = val;
+            dxeRegisterDate.Enabled = val;
+            dxetxtCarValue.Enabled = val;
+
+            dxetxtCiPremium.Enabled = val;
+            dxetxtAciPremium.Enabled = val;
+            dxetxtCstPremium.Enabled = val;
+            dxetxtTotalPremium.Enabled = val;
+            dxetxtCiProcessRate.Enabled = val;
+            dxetxtAciProcessRate.Enabled = val;
+            dxetxtCiProcess.Enabled = val;
+            dxetxtAciProcess.Enabled = val;
+            dxetxtTotalProcess.Enabled = val;
+        }
+
+
+        #endregion Privates
+
 
 
     }
