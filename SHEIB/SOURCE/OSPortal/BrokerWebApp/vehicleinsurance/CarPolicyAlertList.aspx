@@ -11,7 +11,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>询价单批改列表</title>
+    <title>保单批改列表</title>
     <script type="text/javascript">
 	    $(document).ready(function() {
 	        //jQuery.noticeAdd({
@@ -22,21 +22,38 @@
 	    lblCurrentDate.innerHTML = makewelcomeString();
 
 	});
-	
+
 	function gridAuditCustomButtonClick(s, e) {
-	    var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-	    var noint = s.GetDataRow(e.visibleIndex).cells[3].innerText;
-	    var querystring;
-	    querystring = "AskPriceAlert.aspx?pagemode=alt&pid=" + noint;
-	    window.showModalDialog(querystring, self, myArguments);
+	    s.GetRowValues(e.visibleIndex, "PolicyID", getTheAuditSelectedRowsValues);
+	}
+
+	function getTheAuditSelectedRowsValues(selectedValues) {
+	    if (selectedValues.length == 0) {
+	        //
+	    }
+	    else {
+	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
+	        var querystring;
+	        querystring = "CarPolicyAlert.aspx?id=" + selectedValues;
+	        window.showModalDialog(querystring, self, myArguments);
+	    }
 	}
 
 	function gridAlertCustomButtonClick(s, e) {
-	    var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-	    var noint = s.GetDataRow(e.visibleIndex).cells[3].innerText;
-	    var querystring;
-	    querystring = "AskPriceInput.aspx?input=input&id=" + noint;
-	    window.showModalDialog(querystring, self, myArguments);
+	    //
+	    s.GetRowValues(e.visibleIndex, "PolicyID", getTheAlertSelectedRowsValues);
+	}
+
+	function getTheAlertSelectedRowsValues(selectedValues) {
+	    if (selectedValues.length == 0) {
+	        //
+	    }
+	    else {
+	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
+	        var querystring;
+	        querystring = "CarPolicyInput.aspx?pagemode=input&id=" + selectedValues;
+	        window.showModalDialog(querystring, self, myArguments);
+	    }
 	}
 
 	function Carrier_SelectedIndexChanged(s, e) {
@@ -65,7 +82,7 @@
             <td style="height:40px; width:45%;">
             </td>
             <td style="height:40px; width:55%;text-align:left;color:#0E5ED5;">
-                当前位置：询价单批改&nbsp;&nbsp;
+                当前位置：保单批改&nbsp;&nbsp;
                 <asp:label id="LbUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
                 <label id="lblCurrentDate"></label>
             </td>
