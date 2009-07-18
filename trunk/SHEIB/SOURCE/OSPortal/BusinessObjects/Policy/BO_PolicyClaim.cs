@@ -33,12 +33,26 @@ namespace BusinessObjects.Policy
         #endregion Variables
 
 
-            #region Property
-            #endregion Property
+        #region Property
+        #endregion Property
 
 
-            #region Methods
-            #endregion Methods
+        #region Methods
+
+        public static void DeleteByPolicyId(String policyId)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM PolicyClaim ");
+            sb.Append(" WHERE PolicyId = @PolicyId ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@PolicyId", DbType.String, policyId);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
+
+        #endregion Methods
 
     }
 }

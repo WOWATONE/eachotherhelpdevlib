@@ -334,7 +334,30 @@ namespace BusinessObjects.Policy
             return ds.Tables[0];
         }
 
-        
+
+        public static void Delete(String id)
+        {
+            BO_CarPolicyDoc.DeleteByAskPriceID(id);
+
+            //
+            DataTable dt = BO_Policy.FetchPolicyList(" AND B.AskPriceID = '" + id + "'");
+            foreach (DataRow dr in dt.Rows)
+            {
+                String theID = dr["PolicyID"].ToString();
+                BO_Policy.Delete(theID);
+            }
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM CarPolicy ");
+            sb.Append(" WHERE AskPriceID = @AskPriceID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@AskPriceID", DbType.String, id);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
+
         #endregion Methods
 
 

@@ -145,7 +145,19 @@ namespace BusinessObjects.Policy
             _db.ExecuteNonQuery(dbCommand);
 
         }
-        
+
+        public static void DeleteByPolicyId(String policyId)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM PolicyDoc ");
+            sb.Append(" WHERE PolicyId = @PolicyId ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@PolicyId", DbType.String, policyId);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
 
         #endregion Methods
 
