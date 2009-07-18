@@ -27,6 +27,11 @@ namespace BrokerWebApp.CustomerRelation
             }
             catch (Exception ex)
             { }
+
+            if (this.Page.IsCallback)
+            {
+                this.BindGrid();
+            }
         }
 
         /// <summary>
