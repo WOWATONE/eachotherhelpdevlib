@@ -199,6 +199,16 @@ namespace BusinessObjects.SchemaSetting
             return _db.ExecuteDataSet(dbCommand);
         }
 
+        public static DataSet GetProductTypeList()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select ProdTypeID, ProdClass, ProdTypeName, ParentId, Layer ");
+            sb.Append("From ProductType (nolock) ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
         /// <summary>
         /// 判断是否存在指定险种
         /// </summary>
