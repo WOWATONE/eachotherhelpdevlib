@@ -76,6 +76,15 @@
                 else {
                     //do nothing
                 }
+
+                var theothergrid = pWindow.gridSearchResult;
+
+                if (theothergrid != null) {
+                    theothergrid.PerformCallback('refresh');
+                }
+                else {
+                    //do nothing
+                }
             };
 
             getServerControlRefStubs();
@@ -102,20 +111,20 @@
         }
 
         function setOnlyDxeButtonsUnableOrEnable(val) {
-            if (typeof(dxebtnBottomAdd) == 'undefined' && dxebtnBottomAdd != null)
+            if (typeof(dxebtnBottomAdd) != 'undefined' && dxebtnBottomAdd != null)
                 dxebtnBottomAdd.SetEnabled(val);
 
-            if (typeof(dxebtnBottomSave) == 'undefined' && dxebtnBottomSave != null)
+            if (typeof(dxebtnBottomSave) != 'undefined' && dxebtnBottomSave != null)
                 dxebtnBottomSave.SetEnabled(val);
 
-            if (typeof(dxebtnBottomCheck) == 'undefined' && dxebtnBottomCheck != null)
+            if (typeof(dxebtnBottomCheck) != 'undefined' && dxebtnBottomCheck != null)
                 dxebtnBottomCheck.SetEnabled(val);
 
-            if (typeof(dxebtnCancel) == 'undefined' && dxebtnCancel != null)
+            if (typeof(dxebtnCancel) != 'undefined' && dxebtnCancel != null)
                 dxebtnCancel.SetEnabled(val);
 
             try {
-                if (typeof (dxebtnAuditBack) == 'undefined' && dxebtnAuditBack != null)
+                if (typeof(dxebtnAuditBack) != 'undefined' && dxebtnAuditBack != null)
                     dxebtnAuditBack.SetEnabled(val);
             }
             catch (err) {
@@ -124,7 +133,7 @@
 
 
             try {
-                if (typeof (dxebtnAuditOk) == 'undefined' && dxebtnAuditOk != null)
+                if (typeof(dxebtnAuditOk) != 'undefined' && dxebtnAuditOk != null)
                     dxebtnAuditOk.SetEnabled(val);
             }
             catch (err) {
@@ -285,6 +294,7 @@
 
 
         function saveCheckCallbackComplete(s, e) {
+            debugger;
             setOnlyDxeButtonsUnableOrEnable(false);
         }
 
@@ -1417,13 +1427,13 @@
                                     审核人：
                                 </td>
                                 <td style="width: 20%; text-align: left;">
-                                    <dxe:ASPxTextBox ID="dxetxtAuditPerson" ClientInstanceName="dxetxtAuditPerson" runat="server" Width="100px"></dxe:ASPxTextBox>
+                                    <dxe:ASPxTextBox ID="dxetxtAuditPerson" ClientInstanceName="dxetxtAuditPerson" runat="server" Width="100px" ReadOnly="true"></dxe:ASPxTextBox>
                                 </td>
                                 <td style="width: 10%; text-align: right;">
                                     审核日期：
                                 </td>
                                 <td style="width: 20%; text-align: left;">
-                                    <dxe:ASPxDateEdit ID="dxeAuditTime" ClientInstanceName="dxeAuditTime" runat="server" Width="120px">
+                                    <dxe:ASPxDateEdit ID="dxeAuditTime" ClientInstanceName="dxeAuditTime" runat="server" Width="120px" ReadOnly="true">
                                     </dxe:ASPxDateEdit>
                                 </td>
                                 <td>
