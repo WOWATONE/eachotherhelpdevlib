@@ -101,23 +101,23 @@
         }
 
         function setOnlyDxeButtonsUnableOrEnable(val) {
-            if (typeof (dxebtnBottomAdd) == 'undefined' && dxebtnBottomAdd != null)
+            if (typeof (dxebtnBottomAdd) != 'undefined' && dxebtnBottomAdd != null)
                 dxebtnBottomAdd.SetEnabled(val);
 
-            if (typeof (dxebtnAddPolicy) == 'undefined' && dxebtnAddPolicy != null)
+            if (typeof (dxebtnAddPolicy) != 'undefined' && dxebtnAddPolicy != null)
                 dxebtnAddPolicy.SetEnabled(val);
             
-            if (typeof (dxebtnBottomSave) == 'undefined' && dxebtnBottomSave != null)
+            if (typeof (dxebtnBottomSave) != 'undefined' && dxebtnBottomSave != null)
                 dxebtnBottomSave.SetEnabled(val);
 
-            if (typeof (dxebtnBottomCheck) == 'undefined' && dxebtnBottomCheck != null)
+            if (typeof (dxebtnBottomCheck) != 'undefined' && dxebtnBottomCheck != null)
                 dxebtnBottomCheck.SetEnabled(val);
 
-            if (typeof (dxebtnCancel) == 'undefined' && dxebtnCancel != null)
+            if (typeof (dxebtnCancel) != 'undefined' && dxebtnCancel != null)
                 dxebtnCancel.SetEnabled(val);
 
             try {
-                if (typeof (dxebtnAuditBack) == 'undefined' && dxebtnAuditBack != null)
+                if (typeof (dxebtnAuditBack) != 'undefined' && dxebtnAuditBack != null)
                     dxebtnAuditBack.SetEnabled(val);
             }
             catch (err) {
@@ -125,7 +125,7 @@
             }
             
             try {
-                if (typeof (dxebtnAuditOk) == 'undefined' && dxebtnAuditOk != null)
+                if (typeof (dxebtnAuditOk) != 'undefined' && dxebtnAuditOk != null)
                     dxebtnAuditOk.SetEnabled(val);
             }
             catch (err) {

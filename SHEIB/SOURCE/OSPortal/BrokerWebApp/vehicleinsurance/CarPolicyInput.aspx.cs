@@ -74,6 +74,8 @@ namespace BrokerWebApp.vehicleinsurance
                         break;
                     case "audit":
                         pm = PageMode.Audit;
+                        this.dxetxtAuditPerson.Text = this.CurrentUserName;
+                        this.dxeAuditTime.Date = DateTime.Now; 
                         break;
                     case "query":
                         pm = PageMode.Query;
@@ -880,7 +882,7 @@ namespace BrokerWebApp.vehicleinsurance
 
             theObject.AuditTime = DateTime.Now;
             theObject.AuditPerson = this.CurrentUserID;
-            theObject.Remark = obj.Memo;
+            theObject.Remark = obj.Remark;
             theObject.Save(ModifiedAction.Update);
 
         }
@@ -907,7 +909,7 @@ namespace BrokerWebApp.vehicleinsurance
             //AuditOrNot
             theObject.AuditTime = DateTime.Now;
             theObject.AuditPerson = this.CurrentUserID;
-            theObject.Remark = obj.Memo;
+            theObject.Remark = obj.Remark;
             theObject.Save(ModifiedAction.Update);
         }
 
@@ -1073,7 +1075,7 @@ namespace BrokerWebApp.vehicleinsurance
         public Decimal TotalProcess { get; set; }
 
         [DataMember]
-        public string Memo { get; set; }
+        public string Remark { get; set; }
 
         [DataMember]
         public Boolean AuditOrNot { get; set; }

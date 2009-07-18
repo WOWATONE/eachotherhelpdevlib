@@ -859,8 +859,13 @@ namespace BrokerWebApp.vehicleinsurance
 
             objCarPolicy.AuditTime = DateTime.Now;
             objCarPolicy.AuditPerson = this.CurrentUserID;
-            objCarPolicy.Remark = obj.Memo;
+            objCarPolicy.Remark = obj.Remark;
             objCarPolicy.Save(ModifiedAction.Update);
+
+            if (obj.AuditOrNot)
+                BO_Policy.AuditByAskPriceID(theAskPriceID,Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString());
+            else
+                BO_Policy.AuditByAskPriceID(theAskPriceID,Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString());
 
         }
 
@@ -886,8 +891,11 @@ namespace BrokerWebApp.vehicleinsurance
             //AuditOrNot
             objCarPolicy.AuditTime = DateTime.Now;
             objCarPolicy.AuditPerson = this.CurrentUserID;
-            objCarPolicy.Remark = obj.Memo;
+            objCarPolicy.Remark = obj.Remark;
             objCarPolicy.Save(ModifiedAction.Update);
+
+            BO_Policy.AuditByAskPriceID(theAskPriceID, Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString());
+
         }
 
 
@@ -934,7 +942,7 @@ namespace BrokerWebApp.vehicleinsurance
         public String GatheringTypeID { get; set; }
         
         [DataMember]
-        public string Memo { get; set; }
+        public string Remark { get; set; }
 
         [DataMember]
         public Boolean AuditOrNot { get; set; }

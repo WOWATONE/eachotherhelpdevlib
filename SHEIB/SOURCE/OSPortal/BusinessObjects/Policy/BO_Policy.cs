@@ -691,6 +691,23 @@ namespace BusinessObjects.Policy
 
         }
 
+
+        public static void AuditByAskPriceID(String id, String theStatus)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("UPDATE Policy SET ");
+            sb.Append(" PolicyStatus=@PolicyStatus ");
+            sb.Append(" WHERE AskPriceID=@AskPriceID;");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@AskPriceID", DbType.String, id);
+            _db.AddInParameter(dbCommand, "@PolicyStatus", DbType.String, theStatus);
+            
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
+
+
         #endregion Methods
 
 
