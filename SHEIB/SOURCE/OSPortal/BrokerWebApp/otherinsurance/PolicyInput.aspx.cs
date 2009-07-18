@@ -1259,7 +1259,7 @@ namespace BrokerWebApp.otherinsurance
                 this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(value));
                 if (this.dxeddlProdTypeName.SelectedIndex >= 0)
                     this.dxeddlProdTypeName.Text = this.dxeddlProdTypeName.SelectedItem.Text.Substring(this.dxeddlProdTypeName.SelectedItem.Text.IndexOf("∟") + 1);
-                
+                ptid.Value = value;
             }
         }
 
