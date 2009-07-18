@@ -31,13 +31,15 @@ namespace BrokerWebApp.otherinsurance
         private Boolean gridCarrierStartEdit = false;
         private Boolean gridPolicyItemStartEdit = false;
         private Boolean gridPolicyPeriodStartEdit = false;
-        
+
+        private string toadd = string.Empty;
+
         //enctype="multipart/form-data">
 
         public enum PageMode
         {
-            Input, 
-            Alt, 
+            Input,
+            Alt,
             Audit,
             Query
         }
@@ -60,7 +62,7 @@ namespace BrokerWebApp.otherinsurance
                 this.dxetxtPolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey];
 
-                this.pplcid.Value = Page.Request.QueryString[inputQueryStringPreIDKey]; 
+                this.pplcid.Value = Page.Request.QueryString[inputQueryStringPreIDKey];
 
                 switch (this.pagemode.Value.ToLower().Trim())
                 {
@@ -92,7 +94,7 @@ namespace BrokerWebApp.otherinsurance
             this.gridPolicyItem.DataSource = BusinessObjects.Policy.BO_PolicyItem.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridPeriod.DataSource = BusinessObjects.Policy.BO_PolicyPeriod.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-            
+
 
             if (!IsPostBack && !IsCallback)
             {
@@ -106,13 +108,13 @@ namespace BrokerWebApp.otherinsurance
                 {
                     loadPolicyValue(this.dxetxtPolicyID.Text.Trim());
                 }
-                
+
             }
             else
             {
                 //
             }
-            
+
         }
 
 
@@ -158,7 +160,7 @@ namespace BrokerWebApp.otherinsurance
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            
+
             if (this.pm == PageMode.Audit)
             {
                 tbltrAuditExecuteAction.Visible = true;
@@ -183,10 +185,10 @@ namespace BrokerWebApp.otherinsurance
                     dxebtnBottomSave.Visible = false;
                 }
             }
-                
+
         }
 
-        
+
         protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
             ASPxComboBox thecb = (ASPxComboBox)source;
@@ -198,16 +200,16 @@ namespace BrokerWebApp.otherinsurance
             {
                 thecb.SelectedItem = thecb.Items[0];
             }
-            
+
         }
 
-               
+
 
         #endregion Page Events
 
 
         #region Tab Events
-        
+
 
         protected void insuranceDetailTabPage_ActiveTabChanged(object source, DevExpress.Web.ASPxTabControl.TabControlEventArgs e)
         {
@@ -244,7 +246,7 @@ namespace BrokerWebApp.otherinsurance
 
         #region gridPolicyItem Events
 
-        
+
         protected void gridPolicyItem_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
         {
             HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
@@ -261,7 +263,7 @@ namespace BrokerWebApp.otherinsurance
             ASPxTextBox dxetxtPolicyItemPremium = tblEditorTemplate.FindControl("dxetxtPolicyItemPremium") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemProcRate = tblEditorTemplate.FindControl("dxetxtPolicyItemProcRate") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemProcess = tblEditorTemplate.FindControl("dxetxtPolicyItemProcess") as ASPxTextBox;
-            
+
 
             Int32 editIndex = this.gridPolicyItem.EditingRowVisibleIndex;
             if (editIndex > -1)
@@ -276,7 +278,7 @@ namespace BrokerWebApp.otherinsurance
                 String premium = theValueList[4].ToString();
                 String procRate = theValueList[5].ToString();
                 String process = theValueList[6].ToString();
-                
+
 
                 ListEditItem theselected;
                 if (this.gridPolicyItemStartEdit)
@@ -294,9 +296,9 @@ namespace BrokerWebApp.otherinsurance
                     dxetxtPolicyItemProcess.Text = process;
 
                 }
-                
+
             }
-            
+
         }
 
         protected void gridPolicyItem_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
@@ -339,7 +341,7 @@ namespace BrokerWebApp.otherinsurance
             {
                 newobj.Process = Convert.ToDecimal(dxetxtPolicyItemProcess.Text);
             }
-            
+
 
             try
             {
@@ -355,9 +357,9 @@ namespace BrokerWebApp.otherinsurance
             this.gridPolicyItem.CancelEdit();
 
             rebindGridPolicyItem();
-            
-            
-            
+
+
+
         }
 
 
@@ -428,7 +430,7 @@ namespace BrokerWebApp.otherinsurance
         protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             String theKey = e.Keys[0].ToString();
-            
+
             try
             {
                 BusinessObjects.Policy.BO_PolicyItem.Delete(theKey);
@@ -453,7 +455,7 @@ namespace BrokerWebApp.otherinsurance
 
         protected void gridPolicyItem_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
-            String theWhere="";
+            String theWhere = "";
             if (e.Keys.Count > 0)
             {
                 theWhere = " AND ItemID !='" + e.Keys[0].ToString() + "'";
@@ -465,7 +467,7 @@ namespace BrokerWebApp.otherinsurance
             }
             String appendDes = "必需项";
             HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
-                        
+
             ASPxComboBox dxecbGridPolicyItemProdID = tblEditorTemplate.FindControl("dxecbGridPolicyItemProdID") as ASPxComboBox;
 
             theWhere = theWhere + " AND ProdID = '" + dxecbGridPolicyItemProdID.SelectedItem.Value.ToString() + "'";
@@ -473,7 +475,7 @@ namespace BrokerWebApp.otherinsurance
             if (dxecbGridPolicyItemProdID.SelectedItem == null)
             {
                 e.Errors[this.gridPolicyItem.Columns[1]] = "必需项";
-                
+
             }
             else
             {
@@ -502,7 +504,7 @@ namespace BrokerWebApp.otherinsurance
             if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误(" + appendDes + ")。";
 
         }
-     
+
 
         private void rebindGridPolicyItem()
         {
@@ -517,7 +519,7 @@ namespace BrokerWebApp.otherinsurance
 
         protected void gridCarrier_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
         {
-            
+
             HtmlTable tblEditorTemplate = this.gridCarrier.FindEditFormTemplateControl("tblgridCarrierEditorTemplate") as HtmlTable;
 
             ASPxComboBox dxecbGridCarrierCarrierID = tblEditorTemplate.FindControl("dxecbGridCarrierCarrierID") as ASPxComboBox;
@@ -553,7 +555,7 @@ namespace BrokerWebApp.otherinsurance
 
                 ListEditItem theselected;
                 if (this.gridCarrierStartEdit)
-                {                    
+                {
                     theselected = dxecbGridCarrierCarrierID.Items.FindByValue(carrierID);
                     if (theselected != null)
                     {
@@ -587,7 +589,7 @@ namespace BrokerWebApp.otherinsurance
                     dxecbGridCarrierBranchID.DataBind();
                 }
             }
-            
+
         }
 
         protected void gridCarrier_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
@@ -595,10 +597,10 @@ namespace BrokerWebApp.otherinsurance
             this.gridCarrierStartEdit = true;
         }
 
-        
+
         protected void gridCarrier_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            
+
             String theKey = e.Keys[0].ToString();
             HtmlTable tblEditorTemplate = this.gridCarrier.FindEditFormTemplateControl("tblgridCarrierEditorTemplate") as HtmlTable;
 
@@ -649,9 +651,9 @@ namespace BrokerWebApp.otherinsurance
             {
                 newobj.Save(ModifiedAction.Update);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw ex;                
+                throw ex;
             }
 
 
@@ -671,9 +673,9 @@ namespace BrokerWebApp.otherinsurance
         protected void gridCarrier_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             HtmlTable tblEditorTemplate = this.gridCarrier.FindEditFormTemplateControl("tblgridCarrierEditorTemplate") as HtmlTable;
-            
+
             ASPxComboBox dxecbGridCarrierCarrierID = tblEditorTemplate.FindControl("dxecbGridCarrierCarrierID") as ASPxComboBox;
-            
+
             ASPxComboBox dxecbGridCarrierBranchID = tblEditorTemplate.FindControl("dxecbGridCarrierBranchID") as ASPxComboBox;
 
             ASPxTextBox dxetxtGridCarrierPolicyRate = tblEditorTemplate.FindControl("dxetxtGridCarrierPolicyRate") as ASPxTextBox;
@@ -682,9 +684,9 @@ namespace BrokerWebApp.otherinsurance
             ASPxTextBox dxetxtGridCarrierProcessRate = tblEditorTemplate.FindControl("dxetxtGridCarrierProcessRate") as ASPxTextBox;
             ASPxTextBox dxetxtGridCarrierProcess = tblEditorTemplate.FindControl("dxetxtGridCarrierProcess") as ASPxTextBox;
             ASPxTextBox dxetxtGridCarrierProcessBase = tblEditorTemplate.FindControl("dxetxtGridCarrierProcessBase") as ASPxTextBox;
-            
+
             BusinessObjects.Policy.BO_PolicyCarrier newobj = new BusinessObjects.Policy.BO_PolicyCarrier();
-            
+
             newobj.PolicyCarrierID = Guid.NewGuid().ToString();
             newobj.PolicyID = this.dxetxtPolicyID.Text;
 
@@ -790,7 +792,7 @@ namespace BrokerWebApp.otherinsurance
             }
 
             ASPxComboBox dxecbGridCarrierBranchID = tblEditorTemplate.FindControl("dxecbGridCarrierBranchID") as ASPxComboBox;
-            
+
             if (dxecbGridCarrierBranchID.SelectedItem == null)
             {
                 e.Errors[this.gridCarrier.Columns[2]] = "必需项";
@@ -811,7 +813,7 @@ namespace BrokerWebApp.otherinsurance
             theWhere = theWhere + " AND A.BranchID = '" + dxecbGridCarrierBranchID.SelectedItem.Value.ToString() + "'";
 
             Boolean exists = BusinessObjects.Policy.BO_PolicyCarrier.CheckPolicyCarrierBranchExist(theWhere);
-            
+
             if (exists)
             {
                 e.Errors[this.gridCarrier.Columns[2]] = "已存在";
@@ -823,11 +825,11 @@ namespace BrokerWebApp.otherinsurance
             dxecbGridCarrierBranchID.Validate();
 
             if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误(" + appendDes + ")。";
-        
-        }
-     
 
-             
+        }
+
+
+
 
         protected void dxecbGridCarrierBranchIDCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
@@ -848,7 +850,7 @@ namespace BrokerWebApp.otherinsurance
             this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridCarrier.DataBind();
         }
-        
+
 
         #endregion gridCarrier Events
 
@@ -884,7 +886,7 @@ namespace BrokerWebApp.otherinsurance
 
                 String payFeeBase = theValueList[5].ToString();
                 String payProcBase = theValueList[6].ToString();
-                
+
 
                 if (this.gridPolicyPeriodStartEdit)
                 {
@@ -937,7 +939,7 @@ namespace BrokerWebApp.otherinsurance
             {
                 newobj.PayProcBase = Convert.ToDecimal(detxtGridPeriodPayProcBase.Text);
             }
-            
+
             try
             {
                 newobj.Save(ModifiedAction.Update);
@@ -997,17 +999,17 @@ namespace BrokerWebApp.otherinsurance
             DevExpress.Web.ASPxGridView.ASPxGridView refObj = this.gridPeriod;
             HtmlTable tblEditorTemplate = refObj.FindEditFormTemplateControl("tblgridPeriodEditorTemplate") as HtmlTable;
 
-            
+
             ASPxDateEdit detxtGridPeriodPayDate = tblEditorTemplate.FindControl("detxtGridPeriodPayDate") as ASPxDateEdit;
-            
+
             ASPxTextBox detxtGridPeriodPayFeeBase = tblEditorTemplate.FindControl("detxtGridPeriodPayFeeBase") as ASPxTextBox;
             ASPxTextBox detxtGridPeriodPayProcBase = tblEditorTemplate.FindControl("detxtGridPeriodPayProcBase") as ASPxTextBox;
 
-            if (detxtGridPeriodPayDate.Value  == null)
+            if (detxtGridPeriodPayDate.Value == null)
             {
                 e.Errors[refObj.Columns[2]] = "必需项";
             }
-            if (detxtGridPeriodPayFeeBase.Text.Trim()  == "")
+            if (detxtGridPeriodPayFeeBase.Text.Trim() == "")
             {
                 e.Errors[refObj.Columns[5]] = "必需项";
             }
@@ -1016,7 +1018,7 @@ namespace BrokerWebApp.otherinsurance
                 e.Errors[refObj.Columns[6]] = "必需项";
             }
 
-            detxtGridPeriodPayDate.Validate();            
+            detxtGridPeriodPayDate.Validate();
             detxtGridPeriodPayFeeBase.Validate();
             detxtGridPeriodPayProcBase.Validate();
 
@@ -1025,17 +1027,17 @@ namespace BrokerWebApp.otherinsurance
                 //this.gridPolicyPeriodStartEdit = true;
                 e.RowError = "请修正所有的错误。";
             }
-                
+
 
         }
-     
+
 
         private void rebindGridPeriod()
         {
             this.gridPeriod.DataSource = BusinessObjects.Policy.BO_PolicyPeriod.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridPeriod.DataBind();
         }
-        
+
         #endregion gridPeriod Events
 
 
@@ -1045,12 +1047,12 @@ namespace BrokerWebApp.otherinsurance
         {
             //
         }
-                      
+
 
         protected void UploadControl_FileUploadComplete(object sender, FileUploadCompleteEventArgs e)
         {
             try
-            {                
+            {
                 e.CallbackData = SavePostedFiles(e.UploadedFile);
             }
             catch (Exception ex)
@@ -1077,7 +1079,7 @@ namespace BrokerWebApp.otherinsurance
                     if (drtInfo.Exists)
                     {
                         fileInfo = new FileInfo(uploadedFile.FileName);
-                        string resFileName = System.IO.Path.Combine(policyFolderPath,fileInfo.Name);
+                        string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
                         uploadedFile.SaveAs(resFileName);
 
                         //string fileLabel = fileInfo.Name;
@@ -1105,7 +1107,7 @@ namespace BrokerWebApp.otherinsurance
                     pdoc.Save(ModifiedAction.Insert);
                 }
 
-                
+
             }
             return ret;
         }
@@ -1122,12 +1124,12 @@ namespace BrokerWebApp.otherinsurance
             this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridDocList.DataBind();
         }
-        
+
 
         #endregion Upload File  Events
 
 
-        private string savePolicy(String parameter,String policyState)
+        private string savePolicy(String parameter, String policyState)
         {
             String json = parameter;
 
@@ -1167,7 +1169,7 @@ namespace BrokerWebApp.otherinsurance
             obj = (PolicyAuditInfo)serializer.ReadObject(ms);
             ms.Close();
 
-            String thePolicyID=this.dxetxtPolicyID.Text.Trim();
+            String thePolicyID = this.dxetxtPolicyID.Text.Trim();
             BusinessObjects.Policy.BO_Policy objPolicy;
             objPolicy = new BusinessObjects.Policy.BO_Policy(thePolicyID);
 
@@ -1182,7 +1184,7 @@ namespace BrokerWebApp.otherinsurance
             objPolicy.AuditPerson = this.CurrentUserID;
             objPolicy.Remark = obj.Memo;
             objPolicy.Save(ModifiedAction.Update);
-            
+
         }
 
 
@@ -1218,8 +1220,49 @@ namespace BrokerWebApp.otherinsurance
             this.dxeddlCurrency.ValueField = "CurID";
             this.dxeddlCurrency.DataBind();
 
+            this.BindProdTypeName();
+
             //DateTime.Today.ToString("yyyy-MM-dd");
         }
+
+
+
+        private void BindProdTypeName()
+        {
+            DataSet dsList = BusinessObjects.SchemaSetting.BO_ProductType.GetProductTypeList();
+            if (dsList.Tables[0] != null && dsList.Tables[0].Rows.Count > 0)
+            {
+                this.SetProdTypeName(dsList.Tables[0], "0", this.dxeddlProdTypeName);
+            }
+        }
+
+
+        private void SetProdTypeName(DataTable table, string parentid, ASPxComboBox comboBox)
+        {
+            if (parentid == "0")
+                this.toadd = "";
+            else
+                this.toadd += "   ";
+            DataRow[] rows = table.Select("ParentID='" + parentid + "'", "ProdClass");
+            foreach (DataRow row in rows)
+            {
+                comboBox.Items.Add(this.toadd + (parentid == "0" ? "" : "∟") + row["ProdTypeName"].ToString(), row["ProdTypeID"].ToString());
+                this.SetProdTypeName(table, row["ProdTypeID"].ToString(), comboBox);
+                this.toadd = this.toadd.Substring(0, this.toadd.Length - 3);
+            }
+        }
+
+        private void SetddlProdTypeName(string value)
+        {
+            if (!string.IsNullOrEmpty(value))
+            {
+                this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(value));
+                if (this.dxeddlProdTypeName.SelectedIndex >= 0)
+                    this.dxeddlProdTypeName.Text = this.dxeddlProdTypeName.SelectedItem.Text.Substring(this.dxeddlProdTypeName.SelectedItem.Text.IndexOf("∟") + 1);
+                
+            }
+        }
+
 
 
         private void loadPolicyValue(String poliicyID)
@@ -1234,7 +1277,15 @@ namespace BrokerWebApp.otherinsurance
             //dxechkTogether
             //dxechkFlagReinsure
 
-            this.dxetxtProdTypeName.Text = obj.ProdTypeName;
+            //this.dxeddlProdTypeName.Value = obj.ProdTypeID;
+
+
+            this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(obj.ProdTypeID));
+            if (this.dxeddlProdTypeName.SelectedIndex >= 0)
+                this.dxeddlProdTypeName.Text = this.dxeddlProdTypeName.SelectedItem.Text.Substring(this.dxeddlProdTypeName.SelectedItem.Text.IndexOf("∟") + 1);
+
+
+            //this.dxetxtProdTypeName.SelectedItem = dxetxtProdTypeName.Items.FindByValue(obj.ProdTypeID);
             this.ptid.Value = obj.ProdTypeID;
 
             this.dxetxtCustomer.Text = obj.CustomerName;
@@ -1314,7 +1365,7 @@ namespace BrokerWebApp.otherinsurance
                     dxeddlCurrency.SelectedItem = theselected;
                 }
             }
-                        
+
             this.dxetxtPremium.Text = obj.Premium.ToString();
             this.dxetxtProcess.Text = obj.Process.ToString();
             this.dxetxtConversionRate.Text = obj.ConversionRate.ToString();
@@ -1324,7 +1375,7 @@ namespace BrokerWebApp.otherinsurance
             this.dxeCheckDate.Date = obj.AuditTime;
             this.dxetxtIDNo.Text = obj.AuditPerson;
             this.dxeMemo.Text = obj.Remark;
-            
+
         }
 
 
@@ -1339,7 +1390,14 @@ namespace BrokerWebApp.otherinsurance
             //dxechkTogether
             //dxechkFlagReinsure
 
-            this.dxetxtProdTypeName.Text = obj.ProdTypeName;
+            //this.dxetxtProdTypeName.Text = obj.ProdTypeName;
+
+            //this.dxeddlProdTypeName.SelectedItem = dxeddlProdTypeName.Items.FindByValue(obj.ProdTypeID);
+
+            this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(obj.ProdTypeID));
+            if (this.dxeddlProdTypeName.SelectedIndex >= 0)
+                this.dxeddlProdTypeName.Text = this.dxeddlProdTypeName.SelectedItem.Text.Substring(this.dxeddlProdTypeName.SelectedItem.Text.IndexOf("∟") + 1);
+
             this.ptid.Value = obj.ProdTypeID;
 
             this.dxetxtCustomer.Text = obj.CustomerName;
@@ -1406,7 +1464,7 @@ namespace BrokerWebApp.otherinsurance
 
             this.dxetxtStage.Text = obj.PeriodTimes.ToString();
 
-                        
+
         }
 
 
@@ -1432,7 +1490,7 @@ namespace BrokerWebApp.otherinsurance
         public PolicyAuditInfo()
         { }
 
-        
+
         [DataMember]
         public string Memo { get; set; }
 
