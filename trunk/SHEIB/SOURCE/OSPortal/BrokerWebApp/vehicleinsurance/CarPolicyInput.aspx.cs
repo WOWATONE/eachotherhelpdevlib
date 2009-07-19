@@ -43,7 +43,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         private Nullable<PageMode> pm;
 
-        private const String productType = "030709184403-23429EC"; 
+        private const String productType = "C00003001"; 
         #endregion Variables
 
 

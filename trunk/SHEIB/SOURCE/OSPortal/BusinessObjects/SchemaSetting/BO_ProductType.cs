@@ -97,6 +97,7 @@ namespace BusinessObjects.SchemaSetting
 
 
         #region Methods
+
         public void Save(ModifiedAction action)
         {
             if (action == ModifiedAction.Insert)
