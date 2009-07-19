@@ -1024,10 +1024,11 @@
                                                     <td>
                                                         <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
                                                             KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False" OnRowInserting="gridPolicyItem_RowInserting"
-                                                            OnRowInserted="gridPolicyItem_RowInserted" OnRowUpdating="gridPolicyItem_RowUpdating"
-                                                            OnRowUpdated="gridPolicyItem_RowUpdated" OnRowDeleting="gridPolicyItem_RowDeleting"
-                                                            OnStartRowEditing="gridPolicyItem_StartRowEditing" OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
-                                                            OnRowValidating="gridPolicyItem_RowValidating" OnRowDeleted="gridPolicyItem_RowDeleted">
+                                                            OnRowUpdating="gridPolicyItem_RowUpdating"
+                                                            OnRowDeleting="gridPolicyItem_RowDeleting"
+                                                            OnStartRowEditing="gridPolicyItem_StartRowEditing" 
+                                                            OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
+                                                            OnRowValidating="gridPolicyItem_RowValidating">
                                                             <%-- BeginRegion Columns --%>
                                                             <Columns>
                                                                 <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left"
@@ -1318,10 +1319,11 @@
                                                     <td>
                                                         <dxwgv:ASPxGridView ID="gridCarrier" ClientInstanceName="gridCarrier" runat="server"
                                                             KeyFieldName="PolicyCarrierID" Width="100%" AutoGenerateColumns="False" OnStartRowEditing="gridCarrier_StartRowEditing"
-                                                            OnRowInserting="gridCarrier_RowInserting" OnRowUpdating="gridCarrier_RowUpdating"
-                                                            OnRowUpdated="gridCarrier_RowUpdated" OnRowInserted="gridCarrier_RowInserted"
-                                                            OnRowDeleting="gridCarrier_RowDeleting" OnRowDeleted="gridCarrier_RowDeleted"
-                                                            OnHtmlEditFormCreated="gridCarrier_HtmlEditFormCreated" OnRowValidating="gridCarrier_RowValidating">
+                                                            OnRowInserting="gridCarrier_RowInserting" 
+                                                            OnRowUpdating="gridCarrier_RowUpdating"
+                                                            OnRowDeleting="gridCarrier_RowDeleting" 
+                                                            OnHtmlEditFormCreated="gridCarrier_HtmlEditFormCreated" 
+                                                            OnRowValidating="gridCarrier_RowValidating">
                                                             <%-- BeginRegion Columns --%>
                                                             <Columns>
                                                                 <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left"
@@ -1576,10 +1578,12 @@
                                     <td runat="server" id="tblcellgridPeriod">
                                         <dxwgv:ASPxGridView ID="gridPeriod" ClientInstanceName="gridPeriod" runat="server"
                                             KeyFieldName="PolPeriodId" Width="100%" OnStartRowEditing="gridPeriod_StartRowEditing"
-                                            OnRowInserting="gridPeriod_RowInserting" OnRowUpdating="gridPeriod_RowUpdating"
-                                            OnRowUpdated="gridPeriod_RowUpdated" OnRowInserted="gridPeriod_RowInserted" OnRowDeleting="gridPeriod_RowDeleting"
-                                            OnHtmlEditFormCreated="gridPeriod_HtmlEditFormCreated" OnRowDeleted="gridPeriod_RowDeleted"
-                                            OnCustomCallback="gridPeriod_CustomCallback" OnRowValidating="gridPeriod_RowValidating">
+                                            OnRowInserting="gridPeriod_RowInserting" 
+                                            OnRowUpdating="gridPeriod_RowUpdating"
+                                            OnRowDeleting="gridPeriod_RowDeleting"
+                                            OnHtmlEditFormCreated="gridPeriod_HtmlEditFormCreated"
+                                            OnCustomCallback="gridPeriod_CustomCallback" 
+                                            OnRowValidating="gridPeriod_RowValidating">
                                             <%-- BeginRegion Columns --%>
                                             <Columns>
                                                 <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="false">
