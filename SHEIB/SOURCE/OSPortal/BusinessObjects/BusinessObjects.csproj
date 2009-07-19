@@ -73,6 +73,7 @@
     <Compile Include="BaseEntity\SessionService.cs" />
     <Compile Include="BaseEntity\TranUtils.cs" />
     <Compile Include="BaseEntity\Utility.cs" />
+    <Compile Include="Budget\BO_SignPremiumBudget.cs" />
     <Compile Include="Claim\BO_NotifyClaim.cs" />
     <Compile Include="Consult\BO_ConsultFee.cs" />
     <Compile Include="Consult\BO_ConsultFeeItem.cs" />
