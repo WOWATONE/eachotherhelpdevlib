@@ -124,8 +124,7 @@
                            AutoGenerateColumns="False" 
                            Settings-ShowFooter="true"
                            SettingsPager-AlwaysShowPager="true" 
-                           SettingsBehavior-AllowSort="false"
-                           SettingsBehavior-AllowDragDrop="false">
+                           SettingsBehavior-AllowSort="false">
                         <Columns>
                             <dxwgv:GridViewDataTextColumn Caption="联系人编号" FieldName="ContactID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>

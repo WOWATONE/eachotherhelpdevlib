@@ -22,6 +22,11 @@ namespace BrokerWebApp.CustomerRelation
                 {
                     this.Initialization();
                 }
+
+                if (this.Page.IsCallback)
+                {
+                    this.BindGrid();
+                }
             }
             catch (Exception ex)
             { }
@@ -47,6 +52,7 @@ namespace BrokerWebApp.CustomerRelation
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
         {
+            this.BindGrid();
             this.gridExport.WriteXlsToResponse();
         }
 

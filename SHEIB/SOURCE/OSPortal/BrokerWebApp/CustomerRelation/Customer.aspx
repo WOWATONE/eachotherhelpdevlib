@@ -343,7 +343,7 @@
                                     文件列表：
                                 </td>
                                 <td style="text-align: left; vertical-align: top;" colspan="3">
-                                    <dxwgv:ASPxGridView ID="gridAddInfoDocList" ClientInstanceName="gridAddInfoDocList" runat="server"
+                                    <dxwgv:ASPxGridView ID="gridAddInfoDocList" ClientInstanceName="gridAddInfoDocList" runat="server" SettingsBehavior-AllowSort="false"
                                         KeyFieldName="PolicyDocID" Width="80%" AutoGenerateColumns="False" OnCustomCallback="gridAddInfoDocList_CustomCallback">
                                         <%-- BeginRegion Columns --%>
                                         <Columns>

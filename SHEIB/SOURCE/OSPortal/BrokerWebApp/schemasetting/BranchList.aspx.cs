@@ -22,6 +22,11 @@ namespace BrokerWebApp.schemasetting
                 {
                     this.Initialization();
                 }
+
+                if (this.Page.IsCallback)
+                {
+                    this.BindGrid();
+                }
             }
             catch (Exception ex)
             { }
@@ -48,6 +53,7 @@ namespace BrokerWebApp.schemasetting
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
         {
+            this.BindGrid();
             this.gridExport.WriteXlsToResponse();
         }
 

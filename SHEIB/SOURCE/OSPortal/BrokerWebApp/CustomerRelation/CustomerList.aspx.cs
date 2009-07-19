@@ -88,6 +88,7 @@ namespace BrokerWebApp.CustomerRelation
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
         {
+            this.BindGrid();
             this.gridExport.WriteXlsToResponse();
         }
 

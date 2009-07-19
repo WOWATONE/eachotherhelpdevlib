@@ -163,7 +163,6 @@
                            Width="100%" 
                            SettingsPager-AlwaysShowPager="true" 
                            SettingsBehavior-AllowSort="false"
-                           SettingsBehavior-AllowDragDrop="false" 
                            OnRowDeleting="gridSearchResult_RowDeleting"
                            OnRowDeleted="gridSearchResult_RowDeleted">
                         <Columns>
