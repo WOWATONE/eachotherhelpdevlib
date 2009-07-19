@@ -360,7 +360,6 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataDateColumn FieldName="FeeDate" Caption="保费代收日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataDateColumn>
-                                        
                                         <dxwgv:GridViewDataColumn FieldName="PayinedFee" Caption="保费解付金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayinDate" Caption="保费解付日期" CellStyle-Wrap="False">
