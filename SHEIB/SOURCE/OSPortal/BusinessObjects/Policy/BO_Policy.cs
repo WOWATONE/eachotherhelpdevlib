@@ -715,6 +715,9 @@ namespace BusinessObjects.Policy
         }
 
 
+        
+
+
         #endregion Methods
 
 
@@ -984,6 +987,7 @@ namespace BusinessObjects.Policy
 
         private void update()
         {
+            
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE Policy SET ");
             sb.Append("PrevPolicyID=@PrevPolicyID, PolicyNo=@PolicyNo,");
@@ -1106,9 +1110,14 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@CarValue", DbType.String, this.CarValue);
             _db.AddInParameter(dbCommand, "@CarUser", DbType.String, this.CarUser);
 
+            Boolean needChangePeriod = false;
+            BO_Policy theCompare = new BO_Policy(this.PolicyID);
+            if (theCompare.PeriodTimes != this.PeriodTimes) needChangePeriod = true;
+
             try
             {
                 _db.ExecuteNonQuery(dbCommand);
+                if (needChangePeriod) changePeriod(this.PolicyID);
             }
             catch (Exception ex)
             {
@@ -1116,6 +1125,39 @@ namespace BusinessObjects.Policy
             }
 
             
+
+        }
+
+
+        private void changePeriod(String id)
+        {
+            List<BO_PolicyCarrier> theList;
+            theList = BO_PolicyCarrier.FetchListByPolicy(id);
+            BO_PolicyPeriod objNew;
+
+            BO_Policy objPolicy = new BO_Policy(id);
+            Int32 times = objPolicy.PeriodTimes;
+            if (times < 1) times = 1;
+
+            BO_PolicyPeriod.DeleteByPolicyId(id);
+
+            foreach (BO_PolicyCarrier item in theList)
+            {
+                for (int i = 1; i <= times; i++)
+                {
+                    objNew = new BO_PolicyPeriod();
+                    objNew.PolPeriodId = Guid.NewGuid().ToString();
+                    objNew.PolicyId = item.PolicyID;
+                    objNew.CarrierID = item.CarrierID;
+                    objNew.BranchID = item.BranchID;
+                    objNew.Period = i;
+                    objNew.PayDate = DateTime.Now;
+                    objNew.PayFeeBase = item.PremiumBase / times;
+                    objNew.PayProcBase = item.ProcessBase / times;
+                    objNew.NoticeNo = "";
+                    objNew.Save(ModifiedAction.Insert);
+                }
+            }
 
         }
 
