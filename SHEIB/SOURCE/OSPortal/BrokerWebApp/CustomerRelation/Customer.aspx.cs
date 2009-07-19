@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Configuration;
 using System.Data;
@@ -24,6 +25,7 @@ namespace BrokerWebApp.CustomerRelation
         /// </summary>
         private string _custID;
         private string toadd = string.Empty;
+        private const string UploadDirectory = "~/UploadFiles/CustomerUploadFiles/";
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -57,10 +59,11 @@ namespace BrokerWebApp.CustomerRelation
         {
             if (String.IsNullOrEmpty(this._custID))
             {//没有传入客户编号, 认为是新增客户
-                this.customerDetailTabPage.TabPages[2].Visible = false;
-                this.customerDetailTabPage.TabPages[3].Visible = false;
-                this.customerDetailTabPage.TabPages[4].Visible = false;
-                this.customerDetailTabPage.TabPages[5].Visible = false;
+                this.customerDetailTabPage.TabPages[1].Enabled = false;
+                this.customerDetailTabPage.TabPages[2].Enabled = false;
+                this.customerDetailTabPage.TabPages[3].Enabled = false;
+                this.customerDetailTabPage.TabPages[4].Enabled = false;
+                this.customerDetailTabPage.TabPages[5].Enabled = false;
                 //客户编号
                 this.dxetxtCustID.Text = TranUtils.GetCustomerID();
                 //所在地区
@@ -92,7 +95,6 @@ namespace BrokerWebApp.CustomerRelation
                 else
                     this.radUnit.Checked = true;
                 this.dxetxtCustID.Text = customer.CustID;
-                this.dxetxtCustID.Enabled = false;
                 this.SetddlArea(customer.Area);
                 this.dxetxtCustName.Text = customer.CustName;
                 this.dxetxtAddress.Text = customer.Address;
@@ -115,6 +117,7 @@ namespace BrokerWebApp.CustomerRelation
                 this.txtRisk.Text = customer.Risk;
                 this.txtOtherInfo.Text = customer.OtherInfo;
                 this.dxetxtRemark.Text = customer.Remark;
+                this.rebindGridAddInfoDocList();
                 #endregion
 
                 #region 联系人
@@ -269,13 +272,13 @@ namespace BrokerWebApp.CustomerRelation
                     customer.Tel = this.dxetxtTel.Text.Trim();
                     customer.Mobile = this.dxetxtMobile.Text.Trim();
                     customer.IDNO = this.dxetxtIDNO.Text.Trim();
-                    customer.MainOper = this.dxetxtMainOper.Text.Trim();
-                    customer.AssetSize = this.dxetxtAssetSize.Text.Trim();
-                    customer.MainProduct = this.dxetxtMainProduct.Text.Trim();
-                    customer.Background = this.txtBackground.Text.Trim();
-                    customer.OtherInfo = this.txtOtherInfo.Text.Trim();
-                    customer.Risk = this.txtRisk.Text.Trim();
-                    customer.Remark = this.dxetxtRemark.Text.Trim();
+                    //customer.MainOper = this.dxetxtMainOper.Text.Trim();
+                    //customer.AssetSize = this.dxetxtAssetSize.Text.Trim();
+                    //customer.MainProduct = this.dxetxtMainProduct.Text.Trim();
+                    //customer.Background = this.txtBackground.Text.Trim();
+                    //customer.OtherInfo = this.txtOtherInfo.Text.Trim();
+                    //customer.Risk = this.txtRisk.Text.Trim();
+                    //customer.Remark = this.dxetxtRemark.Text.Trim();
                     customer.Contact = this.dxetxtContact.Text.Trim();
                     customer.Save(ModifiedAction.Insert);
 
@@ -320,13 +323,70 @@ namespace BrokerWebApp.CustomerRelation
         {
             try
             {
-                e.CallbackData = SavePostedFiles(e.UploadedFile);
+                e.CallbackData = SavePostedAddInfoFiles(e.UploadedFile);
             }
             catch (Exception ex)
             {
                 e.IsValid = false;
                 e.ErrorText = ex.Message;
             }
+        }
+
+        protected string SavePostedAddInfoFiles(UploadedFile uploadedFile)
+        {
+            string ret = "";
+            string folder = this._custID;
+            string folderPath;
+            if (uploadedFile.IsValid)
+            {
+                DirectoryInfo drtInfo = new DirectoryInfo(MapPath(UploadDirectory));
+                if (drtInfo.Exists)
+                {
+                    folderPath = System.IO.Path.Combine(MapPath(UploadDirectory), folder);
+                    drtInfo = new DirectoryInfo(folder);
+                    FileInfo fileInfo;
+                    if (drtInfo.Exists)
+                    {
+                        fileInfo = new FileInfo(uploadedFile.FileName);
+                        string resFileName = System.IO.Path.Combine(folderPath, fileInfo.Name);
+                        uploadedFile.SaveAs(resFileName);
+
+                        //string fileLabel = fileInfo.Name;
+                        //string fileType = uploadedFile.PostedFile.ContentType.ToString();
+                        //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
+                        //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
+                    }
+                    else
+                    {
+                        //create folder
+                        drtInfo = System.IO.Directory.CreateDirectory(folderPath);
+                        fileInfo = new FileInfo(uploadedFile.FileName);
+                        string resFileName = System.IO.Path.Combine(folderPath, fileInfo.Name);
+                        uploadedFile.SaveAs(resFileName);
+                    }
+
+                    //BO_CustomerDoc
+                    BusinessObjects.CustomerRelation.BO_CustomerDoc.Delete(this._custID, fileInfo.Name);
+                    BusinessObjects.CustomerRelation.BO_CustomerDoc pdoc = new BusinessObjects.CustomerRelation.BO_CustomerDoc();
+                    pdoc.CustDocID = Guid.NewGuid().ToString();
+                    pdoc.CustID = this._custID;
+                    pdoc.CustDocName = fileInfo.Name;
+                    pdoc.CustURL = UploadDirectory.Replace("~", "") + folder + "/" + fileInfo.Name;
+                    pdoc.Save(ModifiedAction.Insert);
+                }
+            }
+            return ret;
+        }
+
+        protected void gridAddInfoDocList_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            rebindGridAddInfoDocList();
+        }
+
+        private void rebindGridAddInfoDocList()
+        {
+            this.gridAddInfoDocList.DataSource = BusinessObjects.CustomerRelation.BO_CustomerDoc.FetchListByCustomer(this._custID);
+            this.gridAddInfoDocList.DataBind();
         }
         #endregion
 
@@ -508,15 +568,15 @@ namespace BrokerWebApp.CustomerRelation
 
         protected void UploadControl_CustomerPTUploadComplete(object sender, FileUploadCompleteEventArgs e)
         {
-            try
-            {
-                e.CallbackData = SavePostedFiles(e.UploadedFile);
-            }
-            catch (Exception ex)
-            {
-                e.IsValid = false;
-                e.ErrorText = ex.Message;
-            }
+            //try
+            //{
+            //    e.CallbackData = SavePostedFiles(e.UploadedFile);
+            //}
+            //catch (Exception ex)
+            //{
+            //    e.IsValid = false;
+            //    e.ErrorText = ex.Message;
+            //}
         }
         #endregion
 
@@ -526,23 +586,6 @@ namespace BrokerWebApp.CustomerRelation
             //
         }
         #endregion
-
-        protected string SavePostedFiles(UploadedFile uploadedFile)
-        {
-            string ret = "";
-            if (uploadedFile.IsValid)
-            {
-                //FileInfo fileInfo = new FileInfo(uploadedFile.FileName);
-                //string resFileName = MapPath(UploadDirectory) + fileInfo.Name;
-                //uploadedFile.SaveAs(resFileName);
-
-                //string fileLabel = fileInfo.Name;
-                //string fileType = uploadedFile.PostedFile.ContentType.ToString();
-                //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
-                //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
-            }
-            return ret;
-        }
 
         /// <summary>
         /// 取得下拉列表编号
