@@ -191,7 +191,18 @@
 
             if ((typeof (gridCarrier) != 'undefined') && gridCarrier != null) {
                 gridCarrier.SetClientVisible(val);
-            }            
+            }
+
+            dxetxtCoverage.SetEnabled(val);
+            dxetxtPremiumRate.SetEnabled(val);
+            dxetxtProcessRate.SetEnabled(val);
+            dxeddlCurrency.SetEnabled(val);
+            dxetxtPremium.SetEnabled(val);
+            dxetxtProcess.SetEnabled(val);
+            dxetxtConversionRate.SetEnabled(val);
+            dxetxtPremiumBase.SetEnabled(val);
+            dxetxtProcessBase.SetEnabled(val);
+                        
         }
 
         function policyBaseCompleteEnable() {
@@ -507,7 +518,7 @@
             var thesource = dxeStartDate.GetDate();
             var theYear = thesource.getFullYear();
             var theMonth = thesource.getMonth();
-            var theDate = thesource.getDate();
+            var theDate = thesource.getDate()-1;
             theYear = theYear + 1;
             theMonth = theMonth + 1;
             var endDateString = theMonth.toString() + "/" + theDate.toString() + "/" + theYear.toString();
@@ -1174,17 +1185,17 @@
                                         <asp:Panel ID="npCostSummaryDetail" runat="server" CssClass="collapsePanel" Height="0">
                                             <table style="width: 100%">
                                                 <tr style="font-size: 1px; height: 2px;">
-                                                    <td style="width: 10%;">
+                                                    <td style="width:80px;">
                                                     </td>
-                                                    <td style="width: 20%;">
+                                                    <td style="width:140px;">
                                                     </td>
-                                                    <td style="width: 10%;">
+                                                    <td style="width:80px;">
                                                     </td>
-                                                    <td style="width: 20%;">
+                                                    <td style="width:140px;">
                                                     </td>
-                                                    <td style="width: 10%;">
+                                                    <td style="width:80px;">
                                                     </td>
-                                                    <td style="width: 20%;">
+                                                    <td style="width:140px;">
                                                     </td>
                                                     <td>
                                                     </td>
