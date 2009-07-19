@@ -24,7 +24,7 @@ namespace BrokerWebApp.otherinsurance
         private const string currentPageModeKey = "CurrentPagePolicyMode";
         private const string inputQueryStringIDKey = "id";
         private const string inputQueryStringPageModeKey = "pagemode";
-        private const string inputQueryStringPreIDKey = "pid";
+        //private const string inputQueryStringPreIDKey = "pid";
         private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
         //private const int ThumbnailSize = 100;
 
@@ -39,7 +39,6 @@ namespace BrokerWebApp.otherinsurance
         public enum PageMode
         {
             Input,
-            Alt,
             Audit,
             Query
         }
@@ -61,16 +60,11 @@ namespace BrokerWebApp.otherinsurance
             {
                 this.dxetxtPolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey];
-
-                this.pplcid.Value = Page.Request.QueryString[inputQueryStringPreIDKey];
-
+                                
                 switch (this.pagemode.Value.ToLower().Trim())
                 {
                     case "input":
                         pm = PageMode.Input;
-                        break;
-                    case "alt":
-                        pm = PageMode.Alt;
                         break;
                     case "audit":
                         pm = PageMode.Audit;
@@ -84,7 +78,6 @@ namespace BrokerWebApp.otherinsurance
                 }
                 ViewState[currentPageModeKey] = pm;
 
-                loadPrePolicyValue(this.pplcid.Value);
             }
 
 
@@ -120,21 +113,6 @@ namespace BrokerWebApp.otherinsurance
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            //switch (this.pm)
-            //{
-            //    case PageMode.Input :
-            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
-            //        break;
-            //    case PageMode.Alt:
-            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
-            //        break;
-            //    case PageMode.Audit:
-            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
-            //        break;
-            //    default:
-            //        obj.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
-            //        break;
-            //}
             String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
             String thePolicyID = savePolicy(e.Parameter, policystatus);
             e.Result = thePolicyID;
@@ -168,10 +146,6 @@ namespace BrokerWebApp.otherinsurance
             }
             else
             {
-                if (this.pm == PageMode.Alt)
-                {
-                    dxebtnBottomAdd.Visible = false;
-                }
                 tbltrAuditExecuteAction.Visible = false;
                 npNewExecuteAction.Visible = true;
 
@@ -363,10 +337,7 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
-        protected void gridPolicyItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
-        {
-            //this.gridPolicyItem.DataBind();
-        }
+        
 
         protected void gridPolicyItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
@@ -448,11 +419,7 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
-        protected void gridPolicyItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
-        {
-            //
-        }
-
+        
         protected void gridPolicyItem_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
             String theWhere = "";
@@ -664,12 +631,7 @@ namespace BrokerWebApp.otherinsurance
 
         }
 
-
-        protected void gridCarrier_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
-        {
-            this.gridCarrier.DataBind();
-        }
-
+                
         protected void gridCarrier_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             HtmlTable tblEditorTemplate = this.gridCarrier.FindEditFormTemplateControl("tblgridCarrierEditorTemplate") as HtmlTable;
@@ -727,11 +689,7 @@ namespace BrokerWebApp.otherinsurance
 
         }
 
-        protected void gridCarrier_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
-        {
-            this.gridCarrier.DataBind();
-        }
-
+        
         protected void gridCarrier_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             String theKey = e.Keys[0].ToString();
@@ -752,11 +710,7 @@ namespace BrokerWebApp.otherinsurance
 
         }
 
-        protected void gridCarrier_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
-        {
-            //
-        }
-
+        
         protected void gridCarrier_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
             String theWhere = "";
@@ -970,11 +924,7 @@ namespace BrokerWebApp.otherinsurance
             this.gridPeriod.CancelEdit();
         }
 
-        protected void gridPeriod_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
-        {
-            //
-        }
-
+        
         protected void gridPeriod_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             //
@@ -982,11 +932,7 @@ namespace BrokerWebApp.otherinsurance
             this.gridPeriod.CancelEdit();
         }
 
-        protected void gridPeriod_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
-        {
-            //
-        }
-
+        
         protected void gridPeriod_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
             //
@@ -1129,27 +1075,106 @@ namespace BrokerWebApp.otherinsurance
         #endregion Upload File  Events
 
 
+        #region Privates
+
         private string savePolicy(String parameter, String policyState)
         {
             String json = parameter;
 
             MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BusinessObjects.Policy.BO_Policy));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(PolicyInfo));
+            
+            PolicyInfo theJosn;
+            theJosn = (PolicyInfo)serializer.ReadObject(ms);
+            ms.Close();
             BusinessObjects.Policy.BO_Policy obj;
 
-            obj = (BusinessObjects.Policy.BO_Policy)serializer.ReadObject(ms);
-            ms.Close();
-
-            if (String.IsNullOrEmpty(obj.PolicyID))
+            if (String.IsNullOrEmpty(theJosn.PolicyID))
             {
+                obj = new BusinessObjects.Policy.BO_Policy();
                 obj.PolicyID = TranUtils.GetPolicyID();
                 obj.PolicyStatus = policyState;
                 obj.PolicyType = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyTypeEnum.Other).ToString();
+                obj.Beneficiary=theJosn.Beneficiary;
+                obj.CarrierSales=theJosn.CarrierSales; 
+                obj.ConversionRate=theJosn.ConversionRate;
+                obj.Coverage=theJosn.Coverage;
+                            
+                obj.Currency=theJosn.Currency; 
+                obj.CustomerID=theJosn.CustomerID; 
+                obj.DeptId=theJosn.DeptId; 
+                obj.EndDate=theJosn.EndDate;
+                            
+                obj.FlagReinsure=theJosn.FlagReinsure; 
+                obj.FlagTogether=theJosn.FlagTogether; 
+                obj.GatheringType=theJosn.GatheringType;
+                            
+                obj.OperationType=theJosn.OperationType; 
+                obj.PeriodTimes=theJosn.PeriodTimes; 
+                obj.PolicyID=theJosn.PolicyID; 
+                obj.PolicyNo=theJosn.PolicyNo;
+                            
+                obj.Premium=theJosn.Premium; 
+                obj.PremiumBase=theJosn.PremiumBase; 
+                obj.PremiumRate=theJosn.PremiumRate;
+                            
+                obj.Process=theJosn.Process; 
+                obj.ProcessBase=theJosn.ProcessBase; 
+                obj.ProcessRate=theJosn.ProcessRate; 
+                obj.ProdTypeID=theJosn.ProdTypeID;
+                obj.Remark=theJosn.Remark; 
+                obj.SalesId=theJosn.SalesId; 
+                obj.SignDate=theJosn.SignDate;
+                obj.SourceTypeID=theJosn.SourceTypeID; 
+                obj.Special=theJosn.Special;
+                obj.StartDate = theJosn.StartDate;
+
+                obj.CreatePerson = this.CurrentUserID;
+                obj.CreateTime = DateTime.Now;
+
                 obj.Save(ModifiedAction.Insert);
             }
             else
             {
+                obj = new BusinessObjects.Policy.BO_Policy(theJosn.PolicyID);
                 obj.PolicyStatus = policyState;
+                obj.Beneficiary = theJosn.Beneficiary;
+                obj.CarrierSales = theJosn.CarrierSales;
+                obj.ConversionRate = theJosn.ConversionRate;
+                obj.Coverage = theJosn.Coverage;
+
+                obj.Currency = theJosn.Currency;
+                obj.CustomerID = theJosn.CustomerID;
+                obj.DeptId = theJosn.DeptId;
+                obj.EndDate = theJosn.EndDate;
+
+                obj.FlagReinsure = theJosn.FlagReinsure;
+                obj.FlagTogether = theJosn.FlagTogether;
+                obj.GatheringType = theJosn.GatheringType;
+
+                obj.OperationType = theJosn.OperationType;
+                obj.PeriodTimes = theJosn.PeriodTimes;
+                obj.PolicyID = theJosn.PolicyID;
+                obj.PolicyNo = theJosn.PolicyNo;
+
+                obj.Premium = theJosn.Premium;
+                obj.PremiumBase = theJosn.PremiumBase;
+                obj.PremiumRate = theJosn.PremiumRate;
+
+                obj.Process = theJosn.Process;
+                obj.ProcessBase = theJosn.ProcessBase;
+                obj.ProcessRate = theJosn.ProcessRate;
+                obj.ProdTypeID = theJosn.ProdTypeID;
+                obj.Remark = theJosn.Remark;
+                obj.SalesId = theJosn.SalesId;
+                obj.SignDate = theJosn.SignDate;
+                obj.SourceTypeID = theJosn.SourceTypeID;
+                obj.Special = theJosn.Special;
+                obj.StartDate = theJosn.StartDate;
+
+                obj.ModifyPerson  = this.CurrentUserID;
+                obj.ModifyTime  = DateTime.Now;
+
                 obj.Save(ModifiedAction.Update);
             }
 
@@ -1163,10 +1188,10 @@ namespace BrokerWebApp.otherinsurance
             String json = parameter;
 
             MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(PolicyAuditInfo));
-            PolicyAuditInfo obj;
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(PolicyInfo));
+            PolicyInfo obj;
 
-            obj = (PolicyAuditInfo)serializer.ReadObject(ms);
+            obj = (PolicyInfo)serializer.ReadObject(ms);
             ms.Close();
 
             String thePolicyID = this.dxetxtPolicyID.Text.Trim();
@@ -1178,11 +1203,9 @@ namespace BrokerWebApp.otherinsurance
             else
                 objPolicy.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
 
-            objPolicy.ModifyTime = DateTime.Now;
             objPolicy.AuditTime = DateTime.Now;
-            objPolicy.ModifyPerson = this.CurrentUserID;
             objPolicy.AuditPerson = this.CurrentUserID;
-            objPolicy.Remark = obj.Memo;
+            objPolicy.Remark = obj.Remark;
             objPolicy.Save(ModifiedAction.Update);
 
         }
@@ -1378,128 +1401,112 @@ namespace BrokerWebApp.otherinsurance
 
         }
 
+        #endregion Privates
 
-        private void loadPrePolicyValue(String prePoliicyID)
+
+        [DataContract(Namespace = "http://www.sheib.com")]
+        public class PolicyInfo
         {
-            ListEditItem theselected;
-            BusinessObjects.Policy.BO_Policy obj;
+            public PolicyInfo()
+            { }
 
-            obj = new BusinessObjects.Policy.BO_Policy(prePoliicyID);
+            [DataMember]
+            public string Beneficiary { get; set; }
 
-            this.dxetxtPolicyNo.Text = "";
-            //dxechkTogether
-            //dxechkFlagReinsure
+            [DataMember]
+            public string CarrierSales { get; set; }
 
-            //this.dxetxtProdTypeName.Text = obj.ProdTypeName;
+            [DataMember]
+            public Decimal ConversionRate { get; set; }
 
-            //this.dxeddlProdTypeName.SelectedItem = dxeddlProdTypeName.Items.FindByValue(obj.ProdTypeID);
+            [DataMember]
+            public Decimal Coverage { get; set; }
 
-            this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(obj.ProdTypeID));
-            if (this.dxeddlProdTypeName.SelectedIndex >= 0)
-                this.dxeddlProdTypeName.Text = this.dxeddlProdTypeName.SelectedItem.Text.Substring(this.dxeddlProdTypeName.SelectedItem.Text.IndexOf("∟") + 1);
+            [DataMember]
+            public string Currency { get; set; }
+            
+            [DataMember]
+            public string CustomerID { get; set; }
 
-            this.ptid.Value = obj.ProdTypeID;
+            
+            [DataMember]
+            public string DeptId { get; set; }
 
-            this.dxetxtCustomer.Text = obj.CustomerName;
-            this.cusid.Value = obj.CustomerID;
+            [DataMember]
+            public DateTime EndDate { get; set; }
 
-            this.dxetxtBeneficiary.Text = obj.Beneficiary;
+            [DataMember]
+            public Int32 FlagReinsure { get; set; }
 
-            //dxeddlDeptID
-            if (!String.IsNullOrEmpty(obj.DeptId))
-            {
-                theselected = dxeddlDeptID.Items.FindByValue(obj.DeptId);
-                if (theselected != null)
-                {
-                    dxeddlDeptID.SelectedItem = theselected;
-                }
-            }
+            [DataMember]
+            public Int32 FlagTogether { get; set; }
 
-            //dxeddlSalesId
-            if (!String.IsNullOrEmpty(obj.SalesId))
-            {
-                theselected = dxeddlSalesId.Items.FindByValue(obj.SalesId);
-                if (theselected != null)
-                {
-                    dxeddlSalesId.SelectedItem = theselected;
-                }
-            }
+            [DataMember]
+            public string GatheringType { get; set; }
 
-            //dxeddlGatheringType
-            if (!String.IsNullOrEmpty(obj.GatheringType))
-            {
-                theselected = dxeddlGatheringType.Items.FindByValue(obj.GatheringType);
-                if (theselected != null)
-                {
-                    dxeddlGatheringType.SelectedItem = theselected;
-                }
-            }
+            [DataMember]
+            public string OperationType { get; set; }
 
-            //dxeddlOperationType
-            if (!String.IsNullOrEmpty(obj.OperationType))
-            {
-                theselected = dxeddlOperationType.Items.FindByValue(obj.OperationType);
-                if (theselected != null)
-                {
-                    dxeddlOperationType.SelectedItem = theselected;
-                }
-            }
+            [DataMember]
+            public Int32 PeriodTimes { get; set; }
+                        
+            [DataMember]
+            public string PolicyID { get; set; }
+            
+            [DataMember]
+            public string PolicyNo { get; set; }
+            
+            [DataMember]
+            public string PolicyStatus { get; set; }
 
-            //dxeddlSourceTypeID
-            if (!String.IsNullOrEmpty(obj.SourceTypeID))
-            {
-                theselected = dxeddlSourceTypeID.Items.FindByValue(obj.SourceTypeID);
-                if (theselected != null)
-                {
-                    dxeddlSourceTypeID.SelectedItem = theselected;
-                }
-            }
+            [DataMember]
+            public Decimal Premium { get; set; }
 
-            this.dxeStartDate.Date = obj.StartDate;
-            this.dxeEndDate.Date = obj.EndDate;
+            [DataMember]
+            public Decimal PremiumBase { get; set; }
 
-            this.dxetxtCreatePerson.Text = this.CurrentUserName;
+            [DataMember]
+            public Decimal PremiumRate { get; set; }
 
-            this.dxedtCreateTime.Date = DateTime.Now;
+            [DataMember]
+            public Decimal Process { get; set; }
+            
+            [DataMember]
+            public Decimal ProcessBase { get; set; }
 
-            this.dxetxtStage.Text = obj.PeriodTimes.ToString();
+            [DataMember]
+            public Decimal ProcessRate { get; set; }
 
+            [DataMember]
+            public string ProdTypeID { get; set; }
+
+            [DataMember]
+            public string Remark { get; set; }
+                        
+             [DataMember]
+            public string SalesId { get; set; }
+
+            [DataMember]
+            public DateTime SignDate { get; set; }
+
+            [DataMember]
+            public string SourceTypeID { get; set; }
+
+            [DataMember]
+            public string Special { get; set; }
+            
+            [DataMember]
+            public DateTime StartDate { get; set; }
+
+            [DataMember]
+            public Boolean AuditOrNot { get; set; }
 
         }
 
 
-        private void toJOSN()
-        {
-            //MemoryStream ms = new MemoryStream();
-            //DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BusinessObjects.Policy.BO_Policy));
-            //BusinessObjects.Policy.BO_Policy obj = new BusinessObjects.Policy.BO_Policy("0903031214");
 
-            //serializer.WriteObject(ms, obj);
-
-            //string retVal = Encoding.UTF8.GetString(ms.ToArray());
-
-            //ms.Close(); 
-        }
-
-    }
-
-
-    [DataContract(Namespace = "http://www.sheib.com")]
-    public class PolicyAuditInfo
-    {
-        public PolicyAuditInfo()
-        { }
-
-
-        [DataMember]
-        public string Memo { get; set; }
-
-        [DataMember]
-        public Boolean AuditOrNot { get; set; }
 
 
     }
-
-
 
 }
