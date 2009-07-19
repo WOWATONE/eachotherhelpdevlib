@@ -335,6 +335,20 @@
     <Compile Include="BaseClass\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudget.aspx.cs">
+      <DependentUpon>SignPremiumBudget.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudget.aspx.designer.cs">
+      <DependentUpon>SignPremiumBudget.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudgetList.aspx.cs">
+      <DependentUpon>SignPremiumBudgetList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetManagement\SignPremiumBudgetList.aspx.designer.cs">
+      <DependentUpon>SignPremiumBudgetList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BusinessConsult\BusinessConsult.aspx.cs">
       <DependentUpon>BusinessConsult.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1047,6 +1061,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\Aqua\ASPxTreeList.skin" />
+    <Content Include="BudgetManagement\SignPremiumBudget.aspx" />
+    <Content Include="BudgetManagement\SignPremiumBudgetList.aspx" />
     <Content Include="BusinessConsult\BusinessConsult.aspx" />
     <Content Include="BusinessConsult\BusinessConsultList.aspx" />
     <Content Include="CustomerClaim\NotifyClaim.aspx" />
