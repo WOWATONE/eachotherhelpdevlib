@@ -415,100 +415,14 @@ namespace BrokerWebApp.vehicleinsurance
             ms.Close();
 
             BO_Policy theObject;
-            if (String.IsNullOrEmpty(obj.PolicyID))
-            {
-                theObject = new BO_Policy();
-                theObject.PolicyID = TranUtils.GetPolicyID();
-                theObject.AskPriceID = obj.AskPriceID;
-                theObject.PolicyStatus = policyState;
-                theObject.PolicyType = Convert.ToInt32(BO_Policy.PolicyTypeEnum.Vehicle).ToString();
-                theObject.PolicyNo = obj.PolicyNo;
+            theObject = new BO_Policy(obj.PolicyID);
 
-                theObject.AciPolicyNo = obj.AciPolicyNo;
+            theObject.PolicyNo = obj.PolicyNo;                
+            theObject.ModifyPerson = this.CurrentUserID;
+            theObject.ModifyTime = DateTime.Now;
 
-                theObject.CarrierSales = obj.CarrierSales;
-                theObject.CustomerID = obj.CustomerID;
-                theObject.Beneficiary = obj.Beneficiary;
-
-                theObject.DeptId = obj.DeptId;
-                theObject.SalesId = obj.SalesId;
-
-                theObject.SourceTypeID = obj.SourceTypeID;
-                theObject.OperationType = obj.OperationTypeID;
-                theObject.GatheringType = obj.GatheringTypeID;
-                theObject.StartDate = obj.StartDate;
-                theObject.EndDate = obj.EndDate;
-                theObject.Special = obj.Special;
-                theObject.CarNo = obj.CarNo;
-                theObject.CarcaseNo = obj.CarcaseNo;
-                theObject.UseCharacter = obj.UseCharacter;
-                theObject.EngineNo = obj.EngineNo;
-                theObject.CarUser = obj.CarUser;
-                theObject.Capacity = obj.Capacity;
-                theObject.RegisterDate = obj.RegisterDate;
-                theObject.CarValue = obj.CarValue;
-                theObject.CiPremium = obj.CiPremium;
-                theObject.AciPremium = obj.AciPremium;
-                theObject.CstPremium = obj.CstPremium;
-
-                theObject.CiProcessRate = obj.CiProcessRate;
-                theObject.AciProcessRate = obj.AciProcessRate;
-                theObject.CiProcess = obj.CiProcess;
-                theObject.AciProcess = obj.AciProcess;
-
-                //theObject.TotalPremium = obj.TotalPremium;
-                //theObject.TotalProcess = obj.TotalProcess;
-
-                theObject.CreatePerson = this.CurrentUserID;
-                theObject.CreateTime = DateTime.Now;
-
-                theObject.Save(ModifiedAction.Insert);
-            }
-            else
-            {
-                theObject = new BO_Policy(obj.PolicyID);
-
-                theObject.PolicyStatus = policyState;
-
-                theObject.PolicyNo = obj.PolicyNo;
-
-                theObject.AciPolicyNo = obj.AciPolicyNo;
-
-                theObject.CarrierSales = obj.CarrierSales;
-                theObject.CustomerID = obj.CustomerID;
-                theObject.Beneficiary = obj.Beneficiary;
-
-                theObject.DeptId = obj.DeptId;
-                theObject.SalesId = obj.SalesId;
-
-                theObject.SourceTypeID = obj.SourceTypeID;
-                theObject.OperationType = obj.OperationTypeID;
-                theObject.GatheringType = obj.GatheringTypeID;
-                theObject.StartDate = obj.StartDate;
-                theObject.EndDate = obj.EndDate;
-                theObject.Special = obj.Special;
-                theObject.CarNo = obj.CarNo;
-                theObject.CarcaseNo = obj.CarcaseNo;
-                theObject.UseCharacter = obj.UseCharacter;
-                theObject.EngineNo = obj.EngineNo;
-                theObject.CarUser = obj.CarUser;
-                theObject.Capacity = obj.Capacity;
-                theObject.RegisterDate = obj.RegisterDate;
-                theObject.CarValue = obj.CarValue;
-                theObject.CiPremium = obj.CiPremium;
-                theObject.AciPremium = obj.AciPremium;
-                theObject.CstPremium = obj.CstPremium;
-
-                theObject.CiProcessRate = obj.CiProcessRate;
-                theObject.AciProcessRate = obj.AciProcessRate;
-                theObject.CiProcess = obj.CiProcess;
-                theObject.AciProcess = obj.AciProcess;
-
-                theObject.ModifyPerson = this.CurrentUserID;
-                theObject.ModifyTime = DateTime.Now;
-
-                theObject.Save(ModifiedAction.Update);
-            }
+            theObject.Save(ModifiedAction.Update);
+            
 
             return theObject.PolicyID;
 
@@ -517,7 +431,7 @@ namespace BrokerWebApp.vehicleinsurance
         private void switchBasicInfoControlsEnable(Boolean val)
         {
             dxetxtPolicyID.Enabled = val;
-            dxetxtPolicyNo.Enabled = val;
+            //dxetxtPolicyNo.Enabled = val;
             dxetxtAciPolicyNo.Enabled = val;
             dxetxtAskPriceID.Enabled = val;
             dxeddlCarrierId.Enabled = val;
@@ -538,16 +452,25 @@ namespace BrokerWebApp.vehicleinsurance
             dxetxtSpecial.Enabled = val;
             dxetxtCreatePerson.Enabled = val;
             dxeCreateTime.Enabled = val;
-            
-            //dxetxtCiPremium.Enabled = val;
-            //dxetxtAciPremium.Enabled = val;
-            //dxetxtCstPremium.Enabled = val;
-            //dxetxtTotalPremium.Enabled = val;
-            //dxetxtCiProcessRate.Enabled = val;
-            //dxetxtAciProcessRate.Enabled = val;
-            //dxetxtCiProcess.Enabled = val;
-            //dxetxtAciProcess.Enabled = val;
-            //dxetxtTotalProcess.Enabled = val;
+
+            dxetxtCarNo.Enabled = val;
+            dxetxtCarcaseNo.Enabled = val;
+            dxetxtUseCharacter.Enabled = val;
+            dxetxtEngineNo.Enabled = val;
+            dxetxtCarUser.Enabled = val;
+            dxetxtCapacity.Enabled = val;
+            dxeRegisterDate.Enabled = val;
+            dxetxtCarValue.Enabled = val;
+
+            dxetxtCiPremium.Enabled = val;
+            dxetxtAciPremium.Enabled = val;
+            dxetxtCstPremium.Enabled = val;
+            dxetxtTotalPremium.Enabled = val;
+            dxetxtCiProcessRate.Enabled = val;
+            dxetxtAciProcessRate.Enabled = val;
+            dxetxtCiProcess.Enabled = val;
+            dxetxtAciProcess.Enabled = val;
+            dxetxtTotalProcess.Enabled = val;
         }
 
 

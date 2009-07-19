@@ -267,10 +267,10 @@
             //do nothing;
             policyBaseCompleteEnable();
 
-            var pid = dxetxtAskPriceID.GetValueString();
+            var pid = dxetxtPolicyID.GetValueString();
 
             if (isEmpty(pid)) {
-                dxetxtAskPriceID.SetValue(e.result);
+                dxetxtPolicyID.SetValue(e.result);
             }
         }
 
@@ -294,7 +294,6 @@
 
 
         function saveCheckCallbackComplete(s, e) {
-            debugger;
             setOnlyDxeButtonsUnableOrEnable(false);
         }
 

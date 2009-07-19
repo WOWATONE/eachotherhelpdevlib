@@ -1,4 +1,4 @@
-﻿<%@ Page Title="车险保单批改" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="CarPolicyAppend.aspx.cs" Inherits="BrokerWebApp.vehicleinsurance.CarPolicyAppend" %>
+﻿<%@ Page Title="车险保单补录" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="CarPolicyAppend.aspx.cs" Inherits="BrokerWebApp.vehicleinsurance.CarPolicyAppend" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
@@ -10,7 +10,7 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>车险保单批改</title>
+    <title>车险保单补录</title>
 
     
     <script type="text/javascript">
@@ -132,40 +132,40 @@
 
             var PolicyID = dxetxtPolicyID.GetValueString();
             var PolicyNo = dxetxtPolicyNo.GetValueString();
-            var AciPolicyNo = dxetxtAciPolicyNo.GetValueString();
-            var AskPriceID = dxetxtAskPriceID.GetValueString();
+            var AciPolicyNo = null; //dxetxtAciPolicyNo.GetValueString();
+            var AskPriceID = null; //dxetxtAskPriceID.GetValueString();
 
-            var CarrierID = dxeddlCarrierId.GetValue();
-            var BranchID = dxeddlBranchId.GetValue();
-            var CarrierSales = dxetxtCarrierSales.GetValueString();
-            var CustomerID = getCustomerID();
-            var Beneficiary = dxetxtBeneficiary.GetValueString();
-            var SourceTypeID = dxeddlSourceTypeID.GetValue();
+            var CarrierID = null; //dxeddlCarrierId.GetValue();
+            var BranchID = null; //dxeddlBranchId.GetValue();
+            var CarrierSales = null; //dxetxtCarrierSales.GetValueString();
+            var CustomerID = null; //getCustomerID();
+            var Beneficiary = null; //dxetxtBeneficiary.GetValueString();
+            var SourceTypeID = null; //dxeddlSourceTypeID.GetValue();
 
-            var SalesId = dxeddlSalesId.GetValue();
-            var DeptId = dxeddlDeptID.GetValue();
-            var GatheringTypeID = dxeddlGatheringType.GetValue();
-            var OperationTypeID = dxeddlOperationType.GetValue();
-            var StartDate = dxeStartDate.GetValue();
-            var EndDate = dxeEndDate.GetValue();
-            var Special = dxetxtSpecial.GetValueString();
-            var CarNo = dxetxtCarNo.GetValueString();
-            var CarcaseNo = dxetxtCarcaseNo.GetValueString();
-            var UseCharacter = dxetxtUseCharacter.GetValueString();
-            var EngineNo = dxetxtEngineNo.GetValueString();
-            var CarUser = dxetxtCarUser.GetValueString();
-            var Capacity = dxetxtCapacity.GetValueString();
-            var RegisterDate = dxeRegisterDate.GetValue();
-            var CarValue = dxetxtCarValue.GetValueString();
-            var CiPremium = dxetxtCiPremium.GetValueString();
-            var AciPremium = dxetxtAciPremium.GetValueString();
-            var CstPremium = dxetxtCstPremium.GetValueString();
-            var TotalPremium = dxetxtTotalPremium.GetValueString();
-            var CiProcessRate = dxetxtCiProcessRate.GetValueString();
-            var AciProcessRate = dxetxtAciProcessRate.GetValueString();
-            var CiProcess = dxetxtCiProcess.GetValueString();
-            var AciProcess = dxetxtAciProcess.GetValueString();
-            var TotalProcess = dxetxtTotalProcess.GetValueString();
+            var SalesId = null; //dxeddlSalesId.GetValue();
+            var DeptId = null; //dxeddlDeptID.GetValue();
+            var GatheringTypeID = null; //dxeddlGatheringType.GetValue();
+            var OperationTypeID = null; //dxeddlOperationType.GetValue();
+            var StartDate = null; //dxeStartDate.GetValue();
+            var EndDate = null; //dxeEndDate.GetValue();
+            var Special = null; //dxetxtSpecial.GetValueString();
+            var CarNo = null; //dxetxtCarNo.GetValueString();
+            var CarcaseNo = null; //dxetxtCarcaseNo.GetValueString();
+            var UseCharacter = null; //dxetxtUseCharacter.GetValueString();
+            var EngineNo = null; //dxetxtEngineNo.GetValueString();
+            var CarUser = null; //dxetxtCarUser.GetValueString();
+            var Capacity = null; //dxetxtCapacity.GetValueString();
+            var RegisterDate = null; //dxeRegisterDate.GetValue();
+            var CarValue = null; //dxetxtCarValue.GetValueString();
+            var CiPremium = null; //dxetxtCiPremium.GetValueString();
+            var AciPremium = null; //dxetxtAciPremium.GetValueString();
+            var CstPremium = null; //dxetxtCstPremium.GetValueString();
+            var TotalPremium = null; //dxetxtTotalPremium.GetValueString();
+            var CiProcessRate = null; //dxetxtCiProcessRate.GetValueString();
+            var AciProcessRate = null; //dxetxtAciProcessRate.GetValueString();
+            var CiProcess = null; //dxetxtCiProcess.GetValueString();
+            var AciProcess = null; //dxetxtAciProcess.GetValueString();
+            var TotalProcess = null; //dxetxtTotalProcess.GetValueString();
 
             var Remark = null;
             var AuditOrNot = null;
@@ -204,11 +204,11 @@
             //do nothing;
             policyBaseCompleteEnable();
 
-            var pid = dxetxtAskPriceID.GetValueString();
+            //var pid = dxetxtPolicyID.GetValueString();
 
-            if (isEmpty(pid)) {
-                dxetxtAskPriceID.SetValue(e.result);
-            }
+            //if (isEmpty(pid)) {
+            //    dxetxtPolicyID.SetValue(e.result);
+            //}
         }
 
         function btnAddClick(s, e) {
@@ -231,7 +231,6 @@
 
 
         function saveCheckCallbackComplete(s, e) {
-            debugger;
             setOnlyDxeButtonsUnableOrEnable(false);
         }
 
@@ -438,7 +437,7 @@
             var PolicyID = dxetxtPolicyID.GetValueString();
             var PolicyNo = null;
             var AciPolicyNo = null;
-            var AskPriceID = dxetxtAskPriceID.GetValueString();
+            var AskPriceID = null;//dxetxtAskPriceID.GetValueString();
 
             var CarrierID = null;
             var BranchID = null;
@@ -472,7 +471,7 @@
             var AciProcess = null;
             var TotalProcess = null;
 
-            var Remark = dxeMemo.GetValueString();
+            var Remark = null; //dxeMemo.GetValueString();
 
             var plc = new Policy(PolicyID, PolicyNo, AciPolicyNo, AskPriceID,
             CarrierID, BranchID, CarrierSales,
@@ -514,7 +513,7 @@
             var PolicyID = dxetxtPolicyID.GetValueString();
             var PolicyNo = null;
             var AciPolicyNo = null;
-            var AskPriceID = dxetxtAskPriceID.GetValueString();
+            var AskPriceID = null; //dxetxtAskPriceID.GetValueString();
 
             var CarrierID = null;
             var BranchID = null;
@@ -549,7 +548,7 @@
             var TotalProcess = null;
 
 
-            var Remark = dxeMemo.GetValueString();
+            var Remark = null; //dxeMemo.GetValueString();
 
             var plc = new Policy(PolicyID, PolicyNo, AciPolicyNo, AskPriceID,
             CarrierID, BranchID, CarrierSales,
