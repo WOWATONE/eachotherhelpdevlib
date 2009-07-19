@@ -108,13 +108,13 @@
 
         function setOnlyDxeButtonsUnableOrEnable(val) {
         
-            //if (typeof (dxebtnBottomSave) != 'undefined' && dxebtnBottomSave != null)
+            //if (typeof(dxebtnBottomSave) != 'undefined' && dxebtnBottomSave != null)
             //    dxebtnBottomSave.SetEnabled(val);
 
-            if (typeof (dxebtnBottomCheck) != 'undefined' && dxebtnBottomCheck != null)
+            if (typeof(dxebtnBottomCheck) != 'undefined' && dxebtnBottomCheck != null)
                 dxebtnBottomCheck.SetEnabled(val);
 
-            if (typeof (dxebtnCancel) != 'undefined' && dxebtnCancel != null)
+            if (typeof(dxebtnCancel) != 'undefined' && dxebtnCancel != null)
                 dxebtnCancel.SetEnabled(val);
 
         }

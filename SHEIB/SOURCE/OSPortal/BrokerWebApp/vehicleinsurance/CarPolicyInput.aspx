@@ -149,7 +149,7 @@
             insuranceDetailTabPage.tabs[1].SetEnabled(val);
             insuranceDetailTabPage.tabs[2].SetEnabled(val);
 
-            if ((typeof gridPolicyItem != 'undefined') && gridPolicyItem != null) {
+            if ((typeof(gridPolicyItem) != 'undefined') && gridPolicyItem != null) {
                 gridPolicyItem.SetClientVisible(val);
             }
         }

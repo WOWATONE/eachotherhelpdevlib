@@ -1,217 +1,107 @@
-<%@ Page Title="±£µ•¬º»Î" Language="C#" MasterPageFile="~/SiteMastePages/PopupUploadMaster.Master"
-    AutoEventWireup="true" Theme="Aqua" CodeBehind="PolicyInput.aspx.cs" Inherits="BrokerWebApp.otherinsurance.PolicyInput" %>
+<%@ Page Title="±£µ•¬º»Î" Language="C#" MasterPageFile="~/SiteMastePages/PopupUploadMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="PolicyInput.aspx.cs" Inherits="BrokerWebApp.otherinsurance.PolicyInput" %>
 
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
-    TagPrefix="dxrp" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl"
-    TagPrefix="dxtc" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses"
-    TagPrefix="dxw" %>
-<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView"
-    TagPrefix="dxwgv" %>
-<%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors"
-    TagPrefix="dxe" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" TagPrefix="dxw" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dxwgv" %>
+<%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl"
-    TagPrefix="dxpc" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl"
-    TagPrefix="dxuc" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
-    TagPrefix="dxcb" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dxpc" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl" TagPrefix="dxuc" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>±£µ•¬º»Î</title>
 
     <script type="text/javascript">
 
-        function policyCheckNessary() {
-            var pid = dxetxtPolicyID.GetValueString();
-            var pt = dxetxtStage.GetValueString();
-            var bf = dxetxtBeneficiary.GetValueString();
-            var cid = getCustomerID();
-            if (isEmpty(pid) || isEmpty(pt) || isEmpty(bf) || isEmpty(cid)) {
+        function isEmpty(testVar) {
+            if ((testVar == null) || (testVar.length == 0)) {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
-
         }
 
-        function policyBaseCompleteEnable() {
-            var pagemode;
-            pagemode = $("#<%=pagemode.ClientID %>")[0];
-
-            var result, panel;
-            if (pagemode.value == "input") {
-                result = $("#<%=npGridPolicyItemDetail.ClientID %>");
-                panel = result[0];
-                panel.parentElement.removeAttribute('disabled');
-
-                result = $("#<%=npCostSummaryDetail.ClientID %>");
-                panel = result[0];
-                panel.parentElement.removeAttribute('disabled', 'true');
-
-                result = $("#<%=npPolicyCompanyDetail.ClientID %>");
-                panel = result[0];
-                panel.parentElement.removeAttribute('disabled', 'true');
-
-                result = $("#<%=tblNewExecuteAction.ClientID %>");
-                if (result.length > 0) {
-                    panel = result[0];
-                    panel.parentElement.removeAttribute('disabled', 'true');
-                }
-
-                //result = $("#<%=tbltrAuditExecuteAction.ClientID %>");
-                //if (result.length > 0) {
-                //    panel = result[0];
-                //panel.parentElement.removeAttribute('disabled', 'true');
-                //}
-
-
-                insuranceDetailTabPage.tabs[1].SetEnabled(true);
-                insuranceDetailTabPage.tabs[2].SetEnabled(true);
-                insuranceDetailTabPage.tabs[3].SetEnabled(true);
+        function isDecimal(str) {
+            if (isEmpty(str)) {
+                return false;
             }
-
-            //alt
-            if (pagemode.value == "alt") {
-                result = $("#<%=npGridPolicyItemDetail.ClientID %>");
-                panel = result[0];
-                panel.parentElement.removeAttribute('disabled');
-
-                result = $("#<%=npCostSummaryDetail.ClientID %>");
-                panel = result[0];
-                panel.parentElement.removeAttribute('disabled', 'true');
-
-                result = $("#<%=npPolicyCompanyDetail.ClientID %>");
-                panel = result[0];
-                panel.parentElement.removeAttribute('disabled', 'true');
-
-                result = $("#<%=tblNewExecuteAction.ClientID %>");
-                if (result.length > 0) {
-                    panel = result[0];
-                    panel.parentElement.removeAttribute('disabled', 'true');
+            else {
+                if (/[^d.]/i.test(str)) {
+                    return true;
                 }
-
-                //result = $("#<%=tbltrAuditExecuteAction.ClientID %>");
-                //if (result.length > 0) {
-                //    panel = result[0];
-                //panel.parentElement.removeAttribute('disabled', 'true');
-                //}
-
-
-                insuranceDetailTabPage.tabs[1].SetEnabled(true);
-                insuranceDetailTabPage.tabs[2].SetEnabled(true);
-                insuranceDetailTabPage.tabs[3].SetEnabled(true);
+                return false;
             }
         }
+        
+        var pagemode = null;
+        var npbasicdetail = null;
+        var npGridPolicyItemDetail = null;
+        var tblNewExecuteAction = null;
+        var tbltrAuditExecuteAction = null;
 
 
-
-        function policyBaseCompleteUnable() {
-
-            var pagemode;
-            pagemode = $("#<%=pagemode.ClientID %>")[0];
-            //debugger;
-
-            var result, panel;
-            //input
-            if (pagemode.value == "input") {
-                if (policyCheckNessary()) {
-                    result = $("#<%=npGridPolicyItemDetail.ClientID %>");
-                    panel = result[0];
-                    panel.parentElement.setAttribute('disabled', 'true');
-
-                    result = $("#<%=npCostSummaryDetail.ClientID %>");
-                    panel = result[0];
-                    panel.parentElement.setAttribute('disabled', 'true');
-
-                    result = $("#<%=npPolicyCompanyDetail.ClientID %>");
-                    panel = result[0];
-                    panel.parentElement.setAttribute('disabled', 'true');
-
-                    result = $("#<%=tblNewExecuteAction.ClientID %>");
-                    if (result.length > 0) {
-                        panel = result[0];
-                        panel.parentElement.setAttribute('disabled', 'true');
-                    }
-
-                    result = $("#<%=tbltrAuditExecuteAction.ClientID %>");
-                    if (result.length > 0) {
-                        panel = result[0];
-                        panel.parentElement.setAttribute('disabled', 'true');
-                    }
-
-
-                    insuranceDetailTabPage.tabs[1].SetEnabled(false);
-                    insuranceDetailTabPage.tabs[2].SetEnabled(false);
-                    insuranceDetailTabPage.tabs[3].SetEnabled(false);
-                }
-
-
+        function getServerControlRefStubs() {
+            if ($("#<%=pagemode.ClientID %>").length > 0) {
+                pagemode = $("#<%=pagemode.ClientID %>")[0];
             }
 
-            //audit
-            if (pagemode.value == "audit") {
-                result = $("#<%=npbasicdetail.ClientID %>");
-                panel = result[0];
-                panel.parentElement.setAttribute('disabled', 'true');
-
-                result = $("#<%=npGridPolicyItemDetail.ClientID %>");
-                panel = result[0];
-                panel.parentElement.setAttribute('disabled', 'true');
-
-                result = $("#<%=npCostSummaryDetail.ClientID %>");
-                panel = result[0];
-                panel.parentElement.setAttribute('disabled', 'true');
-
-                result = $("#<%=npPolicyCompanyDetail.ClientID %>");
-                panel = result[0];
-                panel.parentElement.setAttribute('disabled', 'true');
-
-
+            if ($("#<%=npbasicdetail.ClientID %>").length > 0) {
+                npbasicdetail = $("#<%=npbasicdetail.ClientID %>")[0];
+                
             }
 
-            //alt
-            if (pagemode.value == "alt") {
-                if (policyCheckNessary()) {
-                    result = $("#<%=npGridPolicyItemDetail.ClientID %>");
-                    panel = result[0];
-                    panel.parentElement.setAttribute('disabled', 'true');
-
-                    result = $("#<%=npCostSummaryDetail.ClientID %>");
-                    panel = result[0];
-                    panel.parentElement.setAttribute('disabled', 'true');
-
-                    result = $("#<%=npPolicyCompanyDetail.ClientID %>");
-                    panel = result[0];
-                    panel.parentElement.setAttribute('disabled', 'true');
-
-                    result = $("#<%=tblNewExecuteAction.ClientID %>");
-                    if (result.length > 0) {
-                        panel = result[0];
-                        panel.parentElement.setAttribute('disabled', 'true');
-                    }
-
-                    result = $("#<%=tbltrAuditExecuteAction.ClientID %>");
-                    if (result.length > 0) {
-                        panel = result[0];
-                        panel.parentElement.setAttribute('disabled', 'true');
-                    }
-
-
-                    insuranceDetailTabPage.tabs[1].SetEnabled(false);
-                    insuranceDetailTabPage.tabs[2].SetEnabled(false);
-                    insuranceDetailTabPage.tabs[3].SetEnabled(false);
-                }
-
+            if ($("#<%=npGridPolicyItemDetail.ClientID %>").length > 0) {
+                npGridPolicyItemDetail = $("#<%=npGridPolicyItemDetail.ClientID %>")[0];
             }
 
+            if ($("#<%=npCostSummaryDetail.ClientID %>").length > 0) {
+                npCostSummaryDetail = $("#<%=npCostSummaryDetail.ClientID %>")[0];
+            }
+
+            if ($("#<%=npPolicyCompanyDetail.ClientID %>").length > 0) {
+                npPolicyCompanyDetail = $("#<%=npPolicyCompanyDetail.ClientID %>")[0];
+            }
+            
+
+            if ($("#<%=tblNewExecuteAction.ClientID %>").length > 0) {
+                tblNewExecuteAction = $("#<%=tblNewExecuteAction.ClientID %>")[0];
+            }
+
+            if ($("#<%=tbltrAuditExecuteAction.ClientID %>").length > 0) {
+                tbltrAuditExecuteAction = $("#<%=tbltrAuditExecuteAction.ClientID %>")[0];
+            }
 
         }
 
 
 
+        function getCustomerID() {
+            var result = $("#<%=cusid.ClientID %>");
+            var ID = result[0].value;
+            return ID;
+        }
+
+        function setCustomerID(thevalue) {
+            var result = $("#<%=cusid.ClientID %>");
+            result[0].value = thevalue;
+        }
+
+        //function getProductTypeID() {
+        //    var result = $("#<%=ptid.ClientID %>");
+        //    var ID = result[0].value;
+        //    //var ID = dxeddlProdTypeName.GetValue();
+        //    return ID;
+        //}
+        //function setProductTypeID(thevalue) {
+        //    var result = $("#<%=ptid.ClientID %>");
+        //    result[0].value = thevalue;
+        //}
+
+        function getPageContentPanel() {
+            var result = $("#<%=nppagecontent.ClientID %>");
+            return result[0];
+        }
 
         $(document).ready(function() {
             //jQuery.noticeAdd({
@@ -232,92 +122,163 @@
                 }
             };
 
+            getServerControlRefStubs();
             policyBaseCompleteUnable();
 
         });
 
+        
+    </script>
+    
+    <script type="text/javascript">
+
+        
+        function policyCheckNessary() {
+            var pid = dxetxtPolicyID.GetValueString();            
+            if (isEmpty(pid)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+
+        }
+
+        function setOnlyDxeButtonsUnableOrEnable(val) {
+            if (typeof(dxebtnBottomAdd) != 'undefined' && dxebtnBottomAdd != null)
+                dxebtnBottomAdd.SetEnabled(val);
+
+            if (typeof(dxebtnBottomSave) != 'undefined' && dxebtnBottomSave != null)
+                dxebtnBottomSave.SetEnabled(val);
+
+            if (typeof(dxebtnBottomCheck) != 'undefined' && dxebtnBottomCheck != null)
+                dxebtnBottomCheck.SetEnabled(val);
+
+            if (typeof(dxebtnCancel) != 'undefined' && dxebtnCancel != null)
+                dxebtnCancel.SetEnabled(val);
+
+            try {
+                if (typeof(dxebtnAuditBack) != 'undefined' && dxebtnAuditBack != null)
+                    dxebtnAuditBack.SetEnabled(val);
+            }
+            catch (err) {
+
+            }
+
+
+            try {
+                if (typeof(dxebtnAuditOk) != 'undefined' && dxebtnAuditOk != null)
+                    dxebtnAuditOk.SetEnabled(val);
+            }
+            catch (err) {
+
+            }
+
+
+        }
+
+        function setDxeButtonsUnableOrEnable(val) {
+            setOnlyDxeButtonsUnableOrEnable(val);
+
+
+            insuranceDetailTabPage.tabs[1].SetEnabled(val);
+            insuranceDetailTabPage.tabs[2].SetEnabled(val);
+            insuranceDetailTabPage.tabs[3].SetEnabled(val);
+
+            if ((typeof(gridPolicyItem) != 'undefined') && gridPolicyItem != null) {
+                gridPolicyItem.SetClientVisible(val);
+            }
+
+            if ((typeof (gridCarrier) != 'undefined') && gridCarrier != null) {
+                gridCarrier.SetClientVisible(val);
+            }            
+        }
+
+        function policyBaseCompleteEnable() {
+            
+            var result, panel;
+            if (pagemode.value == "input") {
+                npGridPolicyItemDetail.parentElement.removeAttribute('disabled');
+                npCostSummaryDetail.parentElement.removeAttribute('disabled', 'true');
+                npPolicyCompanyDetail.parentElement.removeAttribute('disabled', 'true');
+                tblNewExecuteAction.parentElement.removeAttribute('disabled', 'true');                
+                //tbltrAuditExecuteAction.parentElement.removeAttribute('disabled', 'true');
+                setDxeButtonsUnableOrEnable(true);
+                
+            }            
+        }
+
+
+
+        function policyBaseCompleteUnable() {
+
+            //input
+            if (pagemode.value == "input") {
+                if (policyCheckNessary()) {
+                    npGridPolicyItemDetail.parentElement.setAttribute('disabled', 'true');
+                    npCostSummaryDetail.parentElement.setAttribute('disabled', 'true');
+                    npPolicyCompanyDetail.parentElement.setAttribute('disabled', 'true');
+                    tblNewExecuteAction.parentElement.setAttribute('disabled', 'true');                    
+                    //tbltrAuditExecuteAction.parentElement.setAttribute('disabled', 'true');
+
+                    setDxeButtonsUnableOrEnable(false);
+                }
+
+
+            }           
+
+        }
+
+
+
+
+        
+
         function makePolicyJSON() {
-          
-            var AciPolicyNo = null;
-            var AciPremium = null;
-            var AciProcess = null;
-            var AciProcessRate = null;
-            var AltNO = null;
-            var AskPriceID = null;
-            var AuditPerson = null;
-            var AuditTime = null;
-            var BankAccount = null;
-            var BankName = null;
+            var AuditOrNot = null;
             var Beneficiary = dxetxtBeneficiary.GetValueString();
-            var Capacity = null;
-            var CarNo = null;
-            var CarUser = null;
-            var CarValue = null;
-            var CarcaseNo = null;
             var CarrierSales = null;
-            var CiPremium = null;
-            var CiProcess = null;
-            var CiProcessRate = null;
             var ConversionRate = dxetxtConversionRate.GetValueString();
             var Coverage = dxetxtCoverage.GetValueString();
-            var CreatePerson = dxetxtCreatePerson.GetValueString();
-            var CreateTime = dxedtCreateTime.GetValue();
-            var CstPremium = null;
             var Currency = dxeddlCurrency.GetValue();
             var CustomerID = getCustomerID();
             var DeptId = dxeddlDeptID.GetValue();
             var EndDate = dxeEndDate.GetValue();
-            var EngineNo = null;
-            var FlagAlt = null;
             var FlagReinsure = null;
             var FlagTogether = null;
             var GatheringType = dxeddlGatheringType.GetValue();
-            var ModifyPerson = null;
-            var ModifyTime = null;
             var OperationType = dxeddlOperationType.GetValue();
             var PeriodTimes = dxetxtStage.GetValueString();
             var PolicyID = dxetxtPolicyID.GetValueString();
             var PolicyNo = dxetxtPolicyNo.GetValueString();
             var PolicyStatus = null;
-            var PolicyType = null;
             var Premium = dxetxtPremium.GetValueString();
             var PremiumBase = dxetxtPremiumBase.GetValueString();
             var PremiumRate = dxetxtPremiumRate.GetValueString();
-            var PrevPolicyID = getPrePolicyID();
             var Process = dxetxtProcess.GetValueString();
             var ProcessBase = dxetxtProcessBase.GetValueString();
             var ProcessRate = dxetxtProcessRate.GetValueString();
-        //debugger;
-            var ProdTypeID = getProductTypeID();
-            var RegisterDate = null;
-            var Remark = null;
-            
+            var ProdTypeID = dxeddlProdTypeNameGetValue();
+            var Remark = null;            
             var SalesId = dxeddlSalesId.GetValue();
             var SignDate = null;
             var SourceTypeID = dxeddlSourceTypeID.GetValue();
             var Special = null;
             var StartDate = dxeStartDate.GetValue();
-            var UseCharacter = null;
-            var VolumnNo = null;
-            var CustomerName = dxetxtCustomer.GetValueString();
-            //var ProdTypeName = dxetxtProdTypeName.GetValueString();
-            
-            var ProdTypeName = dxeddlProdTypeName.GetText();
+            //var CustomerName = dxetxtCustomer.GetValueString();
+            //var ProdTypeName = dxeddlProdTypeName.GetText();
 
 
 
-            var plc = new Policy(AciPolicyNo, AciPremium, AciProcess, AciProcessRate,
-            AltNO, AskPriceID, AuditPerson, AuditTime, BankAccount,
-            BankName, Beneficiary, Capacity, CarNo, CarUser,
-            CarValue, CarcaseNo, CarrierSales, CiPremium, CiProcess,
-            CiProcessRate, ConversionRate, Coverage, CreatePerson, CreateTime,
-            CstPremium, Currency, CustomerID, DeptId, EndDate,
-            EngineNo, FlagAlt, FlagReinsure, FlagTogether, GatheringType,
-            ModifyPerson, ModifyTime, OperationType, PeriodTimes, PolicyID, PolicyNo,
-            PolicyStatus, PolicyType, Premium, PremiumBase, PremiumRate, PrevPolicyID,
-            Process, ProcessBase, ProcessRate, ProdTypeID, RegisterDate,
+            var plc = new Policy(
+            Beneficiary, CarrierSales, ConversionRate, Coverage,
+            Currency, CustomerID, DeptId, EndDate,
+            FlagReinsure, FlagTogether, GatheringType,
+            OperationType, PeriodTimes, PolicyID, PolicyNo,
+            PolicyStatus, Premium, PremiumBase, PremiumRate,
+            Process, ProcessBase, ProcessRate, ProdTypeID,
             Remark, SalesId, SignDate, SourceTypeID, Special,
-            StartDate, UseCharacter, VolumnNo);
+            StartDate);
 
             //deserialize JSON string, make a JSON object
             //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
@@ -368,21 +329,7 @@
 
 
         function saveCheckCallbackComplete(s, e) {
-            if (dxebtnBottomAdd != null) {
-                dxebtnBottomAdd.SetEnabled(false);
-            }
-            if (dxebtnBottomSave != null) {
-                dxebtnBottomSave.SetEnabled(false);
-            }
-            if (dxebtnBottomCheck != null) {
-                dxebtnBottomCheck.SetEnabled(false);
-            }
-            if (dxebtnCancel != null) {
-                dxebtnCancel.SetEnabled(false);
-            }
-            if (dxeClose != null) {
-                dxeClose.SetEnabled(true);
-            }
+            setOnlyDxeButtonsUnableOrEnable(false);
         }
 
 
@@ -427,21 +374,6 @@
         }
 
 
-        function imgPolicyProdTypeClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=600px;dialogHeight=500px;center=yes;help=no";
-            var retrunval = window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
-            if (isEmpty(retrunval)) {
-                //do nothing;
-            }
-            else {
-                //split the return value;
-                var thesplit_array = retrunval.split(";");
-                dxetxtProdTypeName.SetValue(thesplit_array[1]);
-                setProductTypeID(thesplit_array[0]);
-            }
-        }
-
-
         function imgSelectCustomerClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
             var retrunval = window.showModalDialog("../popupselectrefs/PolicyCustomer.aspx", self, myArguments);
@@ -464,127 +396,33 @@
 
         }
 
-        function getPrePolicyID() {
-            var result = $("#<%=pplcid.ClientID %>");
-            var ID = result[0].value;
-            return ID;
-        }
-
-        function getCustomerID() {
-            var result = $("#<%=cusid.ClientID %>");
-            var ID = result[0].value;
-            return ID;
-        }
-
-        function setCustomerID(thevalue) {
-            var result = $("#<%=cusid.ClientID %>");
-            result[0].value = thevalue;
-        }
-
-        function getProductTypeID() {
-            var result = $("#<%=ptid.ClientID %>");
-            var ID = result[0].value;
-            //var ID = dxeddlProdTypeName.GetValue();
-            return ID;
-        }
-        function setProductTypeID(thevalue) {
-            var result = $("#<%=ptid.ClientID %>");
-            result[0].value = thevalue;
-        }
-
-        function getPageContentPanel() {
-            var result = $("#<%=nppagecontent.ClientID %>");
-            return result[0];
-        }
 
 
-        function Policy(AciPolicyNo, AciPremium, AciProcess, AciProcessRate,
-        AltNO, AskPriceID, AuditPerson, AuditTime, BankAccount,
-        BankName, Beneficiary, Capacity, CarNo, CarUser,
-        CarValue, CarcaseNo, CarrierSales, CiPremium, CiProcess,
-        CiProcessRate, ConversionRate, Coverage, CreatePerson, CreateTime,
-        CstPremium, Currency, CustomerID, DeptId, EndDate,
-        EngineNo, FlagAlt, FlagReinsure, FlagTogether, GatheringType,
-        ModifyPerson, ModifyTime, OperationType, PeriodTimes, PolicyID, PolicyNo,
-        PolicyStatus, PolicyType, Premium, PremiumBase, PremiumRate, PrevPolicyID,
-        Process, ProcessBase, ProcessRate, ProdTypeID, RegisterDate,
-        Remark, SalesId, SignDate, SourceTypeID, Special,
-        StartDate, UseCharacter, VolumnNo) {
-            if (!isEmpty(AciPolicyNo))
-                this.AciPolicyNo = AciPolicyNo;
+        function Policy(AuditOrNot, Beneficiary, CarrierSales, ConversionRate, Coverage,
+            Currency, CustomerID, DeptId, EndDate,
+            FlagReinsure, FlagTogether, GatheringType,
+            OperationType, PeriodTimes, PolicyID, PolicyNo,
+            PolicyStatus, Premium, PremiumBase, PremiumRate,
+            Process, ProcessBase, ProcessRate, ProdTypeID,
+            Remark, SalesId, SignDate, SourceTypeID, Special,
+            StartDate) {
 
-            if (!isEmpty(AciPremium))
-                this.AciPremium = AciPremium;
 
-            if (!isEmpty(AciProcess))
-                this.AciProcess = AciProcess;
-
-            if (!isEmpty(AciProcessRate))
-                this.AciProcessRate = AciProcessRate;
-
-            if (!isEmpty(AltNO))
-                this.AltNO = AltNO;
-
-            if (!isEmpty(AskPriceID))
-                this.AskPriceID = AskPriceID;
-
-            if (!isEmpty(AuditPerson))
-                this.AuditPerson = AuditPerson;
-
-            if (!isEmpty(AuditTime))
-                this.AuditTime = AuditTime;
-
-            if (!isEmpty(BankAccount))
-                this.BankAccount = BankAccount;
-
-            if (!isEmpty(BankName))
-                this.BankName = BankName;
-
+            if (!isEmpty(AuditOrNot))
+                this.AuditOrNot = AuditOrNot;
+                
             if (!isEmpty(Beneficiary))
                 this.Beneficiary = Beneficiary;
-
-            if (!isEmpty(Capacity))
-                this.Capacity = Capacity;
-
-            if (!isEmpty(CarNo))
-                this.CarNo = CarNo;
-
-            if (!isEmpty(CarUser))
-                this.CarUser = CarUser;
-
-            if (!isEmpty(CarValue))
-                this.CarValue = CarValue;
-
-            if (!isEmpty(CarcaseNo))
-                this.CarcaseNo = CarcaseNo;
-
+            
             if (!isEmpty(CarrierSales))
-                this.CarrierSales = CarrierSales;
-
-            if (!isEmpty(CiPremium))
-                this.CiPremium = CiPremium;
-
-            if (!isEmpty(CiProcess))
-                this.CiProcess = CiProcess;
-
-            if (!isEmpty(CiProcessRate))
-                this.CiProcessRate = CiProcessRate;
+                this.CarrierSales = CarrierSales;            
 
             if (!isEmpty(ConversionRate))
                 this.ConversionRate = ConversionRate;
 
             if (!isEmpty(Coverage))
                 this.Coverage = Coverage;
-
-            if (!isEmpty(CreatePerson))
-                this.CreatePerson = CreatePerson;
-
-            if (!isEmpty(CreateTime))
-                this.CreateTime = CreateTime;
-
-            if (!isEmpty(CstPremium))
-                this.CstPremium = CstPremium;
-
+            
             if (!isEmpty(Currency))
                 this.Currency = Currency;
 
@@ -597,12 +435,6 @@
             if (!isEmpty(EndDate))
                 this.EndDate = EndDate;
 
-            if (!isEmpty(EngineNo))
-                this.EngineNo = EngineNo;
-
-            if (!isEmpty(FlagAlt))
-                this.FlagAlt = FlagAlt;
-
             if (!isEmpty(FlagReinsure))
                 this.FlagReinsure = FlagReinsure;
 
@@ -611,12 +443,6 @@
 
             if (!isEmpty(GatheringType))
                 this.GatheringType = GatheringType;
-
-            if (!isEmpty(ModifyPerson))
-                this.ModifyPerson = ModifyPerson;
-
-            if (!isEmpty(ModifyTime))
-                this.ModifyTime = ModifyTime;
 
             if (!isEmpty(OperationType))
                 this.OperationType = OperationType;
@@ -633,9 +459,6 @@
             if (!isEmpty(PolicyStatus))
                 this.PolicyStatus = PolicyStatus;
 
-            if (!isEmpty(PolicyType))
-                this.PolicyType = PolicyType;
-
             if (!isEmpty(Premium))
                 this.Premium = Premium;
 
@@ -644,9 +467,6 @@
 
             if (!isEmpty(PremiumRate))
                 this.PremiumRate = PremiumRate;
-
-            if (!isEmpty(PrevPolicyID))
-                this.PrevPolicyID = PrevPolicyID;
 
             if (!isEmpty(Process))
                 this.Process = Process;
@@ -659,9 +479,6 @@
 
             if (!isEmpty(ProdTypeID))
                 this.ProdTypeID = ProdTypeID;
-
-            if (!isEmpty(RegisterDate))
-                this.RegisterDate = RegisterDate;
 
             if (!isEmpty(Remark))
                 this.Remark = Remark;
@@ -680,35 +497,10 @@
 
             if (!isEmpty(StartDate))
                 this.StartDate = StartDate;
-
-            if (!isEmpty(UseCharacter))
-                this.UseCharacter = UseCharacter;
-
-            if (!isEmpty(VolumnNo))
-                this.VolumnNo = VolumnNo;
-
         }
 
 
-        function isEmpty(testVar) {
-            if ((testVar == null) || (testVar.length == 0)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        function isDecimal(str) {
-            if (isEmpty(str)) {
-                return false;
-            }
-            else {
-                if (/[^d.]/i.test(str)) {
-                    return true;
-                }
-                return false;
-            }
-        }
+        
 
         function dxeStartDate_DateChanged(s, e) {
             //http://www.w3school.com.cn/js/jsref_obj_date.asp
@@ -732,7 +524,136 @@
         function btnCloseClick() {
             window.close();
         }
+        
+        function policyTab_Changing(s, e) {
+            //debugger;
+            if (e.tab.index == 1 || e.tab.index == 2) {
+                //refresh perieodtime grid
+                //gridPeriod.PerformCallback();
+                var element = s.GetContentElement(e.tab.index);
+                if (element != null) element.loaded = false;
+            }
+        }
 
+        function policyTab_Click(s, e) {
+            //
+        }
+
+
+        function dxebtnAuditOkClick(s, e) {
+            //debugger;
+            var buttonID = s.GetText();
+            var AuditOrNot;
+            switch (buttonID) {
+                case "…Û∫À":
+                    AuditOrNot = true;
+                    break
+                case "∑¥…Û∫À":
+                    AuditOrNot = false;
+                    break
+                default:
+                    //do nothing;
+            }
+            var Memo = dxeMemo.GetValueString();
+
+            var jsonStringClient = makePolicyAuditJSON(Memo, AuditOrNot);
+
+            dxeAuditOkCallback.PerformCallback(jsonStringClient);
+
+        }
+
+        function auditOkCallbackComplete(s, e) {
+
+            var buttonID = dxebtnAuditOk.GetText();
+            switch (buttonID) {
+                case "…Û∫À":
+                    dxebtnAuditOk.SetText("∑¥…Û∫À");
+                    break
+                case "∑¥…Û∫À":
+                    dxebtnAuditOk.SetText("…Û∫À");
+                    break
+                default:
+                    //do nothing;
+            }
+
+        }
+
+        function makePolicyAuditJSON(Memo, AuditOrNot) {
+            var AuditOrNot = AuditOrNot;
+            var Beneficiary = null;
+            var CarrierSales = null;
+            var ConversionRate = null;
+            var Coverage = null;
+            var Currency = null;
+            var CustomerID = null;
+            var DeptId = null;
+            var EndDate = null;
+            var FlagReinsure = null;
+            var FlagTogether = null;
+            var GatheringType = null;
+            var OperationType = null;
+            var PeriodTimes = null;
+            var PolicyID = dxetxtPolicyID.GetValueString();
+            var PolicyNo = null;
+            var PolicyStatus = null;
+            var Premium = null;
+            var PremiumBase = null;
+            var PremiumRate = null;
+            var Process = null;
+            var ProcessBase = null;
+            var ProcessRate = null;
+            var ProdTypeID = null;
+            var Remark = Memo;
+            var SalesId = null;
+            var SignDate = null;
+            var SourceTypeID = null;
+            var Special = null;
+            var StartDate = null;
+            
+            var plc = new Policy(
+            Beneficiary, CarrierSales, ConversionRate, Coverage,
+            Currency, CustomerID, DeptId, EndDate,
+            FlagReinsure, FlagTogether, GatheringType,
+            OperationType, PeriodTimes, PolicyID, PolicyNo,
+            PolicyStatus, Premium, PremiumBase, PremiumRate,
+            Process, ProcessBase, ProcessRate, ProdTypeID,
+            Remark, SalesId, SignDate, SourceTypeID, Special,
+            StartDate);
+
+            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
+
+            return jsonStringClient;
+
+        }
+        
+
+        function hlPolicyItemTogetherClick(params) {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
+            var url = params;
+            window.open(url);
+        }
+
+        function SelectedProdTypeNameIndexChanged(s, e) {
+            
+//            var result = $("#<%=ptid.ClientID %>");
+//            result[0].value = s.GetValue();
+//            var test = s.GetText();
+//            var sValue = s.GetValue();
+//            
+//            if (test.length > 0) {
+//                var index = test.lastIndexOf("®N");
+//                if (index >= 0) {
+//                    var testTmp = test.substr(index + 1);
+//                    s.SetText(testTmp);
+//                }
+//            }
+        }
+
+        
+    </script>
+    
+    <script type="text/javascript">
+        
         function gridPolicyItem_EndCallback(s, e) {
             //sum                        
             var itemVal;
@@ -765,92 +686,6 @@
             rtn = sumProcessVal.toFixed(2);
             dxetxtProcess.SetValue(rtn);
         }
-
-
-        function policyTab_Changing(s, e) {
-            //debugger;
-            if (e.tab.index == 1 || e.tab.index == 2) {
-                //refresh perieodtime grid
-                //gridPeriod.PerformCallback();
-                var element = s.GetContentElement(e.tab.index);
-                if (element != null) element.loaded = false;
-            }
-        }
-
-        function policyTab_Click(s, e) {
-            //
-        }
-
-
-        function dxebtnAuditOkClick(s, e) {
-            //debugger;
-            var buttonID = s.GetText();
-            var AuditOrNot;
-            switch (buttonID) {
-                case "…Û∫À":
-                    AuditOrNot = true;
-                    break
-                case "∑¥…Û∫À":
-                    AuditOrNot = false;
-                    break
-                default:
-                    //do nothing;
-            }
-            var Memo = dxeMemo.GetValueString();
-
-            var plcAuditInfo = new PolicyAuditInfo(Memo, AuditOrNot);
-
-            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plcAuditInfo);
-
-            dxeAuditOkCallback.PerformCallback(jsonStringClient);
-
-        }
-
-        function auditOkCallbackComplete(s, e) {
-
-            var buttonID = dxebtnAuditOk.GetText();
-            switch (buttonID) {
-                case "…Û∫À":
-                    dxebtnAuditOk.SetText("∑¥…Û∫À");
-                    break
-                case "∑¥…Û∫À":
-                    dxebtnAuditOk.SetText("…Û∫À");
-                    break
-                default:
-                    //do nothing;
-            }
-
-        }
-
-        function PolicyAuditInfo(Memo, AuditOrNot) {
-            if (!isEmpty(Memo))
-                this.Memo = Memo;
-
-            this.AuditOrNot = AuditOrNot;
-        }
-
-        function hlPolicyItemTogetherClick(params) {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
-            var url = params;
-            window.open(url);
-        }
-
-        function SelectedProdTypeNameIndexChanged(s, e) {
-            
-            var result = $("#<%=ptid.ClientID %>");
-            result[0].value = s.GetValue();
-            var test = s.GetText();
-            var sValue = s.GetValue();
-            
-            if (test.length > 0) {
-                var index = test.lastIndexOf("®N");
-                if (index >= 0) {
-                    var testTmp = test.substr(index + 1);
-                    s.SetText(testTmp);
-                }
-            }
-        }
-
         
     </script>
 
