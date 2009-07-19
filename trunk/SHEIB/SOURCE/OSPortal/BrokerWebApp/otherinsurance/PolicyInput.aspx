@@ -666,36 +666,38 @@
     <script type="text/javascript">
         
         function gridPolicyItem_EndCallback(s, e) {
-            //sum                        
-            var itemVal;
-            var sumCoverageVal = 0;
-            var sumPremiumVal = 0;
-            var sumProcessVal = 0;
-            for (i = 0; i < gridPolicyItem.pageRowCount; i++) {
-                //Coverage
-                itemVal = gridPolicyItem.GetDataRow(i).cells[2].innerText;
-                if (isDecimal(itemVal)) {
-                    sumCoverageVal = parseFloat(sumCoverageVal) + parseFloat(itemVal);
-                }
-                //Premium
-                itemVal = gridPolicyItem.GetDataRow(i).cells[3].innerText;
-                if (isDecimal(itemVal)) {
-                    sumPremiumVal = parseFloat(sumPremiumVal) + parseFloat(itemVal);
-                }
-                //ProcRate
-                itemVal = gridPolicyItem.GetDataRow(i).cells[4].innerText;
-                //Process
-                itemVal = gridPolicyItem.GetDataRow(i).cells[5].innerText;
-                if (isDecimal(itemVal)) {
-                    sumProcessVal = parseFloat(sumProcessVal) + parseFloat(itemVal);
-                }
-            }
+            dxeGetGridPolicyItemTotalSummary.PerformCallback();            
+        }
+
+        function dxeGetGridPolicyItemTotalSummaryCallbackComplete(s, e) {
+            var retrunval = e.result;
+            var thesplit_array = retrunval.split(";");
+            var sumCoverageVal = parseFloat(thesplit_array[0]);
+            var sumPremiumVal = parseFloat(thesplit_array[1]);
+            var sumProcessVal = parseFloat(thesplit_array[2]);
+            
             var rtn = sumCoverageVal.toFixed(2);
             dxetxtCoverage.SetValue(rtn);
             rtn = sumPremiumVal.toFixed(2);
             dxetxtPremium.SetValue(rtn);
             rtn = sumProcessVal.toFixed(2);
             dxetxtProcess.SetValue(rtn);
+        }
+
+        function gridCarrierCustomButtonClick(s, e) {
+            s.GetRowValues(e.visibleIndex, "CarrierID", getTheGridCarrierSelectedRowsValues);
+        }
+
+        function getTheGridCarrierSelectedRowsValues(selectedValues) {
+            if (selectedValues.length == 0) {
+                //
+            }
+            else {
+                var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
+                var querystring;
+                querystring = "PolicyReinsure.aspx?id=" + selectedValues;
+                window.showModalDialog(querystring, self, myArguments);
+            }
         }
         
     </script>
@@ -720,6 +722,12 @@
         runat="server" OnCallback="dxeAuditOkCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {auditOkCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
+    
+    <dxcb:ASPxCallback ID="dxeGetGridPolicyItemTotalSummary" ClientInstanceName="dxeGetGridPolicyItemTotalSummary"
+        runat="server" OnCallback="dxeGetGridPolicyItemTotalSummary_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {dxeGetGridPolicyItemTotalSummaryCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
     <asp:Panel ID="nppagecontent" runat="server">
         <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
             runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%"
@@ -1365,7 +1373,7 @@
                                                             <%-- EndRegion --%>
                                                             <SettingsPager Mode="ShowAllRecords" />
                                                             <Settings ShowGroupPanel="false" />
-                                                            <ClientSideEvents CustomButtonClick="" />
+                                                            <ClientSideEvents CustomButtonClick="function(s, e) {gridCarrierCustomButtonClick(s,e);return false;}" />
                                                             <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
                                                             <Templates>
                                                                 <EditForm>
