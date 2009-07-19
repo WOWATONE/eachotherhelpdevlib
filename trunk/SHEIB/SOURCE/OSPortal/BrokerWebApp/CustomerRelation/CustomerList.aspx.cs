@@ -24,14 +24,14 @@ namespace BrokerWebApp.CustomerRelation
                 {
                     this.Initialization();
                 }
+
+                if (this.Page.IsCallback)
+                {
+                    this.BindGrid();
+                }
             }
             catch (Exception ex)
             { }
-
-            if (this.Page.IsCallback)
-            {
-                this.BindGrid();
-            }
         }
 
         /// <summary>

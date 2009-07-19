@@ -44,50 +44,6 @@
                 document.getElementById("spanUnit").style.display = "block";
             }
         }
-        
-        function CustomerPTUploadStart() {
-            //document.getElementById("uploadedListFiles").innerHTML = "";
-        }
-
-        function CustomerPTUploaded(s, e) {
-            var fieldSeparator = "|";
-            if (e.isValid) {
-                //var linkFile = document.createElement("a");
-                //var indexSeparator = e.callbackData.indexOf(fieldSeparator);
-                //var fileName = e.callbackData.substring(0, indexSeparator);
-                //var pictureUrl = e.callbackData.substring(indexSeparator + fieldSeparator.length);
-                //var date = new Date();
-                //var imgSrc = "UploadImages/" + pictureUrl + "?dx=" + date.getTime();
-                //linkFile.innerHTML = fileName;
-                //linkFile.setAttribute("href", imgSrc);
-                //linkFile.setAttribute("target", "_blank");
-                //var container = document.getElementById("uploadedListFiles");
-                //container.appendChild(linkFile);
-                //container.appendChild(document.createElement("br"));
-            }
-        }
-        
-        function AddInfoUploadStart() {
-            //document.getElementById("uploadedListFiles").innerHTML = "";
-        }
-
-        function AddInfoUploaded(s, e) {
-            var fieldSeparator = "|";
-            if (e.isValid) {
-                //var linkFile = document.createElement("a");
-                //var indexSeparator = e.callbackData.indexOf(fieldSeparator);
-                //var fileName = e.callbackData.substring(0, indexSeparator);
-                //var pictureUrl = e.callbackData.substring(indexSeparator + fieldSeparator.length);
-                //var date = new Date();
-                //var imgSrc = "UploadImages/" + pictureUrl + "?dx=" + date.getTime();
-                //linkFile.innerHTML = fileName;
-                //linkFile.setAttribute("href", imgSrc);
-                //linkFile.setAttribute("target", "_blank");
-                //var container = document.getElementById("uploadedListFiles");
-                //container.appendChild(linkFile);
-                //container.appendChild(document.createElement("br"));
-            }
-        }
 
         function SelectedIndexChanged(s, e) {
             var hidCustClassify = $("#<%=hidCustClassify.ClientID %>");
@@ -100,6 +56,21 @@
                     s.SetText(testTmp);
                 }
             }
+        }
+
+        function AddInfoFileUploaded(s, e) {
+            gridAddInfoDocList.PerformCallback();
+        }
+
+        function AddInfoFileUploadStart(s, e) {
+            //var refplcid = dxetxtPolicyID.GetValueString();
+            //filesUploadControl;            
+        }
+
+        function hlPolicyItemTogetherClick(params) {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
+            var url = params;
+            window.open(url);
         }
 
         function btnCloseClick() {
@@ -137,7 +108,7 @@
                                     客户编号：
                                 </td>
                                 <td style="text-align: left;">
-                                    <dxe:ASPxTextBox ID="dxetxtCustID" ClientInstanceName="dxetxtCustID" runat="server" Width="160px">
+                                    <dxe:ASPxTextBox ID="dxetxtCustID" ClientInstanceName="dxetxtCustID" runat="server" Width="160px" Enabled="false">
                                         <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
 										    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                         </ValidationSettings>
@@ -343,13 +314,15 @@
                                     附件：
                                 </td>
                                 <td style="text-align: left; vertical-align: top;" colspan="3">
-                                    <dxuc:ASPxUploadControl ID="AddInfoUploadControl" runat="server" ShowAddRemoveButtons="True"
-                                        Width="400px" ShowUploadButton="True" AddUploadButtonsHorizontalPosition="Center"
-                                        ShowProgressPanel="True" ClientInstanceName="UploadControl" OnFileUploadComplete="UploadControl_AddInfoUploadComplete"
-                                        FileInputCount="1" RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10">
-                                        <ValidationSettings MaxFileSize="4000000" AllowedContentTypes="*">
+                                    <dxuc:ASPxUploadControl ID="addInfoUploadControl"  ClientInstanceName="addInfoUploadControl" 
+                                        runat="server" ShowAddRemoveButtons="True" Width="400px" ShowUploadButton="True" 
+                                        AddUploadButtonsHorizontalPosition="Center"  ShowProgressPanel="True" FileInputCount="3" 
+                                        RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad" 
+                                        OnFileUploadComplete="UploadControl_AddInfoUploadComplete" >
+                                        <ValidationSettings MaxFileSize="4000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
+                                                MaxFileSizeErrorText="文件太大" NotAllowedContentTypeErrorText="不允许上传此类型文件">
                                         </ValidationSettings>
-                                        <ClientSideEvents FileUploadComplete="function(s, e) { AddInfoUploaded(s, e) }" FileUploadStart="function(s, e) { AddInfoUploadStart(); }" />
+                                        <ClientSideEvents FilesUploadComplete="function(s, e) { AddInfoFileUploaded(s, e) }" FileUploadStart="function(s, e) { AddInfoFileUploadStart(s, e); }" />
                                         <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
                                             ImagePosition="Left">
                                             <Image Height="25px" Width="25px" Url="../images/file_remove.gif"></Image>
@@ -363,6 +336,34 @@
                                             <Image Height="25px" Width="25px" Url="../images/file_upload.gif"></Image>
                                         </UploadButton>
                                     </dxuc:ASPxUploadControl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; vertical-align: top;">
+                                    文件列表：
+                                </td>
+                                <td style="text-align: left; vertical-align: top;" colspan="3">
+                                    <dxwgv:ASPxGridView ID="gridAddInfoDocList" ClientInstanceName="gridAddInfoDocList" runat="server"
+                                        KeyFieldName="PolicyDocID" Width="80%" AutoGenerateColumns="False" OnCustomCallback="gridAddInfoDocList_CustomCallback">
+                                        <%-- BeginRegion Columns --%>
+                                        <Columns>
+                                            <dxwgv:GridViewDataColumn FieldName="CustDocName" Caption="文件名" CellStyle-Wrap="False"
+                                                Width="25" Settings-AllowDragDrop="false">
+                                                <DataItemTemplate>
+                                                    <a id="fileurl <%# Eval("CustDocID") %>" onclick="hlPolicyItemTogetherClick('<%# Eval("CustURL") %>');"
+                                                        href="#">
+                                                        <%# Eval("CustDocName")%></a>
+                                                </DataItemTemplate>
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="CustURL" Caption="链接地址" CellStyle-Wrap="False">
+                                            </dxwgv:GridViewDataColumn>
+                                        </Columns>
+                                        <%-- EndRegion --%>
+                                        <SettingsPager Mode="ShowAllRecords" />
+                                        <Settings ShowGroupPanel="false" />
+                                        <ClientSideEvents CustomButtonClick="" />
+                                        <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                    </dxwgv:ASPxGridView>
                                 </td>
                             </tr>
                         </table>
@@ -646,12 +647,12 @@
                                     </dxwgv:ASPxGridView>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr style="display:none;">
                                 <td>
                                     附件：
                                 </td>
                             </tr>
-                            <tr>
+                            <tr style="display:none;">
                                 <td>
                                     <dxuc:ASPxUploadControl ID="CustomerPTUploadControl" runat="server" ShowAddRemoveButtons="True"
                                         Width="400px" ShowUploadButton="True" AddUploadButtonsHorizontalPosition="Center"
