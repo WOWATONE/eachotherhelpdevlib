@@ -23,6 +23,15 @@ namespace BrokerWebApp.otherinsurance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
+        /// nppagecontent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel nppagecontent;
+        
+        /// <summary>
         /// insuranceDetailTabPage control.
         /// </summary>
         /// <remarks>
@@ -626,30 +635,48 @@ namespace BrokerWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.Panel npExecuteAction;
         
         /// <summary>
-        /// btnsave control.
+        /// tblNewExecuteAction control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnsave;
+        protected global::System.Web.UI.HtmlControls.HtmlTable tblNewExecuteAction;
         
         /// <summary>
-        /// btnaudit control.
+        /// dxebtnBottomSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnaudit;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnBottomSave;
         
         /// <summary>
-        /// btncancel control.
+        /// dxebtnBottomCheck control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btncancel;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnBottomCheck;
+        
+        /// <summary>
+        /// dxebtnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnCancel;
+        
+        /// <summary>
+        /// dxeClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxeClose;
     }
 }

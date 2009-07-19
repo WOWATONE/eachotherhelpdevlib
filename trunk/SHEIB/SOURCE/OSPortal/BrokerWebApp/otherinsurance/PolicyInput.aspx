@@ -269,7 +269,7 @@
             var Process = dxetxtProcess.GetValueString();
             var ProcessBase = dxetxtProcessBase.GetValueString();
             var ProcessRate = dxetxtProcessRate.GetValueString();
-            var ProdTypeID = dxeddlProdTypeNameGetValue();
+            var ProdTypeID = dxeddlProdTypeNameGet.Value();
             var Remark = null;            
             var SalesId = dxeddlSalesId.GetValue();
             var SignDate = null;
@@ -281,7 +281,7 @@
 
 
 
-            var plc = new Policy(
+            var plc = new Policy(AuditOrNot,
             Beneficiary, CarrierSales, ConversionRate, Coverage,
             Currency, CustomerID, DeptId, EndDate,
             FlagReinsure, FlagTogether, GatheringType,
@@ -621,7 +621,7 @@
             var Special = null;
             var StartDate = null;
             
-            var plc = new Policy(
+            var plc = new Policy(AuditOrNot,
             Beneficiary, CarrierSales, ConversionRate, Coverage,
             Currency, CustomerID, DeptId, EndDate,
             FlagReinsure, FlagTogether, GatheringType,
@@ -756,24 +756,12 @@
                                         <asp:Panel ID="npbasicdetail" runat="server" CssClass="collapsePanel" Height="0">
                                             <table style="width: 100%">
                                                 <tr style="font-size: 1px; height: 2px;">
-                                                    <td style="width: 70px;">
-                                                    </td>
-                                                    <td style="width: 130px;">
-                                                    </td>
-                                                    <td style="width: 25px;">
-                                                    </td>
-                                                    <td style="width: 70px;">
-                                                    </td>
-                                                    <td style="width: 130px;">
-                                                    </td>
-                                                    <td style="width: 50px;">
-                                                    </td>
-                                                    <td style="width: 70px">
-                                                    </td>
-                                                    <td style="width: 195px;">
-                                                    </td>
-                                                    <td>
-                                                    </td>
+                                                    <td style="width:90px;"></td>
+                                                    <td style="width:180px;"></td>
+                                                    <td style="width:90px;"></td>
+                                                    <td style="width:200px;"></td>
+                                                    <td style="width:90px;"></td>
+                                                    <td style="width:220px;"></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="text-align: right;">
@@ -785,8 +773,6 @@
                                                         </dxe:ASPxTextBox>
                                                         <input type="hidden" id="pplcid" runat="server" />
                                                     </td>
-                                                    <td>
-                                                    </td>
                                                     <td style="text-align: right;">
                                                         保单编号：
                                                     </td>
@@ -795,19 +781,21 @@
                                                             Width="125px">
                                                         </dxe:ASPxTextBox>
                                                     </td>
-                                                    <td>
-                                                    </td>
-                                                    <td style="text-align: right;">
-                                                        <dxe:ASPxCheckBox runat="server" ID="dxechkTogether" ClientInstanceName="dxechkTogether"
-                                                            Text="共保">
-                                                        </dxe:ASPxCheckBox>
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxCheckBox runat="server" ID="dxechkFlagReinsure" ClientInstanceName="dxechkFlagReinsure"
-                                                            Text="再保">
-                                                        </dxe:ASPxCheckBox>
-                                                    </td>
-                                                    <td>
+                                                    <td colspan="2">
+                                                        <table style="margin-left:-3px; text-align:left;">
+                                                            <tr>
+                                                                <td style="text-align: right;">
+                                                                    <dxe:ASPxCheckBox runat="server" ID="dxechkTogether" ClientInstanceName="dxechkTogether"
+                                                                        Text="共保">
+                                                                    </dxe:ASPxCheckBox>
+                                                                </td>
+                                                                <td style="text-align: left;">
+                                                                    <dxe:ASPxCheckBox runat="server" ID="dxechkFlagReinsure" ClientInstanceName="dxechkFlagReinsure"
+                                                                        Text="再保">
+                                                                    </dxe:ASPxCheckBox>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -824,24 +812,29 @@
                                                         </dxe:ASPxComboBox>
                                                         <input type="hidden" id="ptid" runat="server" />
                                                     </td>
-                                                    <td style="text-align: left;">
-                                                        
-                                                    </td>
                                                     <td style="text-align: right;">
                                                         投保人：
                                                     </td>
                                                     <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server"
-                                                            Width="125px">
-                                                        </dxe:ASPxTextBox>
-                                                        <input type="hidden" id="cusid" runat="server" />
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <img runat="server" id="imgNewCustomer" onclick="imgNewCustomerClick();" alt="" src="../images/add_user_icon.png"
-                                                            style="width: 20px; height: 20px; vertical-align: top;" />
-                                                        <img runat="server" id="imgSelectCustomer" onclick="imgSelectCustomerClick();" alt=""
-                                                            src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: top;" />
-                                                    </td>
+                                                        <table style="margin-left:-3px; width:175px;">
+                                                            <tr>
+                                                                <td>
+                                                                    <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server"
+                                                                        Width="125px">
+                                                                    </dxe:ASPxTextBox>
+                                                                    <input type="hidden" id="cusid" runat="server" />
+                                                                </td>
+                                                                <td>
+                                                                   <img runat="server" id="imgNewCustomer" onclick="imgNewCustomerClick();" alt="" src="../images/add_user_icon.png"
+                                                                    style="width: 20px; height: 20px; vertical-align: top;" />
+                                                                </td>
+                                                                <td>
+                                                                    <img runat="server" id="imgSelectCustomer" onclick="imgSelectCustomerClick();" alt=""
+                                                                        src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: top;" />
+                                                                </td>
+                                                            </tr>
+                                                        </table>                                                        
+                                                    </td>                                                    
                                                     <td style="text-align: right;">
                                                         被保险人：
                                                     </td>
@@ -849,8 +842,6 @@
                                                         <dxe:ASPxTextBox ID="dxetxtBeneficiary" ClientInstanceName="dxetxtBeneficiary" runat="server"
                                                             Width="125px">
                                                         </dxe:ASPxTextBox>
-                                                    </td>
-                                                    <td>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -865,8 +856,6 @@
                                                             <ClientSideEvents SelectedIndexChanged="dxeddlDeptID_SelectedIndexChanged" />
                                                         </dxe:ASPxComboBox>
                                                     </td>
-                                                    <td>
-                                                    </td>
                                                     <td style="text-align: right;">
                                                         客户经理：
                                                     </td>
@@ -876,8 +865,6 @@
                                                             <Items>
                                                             </Items>
                                                         </dxe:ASPxComboBox>
-                                                    </td>
-                                                    <td>
                                                     </td>
                                                     <td style="text-align: right;">
                                                         收款方式：
@@ -889,8 +876,6 @@
                                                                 <dxe:ListEditItem Text="(全部)" Value="" />
                                                             </Items>
                                                         </dxe:ASPxComboBox>
-                                                    </td>
-                                                    <td>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -905,8 +890,6 @@
                                                             </Items>
                                                         </dxe:ASPxComboBox>
                                                     </td>
-                                                    <td>
-                                                    </td>
                                                     <td style="text-align: right;">
                                                         业务来源：
                                                     </td>
@@ -917,8 +900,6 @@
                                                                 <dxe:ListEditItem Text="(全部)" Value="" />
                                                             </Items>
                                                         </dxe:ASPxComboBox>
-                                                    </td>
-                                                    <td>
                                                     </td>
                                                     <td style="text-align: right;">
                                                         保险期限：
@@ -943,8 +924,6 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td>
-                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="text-align: right;">
@@ -955,8 +934,6 @@
                                                             runat="server" Width="125px" ReadOnly="true">
                                                         </dxe:ASPxTextBox>
                                                     </td>
-                                                    <td>
-                                                    </td>
                                                     <td style="text-align: right;">
                                                         录单日期：
                                                     </td>
@@ -965,18 +942,16 @@
                                                             Width="100px">
                                                         </dxe:ASPxDateEdit>
                                                     </td>
-                                                    <td>
-                                                    </td>
                                                     <td style="text-align: right;">
                                                         缴费次数：
                                                     </td>
                                                     <td style="text-align: left;">
-                                                        <table style="margin-left: -3px;">
+                                                        <table style="margin-left:-3px;">
                                                             <tr>
-                                                                <td style="width: 120px; text-align: left;">
+                                                                <td style="text-align: left;">
                                                                     <dxe:ASPxTextBox ID="dxetxtStage" ClientInstanceName="dxetxtStage" runat="server"
-                                                                        Width="125px">
-                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="格式不对" CausesValidation="true"
+                                                                        Width="100px">
+                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true"
                                                                             ValidationGroup="BaseGroup">
                                                                             <RegularExpression ValidationExpression="^\d+(\d+)?" ErrorText="格式不对" />
                                                                             <RequiredField IsRequired="true" ErrorText="必需项" />
@@ -993,8 +968,6 @@
                                                                 </td>
                                                             </tr>
                                                         </table>
-                                                    </td>
-                                                    <td style="text-align: left;">
                                                     </td>
                                                 </tr>
                                             </table>
@@ -1091,8 +1064,8 @@
                                                                                         DropDownStyle="DropDownList" Width="120px">
                                                                                         <Items>
                                                                                         </Items>
-                                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项">
-                                                                                            <RequiredField IsRequired="true" />
+                                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" >
+                                                                                            <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                                         </ValidationSettings>
                                                                                         <ClientSideEvents />
                                                                                     </dxe:ASPxComboBox>
@@ -1389,8 +1362,8 @@
                                                                                         DropDownStyle="DropDownList" Width="120px">
                                                                                         <Items>
                                                                                         </Items>
-                                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项">
-                                                                                            <RequiredField IsRequired="true" />
+                                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
+                                                                                            <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                                         </ValidationSettings>
                                                                                         <ClientSideEvents SelectedIndexChanged="GridCarrierCarrier_SelectedIndexChanged" />
                                                                                     </dxe:ASPxComboBox>
@@ -1404,8 +1377,8 @@
                                                                                         Width="120px" OnCallback="dxecbGridCarrierBranchIDCallback">
                                                                                         <Items>
                                                                                         </Items>
-                                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="必需项">
-                                                                                            <RequiredField IsRequired="true" />
+                                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" >
+                                                                                            <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                                         </ValidationSettings>
                                                                                         <ClientSideEvents SelectedIndexChanged="" />
                                                                                     </dxe:ASPxComboBox>
@@ -1656,8 +1629,7 @@
                                                                 <td style="text-align: left;">
                                                                     <dxe:ASPxDateEdit ID="detxtGridPeriodPayDate" ClientInstanceName="detxtGridPeriodPayDate"
                                                                         runat="server">
-                                                                        <ValidationSettings RequiredField-IsRequired="true" CausesValidation="true" ErrorDisplayMode="ImageWithTooltip"
-                                                                            ErrorText="必需项">
+                                                                        <ValidationSettings RequiredField-IsRequired="true" CausesValidation="true" ErrorDisplayMode="ImageWithTooltip">
                                                                             <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                         </ValidationSettings>
                                                                     </dxe:ASPxDateEdit>
@@ -1688,8 +1660,7 @@
                                                                 <td style="text-align: left;">
                                                                     <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodPayFeeBase" ClientInstanceName="detxtGridPeriodPayFeeBase"
                                                                         ReadOnly="false">
-                                                                        <ValidationSettings RequiredField-IsRequired="true" CausesValidation="true" ErrorDisplayMode="ImageWithTooltip"
-                                                                            ErrorText="必需项">
+                                                                        <ValidationSettings RequiredField-IsRequired="true" CausesValidation="true" ErrorDisplayMode="ImageWithTooltip">
                                                                             <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                         </ValidationSettings>
