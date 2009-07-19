@@ -28,11 +28,19 @@
         }
 
         function gridCustomButtonClick(s, e) {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            var noint = s.GetDataRow(e.visibleIndex).cells[2].innerText;
-            var querystring;
-            querystring = "PolicyInput.aspx?pagemode=input&id=" + noint;
-            window.showModalDialog(querystring, self, myArguments);
+            s.GetRowValues(e.visibleIndex, "PolicyID", getTheSelectedRowsValues);
+        }
+
+        function getTheSelectedRowsValues(selectedValues) {
+            if (selectedValues.length == 0) {
+                //
+            }
+            else {
+                var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
+                var querystring;
+                querystring = "PolicyInput.aspx?pagemode=input&id=" + selectedValues;
+                window.showModalDialog(querystring, self, myArguments);
+            }
         }
 
         function imgPolicyProdTypeClick() {
