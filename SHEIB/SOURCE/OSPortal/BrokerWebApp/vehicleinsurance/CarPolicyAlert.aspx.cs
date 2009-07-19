@@ -414,40 +414,42 @@ namespace BrokerWebApp.vehicleinsurance
 
             obj = (CarPriceAlertInfo)serializer.ReadObject(ms);
             ms.Close();
-
+            BO_Policy theSourceObj = new BO_Policy(this.lblSourcePolicyID.Text.Trim());
             BO_Policy theObject;
             if (String.IsNullOrEmpty(obj.PolicyID))
             {
                 theObject = new BO_Policy();
                 theObject.PolicyID = TranUtils.GetPolicyID();
-                theObject.AskPriceID = obj.AskPriceID;
+                theObject.AskPriceID = theSourceObj.AskPriceID;
                 theObject.PolicyStatus = policyState;
                 theObject.PolicyType = Convert.ToInt32(BO_Policy.PolicyTypeEnum.Vehicle).ToString();
-                theObject.PolicyNo = obj.PolicyNo;
+                theObject.PolicyNo = theSourceObj.PolicyNo;
 
-                theObject.AciPolicyNo = obj.AciPolicyNo;
+                theObject.AciPolicyNo = theSourceObj.AciPolicyNo;
 
-                theObject.CarrierSales = obj.CarrierSales;
-                theObject.CustomerID = obj.CustomerID;
-                theObject.Beneficiary = obj.Beneficiary;
+                theObject.CarrierSales = theSourceObj.CarrierSales;
+                theObject.CustomerID = theSourceObj.CustomerID;
+                theObject.Beneficiary = theSourceObj.Beneficiary;
 
-                theObject.DeptId = obj.DeptId;
-                theObject.SalesId = obj.SalesId;
+                theObject.DeptId = theSourceObj.DeptId;
+                theObject.SalesId = theSourceObj.SalesId;
 
-                theObject.SourceTypeID = obj.SourceTypeID;
-                theObject.OperationType = obj.OperationTypeID;
-                theObject.GatheringType = obj.GatheringTypeID;
-                theObject.StartDate = obj.StartDate;
-                theObject.EndDate = obj.EndDate;
-                theObject.Special = obj.Special;
-                theObject.CarNo = obj.CarNo;
-                theObject.CarcaseNo = obj.CarcaseNo;
-                theObject.UseCharacter = obj.UseCharacter;
-                theObject.EngineNo = obj.EngineNo;
-                theObject.CarUser = obj.CarUser;
-                theObject.Capacity = obj.Capacity;
-                theObject.RegisterDate = obj.RegisterDate;
-                theObject.CarValue = obj.CarValue;
+                theObject.SourceTypeID = theSourceObj.SourceTypeID;
+                theObject.OperationType = theSourceObj.OperationType;
+                theObject.GatheringType = theSourceObj.GatheringType;
+                theObject.StartDate = theSourceObj.StartDate;
+                theObject.EndDate = theSourceObj.EndDate;
+                theObject.Special = theSourceObj.Special;
+                theObject.CarNo = theSourceObj.CarNo;
+                theObject.CarcaseNo = theSourceObj.CarcaseNo;
+                theObject.UseCharacter = theSourceObj.UseCharacter;
+                theObject.EngineNo = theSourceObj.EngineNo;
+                theObject.CarUser = theSourceObj.CarUser;
+                theObject.Capacity = theSourceObj.Capacity;
+                theObject.RegisterDate = theSourceObj.RegisterDate;
+                theObject.CarValue = theSourceObj.CarValue;
+
+                //new value
                 theObject.CiPremium = obj.CiPremium;
                 theObject.AciPremium = obj.AciPremium;
                 theObject.CstPremium = obj.CstPremium;
@@ -470,32 +472,7 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject = new BO_Policy(obj.PolicyID);
 
                 theObject.PolicyStatus = policyState;
-
-                theObject.PolicyNo = obj.PolicyNo;
-
-                theObject.AciPolicyNo = obj.AciPolicyNo;
-
-                theObject.CarrierSales = obj.CarrierSales;
-                theObject.CustomerID = obj.CustomerID;
-                theObject.Beneficiary = obj.Beneficiary;
-
-                theObject.DeptId = obj.DeptId;
-                theObject.SalesId = obj.SalesId;
-
-                theObject.SourceTypeID = obj.SourceTypeID;
-                theObject.OperationType = obj.OperationTypeID;
-                theObject.GatheringType = obj.GatheringTypeID;
-                theObject.StartDate = obj.StartDate;
-                theObject.EndDate = obj.EndDate;
-                theObject.Special = obj.Special;
-                theObject.CarNo = obj.CarNo;
-                theObject.CarcaseNo = obj.CarcaseNo;
-                theObject.UseCharacter = obj.UseCharacter;
-                theObject.EngineNo = obj.EngineNo;
-                theObject.CarUser = obj.CarUser;
-                theObject.Capacity = obj.Capacity;
-                theObject.RegisterDate = obj.RegisterDate;
-                theObject.CarValue = obj.CarValue;
+                
                 theObject.CiPremium = obj.CiPremium;
                 theObject.AciPremium = obj.AciPremium;
                 theObject.CstPremium = obj.CstPremium;
@@ -517,7 +494,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         private void switchBasicInfoControlsEnable(Boolean val)
         {
-            dxetxtPolicyID.Enabled = val;
+            //dxetxtPolicyID.Enabled = val;
             dxetxtPolicyNo.Enabled = val;
             dxetxtAciPolicyNo.Enabled = val;
             dxetxtAskPriceID.Enabled = val;

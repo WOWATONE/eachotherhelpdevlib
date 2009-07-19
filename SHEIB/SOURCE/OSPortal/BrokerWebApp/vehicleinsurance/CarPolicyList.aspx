@@ -261,7 +261,7 @@
                                                                 <EditButton Visible="False" />
                                                                 <DeleteButton Visible="false" />
                                                                 <CustomButtons>
-                                                                    <dxwgv:GridViewCommandColumnCustomButton Text="编辑">
+                                                                    <dxwgv:GridViewCommandColumnCustomButton Text="补录">
                                                                     </dxwgv:GridViewCommandColumnCustomButton>
                                                                 </CustomButtons>
                                                             </dxwgv:GridViewCommandColumn>
