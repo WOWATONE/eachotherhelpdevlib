@@ -911,29 +911,29 @@
                                                             </td>
                                                             <td colspan="3">
                                                                 <table style="margin-left:-3px;">
-                                                            <tr>
-                                                                <td>
-                                                                    <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server" Width="110px">
-                                                                        <ClientSideEvents DateChanged="function(s, e) { dxeStartDate_DateChanged(s,e); }" /> 
-                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="false"
-                                                                            ValidationGroup="BaseGroup">
-                                                                            <RequiredField IsRequired="true" ErrorText="Required" />
-                                                                        </ValidationSettings>
-                                                                    </dxe:ASPxDateEdit>
-                                                                </td>
-                                                                <td>
-                                                                    至
-                                                                </td>
-                                                                <td>
-                                                                    <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server" Width="110px">
-                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="false"
-                                                                            ValidationGroup="BaseGroup">
-                                                                            <RequiredField IsRequired="true" ErrorText="Required" />
-                                                                        </ValidationSettings>
-                                                                    </dxe:ASPxDateEdit>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server" Width="110px">
+                                                                                <ClientSideEvents DateChanged="function(s, e) { dxeStartDate_DateChanged(s,e); }" /> 
+                                                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="false"
+                                                                                    ValidationGroup="BaseGroup">
+                                                                                    <RequiredField IsRequired="true" ErrorText="Required" />
+                                                                                </ValidationSettings>
+                                                                            </dxe:ASPxDateEdit>
+                                                                        </td>
+                                                                        <td>
+                                                                            至
+                                                                        </td>
+                                                                        <td>
+                                                                            <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server" Width="110px">
+                                                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="false"
+                                                                                    ValidationGroup="BaseGroup">
+                                                                                    <RequiredField IsRequired="true" ErrorText="Required" />
+                                                                                </ValidationSettings>
+                                                                            </dxe:ASPxDateEdit>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </td>
                                                             <td style="text-align: right;">
                                                                 录单人：
