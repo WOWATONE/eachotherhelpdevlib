@@ -269,7 +269,7 @@
             var Process = dxetxtProcess.GetValueString();
             var ProcessBase = dxetxtProcessBase.GetValueString();
             var ProcessRate = dxetxtProcessRate.GetValueString();
-            var ProdTypeID = dxeddlProdTypeNameGet.Value();
+            var ProdTypeID = dxeddlProdTypeName.GetValue();
             var Remark = null;            
             var SalesId = dxeddlSalesId.GetValue();
             var SignDate = null;

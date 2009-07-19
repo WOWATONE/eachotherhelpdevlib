@@ -329,7 +329,7 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>
-                                                        <SettingsPager Mode="ShowPager"   />
+                                                        <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" />
                                                         <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
                                                         <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                                         <SettingsText CustomizationWindowCaption="个性化" />
