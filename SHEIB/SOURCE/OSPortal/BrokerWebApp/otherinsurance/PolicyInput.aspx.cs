@@ -1125,7 +1125,6 @@ namespace BrokerWebApp.otherinsurance
                             
                 obj.OperationType=theJosn.OperationType; 
                 obj.PeriodTimes=theJosn.PeriodTimes; 
-                obj.PolicyID=theJosn.PolicyID; 
                 obj.PolicyNo=theJosn.PolicyNo;
                             
                 obj.Premium=theJosn.Premium; 
