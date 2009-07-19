@@ -25,19 +25,35 @@
 
 
 	    function gridAuditCustomButtonClick(s, e) {
-	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-	        var noint = s.GetDataRow(e.visibleIndex).cells[3].innerText;
-	        var querystring;
-	        querystring = "PolicyInput.aspx?pagemode=alt&pid=" + noint;
-	        window.showModalDialog(querystring, self, myArguments);
+	        s.GetRowValues(e.visibleIndex, "PolicyID", getTheAuditSelectedRowsValues);
+	    }
+
+	    function getTheAuditSelectedRowsValues(selectedValues) {
+	        if (selectedValues.length == 0) {
+	            //
+	        }
+	        else {
+	            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
+	            var querystring;
+	            querystring = "PolicyAlter.aspx?id=" + selectedValues;
+	            window.showModalDialog(querystring, self, myArguments);
+	        }
 	    }
 
 	    function gridAlertCustomButtonClick(s, e) {
-	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-	        var noint = s.GetDataRow(e.visibleIndex).cells[3].innerText;
-	        var querystring;
-	        querystring = "PolicyInput.aspx?input=alt&pid=" + noint;
-	        window.showModalDialog(querystring, self, myArguments);
+	        s.GetRowValues(e.visibleIndex, "PolicyID", getTheAlertSelectedRowsValues);
+	    }
+
+	    function getTheAlertSelectedRowsValues(selectedValues) {
+	        if (selectedValues.length == 0) {
+	            //
+	        }
+	        else {
+	            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
+	            var querystring;
+	            querystring = "PolicyInput.aspx?input=input&pid=" + selectedValues;
+	            window.showModalDialog(querystring, self, myArguments);
+	        }
 	    }
 
 	    function imgPolicyProdTypeClick() {

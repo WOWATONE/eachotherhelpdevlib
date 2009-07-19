@@ -1,4 +1,4 @@
-﻿<%@ Page Title="车辆信息录入" Theme="Aqua" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" CodeBehind="CarPolicyInput.aspx.cs" Inherits="BrokerWebApp.vehicleinsurance.CarPolicyInput" %>
+﻿<%@ Page Title="车辆保单信息录入" Theme="Aqua" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" CodeBehind="CarPolicyInput.aspx.cs" Inherits="BrokerWebApp.vehicleinsurance.CarPolicyInput" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
@@ -11,7 +11,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>车辆信息录入</title>
+    <title>车辆保单信息录入</title>
 
     <script type="text/javascript">
 
