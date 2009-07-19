@@ -93,7 +93,7 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="ddlAuditStatus" ClientInstanceName="ddlAuditStatus" runat="server" DropDownStyle="DropDownList"  Width="160px">
                                     <Items>
-                                        <dxe:ListEditItem Text="全部" Value="" />
+                                        <dxe:ListEditItem Text="(全部)" Value="" />
                                         <dxe:ListEditItem Text="已审核" Value="1" />
                                         <dxe:ListEditItem Text="未审核" Value="2" />
                                     </Items>
