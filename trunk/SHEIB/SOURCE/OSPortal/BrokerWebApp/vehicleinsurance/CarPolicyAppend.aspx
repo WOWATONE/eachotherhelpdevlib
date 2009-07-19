@@ -100,7 +100,7 @@
 
         function setOnlyDxeButtonsUnableOrEnable(val) {
         
-            if (typeof (dxebtnBottomSave) != 'undefined' && dxebtnBottomSave != null)
+            if (typeof(dxebtnBottomSave) != 'undefined' && dxebtnBottomSave != null)
                 dxebtnBottomSave.SetEnabled(val);
         }
 
