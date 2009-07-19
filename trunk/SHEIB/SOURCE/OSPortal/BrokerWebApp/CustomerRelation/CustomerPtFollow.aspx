@@ -151,8 +151,7 @@
                            AutoGenerateColumns="False" 
                            Settings-ShowFooter="true"
                            SettingsPager-AlwaysShowPager="true" 
-                           SettingsBehavior-AllowSort="false"
-                           SettingsBehavior-AllowDragDrop="false">
+                           SettingsBehavior-AllowSort="false">
                         <Columns>
                             <dxwgv:GridViewDataTextColumn Caption="跟进编号" FieldName="FollowID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
