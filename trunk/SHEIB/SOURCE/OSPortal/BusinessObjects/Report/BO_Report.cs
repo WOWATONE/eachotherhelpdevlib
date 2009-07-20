@@ -16,8 +16,6 @@ namespace BusinessObjects
 
         public BO_Report() { }
 
-
-
         #region Methods
 
 
