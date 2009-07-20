@@ -113,13 +113,13 @@ namespace BrokerWebApp.IntegrateSearch {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesId;
         
         /// <summary>
-        /// dxetxtProdTypeID 控件。
+        /// dxeddlProdTypeName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProdTypeID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlProdTypeName;
         
         /// <summary>
         /// ptid 控件。
@@ -129,15 +129,6 @@ namespace BrokerWebApp.IntegrateSearch {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden ptid;
-        
-        /// <summary>
-        /// imgpeoplesearch 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
         
         /// <summary>
         /// dxeddlCarrierId 控件。
@@ -158,13 +149,13 @@ namespace BrokerWebApp.IntegrateSearch {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlBranchId;
         
         /// <summary>
-        /// dxetxtCreatePerson 控件。
+        /// dxetxtCarrierSales 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCreatePerson;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCarrierSales;
         
         /// <summary>
         /// dxeddlSourceTypeID 控件。
@@ -176,13 +167,13 @@ namespace BrokerWebApp.IntegrateSearch {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSourceTypeID;
         
         /// <summary>
-        /// dxeddlFlagReinsure 控件。
+        /// dxeddlOperationType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlFlagReinsure;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlOperationType;
         
         /// <summary>
         /// dxeStartDate 控件。
@@ -282,15 +273,6 @@ namespace BrokerWebApp.IntegrateSearch {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridExport;
-        
-        /// <summary>
-        /// DataSource 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource DataSource;
         
         /// <summary>
         /// cpeSearchResult 控件。
