@@ -1070,10 +1070,13 @@
                                                                                         <ClientSideEvents />
                                                                                     </dxe:ASPxComboBox>
                                                                                 </td>
-                                                                                <td style="white-space: nowrap; text-align: right;">
-                                                                                </td>
-                                                                                <td style="text-align: left;">
-                                                                                </td>
+                                                                                <td style="white-space: nowrap; text-align: right;"></td>
+                                                                                <td style="text-align: left;"></td>
+                                                                                <td></td>
+                                                                                <td></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                            
                                                                             </tr>
                                                                             <tr>
                                                                                 <td style="white-space: nowrap; text-align: right;">
@@ -1081,7 +1084,18 @@
                                                                                 </td>
                                                                                 <td style="text-align: left;">
                                                                                     <dxe:ASPxTextBox ID="dxetxtPolicyItemCoverage" ClientInstanceName="dxetxtPolicyItemCoverage"
-                                                                                        runat="server" Width="120px">
+                                                                                        runat="server" Width="100px">
+                                                                                        <ValidationSettings>
+                                                                                            <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                        </ValidationSettings>
+                                                                                    </dxe:ASPxTextBox>
+                                                                                </td>
+                                                                                <td style="white-space: nowrap; text-align: right;">
+                                                                                    费率:
+                                                                                </td>
+                                                                                <td style="text-align: left;">
+                                                                                    <dxe:ASPxTextBox ID="dxetxtPolicyItemPremiumRate" ClientInstanceName="dxetxtPolicyItemPremiumRate"
+                                                                                        runat="server" Width="100px">
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
@@ -1092,7 +1106,7 @@
                                                                                 </td>
                                                                                 <td style="text-align: left;">
                                                                                     <dxe:ASPxTextBox ID="dxetxtPolicyItemPremium" ClientInstanceName="dxetxtPolicyItemPremium"
-                                                                                        runat="server" Width="120px">
+                                                                                        runat="server" Width="100px">
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
@@ -1122,6 +1136,8 @@
                                                                                         </ValidationSettings>
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
+                                                                                <td></td>
+                                                                                <td></td>
                                                                             </tr>
                                                                         </table>
                                                                     </div>
