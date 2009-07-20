@@ -864,6 +864,8 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.Save(ModifiedAction.Update);
             }
 
+            dealWithPolicyPeriod(theObject.PolicyID, obj);
+
             return theObject.PolicyID;
 
         }
@@ -1053,6 +1055,42 @@ namespace BrokerWebApp.vehicleinsurance
 
             dxetxtSpecial.Text = objCar.Remark;           
 
+        }
+
+
+        private void dealWithPolicyPeriod(String policyID, CarPriceInputInfo obj)
+        {
+            String where = " AND A.PolicyId ='" + policyID + "'";
+            where += " AND A.BranchID ='" + obj.BranchID + "'";
+            Boolean exist = BO_PolicyPeriod.CheckPolicyBranchExist(where);
+            if (exist)
+            {
+                //do nothing
+            }
+            else
+            {
+                BO_PolicyPeriod objNew;
+                BO_Policy objPolicy = new BO_Policy(policyID);
+                Int32 times = objPolicy.PeriodTimes;
+
+                if (times < 1) times = 1;
+
+                for (int i = 1; i <= times; i++)
+                {
+                    objNew = new BO_PolicyPeriod();
+                    objNew.PolPeriodId = Guid.NewGuid().ToString();
+                    objNew.PolicyId = policyID;
+                    objNew.CarrierID = obj.CarrierID;
+                    objNew.BranchID = obj.BranchID;
+                    objNew.Period = i;
+                    objNew.PayDate = DateTime.Now;
+                    objNew.PayFeeBase = obj.CiPremium / times;
+                    objNew.PayProcBase = obj.CiProcess / times;
+                    objNew.NoticeNo = "";
+                    objNew.Save(ModifiedAction.Insert);
+                }
+
+            }
         }
 
 
