@@ -633,7 +633,16 @@ namespace BrokerWebApp.vehicleinsurance
             ListEditItem theselected;
             BusinessObjects.Policy.BO_Policy obj;
             obj = new BusinessObjects.Policy.BO_Policy(id);
-            if (String.IsNullOrEmpty(obj.PolicyID)) return;
+            if (String.IsNullOrEmpty(obj.PolicyID))
+            {
+                if (String.IsNullOrEmpty(this.dxetxtAskPriceID.Text.Trim())) return;
+                
+                loadDataFromAskPrice(this.dxetxtAskPriceID.Text.Trim());
+                
+                return;
+            }
+
+            
 
             BusinessObjects.Policy.BO_CarPolicy objCar;
             objCar = new BusinessObjects.Policy.BO_CarPolicy(obj.AskPriceID);
@@ -955,6 +964,95 @@ namespace BrokerWebApp.vehicleinsurance
             dxetxtCiProcess.Enabled = val;
             dxetxtAciProcess.Enabled = val;
             dxetxtTotalProcess.Enabled = val;
+        }
+
+
+        private void loadDataFromAskPrice(String id)
+        {
+            ListEditItem theselected;
+            BusinessObjects.Policy.BO_CarPolicy objCar;
+            objCar = new BusinessObjects.Policy.BO_CarPolicy(id);
+            
+            //dxeddlCarrierId
+            if (!String.IsNullOrEmpty(objCar.CarrierID))
+            {
+                theselected = dxeddlCarrierId.Items.FindByValue(objCar.CarrierID);
+                if (theselected != null)
+                {
+                    dxeddlCarrierId.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlBranchId
+            if (!String.IsNullOrEmpty(objCar.BranchID))
+            {
+                theselected = dxeddlBranchId.Items.FindByValue(objCar.BranchID);
+                if (theselected != null)
+                {
+                    dxeddlBranchId.SelectedItem = theselected;
+                }
+            }
+
+
+            this.dxetxtCarrierSales.Text = objCar.CarrierSales;
+
+            this.dxetxtCustomer.Text = objCar.CustomerName;
+            this.cusid.Value = objCar.CustomerID;
+
+            dxetxtBeneficiary.Text = objCar.Beneficiary;
+
+            //dxeddlSourceTypeID
+            if (!String.IsNullOrEmpty(objCar.SourceTypeID))
+            {
+                theselected = dxeddlSourceTypeID.Items.FindByValue(objCar.SourceTypeID);
+                if (theselected != null)
+                {
+                    dxeddlSourceTypeID.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlDeptID
+            if (!String.IsNullOrEmpty(objCar.DeptId))
+            {
+                theselected = dxeddlDeptID.Items.FindByValue(objCar.DeptId);
+                if (theselected != null)
+                {
+                    dxeddlDeptID.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlSalesId
+            if (!String.IsNullOrEmpty(objCar.SalesId))
+            {
+                theselected = dxeddlSalesId.Items.FindByValue(objCar.SalesId);
+                if (theselected != null)
+                {
+                    dxeddlSalesId.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlOperationType
+            if (!String.IsNullOrEmpty(objCar.OperationType))
+            {
+                theselected = dxeddlOperationType.Items.FindByValue(objCar.OperationType);
+                if (theselected != null)
+                {
+                    dxeddlOperationType.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlGatheringType
+            if (!String.IsNullOrEmpty(objCar.GatheringType))
+            {
+                theselected = dxeddlGatheringType.Items.FindByValue(objCar.GatheringType);
+                if (theselected != null)
+                {
+                    dxeddlGatheringType.SelectedItem = theselected;
+                }
+            }
+
+            dxetxtSpecial.Text = objCar.Remark;           
+
         }
 
 
