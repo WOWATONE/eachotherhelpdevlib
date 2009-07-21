@@ -81,6 +81,7 @@
     <Compile Include="CustomerRelation\BO_Customer.cs" />
     <Compile Include="CustomerRelation\BO_CustomerDoc.cs" />
     <Compile Include="CustomerRelation\BO_CustomerPtFollow.cs" />
+    <Compile Include="CustomerRelation\BO_CustomerPtFollowDoc.cs" />
     <Compile Include="FeeBalance\BO_Fee.cs" />
     <Compile Include="FeeBalance\BO_FeePayin.cs" />
     <Compile Include="FeeBalance\BO_Notice.cs" />
