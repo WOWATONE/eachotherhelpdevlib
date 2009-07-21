@@ -39,27 +39,7 @@
 	        }
 	    }
 
-	    function imgPolicyProdTypeClick() {
-	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=700px;dialogHeight=500px;center=yes;help=no";
-	        var retrunval = window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
-	        if (isEmpty(retrunval)) {
-	            //do nothing;
-	        }
-	        else {
-	            //split the return value;
-	            var thesplit_array = retrunval.split(";");
-	            dxetxtProdTypeID.SetValue(thesplit_array[1]);
-	            setProductTypeID(thesplit_array[0]);
-
-	            var result = $("#<%=ptid.ClientID %>");
-	        }
-
-	    }
-
-	    function setProductTypeID(thevalue) {
-	        var result = $("#<%=ptid.ClientID %>");
-	        result[0].value = thevalue;
-	    }
+	    
 
 	    function isEmpty(testVar) {
 	        if ((testVar == null) || (testVar.length == 0)) {
@@ -155,11 +135,12 @@
                                                     </td>
                                                     <td style="text-align:right;">保险险种：</td>
                                                     <td style="text-align:left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server" Width="155px"></dxe:ASPxTextBox> 
-                                                        <input type="hidden" id="ptid" runat="server" />                                                                                                                                                                     
+                                                        <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
+                                                            runat="server" Width="160px" DropDownStyle="DropDownList">
+                                                        </dxe:ASPxComboBox>                                                                                                                                                                     
                                                     </td>
                                                     <td style="text-align:left;">
-                                                        <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width:20px; height:20px; vertical-align:middle;" onclick="imgPolicyProdTypeClick();" /> 
+                                                        
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -196,12 +177,13 @@
                                                     </td>
                                                     <td style="text-align:right;" colspan="2">业务性质：</td>
                                                     <td style="text-align:left;">
-                                                        <dxe:ASPxComboBox ID="dxeddlFlagReinsure" ClientInstanceName="dxeddlFlagReinsure" runat="server" Width="170px" DropDownStyle="DropDownList">
-															<Items>
-																<dxe:ListEditItem Text="新增" Value="1" />
-																<dxe:ListEditItem Text="再保" Value="2" />
-															</Items>
-														</dxe:ASPxComboBox>
+                                                        <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType"
+                                                            runat="server" Width="170px" DropDownStyle="DropDownList">
+                                                            <items>
+																            <dxe:ListEditItem Text="新增" Value="1" />
+																            <dxe:ListEditItem Text="再保" Value="2" />
+															            </items>
+                                                        </dxe:ASPxComboBox>
                                                     </td>
                                                     <td style="text-align:right;">审核状态：</td>
                                                     <td style="text-align:left;">
@@ -218,16 +200,16 @@
                                                 <tr>
                                                     <td style="text-align:right;">录单日期：</td>
                                                     <td style="text-align:left;">
-                                                        <dxe:ASPxDateEdit ID="deStartDate" runat="server">
+                                                        <dxe:ASPxDateEdit ID="dxeStartDate" runat="server">
                                                         </dxe:ASPxDateEdit>                                                       
                                                     </td>
                                                     <td style="text-align:left;">至</td>
                                                     <td style="text-align:left;" colspan="2">
-                                                        <dxe:ASPxDateEdit ID="deEndDate" runat="server"></dxe:ASPxDateEdit>
+                                                        <dxe:ASPxDateEdit ID="dxeEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
                                                     <td style="text-align:right;" colspan="2">
-                                                        <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
+                                                        <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
                                                         <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
                                                         <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" /> 
                                                     </td>
@@ -275,12 +257,11 @@
                                            <tr>
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server" 
-                                                    DataSourceID="DataSource"
+                                                    DataSourceID="gd_DataSource"
                                                     KeyFieldName="KeyGUID" AutoGenerateColumns="False" 
                                                     Settings-ShowFooter="true" Width="100%" 
                                                     SettingsPager-AlwaysShowPager="true" 
-                                                    OnRowDeleting="gridSearchResult_RowDeleting" 
-                                                    OnRowDeleted="gridSearchResult_RowDeleted"
+                                                    OnRowDeleting="gridSearchResult_RowDeleting"
                                                     OnCustomCallback="gridSearchResult_CustomCallback"
                                                     >
                                                         <%-- BeginRegion Columns --%>
@@ -354,13 +335,13 @@
                                                         
                                                     </dxwgv:ASPxGridView> 
                                                     <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
-                                                    <asp:ObjectDataSource ID="DataSource" runat="server" 
-                                                        SelectMethod="FetchPolicyCarrierList"
+                                                    <asp:ObjectDataSource ID="gd_DataSource" runat="server" 
+                                                        SelectMethod="FetchPolicyList"
                                                         TypeName="BusinessObjects.Policy.BO_Policy" 
                                                         EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
                                                         >
                                                         <SelectParameters> 
-                                                             <asp:Parameter Name="policyStatus" Type="String" Direction="Input" DefaultValue="1" />
+                                                             <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" AND ISNULL(B.PolicyStatus,'0') = '1'" />
                                                         </SelectParameters>
                                                     </asp:ObjectDataSource>                                                   
                                                 </td>

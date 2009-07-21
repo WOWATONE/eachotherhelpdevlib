@@ -327,9 +327,10 @@
                         <tr>
                             <td>
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
+                                    DataSourceID="gd_DataSource" 
                                     KeyFieldName="PolicyID" AutoGenerateColumns="False"
                                     Settings-ShowFooter="true" Width="100%" SettingsPager-AlwaysShowPager="true"
-                                    OnRowDeleting="gridSearchResult_RowDeleting" OnRowDeleted="gridSearchResult_RowDeleted"
+                                    OnRowDeleting="gridSearchResult_RowDeleting"
                                     OnCustomCallback="gridSearchResult_CustomCallback">
                                     <%-- BeginRegion Columns --%>
                                     <columns>
@@ -399,6 +400,15 @@
                                                         </totalsummary>
                                     <clientsideevents custombuttonclick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
+                                <asp:ObjectDataSource ID="gd_DataSource" runat="server" 
+                                    SelectMethod="FetchPolicyList"
+                                    TypeName="BusinessObjects.Policy.BO_Policy" 
+                                    EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
+                                    >
+                                    <SelectParameters> 
+                                         <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" AND ISNULL(B.PolicyStatus,'0') = '0'" />
+                                    </SelectParameters>
+                                </asp:ObjectDataSource>
                                 <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
                                 </dxwgv:ASPxGridViewExporter>
                             </td>
