@@ -167,8 +167,71 @@ namespace BusinessObjects
 
         }
 
+        /// <summary>
+        /// 取得联系人编号
+        /// </summary>
+        /// <returns></returns>
+        public static string GetContactID()
+        {
+            string id = "";
+            StringBuilder sb = new StringBuilder();
+            sb.Append("EXEC GetContactID @ContactID OUTPUT;");
 
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
+            _db.AddOutParameter(dbCommand, "@ContactID", DbType.String, 10);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+            id = _db.GetParameterValue(dbCommand, "@ContactID").ToString();
+
+            return id;
+
+        }
+
+        /// <summary>
+        /// 取得销售编号
+        /// </summary>
+        /// <returns></returns>
+        public static string GetFollowID()
+        {
+            string id = "";
+            StringBuilder sb = new StringBuilder();
+            sb.Append("EXEC GetFollowID @FollowID OUTPUT;");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddOutParameter(dbCommand, "@FollowID", DbType.String, 10);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+            id = _db.GetParameterValue(dbCommand, "@FollowID").ToString();
+
+            return id;
+
+        }
+
+        /// <summary>
+        /// 取得咨询费编号
+        /// </summary>
+        /// <returns></returns>
+        public static string GetConsultFeeID()
+        {
+            string id = "";
+            StringBuilder sb = new StringBuilder();
+            sb.Append("EXEC GetConsultFeeID @ConsultFeeID OUTPUT;");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddOutParameter(dbCommand, "@ConsultFeeID", DbType.String, 10);
+
+            _db.ExecuteNonQuery(dbCommand);
+
+            id = _db.GetParameterValue(dbCommand, "@ConsultFeeID").ToString();
+
+            return id;
+
+        }
 
 
     }
