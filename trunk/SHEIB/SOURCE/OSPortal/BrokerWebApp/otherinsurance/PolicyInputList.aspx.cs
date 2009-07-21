@@ -129,45 +129,45 @@ namespace BrokerWebApp.otherinsurance
             lsWhere = lsWhere + " and PolicyStatus='0'";
             if (dxetxtPolicyID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and PolicyID ='" + dxetxtPolicyID.Text + "'";
+                lsWhere = lsWhere + " and b.PolicyID ='" + dxetxtPolicyID.Text + "'";
             }
 
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and b.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
             }
 
             if (this.dxeddlOperationType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlOperationType.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and OperationType ='" + dxeddlOperationType.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.OperationType ='" + dxeddlOperationType.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlDeptID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptID.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and DeptId ='" + dxeddlDeptID.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.DeptId ='" + dxeddlDeptID.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and CarrierID ='" + dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and a.CarrierID ='" + dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlProdTypeName.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlProdTypeName.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and  ProdTypeID like ('%" + dxeddlProdTypeName.SelectedItem.Value.ToString() + "%') ";
+                lsWhere = lsWhere + " and  b.ProdTypeID like ('%" + dxeddlProdTypeName.SelectedItem.Value.ToString() + "%') ";
             }
 
             string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");
             string lsEndDate = dxeEndDate.Date.ToString("yyyy-MM-dd");
             if ((dxeStartDate.Text.Trim() != "") && (dxeEndDate.Text.Trim() != ""))
             {
-                lsWhere = lsWhere + " and (convert(char(10), A.CreateTime,21)) >='" + lsStartDate + "'";
-                lsWhere = lsWhere + " and (convert(char(10), A.CreateTime,21)) <='" + lsEndDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), B.CreateTime,21)) >='" + lsStartDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), B.CreateTime,21)) <='" + lsEndDate + "'";
             }
 
             DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(lsWhere);
