@@ -309,7 +309,7 @@ namespace BrokerWebApp.BusinessConsult
 
                     //保存到咨询费
                     BusinessObjects.Consult.BO_ConsultFee consultFee = new BusinessObjects.Consult.BO_ConsultFee();
-                    consultFee.ConsultFeeID = TranUtils.GetCustomerID(); //?//暂用客户编号代替
+                    consultFee.ConsultFeeID = TranUtils.GetConsultFeeID();
                     consultFee.ConsultFeeNo = this.dxetxtConsultFeeNo.Text.Trim();
                     consultFee.ConsultDate = Convert.ToDateTime(this.deConsultDate.Text);
                     consultFee.SalesID = this.dxeddlSalesID.SelectedItem.Value.ToString();
