@@ -1,14 +1,23 @@
-<%@ Page Title="保单录入" Language="C#" MasterPageFile="~/SiteMastePages/PopupUploadMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="PolicyInput.aspx.cs" Inherits="BrokerWebApp.otherinsurance.PolicyInput" %>
+<%@ Page Title="保单录入" Language="C#" MasterPageFile="~/SiteMastePages/PopupUploadMaster.Master"
+    AutoEventWireup="true" Theme="Aqua" CodeBehind="PolicyInput.aspx.cs" Inherits="BrokerWebApp.otherinsurance.PolicyInput" %>
 
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" TagPrefix="dxw" %>
-<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dxwgv" %>
-<%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
+    TagPrefix="dxrp" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl"
+    TagPrefix="dxtc" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses"
+    TagPrefix="dxw" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView"
+    TagPrefix="dxwgv" %>
+<%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors"
+    TagPrefix="dxe" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dxpc" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl" TagPrefix="dxuc" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl"
+    TagPrefix="dxpc" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl"
+    TagPrefix="dxuc" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
+    TagPrefix="dxcb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>保单录入</title>
 
@@ -33,7 +42,7 @@
                 return false;
             }
         }
-        
+
         var pagemode = null;
         var npbasicdetail = null;
         var npGridPolicyItemDetail = null;
@@ -48,7 +57,7 @@
 
             if ($("#<%=npbasicdetail.ClientID %>").length > 0) {
                 npbasicdetail = $("#<%=npbasicdetail.ClientID %>")[0];
-                
+
             }
 
             if ($("#<%=npGridPolicyItemDetail.ClientID %>").length > 0) {
@@ -62,7 +71,7 @@
             if ($("#<%=npPolicyCompanyDetail.ClientID %>").length > 0) {
                 npPolicyCompanyDetail = $("#<%=npPolicyCompanyDetail.ClientID %>")[0];
             }
-            
+
 
             if ($("#<%=tblNewExecuteAction.ClientID %>").length > 0) {
                 tblNewExecuteAction = $("#<%=tblNewExecuteAction.ClientID %>")[0];
@@ -129,12 +138,12 @@
 
         
     </script>
-    
+
     <script type="text/javascript">
 
-        
+
         function policyCheckNessary() {
-            var pid = dxetxtPolicyID.GetValueString();            
+            var pid = dxetxtPolicyID.GetValueString();
             if (isEmpty(pid)) {
                 return true;
             }
@@ -145,20 +154,20 @@
         }
 
         function setOnlyDxeButtonsUnableOrEnable(val) {
-            if (typeof(dxebtnBottomAdd) != 'undefined' && dxebtnBottomAdd != null)
+            if (typeof (dxebtnBottomAdd) != 'undefined' && dxebtnBottomAdd != null)
                 dxebtnBottomAdd.SetEnabled(val);
 
-            if (typeof(dxebtnBottomSave) != 'undefined' && dxebtnBottomSave != null)
+            if (typeof (dxebtnBottomSave) != 'undefined' && dxebtnBottomSave != null)
                 dxebtnBottomSave.SetEnabled(val);
 
-            if (typeof(dxebtnBottomCheck) != 'undefined' && dxebtnBottomCheck != null)
+            if (typeof (dxebtnBottomCheck) != 'undefined' && dxebtnBottomCheck != null)
                 dxebtnBottomCheck.SetEnabled(val);
 
-            if (typeof(dxebtnCancel) != 'undefined' && dxebtnCancel != null)
+            if (typeof (dxebtnCancel) != 'undefined' && dxebtnCancel != null)
                 dxebtnCancel.SetEnabled(val);
 
             try {
-                if (typeof(dxebtnAuditBack) != 'undefined' && dxebtnAuditBack != null)
+                if (typeof (dxebtnAuditBack) != 'undefined' && dxebtnAuditBack != null)
                     dxebtnAuditBack.SetEnabled(val);
             }
             catch (err) {
@@ -167,7 +176,7 @@
 
 
             try {
-                if (typeof(dxebtnAuditOk) != 'undefined' && dxebtnAuditOk != null)
+                if (typeof (dxebtnAuditOk) != 'undefined' && dxebtnAuditOk != null)
                     dxebtnAuditOk.SetEnabled(val);
             }
             catch (err) {
@@ -185,7 +194,7 @@
             insuranceDetailTabPage.tabs[2].SetEnabled(val);
             insuranceDetailTabPage.tabs[3].SetEnabled(val);
 
-            if ((typeof(gridPolicyItem) != 'undefined') && gridPolicyItem != null) {
+            if ((typeof (gridPolicyItem) != 'undefined') && gridPolicyItem != null) {
                 gridPolicyItem.SetClientVisible(val);
             }
 
@@ -202,21 +211,21 @@
             dxetxtConversionRate.SetEnabled(val);
             dxetxtPremiumBase.SetEnabled(val);
             dxetxtProcessBase.SetEnabled(val);
-                        
+
         }
 
         function policyBaseCompleteEnable() {
-            
+
             var result, panel;
             if (pagemode.value == "input") {
                 npGridPolicyItemDetail.parentElement.removeAttribute('disabled');
                 npCostSummaryDetail.parentElement.removeAttribute('disabled', 'true');
                 npPolicyCompanyDetail.parentElement.removeAttribute('disabled', 'true');
-                tblNewExecuteAction.parentElement.removeAttribute('disabled', 'true');                
+                tblNewExecuteAction.parentElement.removeAttribute('disabled', 'true');
                 //tbltrAuditExecuteAction.parentElement.removeAttribute('disabled', 'true');
                 setDxeButtonsUnableOrEnable(true);
-                
-            }            
+
+            }
         }
 
 
@@ -229,21 +238,21 @@
                     npGridPolicyItemDetail.parentElement.setAttribute('disabled', 'true');
                     npCostSummaryDetail.parentElement.setAttribute('disabled', 'true');
                     npPolicyCompanyDetail.parentElement.setAttribute('disabled', 'true');
-                    tblNewExecuteAction.parentElement.setAttribute('disabled', 'true');                    
+                    tblNewExecuteAction.parentElement.setAttribute('disabled', 'true');
                     //tbltrAuditExecuteAction.parentElement.setAttribute('disabled', 'true');
 
                     setDxeButtonsUnableOrEnable(false);
                 }
 
 
-            }           
+            }
 
         }
 
 
 
 
-        
+
 
         function makePolicyJSON() {
             var AuditOrNot = null;
@@ -270,7 +279,7 @@
             var ProcessBase = dxetxtProcessBase.GetValueString();
             var ProcessRate = dxetxtProcessRate.GetValueString();
             var ProdTypeID = dxeddlProdTypeName.GetValue();
-            var Remark = null;            
+            var Remark = null;
             var SalesId = dxeddlSalesId.GetValue();
             var SignDate = null;
             var SourceTypeID = dxeddlSourceTypeID.GetValue();
@@ -421,19 +430,19 @@
 
             if (!isEmpty(AuditOrNot))
                 this.AuditOrNot = AuditOrNot;
-                
+
             if (!isEmpty(Beneficiary))
                 this.Beneficiary = Beneficiary;
-            
+
             if (!isEmpty(CarrierSales))
-                this.CarrierSales = CarrierSales;            
+                this.CarrierSales = CarrierSales;
 
             if (!isEmpty(ConversionRate))
                 this.ConversionRate = ConversionRate;
 
             if (!isEmpty(Coverage))
                 this.Coverage = Coverage;
-            
+
             if (!isEmpty(Currency))
                 this.Currency = Currency;
 
@@ -511,14 +520,14 @@
         }
 
 
-        
+
 
         function dxeStartDate_DateChanged(s, e) {
             //http://www.w3school.com.cn/js/jsref_obj_date.asp
             var thesource = dxeStartDate.GetDate();
             var theYear = thesource.getFullYear();
             var theMonth = thesource.getMonth();
-            var theDate = thesource.getDate()-1;
+            var theDate = thesource.getDate() - 1;
             theYear = theYear + 1;
             theMonth = theMonth + 1;
             var endDateString = theMonth.toString() + "/" + theDate.toString() + "/" + theYear.toString();
@@ -535,7 +544,7 @@
         function btnCloseClick() {
             window.close();
         }
-        
+
         function policyTab_Changing(s, e) {
             //debugger;
             if (e.tab.index == 1 || e.tab.index == 2) {
@@ -620,7 +629,7 @@
             var SourceTypeID = null;
             var Special = null;
             var StartDate = null;
-            
+
             var plc = new Policy(AuditOrNot,
             Beneficiary, CarrierSales, ConversionRate, Coverage,
             Currency, CustomerID, DeptId, EndDate,
@@ -636,7 +645,7 @@
             return jsonStringClient;
 
         }
-        
+
 
         function hlPolicyItemTogetherClick(params) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
@@ -645,28 +654,28 @@
         }
 
         function SelectedProdTypeNameIndexChanged(s, e) {
-            
-//            var result = $("#<%=ptid.ClientID %>");
-//            result[0].value = s.GetValue();
-//            var test = s.GetText();
-//            var sValue = s.GetValue();
-//            
-//            if (test.length > 0) {
-//                var index = test.lastIndexOf("∟");
-//                if (index >= 0) {
-//                    var testTmp = test.substr(index + 1);
-//                    s.SetText(testTmp);
-//                }
-//            }
+
+            //            var result = $("#<%=ptid.ClientID %>");
+            //            result[0].value = s.GetValue();
+            //            var test = s.GetText();
+            //            var sValue = s.GetValue();
+            //            
+            //            if (test.length > 0) {
+            //                var index = test.lastIndexOf("∟");
+            //                if (index >= 0) {
+            //                    var testTmp = test.substr(index + 1);
+            //                    s.SetText(testTmp);
+            //                }
+            //            }
         }
 
         
     </script>
-    
+
     <script type="text/javascript">
-        
+
         function gridPolicyItem_EndCallback(s, e) {
-            dxeGetGridPolicyItemTotalSummary.PerformCallback();            
+            dxeGetGridPolicyItemTotalSummary.PerformCallback();
         }
 
         function dxeGetGridPolicyItemTotalSummaryCallbackComplete(s, e) {
@@ -675,7 +684,7 @@
             var sumCoverageVal = parseFloat(thesplit_array[0]);
             var sumPremiumVal = parseFloat(thesplit_array[1]);
             var sumProcessVal = parseFloat(thesplit_array[2]);
-            
+
             var rtn = sumCoverageVal.toFixed(2);
             dxetxtCoverage.SetValue(rtn);
             rtn = sumPremiumVal.toFixed(2);
@@ -722,12 +731,10 @@
         runat="server" OnCallback="dxeAuditOkCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {auditOkCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
-    
     <dxcb:ASPxCallback ID="dxeGetGridPolicyItemTotalSummary" ClientInstanceName="dxeGetGridPolicyItemTotalSummary"
         runat="server" OnCallback="dxeGetGridPolicyItemTotalSummary_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {dxeGetGridPolicyItemTotalSummaryCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
-    
     <asp:Panel ID="nppagecontent" runat="server">
         <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
             runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%"
@@ -756,12 +763,18 @@
                                         <asp:Panel ID="npbasicdetail" runat="server" CssClass="collapsePanel" Height="0">
                                             <table style="width: 100%">
                                                 <tr style="font-size: 1px; height: 2px;">
-                                                    <td style="width:90px;"></td>
-                                                    <td style="width:180px;"></td>
-                                                    <td style="width:90px;"></td>
-                                                    <td style="width:200px;"></td>
-                                                    <td style="width:90px;"></td>
-                                                    <td style="width:220px;"></td>
+                                                    <td style="width: 90px;">
+                                                    </td>
+                                                    <td style="width: 180px;">
+                                                    </td>
+                                                    <td style="width: 90px;">
+                                                    </td>
+                                                    <td style="width: 200px;">
+                                                    </td>
+                                                    <td style="width: 90px;">
+                                                    </td>
+                                                    <td style="width: 220px;">
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="text-align: right;">
@@ -782,7 +795,7 @@
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td colspan="2">
-                                                        <table style="margin-left:-3px; text-align:left;">
+                                                        <table style="margin-left: -3px; text-align: left;">
                                                             <tr>
                                                                 <td style="text-align: right;">
                                                                     <dxe:ASPxCheckBox runat="server" ID="dxechkTogether" ClientInstanceName="dxechkTogether"
@@ -802,13 +815,13 @@
                                                     <td style="text-align: right;">
                                                         保险险种：
                                                     </td>
-                                                    <td style="text-align: left;">                                                        
+                                                    <td style="text-align: left;">
                                                         <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
                                                             runat="server" Width="160px" DropDownStyle="DropDownList">
                                                             <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-                                                                <RequiredField ErrorText="不能为空" IsRequired="True" />                                                                                                                              
+                                                                <RequiredField ErrorText="不能为空" IsRequired="True" />
                                                             </ValidationSettings>
-                                                            <ClientSideEvents SelectedIndexChanged="function(s, e) {SelectedProdTypeNameIndexChanged(s, e); return false;}" />  
+                                                            <ClientSideEvents SelectedIndexChanged="function(s, e) {SelectedProdTypeNameIndexChanged(s, e); return false;}" />
                                                         </dxe:ASPxComboBox>
                                                         <input type="hidden" id="ptid" runat="server" />
                                                     </td>
@@ -816,7 +829,7 @@
                                                         投保人：
                                                     </td>
                                                     <td style="text-align: left;">
-                                                        <table style="margin-left:-3px; width:175px;">
+                                                        <table style="margin-left: -3px; width: 175px;">
                                                             <tr>
                                                                 <td>
                                                                     <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server"
@@ -825,16 +838,16 @@
                                                                     <input type="hidden" id="cusid" runat="server" />
                                                                 </td>
                                                                 <td>
-                                                                   <img runat="server" id="imgNewCustomer" onclick="imgNewCustomerClick();" alt="" src="../images/add_user_icon.png"
-                                                                    style="width: 20px; height: 20px; vertical-align: top;" />
+                                                                    <img runat="server" id="imgNewCustomer" onclick="imgNewCustomerClick();" alt="" src="../images/add_user_icon.png"
+                                                                        style="width: 20px; height: 20px; vertical-align: top;" />
                                                                 </td>
                                                                 <td>
                                                                     <img runat="server" id="imgSelectCustomer" onclick="imgSelectCustomerClick();" alt=""
                                                                         src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: top;" />
                                                                 </td>
                                                             </tr>
-                                                        </table>                                                        
-                                                    </td>                                                    
+                                                        </table>
+                                                    </td>
                                                     <td style="text-align: right;">
                                                         被保险人：
                                                     </td>
@@ -946,13 +959,12 @@
                                                         缴费次数：
                                                     </td>
                                                     <td style="text-align: left;">
-                                                        <table style="margin-left:-3px;">
+                                                        <table style="margin-left: -3px;">
                                                             <tr>
                                                                 <td style="text-align: left;">
                                                                     <dxe:ASPxTextBox ID="dxetxtStage" ClientInstanceName="dxetxtStage" runat="server"
                                                                         Width="100px">
-                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true"
-                                                                            ValidationGroup="BaseGroup">
+                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true" ValidationGroup="BaseGroup">
                                                                             <RegularExpression ValidationExpression="^\d+(\d+)?" ErrorText="格式不对" />
                                                                             <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                         </ValidationSettings>
@@ -1005,10 +1017,8 @@
                                                     <td>
                                                         <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
                                                             KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False" OnRowInserting="gridPolicyItem_RowInserting"
-                                                            OnRowUpdating="gridPolicyItem_RowUpdating"
-                                                            OnRowDeleting="gridPolicyItem_RowDeleting"
-                                                            OnStartRowEditing="gridPolicyItem_StartRowEditing" 
-                                                            OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
+                                                            OnRowUpdating="gridPolicyItem_RowUpdating" OnRowDeleting="gridPolicyItem_RowDeleting"
+                                                            OnStartRowEditing="gridPolicyItem_StartRowEditing" OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
                                                             OnRowValidating="gridPolicyItem_RowValidating">
                                                             <%-- BeginRegion Columns --%>
                                                             <Columns>
@@ -1064,19 +1074,22 @@
                                                                                         DropDownStyle="DropDownList" Width="120px">
                                                                                         <Items>
                                                                                         </Items>
-                                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" >
+                                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
                                                                                             <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                                         </ValidationSettings>
                                                                                         <ClientSideEvents />
                                                                                     </dxe:ASPxComboBox>
                                                                                 </td>
-                                                                                <td style="white-space: nowrap; text-align: right;"></td>
-                                                                                <td style="text-align: left;"></td>
-                                                                                <td></td>
-                                                                                <td></td>
+                                                                                <td style="white-space: nowrap; text-align: right;">
+                                                                                </td>
+                                                                                <td style="text-align: left;">
+                                                                                </td>
+                                                                                <td>
+                                                                                </td>
+                                                                                <td>
+                                                                                </td>
                                                                             </tr>
                                                                             <tr>
-                                                                            
                                                                             </tr>
                                                                             <tr>
                                                                                 <td style="white-space: nowrap; text-align: right;">
@@ -1136,8 +1149,10 @@
                                                                                         </ValidationSettings>
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
-                                                                                <td></td>
-                                                                                <td></td>
+                                                                                <td>
+                                                                                </td>
+                                                                                <td>
+                                                                                </td>
                                                                             </tr>
                                                                         </table>
                                                                     </div>
@@ -1183,17 +1198,17 @@
                                         <asp:Panel ID="npCostSummaryDetail" runat="server" CssClass="collapsePanel" Height="0">
                                             <table style="width: 100%">
                                                 <tr style="font-size: 1px; height: 2px;">
-                                                    <td style="width:80px;">
+                                                    <td style="width: 80px;">
                                                     </td>
-                                                    <td style="width:140px;">
+                                                    <td style="width: 140px;">
                                                     </td>
-                                                    <td style="width:80px;">
+                                                    <td style="width: 80px;">
                                                     </td>
-                                                    <td style="width:140px;">
+                                                    <td style="width: 140px;">
                                                     </td>
-                                                    <td style="width:80px;">
+                                                    <td style="width: 80px;">
                                                     </td>
-                                                    <td style="width:140px;">
+                                                    <td style="width: 140px;">
                                                     </td>
                                                     <td>
                                                     </td>
@@ -1316,10 +1331,8 @@
                                                     <td>
                                                         <dxwgv:ASPxGridView ID="gridCarrier" ClientInstanceName="gridCarrier" runat="server"
                                                             KeyFieldName="PolicyCarrierID" Width="100%" AutoGenerateColumns="False" OnStartRowEditing="gridCarrier_StartRowEditing"
-                                                            OnRowInserting="gridCarrier_RowInserting" 
-                                                            OnRowUpdating="gridCarrier_RowUpdating"
-                                                            OnRowDeleting="gridCarrier_RowDeleting" 
-                                                            OnHtmlEditFormCreated="gridCarrier_HtmlEditFormCreated" 
+                                                            OnRowInserting="gridCarrier_RowInserting" OnRowUpdating="gridCarrier_RowUpdating"
+                                                            OnRowDeleting="gridCarrier_RowDeleting" OnHtmlEditFormCreated="gridCarrier_HtmlEditFormCreated"
                                                             OnRowValidating="gridCarrier_RowValidating">
                                                             <%-- BeginRegion Columns --%>
                                                             <Columns>
@@ -1393,7 +1406,7 @@
                                                                                         Width="120px" OnCallback="dxecbGridCarrierBranchIDCallback">
                                                                                         <Items>
                                                                                         </Items>
-                                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" >
+                                                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
                                                                                             <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                                         </ValidationSettings>
                                                                                         <ClientSideEvents SelectedIndexChanged="" />
@@ -1575,12 +1588,9 @@
                                     <td runat="server" id="tblcellgridPeriod">
                                         <dxwgv:ASPxGridView ID="gridPeriod" ClientInstanceName="gridPeriod" runat="server"
                                             KeyFieldName="PolPeriodId" Width="100%" OnStartRowEditing="gridPeriod_StartRowEditing"
-                                            OnRowInserting="gridPeriod_RowInserting" 
-                                            OnRowUpdating="gridPeriod_RowUpdating"
-                                            OnRowDeleting="gridPeriod_RowDeleting"
-                                            OnHtmlEditFormCreated="gridPeriod_HtmlEditFormCreated"
-                                            OnCustomCallback="gridPeriod_CustomCallback" 
-                                            OnRowValidating="gridPeriod_RowValidating">
+                                            OnRowInserting="gridPeriod_RowInserting" OnRowUpdating="gridPeriod_RowUpdating"
+                                            OnRowDeleting="gridPeriod_RowDeleting" OnHtmlEditFormCreated="gridPeriod_HtmlEditFormCreated"
+                                            OnCustomCallback="gridPeriod_CustomCallback" OnRowValidating="gridPeriod_RowValidating">
                                             <%-- BeginRegion Columns --%>
                                             <Columns>
                                                 <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="false">
@@ -1774,6 +1784,146 @@
                                     </td>
                                     <td>
                                         &nbsp;
+                                    </td>
+                                </tr>
+                            </table>
+                        </dxw:ContentControl>
+                    </ContentCollection>
+                </dxtc:TabPage>
+                <dxtc:TabPage Text="结算信息">
+                    <ContentCollection>
+                        <dxw:ContentControl ID="ContentControl3" runat="server">
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="width: 25%; text-align: right;">
+                                    </td>
+                                    <td style="width: 25%; text-align: left;">
+                                    </td>
+                                    <td style="width: 25%; text-align: right;">
+                                    </td>
+                                    <td style="width: 25%; text-align: left;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        已收保费：
+                                    </td>
+                                    <td>
+                                        <dxe:ASPxTextBox ID="dxetxtPayedFee" ClientInstanceName="dxetxtPayedFee" runat="server"
+                                            Width="200px">
+                                        </dxe:ASPxTextBox>
+                                    </td>
+                                    <td>
+                                        未收保费：
+                                    </td>
+                                    <td>
+                                        <dxe:ASPxTextBox ID="dextxtNeededPayFee" ClientInstanceName="dextxtNeededPayFee" runat="server"
+                                            Width="200px">
+                                        </dxe:ASPxTextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        已解付保费：
+                                    </td>
+                                    <td>
+                                        <dxe:ASPxTextBox ID="dxetxtPayinedFee" ClientInstanceName="dxetxtPayinedFee" runat="server"
+                                            Width="200px">
+                                        </dxe:ASPxTextBox>
+                                    </td>
+                                    <td>
+                                        未解付保费：
+                                    </td>
+                                    <td>
+                                        <dxe:ASPxTextBox ID="dxetxtNeededPayinFee" ClientInstanceName="dxetxtNeededPayinFee"
+                                            runat="server" Width="200px">
+                                        </dxe:ASPxTextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        已收经纪费：
+                                    </td>
+                                    <td>
+                                        <dxe:ASPxTextBox ID="dxetxtPayedProc" ClientInstanceName="dxetxtPayedProc" runat="server"
+                                            Width="200px">
+                                        </dxe:ASPxTextBox>
+                                    </td>
+                                    <td>
+                                        未收经纪费：
+                                    </td>
+                                    <td>
+                                        <dxe:ASPxTextBox ID="dxetxtNeededPayProc" ClientInstanceName="dxetxtNeededPayProc"
+                                            runat="server" Width="200px">
+                                        </dxe:ASPxTextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <table style="width: 100%">
+                                            <tr>
+                                                <td>
+                                                    <dxwgv:ASPxGridView ID="gridInOutBalance" ClientInstanceName="gridInOutBalance" runat="server"
+                                                        KeyFieldName="FeeId" AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%"
+                                                        SettingsPager-AlwaysShowPager="true">
+                                                        <%-- BeginRegion Columns --%>
+                                                        <Columns>
+                                                            <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
+                                                                <NewButton Visible="False" />
+                                                                <EditButton Visible="False" />
+                                                                <DeleteButton Visible="False" />
+                                                                <CustomButtons>
+                                                                    <dxwgv:GridViewCommandColumnCustomButton Text="查看">
+                                                                    </dxwgv:GridViewCommandColumnCustomButton>
+                                                                </CustomButtons>
+                                                                <CellStyle Wrap="False">
+                                                                </CellStyle>
+                                                            </dxwgv:GridViewCommandColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False"
+                                                                Visible="false">
+                                                                <CellStyle Wrap="False">
+                                                                </CellStyle>
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="单据流水号" CellStyle-Wrap="False">
+                                                                <CellStyle Wrap="False">
+                                                                </CellStyle>
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="Fee" Caption="金额" CellStyle-Wrap="False">
+                                                                <CellStyle Wrap="False">
+                                                                </CellStyle>
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="FeeDate" Caption="收费日期" CellStyle-Wrap="False">
+                                                                <CellStyle Wrap="False">
+                                                                </CellStyle>
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="AccounttypeName" Caption="收付类别" CellStyle-Wrap="False">
+                                                                <CellStyle Wrap="False">
+                                                                </CellStyle>
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="Createperson" Caption="收费人" CellStyle-Wrap="False">
+                                                                <CellStyle Wrap="False">
+                                                                </CellStyle>
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="AuditStatusName" Caption="状态" CellStyle-Wrap="False">
+                                                                <CellStyle Wrap="False">
+                                                                </CellStyle>
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="ProcessFeeTypeName" Caption="经纪费收取方式" CellStyle-Wrap="False">
+                                                                <CellStyle Wrap="False">
+                                                                </CellStyle>
+                                                            </dxwgv:GridViewDataColumn>
+                                                        </Columns>
+                                                        <%-- EndRegion --%>
+                                                        <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" />
+                                                        <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways"
+                                                            ShowGroupedColumns="true" ShowFilterRow="false" />
+                                                        <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
+                                                        <SettingsText CustomizationWindowCaption="个性化" />
+                                                        <ClientSideEvents CustomButtonClick="function(s, e) {gridInOutBalanceCustomButtonClick(s,e);return false;}" />
+                                                    </dxwgv:ASPxGridView>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                             </table>
