@@ -122,31 +122,13 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesId;
         
         /// <summary>
-        /// dxetxtProdTypeID control.
+        /// dxeddlProdTypeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProdTypeID;
-        
-        /// <summary>
-        /// ptid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden ptid;
-        
-        /// <summary>
-        /// imgpeoplesearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlProdTypeName;
         
         /// <summary>
         /// dxeddlCarrierId control.
@@ -185,13 +167,13 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSourceTypeID;
         
         /// <summary>
-        /// dxeddlFlagReinsure control.
+        /// dxeddlOperationType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlFlagReinsure;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlOperationType;
         
         /// <summary>
         /// dxeddlCheckState control.
@@ -203,22 +185,22 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCheckState;
         
         /// <summary>
-        /// deStartDate control.
+        /// dxeStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deStartDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeStartDate;
         
         /// <summary>
-        /// deEndDate control.
+        /// dxeEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deEndDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeEndDate;
         
         /// <summary>
         /// btnSearch control.
@@ -302,13 +284,13 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridExport;
         
         /// <summary>
-        /// DataSource control.
+        /// gd_DataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource DataSource;
+        protected global::System.Web.UI.WebControls.ObjectDataSource gd_DataSource;
         
         /// <summary>
         /// cpeSearchResult control.
