@@ -26,6 +26,7 @@ namespace BrokerWebApp.CustomerRelation
         private string _custID;
         private string toadd = string.Empty;
         private const string UploadDirectory = "~/UploadFiles/CustomerUploadFiles/";
+        private const string UploadFollowDirectory = "~/UploadFiles/CustomerFollowUploadFiles/";
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -65,7 +66,7 @@ namespace BrokerWebApp.CustomerRelation
                 this.customerDetailTabPage.TabPages[4].Enabled = false;
                 this.customerDetailTabPage.TabPages[5].Enabled = false;
                 //客户编号
-                this.dxetxtCustID.Text = TranUtils.GetCustomerID();
+                //this.dxetxtCustID.Text = TranUtils.GetCustomerID();
                 //所在地区
                 this.SetddlArea("");
                 //客户分类
@@ -91,9 +92,17 @@ namespace BrokerWebApp.CustomerRelation
 
                 #region 客户资料
                 if (customer.CustTypeID == 1)
+                {
                     this.radPerson.Checked = true;
+                    this.radUnit.Checked = false;
+                    this.lblCustType.Text = "身份证号码：";
+                }
                 else
+                {
+                    this.radPerson.Checked = true;
                     this.radUnit.Checked = true;
+                    this.lblCustType.Text = "组织机构号：";
+                }
                 this.dxetxtCustID.Text = customer.CustID;
                 this.SetddlArea(customer.Area);
                 this.dxetxtCustName.Text = customer.CustName;
@@ -128,6 +137,7 @@ namespace BrokerWebApp.CustomerRelation
                 #region 销售跟进
                 this.gridCustomerPtItem.DataSource = BO_CustomerPtFollow.GetCustPtFollowByCustID(this._custID);
                 this.gridCustomerPtItem.DataBind();
+                this.rebindGridPtFollowDocList();
                 #endregion
 
                 #region 理赔记录
@@ -252,14 +262,14 @@ namespace BrokerWebApp.CustomerRelation
                 if (String.IsNullOrEmpty(this._custID))
                 {//新增客户
                     this.lblerrmsg.Visible = false;
-                    if (BO_Customer.IfExistsCustID(this.dxetxtCustID.Text.Trim()))
-                    {
-                        this.lblerrmsg.InnerText = "该客户编号已存在。";
-                        this.lblerrmsg.Visible = true;
-                        return;
-                    }
+                    //if (BO_Customer.IfExistsCustID(this.dxetxtCustID.Text.Trim()))
+                    //{
+                    //    this.lblerrmsg.InnerText = "该客户编号已存在。";
+                    //    this.lblerrmsg.Visible = true;
+                    //    return;
+                    //}
                     BO_Customer customer = new BO_Customer();
-                    customer.CustID = this.dxetxtCustID.Text.Trim();
+                    customer.CustID = TranUtils.GetCustomerID();
                     customer.CustName = this.dxetxtCustName.Text.Trim();
                     customer.TradeTypeID = this.dxeddlTradeType.SelectedItem.Value.ToString();
                     customer.Area = this.dxeddlArea.SelectedItem.Value.ToString();
@@ -432,15 +442,15 @@ namespace BrokerWebApp.CustomerRelation
         protected void gridContactItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             HtmlTable tblEditorTemplate = this.gridContactItem.FindEditFormTemplateControl("tblgridContactItemEditorTemplate") as HtmlTable;
-            string contactID = (tblEditorTemplate.FindControl("dxetxtContactID") as ASPxTextBox).Text.Trim();
-            if (contactID.Length <= 0)
-                throw new Exception("联系人编号不能为空。");
+            //string contactID = (tblEditorTemplate.FindControl("dxetxtContactID") as ASPxTextBox).Text.Trim();
+            //if (contactID.Length <= 0)
+            //    throw new Exception("联系人编号不能为空。");
 
-            if (BO_CustContact.IfExistsContactID(contactID))
-                throw new Exception("联系人编号已经存在。");
+            //if (BO_CustContact.IfExistsContactID(contactID))
+            //    throw new Exception("联系人编号已经存在。");
 
             BO_CustContact custContact = new BO_CustContact();
-            custContact.ContactID = contactID;
+            custContact.ContactID = TranUtils.GetContactID();
             custContact.ContactName = (tblEditorTemplate.FindControl("dxetxtContactName") as ASPxTextBox).Text.Trim();
             custContact.CustID = this._custID;
             custContact.Position = (tblEditorTemplate.FindControl("dxetxtPosition") as ASPxTextBox).Text.Trim();
@@ -520,15 +530,15 @@ namespace BrokerWebApp.CustomerRelation
         protected void gridCustomerPtItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             HtmlTable tblEditorTemplate = this.gridCustomerPtItem.FindEditFormTemplateControl("tblgridPtFollowItemEditorTemplate") as HtmlTable;
-            string followID = (tblEditorTemplate.FindControl("dxetxtFollowID") as ASPxTextBox).Text.Trim();
-            if (followID.Length <= 0)
-                throw new Exception("销售跟进编号不能为空。");
+            //string followID = (tblEditorTemplate.FindControl("dxetxtFollowID") as ASPxTextBox).Text.Trim();
+            //if (followID.Length <= 0)
+            //    throw new Exception("销售跟进编号不能为空。");
 
-            if (BO_CustomerPtFollow.IfExistsFollowID(followID))
-                throw new Exception("销售跟进编号已经存在。");
+            //if (BO_CustomerPtFollow.IfExistsFollowID(followID))
+            //    throw new Exception("销售跟进编号已经存在。");
 
             BO_CustomerPtFollow customerPtFollow = new BO_CustomerPtFollow();
-            customerPtFollow.FollowID = followID;
+            customerPtFollow.FollowID = TranUtils.GetFollowID();
             customerPtFollow.CustID = this._custID;
             customerPtFollow.FollowType = (tblEditorTemplate.FindControl("dxeddlFollowType") as ASPxComboBox).SelectedItem.Value.ToString();
             customerPtFollow.FollowStage = (tblEditorTemplate.FindControl("dxeddlFollowStage") as ASPxComboBox).SelectedItem.Value.ToString();
@@ -566,17 +576,74 @@ namespace BrokerWebApp.CustomerRelation
             //
         }
 
-        protected void UploadControl_CustomerPTUploadComplete(object sender, FileUploadCompleteEventArgs e)
+        protected void UploadControl_CustomerPTUploadControl(object sender, FileUploadCompleteEventArgs e)
         {
-            //try
-            //{
-            //    e.CallbackData = SavePostedFiles(e.UploadedFile);
-            //}
-            //catch (Exception ex)
-            //{
-            //    e.IsValid = false;
-            //    e.ErrorText = ex.Message;
-            //}
+            try
+            {
+                e.CallbackData = SaveCustomerPTFiles(e.UploadedFile);
+            }
+            catch (Exception ex)
+            {
+                e.IsValid = false;
+                e.ErrorText = ex.Message;
+            }
+        }
+
+        protected string SaveCustomerPTFiles(UploadedFile uploadedFile)
+        {
+            string ret = "";
+            string folder = this._custID;
+            string folderPath;
+            if (uploadedFile.IsValid)
+            {
+                DirectoryInfo drtInfo = new DirectoryInfo(MapPath(UploadFollowDirectory));
+                if (drtInfo.Exists)
+                {
+                    folderPath = System.IO.Path.Combine(MapPath(UploadFollowDirectory), folder);
+                    drtInfo = new DirectoryInfo(folder);
+                    FileInfo fileInfo;
+                    if (drtInfo.Exists)
+                    {
+                        fileInfo = new FileInfo(uploadedFile.FileName);
+                        string resFileName = System.IO.Path.Combine(folderPath, fileInfo.Name);
+                        uploadedFile.SaveAs(resFileName);
+
+                        //string fileLabel = fileInfo.Name;
+                        //string fileType = uploadedFile.PostedFile.ContentType.ToString();
+                        //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
+                        //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
+                    }
+                    else
+                    {
+                        //create folder
+                        drtInfo = System.IO.Directory.CreateDirectory(folderPath);
+                        fileInfo = new FileInfo(uploadedFile.FileName);
+                        string resFileName = System.IO.Path.Combine(folderPath, fileInfo.Name);
+                        uploadedFile.SaveAs(resFileName);
+                    }
+
+                    //BO_CustomerDoc
+                    BusinessObjects.CustomerRelation.BO_CustomerPtFollowDoc.Delete(this._custID, fileInfo.Name); //?//
+                    BusinessObjects.CustomerRelation.BO_CustomerPtFollowDoc pdoc = new BusinessObjects.CustomerRelation.BO_CustomerPtFollowDoc();
+                    pdoc.CustomerPtFollowDocID = Guid.NewGuid().ToString();
+                    pdoc.FollowID = this._custID; //?//
+                    pdoc.FollowDocName = fileInfo.Name;
+                    pdoc.FollowDocUrl = UploadFollowDirectory.Replace("~", "") + folder + "/" + fileInfo.Name;
+                    pdoc.Save(ModifiedAction.Insert);
+                }
+            }
+            return ret;
+        }
+
+        protected void gridPtFollowDocList_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            rebindGridPtFollowDocList();
+        }
+
+        private void rebindGridPtFollowDocList()
+        {
+            this.gridPtFollowDocList.DataSource = BusinessObjects.CustomerRelation.BO_CustomerPtFollowDoc.FetchListByFollowID(this._custID);//?//
+            this.gridPtFollowDocList.DataBind();
         }
         #endregion
 

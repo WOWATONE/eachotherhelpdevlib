@@ -31,17 +31,15 @@
             };
         });
         
-        function radCustTypeClick(CustType)
-        {
+        function radCustTypeClick(CustType) {
+            var lblCustType = $("#<%=lblCustType.ClientID %>");
             if(CustType == "1")
             {
-                document.getElementById("spanPerson").style.display = "block";
-                document.getElementById("spanUnit").style.display = "none";
+                lblCustType[0].innerHTML = "身份证号码：";
             }
             else if(CustType == "0")
             {
-                document.getElementById("spanPerson").style.display = "none";
-                document.getElementById("spanUnit").style.display = "block";
+                lblCustType[0].innerHTML = "组织机构号：";
             }
         }
 
@@ -63,14 +61,61 @@
         }
 
         function AddInfoFileUploadStart(s, e) {
-            //var refplcid = dxetxtPolicyID.GetValueString();
-            //filesUploadControl;            
+            //
+        }
+
+        function CustomerPtFileUploaded(s, e) {
+            gridPtFollowDocList.PerformCallback();
+        }
+
+        function CustomerPtUploadStart(s, e) {
+            //
         }
 
         function hlPolicyItemTogetherClick(params) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
             var url = params;
             window.open(url);
+        }
+
+        function btnValidate(s, e) {
+            var idno = dxetxtIDNO.GetText();
+            if (idno.length == 0)
+                return;
+            
+            var radPerson = $("#<%=radPerson.ClientID %>");
+            if (radPerson[0].checked) {
+                if (!isIdCardNo(idno)) {
+                    alert("身份证号码错误!");
+                    e.processOnServer = false;
+                    return false;
+                }
+            }
+            else {
+                if (idno.length < 5) {
+                    alert("组织机构号码长度不能低于5位!");
+                    e.processOnServer = false;
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function isIdCardNo(sId) {
+            var aCity = { 11: "北京", 12: "天津", 13: "河北", 14: "山西", 15: "内蒙古", 21: "辽宁", 22: "吉林", 23: "黑龙江", 31: "上海", 32: "江苏", 33: "浙江", 34: "安徽", 35: "福建", 36: "江西", 37: "山东", 41: "河南", 42: "湖北", 43: "湖南", 44: "广东", 45: "广西", 46: "海南", 50: "重庆", 51: "四川", 52: "贵州", 53: "云南", 54: "西藏", 61: "陕西", 62: "甘肃", 63: "青海", 64: "宁夏", 65: "新疆", 71: "台湾", 81: "香港", 82: "澳门", 91: "国外" };
+            var iSum = 0;
+            if (!/^\d{17}(\d|x)$/i.test(sId)) return false;
+            sId = sId.replace(/x$/i, "a");
+            if (aCity[parseInt(sId.substr(0, 2))] == null) return false;  //"Error:非法地区"
+            var sBirthday = sId.substr(6, 4) + "-" + Number(sId.substr(10, 2)) + "-" + Number(sId.substr(12, 2));
+            var d = new Date(sBirthday.replace(/-/g, "/"));
+            if (sBirthday != (d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate())) return false; //"Error:非法生日"
+            for (var i = 17; i >= 0; i--)
+                iSum += (Math.pow(2, i) % 11) * parseInt(sId.charAt(17 - i), 11);
+            if (iSum % 11 != 1) return false;
+
+            return true;
         }
 
         function btnCloseClick() {
@@ -109,8 +154,8 @@
                                 </td>
                                 <td style="text-align: left;">
                                     <dxe:ASPxTextBox ID="dxetxtCustID" ClientInstanceName="dxetxtCustID" runat="server" Width="160px" Enabled="false">
-                                        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-										    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true" ValidationGroup="BaseGroup">
+                                            <RequiredField IsRequired="true" ErrorText="必需项" />
                                         </ValidationSettings>
                                     </dxe:ASPxTextBox>
                                 </td>
@@ -119,8 +164,8 @@
                                 </td>
                                 <td style="text-align: left;">
                                     <dxe:ASPxComboBox ID="dxeddlArea" ClientInstanceName="dxeddlArea" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-										    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true" ValidationGroup="BaseGroup">
+                                            <RequiredField IsRequired="true" ErrorText="必需项" />
                                         </ValidationSettings>
                                     </dxe:ASPxComboBox>
                                 </td>
@@ -131,8 +176,8 @@
                                 </td>
                                 <td style="text-align: left;">
                                     <dxe:ASPxTextBox ID="dxetxtCustName" ClientInstanceName="dxetxtCustName" runat="server" Width="160px">
-                                        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-										    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true" ValidationGroup="BaseGroup">
+                                            <RequiredField IsRequired="true" ErrorText="必需项" />
                                         </ValidationSettings>
                                     </dxe:ASPxTextBox>
                                 </td>
@@ -149,8 +194,8 @@
                                 </td>
                                 <td style="text-align: left;">
                                     <dxe:ASPxComboBox ID="dxeddlCustClassify" ClientInstanceName="dxeddlCustClassify" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-										    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true" ValidationGroup="BaseGroup">
+                                            <RequiredField IsRequired="true" ErrorText="必需项" />
                                         </ValidationSettings>
                                         <ClientSideEvents SelectedIndexChanged="function(s, e) { SelectedIndexChanged(s, e); return false;}" />
                                     </dxe:ASPxComboBox>
@@ -160,7 +205,7 @@
                                     邮政编码：
                                 </td>
                                 <td style="text-align: left;">
-                                    <dxe:ASPxTextBox ID="dxetxtPostCode" ClientInstanceName="dxetxtPostCode" runat="server" Width="160px"></dxe:ASPxTextBox>
+                                    <dxe:ASPxTextBox ID="dxetxtPostCode" ClientInstanceName="dxetxtPostCode" runat="server" Width="160px" MaxLength=6></dxe:ASPxTextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -169,18 +214,18 @@
                                 </td>
                                 <td style="text-align: left;">
                                     <dxe:ASPxComboBox ID="dxeddlTradeType" ClientInstanceName="dxeddlTradeType" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-										    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true" ValidationGroup="BaseGroup">
+                                            <RequiredField IsRequired="true" ErrorText="必需项" />
                                         </ValidationSettings>
                                     </dxe:ASPxComboBox>
                                 </td>
                                 <td style="text-align: right;">
-                                    <span id="spanPerson" style="display:block;">身份证号码：</span><span id="spanUnit" style="display:none;">组织机构号：</span>
+                                    <asp:Label ID="lblCustType" runat="server" Text="身份证号码："></asp:Label>
                                 </td>
                                 <td style="text-align: left;">
                                     <dxe:ASPxTextBox ID="dxetxtIDNO" ClientInstanceName="dxetxtIDNO" runat="server" Width="160px">
-                                        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-										    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true" ValidationGroup="BaseGroup">
+                                            <RequiredField IsRequired="true" ErrorText="必需项" />
                                         </ValidationSettings>
                                     </dxe:ASPxTextBox>
                                 </td>
@@ -211,8 +256,8 @@
                                 </td>
                                 <td style="text-align: left;">
                                     <dxe:ASPxComboBox ID="dxeddlDepartment" ClientInstanceName="dxeddlDepartment" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-										    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true" ValidationGroup="BaseGroup">
+                                            <RequiredField IsRequired="true" ErrorText="必需项" />
                                         </ValidationSettings>
                                     </dxe:ASPxComboBox>
                                 </td>
@@ -229,8 +274,8 @@
                                 </td>
                                 <td style="text-align: left;">
                                     <dxe:ASPxComboBox ID="dxeddlSalesID" ClientInstanceName="dxeddlSalesID" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-										    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true" ValidationGroup="BaseGroup">
+                                            <RequiredField IsRequired="true" ErrorText="必需项" />
                                         </ValidationSettings>
                                     </dxe:ASPxComboBox>
                                 </td>
@@ -428,7 +473,7 @@
                                                                 联系人编号：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxTextBox ID="dxetxtContactID" ClientInstanceName="dxetxtContactID" runat="server" Text='<%# Eval("ContactID") %>'></dxe:ASPxTextBox>
+                                                                <dxe:ASPxTextBox ID="dxetxtContactID" ClientInstanceName="dxetxtContactID" runat="server" Text='<%# Eval("ContactID") %>' Enabled="false"></dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 姓名：
@@ -572,7 +617,7 @@
                                                                 跟进编号：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxTextBox ID="dxetxtFollowID" ClientInstanceName="dxetxtFollowID" runat="server" Text='<%# Eval("FollowID") %>'></dxe:ASPxTextBox>
+                                                                <dxe:ASPxTextBox ID="dxetxtFollowID" ClientInstanceName="dxetxtFollowID" runat="server" Text='<%# Eval("FollowID") %>' Enabled="false"></dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 跟进类型：
@@ -647,21 +692,22 @@
                                     </dxwgv:ASPxGridView>
                                 </td>
                             </tr>
-                            <tr style="display:none;">
+                            <tr>
                                 <td>
                                     附件：
                                 </td>
                             </tr>
-                            <tr style="display:none;">
+                            <tr>
                                 <td>
-                                    <dxuc:ASPxUploadControl ID="CustomerPTUploadControl" runat="server" ShowAddRemoveButtons="True"
-                                        Width="400px" ShowUploadButton="True" AddUploadButtonsHorizontalPosition="Center"
-                                        ShowProgressPanel="True" ClientInstanceName="UploadControl" OnFileUploadComplete="UploadControl_CustomerPTUploadComplete"
-                                        FileInputCount="1" RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10">
-                                        <ValidationSettings MaxFileSize="4000000" AllowedContentTypes="*">
+                                    <dxuc:ASPxUploadControl ID="CustomerPTUploadControl"  ClientInstanceName="CustomerPTUploadControl" 
+                                        runat="server" ShowAddRemoveButtons="True" Width="400px" ShowUploadButton="True" 
+                                        AddUploadButtonsHorizontalPosition="Center"  ShowProgressPanel="True" FileInputCount="3" 
+                                        RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad" 
+                                        OnFileUploadComplete="UploadControl_CustomerPTUploadControl" >
+                                        <ValidationSettings MaxFileSize="4000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
+                                                MaxFileSizeErrorText="文件太大" NotAllowedContentTypeErrorText="不允许上传此类型文件">
                                         </ValidationSettings>
-                                        <ClientSideEvents FileUploadComplete="function(s, e) { CustomerPTUploaded(s, e) }"
-                                            FileUploadStart="function(s, e) { CustomerPTUploadStart(); }" />
+                                        <ClientSideEvents FilesUploadComplete="function(s, e) { CustomerPtFileUploaded(s, e) }" FileUploadStart="function(s, e) { AddInfoFileUploadStart(s, e); }" />
                                         <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
                                             ImagePosition="Left">
                                             <Image Height="25px" Width="25px" Url="../images/file_remove.gif"></Image>
@@ -676,6 +722,29 @@
                                         </UploadButton>
                                     </dxuc:ASPxUploadControl>
                                 </td>
+                            </tr>
+                            <tr>
+                                <dxwgv:ASPxGridView ID="gridPtFollowDocList" ClientInstanceName="gridPtFollowDocList" runat="server" SettingsBehavior-AllowSort="false"
+                                        KeyFieldName="CustomerPtFollowDocID" Width="80%" AutoGenerateColumns="False" OnCustomCallback="gridPtFollowDocList_CustomCallback">
+                                        <%-- BeginRegion Columns --%>
+                                        <Columns>
+                                            <dxwgv:GridViewDataColumn FieldName="FollowDocName" Caption="文件名" CellStyle-Wrap="False"
+                                                Width="25" Settings-AllowDragDrop="false">
+                                                <DataItemTemplate>
+                                                    <a id="fileurl <%# Eval("CustomerPtFollowDocID") %>" onclick="hlPolicyItemTogetherClick('<%# Eval("FollowDocUrl") %>');"
+                                                        href="#">
+                                                        <%# Eval("FollowDocName")%></a>
+                                                </DataItemTemplate>
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="FollowDocUrl" Caption="链接地址" CellStyle-Wrap="False">
+                                            </dxwgv:GridViewDataColumn>
+                                        </Columns>
+                                        <%-- EndRegion --%>
+                                        <SettingsPager Mode="ShowAllRecords" />
+                                        <Settings ShowGroupPanel="false" />
+                                        <ClientSideEvents CustomButtonClick="" />
+                                        <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                    </dxwgv:ASPxGridView>
                             </tr>
                         </table>
                     </dxw:ContentControl>
@@ -777,7 +846,8 @@
                 </td>
                 <td style="width:50px; text-align:left;">
                     <dxe:ASPxButton runat="server" id="dxebtnBottomSave" Text="保存" 
-                        CausesValidation="true" AutoPostBack="false" onclick="dxebtnBottomSave_Click">
+                        CausesValidation="true" AutoPostBack="false" ValidationGroup="BaseGroup" onclick="dxebtnBottomSave_Click">
+                        <ClientSideEvents Click="function(s, e) {btnValidate(s, e);}" />
                     </dxe:ASPxButton> 
                 </td>
                 <td style="width:50px; text-align:left;">
