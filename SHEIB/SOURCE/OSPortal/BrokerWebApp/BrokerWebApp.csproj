@@ -1203,6 +1203,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="UploadFiles\CarPolicyUploadFiles\" />
+    <Folder Include="UploadFiles\CustomerFollowUploadFiles\" />
     <Folder Include="UploadFiles\CustomerUploadFiles\" />
     <Folder Include="UploadFiles\PolicyUploadFiles\" />
   </ItemGroup>
