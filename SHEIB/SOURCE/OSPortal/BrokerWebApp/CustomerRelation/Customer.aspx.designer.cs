@@ -140,6 +140,15 @@ namespace BrokerWebApp.CustomerRelation {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlTradeType;
         
         /// <summary>
+        /// lblCustType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCustType;
+        
+        /// <summary>
         /// dxetxtIDNO 控件。
         /// </summary>
         /// <remarks>
@@ -327,6 +336,15 @@ namespace BrokerWebApp.CustomerRelation {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxUploadControl.ASPxUploadControl CustomerPTUploadControl;
+        
+        /// <summary>
+        /// gridPtFollowDocList 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridPtFollowDocList;
         
         /// <summary>
         /// ContentControl5 控件。
