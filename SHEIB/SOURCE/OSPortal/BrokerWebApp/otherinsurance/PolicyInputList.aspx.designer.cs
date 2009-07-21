@@ -131,15 +131,6 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlProdTypeName;
         
         /// <summary>
-        /// ptid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden ptid;
-        
-        /// <summary>
         /// dxeddlCarrierId control.
         /// </summary>
         /// <remarks>

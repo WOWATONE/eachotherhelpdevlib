@@ -52,27 +52,7 @@
             }
         }
 
-        function imgPolicyProdTypeClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=700px;dialogHeight=500px;center=yes;help=no";
-            var retrunval = window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
-            if (isEmpty(retrunval)) {
-                //do nothing;
-            }
-            else {
-                //split the return value;
-                var thesplit_array = retrunval.split(";");
-                dxetxtProdTypeID.SetValue(thesplit_array[1]);
-                setProductTypeID(thesplit_array[0]);
-
-                var result = $("#<%=ptid.ClientID %>");
-            }
-            
-        }
-
-        function setProductTypeID(thevalue) {
-            var result = $("#<%=ptid.ClientID %>");
-            result[0].value = thevalue;
-        }
+        
 
         function isEmpty(testVar) {
             if ((testVar == null) || (testVar.length == 0)) {
@@ -196,8 +176,7 @@
                                         <td style="text-align: left;">
                                             <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
                                                 runat="server" Width="160px" DropDownStyle="DropDownList">
-                                            </dxe:ASPxComboBox>
-                                            <input type="hidden" id="ptid" runat="server" />
+                                            </dxe:ASPxComboBox>                                            
                                         </td>
                                         <td style="text-align: left;">
                                         </td>
