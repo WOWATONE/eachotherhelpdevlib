@@ -95,17 +95,7 @@
             var result = $("#<%=cusid.ClientID %>");
             result[0].value = thevalue;
         }
-
-        //function getProductTypeID() {
-        //    var result = $("#<%=ptid.ClientID %>");
-        //    var ID = result[0].value;
-        //    //var ID = dxeddlProdTypeName.GetValue();
-        //    return ID;
-        //}
-        //function setProductTypeID(thevalue) {
-        //    var result = $("#<%=ptid.ClientID %>");
-        //    result[0].value = thevalue;
-        //}
+        
 
         function getPageContentPanel() {
             var result = $("#<%=nppagecontent.ClientID %>");
@@ -654,9 +644,6 @@
         }
 
         function SelectedProdTypeNameIndexChanged(s, e) {
-
-            //            var result = $("#<%=ptid.ClientID %>");
-            //            result[0].value = s.GetValue();
             //            var test = s.GetText();
             //            var sValue = s.GetValue();
             //            
@@ -822,8 +809,7 @@
                                                                 <RequiredField ErrorText="不能为空" IsRequired="True" />
                                                             </ValidationSettings>
                                                             <ClientSideEvents SelectedIndexChanged="function(s, e) {SelectedProdTypeNameIndexChanged(s, e); return false;}" />
-                                                        </dxe:ASPxComboBox>
-                                                        <input type="hidden" id="ptid" runat="server" />
+                                                        </dxe:ASPxComboBox>                                                        
                                                     </td>
                                                     <td style="text-align: right;">
                                                         投保人：
