@@ -332,6 +332,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounting\BrokerAccounting.aspx.cs">
+      <DependentUpon>BrokerAccounting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Accounting\BrokerAccounting.aspx.designer.cs">
+      <DependentUpon>BrokerAccounting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BaseClass\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -1060,6 +1067,7 @@
     <Content Include="SiteMastePages\PopupUploadMaster.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Accounting\BrokerAccounting.aspx" />
     <Content Include="App_Themes\Aqua\ASPxTreeList.skin" />
     <Content Include="BudgetManagement\SignPremiumBudget.aspx" />
     <Content Include="BudgetManagement\SignPremiumBudgetList.aspx" />
@@ -1222,7 +1230,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>5308</DevelopmentServerPort>
+          <DevelopmentServerPort>3747</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/BrokerWebApp</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
