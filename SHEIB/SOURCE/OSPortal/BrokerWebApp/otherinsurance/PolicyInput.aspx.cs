@@ -240,7 +240,7 @@ namespace BrokerWebApp.otherinsurance
             HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
 
             ASPxComboBox dxecbGridPolicyItemProdID = tblEditorTemplate.FindControl("dxecbGridPolicyItemProdID") as ASPxComboBox;
-            String prouctType = this.ptid.Value;
+            String prouctType = this.dxeddlProdTypeName.Value.ToString();
             String sqlfilter = " AND A.ProdTypeID ='" + prouctType + "' ";
             dxecbGridPolicyItemProdID.DataSource = BusinessObjects.SchemaSetting.BO_Product.FetchList(sqlfilter);
             dxecbGridPolicyItemProdID.TextField = "ProdName";
@@ -1314,7 +1314,6 @@ namespace BrokerWebApp.otherinsurance
                 this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(value));
                 if (this.dxeddlProdTypeName.SelectedIndex >= 0)
                     this.dxeddlProdTypeName.Text = this.dxeddlProdTypeName.SelectedItem.Text.Substring(this.dxeddlProdTypeName.SelectedItem.Text.IndexOf("∟") + 1);
-                ptid.Value = value;
             }
         }
 
@@ -1331,18 +1330,12 @@ namespace BrokerWebApp.otherinsurance
             this.dxetxtPolicyNo.Text = obj.PolicyNo;
             //dxechkTogether
             //dxechkFlagReinsure
-
-            //this.dxeddlProdTypeName.Value = obj.ProdTypeID;
-
-
+                        
             this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(obj.ProdTypeID));
             if (this.dxeddlProdTypeName.SelectedIndex >= 0)
                 this.dxeddlProdTypeName.Text = this.dxeddlProdTypeName.SelectedItem.Text.Substring(this.dxeddlProdTypeName.SelectedItem.Text.IndexOf("∟") + 1);
 
-
-            //this.dxetxtProdTypeName.SelectedItem = dxetxtProdTypeName.Items.FindByValue(obj.ProdTypeID);
-            this.ptid.Value = obj.ProdTypeID;
-
+            
             this.dxetxtCustomer.Text = obj.CustomerName;
             this.cusid.Value = obj.CustomerID;
 
