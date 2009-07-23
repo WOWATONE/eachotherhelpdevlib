@@ -44,36 +44,13 @@
         });
 
 
-        function imgPolicyProdTypeClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=700px;dialogHeight=500px;center=yes;help=no";
-            var retrunval = window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
-            if (isEmpty(retrunval)) {
-                //do nothing;
-            }
-            else {
-                //split the return value;
-                var thesplit_array = retrunval.split(";");
-                dxetxtProdTypeID.SetValue(thesplit_array[1]);
-                setProductTypeID(thesplit_array[0]);
 
-            }
-
-        }
-
-
-        function setProductTypeID(thevalue) {
-            var result = $("#<%=ptid.ClientID %>");
-            result[0].value = thevalue;
-        }
-
-        function btnOk_Click() {
-            //debugger;
+        function btnOk_Click() {            
             gridSearchResult.GetSelectedFieldValues("PolperiodID", getTheSelectedRowsValues);
 
         }
 
         function getTheSelectedRowsValues(selectedValues) {
-            //debugger;
             if (selectedValues.length == 0) {
                 alert("请先选择行");
                 return;
@@ -212,23 +189,11 @@
                                 保险险种：
                             </td>
                             <td style="text-align: left;">
-                                <table style="margin-left: -3px;">
-                                    <tr>
-                                        <td>
-                                            <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server"
-                                                Width="100px">
-                                            </dxe:ASPxTextBox>
-                                            <input type="hidden" id="ptid" runat="server" />
-                                        </td>
-                                        <td>
-                                            <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;
-                                                height: 20px; vertical-align: top;" onclick="imgPolicyProdTypeClick();" />
-                                        </td>
-                                    </tr>
-                                </table>
+                                <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
+                                    runat="server" Width="160px" DropDownStyle="DropDownList">
+                                </dxe:ASPxComboBox>
                             </td>
-                            <td>
-                                &nbsp;
+                            <td style="text-align: left;">
                             </td>
                         </tr>
                         <tr>
@@ -255,7 +220,7 @@
                                 </table>
                             </td>
                             <td style="text-align: left;" colspan="2">
-                                <asp:CheckBox runat="server" ID="ckbNeedPayFeePolicy" Text="仅显示客户欠费保单" />
+                                <asp:CheckBox runat="server" ID="ckbNeedPayFeePolicy" Text="仅显示客户欠费保单" Visible="false" />
                             </td>
                             <td>
                             </td>
@@ -307,7 +272,7 @@
                         <tr>
                             <td>
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
-                                    KeyFieldName="NoticeNo" AutoGenerateColumns="False" Settings-ShowFooter="true"
+                                    KeyFieldName="PolperiodID" AutoGenerateColumns="False" Settings-ShowFooter="true"
                                     Width="100%" SettingsPager-AlwaysShowPager="true">
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
@@ -325,9 +290,9 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PremiumBase" Caption="保费(本)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Payfee" Caption="本期应收保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="本期应收保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Payedfee" Caption="本期已收保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="本期已收保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次应收保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -354,8 +319,9 @@
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="NoticeNo" SummaryType="Count" DisplayFormat="记录数:#" />
                                         <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="Payfee" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PayedFee" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="Fee" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" DisplayFormat="c" />
                                     </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>

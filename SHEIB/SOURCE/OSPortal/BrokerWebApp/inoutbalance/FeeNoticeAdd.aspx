@@ -373,15 +373,15 @@
                             </dxe:ASPxButton>
                         </td>
                         <td style="width: 100px; text-align: left;">
-                            <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit"
-                                Text="ÉóºË" AutoPostBack="false">
-                                <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
-                            </dxe:ASPxButton>
-                        </td>
-                        <td style="width: 100px; text-align: left;">
                             <dxe:ASPxButton runat="server" ID="dxebtnPrint" ClientInstanceName="dxebtnPrint"
                                 Text="´òÓ¡µ¥Ö¤" AutoPostBack="false">
                                 <ClientSideEvents Click="btnAddPrintClick" />
+                            </dxe:ASPxButton>
+                        </td>
+                        <td style="width: 100px; text-align: left;">
+                            <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit"
+                                Text="ÉóºË" AutoPostBack="false">
+                                <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
                             </dxe:ASPxButton>
                         </td>
                         <td style="width: 60px; text-align: left;">
@@ -397,7 +397,6 @@
             </td>
         </tr>
         <tr>
-
         </tr>
     </table>
 </asp:Content>

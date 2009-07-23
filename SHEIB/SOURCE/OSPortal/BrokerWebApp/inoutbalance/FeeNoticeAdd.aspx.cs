@@ -294,6 +294,12 @@ namespace BrokerWebApp.inoutbalance
             {
                 objLoad = new BO_Notice(obj.NoticeNo);
                 objLoad.AuditStatus = obj.AuditStatus;
+                if (obj.AuditStatus == "1")
+                {
+                    objLoad.AuditTime = DateTime.Today;
+                    objLoad.AuditPersion = this.CurrentUserID;
+                    
+                }
                 objLoad.Save(ModifiedAction.Update);
             }
 

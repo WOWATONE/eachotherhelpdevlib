@@ -56,30 +56,7 @@
             }
         }
         
-        
-        function imgPolicyProdTypeClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=700px;dialogHeight=500px;center=yes;help=no";
-            var retrunval = window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
-            if (isEmpty(retrunval)) {
-                //do nothing;
-            }
-            else {
-                //split the return value;
-                var thesplit_array = retrunval.split(";");
-                dxetxtProdTypeID.SetValue(thesplit_array[1]);
-                setProductTypeID(thesplit_array[0]);
-
-                var result = $("#<%=ptid.ClientID %>");
-            }
-
-        }
-
-        function setProductTypeID(thevalue) {
-            var result = $("#<%=ptid.ClientID %>");
-            result[0].value = thevalue;
-        }
-
-        function isEmpty(testVar) {
+       function isEmpty(testVar) {
             if ((testVar == null) || (testVar.length == 0)) {
                 return true;
             } else {
@@ -185,23 +162,14 @@
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                                险种：
+                                保险险种：
                             </td>
                             <td style="text-align: left;">
-                                <table style="margin-left:-3px;">
-                                    <tr>
-                                        <td style="width:105px;text-align: left;">
-                                            <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server" Width="100px"></dxe:ASPxTextBox>
-                                            <input type="hidden" id="ptid" runat="server" /> 
-                                        </td>
-                                        <td style="text-align: left;">
-                                        <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;
-                                            height: 20px; vertical-align: top;" onclick="imgPolicyProdTypeClick();" />
-                                        </td>
-                                    </tr>
-                                </table>
+                                <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
+                                    runat="server" Width="160px" DropDownStyle="DropDownList">
+                                </dxe:ASPxComboBox>
                             </td>
-                            <td>
+                            <td style="text-align: left;">
                             </td>
                         </tr>
                         <tr>
@@ -309,6 +277,10 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CustomerName" Caption="投保客户" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataDateColumn FieldName="FeeDate" Caption="收款日期" CellStyle-Wrap="False"
@@ -333,7 +305,7 @@
                                         ShowGroupedColumns="true" ShowFilterRow="false" />
                                     <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                     <GroupSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="VoucherID" SummaryType="Count" ShowInGroupFooterColumn="VoucherID"
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInGroupFooterColumn="PolicyID"
                                             DisplayFormat="总计: {0}" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" ShowInGroupFooterColumn="PayFeeBase"
                                             DisplayFormat="c" />
@@ -343,7 +315,7 @@
                                             DisplayFormat="c" />
                                     </GroupSummary>
                                     <TotalSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="VoucherID" SummaryType="Count" DisplayFormat="总记录:#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" DisplayFormat="总记录:#" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="Fee" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="FeeAdjust" SummaryType="Sum" DisplayFormat="c" />
