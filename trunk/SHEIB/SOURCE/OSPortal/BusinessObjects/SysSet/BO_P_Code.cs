@@ -22,7 +22,7 @@ namespace BusinessObjects
             //FeeCustomer_Agent=1,
             FeeCustomer_Direct = 1,            
             PayIn_Agent = 3,
-            PayIn_Direct = 4,
+            PayIn_Direct = 3,
             Invoice = 5,
             Process = 7
         }
