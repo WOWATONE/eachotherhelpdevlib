@@ -16,6 +16,7 @@ namespace BrokerWebApp.inoutbalance
         #region Variables
 
         private const string inputQueryStringIDKey = "ID";
+        private string toadd = string.Empty;
         //url
 
         #endregion Variables
@@ -27,46 +28,61 @@ namespace BrokerWebApp.inoutbalance
                 ckbNeedPayFeePolicy.Checked = true;
                 Initialization();
                 this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
+                BindGrid();
             }
-            BindGrid();
+
         }
 
 
         private void BindGrid()
         {
             string lsWhere = "";
+
             if (dxetxtNoticeNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and a.NoticeNo ='" + dxetxtNoticeNo.Text + "'";
+                lsWhere = lsWhere + " and b.NoticeNo like '%" + dxetxtNoticeNo.Text + "%'";
             }
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and a.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and c.PolicyNo like '%" + dxetxtPolicyNo.Text + "%'";
             }
             if (dxetxtPolicyID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and a.PolicyID ='" + dxetxtPolicyID.Text + "'";
+                lsWhere = lsWhere + " and a.PolicyID like '%" + dxetxtPolicyID.Text + "%'";
             }
-            if (dxeddlDeptId.SelectedItem.Value.ToString().Trim() != "")
+            if (this.dxeddlDeptId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptId.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and a.DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and c.DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
             }
-            if (dxeddlSalesID.SelectedItem.Value.ToString().Trim() != "")
+
+            if (this.dxeddlSalesID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesID.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and a.SalesId ='" + dxeddlSalesID.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and c.SalesId ='" + dxeddlSalesID.SelectedItem.Value.ToString() + "'";
             }
+
             if (dxetxtCustomerID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=a.CustomerID) ";
+                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=c.CustomerID) ";
             }
-            if (dxeddlGatheringType.SelectedItem.Value.ToString().Trim() != "")
+
+            if (this.dxeddlGatheringType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlGatheringType.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and a.GatheringTypeID ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.GatheringTypeID ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
             }
-            if (dxetxtProdTypeID.Text.Trim() != "")
+
+            if (this.dxeddlPolicyType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyType.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and  exists( select 1 from ProductType where ProdTypeName like '%" + dxetxtProdTypeID.Text + "%' and CustID=a.CustomerID) ";
+                lsWhere = lsWhere + " and c.PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString() + "'";
+
             }
+
+            if (this.dxeddlProdTypeName.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlProdTypeName.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and  c.ProdTypeID like ('%" + dxeddlProdTypeName.SelectedItem.Value.ToString() + "%') ";
+
+            }
+
+
 
             string lsStartDate = dxeNoticeStartDate.Date.ToString("yyyy-MM-dd");
             string lsEndDate = dxeNoticeEndDate.Date.ToString("yyyy-MM-dd");
@@ -76,12 +92,9 @@ namespace BrokerWebApp.inoutbalance
                 lsWhere = lsWhere + " and (convert(char(10), a.NoticeDate,21)) <='" + lsEndDate + "'";
             }
 
-            if (ckbNeedPayFeePolicy.Checked)
-            {
-                lsWhere = lsWhere + " and (Payfee-PayedFee)<>0";       
-            }
             this.gridSearchResult.DataSource = BO_FeeCustomer.GetFeeCustomerAddSelectList(lsWhere);
             this.gridSearchResult.DataBind();
+            this.gridSearchResult.ExpandAll();
 
         }
 
@@ -122,8 +135,41 @@ namespace BrokerWebApp.inoutbalance
                     this.dxeddlGatheringType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
                 }
             }
+
+            //PolicyType
+            this.dxeddlPolicyType.Items.Add("(全部)", "");
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.PolicyType.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlPolicyType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
+
+            dsList = BusinessObjects.SchemaSetting.BO_ProductType.GetProductTypeList();
+            if (dsList.Tables[0] != null && dsList.Tables[0].Rows.Count > 0)
+            {
+                this.SetProdTypeName(dsList.Tables[0], "0", this.dxeddlProdTypeName);
+            }
         }
-                       
+
+
+
+        private void SetProdTypeName(DataTable table, string parentid, DevExpress.Web.ASPxEditors.ASPxComboBox comboBox)
+        {
+            if (parentid == "0")
+                this.toadd = "";
+            else
+                this.toadd += "   ";
+            DataRow[] rows = table.Select("ParentID='" + parentid + "'", "ProdClass");
+            foreach (DataRow row in rows)
+            {
+                comboBox.Items.Add(this.toadd + (parentid == "0" ? "" : "∟") + row["ProdTypeName"].ToString(), row["ProdTypeID"].ToString());
+                this.SetProdTypeName(table, row["ProdTypeID"].ToString(), comboBox);
+                this.toadd = this.toadd.Substring(0, this.toadd.Length - 3);
+            }
+        }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
@@ -152,24 +198,28 @@ namespace BrokerWebApp.inoutbalance
                 {
                     if (s.Trim().Length >= 30)
                     {
-                        exist = BusinessObjects.BO_Fee.PolPeriodExist(s, BusinessObjects.BO_P_Code.AccountType.FeeCustomer_Direct);
-                        if (!exist)
-                        {
-                            obj = new BusinessObjects.Policy.BO_PolicyPeriod(s);
-                            objLoad = new BusinessObjects.BO_Fee();
-                            objLoad.FeeId = Guid.NewGuid().ToString();
-                            objLoad.PolPeriodID = s;
-                            objLoad.VoucherID = this.txtVoucherId.Value;
-                            objLoad.Fee = obj.PayFeeBase;
-                            objLoad.FeeAdjust = 0;
-                            objLoad.Save(ModifiedAction.Insert);
-                        }
+                        //exist = BusinessObjects.BO_Fee.PolPeriodExist(s, BusinessObjects.BO_P_Code.AccountType.FeeCustomer_Direct);
+                        //if (!exist)
+                        //{
+                        DataTable dt = BO_FeeCustomer.GetFeeCustomerAddSelectList("and PolperiodID='" + s.Trim() + "'").Tables[0];
+                        decimal NeedPayFee = decimal.Parse(dt.Rows[0]["Fee"].ToString());
+                        obj = new BusinessObjects.Policy.BO_PolicyPeriod(s);
+                        objLoad = new BusinessObjects.BO_Fee();
+                        objLoad.FeeId = Guid.NewGuid().ToString();
+                        objLoad.PolPeriodID = s;
+                        objLoad.VoucherID = this.txtVoucherId.Value;
+                        //objLoad.Fee = obj.PayFeeBase;
+                        objLoad.Fee = NeedPayFee;
+                        objLoad.FeeAdjust = 0;
+                        objLoad.Save(ModifiedAction.Insert);
+                        //}
                     }
                 }
             }
-            
+
         }
 
 
     }
 }
+
