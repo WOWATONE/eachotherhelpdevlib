@@ -41,7 +41,7 @@
                 dxebtnAddPolicy.SetEnabled(false);
                 dxebtnAudit.SetEnabled(false);
                 dxebtnPrint.SetEnabled(false);
-                dxebtnComplete.SetEnabled(false);
+                //dxebtnComplete.SetEnabled(false);
             }
 
 
@@ -53,7 +53,7 @@
             dxebtnAddPolicy.SetEnabled(true);
             dxebtnAudit.SetEnabled(true);
             dxebtnPrint.SetEnabled(true);
-            dxebtnComplete.SetEnabled(true);
+            //dxebtnComplete.SetEnabled(true);
         }
         
         $(document).ready(function() {
@@ -74,11 +74,7 @@
                     //do nothing
                 }
             };
-
-
             cusNotCompleteUnable();
-
-
 
         });
 
@@ -436,7 +432,7 @@
                                                             本期解付保费:
                                                         </td>
                                                         <td style="text-align: left;">
-                                                            <dxe:ASPxTextBox ID="dxetxtPolicyItemFee" ClientInstanceName="dxetxtPolicyItemFee" runat="server" Width="120px" ReadOnly="true">
+                                                            <dxe:ASPxTextBox ID="dxetxtPolicyItemFee" ClientInstanceName="dxetxtPolicyItemFee" runat="server" Width="120px">
                                                                 <ValidationSettings EnableCustomValidation="true" ErrorDisplayMode="ImageWithTooltip">
                                                                     <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     <RequiredField IsRequired="true" ErrorText="必需项" />
@@ -457,7 +453,7 @@
                                                     </tr>
                                                 </table>
                                             </div>
-                                            <div style="text-align: right; padding: 2px 2px 2px 2px">
+                                            <div style="text-align: center; padding: 2px 2px 2px 2px">
                                                 <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton"
                                                     runat="server">
                                                 </dxwgv:ASPxGridViewTemplateReplacement>
@@ -655,25 +651,17 @@
                                         CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
                                         <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
                                         </dxe:ASPxButton>
-                            </td>
-                            
+                            </td>                            
                             <td style="width: 140px; text-align: left;">
                                 <dxe:ASPxButton runat="server" ID="dxebtnPrint" 
                                     ClientInstanceName="dxebtnPrint" Text="打印解付通知书" AutoPostBack="false" >
                                     <ClientSideEvents Click="btnAddPrintClick" />
                                 </dxe:ASPxButton>
-                            </td>
-                            
+                            </td>                            
                             <td style="width: 100px; text-align: left;">
                                 <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit" Text="审核" AutoPostBack="false">
                                             <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
                                         </dxe:ASPxButton>
-                            </td>
-                            
-                            
-                            <td style="width: 80px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="dxebtnComplete" ClientInstanceName="dxebtnComplete" Text="解付完成" AutoPostBack="false">
-                                </dxe:ASPxButton>
                             </td>
                             <td style="width: 60px; text-align: left;">
                                 <dxe:ASPxButton runat="server" ID="dxebtnClose" ClientInstanceName="dxebtnClose" Text="关闭" AutoPostBack="false">

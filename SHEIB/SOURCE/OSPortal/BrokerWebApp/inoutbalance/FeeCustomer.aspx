@@ -272,8 +272,7 @@
                                                 </dxwgv:GridViewCommandColumnCustomButton>
                                             </CustomButtons>
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="收费流水号" CellStyle-Wrap="False"
-                                            GroupIndex="0">
+                                        <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="收费流水号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>

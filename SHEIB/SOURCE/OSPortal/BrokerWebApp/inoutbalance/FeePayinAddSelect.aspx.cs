@@ -23,10 +23,10 @@ namespace BrokerWebApp.inoutbalance
         {
             Initialization();
             if (!IsPostBack && !IsCallback)
-            {                
+            {
                 ckbPayedNeedPayin.Checked = true;
                 this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
-                
+
             }
             BindGrid();
         }
@@ -80,7 +80,7 @@ namespace BrokerWebApp.inoutbalance
             //{
             //    lsWhere = lsWhere + "  and not exists(select 1 from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('5'))";
             //}
-           
+
             this.gridSearchResult.DataSource = BO_FeePayin.GetFeePayinAddSelectList(lsWhere);
             this.gridSearchResult.DataBind();
 
@@ -153,18 +153,21 @@ namespace BrokerWebApp.inoutbalance
                 {
                     if (s.Trim().Length >= 20)
                     {
-                        exist = BusinessObjects.BO_Fee.PolPeriodExist(s,BO_P_Code.AccountType.PayIn_Direct);
-                        if (!exist)
-                        {
-                            obj = new BusinessObjects.Policy.BO_PolicyPeriod(s);
-                            objLoad = new BusinessObjects.BO_Fee();
-                            objLoad.FeeId = Guid.NewGuid().ToString();
-                            objLoad.PolPeriodID = s;
-                            objLoad.VoucherID = this.txtVoucherId.Value;
-                            objLoad.Fee = obj.PayFeeBase;
-                            objLoad.FeeAdjust = 0;
-                            objLoad.Save(ModifiedAction.Insert);
-                        }
+                        //exist = BusinessObjects.BO_Fee.PolPeriodExist(s,BO_P_Code.AccountType.PayIn_Direct);
+                        //if (!exist)
+                        //{
+                        DataTable dt = BO_FeePayin.GetFeePayinAddSelectList("and PolperiodID='" + s.Trim() + "'").Tables[0];
+                        decimal NeedPayinFee = decimal.Parse(dt.Rows[0]["Fee"].ToString());
+                        obj = new BusinessObjects.Policy.BO_PolicyPeriod(s);
+                        objLoad = new BusinessObjects.BO_Fee();
+                        objLoad.FeeId = Guid.NewGuid().ToString();
+                        objLoad.PolPeriodID = s;
+                        objLoad.VoucherID = this.txtVoucherId.Value;
+                        //objLoad.Fee = obj.PayFeeBase;
+                        objLoad.Fee = NeedPayinFee;
+                        objLoad.FeeAdjust = 0;
+                        objLoad.Save(ModifiedAction.Insert);
+                        //}
                     }
                 }
             }
