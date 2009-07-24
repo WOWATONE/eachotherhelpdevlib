@@ -9,31 +9,29 @@ using BusinessObjects;
 
 namespace BrokerWebApp.inoutbalance
 {
-    public partial class FeeNotice : BasePage
+    public partial class FeeInvoice : BasePage
     {
 
         #region Variables
 
-        private DataTable _dtGrid;
+        
 
         #endregion Variables
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Initialization();
             if (!IsPostBack && !IsCallback)
-            {
-                Initialization();
+            {                
+                //dxeddlAuditStatus.SelectedIndex = 0;                
             }
             BindGrid();
-
         }
 
         private void Initialization()
         {
             DataSet dsList;
-
 
             //GatheringType
             this.dxeddlGatheringType.Items.Add("(全部)", "");
@@ -46,6 +44,16 @@ namespace BrokerWebApp.inoutbalance
                 }
             }
 
+            this.dxeddlProcessFeeType.Items.Add("(全部)", "");
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.ProcessFeeType.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlProcessFeeType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
+
             //AuditStatus
             dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.AuditStatus.ToString());
             if (dsList.Tables[0] != null)
@@ -54,7 +62,6 @@ namespace BrokerWebApp.inoutbalance
                 {
                     this.dxeddlAuditStatus.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
                 }
-                dxeddlAuditStatus.SelectedIndex = 0;
             }
 
 
@@ -92,6 +99,30 @@ namespace BrokerWebApp.inoutbalance
                 }
             }
 
+
+
+            this.dxeddlCarrier.Items.Add("(全部)", "");
+            dsList = BusinessObjects.SchemaSetting.BO_Carrier.GetCarrierList("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlCarrier.Items.Add(row["CarrierNameCn"].ToString().Trim(), row["CarrierID"].ToString().Trim());
+                }
+            }
+
+            this.dxeddlBranch.Items.Add("(全部)", "");
+            dsList = BusinessObjects.SchemaSetting.BO_Branch.GetBranchList("");
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlBranch.Items.Add(row["BranchName"].ToString().Trim(), row["BranchID"].ToString().Trim());
+                }
+            }
+
+
+
         }
 
 
@@ -99,84 +130,75 @@ namespace BrokerWebApp.inoutbalance
         private void BindGrid()
         {
             string lsWhere = "";
-            if (dxetxtNoticeNo.Text.Trim() != "")
-            {
-                lsWhere = lsWhere + " and a.NoticeNo ='" + dxetxtNoticeNo.Text + "'";
-            }
+
+            //if (dxetxtPayinVoucherID.Text.Trim() != "")
+            //{
+            //    lsWhere = lsWhere + " and c.VoucherID ='" + dxetxtPayinVoucherID.Text + "'";
+            //}
+
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from PolicyPeriodDetail where PolicyNo =" + dxetxtPolicyNo.Text + "' and NoticeNo=a.NoticeNo) ";
+                lsWhere = lsWhere + " and PolicyNo ='" + dxetxtPolicyNo.Text + "'";
             }
             if (dxeddlGatheringType.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and  a.GatheringType= ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and  GatheringType= ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
             }
             if (dxeddlDeptId.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from PolicyPeriodDetail where DeptId =" + dxeddlDeptId.SelectedItem.Value.ToString() + "' and NoticeNo=a.NoticeNo) ";
+                lsWhere = lsWhere + " and DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
             }
-
             if (dxeddlSalesID.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from PolicyPeriodDetail where SalesId =" + dxeddlSalesID.SelectedItem.Value.ToString() + "' and NoticeNo=a.NoticeNo) ";
+                lsWhere = lsWhere + " and SalesId ='" + dxeddlSalesID.SelectedItem.Value.ToString() + "'";
             }
             if (dxetxtCustomerID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=a.CustID) ";
+                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=a.CustomerID) ";
             }
             if (dxetxtProdTypeID.Text.Trim() != "")
             {
                 lsWhere = lsWhere + " and  exists( select 1 from ProductType where ProdTypeName like '%" + dxetxtProdTypeID.Text + "%' and ProdTypeID=a.ProdTypeID) ";
             }
 
+            //string lsStartDate = dxePayinStartDate.Date.ToString("yyyy-MM-dd");
+            //string lsEndDate = dxePayinEndDate.Date.ToString("yyyy-MM-dd");
+            //if ((dxePayinStartDate.Text.Trim() != "") && (dxePayinEndDate.Text.Trim() != ""))
+            //{
+            //    lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) >='" + lsStartDate + "'";
+            //    lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) <='" + lsEndDate + "'";
+            //}
 
-            if (dxeddlAuditStatus.SelectedItem.Value.ToString().Trim() != "")
-            {
-                lsWhere = lsWhere + " and a.AuditStatus ='" + dxeddlAuditStatus.SelectedItem.Value.ToString().Trim() + "'";
-            }
-
-
-            string lsStartDate = dxeNoticeStartDate.Date.ToString("yyyy-MM-dd");
-            string lsEndDate = dxeNoticeEndDate.Date.ToString("yyyy-MM-dd");
-            if ((dxeNoticeStartDate.Text.Trim() != "") && (dxeNoticeEndDate.Text.Trim() != ""))
-            {
-                lsWhere = lsWhere + " and (convert(char(10), A.NoticeDate,21)) >='" + lsStartDate + "'";
-                lsWhere = lsWhere + " and (convert(char(10), A.NoticeDate,21)) <='" + lsEndDate + "'";
-            }
-
-
-            DataTable dt = BO_Notice.GetFeeNoticeList(lsWhere).Tables[0];
+            DataTable dt = Bo_FeePayinInvoice.GetFeePayinInvoiceList(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
 
+
+
         }
 
+        protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            e.Cancel = true;
+            this.gridSearchResult.CancelEdit();
+        }
+
+        protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
+        {
+            //this.gridSearchResult.DataBind();
+            
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindGrid();
+        }
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
         {
             this.gridExport.WriteXlsToResponse();
         }
 
-
-        protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
-        {
-            //DataTable dt = ((DataTable)ViewState["PolicyItemGridData"]);
-            //DataRow row = dt.Rows.Find(e.Keys["ID"]);
-            //dt.Rows.Remove(row);
-            e.Cancel = true;
-            this.gridSearchResult.CancelEdit();
-        }
-
-
-        protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
-        {
-            this.gridSearchResult.DataBind();
-        }
-
-        protected void gridSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
-        {
-            BindGrid();
-        }
 
     }
 }

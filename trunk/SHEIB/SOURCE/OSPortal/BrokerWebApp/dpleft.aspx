@@ -86,7 +86,7 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="解付保费" Name="inoutbalance/FeePayin.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="经纪费开票" Name="inoutbalance/FeePayinInvoice.aspx">
+                                <dxnb:NavBarItem Text="经纪费开票" Name="inoutbalance/FeeInvoice.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="经纪费结算" Name="inoutbalance/FeeProcess.aspx">
                                 </dxnb:NavBarItem>

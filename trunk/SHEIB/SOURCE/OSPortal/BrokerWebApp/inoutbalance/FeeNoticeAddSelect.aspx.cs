@@ -11,7 +11,7 @@ using BusinessObjects.SchemaSetting;
 
 namespace BrokerWebApp.inoutbalance
 {
-    public partial class FeeNoticeAddSelect : System.Web.UI.Page
+    public partial class FeeNoticeAddSelect : BasePage
     {
 
         #region Variables

@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master"
-    AutoEventWireup="true" Theme="Aqua" CodeBehind="FeePayinAdd.aspx.cs" Inherits="BrokerWebApp.inoutbalance.FeePayinAdd" %>
+﻿<%@ Page Title="经纪费开票录入" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/PopupMaster.Master"
+    AutoEventWireup="true" CodeBehind="FeeInvoiceAdd.aspx.cs" Inherits="BrokerWebApp.inoutbalance.FeeInvoiceAdd" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
     TagPrefix="dxrp" %>
@@ -16,15 +16,13 @@
     TagPrefix="dxpc" %>
 <%@ Register Assembly="DevExpress.Web.ASPxSpellChecker.v8.3" Namespace="DevExpress.Web.ASPxSpellChecker"
     TagPrefix="dxwsc" %>
-
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
-
-    
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
+    TagPrefix="dxcb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>解付保费录入</title>
+    <title>经纪费开票录入</title>
 
     <script type="text/javascript">
-        
+
         function cusCheckNessary() {
             var id = getVoucherId();
             if (isEmpty(id)) {
@@ -41,7 +39,7 @@
                 dxebtnAddPolicy.SetEnabled(false);
                 dxebtnAudit.SetEnabled(false);
                 dxebtnPrint.SetEnabled(false);
-                //dxebtnComplete.SetEnabled(false);
+                dxebtnComplete.SetEnabled(false);
             }
 
 
@@ -53,14 +51,18 @@
             dxebtnAddPolicy.SetEnabled(true);
             dxebtnAudit.SetEnabled(true);
             dxebtnPrint.SetEnabled(true);
-            //dxebtnComplete.SetEnabled(true);
+            dxebtnComplete.SetEnabled(true);
+
         }
-        
+
+
         $(document).ready(function() {
             //jQuery.noticeAdd({
             //    text: 'This is a notification that you have to remove',
             //    stay: true
             //});
+
+
             window.onunload = function() {
                 var pWindow = window.dialogArguments;
                 var thegrid = pWindow.gridSearchResult;
@@ -72,29 +74,29 @@
                     //do nothing
                 }
             };
+
+
             cusNotCompleteUnable();
+
 
         });
 
-        
+
         function btnAddPolicyClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
-            var url = "FeePayinAddSelect.aspx?ID=" + getVoucherId();
+            var url = "FeePayinInvoiceAddSelect.aspx?ID=" + getVoucherId();
 
             window.showModalDialog(url, self, myArguments);
-            gridPolicyItem.PerformCallback('');
+            var sVoucherID = getVoucherId();
+            gridPolicyItem.PerformCallback(sVoucherID);
         }
 
         function btnAddPrintClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=700px;center=yes;help=no";
-            var url = "FeePayinAddPrint.aspx?ID=" + getVoucherId();
+            var url = "FeePayinInvoiceAddPrint.aspx?ID=" + getVoucherId();
 
             window.showModalDialog(url, self, myArguments);
             gridPolicyItem.PerformCallback('');
-        }
-        
-        function btnCloseClick() {
-            window.close();
         }
 
         function getVoucherId() {
@@ -105,11 +107,47 @@
 
 
         function setVoucherId(value) {
+            debugger;
             var result = $("#<%=lblVoucherId.ClientID %>");
             result[0].innerHTML = value;
         }
 
+        function btnCloseClick() {
+            window.close();
+        }
+
+        function btnCompleteClick() {
+            //debugger;
+            var sInvoiceNo = dxetxtInvoiceNO.GetValue();
+            if ((sInvoiceNo == null) || (sInvoiceNo.length == 0)) {
+                alert("发票号码不能为空,请录入!");
+                return false;
+            }
+
+        }
+
+        function isEmpty(testVar) {
+            if ((testVar == null) || (testVar.length == 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function isDecimal(str) {
+            if (isEmpty(str)) {
+                return false;
+            }
+            else {
+                if (/[^d.]/i.test(str)) {
+                    return true;
+                }
+                return false;
+            }
+        }
+
         function dxebtntopSave_Click(s, e) {
+            //
             if (s.CauseValidation()) {
                 var thejsonstring = makeInfoJSON("0");
                 dxeSaveCallback.PerformCallback(thejsonstring);
@@ -118,64 +156,13 @@
 
         function saveCallbackComplete(s, e) {
             //do nothing;
+            //debugger;
             var pid = getVoucherId();
             if (isEmpty(pid)) {
                 setVoucherId(e.result);
                 cusCompleteEnable();
             }
         }
-
-        function makeInfoJSON(AuditStatus) {
-            var ID = getVoucherId();
-            var Remark = dxetxtRemark.GetValueString();
-            var GotDate = dxeGotDate.GetValue();
-            //var GatheringType = dxeddlGatheringType.GetValue();
-            var GatheringType = "1";
-            var ProcessFeeType = dxeddlProcessFeeType.GetValue();
-            var Carrier = dxeddlCarrier.GetValue();
-            var Branch = dxeddlBranch.GetValue();
-            var plc = new InfoJSON(ID, Remark, GotDate, AuditStatus, GatheringType, ProcessFeeType, Carrier, Branch);
-
-            //deserialize JSON string, make a JSON object
-            //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
-
-            //serialize a JOSN object，make a JSON string.
-            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
-
-            return jsonStringClient;
-
-        }
-
-
-        function InfoJSON(ID, Remark, GotDate, AuditStatus,
-            GatheringType, ProcessFeeType, Carrier, Branch) {
-            
-            if (!isEmpty(ID))
-                this.ID = ID;
-
-            if (!isEmpty(Remark))
-                this.Remark = Remark;
-
-            if (!isEmpty(GotDate))
-                this.GotDate = GotDate;
-
-            if (!isEmpty(AuditStatus))
-                this.AuditStatus = AuditStatus;
-
-            if (!isEmpty(GatheringType))
-                this.GatheringType = GatheringType;
-                
-            if (!isEmpty(ProcessFeeType))
-                this.ProcessFeeType = ProcessFeeType;
-                
-            if (!isEmpty(Carrier))
-                this.Carrier = Carrier;
-                
-            if (!isEmpty(Branch))
-                this.Branch = Branch;
-
-        }
-
 
         function btnAudit_Click(s, e) {
             //
@@ -211,32 +198,70 @@
             }
         }
 
-        function isEmpty(testVar) {
-            if ((testVar == null) || (testVar.length == 0)) {
-                return true;
-            } else {
-                return false;
-            }
+        function dxeddlCarrier_SelectedIndexChanged(s, e) {
+            var thejsonstring = dxeddlCarrier.GetSelectedItem().value;
+            dxeddlBranch.PerformCallback(thejsonstring);
         }
 
-        function isDecimal(str) {
-            if (isEmpty(str)) {
-                return false;
-            }
-            else {
-                if (/[^d.]/i.test(str)) {
-                    return true;
-                }
-                return false;
-            }
+
+        function makeInfoJSON(AuditStatus) {
+
+            var ID = getVoucherId();
+            var Remark = dxetxtRemark.GetValueString();
+            var ReleaseDate = dxeReleaseDate.GetValue();
+            var VoiceNo = dxetxtInvoiceNO.GetValueString();
+            var ProcessFeeType = dxeddlProcessFeeType.GetValue();
+            var Carrier = dxeddlCarrier.GetValue();
+            var Branch = dxeddlBranch.GetValue();
+            var plc = new InfoJSON(ID, Remark, ReleaseDate, AuditStatus, VoiceNo, ProcessFeeType, Carrier, Branch);
+
+            //deserialize JSON string, make a JSON object
+            //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
+
+            //serialize a JOSN object，make a JSON string.
+            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
+
+            return jsonStringClient;
+
+        }
+
+
+        function InfoJSON(ID, Remark, ReleaseDate, AuditStatus,
+            VoiceNo, ProcessFeeType, Carrier, Branch) {
+
+            if (!isEmpty(ID))
+                this.ID = ID;
+
+            if (!isEmpty(Remark))
+                this.Remark = Remark;
+
+            if (!isEmpty(ReleaseDate))
+                this.ReleaseDate = ReleaseDate;
+
+            if (!isEmpty(AuditStatus))
+                this.AuditStatus = AuditStatus;
+
+            if (!isEmpty(VoiceNo))
+                this.VoiceNo = VoiceNo;
+
+            if (!isEmpty(ProcessFeeType))
+                this.ProcessFeeType = ProcessFeeType;
+
+            if (!isEmpty(Carrier))
+                this.Carrier = Carrier;
+
+            if (!isEmpty(Branch))
+                this.Branch = Branch;
+
         }
 
 
         function gridPolicyItem_EndCallback(s, e) {
             //sum
+
             var itemVal;
-            var indexPayProcBase = getOColumnIndex("本次应收经纪费");
-            var indexFee = getOColumnIndex("本次实际解付保费");
+            var indexPayProcBase = getOColumnIndex("本期应收经纪费");
+            var indexFee = getOColumnIndex("本次开票金额");
             var indexFeeAdjust = getOColumnIndex("调整金额");
 
             var sumPayProcBase = 0;
@@ -244,30 +269,32 @@
             var sumFeeAdjust = 0;
 
             for (i = 0; i < gridPolicyItem.pageRowCount; i++) {
-                //PayFeeBase
-                itemVal = gridPolicyItem.GetDataRow(i).cells[indexPayProcBase].innerText;
-                if (isDecimal(itemVal)) {
-                    sumPayProcBase = parseFloat(sumPayProcBase) + parseFloat(itemVal);
-                }
-                //sumFee
-                itemVal = gridPolicyItem.GetDataRow(i).cells[indexFee].innerText;
-                if (isDecimal(itemVal)) {
-                    sumFee = parseFloat(sumFee) + parseFloat(itemVal);
-                }
+                if (gridPolicyItem.GetDataRow(i) != null) {
+                    //PayFeeBase
+                    itemVal = gridPolicyItem.GetDataRow(i).cells[indexPayProcBase].innerText;
+                    if (isDecimal(itemVal)) {
+                        sumPayProcBase = parseFloat(sumPayProcBase) + parseFloat(itemVal);
+                    }
+                    //sumFee
+                    itemVal = gridPolicyItem.GetDataRow(i).cells[indexFee].innerText;
+                    if (isDecimal(itemVal)) {
+                        sumFee = parseFloat(sumFee) + parseFloat(itemVal);
+                    }
 
-                //sumFeeAdjust
-                itemVal = gridPolicyItem.GetDataRow(i).cells[indexFeeAdjust].innerText;
-                if (isDecimal(itemVal)) {
-                    sumFeeAdjust = parseFloat(sumFeeAdjust) + parseFloat(itemVal);
+                    //sumFeeAdjust
+                    itemVal = gridPolicyItem.GetDataRow(i).cells[indexFeeAdjust].innerText;
+                    if (isDecimal(itemVal)) {
+                        sumFeeAdjust = parseFloat(sumFeeAdjust) + parseFloat(itemVal);
+                    }
                 }
             }
 
             var rtn = sumPayProcBase.toFixed(2);
-            dxetxtProcessFee.SetValue(rtn);
+            dxetxtPayProcBase.SetValue(rtn);
             rtn = sumFee.toFixed(2);
-            dxetxtPayinFee.SetValue(rtn);
+            dxetxtInvoiceProc.SetValue(rtn);
             rtn = sumFeeAdjust.toFixed(2);
-            dxetxtFeeAdjust.SetValue(rtn);
+            dxetxtInvoiceProcAdjust.SetValue(rtn);
         }
 
         function getOColumnIndex(fieldName) {
@@ -281,34 +308,20 @@
                 }
             }
         }
-
-        function dxeddlCarrier_SelectedIndexChanged(s, e) {
-            var thejsonstring = dxeddlCarrier.GetSelectedItem().value;
-            dxeddlBranch.PerformCallback(thejsonstring);
-        }
-
-        function dxeddlProcessFeeType_OnProcessFeeTypeChanged(s, e) {
-            var sProcessFeeType = dxeddlProcessFeeType.GetSelectedItem().value;
-            if (sProcessFeeType == "2") {
-                dxetxtProcessFee.SetValue("0");
-            }
-        }
-            
         
     </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
-    
-    <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
+    <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server"
+        OnCallback="dxeSaveCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
-    
-    <dxcb:ASPxCallback ID="dxeAuditCallback" ClientInstanceName="dxeAuditCallback" runat="server" OnCallback="dxeAuditCallback_Callback">
+    <dxcb:ASPxCallback ID="dxeAuditCallback" ClientInstanceName="dxeAuditCallback" runat="server"
+        OnCallback="dxeAuditCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {auditCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
-    
     <table style="width: 100%">
         <tr>
             <td>
@@ -330,7 +343,8 @@
                     <table style="width: 100%">
                         <tr>
                             <td style="width: 10%; text-align: right;">
-                                <dxe:ASPxButton runat="server" ID="dxebtnAddPolicy" ClientInstanceName="dxebtnAddPolicy" AutoPostBack="false" Text="添加保单">
+                                <dxe:ASPxButton runat="server" ID="dxebtnAddPolicy" ClientInstanceName="dxebtnAddPolicy"
+                                    AutoPostBack="false" Text="添加保单">
                                     <ClientSideEvents Click="btnAddPolicyClick" />
                                 </dxe:ASPxButton>
                             </td>
@@ -345,36 +359,32 @@
                             <td colspan="3">
                                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
                                     DataSourceID="" KeyFieldName="FeeId" Width="100%" AutoGenerateColumns="False"
-                                    OnRowUpdating="gridPolicyItem_RowUpdating"
-                                    OnRowUpdated="gridPolicyItem_RowUpdated"
-                                    OnRowDeleting="gridPolicyItem_RowDeleting" 
-                                    OnRowDeleted="gridPolicyItem_RowDeleted"
-                                    OnCustomCallback="gridPolicyItem_CustomCallback"                                    
-                                    OnStartRowEditing="gridPolicyItem_StartRowEditing"
-                                    OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated" 
-                                    OnRowValidating="gridPolicyItem_RowValidating"
-                                    >
+                                    OnRowUpdating="gridPolicyItem_RowUpdating" OnRowUpdated="gridPolicyItem_RowUpdated"
+                                    OnRowDeleting="gridPolicyItem_RowDeleting" OnRowDeleted="gridPolicyItem_RowDeleted"
+                                    OnCustomCallback="gridPolicyItem_CustomCallback" OnStartRowEditing="gridPolicyItem_StartRowEditing"
+                                    OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated" OnRowValidating="gridPolicyItem_RowValidating">
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
                                             <EditButton Visible="true" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False" Visible="false" >
+                                        <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False"
+                                            Visible="false">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="通知书号" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayinID" Caption="解付单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="本期应解付保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="已解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="本期已解付保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="本期应收经纪费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次实际解付保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayinInvoiceedFee" Caption="本期已开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="本次应收经纪费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -384,42 +394,41 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="客户经理" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="ProcessFeeTypeName" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" DisplayFormat="#" />
-                                        <dxwgv:ASPxSummaryItem FieldName="StandardFeeBase" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="GotFeeBase" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="GettingFeeBase" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PayedFee" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PayProcBase" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="Fee" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="FeeAdjust" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PayinInvoiceedFee" SummaryType="Sum" DisplayFormat="c" />
                                     </TotalSummary>
                                     <Settings ShowGroupPanel="True" ShowFooter="True" ShowGroupFooter="VisibleIfExpanded" />
                                     <GroupSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" ShowInGroupFooterColumn="PolicyNo" SummaryType="Count"
-                                            DisplayFormat="#" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" ShowInGroupFooterColumn="PayFeeBase"
-                                            SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayedFee" ShowInGroupFooterColumn="PayedFee" SummaryType="Sum"
-                                            DisplayFormat="{0:c}" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyNo" ShowInGroupFooterColumn="PolicyNo" SummaryType="Count" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PayedFee" ShowInGroupFooterColumn="PayedFee" SummaryType="Sum"  DisplayFormat="{0:c}/>
+                                        <dxwgv:ASPxSummaryItem FieldName="PayProcBase" ShowInGroupFooterColumn="PayProcBase"
+                                            SummaryType="Sum" DisplayFormat="{0:c}" />
                                         <dxwgv:ASPxSummaryItem FieldName="Fee" ShowInGroupFooterColumn="Fee" SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayProcBase" ShowInGroupFooterColumn="PayProcBase" SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayProcBase" ShowInGroupFooterColumn="PayProcBase" SummaryType="Sum" />
                                     </GroupSummary>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowAllRecords" />
-                                    <ClientSideEvents EndCallback="function(s, e) {gridPolicyItem_EndCallback();}" />                                                  
+                                    <Settings ShowGroupPanel="true" />
+                                    <ClientSideEvents EndCallback="function(s, e) {gridPolicyItem_EndCallback();}" />
+                                    <SettingsBehavior AutoExpandAllGroups="true" />
                                     <Templates>
                                         <EditForm>
                                             <div style="padding: 4px 4px 3px 4px">
                                                 <table runat="server" id="tblgridPolicyItemEditorTemplate">
                                                     <tr>
                                                         <td style="white-space: nowrap; text-align: right;">
-                                                            本期解付保费:
+                                                            开票金额:
                                                         </td>
                                                         <td style="text-align: left;">
-                                                            <dxe:ASPxTextBox ID="dxetxtPolicyItemFee" ClientInstanceName="dxetxtPolicyItemFee" runat="server" Width="120px">
+                                                            <dxe:ASPxTextBox ID="dxetxtPolicyItemFee" ClientInstanceName="dxetxtPolicyItemFee"
+                                                                runat="server" Width="120px" ReadOnly="true">
                                                                 <ValidationSettings EnableCustomValidation="true" ErrorDisplayMode="ImageWithTooltip">
                                                                     <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     <RequiredField IsRequired="true" ErrorText="必需项" />
@@ -430,8 +439,9 @@
                                                             调整金额:
                                                         </td>
                                                         <td style="text-align: left;">
-                                                            <dxe:ASPxTextBox ID="dxetxtPolicyItemFeeAdjust" ClientInstanceName="dxetxtPolicyItemFeeAdjust" runat="server" Width="120px">
-                                                                <ValidationSettings EnableCustomValidation="true" ErrorDisplayMode="ImageWithTooltip" >
+                                                            <dxe:ASPxTextBox ID="dxetxtPolicyItemFeeAdjust" ClientInstanceName="dxetxtPolicyItemFeeAdjust"
+                                                                runat="server" Width="120px">
+                                                                <ValidationSettings EnableCustomValidation="true" ErrorDisplayMode="ImageWithTooltip">
                                                                     <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                 </ValidationSettings>
@@ -440,7 +450,7 @@
                                                     </tr>
                                                 </table>
                                             </div>
-                                            <div style="text-align: center; padding: 2px 2px 2px 2px">
+                                            <div style="text-align: right; padding: 2px 2px 2px 2px">
                                                 <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton"
                                                     runat="server">
                                                 </dxwgv:ASPxGridViewTemplateReplacement>
@@ -481,95 +491,89 @@
                 <asp:Panel ID="npOtherPolicyItemDetail" runat="server" CssClass="collapsePanel" Height="0">
                     <table style="width: 100%">
                         <tr>
-                            <td style="width: 15%; text-align: right;">
+                            <td style="width: 110; text-align: right;">
                                 经纪费收取方式：
                             </td>
-                            <td style="width: 18%; text-align: left;">
+                            <td style="width: 130; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlProcessFeeType" ClientInstanceName="dxeddlProcessFeeType"
-                                    runat="server" Width="180px" DropDownStyle="DropDownList" > 
-                                    <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlProcessFeeType_OnProcessFeeTypeChanged(s,e);}" />
+                                    runat="server" Width="120px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
-                            <td style="width: 15%; text-align: right;">
-                               经纪费金额：
+                            <td style="width: 100; text-align: right;">
                             </td>
-                            <td style="width: 20%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtProcessFee" ClientInstanceName="dxetxtProcessFee" runat="server"
-                                    Width="180px">
-                                </dxe:ASPxTextBox>
+                            <td style="width: 130; text-align: left;">
                             </td>
-                            <td style="width: 12%; text-align: right;">
-                                
+                            <td style="width: 100; text-align: right;">
                             </td>
-                            <td style="width: 20%; text-align: left;">
-                                
+                            <td style="width: 130; text-align: left;">
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                本次应解付保费：
+                                本次应收经纪费：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtPayinFeeNeed" ClientInstanceName="dxetxtNeedPayinFeeNeed"
-                                    runat="server" Width="180px">
+                                <dxe:ASPxTextBox ID="dxetxtPayProcBase" ClientInstanceName="dxetxtPayProcBase" runat="server"
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
-                                本次实际解付保费：
+                                本次开票金额：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtPayinFee" ClientInstanceName="dxetxtPayinFee" runat="server"
-                                    Width="180px">
+                                <dxe:ASPxTextBox ID="dxetxtInvoiceProc" ClientInstanceName="dxetxtInvoiceProc" runat="server"
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
                                 调整金额：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtFeeAdjust" ClientInstanceName="dxetxtFeeAdjust" runat="server"
-                                    Width="180px">
+                                <dxe:ASPxTextBox ID="dxetxtInvoiceProcAdjust" ClientInstanceName="dxetxtInvoiceProcAdjust"
+                                    runat="server" Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 13%; text-align: right;">
-                                其中，商业险保费：
+                            <td style="text-align: right;">
+                                其中，商业险经纪费：
                             </td>
-                            <td style="width: 17%; text-align: left;">
+                            <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCiPremium" ClientInstanceName="dxetxtCiPremium" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 13%; text-align: right;">
-                                交强险保费：
+                            <td style="text-align: right;">
+                                交强险经纪费：
                             </td>
-                            <td style="width: 17%; text-align: left;">
+                            <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtAciPremium" ClientInstanceName="dxetxtAciPremium" runat="server"
-                                    Width="160px">
+                                    Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 13%; text-align: right;">
-                                车船税:
+                            <td style="text-align: right;">
                             </td>
-                            <td style="width: 17%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCstPremium" ClientInstanceName="dxetxtCstPremium" runat="server"
-                                    Width="160px">
-                                </dxe:ASPxTextBox>
+                            <td style="text-align: left;">
                             </td>
                             <td>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                解付日期：
+                                开票日期：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="dxeGotDate" ClientInstanceName="dxeGotDate" runat="server">
+                                <dxe:ASPxDateEdit ID="dxeReleaseDate" ClientInstanceName="dxeReleaseDate" runat="server" 
+                                    Width="120">
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">
+                                发票号码：
                             </td>
                             <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtInvoiceNO" ClientInstanceName="dxetxtInvoiceNO" runat="server" 
+                                    Width="120px">
+                                </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
                             </td>
@@ -582,7 +586,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlCarrier" ClientInstanceName="dxeddlCarrier" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
+                                    Width="120px" DropDownStyle="DropDownList">
                                     <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlCarrier_SelectedIndexChanged(s,e);}" />
                                 </dxe:ASPxComboBox>
                             </td>
@@ -591,7 +595,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlBranch" ClientInstanceName="dxeddlBranch" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback">
+                                    Width="120px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
@@ -631,24 +635,32 @@
                             <td style="width: 150px; text-align: left;">
                             </td>
                             <td style="width: 60px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="dxebtnSave" ClientInstanceName="dxebtnSave" Text="保存" 
-                                        CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
-                                        <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
-                                        </dxe:ASPxButton>
-                            </td>                            
+                                <dxe:ASPxButton runat="server" ID="dxebtnSave" ClientInstanceName="dxebtnSave" Text="保存"
+                                    CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
+                                    <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }" />
+                                </dxe:ASPxButton>
+                            </td>
                             <td style="width: 140px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="dxebtnPrint" 
-                                    ClientInstanceName="dxebtnPrint" Text="打印解付通知书" AutoPostBack="false" >
+                                <dxe:ASPxButton runat="server" ID="dxebtnPrint" ClientInstanceName="dxebtnPrint"
+                                    Text="打印开票通知书" AutoPostBack="false">
                                     <ClientSideEvents Click="btnAddPrintClick" />
                                 </dxe:ASPxButton>
-                            </td>                            
-                            <td style="width: 100px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit" Text="审核" AutoPostBack="false">
-                                            <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
-                                        </dxe:ASPxButton>
+                            </td>
+                            <td style="width: 80px; text-align: left;">
+                                <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit"
+                                    Text="审核" AutoPostBack="false">
+                                    <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
+                                </dxe:ASPxButton>
+                            </td>
+                            <td style="width: 80px; text-align: left;">
+                                <dxe:ASPxButton runat="server" ID="dxebtnComplete" ClientInstanceName="dxebtnComplete"
+                                    Text="开票完成" AutoPostBack="false">
+                                    <ClientSideEvents Click="function(s, e) {btnCompleteClick();}" />
+                                </dxe:ASPxButton>
                             </td>
                             <td style="width: 60px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="dxebtnClose" ClientInstanceName="dxebtnClose" Text="关闭" AutoPostBack="false">
+                                <dxe:ASPxButton runat="server" ID="dxebtnClose" ClientInstanceName="dxebtnClose"
+                                    Text="关闭" AutoPostBack="false">
                                     <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
                                 </dxe:ASPxButton>
                             </td>
