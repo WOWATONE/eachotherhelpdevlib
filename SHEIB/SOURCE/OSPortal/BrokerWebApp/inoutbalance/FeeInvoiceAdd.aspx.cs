@@ -18,8 +18,9 @@ using System.Web.UI.HtmlControls;
 
 namespace BrokerWebApp.inoutbalance
 {
-    public partial class FeePayinAdd : BasePage
+    public partial class FeeInvoiceAdd : BasePage
     {
+
         #region Variables
 
         private const string inputQueryStringIDKey = "VoucherID";
@@ -27,22 +28,25 @@ namespace BrokerWebApp.inoutbalance
 
         #endregion Variables
 
+
         protected void Page_Load(object sender, EventArgs e)
-        {      
+        {
+
             if (!IsPostBack && !IsCallback)
             {
                 init();
                 this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];
-                loadValue(this.lblVoucherId.InnerHtml);                
-            }
-            BindGrid();
-        }
+                loadValue(this.lblVoucherId.InnerHtml);
 
+            }
+            string sVocherID = this.lblVoucherId.InnerHtml;
+            BindGrid(sVocherID);
+        }
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
             String id = saveVoucher(e.Parameter);
-            e.Result = id;       
+            e.Result = id;
         }
 
 
@@ -51,8 +55,6 @@ namespace BrokerWebApp.inoutbalance
             auditVoucher(e.Parameter);
             e.Result = "ok";
         }
-
-        
 
         protected void gridPolicyItem_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
         {
@@ -65,12 +67,12 @@ namespace BrokerWebApp.inoutbalance
             Int32 editIndex = this.gridPolicyItem.EditingRowVisibleIndex;
             if (editIndex > -1)
             {
-                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "NoticeNo", "PolicyID", "Fee", "FeeAdjust" });
+                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "Fee", "FeeAdjust" });
                 object[] theValueList = theValues as object[];
 
                 //String feeId = theValueList[0].ToString();
-                String fee = theValueList[3].ToString();
-                String feeAdjust = theValueList[4].ToString();
+                String fee = theValueList[1].ToString();
+                String feeAdjust = theValueList[2].ToString();
 
                 if (this.gridPolicyItemStartEdit)
                 {
@@ -86,7 +88,6 @@ namespace BrokerWebApp.inoutbalance
         {
             this.gridPolicyItemStartEdit = true;
         }
-
 
 
         protected void gridPolicyItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -122,8 +123,7 @@ namespace BrokerWebApp.inoutbalance
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
 
-            BindGrid();
-
+            BindGrid("");
         }
 
         protected void gridPolicyItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
@@ -131,7 +131,8 @@ namespace BrokerWebApp.inoutbalance
             //this.gridPolicyItem.DataBind();
         }
 
-        
+
+
         protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             String theKey = e.Keys[0].ToString();
@@ -147,7 +148,7 @@ namespace BrokerWebApp.inoutbalance
             }
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
-            BindGrid();
+            BindGrid("");
         }
 
         protected void gridPolicyItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
@@ -157,7 +158,8 @@ namespace BrokerWebApp.inoutbalance
 
         protected void gridPolicyItem_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
-            BindGrid();
+            string sVoucherID = e.Parameters;
+            BindGrid(sVoucherID);
         }
 
 
@@ -187,42 +189,24 @@ namespace BrokerWebApp.inoutbalance
             if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误(" + appendDes + ")。";
 
         }
-     
 
 
         private void init()
         {
-            dxetxtPayinFeeNeed.BackColor = Color.LightGray;
-            dxetxtPayinFee.BackColor = Color.LightGray;
-            dxetxtFeeAdjust.BackColor = Color.LightGray;
-            dxetxtProcessFee.BackColor = Color.LightGray;
-            dxetxtCiPremium.BackColor = Color.LightGray;            
+            dxetxtPayProcBase.BackColor = Color.LightGray;
+            dxetxtInvoiceProc.BackColor = Color.LightGray;
+            dxetxtInvoiceProcAdjust.BackColor = Color.LightGray;
+            dxetxtCiPremium.BackColor = Color.LightGray;
             dxetxtAciPremium.BackColor = Color.LightGray;
-            dxetxtCstPremium.BackColor = Color.LightGray;
 
-            
-            dxetxtPayinFeeNeed.ReadOnly = true;
-            dxetxtPayinFee.ReadOnly = true;
-            dxetxtFeeAdjust.ReadOnly = true;
-            dxetxtProcessFee.ReadOnly = true;
+            dxetxtPayProcBase.ReadOnly = true;
+            dxetxtInvoiceProc.ReadOnly = true;
+            dxetxtInvoiceProcAdjust.ReadOnly = true;
             dxetxtCiPremium.ReadOnly = true;
             dxetxtAciPremium.ReadOnly = true;
-            dxetxtCstPremium.ReadOnly = true;
-
 
 
             DataSet dsList;
-
-            //GatheringType
-            //this.dxeddlGatheringType.Items.Add("(全部)", "");
-            //dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.GatheringType.ToString());
-            //if (dsList.Tables[0] != null)
-            //{
-            //    foreach (DataRow row in dsList.Tables[0].Rows)
-            //    {
-            //        this.dxeddlGatheringType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
-            //    }
-            //}
 
             this.dxeddlProcessFeeType.Items.Add("(全部)", "");
             dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.ProcessFeeType.ToString());
@@ -258,31 +242,29 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
-        private void BindGrid()
+        private void BindGrid(string sVoucherID)
         {
-            string sVocherID = "";
-            sVocherID = this.lblVoucherId.InnerHtml;
-            DataTable dt = BO_FeePayin.GetFeePayinAdd(sVocherID).Tables[0];
+            string lsVocherID = "";
+            if (sVoucherID == "")
+            {
+                lsVocherID = this.lblVoucherId.InnerHtml;
+            }
+            else
+            {
+                lsVocherID = sVoucherID;
+            }
+
+            DataTable dt = Bo_FeePayinInvoice.GetFeePayinInvoiceAdd(lsVocherID).Tables[0];
             this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
 
             //取应收.
-
-            dxetxtPayinFeeNeed.Text = dt.Compute("Sum(PayFeeBase)", "").ToString();
-            dxetxtPayinFee.Text = dt.Compute("Sum(Fee)", "").ToString();
-            dxetxtFeeAdjust.Text = dt.Compute("Sum(FeeAdjust)", "").ToString();
-            
-            if (dxeddlProcessFeeType.SelectedItem.Value.ToString() == "1")
-            {
-                dxetxtProcessFee.Text = dt.Compute("Sum(PayProcBase)", "").ToString();  
-            }
-            else
-            {
-                dxetxtProcessFee.Text = "0.00";
-            }
-            dxetxtCiPremium.Text = dt.Compute("Sum(CiPremium)", "").ToString();
-            dxetxtAciPremium.Text = dt.Compute("Sum(AciPremium)", "").ToString();
-            dxetxtCstPremium.Text = dt.Compute("Sum(CstPremium)", "").ToString();
+            //dxetxtPayFee.Text = dt.Compute("Sum(PayFeeBase)", "").ToString();
+            //dxetxtFeeAdjust.Text = dt.Compute("Sum(FeeAdjust)", "").ToString();
+            //dxetxtFee.Text = dt.Compute("Sum(Fee)", "").ToString();
+            //dxetxtCiPremium.Text = dt.Compute("Sum(CiPremium)", "").ToString();
+            //dxetxtAciPremium.Text = dt.Compute("Sum(AciPremium)", "").ToString();
+            //dxetxtCstPremium.Text = dt.Compute("Sum(CstPremium)", "").ToString();
 
         }
 
@@ -304,32 +286,30 @@ namespace BrokerWebApp.inoutbalance
                 objLoad = new BO_Voucher();
 
                 objLoad.VoucherId = TranUtils.GetVoucherNo();
-                objLoad.InvoiceNO = "";
+                objLoad.InvoiceNO = obj.VoiceNo;
                 objLoad.CreateTime = DateTime.Now;
                 objLoad.CreatePerson = this.CurrentUserID;
-                objLoad.AccountTypeID = Convert.ToInt32(BO_P_Code.AccountType.PayIn_Direct);
-                objLoad.FeeDate = obj.GotDate;
+                objLoad.AccountTypeID = Convert.ToInt32(BO_P_Code.AccountType.Invoice);
+                objLoad.FeeDate = obj.ReleaseDate;
                 objLoad.AuditStatus = Convert.ToInt32(BO_P_Code.AuditStatus.Appeal).ToString();
                 objLoad.Remark = obj.Remark;
 
                 objLoad.CarrierID = obj.Carrier;
                 objLoad.BranchID = obj.Branch;
-                objLoad.GatheringType = obj.GatheringType;
                 objLoad.ProcessFeeType = obj.ProcessFeeType;
-
+                objLoad.VoucherNo = "" ;
                 objLoad.Save(ModifiedAction.Insert);
             }
             else
             {
                 objLoad = new BO_Voucher(obj.ID);
-                objLoad.FeeDate = obj.GotDate;
+                objLoad.FeeDate = obj.ReleaseDate;
                 objLoad.Remark = obj.Remark;
 
                 objLoad.CarrierID = obj.Carrier;
                 objLoad.BranchID = obj.Branch;
-                objLoad.GatheringType = obj.GatheringType;
                 objLoad.ProcessFeeType = obj.ProcessFeeType;
-
+                objLoad.InvoiceNO = obj.VoiceNo;
                 objLoad.Save(ModifiedAction.Update);
             }
 
@@ -372,17 +352,11 @@ namespace BrokerWebApp.inoutbalance
 
             obj = new BusinessObjects.BO_Voucher(id);
 
-            this.dxeGotDate.Date = obj.FeeDate;
+            this.dxeReleaseDate.Date = obj.FeeDate;
             this.dxetxtRemark.Text = obj.Remark;
+            this.dxetxtInvoiceNO.Text = obj.InvoiceNO;
 
             ListEditItem theselected;
-
-            //gathertype
-            //theselected = this.dxeddlGatheringType.Items.FindByValue(obj.GatheringType);
-            //if (theselected != null)
-            //{
-            //    dxeddlGatheringType.SelectedItem = theselected;
-            //}
 
             //processtype
             theselected = this.dxeddlProcessFeeType.Items.FindByValue(obj.ProcessFeeType);
@@ -417,6 +391,7 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
+
         protected void dxeddlBranch_Callback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
             ASPxComboBox thecb = (ASPxComboBox)source;
@@ -429,6 +404,7 @@ namespace BrokerWebApp.inoutbalance
                 thecb.SelectedItem = thecb.Items[0];
             }
         }
+
 
 
         [DataContract(Namespace = "http://www.sheib.com")]
@@ -445,13 +421,10 @@ namespace BrokerWebApp.inoutbalance
             public string ID { get; set; }
 
             [DataMember]
-            public DateTime GotDate { get; set; }
+            public DateTime ReleaseDate { get; set; }
 
             [DataMember]
             public string AuditStatus { get; set; }
-
-            [DataMember]
-            public string GatheringType { get; set; }
 
             [DataMember]
             public string ProcessFeeType { get; set; }
@@ -462,9 +435,10 @@ namespace BrokerWebApp.inoutbalance
             [DataMember]
             public string Branch { get; set; }
 
+            [DataMember]
+            public string VoiceNo { get; set; }
+
         }
-
-
 
 
 

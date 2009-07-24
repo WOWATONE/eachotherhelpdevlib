@@ -10,7 +10,7 @@ using BusinessObjects.SchemaSetting;
 
 namespace BrokerWebApp.inoutbalance
 {
-    public partial class FeeCustomer : System.Web.UI.Page
+    public partial class FeeCustomer : BasePage
     {
 
         #region Variables

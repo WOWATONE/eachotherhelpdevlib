@@ -9,7 +9,7 @@ using BusinessObjects;
 
 namespace BrokerWebApp.inoutbalance
 {
-    public partial class FeeProcess : System.Web.UI.Page
+    public partial class FeeProcess : BasePage
     {
 
         #region Variables

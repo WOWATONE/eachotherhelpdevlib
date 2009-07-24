@@ -503,33 +503,33 @@
     <Compile Include="inoutbalance\FeePayinAddSelect.aspx.designer.cs">
       <DependentUpon>FeePayinAddSelect.aspx</DependentUpon>
     </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoice.aspx.cs">
-      <DependentUpon>FeePayinInvoice.aspx</DependentUpon>
+    <Compile Include="inoutbalance\FeeInvoice.aspx.cs">
+      <DependentUpon>FeeInvoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoice.aspx.designer.cs">
-      <DependentUpon>FeePayinInvoice.aspx</DependentUpon>
+    <Compile Include="inoutbalance\FeeInvoice.aspx.designer.cs">
+      <DependentUpon>FeeInvoice.aspx</DependentUpon>
     </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoiceAdd.aspx.cs">
-      <DependentUpon>FeePayinInvoiceAdd.aspx</DependentUpon>
+    <Compile Include="inoutbalance\FeeInvoiceAdd.aspx.cs">
+      <DependentUpon>FeeInvoiceAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoiceAdd.aspx.designer.cs">
-      <DependentUpon>FeePayinInvoiceAdd.aspx</DependentUpon>
+    <Compile Include="inoutbalance\FeeInvoiceAdd.aspx.designer.cs">
+      <DependentUpon>FeeInvoiceAdd.aspx</DependentUpon>
     </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoiceAddPrint.aspx.cs">
-      <DependentUpon>FeePayinInvoiceAddPrint.aspx</DependentUpon>
+    <Compile Include="inoutbalance\FeeInvoiceAddPrint.aspx.cs">
+      <DependentUpon>FeeInvoiceAddPrint.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoiceAddPrint.aspx.designer.cs">
-      <DependentUpon>FeePayinInvoiceAddPrint.aspx</DependentUpon>
+    <Compile Include="inoutbalance\FeeInvoiceAddPrint.aspx.designer.cs">
+      <DependentUpon>FeeInvoiceAddPrint.aspx</DependentUpon>
     </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoiceAddSelect.aspx.cs">
-      <DependentUpon>FeePayinInvoiceAddSelect.aspx</DependentUpon>
+    <Compile Include="inoutbalance\FeeInvoiceAddSelect.aspx.cs">
+      <DependentUpon>FeeInvoiceAddSelect.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="inoutbalance\FeePayinInvoiceAddSelect.aspx.designer.cs">
-      <DependentUpon>FeePayinInvoiceAddSelect.aspx</DependentUpon>
+    <Compile Include="inoutbalance\FeeInvoiceAddSelect.aspx.designer.cs">
+      <DependentUpon>FeeInvoiceAddSelect.aspx</DependentUpon>
     </Compile>
     <Compile Include="inoutbalance\FeeProcess.aspx.cs">
       <DependentUpon>FeeProcess.aspx</DependentUpon>
@@ -1091,10 +1091,10 @@
     <Content Include="inoutbalance\FeePayinAdd.aspx" />
     <Content Include="inoutbalance\FeePayinAddPrint.aspx" />
     <Content Include="inoutbalance\FeePayinAddSelect.aspx" />
-    <Content Include="inoutbalance\FeePayinInvoice.aspx" />
-    <Content Include="inoutbalance\FeePayinInvoiceAdd.aspx" />
-    <Content Include="inoutbalance\FeePayinInvoiceAddPrint.aspx" />
-    <Content Include="inoutbalance\FeePayinInvoiceAddSelect.aspx" />
+    <Content Include="inoutbalance\FeeInvoice.aspx" />
+    <Content Include="inoutbalance\FeeInvoiceAdd.aspx" />
+    <Content Include="inoutbalance\FeeInvoiceAddPrint.aspx" />
+    <Content Include="inoutbalance\FeeInvoiceAddSelect.aspx" />
     <Content Include="inoutbalance\FeeProcess.aspx" />
     <Content Include="inoutbalance\FeeProcessAdd.aspx" />
     <Content Include="inoutbalance\FeeProcessAddPrint.aspx" />
