@@ -294,13 +294,15 @@ namespace BrokerWebApp.inoutbalance
             {
                 objLoad = new BO_Notice(obj.NoticeNo);
                 objLoad.AuditStatus = obj.AuditStatus;
-                if (obj.AuditStatus == "1")
-                {
-                    objLoad.AuditTime = DateTime.Today;
-                    objLoad.AuditPersion = this.CurrentUserID;
+
+                objLoad.AuditNotice();
+                //if (obj.AuditStatus == "1")
+                //{
+                //    objLoad.AuditTime = DateTime.Today;
+                //    objLoad.AuditPersion = this.CurrentUserID;
                     
-                }
-                objLoad.Save(ModifiedAction.Update);
+                //}
+                //objLoad.Save(ModifiedAction.Update);
             }
 
         }
@@ -329,7 +331,10 @@ namespace BrokerWebApp.inoutbalance
             this.dxeNoticeDate.Date = obj.NoticeDate;
             if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
             {
-                this.dxebtnAudit.Text = "反审核"; 
+                this.dxebtnAudit.Text = "反审核";
+                dxebtnSave.Enabled = false;
+                dxebtnPrint.Enabled = false;
+                btnAddPolicy.Enabled = false;
             }
             else
             {
@@ -337,9 +342,6 @@ namespace BrokerWebApp.inoutbalance
             }
             
         }
-
-
-    
     
     }
 

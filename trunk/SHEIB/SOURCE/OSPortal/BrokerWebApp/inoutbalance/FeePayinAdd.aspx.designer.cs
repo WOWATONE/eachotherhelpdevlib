@@ -41,6 +41,15 @@ namespace BrokerWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeAuditCallback;
         
         /// <summary>
+        /// dxeGetGridPolicyItemTotalSummary 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeGetGridPolicyItemTotalSummary;
+        
+        /// <summary>
         /// npGridPolicyItemHeader 控件。
         /// </summary>
         /// <remarks>
@@ -167,22 +176,22 @@ namespace BrokerWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProcessFee;
         
         /// <summary>
-        /// dxetxtPayinFeeNeed 控件。
+        /// dxetxtPayFeeBase 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPayinFeeNeed;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPayFeeBase;
         
         /// <summary>
-        /// dxetxtPayinFee 控件。
+        /// dxetxtFee 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPayinFee;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtFee;
         
         /// <summary>
         /// dxetxtFeeAdjust 控件。
@@ -192,6 +201,15 @@ namespace BrokerWebApp.inoutbalance {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtFeeAdjust;
+        
+        /// <summary>
+        /// dxetxtPayinFee 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPayinFee;
         
         /// <summary>
         /// dxetxtCiPremium 控件。

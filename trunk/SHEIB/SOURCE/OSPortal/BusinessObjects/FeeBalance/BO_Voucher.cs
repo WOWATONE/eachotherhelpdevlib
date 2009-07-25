@@ -255,6 +255,15 @@ namespace BusinessObjects
         }
 
 
+        public void AuditVoucher()
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.AuditVoucher");
+            _db.AddInParameter(dbCommand, "@ac_VoucherID", DbType.String, VoucherId);
+            _db.AddInParameter(dbCommand, "@ac_AuditStatus", DbType.String, AuditStatus);
+            _db.AddInParameter(dbCommand, "@ac_AuditPersion", DbType.String, AuditPerson);
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
 
         #endregion Procedure
 

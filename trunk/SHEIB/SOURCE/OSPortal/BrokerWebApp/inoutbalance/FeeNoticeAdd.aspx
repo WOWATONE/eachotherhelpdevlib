@@ -48,7 +48,6 @@
         }
 
         function cusCompleteEnable() {
-            //debugger;
             if (!cusCheckNessary()) {
                 dxebtnSave.SetEnabled(true);
                 dxebtnAudit.SetEnabled(true);
@@ -212,19 +211,26 @@
 
         function auditCallbackComplete(s, e) {
             //do nothing;
+            debugger;
             var buttonID = dxebtnAudit.GetText();
             switch (buttonID) {
                 case "审核":
                     dxebtnAudit.SetText("反审核");
-                    break
+                    dxebtnSave.SetEnabled(false);
+                    btnAddPolicy.SetEnabled(false);
+                    dxebtnPrint.SetEnabled(false);
+                    break;
                 case "反审核":
                     dxebtnAudit.SetText("审核");
-                    break
+                    dxebtnSave.SetEnabled(true);                 
+                    btnAddPolicy.SetEnabled(true);
+                    dxebtnPrint.SetEnabled(true);
+                    break;
                 default:
                     //do nothing;
             }
         }
-        
+
         
     </script>
 
@@ -283,7 +289,7 @@
                 对应保单：
             </td>
             <td style="text-align: left;">
-                <dxe:ASPxButton runat="server" ID="btnAddPolicy" AutoPostBack="false" Text="添加保单">
+                <dxe:ASPxButton runat="server" ID="btnAddPolicy" ClientInstanceName="btnAddPolicy" AutoPostBack="false" Text="添加保单">
                     <ClientSideEvents Click="btnAddPolicyClick" />
                 </dxe:ASPxButton>
             </td>
