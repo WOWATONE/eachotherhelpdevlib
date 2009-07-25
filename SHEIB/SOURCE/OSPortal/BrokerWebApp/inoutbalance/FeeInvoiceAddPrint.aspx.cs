@@ -55,10 +55,12 @@ namespace BrokerWebApp.inoutbalance
             //sSql = sSql + " group by b.PayinID";
             //sSql = sSql + " ) a";
 
-            sSql = sSql + "select a.VoucherID,b.PayinID,a.PolicyNo,a.PolicyID,a.ProcessFeeTypeName,a.Fee";
+            sSql = sSql + "select a.VoucherID,b.PayinID,c.PolicyNo,b.PolicyID,(select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=b.ProcessFeeType) ProcessFeeTypeName,a.Fee";
             sSql = sSql + " from VoucherFee a";
-            sSql = sSql + " left join PolicyPeriodFee b";
+            sSql = sSql + " left join PolicyPeriod b";
             sSql = sSql + " on a.PolPeriodID=b.PolPeriodID";
+            sSql = sSql + " left join Policy c";
+            sSql = sSql + " on b.PolicyID=c.PolicyID";
             sSql = sSql + " where VoucherID='" + sVoucherID + "'";
             SqlDataAdapter adDetail = new SqlDataAdapter(sSql, conn);
             adDetail.Fill(dFee, "PayinInvoiceDetail");
