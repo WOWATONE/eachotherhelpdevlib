@@ -17,55 +17,8 @@ namespace BusinessObjects
         //FeePayin列表
         public static DataSet GetFeePayinList(string sWhere)
         {
-            //             select a.* from (
-            //select a.VoucherID,a.FeeId,c.CustomerID,c.ProdTypeID,b.CarrierID,b.BranchID,c.PolicyID,c.PolicyNo,b.NoticeNo,
-            //a.FeeDate,b.PayFeeBase,
-            //(select sum(Fee) from fee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4')) PayedFee,
-            //b.PayProcBase,
-            //a.Fee,a.FeeAdjust,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,
-            //a.ProcessFeeType,
-            //(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,
-            //(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,
-            //(select CustName from Customer where CustID=c.CustomerID) CustomerName,
-            //(select UserNameCn from P_User where UserID=c.SalesID) SalesName,
-            //(select ProdTypeName from ProductType where ProdTypeID=c.ProdTypeID) ProdTypeName,
-            //(select CarrierNameCn from Carrier where CarrierID=b.CarrierID) CarrierName,
-            //(select BranchName from Branch where BranchID=b.BranchID) BranchName,
-            //(select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=a.ProcessFeeType) ProcessFeeTypeName
-            // from VoucherFee a,PolicyPeriod b,Policy c
-            // where a.PolPeriodID=b.PolPeriodID
-            //  and b.PolicyID=c.PolicyID
-            //  and a.AccountTypeID in ('3','4')
-            // ) a
-
-            string sSql = "";
-            sSql = sSql + " select a.* from (";
-            sSql = sSql + "select a.VoucherID,a.FeeId,c.CustomerID,c.ProdTypeID,b.CarrierID,b.BranchID,c.PolicyID,c.PolicyNo,b.NoticeNo,";
-            sSql = sSql + "a.FeeDate,b.PayFeeBase,";
-            sSql = sSql + "(select sum(Fee) from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4')) PayedFee,";
-            sSql = sSql + "b.PayProcBase,";
-            sSql = sSql + "a.Fee,a.FeeAdjust,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,";
-            sSql = sSql + "a.ProcessFeeType,";
-            sSql = sSql + "(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,";
-            sSql = sSql + "(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,";
-            sSql = sSql + "(select CustName from Customer where CustID=c.CustomerID) CustomerName,";
-            sSql = sSql + "(select UserNameCn from P_User where UserID=c.SalesID) SalesName,";
-            sSql = sSql + "(select ProdTypeName from ProductType where ProdTypeID=c.ProdTypeID) ProdTypeName,";
-            sSql = sSql + "(select CarrierNameCn from Carrier where CarrierID=b.CarrierID) CarrierName,";
-            sSql = sSql + "(select BranchName from Branch where BranchID=b.BranchID) BranchName,";
-            sSql = sSql + "(select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=a.ProcessFeeType) ProcessFeeTypeName";
-            sSql = sSql + " from VoucherFee a";
-            sSql = sSql + " left join PolicyPeriod b";
-            sSql = sSql + " on a.PolPeriodID=b.PolPeriodID";
-            sSql = sSql + " left join Policy c";
-            sSql = sSql + " on b.PolicyID=c.PolicyID";
-            sSql = sSql + " where a.AccountTypeID in ('3','4')";
-            sSql = sSql + " ) a";
-            if (sWhere != "")
-            {
-                sSql = sSql + sWhere;
-            }
-            DbCommand dbCommand = _db.GetSqlStringCommand(sSql);
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetFeePayinList");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
             return _db.ExecuteDataSet(dbCommand);
         }
 
@@ -73,58 +26,10 @@ namespace BusinessObjects
         public static DataSet GetFeePayinAdd(string sVoucherID)
         {
 
-            string sSql = "";
-
-            //            select a.* from (
-            //select a.VoucherID,a.FeeId,c.CustomerID,c.ProdTypeID,b.CarrierID,b.BranchID,c.PolicyID,c.PolicyNo,b.NoticeNo,
-            //a.FeeDate,b.PayFeeBase,
-            //(select sum(Fee) from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4')) PayedFee,
-            //b.PayProcBase,
-            //a.Fee,a.FeeAdjust,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,
-            //a.ProcessFeeType,
-            //(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,
-            //(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,
-            //(select CustName from Customer where CustID=c.CustomerID) CustomerName,
-            //(select UserNameCn from P_User where UserID=c.SalesID) SalesName,
-            //(select ProdTypeName from ProductType where ProdTypeID=c.ProdTypeID) ProdTypeName,
-            //(select CarrierNameCn from Carrier where CarrierID=b.CarrierID) CarrierName,
-            //(select BranchName from Branch where BranchID=b.BranchID) BranchName,
-            // (select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=a.ProcessFeeType) ProcessFeeTypeName
-            // from VoucherFee a,PolicyPeriod b,Policy c
-            // where a.PolPeriodID=b.PolPeriodID
-            //  and b.PolicyID=c.PolicyID
-            //  and a.AccountTypeID in ('3','4')
-            // ) a
-
-            //where 1=1
-
-
-
-            sSql = sSql + "select a.* from (";
-            sSql = sSql + "select a.VoucherID,a.FeeId,c.CustomerID,c.ProdTypeID,b.CarrierID,b.BranchID,c.PolicyID,c.PolicyNo,b.NoticeNo,";
-            sSql = sSql + "a.FeeDate,b.PayFeeBase,";
-            sSql = sSql + "(select isnull(Sum(Fee),0) from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('3','4') and VoucherID<>a.VoucherID) PayedFee,";
-            sSql = sSql + "b.PayProcBase,";
-            sSql = sSql + "a.Fee,a.FeeAdjust,a.AuditStatus,c.SalesID,CiPremium,AciPremium,CstPremium,";
-            sSql = sSql + "a.ProcessFeeType,";
-            sSql = sSql + "(select AuditStatusName from AuditStatus where AuditStatusID=a.AuditStatus) AuditStatusName,";
-            sSql = sSql + "(select GatheringTypeName from GatheringType where GatheringTypeID=a.GatheringType) GatheringTypeName,";
-            sSql = sSql + "(select CustName from Customer where CustID=c.CustomerID) CustomerName,";
-            sSql = sSql + "(select UserNameCn from P_User where UserID=c.SalesID) SalesName,";
-            sSql = sSql + "(select ProdTypeName from ProductType where ProdTypeID=c.ProdTypeID) ProdTypeName,";
-            sSql = sSql + "(select CarrierNameCn from Carrier where CarrierID=b.CarrierID) CarrierName,";
-            sSql = sSql + "(select BranchName from Branch where BranchID=b.BranchID) BranchName,";
-            sSql = sSql + "(select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=a.ProcessFeeType) ProcessFeeTypeName";
-            sSql = sSql + " from VoucherFee a,PolicyPeriod b,Policy c";
-            sSql = sSql + " where a.PolPeriodID=b.PolPeriodID";
-            sSql = sSql + "  and b.PolicyID=c.PolicyID";
-            sSql = sSql + "  and a.AccountTypeID in ('3','4')";
-            sSql = sSql + "  and VoucherID ='" + sVoucherID + "'";
-            sSql = sSql + " ) a";
-            sSql = sSql + " where 1=1";
-
-            DbCommand dbCommand = _db.GetSqlStringCommand(sSql);
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetFeePayinAdd");
+            _db.AddInParameter(dbCommand, "@ac_VoucherID", DbType.String, sVoucherID);
             return _db.ExecuteDataSet(dbCommand);
+           
         }
 
 
@@ -134,41 +39,9 @@ namespace BusinessObjects
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetFeePayinAddSelectList");
             _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
             return _db.ExecuteDataSet(dbCommand);
-
-            //string sSql = "";
-            //sSql = sSql + "select * from (";
-            //sSql = sSql + "Select a.PolperiodID,a.PolicyID,a.NoticeNo, a.Payfee, a.Feedate, ISNULL(a.Payedfee,0) Payedfee, ISNULL(a.Payinfee,0) Payinfee, a.Payinedfee,(a.Payinfee - ISNULL(a.Payinedfee,0)) Fee,a.Payproc, ";
-            //sSql = sSql + "       a.Period,a.CarrierID, a.CarrierName, a.BranchID, a.BranchName, a.Paydate,";
-            //sSql = sSql + "       a.Payfeebase, a.Payprocbase,a.NoticeDate,";
-            //sSql = sSql + "       b.PolicyNo,b.DeptID,b.CustomerID,b.ProdTypeID,b.SalesID,b.CarrierSales,b.CiPremium,b.AciPremium,b.CstPremium,b.GatheringType,b.PremiumBase,";
-            //sSql = sSql + "       (select CustName from  customer where custID=b.CustomerID) CustName, ";
-            //sSql = sSql + "       (select ProdTypeName from ProductType where ProdTypeID=b.ProdTypeID) ProdTypeName,";
-            //sSql = sSql + "       (select GatheringTypeName from GatheringType where GatheringTypeID=b.GatheringType) GatheringTypeName,";
-            //sSql = sSql + "       (select UserNameCn from P_User where UserID=b.SalesID) SalesName";
-            //sSql = sSql + " From Policyperiodfee a, Policy b";
-            //sSql = sSql + " Where a.Policyid = b.Policyid ";
-            //sSql = sSql + "      And Payfee = Payedfee ";
-            //sSql = sSql + "      And Payinfee <> ISNULL(Payinedfee,0)";
-            //sSql = sSql + ") a";
-            //sSql = sSql + " where 1=1";
-            //if (sWhere != "")
-            //{
-            //    sSql = sSql + sWhere;
-            //}
-            //DbCommand dbCommand = _db.GetSqlStringCommand(sSql);
-            //return _db.ExecuteDataSet(dbCommand);
         }
 
     }
 
 
 }
-
-
-
-//Select a.Noticeno, a.Payfee, a.Feedate, a.Payedfee, a.Payinfee, a.Payinid, a.Payindate, a.Payinedfee, a.Payininvoicefee,
-//             a.Payininvoiceid, a.Payininvoicedate, a.Payininvoiceedfee, a.Payproc, a.Payprocid, a.Payprocdate, a.Payedproc,
-//             a.Polperiodid, a.Period, a.Policyid, a.Carrierid, a.Carriername, a.Branchid, a.Branchname, a.Paydate,
-//             a.Payfeebase, a.Payprocbase
-//From Policyperiodfee a, Policy b
-//Where a.Policyid = b.Policyid And Payfee = Payedfee And Payinfee <> Payinedfee
