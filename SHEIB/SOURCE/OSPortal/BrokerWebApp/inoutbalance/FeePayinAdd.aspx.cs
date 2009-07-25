@@ -43,7 +43,7 @@ namespace BrokerWebApp.inoutbalance
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
             String id = saveVoucher(e.Parameter);
-            e.Result = id;       
+            e.Result = id;
         }
 
 
@@ -164,6 +164,23 @@ namespace BrokerWebApp.inoutbalance
             BindGrid();
         }
 
+        protected void dxeGetGridPolicyItemTotalSummary_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            String PayFeeBase = Convert.ToString(gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["PayFeeBase"]));
+            String Fee = Convert.ToString(gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["Fee"]));
+            String FeeAdjust = Convert.ToString(gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["FeeAdjust"]));
+            String PayProcBase = Convert.ToString(gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["PayProcBase"]));
+            String PayinFee = Convert.ToString(gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["PayinFee"]));
+
+            if (String.IsNullOrEmpty(PayFeeBase)) PayFeeBase = "0";
+            if (String.IsNullOrEmpty(Fee)) Fee = "0";
+            if (String.IsNullOrEmpty(FeeAdjust)) FeeAdjust = "0";
+            if (String.IsNullOrEmpty(PayProcBase)) PayProcBase = "0";
+            if (String.IsNullOrEmpty(PayinFee)) PayinFee = "0";
+
+            e.Result = PayFeeBase + ";" + Fee + ";" + FeeAdjust + ";" + PayProcBase + ";" + PayinFee;
+        }
+
 
         protected void gridPolicyItem_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
@@ -219,7 +236,7 @@ namespace BrokerWebApp.inoutbalance
 
         private void init()
         {
-            dxetxtPayinFeeNeed.BackColor = Color.LightGray;
+            dxetxtPayFeeBase.BackColor = Color.LightGray;
             dxetxtPayinFee.BackColor = Color.LightGray;
             dxetxtFeeAdjust.BackColor = Color.LightGray;
             dxetxtProcessFee.BackColor = Color.LightGray;
@@ -227,8 +244,8 @@ namespace BrokerWebApp.inoutbalance
             dxetxtAciPremium.BackColor = Color.LightGray;
             dxetxtCstPremium.BackColor = Color.LightGray;
 
-            
-            dxetxtPayinFeeNeed.ReadOnly = true;
+
+            dxetxtPayFeeBase.ReadOnly = true;
             dxetxtPayinFee.ReadOnly = true;
             dxetxtFeeAdjust.ReadOnly = true;
             dxetxtProcessFee.ReadOnly = true;
@@ -294,8 +311,8 @@ namespace BrokerWebApp.inoutbalance
             this.gridPolicyItem.DataBind();
 
             //取应收.
-
-            dxetxtPayinFeeNeed.Text = dt.Compute("Sum(PayFeeBase)", "").ToString();
+            /*
+            dxetxtPayFeeBase.Text = dt.Compute("Sum(PayFeeBase)", "").ToString();
             dxetxtPayinFee.Text = dt.Compute("Sum(Fee)", "").ToString();
             dxetxtFeeAdjust.Text = dt.Compute("Sum(FeeAdjust)", "").ToString();
             
@@ -310,7 +327,7 @@ namespace BrokerWebApp.inoutbalance
             dxetxtCiPremium.Text = dt.Compute("Sum(CiPremium)", "").ToString();
             dxetxtAciPremium.Text = dt.Compute("Sum(AciPremium)", "").ToString();
             dxetxtCstPremium.Text = dt.Compute("Sum(CstPremium)", "").ToString();
-
+            */
         }
 
 
@@ -334,7 +351,7 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.InvoiceNO = "";
                 objLoad.CreateTime = DateTime.Now;
                 objLoad.CreatePerson = this.CurrentUserID;
-                objLoad.AccountTypeID = Convert.ToInt32(BO_P_Code.AccountType.PayIn_Direct);
+                objLoad.AccountTypeID = Convert.ToInt32(BO_P_Code.AccountType.PayIn);
                 objLoad.FeeDate = obj.GotDate;
                 objLoad.AuditStatus = Convert.ToInt32(BO_P_Code.AuditStatus.Appeal).ToString();
                 objLoad.Remark = obj.Remark;
@@ -385,7 +402,12 @@ namespace BrokerWebApp.inoutbalance
             {
                 objLoad = new BO_Voucher(obj.ID);
                 objLoad.AuditStatus = obj.AuditStatus;
-                objLoad.Save(ModifiedAction.Update);
+                objLoad.AuditPerson = this.CurrentUserID;
+                objLoad.AuditVoucher();
+                
+                //objLoad.Save(ModifiedAction.Update);
+                
+            
             }
 
         }

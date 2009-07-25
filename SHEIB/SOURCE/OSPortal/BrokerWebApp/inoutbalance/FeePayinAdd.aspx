@@ -22,7 +22,7 @@
     <title>解付保费录入</title>
 
     <script type="text/javascript">
-        
+
         function cusCheckNessary() {
             var id = getVoucherId();
             if (isEmpty(id)) {
@@ -53,7 +53,7 @@
             dxebtnPrint.SetEnabled(true);
             //dxebtnComplete.SetEnabled(true);
         }
-        
+
         $(document).ready(function() {
             //jQuery.noticeAdd({
             //    text: 'This is a notification that you have to remove',
@@ -74,7 +74,7 @@
 
         });
 
-        
+
         function btnAddPolicyClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
             var url = "FeePayinAddSelect.aspx?ID=" + getVoucherId();
@@ -90,7 +90,7 @@
             window.showModalDialog(url, self, myArguments);
             gridPolicyItem.PerformCallback('');
         }
-        
+
         function btnCloseClick() {
             window.close();
         }
@@ -120,6 +120,9 @@
             if (isEmpty(pid)) {
                 setVoucherId(e.result);
                 cusCompleteEnable();
+            } else {
+                //如果更改了经纪费收取方式
+                gridPolicyItem.PerformCallback('');
             }
         }
 
@@ -147,7 +150,7 @@
 
         function InfoJSON(ID, Remark, GotDate, AuditStatus,
             GatheringType, ProcessFeeType, Carrier, Branch) {
-            
+
             if (!isEmpty(ID))
                 this.ID = ID;
 
@@ -162,13 +165,13 @@
 
             if (!isEmpty(GatheringType))
                 this.GatheringType = GatheringType;
-                
+
             if (!isEmpty(ProcessFeeType))
                 this.ProcessFeeType = ProcessFeeType;
-                
+
             if (!isEmpty(Carrier))
                 this.Carrier = Carrier;
-                
+
             if (!isEmpty(Branch))
                 this.Branch = Branch;
 
@@ -229,43 +232,33 @@
             }
         }
 
-
         function gridPolicyItem_EndCallback(s, e) {
-            //sum
-//            var itemVal;
-//            var indexPayProcBase = getOColumnIndex("本次应收经纪费"); 
-//            var indexFee = getOColumnIndex("本次实际解付保费");
-//            var indexFeeAdjust = getOColumnIndex("调整金额");
+            dxeGetGridPolicyItemTotalSummary.PerformCallback();
+        }
 
-//            var sumPayProcBase = 0;
-//            var sumFee = 0;
-//            var sumFeeAdjust = 0;
+        function dxeGetGridPolicyItemTotalSummaryCallbackComplete(s, e) {
+            var retrunval = e.result;
+            var thesplit_array = retrunval.split(";");
+            //PayFeeBase + ";" + Fee + ";" + FeeAdjust + ";" + PayProcBase + ";" + PayinFee;
+            var sumPayFeeBaseVal = parseFloat(thesplit_array[0]);
+            var sumFeeVal = parseFloat(thesplit_array[1]);
+            var sumFeeAdjustVal = parseFloat(thesplit_array[2]);
+            var sumPayProcBaseVal = parseFloat(thesplit_array[3]);
+            var sumPayinFeeVal = parseFloat(thesplit_array[4]);
 
-//            for (i = 0; i < gridPolicyItem.pageRowCount; i++) {
-//                //PayFeeBase
-//                itemVal = gridPolicyItem.GetDataRow(i).cells[indexPayProcBase].innerText;
-//                if (isDecimal(itemVal)) {
-//                    sumPayProcBase = parseFloat(sumPayProcBase) + parseFloat(itemVal);
-//                }
-//                //sumFee
-//                itemVal = gridPolicyItem.GetDataRow(i).cells[indexFee].innerText;
-//                if (isDecimal(itemVal)) {
-//                    sumFee = parseFloat(sumFee) + parseFloat(itemVal);
-//                }
 
-//                //sumFeeAdjust
-//                itemVal = gridPolicyItem.GetDataRow(i).cells[indexFeeAdjust].innerText;
-//                if (isDecimal(itemVal)) {
-//                    sumFeeAdjust = parseFloat(sumFeeAdjust) + parseFloat(itemVal);
-//                }
-//            }
-
-//            var rtn = sumPayProcBase.toFixed(2);
-//            dxetxtProcessFee.SetValue(rtn);
-//            rtn = sumFee.toFixed(2);
-//            dxetxtPayinFee.SetValue(rtn);
-//            rtn = sumFeeAdjust.toFixed(2);
-//            dxetxtFeeAdjust.SetValue(rtn);
+            var rtn = sumPayProcBaseVal.toFixed(2);
+            dxetxtProcessFee.SetValue(rtn);  
+            rtn = sumPayFeeBaseVal.toFixed(2);
+            dxetxtPayFeeBase.SetValue(rtn);
+            rtn = sumFeeVal.toFixed(2);
+            dxetxtFee.SetValue(rtn);
+            rtn = sumFeeAdjustVal.toFixed(2);
+            dxetxtFeeAdjust.SetValue(rtn);
+            rtn = sumPayinFeeVal.toFixed(2);
+            dxetxtPayinFee.SetValue(rtn);
+                                             
+         
         }
 
         function getOColumnIndex(fieldName) {
@@ -287,9 +280,7 @@
 
         function dxeddlProcessFeeType_OnProcessFeeTypeChanged(s, e) {
             var sProcessFeeType = dxeddlProcessFeeType.GetSelectedItem().value;
-            if (sProcessFeeType == "2") {
-                dxetxtProcessFee.SetValue("0");
-            }
+            
         }
             
         
@@ -305,6 +296,10 @@
     <dxcb:ASPxCallback ID="dxeAuditCallback" ClientInstanceName="dxeAuditCallback" runat="server"
         OnCallback="dxeAuditCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {auditCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    <dxcb:ASPxCallback ID="dxeGetGridPolicyItemTotalSummary" ClientInstanceName="dxeGetGridPolicyItemTotalSummary"
+        runat="server" OnCallback="dxeGetGridPolicyItemTotalSummary_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {dxeGetGridPolicyItemTotalSummaryCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
     <table style="width: 100%">
         <tr>
@@ -407,6 +402,7 @@
                                     </GroupSummary>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowAllRecords" />
+                                    <ClientSideEvents Init="function(s, e) {gridPolicyItem_EndCallback();}" />
                                     <ClientSideEvents EndCallback="function(s, e) {gridPolicyItem_EndCallback();}" />
                                     <Templates>
                                         <EditForm>
@@ -506,18 +502,30 @@
                                     Width="180px">
                                 </dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 12%; text-align: right;">
+                            <td style="text-align: right;">
+                                本期应解付保费：
                             </td>
-                            <td style="width: 20%; text-align: left;">
+                            <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtPayFeeBase" ClientInstanceName="dxetxtPayFeeBase"
+                                    runat="server" Width="180px">
+                                </dxe:ASPxTextBox>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                本次应解付保费：
+                                本期解付保费：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtPayinFeeNeed" ClientInstanceName="dxetxtNeedPayinFeeNeed"
+                                <dxe:ASPxTextBox ID="dxetxtFee" ClientInstanceName="dxetxtFee"
                                     runat="server" Width="180px">
+                                </dxe:ASPxTextBox>
+                            </td>                            
+                            <td style="text-align: right;">
+                                调整金额：
+                            </td>
+                            <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtFeeAdjust" ClientInstanceName="dxetxtFeeAdjust" runat="server"
+                                    Width="180px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
@@ -525,14 +533,6 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtPayinFee" ClientInstanceName="dxetxtPayinFee" runat="server"
-                                    Width="180px">
-                                </dxe:ASPxTextBox>
-                            </td>
-                            <td style="text-align: right;">
-                                调整金额：
-                            </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtFeeAdjust" ClientInstanceName="dxetxtFeeAdjust" runat="server"
                                     Width="180px">
                                 </dxe:ASPxTextBox>
                             </td>

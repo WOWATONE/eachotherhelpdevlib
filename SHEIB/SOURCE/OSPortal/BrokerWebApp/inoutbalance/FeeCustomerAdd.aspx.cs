@@ -242,7 +242,7 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.InvoiceNO = "";
                 objLoad.CreateTime = DateTime.Now;
                 objLoad.CreatePerson = this.CurrentUserID;
-                objLoad.AccountTypeID = Convert.ToInt32(BO_P_Code.AccountType.FeeCustomer_Direct);
+                objLoad.AccountTypeID = Convert.ToInt32(BO_P_Code.AccountType.FeeCustomer);
                 objLoad.FeeDate = obj.GotDate;
                 objLoad.AuditStatus = Convert.ToInt32(BO_P_Code.AuditStatus.Appeal).ToString();
                 objLoad.Remark = obj.Remark;
@@ -281,7 +281,14 @@ namespace BrokerWebApp.inoutbalance
             {
                 objLoad = new BO_Voucher(obj.ID);
                 objLoad.AuditStatus = obj.AuditStatus;
-                objLoad.Save(ModifiedAction.Update);
+                objLoad.AuditPerson = this.CurrentUserID;
+                objLoad.AuditVoucher();
+
+                //objLoad.Save(ModifiedAction.Update);
+
+                //objLoad = new BO_Voucher(obj.ID);
+                //objLoad.AuditStatus = obj.AuditStatus;
+                //objLoad.Save(ModifiedAction.Update);
             }
 
         }
