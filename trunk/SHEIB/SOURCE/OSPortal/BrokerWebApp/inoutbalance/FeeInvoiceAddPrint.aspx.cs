@@ -34,7 +34,7 @@ namespace BrokerWebApp.inoutbalance
             sSql = sSql + "select VoucherID,(Select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,b.BranchName,b.BankName,b.BankAccount,";
             sSql = sSql + "(select SUM(Fee) from Fee where VoucherID=a.VoucherID) PayinFee,";
             sSql = sSql + "(select dbo.MoneyToChinese(SUM(Fee)) from Fee where VoucherID=a.VoucherID) PayinFeeUpper,";
-            sSql = sSql + "(select sum(PayProcBase) from VoucherFee where VoucherID=a.VoucherID ) PayProc,";
+            sSql = sSql + "(select sum(Fee) from VoucherFee where VoucherID=a.VoucherID ) PayProc,";
             sSql = sSql + " dbo.GetYYYYMMDDChinese(a.FeeDate) FeeDate";
             sSql = sSql + " from Voucher a";
             sSql = sSql + " left join branch b";

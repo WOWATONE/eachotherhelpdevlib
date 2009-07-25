@@ -314,17 +314,13 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="Payindate" Caption="解付日期" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="PayinDate" Caption="解付日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Payinedfee" Caption="已解付保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayinedFee" Caption="已解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>                                
-                                        <dxwgv:GridViewDataColumn FieldName="PayinInvoicefee" Caption="本期应收经纪费" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Payininvoiceedfee" Caption="本期已开票金额" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次应开票金额" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="本期应开票金额" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>      
                                         <dxwgv:GridViewDataColumn FieldName="ProcessFeeTypeName" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="客户经理" CellStyle-Wrap="False">
