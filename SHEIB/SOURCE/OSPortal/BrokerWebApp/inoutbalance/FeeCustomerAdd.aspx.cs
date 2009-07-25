@@ -36,7 +36,7 @@ namespace BrokerWebApp.inoutbalance
                 this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];
                 loadValue(this.lblVoucherId.InnerHtml);
             }
-            BindGrid();
+            BindGrid("");
             
         }
 
@@ -141,7 +141,7 @@ namespace BrokerWebApp.inoutbalance
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
 
-            BindGrid();
+            BindGrid("");
 
         }
 
@@ -161,7 +161,7 @@ namespace BrokerWebApp.inoutbalance
 
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
-            BindGrid();
+            BindGrid("");
         }
 
         protected void gridPolicyItem_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
@@ -200,14 +200,22 @@ namespace BrokerWebApp.inoutbalance
 
         protected void gridPolicyItem_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
-            BindGrid();
+            BindGrid(e.Parameters.ToString());
         }
 
-        private void BindGrid()
+        private void BindGrid(string sVoucherID)
         {
-            string sVocherID = "";
-            sVocherID = this.lblVoucherId.InnerHtml;
-            DataTable dt =  BO_FeeCustomer.GetFeeCustomerAdd(sVocherID).Tables[0];
+            string lsVocherID = "";
+            if (sVoucherID == "")
+            {
+                lsVocherID = this.lblVoucherId.InnerHtml;
+            }
+            else
+            {
+                lsVocherID = sVoucherID;
+            }
+
+            DataTable dt =  BO_FeeCustomer.GetFeeCustomerAdd(lsVocherID).Tables[0];
             this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
 
@@ -307,10 +315,14 @@ namespace BrokerWebApp.inoutbalance
             if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
             {
                 this.dxebtnAudit.Text = "反审核";
+                dxebtnAddPolicy.Enabled = false;
+                dxebtnSave.Enabled = false;                
             }
             else
             {
                 this.dxebtnAudit.Text = "审核";
+                dxebtnAddPolicy.Enabled = true;
+                dxebtnSave.Enabled = true;
             }
 
         }

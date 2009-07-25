@@ -34,7 +34,7 @@ namespace BrokerWebApp.inoutbalance
                 init();
                 this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];
                 loadValue(this.lblVoucherId.InnerHtml);
-                BindGrid();
+                BindGrid("");
             }
 
         }
@@ -125,14 +125,14 @@ namespace BrokerWebApp.inoutbalance
             }
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
-            BindGrid();
+            BindGrid("");
 
         }
 
         protected void gridPolicyItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
         {
             //this.gridPolicyItem.DataBind();
-            //BindGrid();
+            //BindGrid("");
         }
 
         
@@ -151,7 +151,7 @@ namespace BrokerWebApp.inoutbalance
             }
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
-            BindGrid();
+            BindGrid("");
         }
 
         protected void gridPolicyItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
@@ -161,7 +161,7 @@ namespace BrokerWebApp.inoutbalance
 
         protected void gridPolicyItem_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
-            BindGrid();
+            BindGrid(e.Parameters.ToString());
         }
 
         protected void dxeGetGridPolicyItemTotalSummary_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
@@ -302,11 +302,18 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
-        private void BindGrid()
+        private void BindGrid(string sVoucherID)
         {
-            string sVocherID = "";
-            sVocherID = this.lblVoucherId.InnerHtml;
-            DataTable dt = BO_FeePayin.GetFeePayinAdd(sVocherID).Tables[0];
+            string lsVocherID = "";
+            if (sVoucherID == "")
+            {
+                lsVocherID = this.lblVoucherId.InnerHtml;
+            }
+            else
+            {
+                lsVocherID = sVoucherID;
+            }
+            DataTable dt = BO_FeePayin.GetFeePayinAdd(lsVocherID).Tables[0];
             this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
 
@@ -457,10 +464,16 @@ namespace BrokerWebApp.inoutbalance
             if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
             {
                 this.dxebtnAudit.Text = "反审核";
+                dxebtnAddPolicy.Enabled = false;
+                dxebtnSave.Enabled = false;
+                dxebtnPrint.Enabled = false;
             }
             else
             {
                 this.dxebtnAudit.Text = "审核";
+                dxebtnAddPolicy.Enabled = true;
+                dxebtnSave.Enabled = true;
+                dxebtnPrint.Enabled = true;
             }
 
         }

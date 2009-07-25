@@ -74,7 +74,7 @@
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
             var url = "FeeCustomerAddSelect.aspx?ID=" + getVoucherId();
             window.showModalDialog(url, self, myArguments);
-            gridPolicyItem.PerformCallback('');
+            gridPolicyItem.PerformCallback(getVoucherId());
         }
 
         function btnCloseClick() {
@@ -170,9 +170,13 @@
             switch (buttonID) {
                 case "审核":
                     dxebtnAudit.SetText("反审核");
+                    dxebtnSave.SetEnabled(false);
+                    dxebtnAddPolicy.SetEnabled(false);
                     break
                 case "反审核":
                     dxebtnAudit.SetText("审核");
+                    dxebtnSave.SetEnabled(true);
+                    dxebtnAddPolicy.SetEnabled(true);
                     break
                 default:
                     //do nothing;
@@ -305,7 +309,7 @@
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
                                             <EditButton Visible="true" />
-                                            <DeleteButton Visible="true" />
+                                            <DeleteButton Visible="true" />                                            
                                         </dxwgv:GridViewCommandColumn>
                                         <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False" Visible="false" >
                                         </dxwgv:GridViewDataColumn>
