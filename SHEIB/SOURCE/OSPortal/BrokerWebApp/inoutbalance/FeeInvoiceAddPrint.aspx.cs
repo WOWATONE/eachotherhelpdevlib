@@ -55,7 +55,7 @@ namespace BrokerWebApp.inoutbalance
             //sSql = sSql + " group by b.PayinID";
             //sSql = sSql + " ) a";
 
-            sSql = sSql + "select a.VoucherID,b.PayinID,c.PolicyNo,b.PolicyID,(select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=b.ProcessFeeType) ProcessFeeTypeName,a.Fee";
+            sSql = sSql + "select a.VoucherID,b.PayinID,c.PolicyNo,b.PolicyID,(select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=b.ProcessFeeType) WProcessFeeTypeName,a.Fee";
             sSql = sSql + " from VoucherFee a";
             sSql = sSql + " left join PolicyPeriod b";
             sSql = sSql + " on a.PolPeriodID=b.PolPeriodID";
