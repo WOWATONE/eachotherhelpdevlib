@@ -62,22 +62,26 @@ namespace BrokerWebApp.inoutbalance
 
             ASPxTextBox dxetxtPolicyItemFee = tblEditorTemplate.FindControl("dxetxtPolicyItemFee") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemFeeAdjust = tblEditorTemplate.FindControl("dxetxtPolicyItemFeeAdjust") as ASPxTextBox;
-
+            ASPxTextBox dxetxtPolicyItemPayProcBase = tblEditorTemplate.FindControl("dxetxtPolicyItemPayProcBase") as ASPxTextBox;
+            dxetxtPolicyItemPayProcBase.Enabled = false;
+            dxetxtPolicyItemPayProcBase.BackColor = Color.LightGray;
 
             Int32 editIndex = this.gridPolicyItem.EditingRowVisibleIndex;
             if (editIndex > -1)
             {
-                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "Fee", "FeeAdjust" });
+                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "Fee", "FeeAdjust", "PayProcBase" });
                 object[] theValueList = theValues as object[];
 
                 //String feeId = theValueList[0].ToString();
                 String fee = theValueList[1].ToString();
                 String feeAdjust = theValueList[2].ToString();
+                string PayProcBase = theValueList[3].ToString();
 
                 if (this.gridPolicyItemStartEdit)
                 {
                     dxetxtPolicyItemFee.Text = fee;
                     dxetxtPolicyItemFeeAdjust.Text = feeAdjust;
+                    dxetxtPolicyItemPayProcBase.Text = PayProcBase;
                 }
 
             }
@@ -171,6 +175,7 @@ namespace BrokerWebApp.inoutbalance
 
             ASPxTextBox dxetxtPolicyItemFee = tblEditorTemplate.FindControl("dxetxtPolicyItemFee") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemFeeAdjust = tblEditorTemplate.FindControl("dxetxtPolicyItemFeeAdjust") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemPayProcBase = tblEditorTemplate.FindControl("dxetxtPolicyItemPayProcBase") as ASPxTextBox;
 
 
             if (String.IsNullOrEmpty(dxetxtPolicyItemFee.Text.Trim()))
@@ -186,6 +191,29 @@ namespace BrokerWebApp.inoutbalance
             dxetxtPolicyItemFee.Validate();
             dxetxtPolicyItemFeeAdjust.Validate();
 
+
+            decimal dFee = 0;
+            decimal dFeeAdjust = 0;
+            decimal dPayProcBase = 0;
+            if (dxetxtPolicyItemPayProcBase.Text != String.Empty)
+            {
+                dPayProcBase = Convert.ToDecimal(dxetxtPolicyItemPayProcBase.Text);
+            }
+            if (dxetxtPolicyItemFee.Text != String.Empty)
+            {
+                dFee = Convert.ToDecimal(dxetxtPolicyItemFee.Text);
+            }
+            if (dxetxtPolicyItemFeeAdjust.Text != String.Empty)
+            {
+                dFeeAdjust = Convert.ToDecimal(dxetxtPolicyItemFeeAdjust.Text);
+            }
+
+            if (dPayProcBase != dFee + dFeeAdjust)
+            {
+                e.RowError = "本期应解付保费必须等于本期解付保费与调整金额之和,请修改.";
+            }
+            
+
             if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误(" + appendDes + ")。";
 
         }
@@ -194,14 +222,14 @@ namespace BrokerWebApp.inoutbalance
         private void init()
         {
             dxetxtPayProcBase.BackColor = Color.LightGray;
-            dxetxtInvoiceProc.BackColor = Color.LightGray;
-            dxetxtInvoiceProcAdjust.BackColor = Color.LightGray;
+            dxetxtFee.BackColor = Color.LightGray;
+            dxetxtFeeAdjust.BackColor = Color.LightGray;
             dxetxtCiPremium.BackColor = Color.LightGray;
             dxetxtAciPremium.BackColor = Color.LightGray;
 
             dxetxtPayProcBase.ReadOnly = true;
-            dxetxtInvoiceProc.ReadOnly = true;
-            dxetxtInvoiceProcAdjust.ReadOnly = true;
+            dxetxtFee.ReadOnly = true;
+            dxetxtFeeAdjust.ReadOnly = true;
             dxetxtCiPremium.ReadOnly = true;
             dxetxtAciPremium.ReadOnly = true;
 
@@ -254,7 +282,7 @@ namespace BrokerWebApp.inoutbalance
                 lsVocherID = sVoucherID;
             }
 
-            DataTable dt = Bo_FeePayinInvoice.GetFeePayinInvoiceAdd(lsVocherID).Tables[0];
+            DataTable dt = Bo_FeeInvoice.GetFeeInvoiceAdd(lsVocherID).Tables[0];
             this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
 
@@ -338,7 +366,9 @@ namespace BrokerWebApp.inoutbalance
             {
                 objLoad = new BO_Voucher(obj.ID);
                 objLoad.AuditStatus = obj.AuditStatus;
-                objLoad.Save(ModifiedAction.Update);
+                objLoad.CreatePerson = this.CurrentUserID;
+                objLoad.AuditVoucher();
+                //objLoad.Save(ModifiedAction.Update);
             }
 
         }
@@ -382,10 +412,16 @@ namespace BrokerWebApp.inoutbalance
             if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
             {
                 this.dxebtnAudit.Text = "反审核";
+                dxebtnAddPolicy.Enabled = false;
+                dxebtnSave.Enabled = false;
+                dxebtnPrint.Enabled = false;
             }
             else
             {
                 this.dxebtnAudit.Text = "审核";
+                dxebtnAddPolicy.Enabled = true;
+                dxebtnSave.Enabled = true;
+                dxebtnPrint.Enabled = true;
             }
 
         }
@@ -403,6 +439,22 @@ namespace BrokerWebApp.inoutbalance
             {
                 thecb.SelectedItem = thecb.Items[0];
             }
+        }
+
+
+        protected void dxeGetGridPolicyItemTotalSummary_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            String PayProcBase = Convert.ToString(gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["PayProcBase"]));
+            String Fee = Convert.ToString(gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["Fee"]));
+            String FeeAdjust = Convert.ToString(gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["FeeAdjust"]));
+
+
+            if (String.IsNullOrEmpty(PayProcBase)) PayProcBase = "0";
+            if (String.IsNullOrEmpty(Fee)) Fee = "0";
+            if (String.IsNullOrEmpty(FeeAdjust)) FeeAdjust = "0";
+
+
+            e.Result = PayProcBase + ";" + Fee + ";" + FeeAdjust;
         }
 
 

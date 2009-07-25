@@ -87,7 +87,7 @@
     <Compile Include="FeeBalance\BO_Notice.cs" />
     <Compile Include="FeeBalance\BO_Voucher.cs" />
     <Compile Include="FeeBalance\BO_FeeCustomer.cs" />
-    <Compile Include="FeeBalance\Bo_FeePayinInvoice.cs" />
+    <Compile Include="FeeBalance\Bo_FeeInvoice.cs" />
     <Compile Include="FeeBalance\BO_FeeProcess.cs" />
     <Compile Include="Permission\BO_P_Menu.cs" />
     <Compile Include="Permission\BO_P_Priv.cs" />

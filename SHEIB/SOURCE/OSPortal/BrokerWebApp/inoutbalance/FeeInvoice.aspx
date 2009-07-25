@@ -35,7 +35,7 @@
         function btnCreateClick() {
 
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            window.showModalDialog("FeePayinInvoiceAdd.aspx", self, myArguments);
+            window.showModalDialog("FeeInvoiceAdd.aspx", self, myArguments);
 
         }
 
@@ -51,7 +51,7 @@
             else {
                 var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
                 var querystring;
-                querystring = "FeePayinInvoiceAdd.aspx?VoucherID=" + selectedValues;
+                querystring = "FeeInvoiceAdd.aspx?VoucherID=" + selectedValues;
                 window.showModalDialog(querystring, self, myArguments);
             }
         }
@@ -331,7 +331,11 @@
                                                 </dxwgv:GridViewCommandColumnCustomButton>
                                             </CustomButtons>
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="开票通知书号" CellStyle-Wrap="False" GroupIndex="0">
+                                        <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="开票通知书号" CellStyle-Wrap="False" >
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -339,11 +343,9 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CarrierSales" Caption="业务员" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="本期应收经纪费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="本期应开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="本期已收经纪费" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次开票金额" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>

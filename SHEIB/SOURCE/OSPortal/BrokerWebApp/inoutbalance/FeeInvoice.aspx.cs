@@ -169,7 +169,7 @@ namespace BrokerWebApp.inoutbalance
             //    lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) <='" + lsEndDate + "'";
             //}
 
-            DataTable dt = Bo_FeePayinInvoice.GetFeePayinInvoiceList(lsWhere).Tables[0];
+            DataTable dt = Bo_FeeInvoice.GetFeeInvoiceList(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
 

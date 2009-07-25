@@ -262,8 +262,7 @@
             rtn = sumFeeAdjustVal.toFixed(2);
             dxetxtFeeAdjust.SetValue(rtn);
             rtn = sumPayinFeeVal.toFixed(2);
-            dxetxtPayinFee.SetValue(rtn);
-                                             
+            dxetxtPayinFee.SetValue(rtn);                            
          
         }
 
@@ -535,7 +534,7 @@
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
-                                本次实际解付保费：
+                                实际解付保费：
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtPayinFee" ClientInstanceName="dxetxtPayinFee" runat="server"
