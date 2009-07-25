@@ -80,7 +80,7 @@
             var url = "FeePayinAddSelect.aspx?ID=" + getVoucherId();
 
             window.showModalDialog(url, self, myArguments);
-            gridPolicyItem.PerformCallback('');
+            gridPolicyItem.PerformCallback(getVoucherId());
         }
 
         function btnAddPrintClick() {
@@ -88,7 +88,7 @@
             var url = "FeePayinAddPrint.aspx?ID=" + getVoucherId();
 
             window.showModalDialog(url, self, myArguments);
-            gridPolicyItem.PerformCallback('');
+            gridPolicyItem.PerformCallback(getVoucherId());
         }
 
         function btnCloseClick() {
@@ -121,8 +121,8 @@
                 setVoucherId(e.result);
                 cusCompleteEnable();
             } else {
-                //如果更改了经纪费收取方式
-                gridPolicyItem.PerformCallback('');
+            //如果更改了经纪费收取方式
+                gridPolicyItem.PerformCallback(getVoucherId());
             }
         }
 
@@ -203,9 +203,15 @@
             switch (buttonID) {
                 case "审核":
                     dxebtnAudit.SetText("反审核");
+                    dxebtnSave.SetEnabled(false);
+                    dxebtnAddPolicy.SetEnabled(false);
+                    dxebtnPrint.SetEnabled(false);
                     break
                 case "反审核":
                     dxebtnAudit.SetText("审核");
+                    dxebtnSave.SetEnabled(true);
+                    dxebtnAddPolicy.SetEnabled(true);
+                    dxebtnPrint.SetEnabled(true);
                     break
                 default:
                     //do nothing;
