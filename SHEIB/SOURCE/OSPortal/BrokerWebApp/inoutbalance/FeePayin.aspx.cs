@@ -20,12 +20,17 @@ namespace BrokerWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Initialization();
+           
             if (!IsPostBack && !IsCallback)
-            {                
-                dxeddlAuditStatus.SelectedIndex = 0;                
+            {
+                Initialization();
+                dxeddlAuditStatus.SelectedIndex = 0;
+                BindGrid();
             }
-            BindGrid();
+            if (IsCallback)
+            {
+                BindGrid();
+            }
         }
 
         private void Initialization()

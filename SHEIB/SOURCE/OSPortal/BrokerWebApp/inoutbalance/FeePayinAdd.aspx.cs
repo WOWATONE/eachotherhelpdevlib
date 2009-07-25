@@ -33,9 +33,10 @@ namespace BrokerWebApp.inoutbalance
             {
                 init();
                 this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];
-                loadValue(this.lblVoucherId.InnerHtml);                
+                loadValue(this.lblVoucherId.InnerHtml);
+                BindGrid();
             }
-            BindGrid();
+
         }
 
 
@@ -60,22 +61,26 @@ namespace BrokerWebApp.inoutbalance
 
             ASPxTextBox dxetxtPolicyItemFee = tblEditorTemplate.FindControl("dxetxtPolicyItemFee") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemFeeAdjust = tblEditorTemplate.FindControl("dxetxtPolicyItemFeeAdjust") as ASPxTextBox;
-
+            ASPxTextBox dxetxtPolicyItemPayFeeBase = tblEditorTemplate.FindControl("dxetxtPolicyItemPayFeeBase") as ASPxTextBox;
+            dxetxtPolicyItemPayFeeBase.Enabled = false;
+            dxetxtPolicyItemPayFeeBase.BackColor = Color.LightGray;
 
             Int32 editIndex = this.gridPolicyItem.EditingRowVisibleIndex;
             if (editIndex > -1)
             {
-                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "NoticeNo", "PolicyID", "Fee", "FeeAdjust" });
+                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "NoticeNo", "PolicyID", "Fee", "FeeAdjust" ,"PayFeeBase"});
                 object[] theValueList = theValues as object[];
 
                 //String feeId = theValueList[0].ToString();
                 String fee = theValueList[3].ToString();
                 String feeAdjust = theValueList[4].ToString();
+                String PayFeeBase = theValueList[5].ToString();
 
                 if (this.gridPolicyItemStartEdit)
                 {
                     dxetxtPolicyItemFee.Text = fee;
                     dxetxtPolicyItemFeeAdjust.Text = feeAdjust;
+                    dxetxtPolicyItemPayFeeBase.Text = PayFeeBase;
                 }
 
             }
@@ -96,7 +101,6 @@ namespace BrokerWebApp.inoutbalance
 
             ASPxTextBox dxetxtPolicyItemFee = tblEditorTemplate.FindControl("dxetxtPolicyItemFee") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemFeeAdjust = tblEditorTemplate.FindControl("dxetxtPolicyItemFeeAdjust") as ASPxTextBox;
-
 
             BusinessObjects.BO_Fee newobj = new BusinessObjects.BO_Fee(theKey);
 
@@ -121,7 +125,6 @@ namespace BrokerWebApp.inoutbalance
             }
             e.Cancel = true;
             this.gridPolicyItem.CancelEdit();
-
             BindGrid();
 
         }
@@ -129,6 +132,7 @@ namespace BrokerWebApp.inoutbalance
         protected void gridPolicyItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
         {
             //this.gridPolicyItem.DataBind();
+            //BindGrid();
         }
 
         
@@ -169,6 +173,7 @@ namespace BrokerWebApp.inoutbalance
 
             ASPxTextBox dxetxtPolicyItemFee = tblEditorTemplate.FindControl("dxetxtPolicyItemFee") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemFeeAdjust = tblEditorTemplate.FindControl("dxetxtPolicyItemFeeAdjust") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemPayFeeBase = tblEditorTemplate.FindControl("dxetxtPolicyItemPayFeeBase") as ASPxTextBox;
 
 
             if (String.IsNullOrEmpty(dxetxtPolicyItemFee.Text.Trim()))
@@ -183,6 +188,28 @@ namespace BrokerWebApp.inoutbalance
 
             dxetxtPolicyItemFee.Validate();
             dxetxtPolicyItemFeeAdjust.Validate();
+
+            decimal dFee =0;
+            decimal dFeeAdjust = 0;
+            decimal dPayFeeBase=0;
+            if (dxetxtPolicyItemPayFeeBase.Text != String.Empty)
+            {
+                dPayFeeBase = Convert.ToDecimal(dxetxtPolicyItemPayFeeBase.Text);
+            }
+            if (dxetxtPolicyItemFee.Text != String.Empty)
+            {
+               dFee = Convert.ToDecimal(dxetxtPolicyItemFee.Text);
+            }
+            if (dxetxtPolicyItemFeeAdjust.Text != String.Empty)
+            {
+                dFeeAdjust = Convert.ToDecimal(dxetxtPolicyItemFeeAdjust.Text);
+            }
+
+            if (dPayFeeBase != dFee + dFeeAdjust)
+            {
+                e.RowError = "本期应解付保费必须等于本期解付保费与调整金额之和,请修改.";
+            }
+            
 
             if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误(" + appendDes + ")。";
 
