@@ -409,6 +409,7 @@
                                     <SettingsPager Mode="ShowAllRecords" />
                                     <ClientSideEvents Init="function(s, e) {gridPolicyItem_EndCallback();}" />
                                     <ClientSideEvents EndCallback="function(s, e) {gridPolicyItem_EndCallback();}" />
+                                     <ClientSideEvents Init ="function(s, e) {gridPolicyItem_EndCallback();}" />
                                     <Templates>
                                         <EditForm>
                                             <div style="padding: 4px 4px 3px 4px">

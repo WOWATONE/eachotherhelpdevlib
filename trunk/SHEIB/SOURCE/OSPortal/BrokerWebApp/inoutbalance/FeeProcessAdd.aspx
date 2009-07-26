@@ -39,7 +39,6 @@
                 dxebtnAddPolicy.SetEnabled(false);
                 dxebtnAudit.SetEnabled(false);
                 dxebtnPrint.SetEnabled(false);
-                dxebtnComplete.SetEnabled(false);
             }
 
 
@@ -51,8 +50,6 @@
             dxebtnAddPolicy.SetEnabled(true);
             dxebtnAudit.SetEnabled(true);
             dxebtnPrint.SetEnabled(true);
-            dxebtnComplete.SetEnabled(true);
-
         }
 
 
@@ -179,9 +176,15 @@
             switch (buttonID) {
                 case "审核":
                     dxebtnAudit.SetText("反审核");
+                    dxebtnSave.SetEnabled(false);
+                    dxebtnAddPolicy.SetEnabled(false);
+                    dxebtnPrint.SetEnabled(false);
                     break
                 case "反审核":
                     dxebtnAudit.SetText("审核");
+                    dxebtnSave.SetEnabled(true);
+                    dxebtnAddPolicy.SetEnabled(true);
+                    dxebtnPrint.SetEnabled(true);
                     break
                 default:
                     //do nothing;
@@ -199,7 +202,8 @@
             var ID = getVoucherID();
             var Remark = dxetxtRemark.GetValueString();
             var ReleaseDate = dxeReleaseDate.GetValue();
-            var ProcessFeeType = dxeddlProcessFeeType.GetValue();
+            //var ProcessFeeType = dxeddlProcessFeeType.GetValue();
+            var ProcessFeeType = "0";
             var Carrier = dxeddlCarrier.GetValue();
             var Branch = dxeddlBranch.GetValue();
             var plc = new InfoJSON(ID, Remark, ReleaseDate, AuditStatus, ProcessFeeType, Carrier, Branch);
@@ -349,23 +353,23 @@
                                         <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False"
                                             Visible="false">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayinInvoiceID" Caption="开票通知书号" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="InvoiceID" Caption="开票通知书号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayinInvoiceedFee" Caption="开票金额" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayedProc" Caption="已收经纪费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="InvoiceedFee" Caption="开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本次实收经纪费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="Processfeetypename" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Invoiceno" Caption="发票号码" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="InvoiceNo" Caption="发票号码" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="Payininvoicedate" Caption="开票日期" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="InvoiceDate" Caption="开票日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
                                     </Columns>
@@ -394,11 +398,24 @@
                                                 <table runat="server" id="tblgridPolicyItemEditorTemplate">
                                                     <tr>
                                                         <td style="white-space: nowrap; text-align: right;">
+                                                            开票金额:
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                            <dxe:ASPxTextBox ID="dxetxtPolicyItemInvoiceedFee" ClientInstanceName="dxetxtPolicyItemInvoiceedFee"
+                                                                runat="server" Width="120px">
+                                                                <ValidationSettings EnableCustomValidation="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                </ValidationSettings>
+                                                            </dxe:ASPxTextBox>
+                                                        </td>
+                                                        
+                                                        <td style="white-space: nowrap; text-align: right;">
                                                             本次实收经纪费:
                                                         </td>
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxTextBox ID="dxetxtPolicyItemFee" ClientInstanceName="dxetxtPolicyItemFee"
-                                                                runat="server" Width="120px" ReadOnly="true">
+                                                                runat="server" Width="120px" >
                                                                 <ValidationSettings EnableCustomValidation="true" ErrorDisplayMode="ImageWithTooltip">
                                                                     <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     <RequiredField IsRequired="true" ErrorText="必需项" />
@@ -406,13 +423,22 @@
                                                             </dxe:ASPxTextBox>
                                                         </td>
                                                         <td style="white-space: nowrap; text-align: right;">
+                                                            调整金额:
                                                         </td>
                                                         <td style="text-align: left;">
+                                                            <dxe:ASPxTextBox ID="dxetxtPolicyItemFeeAdjust" ClientInstanceName="dxetxtPolicyItemFeeAdjust"
+                                                                runat="server" Width="120px">
+                                                                <ValidationSettings EnableCustomValidation="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                </ValidationSettings>
+                                                            </dxe:ASPxTextBox>
                                                         </td>
+
                                                     </tr>
                                                 </table>
                                             </div>
-                                            <div style="text-align: right; padding: 2px 2px 2px 2px">
+                                            <div style="text-align: center; padding: 2px 2px 2px 2px">
                                                 <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton"
                                                     runat="server">
                                                 </dxwgv:ASPxGridViewTemplateReplacement>
@@ -454,11 +480,11 @@
                     <table style="width: 100%">
                         <tr>
                             <td style="width: 100; text-align: right;">
-                                经纪费收取方式：
+                                
                             </td>
                             <td style="width: 130; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlProcessFeeType" ClientInstanceName="dxeddlProcessFeeType"
-                                    runat="server" Width="120px" DropDownStyle="DropDownList">
+                                    runat="server" Width="120px" DropDownStyle="DropDownList" Visible="false">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="width: 100; text-align: right;">
@@ -606,11 +632,6 @@
                                 <dxe:ASPxButton runat="server" ID="dxebtnAudit" ClientInstanceName="dxebtnAudit"
                                     Text="审核" AutoPostBack="false">
                                     <ClientSideEvents Click="function(s, e) {btnAudit_Click(s,e);}" />
-                                </dxe:ASPxButton>
-                            </td>
-                            <td style="width: 80px; text-align: left;">
-                                <dxe:ASPxButton runat="server" ID="dxebtnComplete" ClientInstanceName="dxebtnComplete"
-                                    Text="结算完成" AutoPostBack="false">
                                 </dxe:ASPxButton>
                             </td>
                             <td style="width: 60px; text-align: left;">
