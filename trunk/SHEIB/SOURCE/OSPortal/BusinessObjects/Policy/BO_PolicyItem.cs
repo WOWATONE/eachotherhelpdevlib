@@ -31,7 +31,8 @@ namespace BusinessObjects.Policy
             Coverage, 
             Premium, 
             ProcRate, 
-            Process
+            Process,
+            PremiumRate
         }
 
         #endregion Variables
@@ -87,6 +88,11 @@ namespace BusinessObjects.Policy
             set;
         }
 
+        public Decimal PremiumRate
+        {
+            get;
+            set;
+        }
                 
         #endregion Property
 
@@ -113,7 +119,7 @@ namespace BusinessObjects.Policy
             List<BO_PolicyItem> list = new List<BO_PolicyItem>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT A.ItemID, A.PolicyId, A.ProdID, B.ProdName, A.Coverage, A.Premium, A.ProcRate, A.Process ");
+            sb.Append("SELECT A.ItemID, A.PolicyId, A.ProdID, B.ProdName, A.Coverage, A.Premium, A.ProcRate, A.Process, A.PremiumRate ");
             sb.Append(" FROM PolicyItem A ");
             sb.Append(" LEFT JOIN Product B ON A.ProdID = B.ProdID ");
             sb.Append(" WHERE A.PolicyID = @PolicyID");
@@ -196,7 +202,9 @@ namespace BusinessObjects.Policy
             _db.ExecuteNonQuery(dbCommand);
 
         }
-       #endregion Methods
+       
+        
+        #endregion Methods
 
 
         #region Procedure
@@ -206,10 +214,10 @@ namespace BusinessObjects.Policy
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("INSERT INTO PolicyItem ( ");
-            sb.Append(" ItemID, PolicyId, ProdID, Coverage, Premium, ProcRate, Process ");
+            sb.Append(" ItemID, PolicyId, ProdID, Coverage, Premium, ProcRate, Process, PremiumRate ");
             sb.Append(")");
             sb.Append(" VALUES( ");
-            sb.Append(" @ItemID, @PolicyId, @ProdID, @Coverage, @Premium, @ProcRate, @Process ");
+            sb.Append(" @ItemID, @PolicyId, @ProdID, @Coverage, @Premium, @ProcRate, @Process, @PremiumRate ");
             sb.Append(" )");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
@@ -224,6 +232,8 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@ProcRate", DbType.Decimal, this.ProcRate);
             _db.AddInParameter(dbCommand, "@Process", DbType.Decimal, this.Process);
 
+            _db.AddInParameter(dbCommand, "@PremiumRate", DbType.Decimal, this.PremiumRate);
+
             //ExecuteScalar return the value of first column in first row.
             _db.ExecuteNonQuery(dbCommand);
         }
@@ -234,7 +244,7 @@ namespace BusinessObjects.Policy
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE PolicyItem SET ");
             sb.Append("PolicyId=@PolicyId, ProdID=@ProdID, Coverage=@Coverage, Premium=@Premium,");
-            sb.Append("ProcRate=@ProcRate, Process=@Process ");
+            sb.Append("ProcRate=@ProcRate, Process=@Process, PremiumRate=@PremiumRate ");
             sb.Append(" Where ItemID=@ItemID;");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
@@ -248,6 +258,7 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@Premium", DbType.Decimal, this.Premium);
             _db.AddInParameter(dbCommand, "@ProcRate", DbType.Decimal, this.ProcRate);
             _db.AddInParameter(dbCommand, "@Process", DbType.Decimal, this.Process);
+            _db.AddInParameter(dbCommand, "@PremiumRate", DbType.Decimal, this.PremiumRate);
 
             _db.ExecuteNonQuery(dbCommand);
 
@@ -258,7 +269,7 @@ namespace BusinessObjects.Policy
         private void fetchByID(String id)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT A.ItemID, A.PolicyId, A.ProdID, B.ProdName, A.Coverage, A.Premium, A.ProcRate, A.Process ");
+            sb.Append("SELECT A.ItemID, A.PolicyId, A.ProdID, B.ProdName, A.Coverage, A.Premium, A.ProcRate, A.Process, A.PremiumRate ");
             sb.Append(" FROM PolicyItem A ");
             sb.Append(" LEFT JOIN Product B ON A.ProdID = B.ProdID ");
             sb.Append(" WHERE A.ItemID = @ItemID");
@@ -288,7 +299,7 @@ namespace BusinessObjects.Policy
                     this.Premium = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Premium));
                     this.ProcRate = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.ProcRate));
                     this.Process = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Process));
-                    
+                    this.PremiumRate = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.PremiumRate));
                 }
             }
         }

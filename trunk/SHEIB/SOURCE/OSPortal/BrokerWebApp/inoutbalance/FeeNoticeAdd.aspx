@@ -211,7 +211,6 @@
 
         function auditCallbackComplete(s, e) {
             //do nothing;
-            debugger;
             var buttonID = dxebtnAudit.GetText();
             switch (buttonID) {
                 case "…Û∫À":
