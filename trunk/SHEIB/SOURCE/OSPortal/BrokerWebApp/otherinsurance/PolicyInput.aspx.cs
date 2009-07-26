@@ -91,6 +91,7 @@ namespace BrokerWebApp.otherinsurance
 
             if (!IsPostBack && !IsCallback)
             {
+                this.dxetxtCreatePerson.Text = this.CurrentUserName;
                 this.dxedtCreateTime.Date = DateTime.Today;
                 this.gridCarrier.DataBind();
                 this.gridPolicyItem.DataBind();
