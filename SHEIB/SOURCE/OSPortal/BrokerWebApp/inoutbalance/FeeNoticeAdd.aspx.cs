@@ -332,9 +332,9 @@ namespace BrokerWebApp.inoutbalance
             if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
             {
                 this.dxebtnAudit.Text = "反审核";
-                dxebtnSave.Enabled = false;
-                dxebtnPrint.Enabled = false;
-                btnAddPolicy.Enabled = false;
+                dxebtnSave.ClientEnabled = false;
+                dxebtnPrint.ClientEnabled = false;
+                btnAddPolicy.ClientEnabled = false;
             }
             else
             {
