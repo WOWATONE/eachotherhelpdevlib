@@ -310,14 +310,27 @@
         }
 
         function saveCallbackComplete(s, e) {
-            //do nothing;
-            policyBaseCompleteEnable();
-            //
-            var pid = dxetxtPolicyID.GetValueString();
-            if (isEmpty(pid)) {
-                dxetxtPolicyID.SetValue(e.result);
+            
+            var theresult = e.result;
+            switch (theresult) {
+                case "policynoexist":
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize="9px";
+                    resultMsg.innerHTML = "保单编号不唯一";
+                    break
+                default:
+                    //do nothing;
+                    policyBaseCompleteEnable();
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize = "9px";
+                    resultMsg.innerHTML = "保存成功";
+                    var pid = dxetxtPolicyID.GetValueString();
+                    if (isEmpty(pid)) {
+                        dxetxtPolicyID.SetValue(e.result);
+                    }
             }
         }
+        
 
         function btnAddClick(s, e) {
             var thejsonstring = makePolicyJSON();
@@ -327,9 +340,18 @@
 
         function addCallbackComplete(s, e) {
             //do nothing;
-            var result = $("#hrefnewpolicy");
-            var hrefPolicyNew = result[0];
-            hrefPolicyNew.click();
+            var theresult = e.result;
+            switch (theresult) {
+                case "policynoexist":
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize = "9px";
+                    resultMsg.innerHTML = "保单编号不唯一";
+                    break
+                default:
+                    var result = $("#hrefnewpolicy");
+                    var hrefPolicyNew = result[0];
+                    hrefPolicyNew.click();
+            }
         }
 
         function btnSaveCheckClick(s, e) {
@@ -339,7 +361,17 @@
 
 
         function saveCheckCallbackComplete(s, e) {
-            setOnlyDxeButtonsUnableOrEnable(false);
+            var theresult = e.result;
+            switch (theresult) {
+                case "policynoexist":
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize = "9px";
+                    resultMsg.innerHTML = "保单编号不唯一";
+                    break
+                default:
+                    setOnlyDxeButtonsUnableOrEnable(false);
+            }
+            
         }
 
 
@@ -722,6 +754,7 @@
         runat="server" OnCallback="dxeGetGridPolicyItemTotalSummary_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {dxeGetGridPolicyItemTotalSummaryCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
+    <span id="resultMsg" class="errorMSG" style="margin-top:2px; margin-left:8px;">&nbsp;</span>
     <asp:Panel ID="nppagecontent" runat="server">
         <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
             runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%"
