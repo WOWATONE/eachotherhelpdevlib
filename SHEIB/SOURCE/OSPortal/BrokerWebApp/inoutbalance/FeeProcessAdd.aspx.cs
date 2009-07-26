@@ -61,19 +61,27 @@ namespace BrokerWebApp.inoutbalance
             HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
 
             ASPxTextBox dxetxtPolicyItemFee = tblEditorTemplate.FindControl("dxetxtPolicyItemFee") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemFeeAdjust = tblEditorTemplate.FindControl("dxetxtPolicyItemFeeAdjust") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemInvoiceedFee = tblEditorTemplate.FindControl("dxetxtPolicyItemInvoiceedFee") as ASPxTextBox;
+            dxetxtPolicyItemInvoiceedFee.BackColor = Color.LightGray;
+            dxetxtPolicyItemInvoiceedFee.ReadOnly = true;
             
             Int32 editIndex = this.gridPolicyItem.EditingRowVisibleIndex;
             if (editIndex > -1)
             {
-                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "Fee" });
+                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "Fee", "FeeAdjust", "InvoiceedFee" });
                 object[] theValueList = theValues as object[];
 
                 //String FeeId = theValueList[0].ToString();
                 String fee = theValueList[1].ToString();
+                String FeeAdjust = theValueList[2].ToString();
+                String InvoiceedFee = theValueList[3].ToString();
                 
                 if (this.gridPolicyItemStartEdit)
                 {
                     dxetxtPolicyItemFee.Text = fee;
+                    dxetxtPolicyItemFeeAdjust.Text = FeeAdjust;
+                    dxetxtPolicyItemInvoiceedFee.Text = InvoiceedFee;
                 }
 
             }
@@ -93,6 +101,8 @@ namespace BrokerWebApp.inoutbalance
             HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
 
             ASPxTextBox dxetxtPolicyItemFee = tblEditorTemplate.FindControl("dxetxtPolicyItemFee") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemFeeAdjust = tblEditorTemplate.FindControl("dxetxtPolicyItemFeeAdjust") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemInvoiceedFee = tblEditorTemplate.FindControl("dxetxtPolicyItemInvoiceedFee") as ASPxTextBox;
             
 
             BusinessObjects.BO_Fee newobj = new BusinessObjects.BO_Fee(theKey);
@@ -102,7 +112,12 @@ namespace BrokerWebApp.inoutbalance
             {
                 newobj.Fee = Convert.ToDecimal(dxetxtPolicyItemFee.Text);
             }
-            
+
+            if (dxetxtPolicyItemFeeAdjust.Text != String.Empty)
+            {
+                newobj.FeeAdjust = Convert.ToDecimal(dxetxtPolicyItemFeeAdjust.Text);
+            }
+
             try
             {
                 newobj.Save(ModifiedAction.Update);
@@ -162,14 +177,45 @@ namespace BrokerWebApp.inoutbalance
             HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
 
             ASPxTextBox dxetxtPolicyItemFee = tblEditorTemplate.FindControl("dxetxtPolicyItemFee") as ASPxTextBox;
-            
+            ASPxTextBox dxetxtPolicyItemFeeAdjust = tblEditorTemplate.FindControl("dxetxtPolicyItemFeeAdjust") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemInvoiceedFee = tblEditorTemplate.FindControl("dxetxtPolicyItemInvoiceedFee") as ASPxTextBox;
+
+
+
+
             if (String.IsNullOrEmpty(dxetxtPolicyItemFee.Text.Trim()))
             {
                 e.Errors[this.gridPolicyItem.Columns[0]] = appendDes;
             }
 
-            
+            if (String.IsNullOrEmpty(dxetxtPolicyItemFeeAdjust.Text.Trim()))
+            {
+                e.Errors[this.gridPolicyItem.Columns[1]] = appendDes;
+            }
+
             dxetxtPolicyItemFee.Validate();
+            dxetxtPolicyItemFeeAdjust.Validate();
+
+            decimal dFee = 0;
+            decimal dFeeAdjust = 0;
+            decimal dInvoiceedFee = 0;
+            if (dxetxtPolicyItemInvoiceedFee.Text != String.Empty)
+            {
+                dInvoiceedFee = Convert.ToDecimal(dxetxtPolicyItemInvoiceedFee.Text);
+            }
+            if (dxetxtPolicyItemFee.Text != String.Empty)
+            {
+                dFee = Convert.ToDecimal(dxetxtPolicyItemFee.Text);
+            }
+            if (dxetxtPolicyItemFeeAdjust.Text != String.Empty)
+            {
+                dFeeAdjust = Convert.ToDecimal(dxetxtPolicyItemFeeAdjust.Text);
+            }
+
+            if (dInvoiceedFee != dFee + dFeeAdjust)
+            {
+                e.RowError = "本期结算金额与调整金额之和必须与开票金额相同,请修改.";
+            }
             
             if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误(" + appendDes + ")。";
 
@@ -321,14 +367,16 @@ namespace BrokerWebApp.inoutbalance
             {
                 objLoad = new BO_Voucher(obj.ID);
                 objLoad.AuditStatus = obj.AuditStatus;
-                objLoad.Save(ModifiedAction.Update);
+                objLoad.AuditPerson = this.CurrentUserID;
+                objLoad.AuditVoucher();
+                //objLoad.Save(ModifiedAction.Update);
             }
 
         }
 
         private void loadValue(String id)
         {
-            if (String.IsNullOrEmpty(id.Trim())) return;
+            if (String.IsNullOrEmpty(id)) return;
 
 
             BusinessObjects.BO_Voucher obj;
@@ -364,10 +412,16 @@ namespace BrokerWebApp.inoutbalance
             if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
             {
                 this.dxebtnAudit.Text = "反审核";
+                dxebtnAddPolicy.Enabled = false;
+                dxebtnSave.Enabled = false;
+                dxebtnPrint.Enabled = false;
             }
             else
             {
                 this.dxebtnAudit.Text = "审核";
+                dxebtnAddPolicy.Enabled = true;
+                dxebtnSave.Enabled = true;
+                dxebtnPrint.Enabled = true;
             }
 
         }
