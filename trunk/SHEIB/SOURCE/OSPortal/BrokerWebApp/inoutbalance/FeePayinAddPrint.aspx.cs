@@ -32,9 +32,9 @@ namespace BrokerWebApp.inoutbalance
             inoutbalance.rpt.dsPayin dPayin = new BrokerWebApp.inoutbalance.rpt.dsPayin();
 
             sSql = sSql + "select VoucherID,(select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,";
-            sSql = sSql + "(select SUM(Fee) from Fee where VoucherID=a.VoucherID) PayinFee,";
+            sSql = sSql + "(select SUM(Fee) from VoucherFee where VoucherID=a.VoucherID) PayinFee,";
             sSql = sSql + "(select dbo.MoneyToChinese(SUM(Fee)) from Fee where VoucherID=a.VoucherID) PayinFeeUpper,";
-            sSql = sSql + "(select sum(PayProcBase) from VoucherFee where VoucherID=a.VoucherID ) PayProc,";
+            sSql = sSql + "(select sum(Fee) from VoucherFee where VoucherID=a.VoucherID ) PayProc,";
             sSql = sSql + "dbo.GetVoucherCustomer(a.VoucherID) Customer,";
             sSql = sSql + "dbo.GetYYYYMMDDChinese(a.FeeDate) FeeDate";
             sSql = sSql + " from Voucher a";
@@ -45,19 +45,14 @@ namespace BrokerWebApp.inoutbalance
             ad.Fill(dPayin, "Payin");
 
 
-            //sSql = sSql + "select NoticeNo+'('+dbo.GetVoucherPolicyByNoticeNo('" + sVoucherID + "',NoticeNo)+')'  as NoticeNo,PayFee";
-            //sSql = sSql + " from ";
-            //sSql = sSql + " (";
-            //sSql = sSql + " select NoticeNo,sum(PayFee) PayFee";
-            //sSql = sSql + " from voucherfee a";
-            //sSql = sSql + " where VoucherID ='00000004' ";
-            //sSql = sSql + " group by NoticeNo";
-            //sSql = sSql + ") a";
-
             sSql = "";
-            sSql = sSql + "select VoucherID,NoticeNo,PolicyNo,PolicyID,PayFee";
-            sSql = sSql + " from  voucherfee a ";
-            sSql = sSql + " where VoucherID='" + sVoucherID + "'";
+            sSql = sSql + "select a.VoucherID,b.NoticeNo,c.PolicyNo,c.PolicyID,a.Fee";
+            sSql = sSql + " from  VoucherFee a ";
+            sSql = sSql + " left join PolicyPeriod b";
+            sSql = sSql + " on a.PolperiodID=b.PolperiodID";
+            sSql = sSql + " left join Policy c";
+            sSql = sSql + " on b.PolicyID=c.PolicyID";
+            sSql = sSql + " where a.VoucherID='" + sVoucherID + "'";
             SqlDataAdapter adDetail = new SqlDataAdapter(sSql, conn);
             adDetail.Fill(dPayin, "PayinDetail");
 
