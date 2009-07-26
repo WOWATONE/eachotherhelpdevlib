@@ -33,9 +33,9 @@ namespace BrokerWebApp.inoutbalance
 
             sSql = "";
             sSql = sSql + "select VoucherID,(Select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,b.BranchName,b.BankName,b.BankAccount,";
-            sSql = sSql + " (select SUM(Fee) from Fee where VoucherID=a.VoucherID) Fee,";
+            sSql = sSql + " (select SUM(Fee) from VoucherFee where VoucherID=a.VoucherID) Fee,";
             sSql = sSql + " (select dbo.MoneyToChinese(SUM(Fee)) from Fee where VoucherID=a.VoucherID) FeeUpper,";
-            sSql = sSql + " (select sum(PayProcBase) from VoucherFee where VoucherID=a.VoucherID ) PayProc";
+            sSql = sSql + " (select sum(Fee) from VoucherFee where VoucherID=a.VoucherID ) PayProc";
             sSql = sSql + " from Voucher a";
             sSql = sSql + " left join branch b";
             sSql = sSql + " on a.BranchID=b.BranchID";
@@ -54,10 +54,13 @@ namespace BrokerWebApp.inoutbalance
             //sSql = sSql + " where a.VoucherID='" + sVoucherID + "'";
             //sSql = sSql + " group by b.PayinInvoiceID";
             //sSql = sSql + " ) a";
-            sSql = sSql + "select a.VoucherID,b.InvoiceNo,a.PolicyNo,a.PolicyID,a.ProcessFeeTypeName,a.Fee";
+            sSql = sSql + "select a.VoucherID,b.InvoiceNo,c.PolicyNo,b.PolicyID,a.Fee,";
+            sSql = sSql + " (select ProcessFeeTypeName from ProcessFeeType where ProcessFeeTypeID=b.ProcessFeeType) ProcessFeeTypeName";
             sSql = sSql + " from VoucherFee a";
-            sSql = sSql + "  left join PolicyPeriodFee b";
+            sSql = sSql + "  left join PolicyPeriod b";
             sSql = sSql + "  on a.PolPeriodID=b.PolPeriodID";
+            sSql = sSql + "  left join Policy c";
+            sSql = sSql + "  on b.PolicyID=c.PolicyID";
             sSql = sSql + "  where VoucherID ='" + sVoucherID + "'";
  
             SqlDataAdapter adDetail = new SqlDataAdapter(sSql, conn);

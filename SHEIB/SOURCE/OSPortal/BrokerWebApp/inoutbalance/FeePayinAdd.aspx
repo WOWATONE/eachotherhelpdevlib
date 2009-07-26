@@ -88,7 +88,8 @@
             var url = "FeePayinAddPrint.aspx?ID=" + getVoucherId();
 
             window.showModalDialog(url, self, myArguments);
-            gridPolicyItem.PerformCallback(getVoucherId());
+            var sVoucherID = getVoucherID();
+            gridPolicyItem.PerformCallback(sVoucherID);
         }
 
         function btnCloseClick() {

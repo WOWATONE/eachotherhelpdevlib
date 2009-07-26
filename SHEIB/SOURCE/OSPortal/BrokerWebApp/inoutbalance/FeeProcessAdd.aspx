@@ -94,7 +94,8 @@
             var url = "FeeProcessAddPrint.aspx?ID=" + getVoucherID();
 
             window.showModalDialog(url, self, myArguments);
-            gridPolicyItem.PerformCallback('');
+            var sVoucherID = getVoucherID();
+            gridPolicyItem.PerformCallback(sVoucherID);
         }
 
 

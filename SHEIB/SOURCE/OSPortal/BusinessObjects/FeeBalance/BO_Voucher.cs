@@ -255,13 +255,26 @@ namespace BusinessObjects
         }
 
 
-        public void AuditVoucher()
+        public string AuditVoucher()
         {
+            int i_dm = 0;
+            string c_sm = "";
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.AuditVoucher");
             _db.AddInParameter(dbCommand, "@ac_VoucherID", DbType.String, VoucherId);
             _db.AddInParameter(dbCommand, "@ac_AuditStatus", DbType.String, AuditStatus);
             _db.AddInParameter(dbCommand, "@ac_AuditPersion", DbType.String, AuditPerson);
+            _db.AddOutParameter(dbCommand, "@ai_dm", DbType.Int16,4);
+            _db.AddOutParameter(dbCommand, "@ac_sm", DbType.String, 100);
             _db.ExecuteNonQuery(dbCommand);
+            i_dm = int.Parse(dbCommand.Parameters["@ai_dm"].Value.ToString());
+            if (i_dm < 0)                    
+            {
+                c_sm = dbCommand.Parameters["@ac_sm"].Value.ToString();
+            } else
+            {
+                c_sm = "";
+            }
+            return c_sm;
         }
 
 
