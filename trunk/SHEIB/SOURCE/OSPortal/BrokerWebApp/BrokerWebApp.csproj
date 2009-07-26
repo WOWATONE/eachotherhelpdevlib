@@ -1203,7 +1203,7 @@
     <EmbeddedResource Include="inoutbalance\rpt\rptNoticeAgent.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptNoticeDirect.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptPayin.rdlc" />
-    <EmbeddedResource Include="inoutbalance\rpt\rptPayinInvoice.rdlc" />
+    <EmbeddedResource Include="inoutbalance\rpt\rptInvoice.rdlc" />
     <EmbeddedResource Include="inoutbalance\rpt\rptProcess.rdlc" />
     <EmbeddedResource Include="Report\rpt\rptInsuranceCommission1.rdlc" />
     <EmbeddedResource Include="Report\rpt\rptTYGH.rdlc" />
