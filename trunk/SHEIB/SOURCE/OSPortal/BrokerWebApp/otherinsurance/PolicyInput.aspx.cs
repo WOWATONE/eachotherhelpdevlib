@@ -23,18 +23,16 @@ namespace BrokerWebApp.otherinsurance
 
         private const string currentPageModeKey = "CurrentPagePolicyMode";
         private const string inputQueryStringIDKey = "id";
-        private const string inputQueryStringPageModeKey = "pagemode";
-        //private const string inputQueryStringPreIDKey = "pid";
+        private const string inputQueryStringPageModeKey = "pagemode";        
         private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
         //private const int ThumbnailSize = 100;
+        private const string policyNoExist = "policynoexist";
 
         private Boolean gridCarrierStartEdit = false;
         private Boolean gridPolicyItemStartEdit = false;
         private Boolean gridPolicyPeriodStartEdit = false;
 
         private string toadd = string.Empty;
-
-        //enctype="multipart/form-data">
 
         public enum PageMode
         {
@@ -115,16 +113,16 @@ namespace BrokerWebApp.otherinsurance
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
             String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
-            String thePolicyID = savePolicy(e.Parameter, policystatus);
-            e.Result = thePolicyID;
+            String theResult = savePolicy(e.Parameter, policystatus);
+            e.Result = theResult;
         }
 
 
         protected void dxeSaveAndCheckCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
             String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
-            savePolicy(e.Parameter, policystatus);
-            e.Result = "complete";
+            String theResult = savePolicy(e.Parameter, policystatus);
+            e.Result = theResult;
         }
 
 
@@ -1123,6 +1121,11 @@ namespace BrokerWebApp.otherinsurance
             ms.Close();
             BusinessObjects.Policy.BO_Policy obj;
 
+            //check policyno exist first
+            bool checkresult = checkPolicyNoExist(theJosn.PolicyID, theJosn.PolicyNo);
+
+            if (checkresult) return policyNoExist;
+            
             if (String.IsNullOrEmpty(theJosn.PolicyID))
             {
                 obj = new BusinessObjects.Policy.BO_Policy();
@@ -1442,6 +1445,43 @@ namespace BrokerWebApp.otherinsurance
 
 
         }
+
+
+        private bool checkPolicyNoExist(String policyID, String policyNo)
+        {
+            bool result;
+            String swhere = "";
+            if (!String.IsNullOrEmpty(policyID))
+            {
+                swhere = " AND B.PolicyID != '" + policyID.Trim() + "'";
+            }
+
+            if (!String.IsNullOrEmpty(policyNo))
+            {
+                swhere = " AND B.PolicyNo = '" + policyNo.Trim() + "'";
+            }
+            else
+            {
+                return false;
+            }
+
+            try
+            {
+                DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(swhere);
+                if (dt.Rows.Count > 0)
+                    result = true;
+                else
+                    result = false;
+            }
+            catch (Exception)
+            {
+                result = true;
+            }
+
+            return result;
+            
+        }
+
 
         #endregion Privates
 
