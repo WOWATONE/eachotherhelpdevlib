@@ -1035,9 +1035,12 @@
                                                 <tr>
                                                     <td>
                                                         <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                                            KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False" OnRowInserting="gridPolicyItem_RowInserting"
-                                                            OnRowUpdating="gridPolicyItem_RowUpdating" OnRowDeleting="gridPolicyItem_RowDeleting"
-                                                            OnStartRowEditing="gridPolicyItem_StartRowEditing" OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
+                                                            KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False" 
+                                                            OnRowInserting="gridPolicyItem_RowInserting"
+                                                            OnRowUpdating="gridPolicyItem_RowUpdating" 
+                                                            OnRowDeleting="gridPolicyItem_RowDeleting"
+                                                            OnStartRowEditing="gridPolicyItem_StartRowEditing" 
+                                                            OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
                                                             OnRowValidating="gridPolicyItem_RowValidating">
                                                             <%-- BeginRegion Columns --%>
                                                             <Columns>

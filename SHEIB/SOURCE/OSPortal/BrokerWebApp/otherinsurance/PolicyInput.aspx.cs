@@ -250,23 +250,23 @@ namespace BrokerWebApp.otherinsurance
             ASPxTextBox dxetxtPolicyItemPremium = tblEditorTemplate.FindControl("dxetxtPolicyItemPremium") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemProcRate = tblEditorTemplate.FindControl("dxetxtPolicyItemProcRate") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemProcess = tblEditorTemplate.FindControl("dxetxtPolicyItemProcess") as ASPxTextBox;
-            //ASPxTextBox dxetxtPolicyItemPremiumRate = tblEditorTemplate.FindControl("dxetxtPolicyItemPremiumRate") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemPremiumRate = tblEditorTemplate.FindControl("dxetxtPolicyItemPremiumRate") as ASPxTextBox;
             
 
             Int32 editIndex = this.gridPolicyItem.EditingRowVisibleIndex;
             if (editIndex > -1)
             {
-                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "ItemID", "PolicyId", "ProdID", "Coverage", "Premium", "ProcRate", "Process" });
+                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "ItemID", "PolicyId", "ProdID", "Coverage", "Premium", "ProcRate", "Process", "PremiumRate" });
                 object[] theValueList = theValues as object[];
 
-                //String itemID = theValueList[1].ToString();
+                //String itemID = theValueList[0].ToString();
                 //String policyId = theValueList[1].ToString();
                 String prodID = theValueList[2].ToString();
                 String coverage = theValueList[3].ToString();
                 String premium = theValueList[4].ToString();
                 String procRate = theValueList[5].ToString();
                 String process = theValueList[6].ToString();
-
+                String premiumRate = theValueList[7].ToString();
 
                 ListEditItem theselected;
                 if (this.gridPolicyItemStartEdit)
@@ -282,7 +282,7 @@ namespace BrokerWebApp.otherinsurance
                     dxetxtPolicyItemPremium.Text = premium;
                     dxetxtPolicyItemProcRate.Text = procRate;
                     dxetxtPolicyItemProcess.Text = process;
-                    //dxetxtPolicyItemPremiumRate.Text = "";
+                    dxetxtPolicyItemPremiumRate.Text = premiumRate;
 
                 }
 
@@ -306,7 +306,7 @@ namespace BrokerWebApp.otherinsurance
             ASPxTextBox dxetxtPolicyItemPremium = tblEditorTemplate.FindControl("dxetxtPolicyItemPremium") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemProcRate = tblEditorTemplate.FindControl("dxetxtPolicyItemProcRate") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemProcess = tblEditorTemplate.FindControl("dxetxtPolicyItemProcess") as ASPxTextBox;
-            //ASPxTextBox dxetxtPolicyItemPremiumRate = tblEditorTemplate.FindControl("dxetxtPolicyItemPremiumRate") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemPremiumRate = tblEditorTemplate.FindControl("dxetxtPolicyItemPremiumRate") as ASPxTextBox;
             
 
             BusinessObjects.Policy.BO_PolicyItem newobj = new BusinessObjects.Policy.BO_PolicyItem(theKey);
@@ -332,10 +332,10 @@ namespace BrokerWebApp.otherinsurance
                 newobj.Process = Convert.ToDecimal(dxetxtPolicyItemProcess.Text);
             }
 
-            //if (dxetxtPolicyItemPremiumRate.Text != String.Empty)
-            //{
-            //    newobj. = Convert.ToDecimal(dxetxtPolicyItemPremiumRate.Text);
-            //}
+            if (dxetxtPolicyItemPremiumRate.Text != String.Empty)
+            {
+                newobj.PremiumRate = Convert.ToDecimal(dxetxtPolicyItemPremiumRate.Text);
+            }
 
 
             try
@@ -357,9 +357,6 @@ namespace BrokerWebApp.otherinsurance
 
         }
 
-
-        
-
         protected void gridPolicyItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
 
@@ -371,7 +368,7 @@ namespace BrokerWebApp.otherinsurance
             ASPxTextBox dxetxtPolicyItemPremium = tblEditorTemplate.FindControl("dxetxtPolicyItemPremium") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemProcRate = tblEditorTemplate.FindControl("dxetxtPolicyItemProcRate") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemProcess = tblEditorTemplate.FindControl("dxetxtPolicyItemProcess") as ASPxTextBox;
-            //ASPxTextBox dxetxtPolicyItemPremiumRate = tblEditorTemplate.FindControl("dxetxtPolicyItemPremiumRate") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemPremiumRate = tblEditorTemplate.FindControl("dxetxtPolicyItemPremiumRate") as ASPxTextBox;
             
 
             BusinessObjects.Policy.BO_PolicyItem newobj = new BusinessObjects.Policy.BO_PolicyItem();
@@ -398,10 +395,10 @@ namespace BrokerWebApp.otherinsurance
                 newobj.Process = Convert.ToDecimal(dxetxtPolicyItemProcess.Text);
             }
 
-            //if (dxetxtPolicyItemPremiumRate.Text != String.Empty)
-            //{
-            //    newobj. = Convert.ToDecimal(dxetxtPolicyItemPremiumRate.Text);
-            //}
+            if (dxetxtPolicyItemPremiumRate.Text != String.Empty)
+            {
+                newobj.PremiumRate = Convert.ToDecimal(dxetxtPolicyItemPremiumRate.Text);
+            }
 
             try
             {
@@ -417,11 +414,6 @@ namespace BrokerWebApp.otherinsurance
 
             rebindGridPolicyItem();
 
-        }
-
-        protected void gridPolicyItem_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
-        {
-            //this.gridPolicyItem.DataBind();           
         }
 
         protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -444,8 +436,6 @@ namespace BrokerWebApp.otherinsurance
 
         }
 
-
-        
         protected void gridPolicyItem_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
             String theWhere = "";
