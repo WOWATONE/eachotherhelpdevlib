@@ -278,27 +278,27 @@ namespace BrokerWebApp.otherinsurance
                 if (theValueList[3] == null)
                     coverage = "";
                 else
-                    coverage = theValueList[3].ToString();
+                    coverage = String.Format(BasePage.TheTwoSF, theValueList[3]); //theValueList[3].ToString();
 
                 if (theValueList[4] == null)
                     premium = "";
                 else
-                    premium = theValueList[4].ToString();
+                    premium = String.Format(BasePage.TheTwoSF, theValueList[4]);
 
                 if (theValueList[5] == null)
                     procRate = "";
                 else
-                    procRate = theValueList[5].ToString();
+                    procRate = String.Format(BasePage.TheFourSF, theValueList[5]);
 
                 if (theValueList[6] == null)
                     process = "";
                 else
-                    process = theValueList[6].ToString();
+                    process = String.Format(BasePage.TheTwoSF, theValueList[6]);
 
                 if (theValueList[7] == null)
                     premiumRate = "";
                 else
-                    premiumRate = theValueList[7].ToString();
+                    premiumRate = String.Format(BasePage.TheFourSF, theValueList[7]);
 
                 ListEditItem theselected;
                 if (this.gridPolicyItemStartEdit)
@@ -308,8 +308,7 @@ namespace BrokerWebApp.otherinsurance
                     {
                         dxecbGridPolicyItemProdID.SelectedItem = theselected;
                     }
-
-
+                    
                     dxetxtPolicyItemCoverage.Text = coverage;
                     dxetxtPolicyItemPremium.Text = premium;
                     dxetxtPolicyItemProcRate.Text = procRate;
