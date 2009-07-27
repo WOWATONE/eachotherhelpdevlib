@@ -131,6 +131,15 @@ namespace BrokerWebApp.BudgetManagement {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtNY;
         
         /// <summary>
+        /// dxeddlPremiumType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlPremiumType;
+        
+        /// <summary>
         /// dxetxtPremiumBudget 控件。
         /// </summary>
         /// <remarks>

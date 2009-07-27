@@ -156,8 +156,14 @@
                                     (yyyymm)
                                 </td>
                                 <td style="text-align:right;">
+                                    保单类别：
                                 </td>
                                 <td style="text-align:left;">
+                                    <dxe:ASPxComboBox ID="dxeddlPremiumType" ClientInstanceName="dxeddlPremiumType" runat="server" DropDownStyle="DropDownList"  Width="160px">
+                                        <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+										    <RequiredField ErrorText="必填项" IsRequired="True" />                                        
+                                        </ValidationSettings>
+                                    </dxe:ASPxComboBox>
                                 </td>
                             </tr>
                             <tr>
