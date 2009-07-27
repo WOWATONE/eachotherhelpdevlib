@@ -59,7 +59,8 @@ namespace BusinessObjects
             GrdType,     //行政级别
             LossType,    //理赔损失性质
             NotifyType,   //报案方式
-            SourceType
+            SourceType,
+            PremiumType //保单类别(0签单保费 1实收保费)
         }
 
         public enum FieldList
