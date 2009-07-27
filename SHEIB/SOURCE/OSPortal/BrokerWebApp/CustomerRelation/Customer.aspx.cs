@@ -146,7 +146,7 @@ namespace BrokerWebApp.CustomerRelation
                 #endregion
 
                 #region 签单记录
-                this.gridPolicyItem.DataSource = BusinessObjects.Policy.BO_Policy.GetPolicyByCustID(this._custID);
+                this.gridPolicyItem.DataSource = BusinessObjects.Policy.BO_Policy.GetCustomerPolicy(this._custID);
                 this.gridPolicyItem.DataBind();
                 #endregion
             }
