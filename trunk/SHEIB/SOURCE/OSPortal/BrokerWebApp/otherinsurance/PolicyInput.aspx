@@ -378,6 +378,9 @@
                     resultMsg.innerHTML = "保单编号不唯一";
                     break
                 default:
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize = "9px";
+                    resultMsg.innerHTML = "提交成功";
                     setOnlyDxeButtonsUnableOrEnable(false);
             }
             
