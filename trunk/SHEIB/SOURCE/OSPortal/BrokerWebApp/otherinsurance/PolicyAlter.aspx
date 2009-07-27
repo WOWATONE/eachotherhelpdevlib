@@ -1157,79 +1157,79 @@
                                                                                         <ClientSideEvents SelectedIndexChanged="" />
                                                                                     </dxe:ASPxComboBox>
                                                                             </td>
+                                                                            <td></td>
+                                                                            <td></td>
                                                                         </tr>
                                                                         <tr>
-                                                                                <td style="white-space: nowrap; text-align: right;">
-                                                                                    份额比例(%):
-                                                                                </td>
-                                                                                <td style="text-align: left;">
-                                                                                    <dxe:ASPxTextBox ID="dxetxtGridCarrierPolicyRate" ClientInstanceName="dxetxtGridCarrierPolicyRate"
-                                                                                        runat="server" Width="120px">
-                                                                                        <ValidationSettings>
-                                                                                            <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
-                                                                                        </ValidationSettings>
-                                                                                    </dxe:ASPxTextBox>
-                                                                                </td>
-                                                                                <td style="white-space: nowrap; text-align: right;">
-                                                                                    保费(原):
-                                                                                </td>
-                                                                                <td style="text-align: left;">
-                                                                                    <dxe:ASPxTextBox ID="dxetxtGridCarrierPremium" ClientInstanceName="dxetxtGridCarrierPremium"
-                                                                                        runat="server" Width="120px">
-                                                                                        <ValidationSettings>
-                                                                                            <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
-                                                                                        </ValidationSettings>
-                                                                                    </dxe:ASPxTextBox>
-                                                                                </td>
-                                                                            </tr>
-                                                                        <tr>
-                                                                                <td style="white-space: nowrap; text-align: right;">
+                                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                                份额比例(%):
+                                                                            </td>
+                                                                            <td style="text-align: left;">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierPolicyRate" ClientInstanceName="dxetxtGridCarrierPolicyRate"
+                                                                                    runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
+                                                                                </dxe:ASPxTextBox>
+                                                                            </td>
+                                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                                保费(原):
+                                                                            </td>
+                                                                            <td style="text-align: left;">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierPremium" ClientInstanceName="dxetxtGridCarrierPremium"
+                                                                                    runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
+                                                                                </dxe:ASPxTextBox>
+                                                                            </td>
+                                                                            <td style="white-space: nowrap; text-align: right;">
                                                                                     保费(本):
-                                                                                </td>
-                                                                                <td style="text-align: left;">
-                                                                                    <dxe:ASPxTextBox ID="dxetxtGridCarrierPremiumBase" ClientInstanceName="dxetxtGridCarrierPremiumBase"
-                                                                                        runat="server" Width="120px">
-                                                                                        <ValidationSettings>
-                                                                                            <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
-                                                                                        </ValidationSettings>
-                                                                                    </dxe:ASPxTextBox>
-                                                                                </td>
-                                                                                <td style="white-space: nowrap; text-align: right;">
-                                                                                    经纪费率(%):
-                                                                                </td>
-                                                                                <td style="text-align: left;">
-                                                                                    <dxe:ASPxTextBox ID="dxetxtGridCarrierProcessRate" ClientInstanceName="dxetxtGridCarrierProcessRate"
-                                                                                        runat="server" Width="120px">
-                                                                                        <ValidationSettings>
-                                                                                            <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
-                                                                                        </ValidationSettings>
-                                                                                    </dxe:ASPxTextBox>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td style="white-space: nowrap; text-align: right;">
-                                                                                    经纪费(原):
-                                                                                </td>
-                                                                                <td style="text-align: left;">
-                                                                                    <dxe:ASPxTextBox ID="dxetxtGridCarrierProcess" ClientInstanceName="dxetxtGridCarrierProcess"
-                                                                                        runat="server" Width="120px">
-                                                                                        <ValidationSettings>
-                                                                                            <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
-                                                                                        </ValidationSettings>
-                                                                                    </dxe:ASPxTextBox>
-                                                                                </td>
-                                                                                <td style="white-space: nowrap; text-align: right;">
-                                                                                    经纪费(本):
-                                                                                </td>
-                                                                                <td style="text-align: left;">
-                                                                                    <dxe:ASPxTextBox ID="dxetxtGridCarrierProcessBase" ClientInstanceName="dxetxtGridCarrierProcessBase"
-                                                                                        runat="server" Width="120px">
-                                                                                        <ValidationSettings>
-                                                                                            <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
-                                                                                        </ValidationSettings>
-                                                                                    </dxe:ASPxTextBox>
-                                                                                </td>
-                                                                            </tr>
+                                                                            </td>
+                                                                            <td style="text-align: left;">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierPremiumBase" ClientInstanceName="dxetxtGridCarrierPremiumBase"
+                                                                                    runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
+                                                                                </dxe:ASPxTextBox>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>                                                                                
+                                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                                经纪费率(%):
+                                                                            </td>
+                                                                            <td style="text-align: left;">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierProcessRate" ClientInstanceName="dxetxtGridCarrierProcessRate"
+                                                                                    runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
+                                                                                </dxe:ASPxTextBox>
+                                                                            </td>
+                                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                                经纪费(原):
+                                                                            </td>
+                                                                            <td style="text-align: left;">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierProcess" ClientInstanceName="dxetxtGridCarrierProcess"
+                                                                                    runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
+                                                                                </dxe:ASPxTextBox>
+                                                                            </td>
+                                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                                经纪费(本):
+                                                                            </td>
+                                                                            <td style="text-align: left;">
+                                                                                <dxe:ASPxTextBox ID="dxetxtGridCarrierProcessBase" ClientInstanceName="dxetxtGridCarrierProcessBase"
+                                                                                    runat="server" Width="120px">
+                                                                                    <ValidationSettings>
+                                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    </ValidationSettings>
+                                                                                </dxe:ASPxTextBox>
+                                                                            </td>
+                                                                        </tr>
                                                                     </table>
                                                                 </div>
                                                                 <div style="text-align: right; padding: 2px 2px 2px 2px">
