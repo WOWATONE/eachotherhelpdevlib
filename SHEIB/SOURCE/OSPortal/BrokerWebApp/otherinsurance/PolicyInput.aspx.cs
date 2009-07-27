@@ -1318,7 +1318,7 @@ namespace BrokerWebApp.otherinsurance
             else
                 state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
 
-            BusinessObjects.Policy.BO_Policy.AuditPolicy(thePolicyID, state, this.CurrentUserID, ref resultSign, ref resultMSG);
+            BusinessObjects.Policy.BO_Policy.AuditPolicy(thePolicyID, state, this.CurrentUserID, obj.Remark, ref resultSign, ref resultMSG);
             
         }
 
