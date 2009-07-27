@@ -241,13 +241,13 @@ namespace BusinessObjects
         public static DataTable GetCustContactByCustID(string custID)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("Select NC.NotifyID, P.PolicyNo, C.CarrierNameEn, PT.ProdTypeName, P.StartDate, P.EndDate, NC.NotifyTime, ");
+            sb.Append("Select NC.NotifyID, P.PolicyNo, C.CarrierNameCn, PT.ProdTypeName, P.StartDate, P.EndDate, NC.NotifyTime, ");
             sb.Append("isnull(NC.NotifyLossFee, 0) as NotifyLossFee, isnull(C.LossRation, 0) as LossRation, isnull(NC.LastPayFee, 0) as LastPayFee, NC.CaseEndTime ");
             sb.Append("From NotifyClaim NC (nolock) ");
             sb.Append("Inner Join Policy P (nolock) On P.PolicyID=NC.PolicyID ");
-            sb.Append("Inner Join PolicyCarrier PC (nolock) On PC.PolicyID=P.PolicyID ");
-            sb.Append("Inner Join Carrier C (nolock) On C.CarrierID=PC.CarrierID ");
-            sb.Append("Inner Join ProductType PT (nolock) On PT.ProdTypeID=P.ProdTypeID ");
+            sb.Append("Left Join PolicyCarrier PC (nolock) On PC.PolicyID=P.PolicyID ");
+            sb.Append("Left Join Carrier C (nolock) On C.CarrierID=PC.CarrierID ");
+            sb.Append("Left Join ProductType PT (nolock) On PT.ProdTypeID=P.ProdTypeID ");
             sb.Append("Where P.CustomerID=@CustID ");
             sb.Append("Order By NC.NotifyID");
 
