@@ -21,6 +21,17 @@
     <title>保单录入列表</title>
 
     <script type="text/javascript">
+        
+        function getProductTypeID() {
+            var result = $("#<%=ptid.ClientID %>");
+            var ID = result[0].value;
+            return ID;
+        }
+        function setProductTypeID(thevalue) {
+            var result = $("#<%=ptid.ClientID %>");
+            result[0].value = thevalue;
+        }
+        
         $(document).ready(function() {
             //jQuery.noticeAdd({
             //    text: 'This is a notification that you have to remove',
@@ -52,7 +63,20 @@
             }
         }
 
-        
+        function SelectedProdTypeNameIndexChanged(s, e) {
+            var thevalue = s.GetValue();
+            setProductTypeID(thevalue);
+            var test = s.GetText();
+            var sValue = s.GetValue();
+
+            if (test.length > 0) {
+                var index = test.lastIndexOf("∟");
+                if (index >= 0) {
+                    var testTmp = test.substr(index + 1);
+                    s.SetText(testTmp);
+                }
+            }
+        }
 
         function isEmpty(testVar) {
             if ((testVar == null) || (testVar.length == 0)) {
@@ -154,9 +178,9 @@
                                             <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server"
                                                 Width="170px" DropDownStyle="DropDownList">
                                                 <items>
-																<dxe:ListEditItem Text="(全部)" Value="" />
-																<dxe:ListEditItem Text="业务部" Value="1" />
-															</items>
+													<dxe:ListEditItem Text="(全部)" Value="" />
+													<dxe:ListEditItem Text="业务部" Value="1" />
+												</items>
                                             </dxe:ASPxComboBox>
                                         </td>
                                         <td style="text-align: right;" colspan="2">
@@ -166,8 +190,8 @@
                                             <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server"
                                                 Width="170px" DropDownStyle="DropDownList">
                                                 <items>
-																<dxe:ListEditItem Text="(全部)" Value="" />
-															</items>
+													<dxe:ListEditItem Text="(全部)" Value="" />
+												</items>
                                             </dxe:ASPxComboBox>
                                         </td>
                                         <td style="text-align: right;">
@@ -176,7 +200,9 @@
                                         <td style="text-align: left;">
                                             <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
                                                 runat="server" Width="160px" DropDownStyle="DropDownList">
-                                            </dxe:ASPxComboBox>                                            
+                                                <ClientSideEvents SelectedIndexChanged="function(s, e) {SelectedProdTypeNameIndexChanged(s, e); return false;}" />
+                                            </dxe:ASPxComboBox>  
+                                            <input type="hidden" id="ptid" runat="server" />                                           
                                         </td>
                                         <td style="text-align: left;">
                                         </td>
@@ -189,9 +215,10 @@
                                             <dxe:ASPxComboBox ID="dxeddlCarrierId" ClientInstanceName="dxeddlCarrierId" runat="server"
                                                 Width="170px" DropDownStyle="DropDownList">
                                                 <items>
-																<dxe:ListEditItem Text="中国平安保险公司" Value="" />
-															</items>
+												    <dxe:ListEditItem Text="中国平安保险公司" Value="" />
+											    </items>
                                             </dxe:ASPxComboBox>
+                                            
                                         </td>
                                         <td style="text-align: right;" colspan="2">
                                             分支机构：
@@ -200,8 +227,8 @@
                                             <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server"
                                                 Width="170px" DropDownStyle="DropDownList">
                                                 <items>
-																<dxe:ListEditItem Text="中国平安保险公司" Value="" />
-															</items>
+													<dxe:ListEditItem Text="中国平安保险公司" Value="" />
+												</items>
                                             </dxe:ASPxComboBox>
                                         </td>
                                         <td style="text-align: right;">
@@ -234,9 +261,9 @@
                                             <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType"
                                                 runat="server" Width="170px" DropDownStyle="DropDownList">
                                                 <items>
-																<dxe:ListEditItem Text="新增" Value="1" />
-																<dxe:ListEditItem Text="再保" Value="2" />
-															</items>
+													<dxe:ListEditItem Text="新增" Value="1" />
+													<dxe:ListEditItem Text="再保" Value="2" />
+												</items>
                                             </dxe:ASPxComboBox>
                                         </td>
                                         <td style="text-align: right;">
