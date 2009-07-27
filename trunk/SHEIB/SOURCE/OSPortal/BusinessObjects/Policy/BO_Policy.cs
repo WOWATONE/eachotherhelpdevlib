@@ -1135,7 +1135,15 @@ namespace BusinessObjects.Policy
 
             Boolean needChangePeriod = false;
             BO_Policy theCompare = new BO_Policy(this.PolicyID);
+
             if (theCompare.PeriodTimes != this.PeriodTimes) needChangePeriod = true;
+            if (theCompare.Coverage != this.Coverage) needChangePeriod = true;
+            if (theCompare.Premium != this.Premium) needChangePeriod = true;
+            if (theCompare.PremiumBase != this.PremiumBase) needChangePeriod = true;
+            if (theCompare.PremiumRate != this.PremiumRate) needChangePeriod = true;
+            if (theCompare.Process != this.Process) needChangePeriod = true;
+            if (theCompare.ProcessBase != this.ProcessBase) needChangePeriod = true;
+            if (theCompare.ProcessRate != this.ProcessRate) needChangePeriod = true;
 
             try
             {
