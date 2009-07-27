@@ -97,9 +97,9 @@ namespace BrokerWebApp.otherinsurance
                 lsWhere = lsWhere + " and a.CarrierID ='" + dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
             }
 
-            if (this.dxeddlProdTypeName.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlProdTypeName.SelectedItem.Value.ToString()))
+            if (this.ptid.Value != null && !String.IsNullOrEmpty(this.ptid.Value))
             {
-                lsWhere = lsWhere + " and  b.ProdTypeID like ('%" + dxeddlProdTypeName.SelectedItem.Value.ToString() + "%') ";
+                lsWhere = lsWhere + " and  b.ProdTypeID like ('%" + this.ptid.Value.Trim() + "%') ";
             }
 
             string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");

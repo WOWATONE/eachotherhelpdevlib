@@ -12,6 +12,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>保单批改列表</title>
     <script type="text/javascript">
+        function getProductTypeID() {
+            var result = $("#<%=ptid.ClientID %>");
+            var ID = result[0].value;
+            return ID;
+        }
+        function setProductTypeID(thevalue) {
+            var result = $("#<%=ptid.ClientID %>");
+            result[0].value = thevalue;
+        }
+        
 	    $(document).ready(function() {
 	        //jQuery.noticeAdd({
 	        //    text: 'This is a notification that you have to remove',
@@ -56,6 +66,20 @@
 	        }
 	    }
 
+	    function SelectedProdTypeNameIndexChanged(s, e) {
+	        var thevalue = s.GetValue();
+	        setProductTypeID(thevalue);
+	        var test = s.GetText();
+	        var sValue = s.GetValue();
+
+	        if (test.length > 0) {
+	            var index = test.lastIndexOf("∟");
+	            if (index >= 0) {
+	                var testTmp = test.substr(index + 1);
+	                s.SetText(testTmp);
+	            }
+	        }
+	    }
 	    
 	    function isEmpty(testVar) {
 	        if ((testVar == null) || (testVar.length == 0)) {
@@ -187,7 +211,9 @@
                                                                 <td style="text-align:left;">
                                                                     <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
                                                                         runat="server" Width="160px" DropDownStyle="DropDownList">
-                                                                    </dxe:ASPxComboBox>                                                                                                                                                                      
+                                                                        <ClientSideEvents SelectedIndexChanged="function(s, e) {SelectedProdTypeNameIndexChanged(s, e); return false;}" />
+                                                                    </dxe:ASPxComboBox>  
+                                                                    <input type="hidden" id="ptid" runat="server" />                                                                                                                                                                     
                                                                 </td>
                                                                 <td style="text-align:left;"></td>
                                                             </tr>
