@@ -160,7 +160,11 @@ namespace BrokerWebApp.otherinsurance
                     obj = new BusinessObjects.Policy.BO_Policy(this.dxetxtPolicyID.Text.Trim());
 
                     if (obj.PolicyStatus == Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString())
+                    {
                         this.dxebtnAuditOk.Text = "反审核";
+                        this.dxebtnAuditBack.ClientEnabled = false;
+                    }
+                    
                 }
             }
             else
