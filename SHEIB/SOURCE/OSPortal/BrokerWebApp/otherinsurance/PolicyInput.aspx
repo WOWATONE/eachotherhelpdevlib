@@ -734,6 +734,7 @@
         }
 
         function dxeGetGridPolicyItemTotalSummaryCallbackComplete(s, e) {
+            
             var retrunval = e.result;
             var thesplit_array = retrunval.split(";");
             var sumCoverageVal = parseFloat(thesplit_array[0]);
@@ -746,6 +747,9 @@
             dxetxtPremium.SetValue(rtn);
             rtn = sumProcessVal.toFixed(2);
             dxetxtProcess.SetValue(rtn);
+
+            division_ValueChanged(dxetxtPremium, dxetxtCoverage, dxetxtPremiumRate, true);
+            division_ValueChanged(dxetxtProcess, dxetxtPremium, dxetxtProcessRate, true);
         }
 
         function gridCarrierCustomButtonClick(s, e) {
