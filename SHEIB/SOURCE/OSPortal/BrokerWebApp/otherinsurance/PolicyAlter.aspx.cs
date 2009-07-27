@@ -21,17 +21,15 @@ namespace BrokerWebApp.otherinsurance
 
         #region Variables
 
+        private const string policyNoExist = "policynoexist";
         private const string inputQueryStringIDKey = "id";
         private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
-        //private const int ThumbnailSize = 100;
 
-        private Boolean gridCarrierStartEdit = false;
-        private Boolean gridPolicyItemStartEdit = false;
+        private Boolean gridCarrierStartEdit = false;        
         private Boolean gridPolicyPeriodStartEdit = false;
 
         private string toadd = string.Empty;
 
-        //enctype="multipart/form-data">
 
         #endregion Variables
 
@@ -41,17 +39,7 @@ namespace BrokerWebApp.otherinsurance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-            {
-                //
-            }
-            else
-            {
-                this.lblSourcePolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
-                
-                loadPrePolicyValue(this.lblSourcePolicyID.Text);
-            }
-
+            
             this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridPeriod.DataSource = BusinessObjects.Policy.BO_PolicyPeriod.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
@@ -59,6 +47,10 @@ namespace BrokerWebApp.otherinsurance
             if (!IsPostBack && !IsCallback)
             {
                 bindDropDownLists();
+
+                this.lblSourcePolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
+
+                loadPrePolicyValue(this.lblSourcePolicyID.Text);
 
                 this.dxedtCreateTime.Date = DateTime.Today;
                 this.gridCarrier.DataBind();
@@ -83,8 +75,8 @@ namespace BrokerWebApp.otherinsurance
             DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
             String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
-            String thePolicyID = savePolicy(e.Parameter, policystatus);
-            e.Result = thePolicyID;
+            String theResult = savePolicy(e.Parameter, policystatus);
+            e.Result = theResult;
         }
 
 
@@ -92,8 +84,8 @@ namespace BrokerWebApp.otherinsurance
             DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
             String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
-            savePolicy(e.Parameter, policystatus);
-            e.Result = "complete";
+            String theResult = savePolicy(e.Parameter, policystatus);
+            e.Result = theResult;
         }
 
 
@@ -756,6 +748,8 @@ namespace BrokerWebApp.otherinsurance
         #endregion Upload File  Events
 
 
+        #region Privates
+
 
         private string savePolicy(String parameter, String policyState)
         {
@@ -768,6 +762,11 @@ namespace BrokerWebApp.otherinsurance
             theJosn = (PolicyInfo)serializer.ReadObject(ms);
             ms.Close();
             BusinessObjects.Policy.BO_Policy obj;
+
+            //check policyno exist first
+            bool checkresult = checkPolicyNoExist(theJosn.PolicyID, theJosn.PolicyNo);
+
+            if (checkresult) return policyNoExist;
 
             if (String.IsNullOrEmpty(theJosn.PolicyID))
             {
@@ -938,28 +937,23 @@ namespace BrokerWebApp.otherinsurance
 
 
 
-        private void loadPolicyValue(String poliicyID)
+        private void loadPolicyValue(String policyID)
         {
 
             ListEditItem theselected;
             BusinessObjects.Policy.BO_Policy obj;
 
-            obj = new BusinessObjects.Policy.BO_Policy(poliicyID);
+            obj = new BusinessObjects.Policy.BO_Policy(policyID);
 
-            //this.dxetxtPolicyNo.Text = obj.PolicyNo;
+            this.dxetxtPolicyNo.Text = obj.PolicyNo;
             //dxechkTogether
             //dxechkFlagReinsure
-
-            //this.dxeddlProdTypeName.Value = obj.ProdTypeID;
-
 
             this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(obj.ProdTypeID));
             if (this.dxeddlProdTypeName.SelectedIndex >= 0)
                 this.dxeddlProdTypeName.Text = this.dxeddlProdTypeName.SelectedItem.Text.Substring(this.dxeddlProdTypeName.SelectedItem.Text.IndexOf("∟") + 1);
 
-
-            //this.dxetxtProdTypeName.SelectedItem = dxetxtProdTypeName.Items.FindByValue(obj.ProdTypeID);
-            //this.ptid.Value = obj.ProdTypeID;
+            this.ptid.Value = obj.ProdTypeID;
 
             this.dxetxtCustomer.Text = obj.CustomerName;
             this.cusid.Value = obj.CustomerID;
@@ -1048,26 +1042,22 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
-        private void loadPrePolicyValue(String prePoliicyID)
+        private void loadPrePolicyValue(String prePolicyID)
         {
             ListEditItem theselected;
             BusinessObjects.Policy.BO_Policy obj;
 
-            obj = new BusinessObjects.Policy.BO_Policy(prePoliicyID);
+            obj = new BusinessObjects.Policy.BO_Policy(prePolicyID);
 
-            //this.dxetxtPolicyNo.Text = "";
+            this.dxetxtPolicyNo.Text = obj.PolicyNo;
             //dxechkTogether
             //dxechkFlagReinsure
-
-            //this.dxetxtProdTypeName.Text = obj.ProdTypeName;
-
-            //this.dxeddlProdTypeName.SelectedItem = dxeddlProdTypeName.Items.FindByValue(obj.ProdTypeID);
 
             this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(obj.ProdTypeID));
             if (this.dxeddlProdTypeName.SelectedIndex >= 0)
                 this.dxeddlProdTypeName.Text = this.dxeddlProdTypeName.SelectedItem.Text.Substring(this.dxeddlProdTypeName.SelectedItem.Text.IndexOf("∟") + 1);
 
-            //this.ptid.Value = obj.ProdTypeID;
+            this.ptid.Value = obj.ProdTypeID;
 
             this.dxetxtCustomer.Text = obj.CustomerName;
             this.cusid.Value = obj.CustomerID;
@@ -1088,6 +1078,7 @@ namespace BrokerWebApp.otherinsurance
             if (!String.IsNullOrEmpty(obj.SalesId))
             {
                 theselected = dxeddlSalesId.Items.FindByValue(obj.SalesId);
+                //dxeddlSalesId.Items.IndexOfValue(obj.SalesId);
                 if (theselected != null)
                 {
                     dxeddlSalesId.SelectedItem = theselected;
@@ -1137,7 +1128,43 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
+        private bool checkPolicyNoExist(String policyID, String policyNo)
+        {
+            bool result;
+            String swhere = "";
+            if (!String.IsNullOrEmpty(policyID))
+            {
+                swhere += " AND B.PolicyID != '" + policyID.Trim() + "'";
+            }
 
+            if (!String.IsNullOrEmpty(policyNo))
+            {
+                swhere += " AND B.PolicyNo = '" + policyNo.Trim() + "'";
+            }
+            else
+            {
+                return false;
+            }
+
+            try
+            {
+                DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(swhere);
+                if (dt.Rows.Count > 0)
+                    result = true;
+                else
+                    result = false;
+            }
+            catch (Exception)
+            {
+                result = true;
+            }
+
+            return result;
+
+        }
+
+
+        #endregion Privates
 
 
         [DataContract(Namespace = "http://www.sheib.com")]

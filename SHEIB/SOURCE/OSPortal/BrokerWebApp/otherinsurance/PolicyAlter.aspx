@@ -77,6 +77,16 @@
             result[0].value = thevalue;
         }
 
+        function getProductTypeID() {
+            var result = $("#<%=ptid.ClientID %>");
+            var ID = result[0].value;
+            return ID;
+        }
+        function setProductTypeID(thevalue) {
+            var result = $("#<%=ptid.ClientID %>");
+            result[0].value = thevalue;
+        }
+
         function getPageContentPanel() {
             var result = $("#<%=nppagecontent.ClientID %>");
             return result[0];
@@ -132,6 +142,20 @@
 
         }
 
+        function setOnlyAllDxeButtonsUnableOrEnable(val) {
+            if (typeof (dxebtnBottomAdd) != 'undefined' && dxebtnBottomAdd != null)
+                dxebtnBottomAdd.SetEnabled(val);
+
+            if (typeof (dxebtnBottomSave) != 'undefined' && dxebtnBottomSave != null)
+                dxebtnBottomSave.SetEnabled(val);
+
+            if (typeof (dxebtnBottomCheck) != 'undefined' && dxebtnBottomCheck != null)
+                dxebtnBottomCheck.SetEnabled(val);
+
+            if (typeof (dxebtnCancel) != 'undefined' && dxebtnCancel != null)
+                dxebtnCancel.SetEnabled(val);
+        }
+        
         function setOnlyDxeButtonsUnableOrEnable(val) {
             //if (typeof (dxebtnBottomAdd) != 'undefined' && dxebtnBottomAdd != null)
             //    dxebtnBottomAdd.SetEnabled(val);
@@ -144,23 +168,6 @@
 
             if (typeof (dxebtnCancel) != 'undefined' && dxebtnCancel != null)
                 dxebtnCancel.SetEnabled(val);
-
-            //try {
-            //    if (typeof (dxebtnAuditBack) != 'undefined' && dxebtnAuditBack != null)
-            //        dxebtnAuditBack.SetEnabled(val);
-            //}
-            //catch (err) {
-            //}
-
-
-            //try {
-            //    if (typeof (dxebtnAuditOk) != 'undefined' && dxebtnAuditOk != null)
-            //        dxebtnAuditOk.SetEnabled(val);
-            //}
-            //catch (err) {
-            //}
-
-
         }
 
         function setDxeButtonsUnableOrEnable(val) {
@@ -239,17 +246,14 @@
             var Process = dxetxtProcess.GetValueString();
             var ProcessBase = dxetxtProcessBase.GetValueString();
             var ProcessRate = dxetxtProcessRate.GetValueString();
-            var ProdTypeID = dxeddlProdTypeName.GetValue();
+            var ProdTypeID = getProductTypeID(); //dxeddlProdTypeName.GetValue();
             var Remark = dxeAppendRemark.GetValueString();
             var SalesId = dxeddlSalesId.GetValue();
             var SignDate = null;
             var SourceTypeID = dxeddlSourceTypeID.GetValue();
             var Special = null;
             var StartDate = dxeStartDate.GetValue();
-            //var CustomerName = dxetxtCustomer.GetValueString();
-            //var ProdTypeName = dxeddlProdTypeName.GetText();
-
-
+            
 
             var plc = new Policy(AuditOrNot,
             Beneficiary, CarrierSales, ConversionRate, Coverage,
@@ -281,12 +285,24 @@
         }
 
         function saveCallbackComplete(s, e) {
-            //do nothing;
-            policyBaseCompleteEnable();
-            //
-            var pid = dxetxtPolicyID.GetValueString();
-            if (isEmpty(pid)) {
-                dxetxtPolicyID.SetValue(e.result);
+            
+            var theresult = e.result;
+            switch (theresult) {
+                case "policynoexist":
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize = "9px";
+                    resultMsg.innerHTML = "保单编号不唯一";
+                    break
+                default:
+                    //do nothing;
+                    policyBaseCompleteEnable();
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize = "9px";
+                    resultMsg.innerHTML = "保存成功";
+                    var pid = dxetxtPolicyID.GetValueString();
+                    if (isEmpty(pid)) {
+                        dxetxtPolicyID.SetValue(e.result);
+                    }
             }
         }
 
@@ -298,7 +314,19 @@
 
 
         function saveCheckCallbackComplete(s, e) {
-            setOnlyDxeButtonsUnableOrEnable(false);
+            var theresult = e.result;
+            switch (theresult) {
+                case "policynoexist":
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize = "9px";
+                    resultMsg.innerHTML = "保单编号不唯一";
+                    break
+                default:
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize = "9px";
+                    resultMsg.innerHTML = "提交成功";
+                    setOnlyAllDxeButtonsUnableOrEnable(false);            
+            }
         }
 
 
@@ -507,6 +535,22 @@
         function policyTab_Click(s, e) {
             //
         }
+
+
+        function SelectedProdTypeNameIndexChanged(s, e) {
+            var thevalue = s.GetValue();
+            setProductTypeID(thevalue);
+            var test = s.GetText();
+            var sValue = s.GetValue();
+
+            if (test.length > 0) {
+                var index = test.lastIndexOf("∟");
+                if (index >= 0) {
+                    var testTmp = test.substr(index + 1);
+                    s.SetText(testTmp);
+                }
+            }
+        }
                 
     </script>
     
@@ -546,6 +590,7 @@
     
     
     
+    <span id="resultMsg" class="errorMSG" style="margin-top:2px; margin-left:8px;">&nbsp;</span>
     <asp:Panel ID="nppagecontent" runat="server">
     
     
@@ -621,7 +666,7 @@
                                             </tr>
                                             <tr>
                                                 <td style="text-align: right;">
-                                                    保单编号：
+                                                    投保单号：
                                                 </td>
                                                 <td style="text-align: left;">
                                                     <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="125px" ReadOnly="true"></dxe:ASPxTextBox>
@@ -697,6 +742,7 @@
                                                             </ValidationSettings>
                                                             <ClientSideEvents SelectedIndexChanged="function(s, e) {SelectedProdTypeNameIndexChanged(s, e); return false;}" />  
                                                         </dxe:ASPxComboBox>
+                                                        <input type="hidden" id="ptid" runat="server" />
                                                 </td>
                                                 <td></td>
                                             </tr>
@@ -1141,14 +1187,10 @@
                                                         </dxe:ASPxComboBox>
                                                 </td>
                                                 <td style="width: 11%; text-align: right;">
-                                                    客户经理：
+                                                    
                                                 </td>
                                                 <td style="width: 22%; text-align: left;">
-                                                    <dxe:ASPxComboBox ID="ASPxComboBox1" ClientInstanceName="dxeddlSalesId" runat="server"
-                                                            Width="125px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
-                                                            <Items>
-                                                            </Items>
-                                                        </dxe:ASPxComboBox>
+                                                    
                                                 </td>
                                                 <td style="width: 11%; text-align: right;">
                                                 </td>
@@ -1165,7 +1207,6 @@
                                                     <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType"
                                                             runat="server" Width="125px" DropDownStyle="DropDownList">
                                                             <Items>
-                                                                <dxe:ListEditItem Text="(全部)" Value="" />
                                                             </Items>
                                                         </dxe:ASPxComboBox>
                                                 </td>
@@ -1176,7 +1217,6 @@
                                                     <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID"
                                                             runat="server" Width="125px" DropDownStyle="DropDownList">
                                                             <Items>
-                                                                <dxe:ListEditItem Text="(全部)" Value="" />
                                                             </Items>
                                                         </dxe:ASPxComboBox>
                                                 </td>
@@ -1187,7 +1227,6 @@
                                                     <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
                                                             runat="server" Width="125px" DropDownStyle="DropDownList">
                                                             <Items>
-                                                                <dxe:ListEditItem Text="(全部)" Value="" />
                                                             </Items>
                                                         </dxe:ASPxComboBox>
                                                 </td>
