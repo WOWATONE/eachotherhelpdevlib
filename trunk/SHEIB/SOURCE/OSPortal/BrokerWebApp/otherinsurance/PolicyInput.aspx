@@ -876,7 +876,6 @@
                                                         <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server"
                                                             Width="125px" ReadOnly="true">
                                                         </dxe:ASPxTextBox>
-                                                        <input type="hidden" id="pplcid" runat="server" />
                                                     </td>
                                                     <td style="text-align: right;">
                                                         ±£µ¥±àºÅ£º

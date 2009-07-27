@@ -23,6 +23,24 @@ namespace BrokerWebApp.otherinsurance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
+        /// dxeSaveCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeSaveCallback;
+        
+        /// <summary>
+        /// dxeSaveAndCheckCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeSaveAndCheckCallback;
+        
+        /// <summary>
         /// nppagecontent control.
         /// </summary>
         /// <remarks>
@@ -122,6 +140,15 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnOriginalPolicyDetail;
         
         /// <summary>
+        /// dxetxtPolicyNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyNo;
+        
+        /// <summary>
         /// dxetxtPolicyID control.
         /// </summary>
         /// <remarks>
@@ -203,6 +230,15 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlProdTypeName;
         
         /// <summary>
+        /// ptid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden ptid;
+        
+        /// <summary>
         /// dxeStartDate control.
         /// </summary>
         /// <remarks>
@@ -219,6 +255,15 @@ namespace BrokerWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeEndDate;
+        
+        /// <summary>
+        /// dxebtntopSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtntopSave;
         
         /// <summary>
         /// cpeBasic control.
@@ -455,6 +500,15 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridCarrier;
         
         /// <summary>
+        /// btngridCarrierTogether control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.GridViewCommandColumnCustomButton btngridCarrierTogether;
+        
+        /// <summary>
         /// CollapsiblePanelExtender1 control.
         /// </summary>
         /// <remarks>
@@ -507,15 +561,6 @@ namespace BrokerWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlDeptID;
-        
-        /// <summary>
-        /// ASPxComboBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox ASPxComboBox1;
         
         /// <summary>
         /// dxeddlOperationType control.

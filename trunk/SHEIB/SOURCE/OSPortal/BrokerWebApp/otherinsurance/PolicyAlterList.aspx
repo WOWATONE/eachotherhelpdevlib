@@ -61,7 +61,7 @@
 	        else {
 	            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
 	            var querystring;
-	            querystring = "PolicyInput.aspx?input=input&pid=" + selectedValues;
+	            querystring = "PolicyInput.aspx?input=input&id=" + selectedValues;
 	            window.showModalDialog(querystring, self, myArguments);
 	        }
 	    }
