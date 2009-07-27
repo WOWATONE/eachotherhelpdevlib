@@ -142,6 +142,12 @@ namespace BrokerWebApp.otherinsurance
             {
                 tbltrAuditExecuteAction.Visible = true;
                 npNewExecuteAction.Visible = false;
+                this.dxebtntopSave.Visible = false;
+                this.gridCarrier.Enabled = false;
+                this.gridPolicyItem.Enabled = false;
+                this.gridPeriod.Enabled = false;
+                this.filesUploadControl.Enabled = false;
+                this.Page.Title = "保单审核";
             }
             else
             {
