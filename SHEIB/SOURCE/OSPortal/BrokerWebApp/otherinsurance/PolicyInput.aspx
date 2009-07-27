@@ -95,7 +95,16 @@
             var result = $("#<%=cusid.ClientID %>");
             result[0].value = thevalue;
         }
-        
+
+        function getProductTypeID() {
+            var result = $("#<%=ptid.ClientID %>");
+            var ID = result[0].value;
+            return ID;
+        }
+        function setProductTypeID(thevalue) {
+            var result = $("#<%=ptid.ClientID %>");
+            result[0].value = thevalue;
+        }
 
         function getPageContentPanel() {
             var result = $("#<%=nppagecontent.ClientID %>");
@@ -268,7 +277,7 @@
             var Process = dxetxtProcess.GetValueString();
             var ProcessBase = dxetxtProcessBase.GetValueString();
             var ProcessRate = dxetxtProcessRate.GetValueString();
-            var ProdTypeID = dxeddlProdTypeName.GetValue();
+            var ProdTypeID = getProductTypeID();
             var Remark = null;
             var SalesId = dxeddlSalesId.GetValue();
             var SignDate = null;
@@ -676,16 +685,18 @@
         }
 
         function SelectedProdTypeNameIndexChanged(s, e) {
-            //            var test = s.GetText();
-            //            var sValue = s.GetValue();
-            //            
-            //            if (test.length > 0) {
-            //                var index = test.lastIndexOf("∟");
-            //                if (index >= 0) {
-            //                    var testTmp = test.substr(index + 1);
-            //                    s.SetText(testTmp);
-            //                }
-            //            }
+            var thevalue = s.GetValue();
+            setProductTypeID(thevalue);
+            var test = s.GetText();
+            var sValue = s.GetValue();
+            
+            if (test.length > 0) {
+                var index = test.lastIndexOf("∟");
+                if (index >= 0) {
+                    var testTmp = test.substr(index + 1);
+                    s.SetText(testTmp);
+                }
+            }
         }
 
         
@@ -842,7 +853,8 @@
                                                                 <RequiredField ErrorText="不能为空" IsRequired="True" />
                                                             </ValidationSettings>
                                                             <ClientSideEvents SelectedIndexChanged="function(s, e) {SelectedProdTypeNameIndexChanged(s, e); return false;}" />
-                                                        </dxe:ASPxComboBox>                                                        
+                                                        </dxe:ASPxComboBox>
+                                                        <input type="hidden" id="ptid" runat="server" />                                                        
                                                     </td>
                                                     <td style="text-align: right;">
                                                         投保人：
