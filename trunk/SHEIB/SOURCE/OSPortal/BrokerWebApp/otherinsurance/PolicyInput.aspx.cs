@@ -239,7 +239,15 @@ namespace BrokerWebApp.otherinsurance
             HtmlTable tblEditorTemplate = this.gridPolicyItem.FindEditFormTemplateControl("tblgridPolicyItemEditorTemplate") as HtmlTable;
 
             ASPxComboBox dxecbGridPolicyItemProdID = tblEditorTemplate.FindControl("dxecbGridPolicyItemProdID") as ASPxComboBox;
-            String prouctType = this.dxeddlProdTypeName.Value.ToString();
+            String prouctType;
+            if (this.ptid.Value ==null)
+            {
+                prouctType = "";
+            }
+            else
+            {
+                prouctType = this.ptid.Value.ToString();
+            }
             String sqlfilter = " AND A.ProdTypeID ='" + prouctType + "' ";
             dxecbGridPolicyItemProdID.DataSource = BusinessObjects.SchemaSetting.BO_Product.FetchList(sqlfilter);
             dxecbGridPolicyItemProdID.TextField = "ProdName";
@@ -261,12 +269,36 @@ namespace BrokerWebApp.otherinsurance
 
                 //String itemID = theValueList[0].ToString();
                 //String policyId = theValueList[1].ToString();
-                String prodID = theValueList[2].ToString();
-                String coverage = theValueList[3].ToString();
-                String premium = theValueList[4].ToString();
-                String procRate = theValueList[5].ToString();
-                String process = theValueList[6].ToString();
-                String premiumRate = theValueList[7].ToString();
+                String prodID, coverage, premium, procRate, process, premiumRate;
+                if (theValueList[2] == null)
+                    prodID = "";
+                else
+                    prodID = theValueList[2].ToString();
+
+                if (theValueList[3] == null)
+                    coverage = "";
+                else
+                    coverage = theValueList[3].ToString();
+
+                if (theValueList[4] == null)
+                    premium = "";
+                else
+                    premium = theValueList[4].ToString();
+
+                if (theValueList[5] == null)
+                    procRate = "";
+                else
+                    procRate = theValueList[5].ToString();
+
+                if (theValueList[6] == null)
+                    process = "";
+                else
+                    process = theValueList[6].ToString();
+
+                if (theValueList[7] == null)
+                    premiumRate = "";
+                else
+                    premiumRate = theValueList[7].ToString();
 
                 ListEditItem theselected;
                 if (this.gridPolicyItemStartEdit)
@@ -1313,13 +1345,13 @@ namespace BrokerWebApp.otherinsurance
 
 
 
-        private void loadPolicyValue(String poliicyID)
+        private void loadPolicyValue(String policyID)
         {
 
             ListEditItem theselected;
             BusinessObjects.Policy.BO_Policy obj;
 
-            obj = new BusinessObjects.Policy.BO_Policy(poliicyID);
+            obj = new BusinessObjects.Policy.BO_Policy(policyID);
 
             this.dxetxtPolicyNo.Text = obj.PolicyNo;
             //dxechkTogether
@@ -1328,7 +1360,7 @@ namespace BrokerWebApp.otherinsurance
             this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(obj.ProdTypeID));
             if (this.dxeddlProdTypeName.SelectedIndex >= 0)
                 this.dxeddlProdTypeName.Text = this.dxeddlProdTypeName.SelectedItem.Text.Substring(this.dxeddlProdTypeName.SelectedItem.Text.IndexOf("∟") + 1);
-
+            this.ptid.Value = obj.ProdTypeID;
             
             this.dxetxtCustomer.Text = obj.CustomerName;
             this.cusid.Value = obj.CustomerID;
@@ -1418,22 +1450,23 @@ namespace BrokerWebApp.otherinsurance
             this.dxetxtIDNo.Text = obj.AuditPerson;
             this.dxeMemo.Text = obj.Remark;
 
-            //取得结算信息
+            //取得结算信息            
+            DataSet dsPolicyFee = BusinessObjects.Policy.BO_Policy.GetPolicyFee(policyID);
+            if (dsPolicyFee !=null && dsPolicyFee.Tables.Count > 0 && dsPolicyFee.Tables[0].Rows.Count > 0)
+            {
+                DataTable dtFee = dsPolicyFee.Tables[0];
+                DataTable dsFeeDetail = dsPolicyFee.Tables[1];
+                this.dxetxtPayedFee.Text = dtFee.Rows[0]["PayedFee"].ToString();
+                this.dextxtNeededPayFee.Text = dtFee.Rows[0]["NeededPayFee"].ToString();
+                this.dxetxtPayinedFee.Text = dtFee.Rows[0]["PayinedFee"].ToString();
+                this.dxetxtNeededPayinFee.Text = dtFee.Rows[0]["NeededPayinFee"].ToString();
+                this.dxetxtPayedProc.Text = dtFee.Rows[0]["PayedProc"].ToString();
+                this.dxetxtNeededPayProc.Text = dtFee.Rows[0]["NeededPayProc"].ToString();
+
+                gridInOutBalance.DataSource = dsFeeDetail;
+                gridInOutBalance.DataBind();
+            }
             
-            DataSet dsPolicyFee = BusinessObjects.Policy.BO_Policy.GetPolicyFee(poliicyID);
-            DataTable dtFee = dsPolicyFee.Tables[0];
-            DataTable dsFeeDetail = dsPolicyFee.Tables[1];
-            this.dxetxtPayedFee.Text = dtFee.Rows[0]["PayedFee"].ToString();
-            this.dextxtNeededPayFee.Text = dtFee.Rows[0]["NeededPayFee"].ToString();
-            this.dxetxtPayinedFee.Text = dtFee.Rows[0]["PayinedFee"].ToString();
-            this.dxetxtNeededPayinFee.Text = dtFee.Rows[0]["NeededPayinFee"].ToString();
-            this.dxetxtPayedProc.Text = dtFee.Rows[0]["PayedProc"].ToString();
-            this.dxetxtNeededPayProc.Text = dtFee.Rows[0]["NeededPayProc"].ToString();
-
-            gridInOutBalance.DataSource = dsFeeDetail;
-            gridInOutBalance.DataBind();
-
-
         }
 
 
@@ -1443,12 +1476,12 @@ namespace BrokerWebApp.otherinsurance
             String swhere = "";
             if (!String.IsNullOrEmpty(policyID))
             {
-                swhere = " AND B.PolicyID != '" + policyID.Trim() + "'";
+                swhere += " AND B.PolicyID != '" + policyID.Trim() + "'";
             }
 
             if (!String.IsNullOrEmpty(policyNo))
             {
-                swhere = " AND B.PolicyNo = '" + policyNo.Trim() + "'";
+                swhere += " AND B.PolicyNo = '" + policyNo.Trim() + "'";
             }
             else
             {
