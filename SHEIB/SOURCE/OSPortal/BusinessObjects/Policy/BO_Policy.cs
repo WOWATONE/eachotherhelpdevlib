@@ -715,6 +715,25 @@ namespace BusinessObjects.Policy
         }
 
 
+        public static void AuditPolicy(String policyID, String auditStatus, String person, ref Int32 resultSign, ref String resultMsg)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[dbo].[AuditPolicy]");
+
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, policyID);
+            _db.AddInParameter(dbCommand, "@ac_AuditStatus", DbType.String, auditStatus);
+            _db.AddInParameter(dbCommand, "@ac_AuditPersion", DbType.String, person);
+            _db.AddOutParameter(dbCommand, "@ai_dm", DbType.Int32, 32);
+            _db.AddOutParameter(dbCommand, "@ac_sm", DbType.String, 100);
+            
+            _db.ExecuteNonQuery(dbCommand);
+
+            resultSign = Convert.ToInt32(_db.GetParameterValue(dbCommand, "@ai_dm"));
+            resultMsg = Convert.ToString( _db.GetParameterValue(dbCommand, "@ac_sm"));
+
+        }
         
 
 

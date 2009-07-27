@@ -288,6 +288,9 @@
                                                     SettingsPager-AlwaysShowPager="true" 
                                                     OnRowDeleting="gridSearchResult_RowDeleting"
                                                     OnCustomCallback="gridSearchResult_CustomCallback"
+                                                    OnHtmlRowCreated="gridSearchResult_HtmlRowCreated" 
+                                                    OnHtmlCommandCellPrepared="gridSearchResult_CommandCellPrepared" 
+                                                    OnHtmlRowPrepared="gridSearchResult_RowPrepared" 
                                                     >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
