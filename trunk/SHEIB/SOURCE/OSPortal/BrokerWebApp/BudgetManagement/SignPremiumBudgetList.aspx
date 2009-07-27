@@ -157,15 +157,15 @@
                                 (yyyymm)
                             </td>
                             <td style="text-align: right;">
-                                &nbsp;
+                                保单类别
                             </td>
                             <td style="text-align: left;">
+                                <dxe:ASPxComboBox ID="dxeddlPremiumType" ClientInstanceName="dxeddlPremiumType" runat="server" DropDownStyle="DropDownList"  Width="160px"></dxe:ASPxComboBox>
+                            </td>
+                            <td>
                                 <asp:Button ID="Button1" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
                                 <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
                                 <asp:Button ID="btnXlsExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" />
-                            </td>
-                            <td>
-                                &nbsp;
                             </td>
                         </tr>
                     </table>
@@ -232,6 +232,8 @@
                             <dxwgv:GridViewDataTextColumn Caption="保费预算" FieldName="PremiumBudget" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="佣金预算" FieldName="ProcessBudget" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="保单类别" FieldName="PremiumTypeName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                         </Columns>
                         <SettingsPager Mode="ShowPager" />

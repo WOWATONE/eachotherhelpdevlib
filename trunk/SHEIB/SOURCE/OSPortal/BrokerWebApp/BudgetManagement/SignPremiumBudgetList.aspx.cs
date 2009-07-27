@@ -49,6 +49,17 @@ namespace BrokerWebApp.BudgetManagement
                     this.dxeddlSalesID.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
                 }
             }
+
+            //保单类别
+            this.dxeddlPremiumType.Items.Add("(全部)", "");
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.PremiumType.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlPremiumType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
         }
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
@@ -92,6 +103,8 @@ namespace BrokerWebApp.BudgetManagement
                 sbWhere.Append(" And S.OperationType='" + this.dxeddlOperationType.SelectedItem.Value.ToString() + "' ");
             if (this.dxetxtNY.Text.Trim().Length > 0)
                 sbWhere.Append(" And S.NY='" + this.dxetxtNY.Text.Trim() + "' ");
+            if (this.dxeddlPremiumType.SelectedItem.Value.ToString().Length > 0)
+                sbWhere.Append(" And S.PremiumType='" + this.dxeddlPremiumType.SelectedItem.Value.ToString() + "' ");
 
             this.gridSearchResult.DataSource = BusinessObjects.Budget.BO_SignPremiumBudget.GetConsultFeeList(sbWhere.ToString()).Tables[0];
             this.gridSearchResult.DataBind();
