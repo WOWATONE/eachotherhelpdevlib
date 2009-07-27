@@ -29,6 +29,7 @@ namespace BusinessObjects.Budget
             PremiumBudget,
             ProcessBudget,
             NY,
+            PremiumType,
             SalesName,
             CustName,
             ProdTypeName
@@ -51,6 +52,8 @@ namespace BusinessObjects.Budget
         public Double ProcessBudget { get; set; }
         /*年月*/
         public string NY { get; set; }
+        /*保单类别*/
+        public string PremiumType { get; set; }
         public string SalesName { get; set; }
         public string CustName { get; set; }
         public string ProdTypeName { get; set; }
@@ -75,8 +78,8 @@ namespace BusinessObjects.Budget
         private void add()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT INTO SignPremiumBudget(SalesID, CustomerID, ProdTypeID, OperationType, PremiumBudget, ProcessBudget, NY) ");
-            sb.Append(" VALUES(@SalesID, @CustomerID, @ProdTypeID, @OperationType, @PremiumBudget, @ProcessBudget, @NY)");
+            sb.Append("INSERT INTO SignPremiumBudget(SalesID, CustomerID, ProdTypeID, OperationType, PremiumBudget, ProcessBudget, NY, PremiumType) ");
+            sb.Append(" VALUES(@SalesID, @CustomerID, @ProdTypeID, @OperationType, @PremiumBudget, @ProcessBudget, @NY, @PremiumType)");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
@@ -87,6 +90,7 @@ namespace BusinessObjects.Budget
             _db.AddInParameter(dbCommand, "@PremiumBudget", DbType.Double, this.PremiumBudget);
             _db.AddInParameter(dbCommand, "@ProcessBudget", DbType.Double, this.ProcessBudget);
             _db.AddInParameter(dbCommand, "@NY", DbType.AnsiString, this.NY);
+            _db.AddInParameter(dbCommand, "@PremiumType", DbType.AnsiString, this.PremiumType);
             _db.ExecuteNonQuery(dbCommand);
         }
 
@@ -97,7 +101,7 @@ namespace BusinessObjects.Budget
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Update SignPremiumBudget ");
-            sb.Append("Set SalesID=@SalesID, CustomerID=@CustomerID, ProdTypeID=@ProdTypeID, OperationType=@OperationType, PremiumBudget=@PremiumBudget, ProcessBudget=@ProcessBudget, NY=@NY ");
+            sb.Append("Set SalesID=@SalesID, CustomerID=@CustomerID, ProdTypeID=@ProdTypeID, OperationType=@OperationType, PremiumBudget=@PremiumBudget, ProcessBudget=@ProcessBudget, NY=@NY, PremiumType=@PremiumType ");
             sb.Append("Where SignPremiumBudgetID=@SignPremiumBudgetID");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
@@ -110,6 +114,7 @@ namespace BusinessObjects.Budget
             _db.AddInParameter(dbCommand, "@PremiumBudget", DbType.Double, this.PremiumBudget);
             _db.AddInParameter(dbCommand, "@ProcessBudget", DbType.Double, this.ProcessBudget);
             _db.AddInParameter(dbCommand, "@NY", DbType.AnsiString, this.NY);
+            _db.AddInParameter(dbCommand, "@PremiumType", DbType.AnsiString, this.PremiumType);
             _db.ExecuteNonQuery(dbCommand);
         }
 
@@ -137,11 +142,12 @@ namespace BusinessObjects.Budget
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select ");
-            sb.Append("S.SignPremiumBudgetID, P.UserNameCn as SalesName, C.CustName, PT.ProdTypeName, (Case OperationType When '1' Then '新增' When '2' Then '续保' End) As OperationTypeName, S.PremiumBudget, S.ProcessBudget, S.NY ");
+            sb.Append("S.SignPremiumBudgetID, P.UserNameCn as SalesName, C.CustName, PT.ProdTypeName, (Case OperationType When '1' Then '新增' When '2' Then '续保' End) As OperationTypeName, S.PremiumBudget, S.ProcessBudget, S.NY, isnull(PC.CodeName, '') as PremiumTypeName ");
             sb.Append("From SignPremiumBudget S (nolock) ");
             sb.Append("Left Join Customer C (nolock) On C.CustID=S.CustomerID ");
             sb.Append("Left Join P_User P (nolock) On P.UserID=S.SalesID ");
             sb.Append("Left Join ProductType PT (nolock) On PT.ProdTypeID=S.ProdTypeID ");
+            sb.Append("Left Join P_Code PC (nolock) On PC.CodeType='PremiumType' And PC.CodeID=S.PremiumType ");
             sb.Append("Where 1=1 ");
             if (sWhere != "")
             {
@@ -180,6 +186,7 @@ namespace BusinessObjects.Budget
                     signPremiumBudget.PremiumBudget = Utility.GetDoubleFromReader(reader, FieldList.PremiumBudget.ToString());
                     signPremiumBudget.ProcessBudget = Utility.GetDoubleFromReader(reader, FieldList.ProcessBudget.ToString());
                     signPremiumBudget.NY = Utility.GetStringFromReader(reader, FieldList.NY.ToString());
+                    signPremiumBudget.PremiumType = Utility.GetStringFromReader(reader, FieldList.PremiumType.ToString());
 
                     break;
                 }
@@ -195,7 +202,7 @@ namespace BusinessObjects.Budget
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select ");
-            sb.Append("S.SignPremiumBudgetID, S.SalesID, P.UserNameCn as SalesName, S.CustomerID, C.CustName, S.ProdTypeID, PT.ProdTypeName, S.OperationType, S.PremiumBudget, S.ProcessBudget, S.NY ");
+            sb.Append("S.SignPremiumBudgetID, S.SalesID, P.UserNameCn as SalesName, S.CustomerID, C.CustName, S.ProdTypeID, PT.ProdTypeName, S.OperationType, S.PremiumBudget, S.ProcessBudget, S.NY, S.PremiumType ");
             sb.Append("From SignPremiumBudget S (nolock) ");
             sb.Append("Left Join Customer C (nolock) On C.CustID=S.CustomerID ");
             sb.Append("Left Join P_User P (nolock) On P.UserID=S.SalesID ");
@@ -221,6 +228,7 @@ namespace BusinessObjects.Budget
                     this.PremiumBudget = Utility.GetDoubleFromReader(reader, FieldList.PremiumBudget.ToString());
                     this.ProcessBudget = Utility.GetDoubleFromReader(reader, FieldList.ProcessBudget.ToString());
                     this.NY = Utility.GetStringFromReader(reader, FieldList.NY.ToString());
+                    this.PremiumType = Utility.GetStringFromReader(reader, FieldList.PremiumType.ToString());
                     break;
                 }
             }
