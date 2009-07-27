@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using DevExpress.Web.ASPxEditors;
+using DevExpress.Web.ASPxGridView;
 
 namespace BrokerWebApp.otherinsurance
 {
@@ -195,6 +196,19 @@ namespace BrokerWebApp.otherinsurance
             
         }
 
+        protected void gridSearchResult_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data)
+            {
+                DataRow dr = this.gridSearchResult.GetDataRow(e.VisibleIndex);
+
+                if (!String.IsNullOrEmpty(dr["Remark"].ToString()))
+                {
+                    e.Row.Style.Add(HtmlTextWriterStyle.BackgroundColor, "red");                    
+                } 
+            }
+        }
 
     }
 }
