@@ -738,7 +738,31 @@
                 window.showModalDialog(querystring, self, myArguments);
             }
         }
-        
+
+        function dxetxtPolicyItemCoverage_ValueChanged(s, e) {
+            
+            var coverageVal;
+            try{
+                coverageVal = parseFloat(dxetxtPolicyItemCoverage.GetValueString());
+            }
+            catch (err) {
+                coverageVal = 0;
+            }
+            
+            var premiumRateVal;
+            try{
+                premiumRateVal = parseFloat(dxetxtPolicyItemPremiumRate.GetValueString());
+            }
+            catch (err) {
+                premiumRateVal = 0;
+            }
+            
+            var premiumVal = parseFloat(coverageVal * premiumRateVal / 100);
+
+            var rtn = premiumVal.toFixed(2);
+            dxetxtPolicyItemPremium.SetValue(rtn);            
+        }
+
     </script>
 
 </asp:Content>
@@ -1066,6 +1090,8 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Coverage" Caption="保额" CellStyle-Wrap="False">
                                                                 </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="PremiumRate" Caption="费率(%)" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费" CellStyle-Wrap="False">
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="ProcRate" Caption="经纪费率(%)" CellStyle-Wrap="False">
@@ -1086,7 +1112,8 @@
                                                             <TotalSummary>
                                                                 <dxwgv:ASPxSummaryItem FieldName="ProdName" SummaryType="Count" DisplayFormat="数量:#" />
                                                                 <dxwgv:ASPxSummaryItem FieldName="Coverage" SummaryType="Sum" DisplayFormat="c" />
-                                                                <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" DisplayFormat="c" />
+                                                                <dxwgv:ASPxSummaryItem FieldName="PremiumRate" SummaryType="Sum" DisplayFormat="c" />
+                                                                <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" DisplayFormat="c" />                                                                
                                                                 <dxwgv:ASPxSummaryItem FieldName="ProcRate" SummaryType="Average" DisplayFormat="n" />
                                                                 <dxwgv:ASPxSummaryItem FieldName="Process" SummaryType="Sum" DisplayFormat="c" />
                                                             </TotalSummary>
@@ -1135,6 +1162,7 @@
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
+                                                                                        <ClientSideEvents ValueChanged="function(s,e){dxetxtPolicyItemCoverage_ValueChanged(s,e);}" />
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
                                                                                 <td style="white-space: nowrap; text-align: right;">
@@ -1146,6 +1174,7 @@
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
+                                                                                        <ClientSideEvents ValueChanged="function(s,e){dxetxtPolicyItemCoverage_ValueChanged(s,e);}" />
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
                                                                                 <td style="white-space: nowrap; text-align: right;">

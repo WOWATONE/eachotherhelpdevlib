@@ -7,6 +7,8 @@ namespace BrokerWebApp
 {
     public class BasePage : System.Web.UI.Page
     {
+        public static string TheTwoSF = "{0:0.00}";
+        public static string TheFourSF = "{0:0.0000}";
         public static String TheCustomCookieName = "TheCookieName";
 
         public String CurrentUserID

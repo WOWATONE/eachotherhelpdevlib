@@ -145,7 +145,7 @@ namespace BusinessObjects.Policy
                     newObj.Premium = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Premium));
                     newObj.ProcRate = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.ProcRate));
                     newObj.Process = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Process));
-                    
+                    newObj.PremiumRate = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.PremiumRate));
                     list.Add(newObj);
                 }
             }
