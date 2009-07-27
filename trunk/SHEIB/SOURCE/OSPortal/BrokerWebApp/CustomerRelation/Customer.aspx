@@ -724,9 +724,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <dxwgv:ASPxGridView ID="gridPtFollowDocList" ClientInstanceName="gridPtFollowDocList" runat="server" SettingsBehavior-AllowSort="false"
-                                        KeyFieldName="CustomerPtFollowDocID" Width="80%" AutoGenerateColumns="False" OnCustomCallback="gridPtFollowDocList_CustomCallback">
-                                        <%-- BeginRegion Columns --%>
+                                <td>
+                                    <dxwgv:ASPxGridView ID="gridPtFollowDocList" ClientInstanceName="gridPtFollowDocList" runat="server" SettingsBehavior-AllowSort="false"
+                                            KeyFieldName="CustomerPtFollowDocID" Width="80%" AutoGenerateColumns="False" OnCustomCallback="gridPtFollowDocList_CustomCallback">
+                                            <%-- BeginRegion Columns --%>
                                         <Columns>
                                             <dxwgv:GridViewDataColumn FieldName="FollowDocName" Caption="文件名" CellStyle-Wrap="False"
                                                 Width="25" Settings-AllowDragDrop="false">
@@ -745,6 +746,7 @@
                                         <ClientSideEvents CustomButtonClick="" />
                                         <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
                                     </dxwgv:ASPxGridView>
+                                </td>
                             </tr>
                         </table>
                     </dxw:ContentControl>
@@ -756,8 +758,8 @@
                         <table style="width: 100%">
                             <tr>
                                 <td>
-                                    <dxwgv:ASPxGridView ID="gridNotifyClaimItem" ClientInstanceName="gridNotifyClaimItem" runat="server"
-                                        KeyFieldName="NotifyID" Width="100%" AutoGenerateColumns="False" SettingsBehavior-AllowSort="false" SettingsBehavior-AllowDragDrop="false">
+                                    <dxwgv:ASPxGridView ID="gridNotifyClaimItem" ClientInstanceName="gridNotifyClaimItem"  runat="server" SettingsBehavior-AllowSort="false"
+                                        KeyFieldName="NotifyID" Width="100%" AutoGenerateColumns="False" Settings-ShowFooter="true" SettingsPager-AlwaysShowPager="true" SettingsBehavior-AllowDragDrop="false">
                                         <Columns>
                                             <dxwgv:GridViewDataTextColumn Caption="理赔编号" FieldName="NotifyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
@@ -783,7 +785,12 @@
                                             </dxwgv:GridViewDataTextColumn>
                                         </Columns>
                                         <SettingsPager Mode="ShowAllRecords" />
-                                        <Settings ShowGroupPanel="false" />
+                                        <TotalSummary >
+                                            <dxwgv:ASPxSummaryItem FieldName="NotifyLossFee" SummaryType="Sum" ShowInGroupFooterColumn="NotifyLossFee" DisplayFormat = "合计: {0}" />
+                                        </TotalSummary>
+                                        <TotalSummary >
+                                            <dxwgv:ASPxSummaryItem FieldName="LastPayFee" SummaryType="Sum" ShowInGroupFooterColumn="LastPayFee" DisplayFormat = "合计: {0}" />
+                                        </TotalSummary>
                                     </dxwgv:ASPxGridView>
                                 </td>
                             </tr>
@@ -796,32 +803,41 @@
                     <dxw:ContentControl ID="ContentControl6" runat="server">
                         <table style="width: 100%">
                             <tr>
-                                <td colspan=2>
+                                <td>
                                     <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server" SettingsBehavior-AllowSort="false"
                                         KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" Settings-ShowFooter="true" SettingsPager-AlwaysShowPager="true" SettingsBehavior-AllowDragDrop="false">
                                         <Columns>
-                                            <dxwgv:GridViewDataTextColumn Caption="投保编号" FieldName="PolicyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="投保单号" FieldName="PolicyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="保单编号" FieldName="PolicyNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="起保日期" FieldName="StartDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="批改号" FieldName="AltNO" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="终止日期" FieldName="EndDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="保费" FieldName="PremiumBase" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="险种名称" FieldName="ProdTypeName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="经纪费" FieldName="ProcessBase" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="保费" FieldName="Premium" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="创建时间" FieldName="CreateTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="保险公司" FieldName="CarrierNameCn" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="审批时间" FieldName="AuditTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="分支机构" FieldName="BranchName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="保单开始日期" FieldName="StartDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="客户经理" FieldName="UserNameCn" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="保单结束日期" FieldName="EndDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="险种" FieldName="ProdTypeName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="业务员" FieldName="CarrierSales" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataTextColumn Caption="审核状态" FieldName="PolicyStatusName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                         </Columns>
                                         <SettingsPager Mode="ShowAllRecords" />
                                         <TotalSummary >
-                                            <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" ShowInGroupFooterColumn="Premium" DisplayFormat = "保费合计: {0}" />
+                                            <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum" ShowInGroupFooterColumn="PremiumBase" DisplayFormat = "合计: {0}" />
+                                        </TotalSummary>
+                                        <TotalSummary >
+                                            <dxwgv:ASPxSummaryItem FieldName="ProcessBase" SummaryType="Sum" ShowInGroupFooterColumn="ProcessBase" DisplayFormat = "合计: {0}" />
                                         </TotalSummary>
                                     </dxwgv:ASPxGridView>
                                 </td>
