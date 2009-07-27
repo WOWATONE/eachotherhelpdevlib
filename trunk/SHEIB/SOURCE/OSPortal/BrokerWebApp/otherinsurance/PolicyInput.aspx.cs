@@ -19,6 +19,7 @@ namespace BrokerWebApp.otherinsurance
 {
     public partial class PolicyInput : BasePage
     {
+
         #region Variables
 
         private const string currentPageModeKey = "CurrentPagePolicyMode";
@@ -128,10 +129,13 @@ namespace BrokerWebApp.otherinsurance
 
         protected void dxeAuditOkCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            //String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
-            //savePolicy(e.Parameter, policystatus);
-            auditPolicy(e.Parameter);
-            e.Result = "complete";
+            int resultSign = 0;
+            String resultMSG = "";
+            auditPolicy(e.Parameter, ref resultSign, ref resultMSG);
+            if (resultSign ==0)
+                e.Result = resultSign.ToString();
+            else
+                e.Result = resultMSG;
         }
 
 
@@ -148,6 +152,16 @@ namespace BrokerWebApp.otherinsurance
                 this.gridPeriod.Enabled = false;
                 this.filesUploadControl.Enabled = false;
                 this.Page.Title = "保单审核";
+                if (!Page.IsPostBack)
+                {
+                    this.dxetxtAuditPerson.Text = this.CurrentUserName;
+                    this.dxeCheckDate.Date = DateTime.Now;
+                    BusinessObjects.Policy.BO_Policy obj;
+                    obj = new BusinessObjects.Policy.BO_Policy(this.dxetxtPolicyID.Text.Trim());
+
+                    if (obj.PolicyStatus == Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString())
+                        this.dxebtnAuditOk.Text = "反审核";
+                }
             }
             else
             {
@@ -198,6 +212,13 @@ namespace BrokerWebApp.otherinsurance
             e.Result = Coverage + ";" + Premium + ";" + Process;
         }
 
+
+        protected void dxeAuditBackCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            auditBackPolicy(e.Parameter);
+            e.Result = "complete";
+        }
+
         #endregion Page Events
 
 
@@ -225,7 +246,7 @@ namespace BrokerWebApp.otherinsurance
                 rebindGridPeriod();
                 if (this.pm != PageMode.Audit)
                 {
-                    dxetxtIDNo.Enabled = false;
+                    dxetxtAuditPerson.Enabled = false;
                     dxeCheckDate.Enabled = false;
                     dxeMemo.Enabled = false;
                 }
@@ -1279,7 +1300,29 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
-        private void auditPolicy(String parameter)
+        private void auditPolicy(String parameter, ref Int32 resultSign, ref string resultMSG)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(PolicyInfo));
+            PolicyInfo obj;
+
+            obj = (PolicyInfo)serializer.ReadObject(ms);
+            ms.Close();
+
+            String thePolicyID = this.dxetxtPolicyID.Text.Trim();
+            String state;
+            if (obj.AuditOrNot)
+                state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString();
+            else
+                state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+
+            BusinessObjects.Policy.BO_Policy.AuditPolicy(thePolicyID, state, this.CurrentUserID, ref resultSign, ref resultMSG);
+            
+        }
+
+        private void auditBackPolicy(String parameter)
         {
             String json = parameter;
 
@@ -1294,18 +1337,14 @@ namespace BrokerWebApp.otherinsurance
             BusinessObjects.Policy.BO_Policy objPolicy;
             objPolicy = new BusinessObjects.Policy.BO_Policy(thePolicyID);
 
-            if (obj.AuditOrNot)
-                objPolicy.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString();
-            else
-                objPolicy.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
-
+            objPolicy.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+            
             objPolicy.AuditTime = DateTime.Now;
             objPolicy.AuditPerson = this.CurrentUserID;
             objPolicy.Remark = obj.Remark;
             objPolicy.Save(ModifiedAction.Update);
 
         }
-
 
         private void bindDropDownLists()
         {
@@ -1485,7 +1524,7 @@ namespace BrokerWebApp.otherinsurance
             this.dxetxtProcessBase.Text = obj.ProcessBase.ToString();
 
             this.dxeCheckDate.Date = obj.AuditTime;
-            this.dxetxtIDNo.Text = obj.AuditPerson;
+            this.dxetxtAuditPerson.Text = obj.AuditPerson;
             this.dxeMemo.Text = obj.Remark;
 
             //取得结算信息            

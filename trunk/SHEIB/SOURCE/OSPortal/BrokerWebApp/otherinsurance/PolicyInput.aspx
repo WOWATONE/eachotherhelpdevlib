@@ -284,10 +284,7 @@
             var SourceTypeID = dxeddlSourceTypeID.GetValue();
             var Special = null;
             var StartDate = dxeStartDate.GetValue();
-            //var CustomerName = dxetxtCustomer.GetValueString();
-            //var ProdTypeName = dxeddlProdTypeName.GetText();
-
-
+            
 
             var plc = new Policy(AuditOrNot,
             Beneficiary, CarrierSales, ConversionRate, Coverage,
@@ -328,7 +325,6 @@
                     resultMsg.innerHTML = "保单编号不唯一";
                     break
                 default:
-                    //do nothing;
                     policyBaseCompleteEnable();
                     resultMsg.style.display = "inline";
                     resultMsg.style.fontsize = "9px";
@@ -348,7 +344,6 @@
         }
 
         function addCallbackComplete(s, e) {
-            //do nothing;
             var theresult = e.result;
             switch (theresult) {
                 case "policynoexist":
@@ -593,17 +588,39 @@
             //
         }
 
+        function dxebtnAuditBackClick(s, e) {
+            titleMSG = "确定退回吗？";
+            var AuditOrNot = 0;            
+            var Memo = dxeMemo.GetValueString();
 
+            var jsonStringClient = makePolicyAuditJSON(Memo, AuditOrNot);
+
+            var sureOk = window.confirm(titleMSG)
+            if (sureOk) {
+                dxeAuditBackCallback.PerformCallback(jsonStringClient);
+            }
+        }
+
+
+        function auditBackCallbackComplete(s, e) {
+            resultMsg.style.display = "inline";
+            resultMsg.style.fontsize = "9px";
+            resultMsg.innerHTML = "退回成功";
+            setOnlyDxeButtonsUnableOrEnable(false);
+        }
+        
         function dxebtnAuditOkClick(s, e) {
-            //debugger;
+            var titleMSG = "确定吗？";
             var buttonID = s.GetText();
             var AuditOrNot;
             switch (buttonID) {
-                case "审核":
+                case "通过审核":
                     AuditOrNot = true;
+                    titleMSG = "确定审核吗？";
                     break
                 case "反审核":
                     AuditOrNot = false;
+                    titleMSG = "确定反审核吗？";
                     break
                 default:
                     //do nothing;
@@ -612,24 +629,29 @@
 
             var jsonStringClient = makePolicyAuditJSON(Memo, AuditOrNot);
 
-            dxeAuditOkCallback.PerformCallback(jsonStringClient);
+            var sureOk = window.confirm(titleMSG)
+            if (sureOk) {
+                dxeAuditOkCallback.PerformCallback(jsonStringClient);
+            }
 
         }
 
         function auditOkCallbackComplete(s, e) {
-
-            var buttonID = dxebtnAuditOk.GetText();
-            switch (buttonID) {
-                case "审核":
-                    dxebtnAuditOk.SetText("反审核");
-                    break
-                case "反审核":
-                    dxebtnAuditOk.SetText("审核");
+            var buttonID = s.GetText();
+            var titleMSG = buttonID + "成功完成";
+            var theresult = e.result;
+            switch (theresult) {
+                case "0":
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize = "9px";
+                    resultMsg.innerHTML = titleMSG;
+                    setOnlyDxeButtonsUnableOrEnable(false);            
                     break
                 default:
-                    //do nothing;
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize = "9px";
+                    resultMsg.innerHTML = theresult;
             }
-
         }
 
         function makePolicyAuditJSON(Memo, AuditOrNot) {
@@ -744,59 +766,71 @@
 
         function multi_ValueChanged(t1, t2, t3, opt) {
 
-            var coverageVal;
+            var v1;
             try {
-                coverageVal = parseFloat(t1.GetValueString());
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
             }
             catch (err) {
-                coverageVal = 0;
+                v1 = 0;
             }
 
-            var premiumRateVal;
+            var v2;
             try {
-                premiumRateVal = parseFloat(t2.GetValueString());
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
             }
             catch (err) {
-                premiumRateVal = 0;
+                v2 = 0;
             }
 
 
-            var premiumVal;
+            var v3;
             if (opt == true)
-                premiumVal = parseFloat(coverageVal * premiumRateVal / 100);
+                v3 = parseFloat(v1 * v2 / 100);
             else
-                premiumVal = parseFloat(coverageVal * premiumRateVal);
+                v3 = parseFloat(v1 * v2);
 
-            var rtn = premiumVal.toFixed(2);
+            var rtn = v3.toFixed(2);
             t3.SetValue(rtn);
         }
 
 
         function division_ValueChanged(t1, t2, t3, opt) {
             
-            var coverageVal;
+            var v1;
             try {
-                coverageVal = parseFloat(t1.GetValueString());
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
             }
             catch (err) {
-                coverageVal = 0;
+                v1 = 0;
             }
 
-            var premiumRateVal;
+            var v2;
             try {
-                premiumRateVal = parseFloat(t2.GetValueString());
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
             }
             catch (err) {
-                premiumRateVal = 0;
+                v2 = 0;
             }
 
-            var premiumVal;
-            if (opt == true)
-                premiumVal = parseFloat(coverageVal / premiumRateVal * 100);
-            else
-                premiumVal = parseFloat(coverageVal / premiumRateVal);
+            var v3;
+            if (v2 == 0)
+                v3 = 0;
+            else {
+                if (opt == true)
+                    v3 = parseFloat(v1 / v2 * 100);
+                else
+                    v3 = parseFloat(v1 / v2);
+            }
 
-            var rtn = premiumVal.toFixed(2);
+            var rtn = v3.toFixed(2);
             t3.SetValue(rtn);
         }
         
@@ -826,6 +860,11 @@
         runat="server" OnCallback="dxeGetGridPolicyItemTotalSummary_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {dxeGetGridPolicyItemTotalSummaryCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
+    
+    <dxcb:ASPxCallback ID="dxeAuditBackCallback" ClientInstanceName="dxeAuditBackCallback" runat="server" OnCallback="dxeAuditBackCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {auditBackCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
     <span id="resultMsg" class="errorMSG" style="margin-top:2px; margin-left:8px;">&nbsp;</span>
     <asp:Panel ID="nppagecontent" runat="server">
         <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
@@ -1863,7 +1902,7 @@
                                         审核人：
                                     </td>
                                     <td style="width: 20%; text-align: left;">
-                                        <dxe:ASPxTextBox ID="dxetxtIDNo" ClientInstanceName="dxetxtIDNo" runat="server" Width="100px">
+                                        <dxe:ASPxTextBox ID="dxetxtAuditPerson" ClientInstanceName="dxetxtAuditPerson" runat="server" Width="100px">
                                         </dxe:ASPxTextBox>
                                     </td>
                                     <td style="width: 10%; text-align: right;">
@@ -1898,11 +1937,13 @@
                                         &nbsp;
                                     </td>
                                     <td>
-                                        &nbsp;
-                                    </td>
+                                    <dxe:ASPxButton runat="server" id="dxebtnAuditBack" ClientInstanceName="dxebtnAuditBack" Text="退回修改" CausesValidation="false" AutoPostBack="false">
+                                        <ClientSideEvents Click="function(s, e) {dxebtnAuditBackClick(s,e);}" />
+                                    </dxe:ASPxButton>
+                                </td>
                                     <td>
                                         <dxe:ASPxButton runat="server" ID="dxebtnAuditOk" ClientInstanceName="dxebtnAuditOk"
-                                            Text="审核" CausesValidation="false" AutoPostBack="false">
+                                            Text="通过审核" CausesValidation="false" AutoPostBack="false">
                                             <ClientSideEvents Click="function(s, e) {dxebtnAuditOkClick(s,e);}" />
                                         </dxe:ASPxButton>
                                     </td>

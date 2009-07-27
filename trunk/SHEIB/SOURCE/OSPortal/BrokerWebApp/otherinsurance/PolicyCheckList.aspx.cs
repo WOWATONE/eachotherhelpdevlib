@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using DevExpress.Web.ASPxEditors;
+using DevExpress.Web.ASPxGridView;
 
 
 namespace BrokerWebApp.otherinsurance
@@ -30,7 +31,8 @@ namespace BrokerWebApp.otherinsurance
         }
         
         
-        protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        protected void gridSearchResult_RowDeleting(object sender, 
+            DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             String theID = e.Keys[gridKeyName].ToString();
             e.Cancel = true;
@@ -42,7 +44,8 @@ namespace BrokerWebApp.otherinsurance
             this.gridExport.WriteXlsToResponse();
         }
 
-        protected void gridSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        protected void gridSearchResult_CustomCallback(object sender, 
+            DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
             this.gridSearchResult.DataBind();
         }
@@ -52,7 +55,17 @@ namespace BrokerWebApp.otherinsurance
         {
 
             string lsWhere = "";
-            lsWhere = lsWhere + " AND ISNULL(B.PolicyStatus,'0') = '1' ";
+
+            if (this.dxeddlCheckState.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCheckState.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " AND ISNULL(B.PolicyStatus,'0') = '" + dxeddlCheckState.SelectedItem.Value.ToString() + "' ";
+            }
+            else
+            {
+                lsWhere = lsWhere + " AND ISNULL(B.PolicyStatus,'0') = '1' ";
+            }
+
+            
             if (dxetxtPolicyID.Text.Trim() != "")
             {
                 lsWhere = lsWhere + " and b.PolicyID ='" + dxetxtPolicyID.Text + "'";
@@ -103,6 +116,52 @@ namespace BrokerWebApp.otherinsurance
 
             this.gridSearchResult.DataBind();
 
+        }
+
+
+        protected void gridSearchResult_CommandCellPrepared(object sender,
+            ASPxGridViewTableCommandCellEventArgs e)
+        {
+            //
+        }
+
+        protected void gridSearchResult_RowPrepared(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            //          
+        }
+
+        protected void gridSearchResult_HtmlRowCreated(object sender, 
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data || e.RowType == GridViewRowType.EmptyDataRow)
+            {
+                GridViewCommandColumn theCommandColumn = getCommandColumnLoop();
+                if (this.dxeddlCheckState.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCheckState.SelectedItem.Value.ToString()))
+                {
+                    if (this.dxeddlCheckState.SelectedItem.Value.ToString() == "2")
+                        theCommandColumn.CustomButtons[0].Text = "反审核";
+                }
+                else
+                {
+                    //
+                }
+                
+            }            
+        }
+
+        private GridViewCommandColumn getCommandColumnLoop()
+        {
+            GridViewCommandColumn theCommandColumn = null;
+            foreach (GridViewColumn item in gridSearchResult.VisibleColumns)
+            {
+                if (item.GetType() == typeof(GridViewCommandColumn))
+                {
+                    theCommandColumn = (GridViewCommandColumn)item;
+                    break;
+                }                
+            }
+            return theCommandColumn;
         }
 
 
