@@ -629,6 +629,17 @@ namespace BusinessObjects.Policy
             return _db.ExecuteDataSet(dbCommand).Tables[0];
         }
 
+        /// <summary>
+        /// 根据用户ID取得保单信息
+        /// </summary>
+        /// <param name="custID"></param>
+        /// <returns></returns>
+        public static DataTable GetCustomerPolicy(string custID)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetCustomerPolicy");
+            _db.AddInParameter(dbCommand, "@ac_CustomerID", DbType.AnsiString, custID);
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
 
         public static DataTable FetchPolicyList(String sWhere)
         {
