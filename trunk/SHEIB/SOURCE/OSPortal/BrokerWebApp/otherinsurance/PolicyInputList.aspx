@@ -337,7 +337,8 @@
                                     KeyFieldName="PolicyID" AutoGenerateColumns="False"
                                     Settings-ShowFooter="true" Width="100%" SettingsPager-AlwaysShowPager="true"
                                     OnRowDeleting="gridSearchResult_RowDeleting"
-                                    OnCustomCallback="gridSearchResult_CustomCallback">
+                                    OnCustomCallback="gridSearchResult_CustomCallback" 
+                                    OnHtmlRowCreated="gridSearchResult_HtmlRowCreated">
                                     <%-- BeginRegion Columns --%>
                                     <columns>
                                                                 <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
