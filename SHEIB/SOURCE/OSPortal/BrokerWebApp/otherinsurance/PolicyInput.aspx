@@ -1581,6 +1581,8 @@
                                                                                         <ClientSideEvents SelectedIndexChanged="" />
                                                                                     </dxe:ASPxComboBox>
                                                                                 </td>
+                                                                                <td></td>
+                                                                                <td></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td style="white-space: nowrap; text-align: right;">
@@ -1605,8 +1607,6 @@
                                                                                         </ValidationSettings>
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
-                                                                            </tr>
-                                                                            <tr>
                                                                                 <td style="white-space: nowrap; text-align: right;">
                                                                                     保费(本):
                                                                                 </td>
@@ -1618,6 +1618,8 @@
                                                                                         </ValidationSettings>
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
+                                                                            </tr>
+                                                                            <tr>                                                                                
                                                                                 <td style="white-space: nowrap; text-align: right;">
                                                                                     经纪费率(%):
                                                                                 </td>
@@ -1629,8 +1631,6 @@
                                                                                         </ValidationSettings>
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
-                                                                            </tr>
-                                                                            <tr>
                                                                                 <td style="white-space: nowrap; text-align: right;">
                                                                                     经纪费(原):
                                                                                 </td>
