@@ -589,7 +589,7 @@
         }
 
         function dxebtnAuditBackClick(s, e) {
-            titleMSG = "确定退回吗？";
+            var titleMSG = "确定退回吗？";
             var AuditOrNot = 0;            
             var Memo = dxeMemo.GetValueString();
 
@@ -637,7 +637,7 @@
         }
 
         function auditOkCallbackComplete(s, e) {
-            var buttonID = s.GetText();
+            var buttonID = dxebtnAuditOk.GetText();
             var titleMSG = buttonID + "成功完成";
             var theresult = e.result;
             switch (theresult) {
