@@ -517,15 +517,15 @@ namespace BrokerWebApp.otherinsurance
             ASPxTextBox dxetxtPolicyItemProcess = tblEditorTemplate.FindControl("dxetxtPolicyItemProcess") as ASPxTextBox;
             //ASPxTextBox dxetxtPolicyItemPremiumRate = tblEditorTemplate.FindControl("dxetxtPolicyItemPremiumRate") as ASPxTextBox;
             
-            theWhere = theWhere + " AND ProdID = '" + dxecbGridPolicyItemProdID.SelectedItem.Value.ToString() + "'";
-
+            
             if (dxecbGridPolicyItemProdID.SelectedItem == null)
             {
+                theWhere = theWhere + " AND ProdID = '-1'";
                 e.Errors[this.gridPolicyItem.Columns[1]] = "必需项";
-
             }
             else
             {
+                theWhere = theWhere + " AND ProdID = '" + dxecbGridPolicyItemProdID.SelectedItem.Value.ToString() + "'";
                 if (dxecbGridPolicyItemProdID.SelectedItem.Value.ToString() == String.Empty)
                 {
                     e.Errors[this.gridPolicyItem.Columns[1]] = "必需项";
