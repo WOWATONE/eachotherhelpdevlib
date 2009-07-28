@@ -49,8 +49,13 @@ namespace BrokerWebApp.inoutbalance
 
         protected void dxeAuditCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            auditVoucher(e.Parameter);
-            e.Result = "ok";
+            int resultSign = 0;
+            String resultMSG = "";
+            auditVoucher(e.Parameter, ref resultSign, ref resultMSG);
+            if (resultSign == 0)
+                e.Result = resultSign.ToString();
+            else
+                e.Result = resultMSG;
         }
 
         
@@ -389,7 +394,7 @@ namespace BrokerWebApp.inoutbalance
 
         }
 
-        private void auditVoucher(String parameter)
+        private void auditVoucher(String parameter, ref Int32 resultSign, ref string resultMSG)
         {
             String json = parameter;
 
@@ -407,14 +412,7 @@ namespace BrokerWebApp.inoutbalance
             }
             else
             {
-                objLoad = new BO_Voucher(obj.ID);
-                objLoad.AuditStatus = obj.AuditStatus;
-                objLoad.AuditPerson = this.CurrentUserID;
-                objLoad.AuditVoucher();
-                
-                //objLoad.Save(ModifiedAction.Update);
-                
-            
+                BO_Voucher.AuditVoucher(obj.ID, obj.AuditStatus, this.CurrentUserID, ref resultSign, ref resultMSG);
             }
 
         }

@@ -79,7 +79,7 @@ namespace BrokerWebApp.inoutbalance
             //{
             //    lsWhere = lsWhere + " and not exists(select 1 from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('5'))";
             //}
-            this.gridSearchResult.DataSource = BO_FeeProcess.GetFeeProcessAddSelectList(lsWhere);
+            this.gridSearchResult.DataSource = BO_FeeProcess.GetFeeProcessAddSelectList(lsWhere).Tables[0];
             this.gridSearchResult.DataBind();
 
         }
