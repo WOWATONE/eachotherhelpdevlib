@@ -146,41 +146,61 @@
 
 
         function btnAudit_Click(s, e) {
-            //
+
+            var titleMSG = "确定吗？";
             var buttonID = s.GetText();
             var AuditOrNot = "1";
             switch (buttonID) {
                 case "审核":
                     AuditOrNot = "1";
+                    titleMSG = "确定审核吗？";
                     break
                 case "反审核":
                     AuditOrNot = "0";
-                    break
-                default:
-                    AuditOrNot = "1";
-            }
-            var thejsonstring = makeInfoJSON(AuditOrNot);
-            dxeAuditCallback.PerformCallback(thejsonstring);
-
-        }
-
-        function auditCallbackComplete(s, e) {
-            //do nothing;
-            var buttonID = dxebtnAudit.GetText();
-            switch (buttonID) {
-                case "审核":
-                    dxebtnAudit.SetText("反审核");
-                    dxebtnSave.SetEnabled(false);
-                    dxebtnAddPolicy.SetEnabled(false);
-                    break
-                case "反审核":
-                    dxebtnAudit.SetText("审核");
-                    dxebtnSave.SetEnabled(true);
-                    dxebtnAddPolicy.SetEnabled(true);
+                    titleMSG = "确定反审核吗？";
                     break
                 default:
                     //do nothing;
             }
+
+
+            var thejsonstring = makeInfoJSON(AuditOrNot);
+
+            var sureOk = window.confirm(titleMSG)
+            if (sureOk) {
+                dxeAuditCallback.PerformCallback(thejsonstring);
+            }
+
+        }
+
+        function auditCallbackComplete(s, e) {
+
+            var buttonID = dxebtnAudit.GetText();
+
+            var theresult = e.result;
+            switch (theresult) {
+                case "0":
+                    switch (buttonID) {
+                        case "审核":
+                            dxebtnAudit.SetText("反审核");
+                            dxebtnSave.SetEnabled(false);
+                            dxebtnAddPolicy.SetEnabled(false);
+                            alert("审核成功!");
+                            break;
+                        case "反审核":
+                            dxebtnAudit.SetText("审核");
+                            dxebtnSave.SetEnabled(true);
+                            dxebtnAddPolicy.SetEnabled(true);
+                            alert("反审核成功!");
+                            break;
+                        default:
+                            //do nothing;
+                    }
+                    break
+                default:
+                    alert(theresult)
+            }
+                        
         }
         
         function isEmpty(testVar) {

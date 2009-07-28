@@ -158,8 +158,17 @@ namespace BrokerWebApp.inoutbalance
 
         protected void dxeAuditCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            auditNotice(e.Parameter);
-            e.Result = "ok";
+            //auditNotice(e.Parameter);
+            //e.Result = "ok";
+
+            int resultSign = 0;
+            String resultMSG = "";
+            auditNotice(e.Parameter, ref resultSign, ref resultMSG);
+            if (resultSign == 0)
+                e.Result = resultSign.ToString();
+            else
+                e.Result = resultMSG;
+
         }
 
 
@@ -274,7 +283,7 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
-        private void auditNotice(String parameter)
+        private void auditNotice(String parameter, ref Int32 resultSign, ref string resultMSG)
         {
             String json = parameter;
 
@@ -285,24 +294,15 @@ namespace BrokerWebApp.inoutbalance
             obj = (NoticeInfo)serializer.ReadObject(ms);
             ms.Close();
 
-            BusinessObjects.BO_Notice objLoad;
             if (String.IsNullOrEmpty(obj.NoticeNo))
             {
                 //
             }
             else
             {
-                objLoad = new BO_Notice(obj.NoticeNo);
-                objLoad.AuditStatus = obj.AuditStatus;
+                
+                BO_Notice.AuditNotice(obj.NoticeNo,obj.AuditStatus,this.CurrentUserID,ref resultSign,ref resultMSG);
 
-                objLoad.AuditNotice();
-                //if (obj.AuditStatus == "1")
-                //{
-                //    objLoad.AuditTime = DateTime.Today;
-                //    objLoad.AuditPersion = this.CurrentUserID;
-                    
-                //}
-                //objLoad.Save(ModifiedAction.Update);
             }
 
         }

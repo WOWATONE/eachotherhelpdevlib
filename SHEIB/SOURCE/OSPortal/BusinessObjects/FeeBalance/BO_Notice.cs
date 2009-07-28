@@ -262,10 +262,8 @@ namespace BusinessObjects
 
         }
 
-        public string AuditNotice()
+        public static void AuditNotice(string NoticeNo,string AuditStatus,string  AuditPersion,ref Int32 resultSign, ref String resultMsg)
         {
-            int i_dm = 0;
-            string c_sm = "";
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.AuditNotice");
             _db.AddInParameter(dbCommand, "@ac_NoticeNo", DbType.String, NoticeNo);
             _db.AddInParameter(dbCommand, "@ac_AuditStatus", DbType.String, AuditStatus);
@@ -274,15 +272,10 @@ namespace BusinessObjects
             _db.AddOutParameter(dbCommand, "@ac_sm", DbType.String, 100);
             _db.ExecuteNonQuery(dbCommand);
 
-            i_dm = int.Parse(dbCommand.Parameters["@ai_dm"].Value.ToString());
-            if (i_dm < 0)                    
-            {
-                c_sm = dbCommand.Parameters["@ac_sm"].Value.ToString();
-            } else
-            {
-                c_sm = "";
-            }
-            return c_sm;
+
+            resultSign = Convert.ToInt32(_db.GetParameterValue(dbCommand, "@ai_dm"));
+            resultMsg = Convert.ToString(_db.GetParameterValue(dbCommand, "@ac_sm"));
+
         }
 
 

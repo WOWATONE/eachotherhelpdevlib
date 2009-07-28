@@ -69,8 +69,14 @@ namespace BrokerWebApp.inoutbalance
 
         protected void dxeAuditCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            auditVoucher(e.Parameter);
-            e.Result = "ok";
+
+            int resultSign = 0;
+            String resultMSG = "";
+            auditVoucher(e.Parameter, ref resultSign, ref resultMSG);
+            if (resultSign == 0)
+                e.Result = resultSign.ToString();
+            else
+                e.Result = resultMSG;
         }
 
         protected void gridPolicyItem_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
@@ -269,7 +275,7 @@ namespace BrokerWebApp.inoutbalance
 
         }
 
-        private void auditVoucher(String parameter)
+        private void auditVoucher(String parameter, ref Int32 resultSign, ref string resultMSG)
         {
             String json = parameter;
 
@@ -280,25 +286,14 @@ namespace BrokerWebApp.inoutbalance
             obj = (InfoJSON)serializer.ReadObject(ms);
             ms.Close();
 
-            BusinessObjects.BO_Voucher objLoad;
             if (String.IsNullOrEmpty(obj.ID))
             {
                 //
             }
             else
             {
-                objLoad = new BO_Voucher(obj.ID);
-                objLoad.AuditStatus = obj.AuditStatus;
-                objLoad.AuditPerson = this.CurrentUserID;
-                objLoad.AuditVoucher();
-
-                //objLoad.Save(ModifiedAction.Update);
-
-                //objLoad = new BO_Voucher(obj.ID);
-                //objLoad.AuditStatus = obj.AuditStatus;
-                //objLoad.Save(ModifiedAction.Update);
+                BO_Voucher.AuditVoucher(obj.ID, obj.AuditStatus,this.CurrentUserID, ref resultSign, ref resultMSG);
             }
-
         }
 
         private void loadValue(String id)

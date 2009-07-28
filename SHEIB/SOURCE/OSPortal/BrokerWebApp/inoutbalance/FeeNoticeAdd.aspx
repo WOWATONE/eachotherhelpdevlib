@@ -18,7 +18,6 @@
     TagPrefix="dxwsc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
     TagPrefix="dxcb" %>
-<%@ Register TagPrefix="CR" Namespace="CrystalDecisions.Web" Assembly="CrystalDecisions.Web, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" %>
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
     Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -190,44 +189,64 @@
         }
 
 
-        function btnAudit_Click(s, e) {
-            //
+        function btnAudit_Click(s, e) {          
+            
+            var titleMSG = "»∑∂®¬£ø";
             var buttonID = s.GetText();
             var AuditOrNot = "1";
             switch (buttonID) {
                 case "…Û∫À":
                     AuditOrNot = "1";
+                    titleMSG = "»∑∂®…Û∫À¬£ø";
                     break
                 case "∑¥…Û∫À":
                     AuditOrNot = "0";
+                    titleMSG = "»∑∂®∑¥…Û∫À¬£ø";
                     break
-                default:
-                    AuditOrNot = "1";
-            }
-            var thejsonstring = makeNoticeInfoJSON(AuditOrNot);
-            dxeAuditCallback.PerformCallback(thejsonstring);
-
-        }
-
-        function auditCallbackComplete(s, e) {
-            //do nothing;            
-            var buttonID = dxebtnAudit.GetText();
-            switch (buttonID) {
-                case "…Û∫À":
-                    dxebtnAudit.SetText("∑¥…Û∫À");
-                    dxebtnSave.SetEnabled(false);
-                    btnAddPolicy.SetEnabled(false);
-                    dxebtnPrint.SetEnabled(false);
-                    break;
-                case "∑¥…Û∫À":
-                    dxebtnAudit.SetText("…Û∫À");
-                    dxebtnSave.SetEnabled(true);                 
-                    btnAddPolicy.SetEnabled(true);
-                    dxebtnPrint.SetEnabled(true);
-                    break;
                 default:
                     //do nothing;
             }
+
+
+            var thejsonstring = makeNoticeInfoJSON(AuditOrNot);
+
+            var sureOk = window.confirm(titleMSG)
+            if (sureOk) {
+                dxeAuditCallback.PerformCallback(thejsonstring);
+            }
+   
+        }
+
+        function auditCallbackComplete(s, e) {
+
+            var buttonID = dxebtnAudit.GetText();      
+                  
+            var theresult = e.result;
+            switch (theresult) {
+                case "0":
+                    switch (buttonID) {
+                        case "…Û∫À":
+                            dxebtnAudit.SetText("∑¥…Û∫À");
+                            dxebtnSave.SetEnabled(false);
+                            btnAddPolicy.SetEnabled(false);
+                            dxebtnPrint.SetEnabled(false);
+                            alert("…Û∫À≥…π¶!");
+                            break;
+                        case "∑¥…Û∫À":
+                            dxebtnAudit.SetText("…Û∫À");
+                            dxebtnSave.SetEnabled(true);
+                            btnAddPolicy.SetEnabled(true);
+                            dxebtnPrint.SetEnabled(true);
+                            alert("f∑¥…Û∫À≥…π¶!");
+                            break;
+                        default:
+                            //do nothing;
+                    }
+                    break
+                default:
+                    alert(theresult)
+            }
+            
         }
 
         
