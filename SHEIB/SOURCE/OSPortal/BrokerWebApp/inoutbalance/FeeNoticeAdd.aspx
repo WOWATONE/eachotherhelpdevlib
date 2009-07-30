@@ -230,14 +230,34 @@
                             dxebtnSave.SetEnabled(false);
                             btnAddPolicy.SetEnabled(false);
                             dxebtnPrint.SetEnabled(false);
+                            debugger;
+                            var grv = document.getElementById('<%=gridPolicyItem.ClientID %>');
+                            for (var i = 0; i < grv.rows.length; i++) {
+                                for (var j = 0; j < grv.rows(i).cells(0).all.length; j++) {
+                                   var cellContext =grv.rows(i).cells(0).all[j].innerText;
+                                   if (cellContext == "删除") {
+                                        grv.rows(i).cells(0).all[j].style.display = "none";
+                                    }
+                                }
+                            }
                             alert("审核成功!");
                             break;
                         case "反审核":
                             dxebtnAudit.SetText("审核");
                             dxebtnSave.SetEnabled(true);
                             btnAddPolicy.SetEnabled(true);
-                            dxebtnPrint.SetEnabled(true);
-                            alert("f反审核成功!");
+                            debugger;
+                            var grv = document.getElementById('<%=gridPolicyItem.ClientID %>');
+                            for (var i = 0; i < grv.rows.length; i++) {
+                                for (var j = 0; j < grv.rows(i).cells(0).all.length; j++) {
+                                    var cellContext = grv.rows(i).cells(0).all[j].innerText;
+                                    if (cellContext == "删除") {
+                                        grv.rows(i).cells(0).all[j].style.display = "none";
+                                    }
+                                }
+                            }
+                            
+                            alert("反审核成功!");
                             break;
                         default:
                             //do nothing;
@@ -323,8 +343,8 @@
                     <%-- BeginRegion Columns --%>
                     <Columns>
                         <dxwgv:GridViewCommandColumn Caption="&nbsp;">
-                            <DeleteButton Visible="true" />
-                        </dxwgv:GridViewCommandColumn>
+                            <DeleteButton Visible="true"  Text="删除"/>
+                        </dxwgv:GridViewCommandColumn>                          
                         <dxwgv:GridViewDataColumn FieldName="CustName" Caption="投保客户" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False">
@@ -420,7 +440,5 @@
                 </table>
             </td>
         </tr>
-        <tr>
-        </tr>
-    </table>
+        </table>
 </asp:Content>

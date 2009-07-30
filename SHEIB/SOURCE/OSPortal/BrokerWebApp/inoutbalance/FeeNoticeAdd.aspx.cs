@@ -55,13 +55,9 @@ namespace BrokerWebApp.inoutbalance
             {
                 //do nothing;
             }
-                        
 
-            if (!IsPostBack && !IsCallback)
-            {
-                BindGrid();
-            }
 
+            BindGrid();
 
             //if (Session["Report"] != null)
             //{
@@ -302,6 +298,14 @@ namespace BrokerWebApp.inoutbalance
             {
                 
                 BO_Notice.AuditNotice(obj.NoticeNo,obj.AuditStatus,this.CurrentUserID,ref resultSign,ref resultMSG);
+                //if (resultSign == 0)
+                //{
+                //    gridPolicyItem.Columns[0].Visible = false;
+                //}
+                //else
+                //{   
+
+                //}
 
             }
 
@@ -335,6 +339,7 @@ namespace BrokerWebApp.inoutbalance
                 dxebtnSave.ClientEnabled = false;
                 dxebtnPrint.ClientEnabled = false;
                 btnAddPolicy.ClientEnabled = false;
+                //gridPolicyItem.Columns[0].Visible = false;
             }
             else
             {
