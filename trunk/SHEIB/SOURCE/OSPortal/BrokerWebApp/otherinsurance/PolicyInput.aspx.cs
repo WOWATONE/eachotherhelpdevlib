@@ -123,7 +123,7 @@ namespace BrokerWebApp.otherinsurance
         {
             int resultSign = 0;
             String resultMSG = "";
-            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
             String theResult = savePolicy(e.Parameter, policystatus);
             if (theResult != policyNoExist)
             {
