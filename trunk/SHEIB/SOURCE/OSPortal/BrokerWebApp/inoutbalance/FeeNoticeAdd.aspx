@@ -58,11 +58,6 @@
 
 
         $(document).ready(function() {
-            //jQuery.noticeAdd({
-            //    text: 'This is a notification that you have to remove',
-            //    stay: true
-            //});
-
 
             window.onunload = function() {
                 var pWindow = window.dialogArguments;
@@ -75,10 +70,7 @@
                     //do nothing
                 }
             };
-
             cusNotCompleteUnable();
-
-
         });
 
 
@@ -214,7 +206,25 @@
             if (sureOk) {
                 dxeAuditCallback.PerformCallback(thejsonstring);
             }
-   
+
+        }
+
+        function setGridEditStatus(editStatus) {
+            debugger;
+            var grv = document.getElementById('<%=gridPolicyItem.ClientID %>');
+            for (var i = 0; i < grv.rows.length; i++) {
+                for (var j = 0; j < grv.rows(i).cells(0).all.length; j++) {
+                    var cellContext = grv.rows(i).cells(0).all[j].innerText;
+                    if (cellContext == "É¾³ý") {
+                        if (editStatus == false) {
+                            grv.rows(i).cells(0).all[j].style.display = "none";                            
+                        }
+                        else {
+                            grv.rows(i).cells(0).all[j].style.display = "";
+                        }
+                    }
+                }
+            }
         }
 
         function auditCallbackComplete(s, e) {
@@ -230,33 +240,14 @@
                             dxebtnSave.SetEnabled(false);
                             btnAddPolicy.SetEnabled(false);
                             dxebtnPrint.SetEnabled(false);
-                            debugger;
-                            var grv = document.getElementById('<%=gridPolicyItem.ClientID %>');
-                            for (var i = 0; i < grv.rows.length; i++) {
-                                for (var j = 0; j < grv.rows(i).cells(0).all.length; j++) {
-                                   var cellContext =grv.rows(i).cells(0).all[j].innerText;
-                                   if (cellContext == "É¾³ý") {
-                                        grv.rows(i).cells(0).all[j].style.display = "none";
-                                    }
-                                }
-                            }
+                            setGridEditStatus(false);
                             alert("ÉóºË³É¹¦!");
                             break;
                         case "·´ÉóºË":
                             dxebtnAudit.SetText("ÉóºË");
                             dxebtnSave.SetEnabled(true);
                             btnAddPolicy.SetEnabled(true);
-                            debugger;
-                            var grv = document.getElementById('<%=gridPolicyItem.ClientID %>');
-                            for (var i = 0; i < grv.rows.length; i++) {
-                                for (var j = 0; j < grv.rows(i).cells(0).all.length; j++) {
-                                    var cellContext = grv.rows(i).cells(0).all[j].innerText;
-                                    if (cellContext == "É¾³ý") {
-                                        grv.rows(i).cells(0).all[j].style.display = "none";
-                                    }
-                                }
-                            }
-                            
+                            setGridEditStatus(true);
                             alert("·´ÉóºË³É¹¦!");
                             break;
                         default:

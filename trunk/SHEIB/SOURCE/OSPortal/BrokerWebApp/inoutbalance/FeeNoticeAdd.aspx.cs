@@ -35,8 +35,8 @@ namespace BrokerWebApp.inoutbalance
 
         private const string inputQueryStringIDKey = "NoticeNo";
         CrystalReportSource CrSource;
-           
-        
+
+
         #endregion Variables
 
 
@@ -45,11 +45,12 @@ namespace BrokerWebApp.inoutbalance
             this.Initialization();
 
             if (!this.Page.IsPostBack)
-            {                
-                
+            {
+
                 dxeNoticeDate.Date = DateTime.Today;
                 this.dxetxtNoticeNo.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 loadValue(this.dxetxtNoticeNo.Text);
+
             }
             else
             {
@@ -71,8 +72,17 @@ namespace BrokerWebApp.inoutbalance
         protected void Page_PreRender(object sender, EventArgs e)
         {
             //
+            
         }
 
+        protected void Page_PreRenderComplete(object sender, EventArgs e)
+        {
+            //
+      
+
+            //Page.RegisterClientScriptBlock("", "<script language='javascript'>setGridEditStatus(0)</script>");
+        }
+        
         private void BindGrid()
         {
             DataTable dt = getGridData();
@@ -104,7 +114,7 @@ namespace BrokerWebApp.inoutbalance
                                 sWhere += " or a.PolPeriodId = '" + s.Trim() + "' ";
                             else
                                 sWhere += " a.PolPeriodId = '" + s.Trim() + "' ";
-                            
+
                             includePolPeriodId = true;
                         }
                     }
@@ -117,7 +127,7 @@ namespace BrokerWebApp.inoutbalance
             }
             else
             {
-                savePolicyPeriod(this.dxetxtNoticeNo.Text.Trim(),this.txtSelectedPolPeriodIds.Value);
+                savePolicyPeriod(this.dxetxtNoticeNo.Text.Trim(), this.txtSelectedPolPeriodIds.Value);
                 sWhere = " and a.NoticeNo ='" + this.dxetxtNoticeNo.Text.Trim() + "'"; ;
             }
             DataTable dt = BO_Notice.GetFeeNoticeAddList(sWhere).Tables[0];
@@ -141,12 +151,12 @@ namespace BrokerWebApp.inoutbalance
                 }
             }
 
-            
+
         }
 
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
-        {            
+        {
             String thenoticeNo = saveNotice(e.Parameter);
             e.Result = thenoticeNo;
         }
@@ -226,10 +236,10 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.Save(ModifiedAction.Insert);
             }
             else
-            {                
+            {
                 objLoad = new BO_Notice(obj.NoticeNo);
                 objLoad.NoticeDate = obj.NoticeDate;
-                objLoad.GatheringType = obj.GatheringType; 
+                objLoad.GatheringType = obj.GatheringType;
                 objLoad.Save(ModifiedAction.Update);
             }
 
@@ -296,16 +306,8 @@ namespace BrokerWebApp.inoutbalance
             }
             else
             {
-                
-                BO_Notice.AuditNotice(obj.NoticeNo,obj.AuditStatus,this.CurrentUserID,ref resultSign,ref resultMSG);
-                //if (resultSign == 0)
-                //{
-                //    gridPolicyItem.Columns[0].Visible = false;
-                //}
-                //else
-                //{   
 
-                //}
+                BO_Notice.AuditNotice(obj.NoticeNo, obj.AuditStatus, this.CurrentUserID, ref resultSign, ref resultMSG);
 
             }
 
@@ -320,7 +322,7 @@ namespace BrokerWebApp.inoutbalance
 
             obj = new BusinessObjects.BO_Notice(noticeNO);
 
-            
+
 
             //dxeddlDeptID
             if (!String.IsNullOrEmpty(obj.GatheringType))
@@ -339,15 +341,15 @@ namespace BrokerWebApp.inoutbalance
                 dxebtnSave.ClientEnabled = false;
                 dxebtnPrint.ClientEnabled = false;
                 btnAddPolicy.ClientEnabled = false;
-                //gridPolicyItem.Columns[0].Visible = false;
+
             }
             else
             {
-                this.dxebtnAudit.Text = "审核"; 
+                this.dxebtnAudit.Text = "审核";
             }
-            
+
         }
-    
+
     }
 
 

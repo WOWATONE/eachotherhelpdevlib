@@ -149,7 +149,7 @@ namespace BrokerWebApp.inoutbalance
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
 
-            
+            //gridSearchResult.Columns[0].Width =0;
 
         }
 

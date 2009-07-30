@@ -134,12 +134,13 @@ namespace BrokerWebApp.Accounting
         }
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
-        {            
+        {
+            this.BindGrid();
             this.gridExport.WriteXlsToResponse();
         }
 
         protected void gridSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
-        {
+        {            
             this.gridSearchResult.DataBind();
         }
 

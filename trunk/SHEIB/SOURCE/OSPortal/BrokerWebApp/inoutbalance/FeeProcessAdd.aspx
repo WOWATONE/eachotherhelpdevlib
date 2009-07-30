@@ -181,6 +181,25 @@
 
         }
 
+
+        function setGridEditStatus(editStatus) {
+            debugger;
+            var grv = document.getElementById('<%=gridPolicyItem.ClientID %>');
+            for (var i = 0; i < grv.rows.length; i++) {
+                for (var j = 0; j < grv.rows(i).cells(0).all.length; j++) {
+                    var cellContext = grv.rows(i).cells(0).all[j].innerText;
+                    if (cellContext == "删除") {
+                        if (editStatus == false) {
+                            grv.rows(i).cells(0).all[j].style.display = "none";
+                        }
+                        else {
+                            grv.rows(i).cells(0).all[j].style.display = "";
+                        }
+                    }
+                }
+            }
+        }
+        
         function auditCallbackComplete(s, e) {
 
             var buttonID = dxebtnAudit.GetText();
@@ -193,12 +212,14 @@
                             dxebtnAudit.SetText("反审核");
                             dxebtnSave.SetEnabled(false);
                             dxebtnAddPolicy.SetEnabled(false);
+                            setGridEditStatus(false);
                             alert("审核成功!");
                             break;
                         case "反审核":
                             dxebtnAudit.SetText("审核");
                             dxebtnSave.SetEnabled(true);
                             dxebtnAddPolicy.SetEnabled(true);
+                            setGridEditStatus(true);
                             alert("反审核成功!");
                             break;
                         default:
