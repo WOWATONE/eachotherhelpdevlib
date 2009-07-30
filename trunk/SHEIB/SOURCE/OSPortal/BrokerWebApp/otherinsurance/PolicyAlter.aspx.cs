@@ -22,6 +22,7 @@ namespace BrokerWebApp.otherinsurance
         #region Variables
 
         private const string policyNoExist = "policynoexist";
+        private const string inputQueryStringPreIDKey = "pid";
         private const string inputQueryStringIDKey = "id";
         private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
 
@@ -47,11 +48,18 @@ namespace BrokerWebApp.otherinsurance
             if (!IsPostBack && !IsCallback)
             {
                 bindDropDownLists();
-
-                this.lblSourcePolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
-
-                loadPrePolicyValue(this.lblSourcePolicyID.Text);
-
+                String qsID = Page.Request.QueryString[inputQueryStringIDKey];
+                if (String.IsNullOrEmpty(qsID))
+                {
+                    this.lblSourcePolicyID.Text = Page.Request.QueryString[inputQueryStringPreIDKey];
+                    loadPrePolicyValue(this.lblSourcePolicyID.Text);
+                }
+                else
+                {
+                    this.dxetxtPolicyID.Text = qsID;
+                    this.lblSourcePolicyID.Text = loadPolicyValue(qsID);
+                }
+                
                 this.dxedtCreateTime.Date = DateTime.Today;
                 this.gridCarrier.DataBind();
                 this.gridPeriod.DataBind();
@@ -749,8 +757,7 @@ namespace BrokerWebApp.otherinsurance
 
 
         #region Privates
-
-
+                
         private string savePolicy(String parameter, String policyState)
         {
             String json = parameter;
@@ -937,14 +944,15 @@ namespace BrokerWebApp.otherinsurance
 
 
 
-        private void loadPolicyValue(String policyID)
+        private string loadPolicyValue(String policyID)
         {
-
+            string prePolicyID = "";
             ListEditItem theselected;
             BusinessObjects.Policy.BO_Policy obj;
 
             obj = new BusinessObjects.Policy.BO_Policy(policyID);
 
+            prePolicyID = obj.PrevPolicyID;
             this.dxetxtPolicyNo.Text = obj.PolicyNo;
             //dxechkTogether
             //dxechkFlagReinsure
@@ -1038,7 +1046,8 @@ namespace BrokerWebApp.otherinsurance
             this.dxetxtConversionRate.Text = obj.ConversionRate.ToString();
             this.dxetxtPremiumBase.Text = obj.PremiumBase.ToString();
             this.dxetxtProcessBase.Text = obj.ProcessBase.ToString();
-                       
+
+            return prePolicyID;
         }
 
 
