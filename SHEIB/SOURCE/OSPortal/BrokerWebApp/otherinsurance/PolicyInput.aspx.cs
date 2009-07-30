@@ -121,8 +121,19 @@ namespace BrokerWebApp.otherinsurance
 
         protected void dxeSaveAndCheckCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
+            int resultSign = 0;
+            String resultMSG = "";
             String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
             String theResult = savePolicy(e.Parameter, policystatus);
+            if (theResult != policyNoExist)
+            {
+                auditPolicySubmit(ref resultSign, ref resultMSG);
+                if (resultSign == 0)
+                    theResult = resultSign.ToString();
+                else
+                    theResult = resultMSG;
+            }
+
             e.Result = theResult;
         }
 
@@ -1326,6 +1337,19 @@ namespace BrokerWebApp.otherinsurance
             
         }
 
+
+        private void auditPolicySubmit(ref Int32 resultSign, ref string resultMSG)
+        {
+            String thePolicyID = this.dxetxtPolicyID.Text.Trim();
+            String state;
+            
+            state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+
+            BusinessObjects.Policy.BO_Policy.AuditPolicySubmit(thePolicyID, state, this.CurrentUserID, ref resultSign, ref resultMSG);
+
+        }
+
+
         private void auditBackPolicy(String parameter)
         {
             String json = parameter;
@@ -1349,6 +1373,7 @@ namespace BrokerWebApp.otherinsurance
             objPolicy.Save(ModifiedAction.Update);
 
         }
+
 
         private void bindDropDownLists()
         {
@@ -1413,6 +1438,7 @@ namespace BrokerWebApp.otherinsurance
                 this.toadd = this.toadd.Substring(0, this.toadd.Length - 3);
             }
         }
+
 
         private void SetddlProdTypeName(string value)
         {
