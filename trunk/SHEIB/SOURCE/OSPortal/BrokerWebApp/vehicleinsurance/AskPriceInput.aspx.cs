@@ -30,8 +30,8 @@ namespace BrokerWebApp.vehicleinsurance
         private const string inputQueryStringPageModeKey = "pagemode";
         private const string inputQueryStringPreIDKey = "pid";
         private const string UploadDirectory = "~/UploadFiles/CarPolicyUploadFiles/";
-        
 
+        private const string carpolicyNoExist = "carpolicynoexist";
         private Boolean gridPolicyItemStartEdit = false;
 
         public enum PageMode
@@ -235,7 +235,8 @@ namespace BrokerWebApp.vehicleinsurance
 
         #region CallBack Events
 
-        protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        protected void dxeSaveCallback_Callback(object source, 
+            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
             String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.Input).ToString();
             String thePolicyID = saveCarPolicy(e.Parameter, policystatus);
@@ -243,23 +244,43 @@ namespace BrokerWebApp.vehicleinsurance
         }
 
 
-        protected void dxeSaveAndCheckCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        protected void dxeSaveAndCheckCallback_Callback(object source, 
+            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
+            int resultSign = 0;
+            String resultMSG = "";            
             String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.AppealAudit).ToString();
-            String thePolicyID = saveCarPolicy(e.Parameter, policystatus);            
-            e.Result = "complete";
+            String theResult = saveCarPolicy(e.Parameter, policystatus);
+            if (theResult != carpolicyNoExist)
+            {
+                auditCarPolicySubmit(ref resultSign, ref resultMSG);
+                if (resultSign == 0)
+                    theResult = resultSign.ToString();
+                else
+                    theResult = resultMSG;
+            }
+
+            e.Result = theResult;
         }
 
-        protected void dxeAuditBackCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        protected void dxeAuditBackCallback_Callback(object source, 
+            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
             auditBackCarPolicy(e.Parameter);
             e.Result = "complete";
         }
 
-        protected void dxeAuditOkCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+
+        protected void dxeAuditOkCallback_Callback(object source, 
+            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            auditCarPolicy(e.Parameter);
-            e.Result = "complete";
+            int resultSign = 0;
+            String resultMSG = "";
+            auditCarPolicy(e.Parameter, ref resultSign, ref resultMSG);
+            if (resultSign == 0)
+                e.Result = resultSign.ToString();
+            else
+                e.Result = resultMSG;
         }
 
         #endregion CallBack Events
@@ -837,7 +858,7 @@ namespace BrokerWebApp.vehicleinsurance
         }
 
 
-        private void auditCarPolicy(String parameter)
+        private void auditCarPolicy(String parameter, ref Int32 resultSign, ref string resultMSG)
         {
             String json = parameter;
 
@@ -849,24 +870,22 @@ namespace BrokerWebApp.vehicleinsurance
             ms.Close();
 
             String theAskPriceID = this.dxetxtAskPriceID.Text.Trim();
-            BO_CarPolicy objCarPolicy;
-            objCarPolicy = new BO_CarPolicy(theAskPriceID);
-
+            String state;
             if (obj.AuditOrNot)
-                objCarPolicy.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.Audit).ToString();
+                state = Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.Audit).ToString();
             else
-                objCarPolicy.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.AppealAudit).ToString();
+                state = Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.AppealAudit).ToString();
 
-            objCarPolicy.AuditTime = DateTime.Now;
-            objCarPolicy.AuditPerson = this.CurrentUserID;
-            objCarPolicy.Remark = obj.Remark;
-            objCarPolicy.Save(ModifiedAction.Update);
+            BusinessObjects.Policy.BO_CarPolicy.AuditCarPolicy(theAskPriceID, state, this.CurrentUserID, obj.Remark, ref resultSign, ref resultMSG);
+            if (resultSign == 0)
+            {
+                if (obj.AuditOrNot)
+                    state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString();
+                else
+                    state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
 
-            if (obj.AuditOrNot)
-                BO_Policy.AuditByAskPriceID(theAskPriceID,Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString());
-            else
-                BO_Policy.AuditByAskPriceID(theAskPriceID,Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString());
-
+                BO_Policy.AuditByAskPriceID(theAskPriceID, state);
+            }            
         }
 
 
@@ -887,7 +906,6 @@ namespace BrokerWebApp.vehicleinsurance
 
             objCarPolicy.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.Input).ToString();
 
-            //carPolicy.Memo =obj.
             //AuditOrNot
             objCarPolicy.AuditTime = DateTime.Now;
             objCarPolicy.AuditPerson = this.CurrentUserID;
@@ -898,6 +916,17 @@ namespace BrokerWebApp.vehicleinsurance
 
         }
 
+
+        private void auditCarPolicySubmit(ref Int32 resultSign, ref string resultMSG)
+        {
+            String theID = this.dxetxtAskPriceID.Text.Trim();
+            String state;
+
+            state = Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.AppealAudit).ToString();
+
+            BusinessObjects.Policy.BO_CarPolicy.AuditCarPolicySubmit(theID, state, this.CurrentUserID, ref resultSign, ref resultMSG);
+
+        }
 
         #endregion Privates
 
