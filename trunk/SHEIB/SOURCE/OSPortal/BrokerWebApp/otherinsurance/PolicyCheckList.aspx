@@ -34,17 +34,23 @@
 
 
 	    function gridCustomButtonClick(s, e) {
-	        s.GetRowValues(e.visibleIndex, "PolicyID", getTheSelectedRowsValues);
+	        s.GetRowValues(e.visibleIndex, "PolicyID;PrevPolicyID", getTheSelectedRowsValues);
+	        //PrevPolicyID
 	    }
 
 	    function getTheSelectedRowsValues(selectedValues) {
+	        //debugger;
+	        //var isAlert = gridSearchResult.CusJSproperty_IsAlert[1];
 	        if (selectedValues.length == 0) {
 	            //
 	        }
 	        else {
 	            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
 	            var querystring;
-	            querystring = "PolicyInput.aspx?pagemode=audit&id=" + selectedValues;
+	            if (isEmpty(selectedValues[1]))
+	                querystring = "PolicyInput.aspx?pagemode=audit&id=" + selectedValues[0];	                
+	            else
+	                querystring = "PolicyAlter.aspx?pagemode=audit&id=" + selectedValues[0];
 	            window.showModalDialog(querystring, self, myArguments);
 	        }
 	    }

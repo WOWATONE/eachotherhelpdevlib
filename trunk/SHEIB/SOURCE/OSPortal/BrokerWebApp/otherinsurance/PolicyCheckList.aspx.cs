@@ -250,6 +250,22 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
+        protected void grid_CustomJSProperties(object sender,
+            ASPxGridViewClientJSPropertiesEventArgs e)
+        {
+
+            //int startIndex = grid.PageIndex * grid.SettingsPager.PageSize;
+            //int end = Math.Min(grid.VisibleRowCount, startIndex + grid.SettingsPager.PageSize);
+            //object[] titleId = new object[end - startIndex], titles = new object[end - startIndex];
+            //for (int n = startIndex; n < end; n++)
+            //{
+            //    titleId[n - startIndex] = grid.GetRowValues(n, "title_id");
+            //    titles[n - startIndex] = grid.GetRowValues(n, "title");
+            //}
+            e.Properties["CusJSproperty_IsAlert"] = "1";
+
+        }
+
 
     }
 }
