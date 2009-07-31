@@ -284,7 +284,7 @@
             var SourceTypeID = dxeddlSourceTypeID.GetValue();
             var Special = null;
             var StartDate = dxeStartDate.GetValue();
-            
+
 
             var plc = new Policy(AuditOrNot,
             Beneficiary, CarrierSales, ConversionRate, Coverage,
@@ -316,12 +316,12 @@
         }
 
         function saveCallbackComplete(s, e) {
-            
+
             var theresult = e.result;
             switch (theresult) {
                 case "policynoexist":
                     resultMsg.style.display = "inline";
-                    resultMsg.style.fontsize="9px";
+                    resultMsg.style.fontsize = "9px";
                     resultMsg.innerHTML = "保单编号不唯一";
                     break
                 default:
@@ -335,7 +335,7 @@
                     }
             }
         }
-        
+
 
         function btnAddClick(s, e) {
             var thejsonstring = makePolicyJSON();
@@ -377,13 +377,13 @@
                     resultMsg.style.fontsize = "9px";
                     resultMsg.innerHTML = "提交成功";
                     setOnlyDxeButtonsUnableOrEnable(false);
-                    break                
+                    break
                 default:
                     resultMsg.style.display = "inline";
                     resultMsg.style.fontsize = "9px";
-                    resultMsg.innerHTML = theresult; 
+                    resultMsg.innerHTML = theresult;
             }
-            
+
         }
 
 
@@ -595,7 +595,7 @@
 
         function dxebtnAuditBackClick(s, e) {
             var titleMSG = "确定退回吗？";
-            var AuditOrNot = 0;            
+            var AuditOrNot = 0;
             var Memo = dxeMemo.GetValueString();
 
             var jsonStringClient = makePolicyAuditJSON(Memo, AuditOrNot);
@@ -613,7 +613,7 @@
             resultMsg.innerHTML = "退回成功";
             setOnlyDxeButtonsUnableOrEnable(false);
         }
-        
+
         function dxebtnAuditOkClick(s, e) {
             var titleMSG = "确定吗？";
             var buttonID = s.GetText();
@@ -650,7 +650,7 @@
                     resultMsg.style.display = "inline";
                     resultMsg.style.fontsize = "9px";
                     resultMsg.innerHTML = titleMSG;
-                    setOnlyDxeButtonsUnableOrEnable(false);            
+                    setOnlyDxeButtonsUnableOrEnable(false);
                     break
                 default:
                     resultMsg.style.display = "inline";
@@ -719,7 +719,7 @@
             setProductTypeID(thevalue);
             var test = s.GetText();
             var sValue = s.GetValue();
-            
+
             if (test.length > 0) {
                 var index = test.lastIndexOf("∟");
                 if (index >= 0) {
@@ -739,7 +739,7 @@
         }
 
         function dxeGetGridPolicyItemTotalSummaryCallbackComplete(s, e) {
-            
+
             var retrunval = e.result;
             var thesplit_array = retrunval.split(";");
             var sumCoverageVal = parseFloat(thesplit_array[0]);
@@ -808,7 +808,7 @@
 
 
         function division_ValueChanged(t1, t2, t3, opt) {
-            
+
             var v1;
             try {
                 v1 = parseFloat(t1.GetValueString());
@@ -869,12 +869,11 @@
         runat="server" OnCallback="dxeGetGridPolicyItemTotalSummary_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {dxeGetGridPolicyItemTotalSummaryCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
-    
-    <dxcb:ASPxCallback ID="dxeAuditBackCallback" ClientInstanceName="dxeAuditBackCallback" runat="server" OnCallback="dxeAuditBackCallback_Callback">
+    <dxcb:ASPxCallback ID="dxeAuditBackCallback" ClientInstanceName="dxeAuditBackCallback"
+        runat="server" OnCallback="dxeAuditBackCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {auditBackCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
-    
-    <span id="resultMsg" class="errorMSG" style="margin-top:2px; margin-left:8px;">&nbsp;</span>
+    <span id="resultMsg" class="errorMSG" style="margin-top: 2px; margin-left: 8px;">&nbsp;</span>
     <asp:Panel ID="nppagecontent" runat="server">
         <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
             runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%"
@@ -962,7 +961,7 @@
                                                             </ValidationSettings>
                                                             <ClientSideEvents SelectedIndexChanged="function(s, e) {SelectedProdTypeNameIndexChanged(s, e); return false;}" />
                                                         </dxe:ASPxComboBox>
-                                                        <input type="hidden" id="ptid" runat="server" />                                                        
+                                                        <input type="hidden" id="ptid" runat="server" />
                                                     </td>
                                                     <td style="text-align: right;">
                                                         投保人：
@@ -1155,12 +1154,9 @@
                                                 <tr>
                                                     <td>
                                                         <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                                            KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False" 
-                                                            OnRowInserting="gridPolicyItem_RowInserting"
-                                                            OnRowUpdating="gridPolicyItem_RowUpdating" 
-                                                            OnRowDeleting="gridPolicyItem_RowDeleting"
-                                                            OnStartRowEditing="gridPolicyItem_StartRowEditing" 
-                                                            OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
+                                                            KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False" OnRowInserting="gridPolicyItem_RowInserting"
+                                                            OnRowUpdating="gridPolicyItem_RowUpdating" OnRowDeleting="gridPolicyItem_RowDeleting"
+                                                            OnStartRowEditing="gridPolicyItem_StartRowEditing" OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
                                                             OnRowValidating="gridPolicyItem_RowValidating">
                                                             <%-- BeginRegion Columns --%>
                                                             <Columns>
@@ -1196,9 +1192,7 @@
                                                             <TotalSummary>
                                                                 <dxwgv:ASPxSummaryItem FieldName="ProdName" SummaryType="Count" DisplayFormat="数量:#" />
                                                                 <dxwgv:ASPxSummaryItem FieldName="Coverage" SummaryType="Sum" DisplayFormat="c" />
-                                                                <dxwgv:ASPxSummaryItem FieldName="PremiumRate" SummaryType="Sum" DisplayFormat="c" />
-                                                                <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" DisplayFormat="c" />                                                                
-                                                                <dxwgv:ASPxSummaryItem FieldName="ProcRate" SummaryType="Average" DisplayFormat="n" />
+                                                                <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" DisplayFormat="c" />
                                                                 <dxwgv:ASPxSummaryItem FieldName="Process" SummaryType="Sum" DisplayFormat="c" />
                                                             </TotalSummary>
                                                             <%-- EndRegion --%>
@@ -1286,7 +1280,6 @@
                                                                                         </ValidationSettings>
                                                                                         <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPolicyItemPremium,dxetxtPolicyItemProcRate,dxetxtPolicyItemProcess,true);}" />
                                                                                     </dxe:ASPxTextBox>
-                                                                                    
                                                                                 </td>
                                                                                 <td style="white-space: nowrap; text-align: right;">
                                                                                     经纪费:
@@ -1550,9 +1543,15 @@
                                                                     Visible="false">
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
+                                                            <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleAlways" />                                                            
                                                             <%-- EndRegion --%>
                                                             <SettingsPager Mode="ShowAllRecords" />
-                                                            <Settings ShowGroupPanel="false" />
+                                                            <TotalSummary>
+                                                                <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" DisplayFormat="c" />
+                                                                <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum" DisplayFormat="c" />
+                                                                <dxwgv:ASPxSummaryItem FieldName="Process" SummaryType="Sum" DisplayFormat="c" />
+                                                                <dxwgv:ASPxSummaryItem FieldName="ProcessBase" SummaryType="Sum" DisplayFormat="c" />
+                                                            </TotalSummary>
                                                             <ClientSideEvents CustomButtonClick="function(s, e) {gridCarrierCustomButtonClick(s,e);return false;}" />
                                                             <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
                                                             <Templates>
@@ -1590,8 +1589,10 @@
                                                                                         <ClientSideEvents SelectedIndexChanged="" />
                                                                                     </dxe:ASPxComboBox>
                                                                                 </td>
-                                                                                <td></td>
-                                                                                <td></td>
+                                                                                <td>
+                                                                                </td>
+                                                                                <td>
+                                                                                </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td style="white-space: nowrap; text-align: right;">
@@ -1628,7 +1629,7 @@
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
                                                                             </tr>
-                                                                            <tr>                                                                                
+                                                                            <tr>
                                                                                 <td style="white-space: nowrap; text-align: right;">
                                                                                     经纪费率(%):
                                                                                 </td>
@@ -1800,9 +1801,14 @@
                                                 </dxwgv:GridViewDataColumn>
                                             </Columns>
                                             <%-- EndRegion --%>
+                                            
+                                            <TotalSummary>
+                                                <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" DisplayFormat="c" />
+                                                <dxwgv:ASPxSummaryItem FieldName="PayProcBase" SummaryType="Sum" DisplayFormat="c" />
+                                            </TotalSummary>
                                             <SettingsEditing Mode="EditForm" />
-                                            <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways"
-                                                ShowGroupedColumns="true" ShowFilterRow="false" />
+                                            <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways"                                                
+                                                ShowGroupedColumns="true" ShowFilterRow="false" ShowFooter="true" />
                                             <SettingsPager Mode="ShowAllRecords">
                                             </SettingsPager>
                                             <SettingsDetail ExportMode="All" />
@@ -1911,7 +1917,8 @@
                                         审核人：
                                     </td>
                                     <td style="width: 20%; text-align: left;">
-                                        <dxe:ASPxTextBox ID="dxetxtAuditPerson" ClientInstanceName="dxetxtAuditPerson" runat="server" Width="100px">
+                                        <dxe:ASPxTextBox ID="dxetxtAuditPerson" ClientInstanceName="dxetxtAuditPerson" runat="server"
+                                            Width="100px">
                                         </dxe:ASPxTextBox>
                                     </td>
                                     <td style="width: 10%; text-align: right;">
@@ -1946,10 +1953,11 @@
                                         &nbsp;
                                     </td>
                                     <td>
-                                    <dxe:ASPxButton runat="server" id="dxebtnAuditBack" ClientInstanceName="dxebtnAuditBack" Text="退回修改" CausesValidation="false" AutoPostBack="false">
-                                        <ClientSideEvents Click="function(s, e) {dxebtnAuditBackClick(s,e);}" />
-                                    </dxe:ASPxButton>
-                                </td>
+                                        <dxe:ASPxButton runat="server" ID="dxebtnAuditBack" ClientInstanceName="dxebtnAuditBack"
+                                            Text="退回修改" CausesValidation="false" AutoPostBack="false">
+                                            <ClientSideEvents Click="function(s, e) {dxebtnAuditBackClick(s,e);}" />
+                                        </dxe:ASPxButton>
+                                    </td>
                                     <td>
                                         <dxe:ASPxButton runat="server" ID="dxebtnAuditOk" ClientInstanceName="dxebtnAuditOk"
                                             Text="通过审核" CausesValidation="false" AutoPostBack="false">
@@ -1997,8 +2005,8 @@
                                         未收保费：
                                     </td>
                                     <td>
-                                        <dxe:ASPxTextBox ID="dextxtNeededPayFee" ClientInstanceName="dextxtNeededPayFee" runat="server"
-                                            Width="200px">
+                                        <dxe:ASPxTextBox ID="dextxtNeededPayFee" ClientInstanceName="dextxtNeededPayFee"
+                                            runat="server" Width="200px">
                                         </dxe:ASPxTextBox>
                                     </td>
                                 </tr>
