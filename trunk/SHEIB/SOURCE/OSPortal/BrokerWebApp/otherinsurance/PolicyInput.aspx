@@ -1604,6 +1604,12 @@
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
+                                                                                        <ClientSideEvents ValueChanged="function(s,e){
+                                                                                                                        multi_ValueChanged(dxetxtPremium,dxetxtGridCarrierPolicyRate,dxetxtGridCarrierPremium,true); 
+                                                                                                                        multi_ValueChanged(dxetxtPremiumBase,dxetxtGridCarrierPolicyRate,dxetxtGridCarrierPremiumBase,true);
+                                                                                                                        multi_ValueChanged(dxetxtProcess,dxetxtGridCarrierPolicyRate,dxetxtGridCarrierProcess,true); 
+                                                                                                                        multi_ValueChanged(dxetxtProcessBase,dxetxtGridCarrierPolicyRate,dxetxtGridCarrierProcessBase,true);
+                                                                                                                        }" />
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
                                                                                 <td style="white-space: nowrap; text-align: right;">
