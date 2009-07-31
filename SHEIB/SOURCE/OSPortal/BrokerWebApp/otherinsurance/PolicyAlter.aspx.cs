@@ -13,6 +13,7 @@ using DevExpress.Web.ASPxUploadControl;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using BusinessObjects;
+using BusinessObjects.Policy;
 
 namespace BrokerWebApp.otherinsurance
 {
@@ -39,12 +40,8 @@ namespace BrokerWebApp.otherinsurance
         #region Page Events
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {           
             
-            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-            this.gridPeriod.DataSource = BusinessObjects.Policy.BO_PolicyPeriod.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-            this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-
             if (!IsPostBack && !IsCallback)
             {
                 bindDropDownLists();
@@ -61,6 +58,11 @@ namespace BrokerWebApp.otherinsurance
                 }
                 
                 this.dxedtCreateTime.Date = DateTime.Today;
+
+                this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
+                this.gridPeriod.DataSource = BusinessObjects.Policy.BO_PolicyPeriod.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
+                this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
+
                 this.gridCarrier.DataBind();
                 this.gridPeriod.DataBind();
                 this.gridDocList.DataBind();
@@ -155,7 +157,8 @@ namespace BrokerWebApp.otherinsurance
 
         #region gridCarrier Events
 
-        protected void gridCarrier_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
+        protected void gridCarrier_HtmlEditFormCreated(object sender, 
+            DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
         {
 
             HtmlTable tblEditorTemplate = this.gridCarrier.FindEditFormTemplateControl("tblgridCarrierEditorTemplate") as HtmlTable;
@@ -230,13 +233,15 @@ namespace BrokerWebApp.otherinsurance
 
         }
 
-        protected void gridCarrier_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
+        protected void gridCarrier_StartRowEditing(object sender, 
+            DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
         {
             this.gridCarrierStartEdit = true;
         }
 
 
-        protected void gridCarrier_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        protected void gridCarrier_RowUpdating(object sender, 
+            DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
 
             String theKey = e.Keys[0].ToString();
@@ -303,7 +308,8 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
-        protected void gridCarrier_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        protected void gridCarrier_RowInserting(object sender, 
+            DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             HtmlTable tblEditorTemplate = this.gridCarrier.FindEditFormTemplateControl("tblgridCarrierEditorTemplate") as HtmlTable;
 
@@ -361,7 +367,8 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
-        protected void gridCarrier_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        protected void gridCarrier_RowDeleting(object sender, 
+            DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             String theKey = e.Keys[0].ToString();
 
@@ -382,7 +389,8 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
-        protected void gridCarrier_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
+        protected void gridCarrier_RowValidating(object sender, 
+            DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
             String theWhere = "";
             if (e.Keys.Count > 0)
@@ -456,7 +464,8 @@ namespace BrokerWebApp.otherinsurance
 
 
 
-        protected void dxecbGridCarrierBranchIDCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        protected void dxecbGridCarrierBranchIDCallback(object source, 
+            DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
             ASPxComboBox thecb = (ASPxComboBox)source;
             thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
@@ -467,6 +476,13 @@ namespace BrokerWebApp.otherinsurance
             {
                 thecb.SelectedItem = thecb.Items[0];
             }
+        }
+
+
+        protected void gridCarrier_CustomCallback(object sender, 
+            DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            rebindGridCarrier();
         }
 
 
@@ -819,6 +835,7 @@ namespace BrokerWebApp.otherinsurance
                 obj.CreateTime = DateTime.Now;
 
                 obj.Save(ModifiedAction.Insert);
+                copyCarrierFromPrePolicy(obj.PrevPolicyID, obj.PolicyID);
             }
             else
             {
@@ -1170,6 +1187,32 @@ namespace BrokerWebApp.otherinsurance
 
             return result;
 
+        }
+
+
+        private void copyCarrierFromPrePolicy(String prePolicyID, String curPolicyID)
+        {
+            BO_PolicyCarrier newobj;
+
+            List<BO_PolicyCarrier> thelist = BO_PolicyCarrier.FetchListByPolicy(prePolicyID);
+            foreach (BO_PolicyCarrier item in thelist)
+            {
+                newobj = new BO_PolicyCarrier();
+
+                newobj.PolicyCarrierID = Guid.NewGuid().ToString();
+                newobj.PolicyID = curPolicyID;
+
+                newobj.CarrierID = item.CarrierID;
+                newobj.BranchID = item.BranchID;
+
+                newobj.PolicyRate = item.PolicyRate;
+                newobj.Premium = 0;
+                newobj.PremiumBase = 0;
+                newobj.ProcessRate = item.ProcessRate;
+                newobj.Process = 0;
+                newobj.ProcessBase = 0;
+                newobj.Save(ModifiedAction.Insert);
+            }
         }
 
 

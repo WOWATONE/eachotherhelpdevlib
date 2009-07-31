@@ -200,6 +200,9 @@
             npPolicyCompanyDetail.parentElement.removeAttribute('disabled', 'true');
             //tblNewExecuteAction.parentElement.removeAttribute('disabled', 'true');
             setDxeButtonsUnableOrEnable(true);
+            if ((typeof (gridCarrier) != 'undefined') && gridCarrier != null) {
+                gridCarrier.PerformCallback('refresh');
+            }
             
         }
 
@@ -294,8 +297,6 @@
                     resultMsg.innerHTML = "保单编号不唯一";
                     break
                 default:
-                    //do nothing;
-                    policyBaseCompleteEnable();
                     resultMsg.style.display = "inline";
                     resultMsg.style.fontsize = "9px";
                     resultMsg.innerHTML = "保存成功";
@@ -303,6 +304,7 @@
                     if (isEmpty(pid)) {
                         dxetxtPolicyID.SetValue(e.result);
                     }
+                    policyBaseCompleteEnable();                    
             }
         }
 
@@ -1085,7 +1087,8 @@
                                                         OnRowUpdating="gridCarrier_RowUpdating"
                                                         OnRowDeleting="gridCarrier_RowDeleting"
                                                         OnHtmlEditFormCreated="gridCarrier_HtmlEditFormCreated"
-                                                        OnRowValidating="gridCarrier_RowValidating"
+                                                        OnRowValidating="gridCarrier_RowValidating" 
+                                                        OnCustomCallback="gridCarrier_CustomCallback"
                                                         >
                                                         <%-- BeginRegion Columns --%>
                                                         <Columns>
