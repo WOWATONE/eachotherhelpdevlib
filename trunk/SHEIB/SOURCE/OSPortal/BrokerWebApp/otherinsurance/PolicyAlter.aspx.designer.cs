@@ -671,6 +671,78 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridPeriod;
         
         /// <summary>
+        /// ContentControl4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl4;
+        
+        /// <summary>
+        /// dxetxtAuditPerson control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtAuditPerson;
+        
+        /// <summary>
+        /// dxeCheckDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeCheckDate;
+        
+        /// <summary>
+        /// dxeMemo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxMemo dxeMemo;
+        
+        /// <summary>
+        /// tbltrAuditExecuteAction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow tbltrAuditExecuteAction;
+        
+        /// <summary>
+        /// dxebtnAuditBack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnAuditBack;
+        
+        /// <summary>
+        /// dxebtnAuditOk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnAuditOk;
+        
+        /// <summary>
+        /// dxebtnAuditClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnAuditClose;
+        
+        /// <summary>
         /// npExecuteAction control.
         /// </summary>
         /// <remarks>
