@@ -39,8 +39,8 @@
 	    }
 
 	    function getTheSelectedRowsValues(selectedValues) {
-	        //debugger;
-	        //var isAlert = gridSearchResult.CusJSproperty_IsAlert[1];
+	        //var isAlert = gridSearchResult.cpCusJSproperty_IsAlert;
+	        //var isAlert = gridSearchResult.cpCusJSproperty_IsAlert[0];
 	        if (selectedValues.length == 0) {
 	            //
 	        }
@@ -296,7 +296,8 @@
                                                     OnCustomCallback="gridSearchResult_CustomCallback"
                                                     OnHtmlRowCreated="gridSearchResult_HtmlRowCreated" 
                                                     OnHtmlCommandCellPrepared="gridSearchResult_CommandCellPrepared" 
-                                                    OnHtmlRowPrepared="gridSearchResult_RowPrepared" 
+                                                    OnHtmlRowPrepared="gridSearchResult_RowPrepared"  
+                                                    OnCustomJSProperties="gridSearchResult_CustomJSProperties"
                                                     >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
