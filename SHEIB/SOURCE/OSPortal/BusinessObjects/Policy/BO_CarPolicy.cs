@@ -358,6 +358,58 @@ namespace BusinessObjects.Policy
 
         }
 
+        public static void AuditCarPolicy(String askPriceID,
+            String auditStatus, String person, String remark,
+            ref Int32 resultSign, ref String resultMsg)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[dbo].[AuditCarPolicy]");
+
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ac_AskPriceID", DbType.String, askPriceID);
+            _db.AddInParameter(dbCommand, "@ac_AuditStatus", DbType.String, auditStatus);
+            _db.AddInParameter(dbCommand, "@ac_AuditPersion", DbType.String, person);
+            //_db.AddInParameter(dbCommand, "@ac_Remark", DbType.String, remark);
+            _db.AddOutParameter(dbCommand, "@ai_dm", DbType.Int32, 32);
+            _db.AddOutParameter(dbCommand, "@ac_sm", DbType.String, 100);
+
+
+            _db.ExecuteNonQuery(dbCommand);
+
+            resultSign = Convert.ToInt32(_db.GetParameterValue(dbCommand, "@ai_dm"));
+            resultMsg = Convert.ToString(_db.GetParameterValue(dbCommand, "@ac_sm"));
+
+        }
+
+
+        public static void AuditCarPolicySubmit(String askPriceID,
+            String auditStatus, String person,
+            ref Int32 resultSign, ref String resultMsg)
+        {
+            //StringBuilder sb = new StringBuilder();
+            //sb.Append("[dbo].[AuditPolicySubmit]");
+
+            //DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+
+            //_db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, policyID);
+            //_db.AddInParameter(dbCommand, "@ac_AuditStatus", DbType.String, auditStatus);
+            //_db.AddInParameter(dbCommand, "@ac_AuditPersion", DbType.String, person);
+            //_db.AddOutParameter(dbCommand, "@ai_dm", DbType.Int32, 32);
+            //_db.AddOutParameter(dbCommand, "@ac_sm", DbType.String, 100);
+
+
+            //_db.ExecuteNonQuery(dbCommand);
+
+            //resultSign = Convert.ToInt32(_db.GetParameterValue(dbCommand, "@ai_dm"));
+            //resultMsg = Convert.ToString(_db.GetParameterValue(dbCommand, "@ac_sm"));
+            resultSign = 0;
+            resultMsg = "提交审核成功。";
+
+
+        }
+
+
         #endregion Methods
 
 

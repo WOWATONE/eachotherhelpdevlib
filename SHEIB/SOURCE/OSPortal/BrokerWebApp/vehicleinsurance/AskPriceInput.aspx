@@ -223,7 +223,6 @@
         }
 
         function saveCallbackComplete(s, e) {
-            //do nothing;
             policyBaseCompleteEnable();
 
             var pid = dxetxtAskPriceID.GetValueString();
@@ -231,6 +230,7 @@
             if (isEmpty(pid)) {
                 dxetxtAskPriceID.SetValue(e.result);
             }
+            alert("保存成功。");
         }
 
         function btnAddClick(s, e) {
@@ -253,7 +253,16 @@
 
 
         function saveCheckCallbackComplete(s, e) {
-            setOnlyDxeButtonsUnableOrEnable(false);
+            var theresult = e.result;
+            switch (theresult) {
+                case "0":
+                    setOnlyDxeButtonsUnableOrEnable(false);
+                    alert("提交成功");                    
+                    break
+                default:
+                   alert(theresult);
+            }
+            
         }
 
 
@@ -384,9 +393,7 @@
 
 
         function dxebtnAuditBackClick(s, e) {
-
             var AuditOrNot = 0;
-
             var AskPriceID = dxetxtAskPriceID.GetValueString();
             var CarrierID = null;
             var BranchID = null;
@@ -404,27 +411,34 @@
             OperationTypeID, SourceTypeID, Remark, AuditOrNot);
 
             var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
+            var titleMSG = "确定退回吗？";
 
-            dxeAuditOkCallback.PerformCallback(jsonStringClient);
-
+            var sureOk = window.confirm(titleMSG)
+            if (sureOk) {
+                dxeAuditBackCallback.PerformCallback(jsonStringClient);
+            }
         }
 
 
         function auditBackCallbackComplete(s, e) {
             //do nothing;
             setOnlyDxeButtonsUnableOrEnable(false);
+            alert("退回成功");
         }
 
         function dxebtnAuditOkClick(s, e) {
             //debugger;
+            var titleMSG = "确定吗？";
             var buttonID = s.GetText();
             var AuditOrNot;
             switch (buttonID) {
                 case "通过审核":
                     AuditOrNot = true;
+                    titleMSG = "确定审核吗？";
                     break
                 case "反审核":
                     AuditOrNot = false;
+                    titleMSG = "确定反审核吗？";
                     break
                 default:
                     //do nothing;
@@ -449,25 +463,23 @@
             OperationTypeID, SourceTypeID, Remark, AuditOrNot);
 
             var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
-
-            dxeAuditOkCallback.PerformCallback(jsonStringClient);
-
+            var sureOk = window.confirm(titleMSG)
+            if (sureOk) {
+                dxeAuditOkCallback.PerformCallback(jsonStringClient);
+            } 
         }
 
         function auditOkCallbackComplete(s, e) {
-
-            setOnlyDxeButtonsUnableOrEnable(false);
-            dxebtnAuditOk.SetEnabled(true);
-            var buttonID = dxebtnAuditOk.GetText();
-            switch (buttonID) {
-                case "通过审核":
-                    dxebtnAuditOk.SetText("反审核");
-                    break
-                case "反审核":
-                    dxebtnAuditOk.SetText("通过审核");
+            var titleMSG = buttonID + "成功完成";
+            var theresult = e.result;
+            switch (theresult) {
+                case "0":
+                    setOnlyDxeButtonsUnableOrEnable(false);
+                    dxebtnAuditOk.SetEnabled(true);
+                    alert(titleMSG);
                     break
                 default:
-                    //do nothing;
+                    alert(theresult);
             }
 
         }
