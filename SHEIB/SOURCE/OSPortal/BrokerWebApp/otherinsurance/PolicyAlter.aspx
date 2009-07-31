@@ -1596,7 +1596,76 @@
                     </dxw:ContentControl>
                 </ContentCollection>
             </dxtc:TabPage>
-           
+            <dxtc:TabPage Text="审核信息">
+                    <ContentCollection>
+                        <dxw:ContentControl ID="ContentControl4" runat="server">
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="width: 10%; text-align: right;">
+                                        审核人：
+                                    </td>
+                                    <td style="width: 20%; text-align: left;">
+                                        <dxe:ASPxTextBox ID="dxetxtAuditPerson" ClientInstanceName="dxetxtAuditPerson" runat="server"
+                                            Width="100px">
+                                        </dxe:ASPxTextBox>
+                                    </td>
+                                    <td style="width: 10%; text-align: right;">
+                                        审核日期：
+                                    </td>
+                                    <td style="width: 20%; text-align: left;">
+                                        <dxe:ASPxDateEdit ID="dxeCheckDate" ClientInstanceName="dxeCheckDate" runat="server"
+                                            Width="120px">
+                                        </dxe:ASPxDateEdit>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right; vertical-align: top;">
+                                        审核备注：
+                                    </td>
+                                    <td style="text-align: left;" colspan="3">
+                                        <dxe:ASPxMemo runat="server" ID="dxeMemo" ClientInstanceName="dxeMemo" Rows="10"
+                                            Columns="72">
+                                        </dxe:ASPxMemo>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                    </td>
+                                </tr>
+                                <tr runat="server" id="tbltrAuditExecuteAction">
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                    <td>
+                                        <dxe:ASPxButton runat="server" ID="dxebtnAuditBack" ClientInstanceName="dxebtnAuditBack"
+                                            Text="退回修改" CausesValidation="false" AutoPostBack="false">
+                                            <ClientSideEvents Click="function(s, e) {dxebtnAuditBackClick(s,e);}" />
+                                        </dxe:ASPxButton>
+                                    </td>
+                                    <td>
+                                        <dxe:ASPxButton runat="server" ID="dxebtnAuditOk" ClientInstanceName="dxebtnAuditOk"
+                                            Text="通过审核" CausesValidation="false" AutoPostBack="false">
+                                            <ClientSideEvents Click="function(s, e) {dxebtnAuditOkClick(s,e);}" />
+                                        </dxe:ASPxButton>
+                                    </td>
+                                    <td>
+                                        <dxe:ASPxButton runat="server" ID="dxebtnAuditClose" ClientInstanceName="dxebtnAuditClose"
+                                            Text="关闭" CausesValidation="false" AutoPostBack="false">
+                                            <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
+                                        </dxe:ASPxButton>
+                                    </td>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                            </table>
+                        </dxw:ContentControl>
+                    </ContentCollection>
+                </dxtc:TabPage>
         </TabPages>
     </dxtc:ASPxPageControl>
     <table style="height: 5px; background-color: #E0EDFF; width: 100%; font-size: 2px;">
