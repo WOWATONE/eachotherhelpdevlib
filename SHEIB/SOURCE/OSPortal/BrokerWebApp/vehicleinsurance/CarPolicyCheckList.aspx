@@ -24,7 +24,7 @@
 	});
 
 	function gridCheckCustomButtonClick(s, e) {
-	    s.GetRowValues(e.visibleIndex, "PolicyID", getTheSelectedRowsValues);	    
+	    s.GetRowValues(e.visibleIndex, "PolicyID;PrevPolicyID", getTheSelectedRowsValues);	    
 	}
 
 	function getTheSelectedRowsValues(selectedValues) {
@@ -34,7 +34,11 @@
 	    else {
 	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
 	        var querystring;
-	        querystring = "CarPolicyInput.aspx?pagemode=audit&id=" + selectedValues;
+	        if (isEmpty(selectedValues[1]))
+	            querystring = "CarPolicyInput.aspx?pagemode=audit&id=" + selectedValues[0];
+	        else
+	            querystring = "CarPolicyAlert.aspx?pagemode=audit&id=" + selectedValues[0];
+	            
 	        window.showModalDialog(querystring, self, myArguments);
 	    }
 	}

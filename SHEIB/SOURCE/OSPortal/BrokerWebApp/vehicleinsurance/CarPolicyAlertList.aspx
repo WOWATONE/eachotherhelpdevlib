@@ -51,7 +51,7 @@
 	    else {
 	        var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
 	        var querystring;
-	        querystring = "CarPolicyInput.aspx?pagemode=input&id=" + selectedValues;
+	        querystring = "CarPolicyAlert.aspx?pagemode=input&id=" + selectedValues;
 	        window.showModalDialog(querystring, self, myArguments);
 	    }
 	}

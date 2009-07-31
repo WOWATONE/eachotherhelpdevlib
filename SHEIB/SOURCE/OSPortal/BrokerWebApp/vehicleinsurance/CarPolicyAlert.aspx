@@ -15,11 +15,16 @@
     
     <script type="text/javascript">
 
+        var pagemode = null;
         var npbasicdetail = null;        
         var tblNewExecuteAction = null;
-
+        var tbltrAuditExecuteAction = null;
 
         function getServerControlRefStubs() {
+
+            if ($("#<%=pagemode.ClientID %>").length > 0) {
+                pagemode = $("#<%=pagemode.ClientID %>")[0];
+            }
             
             if ($("#<%=npbasicdetail.ClientID %>").length > 0) {
                 npbasicdetail = $("#<%=npbasicdetail.ClientID %>")[0];
@@ -30,6 +35,9 @@
                 tblNewExecuteAction = $("#<%=tblNewExecuteAction.ClientID %>")[0];
             }
 
+            if ($("#<%=tbltrAuditExecuteAction.ClientID %>").length > 0) {
+                tbltrAuditExecuteAction = $("#<%=tbltrAuditExecuteAction.ClientID %>")[0];
+            }
 
         }
 
@@ -127,16 +135,23 @@
         }
 
         function policyBaseCompleteUnable() {
-            //
-            if (policyCheckNessary()) {
-                setDxeButtonsUnableOrEnable(false);
+            if (pagemode.value == "input") {
+                if (policyCheckNessary()) {
+                    setDxeButtonsUnableOrEnable(false);
+                }
+            }
+            //audit
+            if (pagemode.value == "audit") {
+                npbasicdetail.parentElement.setAttribute('disabled', 'true');
             }
 
         }
 
 
         function policyBaseCompleteEnable() {
-            setDxeButtonsUnableOrEnable(true);
+            if (pagemode.value == "input") {
+                setDxeButtonsUnableOrEnable(true);
+            }
         }
 
 
@@ -1136,40 +1151,10 @@
                                                     CollapsedImage="~/images/expand_blue.jpg" SuppressPostBack="true" />
                                             </td>
                                         </tr>
-                                        <tr>
                                     </table>
                                 </dxw:ContentControl>
                             </ContentCollection>
-                        </dxtc:TabPage>
-                        <dxtc:TabPage Text="附件">
-                            <ContentCollection>
-                                <dxw:ContentControl ID="ContentControl2" runat="server">
-                                    <table style="width: 100%">
-                                        <tr>
-                                            <td style="width: 100%; text-align: left;" colspan="2">
-                                                附件列表
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="width: 10%; text-align: right;">
-                                                1
-                                            </td>
-                                            <td style="width: 90%; text-align: left;">
-                                                file1.doc
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="width: 10%; text-align: right;">
-                                                2
-                                            </td>
-                                            <td style="width: 90%; text-align: left;">
-                                                file2.doc
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </dxw:ContentControl>
-                            </ContentCollection>
-                        </dxtc:TabPage>
+                        </dxtc:TabPage>                        
                         <dxtc:TabPage Text="附件">
                             <ContentCollection>
                                 <dxw:ContentControl ID="ContentControl3" runat="server">
@@ -1243,7 +1228,64 @@
                                     </table>
                                 </dxw:ContentControl>
                             </ContentCollection>
-                        </dxtc:TabPage>                                                
+                        </dxtc:TabPage> 
+                        <dxtc:TabPage Text="审核信息">
+                            <ContentCollection>
+                                <dxw:ContentControl ID="ContentControl2" runat="server">
+                                    <table style="width: 100%">
+                                        <tr>
+                                            <td style="width: 10%; text-align: right;">
+                                                审核人：
+                                            </td>
+                                            <td style="width: 20%; text-align: left;">
+                                                <dxe:ASPxTextBox ID="dxetxtAuditPerson" ClientInstanceName="dxetxtAuditPerson" runat="server" Width="100px" ReadOnly="true"></dxe:ASPxTextBox>
+                                            </td>
+                                            <td style="width: 10%; text-align: right;">
+                                                审核日期：
+                                            </td>
+                                            <td style="width: 20%; text-align: left;">
+                                                <dxe:ASPxDateEdit ID="dxeAuditTime" ClientInstanceName="dxeAuditTime" runat="server" Width="120px" ReadOnly="true">
+                                                </dxe:ASPxDateEdit>
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right; vertical-align: top;">
+                                                审核备注：
+                                            </td>
+                                            <td style="text-align: left;" colspan="3">
+                                                <dxe:ASPxMemo runat="server" id="dxeMemo" ClientInstanceName="dxeMemo" Rows="10" Columns="72"></dxe:ASPxMemo>
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5"></td>
+                                        </tr>
+                                        <tr runat="server" id="tbltrAuditExecuteAction">
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <dxe:ASPxButton runat="server" id="dxebtnAuditBack" ClientInstanceName="dxebtnAuditBack" Text="退回修改" CausesValidation="false" AutoPostBack="false">
+                                                    <ClientSideEvents Click="function(s, e) {dxebtnAuditBackClick(s,e);}" />
+                                                </dxe:ASPxButton>
+                                            </td>                                
+                                            <td>
+                                                <dxe:ASPxButton runat="server" id="dxebtnAuditOk" ClientInstanceName="dxebtnAuditOk" Text="通过审核" CausesValidation="false" AutoPostBack="false">
+                                                    <ClientSideEvents Click="function(s, e) {dxebtnAuditOkClick(s,e);}" />
+                                                </dxe:ASPxButton>
+                                            </td>
+                                            <td>
+                                                <dxe:ASPxButton runat="server" id="dxebtnAuditClose" ClientInstanceName="dxebtnAuditClose" Text="关闭" CausesValidation="false" AutoPostBack="false">
+                                                    <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
+                                                </dxe:ASPxButton>
+                                            </td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </table>
+                                </dxw:ContentControl>
+                            </ContentCollection>
+                        </dxtc:TabPage>                                               
                     </TabPages>
                 </dxtc:ASPxPageControl>
                 <table style="height: 5px; background-color: #E0EDFF; width: 100%; font-size: 2px;">
