@@ -362,9 +362,9 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="交费方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="PayFeeDate" Caption="保费代收日期" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataDateColumn FieldName="PayFeeDate" Caption="收费日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="保费代收金额" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="收费金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayinDate" Caption="保费解付日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
