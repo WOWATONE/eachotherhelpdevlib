@@ -323,11 +323,16 @@
                     resultMsg.style.fontsize = "9px";
                     resultMsg.innerHTML = "保单编号不唯一";
                     break
-                default:
+                case "0":
                     resultMsg.style.display = "inline";
                     resultMsg.style.fontsize = "9px";
                     resultMsg.innerHTML = "提交成功";
-                    setOnlyAllDxeButtonsUnableOrEnable(false);            
+                    setOnlyAllDxeButtonsUnableOrEnable(false);
+                    break
+                default:
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize = "9px";
+                    resultMsg.innerHTML = theresult;
             }
         }
 
@@ -1082,7 +1087,7 @@
                                             <tr>
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridCarrier" ClientInstanceName="gridCarrier" runat="server"
-                                                        KeyFieldName="CarrierID" Width="100%" AutoGenerateColumns="False" OnStartRowEditing="gridCarrier_StartRowEditing"
+                                                        KeyFieldName="PolicyCarrierID" Width="100%" AutoGenerateColumns="False" OnStartRowEditing="gridCarrier_StartRowEditing"
                                                         OnRowInserting="gridCarrier_RowInserting" 
                                                         OnRowUpdating="gridCarrier_RowUpdating"
                                                         OnRowDeleting="gridCarrier_RowDeleting"

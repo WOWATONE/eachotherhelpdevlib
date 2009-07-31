@@ -93,8 +93,22 @@ namespace BrokerWebApp.otherinsurance
         protected void dxeSaveAndCheckCallback_Callback(object source, 
             DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+            //String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+            //String theResult = savePolicy(e.Parameter, policystatus);
+            //e.Result = theResult;
+            int resultSign = 0;
+            String resultMSG = "";
+            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
             String theResult = savePolicy(e.Parameter, policystatus);
+            if (theResult != policyNoExist)
+            {
+                auditPolicySubmit(ref resultSign, ref resultMSG);
+                if (resultSign == 0)
+                    theResult = resultSign.ToString();
+                else
+                    theResult = resultMSG;
+            }
+
             e.Result = theResult;
         }
 
@@ -185,14 +199,47 @@ namespace BrokerWebApp.otherinsurance
                 object theValues = this.gridCarrier.GetRowValues(editIndex, new String[] { "PolicyID", "CarrierID", "BranchID", "PolicyRate", "Premium", "PremiumBase", "Process", "ProcessRate", "ProcessBase" });
                 object[] theValueList = theValues as object[];
 
-                String carrierID = theValueList[1].ToString();
-                String brancheID = theValueList[2].ToString();
-                String policyRate = theValueList[3].ToString();
-                String premium = theValueList[4].ToString();
-                String premiumBase = theValueList[5].ToString();
-                String process = theValueList[6].ToString();
-                String processRate = theValueList[7].ToString();
-                String processBase = theValueList[8].ToString();
+                String carrierID, brancheID, policyRate, premium, premiumBase, process, processRate, processBase;
+                if (theValueList[1] == null)
+                    carrierID = "";
+                else
+                    carrierID = theValueList[1].ToString();
+
+                if (theValueList[2] == null)
+                    brancheID = "";
+                else
+                    brancheID = theValueList[2].ToString();
+
+                if (theValueList[3] == null)
+                    policyRate = "";
+                else
+                    policyRate = String.Format(BasePage.TheFourSF, theValueList[3]);
+
+                if (theValueList[4] == null)
+                    premium = "";
+                else
+                    premium = String.Format(BasePage.TheTwoSF, theValueList[4]);
+
+                if (theValueList[5] == null)
+                    premiumBase = "";
+                else
+                    premiumBase = String.Format(BasePage.TheTwoSF, theValueList[5]);
+
+                if (theValueList[6] == null)
+                    process = "";
+                else
+                    process = String.Format(BasePage.TheTwoSF, theValueList[6]);
+
+                if (theValueList[7] == null)
+                    processRate = "";
+                else
+                    processRate = String.Format(BasePage.TheFourSF, theValueList[7]);
+
+                if (theValueList[8] == null)
+                    processBase = "";
+                else
+                    processBase = String.Format(BasePage.TheFourSF, theValueList[8]);
+                
 
                 ListEditItem theselected;
                 if (this.gridCarrierStartEdit)
@@ -787,7 +834,7 @@ namespace BrokerWebApp.otherinsurance
             BusinessObjects.Policy.BO_Policy obj;
 
             //check policyno exist first
-            bool checkresult = checkPolicyNoExist(theJosn.PolicyID, theJosn.PolicyNo);
+            bool checkresult = false;//checkPolicyNoExist(theJosn.PolicyID, theJosn.PolicyNo);
 
             if (checkresult) return policyNoExist;
 
@@ -1215,6 +1262,17 @@ namespace BrokerWebApp.otherinsurance
             }
         }
 
+
+        private void auditPolicySubmit(ref Int32 resultSign, ref string resultMSG)
+        {
+            String thePolicyID = this.dxetxtPolicyID.Text.Trim();
+            String state;
+
+            state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+
+            BusinessObjects.Policy.BO_Policy.AuditPolicySubmit(thePolicyID, state, this.CurrentUserID, ref resultSign, ref resultMSG);
+
+        }
 
         #endregion Privates
 
