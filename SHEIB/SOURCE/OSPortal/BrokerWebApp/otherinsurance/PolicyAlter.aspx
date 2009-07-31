@@ -35,12 +35,17 @@
             }
         }
 
+        var pagemode = null;
         var npbasicdetail = null;
         var tblNewExecuteAction = null;
         var tbltrAuditExecuteAction = null;
 
 
         function getServerControlRefStubs() {
+
+            if ($("#<%=pagemode.ClientID %>").length > 0) {
+                pagemode = $("#<%=pagemode.ClientID %>")[0];
+            }
             
             if ($("#<%=npbasicdetail.ClientID %>").length > 0) {
                 npbasicdetail = $("#<%=npbasicdetail.ClientID %>")[0];
@@ -195,13 +200,15 @@
         }
 
         function policyBaseCompleteEnable() {
-            var result, panel;
-            //npCostSummaryDetail.parentElement.removeAttribute('disabled', 'true');
-            npPolicyCompanyDetail.parentElement.removeAttribute('disabled', 'true');
-            //tblNewExecuteAction.parentElement.removeAttribute('disabled', 'true');
-            setDxeButtonsUnableOrEnable(true);
-            if ((typeof (gridCarrier) != 'undefined') && gridCarrier != null) {
-                gridCarrier.PerformCallback('refresh');
+            
+            if (pagemode.value == "input") {
+                //npCostSummaryDetail.parentElement.removeAttribute('disabled', 'true');
+                npPolicyCompanyDetail.parentElement.removeAttribute('disabled', 'true');
+                //tblNewExecuteAction.parentElement.removeAttribute('disabled', 'true');
+                setDxeButtonsUnableOrEnable(true);
+                if ((typeof (gridCarrier) != 'undefined') && gridCarrier != null) {
+                    gridCarrier.PerformCallback('refresh');
+                }
             }
             
         }
@@ -210,13 +217,15 @@
 
         function policyBaseCompleteUnable() {
 
-            if (policyCheckNessary()) {
+            if (pagemode.value == "input") {
+                if (policyCheckNessary()) {
                     //npCostSummaryDetail.parentElement.setAttribute('disabled', 'true');
                     npPolicyCompanyDetail.parentElement.setAttribute('disabled', 'true');
                     //tblNewExecuteAction.parentElement.setAttribute('disabled', 'true');
-                    
+
                     setDxeButtonsUnableOrEnable(false);
                 }
+            }
 
         }
 
@@ -544,6 +553,122 @@
         }
 
 
+        function dxebtnAuditBackClick(s, e) {
+            var titleMSG = "确定退回吗？";
+            var AuditOrNot = 0;
+            var Memo = dxeMemo.GetValueString();
+
+            var jsonStringClient = makePolicyAuditJSON(Memo, AuditOrNot);
+
+            var sureOk = window.confirm(titleMSG)
+            if (sureOk) {
+                dxeAuditBackCallback.PerformCallback(jsonStringClient);
+            }
+        }
+
+
+        function auditBackCallbackComplete(s, e) {
+            resultMsg.style.display = "inline";
+            resultMsg.style.fontsize = "9px";
+            resultMsg.innerHTML = "退回成功";
+            setOnlyDxeButtonsUnableOrEnable(false);
+        }
+
+        function dxebtnAuditOkClick(s, e) {
+            var titleMSG = "确定吗？";
+            var buttonID = s.GetText();
+            var AuditOrNot;
+            switch (buttonID) {
+                case "通过审核":
+                    AuditOrNot = true;
+                    titleMSG = "确定审核吗？";
+                    break
+                case "反审核":
+                    AuditOrNot = false;
+                    titleMSG = "确定反审核吗？";
+                    break
+                default:
+                    //do nothing;
+            }
+            var Memo = dxeMemo.GetValueString();
+
+            var jsonStringClient = makePolicyAuditJSON(Memo, AuditOrNot);
+
+            var sureOk = window.confirm(titleMSG)
+            if (sureOk) {
+                dxeAuditOkCallback.PerformCallback(jsonStringClient);
+            }
+
+        }
+
+        function auditOkCallbackComplete(s, e) {
+            var buttonID = dxebtnAuditOk.GetText();
+            var titleMSG = buttonID + "成功完成";
+            var theresult = e.result;
+            switch (theresult) {
+                case "0":
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize = "9px";
+                    resultMsg.innerHTML = titleMSG;
+                    setOnlyDxeButtonsUnableOrEnable(false);
+                    break
+                default:
+                    resultMsg.style.display = "inline";
+                    resultMsg.style.fontsize = "9px";
+                    resultMsg.innerHTML = theresult;
+            }
+        }
+
+
+        function makePolicyAuditJSON(Memo, AuditOrNot) {
+            var AuditOrNot = AuditOrNot;
+            var Beneficiary = null;
+            var CarrierSales = null;
+            var ConversionRate = null;
+            var Coverage = null;
+            var Currency = null;
+            var CustomerID = null;
+            var DeptId = null;
+            var EndDate = null;
+            var FlagReinsure = null;
+            var FlagTogether = null;
+            var GatheringType = null;
+            var OperationType = null;
+            var PeriodTimes = null;
+            var PolicyID = dxetxtPolicyID.GetValueString();
+            var PolicyNo = null;
+            var PolicyStatus = null;
+            var Premium = null;
+            var PremiumBase = null;
+            var PremiumRate = null;
+            var Process = null;
+            var ProcessBase = null;
+            var ProcessRate = null;
+            var ProdTypeID = null;
+            var Remark = Memo;
+            var SalesId = null;
+            var SignDate = null;
+            var SourceTypeID = null;
+            var Special = null;
+            var StartDate = null;
+
+            var plc = new Policy(AuditOrNot,
+            Beneficiary, CarrierSales, ConversionRate, Coverage,
+            Currency, CustomerID, DeptId, EndDate,
+            FlagReinsure, FlagTogether, GatheringType,
+            OperationType, PeriodTimes, PolicyID, PolicyNo,
+            PolicyStatus, Premium, PremiumBase, PremiumRate,
+            Process, ProcessBase, ProcessRate, ProdTypeID,
+            Remark, SalesId, SignDate, SourceTypeID, Special,
+            StartDate);
+
+            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
+
+            return jsonStringClient;
+
+        }
+        
+        
         function SelectedProdTypeNameIndexChanged(s, e) {
             var thevalue = s.GetValue();
             setProductTypeID(thevalue);
@@ -655,7 +780,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
-    
+    <input type="hidden" id="pagemode" runat="server" value="" />
 
     <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server"
         OnCallback="dxeSaveCallback_Callback">
@@ -665,8 +790,14 @@
         runat="server" OnCallback="dxeSaveAndCheckCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {saveCheckCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
-    
-    
+    <dxcb:ASPxCallback ID="dxeAuditOkCallback" ClientInstanceName="dxeAuditOkCallback"
+        runat="server" OnCallback="dxeAuditOkCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {auditOkCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    <dxcb:ASPxCallback ID="dxeAuditBackCallback" ClientInstanceName="dxeAuditBackCallback"
+        runat="server" OnCallback="dxeAuditBackCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {auditBackCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
     
     <span id="resultMsg" class="errorMSG" style="margin-top:2px; margin-left:8px;">&nbsp;</span>
     <asp:Panel ID="nppagecontent" runat="server">
@@ -1674,7 +1805,7 @@
             </td>
         </tr>
     </table>
-    <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="30px">
+    <asp:Panel ID="npNewExecuteAction" runat="server" CssClass="allborderPanel" Height="30px">
         
         <table style="width: 100%" runat="server" id="tblNewExecuteAction">
                 <tr>

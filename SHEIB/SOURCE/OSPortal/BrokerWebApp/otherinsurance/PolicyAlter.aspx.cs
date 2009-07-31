@@ -22,6 +22,8 @@ namespace BrokerWebApp.otherinsurance
 
         #region Variables
 
+        private const string currentPageModeKey = "CurrentPagePolicyMode";
+        private const string inputQueryStringPageModeKey = "pagemode"; 
         private const string policyNoExist = "policynoexist";
         private const string inputQueryStringPreIDKey = "pid";
         private const string inputQueryStringIDKey = "id";
@@ -32,6 +34,15 @@ namespace BrokerWebApp.otherinsurance
 
         private string toadd = string.Empty;
 
+
+        public enum PageMode
+        {
+            Input,
+            Audit,
+            Query
+        }
+
+        private Nullable<PageMode> pm;
 
         #endregion Variables
 
@@ -44,6 +55,25 @@ namespace BrokerWebApp.otherinsurance
             
             if (!IsPostBack && !IsCallback)
             {
+                this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey];
+
+                switch (this.pagemode.Value.ToLower().Trim())
+                {
+                    case "input":
+                        pm = PageMode.Input;
+                        break;
+                    case "audit":
+                        pm = PageMode.Audit;
+                        break;
+                    case "query":
+                        pm = PageMode.Query;
+                        break;
+                    default:
+                        pm = PageMode.Input;
+                        break;
+                }
+                ViewState[currentPageModeKey] = pm;
+
                 bindDropDownLists();
                 String qsID = Page.Request.QueryString[inputQueryStringIDKey];
                 if (String.IsNullOrEmpty(qsID))
@@ -75,7 +105,7 @@ namespace BrokerWebApp.otherinsurance
             }
             else
             {
-                //
+                pm = ViewState[currentPageModeKey] as Nullable<PageMode>;
             }
 
         }
@@ -118,12 +148,50 @@ namespace BrokerWebApp.otherinsurance
         protected void Page_PreRender(object sender, EventArgs e)
         {
 
-            //
+            if (this.pm == PageMode.Audit)
+            {
+                tbltrAuditExecuteAction.Visible = true;
+                npNewExecuteAction.Visible = false;
+                this.dxebtntopSave.Visible = false;
+                this.gridCarrier.Enabled = false;
+                this.gridPeriod.Enabled = false;
+                this.filesUploadControl.Enabled = false;
+                this.Page.Title = "保单审核";
+                if (!Page.IsPostBack)
+                {
+                    this.dxetxtAuditPerson.Text = this.CurrentUserName;
+                    this.dxeCheckDate.Date = DateTime.Now;
+                    BusinessObjects.Policy.BO_Policy obj;
+                    obj = new BusinessObjects.Policy.BO_Policy(this.dxetxtPolicyID.Text.Trim());
+
+                    if (obj.PolicyStatus == Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString())
+                    {
+                        this.dxebtnAuditOk.Text = "反审核";
+                        this.dxebtnAuditBack.ClientEnabled = false;
+                    }
+
+                }
+            }
+            else
+            {
+                tbltrAuditExecuteAction.Visible = false;
+                npNewExecuteAction.Visible = true;
+
+                if (this.pm == PageMode.Query)
+                {
+                    dxebtnAuditOk.Visible = false;
+                    dxebtnAuditClose.Visible = false;
+                    dxebtnBottomCheck.Visible = false;
+                    dxebtntopSave.Visible = false;
+                    dxebtnBottomSave.Visible = false;
+                }
+            }
 
         }
 
 
-        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        protected void dxeddlSalesIdCallback(object source, 
+            DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
             ASPxComboBox thecb = (ASPxComboBox)source;
             thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
@@ -135,6 +203,27 @@ namespace BrokerWebApp.otherinsurance
                 thecb.SelectedItem = thecb.Items[0];
             }
 
+        }
+
+
+        protected void dxeAuditOkCallback_Callback(object source, 
+            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            int resultSign = 0;
+            String resultMSG = "";
+            auditPolicy(e.Parameter, ref resultSign, ref resultMSG);
+            if (resultSign == 0)
+                e.Result = resultSign.ToString();
+            else
+                e.Result = resultMSG;
+        }
+
+
+        protected void dxeAuditBackCallback_Callback(object source, 
+            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            auditBackPolicy(e.Parameter);
+            e.Result = "complete";
         }
 
 
@@ -1273,6 +1362,53 @@ namespace BrokerWebApp.otherinsurance
             BusinessObjects.Policy.BO_Policy.AuditPolicySubmit(thePolicyID, state, this.CurrentUserID, ref resultSign, ref resultMSG);
 
         }
+
+        private void auditPolicy(String parameter, ref Int32 resultSign, ref string resultMSG)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(PolicyInfo));
+            PolicyInfo obj;
+
+            obj = (PolicyInfo)serializer.ReadObject(ms);
+            ms.Close();
+
+            String thePolicyID = this.dxetxtPolicyID.Text.Trim();
+            String state;
+            if (obj.AuditOrNot)
+                state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString();
+            else
+                state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+
+            BusinessObjects.Policy.BO_Policy.AuditPolicy(thePolicyID, state, this.CurrentUserID, obj.Remark, ref resultSign, ref resultMSG);
+
+        }
+        
+        private void auditBackPolicy(String parameter)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(PolicyInfo));
+            PolicyInfo obj;
+
+            obj = (PolicyInfo)serializer.ReadObject(ms);
+            ms.Close();
+
+            String thePolicyID = this.dxetxtPolicyID.Text.Trim();
+            BusinessObjects.Policy.BO_Policy objPolicy;
+            objPolicy = new BusinessObjects.Policy.BO_Policy(thePolicyID);
+
+            objPolicy.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+
+            objPolicy.AuditTime = DateTime.Now;
+            objPolicy.AuditPerson = this.CurrentUserID;
+            objPolicy.Remark = obj.Remark;
+            objPolicy.Save(ModifiedAction.Update);
+
+        }
+
 
         #endregion Privates
 
