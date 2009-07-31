@@ -23,6 +23,15 @@ namespace BrokerWebApp.otherinsurance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
+        /// pagemode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden pagemode;
+        
+        /// <summary>
         /// dxeSaveCallback control.
         /// </summary>
         /// <remarks>
@@ -39,6 +48,24 @@ namespace BrokerWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeSaveAndCheckCallback;
+        
+        /// <summary>
+        /// dxeAuditOkCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeAuditOkCallback;
+        
+        /// <summary>
+        /// dxeAuditBackCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeAuditBackCallback;
         
         /// <summary>
         /// nppagecontent control.
@@ -743,13 +770,13 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnAuditClose;
         
         /// <summary>
-        /// npExecuteAction control.
+        /// npNewExecuteAction control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel npExecuteAction;
+        protected global::System.Web.UI.WebControls.Panel npNewExecuteAction;
         
         /// <summary>
         /// tblNewExecuteAction control.

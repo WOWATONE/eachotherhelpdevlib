@@ -214,8 +214,7 @@
         }
 
         function policyBaseCompleteEnable() {
-
-            var result, panel;
+            
             if (pagemode.value == "input") {
                 npGridPolicyItemDetail.parentElement.removeAttribute('disabled');
                 npCostSummaryDetail.parentElement.removeAttribute('disabled', 'true');
