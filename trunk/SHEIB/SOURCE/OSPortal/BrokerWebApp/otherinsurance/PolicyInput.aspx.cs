@@ -219,13 +219,29 @@ namespace BrokerWebApp.otherinsurance
 
         protected void dxeGetGridPolicyItemTotalSummary_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            String Coverage = Convert.ToString(gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["Coverage"]));
-            String Premium = Convert.ToString(gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["Premium"]));
-            String Process = Convert.ToString(gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["Process"]));
+            object objval;
+            objval = gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["Coverage"]);
+            String Coverage = Convert.ToString(objval);
+            if (Convert.IsDBNull(objval))
+                Coverage = "0";
+            else
+                Coverage = Convert.ToString(objval);
 
-            if (String.IsNullOrEmpty(Coverage)) Coverage = "0";
-            if (String.IsNullOrEmpty(Premium)) Premium = "0";
-            if (String.IsNullOrEmpty(Process)) Process = "0";
+
+            objval = gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["Premium"]);
+            String Premium;
+            if (Convert.IsDBNull(objval))
+                Premium = "0";
+            else
+                Premium = Convert.ToString(objval);
+
+            objval = gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["Process"]);
+            String Process;
+            if (Convert.IsDBNull(objval))
+                Process = "0";
+            else
+                Process = Convert.ToString(objval); 
+            
 
             e.Result = Coverage + ";" + Premium + ";" + Process;
         }

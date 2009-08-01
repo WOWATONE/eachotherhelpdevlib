@@ -699,7 +699,113 @@
     </script>
 
     <script type="text/javascript">
-    
+
+        function gridPolicyItem_EndCallback(s, e) {
+            dxeGetGridPolicyItemTotalSummary.PerformCallback();
+        }
+
+        function dxeGetGridPolicyItemTotalSummaryCallbackComplete(s, e) {
+
+            var retrunval = e.result;
+            var thesplit_array = retrunval.split(";");
+            var sumCoverageVal = parseFloat(thesplit_array[0]);
+            var sumPremiumVal = parseFloat(thesplit_array[1]);
+
+            var rtn = sumCoverageVal.toFixed(2);
+            //dxetxtCoverage.SetValue(rtn);
+            rtn = sumPremiumVal.toFixed(2);
+            dxetxtCiPremium.SetValue(rtn);
+            
+            //division_ValueChanged(dxetxtPremium, dxetxtCoverage, dxetxtPremiumRate, true);
+            //division_ValueChanged(dxetxtProcess, dxetxtPremium, dxetxtProcessRate, true);
+        }
+
+        function gridCarrierCustomButtonClick(s, e) {
+            s.GetRowValues(e.visibleIndex, "CarrierID", getTheGridCarrierSelectedRowsValues);
+        }
+
+        function getTheGridCarrierSelectedRowsValues(selectedValues) {
+            if (selectedValues.length == 0) {
+                //
+            }
+            else {
+                var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
+                var querystring;
+                querystring = "PolicyReinsure.aspx?id=" + selectedValues;
+                window.showModalDialog(querystring, self, myArguments);
+            }
+        }
+
+        function multi_ValueChanged(t1, t2, t3, opt) {
+
+            var v1;
+            try {
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
+            }
+            catch (err) {
+                v1 = 0;
+            }
+
+            var v2;
+            try {
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
+            }
+            catch (err) {
+                v2 = 0;
+            }
+
+
+            var v3;
+            if (opt == true)
+                v3 = parseFloat(v1 * v2 / 100);
+            else
+                v3 = parseFloat(v1 * v2);
+
+            var rtn = v3.toFixed(2);
+            t3.SetValue(rtn);
+        }
+
+
+        function division_ValueChanged(t1, t2, t3, opt) {
+
+            var v1;
+            try {
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
+            }
+            catch (err) {
+                v1 = 0;
+            }
+
+            var v2;
+            try {
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
+            }
+            catch (err) {
+                v2 = 0;
+            }
+
+            var v3;
+            if (v2 == 0)
+                v3 = 0;
+            else {
+                if (opt == true)
+                    v3 = parseFloat(v1 / v2 * 100);
+                else
+                    v3 = parseFloat(v1 / v2);
+            }
+
+            var rtn = v3.toFixed(2);
+            t3.SetValue(rtn);
+        }
+        
     </script>
     
 </asp:Content>
@@ -727,6 +833,10 @@
         <ClientSideEvents CallbackComplete="function(s, e) {auditBackCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
     
+    <dxcb:ASPxCallback ID="dxeGetGridPolicyItemTotalSummary" ClientInstanceName="dxeGetGridPolicyItemTotalSummary"
+        runat="server" OnCallback="dxeGetGridPolicyItemTotalSummary_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {dxeGetGridPolicyItemTotalSummaryCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
     
     <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
         runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%" AutoPostBack="false" EnableCallBacks="true">
@@ -1134,6 +1244,8 @@
                                                             <SettingsPager Mode="ShowAllRecords" />
                                                             <Settings ShowGroupPanel="false" ShowFooter="true" />
                                                             <SettingsBehavior />
+                                                            <ClientSideEvents EndCallback="function(s, e) {gridPolicyItem_EndCallback();}" />
+                                                            
                                                             <Templates>
                                                                 <EditForm>
                                                                     <div style="padding: 4px 4px 3px 4px">

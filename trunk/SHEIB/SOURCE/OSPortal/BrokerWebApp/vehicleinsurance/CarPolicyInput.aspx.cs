@@ -270,6 +270,27 @@ namespace BrokerWebApp.vehicleinsurance
             e.Result = "complete";
         }
 
+        protected void dxeGetGridPolicyItemTotalSummary_Callback(object source, 
+            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            object objval;
+            objval = gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["Coverage"]);
+            String Coverage = Convert.ToString(objval);
+            if (Convert.IsDBNull(objval))
+                Coverage = "0";
+            else
+                Coverage = Convert.ToString(objval);
+            
+            
+            objval = gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["Premium"]);
+            String Premium;
+            if (Convert.IsDBNull(objval))
+                Premium = "0";
+            else
+                Premium = Convert.ToString(objval);            
+            
+            e.Result = Coverage + ";" + Premium;
+        }
 
         #endregion CallBack Events
 
