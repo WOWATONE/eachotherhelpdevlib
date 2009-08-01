@@ -9,6 +9,7 @@ using Microsoft.VisualBasic;
 using BusinessObjects;
 using BusinessObjects.SchemaSetting;
 using DevExpress.Web.ASPxEditors;
+using DevExpress.Web.ASPxGridView;
 
 namespace BrokerWebApp.vehicleinsurance
 {
@@ -46,6 +47,24 @@ namespace BrokerWebApp.vehicleinsurance
             this.gridSearchResult.CancelEdit();
         }
 
+        protected void gridSearchResult_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data || e.RowType == GridViewRowType.EmptyDataRow)
+            {
+                GridViewCommandColumn theCommandColumn = getCommandColumnLoop();
+                if (this.dxeddlCheckState.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCheckState.SelectedItem.Value.ToString()))
+                {
+                    if (this.dxeddlCheckState.SelectedItem.Value.ToString() == "2")
+                        theCommandColumn.CustomButtons[0].Text = "反审核";
+                }
+                else
+                {
+                    //
+                }
+
+            }
+        }
 
         protected void gridSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
@@ -60,7 +79,16 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            String where = " and ISNULL(A1.PolicyStatus,'0') = '1' ";
+            String where = "";
+
+            if (this.dxeddlCheckState.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCheckState.SelectedItem.Value.ToString()))
+            {
+                where = where + " AND ISNULL(A1.PolicyStatus,'0') = '" + dxeddlCheckState.SelectedItem.Value.ToString() + "' ";
+            }
+            else
+            {
+                where = where + " AND ISNULL(A1.PolicyStatus,'0') = '1' ";
+            }
 
             if (!String.IsNullOrEmpty(this.dxetxtAskPriceID.Text))
             {
@@ -218,7 +246,19 @@ namespace BrokerWebApp.vehicleinsurance
 
         }
 
-
+        private GridViewCommandColumn getCommandColumnLoop()
+        {
+            GridViewCommandColumn theCommandColumn = null;
+            foreach (GridViewColumn item in gridSearchResult.VisibleColumns)
+            {
+                if (item.GetType() == typeof(GridViewCommandColumn))
+                {
+                    theCommandColumn = (GridViewCommandColumn)item;
+                    break;
+                }
+            }
+            return theCommandColumn;
+        }
 
 
         

@@ -377,9 +377,19 @@ namespace BusinessObjects.Policy
 
             _db.ExecuteNonQuery(dbCommand);
 
-            resultSign = Convert.ToInt32(_db.GetParameterValue(dbCommand, "@ai_dm"));
-            resultMsg = Convert.ToString(_db.GetParameterValue(dbCommand, "@ac_sm"));
-
+            if (Convert.IsDBNull(_db.GetParameterValue(dbCommand, "@ai_dm")))
+            {
+                resultSign = 0;
+            }
+            else
+            {
+                resultSign = Convert.ToInt32(_db.GetParameterValue(dbCommand, "@ai_dm"));
+            }
+            if (Convert.IsDBNull(_db.GetParameterValue(dbCommand, "@ac_sm")))
+                resultMsg = "";
+            else
+                resultMsg = Convert.ToString(_db.GetParameterValue(dbCommand, "@ac_sm"));
+            
         }
 
 

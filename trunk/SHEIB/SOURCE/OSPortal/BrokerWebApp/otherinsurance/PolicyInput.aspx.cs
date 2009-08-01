@@ -165,8 +165,11 @@ namespace BrokerWebApp.otherinsurance
                 this.Page.Title = "保单审核";
                 if (!Page.IsPostBack)
                 {
-                    this.dxetxtAuditPerson.Text = this.CurrentUserName;
-                    this.dxeCheckDate.Date = DateTime.Now;
+                    if (String.IsNullOrEmpty(this.dxetxtAuditPerson.Text))
+                    {
+                        this.dxetxtAuditPerson.Text = this.CurrentUserName;
+                        this.dxeCheckDate.Date = DateTime.Now;
+                    }
                     BusinessObjects.Policy.BO_Policy obj;
                     obj = new BusinessObjects.Policy.BO_Policy(this.dxetxtPolicyID.Text.Trim());
 
