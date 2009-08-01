@@ -818,7 +818,8 @@
                                                         OnStartRowEditing="gridPolicyItem_StartRowEditing" 
                                                         OnRowValidating="gridPolicyItem_RowValidating" 
                                                         OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
-                                                        OnCustomCallback="gridPolicyItem_CustomCallback" OnHtmlRowCreated="gridPolicyItem_HtmlRowCreated"
+                                                        OnCustomCallback="gridPolicyItem_CustomCallback" 
+                                                        OnHtmlRowCreated="gridPolicyItem_HtmlRowCreated"
                                                         >
                                                         <%-- BeginRegion Columns --%>
                                                         <Columns>                                                                        
@@ -997,39 +998,41 @@
                                     <dxcp:ASPxCallbackPanel runat="server" ID="filesUploadControlPanel" ClientInstanceName="filesUploadControlPanel" 
                                     OnCallback="filesUploadControlPanel_Callback"
                                     >
-                                    <PanelCollection> 
-                                    <dxrp:PanelContent runat="server"> 
-                                    
-                                    <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl" 
-                                        runat="server" ShowAddRemoveButtons="True"
-                                        Width="400px" ShowUploadButton="True" 
-                                        AddUploadButtonsHorizontalPosition="Center"
-                                        ShowProgressPanel="True" 
-                                        FileInputCount="5" RemoveButtonSpacing="8px" 
-                                        AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
-                                        OnFileUploadComplete="UploadControl_FileUploadComplete"
-                                        >
-                                        <ValidationSettings MaxFileSize="4000000" 
-                                        FileDoesNotExistErrorText="文件不存在" 
-                                        GeneralErrorText="上传发生错误" 
-                                        MaxFileSizeErrorText="文件太大" 
-                                        NotAllowedContentTypeErrorText="不允许上传此类型文件">
-                                        </ValidationSettings>
-                                        <ClientSideEvents 
-                                            FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" 
-                                            FileUploadStart="function(s, e) { FileUploadStart(s, e); }"  />
-                                        <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
-                                            ImagePosition="Left">
-                                        </RemoveButton>
-                                        <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
-                                            ImagePosition="Left">
-                                        </AddButton>
-                                        <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
-                                            ImagePosition="Left">                                            
-                                        </UploadButton>                                        
-                                    </dxuc:ASPxUploadControl>
-                                    
-                                    </dxrp:PanelContent> </PanelCollection> </dxcp:ASPxCallbackPanel>
+                                        <PanelCollection> 
+                                            <dxrp:PanelContent ID="filesUploadControlPanelContent" runat="server"> 
+                                            
+                                                <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl" 
+                                                    runat="server" ShowAddRemoveButtons="True"
+                                                    Width="400px" ShowUploadButton="True" 
+                                                    AddUploadButtonsHorizontalPosition="Center"
+                                                    ShowProgressPanel="True" 
+                                                    FileInputCount="5" RemoveButtonSpacing="8px" 
+                                                    AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
+                                                    OnFileUploadComplete="UploadControl_FileUploadComplete"
+                                                    >
+                                                    <ValidationSettings MaxFileSize="4000000" 
+                                                    FileDoesNotExistErrorText="文件不存在" 
+                                                    GeneralErrorText="上传发生错误" 
+                                                    MaxFileSizeErrorText="文件太大" 
+                                                    NotAllowedContentTypeErrorText="不允许上传此类型文件">
+                                                    </ValidationSettings>
+                                                    <ClientSideEvents 
+                                                        FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" 
+                                                        FileUploadStart="function(s, e) { FileUploadStart(s, e); }"  />
+                                                    <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
+                                                        ImagePosition="Left">
+                                                    </RemoveButton>
+                                                    <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
+                                                        ImagePosition="Left">
+                                                    </AddButton>
+                                                    <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
+                                                        ImagePosition="Left">                                            
+                                                    </UploadButton>                                        
+                                                </dxuc:ASPxUploadControl>
+                                            
+                                            </dxrp:PanelContent> 
+                                        </PanelCollection> 
+                                    </dxcp:ASPxCallbackPanel>
                                 </td>
                             </tr>
                             <tr>

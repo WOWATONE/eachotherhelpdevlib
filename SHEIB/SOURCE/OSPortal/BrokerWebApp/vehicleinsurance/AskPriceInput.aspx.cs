@@ -16,6 +16,8 @@ using BusinessObjects;
 using BusinessObjects.SchemaSetting;
 using BusinessObjects.Policy;
 using DevExpress.Web.ASPxGridView;
+using DevExpress.Web.ASPxGridView.Rendering;
+using DevExpress.Web.ASPxClasses.Internal;
 
 namespace BrokerWebApp.vehicleinsurance
 {
@@ -38,8 +40,7 @@ namespace BrokerWebApp.vehicleinsurance
         public enum PageMode
         {
             Input,
-            Audit,
-            Query
+            Audit
         }
 
         private Nullable<PageMode> pm;
@@ -77,9 +78,6 @@ namespace BrokerWebApp.vehicleinsurance
                         break;                    
                     case "audit":
                         pm = PageMode.Audit;
-                        break;
-                    case "query":
-                        pm = PageMode.Query;
                         break;
                     default:
                         pm = PageMode.Input;
@@ -123,23 +121,12 @@ namespace BrokerWebApp.vehicleinsurance
                 }
             }
             else
-            {
-                
+            {                
                 tbltrAuditExecuteAction.Visible = false;
                 npExecuteAction.Visible = true;
                 this.dxetxtAuditPerson.Enabled = false;
                 this.dxeAuditTime.Enabled = false;
-                this.dxeMemo.Enabled = false;
-
-                if (this.pm == PageMode.Query)
-                {
-                    dxebtnAuditOk.Visible = false;
-                    dxebtnAuditClose.Visible = false;
-                    dxebtnBottomAdd.Visible = false;
-                    dxebtnBottomCheck.Visible = false;
-                    dxebtntopSave.Visible = false;
-                    dxebtnBottomSave.Visible = false;
-                }
+                this.dxeMemo.Enabled = false;                
             }
  
         }
@@ -277,6 +264,7 @@ namespace BrokerWebApp.vehicleinsurance
 
 
         #endregion Tab Events
+
 
         #region CallBack Events
 
@@ -650,12 +638,47 @@ namespace BrokerWebApp.vehicleinsurance
             getInitPolicyData();  
         }
 
+
         protected void gridPolicyItem_HtmlRowCreated(object sender,
             ASPxGridViewTableRowEventArgs e)
         {
-            //
+            if (e.RowType == GridViewRowType.Data)
+            {
+                String state ="0";
+                object obj = e.GetValue("PolicyStatus");
+                if (Convert.IsDBNull(obj))
+                {
+                    state = "0";
+                }
+                else
+                {
+                    state = Convert.ToString(obj);
+                }
+
+                GridViewCommandColumn objgcc = getCommandColumnLoop(this.gridPolicyItem);
+                if (state == "1" || state == "2")
+                {
+                    //e.Row.Enabled = false;
+                    GridViewCommandColumnButtonControl thebtn;
+                    thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
+                    thebtn.Enabled = false;
+
+                    thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[1];
+                    thebtn.Enabled = false;
+                    InternalHyperLink theIHL = (InternalHyperLink)thebtn.Controls[0];
+                    theIHL.Text = "查看";
+                }
+                else
+                {
+                    e.Row.Enabled = true;
+                }
+
+
+            }
+            
         }
 
+        
         private void getInitPolicyData()
         {
             String where = " and B.AskPriceID != '' and B.AskPriceID = '" + this.dxetxtAskPriceID.Text.Trim() + "'";
@@ -1002,7 +1025,7 @@ namespace BrokerWebApp.vehicleinsurance
                     theCommandColumn = (GridViewCommandColumn)item;
                     break;
                 }
-            }
+            }            
             return theCommandColumn;
         }
 
