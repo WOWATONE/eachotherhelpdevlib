@@ -179,9 +179,14 @@
 									</Items>
 								</dxe:ASPxComboBox>
                             </td>
-                            <td style="text-align: right;">
-                            </td>
-                            <td style="text-align: left;">
+                            <td style="text-align:right;">ÉóºË×´Ì¬£º</td>
+                            <td style="text-align:left;">
+                                <dxe:ASPxComboBox ID="dxeddlCheckState" ClientInstanceName="dxeddlCheckState" runat="server" Width="140px" DropDownStyle="DropDownList">
+									<Items>
+										<dxe:ListEditItem Text="´ýÉóºË" Value="1" />
+										<dxe:ListEditItem Text="ÒÑÉóºË" Value="2" />
+									</Items>
+								</dxe:ASPxComboBox> 
                             </td>
                             <td>
                             </td>

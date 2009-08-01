@@ -53,16 +53,22 @@ namespace BrokerWebApp.otherinsurance
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-
+            GridViewCommandColumn theCommandColumn = getCommandColumnLoop();
+                
             string lsWhere = "";
 
             if (this.dxeddlCheckState.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCheckState.SelectedItem.Value.ToString()))
             {
                 lsWhere = lsWhere + " AND ISNULL(B.PolicyStatus,'0') = '" + dxeddlCheckState.SelectedItem.Value.ToString() + "' ";
+                if (this.dxeddlCheckState.SelectedItem.Value.ToString() == "2")
+                    theCommandColumn.CustomButtons[0].Text = "反审核";
+                else
+                    theCommandColumn.CustomButtons[0].Text = "审核";
             }
             else
             {
                 lsWhere = lsWhere + " AND ISNULL(B.PolicyStatus,'0') = '1' ";
+                theCommandColumn.CustomButtons[0].Text = "审核";
             }
 
             
@@ -134,20 +140,7 @@ namespace BrokerWebApp.otherinsurance
         protected void gridSearchResult_HtmlRowCreated(object sender, 
             ASPxGridViewTableRowEventArgs e)
         {
-            if (e.RowType == GridViewRowType.Data || e.RowType == GridViewRowType.EmptyDataRow)
-            {
-                GridViewCommandColumn theCommandColumn = getCommandColumnLoop();
-                if (this.dxeddlCheckState.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCheckState.SelectedItem.Value.ToString()))
-                {
-                    if (this.dxeddlCheckState.SelectedItem.Value.ToString() == "2")
-                        theCommandColumn.CustomButtons[0].Text = "反审核";
-                }
-                else
-                {
-                    //
-                }
-                
-            }            
+            //            
         }
 
         private GridViewCommandColumn getCommandColumnLoop()

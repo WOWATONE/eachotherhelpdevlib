@@ -9,6 +9,7 @@ using Microsoft.VisualBasic;
 using BusinessObjects;
 using BusinessObjects.SchemaSetting;
 using DevExpress.Web.ASPxEditors;
+using DevExpress.Web.ASPxGridView;
 
 namespace BrokerWebApp.vehicleinsurance
 {
@@ -61,7 +62,23 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            String where = " and ISNULL(B.PolicyStatus,'0') = '1' and ISNULL(B.AskPriceID,'') != '' ";
+            GridViewCommandColumn theCommandColumn = getCommandColumnLoop();
+
+            String where = "";//" and ISNULL(B.PolicyStatus,'0') = '1' and ISNULL(B.AskPriceID,'') != '' ";
+            if (this.dxeddlCheckState.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCheckState.SelectedItem.Value.ToString()))
+            {
+                where = where + " AND ISNULL(B.PolicyStatus,'0') = '" + dxeddlCheckState.SelectedItem.Value.ToString() + "' ";
+                if (this.dxeddlCheckState.SelectedItem.Value.ToString() == "2")
+                    theCommandColumn.CustomButtons[0].Text = "反审核";
+                else
+                    theCommandColumn.CustomButtons[0].Text = "审核";
+            }
+            else
+            {
+                where = where + " AND ISNULL(B.PolicyStatus,'0') = '1' ";
+                theCommandColumn.CustomButtons[0].Text = "审核";
+            }
+
 
             if (!String.IsNullOrEmpty(this.dxetxtAskPriceID.Text))
             {
@@ -234,6 +251,21 @@ namespace BrokerWebApp.vehicleinsurance
             DevExpress.Web.ASPxTabControl.TabControlEventArgs e)
         {
             //
+        }
+
+
+        private GridViewCommandColumn getCommandColumnLoop()
+        {
+            GridViewCommandColumn theCommandColumn = null;
+            foreach (GridViewColumn item in gridSearchResult.VisibleColumns)
+            {
+                if (item.GetType() == typeof(GridViewCommandColumn))
+                {
+                    theCommandColumn = (GridViewCommandColumn)item;
+                    break;
+                }
+            }
+            return theCommandColumn;
         }
 
 
