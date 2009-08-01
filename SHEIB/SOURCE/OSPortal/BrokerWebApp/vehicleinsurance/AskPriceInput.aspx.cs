@@ -15,6 +15,7 @@ using System.Runtime.Serialization.Json;
 using BusinessObjects;
 using BusinessObjects.SchemaSetting;
 using BusinessObjects.Policy;
+using DevExpress.Web.ASPxGridView;
 
 namespace BrokerWebApp.vehicleinsurance
 {
@@ -42,6 +43,8 @@ namespace BrokerWebApp.vehicleinsurance
         }
 
         private Nullable<PageMode> pm;
+
+        private Boolean gridItemEnabled = true;
 
         #endregion Variables
 
@@ -245,6 +248,35 @@ namespace BrokerWebApp.vehicleinsurance
 
         #endregion Page Events
 
+
+        #region Tab Events
+
+
+        protected void insuranceDetailTabPage_ActiveTabChanged(object source, DevExpress.Web.ASPxTabControl.TabControlEventArgs e)
+        {
+            BusinessObjects.Policy.BO_CarPolicy obj;
+            obj = new BusinessObjects.Policy.BO_CarPolicy(this.dxetxtAskPriceID.Text.Trim());
+            String state = Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.AppealAudit).ToString();
+            
+            if (this.insuranceDetailTabPage.ActiveTabIndex == 1)
+            {
+                rebindGridDocList();
+                if (this.pm == PageMode.Audit || obj.PolicyStatus == state)
+                    filesUploadControl.Enabled = false;
+            }
+
+            if (this.insuranceDetailTabPage.ActiveTabIndex == 2 || obj.PolicyStatus == state)
+            {
+                rebindGridDocList();
+                if (this.pm == PageMode.Audit)
+                    filesUploadControl.Enabled = false;
+            }
+
+            
+        }
+
+
+        #endregion Tab Events
 
         #region CallBack Events
 
@@ -613,9 +645,16 @@ namespace BrokerWebApp.vehicleinsurance
             DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
             String theParam = e.Parameters;
-            getInitPolicyData();
+            if (theParam == "unabled")
+                this.gridPolicyItem.Enabled = false; 
+            getInitPolicyData();  
         }
 
+        protected void gridPolicyItem_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            //
+        }
 
         private void getInitPolicyData()
         {
@@ -715,6 +754,15 @@ namespace BrokerWebApp.vehicleinsurance
             this.gridDocList.DataBind();
         }
 
+
+        protected void filesUploadControlPanel_Callback(object source, 
+            DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            String theParam = e.Parameter;
+            if (theParam == "unabled")
+                this.filesUploadControl.Enabled = false; 
+            
+        }
 
         #endregion Upload File  Events
 
@@ -942,6 +990,22 @@ namespace BrokerWebApp.vehicleinsurance
             BusinessObjects.Policy.BO_CarPolicy.AuditCarPolicySubmit(theID, state, this.CurrentUserID, ref resultSign, ref resultMSG);
 
         }
+
+
+        private GridViewCommandColumn getCommandColumnLoop(ASPxGridView grid)
+        {
+            GridViewCommandColumn theCommandColumn = null;
+            foreach (GridViewColumn item in grid.VisibleColumns)
+            {
+                if (item.GetType() == typeof(GridViewCommandColumn))
+                {
+                    theCommandColumn = (GridViewCommandColumn)item;
+                    break;
+                }
+            }
+            return theCommandColumn;
+        }
+
 
         #endregion Privates
 

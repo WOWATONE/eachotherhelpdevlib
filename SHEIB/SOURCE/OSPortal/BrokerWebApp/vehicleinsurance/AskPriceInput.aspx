@@ -10,7 +10,8 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl" TagPrefix="dxuc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
-<%@ OutputCache Location="None" NoStore="true" %>  
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallbackPanel" TagPrefix="dxcp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>询价单录入</title>
     
@@ -20,8 +21,8 @@
         var npGridPolicyItemDetail = null;
         var tblNewExecuteAction = null;
         var tbltrAuditExecuteAction = null;
-        
-        
+
+
         function getServerControlRefStubs() {
             if ($("#<%=pagemode.ClientID %>").length > 0) {
                 pagemode = $("#<%=pagemode.ClientID %>")[0];
@@ -101,6 +102,7 @@
         }
 
         function setOnlyDxeButtonsUnableOrEnable(val) {
+            
             if (typeof(dxebtnBottomAdd) != 'undefined' && dxebtnBottomAdd != null)
                 dxebtnBottomAdd.SetEnabled(val);
 
@@ -214,7 +216,6 @@
 
 
         function dxebtntopSave_Click(s, e) {
-            //
             if (s.CauseValidation()) {
                 var thejsonstring = makePolicyJSON();
                 dxeSaveCallback.PerformCallback(thejsonstring);
@@ -257,7 +258,11 @@
             switch (theresult) {
                 case "0":
                     setOnlyDxeButtonsUnableOrEnable(false);
-                    alert("提交成功");                    
+                    dxebtntopSave.SetEnabled(false);
+                    gridPolicyItem.PerformCallback("unabled");
+                    if (typeof (filesUploadControlPanel) != 'undefined' && filesUploadControlPanel != null)
+                        filesUploadControlPanel.PerformCallback("unabled");                  
+                    alert("提交成功");
                     break
                 default:
                    alert(theresult);
@@ -577,7 +582,7 @@
     
     
     <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
-        runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%" AutoPostBack="false" EnableCallBacks="true">
+        runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%" AutoPostBack="false" EnableCallBacks="true" OnActiveTabChanged="insuranceDetailTabPage_ActiveTabChanged">
         <ClientSideEvents ActiveTabChanging="function(s, e) {}" TabClick="function(s, e) {}" />
         <TabPages>
             <dxtc:TabPage Text="基本信息">
@@ -813,7 +818,7 @@
                                                         OnStartRowEditing="gridPolicyItem_StartRowEditing" 
                                                         OnRowValidating="gridPolicyItem_RowValidating" 
                                                         OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
-                                                        OnCustomCallback="gridPolicyItem_CustomCallback"
+                                                        OnCustomCallback="gridPolicyItem_CustomCallback" OnHtmlRowCreated="gridPolicyItem_HtmlRowCreated"
                                                         >
                                                         <%-- BeginRegion Columns --%>
                                                         <Columns>                                                                        
@@ -847,7 +852,6 @@
                                                             </dxwgv:GridViewDataColumn>
                                                         </Columns>
                                                         <TotalSummary>
-                                                            <dxwgv:ASPxSummaryItem FieldName="CarNo" SummaryType="Count" DisplayFormat="车辆数目:#" />
                                                             <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" DisplayFormat="c" />
                                                             <dxwgv:ASPxSummaryItem FieldName="CiProcess" SummaryType="Sum" DisplayFormat="c" />
                                                             <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" DisplayFormat="c" />
@@ -990,6 +994,12 @@
                             </tr>
                             <tr>
                                 <td style="width: 100%; text-align: left;">
+                                    <dxcp:ASPxCallbackPanel runat="server" ID="filesUploadControlPanel" ClientInstanceName="filesUploadControlPanel" 
+                                    OnCallback="filesUploadControlPanel_Callback"
+                                    >
+                                    <PanelCollection> 
+                                    <dxrp:PanelContent runat="server"> 
+                                    
                                     <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl" 
                                         runat="server" ShowAddRemoveButtons="True"
                                         Width="400px" ShowUploadButton="True" 
@@ -1018,6 +1028,8 @@
                                             ImagePosition="Left">                                            
                                         </UploadButton>                                        
                                     </dxuc:ASPxUploadControl>
+                                    
+                                    </dxrp:PanelContent> </PanelCollection> </dxcp:ASPxCallbackPanel>
                                 </td>
                             </tr>
                             <tr>
