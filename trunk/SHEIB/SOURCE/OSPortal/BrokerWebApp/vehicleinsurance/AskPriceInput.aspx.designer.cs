@@ -374,6 +374,15 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::DevExpress.Web.ASPxCallbackPanel.ASPxCallbackPanel filesUploadControlPanel;
         
         /// <summary>
+        /// filesUploadControlPanelContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxRoundPanel.PanelContent filesUploadControlPanelContent;
+        
+        /// <summary>
         /// filesUploadControl control.
         /// </summary>
         /// <remarks>

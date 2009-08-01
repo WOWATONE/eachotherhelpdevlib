@@ -1,4 +1,4 @@
-﻿<%@ Page Title="车辆保单信息录入" Theme="Aqua" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" CodeBehind="CarPolicyInput.aspx.cs" Inherits="BrokerWebApp.vehicleinsurance.CarPolicyInput" %>
+﻿<%@ Page Title="车辆保单信息录入" Theme="Aqua" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="True" CodeBehind="CarPolicyInput.aspx.cs" Inherits="BrokerWebApp.vehicleinsurance.CarPolicyInput" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
@@ -9,6 +9,7 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl" TagPrefix="dxuc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallbackPanel" TagPrefix="dxcp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>车辆保单信息录入</title>
@@ -272,6 +273,7 @@
             if (isEmpty(pid)) {
                 dxetxtPolicyID.SetValue(e.result);
             }
+            alert("保存成功。");
         }
 
         function btnAddClick(s, e) {
@@ -294,7 +296,19 @@
 
 
         function saveCheckCallbackComplete(s, e) {
-            setOnlyDxeButtonsUnableOrEnable(false);
+            var theresult = e.result;
+            switch (theresult) {
+                case "0":
+                    setOnlyDxeButtonsUnableOrEnable(false);
+                    dxebtntopSave.SetEnabled(false);
+                    gridPolicyItem.PerformCallback("unabled");
+                    if (typeof (filesUploadControlPanel) != 'undefined' && filesUploadControlPanel != null)
+                        filesUploadControlPanel.PerformCallback("unabled");
+                    alert("提交成功");
+                    break
+                default:
+                    alert(theresult);
+            }
         }
 
 
@@ -548,7 +562,12 @@
 
             var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
 
-            dxeAuditOkCallback.PerformCallback(jsonStringClient);
+            var titleMSG = "确定退回吗？";
+
+            var sureOk = window.confirm(titleMSG)
+            if (sureOk) {
+                dxeAuditBackCallback.PerformCallback(jsonStringClient);
+            }
 
         }
 
@@ -556,18 +575,21 @@
         function auditBackCallbackComplete(s, e) {
             //do nothing;
             setOnlyDxeButtonsUnableOrEnable(false);
+            alert("退回成功");
         }
 
         function dxebtnAuditOkClick(s, e) {
-            //debugger;
+            var titleMSG = "确定吗？";            
             var buttonID = s.GetText();
             var AuditOrNot;
             switch (buttonID) {
                 case "通过审核":
                     AuditOrNot = true;
+                    titleMSG = "确定审核吗？";
                     break
                 case "反审核":
                     AuditOrNot = false;
+                    titleMSG = "确定反审核吗？";
                     break
                 default:
                     //do nothing;
@@ -625,24 +647,25 @@
 
             var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
 
-            dxeAuditOkCallback.PerformCallback(jsonStringClient);
+            var sureOk = window.confirm(titleMSG)
+            if (sureOk) {
+                dxeAuditOkCallback.PerformCallback(jsonStringClient);            
+            }
 
         }
 
         function auditOkCallbackComplete(s, e) {
-
-            setOnlyDxeButtonsUnableOrEnable(false);
-            dxebtnAuditOk.SetEnabled(true);
             var buttonID = dxebtnAuditOk.GetText();
-            switch (buttonID) {
-                case "通过审核":
-                    dxebtnAuditOk.SetText("反审核");
-                    break
-                case "反审核":
-                    dxebtnAuditOk.SetText("通过审核");
+            var titleMSG = buttonID + "成功完成";
+            var theresult = e.result;
+            switch (theresult) {
+                case "0":
+                    setOnlyDxeButtonsUnableOrEnable(false);
+                    dxebtnAuditOk.SetEnabled(true);
+                    alert(titleMSG);
                     break
                 default:
-                    //do nothing;
+                    alert(theresult);
             }
 
         }
@@ -842,7 +865,7 @@
             var v4;
             v4 = parseFloat(v1 + v2 + v3);
 
-            var rtn = v3.toFixed(2);
+            var rtn = v4.toFixed(2);
             t4.SetValue(rtn);
         }
 
@@ -910,7 +933,7 @@
     </dxcb:ASPxCallback>
     
     <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
-        runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%" AutoPostBack="false" EnableCallBacks="true">
+        runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%" AutoPostBack="false" EnableCallBacks="true" OnActiveTabChanged="insuranceDetailTabPage_ActiveTabChanged">
         <ClientSideEvents ActiveTabChanging="function(s, e) {}" TabClick="function(s, e) {}" />
         <TabPages>
             <dxtc:TabPage Text="基本信息">
@@ -1283,7 +1306,8 @@
                                                             OnRowUpdating="gridPolicyItem_RowUpdating" 
                                                             OnRowDeleting="gridPolicyItem_RowDeleting" 
                                                             OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
-                                                            OnRowValidating="gridPolicyItem_RowValidating"
+                                                            OnRowValidating="gridPolicyItem_RowValidating" 
+                                                            OnCustomCallback="gridPolicyItem_CustomCallback"
                                                             >
                                                             <%-- BeginRegion Columns --%>
                                                             <Columns>
@@ -1304,6 +1328,8 @@
                                                                 <dxwgv:GridViewDataColumn FieldName="PolicyId" Caption="PolicyId" CellStyle-Wrap="False" Visible="false">
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="ProdID" Caption="ProdID" CellStyle-Wrap="False" Visible="false">
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="PolicyStatus" Caption="PolicyStatus" CellStyle-Wrap="False" Visible="false">
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                             <TotalSummary>
@@ -1415,7 +1441,8 @@
                                                             </ValidationSettings>
                                                             <ClientSideEvents ValueChanged="function(s,e){
                                                                 add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
-                                                                division_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,true);
+                                                                multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,true);
+                                                                add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                 }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
@@ -1429,7 +1456,8 @@
                                                             </ValidationSettings>
                                                             <ClientSideEvents ValueChanged="function(s,e){
                                                                 add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
-                                                                division_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,true);
+                                                                multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,true);
+                                                                add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                 }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
@@ -1468,7 +1496,8 @@
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
                                                             <ClientSideEvents ValueChanged="function(s,e){
-                                                                division_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,true);
+                                                                multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,true);
+                                                                add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                 }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
@@ -1481,7 +1510,8 @@
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
                                                             <ClientSideEvents ValueChanged="function(s,e){
-                                                                division_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,true);
+                                                                multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,true);
+                                                                add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                 }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
@@ -1561,34 +1591,43 @@
                             </tr>
                             <tr>
                                 <td style="width: 100%; text-align: left;">
-                                    <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl" 
-                                        runat="server" ShowAddRemoveButtons="True"
-                                        Width="400px" ShowUploadButton="True" 
-                                        AddUploadButtonsHorizontalPosition="Center"
-                                        ShowProgressPanel="True" 
-                                        FileInputCount="5" RemoveButtonSpacing="8px" 
-                                        AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
-                                        OnFileUploadComplete="UploadControl_FileUploadComplete"
-                                        >
-                                        <ValidationSettings MaxFileSize="4000000" 
-                                        FileDoesNotExistErrorText="文件不存在" 
-                                        GeneralErrorText="上传发生错误" 
-                                        MaxFileSizeErrorText="文件太大" 
-                                        NotAllowedContentTypeErrorText="不允许上传此类型文件">
-                                        </ValidationSettings>
-                                        <ClientSideEvents 
-                                            FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" 
-                                            FileUploadStart="function(s, e) { FileUploadStart(s, e); }"  />
-                                        <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
-                                            ImagePosition="Left">
-                                        </RemoveButton>
-                                        <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
-                                            ImagePosition="Left">
-                                        </AddButton>
-                                        <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
-                                            ImagePosition="Left">                                            
-                                        </UploadButton>                                        
-                                    </dxuc:ASPxUploadControl>
+                                    <dxcp:ASPxCallbackPanel runat="server" ID="filesUploadControlPanel" ClientInstanceName="filesUploadControlPanel" 
+                                    OnCallback="filesUploadControlPanel_Callback"
+                                    >
+                                        <PanelCollection> 
+                                            <dxrp:PanelContent ID="filesUploadControlPanelContent" runat="server"> 
+                                            
+                                                <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl" 
+                                                    runat="server" ShowAddRemoveButtons="True"
+                                                    Width="400px" ShowUploadButton="True" 
+                                                    AddUploadButtonsHorizontalPosition="Center"
+                                                    ShowProgressPanel="True" 
+                                                    FileInputCount="5" RemoveButtonSpacing="8px" 
+                                                    AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
+                                                    OnFileUploadComplete="UploadControl_FileUploadComplete"
+                                                    >
+                                                    <ValidationSettings MaxFileSize="4000000" 
+                                                    FileDoesNotExistErrorText="文件不存在" 
+                                                    GeneralErrorText="上传发生错误" 
+                                                    MaxFileSizeErrorText="文件太大" 
+                                                    NotAllowedContentTypeErrorText="不允许上传此类型文件">
+                                                    </ValidationSettings>
+                                                    <ClientSideEvents 
+                                                        FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" 
+                                                        FileUploadStart="function(s, e) { FileUploadStart(s, e); }"  />
+                                                    <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
+                                                        ImagePosition="Left">
+                                                    </RemoveButton>
+                                                    <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
+                                                        ImagePosition="Left">
+                                                    </AddButton>
+                                                    <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
+                                                        ImagePosition="Left">                                            
+                                                    </UploadButton>                                        
+                                                </dxuc:ASPxUploadControl>
+                                            </dxrp:PanelContent> 
+                                        </PanelCollection> 
+                                    </dxcp:ASPxCallbackPanel>
                                 </td>
                             </tr>
                             <tr>

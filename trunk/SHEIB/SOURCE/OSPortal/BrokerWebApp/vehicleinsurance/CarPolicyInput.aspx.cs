@@ -30,6 +30,7 @@ namespace BrokerWebApp.vehicleinsurance
         private const string inputQueryStringPageModeKey = "pagemode";
         private const string inputQueryStringAskPriceidKey = "askpriceid";
         private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
+        private const string policyNoExist = "policynoexist";
 
 
         private Boolean gridPolicyItemStartEdit = false;
@@ -37,8 +38,7 @@ namespace BrokerWebApp.vehicleinsurance
         public enum PageMode
         {
             Input,
-            Audit,
-            Query
+            Audit
         }
 
         private Nullable<PageMode> pm;
@@ -77,9 +77,6 @@ namespace BrokerWebApp.vehicleinsurance
                         this.dxetxtAuditPerson.Text = this.CurrentUserName;
                         this.dxeAuditTime.Date = DateTime.Now; 
                         break;
-                    case "query":
-                        pm = PageMode.Query;
-                        break;
                     default:
                         pm = PageMode.Input;
                         break;
@@ -108,25 +105,29 @@ namespace BrokerWebApp.vehicleinsurance
                 this.gridPolicyItem.Enabled = false;
                 this.filesUploadControl.Enabled = false;
                 switchBasicInfoControlsEnable(false);
+                
+                if (String.IsNullOrEmpty(this.dxetxtAuditPerson.Text))
+                {
+                    this.dxetxtAuditPerson.Text = this.CurrentUserName;
+                    this.dxeAuditTime.Date = DateTime.Now;
+                }
+                BusinessObjects.Policy.BO_Policy obj;
+                obj = new BusinessObjects.Policy.BO_Policy(this.dxetxtPolicyID.Text.Trim());
+
+                if (obj.PolicyStatus == Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString())
+                {
+                    this.dxebtnAuditOk.Text = "反审核";
+                    this.dxebtnAuditBack.ClientEnabled = false;
+                }
+
             }
             else
             {
-
                 tbltrAuditExecuteAction.Visible = false;
                 npExecuteAction.Visible = true;
                 this.dxetxtAuditPerson.Enabled = false;
                 this.dxeAuditTime.Enabled = false;
-                this.dxeMemo.Enabled = false;
-
-                if (this.pm == PageMode.Query)
-                {
-                    dxebtnAuditOk.Visible = false;
-                    dxebtnAuditClose.Visible = false;
-                    dxebtnBottomAdd.Visible = false;
-                    dxebtnBottomCheck.Visible = false;
-                    dxebtntopSave.Visible = false;
-                    dxebtnBottomSave.Visible = false;
-                }
+                this.dxeMemo.Enabled = false;                
             }
 
         }
@@ -237,6 +238,37 @@ namespace BrokerWebApp.vehicleinsurance
         #endregion Page Events
 
 
+        #region Tab Events
+
+
+        protected void insuranceDetailTabPage_ActiveTabChanged(object source, 
+            DevExpress.Web.ASPxTabControl.TabControlEventArgs e)
+        {
+            BusinessObjects.Policy.BO_Policy obj;
+            obj = new BusinessObjects.Policy.BO_Policy(this.dxetxtPolicyID.Text.Trim());
+            String state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+
+            if (this.insuranceDetailTabPage.ActiveTabIndex == 1)
+            {
+                rebindGridDocList();
+                if (this.pm == PageMode.Audit || obj.PolicyStatus == state)
+                    filesUploadControl.Enabled = false;
+            }
+
+            if (this.insuranceDetailTabPage.ActiveTabIndex == 2 || obj.PolicyStatus == state)
+            {
+                rebindGridDocList();
+                if (this.pm == PageMode.Audit)
+                    filesUploadControl.Enabled = false;
+            }
+
+
+        }
+
+
+        #endregion Tab Events
+
+
         #region CallBack Events
 
         protected void dxeSaveCallback_Callback(object source, 
@@ -251,10 +283,22 @@ namespace BrokerWebApp.vehicleinsurance
         protected void dxeSaveAndCheckCallback_Callback(object source, 
             DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
-            String theID = savePolicy(e.Parameter, policystatus);
-            e.Result = "complete";
+            int resultSign = 0;
+            String resultMSG = "";
+            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+            String theResult = savePolicy(e.Parameter, policystatus);
+            if (theResult != policyNoExist)
+            {
+                auditPolicySubmit(ref resultSign, ref resultMSG);
+                if (resultSign == 0)
+                    theResult = resultSign.ToString();
+                else
+                    theResult = resultMSG;
+            }
+
+            e.Result = theResult;
         }
+
 
         protected void dxeAuditBackCallback_Callback(object source, 
             DevExpress.Web.ASPxCallback.CallbackEventArgs e)
@@ -266,9 +310,15 @@ namespace BrokerWebApp.vehicleinsurance
         protected void dxeAuditOkCallback_Callback(object source, 
             DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            auditPolicy(e.Parameter);
-            e.Result = "complete";
+            int resultSign = 0;
+            String resultMSG = "";
+            auditPolicy(e.Parameter, ref resultSign, ref resultMSG);
+            if (resultSign == 0)
+                e.Result = resultSign.ToString();
+            else
+                e.Result = resultMSG;
         }
+
 
         protected void dxeGetGridPolicyItemTotalSummary_Callback(object source, 
             DevExpress.Web.ASPxCallback.CallbackEventArgs e)
@@ -291,6 +341,7 @@ namespace BrokerWebApp.vehicleinsurance
             
             e.Result = Coverage + ";" + Premium;
         }
+
 
         #endregion CallBack Events
 
@@ -541,6 +592,8 @@ namespace BrokerWebApp.vehicleinsurance
             DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
             String theParam = e.Parameters;
+            if (theParam == "unabled")
+                this.gridPolicyItem.Enabled = false; 
             getInitPolicyData();
         }
 
@@ -639,6 +692,16 @@ namespace BrokerWebApp.vehicleinsurance
         {
             this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridDocList.DataBind();
+        }
+
+
+        protected void filesUploadControlPanel_Callback(object source,
+            DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            String theParam = e.Parameter;
+            if (theParam == "unabled")
+                this.filesUploadControl.Enabled = false;
+
         }
 
 
@@ -798,7 +861,7 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.PolicyStatus = policyState;
                 theObject.PolicyType = Convert.ToInt32(BO_Policy.PolicyTypeEnum.Vehicle).ToString();
                 theObject.PolicyNo = obj.PolicyNo;
-
+                theObject.ProdTypeID = productType;
                 theObject.AciPolicyNo  = obj.AciPolicyNo ;
 
                 theObject.CarrierSales = obj.CarrierSales;
@@ -892,7 +955,19 @@ namespace BrokerWebApp.vehicleinsurance
         }
 
 
-        private void auditPolicy(String parameter)
+        private void auditPolicySubmit(ref Int32 resultSign, ref string resultMSG)
+        {
+            String thePolicyID = this.dxetxtPolicyID.Text.Trim();
+            String state;
+
+            state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+
+            BusinessObjects.Policy.BO_Policy.AuditPolicySubmit(thePolicyID, state, this.CurrentUserID, ref resultSign, ref resultMSG);
+
+        }
+
+
+        private void auditPolicy(String parameter, ref Int32 resultSign, ref string resultMSG)
         {
             String json = parameter;
 
@@ -904,19 +979,16 @@ namespace BrokerWebApp.vehicleinsurance
             ms.Close();
 
             String theID = this.dxetxtPolicyID.Text.Trim();
-            BO_Policy theObject;
-            theObject = new BO_Policy(theID);
 
+
+            String state;
             if (obj.AuditOrNot)
-                theObject.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString();
+                state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString();
             else
-                theObject.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+                state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
 
-            theObject.AuditTime = DateTime.Now;
-            theObject.AuditPerson = this.CurrentUserID;
-            theObject.Remark = obj.Remark;
-            theObject.Save(ModifiedAction.Update);
-
+            BusinessObjects.Policy.BO_Policy.AuditPolicy(theID, state, this.CurrentUserID, obj.Remark, ref resultSign, ref resultMSG);
+            
         }
 
 
