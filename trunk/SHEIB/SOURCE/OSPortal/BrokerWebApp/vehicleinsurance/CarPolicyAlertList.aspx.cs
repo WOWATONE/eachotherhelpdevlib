@@ -10,16 +10,19 @@ using BusinessObjects;
 using BusinessObjects.SchemaSetting;
 using DevExpress.Web.ASPxEditors;
 
+
 namespace BrokerWebApp.vehicleinsurance
 {
     public partial class CarPolicyAlertList : BasePage
     {
+
 
         #region Variables
 
         private const String gridKeyName = "AskPriceID";
 
         #endregion Variables
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -61,6 +64,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            
             String where = " and ISNULL(B.PolicyStatus,'0') = '0' and ISNULL(B.AskPriceID,'') != '' ";
 
             if (!String.IsNullOrEmpty(this.dxetxtAskPriceID.Text))
@@ -235,6 +239,9 @@ namespace BrokerWebApp.vehicleinsurance
         {
             //
         }
+
+
+        
 
 
     }
