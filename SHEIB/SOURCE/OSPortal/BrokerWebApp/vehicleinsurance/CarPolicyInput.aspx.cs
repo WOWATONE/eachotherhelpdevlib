@@ -1023,6 +1023,8 @@ namespace BrokerWebApp.vehicleinsurance
             this.cusid.Value = objCar.CustomerID;
 
             dxetxtBeneficiary.Text = objCar.Beneficiary;
+            if (String.IsNullOrEmpty(dxetxtBeneficiary.Text))
+                dxetxtBeneficiary.Text = objCar.CustomerName;
 
             //dxeddlSourceTypeID
             if (!String.IsNullOrEmpty(objCar.SourceTypeID))

@@ -711,13 +711,12 @@
             var sumCoverageVal = parseFloat(thesplit_array[0]);
             var sumPremiumVal = parseFloat(thesplit_array[1]);
 
-            var rtn = sumCoverageVal.toFixed(2);
-            //dxetxtCoverage.SetValue(rtn);
-            rtn = sumPremiumVal.toFixed(2);
+            var rtn = sumPremiumVal.toFixed(2);
             dxetxtCiPremium.SetValue(rtn);
-            
-            //division_ValueChanged(dxetxtPremium, dxetxtCoverage, dxetxtPremiumRate, true);
-            //division_ValueChanged(dxetxtProcess, dxetxtPremium, dxetxtProcessRate, true);
+
+            add_Four_ValueChanged(dxetxtCiPremium, dxetxtAciPremium, dxetxtCstPremium, dxetxtTotalPremium);
+            division_ValueChanged(dxetxtCiPremium, dxetxtCiProcessRate, dxetxtCiProcess, true);
+            add_Three_ValueChanged(dxetxtCiProcess, dxetxtAciProcess, dxetxtTotalProcess);
         }
 
         function gridCarrierCustomButtonClick(s, e) {
@@ -801,6 +800,78 @@
                 else
                     v3 = parseFloat(v1 / v2);
             }
+
+            var rtn = v3.toFixed(2);
+            t3.SetValue(rtn);
+        }
+
+
+        function add_Four_ValueChanged(t1, t2, t3, t4) {
+
+            var v1;
+            try {
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
+            }
+            catch (err) {
+                v1 = 0;
+            }
+
+            var v2;
+            try {
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
+            }
+            catch (err) {
+                v2 = 0;
+            }
+
+            var v3;
+            try {
+                v3 = parseFloat(t3.GetValueString());
+                if (isNaN(v3))
+                    v3 = 0;
+            }
+            catch (err) {
+                v3 = 0;
+            }
+
+
+            var v4;
+            v4 = parseFloat(v1 + v2 + v3);
+
+            var rtn = v3.toFixed(2);
+            t4.SetValue(rtn);
+        }
+
+
+        function add_Three_ValueChanged(t1, t2, t3) {
+
+            var v1;
+            try {
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
+            }
+            catch (err) {
+                v1 = 0;
+            }
+
+            var v2;
+            try {
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
+            }
+            catch (err) {
+                v2 = 0;
+            }
+
+            
+            var v3;
+            v3 = parseFloat(v1 + v2);
 
             var rtn = v3.toFixed(2);
             t3.SetValue(rtn);
@@ -1342,6 +1413,10 @@
                                                             <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
+                                                            <ClientSideEvents ValueChanged="function(s,e){
+                                                                add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
+                                                                division_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,true);
+                                                                }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="width: 140px; text-align: right;">
@@ -1352,6 +1427,10 @@
                                                             <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
+                                                            <ClientSideEvents ValueChanged="function(s,e){
+                                                                add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
+                                                                division_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,true);
+                                                                }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="width: 110px; text-align: right;">
@@ -1362,6 +1441,9 @@
                                                             <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
+                                                            <ClientSideEvents ValueChanged="function(s,e){
+                                                                add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
+                                                                }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="width: 110px; text-align: right;">
@@ -1372,6 +1454,7 @@
                                                             <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
+                                                            
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                 </tr>
@@ -1384,6 +1467,9 @@
                                                             <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
+                                                            <ClientSideEvents ValueChanged="function(s,e){
+                                                                division_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,true);
+                                                                }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
@@ -1394,6 +1480,9 @@
                                                             <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
+                                                            <ClientSideEvents ValueChanged="function(s,e){
+                                                                division_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,true);
+                                                                }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
@@ -1414,6 +1503,9 @@
                                                             <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
+                                                            <ClientSideEvents ValueChanged="function(s,e){
+                                                                add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
+                                                                }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
@@ -1424,6 +1516,9 @@
                                                             <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
+                                                            <ClientSideEvents ValueChanged="function(s,e){
+                                                                add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
+                                                                }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
