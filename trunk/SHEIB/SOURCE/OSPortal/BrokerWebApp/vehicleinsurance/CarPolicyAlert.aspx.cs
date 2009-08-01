@@ -27,7 +27,7 @@ namespace BrokerWebApp.vehicleinsurance
         private const string currentPageModeKey = "CurrentPagePolicyMode";
         private const string inputQueryStringPageModeKey = "pagemode";
         private const string inputQueryStringIDKey = "id";
-        private const string inputQueryStringAskPriceidKey = "askpriceid";
+        private const string inputQueryStringPreIDKey = "pid";
         private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
 
         private const string policyNoExist = "policynoexist";
@@ -54,7 +54,6 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (Page.IsPostBack)
             {
                 pm = ViewState[currentPageModeKey] as Nullable<PageMode>;
@@ -66,7 +65,7 @@ namespace BrokerWebApp.vehicleinsurance
             else
             {
                 this.dxetxtPolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
-                this.lblSourcePolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
+                this.lblSourcePolicyID.Text = Page.Request.QueryString[inputQueryStringPreIDKey];
                 
                 this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey];
 
@@ -748,6 +747,7 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.CreateTime = DateTime.Now;
 
                 theObject.Save(ModifiedAction.Insert);
+                copyCarrierFromPrePolicy(theObject.PrevPolicyID, theObject.PolicyID);
             }
             else
             {
@@ -836,6 +836,33 @@ namespace BrokerWebApp.vehicleinsurance
             theObject.Remark = obj.Remark;
             theObject.Save(ModifiedAction.Update);
         }
+
+
+        private void copyCarrierFromPrePolicy(String prePolicyID, String curPolicyID)
+        {
+            BO_PolicyCarrier newobj;
+
+            List<BO_PolicyCarrier> thelist = BO_PolicyCarrier.FetchListByPolicy(prePolicyID);
+            foreach (BO_PolicyCarrier item in thelist)
+            {
+                newobj = new BO_PolicyCarrier();
+
+                newobj.PolicyCarrierID = Guid.NewGuid().ToString();
+                newobj.PolicyID = curPolicyID;
+
+                newobj.CarrierID = item.CarrierID;
+                newobj.BranchID = item.BranchID;
+
+                newobj.PolicyRate = item.PolicyRate;
+                newobj.Premium = 0;
+                newobj.PremiumBase = 0;
+                newobj.ProcessRate = item.ProcessRate;
+                newobj.Process = 0;
+                newobj.ProcessBase = 0;
+                newobj.Save(ModifiedAction.Insert);
+            }
+        }
+
 
 
         private void switchBasicInfoControlsEnable(Boolean val)

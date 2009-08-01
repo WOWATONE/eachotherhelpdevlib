@@ -133,6 +133,7 @@
 
             insuranceDetailTabPage.tabs[1].SetEnabled(val);
             insuranceDetailTabPage.tabs[2].SetEnabled(val);
+            insuranceDetailTabPage.tabs[3].SetEnabled(val);
         }
 
         function policyBaseCompleteUnable() {
@@ -1147,8 +1148,13 @@
                                                             <td style="text-align: right;">
                                                                 特别约定：
                                                             </td>
-                                                            <td style="text-align: left;" colspan="7">
-                                                                <dxe:ASPxTextBox ID="dxetxtSpecial" ClientInstanceName="dxetxtSpecial" runat="server" Width="110px"></dxe:ASPxTextBox>
+                                                            <td style="text-align: left;" colspan="5">
+                                                                <dxe:ASPxTextBox ID="dxetxtSpecial" ClientInstanceName="dxetxtSpecial" runat="server" Width="628px"></dxe:ASPxTextBox>
+                                                            </td>
+                                                            <td style="text-align: left;" colspan="2">
+                                                                <dxe:ASPxButton runat="server" id="dxebtntopSave" ClientInstanceName="dxebtntopSave" Text="保存" CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
+                                                                    <ClientSideEvents Click="function(s, e) { dxebtntopSave_Click(s,e); }"></ClientSideEvents>
+                                                                </dxe:ASPxButton>                                                    
                                                             </td>
                                                         </tr>
                                                     </table>

@@ -1230,9 +1230,9 @@
                                                         <Columns>
                                                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left"
                                                                 Width="81" HeaderStyle-Wrap="False" AllowDragDrop="False">
-                                                                <NewButton Visible="True" />
+                                                                <NewButton Visible="true" />
                                                                 <EditButton Visible="true" />
-                                                                <DeleteButton Visible="true" />
+                                                                <DeleteButton Visible="false" />
                                                                 <CustomButtons>
                                                                     <dxwgv:GridViewCommandColumnCustomButton ID="btngridCarrierTogether" Text="再保">
                                                                     </dxwgv:GridViewCommandColumnCustomButton>
@@ -1272,7 +1272,7 @@
                                                                             <td style="text-align: left;">
                                                                                 <dxe:ASPxComboBox runat="server" ID="dxecbGridCarrierCarrierID" AutoPostBack="false"
                                                                                         ClientInstanceName="dxecbGridCarrierCarrierID" DropDownButton-Enabled="true"
-                                                                                        DropDownStyle="DropDownList" Width="120px">
+                                                                                        DropDownStyle="DropDownList" Width="120px" ReadOnly="true">
                                                                                         <Items>
                                                                                         </Items>
                                                                                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
@@ -1287,7 +1287,7 @@
                                                                             <td style="text-align: left;">
                                                                                 <dxe:ASPxComboBox runat="server" ID="dxecbGridCarrierBranchID" AutoPostBack="false"
                                                                                         ClientInstanceName="dxecbGridCarrierBranchID" DropDownButton-Enabled="true" DropDownStyle="DropDownList"
-                                                                                        Width="120px" OnCallback="dxecbGridCarrierBranchIDCallback">
+                                                                                        Width="120px" OnCallback="dxecbGridCarrierBranchIDCallback" ReadOnly="true">
                                                                                         <Items>
                                                                                         </Items>
                                                                                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
