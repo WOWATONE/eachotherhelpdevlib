@@ -163,7 +163,7 @@
             if (pagemode.value == "audit") {
                 npbasicdetail.parentElement.setAttribute('disabled', 'true');
 
-                npGridPolicyItemDetail.parentElement.setAttribute('disabled', 'true');
+                //npGridPolicyItemDetail.parentElement.setAttribute('disabled', 'true');
 
             }
 
@@ -537,7 +537,9 @@
                  }
 
                  function gridCustomButtonClick(s, e) {
-                     s.GetRowValues(e.visibleIndex, "PolicyID", getTheSelectedRowsValues);
+                     var buttonID = e.buttonID;
+
+                     s.GetRowValues(e.visibleIndex, "PolicyID;PolicyStatus", getTheSelectedRowsValues);
                  }
 
                  function getTheSelectedRowsValues(selectedValues) {
@@ -547,7 +549,23 @@
                      else {
                          var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
                          var querystring;
-                         querystring = "CarPolicyInput.aspx?pagemode=input&id=" + selectedValues;
+                         if (selectedValues[1] == "1" || selectedValues[1] == "2")
+                             querystring = "CarPolicyView.aspx?id=" + selectedValues[0];
+                         else
+                             querystring = "CarPolicyInput.aspx?pagemode=input&id=" + selectedValues[0];
+                         window.showModalDialog(querystring, self, myArguments);
+                     }
+                 }
+                 
+                 
+                 function getTheSelectedRowsValuesLook(selectedValues) {
+                     if (selectedValues.length == 0) {
+                         //
+                     }
+                     else {
+                         var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
+                         var querystring;
+                         querystring = "CarPolicyView.aspx?id=" + selectedValues;
                          window.showModalDialog(querystring, self, myArguments);
                      }
                  }

@@ -295,7 +295,7 @@ namespace BusinessObjects.Policy
             sb.Append(" A1.AskPriceID, A1.TradeNo, A1.CustomerID, ");
             sb.Append(" A1.Beneficiary, A1.DeptId,");
             sb.Append(" A1.CarrierSales, A1.SalesId,");
-            sb.Append(" A1.SignDate, A1.PolicyStatus,");
+            sb.Append(" A1.SignDate, ISNULL(A1.PolicyStatus,'0') AS PolicyStatus,");
             sb.Append(" A1.GatheringType, A1.OperationType,");
             sb.Append(" A1.SourceTypeID, A1.Remark,");
             sb.Append(" A1.AuditTime, A1.AuditPerson,");

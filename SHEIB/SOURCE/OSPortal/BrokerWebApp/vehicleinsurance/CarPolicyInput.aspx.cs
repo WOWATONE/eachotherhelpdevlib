@@ -835,6 +835,10 @@ namespace BrokerWebApp.vehicleinsurance
             dxetxtCiProcess.Text = obj.CiProcess.ToString();
             dxetxtAciProcess.Text = obj.AciProcess.ToString();
 
+            this.dxeAuditTime.Date = obj.AuditTime;
+            this.dxetxtAuditPerson.Text = obj.AuditPerson;
+            this.dxeMemo.Text = obj.Remark;
+
             //dxetxtTotalPremium.Text = obj.;            
             //dxetxtTotalProcess.Text = obj;
 
