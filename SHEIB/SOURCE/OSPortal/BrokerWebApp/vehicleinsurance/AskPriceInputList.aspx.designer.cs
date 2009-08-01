@@ -122,7 +122,7 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesId;
         
         /// <summary>
-        /// dxetxtCarNo control.
+        /// dxetxtCarCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -140,7 +140,7 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSourceTypeID;
         
         /// <summary>
-        /// dxeddlFlagReinsure control.
+        /// dxeddlOperationType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -275,7 +275,7 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::DevExpress.Web.ASPxGridView.Export.ASPxGridViewExporter gridExport;
         
         /// <summary>
-        /// DataSource control.
+        /// ds_gridSearchResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

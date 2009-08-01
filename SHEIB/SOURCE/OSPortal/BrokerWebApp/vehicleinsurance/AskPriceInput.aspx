@@ -470,6 +470,7 @@
         }
 
         function auditOkCallbackComplete(s, e) {
+            var buttonID = dxebtnAuditOk.GetText();            
             var titleMSG = buttonID + "成功完成";
             var theresult = e.result;
             switch (theresult) {

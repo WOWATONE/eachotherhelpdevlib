@@ -181,9 +181,14 @@
 									</Items>
 								</dxe:ASPxComboBox>
                             </td>
-                            <td style="text-align: right;">
-                            </td>
-                            <td style="text-align: left;">
+                            <td style="text-align:right;">审核状态：</td>
+                            <td style="text-align:left;">
+                                <dxe:ASPxComboBox ID="dxeddlCheckState" ClientInstanceName="dxeddlCheckState" runat="server" Width="140px" DropDownStyle="DropDownList">
+									<Items>
+										<dxe:ListEditItem Text="待审核" Value="1" />
+										<dxe:ListEditItem Text="已审核" Value="2" />
+									</Items>
+								</dxe:ASPxComboBox> 
                             </td>
                             <td>
                             </td>
@@ -250,6 +255,7 @@
                                     Width="100%" SettingsPager-AlwaysShowPager="true" 
                                     OnRowDeleting="gridSearchResult_RowDeleting" 
                                     OnCustomCallback="gridSearchResult_CustomCallback" 
+                                    OnHtmlRowCreated="gridSearchResult_HtmlRowCreated" 
                                     >
                                     <%-- BeginRegion Columns --%>
                                     <Columns>

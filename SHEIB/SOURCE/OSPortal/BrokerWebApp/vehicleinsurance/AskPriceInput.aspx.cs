@@ -105,6 +105,19 @@ namespace BrokerWebApp.vehicleinsurance
                 npExecuteAction.Visible = false;
                 this.gridPolicyItem.Enabled = false;
                 this.filesUploadControl.Enabled = false;
+                if (String.IsNullOrEmpty(this.dxetxtAuditPerson.Text))
+                {
+                    this.dxetxtAuditPerson.Text = this.CurrentUserName;
+                    this.dxeAuditTime.Date = DateTime.Now;
+                }
+                BusinessObjects.Policy.BO_CarPolicy obj;
+                obj = new BusinessObjects.Policy.BO_CarPolicy(this.dxetxtAskPriceID.Text.Trim());
+
+                if (obj.PolicyStatus == Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.Audit).ToString())
+                {
+                    this.dxebtnAuditOk.Text = "反审核";
+                    this.dxebtnAuditBack.ClientEnabled = false;
+                }
             }
             else
             {
@@ -795,7 +808,9 @@ namespace BrokerWebApp.vehicleinsurance
                 }
             }
 
-             
+            this.dxetxtAuditPerson.Text = obj.AuditPerson;
+            this.dxeAuditTime.Date = obj.AuditTime;
+            this.dxeMemo.Text = obj.Remark;
         }
 
 
