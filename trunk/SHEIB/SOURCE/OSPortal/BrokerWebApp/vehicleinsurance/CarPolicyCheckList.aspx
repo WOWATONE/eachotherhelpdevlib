@@ -316,7 +316,7 @@
                                                             </dxwgv:GridViewDataColumn>
                                                         </Columns>
                                                         <Settings ShowGroupPanel="true" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
-                                                        <SettingsBehavior AllowDragDrop="false" AllowGroup="false" />
+                                                        <SettingsBehavior AllowDragDrop="true" AllowGroup="true" />
                                                         <TotalSummary>
                                                             <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" DisplayFormat="#" /> 
                                                             <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" DisplayFormat="c" />
