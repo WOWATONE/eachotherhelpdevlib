@@ -890,6 +890,13 @@
     <Compile Include="vehicleinsurance\CarPolicyCheckList.aspx.designer.cs">
       <DependentUpon>CarPolicyCheckList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="vehicleinsurance\CarPolicyView.aspx.cs">
+      <DependentUpon>CarPolicyView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vehicleinsurance\CarPolicyView.aspx.designer.cs">
+      <DependentUpon>CarPolicyView.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\Aqua\ASPxButton.skin" />
@@ -1138,6 +1145,7 @@
     <Content Include="vehicleinsurance\CarPolicyList.aspx" />
     <Content Include="vehicleinsurance\CarPolicyAlertList.aspx" />
     <Content Include="vehicleinsurance\CarPolicyCheckList.aspx" />
+    <Content Include="vehicleinsurance\CarPolicyView.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />

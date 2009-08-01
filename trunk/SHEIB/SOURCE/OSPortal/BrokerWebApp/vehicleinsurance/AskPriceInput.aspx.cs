@@ -102,9 +102,10 @@ namespace BrokerWebApp.vehicleinsurance
         {
             if (this.pm == PageMode.Audit)
             {
+                this.dxebtnAddPolicy.Enabled = false;
                 tbltrAuditExecuteAction.Visible = true;
                 npExecuteAction.Visible = false;
-                this.gridPolicyItem.Enabled = false;
+                this.gridPolicyItem.Enabled = true;
                 this.filesUploadControl.Enabled = false;
                 if (String.IsNullOrEmpty(this.dxetxtAuditPerson.Text))
                 {
@@ -661,7 +662,8 @@ namespace BrokerWebApp.vehicleinsurance
                     //e.Row.Enabled = false;
                     GridViewCommandColumnButtonControl thebtn;
                     thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
-                    thebtn.Enabled = false;
+                    ((InternalHyperLink)thebtn.Controls[0]).Enabled = false;
+                    thebtn.Visible = false;
 
                     thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[1];
                     thebtn.Enabled = false;
