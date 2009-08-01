@@ -24,9 +24,28 @@ namespace BrokerWebApp.vehicleinsurance
 
         #region Variables
 
+        private const string currentPageModeKey = "CurrentPagePolicyMode";
+        private const string inputQueryStringPageModeKey = "pagemode";
         private const string inputQueryStringIDKey = "id";
         private const string inputQueryStringAskPriceidKey = "askpriceid";
         private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
+
+        private const string policyNoExist = "policynoexist";
+
+
+        private Boolean gridPolicyItemStartEdit = false;
+
+        public enum PageMode
+        {
+            Input,
+            Audit
+        }
+
+        private Nullable<PageMode> pm;
+
+        private const String productType = "C00003001";
+
+        private Boolean gridPolicyPeriodStartEdit = false;
 
         #endregion Variables
 
@@ -38,6 +57,7 @@ namespace BrokerWebApp.vehicleinsurance
 
             if (Page.IsPostBack)
             {
+                pm = ViewState[currentPageModeKey] as Nullable<PageMode>;
                 if (Page.IsCallback)
                 {
                     rebindGridDocList(this.dxetxtPolicyID.Text.Trim());
@@ -45,9 +65,27 @@ namespace BrokerWebApp.vehicleinsurance
             }
             else
             {
+                this.dxetxtPolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 this.lblSourcePolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
-                this.dxetxtPolicyID.Text = "";
-                                           
+                
+                this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey];
+
+                switch (this.pagemode.Value.ToLower().Trim())
+                {
+                    case "input":
+                        pm = PageMode.Input;
+                        break;
+                    case "audit":
+                        pm = PageMode.Audit;
+                        this.dxetxtAuditPerson.Text = this.CurrentUserName;
+                        this.dxeAuditTime.Date = DateTime.Now;
+                        break;
+                    default:
+                        pm = PageMode.Input;
+                        break;
+                }
+                ViewState[currentPageModeKey] = pm;
+           
                                 
                 Initialization();
 
@@ -62,7 +100,36 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            switchBasicInfoControlsEnable(false);
+            if (this.pm == PageMode.Audit)
+            {
+                tbltrAuditExecuteAction.Visible = true;
+                npExecuteAction.Visible = false;
+                this.filesUploadControl.Enabled = false;
+                switchBasicInfoControlsEnable(false);
+
+                if (String.IsNullOrEmpty(this.dxetxtAuditPerson.Text))
+                {
+                    this.dxetxtAuditPerson.Text = this.CurrentUserName;
+                    this.dxeAuditTime.Date = DateTime.Now;
+                }
+                BusinessObjects.Policy.BO_Policy obj;
+                obj = new BusinessObjects.Policy.BO_Policy(this.dxetxtPolicyID.Text.Trim());
+
+                if (obj.PolicyStatus == Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString())
+                {
+                    this.dxebtnAuditOk.Text = "反审核";
+                    this.dxebtnAuditBack.ClientEnabled = false;
+                }
+
+            }
+            else
+            {
+                tbltrAuditExecuteAction.Visible = false;
+                npExecuteAction.Visible = true;
+                this.dxetxtAuditPerson.Enabled = false;
+                this.dxeAuditTime.Enabled = false;
+                this.dxeMemo.Enabled = false;
+            }
         }
 
 
@@ -185,21 +252,42 @@ namespace BrokerWebApp.vehicleinsurance
         protected void dxeSaveAndCheckCallback_Callback(object source,
             DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
-            String theID = savePolicy(e.Parameter, policystatus);
-            e.Result = "complete";
+            int resultSign = 0;
+            String resultMSG = "";
+            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+            String theResult = savePolicy(e.Parameter, policystatus);
+            if (theResult != policyNoExist)
+            {
+                auditPolicySubmit(ref resultSign, ref resultMSG);
+                if (resultSign == 0)
+                    theResult = resultSign.ToString();
+                else
+                    theResult = resultMSG;
+            }
+
+            e.Result = theResult;
+
         }
+
 
         protected void dxeAuditBackCallback_Callback(object source,
             DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
+            auditBackPolicy(e.Parameter);
             e.Result = "complete";
         }
+
 
         protected void dxeAuditOkCallback_Callback(object source,
             DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            e.Result = "complete";
+            int resultSign = 0;
+            String resultMSG = "";
+            auditPolicy(e.Parameter, ref resultSign, ref resultMSG);
+            if (resultSign == 0)
+                e.Result = resultSign.ToString();
+            else
+                e.Result = resultMSG;
         }
 
 
@@ -286,7 +374,195 @@ namespace BrokerWebApp.vehicleinsurance
         }
 
 
+        protected void filesUploadControlPanel_Callback(object source,
+            DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            String theParam = e.Parameter;
+            if (theParam == "unabled")
+                this.filesUploadControl.Enabled = false;
+
+        }
+
         #endregion Upload File  Events
+
+
+
+        #region gridPeriod Events
+
+        protected void gridPeriod_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
+        {
+            DevExpress.Web.ASPxGridView.ASPxGridView refObj = this.gridPeriod;
+            HtmlTable tblEditorTemplate = refObj.FindEditFormTemplateControl("tblgridPeriodEditorTemplate") as HtmlTable;
+
+            ASPxTextBox detxtGridPeriodPeriod = tblEditorTemplate.FindControl("detxtGridPeriodPeriod") as ASPxTextBox;
+            ASPxDateEdit detxtGridPeriodPayDate = tblEditorTemplate.FindControl("detxtGridPeriodPayDate") as ASPxDateEdit;
+            ASPxTextBox detxtGridPeriodCarrierNameCn = tblEditorTemplate.FindControl("detxtGridPeriodCarrierNameCn") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodBranchName = tblEditorTemplate.FindControl("detxtGridPeriodBranchName") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodPayFeeBase = tblEditorTemplate.FindControl("detxtGridPeriodPayFeeBase") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodPayProcBase = tblEditorTemplate.FindControl("detxtGridPeriodPayProcBase") as ASPxTextBox;
+
+            Int32 editIndex = refObj.EditingRowVisibleIndex;
+            if (editIndex > -1)
+            {
+                object theValues = refObj.GetRowValues(editIndex, new String[] { "PolPeriodId", "Period", "CarrierNameCn", "BranchName", "PayDate", "PayFeeBase", "PayProcBase" });
+                object[] theValueList = theValues as object[];
+
+                String period = theValueList[1].ToString();
+                String carrierNameCn = theValueList[2].ToString();
+                String branchName = theValueList[3].ToString();
+                DateTime payDate;
+                if ((theValueList[4] != null) && (theValueList[4].ToString() != ""))
+                    payDate = Convert.ToDateTime(theValueList[4]);
+                else
+                    payDate = DateTime.Now;
+
+                String payFeeBase = theValueList[5].ToString();
+                String payProcBase = theValueList[6].ToString();
+
+
+                if (this.gridPolicyPeriodStartEdit)
+                {
+                    detxtGridPeriodPeriod.Text = period;
+                    detxtGridPeriodPayDate.Date = payDate;
+                    detxtGridPeriodCarrierNameCn.Text = carrierNameCn;
+                    detxtGridPeriodBranchName.Text = branchName;
+                    detxtGridPeriodPayFeeBase.Text = payFeeBase;
+                    detxtGridPeriodPayProcBase.Text = payProcBase;
+                }
+                else
+                {
+                    detxtGridPeriodPeriod.Text = period;
+                    detxtGridPeriodCarrierNameCn.Text = carrierNameCn;
+                    detxtGridPeriodBranchName.Text = branchName;
+                }
+            }
+
+        }
+
+
+        protected void gridPeriod_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
+        {
+            this.gridPolicyPeriodStartEdit = true;
+        }
+
+
+        protected void gridPeriod_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            String theKey = e.Keys[0].ToString();
+            DevExpress.Web.ASPxGridView.ASPxGridView refObj = this.gridPeriod;
+            HtmlTable tblEditorTemplate = refObj.FindEditFormTemplateControl("tblgridPeriodEditorTemplate") as HtmlTable;
+
+            ASPxTextBox detxtGridPeriodPeriod = tblEditorTemplate.FindControl("detxtGridPeriodPeriod") as ASPxTextBox;
+            ASPxDateEdit detxtGridPeriodPayDate = tblEditorTemplate.FindControl("detxtGridPeriodPayDate") as ASPxDateEdit;
+            ASPxTextBox detxtGridPeriodCarrierNameCn = tblEditorTemplate.FindControl("detxtGridPeriodCarrierNameCn") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodBranchName = tblEditorTemplate.FindControl("detxtGridPeriodBranchName") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodPayFeeBase = tblEditorTemplate.FindControl("detxtGridPeriodPayFeeBase") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodPayProcBase = tblEditorTemplate.FindControl("detxtGridPeriodPayProcBase") as ASPxTextBox;
+
+            BusinessObjects.Policy.BO_PolicyPeriod newobj = new BusinessObjects.Policy.BO_PolicyPeriod(theKey);
+
+            newobj.PayDate = detxtGridPeriodPayDate.Date;
+
+            if (detxtGridPeriodPayFeeBase.Text != String.Empty)
+            {
+                newobj.PayFeeBase = Convert.ToDecimal(detxtGridPeriodPayFeeBase.Text);
+            }
+            if (detxtGridPeriodPayProcBase.Text != String.Empty)
+            {
+                newobj.PayProcBase = Convert.ToDecimal(detxtGridPeriodPayProcBase.Text);
+            }
+
+            try
+            {
+                newobj.Save(ModifiedAction.Update);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //
+            e.Cancel = true;
+            this.gridPeriod.CancelEdit();
+
+            rebindGridPeriod();
+
+        }
+
+
+        protected void gridPeriod_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
+        {
+            this.gridPeriod.DataBind();
+        }
+
+        protected void gridPeriod_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            //
+            e.Cancel = true;
+            this.gridPeriod.CancelEdit();
+        }
+
+
+        protected void gridPeriod_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            //
+            e.Cancel = true;
+            this.gridPeriod.CancelEdit();
+        }
+
+
+        protected void gridPeriod_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            //
+        }
+
+
+        protected void gridPeriod_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
+        {
+
+            DevExpress.Web.ASPxGridView.ASPxGridView refObj = this.gridPeriod;
+            HtmlTable tblEditorTemplate = refObj.FindEditFormTemplateControl("tblgridPeriodEditorTemplate") as HtmlTable;
+
+
+            ASPxDateEdit detxtGridPeriodPayDate = tblEditorTemplate.FindControl("detxtGridPeriodPayDate") as ASPxDateEdit;
+
+            ASPxTextBox detxtGridPeriodPayFeeBase = tblEditorTemplate.FindControl("detxtGridPeriodPayFeeBase") as ASPxTextBox;
+            ASPxTextBox detxtGridPeriodPayProcBase = tblEditorTemplate.FindControl("detxtGridPeriodPayProcBase") as ASPxTextBox;
+
+            if (detxtGridPeriodPayDate.Value == null)
+            {
+                e.Errors[refObj.Columns[2]] = "必需项";
+            }
+            if (detxtGridPeriodPayFeeBase.Text.Trim() == "")
+            {
+                e.Errors[refObj.Columns[5]] = "必需项";
+            }
+            if (detxtGridPeriodPayFeeBase.Text.Trim() == "")
+            {
+                e.Errors[refObj.Columns[6]] = "必需项";
+            }
+
+            detxtGridPeriodPayDate.Validate();
+            detxtGridPeriodPayFeeBase.Validate();
+            detxtGridPeriodPayProcBase.Validate();
+
+            if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0)
+            {
+                //this.gridPolicyPeriodStartEdit = true;
+                e.RowError = "请修正所有的错误。";
+            }
+
+
+        }
+
+
+        private void rebindGridPeriod()
+        {
+            this.gridPeriod.DataSource = BusinessObjects.Policy.BO_PolicyPeriod.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
+            this.gridPeriod.DataBind();
+        }
+
+        #endregion gridPeriod Events
 
 
 
@@ -400,6 +676,9 @@ namespace BrokerWebApp.vehicleinsurance
             dxetxtCiProcess.Text = obj.CiProcess.ToString();
             dxetxtAciProcess.Text = obj.AciProcess.ToString();
 
+            this.dxeAuditTime.Date = obj.AuditTime;
+            this.dxetxtAuditPerson.Text = obj.AuditPerson;
+            this.dxeMemo.Text = obj.Remark;
             //dxetxtTotalPremium.Text = obj.;            
             //dxetxtTotalProcess.Text = obj;
 
@@ -425,6 +704,7 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.AskPriceID = theSourceObj.AskPriceID;
                 theObject.PolicyStatus = policyState;
                 theObject.PolicyType = Convert.ToInt32(BO_Policy.PolicyTypeEnum.Vehicle).ToString();
+                theObject.ProdTypeID = productType;
                 theObject.PolicyNo = theSourceObj.PolicyNo;
 
                 theObject.AciPolicyNo = theSourceObj.AciPolicyNo;
@@ -494,6 +774,70 @@ namespace BrokerWebApp.vehicleinsurance
 
         }
 
+
+        private void auditPolicySubmit(ref Int32 resultSign, ref string resultMSG)
+        {
+            String thePolicyID = this.dxetxtPolicyID.Text.Trim();
+            String state;
+
+            state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+
+            BusinessObjects.Policy.BO_Policy.AuditPolicySubmit(thePolicyID, state, this.CurrentUserID, ref resultSign, ref resultMSG);
+
+        }
+
+
+        private void auditPolicy(String parameter, ref Int32 resultSign, ref string resultMSG)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CarPriceAlertInfo));
+            CarPriceAlertInfo obj;
+
+            obj = (CarPriceAlertInfo)serializer.ReadObject(ms);
+            ms.Close();
+
+            String theID = this.dxetxtPolicyID.Text.Trim();
+
+
+            String state;
+            if (obj.AuditOrNot)
+                state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString();
+            else
+                state = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
+
+            BusinessObjects.Policy.BO_Policy.AuditPolicy(theID, state, this.CurrentUserID, obj.Remark, ref resultSign, ref resultMSG);
+
+        }
+
+
+        private void auditBackPolicy(String parameter)
+        {
+            String json = parameter;
+
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(CarPriceAlertInfo));
+            CarPriceAlertInfo obj;
+
+            obj = (CarPriceAlertInfo)serializer.ReadObject(ms);
+            ms.Close();
+
+            String theID = this.dxetxtPolicyID.Text.Trim();
+            BO_Policy theObject;
+            theObject = new BO_Policy(theID);
+
+            theObject.PolicyStatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Input).ToString();
+
+            //carPolicy.Memo =obj.
+            //AuditOrNot
+            theObject.AuditTime = DateTime.Now;
+            theObject.AuditPerson = this.CurrentUserID;
+            theObject.Remark = obj.Remark;
+            theObject.Save(ModifiedAction.Update);
+        }
+
+
         private void switchBasicInfoControlsEnable(Boolean val)
         {
             //dxetxtPolicyID.Enabled = val;
@@ -529,6 +873,7 @@ namespace BrokerWebApp.vehicleinsurance
             //dxetxtAciProcess.Enabled = val;
             //dxetxtTotalProcess.Enabled = val;
         }
+
 
 
         #endregion Privates

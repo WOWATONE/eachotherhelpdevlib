@@ -1,4 +1,4 @@
-﻿<%@ Page Title="车险保单批改" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="CarPolicyAlert.aspx.cs" Inherits="BrokerWebApp.vehicleinsurance.CarPolicyAlert" %>
+﻿<%@ Page Title="车险保单批改" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master" AutoEventWireup="True" Theme="Aqua" CodeBehind="CarPolicyAlert.aspx.cs" Inherits="BrokerWebApp.vehicleinsurance.CarPolicyAlert" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
@@ -8,6 +8,7 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dxpc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl" TagPrefix="dxuc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallbackPanel" TagPrefix="dxcp" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>车险保单批改</title>
@@ -116,8 +117,8 @@
 
         function setOnlyDxeButtonsUnableOrEnable(val) {
         
-            //if (typeof(dxebtnBottomSave) != 'undefined' && dxebtnBottomSave != null)
-            //    dxebtnBottomSave.SetEnabled(val);
+            if (typeof(dxebtnBottomSave) != 'undefined' && dxebtnBottomSave != null)
+                dxebtnBottomSave.SetEnabled(val);
 
             if (typeof(dxebtnBottomCheck) != 'undefined' && dxebtnBottomCheck != null)
                 dxebtnBottomCheck.SetEnabled(val);
@@ -239,6 +240,8 @@
             if (isEmpty(pid)) {
                 dxetxtPolicyID.SetValue(e.result);
             }
+            alert("保存成功。");
+            
         }
 
         function btnAddClick(s, e) {
@@ -261,8 +264,18 @@
 
 
         function saveCheckCallbackComplete(s, e) {
-            
-            setOnlyDxeButtonsUnableOrEnable(false);
+            var theresult = e.result;
+            switch (theresult) {
+                case "0":
+                    setOnlyDxeButtonsUnableOrEnable(false);
+                    dxebtntopSave.SetEnabled(false);
+                    if (typeof (filesUploadControlPanel) != 'undefined' && filesUploadControlPanel != null)
+                        filesUploadControlPanel.PerformCallback("unabled");
+                    alert("提交成功");
+                    break
+                default:
+                    alert(theresult);
+            }
         }
 
 
@@ -515,8 +528,13 @@
             Remark, AuditOrNot);
 
             var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
+            
+            var titleMSG = "确定退回吗？";
 
-            dxeAuditOkCallback.PerformCallback(jsonStringClient);
+            var sureOk = window.confirm(titleMSG)
+            if (sureOk) {
+                dxeAuditBackCallback.PerformCallback(jsonStringClient);
+            }
 
         }
 
@@ -524,18 +542,22 @@
         function auditBackCallbackComplete(s, e) {
             //do nothing;
             setOnlyDxeButtonsUnableOrEnable(false);
+            alert("退回成功");
         }
 
         function dxebtnAuditOkClick(s, e) {
             //debugger;
+            var titleMSG = "确定吗？";
             var buttonID = s.GetText();
             var AuditOrNot;
             switch (buttonID) {
                 case "通过审核":
                     AuditOrNot = true;
+                    titleMSG = "确定审核吗？";
                     break
                 case "反审核":
                     AuditOrNot = false;
+                    titleMSG = "确定反审核吗？";
                     break
                 default:
                     //do nothing;
@@ -592,27 +614,28 @@
             Remark, AuditOrNot);
 
             var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
-
-            dxeAuditOkCallback.PerformCallback(jsonStringClient);
+            
+            var sureOk = window.confirm(titleMSG)
+            if (sureOk) {
+                dxeAuditOkCallback.PerformCallback(jsonStringClient);
+            }
 
         }
 
         function auditOkCallbackComplete(s, e) {
-
-            setOnlyDxeButtonsUnableOrEnable(false);
-            dxebtnAuditOk.SetEnabled(true);
             var buttonID = dxebtnAuditOk.GetText();
-            switch (buttonID) {
-                case "通过审核":
-                    dxebtnAuditOk.SetText("反审核");
-                    break
-                case "反审核":
-                    dxebtnAuditOk.SetText("通过审核");
+            var buttonID = dxebtnAuditOk.GetText();
+            var titleMSG = buttonID + "成功完成";
+            var theresult = e.result;
+            switch (theresult) {
+                case "0":
+                    setOnlyDxeButtonsUnableOrEnable(false);
+                    dxebtnAuditOk.SetEnabled(true);
+                    alert(titleMSG);
                     break
                 default:
-                    //do nothing;
+                    alert(theresult);
             }
-
         }
 
 
@@ -667,7 +690,164 @@
     </script>
 
     <script type="text/javascript">
-    
+        function gridCarrierCustomButtonClick(s, e) {
+            s.GetRowValues(e.visibleIndex, "CarrierID", getTheGridCarrierSelectedRowsValues);
+        }
+
+        function getTheGridCarrierSelectedRowsValues(selectedValues) {
+            if (selectedValues.length == 0) {
+                //
+            }
+            else {
+                var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
+                var querystring;
+                querystring = "PolicyReinsure.aspx?id=" + selectedValues;
+                window.showModalDialog(querystring, self, myArguments);
+            }
+        }
+
+        function multi_ValueChanged(t1, t2, t3, opt) {
+
+            var v1;
+            try {
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
+            }
+            catch (err) {
+                v1 = 0;
+            }
+
+            var v2;
+            try {
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
+            }
+            catch (err) {
+                v2 = 0;
+            }
+
+
+            var v3;
+            if (opt == true)
+                v3 = parseFloat(v1 * v2 / 100);
+            else
+                v3 = parseFloat(v1 * v2);
+
+            var rtn = v3.toFixed(2);
+            t3.SetValue(rtn);
+        }
+
+
+        function division_ValueChanged(t1, t2, t3, opt) {
+
+            var v1;
+            try {
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
+            }
+            catch (err) {
+                v1 = 0;
+            }
+
+            var v2;
+            try {
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
+            }
+            catch (err) {
+                v2 = 0;
+            }
+
+            var v3;
+            if (v2 == 0)
+                v3 = 0;
+            else {
+                if (opt == true)
+                    v3 = parseFloat(v1 / v2 * 100);
+                else
+                    v3 = parseFloat(v1 / v2);
+            }
+
+            var rtn = v3.toFixed(2);
+            t3.SetValue(rtn);
+        }
+
+
+        function add_Four_ValueChanged(t1, t2, t3, t4) {
+
+            var v1;
+            try {
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
+            }
+            catch (err) {
+                v1 = 0;
+            }
+
+            var v2;
+            try {
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
+            }
+            catch (err) {
+                v2 = 0;
+            }
+
+            var v3;
+            try {
+                v3 = parseFloat(t3.GetValueString());
+                if (isNaN(v3))
+                    v3 = 0;
+            }
+            catch (err) {
+                v3 = 0;
+            }
+
+
+            var v4;
+            v4 = parseFloat(v1 + v2 + v3);
+
+            var rtn = v4.toFixed(2);
+            t4.SetValue(rtn);
+        }
+
+
+        function add_Three_ValueChanged(t1, t2, t3) {
+
+            var v1;
+            try {
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
+            }
+            catch (err) {
+                v1 = 0;
+            }
+
+            var v2;
+            try {
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
+            }
+            catch (err) {
+                v2 = 0;
+            }
+
+
+            var v3;
+            v3 = parseFloat(v1 + v2);
+
+            var rtn = v3.toFixed(2);
+            t3.SetValue(rtn);
+        }
+        
     </script>
     
 </asp:Content>
@@ -1043,6 +1223,11 @@
                                                                     <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                         <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
+                                                                    <ClientSideEvents ValueChanged="function(s,e){
+                                                                        add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
+                                                                        multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,true);
+                                                                        add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
+                                                                        }" />
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="width: 150px; text-align: right;">
@@ -1053,6 +1238,11 @@
                                                                     <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                         <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
+                                                                    <ClientSideEvents ValueChanged="function(s,e){
+                                                                        add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
+                                                                        multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,true);
+                                                                        add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
+                                                                        }" />
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="width: 110px; text-align: right;">
@@ -1063,6 +1253,9 @@
                                                                     <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                         <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
+                                                                    <ClientSideEvents ValueChanged="function(s,e){
+                                                                        add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
+                                                                        }" />
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="width: 110px; text-align: right;">
@@ -1085,6 +1278,10 @@
                                                                     <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                         <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
+                                                                    <ClientSideEvents ValueChanged="function(s,e){
+                                                                        multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,true);
+                                                                        add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
+                                                                        }" />
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="text-align: right;">
@@ -1095,6 +1292,10 @@
                                                                     <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                         <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
+                                                                    <ClientSideEvents ValueChanged="function(s,e){
+                                                                        multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,true);
+                                                                        add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
+                                                                        }" />
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="text-align: right;">
@@ -1115,6 +1316,9 @@
                                                                     <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                         <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
+                                                                    <ClientSideEvents ValueChanged="function(s,e){
+                                                                        add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
+                                                                        }" />
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="text-align: right;">
@@ -1125,6 +1329,9 @@
                                                                     <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
                                                                         <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
+                                                                    <ClientSideEvents ValueChanged="function(s,e){
+                                                                        add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
+                                                                        }" />
                                                                 </dxe:ASPxTextBox>
                                                             </td>
                                                             <td style="text-align: right;">
@@ -1166,34 +1373,43 @@
                                         </tr>
                                         <tr>
                                             <td style="width: 100%; text-align: left;">
-                                                <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl" 
-                                                    runat="server" ShowAddRemoveButtons="True"
-                                                    Width="400px" ShowUploadButton="True" 
-                                                    AddUploadButtonsHorizontalPosition="Center"
-                                                    ShowProgressPanel="True" 
-                                                    FileInputCount="5" RemoveButtonSpacing="8px" 
-                                                    AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
-                                                    OnFileUploadComplete="UploadControl_FileUploadComplete"
-                                                    >
-                                                    <ValidationSettings MaxFileSize="4000000" 
-                                                    FileDoesNotExistErrorText="文件不存在" 
-                                                    GeneralErrorText="上传发生错误" 
-                                                    MaxFileSizeErrorText="文件太大" 
-                                                    NotAllowedContentTypeErrorText="不允许上传此类型文件">
-                                                    </ValidationSettings>
-                                                    <ClientSideEvents 
-                                                        FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" 
-                                                        FileUploadStart="function(s, e) { FileUploadStart(s, e); }"  />
-                                                    <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
-                                                        ImagePosition="Left">
-                                                    </RemoveButton>
-                                                    <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
-                                                        ImagePosition="Left">
-                                                    </AddButton>
-                                                    <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
-                                                        ImagePosition="Left">                                            
-                                                    </UploadButton>                                        
-                                                </dxuc:ASPxUploadControl>
+                                                <dxcp:ASPxCallbackPanel runat="server" ID="filesUploadControlPanel" ClientInstanceName="filesUploadControlPanel" 
+                                                OnCallback="filesUploadControlPanel_Callback"
+                                                >
+                                                    <PanelCollection> 
+                                                        <dxrp:PanelContent ID="filesUploadControlPanelContent" runat="server"> 
+                                                        
+                                                            <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl" 
+                                                                runat="server" ShowAddRemoveButtons="True"
+                                                                Width="400px" ShowUploadButton="True" 
+                                                                AddUploadButtonsHorizontalPosition="Center"
+                                                                ShowProgressPanel="True" 
+                                                                FileInputCount="5" RemoveButtonSpacing="8px" 
+                                                                AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
+                                                                OnFileUploadComplete="UploadControl_FileUploadComplete"
+                                                                >
+                                                                <ValidationSettings MaxFileSize="4000000" 
+                                                                FileDoesNotExistErrorText="文件不存在" 
+                                                                GeneralErrorText="上传发生错误" 
+                                                                MaxFileSizeErrorText="文件太大" 
+                                                                NotAllowedContentTypeErrorText="不允许上传此类型文件">
+                                                                </ValidationSettings>
+                                                                <ClientSideEvents 
+                                                                    FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" 
+                                                                    FileUploadStart="function(s, e) { FileUploadStart(s, e); }"  />
+                                                                <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
+                                                                    ImagePosition="Left">
+                                                                </RemoveButton>
+                                                                <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
+                                                                    ImagePosition="Left">
+                                                                </AddButton>
+                                                                <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
+                                                                    ImagePosition="Left">                                            
+                                                                </UploadButton>                                        
+                                                            </dxuc:ASPxUploadControl>
+                                                        </dxrp:PanelContent> 
+                                                    </PanelCollection> 
+                                                </dxcp:ASPxCallbackPanel>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1229,6 +1445,155 @@
                                 </dxw:ContentControl>
                             </ContentCollection>
                         </dxtc:TabPage> 
+                        <dxtc:TabPage Text="分    期" ClientVisible="true">
+                            <ContentCollection>
+                                <dxw:ContentControl ID="ContentControl4" runat="server">
+                                    <table style="width: 100%">
+                                        <tr>
+                                            <td runat="server" id="tblcellgridPeriod">
+                                                <dxwgv:ASPxGridView ID="gridPeriod" ClientInstanceName="gridPeriod" runat="server"
+                                                    KeyFieldName="PolPeriodId" Width="100%" OnStartRowEditing="gridPeriod_StartRowEditing"
+                                                    OnRowInserting="gridPeriod_RowInserting" OnRowUpdating="gridPeriod_RowUpdating"
+                                                    OnRowDeleting="gridPeriod_RowDeleting" OnHtmlEditFormCreated="gridPeriod_HtmlEditFormCreated"
+                                                    OnCustomCallback="gridPeriod_CustomCallback" OnRowValidating="gridPeriod_RowValidating">
+                                                    <%-- BeginRegion Columns --%>
+                                                    <Columns>
+                                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="false">
+                                                            <EditButton Visible="true" />
+                                                            <NewButton Visible="false" />
+                                                            <DeleteButton Visible="false" />
+                                                        </dxwgv:GridViewCommandColumn>
+                                                        <dxwgv:GridViewDataColumn FieldName="Period" Caption="期次" CellStyle-Wrap="false">
+                                                        </dxwgv:GridViewDataColumn>
+                                                        <dxwgv:GridViewDataDateColumn FieldName="PayDate" Caption="付款日期" CellStyle-Wrap="false"
+                                                            PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                                                        </dxwgv:GridViewDataDateColumn>
+                                                        <dxwgv:GridViewDataColumn FieldName="CarrierNameCn" Caption="保险公司" CellStyle-Wrap="false">
+                                                        </dxwgv:GridViewDataColumn>
+                                                        <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="false">
+                                                        </dxwgv:GridViewDataColumn>
+                                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="保费" CellStyle-Wrap="false">
+                                                        </dxwgv:GridViewDataColumn>
+                                                        <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="经纪费" CellStyle-Wrap="false">
+                                                        </dxwgv:GridViewDataColumn>
+                                                        <dxwgv:GridViewDataColumn FieldName="PolicyId" Caption="PolicyId" CellStyle-Wrap="false"
+                                                            Visible="false">
+                                                        </dxwgv:GridViewDataColumn>
+                                                        <dxwgv:GridViewDataColumn FieldName="CarrierID" Caption="CarrierID" CellStyle-Wrap="false"
+                                                            Visible="false">
+                                                        </dxwgv:GridViewDataColumn>
+                                                        <dxwgv:GridViewDataColumn FieldName="BranchID" Caption="BranchID" CellStyle-Wrap="false"
+                                                            Visible="false">
+                                                        </dxwgv:GridViewDataColumn>
+                                                    </Columns>
+                                                    <%-- EndRegion --%>
+                                                    
+                                                    <TotalSummary>
+                                                        <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" DisplayFormat="c" />
+                                                        <dxwgv:ASPxSummaryItem FieldName="PayProcBase" SummaryType="Sum" DisplayFormat="c" />
+                                                    </TotalSummary>
+                                                    <SettingsEditing Mode="EditForm" />
+                                                    <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways"                                                
+                                                        ShowGroupedColumns="true" ShowFilterRow="false" ShowFooter="true" />
+                                                    <SettingsPager Mode="ShowAllRecords">
+                                                    </SettingsPager>
+                                                    <SettingsDetail ExportMode="All" />
+                                                    <SettingsLoadingPanel Mode="ShowAsPopup" ImagePosition="Top" ShowImage="true" Text="Loading" />
+                                                    <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                                    <Styles>
+                                                        <LoadingDiv>
+                                                        </LoadingDiv>
+                                                        <LoadingPanel>
+                                                        </LoadingPanel>
+                                                    </Styles>
+                                                    <Templates>
+                                                        <EditForm>
+                                                            <div style="padding: 4px 4px 3px 4px">
+                                                                <table style="width: 90%;" runat="server" id="tblgridPeriodEditorTemplate">
+                                                                    <tr>
+                                                                        <td style="white-space: nowrap; text-align: right;">
+                                                                            期次:
+                                                                        </td>
+                                                                        <td style="text-align: left;">
+                                                                            <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodPeriod" ClientInstanceName="detxtGridPeriodPeriod"
+                                                                                Enabled="false" ReadOnly="true">
+                                                                            </dxe:ASPxTextBox>
+                                                                        </td>
+                                                                        <td style="white-space: nowrap; text-align: right;">
+                                                                            付款日期:
+                                                                        </td>
+                                                                        <td style="text-align: left;">
+                                                                            <dxe:ASPxDateEdit ID="detxtGridPeriodPayDate" ClientInstanceName="detxtGridPeriodPayDate"
+                                                                                runat="server">
+                                                                                <ValidationSettings RequiredField-IsRequired="true" CausesValidation="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                                </ValidationSettings>
+                                                                            </dxe:ASPxDateEdit>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="white-space: nowrap; text-align: right;">
+                                                                            保险公司:
+                                                                        </td>
+                                                                        <td style="text-align: left;">
+                                                                            <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodCarrierNameCn" ClientInstanceName="detxtGridPeriodCarrierNameCn"
+                                                                                Enabled="false" ReadOnly="true">
+                                                                            </dxe:ASPxTextBox>
+                                                                        </td>
+                                                                        <td style="white-space: nowrap; text-align: right;">
+                                                                            分支机构:
+                                                                        </td>
+                                                                        <td style="text-align: left;">
+                                                                            <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodBranchName" ClientInstanceName="detxtGridPeriodBranchName"
+                                                                                Enabled="false" ReadOnly="true">
+                                                                            </dxe:ASPxTextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="white-space: nowrap; text-align: right;">
+                                                                            保费:
+                                                                        </td>
+                                                                        <td style="text-align: left;">
+                                                                            <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodPayFeeBase" ClientInstanceName="detxtGridPeriodPayFeeBase"
+                                                                                ReadOnly="false">
+                                                                                <ValidationSettings RequiredField-IsRequired="true" CausesValidation="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                </ValidationSettings>
+                                                                            </dxe:ASPxTextBox>
+                                                                        </td>
+                                                                        <td style="white-space: nowrap; text-align: right;">
+                                                                            经纪费:
+                                                                        </td>
+                                                                        <td style="text-align: left;">
+                                                                            <dxe:ASPxTextBox runat="server" ID="detxtGridPeriodPayProcBase" ClientInstanceName="detxtGridPeriodPayProcBase"
+                                                                                ReadOnly="false">
+                                                                                <ValidationSettings RequiredField-IsRequired="true" CausesValidation="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                </ValidationSettings>
+                                                                            </dxe:ASPxTextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div style="text-align: right; padding: 2px 2px 2px 2px">
+                                                                <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton"
+                                                                    runat="server">
+                                                                </dxwgv:ASPxGridViewTemplateReplacement>
+                                                                <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton"
+                                                                    runat="server">
+                                                                </dxwgv:ASPxGridViewTemplateReplacement>
+                                                            </div>
+                                                        </EditForm>
+                                                    </Templates>
+                                                </dxwgv:ASPxGridView>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </dxw:ContentControl>
+                            </ContentCollection>
+                        </dxtc:TabPage>
                         <dxtc:TabPage Text="审核信息">
                             <ContentCollection>
                                 <dxw:ContentControl ID="ContentControl2" runat="server">

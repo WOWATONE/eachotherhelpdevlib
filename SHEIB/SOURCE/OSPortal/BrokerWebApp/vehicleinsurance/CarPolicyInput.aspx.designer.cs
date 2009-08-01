@@ -707,6 +707,33 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridDocList;
         
         /// <summary>
+        /// ContentControl4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxClasses.ContentControl ContentControl4;
+        
+        /// <summary>
+        /// tblcellgridPeriod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell tblcellgridPeriod;
+        
+        /// <summary>
+        /// gridPeriod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridPeriod;
+        
+        /// <summary>
         /// ContentControl3 control.
         /// </summary>
         /// <remarks>
