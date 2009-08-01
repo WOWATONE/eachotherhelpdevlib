@@ -1225,6 +1225,8 @@ namespace BrokerWebApp.otherinsurance
             this.cusid.Value = obj.CustomerID;
 
             this.dxetxtBeneficiary.Text = obj.Beneficiary;
+            if (String.IsNullOrEmpty(dxetxtBeneficiary.Text))
+                dxetxtBeneficiary.Text = obj.CustomerName;
 
             //dxeddlDeptID
             if (!String.IsNullOrEmpty(obj.DeptId))
