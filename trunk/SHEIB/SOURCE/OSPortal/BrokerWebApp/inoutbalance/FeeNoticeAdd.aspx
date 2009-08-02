@@ -240,14 +240,14 @@
                             dxebtnSave.SetEnabled(false);
                             btnAddPolicy.SetEnabled(false);
                             dxebtnPrint.SetEnabled(false);
-                            setGridEditStatus(false);
+                            //setGridEditStatus(false);
                             alert("审核成功!");
                             break;
                         case "反审核":
                             dxebtnAudit.SetText("审核");
                             dxebtnSave.SetEnabled(true);
                             btnAddPolicy.SetEnabled(true);
-                            setGridEditStatus(true);
+                            //setGridEditStatus(true);
                             alert("反审核成功!");
                             break;
                         default:
@@ -257,6 +257,7 @@
                 default:
                     alert(theresult)
             }
+            gridPolicyItem.PerformCallback('');
             
         }
 
@@ -329,8 +330,12 @@
             </td>
             <td style="text-align: left;">
                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                    KeyFieldName="PolPeriodId" Width="100%" AutoGenerateColumns="False" OnCustomCallback="gridPolicyItem_CustomCallback"
-                    OnRowDeleting="gridPolicyItem_RowDeleting" OnRowDeleted="gridPolicyItem_RowDeleted">
+                    KeyFieldName="PolPeriodId" Width="100%" AutoGenerateColumns="False" 
+                    OnCustomCallback="gridPolicyItem_CustomCallback"
+                    OnRowDeleting="gridPolicyItem_RowDeleting" 
+                    OnRowDeleted="gridPolicyItem_RowDeleted"
+                    OnHtmlRowCreated="gridPolicyItem_HtmlRowCreated"
+                    >
                     <%-- BeginRegion Columns --%>
                     <Columns>
                         <dxwgv:GridViewCommandColumn Caption="&nbsp;">
@@ -352,6 +357,10 @@
                         </dxwgv:GridViewDataColumn>
                         <dxwgv:GridViewDataColumn FieldName="CstPremium" Caption="车船税" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
+                        <dxwgv:GridViewDataColumn FieldName="AuditStatus" Caption="AuditStatus" CellStyle-Wrap="False" Visible="false">
+                        </dxwgv:GridViewDataColumn>
+                        
+                        
                     </Columns>
                     <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleIfExpanded" />
                     <TotalSummary>

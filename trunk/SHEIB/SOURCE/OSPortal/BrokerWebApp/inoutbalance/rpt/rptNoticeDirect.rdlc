@@ -103,6 +103,14 @@
           <DataField>NoticeNo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="CarrierName">
+          <DataField>CarrierName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BranchName">
+          <DataField>BranchName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DummyDataSource</DataSourceName>
@@ -123,13 +131,12 @@
       <Table Name="table1">
         <DataSetName>dsNotice_NoticePolicy</DataSetName>
         <Top>1.75cm</Top>
-        <Width>18cm</Width>
+        <Width>18.206cm</Width>
         <Details>
           <TableRows>
             <TableRow>
               <TableCells>
                 <TableCell>
-                  <ColSpan>2</ColSpan>
                   <ReportItems>
                     <Textbox Name="ProdTypeName">
                       <rd:DefaultName>ProdTypeName</rd:DefaultName>
@@ -145,6 +152,25 @@
                       </Style>
                       <CanGrow>true</CanGrow>
                       <Value>=Fields!ProdTypeName.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox4">
+                      <rd:DefaultName>textbox4</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>宋体</FontFamily>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!PolicyID.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -169,10 +195,9 @@
                   </ReportItems>
                 </TableCell>
                 <TableCell>
-                  <ColSpan>2</ColSpan>
                   <ReportItems>
-                    <Textbox Name="PolicyID">
-                      <rd:DefaultName>PolicyID</rd:DefaultName>
+                    <Textbox Name="CarrierName">
+                      <rd:DefaultName>CarrierName</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -184,7 +209,26 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!PolicyID.Value</Value>
+                      <Value>=Fields!CarrierName.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="BranchName">
+                      <rd:DefaultName>BranchName</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>宋体</FontFamily>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!BranchName.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -366,51 +410,6 @@
               <TableCells>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox38">
-                      <rd:DefaultName>textbox38</rd:DefaultName>
-                      <Style>
-                        <BorderStyle>
-                          <Default>Solid</Default>
-                        </BorderStyle>
-                        <FontFamily>宋体</FontFamily>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>保险公司:</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-                <TableCell>
-                  <ColSpan>6</ColSpan>
-                  <ReportItems>
-                    <Textbox Name="Carrier_1">
-                      <rd:DefaultName>Carrier_1</rd:DefaultName>
-                      <Style>
-                        <BorderStyle>
-                          <Default>Solid</Default>
-                        </BorderStyle>
-                        <FontFamily>宋体</FontFamily>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                      <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!Carrier.Value, "dsNotice_Notice")</Value>
-                    </Textbox>
-                  </ReportItems>
-                </TableCell>
-              </TableCells>
-              <Height>0.63492cm</Height>
-            </TableRow>
-            <TableRow>
-              <TableCells>
-                <TableCell>
-                  <ColSpan>2</ColSpan>
-                  <ReportItems>
                     <Textbox Name="textbox22">
                       <rd:DefaultName>textbox22</rd:DefaultName>
                       <Style>
@@ -425,6 +424,25 @@
                       </Style>
                       <CanGrow>true</CanGrow>
                       <Value>险种</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox3">
+                      <rd:DefaultName>textbox3</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>宋体</FontFamily>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>投保单号</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -449,7 +467,6 @@
                   </ReportItems>
                 </TableCell>
                 <TableCell>
-                  <ColSpan>2</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox32">
                       <rd:DefaultName>textbox32</rd:DefaultName>
@@ -464,7 +481,26 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>投保单号</Value>
+                      <Value>保险公司</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox5">
+                      <rd:DefaultName>textbox5</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>宋体</FontFamily>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>分支机构</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -494,19 +530,19 @@
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>3.088cm</Width>
+            <Width>2.25cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>2.75cm</Width>
           </TableColumn>
           <TableColumn>
             <Width>1.98514cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.98514cm</Width>
+            <Width>2.5cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.73543cm</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>2.73543cm</Width>
+            <Width>3.25cm</Width>
           </TableColumn>
           <TableColumn>
             <Width>2.73543cm</Width>
@@ -515,7 +551,7 @@
             <Width>2.73543cm</Width>
           </TableColumn>
         </TableColumns>
-        <Height>8.36904cm</Height>
+        <Height>7.73412cm</Height>
         <Footer>
           <TableRows>
             <TableRow>
