@@ -192,7 +192,7 @@
                 <asp:Panel ID="npSearchResultDetail" runat="server" CssClass="collapsePanel" Height="0">
                     <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                         KeyFieldName="CustID" AutoGenerateColumns="False" Settings-ShowFooter="true"
-                        Width="100%" SettingsPager-AlwaysShowPager="true" SettingsBehavior-AllowSort="false"
+                        Width="100%" SettingsPager-AlwaysShowPager="true"
                         SettingsBehavior-AllowDragDrop="true" OnRowDeleting="gridSearchResult_RowDeleting"
                         OnCustomCallback="gridSearchResult_CustomCallBack">
                         <Columns>
