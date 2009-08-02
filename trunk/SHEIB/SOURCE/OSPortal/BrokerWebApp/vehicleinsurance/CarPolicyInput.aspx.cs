@@ -1141,8 +1141,8 @@ namespace BrokerWebApp.vehicleinsurance
             {
                 BO_PolicyCarrier.DeleteByPolicyId(theObject.PolicyID);
                 BO_PolicyPeriod.DeleteByPolicyId(theObject.PolicyID);
-                BO_PolicyCarrier.CreateCarrier(objCar.CarrierID, objCar.BranchID, theObject.PolicyID, theObject.Premium,
-                    theObject.PremiumRate, theObject.ProcessRate, theObject.Process);
+                BO_PolicyCarrier.CreateCarrier(objCar.CarrierID, objCar.BranchID, theObject.PolicyID, 
+                    100, theObject.CiPremium, theObject.CiProcessRate, theObject.CiProcess);
 
                 BO_Policy.ChangePeriod(theObject.PolicyID);
             }

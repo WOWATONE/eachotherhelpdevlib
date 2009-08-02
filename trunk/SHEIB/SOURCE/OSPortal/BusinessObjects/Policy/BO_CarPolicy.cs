@@ -398,11 +398,11 @@ namespace BusinessObjects.Policy
             ref Int32 resultSign, ref String resultMsg)
         {
             //StringBuilder sb = new StringBuilder();
-            //sb.Append("[dbo].[AuditPolicySubmit]");
+            //sb.Append("[dbo].[AuditCheckPolicy]");
 
             //DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
 
-            //_db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, policyID);
+            //_db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, askPriceID);
             //_db.AddInParameter(dbCommand, "@ac_AuditStatus", DbType.String, auditStatus);
             //_db.AddInParameter(dbCommand, "@ac_AuditPersion", DbType.String, person);
             //_db.AddOutParameter(dbCommand, "@ai_dm", DbType.Int32, 32);

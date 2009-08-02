@@ -1222,8 +1222,10 @@ namespace BusinessObjects.Policy
                     objNew.BranchID = item.BranchID;
                     objNew.Period = i;
                     objNew.PayDate = DateTime.Now;
+                    
                     objNew.PayFeeBase = item.PremiumBase / times;
                     objNew.PayProcBase = item.ProcessBase / times;
+                    
                     objNew.NoticeNo = "";
                     objNew.Save(ModifiedAction.Insert);
                 }
