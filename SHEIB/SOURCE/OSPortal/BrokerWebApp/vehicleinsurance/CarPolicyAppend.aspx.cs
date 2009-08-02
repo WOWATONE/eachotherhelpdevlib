@@ -350,23 +350,34 @@ namespace BrokerWebApp.vehicleinsurance
             dxeCreateTime.Enabled = val;
 
             dxetxtCarNo.Enabled = val;
+            dxetxtCarNo.Visible = val;
             dxetxtCarcaseNo.Enabled = val;
+            dxetxtCarcaseNo.Visible = val;
             dxetxtUseCharacter.Enabled = val;
+            dxetxtUseCharacter.Visible = val;
             dxetxtEngineNo.Enabled = val;
+            dxetxtEngineNo.Visible = val;
             dxetxtCarUser.Enabled = val;
+            dxetxtCarUser.Visible = val;
             dxetxtCapacity.Enabled = val;
+            dxetxtCapacity.Visible = val;
             dxeRegisterDate.Enabled = val;
+            dxeRegisterDate.Visible = val;
             dxetxtCarValue.Enabled = val;
+            dxetxtCarValue.Visible = val;
 
             dxetxtCiPremium.Enabled = val;
             dxetxtAciPremium.Enabled = val;
             dxetxtCstPremium.Enabled = val;
             dxetxtTotalPremium.Enabled = val;
+            dxetxtTotalPremium.Visible = val;
+
             dxetxtCiProcessRate.Enabled = val;
             dxetxtAciProcessRate.Enabled = val;
             dxetxtCiProcess.Enabled = val;
             dxetxtAciProcess.Enabled = val;
             dxetxtTotalProcess.Enabled = val;
+            dxetxtTotalProcess.Visible = val;
         }
 
 
