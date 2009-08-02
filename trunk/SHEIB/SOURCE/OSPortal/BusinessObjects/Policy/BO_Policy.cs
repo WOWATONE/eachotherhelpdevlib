@@ -726,28 +726,60 @@ namespace BusinessObjects.Policy
         }
 
 
+        public static void ChangePeriod(String id)
+        {
+            List<BO_PolicyCarrier> theList;
+            theList = BO_PolicyCarrier.FetchListByPolicy(id);
+            BO_PolicyPeriod objNew;
+
+            BO_Policy objPolicy = new BO_Policy(id);
+            Int32 times = objPolicy.PeriodTimes;
+            if (times < 1) times = 1;
+
+            BO_PolicyPeriod.DeleteByPolicyId(id);
+
+            foreach (BO_PolicyCarrier item in theList)
+            {
+                for (int i = 1; i <= times; i++)
+                {
+                    objNew = new BO_PolicyPeriod();
+                    objNew.PolPeriodId = Guid.NewGuid().ToString();
+                    objNew.PolicyId = item.PolicyID;
+                    objNew.CarrierID = item.CarrierID;
+                    objNew.BranchID = item.BranchID;
+                    objNew.Period = i;
+                    objNew.PayDate = DateTime.Now;
+
+                    objNew.PayFeeBase = item.PremiumBase / times;
+                    objNew.PayProcBase = item.ProcessBase / times;
+
+                    objNew.NoticeNo = "";
+                    objNew.Save(ModifiedAction.Insert);
+                }
+            }
+
+        }
+
+
+        public static DataSet GetPolicyFee(string sPolicyID)
+        {
+
+            //DbCommand dbCommand = _db.GetStoredProcCommand("dbo.spGetPolicyFee");
+            //_db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, sPolicyID);
+            //return _db.ExecuteDataSet(dbCommand);
+            return null;
+        }
+
+
         public static void AuditPolicy(String policyID, 
             String auditStatus, String person, String remark, 
             ref Int32 resultSign, ref String resultMsg)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("[dbo].[AuditPolicy]");
-
-            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
-
-            _db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, policyID);
-            _db.AddInParameter(dbCommand, "@ac_AuditStatus", DbType.String, auditStatus);
-            _db.AddInParameter(dbCommand, "@ac_AuditPersion", DbType.String, person);
-            _db.AddInParameter(dbCommand, "@ac_Remark", DbType.String, remark);
-            _db.AddOutParameter(dbCommand, "@ai_dm", DbType.Int32, 32);
-            _db.AddOutParameter(dbCommand, "@ac_sm", DbType.String, 100);
-            
-            
-            _db.ExecuteNonQuery(dbCommand);
-
-            resultSign = Convert.ToInt32(_db.GetParameterValue(dbCommand, "@ai_dm"));
-            resultMsg = Convert.ToString( _db.GetParameterValue(dbCommand, "@ac_sm"));
-
+            BO_Policy theObj = new BO_Policy(policyID);
+            if (theObj.PolicyType == Convert.ToInt32(PolicyTypeEnum.Vehicle).ToString())
+                AuditVehiclePolicy(policyID, auditStatus, person, remark, ref resultSign, ref resultMsg);
+            else
+                AuditOtherPolicy(policyID, auditStatus, person, remark, ref resultSign, ref resultMsg);
         }
 
 
@@ -755,23 +787,11 @@ namespace BusinessObjects.Policy
             String auditStatus, String person, 
             ref Int32 resultSign, ref String resultMsg)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("[dbo].[AuditPolicySubmit]");
-
-            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
-
-            _db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, policyID);
-            _db.AddInParameter(dbCommand, "@ac_AuditStatus", DbType.String, auditStatus);
-            _db.AddInParameter(dbCommand, "@ac_AuditPersion", DbType.String, person);
-            _db.AddOutParameter(dbCommand, "@ai_dm", DbType.Int32, 32);
-            _db.AddOutParameter(dbCommand, "@ac_sm", DbType.String, 100);
-
-
-            _db.ExecuteNonQuery(dbCommand);
-
-            resultSign = Convert.ToInt32(_db.GetParameterValue(dbCommand, "@ai_dm"));
-            resultMsg = Convert.ToString(_db.GetParameterValue(dbCommand, "@ac_sm"));
-
+            BO_Policy theObj = new BO_Policy(policyID);
+            if (theObj.PolicyType == Convert.ToInt32(PolicyTypeEnum.Vehicle).ToString())
+                AuditVehiclePolicySubmit(policyID, auditStatus, person,  ref resultSign, ref resultMsg);
+            else
+                AuditOtherPolicySubmit(policyID, auditStatus, person, ref resultSign, ref resultMsg);
         }
 
         #endregion Methods
@@ -1199,48 +1219,100 @@ namespace BusinessObjects.Policy
         }
 
 
-        public static void ChangePeriod(String id)
+        private static void AuditOtherPolicy(String policyID,
+            String auditStatus, String person, String remark,
+            ref Int32 resultSign, ref String resultMsg)
         {
-            List<BO_PolicyCarrier> theList;
-            theList = BO_PolicyCarrier.FetchListByPolicy(id);
-            BO_PolicyPeriod objNew;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[dbo].[AuditPolicy]");
 
-            BO_Policy objPolicy = new BO_Policy(id);
-            Int32 times = objPolicy.PeriodTimes;
-            if (times < 1) times = 1;
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
 
-            BO_PolicyPeriod.DeleteByPolicyId(id);
+            _db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, policyID);
+            _db.AddInParameter(dbCommand, "@ac_AuditStatus", DbType.String, auditStatus);
+            _db.AddInParameter(dbCommand, "@ac_AuditPersion", DbType.String, person);
+            _db.AddInParameter(dbCommand, "@ac_Remark", DbType.String, remark);
+            _db.AddOutParameter(dbCommand, "@ai_dm", DbType.Int32, 32);
+            _db.AddOutParameter(dbCommand, "@ac_sm", DbType.String, 100);
 
-            foreach (BO_PolicyCarrier item in theList)
-            {
-                for (int i = 1; i <= times; i++)
-                {
-                    objNew = new BO_PolicyPeriod();
-                    objNew.PolPeriodId = Guid.NewGuid().ToString();
-                    objNew.PolicyId = item.PolicyID;
-                    objNew.CarrierID = item.CarrierID;
-                    objNew.BranchID = item.BranchID;
-                    objNew.Period = i;
-                    objNew.PayDate = DateTime.Now;
-                    
-                    objNew.PayFeeBase = item.PremiumBase / times;
-                    objNew.PayProcBase = item.ProcessBase / times;
-                    
-                    objNew.NoticeNo = "";
-                    objNew.Save(ModifiedAction.Insert);
-                }
-            }
+
+            _db.ExecuteNonQuery(dbCommand);
+
+            resultSign = Convert.ToInt32(_db.GetParameterValue(dbCommand, "@ai_dm"));
+            resultMsg = Convert.ToString(_db.GetParameterValue(dbCommand, "@ac_sm"));
 
         }
 
 
-        public static DataSet GetPolicyFee(string sPolicyID)
+        private static void AuditVehiclePolicy(String policyID,
+            String auditStatus, String person, String remark,
+            ref Int32 resultSign, ref String resultMsg)
         {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[dbo].[AuditCarPolicy]");
 
-            //DbCommand dbCommand = _db.GetStoredProcCommand("dbo.spGetPolicyFee");
-            //_db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, sPolicyID);
-            //return _db.ExecuteDataSet(dbCommand);
-            return null;
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, policyID);
+            _db.AddInParameter(dbCommand, "@ac_AuditStatus", DbType.String, auditStatus);
+            _db.AddInParameter(dbCommand, "@ac_AuditPersion", DbType.String, person);
+            _db.AddInParameter(dbCommand, "@ac_Remark", DbType.String, remark);
+            _db.AddOutParameter(dbCommand, "@ai_dm", DbType.Int32, 32);
+            _db.AddOutParameter(dbCommand, "@ac_sm", DbType.String, 100);
+
+
+            _db.ExecuteNonQuery(dbCommand);
+
+            resultSign = Convert.ToInt32(_db.GetParameterValue(dbCommand, "@ai_dm"));
+            resultMsg = Convert.ToString(_db.GetParameterValue(dbCommand, "@ac_sm"));
+
+        }
+
+
+        private static void AuditOtherPolicySubmit(String policyID,
+            String auditStatus, String person,
+            ref Int32 resultSign, ref String resultMsg)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[dbo].[AuditPolicySubmit]");
+
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, policyID);
+            _db.AddInParameter(dbCommand, "@ac_AuditStatus", DbType.String, auditStatus);
+            _db.AddInParameter(dbCommand, "@ac_AuditPersion", DbType.String, person);
+            _db.AddOutParameter(dbCommand, "@ai_dm", DbType.Int32, 32);
+            _db.AddOutParameter(dbCommand, "@ac_sm", DbType.String, 100);
+
+
+            _db.ExecuteNonQuery(dbCommand);
+
+            resultSign = Convert.ToInt32(_db.GetParameterValue(dbCommand, "@ai_dm"));
+            resultMsg = Convert.ToString(_db.GetParameterValue(dbCommand, "@ac_sm"));
+
+        }
+
+        private static void AuditVehiclePolicySubmit(String policyID,
+            String auditStatus, String person,
+            ref Int32 resultSign, ref String resultMsg)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[dbo].[AuditCarPolicySubmit]");
+
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, policyID);
+            _db.AddInParameter(dbCommand, "@ac_AuditStatus", DbType.String, auditStatus);
+            _db.AddInParameter(dbCommand, "@ac_AuditPersion", DbType.String, person);
+            _db.AddOutParameter(dbCommand, "@ai_dm", DbType.Int32, 32);
+            _db.AddOutParameter(dbCommand, "@ac_sm", DbType.String, 100);
+
+
+            _db.ExecuteNonQuery(dbCommand);
+
+            resultSign = Convert.ToInt32(_db.GetParameterValue(dbCommand, "@ai_dm"));
+            resultMsg = Convert.ToString(_db.GetParameterValue(dbCommand, "@ac_sm"));
+
         }
 
         #endregion Procedure

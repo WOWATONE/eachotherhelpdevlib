@@ -1011,8 +1011,8 @@ namespace BrokerWebApp.vehicleinsurance
             String state;
 
             state = Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.AppealAudit).ToString();
-
-            BusinessObjects.Policy.BO_CarPolicy.AuditCarPolicySubmit(theID, state, this.CurrentUserID, ref resultSign, ref resultMSG);
+            String remark = "";
+            BusinessObjects.Policy.BO_CarPolicy.AuditCarPolicySubmit(theID, state, this.CurrentUserID, remark, ref resultSign, ref resultMSG);
 
         }
 
