@@ -609,7 +609,9 @@ namespace BrokerWebApp.otherinsurance
                     brancheID = theValueList[2].ToString();
 
                 if (theValueList[3] == null)
-                    policyRate = "";
+                {
+                    policyRate = this.dxetxtProcessRate.Text.Trim();
+                }
                 else
                     policyRate = String.Format(BasePage.TheFourSF, theValueList[3]);
 
@@ -1523,10 +1525,9 @@ namespace BrokerWebApp.otherinsurance
 
             this.dxetxtStage.Text = obj.PeriodTimes.ToString();
 
-
-            this.dxetxtCoverage.Text = obj.Coverage.ToString();
-            this.dxetxtPremiumRate.Text = obj.PremiumRate.ToString();
-            this.dxetxtProcessRate.Text = obj.ProcessRate.ToString();
+            this.dxetxtCoverage.Text = String.Format(BasePage.TheTwoSF, obj.Coverage);
+            this.dxetxtPremiumRate.Text = String.Format(BasePage.TheFourSF, obj.PremiumRate); 
+            this.dxetxtProcessRate.Text = String.Format(BasePage.TheFourSF, obj.ProcessRate);
 
             //dxeddlCurrency
             if (!String.IsNullOrEmpty(obj.Currency))
@@ -1538,11 +1539,11 @@ namespace BrokerWebApp.otherinsurance
                 }
             }
 
-            this.dxetxtPremium.Text = obj.Premium.ToString();
-            this.dxetxtProcess.Text = obj.Process.ToString();
-            this.dxetxtConversionRate.Text = obj.ConversionRate.ToString();
-            this.dxetxtPremiumBase.Text = obj.PremiumBase.ToString();
-            this.dxetxtProcessBase.Text = obj.ProcessBase.ToString();
+            this.dxetxtPremium.Text = String.Format(BasePage.TheTwoSF, obj.Premium); 
+            this.dxetxtProcess.Text = String.Format(BasePage.TheTwoSF, obj.Process);
+            this.dxetxtConversionRate.Text = String.Format(BasePage.TheFiveSF, obj.ConversionRate);
+            this.dxetxtPremiumBase.Text = String.Format(BasePage.TheTwoSF, obj.PremiumBase); 
+            this.dxetxtProcessBase.Text = String.Format(BasePage.TheTwoSF, obj.ProcessBase);
 
             this.dxeCheckDate.Date = obj.AuditTime;
             this.dxetxtAuditPerson.Text = obj.AuditPerson;
