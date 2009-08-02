@@ -157,7 +157,10 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "NotifyPerson", DbType.AnsiString, this.NotifyPerson);
             _db.AddInParameter(dbCommand, "LossType", DbType.AnsiString, this.LossType);
             _db.AddInParameter(dbCommand, "AccidentReason", DbType.AnsiString, this.AccidentReason);
-            _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, this.NotifyLossFee);
+            if (this.NotifyLossFee == -1)
+                _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, DBNull.Value);
+            else
+                _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, this.NotifyLossFee);
             _db.AddInParameter(dbCommand, "ContactPerson", DbType.AnsiString, this.ContactPerson);
             _db.AddInParameter(dbCommand, "ContactPhone", DbType.AnsiString, this.ContactPhone);
             _db.AddInParameter(dbCommand, "NotifyType", DbType.AnsiString, this.NotifyType);
@@ -169,7 +172,10 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "NotifyNo", DbType.AnsiString, this.NotifyNo);
             _db.AddInParameter(dbCommand, "CarrierContactPerson", DbType.AnsiString, this.CarrierContactPerson);
             _db.AddInParameter(dbCommand, "CarrierContactPhone", DbType.AnsiString, this.CarrierContactPhone);
-            _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, this.PerambulateTime);
+            if (this.PerambulateTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, DBNull.Value);
+            else
+                _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, this.PerambulateTime);
             _db.AddInParameter(dbCommand, "Requirement", DbType.AnsiString, this.Requirement);
             _db.AddInParameter(dbCommand, "CaseEndTime", DbType.DateTime, this.CaseEndTime);
             _db.AddInParameter(dbCommand, "LastPayFee", DbType.Double, this.LastPayFee);
@@ -207,7 +213,10 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "NotifyPerson", DbType.AnsiString, this.NotifyPerson);
             _db.AddInParameter(dbCommand, "LossType", DbType.AnsiString, this.LossType);
             _db.AddInParameter(dbCommand, "AccidentReason", DbType.AnsiString, this.AccidentReason);
-            _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, this.NotifyLossFee);
+            if (this.NotifyLossFee == -1)
+                _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, DBNull.Value);
+            else
+                _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, this.NotifyLossFee);
             _db.AddInParameter(dbCommand, "ContactPerson", DbType.AnsiString, this.ContactPerson);
             _db.AddInParameter(dbCommand, "ContactPhone", DbType.AnsiString, this.ContactPhone);
             _db.AddInParameter(dbCommand, "NotifyType", DbType.AnsiString, this.NotifyType);
@@ -219,7 +228,10 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "NotifyNo", DbType.AnsiString, this.NotifyNo);
             _db.AddInParameter(dbCommand, "CarrierContactPerson", DbType.AnsiString, this.CarrierContactPerson);
             _db.AddInParameter(dbCommand, "CarrierContactPhone", DbType.AnsiString, this.CarrierContactPhone);
-            _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, this.PerambulateTime);
+            if (this.PerambulateTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, DBNull.Value);
+            else
+                _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, this.PerambulateTime);
             _db.AddInParameter(dbCommand, "Requirement", DbType.AnsiString, this.Requirement);
             _db.AddInParameter(dbCommand, "CaseEndTime", DbType.DateTime, this.CaseEndTime);
             _db.AddInParameter(dbCommand, "LastPayFee", DbType.Double, this.LastPayFee);
@@ -242,7 +254,7 @@ namespace BusinessObjects
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select NC.NotifyID, P.PolicyNo, C.CarrierNameCn, PT.ProdTypeName, P.StartDate, P.EndDate, NC.NotifyTime, ");
-            sb.Append("isnull(NC.NotifyLossFee, 0) as NotifyLossFee, isnull(C.LossRation, 0) as LossRation, isnull(NC.LastPayFee, 0) as LastPayFee, NC.CaseEndTime ");
+            sb.Append("isnull(NC.NotifyLossFee, '') as NotifyLossFee, isnull(C.LossRation, 0) as LossRation, isnull(NC.LastPayFee, 0) as LastPayFee, NC.CaseEndTime ");
             sb.Append("From NotifyClaim NC (nolock) ");
             sb.Append("Inner Join Policy P (nolock) On P.PolicyID=NC.PolicyID ");
             sb.Append("Left Join PolicyCarrier PC (nolock) On PC.PolicyID=P.PolicyID ");
@@ -327,7 +339,7 @@ namespace BusinessObjects
                     notifyClaim.NotifyPerson = Utility.GetStringFromReader(reader, FieldList.NotifyPerson.ToString());
                     notifyClaim.LossType = Utility.GetStringFromReader(reader, FieldList.LossType.ToString());
                     notifyClaim.AccidentReason = Utility.GetStringFromReader(reader, FieldList.AccidentReason.ToString());
-                    notifyClaim.NotifyLossFee = Utility.GetDoubleFromReader(reader, FieldList.NotifyLossFee.ToString());
+                    notifyClaim.NotifyLossFee = reader["NotifyLossFee"] == DBNull.Value ? -1 : Convert.ToDouble(reader["NotifyLossFee"]);
                     notifyClaim.ContactPerson = Utility.GetStringFromReader(reader, FieldList.ContactPerson.ToString());
                     notifyClaim.ContactPhone = Utility.GetStringFromReader(reader, FieldList.ContactPhone.ToString());
                     notifyClaim.NotifyType = Utility.GetStringFromReader(reader, FieldList.NotifyType.ToString());
