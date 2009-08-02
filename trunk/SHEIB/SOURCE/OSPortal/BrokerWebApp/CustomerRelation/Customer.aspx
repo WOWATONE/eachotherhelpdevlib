@@ -438,7 +438,7 @@
                                                 <EditButton Visible="true" />
                                                 <DeleteButton Visible="true" />
                                             </dxwgv:GridViewCommandColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="联系人编号" FieldName="ContactID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                            <dxwgv:GridViewDataTextColumn Caption="联系人GUID" FieldName="ContactID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="姓名" FieldName="ContactName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
@@ -470,63 +470,63 @@
                                                     <table style="width: 70%;" runat="server" id="tblgridContactItemEditorTemplate">
                                                         <tr>
                                                             <td style="white-space: nowrap; text-align: right;">
-                                                                联系人编号：
-                                                            </td>
-                                                            <td style="text-align: left;">
-                                                                <dxe:ASPxTextBox ID="dxetxtContactID" ClientInstanceName="dxetxtContactID" runat="server" Text='<%# Eval("ContactID") %>' Enabled="false"></dxe:ASPxTextBox>
-                                                            </td>
-                                                            <td style="white-space: nowrap; text-align: right;">
                                                                 姓名：
                                                             </td>
                                                             <td style="text-align: left;">
                                                                 <dxe:ASPxTextBox ID="dxetxtContactName" ClientInstanceName="dxetxtContactName" runat="server" Text='<%# Eval("ContactName") %>'></dxe:ASPxTextBox>
                                                             </td>
-                                                        </tr>
-                                                        <tr>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 性别：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxComboBox ID="dxeddlSex" ClientInstanceName="dxeddlSex" runat="server" DropDownStyle="DropDownList" SelectedIndex='<%# GetSelectedIndex(Eval("Sex"), "Sex")%>'>
+                                                                <dxe:ASPxComboBox ID="dxeddlSex" ClientInstanceName="dxeddlSex" runat="server" DropDownStyle="DropDownList" SelectedIndex='<%# GetSelectedIndex(Eval("Sex"), "Sex")%>' Width="160px">
                                                                     <Items>
                                                                         <dxe:ListEditItem Text="男" Value="男" />
                                                                         <dxe:ListEditItem Text="女" Value="女" />
                                                                     </Items>
                                                                 </dxe:ASPxComboBox>
                                                             </td>
+                                                        </tr>
+                                                        <tr>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 职位：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                               <dxe:ASPxTextBox ID="dxetxtPosition" ClientInstanceName="dxetxtPosition" runat="server" Text='<%# Eval("Position") %>'></dxe:ASPxTextBox>
+                                                                <dxe:ASPxTextBox ID="dxetxtPosition" ClientInstanceName="dxetxtPosition" runat="server" Text='<%# Eval("Position") %>'></dxe:ASPxTextBox>
                                                             </td>
-                                                        </tr>
-                                                        <tr>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 电话：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                 <dxe:ASPxTextBox ID="dxetxtTel" ClientInstanceName="dxetxtTel" runat="server" Text='<%# Eval("Tel") %>'></dxe:ASPxTextBox>
+                                                               <dxe:ASPxTextBox ID="dxetxtTel" ClientInstanceName="dxetxtTel" runat="server" Text='<%# Eval("Tel") %>'></dxe:ASPxTextBox>
                                                             </td>
+                                                        </tr>
+                                                        <tr>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 手机：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxTextBox ID="dxetxtMobilePhone" ClientInstanceName="dxetxtMobilePhone" runat="server" Text='<%# Eval("MobilePhone") %>'></dxe:ASPxTextBox>
+                                                                 <dxe:ASPxTextBox ID="dxetxtMobilePhone" ClientInstanceName="dxetxtMobilePhone" runat="server" Text='<%# Eval("MobilePhone") %>'></dxe:ASPxTextBox>
                                                             </td>
-                                                        </tr>
-                                                        <tr>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 传真：
                                                             </td>
                                                             <td style="text-align: left;">
                                                                 <dxe:ASPxTextBox ID="dxetxtFax" ClientInstanceName="dxetxtFax" runat="server" Text='<%# Eval("Fax") %>'></dxe:ASPxTextBox>
                                                             </td>
+                                                        </tr>
+                                                        <tr>
                                                             <td style="white-space: nowrap; text-align: right;">
                                                                 邮件：
                                                             </td>
                                                             <td style="text-align: left;">
                                                                 <dxe:ASPxTextBox ID="dxetxtEmail" ClientInstanceName="dxetxtEmail" runat="server" Text='<%# Eval("Email") %>'></dxe:ASPxTextBox>
+                                                            </td>
+                                                            <td style="white-space: nowrap; text-align: right;">
+                                                                &nbsp;
+                                                            </td>
+                                                            <td style="text-align: left;">
+                                                                &nbsp;
                                                             </td>
                                                         </tr>
                                                         <tr>
