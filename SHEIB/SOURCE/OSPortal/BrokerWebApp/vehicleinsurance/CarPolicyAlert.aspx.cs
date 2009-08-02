@@ -56,11 +56,7 @@ namespace BrokerWebApp.vehicleinsurance
         {
             if (Page.IsPostBack)
             {
-                pm = ViewState[currentPageModeKey] as Nullable<PageMode>;
-                if (Page.IsCallback)
-                {
-                    rebindGridDocList(this.dxetxtPolicyID.Text.Trim());
-                }
+                pm = ViewState[currentPageModeKey] as Nullable<PageMode>;                
             }
             else
             {
@@ -94,8 +90,10 @@ namespace BrokerWebApp.vehicleinsurance
                     loadPolicyValue(this.lblSourcePolicyID.Text.Trim());
                 else
                     loadPolicyValue(this.dxetxtPolicyID.Text.Trim());
-                rebindGridDocList(this.dxetxtPolicyID.Text.Trim());
+
             }
+            rebindGridPeriod();
+            rebindGridDocList();
 
         }
 
@@ -252,7 +250,7 @@ namespace BrokerWebApp.vehicleinsurance
 
             if (this.insuranceDetailTabPage.ActiveTabIndex == 1)
             {
-                rebindGridDocList(this.dxetxtPolicyID.Text.Trim());
+                rebindGridDocList();
                 if (this.pm == PageMode.Audit || obj.PolicyStatus == state)
                     filesUploadControl.Enabled = false;
             }
@@ -395,13 +393,13 @@ namespace BrokerWebApp.vehicleinsurance
         protected void gridDocList_CustomCallback(object sender, 
             DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
-            rebindGridDocList(this.dxetxtPolicyID.Text.Trim());
+            rebindGridDocList();
         }
 
 
-        private void rebindGridDocList(String id)
+        private void rebindGridDocList()
         {
-            this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(id);
+            this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
             this.gridDocList.DataBind();
         }
 

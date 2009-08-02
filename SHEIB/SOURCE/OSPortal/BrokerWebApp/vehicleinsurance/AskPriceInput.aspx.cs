@@ -57,19 +57,12 @@ namespace BrokerWebApp.vehicleinsurance
 
             if (Page.IsPostBack)
             {
-                pm = ViewState[currentPageModeKey] as Nullable<PageMode>;
-                if (Page.IsCallback)
-                {
-                    getCallBackPolicyData();
-                    rebindGridDocList();
-                }
+                pm = ViewState[currentPageModeKey] as Nullable<PageMode>;                
             }
             else
             {
                 this.dxetxtAskPriceID.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey];
-
-                //this.pkid.Value = Page.Request.QueryString[inputQueryStringPreIDKey];
 
                 switch (this.pagemode.Value.ToLower().Trim())
                 {
@@ -85,16 +78,14 @@ namespace BrokerWebApp.vehicleinsurance
                 }
                 ViewState[currentPageModeKey] = pm;
 
-                getInitPolicyData();
-
                 Initialization();
 
                 this.dxetxtCreatePerson.Text = this.CurrentUserName;
                 this.dxeCreateTime.Date = DateTime.Now;
-
-                loadCarPolicyValue(this.dxetxtAskPriceID.Text);
-                rebindGridDocList();
+                loadCarPolicyValue(this.dxetxtAskPriceID.Text);                
             }
+            getInitPolicyData();
+            rebindGridDocList();
             
         }
 
@@ -690,12 +681,7 @@ namespace BrokerWebApp.vehicleinsurance
             
         }
 
-        private void getCallBackPolicyData()
-        {
-            getInitPolicyData();
-        }
-
-
+        
         #endregion gridPolicyItem Events
 
 
