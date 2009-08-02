@@ -293,7 +293,9 @@ namespace BrokerWebApp.CustomerRelation
                     customer.Contact = this.dxetxtContact.Text.Trim();
                     customer.Save(ModifiedAction.Insert);
 
-                    this.Response.Redirect("Customer.aspx");
+                    Response.Redirect("Customer.aspx?CustID=" + customer.CustID, false);
+                    //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Message", "<script language='javascript'>alert('保存成功。'); window.location.replace('Customer.aspx?CustID=" + customer.CustID + "');</script>", false);
+                    
                 }
                 else
                 {//修改客户
@@ -321,7 +323,7 @@ namespace BrokerWebApp.CustomerRelation
                     customer.Contact = this.dxetxtContact.Text.Trim();
                     customer.Save(ModifiedAction.Update);
 
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Message", "<script language=\"javascript\">alert(\"修改完成。\");window.close();</script>", false);
+                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Message", "<script language=\"javascript\">alert(\"修改完成。\");</script>", false);
                 }
             }
             catch (Exception ex)
