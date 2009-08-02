@@ -118,7 +118,8 @@
     </dxcb:ASPxCallback>
     
     <input type="hidden" id="txtVoucherId" runat="server" value="" />
-    
+    <input type="hidden" id="txtProcessFeeType" runat="server" value="" />
+
     
     <table style="width: 100%">
         <tr>
@@ -252,9 +253,8 @@
                                     </tr>
                                 </table>
                             </td>
-                            
                             <td style="text-align: left;" colspan="2">
-                                <asp:CheckBox runat="server" ID="ckbPayedNeedPayin" Text="仅显示已收费未解付保单" />
+                                
                             </td>
                             <td></td>
                         </tr>
