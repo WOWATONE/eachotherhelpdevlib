@@ -76,7 +76,7 @@ namespace BrokerWebApp.CustomerRelation
                 //部门
                 this.SetddlDeprtment("");
                 //客户经理
-                this.SetddlSalesID("");
+                //this.SetddlSalesID("");
             }
             else
             {//编辑客户
@@ -115,7 +115,7 @@ namespace BrokerWebApp.CustomerRelation
                 this.dxetxtTel.Text = customer.Tel;
                 this.SetddlDeprtment(customer.DeprtmentID);
                 this.dxetxtMobile.Text = customer.Mobile;
-                this.SetddlSalesID(customer.SalesID);
+                this.SetddlSalesID(customer.DeprtmentID, customer.SalesID);
                 #endregion
 
                 #region 附加资料
@@ -237,9 +237,10 @@ namespace BrokerWebApp.CustomerRelation
         /// <summary>
         /// 设置客户经理
         /// </summary>
-        private void SetddlSalesID(string value)
+        private void SetddlSalesID(string deptID, string value)
         {
-            DataSet dsList = BO_P_User.GetUserByUserID("");
+            this.dxeddlSalesID.Items.Clear();
+            DataSet dsList = BO_P_User.GetUserByUserID(deptID, "");
             if (dsList.Tables[0] != null)
             {
                 foreach (DataRow row in dsList.Tables[0].Rows)
@@ -327,6 +328,13 @@ namespace BrokerWebApp.CustomerRelation
             {
             }
         }
+
+        #region 客户资料
+        protected void dxeddlSalesID_Callback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            this.SetddlSalesID(e.Parameter.Trim(), "");
+        }
+        #endregion
 
         #region 附加资料
         protected void UploadControl_AddInfoUploadComplete(object sender, FileUploadCompleteEventArgs e)
