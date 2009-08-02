@@ -90,7 +90,7 @@ namespace BusinessObjects
             StringBuilder sb = new StringBuilder();
             sb.Append("select a.PolPeriodId,a.PolicyID,b.PolicyNo,b.CustomerID,(select CustName from  customer where custID=b.CustomerID) CustName, ");
             sb.Append("CarrierID,BranchID,Period,PayDate,PayFeeBase,");
-            sb.Append("CiPremium,AciPremium,CstPremium");
+            sb.Append("CiPremium,AciPremium,CstPremium,(Select IsNull(AuditStatus,'0') from Notice where NoticeNo=a.NoticeNo) AuditStatus ");
             sb.Append(" from PolicyPeriod a,Policy b");
             sb.Append(" where a.PolicyID=b.PolicyID ");            
             sb.Append(sWhere);
