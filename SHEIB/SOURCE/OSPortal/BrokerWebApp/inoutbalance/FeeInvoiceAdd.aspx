@@ -257,8 +257,10 @@
             var VoiceNo = dxetxtInvoiceNO.GetValueString();
             //var ProcessFeeType = dxeddlProcessFeeType.GetValue();
             var ProcessFeeType = "0";
-            var Carrier = dxeddlCarrier.GetValue();
-            var Branch = dxeddlBranch.GetValue();
+            var Carrier = "";
+            var Branch = "";
+            //var Carrier = dxeddlCarrier.GetValue();
+            //var Branch = dxeddlBranch.GetValue();
             var plc = new InfoJSON(ID, Remark, ReleaseDate, AuditStatus, VoiceNo, ProcessFeeType, Carrier, Branch);
 
             //deserialize JSON string, make a JSON object
@@ -668,20 +670,20 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                保险公司：
+                                
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlCarrier" ClientInstanceName="dxeddlCarrier" runat="server"
-                                    Width="120px" DropDownStyle="DropDownList">
+                                    Width="120px" DropDownStyle="DropDownList" Visible="false">
                                     <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlCarrier_SelectedIndexChanged(s,e);}" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                                分支机构：
+                               
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlBranch" ClientInstanceName="dxeddlBranch" runat="server"
-                                    Width="120px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback">
+                                    Width="120px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback" Visible="false">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
