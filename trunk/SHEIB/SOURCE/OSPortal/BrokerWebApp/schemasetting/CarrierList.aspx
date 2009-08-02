@@ -96,8 +96,7 @@
                    <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server" 
                                         KeyFieldName="CarrierID" AutoGenerateColumns="False" 
                                         Settings-ShowFooter="true" Width="100%" 
-                                        SettingsPager-AlwaysShowPager="true" 
-                                        SettingsBehavior-AllowSort="false"
+                                        SettingsPager-AlwaysShowPager="true"
                                         OnRowDeleting="gridSearchResult_RowDeleting" 
                                         OnCustomCallback="gridSearchResult_CustomCallBack">
                         <Columns>
