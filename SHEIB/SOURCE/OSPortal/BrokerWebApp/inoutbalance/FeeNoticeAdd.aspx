@@ -210,7 +210,7 @@
         }
 
         function setGridEditStatus(editStatus) {
-            debugger;
+            //debugger;
             var grv = document.getElementById('<%=gridPolicyItem.ClientID %>');
             for (var i = 0; i < grv.rows.length; i++) {
                 for (var j = 0; j < grv.rows(i).cells(0).all.length; j++) {

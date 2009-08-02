@@ -76,7 +76,7 @@
 
 
         function btnAddPolicyClick() {
-            debugger;
+            //debugger;
             var ProcessFeeType = dxeddlProcessFeeType.GetValue();
             if ((ProcessFeeType == "") || (ProcessFeeType == null)) {
                 alert("经纪费收取方式不能为空,请选择!")
