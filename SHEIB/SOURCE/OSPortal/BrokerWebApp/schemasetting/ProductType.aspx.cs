@@ -97,7 +97,9 @@ namespace BrokerWebApp.schemasetting
                     {
                         BusinessObjects.SchemaSetting.BO_ProductType productType = new BusinessObjects.SchemaSetting.BO_ProductType(this._ID);
                         this.dxetxtParent.Text = productType.ProdTypeName == null ? "" : productType.ProdTypeName;
+
                     }
+                    this.hidParentId.Value = this._ID;
                     this.SetddlProdClass("");
 
                     this.dxebtnBottomSave.Enabled = true;
@@ -107,6 +109,7 @@ namespace BrokerWebApp.schemasetting
                     this.pageTitle = "修改险种";
                     BusinessObjects.SchemaSetting.BO_ProductType productType = new BusinessObjects.SchemaSetting.BO_ProductType(this._ID);
                     this.dxetxtParent.Text = productType.ParentName == null ? "" : productType.ParentName;
+                    this.hidParentId.Value = productType.ParentId;
                     this.dxetxtProdTypeID.Text = productType.ProdTypeID;
                     this.dxetxtProdTypeName.Text = productType.ProdTypeName;
                     this.SetddlProdClass(productType.ProdClass);
