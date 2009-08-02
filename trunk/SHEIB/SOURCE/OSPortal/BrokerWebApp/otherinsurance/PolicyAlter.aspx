@@ -301,19 +301,21 @@
             var theresult = e.result;
             switch (theresult) {
                 case "policynoexist":
-                    resultMsg.style.display = "inline";
-                    resultMsg.style.fontsize = "9px";
-                    resultMsg.innerHTML = "保单编号不唯一";
+                    //resultMsg.style.display = "inline";
+                    //resultMsg.style.fontsize = "9px";
+                    //resultMsg.innerHTML = "保单编号不唯一";
+                    alert("保单编号不唯一");
                     break
                 default:
-                    resultMsg.style.display = "inline";
-                    resultMsg.style.fontsize = "9px";
-                    resultMsg.innerHTML = "保存成功";
+                    //resultMsg.style.display = "inline";
+                    //resultMsg.style.fontsize = "9px";
+                    //resultMsg.innerHTML = "保存成功";
                     var pid = dxetxtPolicyID.GetValueString();
                     if (isEmpty(pid)) {
                         dxetxtPolicyID.SetValue(e.result);
                     }
-                    policyBaseCompleteEnable();                    
+                    policyBaseCompleteEnable();
+                    alert("保存成功");                   
             }
         }
 
@@ -328,20 +330,23 @@
             var theresult = e.result;
             switch (theresult) {
                 case "policynoexist":
-                    resultMsg.style.display = "inline";
-                    resultMsg.style.fontsize = "9px";
-                    resultMsg.innerHTML = "保单编号不唯一";
+                    //resultMsg.style.display = "inline";
+                    //resultMsg.style.fontsize = "9px";
+                    //resultMsg.innerHTML = "保单编号不唯一";
+                    alert("保单编号不唯一");
                     break
                 case "0":
-                    resultMsg.style.display = "inline";
-                    resultMsg.style.fontsize = "9px";
-                    resultMsg.innerHTML = "提交成功";
+                    //resultMsg.style.display = "inline";
+                    //resultMsg.style.fontsize = "9px";
+                    //resultMsg.innerHTML = "提交成功";
                     setOnlyAllDxeButtonsUnableOrEnable(false);
+                    alert("提交成功");
                     break
                 default:
-                    resultMsg.style.display = "inline";
-                    resultMsg.style.fontsize = "9px";
+                    //resultMsg.style.display = "inline";
+                    //resultMsg.style.fontsize = "9px";
                     resultMsg.innerHTML = theresult;
+                    alert(theresult);
             }
         }
 
@@ -568,10 +573,11 @@
 
 
         function auditBackCallbackComplete(s, e) {
-            resultMsg.style.display = "inline";
-            resultMsg.style.fontsize = "9px";
-            resultMsg.innerHTML = "退回成功";
+            //resultMsg.style.display = "inline";
+            //resultMsg.style.fontsize = "9px";
+            //resultMsg.innerHTML = "退回成功";
             setOnlyDxeButtonsUnableOrEnable(false);
+            alert("退回成功");
         }
 
         function dxebtnAuditOkClick(s, e) {
@@ -607,15 +613,17 @@
             var theresult = e.result;
             switch (theresult) {
                 case "0":
-                    resultMsg.style.display = "inline";
-                    resultMsg.style.fontsize = "9px";
-                    resultMsg.innerHTML = titleMSG;
+                    //resultMsg.style.display = "inline";
+                    //resultMsg.style.fontsize = "9px";
+                    //resultMsg.innerHTML = titleMSG;
                     setOnlyDxeButtonsUnableOrEnable(false);
+                    alert(titleMSG);
                     break
                 default:
-                    resultMsg.style.display = "inline";
-                    resultMsg.style.fontsize = "9px";
-                    resultMsg.innerHTML = theresult;
+                    //resultMsg.style.display = "inline";
+                    //resultMsg.style.fontsize = "9px";
+                    //resultMsg.innerHTML = theresult;
+                    alert(theresult);
             }
         }
 
@@ -808,7 +816,7 @@
         <ClientSideEvents CallbackComplete="function(s, e) {auditBackCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
     
-    <span id="resultMsg" class="errorMSG" style="margin-top:2px; margin-left:8px;">&nbsp;</span>
+    <span id="resultMsg" class="errorMSG" style="margin-top:2px; margin-left:8px; display: none;"></span>
     <asp:Panel ID="nppagecontent" runat="server">
     
     

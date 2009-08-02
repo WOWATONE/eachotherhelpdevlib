@@ -238,14 +238,10 @@
 															</Items>
 														</dxe:ASPxComboBox>
                                                     </td>
-                                                    <td style="text-align:right;">保单状态：</td>
+                                                    <td style="text-align:right;">录单人：</td>
                                                     <td style="text-align:left;">
-                                                        <dxe:ASPxComboBox ID="dxeddlCheckState" ClientInstanceName="dxeddlCheckState" runat="server" Width="155px" DropDownStyle="DropDownList">
-															<Items>
-																<dxe:ListEditItem Text="已审核" Value="2" />
-															</Items>
-														</dxe:ASPxComboBox>                                                      
-                                                    </td>
+                                                        <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="155px"></dxe:ASPxTextBox> 
+                                                    </td>                                                    
                                                     <td></td>
                                                 </tr>
                                                 <tr>
@@ -258,9 +254,8 @@
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="dxeEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>
-                                                    <td style="text-align:right;">录单人：</td>
-                                                    <td style="text-align:left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="155px"></dxe:ASPxTextBox> 
+                                                    <td style="text-align:right;"></td>
+                                                    <td style="text-align:left;">                                                                                                             
                                                     </td>
                                                     <td></td>
                                                 </tr>
@@ -334,7 +329,8 @@
                                                                         Settings-ShowFooter="true" Width="100%" 
                                                                         SettingsPager-AlwaysShowPager="true" 
                                                                         OnRowDeleting="gridSearchResult_RowDeleting"
-                                                                        OnCustomCallback="gridSearchResult_CustomCallback"
+                                                                        OnCustomCallback="gridSearchResult_CustomCallback" 
+                                                                        OnHtmlRowCreated="gridSearchResult_HtmlRowCreated"
                                                                         >
                                                                             <%-- BeginRegion Columns --%>
                                                                                 <Columns>
@@ -410,7 +406,7 @@
                                                                             EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
                                                                             >
                                                                             <SelectParameters> 
-                                                                                 <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" AND ISNULL(B.PolicyStatus,'0') = '0' AND B.PrevPolicyID !=''" />
+                                                                                 <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" AND ISNULL(B.PolicyStatus,'0') = '0' AND ISNULL(B.PrevPolicyID,'') !=''" />
                                                                             </SelectParameters>
                                                                         </asp:ObjectDataSource>                                                    
                                                                     </td>

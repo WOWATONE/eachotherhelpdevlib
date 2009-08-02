@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using DevExpress.Web.ASPxEditors;
-
+using DevExpress.Web.ASPxGridView;
 
 namespace BrokerWebApp.otherinsurance
 {
@@ -45,6 +45,20 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
+        protected void gridSearchResult_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data)
+            {
+                DataRow dr = this.gridSearchResult.GetDataRow(e.VisibleIndex);
+
+                if (!String.IsNullOrEmpty(dr["Remark"].ToString()))
+                {
+                    e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");
+                }
+            }
+        }
+
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
         {
@@ -66,7 +80,7 @@ namespace BrokerWebApp.otherinsurance
         {
 
             string lsWhere = "";
-            lsWhere = lsWhere + " AND ISNULL(B.PolicyStatus,'0') = '1' ";
+            lsWhere = lsWhere + " AND ISNULL(B.PolicyStatus,'0') = '0' AND ISNULL(B.PrevPolicyID,'') !='' ";
             if (dxetxtPolicyID.Text.Trim() != "")
             {
                 lsWhere = lsWhere + " and b.PolicyID ='" + dxetxtPolicyID.Text + "'";
