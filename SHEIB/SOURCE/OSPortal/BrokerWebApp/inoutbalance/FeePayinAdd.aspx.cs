@@ -280,6 +280,8 @@ namespace BrokerWebApp.inoutbalance
             decimal dFee =0;
             decimal dFeeAdjust = 0;
             decimal dPayFeeBase=0;
+            decimal dPayProcBase = 0;
+            string sProcessFeeType = "";
             if (dxetxtPolicyItemPayFeeBase.Text != String.Empty)
             {
                 dPayFeeBase = Convert.ToDecimal(dxetxtPolicyItemPayFeeBase.Text);
@@ -292,12 +294,26 @@ namespace BrokerWebApp.inoutbalance
             {
                 dFeeAdjust = Convert.ToDecimal(dxetxtPolicyItemFeeAdjust.Text);
             }
-
-            if (dPayFeeBase != dFee + dFeeAdjust)
+            if (dxetxtPolicyItemPayProcBase.Text != String.Empty)
             {
-                e.RowError = "本期应解付保费必须等于本期解付保费与调整金额之和,请修改.";
+                dPayProcBase = Convert.ToDecimal(dxetxtPolicyItemPayProcBase.Text);
             }
-            
+
+            sProcessFeeType = dxeddlProcessFeeType.Value.ToString();
+            if (sProcessFeeType == "1")
+            {
+                if (dPayFeeBase != dFee + dFeeAdjust + dPayProcBase)
+                {
+                    e.RowError = "经纪费收取方式为内扣,应符合：本期应解付保费=本期实际解付保费+调整金额+经纪费，请检查.";
+                }
+            }
+            if (sProcessFeeType == "2")
+            {
+                if (dPayFeeBase != dFee + dFeeAdjust)
+                {
+                    e.RowError = "经纪费收取方式为不内扣,应符合：本期应解付保费=本期实际解付保费+调整金额，请检查.";
+                }
+            }
 
             if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误(" + appendDes + ")。";
 
