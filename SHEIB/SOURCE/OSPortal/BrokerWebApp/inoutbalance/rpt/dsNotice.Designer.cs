@@ -670,6 +670,10 @@ namespace BrokerWebApp.inoutbalance.rpt {
             
             private global::System.Data.DataColumn columnNoticeNo;
             
+            private global::System.Data.DataColumn columnCarrierName;
+            
+            private global::System.Data.DataColumn columnBranchName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public NoticePolicyDataTable() {
                 this.TableName = "NoticePolicy";
@@ -736,6 +740,20 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CarrierNameColumn {
+                get {
+                    return this.columnCarrierName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn BranchNameColumn {
+                get {
+                    return this.columnBranchName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -764,14 +782,16 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public NoticePolicyRow AddNoticePolicyRow(string ProdTypeName, string PolicyNo, string PolicyID, string PayFee, string NoticeNo) {
+            public NoticePolicyRow AddNoticePolicyRow(string ProdTypeName, string PolicyNo, string PolicyID, string PayFee, string NoticeNo, string CarrierName, string BranchName) {
                 NoticePolicyRow rowNoticePolicyRow = ((NoticePolicyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ProdTypeName,
                         PolicyNo,
                         PolicyID,
                         PayFee,
-                        NoticeNo};
+                        NoticeNo,
+                        CarrierName,
+                        BranchName};
                 rowNoticePolicyRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNoticePolicyRow);
                 return rowNoticePolicyRow;
@@ -796,6 +816,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 this.columnPolicyID = base.Columns["PolicyID"];
                 this.columnPayFee = base.Columns["PayFee"];
                 this.columnNoticeNo = base.Columns["NoticeNo"];
+                this.columnCarrierName = base.Columns["CarrierName"];
+                this.columnBranchName = base.Columns["BranchName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -810,6 +832,10 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 base.Columns.Add(this.columnPayFee);
                 this.columnNoticeNo = new global::System.Data.DataColumn("NoticeNo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNoticeNo);
+                this.columnCarrierName = new global::System.Data.DataColumn("CarrierName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCarrierName);
+                this.columnBranchName = new global::System.Data.DataColumn("BranchName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBranchName);
                 this.columnProdTypeName.Caption = "NoticeNo";
                 this.columnPolicyNo.Caption = "NoticeDate";
                 this.columnPolicyID.Caption = "CustomerName";
@@ -1335,6 +1361,36 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string CarrierName {
+                get {
+                    try {
+                        return ((string)(this[this.tableNoticePolicy.CarrierNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NoticePolicy”中列“CarrierName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNoticePolicy.CarrierNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string BranchName {
+                get {
+                    try {
+                        return ((string)(this[this.tableNoticePolicy.BranchNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“NoticePolicy”中列“BranchName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNoticePolicy.BranchNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsProdTypeNameNull() {
                 return this.IsNull(this.tableNoticePolicy.ProdTypeNameColumn);
             }
@@ -1382,6 +1438,26 @@ namespace BrokerWebApp.inoutbalance.rpt {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetNoticeNoNull() {
                 this[this.tableNoticePolicy.NoticeNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCarrierNameNull() {
+                return this.IsNull(this.tableNoticePolicy.CarrierNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCarrierNameNull() {
+                this[this.tableNoticePolicy.CarrierNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsBranchNameNull() {
+                return this.IsNull(this.tableNoticePolicy.BranchNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetBranchNameNull() {
+                this[this.tableNoticePolicy.BranchNameColumn] = global::System.Convert.DBNull;
             }
         }
         

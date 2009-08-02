@@ -50,7 +50,7 @@ namespace BrokerWebApp.inoutbalance
             ad.Fill(dNotice, "Notice");
 
             sSql = "";
-            sSql = sSql + "select ProdTypeName,PolicyNo,PolicyID,PayFee,NoticeNo";
+            sSql = sSql + "select ProdTypeName,PolicyNo,PolicyID,PayFee,NoticeNo,CarrierName,BranchName";
             sSql = sSql + " from NoticePolicyPeriod";
             sSql = sSql + " where NoticeNo='" + sNoticeNo + "'";
 

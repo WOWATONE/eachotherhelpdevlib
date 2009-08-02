@@ -24,6 +24,9 @@ using CrystalDecisions.CrystalReports.Engine;
 using Microsoft.Reporting.WebForms;
 
 using System.Data.Common;
+using DevExpress.Web.ASPxGridView;
+using DevExpress.Web.ASPxGridView.Rendering;
+using DevExpress.Web.ASPxClasses.Internal;
 
 
 namespace BrokerWebApp.inoutbalance
@@ -182,6 +185,62 @@ namespace BrokerWebApp.inoutbalance
         {
             BindGrid();
         }
+
+
+        protected void gridPolicyItem_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data)
+            {
+                String state = "0";
+                object obj = e.GetValue("AuditStatus");
+                if (Convert.IsDBNull(obj))
+                {
+                    state = "0";
+                }
+                else
+                {
+                    state = Convert.ToString(obj);
+                }
+
+                GridViewCommandColumn objgcc = getCommandColumnLoop(this.gridPolicyItem);
+                if (state == "1")
+                {
+                    //e.Row.Enabled = false;
+                    GridViewCommandColumnButtonControl thebtn;
+                    thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
+                    ((InternalHyperLink)thebtn.Controls[0]).Enabled = false;
+                    thebtn.Visible = false;
+
+                    //thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[1];
+                    //thebtn.Enabled = false;
+                    //InternalHyperLink theIHL = (InternalHyperLink)thebtn.Controls[0];
+                    //theIHL.Text = "查看";
+                }
+                else
+                {
+                    e.Row.Enabled = true;
+                }
+            }
+
+        }
+
+
+
+        private GridViewCommandColumn getCommandColumnLoop(ASPxGridView grid)
+        {
+            GridViewCommandColumn theCommandColumn = null;
+            foreach (GridViewColumn item in grid.VisibleColumns)
+            {
+                if (item.GetType() == typeof(GridViewCommandColumn))
+                {
+                    theCommandColumn = (GridViewCommandColumn)item;
+                    break;
+                }
+            }
+            return theCommandColumn;
+        }
+
 
         protected void gridPolicyItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {

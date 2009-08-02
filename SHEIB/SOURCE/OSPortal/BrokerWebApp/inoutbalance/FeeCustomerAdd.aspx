@@ -74,7 +74,8 @@
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
             var url = "FeeCustomerAddSelect.aspx?ID=" + getVoucherId();
             window.showModalDialog(url, self, myArguments);
-            gridPolicyItem.PerformCallback(getVoucherId());
+            var VoucherID = getVoucherId();
+            gridPolicyItem.PerformCallback(VoucherID);
         }
 
         function btnCloseClick() {
@@ -95,7 +96,11 @@
 
 
         function dxebtntopSave_Click(s, e) {
-            //
+            //debugger;
+            if (dxeGotDate.GetText() == "") {
+                alert("收款日期不能为空,请输入");
+                return;                
+            }
             if (s.CauseValidation()) {
                 var thejsonstring = makeInfoJSON("0");
                 dxeSaveCallback.PerformCallback(thejsonstring);
@@ -203,14 +208,14 @@
                             dxebtnAudit.SetText("反审核");
                             dxebtnSave.SetEnabled(false);
                             dxebtnAddPolicy.SetEnabled(false);
-                            setGridEditStatus(false);
+                            //setGridEditStatus(false);
                             alert("审核成功!");
                             break;
                         case "反审核":
                             dxebtnAudit.SetText("审核");
                             dxebtnSave.SetEnabled(true);
                             dxebtnAddPolicy.SetEnabled(true);
-                            setGridEditStatus(true);
+                            //setGridEditStatus(true);
                             alert("反审核成功!");
                             break;
                         default:
@@ -220,6 +225,9 @@
                 default:
                     alert(theresult)
             }
+            
+            var VoucherID = getVoucherId();
+            gridPolicyItem.PerformCallback(VoucherID);          
                         
         }
         
@@ -339,11 +347,12 @@
                             KeyFieldName="FeeId" Width="100%" AutoGenerateColumns="False" 
                             OnRowDeleting="gridPolicyItem_RowDeleting" 
                             OnRowDeleted="gridPolicyItem_RowDeleted" 
-                            OnCustomCallback="gridPolicyItem_CustomCallback"
                             OnRowUpdating="gridPolicyItem_RowUpdating"
                             OnStartRowEditing="gridPolicyItem_StartRowEditing"
                             OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated" 
+                            OnCustomCallback="gridPolicyItem_CustomCallback"
                             OnRowValidating="gridPolicyItem_RowValidating"
+                            OnHtmlRowCreated="gridPolicyItem_HtmlRowCreated"
                              >
                                 <%-- BeginRegion Columns --%>
                                     <Columns>
@@ -377,6 +386,8 @@
                                         </dxwgv:GridViewDataColumn>                  
                                         <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="客户经理" CellStyle-Wrap="False">                                            
                                         </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="AuditStatus" Caption="AuditStatus" CellStyle-Wrap="False" Visible="false">
+                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count"  DisplayFormat="#"/>

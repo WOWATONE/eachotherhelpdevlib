@@ -220,14 +220,14 @@
                             dxebtnAudit.SetText("反审核");
                             dxebtnSave.SetEnabled(false);
                             dxebtnAddPolicy.SetEnabled(false);
-                            setGridEditStatus(false);
+                            //setGridEditStatus(false);
                             alert("审核成功!");
                             break;
                         case "反审核":
                             dxebtnAudit.SetText("审核");
                             dxebtnSave.SetEnabled(true);
                             dxebtnAddPolicy.SetEnabled(true);
-                            setGridEditStatus(true);
+                            //setGridEditStatus(true);
                             alert("反审核成功!");
                             break;
                         default:
@@ -237,6 +237,9 @@
                 default:
                     alert(theresult)
             }
+            
+            var VoucherID = getVoucherId();
+            gridPolicyItem.PerformCallback(VoucherID);      
         }
                         
 
@@ -428,10 +431,16 @@
                             <td colspan="3">
                                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
                                     DataSourceID="" KeyFieldName="FeeId" Width="100%" AutoGenerateColumns="False"
-                                    OnRowUpdating="gridPolicyItem_RowUpdating" OnRowUpdated="gridPolicyItem_RowUpdated"
-                                    OnRowDeleting="gridPolicyItem_RowDeleting" OnRowDeleted="gridPolicyItem_RowDeleted"
-                                    OnCustomCallback="gridPolicyItem_CustomCallback" OnStartRowEditing="gridPolicyItem_StartRowEditing"
-                                    OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated" OnRowValidating="gridPolicyItem_RowValidating">
+                                    OnRowUpdating="gridPolicyItem_RowUpdating" 
+                                    OnRowUpdated="gridPolicyItem_RowUpdated"
+                                    OnRowDeleting="gridPolicyItem_RowDeleting" 
+                                    OnRowDeleted="gridPolicyItem_RowDeleted"
+                                    OnCustomCallback="gridPolicyItem_CustomCallback" 
+                                    OnStartRowEditing="gridPolicyItem_StartRowEditing"
+                                    OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated" 
+                                    OnRowValidating="gridPolicyItem_RowValidating"
+                                    OnHtmlRowCreated="gridPolicyItem_HtmlRowCreated"
+                                    >
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
@@ -463,6 +472,8 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="ProcessFeeTypeName" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="AuditStatus" Caption="AuditStatus" CellStyle-Wrap="False" Visible="false">
+                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" DisplayFormat="#" />
