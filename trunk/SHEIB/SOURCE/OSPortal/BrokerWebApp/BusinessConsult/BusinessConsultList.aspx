@@ -156,8 +156,8 @@
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="咨询号" FieldName="ConsultFeeNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="咨询日期" FieldName="ConsultDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
-                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataDateColumn Caption="咨询日期" FieldName="ConsultDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                            </dxwgv:GridViewDataDateColumn>
                             <dxwgv:GridViewDataTextColumn Caption="客户名称" FieldName="CustName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="客户经理" FieldName="SalesName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">

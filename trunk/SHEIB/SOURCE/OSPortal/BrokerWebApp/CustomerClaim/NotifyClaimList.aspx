@@ -182,10 +182,10 @@
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="报案号" FieldName="NotifyNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="报案时间" FieldName="NotifyTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
-                            </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="出险时间" FieldName="AccidentTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
-                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataDateColumn Caption="报案时间" FieldName="NotifyTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                            </dxwgv:GridViewDataDateColumn>
+                            <dxwgv:GridViewDataDateColumn Caption="出险时间" FieldName="AccidentTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                            </dxwgv:GridViewDataDateColumn>
                             <dxwgv:GridViewDataTextColumn Caption="报案人" FieldName="NotifyPerson" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="报损金额" FieldName="NotifyLossFee" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
@@ -194,10 +194,10 @@
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="报案号" FieldName="NotifyNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="查勘时间" FieldName="PerambulateTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
-                            </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="结案时间" FieldName="CaseEndTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
-                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataDateColumn Caption="查勘时间" FieldName="PerambulateTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                            </dxwgv:GridViewDataDateColumn>
+                            <dxwgv:GridViewDataDateColumn Caption="结案时间" FieldName="CaseEndTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                            </dxwgv:GridViewDataDateColumn>
                             <dxwgv:GridViewDataTextColumn Caption="最终赔付金额" FieldName="LastPayFee" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="免赔额" FieldName="AcquitFee" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">

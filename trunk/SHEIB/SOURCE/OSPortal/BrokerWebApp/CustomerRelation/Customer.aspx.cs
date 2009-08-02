@@ -529,10 +529,14 @@ namespace BrokerWebApp.CustomerRelation
             customerPtFollow.FollowStage = (tblEditorTemplate.FindControl("dxeddlFollowStage") as ASPxComboBox).SelectedItem.Value.ToString();
             if ((tblEditorTemplate.FindControl("dxeFollowDate") as ASPxDateEdit).Text.Trim().Length > 0)
                 customerPtFollow.FollowDate = Convert.ToDateTime((tblEditorTemplate.FindControl("dxeFollowDate") as ASPxDateEdit).Text.Trim());
+            else
+                customerPtFollow.FollowDate = DateTime.MinValue;
             customerPtFollow.FollowMemo = (tblEditorTemplate.FindControl("txtFollowMemo") as TextBox).Text.Trim();
             customerPtFollow.FollowPerson = (tblEditorTemplate.FindControl("dxetxtFollowPerson") as ASPxTextBox).Text.Trim();
             if ((tblEditorTemplate.FindControl("dxeNextFollow") as ASPxDateEdit).Text.Trim().Length > 0)
                 customerPtFollow.NextFollow = Convert.ToDateTime((tblEditorTemplate.FindControl("dxeNextFollow") as ASPxDateEdit).Text.Trim());
+            else
+                customerPtFollow.NextFollow = DateTime.MinValue;
             customerPtFollow.NewFollowID = newFollowID;
             customerPtFollow.Save(ModifiedAction.Update);
 
@@ -564,10 +568,14 @@ namespace BrokerWebApp.CustomerRelation
             customerPtFollow.FollowStage = (tblEditorTemplate.FindControl("dxeddlFollowStage") as ASPxComboBox).SelectedItem.Value.ToString();
             if ((tblEditorTemplate.FindControl("dxeFollowDate") as ASPxDateEdit).Text.Trim().Length > 0)
                 customerPtFollow.FollowDate = Convert.ToDateTime((tblEditorTemplate.FindControl("dxeFollowDate") as ASPxDateEdit).Text.Trim());
+            else
+                customerPtFollow.FollowDate = DateTime.MinValue;
             customerPtFollow.FollowMemo = (tblEditorTemplate.FindControl("txtFollowMemo") as TextBox).Text.Trim();
             customerPtFollow.FollowPerson = (tblEditorTemplate.FindControl("dxetxtFollowPerson") as ASPxTextBox).Text.Trim();
             if ((tblEditorTemplate.FindControl("dxeNextFollow") as ASPxDateEdit).Text.Trim().Length > 0)
                 customerPtFollow.NextFollow = Convert.ToDateTime((tblEditorTemplate.FindControl("dxeNextFollow") as ASPxDateEdit).Text.Trim());
+            else
+                customerPtFollow.NextFollow = DateTime.MinValue;
             customerPtFollow.Save(ModifiedAction.Insert);
 
             e.Cancel = true;
