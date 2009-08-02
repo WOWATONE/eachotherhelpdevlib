@@ -714,8 +714,8 @@ namespace BrokerWebApp.vehicleinsurance
             this.dxetxtAuditPerson.Text = obj.AuditPerson;
             this.dxeMemo.Text = obj.Remark;
             
-            dxetxtTotalPremium.Text = String.Format(BasePage.TheTwoSF, obj.CiPremium + obj.AciPremium + obj.CstPremium);
-            dxetxtTotalProcess.Text = String.Format(BasePage.TheTwoSF, obj.CiProcess + obj.AciProcess);
+            dxetxtTotalPremium.Text = String.Format(BasePage.TheTwoSF, obj.Premium);
+            dxetxtTotalProcess.Text = String.Format(BasePage.TheTwoSF, obj.Process);
 
 
         }
@@ -778,10 +778,14 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.CiProcess = obj.CiProcess;
                 theObject.AciProcess = obj.AciProcess;
 
-                
-                //dxetxtTotalPremium.Text = String.Format(BasePage.TheTwoSF, obj.CiPremium + obj.AciPremium + obj.CstPremium);
-                //dxetxtTotalProcess.Text = String.Format(BasePage.TheTwoSF, obj.CiProcess + obj.AciProcess);
+                theObject.Premium = obj.TotalPremium;
+                theObject.PremiumBase = obj.TotalPremium;
+                theObject.PremiumRate = 0;
 
+                theObject.Process = obj.TotalProcess;
+                theObject.ProcessBase = obj.TotalProcess;
+                theObject.ProcessRate = 0;
+                
                 theObject.CreatePerson = this.CurrentUserID;
                 theObject.CreateTime = DateTime.Now;
 
@@ -803,6 +807,14 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.CiProcess = obj.CiProcess;
                 theObject.AciProcess = obj.AciProcess;
 
+                theObject.Premium = obj.TotalPremium;
+                theObject.PremiumBase = obj.TotalPremium;
+                theObject.PremiumRate = 0;
+
+                theObject.Process = obj.TotalProcess;
+                theObject.ProcessBase = obj.TotalProcess;
+                theObject.ProcessRate = 0;
+
                 theObject.ModifyPerson = this.CurrentUserID;
                 theObject.ModifyTime = DateTime.Now;
 
@@ -817,7 +829,7 @@ namespace BrokerWebApp.vehicleinsurance
                 BO_PolicyPeriod.DeleteByPolicyId(theObject.PolicyID);
 
                 BO_PolicyCarrier.CreateCarrier(objCar.CarrierID, objCar.BranchID, theObject.PolicyID, 
-                    100, theObject.CiPremium, theObject.CiProcessRate, theObject.CiProcess);
+                    100, theObject.Premium, theObject.ProcessRate, theObject.Process);
 
                 BO_Policy.ChangePeriod(theObject.PolicyID);
             }
