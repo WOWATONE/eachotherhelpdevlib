@@ -6,7 +6,6 @@
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dxpc" %>
-<%@ Register Assembly="DevExpress.Web.ASPxSpellChecker.v8.3" Namespace="DevExpress.Web.ASPxSpellChecker" TagPrefix="dxwsc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl" TagPrefix="dxuc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -313,6 +312,7 @@
                     var pid = dxetxtPolicyID.GetValueString();
                     if (isEmpty(pid)) {
                         dxetxtPolicyID.SetValue(e.result);
+                        gridCarrier.PerformCallback();
                     }
                     policyBaseCompleteEnable();
                     alert("保存成功");                   
