@@ -77,7 +77,7 @@
                                 客户名称：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCustName" ClientInstanceName="dxetxtCustName" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtCustName" ClientInstanceName="dxetxtCustName" runat="server" Width="160px"></dxe:ASPxTextBox>
                                 <input type="hidden" id="hidCustID" name="hidCustID" runat="server" />
                             </td>
                             <td style="text-align: left;">

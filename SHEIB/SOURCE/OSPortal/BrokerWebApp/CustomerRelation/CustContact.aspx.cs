@@ -71,8 +71,10 @@ namespace BrokerWebApp.CustomerRelation
                 sbWhere.Append(" And CC.ContactName like '%" + this.dxetxtContactName.Text.Trim() + "%' ");
             if (this.dxeddlSalesID.SelectedItem.Value.ToString().Length > 0)
                 sbWhere.Append(" And C.SalesID='" + this.dxeddlSalesID.SelectedItem.Value.ToString() + "' ");
-            if (this.hidCustID.Value.Length > 0)
-                sbWhere.Append(" And C.CustID='" + this.hidCustID.Value + "' ");
+            //if (this.hidCustID.Value.Length > 0)
+            //    sbWhere.Append(" And C.CustID='" + this.hidCustID.Value + "' ");
+            if (this.dxetxtCustName.Text.Trim().Length>0)
+                sbWhere.Append(" And C.CustName like '%" + this.dxetxtCustName.Text.Trim() + "%' ");
             this.gridSearchResult.DataSource = BusinessObjects.BO_CustContact.GetCustContactList(sbWhere.ToString()).Tables[0];
             this.gridSearchResult.DataBind();
         }

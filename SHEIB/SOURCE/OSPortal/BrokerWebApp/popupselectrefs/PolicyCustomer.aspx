@@ -51,8 +51,8 @@
         }
 
         function OnEndCallBack(s, e) {
-            
-            var rowvalues = gridSearchResult.GetSelectedFieldValues("ProdID", OnGetSelectedFieldValues);
+
+            var rowvalues = gridSearchResult.GetSelectedFieldValues("CustID", OnGetSelectedFieldValues);
             //gridSearchResult.UnselectAllRowsOnPage(false);
             //gridSearchResult.SelectRowOnPage(e.visibleIndex, true);
             //var iindex = gridSearchResult.GetFocusedRowIndex();
@@ -151,7 +151,7 @@
                                                     <td style="text-align:right;"></td>
                                                     <td style="text-align:left;"></td>
                                                     <td style="text-align:right;" colspan="2">
-                                                        <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" />&nbsp;
+                                                        <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click"/>&nbsp;
                                                         <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;  
                                                         <input type="button" value="确定" name="btnOk" id="btnok" class="input_2" onclick="btnOk_Click();" />                                                      
                                                     </td>
@@ -218,11 +218,15 @@
                                                                     </DataItemTemplate>
                                                                 </dxwgv:GridViewDataCheckColumn>
 
-                                                                <dxwgv:GridViewDataColumn FieldName="CustID" Caption="CustID" CellStyle-Wrap="False" Visible="false">                                                                    
+                                                                <dxwgv:GridViewDataColumn FieldName="CustID" Caption="客户编号" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>   
                                                                 <dxwgv:GridViewDataColumn FieldName="CustName" Caption="客户名称" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="Address" Caption="客户地址" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="CustClassifyName" Caption="客户分类" CellStyle-Wrap="False">                                                                    
+                                                                </dxwgv:GridViewDataColumn>   
+                                                                <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="客户经理" CellStyle-Wrap="False">                                                                   
+                                                                </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="Address" Caption="客户地址" CellStyle-Wrap="False" Visible="false">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
                                                         <%-- EndRegion --%>
