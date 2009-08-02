@@ -38,6 +38,10 @@
 	        //window.showModalDialog("ClaimMaterial.aspx", self, myArguments);
 	    }
 
+	    function NotifyPersonLostFocus(s, e) {
+	        dxetxtContactPerson.SetText(s.GetText());
+	    }
+
 	    function btnCloseClick() {
 	        window.close();
 	    }
@@ -193,7 +197,9 @@
                                 报案人：
                             </td>
                             <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtNotifyPerson" ClientInstanceName="dxetxtNotifyPerson" runat="server" Width="160px"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtNotifyPerson" ClientInstanceName="dxetxtNotifyPerson" runat="server" Width="160px">
+                                    <ClientSideEvents LostFocus="function(s ,e) { NotifyPersonLostFocus(s, e) }" />
+                                </dxe:ASPxTextBox>
                             </td>
                             <td style="width: 10%; text-align: right;">
                                 报案方式：
@@ -279,11 +285,7 @@
                                 报损金额：
                             </td>
                             <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtNotifyLossFee" ClientInstanceName="dxetxtNotifyLossFee" runat="server" Width="160px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
-                                    </ValidationSettings>
-                                </dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtNotifyLossFee" ClientInstanceName="dxetxtNotifyLossFee" runat="server" Width="160px"></dxe:ASPxTextBox>
                             </td>
                             <td style="width: 5%; text-align: left;">
                             </td>
@@ -404,11 +406,7 @@
                                 查勘时间：
                             </td>
                             <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxDateEdit ID="dePerambulateTime" ClientInstanceName="dePerambulateTime" runat="server" Width="160px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
-                                    </ValidationSettings>
-                                </dxe:ASPxDateEdit>
+                                <dxe:ASPxDateEdit ID="dePerambulateTime" ClientInstanceName="dePerambulateTime" runat="server" Width="160px"></dxe:ASPxDateEdit>
                             </td>
                             <td style="width: 10%; text-align: right;">
                             </td>
@@ -437,11 +435,11 @@
                                 制单人：
                             </td>
                             <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlCreatePerson" ClientInstanceName="dxeddlCreatePerson" runat="server" Width="160px" DropDownStyle="DropDownList">
+                                <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="160px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
-                                </dxe:ASPxComboBox>
+                                </dxe:ASPxTextBox>
                             </td>
                             <td style="width: 10%; text-align: right;">
                                 制单日期:

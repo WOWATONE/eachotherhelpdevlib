@@ -16,7 +16,7 @@ using BusinessObjects;
 
 namespace BrokerWebApp.CustomerClaim
 {
-    public partial class NotifyClaim : System.Web.UI.Page
+    public partial class NotifyClaim : BasePage
     {
         #region 私有变量
         /// <summary>
@@ -63,7 +63,10 @@ namespace BrokerWebApp.CustomerClaim
                 //损失性质
                 this.SetddlLossType("");
                 //制单人
-                this.SetddlCreatePerson("");
+                //this.SetddlCreatePerson("");
+                this.dxetxtCreatePerson.Text = this.CurrentUserID;
+                //制单日期
+                this.deCreateDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
             }
             else
             {
@@ -86,7 +89,7 @@ namespace BrokerWebApp.CustomerClaim
                     this.deAccidentTime.Text = notifyClaim.AccidentTime.ToString("yyyy-MM-dd");
                 this.SetddlLossType(notifyClaim.LossType);
                 this.dxeddlAccidentReason.SelectedIndex = this.dxeddlAccidentReason.Items.IndexOf(this.dxeddlAccidentReason.Items.FindByValue(notifyClaim.AccidentReason));
-                this.dxetxtNotifyLossFee.Text = notifyClaim.NotifyLossFee.ToString();
+                this.dxetxtNotifyLossFee.Text = notifyClaim.NotifyLossFee == -1 ? "" : notifyClaim.NotifyLossFee.ToString();
                 this.dxetxtContactPerson.Text = notifyClaim.ContactPerson;
                 this.dxetxtContactPhone.Text = notifyClaim.ContactPhone;
                 this.txtAccidentProc.Text = notifyClaim.AccidentProc;
@@ -100,7 +103,8 @@ namespace BrokerWebApp.CustomerClaim
                 if (notifyClaim.PerambulateTime != DateTime.MinValue)
                     this.dePerambulateTime.Text = notifyClaim.PerambulateTime.ToString("yyyy-MM-dd");
                 this.txtRequirement.Text = notifyClaim.Requirement;
-                this.SetddlCreatePerson(notifyClaim.CreatePerson);
+                //this.SetddlCreatePerson(notifyClaim.CreatePerson);
+                this.dxetxtCreatePerson.Text = notifyClaim.CreatePerson;
                 if (notifyClaim.CreateDate != DateTime.MinValue)
                     this.deCreateDate.Text = notifyClaim.CreateDate.ToString("yyyy-MM-dd");
 
@@ -160,18 +164,18 @@ namespace BrokerWebApp.CustomerClaim
         /// <summary>
         /// 设置制单人
         /// </summary>
-        private void SetddlCreatePerson(string value)
-        {
-            DataSet dsList = BO_P_User.GetUserByUserID("");
-            if (dsList.Tables[0] != null)
-            {
-                foreach (DataRow row in dsList.Tables[0].Rows)
-                {
-                    this.dxeddlCreatePerson.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
-                }
-                this.dxeddlCreatePerson.SelectedIndex = this.dxeddlCreatePerson.Items.IndexOf(this.dxeddlCreatePerson.Items.FindByValue(value));
-            }
-        }
+        //private void SetddlCreatePerson(string value)
+        //{
+        //    DataSet dsList = BO_P_User.GetUserByUserID("");
+        //    if (dsList.Tables[0] != null)
+        //    {
+        //        foreach (DataRow row in dsList.Tables[0].Rows)
+        //        {
+        //            this.dxeddlCreatePerson.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
+        //        }
+        //        this.dxeddlCreatePerson.SelectedIndex = this.dxeddlCreatePerson.Items.IndexOf(this.dxeddlCreatePerson.Items.FindByValue(value));
+        //    }
+        //}
 
         protected void dxeddlPolicyNo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -261,7 +265,7 @@ namespace BrokerWebApp.CustomerClaim
                     notifyClaim.NotifyPerson = this.dxetxtNotifyPerson.Text.Trim();
                     notifyClaim.LossType = this.dxeddlLossType.SelectedItem.Value.ToString();
                     notifyClaim.AccidentReason = this.dxeddlAccidentReason.SelectedItem.Value.ToString();
-                    notifyClaim.NotifyLossFee = Convert.ToDouble(this.dxetxtNotifyLossFee.Text);
+                    notifyClaim.NotifyLossFee = this.dxetxtNotifyLossFee.Text.Trim().Length == 0 ? -1 : Convert.ToDouble(this.dxetxtNotifyLossFee.Text);
                     notifyClaim.ContactPerson = this.dxetxtContactPerson.Text.Trim();
                     notifyClaim.ContactPhone = this.dxetxtContactPhone.Text.Trim();
                     notifyClaim.NotifyType = this.dxeddlNotifyType.SelectedItem.Value.ToString();
@@ -273,13 +277,17 @@ namespace BrokerWebApp.CustomerClaim
                     notifyClaim.NotifyNo = this.dxetxtNotifyNo.Text.Trim();
                     notifyClaim.CarrierContactPerson = this.dxetxtCarrierContactPerson.Text.Trim();
                     notifyClaim.CarrierContactPhone = this.dxetxtCarrierContactPhone.Text.Trim();
-                    notifyClaim.PerambulateTime = Convert.ToDateTime(this.dePerambulateTime.Text);
+                    if (this.dePerambulateTime.Text.Trim().Length > 0)
+                        notifyClaim.PerambulateTime = Convert.ToDateTime(this.dePerambulateTime.Text);
+                    else
+                        notifyClaim.PerambulateTime = DateTime.MinValue;
                     notifyClaim.Requirement = this.txtRequirement.Text.Trim();
                     notifyClaim.CaseEndTime = DateTime.Today; //?//
                     notifyClaim.LastPayFee = 100; //?//
                     notifyClaim.AcquitFee = 100; //?//
                     notifyClaim.CaseEndRemark = "";//?//
-                    notifyClaim.CreatePerson = this.dxeddlCreatePerson.SelectedItem.Value.ToString();
+                    //notifyClaim.CreatePerson = this.dxeddlCreatePerson.SelectedItem.Value.ToString();
+                    notifyClaim.CreatePerson = this.dxetxtCreatePerson.Text.Trim();
                     notifyClaim.CreateDate = Convert.ToDateTime(this.deCreateDate.Text);
                     notifyClaim.ModifyDate = DateTime.Today;//?//
                     notifyClaim.ModifyPerson = "";//?//
@@ -307,7 +315,7 @@ namespace BrokerWebApp.CustomerClaim
                     notifyClaim.NotifyPerson = this.dxetxtNotifyPerson.Text.Trim();
                     notifyClaim.LossType = this.dxeddlLossType.SelectedItem.Value.ToString();
                     notifyClaim.AccidentReason = this.dxeddlAccidentReason.SelectedItem.Value.ToString();
-                    notifyClaim.NotifyLossFee = Convert.ToDouble(this.dxetxtNotifyLossFee.Text);
+                    notifyClaim.NotifyLossFee = this.dxetxtNotifyLossFee.Text.Trim().Length == 0 ? -1 : Convert.ToDouble(this.dxetxtNotifyLossFee.Text);
                     notifyClaim.ContactPerson = this.dxetxtContactPerson.Text.Trim();
                     notifyClaim.ContactPhone = this.dxetxtContactPhone.Text.Trim();
                     notifyClaim.NotifyType = this.dxeddlNotifyType.SelectedItem.Value.ToString();
@@ -319,19 +327,23 @@ namespace BrokerWebApp.CustomerClaim
                     notifyClaim.NotifyNo = this.dxetxtNotifyNo.Text.Trim();
                     notifyClaim.CarrierContactPerson = this.dxetxtCarrierContactPerson.Text.Trim();
                     notifyClaim.CarrierContactPhone = this.dxetxtCarrierContactPhone.Text.Trim();
-                    notifyClaim.PerambulateTime = Convert.ToDateTime(this.dePerambulateTime.Text);
+                    if (this.dePerambulateTime.Text.Trim().Length > 0)
+                        notifyClaim.PerambulateTime = Convert.ToDateTime(this.dePerambulateTime.Text);
+                    else
+                        notifyClaim.PerambulateTime = DateTime.MinValue;
                     notifyClaim.Requirement = this.txtRequirement.Text.Trim();
                     notifyClaim.CaseEndTime = DateTime.Today; //?//
                     notifyClaim.LastPayFee = 100; //?//
                     notifyClaim.AcquitFee = 100; //?//
                     notifyClaim.CaseEndRemark = "";//?//
-                    notifyClaim.CreatePerson = this.dxeddlCreatePerson.SelectedItem.Value.ToString();
+                    //notifyClaim.CreatePerson = this.dxeddlCreatePerson.SelectedItem.Value.ToString();
+                    notifyClaim.CreatePerson = this.dxetxtCreatePerson.Text.Trim();
                     notifyClaim.CreateDate = Convert.ToDateTime(this.deCreateDate.Text);
                     notifyClaim.ModifyDate = DateTime.Today;//?//
                     notifyClaim.ModifyPerson = "";//?//
                     notifyClaim.Save(ModifiedAction.Update);
 
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Message", "<script language=\"javascript\">alert(\"修改完成。\");window.close();</script>", false);
+                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Message", "<script language=\"javascript\">alert(\"修改完成。\");</script>", false);
                 }
             }
             catch (Exception ex)
