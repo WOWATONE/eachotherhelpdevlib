@@ -918,11 +918,11 @@ namespace BrokerWebApp.vehicleinsurance
                 newobj.BranchID = item.BranchID;
 
                 newobj.PolicyRate = item.PolicyRate;
-                newobj.Premium = 0;
-                newobj.PremiumBase = 0;
+                newobj.Premium = item.Premium;
+                newobj.PremiumBase = item.PremiumBase;
                 newobj.ProcessRate = item.ProcessRate;
-                newobj.Process = 0;
-                newobj.ProcessBase = 0;
+                newobj.Process = item.Process;
+                newobj.ProcessBase = item.ProcessBase;
                 newobj.Save(ModifiedAction.Insert);
             }
         }
