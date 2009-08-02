@@ -38,8 +38,7 @@ namespace BrokerWebApp.otherinsurance
         public enum PageMode
         {
             Input,
-            Audit,
-            Query
+            Audit
         }
 
         private Nullable<PageMode> pm;
@@ -65,9 +64,6 @@ namespace BrokerWebApp.otherinsurance
                     case "audit":
                         pm = PageMode.Audit;
                         break;
-                    case "query":
-                        pm = PageMode.Query;
-                        break;
                     default:
                         pm = PageMode.Input;
                         break;
@@ -88,25 +84,20 @@ namespace BrokerWebApp.otherinsurance
                 }
                 
                 this.dxedtCreateTime.Date = DateTime.Today;
-
-                this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-                this.gridPeriod.DataSource = BusinessObjects.Policy.BO_PolicyPeriod.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-                this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-
-                this.gridCarrier.DataBind();
-                this.gridPeriod.DataBind();
-                this.gridDocList.DataBind();
-
+                                
                 if (!string.IsNullOrEmpty(this.dxetxtPolicyID.Text.Trim()))
                 {
                     loadPolicyValue(this.dxetxtPolicyID.Text.Trim());
                 }
-
             }
             else
             {
-                pm = ViewState[currentPageModeKey] as Nullable<PageMode>;
+                pm = ViewState[currentPageModeKey] as Nullable<PageMode>;                
             }
+
+            rebindGridCarrier();
+            rebindGridPeriod();
+            rebindGridDocList();
 
         }
 
@@ -176,15 +167,7 @@ namespace BrokerWebApp.otherinsurance
             {
                 tbltrAuditExecuteAction.Visible = false;
                 npNewExecuteAction.Visible = true;
-
-                if (this.pm == PageMode.Query)
-                {
-                    dxebtnAuditOk.Visible = false;
-                    dxebtnAuditClose.Visible = false;
-                    dxebtnBottomCheck.Visible = false;
-                    dxebtntopSave.Visible = false;
-                    dxebtnBottomSave.Visible = false;
-                }
+                                
             }
 
         }
@@ -1344,11 +1327,11 @@ namespace BrokerWebApp.otherinsurance
                 newobj.BranchID = item.BranchID;
 
                 newobj.PolicyRate = item.PolicyRate;
-                newobj.Premium = 0;
-                newobj.PremiumBase = 0;
+                newobj.Premium = item.Premium;
+                newobj.PremiumBase = item.PremiumBase;
                 newobj.ProcessRate = item.ProcessRate;
-                newobj.Process = 0;
-                newobj.ProcessBase = 0;
+                newobj.Process = item.Process;
+                newobj.ProcessBase = item.ProcessBase;
                 newobj.Save(ModifiedAction.Insert);
             }
         }

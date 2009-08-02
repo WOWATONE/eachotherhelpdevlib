@@ -59,7 +59,8 @@ namespace BrokerWebApp.otherinsurance
             {
                 this.dxetxtPolicyID.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 this.pagemode.Value = Page.Request.QueryString[inputQueryStringPageModeKey];
-                                
+                bindDropDownLists();
+                
                 switch (this.pagemode.Value.ToLower().Trim())
                 {
                     case "input":
@@ -77,37 +78,22 @@ namespace BrokerWebApp.otherinsurance
                 }
                 ViewState[currentPageModeKey] = pm;
 
-            }
-
-
-            bindDropDownLists();
-
-            this.gridCarrier.DataSource = BusinessObjects.Policy.BO_PolicyCarrier.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-            this.gridPolicyItem.DataSource = BusinessObjects.Policy.BO_PolicyItem.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-            this.gridPeriod.DataSource = BusinessObjects.Policy.BO_PolicyPeriod.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-            this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-
-
-            if (!IsPostBack && !IsCallback)
-            {
                 this.dxetxtCreatePerson.Text = this.CurrentUserName;
                 this.dxedtCreateTime.Date = DateTime.Today;
-                this.gridCarrier.DataBind();
-                this.gridPolicyItem.DataBind();
-                this.gridPeriod.DataBind();
-                this.gridDocList.DataBind();
 
                 if (!string.IsNullOrEmpty(this.dxetxtPolicyID.Text.Trim()))
                 {
                     loadPolicyValue(this.dxetxtPolicyID.Text.Trim());
                 }
-
-            }
-            else
-            {
-                //
             }
 
+
+            
+
+            rebindGridPolicyItem();
+            rebindGridCarrier();
+            rebindGridPeriod();
+            rebindGridDocList();            
         }
 
 
