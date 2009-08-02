@@ -46,7 +46,7 @@
         }
 
         function cusCompleteEnable() {
-            //debugger;
+            //
             dxebtnSave.SetEnabled(true);
             dxebtnAddPolicy.SetEnabled(true);
             dxebtnAudit.SetEnabled(true);
@@ -76,16 +76,24 @@
 
 
         function btnAddPolicyClick() {
+            debugger;
+            var ProcessFeeType = dxeddlProcessFeeType.GetValue();
+            if ((ProcessFeeType == "") || (ProcessFeeType == null)) {
+                alert("经纪费收取方式不能为空,请选择!")
+                return
+            }
+            
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
-            var url = "FeePayinAddSelect.aspx?ID=" + getVoucherId();
+            var url = "FeePayinAddSelect.aspx?ID=" + getVoucherId() + "&ProcessFeeType=" + getProcessFeeType();
 
             window.showModalDialog(url, self, myArguments);
             gridPolicyItem.PerformCallback(getVoucherId());
         }
 
         function btnAddPrintClick() {
+            
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=700px;center=yes;help=no";
-            var url = "FeePayinAddPrint.aspx?ID=" + getVoucherId();
+            var url = "FeePayinAddPrint.aspx?ID=" + getVoucherId() + "&ProcessFeeType=" + getProcessFeeType();
 
             window.showModalDialog(url, self, myArguments);
             var sVoucherID = getVoucherID();
@@ -102,6 +110,11 @@
             return id;
         }
 
+        function getProcessFeeType() {
+            var ProcessFeeType = dxeddlProcessFeeType.GetValue();
+            var result = $("#<%=dxeddlProcessFeeType.ClientID %>");
+            return ProcessFeeType;
+        }
 
         function setVoucherId(value) {
             var result = $("#<%=lblVoucherId.ClientID %>");
@@ -109,6 +122,14 @@
         }
 
         function dxebtntopSave_Click(s, e) {
+            
+            var ProcessFeeType = dxeddlProcessFeeType.GetValue();
+            if ((ProcessFeeType == "") || (ProcessFeeType ==null)) {
+                alert("经纪费收取方式不能为空,请选择!")
+                return
+            }
+
+            
             if (s.CauseValidation()) {
                 var thejsonstring = makeInfoJSON("0");
                 dxeSaveCallback.PerformCallback(thejsonstring);
@@ -208,7 +229,7 @@
         }
 
         function setGridEditStatus(editStatus) {
-            debugger;
+            
             var grv = document.getElementById('<%=gridPolicyItem.ClientID %>');
             for (var i = 0; i < grv.rows.length; i++) {
                 for (var j = 0; j < grv.rows(i).cells(0).all.length; j++) {
@@ -401,15 +422,15 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="本期应解付保费" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期解付保费" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="本期应解付保费" CellStyle-Wrap="False" >
+                                        </dxwgv:GridViewDataColumn>                                        
+                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期实际解付金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="经纪费金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayinFee" Caption="本期实际解付金额" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayinFee" Caption="本期实际解付金额" CellStyle-Wrap="False"  Visible="false">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CustomerName" Caption="投保客户" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -463,7 +484,7 @@
                                                             </dxe:ASPxTextBox>
                                                         </td>
                                                         <td style="white-space: nowrap; text-align: right;">
-                                                            本期解付保费:
+                                                            本期实际解付保费:
                                                         </td>
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxTextBox ID="dxetxtPolicyItemFee" ClientInstanceName="dxetxtPolicyItemFee"
@@ -479,6 +500,18 @@
                                                         </td>
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxTextBox ID="dxetxtPolicyItemFeeAdjust" ClientInstanceName="dxetxtPolicyItemFeeAdjust"
+                                                                runat="server" Width="120px">
+                                                                <ValidationSettings EnableCustomValidation="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                </ValidationSettings>
+                                                            </dxe:ASPxTextBox>
+                                                        </td>
+                                                        <td style="white-space: nowrap; text-align: right;">
+                                                            本期实际解付保费:
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                            <dxe:ASPxTextBox ID="dxetxtPolicyItemPayProcBase" ClientInstanceName="dxetxtPolicyItemPayProcBase"
                                                                 runat="server" Width="120px">
                                                                 <ValidationSettings EnableCustomValidation="true" ErrorDisplayMode="ImageWithTooltip">
                                                                     <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />

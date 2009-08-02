@@ -61,9 +61,7 @@
         }
 
         function btnOk_Click() {
-
-            gridSearchResult.GetSelectedFieldValues("PolPeriodId", getTheSelectedRowsValues);
-
+            gridSearchResult.GetSelectedFieldValues("PolPeriodId", getTheSelectedRowsValues);            
         }
 
         function getTheSelectedRowsValues(selectedValues) {
@@ -81,8 +79,7 @@
                     else {
                         thevalues = thevalues + ";" + selectedValues[i];
                     }
-                }
-                
+                }                
                 window.returnValue = thevalues;
                 window.close();
             }

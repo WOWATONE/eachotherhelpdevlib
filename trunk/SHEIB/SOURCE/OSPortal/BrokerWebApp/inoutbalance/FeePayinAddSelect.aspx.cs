@@ -24,9 +24,8 @@ namespace BrokerWebApp.inoutbalance
             if (!IsPostBack && !IsCallback)
             {
                 Initialization();
-                ckbPayedNeedPayin.Checked = true;
                 this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
-
+                this.txtProcessFeeType.Value = Page.Request.QueryString["ProcessFeeType"];
             }
             BindGrid();
         }
@@ -134,9 +133,9 @@ namespace BrokerWebApp.inoutbalance
 
         protected void dxeSaveCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            String thenoticeNo = e.Parameter;
-            saveFee(thenoticeNo);
-            e.Result = thenoticeNo;
+            String polPeriodIds = e.Parameter;
+            saveFee(polPeriodIds);
+            e.Result = polPeriodIds;
         }
 
         private void saveFee(String polPeriodIds)
@@ -156,15 +155,25 @@ namespace BrokerWebApp.inoutbalance
                         //exist = BusinessObjects.BO_Fee.PolPeriodExist(s,BO_P_Code.AccountType.PayIn_Direct);
                         //if (!exist)
                         //{
-                        DataTable dt = BO_FeePayin.GetFeePayinAddSelectList("and PolperiodID='" + s.Trim() + "'").Tables[0];
-                        decimal NeedPayinFee = decimal.Parse(dt.Rows[0]["Fee"].ToString());
+                        //1 内扣  	 本期应解付保费=	本期实际解付保费	+	调整金额	+	经纪费
+                        //2 不内扣	 本期应解付保费=	本期实际解付保费	+	调整金额
+                        string ProcessFeeType = txtProcessFeeType.Value;
+                        //DataTable dt = BO_FeePayin.GetFeePayinAddSelectList("and PolperiodID='" + s.Trim() + "'").Tables[0];
+                        //decimal NeedPayinFee = decimal.Parse(dt.Rows[0]["Fee"].ToString());
                         obj = new BusinessObjects.Policy.BO_PolicyPeriod(s);
                         objLoad = new BusinessObjects.BO_Fee();
                         objLoad.FeeId = Guid.NewGuid().ToString();
                         objLoad.PolPeriodID = s;
                         objLoad.VoucherID = this.txtVoucherId.Value;
                         //objLoad.Fee = obj.PayFeeBase;
-                        objLoad.Fee = NeedPayinFee;
+                        if (ProcessFeeType == "2")
+                        {
+                            objLoad.Fee = obj.PayFeeBase ;
+                        }
+                        else
+                        {
+                            objLoad.Fee = obj.PayFeeBase - obj.PayProcBase;
+                        }
                         objLoad.FeeAdjust = 0;
                         objLoad.Save(ModifiedAction.Insert);
                         //}

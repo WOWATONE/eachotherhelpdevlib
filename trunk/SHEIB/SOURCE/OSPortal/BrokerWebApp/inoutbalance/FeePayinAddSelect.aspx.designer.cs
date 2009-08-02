@@ -41,6 +41,15 @@ namespace BrokerWebApp.inoutbalance {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden txtVoucherId;
         
         /// <summary>
+        /// txtProcessFeeType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden txtProcessFeeType;
+        
+        /// <summary>
         /// npSearchHeader 控件。
         /// </summary>
         /// <remarks>
@@ -192,15 +201,6 @@ namespace BrokerWebApp.inoutbalance {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeGetEndDate;
-        
-        /// <summary>
-        /// ckbPayedNeedPayin 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ckbPayedNeedPayin;
         
         /// <summary>
         /// btnSearch 控件。

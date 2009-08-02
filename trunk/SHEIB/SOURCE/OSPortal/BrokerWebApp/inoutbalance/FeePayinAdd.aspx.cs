@@ -67,25 +67,30 @@ namespace BrokerWebApp.inoutbalance
             ASPxTextBox dxetxtPolicyItemFee = tblEditorTemplate.FindControl("dxetxtPolicyItemFee") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemFeeAdjust = tblEditorTemplate.FindControl("dxetxtPolicyItemFeeAdjust") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemPayFeeBase = tblEditorTemplate.FindControl("dxetxtPolicyItemPayFeeBase") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemPayProcBase = tblEditorTemplate.FindControl("dxetxtPolicyItemPayProcBase") as ASPxTextBox;
             dxetxtPolicyItemPayFeeBase.Enabled = false;
             dxetxtPolicyItemPayFeeBase.BackColor = Color.LightGray;
+            dxetxtPolicyItemPayProcBase.Enabled = false;
+            dxetxtPolicyItemPayProcBase.BackColor = Color.LightGray;
 
             Int32 editIndex = this.gridPolicyItem.EditingRowVisibleIndex;
             if (editIndex > -1)
             {
-                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "NoticeNo", "PolicyID", "Fee", "FeeAdjust" ,"PayFeeBase"});
+                object theValues = this.gridPolicyItem.GetRowValues(editIndex, new String[] { "FeeId", "NoticeNo", "PolicyID", "Fee", "FeeAdjust", "PayFeeBase", "PayProcBase" });
                 object[] theValueList = theValues as object[];
 
                 //String feeId = theValueList[0].ToString();
                 String fee = theValueList[3].ToString();
                 String feeAdjust = theValueList[4].ToString();
                 String PayFeeBase = theValueList[5].ToString();
+                String PayProcBase = theValueList[6].ToString();
 
                 if (this.gridPolicyItemStartEdit)
                 {
                     dxetxtPolicyItemFee.Text = fee;
                     dxetxtPolicyItemFeeAdjust.Text = feeAdjust;
                     dxetxtPolicyItemPayFeeBase.Text = PayFeeBase;
+                    dxetxtPolicyItemPayProcBase.Text = PayProcBase;
                 }
 
             }
@@ -177,6 +182,7 @@ namespace BrokerWebApp.inoutbalance
             String PayProcBase = Convert.ToString(gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["PayProcBase"]));
             String PayinFee = Convert.ToString(gridPolicyItem.GetTotalSummaryValue(gridPolicyItem.TotalSummary["PayinFee"]));
 
+
             if (String.IsNullOrEmpty(PayFeeBase)) PayFeeBase = "0";
             if (String.IsNullOrEmpty(Fee)) Fee = "0";
             if (String.IsNullOrEmpty(FeeAdjust)) FeeAdjust = "0";
@@ -196,6 +202,8 @@ namespace BrokerWebApp.inoutbalance
             ASPxTextBox dxetxtPolicyItemFee = tblEditorTemplate.FindControl("dxetxtPolicyItemFee") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemFeeAdjust = tblEditorTemplate.FindControl("dxetxtPolicyItemFeeAdjust") as ASPxTextBox;
             ASPxTextBox dxetxtPolicyItemPayFeeBase = tblEditorTemplate.FindControl("dxetxtPolicyItemPayFeeBase") as ASPxTextBox;
+            ASPxTextBox dxetxtPolicyItemPayProcBase = tblEditorTemplate.FindControl("dxetxtPolicyItemPayProcBase") as ASPxTextBox;
+
 
 
             if (String.IsNullOrEmpty(dxetxtPolicyItemFee.Text.Trim()))
@@ -273,7 +281,7 @@ namespace BrokerWebApp.inoutbalance
             //    }
             //}
 
-            this.dxeddlProcessFeeType.Items.Add("(全部)", "");
+            //this.dxeddlProcessFeeType.Items.Add("(全部)", "");
             dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.ProcessFeeType.ToString());
             if (dsList.Tables[0] != null)
             {
