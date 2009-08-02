@@ -47,7 +47,26 @@
 	    var thejsonstring = dxeddlCarrierId.GetSelectedItem().value;
 	    dxeddlBranchId.PerformCallback(thejsonstring);
 	}
-	
+
+	function isEmpty(testVar) {
+	    if ((testVar == null) || (testVar.length == 0)) {
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
+
+	function isDecimal(str) {
+	    if (isEmpty(str)) {
+	        return false;
+	    }
+	    else {
+	        if (/[^d.]/i.test(str)) {
+	            return true;
+	        }
+	        return false;
+	    }
+	}
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
