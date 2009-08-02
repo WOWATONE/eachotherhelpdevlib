@@ -47,7 +47,7 @@ namespace BrokerWebApp.schemasetting
 
                             if (Request.QueryString["ID"] != null && Request.QueryString["ID"].Trim().Length > 0)
                             {
-                                this._ID = Request.QueryString["ID"].Trim().ToLower();
+                                this._ID = Request.QueryString["ID"].Trim();
                                 this.ViewState["ID"] = this._ID;
 
                                 this.Initialization();
@@ -91,7 +91,7 @@ namespace BrokerWebApp.schemasetting
                 if (this._action == "add")
                 {//增加险种
                     this.pageTitle = "增加险种";
-                    if (this._ID == "l0")
+                    if (this._ID == "L0")
                         this.dxetxtParent.Text = "";
                     else
                     {
@@ -187,7 +187,7 @@ namespace BrokerWebApp.schemasetting
                         productType.ProdTypeID = this.dxetxtProdTypeID.Text.Trim();
                         productType.ProdClass = this.dxeddlProdClass.SelectedItem.Value.ToString();
                         productType.ProdTypeName = this.dxetxtProdTypeName.Text.Trim();
-                        if (this._ID == "l0")
+                        if (this._ID == "L0")
                         {
                             productType.ParentId = "";
                             productType.Layer = 1;
