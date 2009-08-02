@@ -75,64 +75,20 @@
                 }
             };
 
-            getServerControlRefStubs();
-
-            policyBaseCompleteUnable();
+            getServerControlRefStubs();            
 
         });
 
         
     </script>
     
-    <script type="text/javascript">
-
-        function policyCheckNessary() {
-            var pid = dxetxtPolicyID.GetValueString();
-            var cid = getCustomerID();
-            if (isEmpty(pid)) {
-                return true;
-            }
-            else {
-                return false;
-            }
-
-        }
-
-        function setOnlyDxeButtonsUnableOrEnable(val) {
-        
-            if (typeof(dxebtnBottomSave) != 'undefined' && dxebtnBottomSave != null)
-                dxebtnBottomSave.SetEnabled(val);
-        }
-
-        function setDxeButtonsUnableOrEnable(val) {
-            setOnlyDxeButtonsUnableOrEnable(val);
-
-            insuranceDetailTabPage.tabs[1].SetEnabled(val);
-            insuranceDetailTabPage.tabs[2].SetEnabled(val);
-        }
-
-        function policyBaseCompleteUnable() {
-            //
-            if (policyCheckNessary()) {
-                setDxeButtonsUnableOrEnable(false);
-            }
-
-        }
-
-
-        function policyBaseCompleteEnable() {
-            setDxeButtonsUnableOrEnable(true);
-        }
-
-
-
-
+    <script type="text/javascript">        
 
         function makePolicyJSON() {
 
             var PolicyID = dxetxtPolicyID.GetValueString();
             var PolicyNo = dxetxtPolicyNo.GetValueString();
-            var AciPolicyNo = null; //dxetxtAciPolicyNo.GetValueString();
+            var AciPolicyNo = dxetxtAciPolicyNo.GetValueString();
             var AskPriceID = null; //dxetxtAskPriceID.GetValueString();
 
             var CarrierID = null; //dxeddlCarrierId.GetValue();
@@ -201,82 +157,10 @@
         }
 
         function saveCallbackComplete(s, e) {
-            //do nothing;
-            policyBaseCompleteEnable();
-
-            //var pid = dxetxtPolicyID.GetValueString();
-
-            //if (isEmpty(pid)) {
-            //    dxetxtPolicyID.SetValue(e.result);
-            //}
+            alert("保存成功。");            
         }
 
-        function btnAddClick(s, e) {
-            var thejsonstring = makePolicyJSON();
-
-            dxeAddCallback.PerformCallback(thejsonstring);
-        }
-
-        function addCallbackComplete(s, e) {
-            //do nothing;
-            var result = $("#hrefnewpolicy");
-            var hrefPolicyNew = result[0];
-            hrefPolicyNew.click();
-        }
-
-        function btnSaveCheckClick(s, e) {
-            var thejsonstring = makePolicyJSON();
-            dxeSaveAndCheckCallback.PerformCallback(thejsonstring);
-        }
-
-
-        function saveCheckCallbackComplete(s, e) {
-            setOnlyDxeButtonsUnableOrEnable(false);
-        }
-
-
-        function GridCarrierCarrier_SelectedIndexChanged(s, e) {
-            var thejsonstring = dxecbGridCarrierCarrierID.GetSelectedItem().value;
-            dxecbGridCarrierBranchID.PerformCallback(thejsonstring);
-        }
-
-
-        function dxeddlDeptID_SelectedIndexChanged(s, e) {
-            var thejsonstring = dxeddlDeptID.GetSelectedItem().value;
-            dxeddlSalesId.PerformCallback(thejsonstring);
-        }
-
-        function FileUploadStart(s, e) {
-            //var refplcid = dxetxtPolicyID.GetValueString();
-            //filesUploadControl;            
-        }
-
-
-        function FileUploaded(s, e) {
-            gridDocList.PerformCallback();
-        }
-
-
-
-        function imgSelectCustomerClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
-            var retrunval = window.showModalDialog("../popupselectrefs/PolicyCustomer.aspx", self, myArguments);
-            if (isEmpty(retrunval)) {
-                //do nothing;
-            }
-            else {
-                //split the return value;
-                var thesplit_array = retrunval.split(";");
-                dxetxtCustomer.SetValue(thesplit_array[1]);
-                dxetxtBeneficiary.SetValue(thesplit_array[1]);
-                setCustomerID(thesplit_array[0]);
-            }
-        }
-
-
-
-
-
+        
         function Policy(PolicyID, PolicyNo, AciPolicyNo, AskPriceID,
             CarrierID, BranchID, CarrierSales,
             CustomerID, Beneficiary, SourceTypeID, DeptId, SalesId,
@@ -418,7 +302,6 @@
 
 
         function policyTab_Changing(s, e) {
-            //debugger;
             if (e.tab.index == 1 || e.tab.index == 2) {
                 var element = s.GetContentElement(e.tab.index);
                 if (element != null) element.loaded = false;
@@ -428,176 +311,7 @@
         function policyTab_Click(s, e) {
             //
         }
-
-
-        function dxebtnAuditBackClick(s, e) {
-
-            var AuditOrNot = 0;
-
-            var PolicyID = dxetxtPolicyID.GetValueString();
-            var PolicyNo = null;
-            var AciPolicyNo = null;
-            var AskPriceID = null;//dxetxtAskPriceID.GetValueString();
-
-            var CarrierID = null;
-            var BranchID = null;
-            var CarrierSales = null;
-            var CustomerID = null;
-            var Beneficiary = null;
-            var SourceTypeID = null;
-
-            var SalesId = null;
-            var DeptId = null;
-            var GatheringTypeID = null;
-            var OperationTypeID = null;
-            var StartDate = null;
-            var EndDate = null;
-            var Special = null;
-            var CarNo = null;
-            var CarcaseNo = null;
-            var UseCharacter = null;
-            var EngineNo = null;
-            var CarUser = null;
-            var Capacity = null;
-            var RegisterDate = null;
-            var CarValue = null;
-            var CiPremium = null;
-            var AciPremium = null;
-            var CstPremium = null;
-            var TotalPremium = null;
-            var CiProcessRate = null;
-            var AciProcessRate = null;
-            var CiProcess = null;
-            var AciProcess = null;
-            var TotalProcess = null;
-
-            var Remark = null; //dxeMemo.GetValueString();
-
-            var plc = new Policy(PolicyID, PolicyNo, AciPolicyNo, AskPriceID,
-            CarrierID, BranchID, CarrierSales,
-            CustomerID, Beneficiary, SourceTypeID, DeptId, SalesId,
-            GatheringTypeID, OperationTypeID, StartDate, EndDate,
-            Special, CarNo, CarcaseNo, UseCharacter, EngineNo, CarUser,
-            Capacity, RegisterDate, CarValue, CiPremium, AciPremium,
-            CstPremium, TotalPremium, CiProcessRate, AciProcessRate,
-            CiProcess, AciProcess, TotalProcess,
-            Remark, AuditOrNot);
-
-            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
-
-            dxeAuditOkCallback.PerformCallback(jsonStringClient);
-
-        }
-
-
-        function auditBackCallbackComplete(s, e) {
-            //do nothing;
-            setOnlyDxeButtonsUnableOrEnable(false);
-        }
-
-        function dxebtnAuditOkClick(s, e) {
-            //debugger;
-            var buttonID = s.GetText();
-            var AuditOrNot;
-            switch (buttonID) {
-                case "通过审核":
-                    AuditOrNot = true;
-                    break
-                case "反审核":
-                    AuditOrNot = false;
-                    break
-                default:
-                    //do nothing;
-            }
-
-            var PolicyID = dxetxtPolicyID.GetValueString();
-            var PolicyNo = null;
-            var AciPolicyNo = null;
-            var AskPriceID = null; //dxetxtAskPriceID.GetValueString();
-
-            var CarrierID = null;
-            var BranchID = null;
-            var CarrierSales = null;
-            var CustomerID = null;
-            var Beneficiary = null;
-            var SourceTypeID = null;
-
-            var SalesId = null;
-            var DeptId = null;
-            var GatheringTypeID = null;
-            var OperationTypeID = null;
-            var StartDate = null;
-            var EndDate = null;
-            var Special = null;
-            var CarNo = null;
-            var CarcaseNo = null;
-            var UseCharacter = null;
-            var EngineNo = null;
-            var CarUser = null;
-            var Capacity = null;
-            var RegisterDate = null;
-            var CarValue = null;
-            var CiPremium = null;
-            var AciPremium = null;
-            var CstPremium = null;
-            var TotalPremium = null;
-            var CiProcessRate = null;
-            var AciProcessRate = null;
-            var CiProcess = null;
-            var AciProcess = null;
-            var TotalProcess = null;
-
-
-            var Remark = null; //dxeMemo.GetValueString();
-
-            var plc = new Policy(PolicyID, PolicyNo, AciPolicyNo, AskPriceID,
-            CarrierID, BranchID, CarrierSales,
-            CustomerID, Beneficiary, SourceTypeID, DeptId, SalesId,
-            GatheringTypeID, OperationTypeID, StartDate, EndDate,
-            Special, CarNo, CarcaseNo, UseCharacter, EngineNo, CarUser,
-            Capacity, RegisterDate, CarValue, CiPremium, AciPremium,
-            CstPremium, TotalPremium, CiProcessRate, AciProcessRate,
-            CiProcess, AciProcess, TotalProcess,
-            Remark, AuditOrNot);
-
-            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
-
-            dxeAuditOkCallback.PerformCallback(jsonStringClient);
-
-        }
-
-        function auditOkCallbackComplete(s, e) {
-
-            setOnlyDxeButtonsUnableOrEnable(false);
-            dxebtnAuditOk.SetEnabled(true);
-            var buttonID = dxebtnAuditOk.GetText();
-            switch (buttonID) {
-                case "通过审核":
-                    dxebtnAuditOk.SetText("反审核");
-                    break
-                case "反审核":
-                    dxebtnAuditOk.SetText("通过审核");
-                    break
-                default:
-                    //do nothing;
-            }
-
-        }
-
-
-        function hlPolicyItemTogetherClick(params) {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
-            var url = params;
-            window.open(url);
-        }
-
-        function Carrier_SelectedIndexChanged(s, e) {
-            var thejsonstring = dxeddlCarrierId.GetSelectedItem().value;
-            dxeddlBranchId.PerformCallback(thejsonstring);
-        }
-
-
-
+       
 
         function isEmpty(testVar) {
             if ((testVar == null) || (testVar.length == 0)) {
@@ -617,21 +331,7 @@
                 }
                 return false;
             }
-        }
-
-        function dxeStartDate_DateChanged(s, e) {
-            //http://www.w3school.com.cn/js/jsref_obj_date.asp
-            var thesource = dxeStartDate.GetDate();
-            var theYear = thesource.getFullYear();
-            var theMonth = thesource.getMonth();
-            var theDate = thesource.getDate() - 1;
-            theYear = theYear + 1;
-            theMonth = theMonth + 1;
-            var endDateString = theMonth.toString() + "/" + theDate.toString() + "/" + theYear.toString();
-
-            dxeEndDate.SetDate(new Date(endDateString));
-        }
-        
+        }        
         
     </script>
 
@@ -645,27 +345,10 @@
     
     <input type="hidden" id="pagemode" runat="server" value="" />
     
-    <dxcb:ASPxCallback ID="dxeAddCallback" ClientInstanceName="dxeAddCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
-        <ClientSideEvents CallbackComplete="function(s, e) {addCallbackComplete(s,e);}" />
-    </dxcb:ASPxCallback>
-    
     <dxcb:ASPxCallback ID="dxeSaveCallback" ClientInstanceName="dxeSaveCallback" runat="server" OnCallback="dxeSaveCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {saveCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
-    
-    <dxcb:ASPxCallback ID="dxeSaveAndCheckCallback" ClientInstanceName="dxeSaveAndCheckCallback" runat="server" OnCallback="dxeSaveAndCheckCallback_Callback">
-        <ClientSideEvents CallbackComplete="function(s, e) {saveCheckCallbackComplete(s,e);}" />
-    </dxcb:ASPxCallback>
-    
-    <dxcb:ASPxCallback ID="dxeAuditOkCallback" ClientInstanceName="dxeAuditOkCallback" runat="server" OnCallback="dxeAuditOkCallback_Callback">
-        <ClientSideEvents CallbackComplete="function(s, e) {auditOkCallbackComplete(s,e);}" />
-    </dxcb:ASPxCallback>
-    
-    <dxcb:ASPxCallback ID="dxeAuditBackCallback" ClientInstanceName="dxeAuditBackCallback" runat="server" OnCallback="dxeAuditBackCallback_Callback">
-        <ClientSideEvents CallbackComplete="function(s, e) {auditBackCallbackComplete(s,e);}" />
-    </dxcb:ASPxCallback>
-    
-    
+        
     <table style="width: 100%">
         <tr>
             <td style="width: 100%;" colspan="2">
@@ -739,7 +422,7 @@
                                                                 分支结构：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server" Width="110px" DropDownStyle="DropDownList" OnCallback="CarrierBranchIDCallback">
+                                                                <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server" Width="110px" DropDownStyle="DropDownList">
 	                                                                <Items>
 	                                                                </Items>
 	                                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="false"
@@ -826,7 +509,7 @@
                                                                 客户经理：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="110px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
+                                                                <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="110px" DropDownStyle="DropDownList">
 	                                                                <Items>
 	                                                                </Items>
 	                                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ErrorText="Required" CausesValidation="false"
@@ -1139,7 +822,6 @@
                                                     CollapsedImage="~/images/expand_blue.jpg" SuppressPostBack="true" />
                                             </td>
                                         </tr>
-                                        <tr>
                                     </table>
                                 </dxw:ContentControl>
                             </ContentCollection>

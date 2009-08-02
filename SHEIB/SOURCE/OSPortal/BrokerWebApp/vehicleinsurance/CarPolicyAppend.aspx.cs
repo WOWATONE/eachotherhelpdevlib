@@ -63,40 +63,7 @@ namespace BrokerWebApp.vehicleinsurance
         {
             switchBasicInfoControlsEnable(false);
         }
-
-
-        protected void CarrierBranchIDCallback(object source,
-            DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
-        {
-            ASPxComboBox thecb = (ASPxComboBox)source;
-            thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
-            thecb.TextField = "BranchName";
-            thecb.ValueField = "BranchID";
-            thecb.DataBind();
-            thecb.Items.Insert(0, new ListEditItem("", ""));
-            if (thecb.Items.Count > 0)
-            {
-                thecb.SelectedItem = thecb.Items[0];
-            }
-        }
-
-
-        protected void dxeddlSalesIdCallback(object source,
-            DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
-        {
-            ASPxComboBox thecb = (ASPxComboBox)source;
-            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
-            thecb.TextField = "UserNameCn";
-            thecb.ValueField = "UserID";
-            thecb.DataBind();
-            thecb.Items.Insert(0, new ListEditItem("", ""));
-            if (thecb.Items.Count > 0)
-            {
-                thecb.SelectedItem = thecb.Items[0];
-            }
-
-        }
-
+                
         private void Initialization()
         {
             DataSet dsList;
@@ -180,28 +147,6 @@ namespace BrokerWebApp.vehicleinsurance
             e.Result = theID;
         }
 
-
-        protected void dxeSaveAndCheckCallback_Callback(object source,
-            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
-        {
-            String policystatus = Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.AppealAudit).ToString();
-            String theID = savePolicy(e.Parameter, policystatus);
-            e.Result = "complete";
-        }
-
-        protected void dxeAuditBackCallback_Callback(object source,
-            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
-        {
-            e.Result = "complete";
-        }
-
-        protected void dxeAuditOkCallback_Callback(object source,
-            DevExpress.Web.ASPxCallback.CallbackEventArgs e)
-        {
-            e.Result = "complete";
-        }
-
-
         #endregion CallBack Events
 
 
@@ -212,7 +157,7 @@ namespace BrokerWebApp.vehicleinsurance
         {
             try
             {
-                e.CallbackData = SavePostedFiles(e.UploadedFile);
+                //
             }
             catch (Exception ex)
             {
@@ -220,56 +165,6 @@ namespace BrokerWebApp.vehicleinsurance
                 e.ErrorText = ex.Message;
             }
         }
-
-
-        protected string SavePostedFiles(UploadedFile uploadedFile)
-        {
-            string ret = "";
-            string policyFolder = this.dxetxtPolicyID.Text.Trim();
-            string policyFolderPath;
-            if (uploadedFile.IsValid)
-            {
-                DirectoryInfo drtInfo = new DirectoryInfo(MapPath(UploadDirectory));
-                if (drtInfo.Exists)
-                {
-                    policyFolderPath = System.IO.Path.Combine(MapPath(UploadDirectory), policyFolder);
-                    drtInfo = new DirectoryInfo(policyFolder);
-                    FileInfo fileInfo;
-                    if (drtInfo.Exists)
-                    {
-                        fileInfo = new FileInfo(uploadedFile.FileName);
-                        string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
-                        uploadedFile.SaveAs(resFileName);
-
-                        //string fileLabel = fileInfo.Name;
-                        //string fileType = uploadedFile.PostedFile.ContentType.ToString();
-                        //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
-                        //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
-                    }
-                    else
-                    {
-                        //create folder
-                        drtInfo = System.IO.Directory.CreateDirectory(policyFolderPath);
-                        fileInfo = new FileInfo(uploadedFile.FileName);
-                        string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
-                        uploadedFile.SaveAs(resFileName);
-                    }
-
-                    //BO_PolicyDoc
-                    BusinessObjects.Policy.BO_PolicyDoc.Delete(this.dxetxtPolicyID.Text.Trim(), fileInfo.Name);
-
-                    BusinessObjects.Policy.BO_PolicyDoc pdoc = new BusinessObjects.Policy.BO_PolicyDoc();
-                    pdoc.PolicyDocID = Guid.NewGuid().ToString();
-                    pdoc.DocName = fileInfo.Name;
-                    pdoc.PolicyID = this.dxetxtPolicyID.Text.Trim();
-                    pdoc.DocURL = UploadDirectory.Replace("~", "") + policyFolder + "/" + fileInfo.Name;
-                    pdoc.Save(ModifiedAction.Insert);
-                }
-            }
-
-            return ret;
-        }
-
 
 
         protected void gridDocList_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
@@ -417,7 +312,8 @@ namespace BrokerWebApp.vehicleinsurance
             BO_Policy theObject;
             theObject = new BO_Policy(obj.PolicyID);
 
-            theObject.PolicyNo = obj.PolicyNo;                
+            theObject.PolicyNo = obj.PolicyNo;
+            theObject.AciPolicyNo = obj.AciPolicyNo; 
             theObject.ModifyPerson = this.CurrentUserID;
             theObject.ModifyTime = DateTime.Now;
 
@@ -432,7 +328,7 @@ namespace BrokerWebApp.vehicleinsurance
         {
             dxetxtPolicyID.Enabled = val;
             //dxetxtPolicyNo.Enabled = val;
-            dxetxtAciPolicyNo.Enabled = val;
+            //dxetxtAciPolicyNo.Enabled = val;
             dxetxtAskPriceID.Enabled = val;
             dxeddlCarrierId.Enabled = val;
             dxeddlBranchId.Enabled = val;
