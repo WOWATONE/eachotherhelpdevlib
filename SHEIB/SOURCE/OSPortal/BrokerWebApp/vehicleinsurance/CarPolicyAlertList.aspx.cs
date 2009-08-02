@@ -9,7 +9,7 @@ using Microsoft.VisualBasic;
 using BusinessObjects;
 using BusinessObjects.SchemaSetting;
 using DevExpress.Web.ASPxEditors;
-
+using DevExpress.Web.ASPxGridView;
 
 namespace BrokerWebApp.vehicleinsurance
 {
@@ -233,6 +233,20 @@ namespace BrokerWebApp.vehicleinsurance
             this.gridSearchResult.DataBind();
         }
 
+
+        protected void gridSearchResult_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data)
+            {
+                DataRow dr = this.gridSearchResult.GetDataRow(e.VisibleIndex);
+
+                if (!String.IsNullOrEmpty(dr["Remark"].ToString()))
+                {
+                    e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");
+                }
+            }
+        }
 
         protected void policyTabPage_ActiveTabChanged(object source, 
             DevExpress.Web.ASPxTabControl.TabControlEventArgs e)
