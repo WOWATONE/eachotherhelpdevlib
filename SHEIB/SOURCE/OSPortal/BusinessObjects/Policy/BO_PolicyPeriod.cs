@@ -303,6 +303,8 @@ namespace BusinessObjects.Policy
 
         private void update()
         {
+            BO_PolicyPeriod oldObj = new BO_PolicyPeriod(PolPeriodId);
+
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE PolicyPeriod SET ");
             sb.Append(" PolicyId=@PolicyId, CarrierID=@CarrierID, BranchID=@BranchID, Period=@Period,  ");
@@ -325,8 +327,30 @@ namespace BusinessObjects.Policy
             
             _db.ExecuteNonQuery(dbCommand);
 
+            if (oldObj.PayDate != this.PayDate)
+            {
+                updateAllPolicyPayDate();
+            }
         }
 
+
+        private void updateAllPolicyPayDate()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("UPDATE PolicyPeriod SET ");
+            sb.Append(" PayDate=@PayDate ");
+            sb.Append(" Where PolicyId=@PolicyId ");
+            sb.Append(" Period=@Period;");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@PolicyId", DbType.String, this.PolicyId);
+            _db.AddInParameter(dbCommand, "@Period", DbType.Int32, this.Period);
+            _db.AddInParameter(dbCommand, "@PayDate", DbType.DateTime, this.PayDate);
+            
+            _db.ExecuteNonQuery(dbCommand);
+
+        }
 
 
         private void fetchByID(String id)
