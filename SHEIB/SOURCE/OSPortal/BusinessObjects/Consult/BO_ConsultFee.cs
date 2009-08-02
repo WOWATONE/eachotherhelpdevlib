@@ -188,7 +188,7 @@ namespace BusinessObjects.Consult
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select ");
-            sb.Append("CF.ConsultFeeID, CF.ConsultFeeNo, isnull(CF.ConsultDate,'') as ConsultDate, C.CustName, P.UserNameCn as SalesName, CF.Contact, CF.Tel, CF.ConsultFee, CF.InvoiceNO, '未审核' as AuditStatus "); //?//
+            sb.Append("CF.ConsultFeeID, CF.ConsultFeeNo, CF.ConsultDate, C.CustName, P.UserNameCn as SalesName, CF.Contact, CF.Tel, CF.ConsultFee, CF.InvoiceNO, '未审核' as AuditStatus "); //?//
             sb.Append("From ConsultFee CF (nolock) ");
             sb.Append("Left Join Customer C (nolock) On C.CustID=CF.CustID ");
             sb.Append("Left Join P_User P (nolock) On P.UserID=C.SalesID ");

@@ -192,7 +192,7 @@ namespace BusinessObjects
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select ");
-            sb.Append("CP.FollowID, isnull(CP.FollowDate, '') as FollowDate, C.CustName, P.UserNameCn as SalesName, CP.FollowType, CP.FollowStage, CP.FollowMemo, CP.FollowPerson, isnull(CP.NextFollow,'') as NextFollow ");
+            sb.Append("CP.FollowID, CP.FollowDate, C.CustName, P.UserNameCn as SalesName, CP.FollowType, CP.FollowStage, CP.FollowMemo, CP.FollowPerson, CP.NextFollow ");
             sb.Append("From CustomerPtFollow CP (nolock) ");
             sb.Append("Left Join Customer C (nolock) On C.CustID=CP.CustID ");
             sb.Append("Left Join P_User P (nolock) On P.UserID=C.SalesID ");
