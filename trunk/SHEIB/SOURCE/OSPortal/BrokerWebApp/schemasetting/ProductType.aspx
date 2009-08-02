@@ -23,6 +23,41 @@
                 }
             };
         });
+
+        function btnValidate(s, e) {
+            var hidParentId = $("#<%=hidParentId.ClientID %>");
+            if (!hidParentId[0] || hidParentId[0] == null)
+                return;
+
+            var parentId = hidParentId[0].value;
+
+            if (parentId.length <= 0 || parentId == "0" || parentId == "L0")
+                return;
+
+            var prodTypeID = dxetxtProdTypeID.GetText();
+            if (prodTypeID.length <= 0)
+                return;
+
+            if (parentId.length > prodTypeID.length) {
+                alert("险种编号必须以" + parentId + "开头。");
+                e.processOnServer = false;
+                return false;
+            }
+
+            if (parentId == prodTypeID) {
+                alert("险种编号不能与上级险种编号相同。");
+                e.processOnServer = false;
+                return false;
+            }
+
+            if (prodTypeID.substr(0, parentId.length) != parentId) {
+                alert("险种编号必须以" + parentId + "开头。");
+                e.processOnServer = false;
+                return false;
+            }
+
+            return true;
+        }
     
         function btnCloseClick() {
             window.close();
@@ -48,7 +83,9 @@
                                     <td style="width:20%; text-align:right;">
                                        上级险种：</td>
                                     <td style="width:40%; text-align:left;">
-                                        <dxe:ASPxTextBox ID="dxetxtParent" ClientInstanceName="dxetxtParent" runat="server" Width="200px" Enabled="false"></dxe:ASPxTextBox></td>
+                                        <dxe:ASPxTextBox ID="dxetxtParent" ClientInstanceName="dxetxtParent" runat="server" Width="200px" Enabled="false"></dxe:ASPxTextBox>
+                                        <input type="hidden" id="hidParentId" name="hidParentId" runat="server" value="" />
+                                    </td>
                                     <td style="width:20%; text-align:left;">
                                         <label id="lblerrmsg" name="lblerrmsg" runat="server" class="red" visible="false"></label></td>
                                 </tr>
@@ -56,7 +93,8 @@
                                     <td>
                                        &nbsp;</td>
                                     <td style="text-align:right;">
-                                       险种编号：</td>
+                                       险种编号：
+                                    </td>
                                     <td style="text-align:left;">
                                         <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server" Width="200px">
                                             <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
@@ -215,6 +253,7 @@
                 <td style="width:50px; text-align:left;">
                     <dxe:ASPxButton runat="server" id="dxebtnBottomSave" Text="保存" 
                         CausesValidation="true" AutoPostBack="false" onclick="dxebtnBottomSave_Click">
+                        <ClientSideEvents Click="function(s, e) {btnValidate(s, e);}" />
                     </dxe:ASPxButton> 
                 </td>
                 <td style="width:50px; text-align:left;">
