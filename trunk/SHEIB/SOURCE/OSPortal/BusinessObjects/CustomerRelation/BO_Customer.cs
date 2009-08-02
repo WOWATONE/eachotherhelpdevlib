@@ -151,12 +151,13 @@ namespace BusinessObjects
             StringBuilder sb = new StringBuilder();
             sb.Append("Select C.CustID, C.CustName, CO1.CodeName As AreaName, D.DeptName As DeprtmentName, C.Address,");
             sb.Append("C.PostCode, CO2.CodeName As TradeTypeName, C.IDNO, C.Contact, C.Tel, C.Mobile,");
-            sb.Append("C.Fax, C.Email, U.UserNameCn As SalesName ");
+            sb.Append("C.Fax, C.Email, U.UserNameCn As SalesName, CC.CustClassifyName ");
             sb.Append("From Customer C (nolock) ");
             sb.Append("Left Join P_Code CO1 (nolock) On CO1.CodeType='Area' And CO1.CodeID=C.Area ");
             sb.Append("Left Join P_Code CO2 (nolock) On CO2.CodeType='TradeName' And CO2.CodeID=C.TradeTypeID ");
             sb.Append("Left Join P_Department D (nolock) On D.DeptID=C.DeprtmentID ");
             sb.Append("Left Join P_User U (nolock) On U.UserID=C.SalesID ");
+            sb.Append("Left Join CustClassify CC (nolock) On CC.CustClassifyID=C.CustClassifyID ");
             sb.Append("Where 1=1 ");
             sb.Append(sWhere);
             sb.Append(" Order By C.CustID");

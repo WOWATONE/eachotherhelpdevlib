@@ -13,7 +13,7 @@ namespace BrokerWebApp.popupselectrefs
         {
 
         }
-        
+
 
         protected void gridSearchResult_DataBinding(object sender, EventArgs e)
         {
@@ -31,6 +31,19 @@ namespace BrokerWebApp.popupselectrefs
             //this.gridSearchResult.PageIndex;
             //this.gridSearchResult.VisibleRowCount;
             //this.gridSearchResult.VisibleStartIndex;
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string lsWhere = "";
+            if (this.dxetxtPolicyID.Text.Trim().Length > 0)
+                lsWhere = " And C.CustName like '%" + this.dxetxtPolicyID.Text.Trim() + "%' ";
+
+            Parameter pt;
+            pt = this.DataSource.SelectParameters[0];
+            pt.DefaultValue = lsWhere;
+
+            this.gridSearchResult.DataBind();
         }
 
     }
