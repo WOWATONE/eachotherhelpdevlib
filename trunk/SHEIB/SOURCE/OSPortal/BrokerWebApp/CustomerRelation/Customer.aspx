@@ -56,6 +56,12 @@
             }
         }
 
+        function DepartmentSelectedIndexChanged(s, e) {
+            var value = s.GetValue();
+            if (value.length > 0)
+                dxeddlSalesID.PerformCallback(s.GetValue());
+        }
+
         function AddInfoFileUploaded(s, e) {
             gridAddInfoDocList.PerformCallback();
         }
@@ -259,6 +265,7 @@
                                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true" ValidationGroup="BaseGroup">
                                             <RequiredField IsRequired="true" ErrorText="必需项" />
                                         </ValidationSettings>
+                                        <ClientSideEvents SelectedIndexChanged="function(s, e) { DepartmentSelectedIndexChanged(s, e) }" />
                                     </dxe:ASPxComboBox>
                                 </td>
                             </tr>
@@ -273,7 +280,7 @@
                                     客户经理：
                                 </td>
                                 <td style="text-align: left;">
-                                    <dxe:ASPxComboBox ID="dxeddlSalesID" ClientInstanceName="dxeddlSalesID" runat="server" Width="160px" DropDownStyle="DropDownList">
+                                    <dxe:ASPxComboBox ID="dxeddlSalesID" ClientInstanceName="dxeddlSalesID" runat="server" Width="160px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesID_Callback">
                                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true" ValidationGroup="BaseGroup">
                                             <RequiredField IsRequired="true" ErrorText="必需项" />
                                         </ValidationSettings>

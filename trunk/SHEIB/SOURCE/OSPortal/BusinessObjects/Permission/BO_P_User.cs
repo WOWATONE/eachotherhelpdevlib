@@ -331,7 +331,7 @@ namespace BusinessObjects
         /// <summary>
         /// 根据用户编号取得用户姓名等信息
         /// </summary>
-        /// <param name="sCodetype"></param>
+        /// <param name="sUserID"></param>
         /// <returns></returns>
         public static DataSet GetUserByUserID(string sUserID)
         {
@@ -339,6 +339,29 @@ namespace BusinessObjects
             sb.Append("select [UserID], [UserNameCn] ");
             sb.Append("FROM P_User (nolock) ");
             sb.Append("Where len(rtrim(UserNameCn))>0 ");
+            if (sUserID.Trim() != "")
+            {
+                sb.Append("And UserID = '" + sUserID + "' ");
+            }
+            sb.Append("ORDER BY UserID");
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        /// <summary>
+        /// 根据用户编号取得用户姓名等信息
+        /// </summary>
+        /// <param name="deptID"></param>
+        /// <param name="sUserID"></param>
+        /// <returns></returns>
+        public static DataSet GetUserByUserID(string deptID, string sUserID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select [UserID], [UserNameCn] ");
+            sb.Append("FROM P_User (nolock) ");
+            sb.Append("Where len(rtrim(UserNameCn))>0 ");
+            sb.Append("And DeptID='" + deptID + "' ");
             if (sUserID.Trim() != "")
             {
                 sb.Append("And UserID = '" + sUserID + "' ");
