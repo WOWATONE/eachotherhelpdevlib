@@ -369,7 +369,7 @@
                                                         EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
                                                         >
                                                         <SelectParameters> 
-                                                             <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" and ISNULL(B.PolicyStatus,'0') = '0' and ISNULL(B.AskPriceID,'') != '' " />
+                                                             <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" and ISNULL(B.PolicyStatus,'0') = '0' and ISNULL(B.PrevPolicyID,'') != '' " />
                                                         </SelectParameters>
                                                     </asp:ObjectDataSource>                                                    
                                                 </td>

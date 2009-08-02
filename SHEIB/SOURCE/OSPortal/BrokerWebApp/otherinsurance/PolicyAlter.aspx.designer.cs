@@ -158,13 +158,13 @@ namespace BrokerWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.CheckBox chkAgain;
         
         /// <summary>
-        /// btnOriginalPolicyDetail control.
+        /// dxebtnOldPolicyView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnOriginalPolicyDetail;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnOldPolicyView;
         
         /// <summary>
         /// dxetxtPolicyNo control.
