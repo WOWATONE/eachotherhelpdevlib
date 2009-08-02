@@ -882,7 +882,7 @@
         <tr>
             <td style="width: 100%;" colspan="2">
                 <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
-                    runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%">
+                    runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%" AutoPostBack="false" EnableCallBacks="true" OnActiveTabChanged="insuranceDetailTabPage_ActiveTabChanged">
                     <ClientSideEvents ActiveTabChanging="function(s, e) {}" TabClick="function(s, e) {}" />
                     <TabPages>
                         <dxtc:TabPage Text="基本信息">
