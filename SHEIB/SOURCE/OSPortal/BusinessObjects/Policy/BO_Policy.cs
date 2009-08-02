@@ -1037,7 +1037,8 @@ namespace BusinessObjects.Policy
 
 
             //ExecuteScalar return the value of first column in first row.
-            _db.ExecuteNonQuery(dbCommand);
+            _db.ExecuteNonQuery(dbCommand);            
+
         }
 
 
@@ -1177,11 +1178,16 @@ namespace BusinessObjects.Policy
             if (theCompare.Process != this.Process) needChangePeriod = true;
             if (theCompare.ProcessBase != this.ProcessBase) needChangePeriod = true;
             if (theCompare.ProcessRate != this.ProcessRate) needChangePeriod = true;
+            if (theCompare.CiPremium != this.CiPremium) needChangePeriod = true;
+            if (theCompare.CiProcessRate != this.CiProcessRate) needChangePeriod = true;
+            if (theCompare.CiProcess != this.CiProcess) needChangePeriod = true;
 
             try
             {
                 _db.ExecuteNonQuery(dbCommand);
-                if (needChangePeriod) changePeriod(this.PolicyID);
+                
+                if (needChangePeriod) ChangePeriod(this.PolicyID);
+
             }
             catch (Exception ex)
             {
@@ -1193,7 +1199,7 @@ namespace BusinessObjects.Policy
         }
 
 
-        private void changePeriod(String id)
+        public static void ChangePeriod(String id)
         {
             List<BO_PolicyCarrier> theList;
             theList = BO_PolicyCarrier.FetchListByPolicy(id);
@@ -1224,7 +1230,6 @@ namespace BusinessObjects.Policy
             }
 
         }
-
 
 
         public static DataSet GetPolicyFee(string sPolicyID)

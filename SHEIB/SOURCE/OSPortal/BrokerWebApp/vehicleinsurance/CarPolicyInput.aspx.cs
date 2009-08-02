@@ -258,11 +258,9 @@ namespace BrokerWebApp.vehicleinsurance
                     filesUploadControl.Enabled = false;
             }
 
-            if (this.insuranceDetailTabPage.ActiveTabIndex == 2 || obj.PolicyStatus == state)
+            if (this.insuranceDetailTabPage.ActiveTabIndex == 2)
             {
-                rebindGridDocList();
-                if (this.pm == PageMode.Audit)
-                    filesUploadControl.Enabled = false;
+                rebindGridPeriod();                
             }
 
 
@@ -1010,20 +1008,21 @@ namespace BrokerWebApp.vehicleinsurance
             dxeRegisterDate.Date  = obj.RegisterDate;
             dxetxtCarValue.Text = obj.CarValue;
 
-            dxetxtCiPremium.Text = obj.CiPremium.ToString();
-            dxetxtAciPremium.Text = obj.AciPremium.ToString();
-            dxetxtCstPremium.Text = obj.CstPremium.ToString();
-            dxetxtCiProcessRate.Text = obj.CiProcessRate.ToString();
-            dxetxtAciProcessRate.Text = obj.AciProcessRate.ToString();
-            dxetxtCiProcess.Text = obj.CiProcess.ToString();
-            dxetxtAciProcess.Text = obj.AciProcess.ToString();
+            //
+            dxetxtCiPremium.Text = String.Format(BasePage.TheTwoSF, obj.CiPremium);
+            dxetxtAciPremium.Text = String.Format(BasePage.TheTwoSF, obj.AciPremium);
+            dxetxtCstPremium.Text = String.Format(BasePage.TheTwoSF, obj.CstPremium);
+            dxetxtCiProcessRate.Text = String.Format(BasePage.TheFourSF, obj.CiProcessRate);
+            dxetxtAciProcessRate.Text = String.Format(BasePage.TheFourSF, obj.AciProcessRate);
+            dxetxtCiProcess.Text = String.Format(BasePage.TheTwoSF, obj.CiProcess);
+            dxetxtAciProcess.Text = String.Format(BasePage.TheTwoSF, obj.AciProcess);
 
             this.dxeAuditTime.Date = obj.AuditTime;
             this.dxetxtAuditPerson.Text = obj.AuditPerson;
             this.dxeMemo.Text = obj.Remark;
 
-            //dxetxtTotalPremium.Text = obj.;            
-            //dxetxtTotalProcess.Text = obj;
+            dxetxtTotalPremium.Text = String.Format(BasePage.TheTwoSF, obj.CiPremium+obj.AciPremium+obj.CstPremium);            
+            dxetxtTotalProcess.Text = String.Format(BasePage.TheTwoSF, obj.CiProcess+obj.AciProcess);
 
         }
 
@@ -1088,6 +1087,7 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.CreateTime = DateTime.Now;
 
                 theObject.Save(ModifiedAction.Insert);
+                
             }
             else
             {
@@ -1135,8 +1135,18 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.Save(ModifiedAction.Update);
             }
 
-            dealWithPolicyPeriod(theObject.PolicyID, obj);
+            BusinessObjects.Policy.BO_CarPolicy objCar;
+            objCar = new BusinessObjects.Policy.BO_CarPolicy(theObject.AskPriceID);
+            if (!String.IsNullOrEmpty(objCar.CarrierID) && !String.IsNullOrEmpty(objCar.BranchID))
+            {
+                BO_PolicyCarrier.DeleteByPolicyId(theObject.PolicyID);
+                BO_PolicyPeriod.DeleteByPolicyId(theObject.PolicyID);
+                BO_PolicyCarrier.CreateCarrier(objCar.CarrierID, objCar.BranchID, theObject.PolicyID, theObject.Premium,
+                    theObject.PremiumRate, theObject.ProcessRate, theObject.Process);
 
+                BO_Policy.ChangePeriod(theObject.PolicyID);
+            }
+            
             return theObject.PolicyID;
 
         }
@@ -1339,43 +1349,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         }
 
-
-        private void dealWithPolicyPeriod(String policyID, CarPriceInputInfo obj)
-        {
-            String where = " AND A.PolicyId ='" + policyID + "'";
-            where += " AND A.BranchID ='" + obj.BranchID + "'";
-            Boolean exist = BO_PolicyPeriod.CheckPolicyBranchExist(where);
-            if (exist)
-            {
-                //do nothing
-            }
-            else
-            {
-                BO_PolicyPeriod objNew;
-                BO_Policy objPolicy = new BO_Policy(policyID);
-                Int32 times = objPolicy.PeriodTimes;
-
-                if (times < 1) times = 1;
-
-                for (int i = 1; i <= times; i++)
-                {
-                    objNew = new BO_PolicyPeriod();
-                    objNew.PolPeriodId = Guid.NewGuid().ToString();
-                    objNew.PolicyId = policyID;
-                    objNew.CarrierID = obj.CarrierID;
-                    objNew.BranchID = obj.BranchID;
-                    objNew.Period = i;
-                    objNew.PayDate = DateTime.Now;
-                    objNew.PayFeeBase = obj.CiPremium / times;
-                    objNew.PayProcBase = obj.CiProcess / times;
-                    objNew.NoticeNo = "";
-                    objNew.Save(ModifiedAction.Insert);
-                }
-
-            }
-        }
-
-
+        
         #endregion Privates
 
 

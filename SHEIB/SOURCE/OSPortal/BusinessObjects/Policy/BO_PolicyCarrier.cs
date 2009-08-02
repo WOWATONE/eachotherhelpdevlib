@@ -227,6 +227,31 @@ namespace BusinessObjects.Policy
 
         }
 
+
+        public static void CreateCarrier(String carrierID, String branchID, String policyID,
+            Decimal policyRate, Decimal premium,
+            Decimal processRate, Decimal process)
+        {
+            BusinessObjects.Policy.BO_PolicyCarrier newobj = new BusinessObjects.Policy.BO_PolicyCarrier();
+
+            newobj.PolicyCarrierID = Guid.NewGuid().ToString();
+            newobj.PolicyID = policyID;
+
+            newobj.CarrierID = carrierID;
+            newobj.BranchID = branchID;
+
+            newobj.PolicyRate = policyRate;
+
+            newobj.Premium = premium;
+            newobj.PremiumBase = premium;
+            newobj.ProcessRate = processRate;
+            newobj.Process = process;
+            newobj.ProcessBase = process;
+
+            newobj.Save(ModifiedAction.Insert);
+
+        }
+
         #endregion Methods
 
 
