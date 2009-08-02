@@ -178,7 +178,15 @@ namespace BusinessObjects
             sb.Append("@CustID, @CustName, @TradeTypeID, @Birthday, @Area, @Address, @PostCode, @CustTypeID, @DeprtmentID, @SalesID, @CustClassifyID, ");
             sb.Append("@Email, @Tel, @Fax, @Mobile, @IDNO, @BankName, @BankAccount, @Hobby, @MainOper, @AssetSize, @MainProduct, @AssetDistribute, @UnitCharacter, @Background, ");
             sb.Append("@OtherInfo, @Risk, @InsureStatus, @Remark, @Contact");
-            sb.Append(" )");
+            sb.Append(" ) ");
+            if (this.Contact.Length > 0)
+            {
+                sb.Append("Insert Into CustContact(ContactID, ContactName, CustID, Position, Sex, Tel, Fax, MobilePhone, Email, Interest, Remark) ");
+                sb.Append("Select '" + TranUtils.GetContactID() + "' as ContactID, C.Contact as ContactName, C.CustID, '' as Position, '男' as Sex, C.Tel, '' as Fax, C.Mobile as MobilePhone, '' as Email, '' as Interest, '' as Remark ");
+                sb.Append("From Customer C (nolock) ");
+                sb.Append("Where not exists(Select top 1 ContactID From CustContact (nolock) Where CustID=C.CustID And ContactName=C.Contact ) ");
+                sb.Append("And C.CustID=@CustID ");
+            }
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
@@ -226,7 +234,15 @@ namespace BusinessObjects
             sb.Append("Set CustName=@CustName, TradeTypeID=@TradeTypeID, Birthday=@Birthday, Area=@Area, Address=@Address, PostCode=@PostCode, CustTypeID=@CustTypeID, DeprtmentID=@DeprtmentID, SalesID=@SalesID, CustClassifyID=@CustClassifyID, ");
             sb.Append("Email=@Email, Tel=@Tel, Fax=@Fax, Mobile=@Mobile, IDNO=@IDNO, BankName=@BankName, BankAccount=@BankAccount, Hobby=@Hobby,MainOper=@MainOper, AssetSize=@AssetSize, MainProduct=@MainProduct, AssetDistribute=@AssetDistribute, UnitCharacter=@UnitCharacter, Background=@Background, ");
             sb.Append("OtherInfo=@OtherInfo, Risk=@Risk, InsureStatus=@InsureStatus, Remark=@Remark, Contact=@Contact ");
-            sb.Append("Where CustID=@CustID");
+            sb.Append("Where CustID=@CustID ");
+            if (this.Contact.Length > 0)
+            {
+                sb.Append("Insert Into CustContact(ContactID, ContactName, CustID, Position, Sex, Tel, Fax, MobilePhone, Email, Interest, Remark) ");
+                sb.Append("Select '" + TranUtils.GetContactID() + "' as ContactID, C.Contact as ContactName, C.CustID, '' as Position, '男' as Sex, C.Tel, '' as Fax, C.Mobile as MobilePhone, '' as Email, '' as Interest, '' as Remark ");
+                sb.Append("From Customer C (nolock) ");
+                sb.Append("Where not exists(Select top 1 ContactID From CustContact (nolock) Where CustID=C.CustID And ContactName=C.Contact ) ");
+                sb.Append("And C.CustID=@CustID ");
+            }
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 

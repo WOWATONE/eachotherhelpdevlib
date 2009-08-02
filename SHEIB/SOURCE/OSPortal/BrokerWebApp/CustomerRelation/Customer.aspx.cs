@@ -405,14 +405,19 @@ namespace BrokerWebApp.CustomerRelation
         {
             HtmlTable tblEditorTemplate = this.gridContactItem.FindEditFormTemplateControl("tblgridContactItemEditorTemplate") as HtmlTable;
             string contactID = e.Keys["ContactID"].ToString();
-            string newContactID = (tblEditorTemplate.FindControl("dxetxtContactID") as ASPxTextBox).Text.Trim();
+            //string newContactID = (tblEditorTemplate.FindControl("dxetxtContactID") as ASPxTextBox).Text.Trim();
 
-            if (newContactID.Length <= 0)
-                throw new Exception("联系人编号不能为空。");
+            //if (newContactID.Length <= 0)
+            //    throw new Exception("联系人编号不能为空。");
 
-            if (contactID != newContactID && BO_CustContact.IfExistsContactID(newContactID))
-                throw new Exception("联系人编号已经存在。");
-
+            //if (contactID != newContactID && BO_CustContact.IfExistsContactID(newContactID))
+            //    throw new Exception("联系人编号已经存在。");
+            if ((tblEditorTemplate.FindControl("dxetxtContactName") as ASPxTextBox).Text.Trim().Length <= 0)
+            {
+                (tblEditorTemplate.FindControl("dxetxtContactName") as ASPxTextBox).Focus();
+                throw new Exception("联系人姓名不能为空。");
+            }
+            
             BO_CustContact custContact = new BO_CustContact();
             custContact.ContactID = contactID;
             custContact.ContactName = (tblEditorTemplate.FindControl("dxetxtContactName") as ASPxTextBox).Text.Trim();
@@ -425,7 +430,7 @@ namespace BrokerWebApp.CustomerRelation
             custContact.Email = (tblEditorTemplate.FindControl("dxetxtEmail") as ASPxTextBox).Text.Trim();
             custContact.Interest = (tblEditorTemplate.FindControl("txtInterest") as TextBox).Text.Trim();
             custContact.Remark = (tblEditorTemplate.FindControl("txtRemark") as TextBox).Text.Trim();
-            custContact.NewContactID = newContactID;
+            custContact.NewContactID = contactID;
             custContact.Save(ModifiedAction.Update);
 
             e.Cancel = true;
@@ -448,6 +453,11 @@ namespace BrokerWebApp.CustomerRelation
 
             //if (BO_CustContact.IfExistsContactID(contactID))
             //    throw new Exception("联系人编号已经存在。");
+            if ((tblEditorTemplate.FindControl("dxetxtContactName") as ASPxTextBox).Text.Trim().Length <= 0)
+            {
+                (tblEditorTemplate.FindControl("dxetxtContactName") as ASPxTextBox).Focus();
+                throw new Exception("联系人姓名不能为空。");
+            }
 
             BO_CustContact custContact = new BO_CustContact();
             custContact.ContactID = TranUtils.GetContactID();
