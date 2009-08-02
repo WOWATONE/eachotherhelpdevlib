@@ -90,8 +90,10 @@ namespace BrokerWebApp.vehicleinsurance
 
                 this.dxetxtCreatePerson.Text = this.CurrentUserName;
                 this.dxeCreateTime.Date = DateTime.Now;
-
-                loadPolicyValue(this.lblSourcePolicyID.Text);
+                if (String.IsNullOrEmpty(this.dxetxtPolicyID.Text.Trim()))
+                    loadPolicyValue(this.lblSourcePolicyID.Text.Trim());
+                else
+                    loadPolicyValue(this.dxetxtPolicyID.Text.Trim());
                 rebindGridDocList(this.dxetxtPolicyID.Text.Trim());
             }
 
@@ -609,7 +611,11 @@ namespace BrokerWebApp.vehicleinsurance
             BusinessObjects.Policy.BO_CarPolicy objCar;
             objCar = new BusinessObjects.Policy.BO_CarPolicy(obj.AskPriceID);
 
-            
+            if (String.IsNullOrEmpty(this.lblSourcePolicyID.Text))
+            {
+                this.lblSourcePolicyID.Text = obj.PrevPolicyID;
+            }
+
             dxetxtPolicyNo.Text = obj.PolicyNo;
             dxetxtAciPolicyNo.Text = obj.AciPolicyNo;
             this.dxetxtAskPriceID.Text = obj.AskPriceID;
@@ -733,6 +739,7 @@ namespace BrokerWebApp.vehicleinsurance
             {
                 theObject = new BO_Policy();
                 theObject.PolicyID = TranUtils.GetPolicyID();
+                theObject.PrevPolicyID = theSourceObj.PolicyID;
                 theObject.AskPriceID = theSourceObj.AskPriceID;
                 theObject.PolicyStatus = policyState;
                 theObject.PolicyType = Convert.ToInt32(BO_Policy.PolicyTypeEnum.Vehicle).ToString();

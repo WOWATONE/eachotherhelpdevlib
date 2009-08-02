@@ -53,6 +53,8 @@ namespace BrokerWebApp.vehicleinsurance
             loadPolicyValue(this.dxetxtPolicyID.Text);
             rebindGridDocList();
 
+            rebindGridPeriod();
+
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
@@ -180,6 +182,23 @@ namespace BrokerWebApp.vehicleinsurance
 
         #endregion gridPolicyItem Events
 
+
+
+        #region gridPeriod Events
+
+        protected void gridPeriod_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            rebindGridPeriod();
+        }
+
+
+        private void rebindGridPeriod()
+        {
+            this.gridPeriod.DataSource = BusinessObjects.Policy.BO_PolicyPeriod.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
+            this.gridPeriod.DataBind();
+        }
+
+        #endregion gridPeriod Events
 
 
 

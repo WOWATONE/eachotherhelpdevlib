@@ -687,7 +687,16 @@
     </script>
     
     <script type="text/javascript">
-    
+
+        function dxebtnOldPolicyView_Click(s, e) {
+
+            var oldID = $("#<%=lblSourcePolicyID.ClientID %>");
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
+            var querystring;
+            querystring = "PolicyView.aspx?id=" + oldID[0].innerHTML;
+            window.showModalDialog(querystring, self, myArguments);
+        }
+        
         function gridCarrierCustomButtonClick(s, e) {
             s.GetRowValues(e.visibleIndex, "CarrierID", getTheGridCarrierSelectedRowsValues);
         }
@@ -843,7 +852,7 @@
                                                     原保单编号：
                                                 </td>
                                                 <td style="text-align: left;" colspan="3">
-                                                    <table style="margin-left:-3px; width:175px; text-align:left;">
+                                                    <table style="margin-left:-3px; width:300px; text-align:left;">
                                                         <tr>
                                                             <td>
                                                                 <asp:Label runat="server" ID="lblSourcePolicyID"></asp:Label>
@@ -855,9 +864,9 @@
                                                                 <asp:CheckBox runat="server" ID="chkAgain" Text="再保" />
                                                             </td>
                                                             <td>
-                                                                <dxe:ASPxButton AutoPostBack="False" runat="server" ID="btnOriginalPolicyDetail"
-                                                                    Text="查看保单" Style="margin: 0px;" Visible="false">
-                                                                    <ClientSideEvents Click="function(s, e) {return false;}" />
+                                                                <dxe:ASPxButton AutoPostBack="False" runat="server" ID="dxebtnOldPolicyView" ClientInstanceName="dxebtnOldPolicyView"
+                                                                    Text="查看原保单" Style="margin: 0px;" Visible="true">
+                                                                    <ClientSideEvents Click="function(s, e) {dxebtnOldPolicyView_Click(s,e);return false;}" />
                                                                 </dxe:ASPxButton>
                                                             </td>
                                                         </tr>

@@ -64,8 +64,8 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            
-            String where = " and ISNULL(B.PolicyStatus,'0') = '0' and ISNULL(B.AskPriceID,'') != '' ";
+
+            String where = " and ISNULL(B.PolicyStatus,'0') = '0' and ISNULL(B.PrevPolicyID,'') != '' ";
 
             if (!String.IsNullOrEmpty(this.dxetxtAskPriceID.Text))
             {

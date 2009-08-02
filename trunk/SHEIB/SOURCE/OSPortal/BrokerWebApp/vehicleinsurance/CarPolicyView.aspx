@@ -12,7 +12,7 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallbackPanel" TagPrefix="dxcp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>车辆保单信息录入</title>
+    <title>车辆保单信息查看</title>
     
     <script type="text/javascript">
         function btnCloseClick() {
@@ -646,6 +646,74 @@
                     </dxw:ContentControl>
                 </ContentCollection>
             </dxtc:TabPage>
+            <dxtc:TabPage Text="分    期" ClientVisible="true">
+                <ContentCollection>
+                    <dxw:ContentControl ID="ContentControl4" runat="server">
+                        <table style="width: 100%">
+                            <tr>
+                                <td runat="server" id="tblcellgridPeriod">
+                                    <dxwgv:ASPxGridView ID="gridPeriod" ClientInstanceName="gridPeriod" runat="server"
+                                        KeyFieldName="PolPeriodId" Width="100%" 
+                                        OnCustomCallback="gridPeriod_CustomCallback"
+                                        >
+                                        <%-- BeginRegion Columns --%>
+                                        <Columns>
+                                            <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="false">
+                                                <EditButton Visible="false" />
+                                                <NewButton Visible="false" />
+                                                <DeleteButton Visible="false" />
+                                            </dxwgv:GridViewCommandColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="Period" Caption="期次" CellStyle-Wrap="false">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataDateColumn FieldName="PayDate" Caption="付款日期" CellStyle-Wrap="false"
+                                                PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                                            </dxwgv:GridViewDataDateColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="CarrierNameCn" Caption="保险公司" CellStyle-Wrap="false">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="false">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="保费" CellStyle-Wrap="false">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="经纪费" CellStyle-Wrap="false">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="PolicyId" Caption="PolicyId" CellStyle-Wrap="false"
+                                                Visible="false">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="CarrierID" Caption="CarrierID" CellStyle-Wrap="false"
+                                                Visible="false">
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="BranchID" Caption="BranchID" CellStyle-Wrap="false"
+                                                Visible="false">
+                                            </dxwgv:GridViewDataColumn>
+                                        </Columns>
+                                        <%-- EndRegion --%>
+                                        
+                                        <TotalSummary>
+                                            <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" DisplayFormat="c" />
+                                            <dxwgv:ASPxSummaryItem FieldName="PayProcBase" SummaryType="Sum" DisplayFormat="c" />
+                                        </TotalSummary>
+                                        <SettingsEditing Mode="EditForm" />
+                                        <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways"                                                
+                                            ShowGroupedColumns="true" ShowFilterRow="false" ShowFooter="true" />
+                                        <SettingsPager Mode="ShowAllRecords">
+                                        </SettingsPager>
+                                        <SettingsDetail ExportMode="All" />
+                                        <SettingsLoadingPanel Mode="ShowAsPopup" ImagePosition="Top" ShowImage="true" Text="Loading" />
+                                        <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                        <Styles>
+                                            <LoadingDiv>
+                                            </LoadingDiv>
+                                            <LoadingPanel>
+                                            </LoadingPanel>
+                                        </Styles>
+                                    </dxwgv:ASPxGridView>
+                                </td>
+                            </tr>
+                        </table>
+                    </dxw:ContentControl>
+                </ContentCollection>
+            </dxtc:TabPage>
+                        
             <dxtc:TabPage Text="审核信息">
                 <ContentCollection>
                     <dxw:ContentControl ID="ContentControl3" runat="server">
