@@ -300,8 +300,6 @@ namespace BrokerWebApp.inoutbalance.rpt {
             
             private global::System.Data.DataColumn columnCustomerName;
             
-            private global::System.Data.DataColumn columnCarrier;
-            
             private global::System.Data.DataColumn columnPayFee;
             
             private global::System.Data.DataColumn columnPayFeeUpper;
@@ -366,13 +364,6 @@ namespace BrokerWebApp.inoutbalance.rpt {
             public global::System.Data.DataColumn CustomerNameColumn {
                 get {
                     return this.columnCustomerName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn CarrierColumn {
-                get {
-                    return this.columnCarrier;
                 }
             }
             
@@ -461,13 +452,12 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public NoticeRow AddNoticeRow(string NoticeNo, string NoticeDate, string CustomerName, string Carrier, string PayFee, string PayFeeUpper, string AciPremium, string CstPremium, string CiPremium, string FeeCompany, string FeeAccount, string FeeBankName) {
+            public NoticeRow AddNoticeRow(string NoticeNo, string NoticeDate, string CustomerName, string PayFee, string PayFeeUpper, string AciPremium, string CstPremium, string CiPremium, string FeeCompany, string FeeAccount, string FeeBankName) {
                 NoticeRow rowNoticeRow = ((NoticeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NoticeNo,
                         NoticeDate,
                         CustomerName,
-                        Carrier,
                         PayFee,
                         PayFeeUpper,
                         AciPremium,
@@ -498,7 +488,6 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 this.columnNoticeNo = base.Columns["NoticeNo"];
                 this.columnNoticeDate = base.Columns["NoticeDate"];
                 this.columnCustomerName = base.Columns["CustomerName"];
-                this.columnCarrier = base.Columns["Carrier"];
                 this.columnPayFee = base.Columns["PayFee"];
                 this.columnPayFeeUpper = base.Columns["PayFeeUpper"];
                 this.columnAciPremium = base.Columns["AciPremium"];
@@ -517,8 +506,6 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 base.Columns.Add(this.columnNoticeDate);
                 this.columnCustomerName = new global::System.Data.DataColumn("CustomerName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCustomerName);
-                this.columnCarrier = new global::System.Data.DataColumn("Carrier", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCarrier);
                 this.columnPayFee = new global::System.Data.DataColumn("PayFee", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPayFee);
                 this.columnPayFeeUpper = new global::System.Data.DataColumn("PayFeeUpper", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1016,21 +1003,6 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string Carrier {
-                get {
-                    try {
-                        return ((string)(this[this.tableNotice.CarrierColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“Notice”中列“Carrier”的值为 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableNotice.CarrierColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string PayFee {
                 get {
                     try {
@@ -1178,16 +1150,6 @@ namespace BrokerWebApp.inoutbalance.rpt {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetCustomerNameNull() {
                 this[this.tableNotice.CustomerNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsCarrierNull() {
-                return this.IsNull(this.tableNotice.CarrierColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetCarrierNull() {
-                this[this.tableNotice.CarrierColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

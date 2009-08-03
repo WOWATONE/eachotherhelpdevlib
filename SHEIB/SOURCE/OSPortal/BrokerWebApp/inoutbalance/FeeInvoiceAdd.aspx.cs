@@ -284,20 +284,7 @@ namespace BrokerWebApp.inoutbalance
 
         private void init()
         {
-            dxetxtPayProcBase.BackColor = Color.LightGray;
-            dxetxtFee.BackColor = Color.LightGray;
-            dxetxtFeeAdjust.BackColor = Color.LightGray;
-            dxetxtCiPremium.BackColor = Color.LightGray;
-            dxetxtAciPremium.BackColor = Color.LightGray;
-
-            dxetxtPayProcBase.ReadOnly = true;
-            dxetxtFee.ReadOnly = true;
-            dxetxtFeeAdjust.ReadOnly = true;
-            dxetxtCiPremium.ReadOnly = true;
-            dxetxtAciPremium.ReadOnly = true;
-
-
-            DataSet dsList;
+             DataSet dsList;
 
             this.dxeddlProcessFeeType.Items.Add("(全部)", "");
             dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.ProcessFeeType.ToString());
@@ -376,7 +363,7 @@ namespace BrokerWebApp.inoutbalance
             {
                 objLoad = new BO_Voucher();
 
-                objLoad.VoucherId = TranUtils.GetVoucherNo();
+                objLoad.VoucherId = TranUtils.GetVoucherNo(BusinessObjects.BO_P_Code.AccountType.Invoice);
                 objLoad.InvoiceNO = obj.VoiceNo;
                 objLoad.CreateTime = DateTime.Now;
                 objLoad.CreatePerson = this.CurrentUserID;
