@@ -137,7 +137,8 @@ namespace BrokerWebApp.IntegrateSearch
         }
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
-        {            
+        {
+            BindGrid();
             this.gridExport.WriteXlsToResponse();
         }
 
