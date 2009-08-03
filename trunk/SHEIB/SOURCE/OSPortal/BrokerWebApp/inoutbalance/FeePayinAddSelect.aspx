@@ -45,29 +45,6 @@
         });
 
 
-
-        function imgPolicyProdTypeClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=700px;dialogHeight=500px;center=yes;help=no";
-            var retrunval = window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
-            if (isEmpty(retrunval)) {
-                //do nothing;
-            }
-            else {
-                //split the return value;
-                var thesplit_array = retrunval.split(";");
-                dxetxtProdTypeID.SetValue(thesplit_array[1]);
-                setProductTypeID(thesplit_array[0]);
-
-            }
-
-        }
-
-
-        function setProductTypeID(thevalue) {
-            var result = $("#<%=ptid.ClientID %>");
-            result[0].value = thevalue;
-        }
-
         function btnOk_Click() {
 
             gridSearchResult.GetSelectedFieldValues("PolperiodID", getTheSelectedRowsValues);
@@ -106,6 +83,12 @@
             } else {
                 return false;
             }
+        }
+
+
+        function dxeddlCarrier_SelectedIndexChanged(s, e) {
+            var thejsonstring = dxeddlCarrier.GetSelectedItem().value;
+            dxeddlBranch.PerformCallback(thejsonstring);
         }
         
     </script>
@@ -205,30 +188,21 @@
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
-                                收款方式：
+                                保险公司：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
-                                    runat="server" Width="100px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlCarrier" ClientInstanceName="dxeddlCarrier" runat="server"
+                                    Width="160px" DropDownStyle="DropDownList" >
+                                    <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlCarrier_SelectedIndexChanged(s,e);}" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                                保险险种：
+                                分支机构：
                             </td>
                             <td style="text-align: left;">
-                                <table style="margin-left:-3px;">
-                                    <tr>
-                                    <td>
-                                        <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server" Width="100px">
-                                        </dxe:ASPxTextBox> 
-                                        <input type="hidden" id="ptid" runat="server" />
-                                    </td>
-                                    <td>                                                                   
-                                    <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;
-                                        height: 20px; vertical-align: top;" onclick="imgPolicyProdTypeClick();" />
-                                    </td>
-                                    </tr> 
-                                </table>
+                                <dxe:ASPxComboBox ID="dxeddlBranch" ClientInstanceName="dxeddlBranch" runat="server"
+                                    Width="160px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback" >
+                                </dxe:ASPxComboBox>
                             </td>
                             <td></td>
                         </tr>
