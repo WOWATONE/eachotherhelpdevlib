@@ -340,7 +340,7 @@ namespace BusinessObjects.Policy
             sb.Append("UPDATE PolicyPeriod SET ");
             sb.Append(" PayDate=@PayDate ");
             sb.Append(" Where PolicyId=@PolicyId ");
-            sb.Append(" Period=@Period;");
+            sb.Append(" AND Period=@Period;");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
