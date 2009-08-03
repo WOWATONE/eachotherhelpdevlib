@@ -149,15 +149,18 @@ namespace BusinessObjects
         }
 
         
-        public static string GetVoucherNo()
+        public static string GetVoucherNo(BusinessObjects.BO_P_Code.AccountType AccoutType)
         {
             string id = "";
+            
             StringBuilder sb = new StringBuilder();
-            sb.Append("EXEC GetVoucherNo @VoucherNo OUTPUT;");
+            sb.Append("[dbo].[GetVoucherNo]");
 
-            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
 
+            _db.AddInParameter(dbCommand, "@AccountType", DbType.String, Convert.ToInt32(AccoutType));
             _db.AddOutParameter(dbCommand, "@VoucherNo", DbType.String, 10);
+
 
             _db.ExecuteNonQuery(dbCommand);
 

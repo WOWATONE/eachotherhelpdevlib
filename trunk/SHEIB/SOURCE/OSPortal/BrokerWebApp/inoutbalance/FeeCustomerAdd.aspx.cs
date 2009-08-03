@@ -45,19 +45,7 @@ namespace BrokerWebApp.inoutbalance
 
         private void init()
         {
-            dxetxtPayFee.BackColor = Color.LightGray;
-            dxetxtFeeAdjust.BackColor = Color.LightGray;
-            dxetxtFee.BackColor = Color.LightGray;
-            dxetxtCiPremium.BackColor = Color.LightGray;
-            dxetxtAciPremium.BackColor = Color.LightGray;
-            dxetxtCstPremium.BackColor = Color.LightGray;
-
-            dxetxtPayFee.ReadOnly = true;
-            dxetxtFeeAdjust.ReadOnly = true;
-            dxetxtFee.ReadOnly = true;
-            dxetxtCiPremium.ReadOnly = true;
-            dxetxtAciPremium.ReadOnly = true;
-            dxetxtCstPremium.ReadOnly = true;
+            
 
         }
 
@@ -287,13 +275,7 @@ namespace BrokerWebApp.inoutbalance
             this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
 
-            //取应收.
-            dxetxtPayFee.Text = dt.Compute("Sum(PayFeeBase)", "").ToString();
-            dxetxtFeeAdjust.Text = dt.Compute("Sum(FeeAdjust)", "").ToString();
-            dxetxtFee.Text = dt.Compute("Sum(Fee)", "").ToString();
-            dxetxtCiPremium.Text = dt.Compute("Sum(CiPremium)", "").ToString();
-            dxetxtAciPremium.Text = dt.Compute("Sum(AciPremium)", "").ToString();
-            dxetxtCstPremium.Text = dt.Compute("Sum(CstPremium)", "").ToString();
+
 
         }
 
@@ -313,8 +295,8 @@ namespace BrokerWebApp.inoutbalance
             if (String.IsNullOrEmpty(obj.ID))
             {
                 objLoad = new BO_Voucher();
-                
-                objLoad.VoucherId = TranUtils.GetVoucherNo();
+
+                objLoad.VoucherId = TranUtils.GetVoucherNo(BusinessObjects.BO_P_Code.AccountType.FeeCustomer);
                 objLoad.InvoiceNO = "";
                 objLoad.CreateTime = DateTime.Now;
                 objLoad.CreatePerson = this.CurrentUserID;

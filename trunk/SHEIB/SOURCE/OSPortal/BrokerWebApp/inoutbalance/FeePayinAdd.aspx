@@ -55,10 +55,7 @@
         }
 
         $(document).ready(function() {
-            //jQuery.noticeAdd({
-            //    text: 'This is a notification that you have to remove',
-            //    stay: true
-            //});
+
             window.onunload = function() {
                 var pWindow = window.dialogArguments;
                 var thegrid = pWindow.gridSearchResult;
@@ -82,7 +79,7 @@
                 alert("经纪费收取方式不能为空,请选择!")
                 return
             }
-            
+
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
             var url = "FeePayinAddSelect.aspx?ID=" + getVoucherId() + "&ProcessFeeType=" + getProcessFeeType();
 
@@ -91,13 +88,13 @@
         }
 
         function btnAddPrintClick() {
-            
+
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=700px;center=yes;help=no";
             var url = "FeePayinAddPrint.aspx?ID=" + getVoucherId() + "&ProcessFeeType=" + getProcessFeeType();
 
             window.showModalDialog(url, self, myArguments);
-            var sVoucherID = getVoucherID();
-            gridPolicyItem.PerformCallback(sVoucherID);
+
+            gridPolicyItem.PerformCallback(getVoucherId());
         }
 
         function btnCloseClick() {
@@ -122,14 +119,14 @@
         }
 
         function dxebtntopSave_Click(s, e) {
-            
+
             var ProcessFeeType = dxeddlProcessFeeType.GetValue();
-            if ((ProcessFeeType == "") || (ProcessFeeType ==null)) {
+            if ((ProcessFeeType == "") || (ProcessFeeType == null)) {
                 alert("经纪费收取方式不能为空,请选择!")
                 return
             }
 
-            
+
             if (s.CauseValidation()) {
                 var thejsonstring = makeInfoJSON("0");
                 dxeSaveCallback.PerformCallback(thejsonstring);
@@ -143,7 +140,7 @@
                 setVoucherId(e.result);
                 cusCompleteEnable();
             } else {
-            //如果更改了经纪费收取方式
+                //如果更改了经纪费收取方式
                 gridPolicyItem.PerformCallback(getVoucherId());
             }
         }
@@ -155,8 +152,8 @@
             //var GatheringType = dxeddlGatheringType.GetValue();
             var GatheringType = "1";
             var ProcessFeeType = dxeddlProcessFeeType.GetValue();
-//            var Carrier = "";
-//            var Branch = "";
+            //            var Carrier = "";
+            //            var Branch = "";
             var Carrier = dxeddlCarrier.GetValue();
             var Branch = dxeddlBranch.GetValue();
             var plc = new InfoJSON(ID, Remark, GotDate, AuditStatus, GatheringType, ProcessFeeType, Carrier, Branch);
@@ -231,7 +228,7 @@
         }
 
         function setGridEditStatus(editStatus) {
-            
+
             var grv = document.getElementById('<%=gridPolicyItem.ClientID %>');
             for (var i = 0; i < grv.rows.length; i++) {
                 for (var j = 0; j < grv.rows(i).cells(0).all.length; j++) {
@@ -279,9 +276,9 @@
             }
 
             var VoucherID = getVoucherId();
-            gridPolicyItem.PerformCallback(VoucherID);      
+            gridPolicyItem.PerformCallback(VoucherID);
         }
-                        
+
 
         function isEmpty(testVar) {
             if ((testVar == null) || (testVar.length == 0)) {
@@ -304,31 +301,31 @@
         }
 
         function gridPolicyItem_EndCallback(s, e) {
-            dxeGetGridPolicyItemTotalSummary.PerformCallback();
+            //dxeGetGridPolicyItemTotalSummary.PerformCallback();
         }
 
         function dxeGetGridPolicyItemTotalSummaryCallbackComplete(s, e) {
-            var retrunval = e.result;
-            var thesplit_array = retrunval.split(";");
-            //PayFeeBase + ";" + Fee + ";" + FeeAdjust + ";" + PayProcBase + ";" + PayinFee;
-            var sumPayFeeBaseVal = parseFloat(thesplit_array[0]);
-            var sumFeeVal = parseFloat(thesplit_array[1]);
-            var sumFeeAdjustVal = parseFloat(thesplit_array[2]);
-            var sumPayProcBaseVal = parseFloat(thesplit_array[3]);
-            var sumPayinFeeVal = parseFloat(thesplit_array[4]);
+            // var retrunval = e.result;
+            // var thesplit_array = retrunval.split(";");
+            // //PayFeeBase + ";" + Fee + ";" + FeeAdjust + ";" + PayProcBase + ";" + PayinFee;
+            // var sumPayFeeBaseVal = parseFloat(thesplit_array[0]);
+            // var sumFeeVal = parseFloat(thesplit_array[1]);
+            // var sumFeeAdjustVal = parseFloat(thesplit_array[2]);
+            // var sumPayProcBaseVal = parseFloat(thesplit_array[3]);
+            // var sumPayinFeeVal = parseFloat(thesplit_array[4]);
 
 
-            var rtn = sumPayProcBaseVal.toFixed(2);
-            dxetxtProcessFee.SetValue(rtn);  
-            rtn = sumPayFeeBaseVal.toFixed(2);
-            dxetxtPayFeeBase.SetValue(rtn);
-            rtn = sumFeeVal.toFixed(2);
-            dxetxtFee.SetValue(rtn);
-            rtn = sumFeeAdjustVal.toFixed(2);
-            dxetxtFeeAdjust.SetValue(rtn);
-            rtn = sumPayinFeeVal.toFixed(2);
-            dxetxtPayinFee.SetValue(rtn);                            
-         
+            // var rtn = sumPayProcBaseVal.toFixed(2);
+            // dxetxtProcessFee.SetValue(rtn);
+            // rtn = sumPayFeeBaseVal.toFixed(2);
+            // dxetxtPayFeeBase.SetValue(rtn);
+            // rtn = sumFeeVal.toFixed(2);
+            // dxetxtFee.SetValue(rtn);
+            // rtn = sumFeeAdjustVal.toFixed(2);
+            // dxetxtFeeAdjust.SetValue(rtn);
+            // rtn = sumPayinFeeVal.toFixed(2);
+            // dxetxtPayinFee.SetValue(rtn);
+
         }
 
         function getOColumnIndex(fieldName) {
@@ -350,7 +347,7 @@
 
         function dxeddlProcessFeeType_OnProcessFeeTypeChanged(s, e) {
             var sProcessFeeType = dxeddlProcessFeeType.GetSelectedItem().value;
-            
+
         }
             
         
@@ -407,18 +404,12 @@
                         <tr>
                             <td colspan="3">
                                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                    DataSourceID="" KeyFieldName="FeeId" Width="100%" 
-                                    AutoGenerateColumns="False"
-                                    OnRowUpdating="gridPolicyItem_RowUpdating" 
-                                    OnRowUpdated="gridPolicyItem_RowUpdated"
-                                    OnRowDeleting="gridPolicyItem_RowDeleting" 
-                                    OnRowDeleted="gridPolicyItem_RowDeleted"
-                                    OnCustomCallback="gridPolicyItem_CustomCallback" 
-                                    OnStartRowEditing="gridPolicyItem_StartRowEditing"
-                                    OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated" 
-                                    OnRowValidating="gridPolicyItem_RowValidating"
-                                    OnHtmlRowCreated="gridPolicyItem_HtmlRowCreated"
-                                    >
+                                    DataSourceID="" KeyFieldName="FeeId" Width="100%" AutoGenerateColumns="False"
+                                    OnRowUpdating="gridPolicyItem_RowUpdating" OnRowUpdated="gridPolicyItem_RowUpdated"
+                                    OnRowDeleting="gridPolicyItem_RowDeleting" OnRowDeleted="gridPolicyItem_RowDeleted"
+                                    OnCustomCallback="gridPolicyItem_CustomCallback" OnStartRowEditing="gridPolicyItem_StartRowEditing"
+                                    OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated" OnRowValidating="gridPolicyItem_RowValidating"
+                                    OnHtmlRowCreated="gridPolicyItem_HtmlRowCreated">
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
@@ -434,15 +425,19 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="本期应解付保费" CellStyle-Wrap="False" >
-                                        </dxwgv:GridViewDataColumn>                                        
+                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="本期应解付保费" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="Fee" Caption="本期实际解付金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="FeeAdjust" Caption="调整金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="经纪费金额" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>                                  
+                                        <dxwgv:GridViewDataColumn FieldName="CiPremium" Caption="商业险保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayinFee" Caption="本期实际解付金额" CellStyle-Wrap="False"  Visible="false">
+                                        <dxwgv:GridViewDataColumn FieldName="AciPremium" Caption="交强险保费" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="CstPremium" Caption="车船税" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CustomerName" Caption="投保客户" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -454,8 +449,9 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="AuditStatus" Caption="AuditStatus" CellStyle-Wrap="False" Visible="false">
-                                         </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="AuditStatus" Caption="AuditStatus" CellStyle-Wrap="False"
+                                            Visible="false">
+                                        </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" DisplayFormat="#" />
@@ -464,7 +460,11 @@
                                         <dxwgv:ASPxSummaryItem FieldName="FeeAdjust" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayProcBase" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayinFee" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" DisplayFormat="c" />
                                     </TotalSummary>
+                                    <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                     <Settings ShowGroupPanel="True" ShowFooter="True" ShowGroupFooter="VisibleIfExpanded" />
                                     <GroupSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" ShowInGroupFooterColumn="PolicyNo" SummaryType="Count"
@@ -483,7 +483,7 @@
                                     <SettingsPager Mode="ShowAllRecords" />
                                     <ClientSideEvents Init="function(s, e) {gridPolicyItem_EndCallback();}" />
                                     <ClientSideEvents EndCallback="function(s, e) {gridPolicyItem_EndCallback();}" />
-                                    <ClientSideEvents Init ="function(s, e) {gridPolicyItem_EndCallback();}" />
+                                    <ClientSideEvents Init="function(s, e) {gridPolicyItem_EndCallback();}" />
                                     <Templates>
                                         <EditForm>
                                             <div style="padding: 4px 4px 3px 4px">
@@ -587,81 +587,9 @@
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="width: 15%; text-align: right;">
-                                经纪费金额：
-                            </td>
-                            <td style="width: 20%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtProcessFee" ClientInstanceName="dxetxtProcessFee" runat="server"
-                                    Width="180px">
-                                </dxe:ASPxTextBox>
-                            </td>
-                            <td style="text-align: right;">
-                                本期应解付保费：
-                            </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtPayFeeBase" ClientInstanceName="dxetxtPayFeeBase"
-                                    runat="server" Width="180px">
-                                </dxe:ASPxTextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
-                                本期解付保费：
-                            </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtFee" ClientInstanceName="dxetxtFee"
-                                    runat="server" Width="180px">
-                                </dxe:ASPxTextBox>
-                            </td>                            
-                            <td style="text-align: right;">
-                                调整金额：
-                            </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtFeeAdjust" ClientInstanceName="dxetxtFeeAdjust" runat="server"
-                                    Width="180px">
-                                </dxe:ASPxTextBox>
-                            </td>
-                            <td style="text-align: right;">
-                                实际解付保费：
-                            </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtPayinFee" ClientInstanceName="dxetxtPayinFee" runat="server"
-                                    Width="180px">
-                                </dxe:ASPxTextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 13%; text-align: right;">
-                                其中，商业险保费：
-                            </td>
-                            <td style="width: 17%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCiPremium" ClientInstanceName="dxetxtCiPremium" runat="server"
-                                    Width="160px">
-                                </dxe:ASPxTextBox>
-                            </td>
-                            <td style="width: 13%; text-align: right;">
-                                交强险保费：
-                            </td>
-                            <td style="width: 17%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtAciPremium" ClientInstanceName="dxetxtAciPremium" runat="server"
-                                    Width="160px">
-                                </dxe:ASPxTextBox>
-                            </td>
-                            <td style="width: 13%; text-align: right;">
-                                车船税:
-                            </td>
-                            <td style="width: 17%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCstPremium" ClientInstanceName="dxetxtCstPremium" runat="server"
-                                    Width="160px">
-                                </dxe:ASPxTextBox>
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
                                 解付日期：
                             </td>
-                            <td style="text-align: left;">
+                            <td style="width: 20%; text-align: left;">
                                 <dxe:ASPxDateEdit ID="dxeGotDate" ClientInstanceName="dxeGotDate" runat="server">
                                 </dxe:ASPxDateEdit>
                             </td>
@@ -669,14 +597,10 @@
                             </td>
                             <td style="text-align: left;">
                             </td>
-                            <td style="text-align: right;">
-                            </td>
-                            <td style="text-align: left;">
-                            </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                            保险公司： 
+                                保险公司：
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlCarrier" ClientInstanceName="dxeddlCarrier" runat="server"
@@ -685,11 +609,12 @@
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                            分支机构：    
+                                分支机构：
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlBranch" ClientInstanceName="dxeddlBranch" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback" Visible="true">
+                                    Width="160px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback"
+                                    Visible="true">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">

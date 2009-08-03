@@ -359,10 +359,9 @@
                         </dxwgv:GridViewDataColumn>
                         <dxwgv:GridViewDataColumn FieldName="AuditStatus" Caption="AuditStatus" CellStyle-Wrap="False" Visible="false">
                         </dxwgv:GridViewDataColumn>
-                        
-                        
                     </Columns>
                     <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleIfExpanded" />
+                    <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                     <TotalSummary>
                         <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" DisplayFormat="保单数量:#" />
                         <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" DisplayFormat="c" />

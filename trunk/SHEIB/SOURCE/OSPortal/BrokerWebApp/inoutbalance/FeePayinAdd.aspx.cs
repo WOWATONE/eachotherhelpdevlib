@@ -322,25 +322,7 @@ namespace BrokerWebApp.inoutbalance
 
 
         private void init()
-        {
-            dxetxtPayFeeBase.BackColor = Color.LightGray;
-            dxetxtPayinFee.BackColor = Color.LightGray;
-            dxetxtFeeAdjust.BackColor = Color.LightGray;
-            dxetxtProcessFee.BackColor = Color.LightGray;
-            dxetxtCiPremium.BackColor = Color.LightGray;            
-            dxetxtAciPremium.BackColor = Color.LightGray;
-            dxetxtCstPremium.BackColor = Color.LightGray;
-
-
-            dxetxtPayFeeBase.ReadOnly = true;
-            dxetxtPayinFee.ReadOnly = true;
-            dxetxtFeeAdjust.ReadOnly = true;
-            dxetxtProcessFee.ReadOnly = true;
-            dxetxtCiPremium.ReadOnly = true;
-            dxetxtAciPremium.ReadOnly = true;
-            dxetxtCstPremium.ReadOnly = true;
-
-
+        {          
 
             DataSet dsList;
 
@@ -441,7 +423,7 @@ namespace BrokerWebApp.inoutbalance
             {
                 objLoad = new BO_Voucher();
 
-                objLoad.VoucherId = TranUtils.GetVoucherNo();
+                objLoad.VoucherId = TranUtils.GetVoucherNo(BusinessObjects.BO_P_Code.AccountType.PayIn);
                 objLoad.InvoiceNO = "";
                 objLoad.CreateTime = DateTime.Now;
                 objLoad.CreatePerson = this.CurrentUserID;

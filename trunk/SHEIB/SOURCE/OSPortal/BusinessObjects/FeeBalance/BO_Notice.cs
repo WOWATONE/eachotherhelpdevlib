@@ -107,6 +107,14 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand);
         }
 
+        public static DataSet GetFeeNoticeAddPrint(string sNoticeNo)
+        {
+
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetFeeNoticeAddPrint");
+            _db.AddInParameter(dbCommand, "@ac_NoticeNo", DbType.String, sNoticeNo);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
 
         public static DataSet GetNoticeReport(string sSql)
         {
