@@ -140,15 +140,16 @@ namespace BrokerWebApp.CustomerRelation
                 this.rebindGridPtFollowDocList();
                 #endregion
 
+                #region 签单记录
+                this.gridPolicyItem.DataSource = BusinessObjects.Policy.BO_Policy.GetCustomerPolicy(this._custID);
+                this.gridPolicyItem.DataBind();
+                #endregion
+
                 #region 理赔记录
                 this.gridNotifyClaimItem.DataSource = BO_NotifyClaim.GetCustContactByCustID(this._custID);
                 this.gridNotifyClaimItem.DataBind();
                 #endregion
 
-                #region 签单记录
-                this.gridPolicyItem.DataSource = BusinessObjects.Policy.BO_Policy.GetCustomerPolicy(this._custID);
-                this.gridPolicyItem.DataBind();
-                #endregion
             }
         }
 
