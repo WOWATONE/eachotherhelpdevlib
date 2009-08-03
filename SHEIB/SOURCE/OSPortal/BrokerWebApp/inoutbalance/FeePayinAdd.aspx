@@ -155,10 +155,10 @@
             //var GatheringType = dxeddlGatheringType.GetValue();
             var GatheringType = "1";
             var ProcessFeeType = dxeddlProcessFeeType.GetValue();
-            var Carrier = "";
-            var Branch = "";
-            //var Carrier = dxeddlCarrier.GetValue();
-            //var Branch = dxeddlBranch.GetValue();
+//            var Carrier = "";
+//            var Branch = "";
+            var Carrier = dxeddlCarrier.GetValue();
+            var Branch = dxeddlBranch.GetValue();
             var plc = new InfoJSON(ID, Remark, GotDate, AuditStatus, GatheringType, ProcessFeeType, Carrier, Branch);
 
             //deserialize JSON string, make a JSON object
@@ -676,20 +676,20 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                
+                            保险公司： 
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlCarrier" ClientInstanceName="dxeddlCarrier" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList" Visible="false">
+                                    Width="160px" DropDownStyle="DropDownList" Visible="true">
                                     <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlCarrier_SelectedIndexChanged(s,e);}" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                                
+                            分支机构：    
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlBranch" ClientInstanceName="dxeddlBranch" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback" Visible="false">
+                                    Width="160px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback" Visible="true">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
