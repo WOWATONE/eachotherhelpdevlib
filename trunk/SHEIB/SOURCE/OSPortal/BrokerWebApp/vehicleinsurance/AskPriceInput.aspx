@@ -883,7 +883,7 @@
                                                         <SettingsPager Mode="ShowAllRecords" />
                                                         <Settings ShowGroupPanel="false" ShowFooter="True" />
                                                         <ClientSideEvents CustomButtonClick="function(s,e) {gridCustomButtonClick(s,e);}"  />
-                                                        <SettingsBehavior ConfirmDelete="true" />
+                                                        <SettingsBehavior ConfirmDelete="true" AllowGroup="false" AllowDragDrop="false" />
                                                         <Templates>
                                                             <EditForm>
                                                                 <div style="padding: 4px 4px 3px 4px">

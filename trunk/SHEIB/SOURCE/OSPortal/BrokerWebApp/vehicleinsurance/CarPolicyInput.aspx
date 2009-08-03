@@ -1340,7 +1340,7 @@
                                                             <%-- EndRegion --%>
                                                             <SettingsPager Mode="ShowAllRecords" />
                                                             <Settings ShowGroupPanel="false" ShowFooter="true" />
-                                                            <SettingsBehavior />
+                                                            <SettingsBehavior ConfirmDelete="true" AllowDragDrop="false" AllowGroup="false" />
                                                             <ClientSideEvents EndCallback="function(s, e) {gridPolicyItem_EndCallback();}" />
                                                             
                                                             <Templates>
@@ -1717,7 +1717,7 @@
                                             </SettingsPager>
                                             <SettingsDetail ExportMode="All" />
                                             <SettingsLoadingPanel Mode="ShowAsPopup" ImagePosition="Top" ShowImage="true" Text="Loading" />
-                                            <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                            <SettingsBehavior AllowDragDrop="true" AllowGroup="true" AllowMultiSelection="false" />
                                             <Styles>
                                                 <LoadingDiv>
                                                 </LoadingDiv>

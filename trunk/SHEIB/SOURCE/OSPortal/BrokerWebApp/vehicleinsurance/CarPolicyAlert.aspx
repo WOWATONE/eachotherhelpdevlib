@@ -1548,7 +1548,7 @@
                                                     </SettingsPager>
                                                     <SettingsDetail ExportMode="All" />
                                                     <SettingsLoadingPanel Mode="ShowAsPopup" ImagePosition="Top" ShowImage="true" Text="Loading" />
-                                                    <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                                    <SettingsBehavior AllowDragDrop="true" AllowGroup="true" AllowMultiSelection="false" />
                                                     <Styles>
                                                         <LoadingDiv>
                                                         </LoadingDiv>
