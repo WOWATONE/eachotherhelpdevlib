@@ -58,7 +58,7 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="保单批改" Name="vehicleinsurance/CarPolicyAlertList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="保单审核" Name="vehicleinsurance/CarPolicyCheckList.aspx">
+                                <dxnb:NavBarItem Text="批单审核" Name="vehicleinsurance/CarPolicyCheckList.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="保单信息补录" Name="vehicleinsurance/CarPolicyList.aspx">
                                 </dxnb:NavBarItem>
@@ -96,8 +96,6 @@
                             <Items>
                                 <dxnb:NavBarItem Text="保单综合查询" Name="IntegrateSearch/PolicyList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="车险保单综合查询" Name="vehicleinsurance/AskPriceSearch.aspx" Visible="false">
-                                </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
                         
@@ -120,8 +118,6 @@
                                 <dxnb:NavBarItem Text="企业目录" Name="CustomerRelation/EnterpriseList.aspx" Visible="false">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="系统选项" Name="http://www.google.cn" Visible="false">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="系统日志" Name="schemasetting/Systemlog.aspx" Visible="false">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="服务提醒" Name="schemasetting/AlertService.aspx">
                                 </dxnb:NavBarItem>
