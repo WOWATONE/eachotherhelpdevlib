@@ -1561,7 +1561,7 @@
                                                                 <dxwgv:ASPxSummaryItem FieldName="ProcessBase" SummaryType="Sum" DisplayFormat="c" />
                                                             </TotalSummary>
                                                             <ClientSideEvents CustomButtonClick="function(s, e) {gridCarrierCustomButtonClick(s,e);return false;}" />
-                                                            <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                                            <SettingsBehavior AllowDragDrop="true" AllowGroup="true" AllowMultiSelection="false" />
                                                             <Templates>
                                                                 <EditForm>
                                                                     <div style="padding: 4px 4px 3px 4px">
@@ -1827,7 +1827,7 @@
                                             </SettingsPager>
                                             <SettingsDetail ExportMode="All" />
                                             <SettingsLoadingPanel Mode="ShowAsPopup" ImagePosition="Top" ShowImage="true" Text="Loading" />
-                                            <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                            <SettingsBehavior AllowDragDrop="true" AllowGroup="true" AllowMultiSelection="false" />
                                             <Styles>
                                                 <LoadingDiv>
                                                 </LoadingDiv>
