@@ -716,7 +716,7 @@
             }
         }
 
-        function multi_ValueChanged(t1, t2, t3, opt) {
+        function multi_ValueChanged(t1, t2, t3, precision, sign, opt) {
 
             var v1;
             try {
@@ -745,12 +745,25 @@
             else
                 v3 = parseFloat(v1 * v2);
 
-            var rtn = v3.toFixed(2);
+            var thePrecision;
+            if (isIntNumeric(precision))
+                thePrecision = parseInt(precision);
+            else
+                thePrecision = 2;
+
+            var rtn = v3.toFixed(thePrecision);
+            if (sign == true) {
+                var srps = "+";
+                rtn = rtn.replace(/(srps+)/g, "");
+                srps = "-";
+                rtn = rtn.replace(/(srps+)/g, "");
+            }
+            
             t3.SetValue(rtn);
         }
 
 
-        function division_ValueChanged(t1, t2, t3, opt) {
+        function division_ValueChanged(t1, t2, t3, precision, sign, opt) {
 
             var v1;
             try {
@@ -781,8 +794,22 @@
                 else
                     v3 = parseFloat(v1 / v2);
             }
+            
+            var thePrecision;
+            if (isIntNumeric(precision))
+                thePrecision = parseInt(precision);
+            else
+                thePrecision = 2;
 
-            var rtn = v3.toFixed(2);
+            var rtn = v3.toFixed(thePrecision);
+
+            if (sign == true) {
+                var srps = "+";
+                rtn = rtn.replace(/(srps+)/g, "");
+                srps = "-";
+                rtn = rtn.replace(/(srps+)/g, "");
+            }
+            
             t3.SetValue(rtn);
         }
 
@@ -857,7 +884,14 @@
             var rtn = v3.toFixed(2);
             t3.SetValue(rtn);
         }
-        
+
+        function isIntNumeric(str) {
+            var val = parseInt(str);
+            if (isNaN(val))
+                return true;
+            else
+                return false;
+        }
     </script>
     
 </asp:Content>
@@ -1236,11 +1270,11 @@
                                                             <td style="width: 130px; text-align: left;">
                                                                 <dxe:ASPxTextBox ID="dxetxtCiPremium" ClientInstanceName="dxetxtCiPremium" runat="server" Width="100px">
                                                                     <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
-                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                        <RegularExpression ValidationExpression="^(\+|\-)?\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
                                                                     <ClientSideEvents ValueChanged="function(s,e){
                                                                         add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
-                                                                        multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,true);
+                                                                        multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,2,false,true);
                                                                         add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                         }" />
                                                                 </dxe:ASPxTextBox>
@@ -1251,11 +1285,11 @@
                                                             <td style="width: 130px; text-align: left;">
                                                                 <dxe:ASPxTextBox ID="dxetxtAciPremium" ClientInstanceName="dxetxtAciPremium" runat="server" Width="100px">
                                                                     <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
-                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                        <RegularExpression ValidationExpression="^(\+|\-)?\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
                                                                     <ClientSideEvents ValueChanged="function(s,e){
                                                                         add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
-                                                                        multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,true);
+                                                                        multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,2,false,true);
                                                                         add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                         }" />
                                                                 </dxe:ASPxTextBox>
@@ -1266,7 +1300,7 @@
                                                             <td style="width: 130px; text-align: left;">
                                                                 <dxe:ASPxTextBox ID="dxetxtCstPremium" ClientInstanceName="dxetxtCstPremium" runat="server" Width="100px">
                                                                     <ValidationSettings  ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
-                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                        <RegularExpression ValidationExpression="^(\+|\-)?\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
                                                                     <ClientSideEvents ValueChanged="function(s,e){
                                                                         add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
@@ -1279,7 +1313,7 @@
                                                             <td style="width: 130px; text-align: left;">
                                                                 <dxe:ASPxTextBox ID="dxetxtTotalPremium" ClientInstanceName="dxetxtTotalPremium" runat="server" Width="100px">
                                                                     <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
-                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                        <RegularExpression ValidationExpression="^(\+|\-)?\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
                                                                 </dxe:ASPxTextBox>
                                                             </td>
@@ -1294,7 +1328,7 @@
                                                                         <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
                                                                     <ClientSideEvents ValueChanged="function(s,e){
-                                                                        multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,true);
+                                                                        multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,2,false,true);
                                                                         add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                         }" />
                                                                 </dxe:ASPxTextBox>
@@ -1308,7 +1342,7 @@
                                                                         <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
                                                                     <ClientSideEvents ValueChanged="function(s,e){
-                                                                        multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,true);
+                                                                        multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,2,false,true);
                                                                         add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                         }" />
                                                                 </dxe:ASPxTextBox>
@@ -1329,7 +1363,7 @@
                                                             <td style="text-align: left;">
                                                                 <dxe:ASPxTextBox ID="dxetxtCiProcess" ClientInstanceName="dxetxtCiProcess" runat="server" Width="100px">
                                                                     <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
-                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                        <RegularExpression ValidationExpression="^(\+|\-)?\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
                                                                     <ClientSideEvents ValueChanged="function(s,e){
                                                                         add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
@@ -1342,7 +1376,7 @@
                                                             <td style="text-align: left;">
                                                                 <dxe:ASPxTextBox ID="dxetxtAciProcess" ClientInstanceName="dxetxtAciProcess" runat="server" Width="100px">
                                                                     <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
-                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                        <RegularExpression ValidationExpression="^(\+|\-)?\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
                                                                     <ClientSideEvents ValueChanged="function(s,e){
                                                                         add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
@@ -1359,7 +1393,7 @@
                                                             <td style="text-align: left;">
                                                                 <dxe:ASPxTextBox ID="dxetxtTotalProcess" ClientInstanceName="dxetxtTotalProcess" runat="server" Width="100px">
                                                                     <ValidationSettings ErrorDisplayMode="ImageWithTooltip" ValidationGroup="BaseGroup">
-                                                                        <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                        <RegularExpression ValidationExpression="^(\+|\-)?\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
                                                                 </dxe:ASPxTextBox>
                                                             </td>
@@ -1573,7 +1607,7 @@
                                                                                 ReadOnly="false">
                                                                                 <ValidationSettings RequiredField-IsRequired="true" CausesValidation="true" ErrorDisplayMode="ImageWithTooltip">
                                                                                     <RequiredField IsRequired="true" ErrorText="必需项" />
-                                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    <RegularExpression ValidationExpression="^(\+|\-)?\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                 </ValidationSettings>
                                                                             </dxe:ASPxTextBox>
                                                                         </td>
@@ -1585,7 +1619,7 @@
                                                                                 ReadOnly="false">
                                                                                 <ValidationSettings RequiredField-IsRequired="true" CausesValidation="true" ErrorDisplayMode="ImageWithTooltip">
                                                                                     <RequiredField IsRequired="true" ErrorText="必需项" />
-                                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                                    <RegularExpression ValidationExpression="^(\+|\-)?\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                 </ValidationSettings>
                                                                             </dxe:ASPxTextBox>
                                                                         </td>
