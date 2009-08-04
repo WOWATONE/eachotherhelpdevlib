@@ -11,7 +11,7 @@
 namespace BrokerWebApp.inoutbalance {
     
     
-    public partial class PayinPrint {
+    public partial class FeePayinAddPrint {
         
         /// <summary>
         /// form1 控件。

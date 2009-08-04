@@ -29,7 +29,7 @@ namespace BrokerWebApp.inoutbalance
         {
             string sSql = "";
             string conn = ConfigurationManager.ConnectionStrings["broker"].ConnectionString;
-            inoutbalance.rpt.dsFeePayinInvoice dFee = new BrokerWebApp.inoutbalance.rpt.dsFeePayinInvoice();
+            inoutbalance.rpt.dsInvoice dFee = new BrokerWebApp.inoutbalance.rpt.dsInvoice();
 
             sSql = sSql + "select VoucherID,(Select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,b.BranchName,b.BankName,b.BankAccount,";
             sSql = sSql + "(select SUM(Fee) from Fee where VoucherID=a.VoucherID) PayinFee,";
@@ -66,8 +66,8 @@ namespace BrokerWebApp.inoutbalance
             adDetail.Fill(dFee, "PayinInvoiceDetail");
 
             ReportViewer1.Visible = true;
-            ReportDataSource dsFee = new ReportDataSource("dsFeePayinInvoice_PayinInvoice", dFee.Tables["PayinInvoice"]);
-            ReportDataSource dsFeeDetail = new ReportDataSource("dsFeePayinInvoice_PayinInvoiceDetail", dFee.Tables["PayinInvoiceDetail"]);
+            ReportDataSource dsFee = new ReportDataSource("dsInvoice_PayinInvoice", dFee.Tables["PayinInvoice"]);
+            ReportDataSource dsFeeDetail = new ReportDataSource("dsInvoice_PayinInvoiceDetail", dFee.Tables["PayinInvoiceDetail"]);
             //ReportViewer1.LocalReport.ReportPath = "rptNoticeDirect.rdlc";
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(dsFee);
