@@ -20,7 +20,7 @@
   <rd:ReportID>2b8639e3-457b-4340-9787-8c92e5455d01</rd:ReportID>
   <PageWidth>21cm</PageWidth>
   <DataSets>
-    <DataSet Name="dsFeePayinInvoice_PayinInvoice">
+    <DataSet Name="dsInvoice_PayinInvoice">
       <Fields>
         <Field Name="VoucherID">
           <DataField>VoucherID</DataField>
@@ -65,11 +65,11 @@
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <rd:DataSetInfo>
-        <rd:DataSetName>dsFeePayinInvoice</rd:DataSetName>
+        <rd:DataSetName>dsInvoice</rd:DataSetName>
         <rd:TableName>PayinInvoice</rd:TableName>
       </rd:DataSetInfo>
     </DataSet>
-    <DataSet Name="dsFeePayinInvoice_PayinInvoiceDetail">
+    <DataSet Name="dsInvoice_PayinInvoiceDetail">
       <Fields>
         <Field Name="VoucherID">
           <DataField>VoucherID</DataField>
@@ -106,7 +106,7 @@
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <rd:DataSetInfo>
-        <rd:DataSetName>dsFeePayinInvoice</rd:DataSetName>
+        <rd:DataSetName>dsInvoice</rd:DataSetName>
         <rd:TableName>PayinInvoiceDetail</rd:TableName>
       </rd:DataSetInfo>
     </DataSet>
@@ -118,7 +118,7 @@
     <ReportItems>
       <Table Name="table2">
         <ZIndex>1</ZIndex>
-        <DataSetName>dsFeePayinInvoice_PayinInvoiceDetail</DataSetName>
+        <DataSetName>dsInvoice_PayinInvoiceDetail</DataSetName>
         <Top>11.27778cm</Top>
         <Width>18.99999cm</Width>
         <Details>
@@ -352,7 +352,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!FeeDate.Value, "dsFeePayinInvoice_PayinInvoice")</Value>
+                      <Value>=First(Fields!FeeDate.Value, "dsInvoice_PayinInvoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -383,7 +383,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!VoucherID.Value, "dsFeePayinInvoice_PayinInvoice")</Value>
+                      <Value>=First(Fields!VoucherID.Value, "dsInvoice_PayinInvoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -443,7 +443,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!CarrierName.Value, "dsFeePayinInvoice_PayinInvoice")</Value>
+                      <Value>=First(Fields!CarrierName.Value, "dsInvoice_PayinInvoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -480,7 +480,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!BranchName.Value, "dsFeePayinInvoice_PayinInvoice")</Value>
+                      <Value>=First(Fields!BranchName.Value, "dsInvoice_PayinInvoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -700,7 +700,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!PayinFeeUpper.Value, "dsFeePayinInvoice_PayinInvoice")</Value>
+                      <Value>=First(Fields!PayinFeeUpper.Value, "dsInvoice_PayinInvoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -736,7 +736,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!PayinFee.Value, "dsFeePayinInvoice_PayinInvoice")</Value>
+                      <Value>=First(Fields!PayinFee.Value, "dsInvoice_PayinInvoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1052,7 +1052,7 @@
         </Footer>
       </Table>
       <Table Name="table1">
-        <DataSetName>dsFeePayinInvoice_PayinInvoiceDetail</DataSetName>
+        <DataSetName>dsInvoice_PayinInvoiceDetail</DataSetName>
         <Top>1.72cm</Top>
         <Width>19cm</Width>
         <Details>
@@ -1298,7 +1298,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!FeeDate.Value, "dsFeePayinInvoice_PayinInvoice")</Value>
+                      <Value>=First(Fields!FeeDate.Value, "dsInvoice_PayinInvoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1331,7 +1331,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!VoucherID.Value, "dsFeePayinInvoice_PayinInvoice")</Value>
+                      <Value>=First(Fields!VoucherID.Value, "dsInvoice_PayinInvoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1394,7 +1394,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!CarrierName.Value, "dsFeePayinInvoice_PayinInvoice")</Value>
+                      <Value>=First(Fields!CarrierName.Value, "dsInvoice_PayinInvoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1433,7 +1433,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!BranchName.Value, "dsFeePayinInvoice_PayinInvoice")</Value>
+                      <Value>=First(Fields!BranchName.Value, "dsInvoice_PayinInvoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1661,7 +1661,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!PayinFeeUpper.Value, "dsFeePayinInvoice_PayinInvoice")</Value>
+                      <Value>=First(Fields!PayinFeeUpper.Value, "dsInvoice_PayinInvoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1697,7 +1697,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!PayinFee.Value, "dsFeePayinInvoice_PayinInvoice")</Value>
+                      <Value>=First(Fields!PayinFee.Value, "dsInvoice_PayinInvoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>

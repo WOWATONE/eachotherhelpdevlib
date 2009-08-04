@@ -11,7 +11,7 @@ using Microsoft.Reporting.WebForms;
 
 namespace BrokerWebApp.inoutbalance
 {
-    public partial class PayinPrint : BasePage
+    public partial class FeePayinAddPrint : BasePage
     {
         #region Variables
 

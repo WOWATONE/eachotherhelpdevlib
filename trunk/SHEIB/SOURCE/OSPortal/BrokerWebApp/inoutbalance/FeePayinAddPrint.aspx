@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FeePayinAddPrint.aspx.cs"
-    Inherits="BrokerWebApp.inoutbalance.PayinPrint" %>
+    Inherits="BrokerWebApp.inoutbalance.FeePayinAddPrint" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
     Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>

@@ -566,10 +566,10 @@
     <Compile Include="inoutbalance\FeeProcessAddSelect.aspx.designer.cs">
       <DependentUpon>FeeProcessAddSelect.aspx</DependentUpon>
     </Compile>
-    <Compile Include="inoutbalance\rpt\dsFeePayinInvoice.Designer.cs">
+    <Compile Include="inoutbalance\rpt\dsInvoice.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dsFeePayinInvoice.xsd</DependentUpon>
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
     </Compile>
     <Compile Include="inoutbalance\rpt\dsNotice.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1159,16 +1159,16 @@
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="inoutbalance\rpt\dsFeePayinInvoice.xsc">
-      <DependentUpon>dsFeePayinInvoice.xsd</DependentUpon>
+    <None Include="inoutbalance\rpt\dsInvoice.xsc">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
     </None>
-    <None Include="inoutbalance\rpt\dsFeePayinInvoice.xsd">
+    <None Include="inoutbalance\rpt\dsInvoice.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsFeePayinInvoice.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsInvoice.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="inoutbalance\rpt\dsFeePayinInvoice.xss">
-      <DependentUpon>dsFeePayinInvoice.xsd</DependentUpon>
+    <None Include="inoutbalance\rpt\dsInvoice.xss">
+      <DependentUpon>dsInvoice.xsd</DependentUpon>
     </None>
     <None Include="inoutbalance\rpt\dsNotice.xsc">
       <DependentUpon>dsNotice.xsd</DependentUpon>
