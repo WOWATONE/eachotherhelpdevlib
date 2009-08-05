@@ -40,6 +40,13 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand);
         }
 
+        public static DataSet GetFeeInvoiceAddPrint(string sVoucherID)
+        {
+
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetFeeInvoiceAddPrint");
+            _db.AddInParameter(dbCommand, "@ac_VoucherID", DbType.String, sVoucherID);
+            return _db.ExecuteDataSet(dbCommand);
+        }
 
     }
 }

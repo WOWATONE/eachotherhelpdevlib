@@ -14,15 +14,13 @@
   <InteractiveWidth>21cm</InteractiveWidth>
   <rd:GridSpacing>0.1cm</rd:GridSpacing>
   <rd:SnapToGrid>true</rd:SnapToGrid>
-  <RightMargin>0.5cm</RightMargin>
-  <LeftMargin>0.5cm</LeftMargin>
   <PageHeader>
     <PrintOnFirstPage>true</PrintOnFirstPage>
     <ReportItems>
       <Image Name="image1">
         <Sizing>Fit</Sizing>
-        <Top>0.3cm</Top>
-        <Width>10cm</Width>
+        <Top>0.4cm</Top>
+        <Width>10.3cm</Width>
         <MIMEType>image/gif</MIMEType>
         <Source>Embedded</Source>
         <Style>
@@ -35,7 +33,6 @@
     <Height>1.7cm</Height>
     <PrintOnLastPage>true</PrintOnLastPage>
   </PageHeader>
-  <BottomMargin>1cm</BottomMargin>
   <rd:ReportID>c45fcc6f-31c9-4cbb-9ac7-deb832f13a15</rd:ReportID>
   <EmbeddedImages>
     <EmbeddedImage Name="sheib">
@@ -185,14 +182,14 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
     </DataSet>
   </DataSets>
   <Code />
-  <Width>20cm</Width>
+  <Width>21cm</Width>
   <Body>
     <ColumnSpacing>1cm</ColumnSpacing>
     <ReportItems>
       <Table Name="table1">
         <DataSetName>dsNotice_NoticePolicy</DataSetName>
         <Top>0.4cm</Top>
-        <Width>18.58797cm</Width>
+        <Width>18cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -369,6 +366,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                       <rd:DefaultName>textbox1</rd:DefaultName>
                       <Style>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>11pt</FontSize>
                         <FontWeight>700</FontWeight>
                         <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -443,6 +441,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                       <rd:DefaultName>textbox28</rd:DefaultName>
                       <Style>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -512,7 +511,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                           <Default>Solid</Default>
                         </BorderStyle>
                         <BorderWidth>
-                          <Left>2pt</Left>
+                          <Left>1pt</Left>
                           <Right>2pt</Right>
                           <Top>2pt</Top>
                         </BorderWidth>
@@ -668,25 +667,25 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>2.51502cm</Width>
+            <Width>2.43547cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>1.6cm</Width>
+            <Width>1.54939cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.05192cm</Width>
+            <Width>1.98701cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.21322cm</Width>
+            <Width>2.14321cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.92344cm</Width>
+            <Width>3.79933cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3.59107cm</Width>
+            <Width>3.47748cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>2.6933cm</Width>
+            <Width>2.60811cm</Width>
           </TableColumn>
         </TableColumns>
         <Height>8.58412cm</Height>
@@ -1354,12 +1353,11 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
             </TableRow>
           </TableRows>
         </Footer>
-        <Left>0.5cm</Left>
+        <Left>1.5cm</Left>
       </Table>
     </ReportItems>
-    <Height>25cm</Height>
+    <Height>28cm</Height>
   </Body>
   <Language>zh-CN</Language>
-  <TopMargin>1cm</TopMargin>
-  <PageHeight>29cm</PageHeight>
+  <PageHeight>29.7cm</PageHeight>
 </Report>
