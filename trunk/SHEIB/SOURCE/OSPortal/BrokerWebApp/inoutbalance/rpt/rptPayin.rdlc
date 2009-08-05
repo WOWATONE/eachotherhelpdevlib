@@ -1812,6 +1812,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                     <Textbox Name="textbox36">
                       <rd:DefaultName>textbox36</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
                         <BorderStyle>
                           <Default>Solid</Default>
                           <Right>None</Right>
@@ -1837,6 +1838,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                     <Textbox Name="textbox39">
                       <rd:DefaultName>textbox39</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
@@ -1857,6 +1859,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                     <Textbox Name="textbox66">
                       <rd:DefaultName>textbox66</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
@@ -1877,6 +1880,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                     <Textbox Name="textbox2">
                       <rd:DefaultName>textbox2</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
