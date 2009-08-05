@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 
 using System.Configuration;
 using Microsoft.Reporting.WebForms;
+using System.Data;
 
 namespace BrokerWebApp.inoutbalance
 {
@@ -27,38 +28,12 @@ namespace BrokerWebApp.inoutbalance
 
         private void printVoucher(string sVoucherID)
         {
-            string sSql = "";
-            string conn = ConfigurationManager.ConnectionStrings["broker"].ConnectionString;
-            inoutbalance.rpt.dsPayin dPayin = new BrokerWebApp.inoutbalance.rpt.dsPayin();
-
-            sSql = sSql + "select VoucherID,(select CarrierNameCn from Carrier where CarrierID=a.CarrierID) CarrierName,";
-            sSql = sSql + "(select SUM(Fee) from VoucherFee where VoucherID=a.VoucherID) PayinFee,";
-            sSql = sSql + "(select dbo.MoneyToChinese(SUM(Fee)) from Fee where VoucherID=a.VoucherID) PayinFeeUpper,";
-            sSql = sSql + "(select sum(Fee) from VoucherFee where VoucherID=a.VoucherID ) PayProc,";
-            sSql = sSql + "dbo.GetVoucherCustomer(a.VoucherID) Customer,";
-            sSql = sSql + "dbo.GetYYYYMMDDChinese(a.FeeDate) FeeDate";
-            sSql = sSql + " from Voucher a";
-            sSql = sSql + " left join branch b";
-            sSql = sSql + " on a.BranchID=b.BranchID";
-            sSql = sSql + " where VoucherID='" + sVoucherID + "'";
-            SqlDataAdapter ad = new SqlDataAdapter(sSql, conn);
-            ad.Fill(dPayin, "Payin");
-
-
-            sSql = "";
-            sSql = sSql + "select a.VoucherID,b.NoticeNo,c.PolicyNo,c.PolicyID,a.Fee";
-            sSql = sSql + " from  VoucherFee a ";
-            sSql = sSql + " left join PolicyPeriod b";
-            sSql = sSql + " on a.PolperiodID=b.PolperiodID";
-            sSql = sSql + " left join Policy c";
-            sSql = sSql + " on b.PolicyID=c.PolicyID";
-            sSql = sSql + " where a.VoucherID='" + sVoucherID + "'";
-            SqlDataAdapter adDetail = new SqlDataAdapter(sSql, conn);
-            adDetail.Fill(dPayin, "PayinDetail");
+ 
+            DataSet dsPayin = BusinessObjects.BO_FeePayin.GetFeePayinAddPrint(sVoucherID);
 
             ReportViewer1.Visible = true;
-            ReportDataSource dataSourcePayin = new ReportDataSource("dsPayin_Payin", dPayin.Tables["Payin"]);
-            ReportDataSource dataSourcePayinDetail = new ReportDataSource("dsPayin_PayinDetail", dPayin.Tables["PayinDetail"]);
+            ReportDataSource dataSourcePayin = new ReportDataSource("dsPayin_Payin", dsPayin.Tables[0]);
+            ReportDataSource dataSourcePayinDetail = new ReportDataSource("dsPayin_PayinDetail", dsPayin.Tables[1]);
             //ReportViewer1.LocalReport.ReportPath = "rptNoticeDirect.rdlc";
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(dataSourcePayin);

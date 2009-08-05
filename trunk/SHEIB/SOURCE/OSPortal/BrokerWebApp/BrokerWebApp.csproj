@@ -567,9 +567,9 @@
       <DependentUpon>FeeProcessAddSelect.aspx</DependentUpon>
     </Compile>
     <Compile Include="inoutbalance\rpt\dsInvoice.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>dsInvoice.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="inoutbalance\rpt\dsNotice.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1102,6 +1102,7 @@
     <Content Include="CustomerRelation\CustomerPtFollow.aspx" />
     <Content Include="dpleft.aspx" />
     <Content Include="HeaderBroker.aspx" />
+    <Content Include="images\SHEIB.GIF" />
     <Content Include="inoutbalance\FeeCustomer.aspx" />
     <Content Include="inoutbalance\FeeCustomerAdd.aspx" />
     <Content Include="inoutbalance\FeeCustomerAddSelect.aspx" />
@@ -1163,9 +1164,9 @@
       <DependentUpon>dsInvoice.xsd</DependentUpon>
     </None>
     <None Include="inoutbalance\rpt\dsInvoice.xsd">
+      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dsInvoice.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
     <None Include="inoutbalance\rpt\dsInvoice.xss">
       <DependentUpon>dsInvoice.xsd</DependentUpon>

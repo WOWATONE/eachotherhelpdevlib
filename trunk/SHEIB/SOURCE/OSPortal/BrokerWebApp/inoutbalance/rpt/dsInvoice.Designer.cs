@@ -304,9 +304,9 @@ namespace BrokerWebApp.inoutbalance.rpt {
             
             private global::System.Data.DataColumn columnBankAccount;
             
-            private global::System.Data.DataColumn columnPayinFee;
+            private global::System.Data.DataColumn columnInvoiceFee;
             
-            private global::System.Data.DataColumn columnPayinFeeUpper;
+            private global::System.Data.DataColumn columnInvoiceFeeUpper;
             
             private global::System.Data.DataColumn columnPayProc;
             
@@ -378,16 +378,16 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn PayinFeeColumn {
+            public global::System.Data.DataColumn InvoiceFeeColumn {
                 get {
-                    return this.columnPayinFee;
+                    return this.columnInvoiceFee;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn PayinFeeUpperColumn {
+            public global::System.Data.DataColumn InvoiceFeeUpperColumn {
                 get {
-                    return this.columnPayinFeeUpper;
+                    return this.columnInvoiceFeeUpper;
                 }
             }
             
@@ -434,7 +434,7 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public InvoiceRow AddInvoiceRow(string VoucherID, string CarrierName, string BranchName, string BankName, string BankAccount, string PayinFee, string PayinFeeUpper, string PayProc, string FeeDate) {
+            public InvoiceRow AddInvoiceRow(string VoucherID, string CarrierName, string BranchName, string BankName, string BankAccount, string InvoiceFee, string InvoiceFeeUpper, string PayProc, string FeeDate) {
                 InvoiceRow rowInvoiceRow = ((InvoiceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         VoucherID,
@@ -442,8 +442,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                         BranchName,
                         BankName,
                         BankAccount,
-                        PayinFee,
-                        PayinFeeUpper,
+                        InvoiceFee,
+                        InvoiceFeeUpper,
                         PayProc,
                         FeeDate};
                 rowInvoiceRow.ItemArray = columnValuesArray;
@@ -470,8 +470,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 this.columnBranchName = base.Columns["BranchName"];
                 this.columnBankName = base.Columns["BankName"];
                 this.columnBankAccount = base.Columns["BankAccount"];
-                this.columnPayinFee = base.Columns["PayinFee"];
-                this.columnPayinFeeUpper = base.Columns["PayinFeeUpper"];
+                this.columnInvoiceFee = base.Columns["InvoiceFee"];
+                this.columnInvoiceFeeUpper = base.Columns["InvoiceFeeUpper"];
                 this.columnPayProc = base.Columns["PayProc"];
                 this.columnFeeDate = base.Columns["FeeDate"];
             }
@@ -488,10 +488,10 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 base.Columns.Add(this.columnBankName);
                 this.columnBankAccount = new global::System.Data.DataColumn("BankAccount", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBankAccount);
-                this.columnPayinFee = new global::System.Data.DataColumn("PayinFee", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPayinFee);
-                this.columnPayinFeeUpper = new global::System.Data.DataColumn("PayinFeeUpper", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPayinFeeUpper);
+                this.columnInvoiceFee = new global::System.Data.DataColumn("InvoiceFee", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceFee);
+                this.columnInvoiceFeeUpper = new global::System.Data.DataColumn("InvoiceFeeUpper", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvoiceFeeUpper);
                 this.columnPayProc = new global::System.Data.DataColumn("PayProc", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPayProc);
                 this.columnFeeDate = new global::System.Data.DataColumn("FeeDate", typeof(string), null, global::System.Data.MappingType.Element);
@@ -633,6 +633,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
             
             private global::System.Data.DataColumn columnPolicyID;
             
+            private global::System.Data.DataColumn columnNoticeNo;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public InvoiceDetailDataTable() {
                 this.TableName = "InvoiceDetail";
@@ -706,6 +708,13 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn NoticeNoColumn {
+                get {
+                    return this.columnNoticeNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -734,7 +743,7 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public InvoiceDetailRow AddInvoiceDetailRow(string VoucherID, string PolicyNo, string Fee, string ProcessFeeTypeName, string PayinID, string PolicyID) {
+            public InvoiceDetailRow AddInvoiceDetailRow(string VoucherID, string PolicyNo, string Fee, string ProcessFeeTypeName, string PayinID, string PolicyID, string NoticeNo) {
                 InvoiceDetailRow rowInvoiceDetailRow = ((InvoiceDetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         VoucherID,
@@ -742,7 +751,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                         Fee,
                         ProcessFeeTypeName,
                         PayinID,
-                        PolicyID};
+                        PolicyID,
+                        NoticeNo};
                 rowInvoiceDetailRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInvoiceDetailRow);
                 return rowInvoiceDetailRow;
@@ -768,6 +778,7 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 this.columnProcessFeeTypeName = base.Columns["ProcessFeeTypeName"];
                 this.columnPayinID = base.Columns["PayinID"];
                 this.columnPolicyID = base.Columns["PolicyID"];
+                this.columnNoticeNo = base.Columns["NoticeNo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -784,6 +795,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 base.Columns.Add(this.columnPayinID);
                 this.columnPolicyID = new global::System.Data.DataColumn("PolicyID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPolicyID);
+                this.columnNoticeNo = new global::System.Data.DataColumn("NoticeNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNoticeNo);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -991,32 +1004,32 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string PayinFee {
+            public string InvoiceFee {
                 get {
                     try {
-                        return ((string)(this[this.tableInvoice.PayinFeeColumn]));
+                        return ((string)(this[this.tableInvoice.InvoiceFeeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“Invoice”中列“PayinFee”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“Invoice”中列“InvoiceFee”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableInvoice.PayinFeeColumn] = value;
+                    this[this.tableInvoice.InvoiceFeeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string PayinFeeUpper {
+            public string InvoiceFeeUpper {
                 get {
                     try {
-                        return ((string)(this[this.tableInvoice.PayinFeeUpperColumn]));
+                        return ((string)(this[this.tableInvoice.InvoiceFeeUpperColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“Invoice”中列“PayinFeeUpper”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“Invoice”中列“InvoiceFeeUpper”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableInvoice.PayinFeeUpperColumn] = value;
+                    this[this.tableInvoice.InvoiceFeeUpperColumn] = value;
                 }
             }
             
@@ -1101,23 +1114,23 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsPayinFeeNull() {
-                return this.IsNull(this.tableInvoice.PayinFeeColumn);
+            public bool IsInvoiceFeeNull() {
+                return this.IsNull(this.tableInvoice.InvoiceFeeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetPayinFeeNull() {
-                this[this.tableInvoice.PayinFeeColumn] = global::System.Convert.DBNull;
+            public void SetInvoiceFeeNull() {
+                this[this.tableInvoice.InvoiceFeeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsPayinFeeUpperNull() {
-                return this.IsNull(this.tableInvoice.PayinFeeUpperColumn);
+            public bool IsInvoiceFeeUpperNull() {
+                return this.IsNull(this.tableInvoice.InvoiceFeeUpperColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetPayinFeeUpperNull() {
-                this[this.tableInvoice.PayinFeeUpperColumn] = global::System.Convert.DBNull;
+            public void SetInvoiceFeeUpperNull() {
+                this[this.tableInvoice.InvoiceFeeUpperColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1246,6 +1259,21 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string NoticeNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableInvoiceDetail.NoticeNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“InvoiceDetail”中列“NoticeNo”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableInvoiceDetail.NoticeNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsVoucherIDNull() {
                 return this.IsNull(this.tableInvoiceDetail.VoucherIDColumn);
             }
@@ -1303,6 +1331,16 @@ namespace BrokerWebApp.inoutbalance.rpt {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetPolicyIDNull() {
                 this[this.tableInvoiceDetail.PolicyIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsNoticeNoNull() {
+                return this.IsNull(this.tableInvoiceDetail.NoticeNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetNoticeNoNull() {
+                this[this.tableInvoiceDetail.NoticeNoColumn] = global::System.Convert.DBNull;
             }
         }
         
