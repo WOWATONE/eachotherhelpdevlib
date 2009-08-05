@@ -537,6 +537,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                     <Textbox Name="textbox22">
                       <rd:DefaultName>textbox22</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
                         <BorderStyle>
                           <Default>Solid</Default>
                           <Right>None</Right>
@@ -561,6 +562,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                     <Textbox Name="textbox3">
                       <rd:DefaultName>textbox3</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
@@ -582,6 +584,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                     <Textbox Name="textbox27">
                       <rd:DefaultName>textbox27</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
@@ -602,6 +605,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                     <Textbox Name="textbox32">
                       <rd:DefaultName>textbox32</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
@@ -622,6 +626,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                     <Textbox Name="textbox5">
                       <rd:DefaultName>textbox5</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
@@ -642,6 +647,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                     <Textbox Name="textbox37">
                       <rd:DefaultName>textbox37</rd:DefaultName>
                       <Style>
+                        <BackgroundColor>Gainsboro</BackgroundColor>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>

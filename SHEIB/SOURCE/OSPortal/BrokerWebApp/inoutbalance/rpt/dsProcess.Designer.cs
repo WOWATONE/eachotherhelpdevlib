@@ -300,10 +300,6 @@ namespace BrokerWebApp.inoutbalance.rpt {
             
             private global::System.Data.DataColumn columnBranchName;
             
-            private global::System.Data.DataColumn columnBankName;
-            
-            private global::System.Data.DataColumn columnBankAccount;
-            
             private global::System.Data.DataColumn columnFee;
             
             private global::System.Data.DataColumn columnFeeUpper;
@@ -364,20 +360,6 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn BankNameColumn {
-                get {
-                    return this.columnBankName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn BankAccountColumn {
-                get {
-                    return this.columnBankAccount;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public global::System.Data.DataColumn FeeColumn {
                 get {
                     return this.columnFee;
@@ -434,14 +416,12 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public ProcessRow AddProcessRow(string VoucherID, string CarrierName, string BranchName, string BankName, string BankAccount, string Fee, string FeeUpper, string PayProc, string FeeDate) {
+            public ProcessRow AddProcessRow(string VoucherID, string CarrierName, string BranchName, string Fee, string FeeUpper, string PayProc, string FeeDate) {
                 ProcessRow rowProcessRow = ((ProcessRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         VoucherID,
                         CarrierName,
                         BranchName,
-                        BankName,
-                        BankAccount,
                         Fee,
                         FeeUpper,
                         PayProc,
@@ -468,8 +448,6 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 this.columnVoucherID = base.Columns["VoucherID"];
                 this.columnCarrierName = base.Columns["CarrierName"];
                 this.columnBranchName = base.Columns["BranchName"];
-                this.columnBankName = base.Columns["BankName"];
-                this.columnBankAccount = base.Columns["BankAccount"];
                 this.columnFee = base.Columns["Fee"];
                 this.columnFeeUpper = base.Columns["FeeUpper"];
                 this.columnPayProc = base.Columns["PayProc"];
@@ -484,10 +462,6 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 base.Columns.Add(this.columnCarrierName);
                 this.columnBranchName = new global::System.Data.DataColumn("BranchName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBranchName);
-                this.columnBankName = new global::System.Data.DataColumn("BankName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBankName);
-                this.columnBankAccount = new global::System.Data.DataColumn("BankAccount", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBankAccount);
                 this.columnFee = new global::System.Data.DataColumn("Fee", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFee);
                 this.columnFeeUpper = new global::System.Data.DataColumn("FeeUpper", typeof(string), null, global::System.Data.MappingType.Element);
@@ -631,6 +605,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
             
             private global::System.Data.DataColumn columnPolicyID;
             
+            private global::System.Data.DataColumn columnVoucherID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ProcessDetailDataTable() {
                 this.TableName = "ProcessDetail";
@@ -697,6 +673,13 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn VoucherIDColumn {
+                get {
+                    return this.columnVoucherID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -725,14 +708,15 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public ProcessDetailRow AddProcessDetailRow(string PolicyNo, string InvoiceNo, string Fee, string ProcessFeeTypeName, string PolicyID) {
+            public ProcessDetailRow AddProcessDetailRow(string PolicyNo, string InvoiceNo, string Fee, string ProcessFeeTypeName, string PolicyID, string VoucherID) {
                 ProcessDetailRow rowProcessDetailRow = ((ProcessDetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PolicyNo,
                         InvoiceNo,
                         Fee,
                         ProcessFeeTypeName,
-                        PolicyID};
+                        PolicyID,
+                        VoucherID};
                 rowProcessDetailRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProcessDetailRow);
                 return rowProcessDetailRow;
@@ -757,6 +741,7 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 this.columnFee = base.Columns["Fee"];
                 this.columnProcessFeeTypeName = base.Columns["ProcessFeeTypeName"];
                 this.columnPolicyID = base.Columns["PolicyID"];
+                this.columnVoucherID = base.Columns["VoucherID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -771,6 +756,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 base.Columns.Add(this.columnProcessFeeTypeName);
                 this.columnPolicyID = new global::System.Data.DataColumn("PolicyID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPolicyID);
+                this.columnVoucherID = new global::System.Data.DataColumn("VoucherID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVoucherID);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -948,36 +935,6 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string BankName {
-                get {
-                    try {
-                        return ((string)(this[this.tableProcess.BankNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“Process”中列“BankName”的值为 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableProcess.BankNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string BankAccount {
-                get {
-                    try {
-                        return ((string)(this[this.tableProcess.BankAccountColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“Process”中列“BankAccount”的值为 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableProcess.BankAccountColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string Fee {
                 get {
                     try {
@@ -1065,26 +1022,6 @@ namespace BrokerWebApp.inoutbalance.rpt {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetBranchNameNull() {
                 this[this.tableProcess.BranchNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsBankNameNull() {
-                return this.IsNull(this.tableProcess.BankNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetBankNameNull() {
-                this[this.tableProcess.BankNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsBankAccountNull() {
-                return this.IsNull(this.tableProcess.BankAccountColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetBankAccountNull() {
-                this[this.tableProcess.BankAccountColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1218,6 +1155,21 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string VoucherID {
+                get {
+                    try {
+                        return ((string)(this[this.tableProcessDetail.VoucherIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“ProcessDetail”中列“VoucherID”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableProcessDetail.VoucherIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsPolicyNoNull() {
                 return this.IsNull(this.tableProcessDetail.PolicyNoColumn);
             }
@@ -1265,6 +1217,16 @@ namespace BrokerWebApp.inoutbalance.rpt {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetPolicyIDNull() {
                 this[this.tableProcessDetail.PolicyIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsVoucherIDNull() {
+                return this.IsNull(this.tableProcessDetail.VoucherIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetVoucherIDNull() {
+                this[this.tableProcessDetail.VoucherIDColumn] = global::System.Convert.DBNull;
             }
         }
         
