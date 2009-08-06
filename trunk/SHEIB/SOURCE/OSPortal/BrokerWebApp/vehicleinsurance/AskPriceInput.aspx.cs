@@ -47,6 +47,8 @@ namespace BrokerWebApp.vehicleinsurance
 
         private Boolean gridItemEnabled = true;
 
+        public String CustomPageTitle = "询价单录入";
+
         #endregion Variables
 
 
@@ -111,6 +113,7 @@ namespace BrokerWebApp.vehicleinsurance
                     this.dxebtnAuditOk.Text = "反审核";
                     this.dxebtnAuditBack.ClientEnabled = false;
                 }
+                CustomPageTitle = "询价单审核";
             }
             else
             {                
@@ -118,7 +121,8 @@ namespace BrokerWebApp.vehicleinsurance
                 npExecuteAction.Visible = true;
                 this.dxetxtAuditPerson.Enabled = false;
                 this.dxeAuditTime.Enabled = false;
-                this.dxeMemo.Enabled = false;                
+                this.dxeMemo.Enabled = false;
+                CustomPageTitle = "询价单录入";
             }
  
         }

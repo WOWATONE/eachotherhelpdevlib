@@ -19,7 +19,7 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
     TagPrefix="dxcb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>保单批改</title>
+    <title><%=CustomPageTitle%></title>
 
     <script type="text/javascript">
 

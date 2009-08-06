@@ -47,6 +47,8 @@ namespace BrokerWebApp.vehicleinsurance
 
         private Boolean gridPolicyPeriodStartEdit = false;
 
+        public String CustomPageTitle = "车险保单批改录入";
+
         #endregion Variables
 
 
@@ -119,7 +121,8 @@ namespace BrokerWebApp.vehicleinsurance
                     this.dxebtnAuditOk.Text = "反审核";
                     this.dxebtnAuditBack.ClientEnabled = false;
                 }
-
+                CustomPageTitle = "车险保单批改审核";
+                
             }
             else
             {
@@ -128,6 +131,7 @@ namespace BrokerWebApp.vehicleinsurance
                 this.dxetxtAuditPerson.Enabled = false;
                 this.dxeAuditTime.Enabled = false;
                 this.dxeMemo.Enabled = false;
+                CustomPageTitle = "车险保单批改录入";
             }
         }
 

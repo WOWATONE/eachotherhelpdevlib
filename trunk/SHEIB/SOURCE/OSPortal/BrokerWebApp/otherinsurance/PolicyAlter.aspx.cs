@@ -34,7 +34,7 @@ namespace BrokerWebApp.otherinsurance
 
         private string toadd = string.Empty;
 
-
+        public String CustomPageTitle = "非车险保单批改录入";
         public enum PageMode
         {
             Input,
@@ -147,7 +147,7 @@ namespace BrokerWebApp.otherinsurance
                 this.gridCarrier.Enabled = false;
                 this.gridPeriod.Enabled = false;
                 this.filesUploadControl.Enabled = false;
-                this.Page.Title = "保单审核";
+                CustomPageTitle = "非车险保单批改审核";
                 if (!Page.IsPostBack)
                 {
                     this.dxetxtAuditPerson.Text = this.CurrentUserName;
@@ -165,6 +165,7 @@ namespace BrokerWebApp.otherinsurance
             }
             else
             {
+                CustomPageTitle = "非车险保单批改录入";
                 tbltrAuditExecuteAction.Visible = false;
                 npNewExecuteAction.Visible = true;
                                 

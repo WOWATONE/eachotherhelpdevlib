@@ -43,6 +43,8 @@ namespace BrokerWebApp.otherinsurance
 
         private Nullable<PageMode> pm;
 
+        public String CustomPageTitle = "非车险保单录入";
+
         #endregion Variables
 
 
@@ -144,7 +146,7 @@ namespace BrokerWebApp.otherinsurance
                 this.gridPolicyItem.Enabled = false;
                 this.gridPeriod.Enabled = false;
                 this.filesUploadControl.Enabled = false;
-                this.Page.Title = "保单审核";
+                CustomPageTitle = "非车险保单审核";
                 if (!Page.IsPostBack)
                 {
                     if (String.IsNullOrEmpty(this.dxetxtAuditPerson.Text))
@@ -165,6 +167,7 @@ namespace BrokerWebApp.otherinsurance
             }
             else
             {
+                CustomPageTitle = "非车险保单录入";
                 tbltrAuditExecuteAction.Visible = false;
                 npNewExecuteAction.Visible = true;
             }
