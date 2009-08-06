@@ -122,19 +122,6 @@ namespace BrokerWebApp.IntegrateSearch
         }
 
 
-                
-        protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
-        {
-            String theID = e.Keys[gridKeyName].ToString();
-            //edit
-            e.Cancel = true;
-            this.gridSearchResult.CancelEdit();
-        }
-
-        protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
-        {
-            //
-        }
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
         {
@@ -152,48 +139,48 @@ namespace BrokerWebApp.IntegrateSearch
             string lsWhere = "";
             if (dxetxtPolicyID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and PolicyID ='" + dxetxtPolicyID.Text + "'";
+                lsWhere = lsWhere + " and a.PolicyID ='" + dxetxtPolicyID.Text + "'";
             }
 
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and a.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
             }
 
             if (this.dxeddlOperationType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlOperationType.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and OperationType ='" + dxeddlOperationType.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and a.OperationType ='" + dxeddlOperationType.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlDeptID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptID.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and DeptId ='" + dxeddlDeptID.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and a.DeptId ='" + dxeddlDeptID.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and a.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and CarrierID ='" + dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.CarrierID ='" + dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlProdTypeName.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlProdTypeName.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and  ProdTypeID like ('%" + dxeddlProdTypeName.SelectedItem.Value.ToString() + "%') ";
+                lsWhere = lsWhere + " and  a.ProdTypeID like ('%" + dxeddlProdTypeName.SelectedItem.Value.ToString() + "%') ";
             }
 
             string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");
             string lsEndDate = dxeEndDate.Date.ToString("yyyy-MM-dd");
             if ((dxeStartDate.Text.Trim() != "") && (dxeEndDate.Text.Trim() != ""))
             {
-                lsWhere = lsWhere + " and (convert(char(10), A.CreateTime,21)) >='" + lsStartDate + "'";
-                lsWhere = lsWhere + " and (convert(char(10), A.CreateTime,21)) <='" + lsEndDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), a.CreateTime,21)) >='" + lsStartDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), a.CreateTime,21)) <='" + lsEndDate + "'";
             }
 
-            DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(lsWhere);
+            DataTable dt = BusinessObjects.Policy.BO_Policy.GetPolicyByCarrier(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
 
