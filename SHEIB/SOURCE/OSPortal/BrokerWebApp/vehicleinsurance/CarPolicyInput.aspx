@@ -12,7 +12,7 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallbackPanel" TagPrefix="dxcp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>车辆保单信息录入</title>
+    <title><%=CustomPageTitle%></title>
 
     <script type="text/javascript">
 

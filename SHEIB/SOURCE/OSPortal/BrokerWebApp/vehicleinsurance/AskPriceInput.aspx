@@ -13,7 +13,7 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallbackPanel" TagPrefix="dxcp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Ñ¯¼Ûµ¥Â¼Èë</title>
+    <title><%=CustomPageTitle%></title>
     
     <script type="text/javascript">
         var pagemode = null;
