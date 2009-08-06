@@ -1315,6 +1315,15 @@ namespace BusinessObjects.Policy
 
         }
 
+
+        //取保单综合信息
+        public static DataSet GetPolicyByCarrier(string sWhere)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetPolicyByCarrier");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
         #endregion Procedure
 
 
