@@ -286,7 +286,7 @@ namespace BrokerWebApp.otherinsurance
                 if (theValueList[3] == null)
                     policyRate = this.dxetxtProcessRate.Text.Trim();
                 else
-                    policyRate = String.Format(BasePage.TheFourSF, theValueList[3]);
+                    policyRate = String.Format(BasePage.TheTwoSF, theValueList[3]);
 
                 if (theValueList[4] == null)
                     premium = "";
@@ -306,12 +306,12 @@ namespace BrokerWebApp.otherinsurance
                 if (theValueList[7] == null)
                     processRate = "";
                 else
-                    processRate = String.Format(BasePage.TheFourSF, theValueList[7]);
+                    processRate = String.Format(BasePage.TheTwoSF, theValueList[7]);
 
                 if (theValueList[8] == null)
                     processBase = "";
                 else
-                    processBase = String.Format(BasePage.TheFourSF, theValueList[8]);
+                    processBase = String.Format(BasePage.TheTwoSF, theValueList[8]);
                 
 
                 ListEditItem theselected;

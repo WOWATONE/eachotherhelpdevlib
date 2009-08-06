@@ -324,7 +324,7 @@ namespace BrokerWebApp.otherinsurance
                 if (theValueList[5] == null)
                     procRate = "";
                 else
-                    procRate = String.Format(BasePage.TheFourSF, theValueList[5]);
+                    procRate = String.Format(BasePage.TheTwoSF, theValueList[5]);
 
                 if (theValueList[6] == null)
                     process = "";
@@ -334,7 +334,7 @@ namespace BrokerWebApp.otherinsurance
                 if (theValueList[7] == null)
                     premiumRate = "";
                 else
-                    premiumRate = String.Format(BasePage.TheFourSF, theValueList[7]);
+                    premiumRate = String.Format(BasePage.TheTwoSF, theValueList[7]);
 
                 ListEditItem theselected;
                 if (this.gridPolicyItemStartEdit)
