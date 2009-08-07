@@ -58,16 +58,6 @@ namespace BusinessObjects
 
         public static DataSet GetFeeNoticeList(string sWhere)
         {
-            //NoticePolicyPeriod 未视图
-
-            //sb.Append("Select ");
-            //sb.Append("NoticeNo,NoticeDate,Content,CustID,");
-            //sb.Append("GatheringType,CreatePersion,CreateTime,AuditStatus,AuditTime,AuditPersion,CustID,SalesId,CustName,SalesName,");
-            //sb.Append("(Select GatheringTypeName From GatheringType Where GatheringTypeID=a.GatheringType) GatheringTypeName,");
-            //sb.Append("CreatePersionName,AuditPersionName,AuditStatusName,PayFee");
-            //sb.Append(" From NoticePolicyPeriod a ");
-
-
             string sSql = "";
             sSql = sSql + "select NoticeNo, ";
             sSql = sSql + "dbo.GetNoticeCustomer(a.NoticeNo) CustomerName,";
