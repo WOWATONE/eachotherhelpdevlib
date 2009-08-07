@@ -45,7 +45,7 @@
 
 
 
-        function btnOk_Click() {            
+        function btnOk_Click() {
             gridSearchResult.GetSelectedFieldValues("PolperiodID", getTheSelectedRowsValues);
 
         }
@@ -83,7 +83,12 @@
                 return false;
             }
         }
-        
+
+        function dxeddlDeptId_SelectedIndexChanged(s, e) {
+            var thejsonstring = dxeddlDeptId.GetSelectedItem().value;
+            dxeddlSalesId.PerformCallback(thejsonstring);
+        }    
+       
     </script>
 
 </asp:Content>
@@ -127,6 +132,7 @@
                             <td style="width: 110px; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlDeptId" ClientInstanceName="dxeddlDeptId" runat="server"
                                     Width="100px" DropDownStyle="DropDownList">
+                                    <ClientSideEvents SelectedIndexChanged="dxeddlDeptId_SelectedIndexChanged" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="width: 70px; text-align: right;">
@@ -134,7 +140,7 @@
                             </td>
                             <td style="width: 130px; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server"
-                                    Width="100px" DropDownStyle="DropDownList">
+                                    Width="100px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td>
@@ -178,26 +184,6 @@
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
-                                收款方式：
-                            </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
-                                    runat="server" Width="100px" DropDownStyle="DropDownList">
-                                </dxe:ASPxComboBox>
-                            </td>
-                            <td style="text-align: right;">
-                                保险险种：
-                            </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
-                                    runat="server" Width="160px" DropDownStyle="DropDownList">
-                                </dxe:ASPxComboBox>
-                            </td>
-                            <td style="text-align: left;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
                                 通知日期：
                             </td>
                             <td style="text-align: left;" colspan="3">
@@ -219,11 +205,7 @@
                                     </tr>
                                 </table>
                             </td>
-                            <td style="text-align: left;" colspan="2">
-                                <asp:CheckBox runat="server" ID="ckbNeedPayFeePolicy" Text="仅显示客户欠费保单" Visible="false" />
-                            </td>
-                            <td>
-                            </td>
+
                         </tr>
                         <tr>
                             <td style="text-align: right;">

@@ -77,13 +77,13 @@ namespace BrokerWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.Panel npSearchDetail;
         
         /// <summary>
-        /// dxetxtPayinInvoiceNoticeID 控件。
+        /// dxetxtInvoiceID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPayinInvoiceNoticeID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtInvoiceID;
         
         /// <summary>
         /// dxetxtPolicyNo 控件。
@@ -138,33 +138,6 @@ namespace BrokerWebApp.inoutbalance {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesId;
-        
-        /// <summary>
-        /// dxetxtProdTypeID 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProdTypeID;
-        
-        /// <summary>
-        /// ptid 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden ptid;
-        
-        /// <summary>
-        /// imgpeoplesearch 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
         
         /// <summary>
         /// dxeddlCarrier 控件。

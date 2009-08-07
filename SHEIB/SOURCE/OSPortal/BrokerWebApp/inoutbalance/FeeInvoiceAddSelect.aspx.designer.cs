@@ -77,13 +77,13 @@ namespace BrokerWebApp.inoutbalance {
         protected global::System.Web.UI.WebControls.Panel npSearchDetail;
         
         /// <summary>
-        /// dxetxtPolicyID 控件。
+        /// dxetxtPolicyNo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyNo;
         
         /// <summary>
         /// dxeddlDeptId 控件。
@@ -140,13 +140,13 @@ namespace BrokerWebApp.inoutbalance {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlGatheringType;
         
         /// <summary>
-        /// dxeddlAuditStatus 控件。
+        /// dxeddlPolicyType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlAuditStatus;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlPolicyType;
         
         /// <summary>
         /// dxeGetStartDate 控件。
@@ -165,42 +165,6 @@ namespace BrokerWebApp.inoutbalance {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeGetEndDate;
-        
-        /// <summary>
-        /// dxetxtProdTypeID 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProdTypeID;
-        
-        /// <summary>
-        /// ptid 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden ptid;
-        
-        /// <summary>
-        /// imgpeoplesearch 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgpeoplesearch;
-        
-        /// <summary>
-        /// ckbPayinedNeedInvoice 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ckbPayinedNeedInvoice;
         
         /// <summary>
         /// btnSearch 控件。

@@ -85,7 +85,11 @@
             }
         }
 
-
+        function dxeddlDeptId_SelectedIndexChanged(s, e) {
+            var thejsonstring = dxeddlDeptId.GetSelectedItem().value;
+            dxeddlSalesId.PerformCallback(thejsonstring);
+        }    
+        
         function dxeddlCarrier_SelectedIndexChanged(s, e) {
             var thejsonstring = dxeddlCarrier.GetSelectedItem().value;
             dxeddlBranch.PerformCallback(thejsonstring);
@@ -137,6 +141,7 @@
                             <td style="width: 110px; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlDeptId" ClientInstanceName="dxeddlDeptId" runat="server"
                                     Width="100px" DropDownStyle="DropDownList">
+                                    <ClientSideEvents SelectedIndexChanged="dxeddlDeptId_SelectedIndexChanged" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="width: 70px; text-align: right;">
@@ -144,7 +149,7 @@
                             </td>
                             <td style="width: 110px; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server"
-                                    Width="100px" DropDownStyle="DropDownList">
+                                    Width="100px" DropDownStyle="DropDownList"  OnCallback="dxeddlSalesIdCallback">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td>
