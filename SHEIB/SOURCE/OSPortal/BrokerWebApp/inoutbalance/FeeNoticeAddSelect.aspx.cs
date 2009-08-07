@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using BusinessObjects;
 using BusinessObjects.SchemaSetting;
+using DevExpress.Web.ASPxEditors;
 
 
 namespace BrokerWebApp.inoutbalance
@@ -34,7 +35,7 @@ namespace BrokerWebApp.inoutbalance
             string lsWhere = "";
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and a.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and b.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
             }
             if (dxetxtPolicyID.Text.Trim() != "")
             {
@@ -42,15 +43,15 @@ namespace BrokerWebApp.inoutbalance
             }
             if (dxeddlDeptId.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and a.DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
             }
-            if (dxeddlSalesID.SelectedItem.Value.ToString().Trim() != "")
+            if (dxeddlSalesId.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and a.SalesId ='" + dxeddlSalesID.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
             }
             if (dxetxtCustomerID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=a.CustomerID) ";
+                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=b.CustomerID) ";
             }
             if (dxeddlCarrier.SelectedItem.Value.ToString().Trim() != "")
             {
@@ -60,10 +61,11 @@ namespace BrokerWebApp.inoutbalance
             {
                 lsWhere = lsWhere + " and a.BranchID ='" + dxeddlBranch.SelectedItem.Value.ToString() + "'";
             }
-            if (dxetxtProdTypeID.Text.Trim() != "")
+            if (this.dxeddlPolicyType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyType.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and  exists( select 1 from ProductType where ProdTypeName like '%" + dxetxtProdTypeID.Text + "%' and CustID=a.CustomerID) ";
+                lsWhere = lsWhere + " and  b.PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString().Trim() + "') ";
             }
+
             if (ckbPayDate.Checked)
             {
                 string lsStartDate = dxeStartPayDate.Date.ToString("yyyy-MM-dd");
@@ -75,15 +77,15 @@ namespace BrokerWebApp.inoutbalance
             {
                 string lsStartDate = dxePolicyStartDateStart.Date.ToString("yyyy-MM-dd");
                 string lsEndDate = dxePolicyStartDateEnd.Date.ToString("yyyy-MM-dd");
-                lsWhere = lsWhere + " and (convert(char(10), A.StartDate,21)) >='" + lsStartDate + "'";
-                lsWhere = lsWhere + " and (convert(char(10), A.StartDate,21)) <='" + lsEndDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), b.StartDate,21)) >='" + lsStartDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), b.StartDate,21)) <='" + lsEndDate + "'";
             }
             if (chkPolicyEndDate.Checked)
             {
                 string lsStartDate = dxePolicyEndDateStart.Date.ToString("yyyy-MM-dd");
                 string lsEndDate = dxePolicyEndDateEnd.Date.ToString("yyyy-MM-dd");
-                lsWhere = lsWhere + " and (convert(char(10), A.EndDate,21)) >='" + lsStartDate + "'";
-                lsWhere = lsWhere + " and (convert(char(10), A.EndDate,21)) <='" + lsEndDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), b.EndDate,21)) >='" + lsStartDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), b.EndDate,21)) <='" + lsEndDate + "'";
             }
 
             this.gridSearchResult.DataSource = BO_Notice.GetFeeNoticeAddSelectList(lsWhere);
@@ -129,13 +131,13 @@ namespace BrokerWebApp.inoutbalance
             }
 
             //客户经理
-            this.dxeddlSalesID.Items.Add("(全部)", "");
+            this.dxeddlSalesId.Items.Add("(全部)", "");
             dsList = BO_P_User.GetUserByUserID("");
             if (dsList.Tables[0] != null)
             {
                 foreach (DataRow row in dsList.Tables[0].Rows)
                 {
-                    this.dxeddlSalesID.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
+                    this.dxeddlSalesId.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
                 }
             }
 
@@ -171,6 +173,31 @@ namespace BrokerWebApp.inoutbalance
             BindGrid();
         }
 
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+        }
+
+        protected void dxeddlBranch_Callback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
+            thecb.TextField = "BranchName";
+            thecb.ValueField = "BranchID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+        }
         
     }
 }
