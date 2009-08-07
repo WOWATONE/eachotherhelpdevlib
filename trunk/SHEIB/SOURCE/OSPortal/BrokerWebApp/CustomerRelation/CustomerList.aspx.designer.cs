@@ -68,24 +68,6 @@ namespace BrokerWebApp.CustomerRelation {
         protected global::System.Web.UI.WebControls.Panel npSearchDetail;
         
         /// <summary>
-        /// radPerson 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton radPerson;
-        
-        /// <summary>
-        /// radUnit 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton radUnit;
-        
-        /// <summary>
         /// dxetxtCustID 控件。
         /// </summary>
         /// <remarks>
@@ -140,6 +122,15 @@ namespace BrokerWebApp.CustomerRelation {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlDepartment;
         
         /// <summary>
+        /// lblCustType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCustType;
+        
+        /// <summary>
         /// dxetxtIDNO 控件。
         /// </summary>
         /// <remarks>
@@ -156,6 +147,15 @@ namespace BrokerWebApp.CustomerRelation {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesID;
+        
+        /// <summary>
+        /// dxeddlCustType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCustType;
         
         /// <summary>
         /// btnSearch 控件。

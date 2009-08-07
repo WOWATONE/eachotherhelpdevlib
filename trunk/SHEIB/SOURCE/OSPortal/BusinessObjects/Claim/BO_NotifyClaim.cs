@@ -254,7 +254,7 @@ namespace BusinessObjects
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select NC.NotifyID, P.PolicyNo, C.CarrierNameCn, PT.ProdTypeName, P.StartDate, P.EndDate, NC.NotifyTime, ");
-            sb.Append("isnull(NC.NotifyLossFee, '') as NotifyLossFee, isnull(C.LossRation, 0) as LossRation, isnull(NC.LastPayFee, 0) as LastPayFee, NC.CaseEndTime ");
+            sb.Append("NC.NotifyLossFee, isnull(C.LossRation, 0) as LossRation, isnull(NC.LastPayFee, 0) as LastPayFee, NC.CaseEndTime ");
             sb.Append("From NotifyClaim NC (nolock) ");
             sb.Append("Inner Join Policy P (nolock) On P.PolicyID=NC.PolicyID ");
             sb.Append("Left Join PolicyCarrier PC (nolock) On PC.PolicyID=P.PolicyID ");

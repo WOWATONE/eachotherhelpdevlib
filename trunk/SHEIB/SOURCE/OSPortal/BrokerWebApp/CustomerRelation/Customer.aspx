@@ -598,8 +598,8 @@
                                             </dxwgv:GridViewCommandColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="销售跟进编号" FieldName="FollowID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="跟进日期" FieldName="FollowDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
-                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataDateColumn Caption="跟进日期" FieldName="FollowDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                                            </dxwgv:GridViewDataDateColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="跟进类型" FieldName="FollowType" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="跟进程度" FieldName="FollowStage" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
@@ -608,8 +608,8 @@
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="跟进人" FieldName="FollowPerson" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Visible="false">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="下次跟进日期" FieldName="NextFollow" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Visible="false">
-                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataDateColumn Caption="下次跟进日期" FieldName="NextFollow" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Visible="false" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                                            </dxwgv:GridViewDataDateColumn>
                                         </Columns>
                                         <SettingsPager Mode="ShowAllRecords" />
                                         <Settings ShowGroupPanel="false" />
@@ -776,10 +776,10 @@
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="险种名称" FieldName="ProdTypeName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="起保日期" FieldName="StartDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
-                                            </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="截止日期" FieldName="EndDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
-                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataDateColumn Caption="起保日期" FieldName="StartDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                                            </dxwgv:GridViewDataDateColumn>
+                                            <dxwgv:GridViewDataDateColumn Caption="截止日期" FieldName="EndDate" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                                            </dxwgv:GridViewDataDateColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="报案时间" FieldName="NotifyTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="报损金额" FieldName="NotifyLossFee" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
@@ -788,8 +788,8 @@
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="实赔金额" FieldName="LastPayFee" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="结案日" FieldName="CaseEndTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
-                                            </dxwgv:GridViewDataTextColumn>
+                                            <dxwgv:GridViewDataDateColumn Caption="结案日" FieldName="CaseEndTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                                            </dxwgv:GridViewDataDateColumn>
                                         </Columns>
                                         <SettingsPager Mode="ShowAllRecords" />
                                         <TotalSummary >

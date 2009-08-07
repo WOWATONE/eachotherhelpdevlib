@@ -14,15 +14,15 @@
 
     <script type="text/javascript">
      <!--
-        function radCustTypeClick(CustType) {
-            if (CustType == "1") {
-                document.getElementById("spanPerson").style.display = "block";
-                document.getElementById("spanUnit").style.display = "none";
-            }
-            else if (CustType == "0") {
-                document.getElementById("spanPerson").style.display = "none";
-                document.getElementById("spanUnit").style.display = "block";
-            }
+        function CustTypeSelectedIndexChanged(s, e) {
+            var custType = s.GetValue();
+            var lblCustType = $("#<%=lblCustType.ClientID %>");
+            if (custType == "1")
+                lblCustType[0].innerHTML = "身份证号码：";
+            else if (custType == "0")
+                lblCustType[0].innerHTML = "组织机构号：";
+            else
+                lblCustType[0].innerHTML = "身份证号码/<br/>组织机构号：";
         }
 
         function btnCreateClick() {
@@ -67,26 +67,6 @@
                 <asp:Panel ID="npSearchDetail" runat="server" CssClass="allborderPanel" Height="0">
                     <table style="width: 100%">
                         <tr>
-                            <td style="width: 250px; text-align: left;" colspan="2">
-                                &nbsp;
-                                <input type="radio" id="radPerson" name="radCustType" value="1" runat="server" checked
-                                    onclick="javascript:radCustTypeClick(this.value);" />个人&nbsp;
-                                <input type="radio" id="radUnit" name="radCustType" value="0" runat="server" onclick="javascript:radCustTypeClick(this.value);" />单位
-                            </td>
-                            <td style="width: 70px;">
-                                &nbsp;
-                            </td>
-                            <td style="width: 170px;">
-                                &nbsp;
-                            </td>
-                            <td style="width: 70px;">
-                                &nbsp;
-                            </td>
-                            <td>
-                                &nbsp;
-                            </td>
-                        </tr>
-                        <tr>
                             <td style="width: 80px; text-align: right;">
                                 客户编号：
                             </td>
@@ -106,10 +86,13 @@
                             <td style="width: 70px; text-align: right;">
                                 客户地址：
                             </td>
-                            <td style="text-align: left;">
+                            <td style="width: 170px; text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtAddress" ClientInstanceName="dxetxtAddress" runat="server"
                                     Width="160px">
                                 </dxe:ASPxTextBox>
+                            </td>
+                            <td style="text-align: left;">
+                                &nbsp;
                             </td>
                         </tr>
                         <tr>
@@ -137,10 +120,13 @@
                                     Width="160px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
+                            <td style="text-align: left;">
+                                &nbsp;
+                            </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                <span id="spanPerson" style="display: block;">身份证号码：</span><span id="spanUnit" style="display: none;">组织机构号：</span>
+                                <asp:Label ID="lblCustType" runat="server" Text="身份证号码/<br/>组织机构号："></asp:Label>
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtIDNO" ClientInstanceName="dxetxtIDNO" runat="server" Width="160px">
@@ -155,7 +141,18 @@
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                                &nbsp;
+                                客户类型;
+                            </td>
+                            <td style="text-align: left;">
+                                <dxe:ASPxComboBox ID="dxeddlCustType" ClientInstanceName="dxeddlCustType" runat="server"
+                                    Width="160px" DropDownStyle="DropDownList">
+                                    <Items>
+                                        <dxe:ListEditItem Text="(全部)" Value="" />
+                                        <dxe:ListEditItem Text="个人" Value="1" />
+                                        <dxe:ListEditItem Text="单位" Value="0" />
+                                    </Items>
+                                    <ClientSideEvents SelectedIndexChanged="function(s, e) { CustTypeSelectedIndexChanged(s, e); return false;}" />
+                                </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: left;">
                                 <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
@@ -209,6 +206,9 @@
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="客户名称" FieldName="CustName" CellStyle-Wrap="False"
+                                HeaderStyle-HorizontalAlign="Center">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="客户分类" FieldName="CustTypeName" CellStyle-Wrap="False"
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="所在地区" FieldName="AreaName" CellStyle-Wrap="False"
