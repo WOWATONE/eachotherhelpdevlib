@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using BusinessObjects;
+using DevExpress.Web.ASPxEditors;
 
 namespace BrokerWebApp.inoutbalance
 {
@@ -25,8 +26,9 @@ namespace BrokerWebApp.inoutbalance
             if (!IsPostBack && !IsCallback)
             {
                 Initialization();
+                BindGrid();
             }
-            BindGrid();
+
 
         }
 
@@ -47,6 +49,7 @@ namespace BrokerWebApp.inoutbalance
             }
 
             //AuditStatus
+            this.dxeddlAuditStatus.Items.Add("(全部)", "");
             dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.AuditStatus.ToString());
             if (dsList.Tables[0] != null)
             {
@@ -70,13 +73,13 @@ namespace BrokerWebApp.inoutbalance
             }
 
             //客户经理
-            this.dxeddlSalesID.Items.Add("(全部)", "");
+            this.dxeddlSalesId.Items.Add("(全部)", "");
             dsList = BO_P_User.GetUserByUserID("");
             if (dsList.Tables[0] != null)
             {
                 foreach (DataRow row in dsList.Tables[0].Rows)
                 {
-                    this.dxeddlSalesID.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
+                    this.dxeddlSalesId.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
                 }
             }
 
@@ -99,40 +102,44 @@ namespace BrokerWebApp.inoutbalance
         private void BindGrid()
         {
             string lsWhere = "";
+
             if (dxetxtNoticeNo.Text.Trim() != "")
             {
                 lsWhere = lsWhere + " and a.NoticeNo ='" + dxetxtNoticeNo.Text + "'";
             }
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from PolicyPeriodDetail where PolicyNo =" + dxetxtPolicyNo.Text + "' and NoticeNo=a.NoticeNo) ";
-            }
-            if (dxeddlGatheringType.SelectedItem.Value.ToString().Trim() != "")
-            {
-                lsWhere = lsWhere + " and  a.GatheringType= ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
-            }
-            if (dxeddlDeptId.SelectedItem.Value.ToString().Trim() != "")
-            {
-                lsWhere = lsWhere + " and  exists( select 1 from PolicyPeriodDetail where DeptId =" + dxeddlDeptId.SelectedItem.Value.ToString() + "' and NoticeNo=a.NoticeNo) ";
+                lsWhere = lsWhere + " and  exists( select 1 from PolicyPeriodDetail where PolicyNo like '%" + dxetxtPolicyNo.Text + "%' and NoticeNo=a.NoticeNo) ";
             }
 
-            if (dxeddlSalesID.SelectedItem.Value.ToString().Trim() != "")
+            if (this.dxeddlGatheringType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlGatheringType.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and  exists( select 1 from PolicyPeriodDetail where SalesId =" + dxeddlSalesID.SelectedItem.Value.ToString() + "' and NoticeNo=a.NoticeNo) ";
+                lsWhere = lsWhere + " and  a.GatheringType= '" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
+            }
+
+            if (this.dxeddlDeptId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptId.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and  exists( select 1 from PolicyPeriodDetail where DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "' and NoticeNo=a.NoticeNo) ";
+            }
+
+            if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and  exists( select 1 from PolicyPeriodDetail where SalesId =" + dxeddlSalesId.SelectedItem.Value.ToString() + "' and NoticeNo=a.NoticeNo) ";
             }
             if (dxetxtCustomerID.Text.Trim() != "")
             {
                 lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=a.CustID) ";
             }
-            if (dxetxtProdTypeID.Text.Trim() != "")
+
+            if (this.dxeddlAuditStatus.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlAuditStatus.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and  exists( select 1 from ProductType where ProdTypeName like '%" + dxetxtProdTypeID.Text + "%' and ProdTypeID=a.ProdTypeID) ";
+                lsWhere = lsWhere + " and a.AuditStatus ='" + dxeddlAuditStatus.SelectedItem.Value.ToString().Trim() + "'";
             }
 
 
-            if (dxeddlAuditStatus.SelectedItem.Value.ToString().Trim() != "")
+            if (this.dxeddlPolicyType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyType.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and a.AuditStatus ='" + dxeddlAuditStatus.SelectedItem.Value.ToString().Trim() + "'";
+                lsWhere = lsWhere + " and  exists( select 1 from PolicyPeriodDetail where PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString().Trim() + "' and NoticeNo=a.NoticeNo) ";
             }
 
 
@@ -176,6 +183,24 @@ namespace BrokerWebApp.inoutbalance
         }
 
         protected void gridSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            BindGrid();
+        }
+
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
         {
             BindGrid();
         }
