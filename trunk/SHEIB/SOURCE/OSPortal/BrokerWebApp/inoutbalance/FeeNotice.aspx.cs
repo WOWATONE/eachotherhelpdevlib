@@ -128,7 +128,7 @@ namespace BrokerWebApp.inoutbalance
             }
             if (dxetxtCustomerID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=a.CustID) ";
+                lsWhere = lsWhere + " and  exists( select 1 from PolicyPeriodDetail where CustomerName like '%" + dxetxtCustomerID.Text + "%' and NoticeNo=a.NoticeNo) ";
             }
 
             if (this.dxeddlAuditStatus.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlAuditStatus.SelectedItem.Value.ToString()))
