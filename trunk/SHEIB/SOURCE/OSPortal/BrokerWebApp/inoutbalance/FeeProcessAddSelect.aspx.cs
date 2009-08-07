@@ -50,9 +50,9 @@ namespace BrokerWebApp.inoutbalance
             {
                 lsWhere = lsWhere + " and a.DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
             }
-            if (dxeddlSalesID.SelectedItem.Value.ToString().Trim() != "")
+            if (dxeddlSalesId.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and a.SalesId ='" + dxeddlSalesID.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and a.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
             }
             //if (dxetxtCustomerID.Text.Trim() != "")
             //{
@@ -102,13 +102,13 @@ namespace BrokerWebApp.inoutbalance
             }
 
             //客户经理
-            this.dxeddlSalesID.Items.Add("(全部)", "");
+            this.dxeddlSalesId.Items.Add("(全部)", "");
             dsList = BO_P_User.GetUserByUserID("");
             if (dsList.Tables[0] != null)
             {
                 foreach (DataRow row in dsList.Tables[0].Rows)
                 {
-                    this.dxeddlSalesID.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
+                    this.dxeddlSalesId.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
                 }
             }
 
