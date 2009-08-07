@@ -36,13 +36,19 @@ namespace BrokerWebApp.inoutbalance
             if (!IsPostBack && !IsCallback)
             {
                 init();
-                this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];
-                loadValue(this.lblVoucherId.InnerHtml);
+                this.dxetxtVoucherId.Text = Page.Request.QueryString[inputQueryStringIDKey];
+                loadValue(this.dxetxtVoucherId.Text);
                 
             }
             
             BindGrid("");
         }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            //
+        }
+
 
         private void init()
         {
@@ -73,7 +79,7 @@ namespace BrokerWebApp.inoutbalance
 
         protected void dxeGetVoucherIDCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            lblVoucherId.InnerHtml = e.Parameter.ToString();
+            dxetxtVoucherId.Text = e.Parameter.ToString();
         }
         
 
@@ -207,7 +213,7 @@ namespace BrokerWebApp.inoutbalance
         {
             if (e.Parameters.ToString() != "")
             {
-                lblVoucherId.InnerHtml = e.Parameters.ToString();
+                dxetxtVoucherId.Text = e.Parameters.ToString();
             }
             BindGrid(e.Parameters.ToString());
         }
@@ -273,7 +279,7 @@ namespace BrokerWebApp.inoutbalance
             string lsVocherID = "";
             if (sVoucherID == "")
             {
-                lsVocherID = this.lblVoucherId.InnerHtml;
+                lsVocherID = this.dxetxtVoucherId.Text;
             }
             else
             {
@@ -321,7 +327,8 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.Save(ModifiedAction.Update);
             }
 
-            lblVoucherId.InnerHtml = objLoad.VoucherId;
+            //lblVoucherId.InnerHtml = objLoad.VoucherId;
+            this.dxetxtVoucherId.Text = objLoad.VoucherId;
 
             return objLoad.VoucherId;
 

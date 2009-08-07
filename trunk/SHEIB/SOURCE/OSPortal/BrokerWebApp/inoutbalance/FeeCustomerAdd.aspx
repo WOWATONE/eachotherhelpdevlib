@@ -88,15 +88,13 @@
         }
 
         function getVoucherId() {
-            var result = $("#<%=lblVoucherId.ClientID %>");
-            var id = result[0].innerHTML;
+            var id = dxetxtVoucherId.GetValueString();
             return id;
         }
 
 
         function setVoucherId(value) {
-            var result = $("#<%=lblVoucherId.ClientID %>");
-            result[0].innerHTML = value;
+            dxetxtVoucherId.SetValue(value);
         }
 
 
@@ -116,9 +114,9 @@
             //do nothing;
             var pid = getVoucherId();
             if (isEmpty(pid)) {
-                setVoucherId(e.result);
+                setVoucherId(e.result);                
                 cusCompleteEnable();
-            }
+            }            
         }
 
         function makeInfoJSON(AuditStatus) {
@@ -353,7 +351,7 @@
                                 流水号：
                             </td>
                             <td style="width: 78%; text-align: left;">
-                                <label id="lblVoucherId" runat="server" />
+                                <dxe:ASPxTextBox ID="dxetxtVoucherId" ClientInstanceName="dxetxtVoucherId" runat="server" Width="110px" ReadOnly="true"></dxe:ASPxTextBox>
                             </td>
                         </tr>
                         <tr>
