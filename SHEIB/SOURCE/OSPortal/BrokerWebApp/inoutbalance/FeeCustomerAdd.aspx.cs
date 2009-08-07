@@ -38,9 +38,10 @@ namespace BrokerWebApp.inoutbalance
                 init();
                 this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];
                 loadValue(this.lblVoucherId.InnerHtml);
+                
             }
-            BindGrid("");
             
+            BindGrid("");
         }
 
         private void init()
@@ -69,6 +70,13 @@ namespace BrokerWebApp.inoutbalance
             else
                 e.Result = resultMSG;
         }
+
+        protected void dxeGetVoucherIDCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            lblVoucherId.InnerHtml = e.Parameter.ToString();
+        }
+        
+
 
         protected void gridPolicyItem_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
         {
@@ -205,6 +213,7 @@ namespace BrokerWebApp.inoutbalance
         }
 
 
+
         protected void gridPolicyItem_HtmlRowCreated(object sender,
             ASPxGridViewTableRowEventArgs e)
         {
@@ -275,8 +284,6 @@ namespace BrokerWebApp.inoutbalance
             this.gridPolicyItem.DataSource = dt;
             this.gridPolicyItem.DataBind();
 
-
-
         }
 
 
@@ -314,7 +321,11 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.Save(ModifiedAction.Update);
             }
 
+            lblVoucherId.InnerHtml = objLoad.VoucherId;
+
             return objLoad.VoucherId;
+
+
             
 
         }

@@ -79,6 +79,7 @@
             var url = "FeeCustomerAddSelect.aspx?ID=" + getVoucherId();
             window.showModalDialog(url, self, myArguments);
 
+            //dxeGetVoucherIDCallback.PerformCallback(getVoucherId());
             gridPolicyItem.PerformCallback(getVoucherId());
         }
 
@@ -318,6 +319,9 @@
         OnCallback="dxeAuditCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {auditCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
+    <dxcb:ASPxCallback ID="dxeGetVoucherIDCallback" ClientInstanceName="dxeGetVoucherIDCallback" runat="server"
+        OnCallback="dxeGetVoucherIDCallback_Callback">
+    </dxcb:ASPxCallback>    
     <table style="width: 100%">
         <tr>
             <td>
@@ -354,12 +358,21 @@
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                    KeyFieldName="FeeId" Width="100%" AutoGenerateColumns="False" OnRowDeleting="gridPolicyItem_RowDeleting"
-                                    OnRowDeleted="gridPolicyItem_RowDeleted" OnRowUpdating="gridPolicyItem_RowUpdating"
-                                    OnStartRowEditing="gridPolicyItem_StartRowEditing" OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
-                                    OnCustomCallback="gridPolicyItem_CustomCallback" OnRowValidating="gridPolicyItem_RowValidating"
-                                    OnHtmlRowCreated="gridPolicyItem_HtmlRowCreated">
+                                <dxwgv:ASPxGridView ID="gridPolicyItem" 
+                                    ClientInstanceName="gridPolicyItem" 
+                                    runat="server"
+                                    KeyFieldName="FeeId" 
+                                    Width="100%" 
+                                    AutoGenerateColumns="False" 
+                                    OnRowDeleting="gridPolicyItem_RowDeleting"
+                                    OnRowDeleted="gridPolicyItem_RowDeleted" 
+                                    OnRowUpdating="gridPolicyItem_RowUpdating"
+                                    OnStartRowEditing="gridPolicyItem_StartRowEditing" 
+                                    OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
+                                    OnCustomCallback="gridPolicyItem_CustomCallback" 
+                                    OnRowValidating="gridPolicyItem_RowValidating"
+                                    OnHtmlRowCreated="gridPolicyItem_HtmlRowCreated"
+                                    >
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
