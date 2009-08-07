@@ -181,6 +181,10 @@ namespace BrokerWebApp.inoutbalance
             {
                 lsWhere = lsWhere + " and b.ProcessFeeType ='" + dxeddlProcessFeeType.SelectedItem.Value.ToString() + "'";
             }
+            if (this.dxetxtCarrierSales.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and c.CarrierSales like '%" + dxetxtCarrierSales.Text + "%'";
+            }
 
 
             string lsStartDate = dxeGetStartDate.Date.ToString("yyyy-MM-dd");
