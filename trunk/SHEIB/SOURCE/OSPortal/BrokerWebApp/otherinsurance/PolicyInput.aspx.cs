@@ -1550,24 +1550,7 @@ namespace BrokerWebApp.otherinsurance
 
             this.dxeCheckDate.Date = obj.AuditTime;
             this.dxetxtAuditPerson.Text = obj.AuditPerson;
-            this.dxeMemo.Text = obj.Remark;
-
-            //取得结算信息            
-            DataSet dsPolicyFee = BusinessObjects.Policy.BO_Policy.GetPolicyFee(policyID);
-            if (dsPolicyFee !=null && dsPolicyFee.Tables.Count > 0 && dsPolicyFee.Tables[0].Rows.Count > 0)
-            {
-                DataTable dtFee = dsPolicyFee.Tables[0];
-                DataTable dsFeeDetail = dsPolicyFee.Tables[1];
-                this.dxetxtPayedFee.Text = dtFee.Rows[0]["PayedFee"].ToString();
-                this.dextxtNeededPayFee.Text = dtFee.Rows[0]["NeededPayFee"].ToString();
-                this.dxetxtPayinedFee.Text = dtFee.Rows[0]["PayinedFee"].ToString();
-                this.dxetxtNeededPayinFee.Text = dtFee.Rows[0]["NeededPayinFee"].ToString();
-                this.dxetxtPayedProc.Text = dtFee.Rows[0]["PayedProc"].ToString();
-                this.dxetxtNeededPayProc.Text = dtFee.Rows[0]["NeededPayProc"].ToString();
-
-                gridInOutBalance.DataSource = dsFeeDetail;
-                gridInOutBalance.DataBind();
-            }
+            this.dxeMemo.Text = obj.Remark;            
             
         }
 
