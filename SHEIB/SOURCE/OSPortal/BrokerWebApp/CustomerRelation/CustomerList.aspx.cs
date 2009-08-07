@@ -24,6 +24,15 @@ namespace BrokerWebApp.CustomerRelation
                 {
                     this.Initialization();
                 }
+                else
+                {
+                    if (this.dxeddlCustType.SelectedItem.Value.ToString() == "1")
+                        this.lblCustType.Text = "身份证号码：";
+                    else if (this.dxeddlCustType.SelectedItem.Value.ToString() == "0")
+                        this.lblCustType.Text = "组织机构号：";
+                    else
+                        this.lblCustType.Text = "身份证号码/<br/>组织机构号：";
+                }
 
                 if (this.Page.IsCallback)
                 {
@@ -117,10 +126,8 @@ namespace BrokerWebApp.CustomerRelation
         private void BindGrid()
         {
             System.Text.StringBuilder sbWhere = new System.Text.StringBuilder();
-            if (this.radPerson.Checked)
-                sbWhere.Append(" And C.CustTypeID=1");
-            else
-                sbWhere.Append(" And C.CustTypeID=0");
+            if (this.dxeddlCustType.SelectedItem.Value.ToString().Length > 0)
+                sbWhere.Append(" And C.CustTypeID=" + this.dxeddlCustType.SelectedItem.Value.ToString() + " ");
             if (this.dxetxtCustID.Text.Trim().Length > 0)
                 sbWhere.Append(" And C.CustID='" + this.dxetxtCustID.Text.Trim() + "' ");
             if (this.dxeddlArea.SelectedItem.Value.ToString().Length > 0)

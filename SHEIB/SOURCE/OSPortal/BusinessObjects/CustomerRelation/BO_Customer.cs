@@ -149,7 +149,7 @@ namespace BusinessObjects
         public static DataTable GetCustomerList(string sWhere)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("Select C.CustID, C.CustName, CO1.CodeName As AreaName, D.DeptName As DeprtmentName, C.Address,");
+            sb.Append("Select C.CustID, (Case When C.CustTypeID=1 Then '个人' Else '单位' End) As CustTypeName, C.CustName, CO1.CodeName As AreaName, D.DeptName As DeprtmentName, C.Address,");
             sb.Append("C.PostCode, CO2.CodeName As TradeTypeName, C.IDNO, C.Contact, C.Tel, C.Mobile,");
             sb.Append("C.Fax, C.Email, U.UserNameCn As SalesName, CC.CustClassifyName ");
             sb.Append("From Customer C (nolock) ");
