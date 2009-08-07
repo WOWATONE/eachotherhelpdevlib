@@ -63,6 +63,12 @@
             }
         }
         
+        function dxeddlDeptId_SelectedIndexChanged(s, e) {
+            var thejsonstring = dxeddlDeptId.GetSelectedItem().value;
+            dxeddlSalesId.PerformCallback(thejsonstring);
+        }        
+                
+        
     </script>
 
 </asp:Content>
@@ -125,12 +131,10 @@
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="width: 70px; text-align: right;">
-                                收款方式：
+                                
                             </td>
                             <td style="width: 130px; text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
-                                    runat="server" Width="100px" DropDownStyle="DropDownList">
-                                </dxe:ASPxComboBox>
+                              
                             </td>
                             <td>
                             </td>
@@ -150,6 +154,7 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlDeptId" ClientInstanceName="dxeddlDeptId" runat="server"
                                     Width="100px" DropDownStyle="DropDownList">
+                                     <ClientSideEvents SelectedIndexChanged="dxeddlDeptId_SelectedIndexChanged" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
@@ -157,16 +162,14 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server"
-                                    Width="100px" DropDownStyle="DropDownList">
+                                    Width="100px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                                保险险种：
+                               
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
-                                    runat="server" Width="160px" DropDownStyle="DropDownList">
-                                </dxe:ASPxComboBox>
+                                
                             </td>
                             <td style="text-align: left;">
                             </td>

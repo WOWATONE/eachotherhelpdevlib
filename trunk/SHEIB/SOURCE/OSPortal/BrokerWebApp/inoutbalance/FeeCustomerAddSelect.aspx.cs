@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using BusinessObjects;
 using BusinessObjects.SchemaSetting;
+using DevExpress.Web.ASPxEditors;
 
 namespace BrokerWebApp.inoutbalance
 {
@@ -24,8 +25,7 @@ namespace BrokerWebApp.inoutbalance
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack && !IsCallback)
-            {
-                ckbNeedPayFeePolicy.Checked = true;
+            {                
                 Initialization();
                 this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
                 BindGrid();
@@ -65,23 +65,12 @@ namespace BrokerWebApp.inoutbalance
                 lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=c.CustomerID) ";
             }
 
-            if (this.dxeddlGatheringType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlGatheringType.SelectedItem.Value.ToString()))
-            {
-                lsWhere = lsWhere + " and b.GatheringTypeID ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
-            }
 
             if (this.dxeddlPolicyType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyType.SelectedItem.Value.ToString()))
             {
                 lsWhere = lsWhere + " and c.PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString() + "'";
 
             }
-
-            if (this.dxeddlProdTypeName.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlProdTypeName.SelectedItem.Value.ToString()))
-            {
-                lsWhere = lsWhere + " and  c.ProdTypeID like ('%" + dxeddlProdTypeName.SelectedItem.Value.ToString() + "%') ";
-
-            }
-
 
 
             string lsStartDate = dxeNoticeStartDate.Date.ToString("yyyy-MM-dd");
@@ -125,16 +114,6 @@ namespace BrokerWebApp.inoutbalance
                 }
             }
 
-            //dxeddlGatheringType
-            this.dxeddlGatheringType.Items.Add("(全部)", "");
-            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.GatheringType.ToString());
-            if (dsList.Tables[0] != null)
-            {
-                foreach (DataRow row in dsList.Tables[0].Rows)
-                {
-                    this.dxeddlGatheringType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
-                }
-            }
 
             //PolicyType
             this.dxeddlPolicyType.Items.Add("(全部)", "");
@@ -147,11 +126,7 @@ namespace BrokerWebApp.inoutbalance
                 }
             }
 
-            dsList = BusinessObjects.SchemaSetting.BO_ProductType.GetProductTypeList();
-            if (dsList.Tables[0] != null && dsList.Tables[0].Rows.Count > 0)
-            {
-                this.SetProdTypeName(dsList.Tables[0], "0", this.dxeddlProdTypeName);
-            }
+
         }
 
 
@@ -218,6 +193,20 @@ namespace BrokerWebApp.inoutbalance
             }
 
         }
+
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+        }
+
 
 
     }

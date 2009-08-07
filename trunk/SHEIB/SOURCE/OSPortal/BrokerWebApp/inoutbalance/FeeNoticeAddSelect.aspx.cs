@@ -41,11 +41,11 @@ namespace BrokerWebApp.inoutbalance
             {
                 lsWhere = lsWhere + " and a.PolicyID ='" + dxetxtPolicyID.Text + "'";
             }
-            if (dxeddlDeptId.SelectedItem.Value.ToString().Trim() != "")
+            if (this.dxeddlDeptId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptId.SelectedItem.Value.ToString()))
             {
                 lsWhere = lsWhere + " and b.DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
             }
-            if (dxeddlSalesId.SelectedItem.Value.ToString().Trim() != "")
+            if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
             {
                 lsWhere = lsWhere + " and b.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
             }
@@ -53,11 +53,11 @@ namespace BrokerWebApp.inoutbalance
             {
                 lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=b.CustomerID) ";
             }
-            if (dxeddlCarrier.SelectedItem.Value.ToString().Trim() != "")
+            if (this.dxeddlCarrier.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrier.SelectedItem.Value.ToString()))
             {
                 lsWhere = lsWhere + " and a.CarrierID ='" + dxeddlCarrier.SelectedItem.Value.ToString() + "'";
             }
-            if (dxeddlBranch.SelectedItem.Value.ToString().Trim() != "")
+            if (this.dxeddlBranch.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranch.SelectedItem.Value.ToString()))
             {
                 lsWhere = lsWhere + " and a.BranchID ='" + dxeddlBranch.SelectedItem.Value.ToString() + "'";
             }
@@ -198,6 +198,6 @@ namespace BrokerWebApp.inoutbalance
                 thecb.SelectedItem = thecb.Items[0];
             }
         }
-        
+
     }
 }

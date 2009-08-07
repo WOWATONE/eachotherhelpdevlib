@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using BusinessObjects;
+using DevExpress.Web.ASPxEditors;
 
 namespace BrokerWebApp.inoutbalance
 {
@@ -21,10 +22,11 @@ namespace BrokerWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Initialization();
+            
             if (!IsPostBack && !IsCallback)
             {                
-                //dxeddlAuditStatus.SelectedIndex = 0;                
+                //dxeddlAuditStatus.SelectedIndex = 0;     
+                Initialization();
             }
             BindGrid();
         }
@@ -131,43 +133,65 @@ namespace BrokerWebApp.inoutbalance
         {
             string lsWhere = "";
 
-            //if (dxetxtPayinVoucherID.Text.Trim() != "")
-            //{
-            //    lsWhere = lsWhere + " and c.VoucherID ='" + dxetxtPayinVoucherID.Text + "'";
-            //}
+            if (dxetxtInvoiceID.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and a.VoucherID ='" + dxetxtInvoiceID.Text + "'";
+            }
 
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and c.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
             }
             if (dxeddlGatheringType.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and  GatheringType= ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and  b.GatheringType= ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
             }
             if (dxeddlDeptId.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and c.DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
             }
             if (dxeddlSalesId.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and c.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
             }
             if (dxetxtCustomerID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=a.CustomerID) ";
-            }
-            if (dxetxtProdTypeID.Text.Trim() != "")
-            {
-                lsWhere = lsWhere + " and  exists( select 1 from ProductType where ProdTypeName like '%" + dxetxtProdTypeID.Text + "%' and ProdTypeID=a.ProdTypeID) ";
+                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=c.CustomerID) ";
             }
 
-            //string lsStartDate = dxePayinStartDate.Date.ToString("yyyy-MM-dd");
-            //string lsEndDate = dxePayinEndDate.Date.ToString("yyyy-MM-dd");
-            //if ((dxePayinStartDate.Text.Trim() != "") && (dxePayinEndDate.Text.Trim() != ""))
-            //{
-            //    lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) >='" + lsStartDate + "'";
-            //    lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) <='" + lsEndDate + "'";
-            //}
+            if (this.dxeddlCarrier.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrier.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and a.CarrierID ='" + dxeddlCarrier.SelectedItem.Value.ToString() + "'";
+            }
+            if (this.dxeddlBranch.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranch.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and a.BranchID ='" + dxeddlBranch.SelectedItem.Value.ToString() + "'";
+            }
+
+            if (this.dxeddlPolicyType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyType.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and c.PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString() + "'";
+            }
+
+            if (this.dxeddlGatheringType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlGatheringType.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and b.GatheringType ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
+            }
+
+            if (this.dxeddlProcessFeeType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlProcessFeeType.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and b.ProcessFeeType ='" + dxeddlProcessFeeType.SelectedItem.Value.ToString() + "'";
+            }
+
+
+
+            string lsStartDate = dxeGetStartDate.Date.ToString("yyyy-MM-dd");
+            string lsEndDate = dxeGetEndDate.Date.ToString("yyyy-MM-dd");
+            if ((dxeGetEndDate.Text.Trim() != "") && (dxeGetEndDate.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) >='" + lsStartDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) <='" + lsEndDate + "'";
+            }
 
             DataTable dt = Bo_FeeInvoice.GetFeeInvoiceList(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
@@ -199,6 +223,32 @@ namespace BrokerWebApp.inoutbalance
             this.gridExport.WriteXlsToResponse();
         }
 
+
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+        }
+
+        protected void dxeddlBranch_Callback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
+            thecb.TextField = "BranchName";
+            thecb.ValueField = "BranchID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+        }
 
     }
 }

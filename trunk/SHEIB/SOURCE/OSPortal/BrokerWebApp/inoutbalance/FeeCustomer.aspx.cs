@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using BusinessObjects;
 using BusinessObjects.SchemaSetting;
+using DevExpress.Web.ASPxEditors;
 
 namespace BrokerWebApp.inoutbalance
 {
@@ -45,17 +46,6 @@ namespace BrokerWebApp.inoutbalance
         private void Initialization()
         {
             DataSet dsList;
-
-            //GatheringType
-            this.dxeddlGatheringType.Items.Add("(全部)", "");
-            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.GatheringType.ToString());
-            if (dsList.Tables[0] != null)
-            {
-                foreach (DataRow row in dsList.Tables[0].Rows)
-                {
-                    this.dxeddlGatheringType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
-                }
-            }
 
             //AuditStatus
             dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.AuditStatus.ToString());
@@ -102,28 +92,6 @@ namespace BrokerWebApp.inoutbalance
                 }
             }
 
-            dsList = BusinessObjects.SchemaSetting.BO_ProductType.GetProductTypeList();
-            if (dsList.Tables[0] != null && dsList.Tables[0].Rows.Count > 0)
-            {
-                this.SetProdTypeName(dsList.Tables[0], "0", this.dxeddlProdTypeName);
-            }
-        }
-
-
-
-        private void SetProdTypeName(DataTable table, string parentid, DevExpress.Web.ASPxEditors.ASPxComboBox comboBox)
-        {
-            if (parentid == "0")
-                this.toadd = "";
-            else
-                this.toadd += "   ";
-            DataRow[] rows = table.Select("ParentID='" + parentid + "'", "ProdClass");
-            foreach (DataRow row in rows)
-            {
-                comboBox.Items.Add(this.toadd + (parentid == "0" ? "" : "∟") + row["ProdTypeName"].ToString(), row["ProdTypeID"].ToString());
-                this.SetProdTypeName(table, row["ProdTypeID"].ToString(), comboBox);
-                this.toadd = this.toadd.Substring(0, this.toadd.Length - 3);
-            }
         }
 
 
@@ -159,20 +127,9 @@ namespace BrokerWebApp.inoutbalance
                 lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=c.CustomerID) ";
             }
 
-            if (this.dxeddlGatheringType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlGatheringType.SelectedItem.Value.ToString()))
-            {
-                lsWhere = lsWhere + " and d.GatheringTypeID ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
-            }
-
             if (this.dxeddlPolicyType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyType.SelectedItem.Value.ToString()))
             {
                 lsWhere = lsWhere + " and c.PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString() + "'";
-
-            }
-
-            if (this.dxeddlProdTypeName.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlProdTypeName.SelectedItem.Value.ToString()))
-            {
-                lsWhere = lsWhere + " and  c.ProdTypeID like ('%" + dxeddlProdTypeName.SelectedItem.Value.ToString() + "%') ";
 
             }
 
@@ -225,6 +182,18 @@ namespace BrokerWebApp.inoutbalance
             this.gridExport.WriteXlsToResponse();
         }
 
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+        }
 
 
     }

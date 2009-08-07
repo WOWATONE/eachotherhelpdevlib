@@ -27,8 +27,8 @@ namespace BrokerWebApp.inoutbalance
                 Initialization();
                 this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
                 this.txtProcessFeeType.Value = Page.Request.QueryString["ProcessFeeType"];
+                BindGrid();
             }
-            BindGrid();
         }
 
 
@@ -41,46 +41,49 @@ namespace BrokerWebApp.inoutbalance
             }
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and a.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and c.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
             }
             if (dxetxtPolicyID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and a.PolicyID ='" + dxetxtPolicyID.Text + "'";
+                lsWhere = lsWhere + " and c.PolicyID ='" + dxetxtPolicyID.Text + "'";
             }
             if (dxeddlDeptId.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and a.DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and c.DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
             }
             if (dxeddlSalesId.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and a.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and c.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
             }
             if (dxetxtCustomerID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=a.CustomerID) ";
+                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=c.CustomerID) ";
             }
-            //if (dxeddlGatheringType.SelectedItem.Value.ToString().Trim() != "")
-            //{
-            //    lsWhere = lsWhere + " and a.GatheringTypeID ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
-            //}
-            //if (dxetxtProdTypeID.Text.Trim() != "")
-            //{
-            //    lsWhere = lsWhere + " and  exists( select 1 from ProductType where ProdTypeName like '%" + dxetxtProdTypeID.Text + "%' and CustID=a.CustomerID) ";
-            //}
+            if (this.dxeddlCarrier.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrier.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and a.CarrierID ='" + dxeddlCarrier.SelectedItem.Value.ToString() + "'";
+            }
+            if (this.dxeddlBranch.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranch.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and a.BranchID ='" + dxeddlBranch.SelectedItem.Value.ToString() + "'";
+            }
 
-            //string lsStartDate = dxe.Date.ToString("yyyy-MM-dd");
-            //string lsEndDate = dxeNoticeEndDate.Date.ToString("yyyy-MM-dd");
-            //if ((dxeNoticeStartDate.Text.Trim() != "") && (dxeNoticeEndDate.Text.Trim() != ""))
-            //{
-            //    lsWhere = lsWhere + " and (convert(char(10), a.NoticeDate,21)) >='" + lsStartDate + "'";
-            //    lsWhere = lsWhere + " and (convert(char(10), a.NoticeDate,21)) <='" + lsEndDate + "'";
-            //}
 
-            //if (ckbPayedNeedPayin.Checked)
-            //{
-            //    lsWhere = lsWhere + "  and not exists(select 1 from VoucherFee where PolPeriodID=a.PolPeriodID and AccountTypeID in ('5'))";
-            //}
+            if (this.dxeddlPolicyType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyType.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and c.PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString() + "'";
 
+            }
+
+
+            string lsStartDate = dxeGetStartDate.Date.ToString("yyyy-MM-dd");
+            string lsEndDate = dxeGetEndDate.Date.ToString("yyyy-MM-dd");
+            if ((dxeGetStartDate.Text.Trim() != "") && (dxeGetEndDate.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), a.PayFeeDate,21)) >='" + lsStartDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), a.PayFeeDate,21)) <='" + lsEndDate + "'";
+            }
+     
             this.gridSearchResult.DataSource = BO_FeePayin.GetFeePayinAddSelectList(lsWhere);
             this.gridSearchResult.DataBind();
 
@@ -131,6 +134,17 @@ namespace BrokerWebApp.inoutbalance
                 foreach (DataRow row in dsList.Tables[0].Rows)
                 {
                     this.dxeddlBranch.Items.Add(row["BranchName"].ToString().Trim(), row["BranchID"].ToString().Trim());
+                }
+            }
+
+            //PolicyType
+            this.dxeddlPolicyType.Items.Add("(全部)", "");
+            dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.PolicyType.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlPolicyType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
                 }
             }
         }
@@ -192,6 +206,19 @@ namespace BrokerWebApp.inoutbalance
                 }
             }
 
+        }
+
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
         }
 
         protected void dxeddlBranch_Callback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)

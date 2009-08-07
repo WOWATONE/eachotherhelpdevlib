@@ -56,35 +56,22 @@
             }
         }
 
-
-        function imgPolicyProdTypeClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=700px;dialogHeight=500px;center=yes;help=no";
-            var retrunval = window.showModalDialog("../popupselectrefs/PolicyProdType.aspx", self, myArguments);
-            if (isEmpty(retrunval)) {
-                //do nothing;
-            }
-            else {
-                //split the return value;
-                var thesplit_array = retrunval.split(";");
-                dxetxtProdTypeID.SetValue(thesplit_array[1]);
-                setProductTypeID(thesplit_array[0]);
-
-                var result = $("#<%=ptid.ClientID %>");
-            }
-
-        }
-
-        function setProductTypeID(thevalue) {
-            var result = $("#<%=ptid.ClientID %>");
-            result[0].value = thevalue;
-        }
-
         function isEmpty(testVar) {
             if ((testVar == null) || (testVar.length == 0)) {
                 return true;
             } else {
                 return false;
             }
+        }
+
+        function dxeddlDeptId_SelectedIndexChanged(s, e) {
+            var thejsonstring = dxeddlDeptId.GetSelectedItem().value;
+            dxeddlSalesId.PerformCallback(thejsonstring);
+        }
+
+        function dxeddlCarrier_SelectedIndexChanged(s, e) {
+            var thejsonstring = dxeddlCarrier.GetSelectedItem().value;
+            dxeddlBranch.PerformCallback(thejsonstring);
         }
         
     </script>
@@ -128,7 +115,7 @@
                                 开票通知书号：
                             </td>
                             <td style="width: 130px; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtPayinInvoiceNoticeID" ClientInstanceName="dxetxtPayinInvoiceVoucherID"
+                                <dxe:ASPxTextBox ID="dxetxtInvoiceID" ClientInstanceName="dxetxtInvoiceID"
                                     runat="server" Width="120px">
                                 </dxe:ASPxTextBox>
                             </td>
@@ -174,6 +161,7 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlDeptId" ClientInstanceName="dxeddlDeptId" runat="server"
                                     Width="120px" DropDownStyle="DropDownList">
+                                    <ClientSideEvents SelectedIndexChanged="dxeddlDeptId_SelectedIndexChanged" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
@@ -181,25 +169,14 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server"
-                                    Width="120px" DropDownStyle="DropDownList">
+                                    Width="120px" DropDownStyle="DropDownList"  OnCallback="dxeddlSalesIdCallback">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                                险种：
+                              
                             </td>
                             <td style="text-align: left;">
-                                <table style="margin-left:-3px;">
-                                    <tr>
-                                        <td style="width:105px;text-align: left;">
-                                            <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server" Width="100px"></dxe:ASPxTextBox>
-                                            <input type="hidden" id="ptid" runat="server" /> 
-                                        </td>
-                                        <td style="text-align: left;">
-                                        <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;
-                                            height: 20px; vertical-align: top;" onclick="imgPolicyProdTypeClick();" />
-                                        </td>
-                                    </tr>
-                                </table>
+              
                             </td>
                             <td>
                             </td>
@@ -211,6 +188,7 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlCarrier" ClientInstanceName="dxeddlCarrier" runat="server"
                                     Width="120px" DropDownStyle="DropDownList">
+                                    <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlCarrier_SelectedIndexChanged(s,e);}" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
@@ -218,7 +196,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlBranch" ClientInstanceName="dxeddlBranch" runat="server"
-                                    Width="120px" DropDownStyle="DropDownList">
+                                    Width="120px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback" >
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
