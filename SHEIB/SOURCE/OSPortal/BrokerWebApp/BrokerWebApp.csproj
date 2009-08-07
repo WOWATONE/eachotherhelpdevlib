@@ -656,6 +656,13 @@
     <Compile Include="otherinsurance\PolicyView.aspx.designer.cs">
       <DependentUpon>PolicyView.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PolicyViewTransfer.aspx.cs">
+      <DependentUpon>PolicyViewTransfer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PolicyViewTransfer.aspx.designer.cs">
+      <DependentUpon>PolicyViewTransfer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="popupselectrefs\PolicyCustomer.aspx.cs">
       <DependentUpon>PolicyCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1131,6 +1138,7 @@
     <Content Include="otherinsurance\PolicyInputList.aspx" />
     <Content Include="otherinsurance\PolicyReinsure.aspx" />
     <Content Include="otherinsurance\PolicyView.aspx" />
+    <Content Include="PolicyViewTransfer.aspx" />
     <Content Include="popupselectrefs\PolicyCustomer.aspx" />
     <Content Include="popupselectrefs\PolicyProdType.aspx" />
     <Content Include="Report\InsuranceCommission1.aspx" />
