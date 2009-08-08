@@ -15,8 +15,6 @@ namespace BrokerWebApp
         private const string inputQueryStringIDKey = "id";
 
         #endregion Variables
-
-
         #region Page Events
 
         protected void Page_Load(object sender, EventArgs e)

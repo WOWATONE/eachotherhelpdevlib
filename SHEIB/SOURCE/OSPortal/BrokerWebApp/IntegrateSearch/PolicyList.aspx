@@ -40,7 +40,8 @@
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
             var noint = s.GetDataRow(e.visibleIndex).cells[2].innerText;
             var querystring;
-            querystring = "../otherinsurance/PolicyInput.aspx?pagemode=Query&id=" + noint;
+            //querystring = "../otherinsurance/PolicyInput.aspx?pagemode=Query&id=" + noint;
+            querystring = "../PolicyViewTransfer.aspx?id=" + noint;
             window.showModalDialog(querystring, self, myArguments);
         }
 
