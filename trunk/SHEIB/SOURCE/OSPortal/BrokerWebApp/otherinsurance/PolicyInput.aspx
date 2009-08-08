@@ -761,8 +761,8 @@
             rtn = sumProcessVal.toFixed(2);
             dxetxtProcess.SetValue(rtn);
 
-            division_ValueChanged(dxetxtPremium, dxetxtCoverage, dxetxtPremiumRate, true);
-            division_ValueChanged(dxetxtProcess, dxetxtPremium, dxetxtProcessRate, true);
+            division_ValueChanged(dxetxtPremium, dxetxtCoverage, dxetxtPremiumRate, 5, false, true);
+            division_ValueChanged(dxetxtProcess, dxetxtPremium, dxetxtProcessRate, 2, false, true);
         }
 
         function gridCarrierCustomButtonClick(s, e) {
@@ -780,8 +780,8 @@
                 window.showModalDialog(querystring, self, myArguments);
             }
         }
-
-        function multi_ValueChanged(t1, t2, t3, opt) {
+        
+        function multi_ValueChanged(t1, t2, t3, precision, sign, opt) {
 
             var v1;
             try {
@@ -810,12 +810,25 @@
             else
                 v3 = parseFloat(v1 * v2);
 
-            var rtn = v3.toFixed(2);
+            var thePrecision;
+            if (isIntNumeric(precision))
+                thePrecision = parseInt(precision);
+            else
+                thePrecision = 2;
+
+            var rtn = v3.toFixed(thePrecision);
+            if (sign == true) {
+                var srps = "+";
+                rtn = rtn.replace(/(srps+)/g, "");
+                srps = "-";
+                rtn = rtn.replace(/(srps+)/g, "");
+            }
+
             t3.SetValue(rtn);
         }
 
 
-        function division_ValueChanged(t1, t2, t3, opt) {
+        function division_ValueChanged(t1, t2, t3, precision, sign, opt) {
 
             var v1;
             try {
@@ -847,8 +860,31 @@
                     v3 = parseFloat(v1 / v2);
             }
 
-            var rtn = v3.toFixed(2);
+            var thePrecision;
+            if (isIntNumeric(precision))
+                thePrecision = parseInt(precision);
+            else
+                thePrecision = 2;
+
+            var rtn = v3.toFixed(thePrecision);
+
+            if (sign == true) {
+                var srps = "+";
+                rtn = rtn.replace(/(srps+)/g, "");
+                srps = "-";
+                rtn = rtn.replace(/(srps+)/g, "");
+            }
+
             t3.SetValue(rtn);
+        }
+
+
+        function isIntNumeric(str) {
+            var val = parseInt(str);
+            if (isNaN(val))
+                return true;
+            else
+                return false;
         }
         
     </script>
@@ -1248,7 +1284,7 @@
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
-                                                                                        <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPolicyItemCoverage,dxetxtPolicyItemPremiumRate,dxetxtPolicyItemPremium,true);}" />
+                                                                                        <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPolicyItemCoverage,dxetxtPolicyItemPremiumRate,dxetxtPolicyItemPremium,2,false,true);}" />
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
                                                                                 <td style="white-space: nowrap; text-align: right;">
@@ -1260,7 +1296,7 @@
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
-                                                                                        <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPolicyItemCoverage,dxetxtPolicyItemPremiumRate,dxetxtPolicyItemPremium,true);}" />
+                                                                                        <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPolicyItemCoverage,dxetxtPolicyItemPremiumRate,dxetxtPolicyItemPremium,2,false,true);}" />
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
                                                                                 <td style="white-space: nowrap; text-align: right;">
@@ -1272,7 +1308,7 @@
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
-                                                                                        <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPolicyItemPremium,dxetxtPolicyItemProcRate,dxetxtPolicyItemProcess,true);}" />
+                                                                                        <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPolicyItemPremium,dxetxtPolicyItemProcRate,dxetxtPolicyItemProcess,2,false,true);}" />
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
                                                                             </tr>
@@ -1286,7 +1322,7 @@
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
-                                                                                        <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPolicyItemPremium,dxetxtPolicyItemProcRate,dxetxtPolicyItemProcess,true);}" />
+                                                                                        <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPolicyItemPremium,dxetxtPolicyItemProcRate,dxetxtPolicyItemProcess,2,false,true);}" />
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
                                                                                 <td style="white-space: nowrap; text-align: right;">
@@ -1374,7 +1410,7 @@
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
-                                                            <ClientSideEvents ValueChanged="function(s,e){division_ValueChanged(dxetxtPremium,dxetxtCoverage,dxetxtPremiumRate,true);}" />
+                                                            <ClientSideEvents ValueChanged="function(s,e){division_ValueChanged(dxetxtPremium,dxetxtCoverage,dxetxtPremiumRate,5,false,true);}" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
@@ -1421,7 +1457,9 @@
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
-                                                            <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPremium,dxetxtConversionRate,dxetxtPremiumBase,false);division_ValueChanged(dxetxtPremium,dxetxtCoverage,dxetxtPremiumRate,true);division_ValueChanged(dxetxtProcess,dxetxtPremium,dxetxtProcessRate,true);}" />
+                                                            <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPremium,dxetxtConversionRate,dxetxtPremiumBase,2,false,false);
+                                                            division_ValueChanged(dxetxtPremium,dxetxtCoverage,dxetxtPremiumRate,5,false,true);
+                                                            division_ValueChanged(dxetxtProcess,dxetxtPremium,dxetxtProcessRate,2,false,true);}" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
@@ -1433,7 +1471,8 @@
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
-                                                            <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtProcess,dxetxtConversionRate,dxetxtProcessBase,false);division_ValueChanged(dxetxtProcess,dxetxtPremium,dxetxtProcessRate,true);}" />
+                                                            <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtProcess,dxetxtConversionRate,dxetxtProcessBase,2,false,false);
+                                                            division_ValueChanged(dxetxtProcess,dxetxtPremium,dxetxtProcessRate,2,false,true);}" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                 </tr>
@@ -1447,7 +1486,8 @@
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
-                                                            <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtProcess,dxetxtConversionRate,dxetxtProcessBase,false); multi_ValueChanged(dxetxtPremium,dxetxtConversionRate,dxetxtPremiumBase,false);}" />
+                                                            <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtProcess,dxetxtConversionRate,dxetxtProcessBase,2,false,false);
+                                                             multi_ValueChanged(dxetxtPremium,dxetxtConversionRate,dxetxtPremiumBase,2,false,false);}" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
@@ -1613,10 +1653,10 @@
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
                                                                                         <ClientSideEvents ValueChanged="function(s,e){
-                                                                                                                        multi_ValueChanged(dxetxtPremium,dxetxtGridCarrierPolicyRate,dxetxtGridCarrierPremium,true); 
-                                                                                                                        multi_ValueChanged(dxetxtPremiumBase,dxetxtGridCarrierPolicyRate,dxetxtGridCarrierPremiumBase,true);
-                                                                                                                        multi_ValueChanged(dxetxtProcess,dxetxtGridCarrierPolicyRate,dxetxtGridCarrierProcess,true); 
-                                                                                                                        multi_ValueChanged(dxetxtProcessBase,dxetxtGridCarrierPolicyRate,dxetxtGridCarrierProcessBase,true);
+                                                                                                                        multi_ValueChanged(dxetxtPremium,dxetxtGridCarrierPolicyRate,dxetxtGridCarrierPremium,2,false,true); 
+                                                                                                                        multi_ValueChanged(dxetxtPremiumBase,dxetxtGridCarrierPolicyRate,dxetxtGridCarrierPremiumBase,2,false,true);
+                                                                                                                        multi_ValueChanged(dxetxtProcess,dxetxtGridCarrierPolicyRate,dxetxtGridCarrierProcess,2,false,true); 
+                                                                                                                        multi_ValueChanged(dxetxtProcessBase,dxetxtGridCarrierPolicyRate,dxetxtGridCarrierProcessBase,2,false,true);
                                                                                                                         }" />
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
