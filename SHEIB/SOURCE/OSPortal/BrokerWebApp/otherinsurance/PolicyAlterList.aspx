@@ -344,7 +344,7 @@
                                                                                             </dxwgv:GridViewCommandColumnCustomButton>                                                                        
                                                                                         </CustomButtons>                                                   
                                                                                     </dxwgv:GridViewCommandColumn> 
-                                                                                    <dxwgv:GridViewDataColumn FieldName="PrevPolicyID" Caption="批单编号" VisibleIndex="1" CellStyle-Wrap="False">                                                                    
+                                                                                    <dxwgv:GridViewDataColumn FieldName="AltNO" Caption="批单编号" VisibleIndex="1" CellStyle-Wrap="False">                                                                    
                                                                                     </dxwgv:GridViewDataColumn>                                                               
                                                                                     <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" VisibleIndex="2" CellStyle-Wrap="False">                                                                    
                                                                                     </dxwgv:GridViewDataColumn>
@@ -441,7 +441,7 @@
                                                                                             </dxwgv:GridViewCommandColumnCustomButton>                                                                        
                                                                                         </CustomButtons>                                                   
                                                                                     </dxwgv:GridViewCommandColumn> 
-                                                                                    <dxwgv:GridViewDataColumn FieldName="PrevPolicyID" Caption="批单编号" VisibleIndex="1" CellStyle-Wrap="False">                                                                    
+                                                                                    <dxwgv:GridViewDataColumn FieldName="AltNO" Caption="批单编号" VisibleIndex="1" CellStyle-Wrap="False">                                                                    
                                                                                     </dxwgv:GridViewDataColumn>                                                               
                                                                                     <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" VisibleIndex="2" CellStyle-Wrap="False">                                                                    
                                                                                     </dxwgv:GridViewDataColumn>
