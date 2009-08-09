@@ -970,7 +970,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td style="white-space: nowrap; text-align: right;">
-                                                                原投保编号：
+                                                                原投保单号：
                                                             </td>
                                                             <td style="text-align: left;" colspan="5">
                                                                 <table style="margin-left:-3px; width:350px;">

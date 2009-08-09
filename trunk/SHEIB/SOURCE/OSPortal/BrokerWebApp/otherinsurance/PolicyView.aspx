@@ -88,18 +88,18 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server"
-                                                            Width="125px" ReadOnly="true">
+                                                            Width="160px" ReadOnly="true">
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
                                                         ±£µ¥±àºÅ£º
                                                     </td>
-                                                    <td style="text-align: left;">
+                                                    <td style="text-align: left;" colspan="2">
                                                         <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server"
                                                             Width="240px">
                                                         </dxe:ASPxTextBox>
                                                     </td>
-                                                    <td colspan="2">
+                                                    <td>
                                                         <table style="margin-left: -3px; text-align: left;">
                                                             <tr>
                                                                 <td style="text-align: right;">
@@ -141,7 +141,7 @@
                                                                     </dxe:ASPxTextBox>
                                                                     <input type="hidden" id="cusid" runat="server" />
                                                                 </td>
-                                                                <td style="text-align: left;">
+                                                                <td style="text-align: left; display:none;">
                                                                     <img runat="server" id="imgSelectCustomer" onclick="imgSelectCustomerClick();" alt=""
                                                                         src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: top;" />
                                                                 </td>
