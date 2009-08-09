@@ -333,6 +333,7 @@
                     if (isEmpty(pid)) {
                         dxetxtPolicyID.SetValue(e.result);
                     }
+                    gridCarrier.PerformCallback('refresh');
                     alert("保存成功");
             }
         }
@@ -382,7 +383,8 @@
                     setOnlyDxeButtonsUnableOrEnable(false);
                     if (typeof (dxebtntopSave) != 'undefined' && dxebtntopSave != null)
                         dxebtntopSave.SetEnabled(false);
-                        
+
+                    gridCarrier.PerformCallback('refresh');
                     alert("提交成功");
                     break
                 default:

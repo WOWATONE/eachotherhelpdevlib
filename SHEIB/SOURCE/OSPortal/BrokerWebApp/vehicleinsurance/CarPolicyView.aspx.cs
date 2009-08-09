@@ -333,14 +333,17 @@ namespace BrokerWebApp.vehicleinsurance
             dxetxtCapacity.Text = obj.Capacity;
             dxeRegisterDate.Date  = obj.RegisterDate;
             dxetxtCarValue.Text = obj.CarValue;
+            
+            dxetxtCiPremium.Text = String.Format(BasePage.TheTwoSF, obj.CiPremium);
+            dxetxtAciPremium.Text = String.Format(BasePage.TheTwoSF, obj.AciPremium);
+            dxetxtCstPremium.Text = String.Format(BasePage.TheTwoSF, obj.CstPremium);
+            dxetxtCiProcessRate.Text = String.Format(BasePage.TheFourSF, obj.CiProcessRate);
+            dxetxtAciProcessRate.Text = String.Format(BasePage.TheFourSF, obj.AciProcessRate);
+            dxetxtCiProcess.Text = String.Format(BasePage.TheTwoSF, obj.CiProcess);
+            dxetxtAciProcess.Text = String.Format(BasePage.TheTwoSF, obj.AciProcess);
 
-            dxetxtCiPremium.Text = obj.CiPremium.ToString();
-            dxetxtAciPremium.Text = obj.AciPremium.ToString();
-            dxetxtCstPremium.Text = obj.CstPremium.ToString();
-            dxetxtCiProcessRate.Text = obj.CiProcessRate.ToString();
-            dxetxtAciProcessRate.Text = obj.AciProcessRate.ToString();
-            dxetxtCiProcess.Text = obj.CiProcess.ToString();
-            dxetxtAciProcess.Text = obj.AciProcess.ToString();
+            dxetxtTotalPremium.Text = String.Format(BasePage.TheTwoSF, obj.Premium);
+            dxetxtTotalProcess.Text = String.Format(BasePage.TheTwoSF, obj.Process);
 
             this.dxeAuditTime.Date = obj.AuditTime;
             this.dxetxtAuditPerson.Text = obj.AuditPerson;
