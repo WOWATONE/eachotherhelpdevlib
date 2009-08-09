@@ -171,6 +171,8 @@ namespace BrokerWebApp.otherinsurance
                                 
             }
 
+            alwayBasicInfoControlsUnable();
+
         }
 
 
@@ -1403,6 +1405,58 @@ namespace BrokerWebApp.otherinsurance
             objPolicy.AuditPerson = this.CurrentUserID;
             objPolicy.Remark = obj.Remark;
             objPolicy.Save(ModifiedAction.Update);
+
+        }
+
+
+
+        private void alwayBasicInfoControlsUnable()
+        {
+            Boolean val = true;
+            dxetxtPolicyID.ReadOnly = val;
+            dxetxtPolicyID.ClientEnabled = false;
+            dxetxtPolicyID.ReadOnlyStyle.ForeColor = System.Drawing.Color.LightGray;
+            dxetxtPolicyID.ReadOnlyStyle.Border.BorderColor = System.Drawing.Color.LightGray;
+
+            dxeddlProdTypeName.ReadOnly = val;
+            dxeddlProdTypeName.ClientEnabled = false;
+            dxeddlProdTypeName.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+                        
+            dxetxtCustomer.ReadOnly = val;
+            dxetxtCustomer.ClientEnabled = false;
+            dxetxtCustomer.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+
+            dxetxtBeneficiary.ReadOnly = val;
+            dxetxtBeneficiary.ClientEnabled = false;
+            dxetxtBeneficiary.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+
+            dxeddlSourceTypeID.ReadOnly = val;
+            dxeddlSourceTypeID.ClientEnabled = false;
+            dxeddlSourceTypeID.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+
+            dxeddlDeptID.ReadOnly = val;
+            dxeddlDeptID.ClientEnabled = false;
+            dxeddlDeptID.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+
+            dxeddlSalesId.ReadOnly = val;
+            dxeddlSalesId.ClientEnabled = false;
+            dxeddlSalesId.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+
+            dxeddlGatheringType.ReadOnly = val;
+            dxeddlGatheringType.ClientEnabled = false;
+            dxeddlGatheringType.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+
+            dxeddlOperationType.ReadOnly = val;
+            dxeddlOperationType.ClientEnabled = false;
+            dxeddlOperationType.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+
+            dxetxtCreatePerson.ReadOnly = val;
+            dxetxtCreatePerson.ClientEnabled = false;
+            dxetxtCreatePerson.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+
+            dxedtCreateTime.ReadOnly = val;
+            dxedtCreateTime.ClientEnabled = false;
+            dxedtCreateTime.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
 
         }
 
