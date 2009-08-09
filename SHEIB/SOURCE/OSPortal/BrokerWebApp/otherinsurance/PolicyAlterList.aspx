@@ -99,6 +99,16 @@
 	    function policyTab_Click(s, e) {
 	        //
 	    }
+
+	    function Carrier_SelectedIndexChanged(s, e) {
+	        var thejsonstring = dxeddlCarrierId.GetSelectedItem().value;
+	        dxeddlBranchId.PerformCallback(thejsonstring);
+	    }
+
+	    function dxeddlDeptID_SelectedIndexChanged(s, e) {
+	        var thejsonstring = dxeddlDeptID.GetSelectedItem().value;
+	        dxeddlSalesId.PerformCallback(thejsonstring);
+	    }
 	    
     </script>
 </asp:Content>
@@ -142,7 +152,7 @@
                                                     <td style="width:70px;"></td>
                                                     <td style="width:250px;"></td>
                                                     <td style="width:70px;"></td>
-                                                    <td style="width:160px;"></td>
+                                                    <td style="width:250px;"></td>
                                                     <td></td>
                                                 </tr>
                                                 <tr>
@@ -167,13 +177,14 @@
                                                        <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server" Width="240px" DropDownStyle="DropDownList">
 															<Items>
 															</Items>
+															<ClientSideEvents SelectedIndexChanged="dxeddlDeptID_SelectedIndexChanged" />
 														</dxe:ASPxComboBox>                                                         
                                                     </td>
                                                     <td style="text-align:right;">客户经理：</td>
                                                     <td style="text-align:left;">
-                                                        <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="240px" DropDownStyle="DropDownList">
+                                                        <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="240px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
 															<Items>
-															</Items>
+															</Items>															
 														</dxe:ASPxComboBox>
                                                     </td>
                                                     <td style="text-align:right;">投保客户：</td>
@@ -221,11 +232,12 @@
                                                         <dxe:ASPxComboBox ID="dxeddlCarrierId" ClientInstanceName="dxeddlCarrierId" runat="server" Width="240px" DropDownStyle="DropDownList">
 															<Items>
 															</Items>
+															<ClientSideEvents SelectedIndexChanged="Carrier_SelectedIndexChanged" />
 														</dxe:ASPxComboBox>                                                       
                                                     </td>
                                                     <td style="text-align:right;">分支机构：</td>
                                                     <td style="text-align:left;">
-                                                        <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server" Width="240px" DropDownStyle="DropDownList">
+                                                        <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server" Width="240px" DropDownStyle="DropDownList" OnCallback="CarrierBranchIDCallback">
 															<Items>
 															</Items>
 														</dxe:ASPxComboBox>
@@ -398,7 +410,7 @@
                                                                             EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
                                                                             >
                                                                             <SelectParameters> 
-                                                                                 <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" AND ISNULL(B.PolicyStatus,'0') = '0' AND ISNULL(B.PrevPolicyID,'') !=''" />
+                                                                                 <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" AND ISNULL(B.PolicyStatus,'0') = '0' AND ISNULL(B.PrevPolicyID,'') !='' AND ISNULL(B.PolicyType,'0') ='0' " />
                                                                             </SelectParameters>
                                                                         </asp:ObjectDataSource>                                                    
                                                                     </td>
