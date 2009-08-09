@@ -99,7 +99,7 @@
 
 
         function dxebtntopSave_Click(s, e) {
-            debugger;
+            //debugger;
             if (dxeGotDate.GetText() == "") {
                 alert("收款日期不能为空,请输入");
                 return;
