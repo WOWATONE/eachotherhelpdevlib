@@ -115,7 +115,7 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="数据字典" Name="schemasetting/DataDictionary.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="企业目录" Name="CustomerRelation/EnterpriseList.aspx" Visible="false">
+                                <dxnb:NavBarItem Text="企业目录" Name="schemasetting/EnterpriseList.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="系统选项" Name="http://www.google.cn" Visible="false">
                                 </dxnb:NavBarItem>

@@ -109,6 +109,7 @@
     <Compile Include="Report\BO_Report.cs" />
     <Compile Include="SchemaSetting\BO_Branch.cs" />
     <Compile Include="SchemaSetting\BO_Carrier.cs" />
+    <Compile Include="SchemaSetting\BO_CustClassify.cs" />
     <Compile Include="SchemaSetting\BO_Product.cs" />
     <Compile Include="SchemaSetting\BO_ProductType.cs" />
     <Compile Include="SchemaSetting\BO_P_Department.cs" />

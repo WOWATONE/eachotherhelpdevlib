@@ -192,7 +192,7 @@ namespace BrokerWebApp.schemasetting
                         productType.ProdTypeName = this.dxetxtProdTypeName.Text.Trim();
                         if (this._ID == "L0")
                         {
-                            productType.ParentId = "";
+                            productType.ParentId = "0";
                             productType.Layer = 1;
                         }
                         else

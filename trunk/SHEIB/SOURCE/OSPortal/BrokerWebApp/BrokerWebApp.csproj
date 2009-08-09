@@ -757,6 +757,20 @@
     <Compile Include="schemasetting\DepartmentManager.aspx.designer.cs">
       <DependentUpon>DepartmentManager.aspx</DependentUpon>
     </Compile>
+    <Compile Include="schemasetting\Enterprise.aspx.cs">
+      <DependentUpon>Enterprise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\Enterprise.aspx.designer.cs">
+      <DependentUpon>Enterprise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="schemasetting\EnterpriseList.aspx.cs">
+      <DependentUpon>EnterpriseList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="schemasetting\EnterpriseList.aspx.designer.cs">
+      <DependentUpon>EnterpriseList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="schemasetting\ProductType.aspx.cs">
       <DependentUpon>ProductType.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1151,6 +1165,8 @@
     <Content Include="schemasetting\CarrierList.aspx" />
     <Content Include="schemasetting\DataDictionary.aspx" />
     <Content Include="schemasetting\DepartmentEdit.aspx" />
+    <Content Include="schemasetting\Enterprise.aspx" />
+    <Content Include="schemasetting\EnterpriseList.aspx" />
     <Content Include="schemasetting\ProductType.aspx" />
     <Content Include="schemasetting\ProductTypeList.aspx" />
     <Content Include="vehicleinsurance\AskPriceCheckList.aspx" />
