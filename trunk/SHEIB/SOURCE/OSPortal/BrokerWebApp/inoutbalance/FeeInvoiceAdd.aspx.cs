@@ -368,7 +368,7 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.CreateTime = DateTime.Now;
                 objLoad.CreatePerson = this.CurrentUserID;
                 objLoad.AccountTypeID = Convert.ToInt32(BO_P_Code.AccountType.Invoice);
-                objLoad.FeeDate = obj.ReleaseDate;
+                objLoad.FeeDate = dxeReleaseDate.Date;//obj.ReleaseDate;
                 objLoad.AuditStatus = Convert.ToInt32(BO_P_Code.AuditStatus.Appeal).ToString();
                 objLoad.Remark = obj.Remark;
 
@@ -381,7 +381,7 @@ namespace BrokerWebApp.inoutbalance
             else
             {
                 objLoad = new BO_Voucher(obj.ID);
-                objLoad.FeeDate = obj.ReleaseDate;
+                objLoad.FeeDate = dxeReleaseDate.Date;//obj.ReleaseDate;
                 objLoad.Remark = obj.Remark;
 
                 objLoad.CarrierID = obj.Carrier;
