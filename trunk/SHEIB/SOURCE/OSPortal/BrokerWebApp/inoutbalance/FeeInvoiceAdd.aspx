@@ -96,17 +96,15 @@
             gridPolicyItem.PerformCallback(getVoucherId);
         }
 
+
         function getVoucherId() {
-            var result = $("#<%=lblVoucherId.ClientID %>");
-            var id = result[0].innerHTML;
+            var id = dxetxtVoucherId.GetValueString();
             return id;
         }
 
 
         function setVoucherId(value) {
-            //debugger;
-            var result = $("#<%=lblVoucherId.ClientID %>");
-            result[0].innerHTML = value;
+            dxetxtVoucherId.SetValue(value);
         }
 
         function btnCloseClick() {
@@ -387,7 +385,9 @@
                                 流水号：
                             </td>
                             <td style="width: 78%; text-align: left;">
-                                <label id="lblVoucherId" runat="server" />
+                                <dxe:ASPxTextBox ID="dxetxtVoucherId" ClientInstanceName="dxetxtVoucherId" runat="server"
+                                    Width="110px" ReadOnly="true" Enabled="false">
+                                </dxe:ASPxTextBox>
                             </td>
                         </tr>
                         <tr>

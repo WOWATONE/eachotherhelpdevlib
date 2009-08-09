@@ -23,8 +23,8 @@
 
     <script type="text/javascript">
 
-        function cusCheckNessary() {
-            var id = getVoucherID();
+        function cusCheckNessary() {            
+            var id = getVoucherId();
             if (isEmpty(id)) {
                 return true;
             }
@@ -77,33 +77,32 @@
 
         function btnAddPolicyClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=500px;center=yes;help=no";
-            var url = "FeeProcessAddSelect.aspx?ID=" + getVoucherID();
+            var url = "FeeProcessAddSelect.aspx?ID=" + getVoucherId();
 
             window.showModalDialog(url, self, myArguments);
-            var sVoucherID = getVoucherID();
+            var sVoucherID = getVoucherId();
             gridPolicyItem.PerformCallback(sVoucherID);
         }
 
         function btnAddPrintClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=700px;center=yes;help=no";
-            var url = "FeeProcessAddPrint.aspx?ID=" + getVoucherID();
+            var url = "FeeProcessAddPrint.aspx?ID=" + getVoucherId();
 
             window.showModalDialog(url, self, myArguments);
-            var sVoucherID = getVoucherID();
+            var sVoucherID = getVoucherId();
             gridPolicyItem.PerformCallback(sVoucherID);
         }
 
 
-        function getVoucherID() {
-            var result = $("#<%=lblVoucherID.ClientID %>");
-            var id = result[0].innerHTML;
+
+        function getVoucherId() {           
+            var id = dxetxtVoucherId.GetValueString();
             return id;
         }
 
 
-        function setVoucherID(value) {
-            var result = $("#<%=lblVoucherID.ClientID %>");
-            result[0].innerHTML = value;
+        function setVoucherId(value) {
+            dxetxtVoucherId.SetValue(value);
         }
 
         function btnCloseClick() {
@@ -140,9 +139,9 @@
 
         function saveCallbackComplete(s, e) {
             //do nothing;
-            var pid = getVoucherID();
+            var pid = getVoucherId();
             if (isEmpty(pid)) {
-                setVoucherID(e.result);
+                setVoucherId(e.result);
                 cusCompleteEnable();
             }
         }
@@ -224,7 +223,7 @@
                     alert(theresult)
             }
 
-            gridPolicyItem.PerformCallback(getVoucherID());
+            gridPolicyItem.PerformCallback(getVoucherId());
         }
 
 
@@ -236,7 +235,7 @@
 
         function makeInfoJSON(AuditStatus) {
 
-            var ID = getVoucherID();
+            var ID = getVoucherId();
             var Remark = dxetxtRemark.GetValueString();
             var ReleaseDate = dxeReleaseDate.GetValue();
             //var ProcessFeeType = dxeddlProcessFeeType.GetValue();
@@ -286,33 +285,7 @@
 
 
         function gridPolicyItem_EndCallback(s, e) {
-            //var itemVal;
-            //var indexFee = getOColumnIndex("开票金额");
-            //var indexFeeAdjust = getOColumnIndex("本次实收经纪费");
-
-            //var sumPayProcBase = 0;
-            //var sumFee = 0;
-            //var sumFeeAdjust = 0;
-
-            //for (i = 0; i < gridPolicyItem.pageRowCount; i++) {
-            //    if (gridPolicyItem.GetDataRow(i) != null) {
-            //        //sumFee
-            //        itemVal = gridPolicyItem.GetDataRow(i).cells[indexFee].innerText;
-            //        if (isDecimal(itemVal)) {
-            //            sumFee = parseFloat(sumFee) + parseFloat(itemVal);
-            //        }
-            //        //sumFeeAdjust
-            //        itemVal = gridPolicyItem.GetDataRow(i).cells[indexFeeAdjust].innerText;
-            //        if (isDecimal(itemVal)) {
-            //            sumFeeAdjust = parseFloat(sumFeeAdjust) + parseFloat(itemVal);
-            //        }
-            //    }
-            //}
-
-            //var rtn = sumFee.toFixed(2);
-            //dxetxtInvoiceProc.SetValue(rtn);
-            //rtn = sumFeeAdjust.toFixed(2);
-            //dxetxtPayProcBase.SetValue(rtn);
+           
         }
 
         function getOColumnIndex(fieldName) {
@@ -370,7 +343,9 @@
                                 流水号：
                             </td>
                             <td style="width: 78%; text-align: left;">
-                                <label id="lblVoucherID" runat="server" />
+                                <dxe:ASPxTextBox ID="dxetxtVoucherId" ClientInstanceName="dxetxtVoucherId" runat="server"
+                                    Width="110px" ReadOnly="true" Enabled="false">
+                                </dxe:ASPxTextBox>
                             </td>
                         </tr>
                         <tr>

@@ -34,15 +34,16 @@ namespace BrokerWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack && !IsCallback)
             {
                 init();
-                string sVoucherID = Page.Request.QueryString[inputQueryStringIDKey];
-                this.lblVoucherID.InnerHtml = sVoucherID;        
-                loadValue(sVoucherID);
+                this.dxetxtVoucherId.Text = Page.Request.QueryString[inputQueryStringIDKey];
+                loadValue(this.dxetxtVoucherId.Text);
+                dxetxtVoucherId.BackColor = Color.LightGray;
+
             }
-            BindGrid("");
+            string sVocherID = this.dxetxtVoucherId.Text;
+            BindGrid(sVocherID);
         }
 
 
@@ -330,7 +331,7 @@ namespace BrokerWebApp.inoutbalance
             string lsVocherID = "";
             if (sVoucherID == "")
             {
-                lsVocherID = this.lblVoucherID.InnerHtml; 
+                lsVocherID = this.dxetxtVoucherId.Text;
             }
             else
             {

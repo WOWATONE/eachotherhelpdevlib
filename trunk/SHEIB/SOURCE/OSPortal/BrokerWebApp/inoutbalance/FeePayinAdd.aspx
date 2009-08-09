@@ -101,21 +101,19 @@
             window.close();
         }
 
+        function getProcessFeeType() {
+            var ProcessFeeType = dxeddlProcessFeeType.GetValue();
+            return ProcessFeeType;
+        }
+        
         function getVoucherId() {
-            var result = $("#<%=lblVoucherId.ClientID %>");
-            var id = result[0].innerHTML;
+            var id = dxetxtVoucherId.GetValueString();
             return id;
         }
 
-        function getProcessFeeType() {
-            var ProcessFeeType = dxeddlProcessFeeType.GetValue();
-            var result = $("#<%=dxeddlProcessFeeType.ClientID %>");
-            return ProcessFeeType;
-        }
 
         function setVoucherId(value) {
-            var result = $("#<%=lblVoucherId.ClientID %>");
-            result[0].innerHTML = value;
+            dxetxtVoucherId.SetValue(value);
         }
 
         function dxebtntopSave_Click(s, e) {
@@ -305,26 +303,7 @@
         }
 
         function dxeGetGridPolicyItemTotalSummaryCallbackComplete(s, e) {
-            // var retrunval = e.result;
-            // var thesplit_array = retrunval.split(";");
-            // //PayFeeBase + ";" + Fee + ";" + FeeAdjust + ";" + PayProcBase + ";" + PayinFee;
-            // var sumPayFeeBaseVal = parseFloat(thesplit_array[0]);
-            // var sumFeeVal = parseFloat(thesplit_array[1]);
-            // var sumFeeAdjustVal = parseFloat(thesplit_array[2]);
-            // var sumPayProcBaseVal = parseFloat(thesplit_array[3]);
-            // var sumPayinFeeVal = parseFloat(thesplit_array[4]);
 
-
-            // var rtn = sumPayProcBaseVal.toFixed(2);
-            // dxetxtProcessFee.SetValue(rtn);
-            // rtn = sumPayFeeBaseVal.toFixed(2);
-            // dxetxtPayFeeBase.SetValue(rtn);
-            // rtn = sumFeeVal.toFixed(2);
-            // dxetxtFee.SetValue(rtn);
-            // rtn = sumFeeAdjustVal.toFixed(2);
-            // dxetxtFeeAdjust.SetValue(rtn);
-            // rtn = sumPayinFeeVal.toFixed(2);
-            // dxetxtPayinFee.SetValue(rtn);
 
         }
 
@@ -398,7 +377,9 @@
                                 流水号：
                             </td>
                             <td style="width: 78%; text-align: left;">
-                                <label id="lblVoucherId" runat="server" />
+                                <dxe:ASPxTextBox ID="dxetxtVoucherId" ClientInstanceName="dxetxtVoucherId" runat="server"
+                                    Width="110px" ReadOnly="true" Enabled="false">
+                                </dxe:ASPxTextBox>
                             </td>
                         </tr>
                         <tr>
