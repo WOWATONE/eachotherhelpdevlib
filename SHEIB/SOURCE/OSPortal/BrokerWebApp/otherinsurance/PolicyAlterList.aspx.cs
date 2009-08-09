@@ -12,6 +12,7 @@ namespace BrokerWebApp.otherinsurance
 {
     public partial class PolicyAlterList : BasePage
     {
+
         #region Variables
 
         private const String gridKeyName = "KeyGUID";
@@ -170,25 +171,7 @@ namespace BrokerWebApp.otherinsurance
             this.dxeddlBranchId.TextField = "BranchName";
             this.dxeddlBranchId.ValueField = "BranchID";
             this.dxeddlBranchId.DataBind();
-
-            dsList = BusinessObjects.SchemaSetting.BO_Carrier.GetCarrierList("");
-            if (dsList.Tables[0] != null)
-            {
-                foreach (DataRow row in dsList.Tables[0].Rows)
-                {
-                    this.dxeddlCarrierId.Items.Add(row["CarrierNameCn"].ToString().Trim(), row["CarrierID"].ToString().Trim());
-                }
-            }
-
-            dsList = BusinessObjects.SchemaSetting.BO_Branch.GetBranchList("");
-            if (dsList.Tables[0] != null)
-            {
-                foreach (DataRow row in dsList.Tables[0].Rows)
-                {
-                    this.dxeddlBranchId.Items.Add(row["BranchName"].ToString().Trim(), row["BranchID"].ToString().Trim());
-                }
-            }
-
+                        
             dsList = BusinessObjects.SchemaSetting.BO_ProductType.GetProductTypeList();
             if (dsList.Tables[0] != null && dsList.Tables[0].Rows.Count > 0)
             {
