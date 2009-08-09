@@ -284,16 +284,26 @@ namespace BrokerWebApp.vehicleinsurance
             dxeEndDate.Date = obj.EndDate;
             dxetxtSpecial.Text = obj.Special;
 
-            dxetxtCiPremium.Text = obj.CiPremium.ToString();
-            dxetxtAciPremium.Text = obj.AciPremium.ToString();
-            dxetxtCstPremium.Text = obj.CstPremium.ToString();
-            dxetxtCiProcessRate.Text = obj.CiProcessRate.ToString();
-            dxetxtAciProcessRate.Text = obj.AciProcessRate.ToString();
-            dxetxtCiProcess.Text = obj.CiProcess.ToString();
-            dxetxtAciProcess.Text = obj.AciProcess.ToString();
+            dxetxtCarNo.Text = obj.CarNo;
+            dxetxtCarcaseNo.Text = obj.CarcaseNo;
+            dxetxtUseCharacter.Text = obj.UseCharacter;
+            dxetxtEngineNo.Text = obj.EngineNo;
+            dxetxtCarUser.Text = obj.CarUser;
+            dxetxtCapacity.Text = obj.Capacity;
+            dxeRegisterDate.Date = obj.RegisterDate;
+            dxetxtCarValue.Text = obj.CarValue;          
+                      
+            
+            dxetxtCiPremium.Text = String.Format(BasePage.TheTwoSF, obj.CiPremium);
+            dxetxtAciPremium.Text = String.Format(BasePage.TheTwoSF, obj.AciPremium);
+            dxetxtCstPremium.Text = String.Format(BasePage.TheTwoSF, obj.CstPremium);
+            dxetxtCiProcessRate.Text = String.Format(BasePage.TheFourSF, obj.CiProcessRate);
+            dxetxtAciProcessRate.Text = String.Format(BasePage.TheFourSF, obj.AciProcessRate);
+            dxetxtCiProcess.Text = String.Format(BasePage.TheTwoSF, obj.CiProcess);
+            dxetxtAciProcess.Text = String.Format(BasePage.TheTwoSF, obj.AciProcess);
 
-            //dxetxtTotalPremium.Text = obj.;            
-            //dxetxtTotalProcess.Text = obj;
+            dxetxtTotalPremium.Text = String.Format(BasePage.TheTwoSF, obj.Premium);
+            dxetxtTotalProcess.Text = String.Format(BasePage.TheTwoSF, obj.Process);
 
         }
 
@@ -326,58 +336,115 @@ namespace BrokerWebApp.vehicleinsurance
 
         private void switchBasicInfoControlsEnable(Boolean val)
         {
-            dxetxtPolicyID.Enabled = val;
+            val = false;
+            //dxetxtPolicyID.ReadOnly= true;
+            dxetxtPolicyID.ClientEnabled = val;
+            dxetxtPolicyID.DisabledStyle.ForeColor = System.Drawing.Color.LightGray;
+            dxetxtPolicyID.DisabledStyle.Border.BorderColor = System.Drawing.Color.LightGray;
+            
             //dxetxtPolicyNo.Enabled = val;
             //dxetxtAciPolicyNo.Enabled = val;
-            dxetxtAskPriceID.Enabled = val;
-            dxeddlCarrierId.Enabled = val;
-            dxeddlBranchId.Enabled = val;
-            dxetxtCarrierSales.Enabled = val;
 
-            dxetxtCustomer.Enabled = val;
+            dxetxtAskPriceID.ClientEnabled = val;
+            dxetxtAskPriceID.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
 
-            dxetxtBeneficiary.Enabled = val;
+            dxeddlCarrierId.ClientEnabled = val;
+            dxeddlCarrierId.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
 
-            dxeddlSourceTypeID.Enabled = val;
-            dxeddlDeptID.Enabled = val;
-            dxeddlSalesId.Enabled = val;
-            dxeddlGatheringType.Enabled = val;
-            dxeddlOperationType.Enabled = val;
-            dxeStartDate.Enabled = val;
-            dxeEndDate.Enabled = val;
-            dxetxtSpecial.Enabled = val;
-            dxetxtCreatePerson.Enabled = val;
-            dxeCreateTime.Enabled = val;
+            dxeddlBranchId.ClientEnabled = val;
+            dxeddlBranchId.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
 
-            dxetxtCarNo.Enabled = val;
-            dxetxtCarNo.Visible = val;
-            dxetxtCarcaseNo.Enabled = val;
-            dxetxtCarcaseNo.Visible = val;
-            dxetxtUseCharacter.Enabled = val;
-            dxetxtUseCharacter.Visible = val;
-            dxetxtEngineNo.Enabled = val;
-            dxetxtEngineNo.Visible = val;
-            dxetxtCarUser.Enabled = val;
-            dxetxtCarUser.Visible = val;
-            dxetxtCapacity.Enabled = val;
-            dxetxtCapacity.Visible = val;
-            dxeRegisterDate.Enabled = val;
-            dxeRegisterDate.Visible = val;
-            dxetxtCarValue.Enabled = val;
-            dxetxtCarValue.Visible = val;
+            dxetxtCarrierSales.ClientEnabled = val;
+            dxetxtCarrierSales.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
 
-            dxetxtCiPremium.Enabled = val;
-            dxetxtAciPremium.Enabled = val;
-            dxetxtCstPremium.Enabled = val;
-            dxetxtTotalPremium.Enabled = val;
-            dxetxtTotalPremium.Visible = val;
+            dxetxtCustomer.ClientEnabled = val;
+            dxetxtCustomer.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
 
-            dxetxtCiProcessRate.Enabled = val;
-            dxetxtAciProcessRate.Enabled = val;
-            dxetxtCiProcess.Enabled = val;
-            dxetxtAciProcess.Enabled = val;
-            dxetxtTotalProcess.Enabled = val;
-            dxetxtTotalProcess.Visible = val;
+            dxetxtBeneficiary.ClientEnabled = val;
+            dxetxtBeneficiary.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxeddlSourceTypeID.ClientEnabled = val;
+            dxeddlSourceTypeID.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxeddlDeptID.ClientEnabled = val;
+            dxeddlDeptID.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxeddlSalesId.ClientEnabled = val;
+            dxeddlSalesId.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxeddlGatheringType.ClientEnabled = val;
+            dxeddlGatheringType.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxeddlOperationType.ClientEnabled = val;
+            dxeddlOperationType.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxeStartDate.ClientEnabled = val;
+            dxeStartDate.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxeEndDate.ClientEnabled = val;
+            dxeEndDate.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtSpecial.ClientEnabled = val;
+            dxetxtSpecial.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtCreatePerson.ClientEnabled = val;
+            dxetxtCreatePerson.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxeCreateTime.ClientEnabled = val;
+            dxeCreateTime.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtCarNo.ClientEnabled = val;
+            dxetxtCarNo.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtCarcaseNo.ClientEnabled = val;
+            dxetxtCarcaseNo.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtUseCharacter.ClientEnabled = val;
+            dxetxtUseCharacter.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtEngineNo.ClientEnabled = val;
+            dxetxtEngineNo.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtCarUser.ClientEnabled = val;
+            dxetxtCarUser.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtCapacity.ClientEnabled = val;
+            dxetxtCapacity.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxeRegisterDate.ClientEnabled = val;
+            dxeRegisterDate.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtCarValue.ClientEnabled = val;
+            dxetxtCarValue.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtCiPremium.ClientEnabled = val;
+            dxetxtCiPremium.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtAciPremium.ClientEnabled = val;
+            dxetxtAciPremium.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtCstPremium.ClientEnabled = val;
+            dxetxtCstPremium.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtTotalPremium.ClientEnabled = val;
+            dxetxtTotalPremium.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+
+            dxetxtCiProcessRate.ClientEnabled = val;
+            dxetxtCiProcessRate.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtAciProcessRate.ClientEnabled = val;
+            dxetxtAciProcessRate.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtCiProcess.ClientEnabled = val;
+            dxetxtCiProcess.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtAciProcess.ClientEnabled = val;
+            dxetxtAciProcess.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+
+            dxetxtTotalProcess.ClientEnabled = val;
+            dxetxtTotalProcess.DisabledStyle.CopyFrom(dxetxtPolicyID.DisabledStyle);
+            
         }
 
 
