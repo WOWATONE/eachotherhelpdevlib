@@ -86,15 +86,6 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// dxetxtPolicyID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyID;
-        
-        /// <summary>
         /// dxetxtPolicyNo control.
         /// </summary>
         /// <remarks>
@@ -102,6 +93,15 @@ namespace BrokerWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyNo;
+        
+        /// <summary>
+        /// dxetxtPolicyID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyID;
         
         /// <summary>
         /// dxetxtAciPolicyNo control.
@@ -165,15 +165,6 @@ namespace BrokerWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden cusid;
-        
-        /// <summary>
-        /// imgNewCustomer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgNewCustomer;
         
         /// <summary>
         /// imgSelectCustomer control.
@@ -257,6 +248,15 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeEndDate;
         
         /// <summary>
+        /// dxetxtSpecial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtSpecial;
+        
+        /// <summary>
         /// dxetxtCreatePerson control.
         /// </summary>
         /// <remarks>
@@ -273,15 +273,6 @@ namespace BrokerWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeCreateTime;
-        
-        /// <summary>
-        /// dxetxtSpecial control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtSpecial;
         
         /// <summary>
         /// CollapsiblePanelExtender1 control.
