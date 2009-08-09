@@ -38,9 +38,8 @@ namespace BrokerWebApp.inoutbalance
                 init();
                 this.dxetxtVoucherId.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 loadValue(this.dxetxtVoucherId.Text);
-                
-            }
-            
+                dxetxtVoucherId.BackColor = Color.LightGray;                
+            }            
             BindGrid("");
         }
 

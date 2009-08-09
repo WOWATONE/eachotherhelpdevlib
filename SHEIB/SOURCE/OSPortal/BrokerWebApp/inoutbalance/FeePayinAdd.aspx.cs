@@ -31,14 +31,18 @@ namespace BrokerWebApp.inoutbalance
         #endregion Variables
 
         protected void Page_Load(object sender, EventArgs e)
-        {      
+        {
+
             if (!IsPostBack && !IsCallback)
             {
                 init();
-                this.lblVoucherId.InnerHtml = Page.Request.QueryString[inputQueryStringIDKey];
-                loadValue(this.lblVoucherId.InnerHtml);
-                BindGrid("");
+                this.dxetxtVoucherId.Text = Page.Request.QueryString[inputQueryStringIDKey];
+                loadValue(this.dxetxtVoucherId.Text);
+                dxetxtVoucherId.BackColor = Color.LightGray;
+
             }
+            string sVocherID = this.dxetxtVoucherId.Text;
+            BindGrid(sVocherID);
 
         }
 
@@ -376,7 +380,7 @@ namespace BrokerWebApp.inoutbalance
             string lsVocherID = "";
             if (sVoucherID == "")
             {
-                lsVocherID = this.lblVoucherId.InnerHtml;
+                lsVocherID = this.dxetxtVoucherId.Text;
             }
             else
             {

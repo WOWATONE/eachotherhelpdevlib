@@ -243,41 +243,7 @@
         }
 
         function gridPolicyItem_EndCallback(s, e) {
-
-            //            var itemVal;
-            //            var indexPayFeeBase = getOColumnIndex("本期应收保费");
-            //            var indexFee = getOColumnIndex("本次实收保费");
-            //            var indexFeeAdjust = getOColumnIndex("金额调整");
-            //            
-            //            var sumPayFeeBase = 0;
-            //            var sumFee = 0;
-            //            var sumFeeAdjust = 0;
-            //            
-            //            for (i = 0; i < gridPolicyItem.pageRowCount; i++) {
-            //                //PayFeeBase
-            //                itemVal = gridPolicyItem.GetDataRow(i).cells[indexPayFeeBase].innerText;
-            //                if (isDecimal(itemVal)) {
-            //                    sumPayFeeBase = parseFloat(sumPayFeeBase) + parseFloat(itemVal);
-            //                }
-            //                //sumFee
-            //                itemVal = gridPolicyItem.GetDataRow(i).cells[indexFee].innerText;
-            //                if (isDecimal(itemVal)) {
-            //                    sumFee = parseFloat(sumFee) + parseFloat(itemVal);
-            //                }
-
-            //                //sumFeeAdjust
-            //                itemVal = gridPolicyItem.GetDataRow(i).cells[indexFeeAdjust].innerText;
-            //                if (isDecimal(itemVal)) {
-            //                    sumFeeAdjust = parseFloat(sumFeeAdjust) + parseFloat(itemVal);
-            //                }
-            //            }
-
-            //            var rtn = sumPayFeeBase.toFixed(2);
-            //            dxetxtPayFee.SetValue(rtn);
-            //            rtn = sumFee.toFixed(2);
-            //            dxetxtFee.SetValue(rtn);
-            //            rtn = sumFeeAdjust.toFixed(2);
-            //            dxetxtFeeAdjust.SetValue(rtn);
+           
         }
 
         function getOColumnIndex(fieldName) {
@@ -351,7 +317,7 @@
                                 流水号：
                             </td>
                             <td style="width: 78%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtVoucherId" ClientInstanceName="dxetxtVoucherId" runat="server" Width="110px" ReadOnly="true"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtVoucherId" ClientInstanceName="dxetxtVoucherId" runat="server" Width="110px" ReadOnly="true" Enabled="false"></dxe:ASPxTextBox>
                             </td>
                         </tr>
                         <tr>
