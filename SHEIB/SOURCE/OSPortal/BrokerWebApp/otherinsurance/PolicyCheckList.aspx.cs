@@ -54,8 +54,8 @@ namespace BrokerWebApp.otherinsurance
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             GridViewCommandColumn theCommandColumn = getCommandColumnLoop();
-                
-            string lsWhere = "";
+
+            string lsWhere = " AND ISNULL(B.PolicyType,'0') ='0' ";
 
             if (this.dxeddlCheckState.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCheckState.SelectedItem.Value.ToString()))
             {

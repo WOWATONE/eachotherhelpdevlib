@@ -380,12 +380,15 @@
                     //resultMsg.style.fontsize = "9px";
                     //resultMsg.innerHTML = "提交成功";
                     setOnlyDxeButtonsUnableOrEnable(false);
+                    if (typeof (dxebtntopSave) != 'undefined' && dxebtntopSave != null)
+                        dxebtntopSave.SetEnabled(false);
+                        
                     alert("提交成功");
                     break
                 default:
-                    resultMsg.style.display = "inline";
-                    resultMsg.style.fontsize = "9px";
-                    resultMsg.innerHTML = theresult;
+                    //resultMsg.style.display = "inline";
+                    //resultMsg.style.fontsize = "9px";
+                    //resultMsg.innerHTML = theresult;
                     alert(theresult);
             }
 
@@ -448,14 +451,6 @@
                 //
             }
         }
-
-        function imgNewCustomerClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
-            //window.showModalDialog("NewCustomer.aspx", self, myArguments);
-
-        }
-
-
 
         function Policy(AuditOrNot, Beneficiary, CarrierSales, ConversionRate, Coverage,
             Currency, CustomerID, DeptId, EndDate,
@@ -1018,10 +1013,6 @@
                                                                         Width="125px">
                                                                     </dxe:ASPxTextBox>
                                                                     <input type="hidden" id="cusid" runat="server" />
-                                                                </td>
-                                                                <td>
-                                                                    <img runat="server" id="imgNewCustomer" onclick="imgNewCustomerClick();" alt="" src="../images/add_user_icon.png"
-                                                                        style="width: 20px; height: 20px; vertical-align: top;" />
                                                                 </td>
                                                                 <td>
                                                                     <img runat="server" id="imgSelectCustomer" onclick="imgSelectCustomerClick();" alt=""

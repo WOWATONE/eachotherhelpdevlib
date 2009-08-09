@@ -51,7 +51,7 @@ namespace BrokerWebApp.otherinsurance
         #region Page Events
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {            
             if (Page.IsPostBack)
             {
                 pm = ViewState[currentPageModeKey] as Nullable<PageMode>;
@@ -634,15 +634,17 @@ namespace BrokerWebApp.otherinsurance
                     process = String.Format(BasePage.TheTwoSF, theValueList[6]);
 
                 if (theValueList[7] == null)
+                {
                     processRate = "";
+                }
                 else
                     processRate = String.Format(BasePage.TheTwoSF, theValueList[7]);
-                
+
                 if (theValueList[8] == null)
                     processBase = "";
                 else
                     processBase = String.Format(BasePage.TheTwoSF, theValueList[8]);
-                
+
 
                 ListEditItem theselected;
                 if (this.gridCarrierStartEdit)
@@ -679,6 +681,10 @@ namespace BrokerWebApp.otherinsurance
                     dxecbGridCarrierBranchID.ValueField = "BranchID";
                     dxecbGridCarrierBranchID.DataBind();
                 }
+            }
+            else
+            {
+                dxetxtGridCarrierProcessRate.Text = this.dxetxtProcessRate.Text;
             }
 
         }

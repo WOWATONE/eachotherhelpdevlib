@@ -14,7 +14,7 @@ namespace BrokerWebApp.SiteMastePages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("zh-CN"); 
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("zh-CN");            
         }
     }
 }
