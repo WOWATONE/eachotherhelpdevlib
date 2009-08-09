@@ -69,6 +69,11 @@ namespace BrokerWebApp.IntegrateSearch
             this.dxeddlBranchId.ValueField = "BranchID";
             this.dxeddlBranchId.DataBind();
 
+            this.dxeddlPolicyStatus.DataSource = BusinessObjects.BO_P_Code.GetCodeListByCodeTypeID(BusinessObjects.BO_P_Code.PCodeType.PolicyStatus.ToString());
+            this.dxeddlPolicyStatus.TextField = "CodeName";
+            this.dxeddlPolicyStatus.ValueField = "CodeID";
+            this.dxeddlPolicyStatus.DataBind();
+
             //dsList = BusinessObjects.SchemaSetting.BO_Carrier.GetCarrierList("");
             //if (dsList.Tables[0] != null)
             //{
@@ -172,6 +177,16 @@ namespace BrokerWebApp.IntegrateSearch
                 lsWhere = lsWhere + " and  a.ProdTypeID like ('%" + dxeddlProdTypeName.SelectedItem.Value.ToString() + "%') ";
             }
 
+            if (this.dxeddlPolicyStatus.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyStatus.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " AND ISNULL(a.PolicyStatus,'0') = '" + dxeddlPolicyStatus.SelectedItem.Value.ToString() + "' ";
+            }
+
+            if (dxetxtCustomer.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomer.Text + "%' and CustID=a.CustomerID) ";
+            }
+
             string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");
             string lsEndDate = dxeEndDate.Date.ToString("yyyy-MM-dd");
             if ((dxeStartDate.Text.Trim() != "") && (dxeEndDate.Text.Trim() != ""))
@@ -190,5 +205,33 @@ namespace BrokerWebApp.IntegrateSearch
         {
             BindGrid();
         }
+
+
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+        }
+
+        protected void dxeddlBranchId_Callback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
+            thecb.TextField = "BranchName";
+            thecb.ValueField = "BranchID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+        }
+
     }
 }
