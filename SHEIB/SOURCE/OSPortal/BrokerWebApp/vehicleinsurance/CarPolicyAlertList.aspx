@@ -129,8 +129,6 @@
                             <td style="width: 250px; text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server" Width="240px"></dxe:ASPxTextBox> 
                             </td>
-                            <td>
-                            </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
@@ -158,8 +156,6 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCarCount" ClientInstanceName="dxetxtCarCount" runat="server" Width="240px"></dxe:ASPxTextBox>
                             </td>
-                            <td>
-                            </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
@@ -186,8 +182,6 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="240px"></dxe:ASPxTextBox>
                             </td>
-                            <td>
-                            </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
@@ -209,11 +203,10 @@
 									</Items>
 								</dxe:ASPxComboBox>
                             </td>
-                            <td style="text-align: right;">
+                            <td style="text-align: right;">±£µ¥±àºÅ£º
                             </td>
                             <td style="text-align: left;">
-                            </td>
-                            <td>
+                                <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server" Width="240px"></dxe:ASPxTextBox>
                             </td>
                         </tr>
                         <tr>
@@ -241,7 +234,6 @@
                                 <input type="reset" value="ÖØÖÃ" name="btnReset" id="btnReset" class="input_2" />&nbsp;
                                 <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" />
                             </td>
-                            <td></td>
                         </tr>
                     </table>        
                                      

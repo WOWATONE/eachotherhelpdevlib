@@ -134,6 +134,11 @@ namespace BrokerWebApp.vehicleinsurance
                 where += " and B.CreateTime<='" + this.dxeEndDate.Date + "'";
             }
 
+            if (!String.IsNullOrEmpty(this.dxetxtPolicyNo.Text.Trim()))
+            {
+                where += " and B.PolicyNo like '%" + this.dxetxtPolicyNo.Text.Trim() + "%'";
+            }
+
             Parameter pt;
             pt = this.ds_gridSearchResult.SelectParameters[0];
 
