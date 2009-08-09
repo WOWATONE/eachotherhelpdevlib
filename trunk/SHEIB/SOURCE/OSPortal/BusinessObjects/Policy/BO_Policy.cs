@@ -762,6 +762,21 @@ namespace BusinessObjects.Policy
         }
 
 
+        public static void ChangePolicyCarrierRateValue(String id)
+        {
+            BO_Policy objPolicy = new BO_Policy(id);
+            List<BO_PolicyCarrier> thelist = BO_PolicyCarrier.FetchListByPolicy(id);
+            foreach (BO_PolicyCarrier item in thelist)
+            {
+                item.Premium = objPolicy.Premium * item.PolicyRate / 100;
+                item.PremiumBase = objPolicy.PremiumBase * item.PolicyRate / 100;
+                item.Process = objPolicy.Process * item.PolicyRate / 100;
+                item.ProcessBase = objPolicy.ProcessBase * item.PolicyRate / 100;
+                item.Save(ModifiedAction.Update);
+            }
+        }
+
+
         public static DataSet GetPolicyFee(string sPolicyID)
         {
 
@@ -1206,8 +1221,12 @@ namespace BusinessObjects.Policy
             try
             {
                 _db.ExecuteNonQuery(dbCommand);
-                
-                if (needChangePeriod) ChangePeriod(this.PolicyID);
+
+                if (needChangePeriod)
+                {
+                    ChangePeriod(this.PolicyID);
+                    ChangePolicyCarrierRateValue(this.PolicyID);
+                }
 
             }
             catch (Exception ex)
