@@ -780,10 +780,10 @@ namespace BusinessObjects.Policy
         public static DataSet GetPolicyFee(string sPolicyID)
         {
 
-            //DbCommand dbCommand = _db.GetStoredProcCommand("dbo.spGetPolicyFee");
-            //_db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, sPolicyID);
-            //return _db.ExecuteDataSet(dbCommand);
-            return null;
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.spGetPolicyFee");
+            _db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, sPolicyID);
+            return _db.ExecuteDataSet(dbCommand);
+            //return null;
         }
 
 
