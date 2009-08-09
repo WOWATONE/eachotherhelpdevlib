@@ -731,6 +731,8 @@ namespace BrokerWebApp.vehicleinsurance
             this.dxetxtAuditPerson.Text = obj.AuditPerson;
             this.dxeMemo.Text = obj.Remark;
             
+            dxetxtCreatePerson.Text = obj.CreatePerson;
+            dxeCreateTime.Date = obj.CreateTime;
             
 
         }

@@ -348,8 +348,9 @@ namespace BrokerWebApp.vehicleinsurance
             this.dxeAuditTime.Date = obj.AuditTime;
             this.dxetxtAuditPerson.Text = obj.AuditPerson;
             this.dxeMemo.Text = obj.Remark;
-            //dxetxtTotalPremium.Text = obj.;            
-            //dxetxtTotalProcess.Text = obj;
+
+            dxetxtCreatePerson.Text = obj.CreatePerson;
+            dxeCreateTime.Date = obj.CreateTime;
 
         }
 
