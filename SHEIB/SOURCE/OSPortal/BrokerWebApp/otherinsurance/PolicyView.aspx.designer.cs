@@ -158,15 +158,6 @@ namespace BrokerWebApp.otherinsurance {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden cusid;
         
         /// <summary>
-        /// imgNewCustomer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgNewCustomer;
-        
-        /// <summary>
         /// imgSelectCustomer control.
         /// </summary>
         /// <remarks>
@@ -687,5 +678,32 @@ namespace BrokerWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridInOutBalance;
+        
+        /// <summary>
+        /// npNewExecuteAction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npNewExecuteAction;
+        
+        /// <summary>
+        /// tblNewExecuteAction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable tblNewExecuteAction;
+        
+        /// <summary>
+        /// dxeClose control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxeClose;
     }
 }
