@@ -507,7 +507,7 @@
                                                                             EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
                                                                             >
                                                                             <SelectParameters> 
-                                                                                 <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" AND ISNULL(B.PolicyStatus,'0') = '0' AND ISNULL(B.PrevPolicyID,'') ='' AND ISNULL(B.PolicyType,'0') ='0'" />
+                                                                                 <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" AND ISNULL(B.PolicyStatus,'0') = '2' AND ISNULL(B.PrevPolicyID,'') ='' AND ISNULL(B.PolicyType,'0') ='0'" />
                                                                             </SelectParameters>
                                                                         </asp:ObjectDataSource>                                                    
                                                                     </td>

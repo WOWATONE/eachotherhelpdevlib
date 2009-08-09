@@ -273,7 +273,7 @@
             var SourceTypeID = dxeddlSourceTypeID.GetValue();
             var Special = null;
             var StartDate = dxeStartDate.GetValue();
-            
+            var AltNo = dxetxtAltNo.GetValueString();
 
             var plc = new Policy(AuditOrNot,
             Beneficiary, CarrierSales, ConversionRate, Coverage,
@@ -283,7 +283,7 @@
             PolicyStatus, Premium, PremiumBase, PremiumRate,
             Process, ProcessBase, ProcessRate, ProdTypeID,
             Remark, SalesId, SignDate, SourceTypeID, Special,
-            StartDate);
+            StartDate, AltNo);
 
             //deserialize JSON string, make a JSON object
             //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
@@ -349,6 +349,9 @@
                     //resultMsg.style.fontsize = "9px";
                     //resultMsg.innerHTML = "提交成功";
                     setOnlyAllDxeButtonsUnableOrEnable(false);
+                    if (typeof (dxebtntopSave) != 'undefined' && dxebtntopSave != null)
+                        dxebtntopSave.SetEnabled(false);
+                        
                     alert("提交成功");
                     break
                 default:
@@ -425,7 +428,7 @@
             PolicyStatus, Premium, PremiumBase, PremiumRate,
             Process, ProcessBase, ProcessRate, ProdTypeID,
             Remark, SalesId, SignDate, SourceTypeID, Special,
-            StartDate) {
+            StartDate, AltNo) {
 
 
             if (!isEmpty(AuditOrNot))
@@ -517,6 +520,9 @@
 
             if (!isEmpty(StartDate))
                 this.StartDate = StartDate;
+
+            if (!isEmpty(AltNo))
+                this.AltNo = AltNo;
         }
 
 
@@ -661,6 +667,7 @@
             var SourceTypeID = null;
             var Special = null;
             var StartDate = null;
+            var AltNo = null;
 
             var plc = new Policy(AuditOrNot,
             Beneficiary, CarrierSales, ConversionRate, Coverage,
@@ -670,7 +677,7 @@
             PolicyStatus, Premium, PremiumBase, PremiumRate,
             Process, ProcessBase, ProcessRate, ProdTypeID,
             Remark, SalesId, SignDate, SourceTypeID, Special,
-            StartDate);
+            StartDate, AltNo);
 
             var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
 

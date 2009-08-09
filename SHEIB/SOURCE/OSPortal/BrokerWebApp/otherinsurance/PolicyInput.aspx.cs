@@ -1237,8 +1237,8 @@ namespace BrokerWebApp.otherinsurance
                             
                 obj.Currency=theJosn.Currency; 
                 obj.CustomerID=theJosn.CustomerID; 
-                obj.DeptId=theJosn.DeptId; 
-                obj.EndDate=theJosn.EndDate;
+                obj.DeptId=theJosn.DeptId;
+                obj.EndDate = this.dxeEndDate.Date; //theJosn.EndDate;
                             
                 obj.FlagReinsure=theJosn.FlagReinsure; 
                 obj.FlagTogether=theJosn.FlagTogether; 
@@ -1261,7 +1261,7 @@ namespace BrokerWebApp.otherinsurance
                 obj.SignDate=theJosn.SignDate;
                 obj.SourceTypeID=theJosn.SourceTypeID; 
                 obj.Special=theJosn.Special;
-                obj.StartDate = theJosn.StartDate;
+                obj.StartDate = this.dxeStartDate.Date; //theJosn.StartDate;
 
                 obj.CreatePerson = this.CurrentUserID;
                 obj.CreateTime = DateTime.Now;
@@ -1280,7 +1280,7 @@ namespace BrokerWebApp.otherinsurance
                 obj.Currency = theJosn.Currency;
                 obj.CustomerID = theJosn.CustomerID;
                 obj.DeptId = theJosn.DeptId;
-                obj.EndDate = theJosn.EndDate;
+                obj.EndDate = this.dxeEndDate.Date; //theJosn.EndDate;
 
                 obj.FlagReinsure = theJosn.FlagReinsure;
                 obj.FlagTogether = theJosn.FlagTogether;
@@ -1304,7 +1304,7 @@ namespace BrokerWebApp.otherinsurance
                 obj.SignDate = theJosn.SignDate;
                 obj.SourceTypeID = theJosn.SourceTypeID;
                 obj.Special = theJosn.Special;
-                obj.StartDate = theJosn.StartDate;
+                obj.StartDate = this.dxeStartDate.Date; //theJosn.StartDate;
 
                 obj.ModifyPerson  = this.CurrentUserID;
                 obj.ModifyTime  = DateTime.Now;

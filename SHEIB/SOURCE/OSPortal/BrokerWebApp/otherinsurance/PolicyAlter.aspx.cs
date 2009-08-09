@@ -350,6 +350,10 @@ namespace BrokerWebApp.otherinsurance
                     dxecbGridCarrierBranchID.DataBind();
                 }
             }
+            else
+            {
+                dxetxtGridCarrierProcessRate.Text = this.dxetxtProcessRate.Text;
+            }
 
         }
 
@@ -926,7 +930,7 @@ namespace BrokerWebApp.otherinsurance
                 obj.Currency = theJosn.Currency;
                 obj.CustomerID = theJosn.CustomerID;
                 obj.DeptId = theJosn.DeptId;
-                obj.EndDate = theJosn.EndDate;
+                obj.EndDate = this.dxeEndDate.Date;//theJosn.EndDate;
 
                 obj.FlagReinsure = theJosn.FlagReinsure;
                 obj.FlagTogether = theJosn.FlagTogether;
@@ -949,10 +953,12 @@ namespace BrokerWebApp.otherinsurance
                 obj.SignDate = theJosn.SignDate;
                 obj.SourceTypeID = theJosn.SourceTypeID;
                 obj.Special = theJosn.Special;
-                obj.StartDate = theJosn.StartDate;
+                obj.StartDate = this.dxeStartDate.Date;//theJosn.StartDate;
 
                 obj.CreatePerson = this.CurrentUserID;
                 obj.CreateTime = DateTime.Now;
+
+                obj.AltNO = theJosn.AltNo;
 
                 obj.Save(ModifiedAction.Insert);
                 copyCarrierFromPrePolicy(obj.PrevPolicyID, obj.PolicyID);
@@ -969,7 +975,7 @@ namespace BrokerWebApp.otherinsurance
                 obj.Currency = theJosn.Currency;
                 obj.CustomerID = theJosn.CustomerID;
                 obj.DeptId = theJosn.DeptId;
-                obj.EndDate = theJosn.EndDate;
+                obj.EndDate = this.dxeEndDate.Date;//theJosn.EndDate;
 
                 obj.FlagReinsure = theJosn.FlagReinsure;
                 obj.FlagTogether = theJosn.FlagTogether;
@@ -992,10 +998,12 @@ namespace BrokerWebApp.otherinsurance
                 obj.SignDate = theJosn.SignDate;
                 obj.SourceTypeID = theJosn.SourceTypeID;
                 obj.Special = theJosn.Special;
-                obj.StartDate = theJosn.StartDate;
+                obj.StartDate = this.dxeStartDate.Date;//theJosn.StartDate;
 
                 obj.ModifyPerson = this.CurrentUserID;
                 obj.ModifyTime = DateTime.Now;
+
+                obj.AltNO = theJosn.AltNo;
 
                 obj.Save(ModifiedAction.Update);
             }
@@ -1183,6 +1191,7 @@ namespace BrokerWebApp.otherinsurance
             this.dxetxtPremiumBase.Text = String.Format(BasePage.TheTwoSF, obj.PremiumBase);
             this.dxetxtProcessBase.Text = String.Format(BasePage.TheTwoSF, obj.ProcessBase);
 
+            this.dxetxtAltNo.Text = obj.AltNO;
 
             return prePolicyID;
         }
@@ -1272,6 +1281,7 @@ namespace BrokerWebApp.otherinsurance
 
             this.dxetxtStage.Text = obj.PeriodTimes.ToString();
 
+            this.dxetxtAltNo.Text = obj.AltNO;
 
         }
 
@@ -1328,11 +1338,11 @@ namespace BrokerWebApp.otherinsurance
                 newobj.BranchID = item.BranchID;
 
                 newobj.PolicyRate = item.PolicyRate;
-                newobj.Premium = item.Premium;
-                newobj.PremiumBase = item.PremiumBase;
-                newobj.ProcessRate = item.ProcessRate;
-                newobj.Process = item.Process;
-                newobj.ProcessBase = item.ProcessBase;
+                newobj.Premium = 0;//item.Premium;
+                newobj.PremiumBase = 0;// item.PremiumBase;
+                newobj.ProcessRate = 0;// item.ProcessRate;
+                newobj.Process = 0;//item.Process;
+                newobj.ProcessBase = 0;// item.ProcessBase;
                 newobj.Save(ModifiedAction.Insert);
             }
         }
@@ -1495,6 +1505,9 @@ namespace BrokerWebApp.otherinsurance
 
             [DataMember]
             public Boolean AuditOrNot { get; set; }
+
+            [DataMember]
+            public string AltNo { get; set; }
 
         }
 
