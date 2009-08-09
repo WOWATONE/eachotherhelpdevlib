@@ -947,7 +947,7 @@
                                                     </td>
                                                     <td style="width: 90px;">
                                                     </td>
-                                                    <td style="width: 200px;">
+                                                    <td style="width: 250px;">
                                                     </td>
                                                     <td style="width: 90px;">
                                                     </td>
@@ -1006,7 +1006,7 @@
                                                         Õ∂±£»À£∫
                                                     </td>
                                                     <td style="text-align: left;">
-                                                        <table style="margin-left: -3px; width: 175px;">
+                                                        <table style="margin-left: -3px; width: 245px;">
                                                             <tr>
                                                                 <td>
                                                                     <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server"
@@ -1014,7 +1014,7 @@
                                                                     </dxe:ASPxTextBox>
                                                                     <input type="hidden" id="cusid" runat="server" />
                                                                 </td>
-                                                                <td>
+                                                                <td style="text-align: left;">
                                                                     <img runat="server" id="imgSelectCustomer" onclick="imgSelectCustomerClick();" alt=""
                                                                         src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: top;" />
                                                                 </td>
@@ -1092,7 +1092,7 @@
                                                             <tr>
                                                                 <td>
                                                                     <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server"
-                                                                        Width="95px">
+                                                                        Width="105px">
                                                                         <ClientSideEvents DateChanged="function(s, e) { dxeStartDate_DateChanged(s,e); }" />
                                                                     </dxe:ASPxDateEdit>
                                                                 </td>
@@ -1101,7 +1101,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server"
-                                                                        Width="95px">
+                                                                        Width="105px">
                                                                     </dxe:ASPxDateEdit>
                                                                 </td>
                                                             </tr>
