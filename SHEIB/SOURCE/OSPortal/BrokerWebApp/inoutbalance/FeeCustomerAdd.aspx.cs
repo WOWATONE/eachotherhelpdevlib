@@ -313,7 +313,7 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.CreateTime = DateTime.Now;
                 objLoad.CreatePerson = this.CurrentUserID;
                 objLoad.AccountTypeID = Convert.ToInt32(BO_P_Code.AccountType.FeeCustomer);
-                objLoad.FeeDate = obj.GotDate;
+                objLoad.FeeDate = dxeGotDate.Date;//obj.GotDate;
                 objLoad.AuditStatus = Convert.ToInt32(BO_P_Code.AuditStatus.Appeal).ToString();
                 objLoad.Remark = obj.Remark;
                 objLoad.Save(ModifiedAction.Insert);
@@ -321,7 +321,7 @@ namespace BrokerWebApp.inoutbalance
             else
             {
                 objLoad = new BO_Voucher(obj.ID);
-                objLoad.FeeDate = obj.GotDate;
+                objLoad.FeeDate = dxeGotDate.Date;//obj.GotDate;
                 objLoad.Remark  = obj.Remark;
                 objLoad.Save(ModifiedAction.Update);
             }

@@ -290,14 +290,14 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.CreateTime = DateTime.Now;
                 objLoad.CreatePersion = this.CurrentUserID;
                 objLoad.GatheringType = obj.GatheringType;
-                objLoad.NoticeDate = obj.NoticeDate;
+                objLoad.NoticeDate = dxeNoticeDate.Date;//obj.NoticeDate;
                 objLoad.AuditStatus = Convert.ToInt32(BO_P_Code.AuditStatus.Appeal).ToString();
                 objLoad.Save(ModifiedAction.Insert);
             }
             else
             {
                 objLoad = new BO_Notice(obj.NoticeNo);
-                objLoad.NoticeDate = obj.NoticeDate;
+                objLoad.NoticeDate = dxeNoticeDate.Date;//obj.NoticeDate;
                 objLoad.GatheringType = obj.GatheringType;
                 objLoad.Save(ModifiedAction.Update);
             }
