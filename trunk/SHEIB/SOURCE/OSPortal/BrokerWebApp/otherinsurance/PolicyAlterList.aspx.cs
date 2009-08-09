@@ -205,6 +205,34 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+
+        }
+
+
+        protected void CarrierBranchIDCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
+            thecb.TextField = "BranchName";
+            thecb.ValueField = "BranchID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+        }
+
 
     }
 }

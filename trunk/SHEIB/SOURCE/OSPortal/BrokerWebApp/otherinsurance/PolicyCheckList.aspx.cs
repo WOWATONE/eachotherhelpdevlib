@@ -192,24 +192,7 @@ namespace BrokerWebApp.otherinsurance
             this.dxeddlBranchId.ValueField = "BranchID";
             this.dxeddlBranchId.DataBind();
 
-            dsList = BusinessObjects.SchemaSetting.BO_Carrier.GetCarrierList("");
-            if (dsList.Tables[0] != null)
-            {
-                foreach (DataRow row in dsList.Tables[0].Rows)
-                {
-                    this.dxeddlCarrierId.Items.Add(row["CarrierNameCn"].ToString().Trim(), row["CarrierID"].ToString().Trim());
-                }
-            }
-
-            dsList = BusinessObjects.SchemaSetting.BO_Branch.GetBranchList("");
-            if (dsList.Tables[0] != null)
-            {
-                foreach (DataRow row in dsList.Tables[0].Rows)
-                {
-                    this.dxeddlBranchId.Items.Add(row["BranchName"].ToString().Trim(), row["BranchID"].ToString().Trim());
-                }
-            }
-
+            
             dsList = BusinessObjects.SchemaSetting.BO_ProductType.GetProductTypeList();
             if (dsList.Tables[0] != null && dsList.Tables[0].Rows.Count > 0)
             {
@@ -239,6 +222,35 @@ namespace BrokerWebApp.otherinsurance
                 this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(value));
                 if (this.dxeddlProdTypeName.SelectedIndex >= 0)
                     this.dxeddlProdTypeName.Text = this.dxeddlProdTypeName.SelectedItem.Text.Substring(this.dxeddlProdTypeName.SelectedItem.Text.IndexOf("∟") + 1);
+            }
+        }
+
+
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+
+        }
+
+
+        protected void CarrierBranchIDCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
+            thecb.TextField = "BranchName";
+            thecb.ValueField = "BranchID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
             }
         }
 
