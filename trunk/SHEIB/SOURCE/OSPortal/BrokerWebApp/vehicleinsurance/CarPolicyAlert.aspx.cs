@@ -56,6 +56,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (Page.IsPostBack)
             {
                 pm = ViewState[currentPageModeKey] as Nullable<PageMode>;                
@@ -101,6 +102,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
+            
             if (this.pm == PageMode.Audit)
             {
                 tbltrAuditExecuteAction.Visible = true;
@@ -133,6 +135,10 @@ namespace BrokerWebApp.vehicleinsurance
                 this.dxeMemo.Enabled = false;
                 CustomPageTitle = "车险保单批改录入";
             }
+
+            alwayBasicInfoControlsUnable();
+
+
         }
 
 
@@ -746,10 +752,7 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.PolicyStatus = policyState;
                 theObject.PolicyType = Convert.ToInt32(BO_Policy.PolicyTypeEnum.Vehicle).ToString();
                 theObject.ProdTypeID = productType;
-                theObject.PolicyNo = theSourceObj.PolicyNo;
-
-                theObject.AciPolicyNo = theSourceObj.AciPolicyNo;
-
+                
                 theObject.CarrierSales = theSourceObj.CarrierSales;
                 theObject.CustomerID = theSourceObj.CustomerID;
                 theObject.Beneficiary = theSourceObj.Beneficiary;
@@ -760,9 +763,7 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.SourceTypeID = theSourceObj.SourceTypeID;
                 theObject.OperationType = theSourceObj.OperationType;
                 theObject.GatheringType = theSourceObj.GatheringType;
-                theObject.StartDate = theSourceObj.StartDate;
-                theObject.EndDate = theSourceObj.EndDate;
-                theObject.Special = theSourceObj.Special;
+                
                 theObject.CarNo = theSourceObj.CarNo;
                 theObject.CarcaseNo = theSourceObj.CarcaseNo;
                 theObject.UseCharacter = theSourceObj.UseCharacter;
@@ -773,6 +774,13 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.CarValue = theSourceObj.CarValue;
 
                 //new value
+                theObject.PolicyNo = obj.PolicyNo;
+                theObject.AciPolicyNo = obj.AciPolicyNo;
+                theObject.AltNO = obj.AltNo;
+                theObject.StartDate = this.dxeStartDate.Date;//theSourceObj.StartDate;
+                theObject.EndDate = this.dxeEndDate.Date;//theSourceObj.EndDate;
+                theObject.Special = obj.Special;
+
                 theObject.CiPremium = obj.CiPremium;
                 theObject.AciPremium = obj.AciPremium;
                 theObject.CstPremium = obj.CstPremium;
@@ -792,6 +800,7 @@ namespace BrokerWebApp.vehicleinsurance
                 
                 theObject.CreatePerson = this.CurrentUserID;
                 theObject.CreateTime = DateTime.Now;
+                
 
                 theObject.Save(ModifiedAction.Insert);
                 copyCarrierFromPrePolicy(theObject.PrevPolicyID, theObject.PolicyID);
@@ -801,6 +810,13 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject = new BO_Policy(obj.PolicyID);
 
                 theObject.PolicyStatus = policyState;
+
+                theObject.PolicyNo = obj.PolicyNo;
+                theObject.AciPolicyNo = obj.AciPolicyNo;
+                theObject.AltNO = obj.AltNo;
+                theObject.StartDate = this.dxeStartDate.Date;//theSourceObj.StartDate;
+                theObject.EndDate = this.dxeEndDate.Date;//theSourceObj.EndDate;
+                theObject.Special = obj.Special;
                 
                 theObject.CiPremium = obj.CiPremium;
                 theObject.AciPremium = obj.AciPremium;
@@ -821,7 +837,7 @@ namespace BrokerWebApp.vehicleinsurance
 
                 theObject.ModifyPerson = this.CurrentUserID;
                 theObject.ModifyTime = DateTime.Now;
-
+                
                 theObject.Save(ModifiedAction.Update);
             }
 
@@ -922,11 +938,11 @@ namespace BrokerWebApp.vehicleinsurance
                 newobj.BranchID = item.BranchID;
 
                 newobj.PolicyRate = item.PolicyRate;
-                newobj.Premium = item.Premium;
-                newobj.PremiumBase = item.PremiumBase;
-                newobj.ProcessRate = item.ProcessRate;
-                newobj.Process = item.Process;
-                newobj.ProcessBase = item.ProcessBase;
+                newobj.Premium = 0;//item.Premium;
+                newobj.PremiumBase = 0;//item.PremiumBase;
+                newobj.ProcessRate = 0;//item.ProcessRate;
+                newobj.Process = 0;//item.Process;
+                newobj.ProcessBase = 0;//item.ProcessBase;
                 newobj.Save(ModifiedAction.Insert);
             }
         }
@@ -935,27 +951,42 @@ namespace BrokerWebApp.vehicleinsurance
 
         private void switchBasicInfoControlsEnable(Boolean val)
         {
-            //dxetxtPolicyID.Enabled = val;
+            dxetxtPolicyID.ReadOnly = val;
+
             dxetxtPolicyNo.Enabled = val;
+            
             dxetxtAciPolicyNo.Enabled = val;
+            
             dxetxtAskPriceID.Enabled = val;
+            
             dxeddlCarrierId.Enabled = val;
+            
             dxeddlBranchId.Enabled = val;
+            
             dxetxtCarrierSales.Enabled = val;
-
+            
             dxetxtCustomer.Enabled = val;
-
+            
             dxetxtBeneficiary.Enabled = val;
-
+            
             dxeddlSourceTypeID.Enabled = val;
+            
             dxeddlDeptID.Enabled = val;
+            
             dxeddlSalesId.Enabled = val;
+            
             dxeddlGatheringType.Enabled = val;
+            
             dxeddlOperationType.Enabled = val;
+            
             dxeStartDate.Enabled = val;
+            
             dxeEndDate.Enabled = val;
+            
             dxetxtSpecial.Enabled = val;
+            
             dxetxtCreatePerson.Enabled = val;
+            
             dxeCreateTime.Enabled = val;
             
             //dxetxtCiPremium.Enabled = val;
@@ -970,6 +1001,69 @@ namespace BrokerWebApp.vehicleinsurance
         }
 
 
+        private void alwayBasicInfoControlsUnable()
+        {
+            Boolean val = true;
+            dxetxtPolicyID.ReadOnly = val;
+            dxetxtPolicyID.ClientEnabled = false;
+            dxetxtPolicyID.ReadOnlyStyle.ForeColor = System.Drawing.Color.LightGray;
+            dxetxtPolicyID.ReadOnlyStyle.Border.BorderColor = System.Drawing.Color.LightGray;
+                        
+            dxetxtAskPriceID.ReadOnly = val;
+            dxetxtAskPriceID.ClientEnabled = false;
+            dxetxtAskPriceID.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+            
+
+            dxeddlCarrierId.ReadOnly = val;
+            dxeddlCarrierId.ClientEnabled = false;
+            dxeddlCarrierId.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+            
+
+            dxeddlBranchId.ReadOnly = val;
+            dxeddlBranchId.ClientEnabled = false;
+            dxeddlBranchId.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+            
+            dxetxtCarrierSales.ReadOnly = val;
+            dxetxtCarrierSales.ClientEnabled = false;
+            dxetxtCarrierSales.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+            
+            dxetxtCustomer.ReadOnly = val;
+            dxetxtCustomer.ClientEnabled = false;
+            dxetxtCustomer.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+            
+            dxetxtBeneficiary.ReadOnly = val;
+            dxetxtBeneficiary.ClientEnabled = false;
+            dxetxtBeneficiary.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+            
+            dxeddlSourceTypeID.ReadOnly = val;
+            dxeddlSourceTypeID.ClientEnabled = false;
+            dxeddlSourceTypeID.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+            
+            dxeddlDeptID.ReadOnly = val;
+            dxeddlDeptID.ClientEnabled = false;
+            dxeddlDeptID.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+            
+            dxeddlSalesId.ReadOnly = val;
+            dxeddlSalesId.ClientEnabled = false;
+            dxeddlSalesId.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+            
+            dxeddlGatheringType.ReadOnly = val;
+            dxeddlGatheringType.ClientEnabled = false;
+            dxeddlGatheringType.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+            
+            dxeddlOperationType.ReadOnly = val;
+            dxeddlOperationType.ClientEnabled = false;
+            dxeddlOperationType.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+                        
+            dxetxtCreatePerson.ReadOnly = val;
+            dxetxtCreatePerson.ClientEnabled = false;
+            dxetxtCreatePerson.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+            
+            dxeCreateTime.ReadOnly = val;
+            dxeCreateTime.ClientEnabled = false;
+            dxeCreateTime.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+                        
+        }
 
         #endregion Privates
 
@@ -1088,7 +1182,8 @@ namespace BrokerWebApp.vehicleinsurance
             [DataMember]
             public Boolean AuditOrNot { get; set; }
 
-
+            [DataMember]
+            public string AltNo { get; set; }
         }
 
 

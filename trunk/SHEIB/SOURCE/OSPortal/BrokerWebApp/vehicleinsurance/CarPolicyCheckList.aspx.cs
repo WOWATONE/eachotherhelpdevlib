@@ -64,7 +64,7 @@ namespace BrokerWebApp.vehicleinsurance
         {
             GridViewCommandColumn theCommandColumn = getCommandColumnLoop();
 
-            String where = "";//" and ISNULL(B.PolicyStatus,'0') = '1' and ISNULL(B.AskPriceID,'') != '' ";
+            String where = " AND ISNULL(B.PolicyType,'0') ='1' ";//" and ISNULL(B.PolicyStatus,'0') = '1' and ISNULL(B.AskPriceID,'') != '' ";
             if (this.dxeddlCheckState.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCheckState.SelectedItem.Value.ToString()))
             {
                 where = where + " AND ISNULL(B.PolicyStatus,'0') = '" + dxeddlCheckState.SelectedItem.Value.ToString() + "' ";
@@ -267,6 +267,23 @@ namespace BrokerWebApp.vehicleinsurance
             }
             return theCommandColumn;
         }
+
+
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+
+        }
+
+
 
 
     }

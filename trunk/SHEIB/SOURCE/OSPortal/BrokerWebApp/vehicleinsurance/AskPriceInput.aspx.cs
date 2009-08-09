@@ -88,7 +88,14 @@ namespace BrokerWebApp.vehicleinsurance
             }
             getInitPolicyData();
             rebindGridDocList();
-            
+
+            if (pm == PageMode.Audit)
+            {
+                GridViewCommandColumn objgcc = getCommandColumnLoop(this.gridPolicyItem);
+                objgcc.CustomButtons.Column.DeleteButton.Visible = false;
+                objgcc.CustomButtons.Column.CustomButtons[0].Text = "查看";
+            }
+                
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
@@ -638,6 +645,9 @@ namespace BrokerWebApp.vehicleinsurance
         protected void gridPolicyItem_HtmlRowCreated(object sender,
             ASPxGridViewTableRowEventArgs e)
         {
+
+            if (pm == PageMode.Audit) return;
+
             if (e.RowType == GridViewRowType.Data)
             {
                 String state ="0";

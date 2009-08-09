@@ -269,14 +269,7 @@
             }
             
         }
-
-
-
-        function btnAddCustomerClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
-            //window.showModalDialog("NewCustomer.aspx", self, myArguments);
-        }
-
+        
 
         function GridCarrierCarrier_SelectedIndexChanged(s, e) {
             var thejsonstring = dxecbGridCarrierCarrierID.GetSelectedItem().value;
@@ -314,15 +307,7 @@
                 setCustomerID(thesplit_array[0]);
             }
         }
-
-        function imgNewCustomerClick() {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
-            //window.showModalDialog("NewCustomer.aspx", self, myArguments);
-
-        }
-
-
-
+        
 
         function Policy(AskPriceID, CarrierID, BranchID, CarrierSales,
             CustomerID, SalesId, DeptId, GatheringTypeID,
@@ -385,7 +370,6 @@
 
 
         function policyTab_Changing(s, e) {
-            //debugger;
             if (e.tab.index == 1 || e.tab.index == 2) {
                 var element = s.GetContentElement(e.tab.index);
                 if (element != null) element.loaded = false;
@@ -481,7 +465,7 @@
             switch (theresult) {
                 case "0":
                     setOnlyDxeButtonsUnableOrEnable(false);
-                    dxebtnAuditOk.SetEnabled(true);
+                    dxebtnAuditOk.SetEnabled(false);
                     alert(titleMSG);
                     break
                 default:
@@ -538,8 +522,12 @@
 
                  function gridCustomButtonClick(s, e) {
                      var buttonID = e.buttonID;
-
-                     s.GetRowValues(e.visibleIndex, "PolicyID;PolicyStatus", getTheSelectedRowsValues);
+                     if (buttonID == "查看") {
+                         s.GetRowValues(e.visibleIndex, "PolicyID", getTheSelectedRowsValuesLook);
+                     }
+                     else {
+                         s.GetRowValues(e.visibleIndex, "PolicyID;PolicyStatus", getTheSelectedRowsValues);
+                     }
                  }
 
                  function getTheSelectedRowsValues(selectedValues) {
@@ -628,8 +616,8 @@
                                                 <td style="width: 90px; text-align: right;">
                                                     询价单号：
                                                 </td>
-                                                <td style="width: 180px; text-align: left;">
-                                                    <dxe:ASPxTextBox ID="dxetxtAskPriceID" ClientInstanceName="dxetxtAskPriceID" runat="server" Width="140px" ReadOnly="true"></dxe:ASPxTextBox>
+                                                <td style="width: 250px; text-align: left;">
+                                                    <dxe:ASPxTextBox ID="dxetxtAskPriceID" ClientInstanceName="dxetxtAskPriceID" runat="server" Width="240px" ReadOnly="true"></dxe:ASPxTextBox>
                                                 </td>
                                                 <td style="width: 90px; text-align: right;">
                                                     部门：
@@ -712,12 +700,8 @@
                                                                         </ValidationSettings>
                                                                     </dxe:ASPxTextBox>                                                                    
                                                                 </td>
-                                                                <td><input type="hidden" id="cusid" runat="server" /></td>
                                                                 <td style="text-align:left; width:20px">
-                                                                    <img runat="server" id="imgNewCustomer" onclick="imgNewCustomerClick();" alt="" src="../images/add_user_icon.png"
-                                                                        style="width: 20px; height: 20px; vertical-align: top;" />
-                                                                </td>
-                                                                <td style="text-align:left; width:20px">
+                                                                    <input type="hidden" id="cusid" runat="server" />
                                                                     <img runat="server" id="imgSelectCustomer" onclick="imgSelectCustomerClick();" alt=""
                                                                         src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: top;" />
                                                                 </td>

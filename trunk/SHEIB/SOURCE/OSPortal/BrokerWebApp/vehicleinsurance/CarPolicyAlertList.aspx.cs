@@ -65,7 +65,7 @@ namespace BrokerWebApp.vehicleinsurance
         protected void btnSearch_Click(object sender, EventArgs e)
         {
 
-            String where = " and ISNULL(B.PolicyStatus,'0') = '0' and ISNULL(B.PrevPolicyID,'') != '' ";
+            String where = " and ISNULL(B.PolicyStatus,'0') = '0' and ISNULL(B.PrevPolicyID,'') != '' AND ISNULL(B.PolicyType,'0') ='1' ";
 
             if (!String.IsNullOrEmpty(this.dxetxtAskPriceID.Text))
             {
@@ -255,7 +255,19 @@ namespace BrokerWebApp.vehicleinsurance
         }
 
 
-        
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            if (thecb.Items.Count > 0)
+            {
+                thecb.SelectedItem = thecb.Items[0];
+            }
+
+        }
 
 
     }

@@ -67,6 +67,11 @@
 	        return false;
 	    }
 	}
+
+	function dxeddlDeptID_SelectedIndexChanged(s, e) {
+	    var thejsonstring = dxeddlDeptID.GetSelectedItem().value;
+	    dxeddlSalesId.PerformCallback(thejsonstring);
+	}
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -104,20 +109,20 @@
                             <td style="width: 70px; text-align: right;">
                                 询价单号：
                             </td>
-                            <td style="width: 150px; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtAskPriceID" ClientInstanceName="dxetxtAskPriceID" runat="server" Width="140px"></dxe:ASPxTextBox>
+                            <td style="width: 250px; text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtAskPriceID" ClientInstanceName="dxetxtAskPriceID" runat="server" Width="240px"></dxe:ASPxTextBox>
                             </td>
                             <td style="width: 70px; text-align: right;">
                                 投保编号：
                             </td>
-                            <td style="width: 150px; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="140px"></dxe:ASPxTextBox>
+                            <td style="width: 250px; text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="240px"></dxe:ASPxTextBox>
                             </td>
                             <td style="width: 70px; text-align: right;">
                                 投保客户：
                             </td>
-                            <td style="width: 150px; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server" Width="140px"></dxe:ASPxTextBox> 
+                            <td style="width: 250px; text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server" Width="240px"></dxe:ASPxTextBox> 
                             </td>
                             <td>
                             </td>
@@ -127,16 +132,17 @@
                                 部门：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server" Width="140px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server" Width="240px" DropDownStyle="DropDownList">
 									<Items>
 									</Items>
+									<ClientSideEvents SelectedIndexChanged="dxeddlDeptID_SelectedIndexChanged" />
 								</dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
                                 客户经理：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="140px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server" Width="240px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
 									<Items>
 									</Items>
 								</dxe:ASPxComboBox>
@@ -145,7 +151,7 @@
                                 车牌号：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCarCount" ClientInstanceName="dxetxtCarCount" runat="server" Width="140px"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtCarCount" ClientInstanceName="dxetxtCarCount" runat="server" Width="240px"></dxe:ASPxTextBox>
                             </td>
                             <td>
                             </td>
@@ -155,7 +161,7 @@
                                 业务来源：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID" runat="server" Width="140px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID" runat="server" Width="240px" DropDownStyle="DropDownList">
 									<Items>
 									</Items>
 								</dxe:ASPxComboBox>
@@ -164,7 +170,7 @@
                                 业务性质：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType" runat="server" Width="140px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType" runat="server" Width="240px" DropDownStyle="DropDownList">
 									<Items>
 									</Items>
 								</dxe:ASPxComboBox>
@@ -173,7 +179,7 @@
                                 录单人：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="140px"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="240px"></dxe:ASPxTextBox>
                             </td>
                             <td>
                             </td>
@@ -183,7 +189,7 @@
                                 保险公司：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlCarrierId" ClientInstanceName="dxeddlCarrierId" runat="server" Width="140px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlCarrierId" ClientInstanceName="dxeddlCarrierId" runat="server" Width="240px" DropDownStyle="DropDownList">
 									<Items>										
 									</Items>
 									<ClientSideEvents SelectedIndexChanged="Carrier_SelectedIndexChanged" />
@@ -193,14 +199,14 @@
                                 分支机构：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server" Width="140px" DropDownStyle="DropDownList" OnCallback="CarrierBranchIDCallback">
+                                <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server" Width="240px" DropDownStyle="DropDownList" OnCallback="CarrierBranchIDCallback">
 									<Items>										
 									</Items>
 								</dxe:ASPxComboBox>
                             </td>
                             <td style="text-align:right;">审核状态：</td>
                             <td style="text-align:left;">
-                                <dxe:ASPxComboBox ID="dxeddlCheckState" ClientInstanceName="dxeddlCheckState" runat="server" Width="140px" DropDownStyle="DropDownList">
+                                <dxe:ASPxComboBox ID="dxeddlCheckState" ClientInstanceName="dxeddlCheckState" runat="server" Width="240px" DropDownStyle="DropDownList">
 									<Items>
 										<dxe:ListEditItem Text="待审核" Value="1" />
 										<dxe:ListEditItem Text="已审核" Value="2" />
@@ -218,12 +224,12 @@
                                 <table style="margin-left:-3px;">
                                     <tr>
                                         <td>
-                                            <dxe:ASPxDateEdit ID="dxeStartDate" runat="server" Width="140px">
+                                            <dxe:ASPxDateEdit ID="dxeStartDate" runat="server" Width="240px">
                                             </dxe:ASPxDateEdit>
                                         </td>
                                         <td>至</td>
                                         <td>
-                                            <dxe:ASPxDateEdit ID="dxeEndDate" runat="server" Width="140px">
+                                            <dxe:ASPxDateEdit ID="dxeEndDate" runat="server" Width="240px">
                                             </dxe:ASPxDateEdit>
                                         </td>
                                     </tr>
@@ -297,7 +303,7 @@
                                                             </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
-                                                            <dxwgv:GridViewDataColumn FieldName="PrevPolicyID" Caption="批改单号" CellStyle-Wrap="False">
+                                                            <dxwgv:GridViewDataColumn FieldName="AltNO" Caption="批改单号" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="CarNo" Caption="车牌号码" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
@@ -360,7 +366,7 @@
                                                         EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
                                                         >
                                                         <SelectParameters> 
-                                                             <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" and ISNULL(B.PolicyStatus,'0') = '1' and ISNULL(B.AskPriceID,'') != '' " />
+                                                             <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" and ISNULL(B.PolicyStatus,'0') = '1' AND ISNULL(B.PolicyType,'0') ='1' " />
                                                         </SelectParameters>
                                                     </asp:ObjectDataSource>                                                    
                                                 </td>
