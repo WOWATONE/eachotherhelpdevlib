@@ -900,7 +900,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="text-align: right;">
-                                                        原保单编号：
+                                                        原投保编号：
                                                     </td>
                                                     <td style="text-align: left;" colspan="3">
                                                         <table style="margin-left: -3px; width: 530px; text-align: left;">

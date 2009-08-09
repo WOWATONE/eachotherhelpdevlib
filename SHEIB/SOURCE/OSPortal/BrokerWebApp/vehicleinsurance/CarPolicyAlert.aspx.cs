@@ -712,21 +712,26 @@ namespace BrokerWebApp.vehicleinsurance
             dxeEndDate.Date = obj.EndDate;
             dxetxtSpecial.Text = obj.Special;
 
-            dxetxtCiPremium.Text = String.Format(BasePage.TheTwoSF, obj.CiPremium);
-            dxetxtAciPremium.Text = String.Format(BasePage.TheTwoSF, obj.AciPremium);
-            dxetxtCstPremium.Text = String.Format(BasePage.TheTwoSF, obj.CstPremium);
-            dxetxtCiProcessRate.Text = String.Format(BasePage.TheFourSF, obj.CiProcessRate);
-            dxetxtAciProcessRate.Text = String.Format(BasePage.TheFourSF, obj.AciProcessRate);
-            dxetxtCiProcess.Text = String.Format(BasePage.TheTwoSF, obj.CiProcess);
-            dxetxtAciProcess.Text = String.Format(BasePage.TheTwoSF, obj.AciProcess);
+            if (!String.IsNullOrEmpty(this.dxetxtPolicyID.Text.Trim()))
+            {
+                dxetxtCiPremium.Text = String.Format(BasePage.TheTwoSF, obj.CiPremium);
+                dxetxtAciPremium.Text = String.Format(BasePage.TheTwoSF, obj.AciPremium);
+                dxetxtCstPremium.Text = String.Format(BasePage.TheTwoSF, obj.CstPremium);
+                dxetxtCiProcessRate.Text = String.Format(BasePage.TheFourSF, obj.CiProcessRate);
+                dxetxtAciProcessRate.Text = String.Format(BasePage.TheFourSF, obj.AciProcessRate);
+                dxetxtCiProcess.Text = String.Format(BasePage.TheTwoSF, obj.CiProcess);
+                dxetxtAciProcess.Text = String.Format(BasePage.TheTwoSF, obj.AciProcess);
+
+                dxetxtTotalPremium.Text = String.Format(BasePage.TheTwoSF, obj.Premium);
+                dxetxtTotalProcess.Text = String.Format(BasePage.TheTwoSF, obj.Process);
+
+            }
 
             this.dxeAuditTime.Date = obj.AuditTime;
             this.dxetxtAuditPerson.Text = obj.AuditPerson;
             this.dxeMemo.Text = obj.Remark;
             
-            dxetxtTotalPremium.Text = String.Format(BasePage.TheTwoSF, obj.Premium);
-            dxetxtTotalProcess.Text = String.Format(BasePage.TheTwoSF, obj.Process);
-
+            
 
         }
 
