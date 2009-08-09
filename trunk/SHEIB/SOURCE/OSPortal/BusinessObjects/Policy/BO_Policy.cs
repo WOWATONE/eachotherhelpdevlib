@@ -646,6 +646,7 @@ namespace BusinessObjects.Policy
             StringBuilder sb = new StringBuilder();
             sb.Append(" SELECT NewID() AS KeyGUID, A.Premium, A.Process, A.PremiumBase, A.ProcessBase, ");
             sb.Append(" B.PolicyID, B.PrevPolicyID, B.PolicyNo, ISNULL(B.PolicyStatus,'0') AS PolicyStatus, ");
+            sb.Append(" ISNULL(B.PolicyType,'0') AS PolicyType, ");
             sb.Append(" B.SalesId, C.UserID, C.UserNameCn, ");
             sb.Append(" B.Coverage, B.CreatePerson, ");
             sb.Append(" B.Currency, H.CurrencyName, ");

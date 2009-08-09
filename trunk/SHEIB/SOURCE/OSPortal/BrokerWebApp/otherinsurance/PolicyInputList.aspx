@@ -413,7 +413,7 @@
                                     EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
                                     >
                                     <SelectParameters> 
-                                         <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" AND ISNULL(B.PolicyStatus,'0') = '0' AND ISNULL(B.PrevPolicyID,'') = '' " />
+                                         <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" AND ISNULL(B.PolicyStatus,'0') = '0' AND ISNULL(B.PrevPolicyID,'') = '' AND ISNULL(B.PolicyType,'0') ='0' " />
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
                                 <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">

@@ -83,7 +83,7 @@ namespace BrokerWebApp.otherinsurance
         {
 
             string lsWhere = "";
-            lsWhere = lsWhere + " AND ISNULL(B.PolicyStatus,'0') = '0' AND ISNULL(B.PrevPolicyID,'') !='' ";
+            lsWhere = lsWhere + " AND ISNULL(B.PolicyStatus,'0') = '0' AND ISNULL(B.PrevPolicyID,'') !='' AND ISNULL(B.PolicyType,'0') ='0' ";
             if (dxetxtPolicyID.Text.Trim() != "")
             {
                 lsWhere = lsWhere + " and b.PolicyID ='" + dxetxtPolicyID.Text + "'";
