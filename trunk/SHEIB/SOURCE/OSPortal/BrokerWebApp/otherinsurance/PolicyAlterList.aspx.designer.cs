@@ -23,13 +23,13 @@ namespace BrokerWebApp.otherinsurance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
-        /// LblUserNameTop control.
+        /// lblUserNameTop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblUserNameTop;
+        protected global::System.Web.UI.WebControls.Label lblUserNameTop;
         
         /// <summary>
         /// npSearchHeader control.

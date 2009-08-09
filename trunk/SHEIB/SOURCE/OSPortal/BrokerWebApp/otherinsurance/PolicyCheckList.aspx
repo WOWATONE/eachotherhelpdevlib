@@ -101,7 +101,7 @@
                         </td>
                         <td style="height:40px; width:55%;color:#0E5ED5;text-align:left;">
                             当前位置：非车险保单审核&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:label id="LblUserNameTop" runat="server" Text="王六"></asp:label>，您好！今天是
+                            <asp:label id="LblUserNameTop" runat="server" Text="<%=CurrentUserName%>"></asp:label>，您好！今天是
 	                        <label id="lblCurrentDate"></label>
                         </td>
                     </tr>

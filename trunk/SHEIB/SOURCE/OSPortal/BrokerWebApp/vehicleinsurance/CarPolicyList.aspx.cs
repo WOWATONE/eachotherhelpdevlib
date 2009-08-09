@@ -24,6 +24,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.LbUserNameTop.Text = this.CurrentUser.UserNameCn;
             if (Page.IsPostBack)
             {
                 if (Page.IsCallback)

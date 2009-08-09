@@ -23,6 +23,7 @@ namespace BrokerWebApp.otherinsurance
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.lblUserNameTop.Text = this.CurrentUser.UserNameCn;
             if (!Page.IsPostBack)
             {
                 bindDropDownLists();
