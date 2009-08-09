@@ -960,18 +960,18 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server"
-                                                            Width="125px" ReadOnly="true">
+                                                            Width="160px" ReadOnly="true">
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
                                                         保单编号：
                                                     </td>
-                                                    <td style="text-align: left;">
+                                                    <td style="text-align: left;" colspan="2">
                                                         <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server"
-                                                            Width="125px">
+                                                            Width="240px">
                                                         </dxe:ASPxTextBox>
                                                     </td>
-                                                    <td colspan="2">
+                                                    <td>
                                                         <table style="margin-left: -3px; text-align: left;">
                                                             <tr>
                                                                 <td style="text-align: right;">
@@ -1010,7 +1010,7 @@
                                                             <tr>
                                                                 <td>
                                                                     <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server"
-                                                                        Width="125px">
+                                                                        Width="160px">
                                                                     </dxe:ASPxTextBox>
                                                                     <input type="hidden" id="cusid" runat="server" />
                                                                 </td>
@@ -1026,7 +1026,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxTextBox ID="dxetxtBeneficiary" ClientInstanceName="dxetxtBeneficiary" runat="server"
-                                                            Width="125px">
+                                                            Width="160px">
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                 </tr>
@@ -1036,7 +1036,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server"
-                                                            Width="125px" DropDownStyle="DropDownList">
+                                                            Width="160px" DropDownStyle="DropDownList">
                                                             <Items>
                                                             </Items>
                                                             <ClientSideEvents SelectedIndexChanged="dxeddlDeptID_SelectedIndexChanged" />
@@ -1047,7 +1047,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server"
-                                                            Width="125px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
+                                                            Width="160px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
                                                             <Items>
                                                             </Items>
                                                         </dxe:ASPxComboBox>
@@ -1057,9 +1057,8 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
-                                                            runat="server" Width="125px" DropDownStyle="DropDownList">
+                                                            runat="server" Width="160px" DropDownStyle="DropDownList">
                                                             <Items>
-                                                                <dxe:ListEditItem Text="(全部)" Value="" />
                                                             </Items>
                                                         </dxe:ASPxComboBox>
                                                     </td>
@@ -1070,9 +1069,8 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType"
-                                                            runat="server" Width="125px" DropDownStyle="DropDownList">
+                                                            runat="server" Width="160px" DropDownStyle="DropDownList">
                                                             <Items>
-                                                                <dxe:ListEditItem Text="(全部)" Value="" />
                                                             </Items>
                                                         </dxe:ASPxComboBox>
                                                     </td>
@@ -1081,9 +1079,8 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID"
-                                                            runat="server" Width="125px" DropDownStyle="DropDownList">
+                                                            runat="server" Width="160px" DropDownStyle="DropDownList">
                                                             <Items>
-                                                                <dxe:ListEditItem Text="(全部)" Value="" />
                                                             </Items>
                                                         </dxe:ASPxComboBox>
                                                     </td>
@@ -1117,7 +1114,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson"
-                                                            runat="server" Width="125px" ReadOnly="true">
+                                                            runat="server" Width="160px" ReadOnly="true">
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
@@ -1125,7 +1122,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxDateEdit ID="dxedtCreateTime" ClientInstanceName="dxedtCreateTime" runat="server"
-                                                            Width="100px">
+                                                            Width="160px">
                                                         </dxe:ASPxDateEdit>
                                                     </td>
                                                     <td style="text-align: right;">
@@ -1245,7 +1242,7 @@
                                                                                 <td style="text-align: left;">
                                                                                     <dxe:ASPxComboBox runat="server" ID="dxecbGridPolicyItemProdID" AutoPostBack="false"
                                                                                         ClientInstanceName="dxecbGridPolicyItemProdID" DropDownButton-Enabled="true"
-                                                                                        DropDownStyle="DropDownList" Width="120px">
+                                                                                        DropDownStyle="DropDownList" Width="150px">
                                                                                         <Items>
                                                                                         </Items>
                                                                                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
@@ -1271,7 +1268,7 @@
                                                                                 </td>
                                                                                 <td style="text-align: left;">
                                                                                     <dxe:ASPxTextBox ID="dxetxtPolicyItemCoverage" ClientInstanceName="dxetxtPolicyItemCoverage"
-                                                                                        runat="server" Width="100px">
+                                                                                        runat="server" Width="150px">
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
@@ -1283,7 +1280,7 @@
                                                                                 </td>
                                                                                 <td style="text-align: left;">
                                                                                     <dxe:ASPxTextBox ID="dxetxtPolicyItemPremiumRate" ClientInstanceName="dxetxtPolicyItemPremiumRate"
-                                                                                        runat="server" Width="100px">
+                                                                                        runat="server" Width="150px">
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
@@ -1295,7 +1292,7 @@
                                                                                 </td>
                                                                                 <td style="text-align: left;">
                                                                                     <dxe:ASPxTextBox ID="dxetxtPolicyItemPremium" ClientInstanceName="dxetxtPolicyItemPremium"
-                                                                                        runat="server" Width="100px">
+                                                                                        runat="server" Width="150px">
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
@@ -1309,7 +1306,7 @@
                                                                                 </td>
                                                                                 <td style="text-align: left;">
                                                                                     <dxe:ASPxTextBox ID="dxetxtPolicyItemProcRate" ClientInstanceName="dxetxtPolicyItemProcRate"
-                                                                                        runat="server" Width="120px">
+                                                                                        runat="server" Width="150px">
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
@@ -1321,7 +1318,7 @@
                                                                                 </td>
                                                                                 <td style="text-align: left;">
                                                                                     <dxe:ASPxTextBox ID="dxetxtPolicyItemProcess" ClientInstanceName="dxetxtPolicyItemProcess"
-                                                                                        runat="server" Width="120px">
+                                                                                        runat="server" Width="150px">
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
@@ -1376,17 +1373,17 @@
                                         <asp:Panel ID="npCostSummaryDetail" runat="server" CssClass="collapsePanel" Height="0">
                                             <table style="width: 100%">
                                                 <tr style="font-size: 1px; height: 2px;">
-                                                    <td style="width: 80px;">
+                                                    <td style="width: 95px;">
                                                     </td>
-                                                    <td style="width: 140px;">
+                                                    <td style="width: 150px;">
                                                     </td>
-                                                    <td style="width: 80px;">
+                                                    <td style="width: 95px;">
                                                     </td>
-                                                    <td style="width: 140px;">
+                                                    <td style="width: 150px;">
                                                     </td>
-                                                    <td style="width: 80px;">
+                                                    <td style="width: 120px;">
                                                     </td>
-                                                    <td style="width: 140px;">
+                                                    <td style="width: 150px;">
                                                     </td>
                                                     <td>
                                                     </td>
@@ -1397,7 +1394,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxTextBox ID="dxetxtCoverage" ClientInstanceName="dxetxtCoverage" runat="server"
-                                                            Width="120px">
+                                                            Width="145px">
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
@@ -1409,7 +1406,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxTextBox ID="dxetxtPremiumRate" ClientInstanceName="dxetxtPremiumRate" runat="server"
-                                                            Width="120px">
+                                                            Width="145px">
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
@@ -1420,7 +1417,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxTextBox ID="dxetxtProcessRate" ClientInstanceName="dxetxtProcessRate" runat="server"
-                                                            Width="120px">
+                                                            Width="145px">
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
@@ -1433,7 +1430,7 @@
                                                     </td>
                                                     <td>
                                                         <dxe:ASPxComboBox ID="dxeddlCurrency" ClientInstanceName="dxeddlCurrency" runat="server"
-                                                            Width="120px" DropDownStyle="DropDownList">
+                                                            Width="145px" DropDownStyle="DropDownList">
                                                             <Items>
                                                                 <dxe:ListEditItem Text="(全部)" Value="" />
                                                             </Items>
@@ -1444,7 +1441,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxTextBox ID="dxetxtPremium" ClientInstanceName="dxetxtPremium" runat="server"
-                                                            Width="120px">
+                                                            Width="145px">
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
@@ -1458,7 +1455,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxTextBox ID="dxetxtProcess" ClientInstanceName="dxetxtProcess" runat="server"
-                                                            Width="120px">
+                                                            Width="145px">
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
@@ -1473,7 +1470,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxTextBox ID="dxetxtConversionRate" ClientInstanceName="dxetxtConversionRate"
-                                                            runat="server" Width="120px">
+                                                            runat="server" Width="145px">
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
@@ -1486,7 +1483,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxTextBox ID="dxetxtPremiumBase" ClientInstanceName="dxetxtPremiumBase" runat="server"
-                                                            Width="120px">
+                                                            Width="145px">
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
@@ -1497,7 +1494,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxTextBox ID="dxetxtProcessBase" ClientInstanceName="dxetxtProcessBase" runat="server"
-                                                            Width="120px">
+                                                            Width="145px">
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
