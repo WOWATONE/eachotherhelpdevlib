@@ -26,6 +26,7 @@ namespace BrokerWebApp.CustomerRelation
         private string _custID;
         private string toadd = string.Empty;
         private const string UploadDirectory = "~/UploadFiles/CustomerUploadFiles/";
+        private const string UploadBusDocDirectory = "~/UploadFiles/CustomerBusDocUploadFiles/";
         private const string UploadFollowDirectory = "~/UploadFiles/CustomerFollowUploadFiles/";
         #endregion
 
@@ -65,6 +66,7 @@ namespace BrokerWebApp.CustomerRelation
                 this.customerDetailTabPage.TabPages[3].Enabled = false;
                 this.customerDetailTabPage.TabPages[4].Enabled = false;
                 this.customerDetailTabPage.TabPages[5].Enabled = false;
+                this.customerDetailTabPage.TabPages[6].Enabled = false;
                 //客户编号
                 //this.dxetxtCustID.Text = TranUtils.GetCustomerID();
                 //所在地区
@@ -129,6 +131,10 @@ namespace BrokerWebApp.CustomerRelation
                 this.rebindGridAddInfoDocList();
                 #endregion
 
+                #region 业务单证
+                this.rebindGridBusDocList();
+                #endregion
+
                 #region 联系人
                 this.gridContactItem.DataSource = BO_CustContact.GetCustContactByCustID(this._custID);
                 this.gridContactItem.DataBind();
@@ -149,7 +155,6 @@ namespace BrokerWebApp.CustomerRelation
                 this.gridNotifyClaimItem.DataSource = BO_NotifyClaim.GetCustContactByCustID(this._custID);
                 this.gridNotifyClaimItem.DataBind();
                 #endregion
-
             }
         }
 
@@ -408,6 +413,78 @@ namespace BrokerWebApp.CustomerRelation
         {
             this.gridAddInfoDocList.DataSource = BusinessObjects.CustomerRelation.BO_CustomerDoc.FetchListByCustomer(this._custID);
             this.gridAddInfoDocList.DataBind();
+        }
+        #endregion
+
+        #region 业务单证
+        protected void UploadControl_BusDocUploadComplete(object sender, FileUploadCompleteEventArgs e)
+        {
+            try
+            {
+                e.CallbackData = SavePostedBusFiles(e.UploadedFile);
+            }
+            catch (Exception ex)
+            {
+                e.IsValid = false;
+                e.ErrorText = ex.Message;
+            }
+        }
+
+        protected string SavePostedBusFiles(UploadedFile uploadedFile)
+        {
+            string ret = "";
+            string folder = this._custID;
+            string folderPath;
+            if (uploadedFile.IsValid)
+            {
+                DirectoryInfo drtInfo = new DirectoryInfo(MapPath(UploadBusDocDirectory));
+                if (drtInfo.Exists)
+                {
+                    folderPath = System.IO.Path.Combine(MapPath(UploadBusDocDirectory), folder);
+                    drtInfo = new DirectoryInfo(folder);
+                    FileInfo fileInfo;
+                    if (drtInfo.Exists)
+                    {
+                        fileInfo = new FileInfo(uploadedFile.FileName);
+                        string resFileName = System.IO.Path.Combine(folderPath, fileInfo.Name);
+                        uploadedFile.SaveAs(resFileName);
+
+                        //string fileLabel = fileInfo.Name;
+                        //string fileType = uploadedFile.PostedFile.ContentType.ToString();
+                        //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
+                        //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
+                    }
+                    else
+                    {
+                        //create folder
+                        drtInfo = System.IO.Directory.CreateDirectory(folderPath);
+                        fileInfo = new FileInfo(uploadedFile.FileName);
+                        string resFileName = System.IO.Path.Combine(folderPath, fileInfo.Name);
+                        uploadedFile.SaveAs(resFileName);
+                    }
+
+                    //BO_CustomerDoc
+                    BusinessObjects.CustomerRelation.BO_CustomerBusDoc.Delete(this._custID, fileInfo.Name);
+                    BusinessObjects.CustomerRelation.BO_CustomerBusDoc pdoc = new BusinessObjects.CustomerRelation.BO_CustomerBusDoc();
+                    pdoc.CustBusDocID = Guid.NewGuid().ToString();
+                    pdoc.CustID = this._custID;
+                    pdoc.CustBusDocName = fileInfo.Name;
+                    pdoc.CustBusDocURL = UploadBusDocDirectory.Replace("~", "") + folder + "/" + fileInfo.Name;
+                    pdoc.Save(ModifiedAction.Insert);
+                }
+            }
+            return ret;
+        }
+
+        protected void gridBusDocList_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            rebindGridBusDocList();
+        }
+
+        private void rebindGridBusDocList()
+        {
+            this.gridBusDocList.DataSource = BusinessObjects.CustomerRelation.BO_CustomerBusDoc.FetchListByCustomer(this._custID);
+            this.gridBusDocList.DataBind();
         }
         #endregion
 

@@ -78,6 +78,14 @@
             //
         }
 
+        function BusDocFileUploaded(s, e) {
+            gridBusDocList.PerformCallback();
+        }
+
+        function BusDocFileUploadStart(s, e) {
+            //
+        }
+
         function hlPolicyItemTogetherClick(params) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
             var url = params;
@@ -396,7 +404,7 @@
                                 </td>
                                 <td style="text-align: left; vertical-align: top;" colspan="3">
                                     <dxwgv:ASPxGridView ID="gridAddInfoDocList" ClientInstanceName="gridAddInfoDocList" runat="server" SettingsBehavior-AllowSort="false"
-                                        KeyFieldName="PolicyDocID" Width="80%" AutoGenerateColumns="False" OnCustomCallback="gridAddInfoDocList_CustomCallback">
+                                        KeyFieldName="CustDocID" Width="80%" AutoGenerateColumns="False" OnCustomCallback="gridAddInfoDocList_CustomCallback">
                                         <%-- BeginRegion Columns --%>
                                         <Columns>
                                             <dxwgv:GridViewDataColumn FieldName="CustDocName" Caption="文件名" CellStyle-Wrap="False"
@@ -408,6 +416,71 @@
                                                 </DataItemTemplate>
                                             </dxwgv:GridViewDataColumn>
                                             <dxwgv:GridViewDataColumn FieldName="CustURL" Caption="链接地址" CellStyle-Wrap="False">
+                                            </dxwgv:GridViewDataColumn>
+                                        </Columns>
+                                        <%-- EndRegion --%>
+                                        <SettingsPager Mode="ShowAllRecords" />
+                                        <Settings ShowGroupPanel="false" />
+                                        <ClientSideEvents CustomButtonClick="" />
+                                        <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                    </dxwgv:ASPxGridView>
+                                </td>
+                            </tr>
+                        </table>
+                    </dxw:ContentControl>
+                </ContentCollection>
+            </dxtc:TabPage>
+            <dxtc:TabPage Name="BusDoc" Text="业务单证">
+                <ContentCollection>
+                    <dxw:ContentControl ID="ContentControl7" runat="server">
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="width: 150px; text-align: right; vertical-align: top;">
+                                    单证：
+                                </td>
+                                <td style="text-align: left; vertical-align: top;">
+                                    <dxuc:ASPxUploadControl ID="busDocUploadControl"  ClientInstanceName="busDocUploadControl" 
+                                        runat="server" ShowAddRemoveButtons="True" Width="400px" ShowUploadButton="True" 
+                                        AddUploadButtonsHorizontalPosition="Center"  ShowProgressPanel="True" FileInputCount="3" 
+                                        RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad" 
+                                        OnFileUploadComplete="UploadControl_BusDocUploadComplete" >
+                                        <ValidationSettings MaxFileSize="4000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
+                                                MaxFileSizeErrorText="文件太大" NotAllowedContentTypeErrorText="不允许上传此类型文件">
+                                        </ValidationSettings>
+                                        <ClientSideEvents FilesUploadComplete="function(s, e) { BusDocFileUploaded(s, e) }" FileUploadStart="function(s, e) { BusDocFileUploadStart(s, e); }" />
+                                        <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
+                                            ImagePosition="Left">
+                                            <Image Height="25px" Width="25px" Url="../images/file_remove.gif"></Image>
+                                        </RemoveButton>
+                                        <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
+                                            ImagePosition="Left">
+                                            <Image Height="25px" Width="25px" Url="../images/file_add.gif"></Image>
+                                        </AddButton>
+                                        <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
+                                            ImagePosition="Left">
+                                            <Image Height="25px" Width="25px" Url="../images/file_upload.gif"></Image>
+                                        </UploadButton>
+                                    </dxuc:ASPxUploadControl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; vertical-align: top;">
+                                    单证列表：
+                                </td>
+                                <td style="text-align: left; vertical-align: top;">
+                                    <dxwgv:ASPxGridView ID="gridBusDocList" ClientInstanceName="gridBusDocList" runat="server" SettingsBehavior-AllowSort="false"
+                                        KeyFieldName="CustBusDocID" Width="80%" AutoGenerateColumns="False" OnCustomCallback="gridBusDocList_CustomCallback">
+                                        <%-- BeginRegion Columns --%>
+                                        <Columns>
+                                            <dxwgv:GridViewDataColumn FieldName="CustBusDocName" Caption="文件名" CellStyle-Wrap="False"
+                                                Width="25" Settings-AllowDragDrop="false">
+                                                <DataItemTemplate>
+                                                    <a id="fileurl <%# Eval("CustBusDocID") %>" onclick="hlPolicyItemTogetherClick('<%# Eval("CustBusDocURL") %>');"
+                                                        href="#">
+                                                        <%# Eval("CustBusDocName")%></a>
+                                                </DataItemTemplate>
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="CustBusDocURL" Caption="链接地址" CellStyle-Wrap="False">
                                             </dxwgv:GridViewDataColumn>
                                         </Columns>
                                         <%-- EndRegion --%>
@@ -714,7 +787,7 @@
                                         <ValidationSettings MaxFileSize="4000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
                                                 MaxFileSizeErrorText="文件太大" NotAllowedContentTypeErrorText="不允许上传此类型文件">
                                         </ValidationSettings>
-                                        <ClientSideEvents FilesUploadComplete="function(s, e) { CustomerPtFileUploaded(s, e) }" FileUploadStart="function(s, e) { AddInfoFileUploadStart(s, e); }" />
+                                        <ClientSideEvents FilesUploadComplete="function(s, e) { CustomerPtFileUploaded(s, e) }" FileUploadStart="function(s, e) { CustomerPtUploadStart(s, e); }" />
                                         <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
                                             ImagePosition="Left">
                                             <Image Height="25px" Width="25px" Url="../images/file_remove.gif"></Image>
