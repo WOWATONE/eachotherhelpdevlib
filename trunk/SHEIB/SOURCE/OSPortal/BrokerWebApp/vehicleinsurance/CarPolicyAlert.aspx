@@ -1192,7 +1192,7 @@
                                                                 特别约定：
                                                             </td>
                                                             <td style="text-align: left;" colspan="5">
-                                                                <dxe:ASPxTextBox ID="dxetxtSpecial" ClientInstanceName="dxetxtSpecial" runat="server" Width="810px"></dxe:ASPxTextBox>
+                                                                <dxe:ASPxTextBox ID="dxetxtSpecial" ClientInstanceName="dxetxtSpecial" runat="server" Width="815px"></dxe:ASPxTextBox>
                                                             </td>                                                            
                                                         </tr>
                                                         <tr>

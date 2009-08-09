@@ -136,6 +136,8 @@ namespace BrokerWebApp.vehicleinsurance
                 
             }
 
+            alwayBasicInfoControlsUnable();
+
         }
 
 
@@ -1058,8 +1060,8 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.SourceTypeID = obj.SourceTypeID;
                 theObject.OperationType = obj.OperationTypeID;
                 theObject.GatheringType = obj.GatheringTypeID;
-                theObject.StartDate   = obj.StartDate  ;
-                theObject.EndDate = obj.EndDate;
+                theObject.StartDate = this.dxeStartDate.Date;//obj.StartDate  ;
+                theObject.EndDate = this.dxeEndDate.Date;//obj.EndDate;
                 theObject.Special = obj.Special;
                 theObject.CarNo = obj.CarNo;
                 theObject.CarcaseNo = obj.CarcaseNo;
@@ -1111,9 +1113,9 @@ namespace BrokerWebApp.vehicleinsurance
 
                 theObject.SourceTypeID = obj.SourceTypeID;
                 theObject.OperationType = obj.OperationTypeID;
-                theObject.GatheringType = obj.GatheringTypeID;
-                theObject.StartDate = obj.StartDate;
-                theObject.EndDate = obj.EndDate;
+                theObject.GatheringType = obj.GatheringTypeID;                
+                theObject.StartDate = this.dxeStartDate.Date;//obj.StartDate  ;
+                theObject.EndDate = this.dxeEndDate.Date;//obj.EndDate;
                 theObject.Special = obj.Special;
                 theObject.CarNo = obj.CarNo;
                 theObject.CarcaseNo = obj.CarcaseNo;
@@ -1360,7 +1362,20 @@ namespace BrokerWebApp.vehicleinsurance
 
         }
 
-        
+        private void alwayBasicInfoControlsUnable()
+        {
+            Boolean val = true;
+            dxetxtCreatePerson.ReadOnly = val;
+            dxetxtCreatePerson.ClientEnabled = false;
+            dxetxtCreatePerson.ReadOnlyStyle.ForeColor = System.Drawing.Color.LightGray;
+            dxetxtCreatePerson.ReadOnlyStyle.Border.BorderColor = System.Drawing.Color.LightGray;
+                        
+            dxeCreateTime.ReadOnly = val;
+            dxeCreateTime.ClientEnabled = false;
+            dxeCreateTime.ReadOnlyStyle.CopyFrom(dxetxtCreatePerson.ReadOnlyStyle);
+
+        }
+
         #endregion Privates
 
 

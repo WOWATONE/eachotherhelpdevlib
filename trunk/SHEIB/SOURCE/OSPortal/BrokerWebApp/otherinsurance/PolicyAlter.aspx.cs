@@ -255,9 +255,10 @@ namespace BrokerWebApp.otherinsurance
             dxecbGridCarrierCarrierID.TextField = "CarrierNameCn";
             dxecbGridCarrierCarrierID.ValueField = "CarrierID";
             dxecbGridCarrierCarrierID.DataBind();
-
+            dxecbGridCarrierCarrierID.ClientEnabled = false;
 
             ASPxComboBox dxecbGridCarrierBranchID = tblEditorTemplate.FindControl("dxecbGridCarrierBranchID") as ASPxComboBox;
+            dxecbGridCarrierBranchID.ClientEnabled = false;
 
             ASPxTextBox dxetxtGridCarrierPolicyRate = tblEditorTemplate.FindControl("dxetxtGridCarrierPolicyRate") as ASPxTextBox;
             ASPxTextBox dxetxtGridCarrierPremium = tblEditorTemplate.FindControl("dxetxtGridCarrierPremium") as ASPxTextBox;
