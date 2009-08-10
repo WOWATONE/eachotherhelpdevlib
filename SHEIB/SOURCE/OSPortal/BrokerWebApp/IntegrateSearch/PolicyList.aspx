@@ -312,8 +312,6 @@
                                         <dxwgv:GridViewDataColumn FieldName="GUID" Caption="GUID" CellStyle-Wrap="False"
                                             Visible="false">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="Beneficiary" Caption="被保险人" CellStyle-Wrap="False">
@@ -336,8 +334,8 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CarrierSales" Caption="业务员" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataTextColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataTextColumn>
                                         <dxwgv:GridViewDataColumn FieldName="AltNo" Caption="批单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="承保份额(%)" CellStyle-Wrap="False">
