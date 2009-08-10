@@ -1027,7 +1027,7 @@ namespace BusinessObjects.Policy
             if (this.CreateTime == DateTime.MinValue)
                 _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, DateTime.Now);
             else
-                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, DateTime.Now);
+                _db.AddInParameter(dbCommand, "@CreateTime", DbType.DateTime, this.CreateTime);
 
             _db.AddInParameter(dbCommand, "@CreatePerson", DbType.String, this.CreatePerson);
 
