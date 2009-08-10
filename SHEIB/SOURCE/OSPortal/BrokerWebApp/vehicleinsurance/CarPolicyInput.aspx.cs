@@ -81,9 +81,7 @@ namespace BrokerWebApp.vehicleinsurance
                         pm = PageMode.Input;
                         break;
                 }
-                ViewState[currentPageModeKey] = pm;
-
-                
+                ViewState[currentPageModeKey] = pm;                               
 
                 Initialization();
 

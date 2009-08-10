@@ -1318,6 +1318,7 @@
                                                             OnHtmlEditFormCreated="gridPolicyItem_HtmlEditFormCreated"
                                                             OnRowValidating="gridPolicyItem_RowValidating" 
                                                             OnCustomCallback="gridPolicyItem_CustomCallback"
+                                                            OnStartRowEditing="gridPolicyItem_StartRowEditing"
                                                             >
                                                             <%-- BeginRegion Columns --%>
                                                             <Columns>
