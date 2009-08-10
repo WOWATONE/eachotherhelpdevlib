@@ -1017,6 +1017,7 @@ namespace BrokerWebApp.vehicleinsurance
             dxetxtCiProcess.Text = String.Format(BasePage.TheTwoSF, obj.CiProcess);
             dxetxtAciProcess.Text = String.Format(BasePage.TheTwoSF, obj.AciProcess);
 
+            dxeCreateTime.Date = obj.CreateTime;
             this.dxeAuditTime.Date = obj.AuditTime;
             this.dxetxtAuditPerson.Text = obj.AuditPerson;
             this.dxeMemo.Text = obj.Remark;
@@ -1089,7 +1090,7 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.ProcessRate = 0;
                                 
                 theObject.CreatePerson = this.CurrentUserID;
-                theObject.CreateTime = DateTime.Now;
+                theObject.CreateTime = dxeCreateTime.Date;
 
                 theObject.Save(ModifiedAction.Insert);
                 
@@ -1144,6 +1145,7 @@ namespace BrokerWebApp.vehicleinsurance
 
                 theObject.ModifyPerson = this.CurrentUserID;
                 theObject.ModifyTime = DateTime.Now;
+                theObject.CreateTime = dxeCreateTime.Date;
 
                 theObject.Save(ModifiedAction.Update);
             }
