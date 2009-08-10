@@ -883,6 +883,7 @@ namespace BrokerWebApp.vehicleinsurance
 
             this.dxetxtAuditPerson.Text = obj.AuditPerson;
             this.dxeAuditTime.Date = obj.AuditTime;
+            this.dxeCreateTime.Date = obj.CreateTime;
             this.dxeMemo.Text = obj.Remark;
         }
 
@@ -916,7 +917,8 @@ namespace BrokerWebApp.vehicleinsurance
                 carPolicy.GatheringType = obj.GatheringTypeID;
                 
                 carPolicy.CreatePerson  = this.CurrentUserID;
-                carPolicy.CreateTime = DateTime.Now;               
+                //carPolicy.CreateTime = DateTime.Now;   
+                carPolicy.CreateTime = dxeCreateTime.Date;  
 
                 carPolicy.Save(ModifiedAction.Insert);
             }
@@ -937,6 +939,7 @@ namespace BrokerWebApp.vehicleinsurance
 
                 carPolicy.ModifyPerson = this.CurrentUserID;
                 carPolicy.ModifyTime = DateTime.Now;
+                carPolicy.CreateTime = dxeCreateTime.Date;  
 
                 carPolicy.Save(ModifiedAction.Update);
             }
