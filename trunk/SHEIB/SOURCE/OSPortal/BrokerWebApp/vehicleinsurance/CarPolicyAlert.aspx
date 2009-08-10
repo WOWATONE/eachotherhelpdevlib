@@ -1288,7 +1288,7 @@
                                                                     </ValidationSettings>
                                                                     <ClientSideEvents ValueChanged="function(s,e){
                                                                         add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
-                                                                        multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,2,true,true);
+                                                                        multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,2,false,true);
                                                                         add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                         }" />
                                                                 </dxe:ASPxTextBox>
@@ -1303,7 +1303,7 @@
                                                                     </ValidationSettings>
                                                                     <ClientSideEvents ValueChanged="function(s,e){
                                                                         add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
-                                                                        multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,2,true,true);
+                                                                        multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,2,false,true);
                                                                         add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                         }" />
                                                                 </dxe:ASPxTextBox>
@@ -1342,7 +1342,7 @@
                                                                         <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
                                                                     <ClientSideEvents ValueChanged="function(s,e){
-                                                                        multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,2,true,true);
+                                                                        multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,2,false,true);
                                                                         add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                         }" />
                                                                 </dxe:ASPxTextBox>
@@ -1356,7 +1356,7 @@
                                                                         <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                     </ValidationSettings>
                                                                     <ClientSideEvents ValueChanged="function(s,e){
-                                                                        multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,2,true,true);
+                                                                        multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,2,false,true);
                                                                         add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                         }" />
                                                                 </dxe:ASPxTextBox>
