@@ -831,9 +831,9 @@
         function isIntNumeric(str) {
             var val = parseInt(str);
             if (isNaN(val))
-                return true;
-            else
                 return false;
+            else
+                return true;
         }
     </script>
 
