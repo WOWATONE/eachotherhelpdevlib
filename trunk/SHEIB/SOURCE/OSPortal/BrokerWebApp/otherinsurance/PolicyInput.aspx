@@ -757,7 +757,7 @@
             dxetxtPremium.SetValue(rtn);
             rtn = sumProcessVal.toFixed(2);
             dxetxtProcess.SetValue(rtn);
-
+            
             division_ValueChanged(dxetxtPremium, dxetxtCoverage, dxetxtPremiumRate, 5, false, true);
             division_ValueChanged(dxetxtProcess, dxetxtPremium, dxetxtProcessRate, 2, false, true);
         }
@@ -879,9 +879,9 @@
         function isIntNumeric(str) {
             var val = parseInt(str);
             if (isNaN(val))
-                return true;
-            else
                 return false;
+            else
+                return true;
         }
         
     </script>
