@@ -760,7 +760,7 @@
                                                     Â¼µ¥ÈÕÆÚ£º
                                                 </td>
                                                 <td style="text-align: left;">
-                                                    <dxe:ASPxDateEdit ID="dxeCreateTime" runat="server" Width="140px" ReadOnly="true"></dxe:ASPxDateEdit>
+                                                    <dxe:ASPxDateEdit ID="dxeCreateTime" runat="server" Width="140px" ></dxe:ASPxDateEdit>
                                                 </td>
                                                 <td></td>
                                             </tr> 
