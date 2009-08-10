@@ -278,6 +278,8 @@
                                                             </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="AltNO" Caption="批改单号" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="AciPolicyNo" Caption="交强险保单号" CellStyle-Wrap="False">
+                                                            </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="CarNo" Caption="车牌号码" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="UserNameCn" Caption="客户经理" CellStyle-Wrap="False">

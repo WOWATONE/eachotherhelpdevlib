@@ -668,7 +668,7 @@ namespace BusinessObjects.Policy
             sb.Append(" B.CiProcessRate, B.CiProcess, B.AciPremium, B.AciProcessRate,  ");
             sb.Append(" B.AciProcess, B.CstPremium, B.PeriodTimes, B.CarNo, B.CarcaseNo, ");
             sb.Append(" B.EngineNo, B.Capacity, B.UseCharacter, B.RegisterDate, B.CarValue, B.CarUser, ");
-            sb.Append(" B.AltNO ");
+            sb.Append(" B.AltNO, B.AciPolicyNo ");
             sb.Append(" FROM Policy B ");
             sb.Append(" LEFT JOIN PolicyCarrier A ON A.PolicyID = B.PolicyID ");
             sb.Append(" LEFT JOIN P_User C ON B.SalesId = C.UserID ");
