@@ -1274,7 +1274,9 @@
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
-                                                                                        <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPolicyItemCoverage,dxetxtPolicyItemPremiumRate,dxetxtPolicyItemPremium,2,false,true);}" />
+                                                                                        <ClientSideEvents ValueChanged="function(s,e){
+                                                                                        multi_ValueChanged(dxetxtPolicyItemCoverage,dxetxtPolicyItemPremiumRate,dxetxtPolicyItemPremium,2,false,true);
+                                                                                        }" />
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
                                                                                 <td style="white-space: nowrap; text-align: right;">
@@ -1286,7 +1288,9 @@
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
-                                                                                        <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPolicyItemCoverage,dxetxtPolicyItemPremiumRate,dxetxtPolicyItemPremium,2,false,true);}" />
+                                                                                        <ClientSideEvents ValueChanged="function(s,e){
+                                                                                        multi_ValueChanged(dxetxtPolicyItemCoverage,dxetxtPolicyItemPremiumRate,dxetxtPolicyItemPremium,2,false,true);
+                                                                                        }" />
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
                                                                                 <td style="white-space: nowrap; text-align: right;">
@@ -1298,7 +1302,9 @@
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
-                                                                                        <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPolicyItemPremium,dxetxtPolicyItemProcRate,dxetxtPolicyItemProcess,2,false,true);}" />
+                                                                                        <ClientSideEvents ValueChanged="function(s,e){
+                                                                                        multi_ValueChanged(dxetxtPolicyItemPremium,dxetxtPolicyItemProcRate,dxetxtPolicyItemProcess,2,false,true);
+                                                                                        }" />
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
                                                                             </tr>
@@ -1312,7 +1318,9 @@
                                                                                         <ValidationSettings>
                                                                                             <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                                                         </ValidationSettings>
-                                                                                        <ClientSideEvents ValueChanged="function(s,e){multi_ValueChanged(dxetxtPolicyItemPremium,dxetxtPolicyItemProcRate,dxetxtPolicyItemProcess,2,false,true);}" />
+                                                                                        <ClientSideEvents ValueChanged="function(s,e){
+                                                                                        multi_ValueChanged(dxetxtPolicyItemPremium,dxetxtPolicyItemProcRate,dxetxtPolicyItemProcess,2,false,true);
+                                                                                        }" />
                                                                                     </dxe:ASPxTextBox>
                                                                                 </td>
                                                                                 <td style="white-space: nowrap; text-align: right;">
