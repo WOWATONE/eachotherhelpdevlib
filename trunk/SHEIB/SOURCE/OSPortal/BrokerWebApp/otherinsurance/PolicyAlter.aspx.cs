@@ -1175,7 +1175,7 @@ namespace BrokerWebApp.otherinsurance
             this.dxetxtStage.Text = obj.PeriodTimes.ToString();
 
             this.dxetxtCoverage.Text = String.Format(BasePage.TheTwoSF, obj.Coverage);
-            this.dxetxtPremiumRate.Text = String.Format(BasePage.TheFourSF, obj.PremiumRate);
+            this.dxetxtPremiumRate.Text = String.Format(BasePage.TheFiveSF, obj.PremiumRate);
             this.dxetxtProcessRate.Text = String.Format(BasePage.TheFourSF, obj.ProcessRate);
 
             //dxeddlCurrency
