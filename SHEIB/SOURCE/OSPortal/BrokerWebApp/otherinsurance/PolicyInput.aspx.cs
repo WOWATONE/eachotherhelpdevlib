@@ -1264,7 +1264,8 @@ namespace BrokerWebApp.otherinsurance
                 obj.StartDate = this.dxeStartDate.Date; //theJosn.StartDate;
 
                 obj.CreatePerson = this.CurrentUserID;
-                obj.CreateTime = DateTime.Now;
+                //obj.CreateTime = DateTime.Now;
+                obj.CreateTime = dxedtCreateTime.Date;
 
                 obj.Save(ModifiedAction.Insert);
             }
@@ -1308,6 +1309,7 @@ namespace BrokerWebApp.otherinsurance
 
                 obj.ModifyPerson  = this.CurrentUserID;
                 obj.ModifyTime  = DateTime.Now;
+                obj.CreateTime = dxedtCreateTime.Date;
 
                 obj.Save(ModifiedAction.Update);
             }
