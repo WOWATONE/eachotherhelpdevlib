@@ -167,15 +167,6 @@ namespace BrokerWebApp.vehicleinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtAskPriceID;
         
         /// <summary>
-        /// dxetxtPolicyNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyNo;
-        
-        /// <summary>
         /// dxetxtAltNo control.
         /// </summary>
         /// <remarks>
@@ -183,6 +174,15 @@ namespace BrokerWebApp.vehicleinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtAltNo;
+        
+        /// <summary>
+        /// dxetxtPolicyNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyNo;
         
         /// <summary>
         /// dxetxtPolicyID control.
