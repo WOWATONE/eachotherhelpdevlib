@@ -59,7 +59,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            //
+            alwayBasicInfoControlsUnable();
         }
 
 
@@ -403,6 +403,19 @@ namespace BrokerWebApp.vehicleinsurance
         }
 
 
+        private void alwayBasicInfoControlsUnable()
+        {
+            Boolean val = true;
+            dxetxtCreatePerson.ReadOnly = val;
+            dxetxtCreatePerson.ClientEnabled = false;
+            dxetxtCreatePerson.ReadOnlyStyle.ForeColor = System.Drawing.Color.LightGray;
+            dxetxtCreatePerson.ReadOnlyStyle.Border.BorderColor = System.Drawing.Color.LightGray;
+
+            dxeCreateTime.ReadOnly = val;
+            dxeCreateTime.ClientEnabled = false;
+            dxeCreateTime.ReadOnlyStyle.CopyFrom(dxetxtCreatePerson.ReadOnlyStyle);
+
+        }
 
         #endregion Privates
 
