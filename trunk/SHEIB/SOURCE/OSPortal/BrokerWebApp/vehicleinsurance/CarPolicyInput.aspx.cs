@@ -1023,6 +1023,9 @@ namespace BrokerWebApp.vehicleinsurance
             dxetxtTotalPremium.Text = String.Format(BasePage.TheTwoSF, obj.Premium);            
             dxetxtTotalProcess.Text = String.Format(BasePage.TheTwoSF, obj.Process);
 
+            dxetxtCreatePerson.Text = obj.CreatePerson;
+            dxeCreateTime.Date = obj.CreateTime;
+
         }
 
 
