@@ -978,21 +978,15 @@
                                                     <td style="white-space: nowrap; text-align: right;">
                                                         询价单号：
                                                     </td>
-                                                    <td style="text-align: left; color: Red"  colspan="3">
-                                                        <dxe:ASPxTextBox ID="dxetxtAskPriceID" ClientInstanceName="dxetxtAskPriceID" runat="server" Width="514px" ReadOnly="true"></dxe:ASPxTextBox>
+                                                    <td style="text-align: left; color: Red">
+                                                        <dxe:ASPxTextBox ID="dxetxtAskPriceID" ClientInstanceName="dxetxtAskPriceID" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
                                                     </td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
                                                     <td style="white-space: nowrap; text-align: right;">
                                                         商业险保单号：
                                                     </td>
                                                     <td style="text-align: left;" colspan="3">
-                                                        <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server" Width="514px"></dxe:ASPxTextBox>
-                                                    </td>                                                    
-                                                    <td></td>
-                                                    <td></td>
+                                                        <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server" Width="483px"></dxe:ASPxTextBox>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="white-space: nowrap; text-align: right;">
@@ -1004,11 +998,9 @@
                                                     <td style="white-space: nowrap; text-align: right;">
                                                         交强险保单号：
                                                     </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtAciPolicyNo" ClientInstanceName="dxetxtAciPolicyNo" runat="server" Width="160px"></dxe:ASPxTextBox>
+                                                    <td style="text-align: left;" colspan="3">
+                                                        <dxe:ASPxTextBox ID="dxetxtAciPolicyNo" ClientInstanceName="dxetxtAciPolicyNo" runat="server" Width="483px"></dxe:ASPxTextBox>
                                                     </td>
-                                                    <td></td>
-                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="text-align: right;">
@@ -1179,7 +1171,7 @@
                                                         特别约定：
                                                     </td>
                                                     <td style="text-align: left;" colspan="5">
-                                                        <dxe:ASPxTextBox ID="dxetxtSpecial" ClientInstanceName="dxetxtSpecial" runat="server" Width="821px"></dxe:ASPxTextBox>
+                                                        <dxe:ASPxTextBox ID="dxetxtSpecial" ClientInstanceName="dxetxtSpecial" runat="server" Width="802px"></dxe:ASPxTextBox>
                                                     </td>                                                            
                                                 </tr>
                                                 <tr>
