@@ -132,6 +132,13 @@
             return true;
         }
 
+        function PolicyViewTransfer(id) {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+            var querystring;
+            querystring = "../PolicyViewTransfer.aspx?id=" + id;
+            window.showModalDialog(querystring, self, myArguments);
+        }
+
         function btnCloseClick() {
             window.close();
         }
@@ -888,6 +895,9 @@
                                         KeyFieldName="PolicyID" Width="100%" AutoGenerateColumns="False" Settings-ShowFooter="true" SettingsPager-AlwaysShowPager="true" SettingsBehavior-AllowDragDrop="false">
                                         <Columns>
                                             <dxwgv:GridViewDataTextColumn Caption="投保单号" FieldName="PolicyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                                <DataItemTemplate>
+                                                    <a href="javascript:PolicyViewTransfer('<%# Eval("PolicyID") %>');"><%# Eval("PolicyID")%></a>
+                                                </DataItemTemplate>
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="保单编号" FieldName="PolicyNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
