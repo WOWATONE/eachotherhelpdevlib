@@ -207,8 +207,8 @@ namespace BrokerWebApp.CustomerClaim
             DataTable dt = BusinessObjects.BO_NotifyClaim.GetPolicyByPolicyNo(policyNo);
             if (dt != null && dt.Rows.Count > 0)
             {
-                if (dt.Rows[0]["CarrierNameEn"] != DBNull.Value)
-                    this.dxetxtCarrierNameCn.Text = dt.Rows[0]["CarrierNameEn"].ToString();
+                if (dt.Rows[0]["CarrierNameCn"] != DBNull.Value)
+                    this.dxetxtCarrierNameCn.Text = dt.Rows[0]["CarrierNameCn"].ToString();
                 if (dt.Rows[0]["CustName"] != DBNull.Value)
                     this.dxetxtCustName.Text = dt.Rows[0]["CustName"].ToString();
                 if (dt.Rows[0]["BranchName"] != DBNull.Value)
