@@ -42,6 +42,8 @@ namespace BrokerWebApp.IntegrateSearch
             this.dxeddlDeptID.TextField = "DeptName";
             this.dxeddlDeptID.ValueField = "DeptID";
             this.dxeddlDeptID.DataBind();
+            this.dxeddlDeptID.Items.Insert(0, new ListEditItem("(全部)", ""));
+
 
             this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
             this.dxeddlSalesId.TextField = "UserNameCn";
@@ -214,10 +216,11 @@ namespace BrokerWebApp.IntegrateSearch
             thecb.TextField = "UserNameCn";
             thecb.ValueField = "UserID";
             thecb.DataBind();
-            if (thecb.Items.Count > 0)
-            {
-                thecb.SelectedItem = thecb.Items[0];
-            }
+            thecb.Items.Insert(0, new ListEditItem("(全部)", ""));
+            //if (thecb.Items.Count > 0)
+            //{
+            //    thecb.SelectedItem = thecb.Items[0];
+            //}
         }
 
         protected void dxeddlBranchId_Callback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)

@@ -185,7 +185,7 @@
                                                 <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlCarrierId_SelectedIndexChanged(s,e);}" />
                                             </dxe:ASPxComboBox>
                                         </td>
-                                        <td style="text-align: right;" >
+                                        <td style="text-align: right;">
                                             分支机构：
                                         </td>
                                         <td style="text-align: left;">
@@ -296,9 +296,16 @@
                     <table style="width: 100%">
                         <tr>
                             <td>
-                                <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
-                                    KeyFieldName="GUID" AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%"
-                                    SettingsPager-AlwaysShowPager="true" OnCustomCallback="gridSearchResult_CustomCallback">
+                                <dxwgv:ASPxGridView ID="gridSearchResult" 
+                                    ClientInstanceName="gridSearchResult" 
+                                    runat="server"
+                                    KeyFieldName="GUID" 
+                                    AutoGenerateColumns="False" 
+                                    Settings-ShowFooter="true" 
+                                    Width="100%"
+                                    SettingsPager-AlwaysShowPager="true" 
+                                    OnCustomCallback="gridSearchResult_CustomCallback"
+                                    >
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
@@ -312,8 +319,8 @@
                                         <dxwgv:GridViewDataColumn FieldName="GUID" Caption="GUID" CellStyle-Wrap="False"
                                             Visible="false">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataTextColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataTextColumn>
                                         <dxwgv:GridViewDataColumn FieldName="Beneficiary" Caption="被保险人" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CustomerName" Caption="投保客户" CellStyle-Wrap="False">
@@ -370,8 +377,8 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CstPremium" Caption="车船税" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="AciPolicyNo" Caption="交强险保单号" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataTextColumn FieldName="AciPolicyNo" Caption="交强险保单号" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataTextColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowPager" />
@@ -384,8 +391,15 @@
                                             DisplayFormat="总计: {0}" />
                                     </GroupSummary>
                                     <TotalSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" ShowInGroupFooterColumn="PolicyNo"
-                                            DisplayFormat="总计: {0}" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" DisplayFormat="总计: {0}" />
+                                        <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="Process" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="ProcessBase" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" DisplayFormat="c" />
+                                        
                                     </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
