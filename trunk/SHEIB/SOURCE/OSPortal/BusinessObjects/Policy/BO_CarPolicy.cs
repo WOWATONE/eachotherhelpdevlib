@@ -311,7 +311,8 @@ namespace BusinessObjects.Policy
             sb.Append(" D.CarrierNameCn,  ");
             sb.Append(" E.BranchName, ");
             sb.Append(" K.DeptName, ");
-            sb.Append(" G.CustName ");
+            sb.Append(" G.CustName, ");
+            sb.Append(" (Select Count(PolicyId) As CarNumber From Policy Where PolicyType = '1' And AskPriceID = A1.AskPriceID) As CarNumber ");
             sb.Append(" FROM CarPolicy A1 ");
             sb.Append(" LEFT JOIN P_User C ON A1.SalesId = C.UserID ");
             sb.Append(" LEFT JOIN Carrier D ON A1.CarrierID = D.CarrierID ");

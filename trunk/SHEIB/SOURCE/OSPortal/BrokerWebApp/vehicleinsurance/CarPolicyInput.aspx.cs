@@ -1369,10 +1369,10 @@ namespace BrokerWebApp.vehicleinsurance
             dxetxtCreatePerson.ClientEnabled = false;
             dxetxtCreatePerson.ReadOnlyStyle.ForeColor = System.Drawing.Color.LightGray;
             dxetxtCreatePerson.ReadOnlyStyle.Border.BorderColor = System.Drawing.Color.LightGray;
-                        
-            //dxeCreateTime.ReadOnly = val;
-            //dxeCreateTime.ClientEnabled = false;
-            //dxeCreateTime.ReadOnlyStyle.CopyFrom(dxetxtCreatePerson.ReadOnlyStyle);
+
+            dxeCreateTime.ReadOnly = val;
+            dxeCreateTime.ClientEnabled = false;
+            dxeCreateTime.ReadOnlyStyle.CopyFrom(dxetxtCreatePerson.ReadOnlyStyle);
 
         }
 
