@@ -1361,7 +1361,9 @@ namespace BrokerWebApp.vehicleinsurance
                 }
             }
 
-            dxetxtSpecial.Text = objCar.Remark;           
+            dxetxtSpecial.Text = objCar.Remark;
+            //dxetxtCreatePerson.Text = objCar.CreatePerson;
+            dxeCreateTime.Date = objCar.CreateTime;
 
         }
 
