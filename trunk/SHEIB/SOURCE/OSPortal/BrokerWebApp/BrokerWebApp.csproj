@@ -391,6 +391,13 @@
     <Compile Include="CustomerClaim\NotifyClaimList.aspx.designer.cs">
       <DependentUpon>NotifyClaimList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustomerClaim\NotifyClaimView.aspx.cs">
+      <DependentUpon>NotifyClaimView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\NotifyClaimView.aspx.designer.cs">
+      <DependentUpon>NotifyClaimView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CustomerRelation\CustContact.aspx.cs">
       <DependentUpon>CustContact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1117,6 +1124,7 @@
     <Content Include="BusinessConsult\BusinessConsultList.aspx" />
     <Content Include="CustomerClaim\NotifyClaim.aspx" />
     <Content Include="CustomerClaim\NotifyClaimList.aspx" />
+    <Content Include="CustomerClaim\NotifyClaimView.aspx" />
     <Content Include="CustomerRelation\CustContact.aspx" />
     <Content Include="CustomerRelation\Customer.aspx" />
     <Content Include="CustomerRelation\CustomerList.aspx" />

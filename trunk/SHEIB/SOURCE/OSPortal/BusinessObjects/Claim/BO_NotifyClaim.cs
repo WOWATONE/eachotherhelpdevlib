@@ -389,7 +389,7 @@ namespace BusinessObjects
         public static DataTable GetPolicyByPolicyNo(string policyNo)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("Select P.PolicyID, C.CarrierNameEn, CUST.CustName, B.BranchName, P.Beneficiary, PT.ProdTypeName, P.StartDate, P.EndDate, PU.UserNameCn ");
+            sb.Append("Select P.PolicyID, C.CarrierNameCn, CUST.CustName, B.BranchName, P.Beneficiary, PT.ProdTypeName, P.StartDate, P.EndDate, PU.UserNameCn ");
             sb.Append("From Policy P (nolock) ");
             sb.Append("Left Join PolicyCarrier PC (nolock) On PC.PolicyID=P.PolicyID ");
             sb.Append("Left Join Carrier C (nolock) On C.CarrierID=PC.CarrierID ");

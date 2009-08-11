@@ -139,6 +139,13 @@
             window.showModalDialog(querystring, self, myArguments);
         }
 
+        function NotifyClaimView(id) {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=800px;center=yes;help=no";
+            var querystring;
+            querystring = "../CustomerClaim/NotifyClaimView.aspx?id=" + id;
+            window.showModalDialog(querystring, self, myArguments);
+        }
+
         function btnCloseClick() {
             window.close();
         }
@@ -849,6 +856,9 @@
                                         KeyFieldName="NotifyID" Width="100%" AutoGenerateColumns="False" Settings-ShowFooter="true" SettingsPager-AlwaysShowPager="true" SettingsBehavior-AllowDragDrop="false">
                                         <Columns>
                                             <dxwgv:GridViewDataTextColumn Caption="理赔编号" FieldName="NotifyID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                                                <DataItemTemplate>
+                                                    <a href="javascript:NotifyClaimView('<%# Eval("NotifyID") %>');"><%# Eval("NotifyID") %></a>
+                                                </DataItemTemplate>
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="保单编号" FieldName="PolicyNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
