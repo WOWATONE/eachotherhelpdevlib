@@ -305,6 +305,7 @@
                                     Width="100%"
                                     SettingsPager-AlwaysShowPager="true" 
                                     OnCustomCallback="gridSearchResult_CustomCallback"
+                                    OnCustomSummaryCalculate="gridSearchResult_CustomSummaryCalculate"                                    
                                     >
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
@@ -391,7 +392,7 @@
                                             DisplayFormat="总计: {0}" />
                                     </GroupSummary>
                                     <TotalSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" DisplayFormat="总计: {0}" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Custom" DisplayFormat="总计: {0}" />
                                         <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="Process" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum" DisplayFormat="c" />

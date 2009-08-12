@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using DevExpress.Web.ASPxEditors;
+using DevExpress.Web.ASPxGridView;
 
 namespace BrokerWebApp.IntegrateSearch
 {
@@ -200,6 +201,9 @@ namespace BrokerWebApp.IntegrateSearch
             DataTable dt = BusinessObjects.Policy.BO_Policy.GetPolicyByCarrier(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
+            
+
+
 
         }
 
@@ -208,6 +212,27 @@ namespace BrokerWebApp.IntegrateSearch
             BindGrid();
         }
 
+
+        protected void gridSearchResult_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
+        {
+            if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Finalize) {
+                ASPxSummaryItem si = (ASPxSummaryItem)e.Item;
+                if (si.FieldName == "PolicyNo") {
+
+                    if (e.IsTotalSummary) {
+                    
+
+                    }
+                    if (e.IsGroupSummary) {
+                        //here I need visible index, but it seems impossible to calculate it
+                        //subTotal = (decimal)ASPxGridView1.GetGroupSummaryValue(visIndex, ASPxGridView1.GroupSummary["SubTotal"]);
+                        //taxAmt = (decimal)ASPxGridView1.GetGroupSummaryValue(visIndex++, ASPxGridView1.GroupSummary["TaxAmt"]);
+                    }
+                    e.TotalValue = 20;
+                }
+            }
+        }
+        
 
         protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
