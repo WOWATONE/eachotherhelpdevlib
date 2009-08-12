@@ -334,7 +334,7 @@ namespace BrokerWebApp.otherinsurance
                 if (theValueList[7] == null)
                     premiumRate = "";
                 else
-                    premiumRate = String.Format(BasePage.TheTwoSF, theValueList[7]);
+                    premiumRate = String.Format(BasePage.TheFiveSF, theValueList[7]);
 
                 ListEditItem theselected;
                 if (this.gridPolicyItemStartEdit)
