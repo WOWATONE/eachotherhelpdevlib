@@ -29,8 +29,9 @@
 
 
         function gridCustomButtonClick(s, e) {
+            debugger;
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-            var noint = s.GetDataRow(e.visibleIndex).cells[2].innerText;
+            var noint = s.GetDataRow(e.visibleIndex).cells[1].innerText;
             var querystring;
             querystring = "../PolicyViewTransfer.aspx?id=" + noint;
             window.showModalDialog(querystring, self, myArguments);
