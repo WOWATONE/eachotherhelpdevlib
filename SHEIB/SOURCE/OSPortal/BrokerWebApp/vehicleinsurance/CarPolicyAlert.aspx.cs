@@ -806,7 +806,7 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.ProcessRate = 0;
                 
                 theObject.CreatePerson = this.CurrentUserID;
-                theObject.CreateTime = DateTime.Now;
+                theObject.CreateTime = dxeCreateTime.Date;
                 
 
                 theObject.Save(ModifiedAction.Insert);
@@ -842,6 +842,7 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.ProcessBase = obj.TotalProcess;
                 theObject.ProcessRate = 0;
 
+                theObject.CreateTime = dxeCreateTime.Date;
                 theObject.ModifyPerson = this.CurrentUserID;
                 theObject.ModifyTime = DateTime.Now;
                 
@@ -1066,9 +1067,9 @@ namespace BrokerWebApp.vehicleinsurance
             dxetxtCreatePerson.ClientEnabled = false;
             dxetxtCreatePerson.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
             
-            dxeCreateTime.ReadOnly = val;
-            dxeCreateTime.ClientEnabled = false;
-            dxeCreateTime.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+            //dxeCreateTime.ReadOnly = val;
+            //dxeCreateTime.ClientEnabled = false;
+            //dxeCreateTime.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
                         
         }
 

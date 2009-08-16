@@ -299,7 +299,7 @@
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <Settings ShowGroupPanel="true" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
-                                    <SettingsBehavior AllowDragDrop="true" AllowGroup="true" />
+                                    <SettingsBehavior AllowDragDrop="true" AllowGroup="true" ConfirmDelete="true" />
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="AskPriceID" SummaryType="Count" DisplayFormat="#" />                                                                               
                                     </TotalSummary>

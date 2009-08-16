@@ -1569,7 +1569,7 @@
                                                     </td>
                                                     <td style="text-align: left;">
                                                         <dxe:ASPxDateEdit ID="dxedtCreateTime" ClientInstanceName="dxedtCreateTime" runat="server"
-                                                            Width="125px" ReadOnly="true">
+                                                            Width="125px">
                                                         </dxe:ASPxDateEdit>
                                                     </td>
                                                     <td>
@@ -1709,8 +1709,8 @@
                                             <SettingsLoadingPanel Mode="ShowAsPopup" ImagePosition="Top" ShowImage="true" Text="Loading" />
                                             <SettingsBehavior AllowDragDrop="true" AllowGroup="true" AllowMultiSelection="false" />
                                             <TotalSummary>
-                                                <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum" DisplayFormat="c" />                                              
-                                                <dxwgv:ASPxSummaryItem FieldName="ProcessBase" SummaryType="Sum" DisplayFormat="c" />
+                                                <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" ShowInColumn="PayFeeBase" SummaryType="Sum" DisplayFormat="c" />                                              
+                                                <dxwgv:ASPxSummaryItem FieldName="PayProcBase" ShowInColumn="PayProcBase" SummaryType="Sum" DisplayFormat="c" />
                                             </TotalSummary>
                                             <Styles>
                                                 <LoadingDiv>
