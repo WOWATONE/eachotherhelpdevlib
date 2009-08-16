@@ -10,8 +10,8 @@ using DevExpress.Web.ASPxGridView;
 
 namespace BrokerWebApp.IntegrateSearch
 {
- 
-    public partial class PolicyList : BasePage
+
+    public partial class PolicyListDetail : System.Web.UI.Page
     {
 
         #region Variables
@@ -45,6 +45,7 @@ namespace BrokerWebApp.IntegrateSearch
             this.dxeddlDeptID.DataBind();
             this.dxeddlDeptID.Items.Insert(0, new ListEditItem("(全部)", ""));
 
+
             this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
             this.dxeddlSalesId.TextField = "UserNameCn";
             this.dxeddlSalesId.ValueField = "UserID";
@@ -65,6 +66,7 @@ namespace BrokerWebApp.IntegrateSearch
             this.dxeddlCarrierId.ValueField = "CarrierID";
             this.dxeddlCarrierId.DataBind();
 
+
             this.dxeddlBranchId.DataSource = BusinessObjects.SchemaSetting.BO_Branch.GetBranchList("");
             this.dxeddlBranchId.TextField = "BranchName";
             this.dxeddlBranchId.ValueField = "BranchID";
@@ -74,6 +76,24 @@ namespace BrokerWebApp.IntegrateSearch
             this.dxeddlPolicyStatus.TextField = "CodeName";
             this.dxeddlPolicyStatus.ValueField = "CodeID";
             this.dxeddlPolicyStatus.DataBind();
+
+            //dsList = BusinessObjects.SchemaSetting.BO_Carrier.GetCarrierList("");
+            //if (dsList.Tables[0] != null)
+            //{
+            //    foreach (DataRow row in dsList.Tables[0].Rows)
+            //    {
+            //        this.dxeddlCarrierId.Items.Add(row["CarrierNameCn"].ToString().Trim(), row["CarrierID"].ToString().Trim());
+            //    }
+            //}
+
+            //dsList = BusinessObjects.SchemaSetting.BO_Branch.GetBranchList("");
+            //if (dsList.Tables[0] != null)
+            //{
+            //    foreach (DataRow row in dsList.Tables[0].Rows)
+            //    {
+            //        this.dxeddlBranchId.Items.Add(row["BranchName"].ToString().Trim(), row["BranchID"].ToString().Trim());
+            //    }
+            //}
 
             dsList = BusinessObjects.SchemaSetting.BO_ProductType.GetProductTypeList();
             if (dsList.Tables[0] != null && dsList.Tables[0].Rows.Count > 0)
@@ -178,18 +198,20 @@ namespace BrokerWebApp.IntegrateSearch
                 lsWhere = lsWhere + " and (convert(char(10), a.CreateTime,21)) <='" + lsEndDate + "'";
             }
 
-            DataTable dt = BusinessObjects.Policy.BO_Policy.GetPolicyList(lsWhere).Tables[0];
+            DataTable dt = BusinessObjects.Policy.BO_Policy.GetPolicyByCarrier(lsWhere).Tables[0];
+            
             this.gridSearchResult.DataSource = dt;
-
-            //经过DataView筛选name 字段不重复的数据
-            //DataView dv = new DataView(dt);
-            //string[] strComuns = { "PolicyID" };
-            //DataTable dtPolicyID = dv.ToTable(true, strComuns);
-            //Session["PolicyCount"] = dtPolicyID.Rows.Count;
-
             this.gridSearchResult.DataBind();
 
 
+            System.Collections.ArrayList result = new System.Collections.ArrayList();
+            foreach (DataRow row in dt.Rows)
+            {
+                if (row["PolicyID"].ToString() != "00000052")
+                    result.Add(row["PolicyID"]);
+            }
+            Session["SelectResult"] = result;
+            
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -197,28 +219,76 @@ namespace BrokerWebApp.IntegrateSearch
             BindGrid();
         }
 
+        protected void detailGrid_DataSelect(object sender, EventArgs e)
+        {
+            string PolicyID = (string)(sender as ASPxGridView).GetMasterRowFieldValues("PolicyID");
+            DataTable dt = BusinessObjects.Policy.BO_Policy.GetPolicyByCarrier(" and a.PolicyID='" + PolicyID + "'").Tables[0];
+
+            ASPxGridView detailGrid = sender as ASPxGridView;
+            detailGrid.SettingsDetail.ExportMode = GridViewDetailExportMode.None;
+            detailGrid.DataSource = dt;
+
+            if (PolicyID == "00000052")                
+            {
+                detailGrid.SettingsDetail.ExportMode = GridViewDetailExportMode.None;
+            }
+
+        }
+
 
         protected void gridSearchResult_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
         {
-        //    if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Finalize) {
-        //        ASPxSummaryItem si = (ASPxSummaryItem)e.Item;
-        //        if (si.FieldName == "PolicyID")
-        //        {
+            //if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Finalize) {
+            //    ASPxSummaryItem si = (ASPxSummaryItem)e.Item;
+            //    if (si.FieldName == "PolicyNo") {
 
-        //            if (e.IsTotalSummary) {
-        //                if (Session["PolicyCount"] != null)
-        //                {
-        //                    e.TotalValue = int.Parse(Session["PolicyCount"].ToString());
-        //                }
-        //            }
-        //            if (e.IsGroupSummary) {
+            //        if (e.IsTotalSummary) {
+                    
 
-        //            }
-
-        //        }
-        //    }
+            //        }
+            //        if (e.IsGroupSummary) {
+            //            //here I need visible index, but it seems impossible to calculate it
+            //            //subTotal = (decimal)ASPxGridView1.GetGroupSummaryValue(visIndex, ASPxGridView1.GroupSummary["SubTotal"]);
+            //            //taxAmt = (decimal)ASPxGridView1.GetGroupSummaryValue(visIndex++, ASPxGridView1.GroupSummary["TaxAmt"]);
+            //        }
+            //        e.TotalValue = 20;
+            //    }
+            //}
         }
-        
+
+
+        protected void gridSearchResult_DataBinding(object sender, EventArgs e)
+        {
+            DevExpress.Web.ASPxGridView.ASPxGridView grid = sender as DevExpress.Web.ASPxGridView.ASPxGridView;
+            if ((grid != null) )
+            {
+                int i = (int)grid.GetMasterRowKeyValue();/*取主表记录的Key，主表grid必须设定KeyFieldName*/
+                
+            }
+
+            
+        }
+        private void DoSelect()
+        {
+       
+        }
+
+
+        protected void gridSearchResult_DetailRowGetButtonVisibility(object sender, ASPxGridViewDetailRowButtonEventArgs e)
+        {
+           // Response.Write(e.KeyValue);
+
+            if (Session["SelectResult"] != null)
+            {
+                if (!((System.Collections.ArrayList)Session["SelectResult"]).Contains(e.KeyValue))
+                    e.ButtonState = GridViewDetailRowButtonState.Hidden;
+            }
+
+            //ASPxGridView detailGrid = sender as ASPxGridView;
+
+        }
+
+
 
         protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
