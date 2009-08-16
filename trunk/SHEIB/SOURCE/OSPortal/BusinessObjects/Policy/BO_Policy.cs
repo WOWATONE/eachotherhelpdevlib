@@ -1344,6 +1344,13 @@ namespace BusinessObjects.Policy
             return _db.ExecuteDataSet(dbCommand);
         }
 
+        public static DataSet GetPolicyList(string sWhere)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetPolicyList");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
         #endregion Procedure
 
 
