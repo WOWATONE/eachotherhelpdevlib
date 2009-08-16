@@ -1224,8 +1224,8 @@ namespace BusinessObjects.Policy
 
                 if (needChangePeriod)
                 {
-                    ChangePeriod(this.PolicyID);
                     ChangePolicyCarrierRateValue(this.PolicyID);
+                    ChangePeriod(this.PolicyID);                    
                 }
 
             }

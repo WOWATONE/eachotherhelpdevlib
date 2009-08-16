@@ -959,7 +959,7 @@ namespace BrokerWebApp.otherinsurance
                 obj.StartDate = this.dxeStartDate.Date;//theJosn.StartDate;
 
                 obj.CreatePerson = this.CurrentUserID;
-                obj.CreateTime = DateTime.Now;
+                obj.CreateTime = dxedtCreateTime.Date;
 
                 obj.AltNO = theJosn.AltNo;
 
@@ -1003,6 +1003,7 @@ namespace BrokerWebApp.otherinsurance
                 obj.Special = theJosn.Special;
                 obj.StartDate = this.dxeStartDate.Date;//theJosn.StartDate;
 
+                obj.CreateTime = dxedtCreateTime.Date;
                 obj.ModifyPerson = this.CurrentUserID;
                 obj.ModifyTime = DateTime.Now;
 
@@ -1454,9 +1455,9 @@ namespace BrokerWebApp.otherinsurance
             dxetxtCreatePerson.ClientEnabled = false;
             dxetxtCreatePerson.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
 
-            dxedtCreateTime.ReadOnly = val;
-            dxedtCreateTime.ClientEnabled = false;
-            dxedtCreateTime.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
+            //dxedtCreateTime.ReadOnly = val;
+            //dxedtCreateTime.ClientEnabled = false;
+            //dxedtCreateTime.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
 
         }
 

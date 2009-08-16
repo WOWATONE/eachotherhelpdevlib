@@ -1214,7 +1214,7 @@
                                                                 录单日期：
                                                             </td>
                                                             <td style="text-align: left;">
-                                                                <dxe:ASPxDateEdit ID="dxeCreateTime" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxDateEdit>
+                                                                <dxe:ASPxDateEdit ID="dxeCreateTime" runat="server" Width="160px"></dxe:ASPxDateEdit>
                                                             </td>
                                                             <td style="text-align: left;" colspan="2">
                                                                 <dxe:ASPxButton runat="server" id="dxebtntopSave" ClientInstanceName="dxebtntopSave" Text="保存" CausesValidation="true" ValidationGroup="BaseGroup" AutoPostBack="false">
