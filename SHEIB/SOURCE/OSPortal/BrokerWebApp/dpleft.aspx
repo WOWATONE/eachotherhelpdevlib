@@ -68,8 +68,6 @@
                             <Items>
                                 <dxnb:NavBarItem Text="理赔登记" Name="CustomerClaim/NotifyClaimList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="理赔资料管理" Name="http://www.google.cn" Visible="false">
-                                </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="业务咨询" Expanded="false">
@@ -139,7 +137,7 @@
                             <Items>
                                 <dxnb:NavBarItem Text="签约预算清单" Name="BudgetManagement/SignPremiumBudgetList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="签约预算执行明细" Name="BudgetManagement/SignPremiumBudgetDetails.aspx" Visible="false">
+                                <dxnb:NavBarItem Text="签约预算完成情况" Name="BudgetManagement/SignPremiumBudgetRpt.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="签约预算完成汇总" Name="BudgetManagement/SignPremiumBudgetSummary.aspx" Visible="false">
                                 </dxnb:NavBarItem>

@@ -53,7 +53,10 @@
             var thejsonstring = dxeddlCarrierId.GetSelectedItem().value;
             dxeddlBranchId.PerformCallback(thejsonstring);
         }
-        
+
+        function btnResetClick() {
+            ASPxClientEdit.ClearEditorsInContainer(null);
+        }
         
     </script>
 
@@ -228,13 +231,25 @@
                                         </td>
                                         <td style="text-align: center;">
                                         </td>
-                                        <td style="text-align: left;">
-                                        </td>
-                                        <td style="text-align: right;" colspan="2">
-                                            <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click"  />&nbsp;
-                                            <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2"  />&nbsp;
-                                            <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
-                                                CssClass="input_2" />
+                                        <td style="text-align: right;" colspan="3">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxButton ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click">
+                                                        </dxe:ASPxButton>
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxButton ID="btnReset" runat="server" Text="重置" AutoPostBack="false" class="input_2">
+                                                            <ClientSideEvents Click="btnResetClick" />
+                                                        </dxe:ASPxButton>
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxButton ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
+                                                            CssClass="input_2" />
+                                                        </dxe:ASPxButton>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
                                     </tr>
                                 </table>
@@ -271,17 +286,10 @@
                     <table style="width: 100%">
                         <tr>
                             <td>
-                                <dxwgv:ASPxGridView ID="gridSearchResult" 
-                                    ClientInstanceName="gridSearchResult" 
-                                    runat="server"
-                                    KeyFieldName="GUID" 
-                                    AutoGenerateColumns="False" 
-                                    Settings-ShowFooter="true" 
-                                    Width="100%"
-                                    SettingsPager-AlwaysShowPager="true" 
-                                    OnCustomCallback="gridSearchResult_CustomCallback"
-                                    OnCustomSummaryCalculate="gridSearchResult_CustomSummaryCalculate"                                    
-                                    >
+                                <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
+                                    KeyFieldName="GUID" AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%"
+                                    SettingsPager-AlwaysShowPager="true" OnCustomCallback="gridSearchResult_CustomCallback"
+                                    OnCustomSummaryCalculate="gridSearchResult_CustomSummaryCalculate">
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
@@ -295,11 +303,14 @@
                                         <dxwgv:GridViewDataColumn FieldName="GUID" Caption="GUID" CellStyle-Wrap="False"
                                             Visible="false">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataTextColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False"  VisibleIndex="0">
+                                        <dxwgv:GridViewDataTextColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False"
+                                            VisibleIndex="0">
                                         </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Beneficiary" Caption="被保险人" CellStyle-Wrap="False" VisibleIndex="1">
+                                        <dxwgv:GridViewDataColumn FieldName="Beneficiary" Caption="被保险人" CellStyle-Wrap="False"
+                                            VisibleIndex="1">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CustomerName" Caption="投保客户" CellStyle-Wrap="False" VisibleIndex="2">
+                                        <dxwgv:GridViewDataColumn FieldName="CustomerName" Caption="投保客户" CellStyle-Wrap="False"
+                                            VisibleIndex="2">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="DeptName" Caption="部门" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -311,14 +322,14 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="EndDate" Caption="终止日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="False" >
-                                        </dxwgv:GridViewDataColumn>                                        
+                                        <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CarrierSales" Caption="业务员" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataTextColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataTextColumn>
                                         <dxwgv:GridViewDataColumn FieldName="AltNo" Caption="批单号" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>                                       
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费（原）" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="Process" Caption="经纪费（原）" CellStyle-Wrap="False">
@@ -363,13 +374,13 @@
                                             DisplayFormat="总计: {0}" />
                                     </GroupSummary>
                                     <TotalSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Custom"  ShowInColumn="Beneficiary" DisplayFormat="保单数: {0}" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Custom" ShowInColumn="Beneficiary"
+                                            DisplayFormat="保单数: {0}" />
                                         <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="ProcessBase" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" DisplayFormat="c" />
-                                        
                                     </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
