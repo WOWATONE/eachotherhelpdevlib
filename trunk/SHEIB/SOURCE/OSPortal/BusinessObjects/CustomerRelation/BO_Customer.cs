@@ -373,6 +373,28 @@ namespace BusinessObjects
 
             return customer;
         }
+
+        /// <summary>
+        /// 判断保单中是否有指定客户
+        /// </summary>
+        /// <param name="custID"></param>
+        /// <returns></returns>
+        public static bool IfExistsInPolicy(string custID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select top 1 CustomerID ");
+            sb.Append("From Policy (nolock) ");
+            sb.Append("Where CustomerID=@CustomerID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@CustomerID", DbType.AnsiString, custID);
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+
+            if (value != null && value.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
         #endregion
     }
 }

@@ -9,6 +9,7 @@
     TagPrefix="dxwgv" %>
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors"
     TagPrefix="dxe" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>客户列表</title>
 
@@ -31,9 +32,27 @@
         }
 
         function gridCustomButtonClick(s, e) {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=700px;center=yes;help=no";
-            var custID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
-            window.showModalDialog("Customer.aspx?CustID=" + custID, self, myArguments);
+            if (e.buttonID == "删除") {
+                if (!confirm("确定删除吗?"))
+                    return false;
+                var custID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
+                dxeDeleteCustomerCallback.PerformCallback(custID);
+            }
+            else if (e.buttonID == "编辑") {
+                var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=700px;center=yes;help=no";
+                var custID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
+                window.showModalDialog("Customer.aspx?CustID=" + custID, self, myArguments);
+            }
+            else
+                return false;
+        }
+
+        function deleteCustomerCallbackComplete(s, e) {
+            if (e.result != "" && e.result != "ok") {
+                alert(e.result);
+                return false;
+            }
+            gridSearchResult.PerformCallback();
         }
     -->
     </script>
@@ -41,6 +60,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    <dxcb:ASPxCallback ID="dxeDeleteCustomerCallback" ClientInstanceName="dxeDeleteCustomerCallback" runat="server" OnCallback="dxeDeleteCustomerCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) { deleteCustomerCallbackComplete(s, e); }" />
+    </dxcb:ASPxCallback>
     <table style="width: 100%;">
         <tr>
             <td style="height: 40px; width: 100%;">
@@ -196,8 +218,10 @@
                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" Width="20px">
                                 <NewButton Visible="False" />
                                 <EditButton Visible="False" />
-                                <DeleteButton Visible="true" />
+                                <DeleteButton Visible="False" />
                                 <CustomButtons>
+                                    <dxwgv:GridViewCommandColumnCustomButton Text="删除">
+                                    </dxwgv:GridViewCommandColumnCustomButton>
                                     <dxwgv:GridViewCommandColumnCustomButton Text="编辑">
                                     </dxwgv:GridViewCommandColumnCustomButton>
                                 </CustomButtons>
