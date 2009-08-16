@@ -371,11 +371,11 @@
                                     <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                     <SettingsText CustomizationWindowCaption="个性化" />
                                     <GroupSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInGroupFooterColumn="PolicyNo"
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInGroupFooterColumn="PolicyID"
                                             DisplayFormat="总计: {0}" />
                                     </GroupSummary>
                                     <TotalSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Custom" ShowInColumn="Beneficiary"
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInColumn="Beneficiary"
                                             DisplayFormat="保单数: {0}" />
                                         <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="ProcessBase" SummaryType="Sum" DisplayFormat="c" />
