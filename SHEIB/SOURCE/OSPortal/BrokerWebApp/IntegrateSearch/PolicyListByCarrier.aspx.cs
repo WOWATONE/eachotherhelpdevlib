@@ -10,8 +10,8 @@ using DevExpress.Web.ASPxGridView;
 
 namespace BrokerWebApp.IntegrateSearch
 {
- 
-    public partial class PolicyList : BasePage
+
+    public partial class PolicyListByCarrier :BasePage
     {
 
         #region Variables
@@ -178,14 +178,14 @@ namespace BrokerWebApp.IntegrateSearch
                 lsWhere = lsWhere + " and (convert(char(10), a.CreateTime,21)) <='" + lsEndDate + "'";
             }
 
-            DataTable dt = BusinessObjects.Policy.BO_Policy.GetPolicyList(lsWhere).Tables[0];
+            DataTable dt = BusinessObjects.Policy.BO_Policy.GetPolicyByCarrier(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
 
             //经过DataView筛选name 字段不重复的数据
-            //DataView dv = new DataView(dt);
-            //string[] strComuns = { "PolicyID" };
-            //DataTable dtPolicyID = dv.ToTable(true, strComuns);
-            //Session["PolicyCount"] = dtPolicyID.Rows.Count;
+            DataView dv = new DataView(dt);
+            string[] strComuns = { "PolicyID" };
+            DataTable dtPolicyID = dv.ToTable(true, strComuns);
+            Session["PolicyCount"] = dtPolicyID.Rows.Count;
 
             this.gridSearchResult.DataBind();
 
@@ -200,23 +200,23 @@ namespace BrokerWebApp.IntegrateSearch
 
         protected void gridSearchResult_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
         {
-        //    if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Finalize) {
-        //        ASPxSummaryItem si = (ASPxSummaryItem)e.Item;
-        //        if (si.FieldName == "PolicyID")
-        //        {
+            if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Finalize) {
+                ASPxSummaryItem si = (ASPxSummaryItem)e.Item;
+                if (si.FieldName == "PolicyID")
+                {
 
-        //            if (e.IsTotalSummary) {
-        //                if (Session["PolicyCount"] != null)
-        //                {
-        //                    e.TotalValue = int.Parse(Session["PolicyCount"].ToString());
-        //                }
-        //            }
-        //            if (e.IsGroupSummary) {
+                    if (e.IsTotalSummary) {
+                        if (Session["PolicyCount"] != null)
+                        {
+                            e.TotalValue = int.Parse(Session["PolicyCount"].ToString());
+                        }
+                    }
+                    if (e.IsGroupSummary) {
 
-        //            }
+                    }
 
-        //        }
-        //    }
+                }
+            }
         }
         
 

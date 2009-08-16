@@ -607,6 +607,20 @@
     <Compile Include="IntegrateSearch\PolicyList.aspx.designer.cs">
       <DependentUpon>PolicyList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="IntegrateSearch\PolicyListDetail.aspx.cs">
+      <DependentUpon>PolicyListDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IntegrateSearch\PolicyListDetail.aspx.designer.cs">
+      <DependentUpon>PolicyListDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IntegrateSearch\PolicyListByCarrier.aspx.cs">
+      <DependentUpon>PolicyListByCarrier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IntegrateSearch\PolicyListByCarrier.aspx.designer.cs">
+      <DependentUpon>PolicyListByCarrier.aspx</DependentUpon>
+    </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1152,6 +1166,8 @@
     <Content Include="inoutbalance\FeeProcessAddSelect.aspx" />
     <Content Include="inoutbalance\FeeNoticeAddPrint.aspx" />
     <Content Include="IntegrateSearch\PolicyList.aspx" />
+    <Content Include="IntegrateSearch\PolicyListDetail.aspx" />
+    <Content Include="IntegrateSearch\PolicyListByCarrier.aspx" />
     <Content Include="js\pagejs\AskPriceInput.js" />
     <Content Include="otherinsurance\PolicyAlter.aspx" />
     <Content Include="otherinsurance\PolicyAlterList.aspx" />
