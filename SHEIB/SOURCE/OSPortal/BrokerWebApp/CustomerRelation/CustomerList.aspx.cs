@@ -103,16 +103,27 @@ namespace BrokerWebApp.CustomerRelation
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            String custID = e.Keys["CustID"].ToString();
-            BO_Customer.Delete(custID);
-            e.Cancel = true;
-            this.gridSearchResult.CancelEdit();
-            this.BindGrid();
+            //
         }
 
         protected void gridSearchResult_CustomCallBack(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
-            //                       
+            this.BindGrid();                       
+        }
+
+        protected void dxeDeleteCustomerCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            string key = e.Parameter;
+            e.Result = "";
+
+            if (BusinessObjects.BO_Customer.IfExistsInPolicy(key))
+            {
+                e.Result = "该客户有相关保单存在，不能删除！";
+                return;
+            }
+
+            BO_Customer.Delete(key);
+            e.Result = "ok";
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
