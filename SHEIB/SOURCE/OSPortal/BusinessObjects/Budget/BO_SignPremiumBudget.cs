@@ -234,6 +234,16 @@ namespace BusinessObjects.Budget
             }
         }
 
+        //签约预算完成情况表
+        public static DataSet RptSignPremiumBudget(string sNy,string sDeptID,string sSalesID)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptSignPremiumBudget");
+            _db.AddInParameter(dbCommand, "@ac_ny", DbType.String, sNy);
+            _db.AddInParameter(dbCommand, "@ac_DeptID", DbType.String, sDeptID);
+            _db.AddInParameter(dbCommand, "@ac_SalesID", DbType.String, sSalesID);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
         #endregion Procedure
     }
 }
