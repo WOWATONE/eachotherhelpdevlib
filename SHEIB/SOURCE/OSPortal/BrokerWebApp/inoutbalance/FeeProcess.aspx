@@ -12,9 +12,12 @@
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors"
     TagPrefix="dxe" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dxm" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dxpc" %>
-<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3.Export" Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dxwgv" %>
- 
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl"
+    TagPrefix="dxpc" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3.Export" Namespace="DevExpress.Web.ASPxGridView.Export"
+    TagPrefix="dxwgv" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
+    TagPrefix="dxcb" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>经纪费结算列表</title>
@@ -31,15 +34,40 @@
         });
 
         function btnCreateClick() {
-	        
-                var myArguments="resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
-                window.showModalDialog("FeeProcessAdd.aspx", self, myArguments);
-            
+
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
+            window.showModalDialog("FeeProcessAdd.aspx", self, myArguments);
+
         }
 
-        function gridCustomButtonClick(s, e) {
-            //s.GetSelectedFieldValues("VoucherID", getTheSelectedRowsValues);
-            s.GetRowValues(e.visibleIndex, "VoucherID", getTheSelectedRowsValues)
+        //        function gridCustomButtonClick(s, e) {
+        //            //s.GetSelectedFieldValues("VoucherID", getTheSelectedRowsValues);
+        //            s.GetRowValues(e.visibleIndex, "VoucherID", getTheSelectedRowsValues)
+        //        }
+
+
+        function gridCustomButtonClick(s, e) {          
+            if (e.buttonID == "删除") {
+                if (!confirm("确定删除吗?"))
+                    return false;
+                var custID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
+                dxeDeleteVoucherCallback.PerformCallback(custID);
+            }
+            else if (e.buttonID == "编辑") {
+                s.GetRowValues(e.visibleIndex, "VoucherID", getTheSelectedRowsValues)
+            }
+            else
+                return false;
+        }
+
+        function deleteVoucherCallbackComplete(s, e) {
+
+            if (e.result != "" && e.result != "ok") {
+                alert(e.result);
+                return false;
+            }
+
+            gridSearchResult.PerformCallback();
         }
 
         function getTheSelectedRowsValues(selectedValues) {
@@ -77,6 +105,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    <dxcb:ASPxCallback ID="dxeDeleteVoucherCallback" ClientInstanceName="dxeDeleteVoucherCallback"
+        runat="server" OnCallback="dxeDeleteVoucherCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) { deleteVoucherCallbackComplete(s, e); }" />
+    </dxcb:ASPxCallback>
     <table style="width: 100%">
         <tr>
             <td style="height: 40px; width: 45%;">
@@ -114,7 +146,7 @@
                             </td>
                             <td style="width: 110px; text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtProcessID" ClientInstanceName="dxetxtProcessID" runat="server"
-                                    Width="100px" >
+                                    Width="100px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="width: 70px; text-align: right;">
@@ -122,14 +154,14 @@
                             </td>
                             <td style="width: 110px; text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server"
-                                    Width="100px" >
+                                    Width="100px">
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="width: 70px; text-align: right;">
                                 收款方式：
                             </td>
                             <td style="width: 110px; text-align: left;">
-                                 <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
+                                <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
                                     runat="server" Width="100px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
@@ -137,7 +169,7 @@
                                 经纪费收取方式：
                             </td>
                             <td style="width: 110px; text-align: left;">
-                                 <dxe:ASPxComboBox ID="dxeddlProcessFeeType" ClientInstanceName="dxeddlProcessFeeType"
+                                <dxe:ASPxComboBox ID="dxeddlProcessFeeType" ClientInstanceName="dxeddlProcessFeeType"
                                     runat="server" Width="100px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
@@ -166,15 +198,13 @@
                                 客户经理：
                             </td>
                             <td style="text-align: left;">
-                               <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server"
-                                    Width="100px" DropDownStyle="DropDownList"  OnCallback="dxeddlSalesIdCallback">
+                                <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server"
+                                    Width="100px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                             
                             </td>
                             <td style="text-align: left;">
-                             
                             </td>
                             <td>
                             </td>
@@ -193,15 +223,15 @@
                                 分支机构：
                             </td>
                             <td style="text-align: left;">
-                                 <dxe:ASPxComboBox ID="dxeddlBranch" ClientInstanceName="dxeddlBranch" runat="server"
-                                    Width="100px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback" >
+                                <dxe:ASPxComboBox ID="dxeddlBranch" ClientInstanceName="dxeddlBranch" runat="server"
+                                    Width="100px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
                                 业务员：
                             </td>
                             <td style="text-align: left;">
-                                  <dxe:ASPxTextBox ID="dxetxtCarrierSales" ClientInstanceName="dxetxtCarrierSales"
+                                <dxe:ASPxTextBox ID="dxetxtCarrierSales" ClientInstanceName="dxetxtCarrierSales"
                                     runat="server" Width="100px">
                                 </dxe:ASPxTextBox>
                             </td>
@@ -221,7 +251,7 @@
                                 经纪费收取日期：
                             </td>
                             <td style="text-align: left;" colspan="3">
-                                <table style="margin-left:-3px;">
+                                <table style="margin-left: -3px;">
                                     <tr>
                                         <td style="text-align: left;">
                                             <dxe:ASPxDateEdit ID="dxeGetStartDate" runat="server" Width="120">
@@ -236,12 +266,12 @@
                                         </td>
                                     </tr>
                                 </table>
-                            </td>                            
+                            </td>
                             <td style="text-align: right;">
                                 状态：
                             </td>
                             <td style="text-align: left;">
-                               <dxe:ASPxComboBox ID="dxeddlAuditStatus" ClientInstanceName="dxeddlAuditStatus" runat="server"
+                                <dxe:ASPxComboBox ID="dxeddlAuditStatus" ClientInstanceName="dxeddlAuditStatus" runat="server"
                                     Width="100px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
@@ -253,16 +283,23 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="text-align: right;"></td>
-                            <td style="text-align: left;"></td>
-                            <td style="text-align: right;"></td>
-                            <td style="text-align: left;"></td>
-                            <td style="text-align: right;"></td>
-                            <td style="text-align: left;"></td>
+                            <td style="text-align: right;">
+                            </td>
+                            <td style="text-align: left;">
+                            </td>
+                            <td style="text-align: right;">
+                            </td>
+                            <td style="text-align: left;">
+                            </td>
+                            <td style="text-align: right;">
+                            </td>
+                            <td style="text-align: left;">
+                            </td>
                             <td style="text-align: left;" colspan="2">
-                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" onclick="btnSearch_Click" />&nbsp;
+                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
                                 <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
-                                <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" />
+                                <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
+                                    CssClass="input_2" />
                             </td>
                             <td>
                             </td>
@@ -298,20 +335,21 @@
                             <td>
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                                     KeyFieldName="FeeId" AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%"
-                                    SettingsPager-AlwaysShowPager="true" 
-                                    OnRowDeleting="gridSearchResult_RowDeleting"
+                                    SettingsPager-AlwaysShowPager="true" OnRowDeleting="gridSearchResult_RowDeleting"
                                     OnRowDeleted="gridSearchResult_RowDeleted">
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
                                             <NewButton Visible="False" />
                                             <EditButton Visible="false" />
-                                            <DeleteButton Visible="true" />
+                                            <DeleteButton Visible="false" />
                                             <CustomButtons>
+                                                <dxwgv:GridViewCommandColumnCustomButton Text="删除">
+                                                </dxwgv:GridViewCommandColumnCustomButton>
                                                 <dxwgv:GridViewCommandColumnCustomButton Text="编辑">
                                                 </dxwgv:GridViewCommandColumnCustomButton>
                                             </CustomButtons>
-                                        </dxwgv:GridViewCommandColumn>                                        
+                                        </dxwgv:GridViewCommandColumn>
                                         <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="经纪费入账单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="False">
@@ -366,7 +404,8 @@
                                         <dxwgv:ASPxSummaryItem FieldName="FeeAdjust" SummaryType="Sum" DisplayFormat="c" />
                                     </TotalSummary>
                                 </dxwgv:ASPxGridView>
-                                <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
+                                <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
+                                </dxwgv:ASPxGridViewExporter>
                             </td>
                         </tr>
                     </table>

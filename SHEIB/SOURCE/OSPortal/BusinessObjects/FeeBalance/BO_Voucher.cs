@@ -270,6 +270,40 @@ namespace BusinessObjects
         }
 
 
+        /// <summary>
+        /// 是否存在保单
+        /// </summary>
+        /// <param name="custID"></param>
+        /// <returns></returns>
+        public static bool IfExistsPolicy(string VoucherId)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select top 1 FeeId ");
+            sb.Append("From Fee ");
+            sb.Append("Where VoucherId=@VoucherId");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@VoucherId", DbType.AnsiString, VoucherId);
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+
+            if (value != null && value.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public static void Delete(string VoucherId)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM Voucher ");
+            sb.Append(" WHERE VoucherId = @VoucherId ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@VoucherId", DbType.AnsiString, VoucherId);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
         #endregion Procedure
 
 

@@ -16,6 +16,8 @@
     TagPrefix="dxpc" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3.Export" Namespace="DevExpress.Web.ASPxGridView.Export"
     TagPrefix="dxwgv" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
+    TagPrefix="dxcb" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>客户收费列表</title>
@@ -38,9 +40,33 @@
 
         }
 
+        //        function gridCustomButtonClick(s, e) {
+        //            //s.GetSelectedFieldValues("VoucherID", getTheSelectedRowsValues);
+        //            s.GetRowValues(e.visibleIndex, "VoucherID", getTheSelectedRowsValues)
+        //        }
+
         function gridCustomButtonClick(s, e) {
-            //s.GetSelectedFieldValues("VoucherID", getTheSelectedRowsValues);
-            s.GetRowValues(e.visibleIndex, "VoucherID", getTheSelectedRowsValues)
+            if (e.buttonID == "删除") {
+                if (!confirm("确定删除吗?"))
+                    return false;
+                var custID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
+                dxeDeleteVoucherCallback.PerformCallback(custID);
+            }
+            else if (e.buttonID == "编辑") {
+                s.GetRowValues(e.visibleIndex, "VoucherID", getTheSelectedRowsValues)
+            }
+            else
+                return false;
+        }
+
+        function deleteVoucherCallbackComplete(s, e) {
+
+            if (e.result != "" && e.result != "ok") {
+                alert(e.result);
+                return false;
+            }
+
+            gridSearchResult.PerformCallback();
         }
 
         function getTheSelectedRowsValues(selectedValues) {
@@ -54,15 +80,15 @@
                 window.showModalDialog(querystring, self, myArguments);
             }
         }
-        
-       function isEmpty(testVar) {
+
+        function isEmpty(testVar) {
             if ((testVar == null) || (testVar.length == 0)) {
                 return true;
             } else {
                 return false;
             }
         }
-        
+
         function dxeddlDeptId_SelectedIndexChanged(s, e) {
             var thejsonstring = dxeddlDeptId.GetSelectedItem().value;
             dxeddlSalesId.PerformCallback(thejsonstring);
@@ -74,6 +100,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    <dxcb:ASPxCallback ID="dxeDeleteVoucherCallback" ClientInstanceName="dxeDeleteVoucherCallback"
+        runat="server" OnCallback="dxeDeleteVoucherCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) { deleteVoucherCallbackComplete(s, e); }" />
+    </dxcb:ASPxCallback>
     <table style="width: 100%">
         <tr>
             <td style="height: 40px; width: 45%;">
@@ -131,10 +161,8 @@
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="width: 70px; text-align: right;">
-                                
                             </td>
                             <td style="width: 130px; text-align: left;">
-                              
                             </td>
                             <td>
                             </td>
@@ -154,7 +182,7 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlDeptId" ClientInstanceName="dxeddlDeptId" runat="server"
                                     Width="100px" DropDownStyle="DropDownList">
-                                     <ClientSideEvents SelectedIndexChanged="dxeddlDeptId_SelectedIndexChanged" />
+                                    <ClientSideEvents SelectedIndexChanged="dxeddlDeptId_SelectedIndexChanged" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
@@ -166,10 +194,8 @@
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                               
                             </td>
                             <td style="text-align: left;">
-                                
                             </td>
                             <td style="text-align: left;">
                             </td>
@@ -268,8 +294,10 @@
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
                                             <NewButton Visible="False" />
                                             <EditButton Visible="false" />
-                                            <DeleteButton Visible="true" />
+                                            <DeleteButton Visible="false" />
                                             <CustomButtons>
+                                                <dxwgv:GridViewCommandColumnCustomButton Text="删除">
+                                                </dxwgv:GridViewCommandColumnCustomButton>
                                                 <dxwgv:GridViewCommandColumnCustomButton Text="编辑">
                                                 </dxwgv:GridViewCommandColumnCustomButton>
                                             </CustomButtons>
@@ -321,7 +349,7 @@
                                     </GroupSummary>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" DisplayFormat="总记录:#" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" DisplayFormat="c" />                                        
+                                        <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayedFee" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="Fee" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="FeeAdjust" SummaryType="Sum" DisplayFormat="c" />

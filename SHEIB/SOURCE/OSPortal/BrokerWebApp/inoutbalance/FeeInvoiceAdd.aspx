@@ -157,6 +157,7 @@
                 setVoucherId(e.result);
                 cusCompleteEnable();
             }
+            alert("保存成功");
         }
 
 

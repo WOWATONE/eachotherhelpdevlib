@@ -276,7 +276,39 @@ namespace BusinessObjects
 
         }
 
+        /// <summary>
+        /// 是否存在保单
+        /// </summary>
+        /// <param name="custID"></param>
+        /// <returns></returns>
+        public static bool IfExistsPolicy(string NoticeNo)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select top 1 PolicyID ");
+            sb.Append("From PolicyPeriod ");
+            sb.Append("Where NoticeNo=@NoticeNo");
 
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@NoticeNo", DbType.AnsiString, NoticeNo);
+            DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
+
+            if (value != null && value.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public static void Delete(string NoticeNo)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("DELETE FROM Notice ");
+            sb.Append(" WHERE NoticeNo = @NoticeNo ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@NoticeNo", DbType.AnsiString, NoticeNo);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
 
         #endregion Procedure
 

@@ -141,6 +141,7 @@
                 //如果更改了经纪费收取方式
                 gridPolicyItem.PerformCallback(getVoucherId());
             }
+            alert("保存成功");
         }
 
         function makeInfoJSON(AuditStatus) {
