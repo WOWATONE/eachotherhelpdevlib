@@ -205,5 +205,22 @@ namespace BrokerWebApp.inoutbalance
             BindGrid();
         }
 
+
+        protected void dxeDeleteVoucherCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            string key = e.Parameter;
+            e.Result = "";
+
+            if (BusinessObjects.BO_Notice.IfExistsPolicy(key))
+            {
+                e.Result = "该通知书有相关保单存在，不能删除！";
+                return;
+            }
+
+            BO_Notice.Delete(key);
+            e.Result = "ok";
+        }
+
+
     }
 }

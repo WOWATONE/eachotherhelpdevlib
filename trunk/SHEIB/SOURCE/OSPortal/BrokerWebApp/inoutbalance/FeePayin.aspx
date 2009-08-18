@@ -14,9 +14,10 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dxm" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxPopupControl"
     TagPrefix="dxpc" %>
-    
-<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3.Export" Namespace="DevExpress.Web.ASPxGridView.Export" TagPrefix="dxwgv" %>
- 
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3.Export" Namespace="DevExpress.Web.ASPxGridView.Export"
+    TagPrefix="dxwgv" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
+    TagPrefix="dxcb" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>解付保费列表</title>
@@ -40,9 +41,34 @@
         }
 
 
+        //        function gridCustomButtonClick(s, e) {
+        //            //s.GetSelectedFieldValues("VoucherID", getTheSelectedRowsValues);
+        //            s.GetRowValues(e.visibleIndex, "VoucherID", getTheSelectedRowsValues)
+        //        }
+
+
         function gridCustomButtonClick(s, e) {
-            //s.GetSelectedFieldValues("VoucherID", getTheSelectedRowsValues);
-            s.GetRowValues(e.visibleIndex, "VoucherID", getTheSelectedRowsValues)
+            if (e.buttonID == "删除") {
+                if (!confirm("确定删除吗?"))
+                    return false;
+                var custID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
+                dxeDeleteVoucherCallback.PerformCallback(custID);
+            }
+            else if (e.buttonID == "编辑") {
+                s.GetRowValues(e.visibleIndex, "VoucherID", getTheSelectedRowsValues)
+            }
+            else
+                return false;
+        }
+
+        function deleteVoucherCallbackComplete(s, e) {
+
+            if (e.result != "" && e.result != "ok") {
+                alert(e.result);
+                return false;
+            }
+
+            gridSearchResult.PerformCallback();
         }
 
         function getTheSelectedRowsValues(selectedValues) {
@@ -93,6 +119,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    <dxcb:ASPxCallback ID="dxeDeleteVoucherCallback" ClientInstanceName="dxeDeleteVoucherCallback"
+        runat="server" OnCallback="dxeDeleteVoucherCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) { deleteVoucherCallbackComplete(s, e); }" />
+    </dxcb:ASPxCallback>
     <table style="width: 100%">
         <tr>
             <td style="height: 40px; width: 45%;">
@@ -221,15 +251,17 @@
                                 险种：
                             </td>
                             <td style="text-align: left;">
-                                <table style="margin-left:-3px;">
+                                <table style="margin-left: -3px;">
                                     <tr>
-                                        <td style="width:105px;text-align: left;">
-                                            <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server" Width="100px"></dxe:ASPxTextBox>
-                                            <input type="hidden" id="ptid" runat="server" /> 
+                                        <td style="width: 105px; text-align: left;">
+                                            <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server"
+                                                Width="100px">
+                                            </dxe:ASPxTextBox>
+                                            <input type="hidden" id="ptid" runat="server" />
                                         </td>
                                         <td style="text-align: left;">
-                                        <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;
-                                            height: 20px; vertical-align: top;" onclick="imgPolicyProdTypeClick();" />
+                                            <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;
+                                                height: 20px; vertical-align: top;" onclick="imgPolicyProdTypeClick();" />
                                         </td>
                                     </tr>
                                 </table>
@@ -250,7 +282,7 @@
                                 解付日期：
                             </td>
                             <td style="text-align: left;" colspan="3">
-                                <table style="margin-left:-3px;">
+                                <table style="margin-left: -3px;">
                                     <tr>
                                         <td style="text-align: left;">
                                             <dxe:ASPxDateEdit ID="dxePayinStartDate" runat="server">
@@ -265,10 +297,13 @@
                                         </td>
                                     </tr>
                                 </table>
-                            </td>                            
-                            <td style="text-align: right;"></td>
-                            <td style="text-align: left;"></td>
-                            <td></td>
+                            </td>
+                            <td style="text-align: right;">
+                            </td>
+                            <td style="text-align: left;">
+                            </td>
+                            <td>
+                            </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
@@ -280,10 +315,10 @@
                             <td style="text-align: left;">
                             </td>
                             <td style="text-align: left;" colspan="2">
-                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" 
-                                    onclick="btnSearch_Click" />&nbsp;
+                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
                                 <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
-                                <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" CssClass="input_2" />
+                                <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
+                                    CssClass="input_2" />
                             </td>
                             <td>
                             </td>
@@ -326,13 +361,16 @@
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
                                             <NewButton Visible="False" />
                                             <EditButton Visible="false" />
-                                            <DeleteButton Visible="true" />
+                                            <DeleteButton Visible="false" />
                                             <CustomButtons>
+                                                <dxwgv:GridViewCommandColumnCustomButton Text="删除">
+                                                </dxwgv:GridViewCommandColumnCustomButton>
                                                 <dxwgv:GridViewCommandColumnCustomButton Text="编辑">
                                                 </dxwgv:GridViewCommandColumnCustomButton>
                                             </CustomButtons>
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False" Visible ="false">
+                                        <dxwgv:GridViewDataColumn FieldName="FeeId" Caption="FeeId" CellStyle-Wrap="False"
+                                            Visible="false">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="VoucherID" Caption="解付单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -383,7 +421,8 @@
                                     </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
-                                <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult"></dxwgv:ASPxGridViewExporter>
+                                <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
+                                </dxwgv:ASPxGridViewExporter>
                             </td>
                         </tr>
                     </table>

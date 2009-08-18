@@ -141,6 +141,7 @@
                 result[0].value = "-1";
                 cusCompleteEnable();
             }
+            alert("±£´æ³É¹¦");
         }
 
         function makeNoticeInfoJSON(AuditStatus) {
