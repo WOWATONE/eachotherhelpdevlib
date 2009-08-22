@@ -202,7 +202,11 @@ namespace BrokerWebApp.otherinsurance
                 }
                 else
                 {
-                    e.Row.Enabled = true;
+                    object objIsAntiAudit = e.GetValue("IsAntiAudit");
+                    if (!String.IsNullOrEmpty(objIsAntiAudit.ToString()))
+                    {
+                        e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");
+                    }                     
                 }
 
             }
