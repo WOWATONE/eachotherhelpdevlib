@@ -116,6 +116,10 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
           <DataField>FeeDate</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Remark">
+          <DataField>Remark</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DummyDataSource</DataSourceName>
@@ -812,7 +816,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
               <TableCells>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox39">
+                    <Textbox Name="textbox54">
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -820,7 +824,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         </BorderStyle>
                         <BorderWidth>
                           <Left>2pt</Left>
-                          <Bottom>1pt</Bottom>
+                          <Bottom>2pt</Bottom>
                         </BorderWidth>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -837,14 +841,14 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 <TableCell>
                   <ColSpan>6</ColSpan>
                   <ReportItems>
-                    <Textbox Name="textbox45">
+                    <Textbox Name="textbox56">
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <BorderWidth>
                           <Right>2pt</Right>
-                          <Bottom>1pt</Bottom>
+                          <Bottom>2pt</Bottom>
                         </BorderWidth>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -854,7 +858,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=First(Fields!Remark.Value, "dsInvoice_Invoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1717,8 +1721,8 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 <TableCell>
                   <ColSpan>6</ColSpan>
                   <ReportItems>
-                    <Textbox Name="textbox54">
-                      <rd:DefaultName>textbox54</rd:DefaultName>
+                    <Textbox Name="Remark">
+                      <rd:DefaultName>Remark</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -1735,7 +1739,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=First(Fields!Remark.Value, "dsInvoice_Invoice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>

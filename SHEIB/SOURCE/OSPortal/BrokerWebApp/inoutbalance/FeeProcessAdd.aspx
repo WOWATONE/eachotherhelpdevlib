@@ -86,7 +86,7 @@
 
         function btnAddPrintClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=700px;center=yes;help=no";
-            var url = "FeeProcessAddPrint.aspx?ID=" + getVoucherId();
+            var url = "FeeProcessAddPrint.aspx?ID=" + getVoucherId() + "&tmpID=" + Math.random();
 
             window.showModalDialog(url, self, myArguments);
             var sVoucherID = getVoucherId();

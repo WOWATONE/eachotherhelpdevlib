@@ -27,8 +27,8 @@ namespace BrokerWebApp.inoutbalance
                 Initialization();
                 this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
                 this.txtProcessFeeType.Value = Page.Request.QueryString["ProcessFeeType"];
-                BindGrid();
             }
+            BindGrid();
         }
 
 

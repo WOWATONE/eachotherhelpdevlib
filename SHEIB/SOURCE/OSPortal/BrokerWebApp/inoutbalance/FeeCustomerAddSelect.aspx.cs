@@ -28,9 +28,8 @@ namespace BrokerWebApp.inoutbalance
             {                
                 Initialization();
                 this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
-                BindGrid();
             }
-
+            BindGrid();
         }
 
 

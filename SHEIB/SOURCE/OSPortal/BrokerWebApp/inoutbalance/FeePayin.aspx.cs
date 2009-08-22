@@ -137,6 +137,11 @@ namespace BrokerWebApp.inoutbalance
                 lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) <='" + lsEndDate + "'";
             }
 
+            if (dxeddlAuditStatus.SelectedItem.Value.ToString().Trim() != "")
+            {
+                lsWhere = lsWhere + " and a.AuditStatus ='" + dxeddlAuditStatus.SelectedItem.Value.ToString() + "'";
+            }
+
             DataTable dt = BO_FeePayin.GetFeePayinList(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
@@ -180,6 +185,24 @@ namespace BrokerWebApp.inoutbalance
 
             BO_Voucher.Delete(key);
             e.Result = "ok";
+        }
+
+
+        protected void gridSearchResult_HtmlRowCreated(object sender,
+            DevExpress.Web.ASPxGridView.ASPxGridViewTableRowEventArgs e)
+        {
+
+            if (e.RowType == DevExpress.Web.ASPxGridView.GridViewRowType.Data)
+            {
+                object objIsAntiAudit = e.GetValue("IsAntiAudit");
+                if (!String.IsNullOrEmpty(objIsAntiAudit.ToString()))
+                {
+                    if (objIsAntiAudit.ToString() == "1")
+                    {
+                        e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");
+                    }
+                }
+            }
         }
 
 

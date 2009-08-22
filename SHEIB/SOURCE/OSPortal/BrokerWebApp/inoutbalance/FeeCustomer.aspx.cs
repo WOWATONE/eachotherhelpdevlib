@@ -16,7 +16,7 @@ namespace BrokerWebApp.inoutbalance
 
         #region Variables
         private string toadd = string.Empty;
-        
+
         #endregion Variables
 
         public DataTable FeeDataTable
@@ -35,7 +35,7 @@ namespace BrokerWebApp.inoutbalance
             {
                 Initialization();
                 dxeddlAuditStatus.SelectedIndex = 0;
-                
+
             }
             if (IsCallback)
             {
@@ -141,16 +141,33 @@ namespace BrokerWebApp.inoutbalance
                 lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) <='" + lsEndDate + "'";
             }
 
-            //if (dxeddlAuditStatus.SelectedItem.Value.ToString().Trim() != "")
-            //{
-            //    lsWhere = lsWhere + " and a.AuditStatus ='" + dxeddlAuditStatus.SelectedItem.Value.ToString() + "'";
-            //}
+            if (dxeddlAuditStatus.SelectedItem.Value.ToString().Trim() != "")
+            {
+                lsWhere = lsWhere + " and a.AuditStatus ='" + dxeddlAuditStatus.SelectedItem.Value.ToString() + "'";
+            }
             DataTable dt = BO_FeeCustomer.GetFeeCustomerList(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
-            
+
         }
 
+
+        protected void gridSearchResult_HtmlRowCreated(object sender,
+            DevExpress.Web.ASPxGridView.ASPxGridViewTableRowEventArgs e)
+        {
+
+            if (e.RowType == DevExpress.Web.ASPxGridView.GridViewRowType.Data)
+            {
+                object objIsAntiAudit = e.GetValue("IsAntiAudit");
+                if (!String.IsNullOrEmpty(objIsAntiAudit.ToString()))
+                {
+                    if (objIsAntiAudit.ToString() == "1")
+                    {
+                        e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");
+                    }
+                }
+            }
+        }
 
 
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -169,7 +186,7 @@ namespace BrokerWebApp.inoutbalance
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-           BindGrid();
+            BindGrid();
         }
 
         protected void gridSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)

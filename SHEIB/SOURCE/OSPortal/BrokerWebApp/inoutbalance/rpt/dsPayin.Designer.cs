@@ -316,6 +316,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
             
             private global::System.Data.DataColumn columnProcessFeeTypeName;
             
+            private global::System.Data.DataColumn columnRemark;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public PayinDataTable() {
                 this.TableName = "Payin";
@@ -424,6 +426,13 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn RemarkColumn {
+                get {
+                    return this.columnRemark;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -452,7 +461,7 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PayinRow AddPayinRow(string VoucherID, string CarrierName, string BranchName, string BankName, string BankAccount, string PayinFee, string PayinFeeUpper, string PayProc, string Customer, string FeeDate, string ProcessFeeTypeName) {
+            public PayinRow AddPayinRow(string VoucherID, string CarrierName, string BranchName, string BankName, string BankAccount, string PayinFee, string PayinFeeUpper, string PayProc, string Customer, string FeeDate, string ProcessFeeTypeName, string Remark) {
                 PayinRow rowPayinRow = ((PayinRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         VoucherID,
@@ -465,7 +474,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                         PayProc,
                         Customer,
                         FeeDate,
-                        ProcessFeeTypeName};
+                        ProcessFeeTypeName,
+                        Remark};
                 rowPayinRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPayinRow);
                 return rowPayinRow;
@@ -496,6 +506,7 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 this.columnCustomer = base.Columns["Customer"];
                 this.columnFeeDate = base.Columns["FeeDate"];
                 this.columnProcessFeeTypeName = base.Columns["ProcessFeeTypeName"];
+                this.columnRemark = base.Columns["Remark"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -522,6 +533,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 base.Columns.Add(this.columnFeeDate);
                 this.columnProcessFeeTypeName = new global::System.Data.DataColumn("ProcessFeeTypeName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProcessFeeTypeName);
+                this.columnRemark = new global::System.Data.DataColumn("Remark", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRemark);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1094,6 +1107,21 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Remark {
+                get {
+                    try {
+                        return ((string)(this[this.tablePayin.RemarkColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“Payin”中列“Remark”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablePayin.RemarkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsVoucherIDNull() {
                 return this.IsNull(this.tablePayin.VoucherIDColumn);
             }
@@ -1201,6 +1229,16 @@ namespace BrokerWebApp.inoutbalance.rpt {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetProcessFeeTypeNameNull() {
                 this[this.tablePayin.ProcessFeeTypeNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsRemarkNull() {
+                return this.IsNull(this.tablePayin.RemarkColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetRemarkNull() {
+                this[this.tablePayin.RemarkColumn] = global::System.Convert.DBNull;
             }
         }
         

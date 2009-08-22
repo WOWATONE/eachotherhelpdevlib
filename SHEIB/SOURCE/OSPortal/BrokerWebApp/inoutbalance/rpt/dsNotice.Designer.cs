@@ -316,6 +316,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
             
             private global::System.Data.DataColumn columnFeeBankName;
             
+            private global::System.Data.DataColumn columnContent;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public NoticeDataTable() {
                 this.TableName = "Notice";
@@ -424,6 +426,13 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ContentColumn {
+                get {
+                    return this.columnContent;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -452,7 +461,7 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public NoticeRow AddNoticeRow(string NoticeNo, string NoticeDate, string CustomerName, string PayFee, string PayFeeUpper, string AciPremium, string CstPremium, string CiPremium, string FeeCompany, string FeeAccount, string FeeBankName) {
+            public NoticeRow AddNoticeRow(string NoticeNo, string NoticeDate, string CustomerName, string PayFee, string PayFeeUpper, string AciPremium, string CstPremium, string CiPremium, string FeeCompany, string FeeAccount, string FeeBankName, string Content) {
                 NoticeRow rowNoticeRow = ((NoticeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NoticeNo,
@@ -465,7 +474,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                         CiPremium,
                         FeeCompany,
                         FeeAccount,
-                        FeeBankName};
+                        FeeBankName,
+                        Content};
                 rowNoticeRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNoticeRow);
                 return rowNoticeRow;
@@ -496,6 +506,7 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 this.columnFeeCompany = base.Columns["FeeCompany"];
                 this.columnFeeAccount = base.Columns["FeeAccount"];
                 this.columnFeeBankName = base.Columns["FeeBankName"];
+                this.columnContent = base.Columns["Content"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -522,6 +533,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 base.Columns.Add(this.columnFeeAccount);
                 this.columnFeeBankName = new global::System.Data.DataColumn("FeeBankName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFeeBankName);
+                this.columnContent = new global::System.Data.DataColumn("Content", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContent);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1123,6 +1136,21 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Content {
+                get {
+                    try {
+                        return ((string)(this[this.tableNotice.ContentColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“Notice”中列“Content”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableNotice.ContentColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsNoticeNoNull() {
                 return this.IsNull(this.tableNotice.NoticeNoColumn);
             }
@@ -1230,6 +1258,16 @@ namespace BrokerWebApp.inoutbalance.rpt {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetFeeBankNameNull() {
                 this[this.tableNotice.FeeBankNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsContentNull() {
+                return this.IsNull(this.tableNotice.ContentColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetContentNull() {
+                this[this.tableNotice.ContentColumn] = global::System.Convert.DBNull;
             }
         }
         

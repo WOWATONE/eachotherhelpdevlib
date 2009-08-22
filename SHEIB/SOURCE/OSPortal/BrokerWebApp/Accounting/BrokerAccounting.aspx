@@ -357,8 +357,6 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PremiumRate" Caption="费率" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="交费方式" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="Period" Caption="期次" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="保费金额" CellStyle-Wrap="False">
