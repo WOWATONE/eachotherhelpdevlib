@@ -126,6 +126,22 @@
             if (typeof(dxebtnCancel) != 'undefined' && dxebtnCancel != null)
                 dxebtnCancel.SetEnabled(val);
 
+            try {
+                if (typeof (dxebtnAuditBack) != 'undefined' && dxebtnAuditBack != null)
+                    dxebtnBottomCheck.SetEnabled(val);
+            }
+            catch (err) {
+
+            }
+
+            try {
+                if (typeof (dxebtnAuditOk) != 'undefined' && dxebtnAuditOk != null)
+                    dxebtnCancel.SetEnabled(val);
+            }
+            catch (err) {
+
+            }
+
         }
 
         function setDxeButtonsUnableOrEnable(val) {
