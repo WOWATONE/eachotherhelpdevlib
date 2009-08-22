@@ -40,32 +40,38 @@ namespace BrokerWebApp.otherinsurance
             this.dxeddlDeptID.TextField = "DeptName";
             this.dxeddlDeptID.ValueField = "DeptID";
             this.dxeddlDeptID.DataBind();
+            this.dxeddlDeptID.Items.Insert(0, new ListEditItem("全部", ""));
 
             this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
             this.dxeddlSalesId.TextField = "UserNameCn";
             this.dxeddlSalesId.ValueField = "UserID";
             this.dxeddlSalesId.DataBind();
+            this.dxeddlSalesId.Items.Insert(0, new ListEditItem("全部", ""));
 
             this.dxeddlOperationType.DataSource = BusinessObjects.BO_P_Code.GetOperationTypeList();
             this.dxeddlOperationType.TextField = "OperationTypeName";
             this.dxeddlOperationType.ValueField = "OperationTypeID";
             this.dxeddlOperationType.DataBind();
+            this.dxeddlOperationType.Items.Insert(0, new ListEditItem("全部", ""));
 
             this.dxeddlSourceTypeID.DataSource = BusinessObjects.BO_P_Code.GetSourceTypeList();
             this.dxeddlSourceTypeID.TextField = "SourceTypeName";
             this.dxeddlSourceTypeID.ValueField = "SourceTypeID";
             this.dxeddlSourceTypeID.DataBind();
+            this.dxeddlSourceTypeID.Items.Insert(0, new ListEditItem("全部", ""));
 
             this.dxeddlCarrierId.DataSource = BusinessObjects.SchemaSetting.BO_Carrier.GetCarrierList("");
             this.dxeddlCarrierId.TextField = "CarrierNameCn";
             this.dxeddlCarrierId.ValueField = "CarrierID";
             this.dxeddlCarrierId.DataBind();
+            this.dxeddlCarrierId.Items.Insert(0, new ListEditItem("全部", ""));
 
 
             this.dxeddlBranchId.DataSource = BusinessObjects.SchemaSetting.BO_Branch.GetBranchList("");
             this.dxeddlBranchId.TextField = "BranchName";
             this.dxeddlBranchId.ValueField = "BranchID";
             this.dxeddlBranchId.DataBind();
+            this.dxeddlBranchId.Items.Insert(0, new ListEditItem("全部", ""));
 
             
             dsList = BusinessObjects.SchemaSetting.BO_ProductType.GetProductTypeList();
@@ -139,41 +145,73 @@ namespace BrokerWebApp.otherinsurance
 
             string lsWhere = "";
             lsWhere = lsWhere + " AND ISNULL(B.PolicyStatus,'0') = '0' AND ISNULL(B.PrevPolicyID,'') = '' AND ISNULL(B.PolicyType,'0') ='0' ";
+
+            //投保编号
             if (dxetxtPolicyID.Text.Trim() != "")
             {
                 lsWhere = lsWhere + " and b.PolicyID ='" + dxetxtPolicyID.Text + "'";
             }
 
+            //保单编号
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
                 lsWhere = lsWhere + " and b.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
             }
 
-            if (this.dxeddlOperationType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlOperationType.SelectedItem.Value.ToString()))
+            //投保客户
+            if (this.dxetxtCustomer.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and b.OperationType ='" + dxeddlOperationType.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and  G.CustName like ('%" + this.dxetxtCustomer.Text.Trim() + "%') ";
             }
 
+            //部门
             if (this.dxeddlDeptID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptID.SelectedItem.Value.ToString()))
             {
                 lsWhere = lsWhere + " and b.DeptId ='" + dxeddlDeptID.SelectedItem.Value.ToString() + "'";
             }
 
+            //客户经理
             if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
             {
                 lsWhere = lsWhere + " and b.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
             }
 
-            if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
-            {
-                lsWhere = lsWhere + " and a.CarrierID ='" + dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
-            }
-
+            //保险险种
             if (this.ptid.Value != null && !String.IsNullOrEmpty(this.ptid.Value))
             {
                 lsWhere = lsWhere + " and  b.ProdTypeID like ('%" + this.ptid.Value.Trim() + "%') ";
             }
 
+            //保险公司
+            if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and a.CarrierID ='" + dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
+            }
+
+            //分支机构
+            if (this.dxeddlBranchId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranchId.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and a.BranchID ='" + dxeddlBranchId.SelectedItem.Value.ToString() + "'";
+            }
+
+            //业务员
+            if (this.dxetxtCarrierSales.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and  b.CarrierSales like ('%" + this.dxetxtCarrierSales.Text.Trim() + "%') ";
+            }
+
+            //业务来源
+            if (this.dxeddlSourceTypeID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSourceTypeID.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and b.SourceTypeID ='" + dxeddlSourceTypeID.SelectedItem.Value.ToString() + "'";
+            }
+
+            //业务性质
+            if (this.dxeddlOperationType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlOperationType.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and b.OperationType ='" + dxeddlOperationType.SelectedItem.Value.ToString() + "'";
+            }
+            
             string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");
             string lsEndDate = dxeEndDate.Date.ToString("yyyy-MM-dd");
             if ((dxeStartDate.Text.Trim() != "") && (dxeEndDate.Text.Trim() != ""))
@@ -214,6 +252,7 @@ namespace BrokerWebApp.otherinsurance
             thecb.TextField = "UserNameCn";
             thecb.ValueField = "UserID";
             thecb.DataBind();
+            thecb.Items.Insert(0, new ListEditItem("全部", ""));
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];
@@ -229,6 +268,7 @@ namespace BrokerWebApp.otherinsurance
             thecb.TextField = "BranchName";
             thecb.ValueField = "BranchID";
             thecb.DataBind();
+            thecb.Items.Insert(0, new ListEditItem("全部", ""));
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];
