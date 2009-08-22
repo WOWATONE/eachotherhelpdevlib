@@ -96,8 +96,9 @@
         }
 
         function btnAddPrintClick() {
+            debugger;
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=850px;dialogHeight=700px;center=yes;help=no";
-            var url = "FeeNoticeAddPrint.aspx?NoticeNo=" + getNoticeNo() + "&GatheringType=" + getGatheringType();
+            var url = "FeeNoticeAddPrint.aspx?NoticeNo=" + getNoticeNo() + "&GatheringType=" + getGatheringType() + "&tmpID=" + Math.random();
 
             window.showModalDialog(url, self, myArguments);
             gridPolicyItem.PerformCallback('');

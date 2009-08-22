@@ -90,7 +90,7 @@
         function btnAddPrintClick() {
 
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=700px;center=yes;help=no";
-            var url = "FeePayinAddPrint.aspx?ID=" + getVoucherId() + "&ProcessFeeType=" + getProcessFeeType();
+            var url = "FeePayinAddPrint.aspx?ID=" + getVoucherId() + "&ProcessFeeType=" + getProcessFeeType() + "&tmpID=" + Math.random();
 
             window.showModalDialog(url, self, myArguments);
 

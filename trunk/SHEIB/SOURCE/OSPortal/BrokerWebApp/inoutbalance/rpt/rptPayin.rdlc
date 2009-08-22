@@ -125,6 +125,10 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
           <DataField>ProcessFeeTypeName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Remark">
+          <DataField>Remark</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DummyDataSource</DataSourceName>
@@ -1017,7 +1021,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 <TableCell>
                   <ColSpan>2</ColSpan>
                   <ReportItems>
-                    <Textbox Name="textbox63">
+                    <Textbox Name="textbox81">
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -1025,7 +1029,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         </BorderStyle>
                         <BorderWidth>
                           <Left>2pt</Left>
-                          <Bottom>1pt</Bottom>
+                          <Bottom>2pt</Bottom>
                         </BorderWidth>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -1042,14 +1046,14 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 <TableCell>
                   <ColSpan>5</ColSpan>
                   <ReportItems>
-                    <Textbox Name="textbox64">
+                    <Textbox Name="textbox83">
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <BorderWidth>
                           <Right>2pt</Right>
-                          <Bottom>1pt</Bottom>
+                          <Bottom>2pt</Bottom>
                         </BorderWidth>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -1059,7 +1063,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=First(Fields!Remark.Value, "dsPayin_Payin")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -2210,7 +2214,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=First(Fields!Remark.Value, "dsPayin_Payin")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>

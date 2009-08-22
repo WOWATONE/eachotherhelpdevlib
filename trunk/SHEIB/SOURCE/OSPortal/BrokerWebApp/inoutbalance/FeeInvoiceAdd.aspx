@@ -90,7 +90,7 @@
 
         function btnAddPrintClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=700px;center=yes;help=no";
-            var url = "FeeInvoiceAddPrint.aspx?ID=" + getVoucherId();
+            var url = "FeeInvoiceAddPrint.aspx?ID=" + getVoucherId() + "&tmpID=" + Math.random();
 
             window.showModalDialog(url, self, myArguments);
             gridPolicyItem.PerformCallback(getVoucherId);

@@ -25,8 +25,8 @@ namespace BrokerWebApp.inoutbalance
             {
                 Initialization();
                 this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
-                BindGrid();
             }
+            BindGrid();
             
         }
 
@@ -72,7 +72,6 @@ namespace BrokerWebApp.inoutbalance
             if (this.dxeddlPolicyType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyType.SelectedItem.Value.ToString()))
             {
                 lsWhere = lsWhere + " and c.PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString() + "'";
-
             }
 
             if (this.dxeddlGatheringType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlGatheringType.SelectedItem.Value.ToString()))

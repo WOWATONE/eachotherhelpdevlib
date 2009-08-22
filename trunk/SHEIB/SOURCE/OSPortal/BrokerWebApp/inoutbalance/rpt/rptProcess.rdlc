@@ -117,6 +117,10 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
           <DataField>FeeDate</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Remark">
+          <DataField>Remark</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DummyDataSource</DataSourceName>
@@ -803,12 +807,12 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
             <TableRow>
               <TableCells>
                 <TableCell>
-                  <ColSpan>7</ColSpan>
                   <ReportItems>
-                    <Textbox Name="textbox57">
+                    <Textbox Name="textbox72">
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
+                          <Right>None</Right>
                         </BorderStyle>
                         <BorderWidth>
                           <Left>2pt</Left>
@@ -823,6 +827,31 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                       </Style>
                       <CanGrow>true</CanGrow>
                       <Value>备注:</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ColSpan>6</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox73">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                          <Left>None</Left>
+                        </BorderStyle>
+                        <BorderWidth>
+                          <Left>2pt</Left>
+                          <Right>2pt</Right>
+                        </BorderWidth>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!Remark.Value, "dsProcess_Process")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1757,13 +1786,13 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
             <TableRow>
               <TableCells>
                 <TableCell>
-                  <ColSpan>7</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox51">
                       <rd:DefaultName>textbox51</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
+                          <Right>None</Right>
                         </BorderStyle>
                         <BorderWidth>
                           <Left>2pt</Left>
@@ -1778,6 +1807,32 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                       </Style>
                       <CanGrow>true</CanGrow>
                       <Value>备注:</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ColSpan>6</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="Remark">
+                      <rd:DefaultName>Remark</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                          <Left>None</Left>
+                        </BorderStyle>
+                        <BorderWidth>
+                          <Left>2pt</Left>
+                          <Right>2pt</Right>
+                        </BorderWidth>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!Remark.Value, "dsProcess_Process")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
