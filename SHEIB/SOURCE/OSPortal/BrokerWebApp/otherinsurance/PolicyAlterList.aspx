@@ -350,7 +350,7 @@
                                                                                     </dxwgv:GridViewDataColumn>
                                                                                     <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" VisibleIndex="3" CellStyle-Wrap="False">                                                                   
                                                                                     </dxwgv:GridViewDataColumn>   
-                                                                                    <dxwgv:GridViewDataColumn FieldName="UserNameCn" Caption="客户经理" VisibleIndex="4" CellStyle-Wrap="False">                                                                   
+                                                                                    <dxwgv:GridViewDataColumn FieldName="SalesIdName" Caption="客户经理" VisibleIndex="4" CellStyle-Wrap="False">                                                                   
                                                                                     </dxwgv:GridViewDataColumn>      
                                                                                     <dxwgv:GridViewDataColumn FieldName="CarrierNameCn" Caption="保险公司" VisibleIndex="5" CellStyle-Wrap="False">                                                                    
                                                                                     </dxwgv:GridViewDataColumn>
@@ -372,7 +372,7 @@
                                                                                     </dxwgv:GridViewDataColumn>
                                                                                     <dxwgv:GridViewDataColumn FieldName="CustName" Caption="投保客户" VisibleIndex="14" CellStyle-Wrap="False">                                                                   
                                                                                     </dxwgv:GridViewDataColumn>                                                                
-                                                                                    <dxwgv:GridViewDataColumn FieldName="CreatePerson" Caption="录单人" VisibleIndex="15" CellStyle-Wrap="False">                                                                   
+                                                                                    <dxwgv:GridViewDataColumn FieldName="CreatePersonName" Caption="录单人" VisibleIndex="15" CellStyle-Wrap="False">                                                                   
                                                                                     </dxwgv:GridViewDataColumn>
                                                                                     <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="录单日期" VisibleIndex="16" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
                                                                                     </dxwgv:GridViewDataDateColumn>                                        
@@ -447,7 +447,7 @@
                                                                                     </dxwgv:GridViewDataColumn>
                                                                                     <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" VisibleIndex="3" CellStyle-Wrap="False">                                                                   
                                                                                     </dxwgv:GridViewDataColumn>   
-                                                                                    <dxwgv:GridViewDataColumn FieldName="UserNameCn" Caption="客户经理" VisibleIndex="4" CellStyle-Wrap="False">                                                                   
+                                                                                    <dxwgv:GridViewDataColumn FieldName="SalesIdName" Caption="客户经理" VisibleIndex="4" CellStyle-Wrap="False">                                                                   
                                                                                     </dxwgv:GridViewDataColumn>      
                                                                                     <dxwgv:GridViewDataColumn FieldName="CarrierNameCn" Caption="保险公司" VisibleIndex="5" CellStyle-Wrap="False">                                                                    
                                                                                     </dxwgv:GridViewDataColumn>
@@ -469,7 +469,7 @@
                                                                                     </dxwgv:GridViewDataColumn>
                                                                                     <dxwgv:GridViewDataColumn FieldName="CustName" Caption="投保客户" VisibleIndex="14" CellStyle-Wrap="False">                                                                   
                                                                                     </dxwgv:GridViewDataColumn>                                                                
-                                                                                    <dxwgv:GridViewDataColumn FieldName="CreatePerson" Caption="录单人" VisibleIndex="15" CellStyle-Wrap="False">                                                                   
+                                                                                    <dxwgv:GridViewDataColumn FieldName="CreatePersonName" Caption="录单人" VisibleIndex="15" CellStyle-Wrap="False">                                                                   
                                                                                     </dxwgv:GridViewDataColumn>
                                                                                     <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="录单日期" VisibleIndex="16" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
                                                                                     </dxwgv:GridViewDataDateColumn>                                        

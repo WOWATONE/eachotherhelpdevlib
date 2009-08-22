@@ -144,7 +144,7 @@
                                                     </td>
                                                     <td style="text-align:right;">批单编号：</td>
                                                     <td style="text-align:left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtPrevPolicyID" ClientInstanceName="dxetxtPrevPolicyID" runat="server" Width="240px"></dxe:ASPxTextBox>
+                                                        <dxe:ASPxTextBox ID="dxetxtAltNO" ClientInstanceName="dxetxtAltNO" runat="server" Width="240px"></dxe:ASPxTextBox>
                                                     </td>                                                                                                     
                                                 </tr> 
                                                 <tr>
@@ -196,7 +196,7 @@
                                                 <tr>
                                                     <td style="text-align:right;">业务员：</td>
                                                     <td style="text-align:left;"> 
-                                                        <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="240px"></dxe:ASPxTextBox>                                                                                                             
+                                                        <dxe:ASPxTextBox ID="dxetxtCarrierSales" ClientInstanceName="dxetxtCarrierSales" runat="server" Width="240px"></dxe:ASPxTextBox>                                                                                                             
                                                     </td>                                                
                                                     <td style="text-align:right;">业务来源：</td>
                                                     <td style="text-align:left;">
@@ -315,7 +315,7 @@
                                                                 </dxwgv:GridViewDataColumn>   
                                                                 <dxwgv:GridViewDataColumn FieldName="AltNO" Caption="批单编号" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>   
-                                                                <dxwgv:GridViewDataColumn FieldName="UserNameCn" Caption="客户经理" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="SalesIdName" Caption="客户经理" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>      
                                                                 <dxwgv:GridViewDataColumn FieldName="CarrierNameCn" Caption="保险公司" CellStyle-Wrap="False">                                                                    
                                                                 </dxwgv:GridViewDataColumn>
@@ -337,7 +337,7 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="CustName" Caption="投保客户" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>                                                                
-                                                                <dxwgv:GridViewDataColumn FieldName="CreatePerson" Caption="录单人" CellStyle-Wrap="False">                                                                   
+                                                                <dxwgv:GridViewDataColumn FieldName="CreatePersonName" Caption="录单人" CellStyle-Wrap="False">                                                                   
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataDateColumn FieldName="CreateTime" Caption="录单日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">                                                                   
                                                                 </dxwgv:GridViewDataDateColumn>                                        
