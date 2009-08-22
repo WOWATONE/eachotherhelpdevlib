@@ -291,6 +291,7 @@ namespace BrokerWebApp.inoutbalance
                 objLoad.CreatePersion = this.CurrentUserID;
                 objLoad.GatheringType = obj.GatheringType;
                 objLoad.NoticeDate = dxeNoticeDate.Date;//obj.NoticeDate;
+                objLoad.Content = obj.Content;
                 objLoad.AuditStatus = Convert.ToInt32(BO_P_Code.AuditStatus.Appeal).ToString();
                 objLoad.Save(ModifiedAction.Insert);
             }
@@ -299,6 +300,7 @@ namespace BrokerWebApp.inoutbalance
                 objLoad = new BO_Notice(obj.NoticeNo);
                 objLoad.NoticeDate = dxeNoticeDate.Date;//obj.NoticeDate;
                 objLoad.GatheringType = obj.GatheringType;
+                objLoad.Content = obj.Content;
                 objLoad.Save(ModifiedAction.Update);
             }
 
@@ -394,6 +396,7 @@ namespace BrokerWebApp.inoutbalance
             }
 
             this.dxeNoticeDate.Date = obj.NoticeDate;
+            this.dxetxtContent.Text = obj.Content;
             if (obj.AuditStatus == Convert.ToInt32(BO_P_Code.AuditStatus.AuditOk).ToString())
             {
                 this.dxebtnAudit.Text = "反审核";
@@ -430,6 +433,9 @@ namespace BrokerWebApp.inoutbalance
 
         [DataMember]
         public string AuditStatus { get; set; }
+
+        [DataMember]
+        public string Content { get; set; }
 
 
     }

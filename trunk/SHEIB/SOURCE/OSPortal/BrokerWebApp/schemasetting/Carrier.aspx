@@ -46,7 +46,7 @@
                                         </ValidationSettings>
                                     </dxe:ASPxTextBox></td>
                                 <td style="width:80px; text-align:right;">
-                                    公司简称：</td>
+                                   公司名称(中文)：</td>
                                 <td style="text-align:left;">
                                     <dxe:ASPxTextBox ID="dxetxtShortName" ClientInstanceName="dxetxtShortName" runat="server" Width="160px">
                                         <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
@@ -56,7 +56,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align:right;">
-                                    公司名称(中文)：</td>
+                                    公司简称：</td>
                                 <td style="text-align:left;" colspan="3">
                                     <dxe:ASPxTextBox ID="dxetxtCarrierNameCn" ClientInstanceName="dxetxtCarrierNameCn" runat="server" Width="480px">
                                         <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
