@@ -82,13 +82,13 @@ namespace BrokerWebApp.vehicleinsurance
                     GridViewCommandColumnButtonControl thebtn;
 
                     thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
-                    thebtn.Enabled = false;
+                    //thebtn.Enabled = false;
                     InternalHyperLink theIHL = (InternalHyperLink)thebtn.Controls[0];
                     theIHL.Text = "反审核";
                 }
                 else
                 {
-                    e.Row.Enabled = true;
+                    //e.Row.Enabled = true;
                 }
 
             }
@@ -104,81 +104,91 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            GridViewCommandColumn theCommandColumn = getCommandColumnLoop();
-
+            
             String where = " AND ISNULL(B.PolicyType,'0') ='1' ";//" and ISNULL(B.PolicyStatus,'0') = '1' and ISNULL(B.AskPriceID,'') != '' ";
             if (this.dxeddlCheckState.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCheckState.SelectedItem.Value.ToString()))
             {
                 where = where + " AND ISNULL(B.PolicyStatus,'0') = '" + dxeddlCheckState.SelectedItem.Value.ToString() + "' ";
-                if (this.dxeddlCheckState.SelectedItem.Value.ToString() == "2")
-                    theCommandColumn.CustomButtons[0].Text = "反审核";
-                else
-                    theCommandColumn.CustomButtons[0].Text = "审核";
             }
             else
             {
                 where = where + " AND ISNULL(B.PolicyStatus,'0') = '1' ";
-                theCommandColumn.CustomButtons[0].Text = "审核";
             }
 
-
+            //询价单号
             if (!String.IsNullOrEmpty(this.dxetxtAskPriceID.Text))
             {
                 where += " and B.AskPriceID='" + this.dxetxtAskPriceID.Text.Trim() + "'";
             }
 
+            //投保编号
             if (!String.IsNullOrEmpty(this.dxetxtPolicyID.Text))
             {
                 where += " and B.PolicyID ='" + this.dxetxtPolicyID.Text.Trim() + "'";
             }
 
+            //投保客户
             if (!String.IsNullOrEmpty(this.dxetxtCustomer.Text))
             {
                 where += " and G.CustName='" + this.dxetxtCustomer.Text.Trim() + "'";
             }
 
+            //部门
             if (this.dxeddlDeptID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptID.SelectedItem.Value.ToString()))
             {
                 where += " and B.DeptId='" + this.dxeddlDeptID.SelectedItem.Value.ToString() + "'";
             }
 
+            //客户经理
             if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
             {
                 where += " and B.SalesId='" + this.dxeddlSalesId.SelectedItem.Value.ToString() + "'";
             }
 
 
-            //if (!String.IsNullOrEmpty(this.dxetxtCarCount.Text.Trim()) && Information.IsNumeric(this.dxetxtCarCount.Text.Trim()))
-            if (!String.IsNullOrEmpty(this.dxetxtCarCount.Text.Trim()))
+            //车牌号
+            if (!String.IsNullOrEmpty(this.dxetxtCarNo.Text.Trim()))
             {
-                where += " and B.CarNo='" + this.dxetxtCarCount.Text.Trim() + "'";
+                where += " and B.CarNo like ('%" + this.dxetxtCarNo.Text.Trim() + "%')";
             }
 
+            //业务来源
             if (this.dxeddlSourceTypeID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSourceTypeID.SelectedItem.Value.ToString()))
             {
                 where += " and B.SourceTypeID='" + this.dxeddlSourceTypeID.SelectedItem.Value.ToString() + "'";
             }
 
+            //业务性质
             if (this.dxeddlOperationType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlOperationType.SelectedItem.Value.ToString()))
             {
                 where += " and B.OperationType='" + this.dxeddlOperationType.SelectedItem.Value.ToString() + "'";
             }
 
+            //录单人
             if (!String.IsNullOrEmpty(this.dxetxtCreatePerson.Text.Trim()))
             {
-                where += " and B.CreatePerson='" + this.dxetxtCreatePerson.Text.Trim() + "'";
+                where += " and M.UserNameCn like ('%" + this.dxetxtCreatePerson.Text.Trim() + "%')";
             }
 
+            //保险公司
             if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
             {
                 where += " and B.CarrierID='" + this.dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
             }
 
+            //分支机构
             if (this.dxeddlBranchId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranchId.SelectedItem.Value.ToString()))
             {
                 where += " and B.BranchID='" + this.dxeddlBranchId.SelectedItem.Value.ToString() + "'";
             }
 
+            ////保单编号
+            //if (!String.IsNullOrEmpty(this.dxetxtPolicyNo.Text))
+            //{
+            //    where += " and B.PolicyNo ='" + this.dxetxtPolicyNo.Text.Trim() + "'";
+            //}
+
+            //录单日期
             if (this.dxeStartDate.Date > DateTime.MinValue && this.dxeStartDate.Date < DateTime.MaxValue)
             {
                 where += " and B.CreateTime>='" + this.dxeStartDate.Date + "'";

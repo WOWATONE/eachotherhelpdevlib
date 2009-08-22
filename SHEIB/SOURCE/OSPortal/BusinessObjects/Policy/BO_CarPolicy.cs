@@ -294,17 +294,17 @@ namespace BusinessObjects.Policy
             sb.Append(" SELECT ");
             sb.Append(" A1.AskPriceID, A1.TradeNo, A1.CustomerID, ");
             sb.Append(" A1.Beneficiary, A1.DeptId,");
-            sb.Append(" A1.CarrierSales, A1.SalesId,");
+            sb.Append(" A1.CarrierSales, ");
             sb.Append(" A1.SignDate, ISNULL(A1.PolicyStatus,'0') AS PolicyStatus,");
             sb.Append(" A1.GatheringType, A1.OperationType,");
             sb.Append(" A1.SourceTypeID, A1.Remark,");
             sb.Append(" A1.AuditTime, A1.AuditPerson,");
-            sb.Append(" A1.AuditContent, A1.CreateTime,");
+            sb.Append(" A1.AuditContent, M.UserNameCn AS CreatePersonName, A1.CreateTime,");
             sb.Append(" A1.CreatePerson, A1.ModifyTime,");
             sb.Append(" A1.ModifyPerson, A1.VolumnNo,");
             sb.Append(" A1.CarCount, A1.BankName,");
             sb.Append(" A1.BankAccount, A1.CarrierID, A1.BranchID,");
-            sb.Append(" C.UserID, C.UserNameCn, ");
+            sb.Append(" A1.SalesId, C.UserID, C.UserNameCn AS SalesIdName, ");
             sb.Append(" I.SourceTypeName, ");
             sb.Append(" J.GatheringTypeName, ");
             sb.Append(" L.OperationTypeName, ");
@@ -324,7 +324,7 @@ namespace BusinessObjects.Policy
             sb.Append(" LEFT JOIN GatheringType J ON J.GatheringTypeID = A1.GatheringType ");
             sb.Append(" LEFT JOIN P_Department K ON A1.DeptID = K.DeptID ");
             sb.Append(" LEFT JOIN OperationType L ON L.OperationTypeID = A1.OperationType ");
-            
+            sb.Append(" LEFT JOIN P_User M ON A1.CreatePerson = M.UserID ");
             sb.Append(" WHERE 1=1 ");
             sb.Append(sWhere);
             sb.Append(" ORDER BY A1.CreateTime DESC  ");

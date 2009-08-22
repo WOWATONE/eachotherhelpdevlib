@@ -151,7 +151,7 @@
                                 ³µÅÆºÅ£º
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCarCount" ClientInstanceName="dxetxtCarCount" runat="server" Width="240px"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtCarNo" ClientInstanceName="dxetxtCarNo" runat="server" Width="240px"></dxe:ASPxTextBox>
                             </td>
                             <td>
                             </td>

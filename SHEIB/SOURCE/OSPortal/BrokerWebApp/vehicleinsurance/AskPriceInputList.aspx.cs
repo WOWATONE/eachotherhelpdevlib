@@ -10,6 +10,7 @@ using BusinessObjects;
 using BusinessObjects.SchemaSetting;
 using DevExpress.Web.ASPxEditors;
 using DevExpress.Web.ASPxGridView;
+using DevExpress.Web.ASPxGridView.Rendering;
 
 namespace BrokerWebApp.vehicleinsurance
 {
@@ -80,62 +81,73 @@ namespace BrokerWebApp.vehicleinsurance
         {
             String where = " and ISNULL(A1.PolicyStatus,'0') = '0' ";
 
+            //询价单号
             if (!String.IsNullOrEmpty(this.dxetxtAskPriceID.Text))
             {
                 where += " and A1.AskPriceID='" + this.dxetxtAskPriceID.Text.Trim() + "'";
             }
 
+            //投保编号
             if (!String.IsNullOrEmpty(this.dxetxtPolicyID.Text))
             {
-                //where += " and ='" + this.dxetxtPolicyID.Text.Trim() + "'";
+                where += " and A1.AskPriceID IN (Select AskPriceID From Policy Where PolicyType = '1' AND PolicyID='" + this.dxetxtPolicyID.Text.Trim() + "')";
             }
 
+            //投保客户
             if (!String.IsNullOrEmpty(this.dxetxtCustomer.Text))
             {
                 where += " and G.CustName='" + this.dxetxtCustomer.Text.Trim() + "'";
             }
 
+            //部门
             if (this.dxeddlDeptID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptID.SelectedItem.Value.ToString()))
             {
                 where += " and A1.DeptId='" + this.dxeddlDeptID.SelectedItem.Value.ToString() + "'";
             }
 
+            //客户经理
             if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
             {
                 where += " and A1.SalesId='" + this.dxeddlSalesId.SelectedItem.Value.ToString() + "'";
             }
 
-
+            //车牌数目
             if (!String.IsNullOrEmpty(this.dxetxtCarCount.Text.Trim()) && Information.IsNumeric(this.dxetxtCarCount.Text.Trim()))
             {
-                where += " and A1.CarCount=" + this.dxetxtCarCount.Text.Trim();
+                where += " and ((Select Count(PolicyId) As CarNumber From Policy Where PolicyType = '1' And AskPriceID = A1.AskPriceID) >=" + this.dxetxtCarCount.Text.Trim() + ")";
             }
 
+            //业务来源
             if (this.dxeddlSourceTypeID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSourceTypeID.SelectedItem.Value.ToString()))
             {
                 where += " and A1.SourceTypeID='" + this.dxeddlSourceTypeID.SelectedItem.Value.ToString() + "'";
             }
 
+            //业务性质
             if (this.dxeddlOperationType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlOperationType.SelectedItem.Value.ToString()))
             {
                 where += " and A1.OperationType='" + this.dxeddlOperationType.SelectedItem.Value.ToString() + "'";
             }
 
+            //录单人
             if (!String.IsNullOrEmpty(this.dxetxtCreatePerson.Text.Trim()))
             {
-                where += " and A1.CreatePerson='" + this.dxetxtCreatePerson.Text.Trim() + "'";
+                where += " and M.UserNameCn like ('%" + this.dxetxtCreatePerson.Text.Trim() + "%')";
             }
 
+            //保险公司
             if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
             {
                 where += " and A1.CarrierID='" + this.dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
             }
 
+            //分支机构
             if (this.dxeddlBranchId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranchId.SelectedItem.Value.ToString()))
             {
                 where += " and A1.BranchID='" + this.dxeddlBranchId.SelectedItem.Value.ToString() + "'";
             }
 
+            //录单日期
             if (this.dxeStartDate.Date > DateTime.MinValue && this.dxeStartDate.Date < DateTime.MaxValue)
             {
                 where += " and A1.CreateTime>='" + this.dxeStartDate.Date + "'";
@@ -162,8 +174,8 @@ namespace BrokerWebApp.vehicleinsurance
             thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
             thecb.TextField = "BranchName";
             thecb.ValueField = "BranchID";
-            thecb.DataBind(); thecb.Items.Insert(0, new ListEditItem("", ""));
-                        
+            thecb.DataBind(); 
+            thecb.Items.Insert(0, new ListEditItem("(全部)", ""));            
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];
@@ -245,6 +257,7 @@ namespace BrokerWebApp.vehicleinsurance
             thecb.TextField = "UserNameCn";
             thecb.ValueField = "UserID";
             thecb.DataBind();
+            thecb.Items.Insert(0, new ListEditItem("(全部)", ""));
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];
