@@ -167,7 +167,7 @@
                                                     </td>
                                                     <td style="text-align:right;">批单编号</td>
                                                     <td style="text-align:left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtPrevPolicyID" ClientInstanceName="dxetxtPrevPolicyID" runat="server" Width="240px"></dxe:ASPxTextBox>
+                                                        <dxe:ASPxTextBox ID="dxetxtAltNO" ClientInstanceName="dxetxtAltNO" runat="server" Width="240px"></dxe:ASPxTextBox>
                                                     </td> 
                                                     <td></td>                                                   
                                                 </tr> 
@@ -254,7 +254,7 @@
                                                         <dxe:ASPxDateEdit ID="dxeStartDate" runat="server" Width="240px">
                                                         </dxe:ASPxDateEdit>                                                       
                                                     </td>
-                                                    <td style="text-align:right;">至</td>
+                                                    <td style="text-align:center;">至</td>
                                                     <td style="text-align:left;">
                                                         <dxe:ASPxDateEdit ID="dxeEndDate" runat="server"></dxe:ASPxDateEdit>
                                                     </td>

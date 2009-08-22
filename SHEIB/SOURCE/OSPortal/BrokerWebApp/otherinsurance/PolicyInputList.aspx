@@ -230,7 +230,7 @@
                                             业务员：
                                         </td>
                                         <td style="text-align: left;">
-                                            <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson"
+                                            <dxe:ASPxTextBox ID="dxetxtCarrierSales" ClientInstanceName="dxetxtCarrierSales"
                                                 runat="server" Width="240px">
                                             </dxe:ASPxTextBox>
                                         </td>
