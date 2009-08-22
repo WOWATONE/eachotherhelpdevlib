@@ -33,12 +33,26 @@ namespace BrokerWebApp.otherinsurance
 
 
 
-
-        protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        protected void gridSearchResult_RowDeleting(object sender, 
+            DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            String theID = e.Keys[gridKeyName].ToString();
+            String theID = e.Keys[0].ToString();
+            object theValues = this.gridSearchResult.GetRowValuesByKeyValue(theID, new String[] { "PolicyID", "PolicyNo" });
+            object[] theValueList = theValues as object[];
+            String policyID;
+            if (theValueList[0] == null)
+                policyID = "";
+            else
+                policyID = theValueList[0].ToString();
+
+            if (!String.IsNullOrEmpty(policyID))
+            {
+                BusinessObjects.Policy.BO_Policy.Delete(policyID);
+            }
+
             e.Cancel = true;
-            this.gridAuditSearchResult.CancelEdit();
+            this.gridSearchResult.CancelEdit();
+            
         }
 
 

@@ -294,7 +294,7 @@
                                                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
                                                                 <NewButton Visible="False" />
                                                                 <EditButton Visible="False" />
-                                                                <DeleteButton Visible="false" />
+                                                                <DeleteButton Visible="true" />
                                                                 <CustomButtons>
                                                                     <dxwgv:GridViewCommandColumnCustomButton Text="±à¼­">
                                                                     </dxwgv:GridViewCommandColumnCustomButton>
@@ -349,7 +349,7 @@
                                                             </dxwgv:GridViewDataColumn>
                                                         </Columns>
                                                         <Settings ShowGroupPanel="true" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
-                                                        <SettingsBehavior AllowDragDrop="true" AllowGroup="true" />
+                                                        <SettingsBehavior ConfirmDelete="true" AllowDragDrop="true" AllowGroup="true" />
                                                         <TotalSummary>
                                                             <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" DisplayFormat="#" /> 
                                                             <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" DisplayFormat="c" />

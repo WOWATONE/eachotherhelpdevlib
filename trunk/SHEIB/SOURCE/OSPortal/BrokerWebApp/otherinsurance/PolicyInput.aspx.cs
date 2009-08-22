@@ -149,14 +149,16 @@ namespace BrokerWebApp.otherinsurance
                 CustomPageTitle = "非车险保单审核";
                 if (!Page.IsPostBack)
                 {
-                    if (String.IsNullOrEmpty(this.dxetxtAuditPerson.Text))
-                    {
-                        this.dxetxtAuditPerson.Text = this.CurrentUserName;
-                        this.dxeCheckDate.Date = DateTime.Now;
-                    }
                     BusinessObjects.Policy.BO_Policy obj;
                     obj = new BusinessObjects.Policy.BO_Policy(this.dxetxtPolicyID.Text.Trim());
 
+                    //if (String.IsNullOrEmpty(this.dxetxtAuditPerson.Text))
+                    //{                        
+                    //}
+                    this.dxetxtAuditPerson.Text = this.CurrentUserName;
+                    this.dxeCheckDate.Date = obj.CreateTime;//DateTime.Now;
+                                        
+                    
                     if (obj.PolicyStatus == Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString())
                     {
                         this.dxebtnAuditOk.Text = "反审核";
