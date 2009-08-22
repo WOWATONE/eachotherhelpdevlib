@@ -86,13 +86,13 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyID;
         
         /// <summary>
-        /// dxetxtPrevPolicyID control.
+        /// dxetxtAltNO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPrevPolicyID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtAltNO;
         
         /// <summary>
         /// dxetxtCustomer control.
@@ -158,13 +158,13 @@ namespace BrokerWebApp.otherinsurance {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlBranchId;
         
         /// <summary>
-        /// dxetxtCreatePerson control.
+        /// dxetxtCarrierSales control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCreatePerson;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCarrierSales;
         
         /// <summary>
         /// dxeddlSourceTypeID control.

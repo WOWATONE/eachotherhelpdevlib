@@ -647,8 +647,8 @@ namespace BusinessObjects.Policy
             sb.Append(" SELECT NewID() AS KeyGUID, A.Premium, A.Process, A.PremiumBase, A.ProcessBase, ");
             sb.Append(" B.PolicyID, B.PrevPolicyID, B.PolicyNo, ISNULL(B.PolicyStatus,'0') AS PolicyStatus, ");
             sb.Append(" ISNULL(B.PolicyType,'0') AS PolicyType, ");
-            sb.Append(" B.SalesId, C.UserID, C.UserNameCn, ");
-            sb.Append(" B.Coverage, B.CreatePerson, ");
+            sb.Append(" B.SalesId, C.UserID, C.UserNameCn AS SalesIdName, ");
+            sb.Append(" B.Coverage, ");
             sb.Append(" B.Currency, H.CurrencyName, ");
             sb.Append(" B.SourceTypeID,I.SourceTypeName, ");
             sb.Append(" B.GatheringType,J.GatheringTypeName, ");
@@ -661,7 +661,7 @@ namespace BusinessObjects.Policy
             sb.Append(" B.CarrierSales, B.DeptId, K.DeptName, ");
             sb.Append(" B.ProdTypeID, F.ProdTypeName, ");
             sb.Append(" B.CustomerID, G.CustName, ");
-            sb.Append(" B.CreatePerson,B.CreateTime, ");
+            sb.Append(" B.CreatePerson, M.UserNameCn AS CreatePersonName, B.CreateTime, ");
             sb.Append(" B.AuditPerson,B.AuditTime, ");
             sb.Append(" B.ModifyPerson,B.ModifyTime, ");
             sb.Append(" B.Remark, B.AskPriceID, B.BankName, B.BankAccount, B.CiPremium, ");
@@ -681,6 +681,7 @@ namespace BusinessObjects.Policy
             sb.Append(" LEFT JOIN GatheringType J ON J.GatheringTypeID = B.GatheringType ");
             sb.Append(" LEFT JOIN P_Department K ON B.DeptID = K.DeptID ");
             sb.Append(" LEFT JOIN OperationType L ON B.OperationType = L.OperationTypeID ");
+            sb.Append(" LEFT JOIN P_User M ON B.CreatePerson = M.UserID ");
             sb.Append(" WHERE 1=1 ");
             sb.Append(sWhere);
 
