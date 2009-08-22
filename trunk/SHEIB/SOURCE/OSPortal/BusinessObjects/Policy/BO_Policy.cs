@@ -564,7 +564,7 @@ namespace BusinessObjects.Policy
             StringBuilder sb = new StringBuilder();
             sb.Append(" SELECT NewID() AS KeyGUID, A.Premium, A.Process, A.PremiumBase, A.ProcessBase, ");
             sb.Append(" B.PolicyID, B.PrevPolicyID, B.PolicyNo, ");
-            sb.Append(" B.SalesId, C.UserID, C.UserNameCn, ");
+            sb.Append(" B.SalesId, C.UserID, C.UserNameCn AS SalesIdName, ");
             sb.Append(" B.Coverage, B.CreatePerson, ");
             sb.Append(" B.Currency, H.CurrencyName, ");
             sb.Append(" B.SourceTypeID,I.SourceTypeName, ");
@@ -578,10 +578,14 @@ namespace BusinessObjects.Policy
             sb.Append(" B.CarrierSales, B.DeptId, K.DeptName, ");
             sb.Append(" B.ProdTypeID, F.ProdTypeName, ");
             sb.Append(" B.CustomerID, G.CustName, ");
-            sb.Append(" B.CreatePerson,B.CreateTime, ");
+            sb.Append(" B.CreatePerson, M.UserNameCn AS CreatePersonName, B.CreateTime, ");
             sb.Append(" B.AuditPerson,B.AuditTime, ");
             sb.Append(" B.ModifyPerson,B.ModifyTime, ");
-            sb.Append(" B.Remark ");
+            sb.Append(" B.Remark, B.AskPriceID, B.BankName, B.BankAccount, B.CiPremium, ");
+            sb.Append(" B.CiProcessRate, B.CiProcess, B.AciPremium, B.AciProcessRate,  ");
+            sb.Append(" B.AciProcess, B.CstPremium, B.PeriodTimes, B.CarNo, B.CarcaseNo, ");
+            sb.Append(" B.EngineNo, B.Capacity, B.UseCharacter, B.RegisterDate, B.CarValue, B.CarUser, ");
+            sb.Append(" B.AltNO, B.AciPolicyNo, B.IsAntiAudit ");
 
             sb.Append(" FROM Policy B ");
             sb.Append(" LEFT JOIN PolicyCarrier A ON A.PolicyID = B.PolicyID ");
@@ -595,6 +599,7 @@ namespace BusinessObjects.Policy
             sb.Append(" LEFT JOIN GatheringType J ON J.GatheringTypeID = B.GatheringType ");
             sb.Append(" LEFT JOIN P_Department K ON B.DeptID = K.DeptID ");
             sb.Append(" LEFT JOIN OperationType L ON B.OperationType = L.OperationTypeID ");
+            sb.Append(" LEFT JOIN P_User M ON B.CreatePerson = M.UserID ");
             sb.Append(" WHERE ISNULL(B.PolicyStatus,'0') = @PolicyStatus ");
             sb.Append(" ORDER BY B.CreateTime DESC  ");
 
@@ -668,7 +673,7 @@ namespace BusinessObjects.Policy
             sb.Append(" B.CiProcessRate, B.CiProcess, B.AciPremium, B.AciProcessRate,  ");
             sb.Append(" B.AciProcess, B.CstPremium, B.PeriodTimes, B.CarNo, B.CarcaseNo, ");
             sb.Append(" B.EngineNo, B.Capacity, B.UseCharacter, B.RegisterDate, B.CarValue, B.CarUser, ");
-            sb.Append(" B.AltNO, B.AciPolicyNo ");
+            sb.Append(" B.AltNO, B.AciPolicyNo, B.IsAntiAudit ");
             sb.Append(" FROM Policy B ");
             sb.Append(" LEFT JOIN PolicyCarrier A ON A.PolicyID = B.PolicyID ");
             sb.Append(" LEFT JOIN P_User C ON B.SalesId = C.UserID ");
