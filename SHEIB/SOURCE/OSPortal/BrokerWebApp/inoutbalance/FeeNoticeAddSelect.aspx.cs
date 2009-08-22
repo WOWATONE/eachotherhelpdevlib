@@ -24,9 +24,9 @@ namespace BrokerWebApp.inoutbalance
         {
             if (!IsPostBack && !IsCallback)
             {
-                Initialization();
-                BindGrid();
+                Initialization();                
             }
+            BindGrid();
         }
 
 

@@ -84,6 +84,8 @@ namespace BusinessObjects
             sb.Append(" from PolicyPeriod a,Policy b");
             sb.Append(" where a.PolicyID=b.PolicyID ");            
             sb.Append(sWhere);
+            sb.Append(" order by a.PolicyID");
+
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
             return _db.ExecuteDataSet(dbCommand);

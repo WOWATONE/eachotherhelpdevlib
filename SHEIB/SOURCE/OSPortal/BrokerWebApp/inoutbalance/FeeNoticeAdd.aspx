@@ -149,7 +149,8 @@
             var GatheringType = dxeddlGatheringType.GetValue();
             var NoticeNo = dxetxtNoticeNo.GetValueString();
             var NoticeDate = dxeNoticeDate.GetValue();
-            var plc = new NoticeInfo(GatheringType, NoticeNo, NoticeDate, AuditStatus);
+            var Content = dxetxtContent.GetValueString();
+            var plc = new NoticeInfo(GatheringType, NoticeNo, NoticeDate, AuditStatus, Content);
 
             //deserialize JSON string, make a JSON object
             //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
@@ -162,7 +163,7 @@
         }
 
 
-        function NoticeInfo(GatheringType, NoticeNo, NoticeDate, AuditStatus) {
+        function NoticeInfo(GatheringType, NoticeNo, NoticeDate, AuditStatus, Content) {
             if (!isEmpty(GatheringType))
                 this.GatheringType = GatheringType;
 
@@ -175,6 +176,9 @@
             if (!isEmpty(AuditStatus))
                 this.AuditStatus = AuditStatus;
 
+            if (!isEmpty(Content))
+                this.Content = Content;    
+
         }
 
         function btnCloseClick() {
@@ -182,8 +186,8 @@
         }
 
 
-        function btnAudit_Click(s, e) {          
-            
+        function btnAudit_Click(s, e) {
+
             var titleMSG = "确定吗？";
             var buttonID = s.GetText();
             var AuditOrNot = "1";
@@ -218,7 +222,7 @@
                     var cellContext = grv.rows(i).cells(0).all[j].innerText;
                     if (cellContext == "删除") {
                         if (editStatus == false) {
-                            grv.rows(i).cells(0).all[j].style.display = "none";                            
+                            grv.rows(i).cells(0).all[j].style.display = "none";
                         }
                         else {
                             grv.rows(i).cells(0).all[j].style.display = "";
@@ -230,8 +234,8 @@
 
         function auditCallbackComplete(s, e) {
 
-            var buttonID = dxebtnAudit.GetText();      
-                  
+            var buttonID = dxebtnAudit.GetText();
+
             var theresult = e.result;
             switch (theresult) {
                 case "0":
@@ -259,7 +263,7 @@
                     alert(theresult)
             }
             gridPolicyItem.PerformCallback('');
-            
+
         }
 
         
@@ -316,11 +320,22 @@
             </td>
         </tr>
         <tr>
+            <td style="text-align: right;">
+                备注：
+            </td>
+            <td style="text-align: left;" colspan="7" >
+                <dxe:ASPxTextBox ID="dxetxtContent" ClientInstanceName="dxetxtContent" runat="server"
+                    Width="655px">
+                </dxe:ASPxTextBox>
+            </td>
+        </tr>
+        <tr>
             <td style="text-align: right; vertical-align: top;">
                 对应保单：
             </td>
             <td style="text-align: left;">
-                <dxe:ASPxButton runat="server" ID="btnAddPolicy" ClientInstanceName="btnAddPolicy" AutoPostBack="false" Text="添加保单">
+                <dxe:ASPxButton runat="server" ID="btnAddPolicy" ClientInstanceName="btnAddPolicy"
+                    AutoPostBack="false" Text="添加保单">
                     <ClientSideEvents Click="btnAddPolicyClick" />
                 </dxe:ASPxButton>
             </td>
@@ -331,17 +346,14 @@
             </td>
             <td style="text-align: left;">
                 <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                    KeyFieldName="PolPeriodId" Width="100%" AutoGenerateColumns="False" 
-                    OnCustomCallback="gridPolicyItem_CustomCallback"
-                    OnRowDeleting="gridPolicyItem_RowDeleting" 
-                    OnRowDeleted="gridPolicyItem_RowDeleted"
-                    OnHtmlRowCreated="gridPolicyItem_HtmlRowCreated"
-                    >
+                    KeyFieldName="PolPeriodId" Width="100%" AutoGenerateColumns="False" OnCustomCallback="gridPolicyItem_CustomCallback"
+                    OnRowDeleting="gridPolicyItem_RowDeleting" OnRowDeleted="gridPolicyItem_RowDeleted"
+                    OnHtmlRowCreated="gridPolicyItem_HtmlRowCreated">
                     <%-- BeginRegion Columns --%>
                     <Columns>
                         <dxwgv:GridViewCommandColumn Caption="&nbsp;">
-                            <DeleteButton Visible="true"  Text="删除"/>
-                        </dxwgv:GridViewCommandColumn>                          
+                            <DeleteButton Visible="true" Text="删除" />
+                        </dxwgv:GridViewCommandColumn>
                         <dxwgv:GridViewDataColumn FieldName="CustName" Caption="投保客户" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False">
@@ -358,13 +370,15 @@
                         </dxwgv:GridViewDataColumn>
                         <dxwgv:GridViewDataColumn FieldName="CstPremium" Caption="车船税" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
-                        <dxwgv:GridViewDataColumn FieldName="AuditStatus" Caption="AuditStatus" CellStyle-Wrap="False" Visible="false">
+                        <dxwgv:GridViewDataColumn FieldName="AuditStatus" Caption="AuditStatus" CellStyle-Wrap="False"
+                            Visible="false">
                         </dxwgv:GridViewDataColumn>
                     </Columns>
                     <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleIfExpanded" />
                     <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                     <TotalSummary>
-                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" DisplayFormat="保单数量:#" />
+                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInColumn="CustName"
+                            DisplayFormat="保单数量:#" />
                         <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" DisplayFormat="c" />
                         <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" DisplayFormat="c" />
                         <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" DisplayFormat="c" />
@@ -394,13 +408,6 @@
         </tr>
         <tr>
             <td colspan="2">
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: right;">
-            </td>
-            <td style="text-align: left;">
                 &nbsp;
             </td>
         </tr>
@@ -440,5 +447,5 @@
                 </table>
             </td>
         </tr>
-        </table>
+    </table>
 </asp:Content>

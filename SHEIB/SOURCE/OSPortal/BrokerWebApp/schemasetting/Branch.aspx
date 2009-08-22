@@ -56,7 +56,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align:right;">
-                                    分支机构简称：</td>
+                                    分支机构全称：</td>
                                 <td style="text-align:left;">
                                     <dxe:ASPxTextBox ID="dxetxtShortName" ClientInstanceName="dxetxtShortName" runat="server" Width="160px">
                                         <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
@@ -74,7 +74,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align:right;">
-                                    分支机构全称：</td>
+                                    分支机构简称：</td>
                                 <td style="text-align:left;" colspan="3">
                                     <dxe:ASPxTextBox ID="dxetxtBranchName" ClientInstanceName="dxetxtBranchName" runat="server" Width="480px">
                                         <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
