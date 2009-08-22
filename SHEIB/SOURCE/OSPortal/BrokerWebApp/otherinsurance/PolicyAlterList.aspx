@@ -329,7 +329,7 @@
                                                                     <td>
                                                                         <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server" 
                                                                         DataSourceID="AltDataSource"
-                                                                        KeyFieldName="KeyGUID" AutoGenerateColumns="False" 
+                                                                        KeyFieldName="PolicyID" AutoGenerateColumns="False" 
                                                                         Settings-ShowFooter="true" Width="100%" 
                                                                         SettingsPager-AlwaysShowPager="true" 
                                                                         OnRowDeleting="gridSearchResult_RowDeleting"
@@ -339,6 +339,7 @@
                                                                             <%-- BeginRegion Columns --%>
                                                                                 <Columns>
                                                                                     <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
+                                                                                        <DeleteButton Visible="true" />
                                                                                         <CustomButtons>
                                                                                             <dxwgv:GridViewCommandColumnCustomButton Text="修改">                                                                            
                                                                                             </dxwgv:GridViewCommandColumnCustomButton>                                                                        
@@ -428,7 +429,7 @@
                                                                     <td>
                                                                         <dxwgv:ASPxGridView ID="gridAuditSearchResult" ClientInstanceName="gridAuditSearchResult" runat="server" 
                                                                         DataSourceID="DataSource"
-                                                                        KeyFieldName="KeyGUID" AutoGenerateColumns="False" 
+                                                                        KeyFieldName="PolicyID" AutoGenerateColumns="False" 
                                                                         Settings-ShowFooter="true" Width="100%" 
                                                                         SettingsPager-AlwaysShowPager="true"
                                                                         OnCustomCallback="gridAuditSearchResult_CustomCallback"

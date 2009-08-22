@@ -107,14 +107,16 @@ namespace BrokerWebApp.vehicleinsurance
                 npExecuteAction.Visible = false;
                 this.gridPolicyItem.Enabled = true;
                 this.filesUploadControl.Enabled = false;
-                if (String.IsNullOrEmpty(this.dxetxtAuditPerson.Text))
-                {
-                    this.dxetxtAuditPerson.Text = this.CurrentUserName;
-                    this.dxeAuditTime.Date = DateTime.Now;
-                }
+
                 BusinessObjects.Policy.BO_CarPolicy obj;
                 obj = new BusinessObjects.Policy.BO_CarPolicy(this.dxetxtAskPriceID.Text.Trim());
+                this.dxetxtAuditPerson.Text = this.CurrentUserName;
+                this.dxeAuditTime.Date = obj.CreateTime;
 
+                //if (String.IsNullOrEmpty(this.dxetxtAuditPerson.Text))
+                //{                    
+                //}
+                
                 if (obj.PolicyStatus == Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.Audit).ToString())
                 {
                     this.dxebtnAuditOk.Text = "反审核";
