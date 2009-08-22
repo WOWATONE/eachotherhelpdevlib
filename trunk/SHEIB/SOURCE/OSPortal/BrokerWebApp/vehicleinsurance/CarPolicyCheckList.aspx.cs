@@ -10,6 +10,9 @@ using BusinessObjects;
 using BusinessObjects.SchemaSetting;
 using DevExpress.Web.ASPxEditors;
 using DevExpress.Web.ASPxGridView;
+using DevExpress.Web.ASPxGridView.Rendering;
+using DevExpress.Web.ASPxClasses.Internal;
+
 
 namespace BrokerWebApp.vehicleinsurance
 {
@@ -54,6 +57,44 @@ namespace BrokerWebApp.vehicleinsurance
         {
             this.gridSearchResult.DataBind();
         }
+
+
+        protected void gridSearchResult_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+
+            if (e.RowType == GridViewRowType.Data)
+            {
+                String state = "1";
+                object obj = e.GetValue("PolicyStatus");
+                if (Convert.IsDBNull(obj))
+                {
+                    state = "1";
+                }
+                else
+                {
+                    state = Convert.ToString(obj);
+                }
+
+                GridViewCommandColumn objgcc = getCommandColumnLoop();
+                if (state == "2")
+                {
+                    GridViewCommandColumnButtonControl thebtn;
+
+                    thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
+                    thebtn.Enabled = false;
+                    InternalHyperLink theIHL = (InternalHyperLink)thebtn.Controls[0];
+                    theIHL.Text = "反审核";
+                }
+                else
+                {
+                    e.Row.Enabled = true;
+                }
+
+            }
+
+        }
+
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
         {
