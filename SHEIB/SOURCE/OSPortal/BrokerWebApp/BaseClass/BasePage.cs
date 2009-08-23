@@ -31,21 +31,37 @@ namespace BrokerWebApp
             }
         }
 
+        private BusinessObjects.BO_P_User _currentUser;
         public BusinessObjects.BO_P_User CurrentUser
         {
             get
             {
-                String userID;
-                userID = this.CurrentUserID;
-                BusinessObjects.BO_P_User theUser = new BusinessObjects.BO_P_User(userID);
-                if (theUser.UserID != null)
-                    return theUser;
-                else
-                    return null;
+                return _currentUser; 
             }
         }
 
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+            loadCurrentUser();            
+        }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);            
+        }
+
+
+        protected void loadCurrentUser()
+        {
+            String userID;
+            userID = this.CurrentUserID;
+            BusinessObjects.BO_P_User theUser = new BusinessObjects.BO_P_User(userID);
+            if (theUser.UserID != null)
+                _currentUser = theUser;
+            else
+                _currentUser =  null;
+        }
 
     }
 }
