@@ -95,6 +95,11 @@
             var thejsonstring = dxeddlDeptId.GetSelectedItem().value;
             dxeddlSalesId.PerformCallback(thejsonstring);
         }
+
+        function btnResetClick() {
+            ASPxClientEdit.ClearEditorsInContainer(null);
+        }
+        
     </script>
 
 </asp:Content>
@@ -266,10 +271,24 @@
                             <td>
                             </td>
                             <td style="text-align: right;" colspan="2">
-                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
-                                <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
-                                <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
-                                    CssClass="input_2" />
+                                 <table>
+                                    <tr>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click">
+                                            </dxe:ASPxButton>
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnReset" runat="server" Text="重置" AutoPostBack="false" class="input_2">
+                                                <ClientSideEvents Click="btnResetClick" />
+                                            </dxe:ASPxButton>
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
+                                                CssClass="input_2" />
+                                            </dxe:ASPxButton>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                             <td>
                             </td>

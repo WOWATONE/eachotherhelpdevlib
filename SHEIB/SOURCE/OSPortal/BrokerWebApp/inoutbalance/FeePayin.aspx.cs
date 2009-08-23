@@ -20,7 +20,7 @@ namespace BrokerWebApp.inoutbalance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
             if (!IsPostBack && !IsCallback)
             {
                 Initialization();
@@ -101,12 +101,12 @@ namespace BrokerWebApp.inoutbalance
             string lsWhere = "";
             if (dxetxtPayinVoucherID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and c.VoucherID ='" + dxetxtPayinVoucherID.Text + "'";
+                lsWhere = lsWhere + " and c.VoucherID like '%" + dxetxtPayinVoucherID.Text + "%'";
             }
 
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and c.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and c.PolicyNo like '%" + dxetxtPolicyNo.Text + "%'";
             }
             if (dxeddlGatheringType.SelectedItem.Value.ToString().Trim() != "")
             {
@@ -137,7 +137,7 @@ namespace BrokerWebApp.inoutbalance
                 lsWhere = lsWhere + " and (convert(char(10), A.FeeDate,21)) <='" + lsEndDate + "'";
             }
 
-            if (dxeddlAuditStatus.SelectedItem.Value.ToString().Trim() != "")
+            if (this.dxeddlAuditStatus.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlAuditStatus.SelectedItem.Value.ToString()))
             {
                 lsWhere = lsWhere + " and a.AuditStatus ='" + dxeddlAuditStatus.SelectedItem.Value.ToString() + "'";
             }

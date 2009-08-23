@@ -134,16 +134,16 @@ namespace BrokerWebApp.inoutbalance
 
             if (dxetxtProcessID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and a.VoucherID ='" + dxetxtProcessID.Text + "'";
+                lsWhere = lsWhere + " and a.VoucherID like '%" + dxetxtProcessID.Text + "%'";
             }
 
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and c.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and c.PolicyNo like '%" + dxetxtPolicyNo.Text + "%'";
             }
             if (dxeddlGatheringType.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and  b.GatheringType= ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and  b.GatheringType ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
             }
             if (dxeddlDeptId.SelectedItem.Value.ToString().Trim() != "")
             {

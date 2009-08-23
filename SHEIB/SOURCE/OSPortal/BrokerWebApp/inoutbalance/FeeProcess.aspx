@@ -46,7 +46,7 @@
         //        }
 
 
-        function gridCustomButtonClick(s, e) {          
+        function gridCustomButtonClick(s, e) {
             if (e.buttonID == "删除") {
                 if (!confirm("确定删除吗?"))
                     return false;
@@ -98,6 +98,10 @@
         function dxeddlCarrier_SelectedIndexChanged(s, e) {
             var thejsonstring = dxeddlCarrier.GetSelectedItem().value;
             dxeddlBranch.PerformCallback(thejsonstring);
+        }
+
+        function btnResetClick() {
+            ASPxClientEdit.ClearEditorsInContainer(null);
         }
         
     </script>
@@ -296,10 +300,24 @@
                             <td style="text-align: left;">
                             </td>
                             <td style="text-align: left;" colspan="2">
-                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
-                                <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
-                                <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
-                                    CssClass="input_2" />
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click">
+                                            </dxe:ASPxButton>
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnReset" runat="server" Text="重置" AutoPostBack="false" class="input_2">
+                                                <ClientSideEvents Click="btnResetClick" />
+                                            </dxe:ASPxButton>
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
+                                                CssClass="input_2" />
+                                            </dxe:ASPxButton>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                             <td>
                             </td>
@@ -336,9 +354,7 @@
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                                     KeyFieldName="FeeId" AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%"
                                     SettingsPager-AlwaysShowPager="true" OnRowDeleting="gridSearchResult_RowDeleting"
-                                    OnHtmlRowCreated="gridSearchResult_HtmlRowCreated"
-                                    OnRowDeleted="gridSearchResult_RowDeleted"
-                                    >
+                                    OnHtmlRowCreated="gridSearchResult_HtmlRowCreated" OnRowDeleted="gridSearchResult_RowDeleted">
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">

@@ -300,6 +300,10 @@
                 }
             }
         }
+
+        function btnResetClick() {
+            ASPxClientEdit.ClearEditorsInContainer(null);
+        }
         
     </script>
 

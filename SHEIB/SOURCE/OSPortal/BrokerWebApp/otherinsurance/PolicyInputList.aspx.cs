@@ -235,11 +235,13 @@ namespace BrokerWebApp.otherinsurance
             if (e.RowType == GridViewRowType.Data)
             {
                 DataRow dr = this.gridSearchResult.GetDataRow(e.VisibleIndex);
-
-                if (!String.IsNullOrEmpty(dr["Remark"].ToString()))
+                if (dr != null)
                 {
-                    e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");                    
-                } 
+                    if (!String.IsNullOrEmpty(dr["Remark"].ToString()))
+                    {
+                        e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");
+                    }
+                }
             }
         }
 
