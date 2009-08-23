@@ -34,6 +34,7 @@ namespace BusinessObjects.Policy
             Process, 
             ProcessRate, 
             ProcessBase,
+            CarrierSales,
             CarrierNameCn,
             BranchName
         }
@@ -113,6 +114,12 @@ namespace BusinessObjects.Policy
             set;
         }
 
+        public String CarrierSales
+        {
+            get;
+            set;
+        }
+
         #endregion Property
 
 
@@ -135,7 +142,7 @@ namespace BusinessObjects.Policy
             List<BO_PolicyCarrier> list = new List<BO_PolicyCarrier>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT A.PolicyCarrierID, A.PolicyID, A.CarrierID, A.BranchID, A.PolicyRate, A.Premium, A.PremiumBase, A.Process, A.ProcessRate, A.ProcessBase, ");
+            sb.Append("SELECT A.PolicyCarrierID, A.PolicyID, A.CarrierID, A.BranchID, A.PolicyRate, A.Premium, A.PremiumBase, A.Process, A.ProcessRate, A.ProcessBase, A.CarrierSales, ");
             sb.Append(" B.CarrierNameCn, C.BranchName");
             sb.Append(" FROM PolicyCarrier A ");
             sb.Append(" LEFT JOIN Carrier B ON A.CarrierID = B.CarrierID ");
@@ -166,6 +173,7 @@ namespace BusinessObjects.Policy
                     newObj.Process = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Process));
                     newObj.ProcessRate = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.ProcessRate));
                     newObj.ProcessBase = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.ProcessBase));
+                    newObj.CarrierSales = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CarrierSales));
 
                     newObj.CarrierNameCn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CarrierNameCn));
                     newObj.BranchName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.BranchName));
@@ -230,7 +238,7 @@ namespace BusinessObjects.Policy
 
         public static void CreateCarrier(String carrierID, String branchID, String policyID,
             Decimal policyRate, Decimal premium,
-            Decimal processRate, Decimal process)
+            Decimal processRate, Decimal process, String carrierSales)
         {
             BusinessObjects.Policy.BO_PolicyCarrier newobj = new BusinessObjects.Policy.BO_PolicyCarrier();
 
@@ -247,6 +255,7 @@ namespace BusinessObjects.Policy
             newobj.ProcessRate = processRate;
             newobj.Process = process;
             newobj.ProcessBase = process;
+            newobj.CarrierSales = carrierSales;
 
             newobj.Save(ModifiedAction.Insert);
 
@@ -262,12 +271,12 @@ namespace BusinessObjects.Policy
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("INSERT INTO PolicyCarrier ( ");
-            sb.Append("PolicyCarrierID, PolicyID, CarrierID, BranchID, PolicyRate,"); 
-			sb.Append("Premium, PremiumBase, Process, ProcessRate, ProcessBase"); 
+            sb.Append("PolicyCarrierID, PolicyID, CarrierID, BranchID, PolicyRate,");
+            sb.Append("Premium, PremiumBase, Process, ProcessRate, ProcessBase, CarrierSales"); 
 			sb.Append(")");
             sb.Append(" VALUES( ");
             sb.Append("@PolicyCarrierID, @PolicyID, @CarrierID, @BranchID, @PolicyRate,");
-            sb.Append("@Premium, @PremiumBase, @Process, @ProcessRate, @ProcessBase");
+            sb.Append("@Premium, @PremiumBase, @Process, @ProcessRate, @ProcessBase, @CarrierSales");
             sb.Append(" )");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
@@ -284,7 +293,9 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@Process", DbType.Decimal, this.Process);
             _db.AddInParameter(dbCommand, "@ProcessRate", DbType.Decimal, this.ProcessRate);
             _db.AddInParameter(dbCommand, "@ProcessBase", DbType.Decimal, this.ProcessBase);
-                        
+
+            _db.AddInParameter(dbCommand, "@CarrierSales", DbType.String, this.CarrierSales);
+
             //ExecuteScalar return the value of first column in first row.
             _db.ExecuteNonQuery(dbCommand);
 
@@ -297,7 +308,7 @@ namespace BusinessObjects.Policy
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE PolicyCarrier SET ");
             sb.Append("PolicyID=@PolicyID, CarrierID=@CarrierID, BranchID=@BranchID, PolicyRate=@PolicyRate,");
-            sb.Append("Premium=@Premium, PremiumBase=@PremiumBase, Process=@Process, ProcessRate=@ProcessRate, ProcessBase=@ProcessBase");
+            sb.Append("Premium=@Premium, PremiumBase=@PremiumBase, Process=@Process, ProcessRate=@ProcessRate, ProcessBase=@ProcessBase, CarrierSales=@CarrierSales");
             sb.Append(" Where PolicyCarrierID=@PolicyCarrierID;");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
@@ -314,7 +325,9 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@Process", DbType.Decimal, this.Process);
             _db.AddInParameter(dbCommand, "@ProcessRate", DbType.Decimal, this.ProcessRate);
             _db.AddInParameter(dbCommand, "@ProcessBase", DbType.Decimal, this.ProcessBase);
-            
+
+            _db.AddInParameter(dbCommand, "@CarrierSales", DbType.String, this.CarrierSales);
+
             _db.ExecuteNonQuery(dbCommand);
 
             dealWithPolicyPeriod();
@@ -326,7 +339,7 @@ namespace BusinessObjects.Policy
         private void fetchByID(String policyCarrierID)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT A.PolicyCarrierID, A.PolicyID, A.CarrierID, A.BranchID, A.PolicyRate, A.Premium, A.PremiumBase, A.Process, A.ProcessRate, A.ProcessBase, ");
+            sb.Append("SELECT A.PolicyCarrierID, A.PolicyID, A.CarrierID, A.BranchID, A.PolicyRate, A.Premium, A.PremiumBase, A.Process, A.ProcessRate, A.ProcessBase, A.CarrierSales,");
             sb.Append(" B.CarrierNameCn, C.BranchName");
             sb.Append(" FROM PolicyCarrier A ");
             sb.Append(" LEFT JOIN Carrier B ON A.CarrierID = B.CarrierID ");
@@ -359,6 +372,7 @@ namespace BusinessObjects.Policy
                     this.Process = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.Process));
                     this.ProcessRate = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.ProcessRate));
                     this.ProcessBase = Utility.GetDecimalFromReader(reader, Convert.ToInt32(FieldList.ProcessBase));
+                    this.CarrierSales = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CarrierSales));
 
                     this.CarrierNameCn = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CarrierNameCn));
                     this.BranchName = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.BranchName));
