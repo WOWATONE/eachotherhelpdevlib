@@ -87,7 +87,11 @@
         function dxeddlDeptId_SelectedIndexChanged(s, e) {
             var thejsonstring = dxeddlDeptId.GetSelectedItem().value;
             dxeddlSalesId.PerformCallback(thejsonstring);
-        }    
+        }
+
+        function btnResetClick() {
+            ASPxClientEdit.ClearEditorsInContainer(null);
+        } 
        
     </script>
 

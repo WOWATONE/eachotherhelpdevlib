@@ -83,6 +83,10 @@
             var thejsonstring = dxeddlCarrierId.GetSelectedItem().value;
             dxeddlBranchId.PerformCallback(thejsonstring);
         }
+
+        function btnResetClick() {
+            ASPxClientEdit.ClearEditorsInContainer(null);
+        }
     </script>
 
 </asp:Content>
@@ -264,10 +268,24 @@
                                             </dxe:ASPxDateEdit>
                                         </td>
                                         <td style="text-align: right;" colspan="2">
-                                            <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
-                                            <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
-                                            <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
-                                                CssClass="input_2" />
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxButton ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click">
+                                                        </dxe:ASPxButton>
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxButton ID="btnReset" runat="server" Text="重置" AutoPostBack="false" class="input_2">
+                                                            <ClientSideEvents Click="btnResetClick" />
+                                                        </dxe:ASPxButton>
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxButton ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
+                                                            CssClass="input_2" />
+                                                        </dxe:ASPxButton>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
                                         <td>
                                             &nbsp;
@@ -382,7 +400,7 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="ProcessFeeTypeName" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption='经纪费率" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption='经纪费率" CellStyle-Wrap="False"'>
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="经纪费金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>

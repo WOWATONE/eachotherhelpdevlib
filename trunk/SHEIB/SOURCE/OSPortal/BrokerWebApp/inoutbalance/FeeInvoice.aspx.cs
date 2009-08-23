@@ -135,16 +135,16 @@ namespace BrokerWebApp.inoutbalance
 
             if (dxetxtInvoiceID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and a.VoucherID ='" + dxetxtInvoiceID.Text + "'";
+                lsWhere = lsWhere + " and a.VoucherID like '%" + dxetxtInvoiceID.Text + "%'";
             }
 
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and c.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and c.PolicyNo like '%" + dxetxtPolicyNo.Text + "%'";
             }
             if (dxeddlGatheringType.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and  b.GatheringType= ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and  b.GatheringType ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
             }
             if (dxeddlDeptId.SelectedItem.Value.ToString().Trim() != "")
             {
@@ -156,7 +156,7 @@ namespace BrokerWebApp.inoutbalance
             }
             if (dxetxtCustomerID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=c.CustomerID) ";
+                lsWhere = lsWhere + " and  exists (select 1 from Customer where CustName like '%" + dxetxtCustomerID.Text + "%' and CustID=c.CustomerID) ";
             }
 
             if (this.dxeddlCarrier.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrier.SelectedItem.Value.ToString()))

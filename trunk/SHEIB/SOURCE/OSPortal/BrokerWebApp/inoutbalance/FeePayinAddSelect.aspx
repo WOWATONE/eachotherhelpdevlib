@@ -94,7 +94,10 @@
             var thejsonstring = dxeddlCarrier.GetSelectedItem().value;
             dxeddlBranch.PerformCallback(thejsonstring);
         }
-        
+
+        function btnResetClick() {
+            ASPxClientEdit.ClearEditorsInContainer(null);
+        }
     </script>
 
 </asp:Content>
