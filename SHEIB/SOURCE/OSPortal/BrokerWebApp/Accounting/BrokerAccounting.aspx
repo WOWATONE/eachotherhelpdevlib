@@ -27,7 +27,7 @@
             //    stay: true
             //});
 
-            lblCurrentDate.innerHTML = makewelcomeString();
+            // lblCurrentDate.innerHTML = makewelcomeString();
 
         });
 
@@ -93,16 +93,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     <table style="width: 100%">
-        <tr>
-            <td style="height: 40px; width: 45%;">
-            </td>
-            <td style="height: 40px; width: 55%; color: #0E5ED5; text-align: left;">
-                当前位置：保险经纪业务台帐&nbsp;
-                <asp:Label ID="LblUserNameTop" runat="server" Text="王六"></asp:Label>，您好！今天是
-                <label id="lblCurrentDate">
-                </label>
-            </td>
-        </tr>
+
         <tr>
             <td style="width: 100%;" colspan="2">
                 <asp:Panel ID="npSearchHeader" runat="server" CssClass="collapsePanelHeader" Height="25px">
@@ -244,6 +235,26 @@
                                             <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType"
                                                 runat="server" Width="170px" DropDownStyle="DropDownList">
                                             </dxe:ASPxComboBox>
+                                        </td>
+                                        <td style="text-align: right;">
+                                        </td>
+                                        <td style="text-align: left;">
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;">
+                                            收费日期：
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <div>d</div>
+                                        </td>
+                                        <td style="text-align: right;" colspan="2">
+                                           
+                                        </td>
+                                        <td style="text-align: left;">
+                                            
                                         </td>
                                         <td style="text-align: right;">
                                         </td>
@@ -400,7 +411,7 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="ProcessFeeTypeName" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption='经纪费率" CellStyle-Wrap="False"'>
+                                        <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="经纪费率" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="经纪费金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
