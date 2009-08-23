@@ -200,6 +200,38 @@ namespace BrokerWebApp.Accounting
                 lsWhere = lsWhere + " and (convert(char(10), b.CreateTime,21)) <='" + lsEndDate + "'";
             }
 
+            string lsStartPayFeeDate = dxeStartPayFeeDate.Date.ToString("yyyy-MM-dd");
+            string lsEndPayFeeDate = dxeEndPayFeeDate.Date.ToString("yyyy-MM-dd");
+            if ((dxeStartPayFeeDate.Text.Trim() != "") && (dxeEndPayFeeDate.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), a.PayFeeDate,21)) >='" + lsStartPayFeeDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), a.PayFeeDate,21)) <='" + lsEndPayFeeDate + "'";
+            }
+
+            string lsStartPayinDate = dxeStartPayinDate.Date.ToString("yyyy-MM-dd");
+            string lsEndPayinDate = dxeEndPayinDate.Date.ToString("yyyy-MM-dd");
+            if ((dxeStartPayinDate.Text.Trim() != "") && (dxeEndPayinDate.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), a.PayinDate,21)) >='" + lsStartPayinDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), a.PayinDate,21)) <='" + lsEndPayinDate + "'";
+            }
+
+            string lsStartInvoiceDate = dxeStartInvoiceDate.Date.ToString("yyyy-MM-dd");
+            string lsEndInvoiceDate = dxeEndInvoiceDate.Date.ToString("yyyy-MM-dd");
+            if ((dxeStartInvoiceDate.Text.Trim() != "") && (dxeEndInvoiceDate.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), a.InvoiceDate,21)) >='" + lsStartInvoiceDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), a.InvoiceDate,21)) <='" + lsEndInvoiceDate + "'";
+            }
+
+            string lsStartPayProcDate = dxeStartPayProcDate.Date.ToString("yyyy-MM-dd");
+            string lsEndPayProcDate = dxeEndPayProcDate.Date.ToString("yyyy-MM-dd");
+            if ((dxeStartPayProcDate.Text.Trim() != "") && (dxeEndPayProcDate.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), a.PayProcDate,21)) >='" + lsStartPayProcDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), a.PayProcDate,21)) <='" + lsEndPayProcDate + "'";
+            }
+
             DataTable dt = BO_Report.GetAccounting(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();

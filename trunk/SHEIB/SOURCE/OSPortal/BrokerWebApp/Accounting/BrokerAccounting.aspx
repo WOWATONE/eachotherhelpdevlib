@@ -1,4 +1,4 @@
-Ôªø<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master"
+<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master"
     AutoEventWireup="true" Theme="Aqua" CodeBehind="BrokerAccounting.aspx.cs" Inherits="BrokerWebApp.Accounting.BrokerAccounting" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
@@ -18,7 +18,7 @@
     TagPrefix="dxwgv" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>‰øùÂçïÂΩïÂÖ•ÂàóË°®</title>
+    <title>±£µ•¬º»Î¡–±Ì</title>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -93,7 +93,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     <table style="width: 100%">
-
         <tr>
             <td style="width: 100%;" colspan="2">
                 <asp:Panel ID="npSearchHeader" runat="server" CssClass="collapsePanelHeader" Height="25px">
@@ -103,9 +102,9 @@
                                 AlternateText="" />
                         </div>
                         <div style="float: left; margin-left: 5px;">
-                            ÊâÄÂ±ûÈ°πÁõÆ</div>
+                            À˘ ÙœÓƒø</div>
                         <div style="float: left; margin-left: 5px;">
-                            <asp:Label ID="lbl_npSearchHeader" runat="server">(Â±ïÂºÄ)</asp:Label>
+                            <asp:Label ID="lbl_npSearchHeader" runat="server">(’πø™)</asp:Label>
                         </div>
                     </div>
                 </asp:Panel>
@@ -134,7 +133,7 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align: right;">
-                                            ‰øùÂçïÁºñÂè∑Ôºö
+                                            ±£µ•±‡∫≈£∫
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server"
@@ -142,7 +141,7 @@
                                             </dxe:ASPxTextBox>
                                         </td>
                                         <td style="text-align: right;" colspan="2">
-                                            Êäï‰øùÁºñÂè∑Ôºö
+                                            Õ∂±£±‡∫≈£∫
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server"
@@ -150,7 +149,7 @@
                                             </dxe:ASPxTextBox>
                                         </td>
                                         <td style="text-align: right;">
-                                            Êäï‰øùÂÆ¢Êà∑Ôºö
+                                            Õ∂±£øÕªß£∫
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxTextBox ID="dxetxtCustomer" ClientInstanceName="dxetxtCustomer" runat="server"
@@ -162,7 +161,7 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align: right;">
-                                            ÈÉ®Èó®Ôºö
+                                            ≤ø√≈£∫
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server"
@@ -171,7 +170,7 @@
                                             </dxe:ASPxComboBox>
                                         </td>
                                         <td style="text-align: right;" colspan="2">
-                                            ÂÆ¢Êà∑ÁªèÁêÜÔºö
+                                            øÕªßæ≠¿Ì£∫
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server"
@@ -179,7 +178,7 @@
                                             </dxe:ASPxComboBox>
                                         </td>
                                         <td style="text-align: right;">
-                                            ‰øùÈô©Èô©ÁßçÔºö
+                                            ±£œ’œ’÷÷£∫
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
@@ -192,7 +191,7 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align: right;">
-                                            ‰øùÈô©ÂÖ¨Âè∏Ôºö
+                                            ±£œ’π´Àæ£∫
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxComboBox ID="dxeddlCarrierId" ClientInstanceName="dxeddlCarrierId" runat="server"
@@ -201,7 +200,7 @@
                                             </dxe:ASPxComboBox>
                                         </td>
                                         <td style="text-align: right;" colspan="2">
-                                            ÂàÜÊîØÊú∫ÊûÑÔºö
+                                            ∑÷÷ßª˙ππ£∫
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server"
@@ -209,7 +208,7 @@
                                             </dxe:ASPxComboBox>
                                         </td>
                                         <td style="text-align: right;">
-                                            ‰∏öÂä°ÂëòÔºö
+                                            “µŒÒ‘±£∫
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxTextBox ID="dxetxtCarrierSales" ClientInstanceName="dxetxtCarrierSales"
@@ -221,7 +220,7 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align: right;">
-                                            ‰∏öÂä°Êù•Ê∫êÔºö
+                                            “µŒÒ¿¥‘¥£∫
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID"
@@ -229,7 +228,7 @@
                                             </dxe:ASPxComboBox>
                                         </td>
                                         <td style="text-align: right;" colspan="2">
-                                            ‰∏öÂä°ÊÄßË¥®Ôºö
+                                            “µŒÒ–‘÷ £∫
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType"
@@ -245,18 +244,25 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align: right;">
-                                            Êî∂Ë¥πÊó•ÊúüÔºö
+                                             ’∑—»’∆⁄£∫
                                         </td>
-                                        <td style="text-align: left;">
-                                            <div>d</div>
-                                        </td>
-                                        <td style="text-align: right;" colspan="2">
-                                           
-                                        </td>
-                                        <td style="text-align: left;">
-                                            
-                                        </td>
-                                        <td style="text-align: right;">
+                                        <td style="text-align: left; white-space: nowrap" nowrap="nowrap" colspan="4">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeStartPayFeeDate" ClientInstanceName="dxeStartPayFeeDate"
+                                                            runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                    <td>
+                                                        ÷¡
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeEndPayFeeDate" ClientInstanceName="dxeEndPayFeeDate" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
                                         <td style="text-align: left;">
                                         </td>
@@ -265,28 +271,114 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align: right;">
-                                            ÂΩïÂçïÊó•ÊúüÔºö
+                                            Ω‚∏∂»’∆⁄£∫
+                                        </td>
+                                        <td style="text-align: left; white-space: nowrap" nowrap="nowrap" colspan="4">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeStartPayinDate" ClientInstanceName="dxeStartPayinDate" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                    <td>
+                                                        ÷¡
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeEndPayinDate" ClientInstanceName="dxeEndPayinDate" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
                                         <td style="text-align: left;">
-                                            <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server">
-                                            </dxe:ASPxDateEdit>
                                         </td>
-                                        <td style="text-align: center;">
-                                            Ëá≥
+                                        <td>
                                         </td>
-                                        <td style="text-align: left;" colspan="2">
-                                            <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server">
-                                            </dxe:ASPxDateEdit>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;">
+                                            ø™∆±»’∆⁄£∫
+                                        </td>
+                                        <td style="text-align: left; white-space: nowrap" nowrap="nowrap" colspan="4">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeStartInvoiceDate" ClientInstanceName="dxeStartInvoiceDate"
+                                                            runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                    <td>
+                                                        ÷¡
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeEndInvoiceDate" ClientInstanceName="dxeEndInvoiceDate" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="text-align: left;">
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;">
+                                            Ω·À„»’∆⁄£∫
+                                        </td>
+                                        <td style="text-align: left; white-space: nowrap" nowrap="nowrap" colspan="4">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeStartPayProcDate" ClientInstanceName="dxeStartPayProcDate"
+                                                            runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                    <td>
+                                                        ÷¡
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeEndPayProcDate" ClientInstanceName="dxeEndPayProcDate" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="text-align: left;">
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;">
+                                            ¬ºµ•»’∆⁄£∫
+                                        </td>
+                                        <td style="text-align: left;" colspan="4">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                    <td>
+                                                        ÷¡
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
                                         <td style="text-align: right;" colspan="2">
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <dxe:ASPxButton ID="btnSearch" runat="server" Text="Êü•ËØ¢" CssClass="input_2" OnClick="btnSearch_Click">
+                                                        <dxe:ASPxButton ID="btnSearch" runat="server" Text="≤È—Ø" CssClass="input_2" OnClick="btnSearch_Click">
                                                         </dxe:ASPxButton>
                                                     </td>
                                                     <td>
-                                                        <dxe:ASPxButton ID="btnReset" runat="server" Text="ÈáçÁΩÆ" AutoPostBack="false" class="input_2">
+                                                        <dxe:ASPxButton ID="btnReset" runat="server" Text="÷ÿ÷√" AutoPostBack="false" class="input_2">
                                                             <ClientSideEvents Click="btnResetClick" />
                                                         </dxe:ASPxButton>
                                                     </td>
@@ -298,9 +390,6 @@
                                                 </tr>
                                             </table>
                                         </td>
-                                        <td>
-                                            &nbsp;
-                                        </td>
                                     </tr>
                                 </table>
                             </td>
@@ -311,8 +400,8 @@
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearch" runat="Server" TargetControlID="npSearchDetail"
                     ExpandControlID="npSearchHeader" CollapseControlID="npSearchHeader" Collapsed="false"
-                    TextLabelID="lbl_npSearchHeader" ImageControlID="img_npSearchHeader" ExpandedText="(Â±ïÂºÄ)"
-                    CollapsedText="(ÈöêËóè)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
+                    TextLabelID="lbl_npSearchHeader" ImageControlID="img_npSearchHeader" ExpandedText="(’πø™)"
+                    CollapsedText="(“˛≤ÿ)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
                     SuppressPostBack="true" />
             </td>
         </tr>
@@ -326,9 +415,9 @@
                                 AlternateText="" />
                         </div>
                         <div style="float: left; margin-left: 5px;">
-                            ÊêúÁ¥¢ÁªìÊûú</div>
+                            À—À˜Ω·π˚</div>
                         <div style="float: left; margin-left: 5px;">
-                            <asp:Label ID="lbl_npSearchResultHeader" runat="server">(Â±ïÂºÄ)</asp:Label>
+                            <asp:Label ID="lbl_npSearchResultHeader" runat="server">(’πø™)</asp:Label>
                         </div>
                     </div>
                 </asp:Panel>
@@ -346,98 +435,98 @@
                                             <NewButton Visible="False" />
                                             <EditButton Visible="False" />
                                             <CustomButtons>
-                                                <dxwgv:GridViewCommandColumnCustomButton Text="Êü•Áúã">
+                                                <dxwgv:GridViewCommandColumnCustomButton Text="≤Èø¥">
                                                 </dxwgv:GridViewCommandColumnCustomButton>
                                             </CustomButtons>
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="Êäï‰øùÁºñÂè∑" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="Õ∂±£±‡∫≈" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CreateTime" Caption="ÂÖ•ÂçïÊó•Êúü" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CreateTime" Caption="»Îµ•»’∆⁄" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="‰øùÂçïÂè∑" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="±£µ•∫≈" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="AreaName" Caption="‰øùÈô©‰∫∫ÁúÅ‰ªΩ" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="AreaName" Caption="±£œ’»À °∑›" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="‰øùÈô©ÂÖ¨Âè∏" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="±£œ’π´Àæ" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="ÂàÜÊîØÊú∫ÊûÑ" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="∑÷÷ßª˙ππ" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CarrierSales" Caption="‰∏öÂä°Âëò" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CarrierSales" Caption="“µŒÒ‘±" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="Êâø‰øù‰ªΩÈ¢ù(%)" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="≥–±£∑›∂Ó(%)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CustName" Caption="Êäï‰øù‰∫∫" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CustName" Caption="Õ∂±£»À" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Beneficiary" Caption="Ë¢´‰øùÈô©‰∫∫" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Beneficiary" Caption="±ª±£œ’»À" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="OperationTypeName" Caption="‰∏öÂä°ÊÄßË¥®" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="OperationTypeName" Caption="“µŒÒ–‘÷ " CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="SourceTypeName" Caption="‰∏öÂä°Êù•Ê∫ê" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="SourceTypeName" Caption="“µŒÒ¿¥‘¥" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="StartDate" Caption="Ëµ∑‰øùÊó•Êúü" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="StartDate" Caption="∆±£»’∆⁄" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="EndDate" Caption="ÁªàÊ≠¢Êó•Êúü" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="EndDate" Caption="÷’÷π»’∆⁄" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="ProdTypeName" Caption="Èô©ÁßçÁ±ªÂà´" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataDateColumn FieldName="ProdTypeName" Caption="œ’÷÷¿‡±" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="DeptName" Caption="ÈÉ®Èó®" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="DeptName" Caption="≤ø√≈" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="ÂÆ¢Êà∑ÁªèÁêÜ" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="øÕªßæ≠¿Ì" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PremiumRate" Caption="Ë¥πÁéá" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PremiumRate" Caption="∑—¬ " CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Period" Caption="ÊúüÊ¨°" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Period" Caption="∆⁄¥Œ" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="‰øùË¥πÈáëÈ¢ù" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="±£∑—Ω∂Ó" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="Êî∂Ê¨æÊñπÂºè" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption=" ’øÓ∑Ω Ω" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="PayDate" Caption="‰øùË¥πÂ∫îÊî∂Êó•Êúü" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="PayDate" Caption="±£∑—”¶ ’»’∆⁄" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="PayFeeDate" Caption="‰øùË¥πÊî∂Ë¥πÊó•Êúü" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="PayFeeDate" Caption="±£∑— ’∑—»’∆⁄" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="‰øùË¥πÊî∂Ë¥πÈáëÈ¢ù" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="±£∑— ’∑—Ω∂Ó" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayedFeeAdjust" Caption="‰øùË¥πË∞ÉÊï¥ÈáëÈ¢ù" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayedFeeAdjust" Caption="±£∑—µ˜’˚Ω∂Ó" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="PayinDate" Caption="‰øùË¥πËß£‰ªòÊó•Êúü" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="PayinDate" Caption="±£∑—Ω‚∏∂»’∆⁄" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayinedFee" Caption="‰øùË¥πËß£‰ªòÈáëÈ¢ù" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayinedFee" Caption="±£∑—Ω‚∏∂Ω∂Ó" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayinedFeeAdjust" Caption="‰øùË¥πËß£‰ªòË∞ÉÊï¥ÈáëÈ¢ù" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayinedFeeAdjust" Caption="±£∑—Ω‚∏∂µ˜’˚Ω∂Ó" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="ProcessFeeTypeName" Caption="ÁªèÁ∫™Ë¥πÊî∂ÂèñÊñπÂºè" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="ProcessFeeTypeName" Caption="æ≠ºÕ∑— ’»°∑Ω Ω" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="ÁªèÁ∫™Ë¥πÁéá" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="ProcessRate" Caption="æ≠ºÕ∑—¬ " CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="ÁªèÁ∫™Ë¥πÈáëÈ¢ù" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="æ≠ºÕ∑—Ω∂Ó" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="InvoiceDate" Caption="ÁªèÁ∫™Ë¥πÂºÄÁ•®Êó•Êúü" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="InvoiceDate" Caption="æ≠ºÕ∑—ø™∆±»’∆⁄" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="InvoiceedFee" Caption="ÁªèÁ∫™Ë¥πÂºÄÁ•®ÈáëÈ¢ù" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="InvoiceedFee" Caption="æ≠ºÕ∑—ø™∆±Ω∂Ó" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="InvoiceedFeeAdjust" Caption="ÁªèÁ∫™Ë¥πÂºÄÁ•®Ë∞ÉÊï¥ÈáëÈ¢ù" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="InvoiceedFeeAdjust" Caption="æ≠ºÕ∑—ø™∆±µ˜’˚Ω∂Ó" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="InvoiceNo" Caption="ÁªèÁ∫™Ë¥πÂèëÁ•®Âè∑" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="InvoiceNo" Caption="æ≠ºÕ∑—∑¢∆±∫≈" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="PayProcDate" Caption="ÁªèÁ∫™Ë¥πÂÖ•Â∏êÊó•Êúü" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="PayProcDate" Caption="æ≠ºÕ∑—»Î’ »’∆⁄" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayProcedFee" Caption="ÁªèÁ∫™Ë¥πÂÖ•Â∏êÈáëÈ¢ù" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayProcedFee" Caption="æ≠ºÕ∑—»Î’ Ω∂Ó" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayProcedFeeAdjust" Caption="ÁªèÁ∫™Ë¥πÂÖ•Â∏êË∞ÉÊï¥ÈáëÈ¢ù" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayProcedFeeAdjust" Caption="æ≠ºÕ∑—»Î’ µ˜’˚Ω∂Ó" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CarNo" Caption="ËΩ¶ÁâåÂè∑" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CarNo" Caption="≥µ≈∆∫≈" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CiPremium" Caption="ÂïÜ‰∏öÈô©‰øùË¥π" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CiPremium" Caption="…Ã“µœ’±£∑—" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="AciPremium" Caption="‰∫§Âº∫Èô©‰øùË¥π" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="AciPremium" Caption="Ωª«øœ’±£∑—" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CstPremium" Caption="ËΩ¶ËàπÁ®é" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CstPremium" Caption="≥µ¥¨À∞" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
@@ -445,7 +534,7 @@
                                     <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways"
                                         ShowGroupedColumns="true" ShowFilterRow="false" />
                                     <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
-                                    <SettingsText CustomizationWindowCaption="‰∏™ÊÄßÂåñ" />
+                                    <SettingsText CustomizationWindowCaption="∏ˆ–‘ªØ" />
                                     <GroupSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" ShowInGroupFooterColumn="PolicyNo" SummaryType="Count"
                                             DisplayFormat="#" />
@@ -482,7 +571,7 @@
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearchResult" runat="Server" TargetControlID="npSearchResultDetail"
                     ExpandControlID="npSearchResultHeader" CollapseControlID="npSearchResultHeader"
                     Collapsed="false" TextLabelID="lbl_npSearchResultHeader" ImageControlID="img_npSearchResultHeader"
-                    ExpandedText="(Â±ïÂºÄ)" CollapsedText="(ÈöêËóè)" ExpandedImage="~/images/collapse_blue.jpg"
+                    ExpandedText="(’πø™)" CollapsedText="(“˛≤ÿ)" ExpandedImage="~/images/collapse_blue.jpg"
                     CollapsedImage="~/images/expand_blue.jpg" SuppressPostBack="true" />
             </td>
         </tr>
