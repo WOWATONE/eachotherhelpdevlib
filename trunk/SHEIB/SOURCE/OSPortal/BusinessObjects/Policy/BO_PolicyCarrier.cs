@@ -367,6 +367,8 @@ namespace BusinessObjects.Policy
         }
 
 
+        
+
         private void dealWithPolicyPeriod()
         {
             String where = " AND A.PolicyId ='" + this.PolicyID + "'";
@@ -378,28 +380,87 @@ namespace BusinessObjects.Policy
             }
             else
             {
-                BO_PolicyPeriod objNew;
-                BO_Policy objPolicy = new BO_Policy(this.PolicyID);
-                Int32 times = objPolicy.PeriodTimes;
+                ChangePeriod(this.PolicyID);                
+            }
 
-                if (times < 1) times = 1;
+        }
+
+
+        public static void ChangePeriod(String id)
+        {
+            List<BO_PolicyCarrier> theList;
+            theList = BO_PolicyCarrier.FetchListByPolicy(id);
+            BO_PolicyPeriod objNew;
+
+            BO_Policy objPolicy = new BO_Policy(id);
+            Int32 times = objPolicy.PeriodTimes;
+            if (times < 1) times = 1;
+
+            BO_PolicyPeriod.DeleteByPolicyId(id);
+
+            decimal dPremiumAverage = 0;
+            decimal dPremiumModulus = 0;
+            decimal dProcessAverage = 0;
+            decimal dProcessModulus = 0;
+            foreach (BO_PolicyCarrier item in theList)
+            {
+                averagePremium(item.PremiumBase, times, ref dPremiumAverage, ref dPremiumModulus);
+                averagePremium(item.ProcessBase, times, ref dProcessAverage, ref dProcessModulus);
 
                 for (int i = 1; i <= times; i++)
                 {
                     objNew = new BO_PolicyPeriod();
                     objNew.PolPeriodId = Guid.NewGuid().ToString();
-                    objNew.PolicyId = this.PolicyID;
-                    objNew.CarrierID = this.CarrierID;
-                    objNew.BranchID = this.BranchID;
+                    objNew.PolicyId = item.PolicyID;
+                    objNew.CarrierID = item.CarrierID;
+                    objNew.BranchID = item.BranchID;
                     objNew.Period = i;
-                    objNew.PayDate = DateTime.Now;
-                    objNew.PayFeeBase = this.PremiumBase / times;
-                    objNew.PayProcBase = this.ProcessBase / times;
+                    objNew.PayDate = objPolicy.CreateTime;//DateTime.Now;
+                    if (i == times)
+                    {
+                        objNew.PayFeeBase = dPremiumAverage + dPremiumModulus;
+                        objNew.PayProcBase = dProcessAverage + dProcessModulus;
+                    }
+                    else
+                    {
+                        objNew.PayFeeBase = dPremiumAverage;
+                        objNew.PayProcBase = dProcessAverage;
+                    }
+
                     objNew.NoticeNo = "";
                     objNew.Save(ModifiedAction.Insert);
                 }
-                
             }
+
+        }
+
+
+        private static void averagePremium(decimal totalVal, Int32 count, ref decimal average, ref decimal modulus)
+        {
+            Int32 ipoint = 0;
+
+            String strTotal = String.Format("{0:00.00}", totalVal);
+
+            ipoint = strTotal.Length - strTotal.LastIndexOf('.') - 1;
+
+            Int64 iMultiple = factorialOf10(ipoint);
+
+            average = (Math.Floor(totalVal * iMultiple / count)) / iMultiple;
+            modulus = (Math.Floor(totalVal * iMultiple % count)) / iMultiple;
+
+        }
+
+
+        private static Int64 factorialOf10(Int32 multiple)
+        {
+            Int64 result = 1;
+
+            for (Int32 i = 0; i < multiple; i++)
+            {
+                result = result * 10;
+            }
+
+            return result;
         }
 
 
