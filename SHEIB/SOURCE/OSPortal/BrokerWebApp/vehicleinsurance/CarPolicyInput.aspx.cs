@@ -1162,7 +1162,7 @@ namespace BrokerWebApp.vehicleinsurance
                 BO_PolicyCarrier.CreateCarrier(objCar.CarrierID, objCar.BranchID, theObject.PolicyID, 
                     100, theObject.Premium, theObject.ProcessRate, theObject.Process);
 
-                BO_Policy.ChangePeriod(theObject.PolicyID);
+                BO_PolicyCarrier.ChangePeriod(theObject.PolicyID);
             }
             
             return theObject.PolicyID;

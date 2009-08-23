@@ -733,41 +733,6 @@ namespace BusinessObjects.Policy
         }
 
 
-        public static void ChangePeriod(String id)
-        {
-            List<BO_PolicyCarrier> theList;
-            theList = BO_PolicyCarrier.FetchListByPolicy(id);
-            BO_PolicyPeriod objNew;
-
-            BO_Policy objPolicy = new BO_Policy(id);
-            Int32 times = objPolicy.PeriodTimes;
-            if (times < 1) times = 1;
-
-            BO_PolicyPeriod.DeleteByPolicyId(id);
-
-            foreach (BO_PolicyCarrier item in theList)
-            {
-                for (int i = 1; i <= times; i++)
-                {
-                    objNew = new BO_PolicyPeriod();
-                    objNew.PolPeriodId = Guid.NewGuid().ToString();
-                    objNew.PolicyId = item.PolicyID;
-                    objNew.CarrierID = item.CarrierID;
-                    objNew.BranchID = item.BranchID;
-                    objNew.Period = i;
-                    objNew.PayDate = DateTime.Now;
-
-                    objNew.PayFeeBase = item.PremiumBase / times;
-                    objNew.PayProcBase = item.ProcessBase / times;
-
-                    objNew.NoticeNo = "";
-                    objNew.Save(ModifiedAction.Insert);
-                }
-            }
-
-        }
-
-
         public static void ChangePolicyCarrierRateValue(String id)
         {
             BO_Policy objPolicy = new BO_Policy(id);
@@ -1231,7 +1196,7 @@ namespace BusinessObjects.Policy
                 if (needChangePeriod)
                 {
                     ChangePolicyCarrierRateValue(this.PolicyID);
-                    ChangePeriod(this.PolicyID);                    
+                    BO_PolicyCarrier.ChangePeriod(this.PolicyID);                    
                 }
 
             }
@@ -1356,6 +1321,11 @@ namespace BusinessObjects.Policy
             _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
             return _db.ExecuteDataSet(dbCommand);
         }
+
+
+
+
+        
 
         #endregion Procedure
 
