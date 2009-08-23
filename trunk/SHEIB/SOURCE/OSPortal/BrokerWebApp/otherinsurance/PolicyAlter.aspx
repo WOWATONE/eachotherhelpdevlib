@@ -1332,6 +1332,8 @@
                                                                 </dxwgv:GridViewDataTextColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="False">
                                                                 </dxwgv:GridViewDataColumn>
+                                                                <dxwgv:GridViewDataColumn FieldName="CarrierSales" Caption="业务员" CellStyle-Wrap="False">
+                                                                </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="PolicyRate" Caption="份额比例(%)" CellStyle-Wrap="False">
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="Premium" Caption="保费(原)" CellStyle-Wrap="False">
@@ -1391,9 +1393,13 @@
                                                                                         <ClientSideEvents SelectedIndexChanged="" />
                                                                                     </dxe:ASPxComboBox>
                                                                                 </td>
-                                                                                <td>
+                                                                                <td style="white-space: nowrap; text-align: right;">
+                                                                                    业务员
                                                                                 </td>
-                                                                                <td>
+                                                                                <td style="text-align: left;">
+                                                                                    <dxe:ASPxTextBox ID="dxetxtGridCarrierCarrierSales" ClientInstanceName="dxetxtGridCarrierCarrierSales"
+                                                                                        runat="server" Width="120px">
+                                                                                    </dxe:ASPxTextBox>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>

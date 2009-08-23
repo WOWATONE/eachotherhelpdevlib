@@ -263,6 +263,8 @@ namespace BrokerWebApp.otherinsurance
             ASPxComboBox dxecbGridCarrierBranchID = tblEditorTemplate.FindControl("dxecbGridCarrierBranchID") as ASPxComboBox;
             dxecbGridCarrierBranchID.ClientEnabled = false;
 
+            ASPxTextBox dxetxtGridCarrierCarrierSales = tblEditorTemplate.FindControl("dxetxtGridCarrierCarrierSales") as ASPxTextBox;
+
             ASPxTextBox dxetxtGridCarrierPolicyRate = tblEditorTemplate.FindControl("dxetxtGridCarrierPolicyRate") as ASPxTextBox;
             ASPxTextBox dxetxtGridCarrierPremium = tblEditorTemplate.FindControl("dxetxtGridCarrierPremium") as ASPxTextBox;
             ASPxTextBox dxetxtGridCarrierPremiumBase = tblEditorTemplate.FindControl("dxetxtGridCarrierPremiumBase") as ASPxTextBox;
@@ -273,10 +275,10 @@ namespace BrokerWebApp.otherinsurance
             Int32 editIndex = this.gridCarrier.EditingRowVisibleIndex;
             if (editIndex > -1)
             {
-                object theValues = this.gridCarrier.GetRowValues(editIndex, new String[] { "PolicyID", "CarrierID", "BranchID", "PolicyRate", "Premium", "PremiumBase", "Process", "ProcessRate", "ProcessBase" });
+                object theValues = this.gridCarrier.GetRowValues(editIndex, new String[] { "PolicyID", "CarrierID", "BranchID", "PolicyRate", "Premium", "PremiumBase", "Process", "ProcessRate", "ProcessBase", "CarrierSales" });
                 object[] theValueList = theValues as object[];
 
-                String carrierID, brancheID, policyRate, premium, premiumBase, process, processRate, processBase;
+                String carrierID, brancheID, policyRate, premium, premiumBase, process, processRate, processBase, carrierSales;
                 if (theValueList[1] == null)
                     carrierID = "";
                 else
@@ -316,7 +318,11 @@ namespace BrokerWebApp.otherinsurance
                     processBase = "";
                 else
                     processBase = String.Format(BasePage.TheTwoSF, theValueList[8]);
-                
+
+                if (theValueList[9] == null)
+                    carrierSales = "";
+                else
+                    carrierSales = theValueList[9].ToString();
 
                 ListEditItem theselected;
                 if (this.gridCarrierStartEdit)
@@ -337,6 +343,8 @@ namespace BrokerWebApp.otherinsurance
                     {
                         dxecbGridCarrierBranchID.SelectedItem = theselected;
                     }
+
+                    dxetxtGridCarrierCarrierSales.Text = carrierSales;
 
                     dxetxtGridCarrierPolicyRate.Text = policyRate;
                     dxetxtGridCarrierPremium.Text = premium;
@@ -379,6 +387,8 @@ namespace BrokerWebApp.otherinsurance
 
             ASPxComboBox dxecbGridCarrierBranchID = tblEditorTemplate.FindControl("dxecbGridCarrierBranchID") as ASPxComboBox;
 
+            ASPxTextBox dxetxtGridCarrierCarrierSales = tblEditorTemplate.FindControl("dxetxtGridCarrierCarrierSales") as ASPxTextBox;
+
             ASPxTextBox dxetxtGridCarrierPolicyRate = tblEditorTemplate.FindControl("dxetxtGridCarrierPolicyRate") as ASPxTextBox;
             ASPxTextBox dxetxtGridCarrierPremium = tblEditorTemplate.FindControl("dxetxtGridCarrierPremium") as ASPxTextBox;
             ASPxTextBox dxetxtGridCarrierPremiumBase = tblEditorTemplate.FindControl("dxetxtGridCarrierPremiumBase") as ASPxTextBox;
@@ -418,6 +428,8 @@ namespace BrokerWebApp.otherinsurance
                 newobj.ProcessBase = Convert.ToDecimal(dxetxtGridCarrierProcessBase.Text);
             }
 
+            newobj.CarrierSales = dxetxtGridCarrierCarrierSales.Text.Trim();
+
             try
             {
                 newobj.Save(ModifiedAction.Update);
@@ -444,6 +456,8 @@ namespace BrokerWebApp.otherinsurance
             ASPxComboBox dxecbGridCarrierCarrierID = tblEditorTemplate.FindControl("dxecbGridCarrierCarrierID") as ASPxComboBox;
 
             ASPxComboBox dxecbGridCarrierBranchID = tblEditorTemplate.FindControl("dxecbGridCarrierBranchID") as ASPxComboBox;
+
+            ASPxTextBox dxetxtGridCarrierCarrierSales = tblEditorTemplate.FindControl("dxetxtGridCarrierCarrierSales") as ASPxTextBox;
 
             ASPxTextBox dxetxtGridCarrierPolicyRate = tblEditorTemplate.FindControl("dxetxtGridCarrierPolicyRate") as ASPxTextBox;
             ASPxTextBox dxetxtGridCarrierPremium = tblEditorTemplate.FindControl("dxetxtGridCarrierPremium") as ASPxTextBox;
@@ -484,6 +498,8 @@ namespace BrokerWebApp.otherinsurance
             {
                 newobj.ProcessBase = Convert.ToDecimal(dxetxtGridCarrierProcessBase.Text);
             }
+
+            newobj.CarrierSales = dxetxtGridCarrierCarrierSales.Text.Trim();
 
             newobj.Save(ModifiedAction.Insert);
 

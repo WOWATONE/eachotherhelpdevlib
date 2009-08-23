@@ -10,7 +10,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>保单录入列表</title>
+    <title>保单再保</title>
     <script type="text/javascript">
         $(document).ready(function() {
             //jQuery.noticeAdd({
