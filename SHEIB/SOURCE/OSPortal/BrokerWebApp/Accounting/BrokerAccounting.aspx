@@ -265,8 +265,16 @@
                                             </table>
                                         </td>
                                         <td style="text-align: left;">
+                                            收费状态：
                                         </td>
                                         <td>
+                                            <dxe:ASPxComboBox ID="dxeddlPayFeeStatus" ClientInstanceName="dxeddlPayFeeStatus"
+                                                runat="server" Width="155px" DropDownStyle="DropDownList">
+                                                <Items>
+                                                    <dxe:ListEditItem Value="0" Text="未收费" />
+                                                    <dxe:ListEditItem Value="1" Text="已收费" />
+                                                </Items>
+                                            </dxe:ASPxComboBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -291,8 +299,16 @@
                                             </table>
                                         </td>
                                         <td style="text-align: left;">
+                                            解付状态：
                                         </td>
                                         <td>
+                                            <dxe:ASPxComboBox ID="dxeddlPayinStatus" ClientInstanceName="dxeddlPayinStatus" runat="server"
+                                                Width="155px" DropDownStyle="DropDownList">
+                                                <Items>
+                                                    <dxe:ListEditItem Value="0" Text="未解付" />
+                                                    <dxe:ListEditItem Value="1" Text="已解付" />
+                                                </Items>
+                                            </dxe:ASPxComboBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -318,8 +334,16 @@
                                             </table>
                                         </td>
                                         <td style="text-align: left;">
+                                            开票状态：
                                         </td>
                                         <td>
+                                            <dxe:ASPxComboBox ID="dxeddlInvoiceStatus" ClientInstanceName="dxeddlInvoiceStatus" runat="server"
+                                                Width="155px" DropDownStyle="DropDownList">
+                                                <Items>
+                                                    <dxe:ListEditItem Value="0" Text="未开票" />
+                                                    <dxe:ListEditItem Value="1" Text="已开票" />
+                                                </Items>
+                                            </dxe:ASPxComboBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -345,8 +369,16 @@
                                             </table>
                                         </td>
                                         <td style="text-align: left;">
+                                            结算状态：
                                         </td>
                                         <td>
+                                            <dxe:ASPxComboBox ID="dxeddlPayProcStatus" ClientInstanceName="dxeddlPayProcStatus" runat="server"
+                                                Width="155px" DropDownStyle="DropDownList">
+                                                <Items>
+                                                    <dxe:ListEditItem Value="0" Text="未结算" />
+                                                    <dxe:ListEditItem Value="1" Text="已结算" />
+                                                </Items>
+                                            </dxe:ASPxComboBox>
                                         </td>
                                     </tr>
                                     <tr>

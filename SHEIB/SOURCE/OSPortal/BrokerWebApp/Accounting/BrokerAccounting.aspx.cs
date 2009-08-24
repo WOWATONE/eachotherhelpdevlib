@@ -29,6 +29,7 @@ namespace BrokerWebApp.Accounting
             {
                 bindDropDownLists();
             }
+            BindGrid();
         }
 
 
@@ -207,6 +208,19 @@ namespace BrokerWebApp.Accounting
                 lsWhere = lsWhere + " and (convert(char(10), a.PayFeeDate,21)) >='" + lsStartPayFeeDate + "'";
                 lsWhere = lsWhere + " and (convert(char(10), a.PayFeeDate,21)) <='" + lsEndPayFeeDate + "'";
             }
+            if (this.dxeddlPayFeeStatus.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPayFeeStatus.SelectedItem.Value.ToString()))
+            {
+                string sStatus = dxeddlPayFeeStatus.SelectedItem.Value.ToString();
+                if (sStatus == "0")
+                {
+                    lsWhere = lsWhere + " and a.PayFeeDate is null ";
+                }
+                if (sStatus == "1")
+                {
+                    lsWhere = lsWhere + " and a.PayFeeDate is not null ";
+                }
+            }
+
 
             string lsStartPayinDate = dxeStartPayinDate.Date.ToString("yyyy-MM-dd");
             string lsEndPayinDate = dxeEndPayinDate.Date.ToString("yyyy-MM-dd");
@@ -215,6 +229,19 @@ namespace BrokerWebApp.Accounting
                 lsWhere = lsWhere + " and (convert(char(10), a.PayinDate,21)) >='" + lsStartPayinDate + "'";
                 lsWhere = lsWhere + " and (convert(char(10), a.PayinDate,21)) <='" + lsEndPayinDate + "'";
             }
+            if (this.dxeddlPayinStatus.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPayinStatus.SelectedItem.Value.ToString()))
+            {
+                string sStatus = dxeddlPayinStatus.SelectedItem.Value.ToString();
+                if (sStatus == "0")
+                {
+                    lsWhere = lsWhere + " and a.PayinDate is null ";
+                }
+                if (sStatus == "1")
+                {
+                    lsWhere = lsWhere + " and a.PayinDate is not null ";
+                }
+            }
+
 
             string lsStartInvoiceDate = dxeStartInvoiceDate.Date.ToString("yyyy-MM-dd");
             string lsEndInvoiceDate = dxeEndInvoiceDate.Date.ToString("yyyy-MM-dd");
@@ -223,6 +250,19 @@ namespace BrokerWebApp.Accounting
                 lsWhere = lsWhere + " and (convert(char(10), a.InvoiceDate,21)) >='" + lsStartInvoiceDate + "'";
                 lsWhere = lsWhere + " and (convert(char(10), a.InvoiceDate,21)) <='" + lsEndInvoiceDate + "'";
             }
+            if (this.dxeddlInvoiceStatus.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlInvoiceStatus.SelectedItem.Value.ToString()))
+            {
+                string sStatus = dxeddlInvoiceStatus.SelectedItem.Value.ToString();
+                if (sStatus == "0")
+                {
+                    lsWhere = lsWhere + " and a.InvoiceDate is null ";
+                }
+                if (sStatus == "1")
+                {
+                    lsWhere = lsWhere + " and a.InvoiceDate is not null ";
+                }
+            }
+
 
             string lsStartPayProcDate = dxeStartPayProcDate.Date.ToString("yyyy-MM-dd");
             string lsEndPayProcDate = dxeEndPayProcDate.Date.ToString("yyyy-MM-dd");
@@ -230,6 +270,18 @@ namespace BrokerWebApp.Accounting
             {
                 lsWhere = lsWhere + " and (convert(char(10), a.PayProcDate,21)) >='" + lsStartPayProcDate + "'";
                 lsWhere = lsWhere + " and (convert(char(10), a.PayProcDate,21)) <='" + lsEndPayProcDate + "'";
+            }
+            if (this.dxeddlPayProcStatus.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPayProcStatus.SelectedItem.Value.ToString()))
+            {
+                string sStatus = dxeddlPayProcStatus.SelectedItem.Value.ToString();
+                if (sStatus == "0")
+                {
+                    lsWhere = lsWhere + " and a.PayProcDate is null ";
+                }
+                if (sStatus == "1")
+                {
+                    lsWhere = lsWhere + " and a.PayProcDate is not null ";
+                }
             }
 
             DataTable dt = BO_Report.GetAccounting(lsWhere).Tables[0];
