@@ -110,7 +110,7 @@ namespace BrokerWebApp.inoutbalance
             }
             if (dxetxtPolicyID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and a.PolicyID like '%" + dxetxtPolicyID.Text + "%'";
+                lsWhere = lsWhere + " and c.PolicyID like '%" + dxetxtPolicyID.Text + "%'";
             }
             if (this.dxeddlDeptId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptId.SelectedItem.Value.ToString()))
             {
