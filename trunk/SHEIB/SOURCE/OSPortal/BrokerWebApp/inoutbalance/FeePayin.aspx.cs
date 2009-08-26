@@ -101,7 +101,7 @@ namespace BrokerWebApp.inoutbalance
             string lsWhere = "";
             if (dxetxtPayinVoucherID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and c.VoucherID like '%" + dxetxtPayinVoucherID.Text + "%'";
+                lsWhere = lsWhere + " and a.VoucherID like '%" + dxetxtPayinVoucherID.Text + "%'";
             }
 
             if (dxetxtPolicyNo.Text.Trim() != "")
@@ -110,7 +110,7 @@ namespace BrokerWebApp.inoutbalance
             }
             if (dxeddlGatheringType.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and  d.GatheringType= ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and  d.GatheringType ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
             }
             if (dxeddlDeptId.SelectedItem.Value.ToString().Trim() != "")
             {

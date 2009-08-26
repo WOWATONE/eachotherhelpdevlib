@@ -17,7 +17,7 @@
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3.Export" Namespace="DevExpress.Web.ASPxGridView.Export"
     TagPrefix="dxwgv" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
-    TagPrefix="dxcb" %>    
+    TagPrefix="dxcb" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>经纪费开票</title>
@@ -108,10 +108,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
-    <dxcb:aspxcallback id="dxeDeleteVoucherCallback" clientinstancename="dxeDeleteVoucherCallback"
-        runat="server" oncallback="dxeDeleteVoucherCallback_Callback">
+    <dxcb:ASPxCallback ID="dxeDeleteVoucherCallback" ClientInstanceName="dxeDeleteVoucherCallback"
+        runat="server" OnCallback="dxeDeleteVoucherCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) { deleteVoucherCallbackComplete(s, e); }" />
-    </dxcb:aspxcallback>
+    </dxcb:ASPxCallback>
     <table style="width: 100%">
         <tr>
             <td style="height: 40px; width: 45%;">
@@ -278,9 +278,25 @@
                                     Width="120px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
-                            <td>
-                            </td>
-                            <td>
+                            <td colspan="2">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click">
+                                            </dxe:ASPxButton>
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnReset" runat="server" Text="重置" AutoPostBack="false" class="input_2">
+                                                <ClientSideEvents Click="btnResetClick" />
+                                            </dxe:ASPxButton>
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
+                                                CssClass="input_2" />
+                                            </dxe:ASPxButton>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                             <td>
                             </td>
@@ -299,24 +315,6 @@
                             <td style="text-align: left;">
                             </td>
                             <td style="text-align: left;" colspan="2">
-                                 <table>
-                                    <tr>
-                                        <td>
-                                            <dxe:ASPxButton ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click">
-                                            </dxe:ASPxButton>
-                                        </td>
-                                        <td>
-                                            <dxe:ASPxButton ID="btnReset" runat="server" Text="重置" AutoPostBack="false" class="input_2">
-                                                <ClientSideEvents Click="btnResetClick" />
-                                            </dxe:ASPxButton>
-                                        </td>
-                                        <td>
-                                            <dxe:ASPxButton ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
-                                                CssClass="input_2" />
-                                            </dxe:ASPxButton>
-                                        </td>
-                                    </tr>
-                                </table>
                             </td>
                             <td>
                             </td>
@@ -353,13 +351,11 @@
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                                     KeyFieldName="FeeId" AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%"
                                     SettingsPager-AlwaysShowPager="true" OnRowDeleting="gridSearchResult_RowDeleting"
-                                    OnRowDeleted="gridSearchResult_RowDeleted"
-                                    OnHtmlRowCreated="gridSearchResult_HtmlRowCreated"
-                                    >
+                                    OnRowDeleted="gridSearchResult_RowDeleted" OnHtmlRowCreated="gridSearchResult_HtmlRowCreated">
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
-                                            <NewButton Visible="False" />                                         
+                                            <NewButton Visible="False" />
                                             <DeleteButton Visible="false" />
                                             <CustomButtons>
                                                 <dxwgv:GridViewCommandColumnCustomButton Text="删除">
