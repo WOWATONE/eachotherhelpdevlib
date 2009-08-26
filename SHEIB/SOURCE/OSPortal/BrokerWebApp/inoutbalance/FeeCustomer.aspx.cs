@@ -102,7 +102,7 @@ namespace BrokerWebApp.inoutbalance
 
             if (dxetxtNoticeNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and a.NoticeNo like '%" + dxetxtNoticeNo.Text + "%'";
+                lsWhere = lsWhere + " and b.NoticeNo like '%" + dxetxtNoticeNo.Text + "%'";
             }
             if (dxetxtPolicyNo.Text.Trim() != "")
             {

@@ -138,6 +138,11 @@ namespace BrokerWebApp.inoutbalance
                 lsWhere = lsWhere + " and a.VoucherID like '%" + dxetxtInvoiceID.Text + "%'";
             }
 
+            if (dxetxtCarrierSales.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and c.CarrierSales like '%" + dxetxtCarrierSales.Text + "%'";
+            }
+
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
                 lsWhere = lsWhere + " and c.PolicyNo like '%" + dxetxtPolicyNo.Text + "%'";
