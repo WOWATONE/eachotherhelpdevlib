@@ -40,8 +40,8 @@ namespace BrokerWebApp.inoutbalance
                 this.dxetxtVoucherId.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 loadValue(this.dxetxtVoucherId.Text);
                 dxetxtVoucherId.BackColor = Color.LightGray;                         
-
             }
+
             string sVocherID = this.dxetxtVoucherId.Text;
             BindGrid(sVocherID);
         }
@@ -171,6 +171,7 @@ namespace BrokerWebApp.inoutbalance
         protected void gridPolicyItem_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
             string sVoucherID = e.Parameters;
+
             BindGrid(sVoucherID);
         }
 
