@@ -125,7 +125,7 @@ namespace BrokerWebApp.vehicleinsurance
             //投保客户
             if (!String.IsNullOrEmpty(this.dxetxtCustomer.Text))
             {
-                where += " and G.CustName='" + this.dxetxtCustomer.Text.Trim() + "'";
+                where += " and G.CustName like '%" + this.dxetxtCustomer.Text.Trim() + "%'";
             }
 
             //部门
