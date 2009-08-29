@@ -381,9 +381,13 @@
                     //resultMsg.style.fontsize = "9px";
                     //resultMsg.innerHTML = "提交成功";
                     setOnlyDxeButtonsUnableOrEnable(false);
+                    
                     if (typeof (dxebtntopSave) != 'undefined' && dxebtntopSave != null)
                         dxebtntopSave.SetEnabled(false);
-
+                        
+                    if (typeof (dxebtnBottomAdd) != 'undefined' && dxebtnBottomAdd != null)
+                        dxebtnBottomAdd.SetEnabled(true);
+                        
                     gridCarrier.PerformCallback('refresh');
                     alert("提交成功");
                     break

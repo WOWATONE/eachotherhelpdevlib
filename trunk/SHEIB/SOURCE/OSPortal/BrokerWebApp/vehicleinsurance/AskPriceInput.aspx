@@ -259,6 +259,9 @@
                 case "0":
                     setOnlyDxeButtonsUnableOrEnable(false);
                     dxebtntopSave.SetEnabled(false);
+                    if (typeof (dxebtnBottomAdd) != 'undefined' && dxebtnBottomAdd != null)
+                        dxebtnBottomAdd.SetEnabled(true);
+                        
                     gridPolicyItem.PerformCallback("unabled");
                     if (typeof (filesUploadControlPanel) != 'undefined' && filesUploadControlPanel != null)
                         filesUploadControlPanel.PerformCallback("unabled");                  
