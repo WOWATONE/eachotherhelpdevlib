@@ -23,7 +23,7 @@ namespace BrokerWebApp.vehicleinsurance
 
         #region Variables
 
-
+        public const string CarDamnificationType = "C0000300101";
         private const string currentPageModeKey = "CurrentPagePolicyMode";
 
         private const string inputQueryStringIDKey = "id";

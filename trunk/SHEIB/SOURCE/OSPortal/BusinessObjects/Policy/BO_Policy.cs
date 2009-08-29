@@ -807,6 +807,7 @@ namespace BusinessObjects.Policy
                 item.PremiumBase = objPolicy.PremiumBase * item.PolicyRate / 100;
                 item.Process = objPolicy.Process * item.PolicyRate / 100;
                 item.ProcessBase = objPolicy.ProcessBase * item.PolicyRate / 100;
+                item.ProcessRate = objPolicy.ProcessRate;
                 item.Save(ModifiedAction.Update);
             }
         }

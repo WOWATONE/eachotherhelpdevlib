@@ -331,6 +331,7 @@
                 var thesplit_array = retrunval.split(";");
                 dxetxtCustomer.SetValue(thesplit_array[1]);
                 dxetxtBeneficiary.SetValue(thesplit_array[1]);
+                dxetxtCarUser.SetValue(thesplit_array[1]);
                 setCustomerID(thesplit_array[0]);
             }
         }
@@ -737,102 +738,7 @@
             }
         }
 
-        function multi_ValueChanged(t1, t2, t3, precision, sign, opt) {
-
-            var v1;
-            try {
-                v1 = parseFloat(t1.GetValueString());
-                if (isNaN(v1))
-                    v1 = 0;
-            }
-            catch (err) {
-                v1 = 0;
-            }
-
-            var v2;
-            try {
-                v2 = parseFloat(t2.GetValueString());
-                if (isNaN(v2))
-                    v2 = 0;
-            }
-            catch (err) {
-                v2 = 0;
-            }
-
-
-            var v3;
-            if (opt == true)
-                v3 = parseFloat(v1 * v2 / 100);
-            else
-                v3 = parseFloat(v1 * v2);
-
-            var thePrecision;
-            if (isIntNumeric(precision))
-                thePrecision = parseInt(precision);
-            else
-                thePrecision = 2;
-
-            var rtn = v3.toFixed(thePrecision);
-            if (sign == true) {
-                var srps = "+";
-                rtn = rtn.replace(/(srps+)/g, "");
-                srps = "-";
-                rtn = rtn.replace(/(srps+)/g, "");
-            }
-            
-            t3.SetValue(rtn);
-        }
-
-
-        function division_ValueChanged(t1, t2, t3, precision, sign, opt) {
-
-            var v1;
-            try {
-                v1 = parseFloat(t1.GetValueString());
-                if (isNaN(v1))
-                    v1 = 0;
-            }
-            catch (err) {
-                v1 = 0;
-            }
-
-            var v2;
-            try {
-                v2 = parseFloat(t2.GetValueString());
-                if (isNaN(v2))
-                    v2 = 0;
-            }
-            catch (err) {
-                v2 = 0;
-            }
-
-            var v3;
-            if (v2 == 0)
-                v3 = 0;
-            else {
-                if (opt == true)
-                    v3 = parseFloat(v1 / v2 * 100);
-                else
-                    v3 = parseFloat(v1 / v2);
-            }
-            
-            var thePrecision;
-            if (isIntNumeric(precision))
-                thePrecision = parseInt(precision);
-            else
-                thePrecision = 2;
-
-            var rtn = v3.toFixed(thePrecision);
-
-            if (sign == true) {
-                var srps = "+";
-                rtn = rtn.replace(/(srps+)/g, "");
-                srps = "-";
-                rtn = rtn.replace(/(srps+)/g, "");
-            }
-            
-            t3.SetValue(rtn);
-        }
+        
 
 
         function add_Four_ValueChanged(t1, t2, t3, t4) {
@@ -906,6 +812,104 @@
             t3.SetValue(rtn);
         }
 
+
+
+        function multi_ValueChanged(t1, t2, t3, precision, sign, opt) {
+
+            var v1;
+            try {
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
+            }
+            catch (err) {
+                v1 = 0;
+            }
+
+            var v2;
+            try {
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
+            }
+            catch (err) {
+                v2 = 0;
+            }
+
+
+            var v3;
+            if (opt == true)
+                v3 = parseFloat(v1 * v2 / 100);
+            else
+                v3 = parseFloat(v1 * v2);
+
+            var thePrecision;
+            if (isIntNumeric(precision))
+                thePrecision = parseInt(precision);
+            else
+                thePrecision = 2;
+
+            var rtn = v3.toFixed(thePrecision);
+            if (sign == true) {
+                var srps = "+";
+                rtn = rtn.replace(/(srps+)/g, "");
+                srps = "-";
+                rtn = rtn.replace(/(srps+)/g, "");
+            }
+
+            t3.SetValue(rtn);
+        }
+
+
+        function division_ValueChanged(t1, t2, t3, precision, sign, opt) {
+
+            var v1;
+            try {
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
+            }
+            catch (err) {
+                v1 = 0;
+            }
+
+            var v2;
+            try {
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
+            }
+            catch (err) {
+                v2 = 0;
+            }
+
+            var v3;
+            if (v2 == 0)
+                v3 = 0;
+            else {
+                if (opt == true)
+                    v3 = parseFloat(v1 / v2 * 100);
+                else
+                    v3 = parseFloat(v1 / v2);
+            }
+
+            var thePrecision;
+            if (isIntNumeric(precision))
+                thePrecision = parseInt(precision);
+            else
+                thePrecision = 2;
+
+            var rtn = v3.toFixed(thePrecision);
+            if (sign == true) {
+                var srps = "+";
+                rtn = rtn.replace(/(srps+)/g, "");
+                srps = "-";
+                rtn = rtn.replace(/(srps+)/g, "");
+            }
+            t3.SetValue(rtn);
+        }
+
+        
         function isIntNumeric(str) {
             var val = parseInt(str);
             if (isNaN(val))

@@ -1170,7 +1170,7 @@
                                                                 <RegularExpression ValidationExpression="^(\+|\-)?\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
                                                             <ClientSideEvents ValueChanged="function(s,e){
-                                                                division_ValueChanged(dxetxtPremium,dxetxtCoverage,dxetxtPremiumRate,5,true,true);
+                                                                multi_ValueChanged(dxetxtCoverage,dxetxtPremiumRate,dxetxtPremium,2,false,true);
                                                                 }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
@@ -1183,6 +1183,9 @@
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
+                                                            <ClientSideEvents ValueChanged="function(s,e){
+                                                                multi_ValueChanged(dxetxtCoverage,dxetxtPremiumRate,dxetxtPremium,2,false,true);
+                                                                }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
@@ -1194,6 +1197,9 @@
                                                             <ValidationSettings>
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
+                                                            <ClientSideEvents ValueChanged="function(s,e){
+                                                                multi_ValueChanged(dxetxtPremium,dxetxtProcessRate,dxetxtProcess,2,false,true);
+                                                                }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                 </tr>
@@ -1218,9 +1224,11 @@
                                                                 <RegularExpression ValidationExpression="^(\+|\-)?\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
                                                             <ClientSideEvents ValueChanged="function(s,e){
-                                                                multi_ValueChanged(dxetxtPremium,dxetxtConversionRate,dxetxtPremiumBase,2,false,false);
-                                                                division_ValueChanged(dxetxtPremium,dxetxtCoverage,dxetxtPremiumRate,5,true,true);
-                                                                division_ValueChanged(dxetxtProcess,dxetxtPremium,dxetxtProcessRate,2,true,true);}" />
+                                                            multi_ValueChanged(dxetxtPremium,dxetxtConversionRate,dxetxtPremiumBase,2,false,false);
+                                                            division_ValueChanged(dxetxtPremium,dxetxtCoverage,dxetxtPremiumRate,5,false,true);
+                                                            multi_ValueChanged(dxetxtPremium,dxetxtProcessRate,dxetxtProcess,2,false,true);
+                                                            division_ValueChanged(dxetxtProcess,dxetxtPremium,dxetxtProcessRate,2,false,true);
+                                                            }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
@@ -1233,8 +1241,9 @@
                                                                 <RegularExpression ValidationExpression="^(\+|\-)?\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
                                                             <ClientSideEvents ValueChanged="function(s,e){
-                                                                multi_ValueChanged(dxetxtProcess,dxetxtConversionRate,dxetxtProcessBase,2,false,false);
-                                                                division_ValueChanged(dxetxtProcess,dxetxtPremium,dxetxtProcessRate,2,true,true);}" />
+                                                            multi_ValueChanged(dxetxtProcess,dxetxtConversionRate,dxetxtProcessBase,2,false,false);
+                                                            division_ValueChanged(dxetxtProcess,dxetxtPremium,dxetxtProcessRate,2,false,true);
+                                                            }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                 </tr>
@@ -1249,8 +1258,9 @@
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
                                                             <ClientSideEvents ValueChanged="function(s,e){
-                                                                multi_ValueChanged(dxetxtProcess,dxetxtConversionRate,dxetxtProcessBase,2,false,false); 
-                                                                multi_ValueChanged(dxetxtPremium,dxetxtConversionRate,dxetxtPremiumBase,2,false,false);}" />
+                                                             multi_ValueChanged(dxetxtProcess,dxetxtConversionRate,dxetxtProcessBase,2,false,false);
+                                                             multi_ValueChanged(dxetxtPremium,dxetxtConversionRate,dxetxtPremiumBase,2,false,false);
+                                                             }" />
                                                         </dxe:ASPxTextBox>
                                                     </td>
                                                     <td style="text-align: right;">
