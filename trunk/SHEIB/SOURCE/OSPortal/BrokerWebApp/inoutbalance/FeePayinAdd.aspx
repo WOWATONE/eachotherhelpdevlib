@@ -379,7 +379,7 @@
                             </td>
                             <td style="width: 78%; text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtVoucherId" ClientInstanceName="dxetxtVoucherId" runat="server"
-                                    Width="110px" ReadOnly="true" Enabled="false">
+                                    Width="110px" ReadOnly="true" >
                                 </dxe:ASPxTextBox>
                             </td>
                         </tr>
