@@ -152,9 +152,7 @@ namespace BrokerWebApp.otherinsurance
                     BusinessObjects.Policy.BO_Policy obj;
                     obj = new BusinessObjects.Policy.BO_Policy(this.dxetxtPolicyID.Text.Trim());
 
-                    //if (String.IsNullOrEmpty(this.dxetxtAuditPerson.Text))
-                    //{                        
-                    //}
+                    
                     this.dxetxtAuditPerson.Text = this.CurrentUserName;
                     this.dxeCheckDate.Date = obj.CreateTime;//DateTime.Now;
                                         
@@ -1548,7 +1546,8 @@ namespace BrokerWebApp.otherinsurance
 
             this.dxeStartDate.Date = obj.StartDate;
             this.dxeEndDate.Date = obj.EndDate;
-            this.dxetxtCreatePerson.Text = obj.CreatePerson;
+            this.dxetxtCreatePerson.Text = obj.CreatePersonName;
+            
 
             this.dxedtCreateTime.Date = obj.CreateTime;
 
@@ -1575,7 +1574,7 @@ namespace BrokerWebApp.otherinsurance
             this.dxetxtProcessBase.Text = String.Format(BasePage.TheTwoSF, obj.ProcessBase);
 
             this.dxeCheckDate.Date = obj.AuditTime;
-            this.dxetxtAuditPerson.Text = obj.AuditPerson;
+            this.dxetxtAuditPerson.Text = obj.AuditPersonName;
             this.dxeMemo.Text = obj.Remark;            
             
         }

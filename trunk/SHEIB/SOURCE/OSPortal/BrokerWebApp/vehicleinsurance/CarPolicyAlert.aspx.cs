@@ -115,9 +115,7 @@ namespace BrokerWebApp.vehicleinsurance
                 this.dxetxtAuditPerson.Text = this.CurrentUserName;
                 this.dxeAuditTime.Date = obj.CreateTime;//DateTime.Now;
 
-                //if (String.IsNullOrEmpty(this.dxetxtAuditPerson.Text))
-                //{                    
-                //}
+                
                 
                 if (obj.PolicyStatus == Convert.ToInt32(BusinessObjects.Policy.BO_Policy.PolicyStatusEnum.Audit).ToString())
                 {
@@ -729,10 +727,10 @@ namespace BrokerWebApp.vehicleinsurance
             }
 
             this.dxeAuditTime.Date = obj.AuditTime;
-            this.dxetxtAuditPerson.Text = obj.AuditPerson;
+            this.dxetxtAuditPerson.Text = obj.AuditPersonName;
             this.dxeMemo.Text = obj.Remark;
             
-            dxetxtCreatePerson.Text = obj.CreatePerson;
+            dxetxtCreatePerson.Text = obj.CreatePersonName;
             dxeCreateTime.Date = obj.CreateTime;
             
 

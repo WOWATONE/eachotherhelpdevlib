@@ -360,7 +360,7 @@ namespace BrokerWebApp.otherinsurance
 
             this.dxeStartDate.Date = obj.StartDate;
             this.dxeEndDate.Date = obj.EndDate;
-            this.dxetxtCreatePerson.Text = obj.CreatePerson;
+            this.dxetxtCreatePerson.Text = obj.CreatePersonName;
 
             this.dxedtCreateTime.Date = obj.CreateTime;
 
@@ -388,7 +388,7 @@ namespace BrokerWebApp.otherinsurance
             this.dxetxtProcessBase.Text = obj.ProcessBase.ToString();
 
             this.dxeCheckDate.Date = obj.AuditTime;
-            this.dxetxtAuditPerson.Text = obj.AuditPerson;
+            this.dxetxtAuditPerson.Text = obj.AuditPersonName;
             this.dxeMemo.Text = obj.Remark;
 
             //取得结算信息            

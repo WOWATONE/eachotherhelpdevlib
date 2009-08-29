@@ -1186,7 +1186,7 @@ namespace BrokerWebApp.otherinsurance
 
             this.dxeStartDate.Date = obj.StartDate;
             this.dxeEndDate.Date = obj.EndDate;
-            this.dxetxtCreatePerson.Text = obj.CreatePerson;
+            this.dxetxtCreatePerson.Text = obj.CreatePersonName;
 
             this.dxedtCreateTime.Date = obj.CreateTime;
 

@@ -123,13 +123,13 @@ namespace BrokerWebApp.vehicleinsurance
             //保险公司
             if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
             {
-                where += " and B.CarrierID='" + this.dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
+                where += " and A.CarrierID='" + this.dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
             }
 
             //分支机构
             if (this.dxeddlBranchId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranchId.SelectedItem.Value.ToString()))
             {
-                where += " and B.BranchID='" + this.dxeddlBranchId.SelectedItem.Value.ToString() + "'";
+                where += " and A.BranchID='" + this.dxeddlBranchId.SelectedItem.Value.ToString() + "'";
             }
 
             ////保单编号

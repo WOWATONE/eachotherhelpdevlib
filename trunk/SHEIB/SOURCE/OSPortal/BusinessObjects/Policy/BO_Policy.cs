@@ -541,6 +541,51 @@ namespace BusinessObjects.Policy
             get;
             set;
         }
+
+        [DataMember]
+        public string CreatePersonName
+        {
+            get {
+                String userID;
+                userID = this.CreatePerson;
+                BusinessObjects.BO_P_User theUser = new BusinessObjects.BO_P_User(userID);
+                if (theUser.UserID != null)
+                    return theUser.UserNameCn;
+                else
+                    return "";
+            }
+        }
+
+
+        [DataMember]
+        public string AuditPersonName
+        {
+            get
+            {
+                String userID;
+                userID = this.AuditPerson;
+                BusinessObjects.BO_P_User theUser = new BusinessObjects.BO_P_User(userID);
+                if (theUser.UserID != null)
+                    return theUser.UserNameCn;
+                else
+                    return "";
+            }
+        }
+
+        [DataMember]
+        public string ModifyPersonName
+        {
+            get
+            {
+                String userID;
+                userID = this.ModifyPerson;
+                BusinessObjects.BO_P_User theUser = new BusinessObjects.BO_P_User(userID);
+                if (theUser.UserID != null)
+                    return theUser.UserNameCn;
+                else
+                    return "";
+            }
+        }
          
         #endregion Property
 
