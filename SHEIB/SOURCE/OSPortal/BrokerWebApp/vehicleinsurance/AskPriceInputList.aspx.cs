@@ -45,7 +45,11 @@ namespace BrokerWebApp.vehicleinsurance
         
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            //
+            String theID = e.Keys[0].ToString();
+            if (!String.IsNullOrEmpty(theID))
+            {
+                BusinessObjects.Policy.BO_CarPolicy.Delete(theID);
+            }
             e.Cancel = true;
             this.gridSearchResult.CancelEdit();
         }
@@ -96,7 +100,7 @@ namespace BrokerWebApp.vehicleinsurance
             //投保客户
             if (!String.IsNullOrEmpty(this.dxetxtCustomer.Text))
             {
-                where += " and G.CustName='" + this.dxetxtCustomer.Text.Trim() + "'";
+                where += " and G.CustName like '%" + this.dxetxtCustomer.Text.Trim() + "%'";
             }
 
             //部门
@@ -175,7 +179,8 @@ namespace BrokerWebApp.vehicleinsurance
             thecb.TextField = "BranchName";
             thecb.ValueField = "BranchID";
             thecb.DataBind(); 
-            thecb.Items.Insert(0, new ListEditItem("(全部)", ""));            
+            //thecb.Items.Insert(0, new ListEditItem("(全部)", "")); 
+           
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];
@@ -257,7 +262,8 @@ namespace BrokerWebApp.vehicleinsurance
             thecb.TextField = "UserNameCn";
             thecb.ValueField = "UserID";
             thecb.DataBind();
-            thecb.Items.Insert(0, new ListEditItem("(全部)", ""));
+            //thecb.Items.Insert(0, new ListEditItem("(全部)", ""));
+
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];

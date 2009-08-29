@@ -80,7 +80,7 @@ namespace BrokerWebApp.vehicleinsurance
             //投保客户
             if (!String.IsNullOrEmpty(this.dxetxtCustomer.Text))
             {
-                where += " and G.CustName='" + this.dxetxtCustomer.Text.Trim() + "'";
+                where += " and G.CustName like '%" + this.dxetxtCustomer.Text.Trim() + "%'";
             }
 
             //部门
@@ -166,7 +166,8 @@ namespace BrokerWebApp.vehicleinsurance
             thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
             thecb.TextField = "BranchName";
             thecb.ValueField = "BranchID";
-            thecb.DataBind(); thecb.Items.Insert(0, new ListEditItem("", ""));
+            thecb.DataBind(); 
+            
 
             if (thecb.Items.Count > 0)
             {
