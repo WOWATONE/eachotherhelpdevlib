@@ -288,7 +288,7 @@
                                                 <td>
                                                     <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server" 
                                                     DataSourceID="gd_DataSource"
-                                                    KeyFieldName="KeyGUID" AutoGenerateColumns="False" 
+                                                    KeyFieldName="PolicyID" AutoGenerateColumns="False" 
                                                     Settings-ShowFooter="true" Width="100%" 
                                                     SettingsPager-AlwaysShowPager="true" 
                                                     OnRowDeleting="gridSearchResult_RowDeleting"
@@ -300,7 +300,7 @@
                                                     >
                                                         <%-- BeginRegion Columns --%>
                                                             <Columns>
-                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
+                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
                                                                     <NewButton Visible="False" />
                                                                     <EditButton Visible="False" />                                                                    
                                                                     <DeleteButton Visible="false" />

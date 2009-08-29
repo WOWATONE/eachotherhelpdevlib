@@ -340,7 +340,6 @@ namespace BusinessObjects.Policy
         {
             BO_CarPolicyDoc.DeleteByAskPriceID(id);
 
-            //
             DataTable dt = BO_Policy.FetchPolicyList(" AND B.AskPriceID = '" + id + "'");
             foreach (DataRow dr in dt.Rows)
             {
@@ -354,7 +353,7 @@ namespace BusinessObjects.Policy
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
             _db.AddInParameter(dbCommand, "@AskPriceID", DbType.String, id);
-
+            
             _db.ExecuteNonQuery(dbCommand);
 
         }

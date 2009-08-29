@@ -16,8 +16,8 @@ namespace BrokerWebApp.otherinsurance
 
         #region Variables
 
-        private const String gridKeyName = "KeyGUID";
         private string toadd = string.Empty;
+
         #endregion Variables
 
 
@@ -197,7 +197,11 @@ namespace BrokerWebApp.otherinsurance
             //业务员
             if (this.dxetxtCarrierSales.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and  b.CarrierSales like ('%" + this.dxetxtCarrierSales.Text.Trim() + "%') ";
+                lsWhere = lsWhere + " and (";
+                lsWhere = lsWhere + " b.CarrierSales like ('%" + this.dxetxtCarrierSales.Text.Trim() + "%') ";
+                lsWhere = lsWhere + " or ";
+                lsWhere = lsWhere + " A.CarrierSales like ('%" + this.dxetxtCarrierSales.Text.Trim() + "%') ";
+                lsWhere = lsWhere + " )";
             }
 
             //业务来源
@@ -254,7 +258,7 @@ namespace BrokerWebApp.otherinsurance
             thecb.TextField = "UserNameCn";
             thecb.ValueField = "UserID";
             thecb.DataBind();
-            thecb.Items.Insert(0, new ListEditItem("全部", ""));
+            //thecb.Items.Insert(0, new ListEditItem("全部", ""));
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];
@@ -270,7 +274,7 @@ namespace BrokerWebApp.otherinsurance
             thecb.TextField = "BranchName";
             thecb.ValueField = "BranchID";
             thecb.DataBind();
-            thecb.Items.Insert(0, new ListEditItem("全部", ""));
+            //thecb.Items.Insert(0, new ListEditItem("全部", ""));
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];

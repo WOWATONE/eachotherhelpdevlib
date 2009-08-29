@@ -716,6 +716,25 @@ namespace BusinessObjects.Policy
 
         }
 
+        public static void DeleteByAskPriceId(String askPriceId)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT PolicyID, AskPriceID  FROM Policy ");
+            sb.Append(" WHERE AskPriceID = @AskPriceID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@AskPriceID", DbType.String, askPriceId);
+
+            DataSet ds = _db.ExecuteDataSet(dbCommand);
+            String id;
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                id = Convert.ToString(dr["PolicyID"]);
+                Delete(id);
+            }
+
+        }
+
 
         public static void AuditByAskPriceID(String id, String theStatus)
         {
