@@ -351,6 +351,7 @@
                 var thesplit_array = retrunval.split(";");
                 dxetxtCustomer.SetValue(thesplit_array[1]);
                 dxetxtBeneficiary.SetValue(thesplit_array[1]);
+                dxetxtCarUser.SetValue(thesplit_array[1]);
                 setCustomerID(thesplit_array[0]);
             }
         }
@@ -722,8 +723,24 @@
             
             dxeEndDate.SetDate(new Date(endDateString));
         }
-        
-        
+
+        function CarrierProductType_SelectedIndexChanged(s, e) {
+            var thejsonstring = dxecbGridPolicyItemProdID.GetSelectedItem().value;
+            if (!isEmpty(thejsonstring)) {
+                if (thejsonstring == "<%=CarDamnificationType %>") {
+                    var carval;
+                    try {
+                        carval = parseFloat(dxetxtCarValue.GetValueString());
+                        if (isNaN(carval))
+                            carval = 0;
+                    }
+                    catch (err) {
+                        carval = 0;
+                    }
+                    dxetxtGridPolicyCoverage.SetValue(carval);
+                }
+            }
+        }
     </script>
 
     <script type="text/javascript">
@@ -743,7 +760,7 @@
             dxetxtCiPremium.SetValue(rtn);
 
             add_Four_ValueChanged(dxetxtCiPremium, dxetxtAciPremium, dxetxtCstPremium, dxetxtTotalPremium);
-            division_ValueChanged(dxetxtCiPremium, dxetxtCiProcessRate, dxetxtCiProcess, true);
+            division_ValueChanged(dxetxtCiPremium, dxetxtCiProcessRate, dxetxtCiProcess, 5, true, false);
             add_Three_ValueChanged(dxetxtCiProcess, dxetxtAciProcess, dxetxtTotalProcess);
         }
 
@@ -761,76 +778,6 @@
                 querystring = "PolicyReinsure.aspx?id=" + selectedValues;
                 window.showModalDialog(querystring, self, myArguments);
             }
-        }
-
-        function multi_ValueChanged(t1, t2, t3, opt) {
-
-            var v1;
-            try {
-                v1 = parseFloat(t1.GetValueString());
-                if (isNaN(v1))
-                    v1 = 0;
-            }
-            catch (err) {
-                v1 = 0;
-            }
-
-            var v2;
-            try {
-                v2 = parseFloat(t2.GetValueString());
-                if (isNaN(v2))
-                    v2 = 0;
-            }
-            catch (err) {
-                v2 = 0;
-            }
-
-
-            var v3;
-            if (opt == true)
-                v3 = parseFloat(v1 * v2 / 100);
-            else
-                v3 = parseFloat(v1 * v2);
-
-            var rtn = v3.toFixed(2);
-            t3.SetValue(rtn);
-        }
-
-
-        function division_ValueChanged(t1, t2, t3, opt) {
-
-            var v1;
-            try {
-                v1 = parseFloat(t1.GetValueString());
-                if (isNaN(v1))
-                    v1 = 0;
-            }
-            catch (err) {
-                v1 = 0;
-            }
-
-            var v2;
-            try {
-                v2 = parseFloat(t2.GetValueString());
-                if (isNaN(v2))
-                    v2 = 0;
-            }
-            catch (err) {
-                v2 = 0;
-            }
-
-            var v3;
-            if (v2 == 0)
-                v3 = 0;
-            else {
-                if (opt == true)
-                    v3 = parseFloat(v1 / v2 * 100);
-                else
-                    v3 = parseFloat(v1 / v2);
-            }
-
-            var rtn = v3.toFixed(2);
-            t3.SetValue(rtn);
         }
 
 
@@ -904,7 +851,110 @@
             var rtn = v3.toFixed(2);
             t3.SetValue(rtn);
         }
-        
+
+
+        function multi_ValueChanged(t1, t2, t3, precision, sign, opt) {
+
+            var v1;
+            try {
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
+            }
+            catch (err) {
+                v1 = 0;
+            }
+
+            var v2;
+            try {
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
+            }
+            catch (err) {
+                v2 = 0;
+            }
+
+
+            var v3;
+            if (opt == true)
+                v3 = parseFloat(v1 * v2 / 100);
+            else
+                v3 = parseFloat(v1 * v2);
+
+            var thePrecision;
+            if (isIntNumeric(precision))
+                thePrecision = parseInt(precision);
+            else
+                thePrecision = 2;
+
+            var rtn = v3.toFixed(thePrecision);
+            if (sign == true) {
+                var srps = "+";
+                rtn = rtn.replace(/(srps+)/g, "");
+                srps = "-";
+                rtn = rtn.replace(/(srps+)/g, "");
+            }
+
+            t3.SetValue(rtn);
+        }
+
+
+        function division_ValueChanged(t1, t2, t3, precision, sign, opt) {
+
+            var v1;
+            try {
+                v1 = parseFloat(t1.GetValueString());
+                if (isNaN(v1))
+                    v1 = 0;
+            }
+            catch (err) {
+                v1 = 0;
+            }
+
+            var v2;
+            try {
+                v2 = parseFloat(t2.GetValueString());
+                if (isNaN(v2))
+                    v2 = 0;
+            }
+            catch (err) {
+                v2 = 0;
+            }
+
+            var v3;
+            if (v2 == 0)
+                v3 = 0;
+            else {
+                if (opt == true)
+                    v3 = parseFloat(v1 / v2 * 100);
+                else
+                    v3 = parseFloat(v1 / v2);
+            }
+
+            var thePrecision;
+            if (isIntNumeric(precision))
+                thePrecision = parseInt(precision);
+            else
+                thePrecision = 2;
+
+            var rtn = v3.toFixed(thePrecision);
+            if (sign == true) {
+                var srps = "+";
+                rtn = rtn.replace(/(srps+)/g, "");
+                srps = "-";
+                rtn = rtn.replace(/(srps+)/g, "");
+            }
+            t3.SetValue(rtn);
+        }
+
+        function isIntNumeric(str) {
+            var val = parseInt(str);
+            if (isNaN(val))
+                return false;
+            else
+                return true;
+        }
     </script>
     
 </asp:Content>
@@ -1369,9 +1419,8 @@
                                                                                     <dxe:ASPxComboBox runat="server" ID="dxecbGridPolicyItemProdID" AutoPostBack="false"
                                                                                         ClientInstanceName="dxecbGridPolicyItemProdID" DropDownButton-Enabled="true"
                                                                                         DropDownStyle="DropDownList" Width="100px">
-                                                                                        <Items>                                                                                            
-                                                                                        </Items>
-                                                                                        <ClientSideEvents SelectedIndexChanged="" />
+                                                                                        <Items></Items>
+                                                                                        <ClientSideEvents SelectedIndexChanged="CarrierProductType_SelectedIndexChanged" />
                                                                                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip" >
                                                                                             <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                                         </ValidationSettings>
@@ -1455,7 +1504,7 @@
                                                             </ValidationSettings>
                                                             <ClientSideEvents ValueChanged="function(s,e){
                                                                 add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
-                                                                multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,true);
+                                                                multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,2,true,false);
                                                                 add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                 }" />
                                                         </dxe:ASPxTextBox>
@@ -1470,7 +1519,7 @@
                                                             </ValidationSettings>
                                                             <ClientSideEvents ValueChanged="function(s,e){
                                                                 add_Four_ValueChanged(dxetxtCiPremium,dxetxtAciPremium,dxetxtCstPremium,dxetxtTotalPremium);
-                                                                multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,true);
+                                                                multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,2,true,false);
                                                                 add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                 }" />
                                                         </dxe:ASPxTextBox>
@@ -1510,7 +1559,7 @@
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
                                                             <ClientSideEvents ValueChanged="function(s,e){
-                                                                multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,true);
+                                                                multi_ValueChanged(dxetxtCiPremium,dxetxtCiProcessRate,dxetxtCiProcess,2,true,false);
                                                                 add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                 }" />
                                                         </dxe:ASPxTextBox>
@@ -1524,7 +1573,7 @@
                                                                 <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
                                                             </ValidationSettings>
                                                             <ClientSideEvents ValueChanged="function(s,e){
-                                                                multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,true);
+                                                                multi_ValueChanged(dxetxtAciPremium,dxetxtAciProcessRate,dxetxtAciProcess,2,true,false);
                                                                 add_Three_ValueChanged(dxetxtCiProcess,dxetxtAciProcess,dxetxtTotalProcess);
                                                                 }" />
                                                         </dxe:ASPxTextBox>
