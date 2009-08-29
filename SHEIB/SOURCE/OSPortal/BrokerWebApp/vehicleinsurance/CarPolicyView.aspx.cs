@@ -346,10 +346,10 @@ namespace BrokerWebApp.vehicleinsurance
             dxetxtTotalProcess.Text = String.Format(BasePage.TheTwoSF, obj.Process);
 
             this.dxeAuditTime.Date = obj.AuditTime;
-            this.dxetxtAuditPerson.Text = obj.AuditPerson;
+            this.dxetxtAuditPerson.Text = obj.AuditPersonName;
             this.dxeMemo.Text = obj.Remark;
 
-            dxetxtCreatePerson.Text = obj.CreatePerson;
+            dxetxtCreatePerson.Text = obj.CreatePersonName;
             dxeCreateTime.Date = obj.CreateTime;
 
         }

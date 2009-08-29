@@ -113,10 +113,7 @@ namespace BrokerWebApp.vehicleinsurance
                 this.dxetxtAuditPerson.Text = this.CurrentUserName;
                 this.dxeAuditTime.Date = obj.CreateTime;
 
-                //if (String.IsNullOrEmpty(this.dxetxtAuditPerson.Text))
-                //{                    
-                //}
-                
+                                
                 if (obj.PolicyStatus == Convert.ToInt32(BusinessObjects.Policy.BO_CarPolicy.CarPolicyStatusEnum.Audit).ToString())
                 {
                     this.dxebtnAuditOk.Text = "反审核";
@@ -883,9 +880,14 @@ namespace BrokerWebApp.vehicleinsurance
                 }
             }
 
-            this.dxetxtAuditPerson.Text = obj.AuditPerson;
+            this.dxetxtAuditPerson.Text = obj.AuditPersonName;
             this.dxeAuditTime.Date = obj.AuditTime;
-            this.dxeCreateTime.Date = obj.CreateTime;
+
+            this.dxetxtCreatePerson.Text = obj.CreatePersonName;
+
+            if (obj.CreateTime != DateTime.MinValue )
+                this.dxeCreateTime.Date = obj.CreateTime;
+
             this.dxeMemo.Text = obj.Remark;
         }
 

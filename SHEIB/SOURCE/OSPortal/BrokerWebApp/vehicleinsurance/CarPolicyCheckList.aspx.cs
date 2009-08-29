@@ -46,7 +46,13 @@ namespace BrokerWebApp.vehicleinsurance
         protected void gridSearchResult_RowDeleting(object sender, 
             DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            //
+            String theID = e.Keys[0].ToString();
+
+            if (!String.IsNullOrEmpty(theID))
+            {
+                BusinessObjects.Policy.BO_Policy.Delete(theID);
+            }
+
             e.Cancel = true;
             this.gridSearchResult.CancelEdit();
         }
@@ -104,8 +110,8 @@ namespace BrokerWebApp.vehicleinsurance
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            
-            String where = " AND ISNULL(B.PolicyType,'0') ='1' ";//" and ISNULL(B.PolicyStatus,'0') = '1' and ISNULL(B.AskPriceID,'') != '' ";
+
+            String where = " AND ISNULL(B.PrevPolicyID,'') !='' AND ISNULL(B.PolicyType,'0') ='1' ";//" and ISNULL(B.PolicyStatus,'0') = '1' and ISNULL(B.AskPriceID,'') != '' ";
             if (this.dxeddlCheckState.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCheckState.SelectedItem.Value.ToString()))
             {
                 where = where + " AND ISNULL(B.PolicyStatus,'0') = '" + dxeddlCheckState.SelectedItem.Value.ToString() + "' ";
@@ -173,13 +179,13 @@ namespace BrokerWebApp.vehicleinsurance
             //保险公司
             if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
             {
-                where += " and B.CarrierID='" + this.dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
+                where += " and A.CarrierID='" + this.dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
             }
 
             //分支机构
             if (this.dxeddlBranchId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranchId.SelectedItem.Value.ToString()))
             {
-                where += " and B.BranchID='" + this.dxeddlBranchId.SelectedItem.Value.ToString() + "'";
+                where += " and A.BranchID='" + this.dxeddlBranchId.SelectedItem.Value.ToString() + "'";
             }
 
             ////保单编号

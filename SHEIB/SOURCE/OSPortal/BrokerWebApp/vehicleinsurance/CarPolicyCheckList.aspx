@@ -292,7 +292,7 @@
                                                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False">
                                                                 <NewButton Visible="False" />
                                                                 <EditButton Visible="False" />
-                                                                <DeleteButton Visible="false" />
+                                                                <DeleteButton Visible="true" />
                                                                 <CustomButtons>
                                                                     <dxwgv:GridViewCommandColumnCustomButton Text="ÉóºË">
                                                                     </dxwgv:GridViewCommandColumnCustomButton>
@@ -347,7 +347,7 @@
                                                             </dxwgv:GridViewDataColumn>
                                                         </Columns>
                                                         <Settings ShowGroupPanel="true" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
-                                                        <SettingsBehavior AllowDragDrop="true" AllowGroup="true" />
+                                                        <SettingsBehavior AllowDragDrop="true" AllowGroup="true" ConfirmDelete="true" />
                                                         <TotalSummary>
                                                             <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" DisplayFormat="#" /> 
                                                             <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" DisplayFormat="c" />
@@ -367,7 +367,7 @@
                                                         EnablePaging="false"  CacheDuration="1"                                                                                                                                                      
                                                         >
                                                         <SelectParameters> 
-                                                             <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" and ISNULL(B.PolicyStatus,'0') = '1' AND ISNULL(B.PolicyType,'0') ='1' " />
+                                                             <asp:Parameter Name="sWhere" Type="String" Direction="Input" DefaultValue=" AND ISNULL(B.PrevPolicyID,'') !='' and ISNULL(B.PolicyStatus,'0') = '1' AND ISNULL(B.PolicyType,'0') ='1' " />
                                                         </SelectParameters>
                                                     </asp:ObjectDataSource>                                                    
                                                 </td>
