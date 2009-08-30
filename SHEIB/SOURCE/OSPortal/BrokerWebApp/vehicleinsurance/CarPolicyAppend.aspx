@@ -156,8 +156,19 @@
 
         }
 
-        function saveCallbackComplete(s, e) {
-            alert("保存成功。");            
+        function saveCallbackComplete(s, e) {            
+            var theresult = e.result;
+            switch (theresult) {
+                case "policynoexist":
+                    //resultMsg.style.display = "inline";
+                    //resultMsg.style.fontsize = "9px";
+                    //resultMsg.innerHTML = "保单编号不唯一";
+                    alert("编号不唯一");
+                    break
+                default:                    
+                    alert("保存成功");
+            }
+                       
         }
 
         

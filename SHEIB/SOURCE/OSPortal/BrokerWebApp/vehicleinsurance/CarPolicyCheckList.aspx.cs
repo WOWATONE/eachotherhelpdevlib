@@ -222,8 +222,9 @@ namespace BrokerWebApp.vehicleinsurance
             thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
             thecb.TextField = "BranchName";
             thecb.ValueField = "BranchID";
-            thecb.DataBind(); 
-            
+            thecb.DataBind();
+            thecb.Items.Insert(0, new ListEditItem("全部", ""));
+
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];
@@ -334,6 +335,8 @@ namespace BrokerWebApp.vehicleinsurance
             thecb.TextField = "UserNameCn";
             thecb.ValueField = "UserID";
             thecb.DataBind();
+            thecb.Items.Insert(0, new ListEditItem("全部", ""));
+
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];

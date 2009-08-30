@@ -258,7 +258,8 @@ namespace BrokerWebApp.otherinsurance
             thecb.TextField = "UserNameCn";
             thecb.ValueField = "UserID";
             thecb.DataBind();
-            //thecb.Items.Insert(0, new ListEditItem("全部", ""));
+            thecb.Items.Insert(0, new ListEditItem("全部", ""));
+
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];
@@ -274,7 +275,8 @@ namespace BrokerWebApp.otherinsurance
             thecb.TextField = "BranchName";
             thecb.ValueField = "BranchID";
             thecb.DataBind();
-            //thecb.Items.Insert(0, new ListEditItem("全部", ""));
+            thecb.Items.Insert(0, new ListEditItem("全部", ""));
+
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];

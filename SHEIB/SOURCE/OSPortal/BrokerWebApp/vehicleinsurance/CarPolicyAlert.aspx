@@ -250,17 +250,28 @@
         }
 
         function saveCallbackComplete(s, e) {
-            //do nothing;
-            policyBaseCompleteEnable();
+            var theresult = e.result;
+            switch (theresult) {
+                case "policynoexist":
+                    //resultMsg.style.display = "inline";
+                    //resultMsg.style.fontsize = "9px";
+                    //resultMsg.innerHTML = "保单编号不唯一";
+                    alert("保单编号不唯一");
+                    break
+                default:
+                    
+                    policyBaseCompleteEnable();
 
-            var pid = dxetxtPolicyID.GetValueString();
+                    var pid = dxetxtPolicyID.GetValueString();
 
-            if (isEmpty(pid)) {
-                dxetxtPolicyID.SetValue(e.result);
-            }
-            alert("保存成功。");
+                    if (isEmpty(pid)) {
+                        dxetxtPolicyID.SetValue(e.result);
+                    }
+                    alert("保存成功。");
+            } 
             
         }
+
 
         function btnAddClick(s, e) {
             var thejsonstring = makePolicyJSON();

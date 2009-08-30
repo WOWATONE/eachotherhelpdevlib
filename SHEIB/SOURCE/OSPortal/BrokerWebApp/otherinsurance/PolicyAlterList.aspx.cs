@@ -182,6 +182,8 @@ namespace BrokerWebApp.otherinsurance
 
             this.gridSearchResult.DataBind();
 
+            //auditgrid search too.
+            auditGridSearch();
         }
 
 
@@ -265,7 +267,7 @@ namespace BrokerWebApp.otherinsurance
             thecb.TextField = "UserNameCn";
             thecb.ValueField = "UserID";
             thecb.DataBind();
-            //thecb.Items.Insert(0, new ListEditItem("全部", ""));
+            thecb.Items.Insert(0, new ListEditItem("全部", ""));
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];
@@ -281,11 +283,101 @@ namespace BrokerWebApp.otherinsurance
             thecb.TextField = "BranchName";
             thecb.ValueField = "BranchID";
             thecb.DataBind();
-            //thecb.Items.Insert(0, new ListEditItem("全部", ""));
+            thecb.Items.Insert(0, new ListEditItem("全部", ""));
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];
             }
+        }
+
+
+        private void auditGridSearch()
+        {
+
+            string lsWhere = "";
+            lsWhere = lsWhere + " AND ISNULL(B.PolicyStatus,'0') = '2' AND ISNULL(B.PrevPolicyID,'') ='' AND ISNULL(B.PolicyType,'0') ='0'";
+
+            //投保编号
+            if (dxetxtPolicyID.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and b.PolicyID ='" + dxetxtPolicyID.Text + "'";
+            }
+
+            //保单编号
+            if (dxetxtPolicyNo.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and b.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+            }
+
+            //批单编号
+            if (dxetxtAltNO.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and b.AltNO ='" + dxetxtAltNO.Text + "'";
+            }
+
+            //投保客户
+            if (this.dxetxtCustomer.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and  G.CustName like ('%" + this.dxetxtCustomer.Text.Trim() + "%') ";
+            }
+
+            //部门
+            if (this.dxeddlDeptID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptID.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and b.DeptId ='" + dxeddlDeptID.SelectedItem.Value.ToString() + "'";
+            }
+
+            //客户经理
+            if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and b.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
+            }
+
+            //保险险种
+            if (this.ptid.Value != null && !String.IsNullOrEmpty(this.ptid.Value))
+            {
+                lsWhere = lsWhere + " and  b.ProdTypeID like ('%" + this.ptid.Value.Trim() + "%') ";
+            }
+
+            //保险公司
+            if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and a.CarrierID ='" + dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
+            }
+
+            //分支机构
+            if (this.dxeddlBranchId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranchId.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and a.BranchID ='" + dxeddlBranchId.SelectedItem.Value.ToString() + "'";
+            }
+
+            //业务来源
+            if (this.dxeddlSourceTypeID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSourceTypeID.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and b.SourceTypeID ='" + dxeddlSourceTypeID.SelectedItem.Value.ToString() + "'";
+            }
+
+            //业务性质
+            if (this.dxeddlOperationType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlOperationType.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and b.OperationType ='" + dxeddlOperationType.SelectedItem.Value.ToString() + "'";
+            }
+
+            string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");
+            string lsEndDate = dxeEndDate.Date.ToString("yyyy-MM-dd");
+            if ((dxeStartDate.Text.Trim() != "") && (dxeEndDate.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), B.CreateTime,21)) >='" + lsStartDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), B.CreateTime,21)) <='" + lsEndDate + "'";
+            }
+
+            Parameter pt;
+            pt = this.DataSource.SelectParameters[0];
+
+            pt.DefaultValue = lsWhere;
+
+            this.gridAuditSearchResult.DataBind();
+
         }
 
 
