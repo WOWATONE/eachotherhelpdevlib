@@ -88,6 +88,14 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="经纪费结算" Name="inoutbalance/FeeProcess.aspx">
                                 </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="已通知未收费清单" Name="inoutbalance/FeeCustomerAddSelect.aspx?ID=q">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="已收费未解付清单" Name="inoutbalance/FeePayinAddSelect.aspx?ID=q">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="已解付未开票清单" Name="inoutbalance/FeeInvoiceAddSelect.aspx?ID=q">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="已开票未结算清单" Name="inoutbalance/FeeProcessAddSelect.aspx?ID=q">
+                                </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="综合查询" Expanded="false">

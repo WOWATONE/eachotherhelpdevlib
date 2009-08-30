@@ -152,7 +152,12 @@ namespace BrokerWebApp.IntegrateSearch
 
             if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and b.CarrierID ='" + dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and exists (select 1 from PolicyCarrier where policyid=a.PolicyID and CarrierID ='" + dxeddlCarrierId.SelectedItem.Value.ToString() + "')";
+            }
+
+            if (this.dxeddlBranchId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranchId.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and exists (select 1 from PolicyCarrier where PolicyID=a.PolicyID and BranchID ='" + dxeddlBranchId.SelectedItem.Value.ToString() + "')";
             }
 
             if (this.dxeddlProdTypeName.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlProdTypeName.SelectedItem.Value.ToString()))

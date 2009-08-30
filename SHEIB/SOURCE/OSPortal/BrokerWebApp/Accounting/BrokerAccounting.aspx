@@ -337,8 +337,8 @@
                                             开票状态：
                                         </td>
                                         <td>
-                                            <dxe:ASPxComboBox ID="dxeddlInvoiceStatus" ClientInstanceName="dxeddlInvoiceStatus" runat="server"
-                                                Width="155px" DropDownStyle="DropDownList">
+                                            <dxe:ASPxComboBox ID="dxeddlInvoiceStatus" ClientInstanceName="dxeddlInvoiceStatus"
+                                                runat="server" Width="155px" DropDownStyle="DropDownList">
                                                 <Items>
                                                     <dxe:ListEditItem Value="0" Text="未开票" />
                                                     <dxe:ListEditItem Value="1" Text="已开票" />
@@ -372,8 +372,8 @@
                                             结算状态：
                                         </td>
                                         <td>
-                                            <dxe:ASPxComboBox ID="dxeddlPayProcStatus" ClientInstanceName="dxeddlPayProcStatus" runat="server"
-                                                Width="155px" DropDownStyle="DropDownList">
+                                            <dxe:ASPxComboBox ID="dxeddlPayProcStatus" ClientInstanceName="dxeddlPayProcStatus"
+                                                runat="server" Width="155px" DropDownStyle="DropDownList">
                                                 <Items>
                                                     <dxe:ListEditItem Value="0" Text="未结算" />
                                                     <dxe:ListEditItem Value="1" Text="已结算" />
@@ -582,6 +582,9 @@
                                             SummaryType="Sum" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayProcedFee" ShowInGroupFooterColumn="PayedFee"
                                             SummaryType="Sum" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum"  ShowInGroupFooterColumn="CiPremium"   />
+                                        <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" ShowInGroupFooterColumn="AciPremium"  />
+                                        <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" ShowInGroupFooterColumn="CstPremium"  />
                                     </GroupSummary>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" DisplayFormat="#" />
@@ -591,6 +594,9 @@
                                         <dxwgv:ASPxSummaryItem FieldName="PayinedFee" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="InvoiceedFee" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayProcedFee" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" DisplayFormat="c" />
                                     </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>

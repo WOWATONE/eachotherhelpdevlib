@@ -1,4 +1,4 @@
-Ôªø<%@ Page Title="ÂÆ¢Êà∑Êî∂Ë¥πÈÄâÊã©" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/PopupMaster.Master"
+<%@ Page Title="øÕªß ’∑——°‘Ò" Language="C#" Theme="Aqua" MasterPageFile="~/SiteMastePages/PopupMaster.Master"
     AutoEventWireup="true" CodeBehind="FeeCustomerAddSelect.aspx.cs" Inherits="BrokerWebApp.inoutbalance.FeeCustomerAddSelect" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
@@ -18,8 +18,11 @@
     TagPrefix="dxwsc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
     TagPrefix="dxcb" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3.Export" Namespace="DevExpress.Web.ASPxGridView.Export"
+    TagPrefix="dxwgv" %>
+        
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>ÂÆ¢Êà∑Êî∂Ë¥πÈÄâÊã©</title>
+    <title>øÕªß ’∑——°‘Ò</title>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -27,11 +30,12 @@
             //    text: 'This is a notification that you have to remove',
             //    stay: true
             //});
-
-
             window.onunload = function() {
                 var pWindow = window.dialogArguments;
-                var thegrid = pWindow.gridPolicyItem;
+                var thegrid;
+                if (pWindow != null) {
+                    thegrid = pWindow.gridPolicyItem;
+                }
 
                 if (thegrid != null) {
                     thegrid.PerformCallback('');
@@ -52,7 +56,7 @@
 
         function getTheSelectedRowsValues(selectedValues) {
             if (selectedValues.length == 0) {
-                alert("ËØ∑ÂÖàÈÄâÊã©Ë°å");
+                alert("«Îœ»—°‘Ò––");
                 return;
             }
             else {
@@ -113,9 +117,9 @@
                                 AlternateText="" />
                         </div>
                         <div style="float: left; margin-left: 5px;">
-                            Ê£ÄÁ¥¢Êù°‰ª∂</div>
+                            ºÏÀ˜Ãıº˛</div>
                         <div style="float: left; margin-left: 5px;">
-                            <asp:Label ID="lbl_npSearchHeader" runat="server">(Â±ïÂºÄ)</asp:Label>
+                            <asp:Label ID="lbl_npSearchHeader" runat="server">(’πø™)</asp:Label>
                         </div>
                     </div>
                 </asp:Panel>
@@ -123,7 +127,7 @@
                     <table style="width: 720px;">
                         <tr>
                             <td style="width: 70px; text-align: right;">
-                                ÈÄöÁü•‰π¶Âè∑Ôºö
+                                Õ®÷™ È∫≈£∫
                             </td>
                             <td style="width: 110px; text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtNoticeNo" ClientInstanceName="dxeNoticeNo" runat="server"
@@ -131,7 +135,7 @@
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="width: 70px; text-align: right;">
-                                ÈÉ®Èó®Ôºö
+                                ≤ø√≈£∫
                             </td>
                             <td style="width: 110px; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlDeptId" ClientInstanceName="dxeddlDeptId" runat="server"
@@ -140,7 +144,7 @@
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="width: 70px; text-align: right;">
-                                ÂÆ¢Êà∑ÁªèÁêÜÔºö
+                                øÕªßæ≠¿Ì£∫
                             </td>
                             <td style="width: 130px; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlSalesId" ClientInstanceName="dxeddlSalesId" runat="server"
@@ -152,7 +156,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                Êäï‰øùÁºñÂè∑Ôºö
+                                Õ∂±£±‡∫≈£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server"
@@ -160,7 +164,7 @@
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
-                                ‰øùÂçïÁºñÂè∑Ôºö
+                                ±£µ•±‡∫≈£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server"
@@ -168,7 +172,7 @@
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
-                                ‰øùÂçïÁ±ªÂûãÔºö
+                                ±£µ•¿‡–Õ£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlPolicyType" ClientInstanceName="dxeddlPolicyType" runat="server"
@@ -180,7 +184,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                Êäï‰øùÂÆ¢Êà∑Ôºö
+                                Õ∂±£øÕªß£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCustomerID" ClientInstanceName="dxetxtCustomerID" runat="server"
@@ -188,7 +192,7 @@
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
-                                ÈÄöÁü•Êó•ÊúüÔºö
+                                Õ®÷™»’∆⁄£∫
                             </td>
                             <td style="text-align: left;" colspan="3">
                                 <table style="margin-left: -3px;">
@@ -199,7 +203,7 @@
                                             </dxe:ASPxDateEdit>
                                         </td>
                                         <td style="text-align: right;">
-                                            Ëá≥
+                                            ÷¡
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxDateEdit ID="dxeNoticeEndDate" ClientInstanceName="dxeNoticeEndDate" runat="server"
@@ -221,9 +225,29 @@
                             <td style="text-align: left;">
                             </td>
                             <td style="text-align: left;" colspan="2">
-                                <asp:Button ID="btnSearch" runat="server" Text="Êü•ËØ¢" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
-                                <input type="reset" value="ÈáçÁΩÆ" name="btnReset" id="btnReset" class="input_2" />&nbsp;
-                                <input type="button" value="Á°ÆÂÆö" name="btnOk" id="btnok" class="input_2" onclick="btnOk_Click();" />
+                                 <table>
+                                    <tr>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnSearch" runat="server" Text="≤È—Ø" CssClass="input_2" OnClick="btnSearch_Click">
+                                            </dxe:ASPxButton>
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnReset" runat="server" Text="÷ÿ÷√" AutoPostBack="false" class="input_2">
+                                                <ClientSideEvents Click="btnResetClick" />
+                                            </dxe:ASPxButton>
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnOk" runat="server" Text="»∑∂®" CssClass="input_2" />
+                                                <ClientSideEvents Click="btnOk_Click" />
+                                            </dxe:ASPxButton>
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
+                                                CssClass="input_2" />
+                                            </dxe:ASPxButton>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                             <td>
                             </td>
@@ -232,8 +256,8 @@
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearch" runat="Server" TargetControlID="npSearchDetail"
                     ExpandControlID="npSearchHeader" CollapseControlID="npSearchHeader" Collapsed="false"
-                    TextLabelID="lbl_npSearchHeader" ImageControlID="img_npSearchHeader" ExpandedText="(Â±ïÂºÄ)"
-                    CollapsedText="(ÈöêËóè)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
+                    TextLabelID="lbl_npSearchHeader" ImageControlID="img_npSearchHeader" ExpandedText="(’πø™)"
+                    CollapsedText="(“˛≤ÿ)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
                     SuppressPostBack="true" />
             </td>
         </tr>
@@ -247,9 +271,9 @@
                                 AlternateText="" />
                         </div>
                         <div style="float: left; margin-left: 5px;">
-                            ÊêúÁ¥¢ÁªìÊûú</div>
+                            À—À˜Ω·π˚</div>
                         <div style="float: left; margin-left: 5px;">
-                            <asp:Label ID="lbl_npSearchResultHeader" runat="server">(Â±ïÂºÄ)</asp:Label>
+                            <asp:Label ID="lbl_npSearchResultHeader" runat="server">(’πø™)</asp:Label>
                         </div>
                     </div>
                 </asp:Panel>
@@ -268,34 +292,34 @@
                                         <dxwgv:GridViewDataColumn FieldName="PolperiodID" Caption="PolperiodID" CellStyle-Wrap="False"
                                             Visible="false">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="ÈÄöÁü•‰π¶Âè∑" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="NoticeNo" Caption="Õ®÷™ È∫≈" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="Êäï‰øùÁºñÂè∑" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="Õ∂±£±‡∫≈" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="‰øùÂçïÁºñÂè∑" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="±£µ•±‡∫≈" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PremiumBase" Caption="‰øùË¥π(Êú¨)" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PremiumBase" Caption="±£∑—(±æ)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="Êú¨ÊúüÂ∫îÊî∂‰øùË¥π" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="±æ∆⁄”¶ ’±£∑—" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="Êú¨ÊúüÂ∑≤Êî∂‰øùË¥π" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="±æ∆⁄“— ’±£∑—" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="Êú¨Ê¨°Â∫îÊî∂‰øùË¥π" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="Fee" Caption="±æ¥Œ”¶ ’±£∑—" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="Èô©Áßç" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="œ’÷÷" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CustName" Caption="Êäï‰øùÂÆ¢Êà∑" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CustName" Caption="Õ∂±£øÕªß" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="ÂÆ¢Êà∑ÁªèÁêÜ" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="øÕªßæ≠¿Ì" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="Êî∂Ê¨æÊñπÂºè" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption=" ’øÓ∑Ω Ω" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="NoticeDate" Caption="ÈÄöÁü•Êó•Êúü" CellStyle-Wrap="False"
+                                        <dxwgv:GridViewDataDateColumn FieldName="NoticeDate" Caption="Õ®÷™»’∆⁄" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="‰øùÈô©ÂÖ¨Âè∏" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="±£œ’π´Àæ" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="ÂàÜÊîØÊú∫ÊûÑ" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="∑÷÷ßª˙ππ" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
@@ -303,7 +327,7 @@
                                     <Settings ShowGroupPanel="false" />
                                     <SettingsBehavior AllowMultiSelection="true" />
                                     <TotalSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="NoticeNo" SummaryType="Count" DisplayFormat="ËÆ∞ÂΩïÊï∞:#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="NoticeNo" SummaryType="Count" DisplayFormat="º«¬º ˝:#" />
                                         <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayedFee" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="Fee" SummaryType="Sum" DisplayFormat="c" />
@@ -311,6 +335,8 @@
                                     </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
+                                <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
+                                </dxwgv:ASPxGridViewExporter>
                             </td>
                         </tr>
                     </table>
@@ -318,7 +344,7 @@
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearchResult" runat="Server" TargetControlID="npSearchResultDetail"
                     ExpandControlID="npSearchResultHeader" CollapseControlID="npSearchResultHeader"
                     Collapsed="false" TextLabelID="lbl_npSearchResultHeader" ImageControlID="img_npSearchResultHeader"
-                    ExpandedText="(Â±ïÂºÄ)" CollapsedText="(ÈöêËóè)" ExpandedImage="~/images/collapse_blue.jpg"
+                    ExpandedText="(’πø™)" CollapsedText="(“˛≤ÿ)" ExpandedImage="~/images/collapse_blue.jpg"
                     CollapsedImage="~/images/expand_blue.jpg" SuppressPostBack="true" />
             </td>
         </tr>

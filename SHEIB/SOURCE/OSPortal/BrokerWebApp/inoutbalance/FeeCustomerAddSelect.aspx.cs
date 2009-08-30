@@ -28,6 +28,10 @@ namespace BrokerWebApp.inoutbalance
             {                
                 Initialization();
                 this.txtVoucherId.Value = Page.Request.QueryString[inputQueryStringIDKey];
+                if (txtVoucherId.Value == "q")
+                {
+                    btnOk.Visible = false;
+                }
             }
             BindGrid();
         }
@@ -204,6 +208,12 @@ namespace BrokerWebApp.inoutbalance
             {
                 thecb.SelectedItem = thecb.Items[0];
             }
+        }
+
+        protected void btnXlsExport_Click(object sender, EventArgs e)
+        {
+            BindGrid();
+            this.gridExport.WriteXlsToResponse();
         }
 
 
