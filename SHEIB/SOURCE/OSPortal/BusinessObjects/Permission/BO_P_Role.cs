@@ -64,6 +64,21 @@ namespace BusinessObjects
         #endregion Property
 
 
+        #region ReadOnly Property
+
+        public List<BO_P_Priv> Privs
+        {
+            get
+            {
+                return BO_P_Priv.FetchListByRoleID(this.RoleID);
+            }
+
+        }
+
+        #endregion ReadOnly Property
+
+
+
         #region Methods
 
 

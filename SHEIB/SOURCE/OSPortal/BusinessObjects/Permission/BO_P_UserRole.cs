@@ -25,6 +25,16 @@ namespace BusinessObjects
         }
 
 
+        public enum UserRoleFieldList
+        {
+            UserRoleID,
+            RoleID,
+            UserID,
+            RoleNo, 
+            RoleName, 
+            Remark
+        }
+
 
         public static void Add(String roleID, String userID)
         {
@@ -99,6 +109,43 @@ namespace BusinessObjects
             ds = _db.ExecuteDataSet(dbCommand);
 
             return ds.Tables[0];
+        }
+
+
+        public static List<BO_P_Role> FetchListByUserId(String userID)
+        {
+            List<BO_P_Role> list = new List<BO_P_Role>();
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" SELECT A.UserRoleID, A.RoleID, A.UserID, B.RoleNo, B.RoleName, B.Remark ");
+            sb.Append(" FROM  P_UserRole A ");
+            sb.Append(" INNER JOIN P_Role B ON A.RoleID = B.RoleID ");
+            sb.Append(" WHERE A.UserID = @UserID");
+            sb.Append(";");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@UserID", DbType.String, userID);
+
+            BO_P_Role newObj;
+            using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                Int32 loop = 0;
+                while (reader.Read())
+                {
+                    newObj = new BO_P_Role();
+
+                    newObj.RoleID = Utility.GetStringFromReader(reader, Convert.ToInt32(UserRoleFieldList.RoleID));
+                    newObj.RoleNo = Utility.GetStringFromReader(reader, Convert.ToInt32(UserRoleFieldList.RoleNo));
+                    newObj.RoleName = Utility.GetStringFromReader(reader, Convert.ToInt32(UserRoleFieldList.RoleName));
+                    newObj.Remark = Utility.GetStringFromReader(reader, Convert.ToInt32(UserRoleFieldList.Remark));
+
+                    list.Add(newObj);
+                    loop += 1;
+                }
+            }
+
+            return list;
         }
 
     }

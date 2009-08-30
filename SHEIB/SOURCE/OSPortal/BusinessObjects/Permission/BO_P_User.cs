@@ -184,6 +184,18 @@ namespace BusinessObjects
 
         #endregion Property
 
+        #region ReadOnly Property
+
+        public List<BO_P_Role> Roles
+        {
+            get
+            {
+                return BO_P_UserRole.FetchListByUserId(this.UserID);
+            }
+            
+        }
+
+        #endregion ReadOnly Property
 
         #region Methods
 
