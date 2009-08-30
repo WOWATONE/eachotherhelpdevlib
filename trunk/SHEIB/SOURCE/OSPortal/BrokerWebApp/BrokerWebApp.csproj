@@ -370,6 +370,13 @@
     <Compile Include="BudgetManagement\SignPremiumBudgetRpt.aspx.designer.cs">
       <DependentUpon>SignPremiumBudgetRpt.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BudgetManagement\RptSignBudgetBase.aspx.cs">
+      <DependentUpon>RptSignBudgetBase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetManagement\RptSignBudgetBase.aspx.designer.cs">
+      <DependentUpon>RptSignBudgetBase.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BusinessConsult\BusinessConsult.aspx.cs">
       <DependentUpon>BusinessConsult.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1142,6 +1149,7 @@
     <Content Include="BudgetManagement\SignPremiumBudget.aspx" />
     <Content Include="BudgetManagement\SignPremiumBudgetList.aspx" />
     <Content Include="BudgetManagement\SignPremiumBudgetRpt.aspx" />
+    <Content Include="BudgetManagement\RptSignBudgetBase.aspx" />
     <Content Include="BusinessConsult\BusinessConsult.aspx" />
     <Content Include="BusinessConsult\BusinessConsultList.aspx" />
     <Content Include="CustomerClaim\NotifyClaim.aspx" />
