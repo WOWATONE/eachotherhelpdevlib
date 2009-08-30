@@ -16,7 +16,8 @@
     TagPrefix="dxpc" %>
 <%@ Register Assembly="DevExpress.Web.ASPxSpellChecker.v8.3" Namespace="DevExpress.Web.ASPxSpellChecker"
     TagPrefix="dxwsc" %>
-
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3.Export" Namespace="DevExpress.Web.ASPxGridView.Export"
+    TagPrefix="dxwgv" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
     
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -32,7 +33,10 @@
 
             window.onunload = function() {
                 var pWindow = window.dialogArguments;
-                var thegrid = pWindow.gridSearchResult;
+                var thegrid;
+                if (pWindow != null) {
+                    thegrid = pWindow.gridPolicyItem;
+                }
 
                 if (thegrid != null) {
                     thegrid.PerformCallback('');
@@ -238,9 +242,29 @@
                             <td></td>
                             <td></td>
                             <td style="text-align: left;" colspan="2">
-                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" onclick="btnSearch_Click" />&nbsp;
-                                <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp; 
-                                <input type="button" value="确定" name="btnOk" id="btnok" class="input_2" onclick="btnOk_Click();" />
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click">
+                                            </dxe:ASPxButton>
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnReset" runat="server" Text="重置" AutoPostBack="false" class="input_2">
+                                                <ClientSideEvents Click="btnResetClick" />
+                                            </dxe:ASPxButton>
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnOk" runat="server" Text="确定" CssClass="input_2" />
+                                                <ClientSideEvents Click="btnOk_Click" />
+                                            </dxe:ASPxButton>
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxButton ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
+                                                CssClass="input_2" />
+                                            </dxe:ASPxButton>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                             <td></td>
                         </tr>
@@ -299,6 +323,10 @@
                                         <dxwgv:GridViewDataColumn FieldName="PayinedFee" Caption="已解付保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>                                
                                         <dxwgv:GridViewDataColumn FieldName="PayProcBase" Caption="本期应开票金额" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="BranchName" Caption="分支机构" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>      
                                         <dxwgv:GridViewDataColumn FieldName="ProcessFeeTypeName" Caption="经纪费收取方式" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -312,6 +340,8 @@
                                     <Settings ShowGroupPanel="false" />
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
+                                <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
+                                </dxwgv:ASPxGridViewExporter>
                             </td>
                         </tr>
                     </table>
