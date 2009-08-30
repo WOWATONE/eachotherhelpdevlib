@@ -846,6 +846,133 @@ namespace BusinessObjects.Policy
                 AuditOtherPolicySubmit(policyID, auditStatus, person, ref resultSign, ref resultMsg);
         }
 
+
+
+        public static bool CheckPolicyNoExist(String policyID, String policyNo, String prePolicyID)
+        {
+            bool result;
+            
+            String swhere = "";
+            if (!String.IsNullOrEmpty(policyID))
+            {
+                swhere += " AND B.PolicyID != '" + policyID.Trim() + "'";
+            }
+
+            if (!String.IsNullOrEmpty(prePolicyID))
+            {
+                swhere += " AND B.PrevPolicyID != '" + prePolicyID.Trim() + "'";
+            }
+
+            if (!String.IsNullOrEmpty(policyNo))
+            {
+                swhere += " AND B.PolicyNo = '" + policyNo.Trim() + "'";
+            }
+            else
+            {
+                return false;
+            }
+
+            try
+            {
+                DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(swhere);
+                if (dt.Rows.Count > 0)
+                    result = true;
+                else
+                    result = false;
+            }
+            catch (Exception)
+            {
+                result = true;
+            }
+
+            return result;
+
+        }
+
+
+        public static bool CheckAltNOExist(String policyID, String altNO, String prePolicyID)
+        {
+            bool result;
+
+            String swhere = "";
+            if (!String.IsNullOrEmpty(policyID))
+            {
+                swhere += " AND B.PolicyID != '" + policyID.Trim() + "'";
+            }
+
+            if (!String.IsNullOrEmpty(prePolicyID))
+            {
+                swhere += " AND B.PrevPolicyID != '" + prePolicyID.Trim() + "'";
+            }
+
+            if (!String.IsNullOrEmpty(altNO))
+            {
+                swhere += " AND B.AltNO = '" + altNO.Trim() + "'";
+            }
+            else
+            {
+                return false;
+            }
+
+            try
+            {
+                DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(swhere);
+                if (dt.Rows.Count > 0)
+                    result = true;
+                else
+                    result = false;
+            }
+            catch (Exception)
+            {
+                result = true;
+            }
+
+            return result;
+
+        }
+
+
+        public static bool CheckAciPolicyNoExist(String policyID, String aciPolicyNo, String prePolicyID)
+        {
+            bool result;
+
+            String swhere = "";
+            if (!String.IsNullOrEmpty(policyID))
+            {
+                swhere += " AND B.PolicyID != '" + policyID.Trim() + "'";
+            }
+
+            if (!String.IsNullOrEmpty(prePolicyID))
+            {
+                swhere += " AND B.PrevPolicyID != '" + prePolicyID.Trim() + "'";
+            }
+
+            if (!String.IsNullOrEmpty(aciPolicyNo))
+            {
+                swhere += " AND B.AltNO = '" + aciPolicyNo.Trim() + "'";
+            }
+            else
+            {
+                return false;
+            }
+
+            try
+            {
+                DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(swhere);
+                if (dt.Rows.Count > 0)
+                    result = true;
+                else
+                    result = false;
+            }
+            catch (Exception)
+            {
+                result = true;
+            }
+
+            return result;
+
+        }
+
         #endregion Methods
 
 
