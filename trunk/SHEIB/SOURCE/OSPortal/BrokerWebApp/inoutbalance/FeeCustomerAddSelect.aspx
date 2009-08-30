@@ -237,7 +237,7 @@
                                             </dxe:ASPxButton>
                                         </td>
                                         <td>
-                                            <dxe:ASPxButton ID="btnOk" runat="server" Text="确定" CssClass="input_2" />
+                                            <dxe:ASPxButton ID="btnOk" runat="server" Text="确定" AutoPostBack="false"  CssClass="input_2" >
                                                 <ClientSideEvents Click="btnOk_Click" />
                                             </dxe:ASPxButton>
                                         </td>
