@@ -931,9 +931,13 @@ namespace BrokerWebApp.otherinsurance
             BusinessObjects.Policy.BO_Policy obj;
 
             //check policyno exist first
-            bool checkresult = false;//checkPolicyNoExist(theJosn.PolicyID, theJosn.PolicyNo);
-
+            bool checkresult = checkPolicyNoExist(theJosn.PolicyID, theJosn.PolicyNo, this.lblSourcePolicyID.Text.Trim());
             if (checkresult) return policyNoExist;
+
+            //check altno exist first
+            checkresult = BusinessObjects.Policy.BO_Policy.CheckAltNOExist(theJosn.PolicyID, theJosn.AltNo, this.lblSourcePolicyID.Text.Trim());
+            if (checkresult) return policyNoExist;
+
 
             if (String.IsNullOrEmpty(theJosn.PolicyID))
             {
@@ -1307,36 +1311,10 @@ namespace BrokerWebApp.otherinsurance
         }
 
 
-        private bool checkPolicyNoExist(String policyID, String policyNo)
+        private bool checkPolicyNoExist(String policyID, String policyNo, String prePolicyID)
         {
             bool result;
-            String swhere = "";
-            if (!String.IsNullOrEmpty(policyID))
-            {
-                swhere += " AND B.PolicyID != '" + policyID.Trim() + "'";
-            }
-
-            if (!String.IsNullOrEmpty(policyNo))
-            {
-                swhere += " AND B.PolicyNo = '" + policyNo.Trim() + "'";
-            }
-            else
-            {
-                return false;
-            }
-
-            try
-            {
-                DataTable dt = BusinessObjects.Policy.BO_Policy.FetchPolicyList(swhere);
-                if (dt.Rows.Count > 0)
-                    result = true;
-                else
-                    result = false;
-            }
-            catch (Exception)
-            {
-                result = true;
-            }
+            result = BusinessObjects.Policy.BO_Policy.CheckPolicyNoExist(policyID, policyNo, prePolicyID);
 
             return result;
 

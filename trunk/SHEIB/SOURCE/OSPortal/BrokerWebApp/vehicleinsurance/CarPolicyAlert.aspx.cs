@@ -747,6 +747,16 @@ namespace BrokerWebApp.vehicleinsurance
 
             obj = (CarPriceAlertInfo)serializer.ReadObject(ms);
             ms.Close();
+
+            //check policyno exist first
+            bool checkresult = checkPolicyNoExist(obj.PolicyID, obj.PolicyNo, this.lblSourcePolicyID.Text.Trim());
+            if (checkresult) return policyNoExist;
+
+            //check altno exist first
+            checkresult = BusinessObjects.Policy.BO_Policy.CheckAltNOExist(obj.PolicyID, obj.AltNo, this.lblSourcePolicyID.Text.Trim());
+            if (checkresult) return policyNoExist;
+
+
             BO_Policy theSourceObj = new BO_Policy(this.lblSourcePolicyID.Text.Trim());
             BO_Policy theObject;
             if (String.IsNullOrEmpty(obj.PolicyID))
@@ -1070,6 +1080,15 @@ namespace BrokerWebApp.vehicleinsurance
             //dxeCreateTime.ClientEnabled = false;
             //dxeCreateTime.ReadOnlyStyle.CopyFrom(dxetxtPolicyID.ReadOnlyStyle);
                         
+        }
+
+        private bool checkPolicyNoExist(String policyID, String policyNo, String prePolicyID)
+        {
+            bool result;
+            result = BusinessObjects.Policy.BO_Policy.CheckPolicyNoExist(policyID, policyNo, prePolicyID);
+
+            return result;
+
         }
 
         #endregion Privates

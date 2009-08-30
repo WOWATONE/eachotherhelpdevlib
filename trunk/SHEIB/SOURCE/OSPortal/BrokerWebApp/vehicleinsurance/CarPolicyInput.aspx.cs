@@ -1039,6 +1039,10 @@ namespace BrokerWebApp.vehicleinsurance
             obj = (CarPriceInputInfo)serializer.ReadObject(ms);
             ms.Close();
 
+            //check policyno exist first
+            bool checkresult = checkPolicyNoExist(obj.PolicyID, obj.PolicyNo, obj.PolicyID);
+            if (checkresult) return policyNoExist;
+
             BO_Policy theObject;
             if (String.IsNullOrEmpty(obj.PolicyID))
             {
@@ -1377,6 +1381,16 @@ namespace BrokerWebApp.vehicleinsurance
             dxeCreateTime.ReadOnly = val;
             dxeCreateTime.ClientEnabled = false;
             dxeCreateTime.ReadOnlyStyle.CopyFrom(dxetxtCreatePerson.ReadOnlyStyle);
+
+        }
+
+
+        private bool checkPolicyNoExist(String policyID, String policyNo, String prePolicyID)
+        {
+            bool result;
+            result = BusinessObjects.Policy.BO_Policy.CheckPolicyNoExist(policyID, policyNo, prePolicyID);
+
+            return result;
 
         }
 
