@@ -30,6 +30,17 @@ namespace BusinessObjects
         }
 
 
+        public enum RoleFieldList
+        {
+            RolePrivID, 
+            RoleID,  
+            PrivID, 
+            PrivName, 
+            MenuID, 
+            PrivType
+        }
+
+
         #region Property
 
         public string PrivID
@@ -116,6 +127,45 @@ namespace BusinessObjects
 
             _db.ExecuteNonQuery(dbCommand);
 
+        }
+
+
+        public static List<BO_P_Priv> FetchListByRoleID(String roleID)
+        {
+            List<BO_P_Priv> list = new List<BO_P_Priv>();
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" SELECT A.RolePrivID, A.RoleID, A.PrivID, ");
+            sb.Append(" C.PrivName, C.MenuID, PrivType ");
+            sb.Append(" FROM P_RolePriv A ");
+            sb.Append(" INNER JOIN P_Role B ON A.RoleID = B.RoleID ");
+            sb.Append(" INNER JOIN P_Priv C ON C.PrivID = A.PrivID ");
+            sb.Append(" WHERE A.RoleID = @RoleID ");
+            sb.Append(" ");
+            sb.Append(" ");
+            sb.Append(" ;");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@RoleID", DbType.String, roleID);
+
+            BO_P_Priv newObj;
+            using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                while (reader.Read())
+                {
+                    newObj = new BO_P_Priv();
+
+                    newObj.PrivID = Utility.GetStringFromReader(reader, Convert.ToInt32(RoleFieldList.PrivID));
+                    newObj.PrivName = Utility.GetStringFromReader(reader, Convert.ToInt32(RoleFieldList.PrivName));
+                    newObj.MenuID = Utility.GetStringFromReader(reader, Convert.ToInt32(RoleFieldList.MenuID));
+                    newObj.PrivType = Utility.GetStringFromReader(reader, Convert.ToInt32(RoleFieldList.PrivType));
+
+                    list.Add(newObj);
+                }
+            }
+
+            return list;
         }
 
 
