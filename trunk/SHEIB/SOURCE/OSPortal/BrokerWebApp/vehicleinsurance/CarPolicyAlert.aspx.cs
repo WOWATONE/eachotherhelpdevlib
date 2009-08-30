@@ -756,6 +756,10 @@ namespace BrokerWebApp.vehicleinsurance
             checkresult = BusinessObjects.Policy.BO_Policy.CheckAltNOExist(obj.PolicyID, obj.AltNo, this.lblSourcePolicyID.Text.Trim());
             if (checkresult) return policyNoExist;
 
+            //check AciPolicyNo exist first
+            checkresult = BusinessObjects.Policy.BO_Policy.CheckAciPolicyNoExist(obj.PolicyID, obj.AciPolicyNo, this.lblSourcePolicyID.Text.Trim());
+            if (checkresult) return policyNoExist;
+
 
             BO_Policy theSourceObj = new BO_Policy(this.lblSourcePolicyID.Text.Trim());
             BO_Policy theObject;

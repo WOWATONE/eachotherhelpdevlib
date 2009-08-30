@@ -152,7 +152,7 @@ namespace BrokerWebApp.vehicleinsurance
             //保单编号
             if (!String.IsNullOrEmpty(this.dxetxtPolicyNo.Text))
             {
-                where += " and B.PolicyNo ='" + this.dxetxtPolicyNo.Text.Trim() + "'";
+                where += " and B.PolicyNo like '%" + this.dxetxtPolicyNo.Text.Trim() + "%'";
             }
 
             //录单日期
@@ -166,11 +166,6 @@ namespace BrokerWebApp.vehicleinsurance
                 where += " and B.CreateTime<='" + this.dxeEndDate.Date + "'";
             }
 
-            if (!String.IsNullOrEmpty(this.dxetxtPolicyNo.Text.Trim()))
-            {
-                where += " and B.PolicyNo like '%" + this.dxetxtPolicyNo.Text.Trim() + "%'";
-            }
-
             Parameter pt;
             pt = this.ds_gridSearchResult.SelectParameters[0];
 
@@ -178,7 +173,107 @@ namespace BrokerWebApp.vehicleinsurance
 
             this.gridSearchResult.DataBind();
 
+            //audit search
+            auditGridSearch();
         }
+
+        private void auditGridSearch()
+        {
+            String where = " and ISNULL(B.PolicyStatus,'0') = '2' and ISNULL(B.PrevPolicyID,'') = '' AND ISNULL(B.PolicyType,'0') ='1' ";
+
+            //询价单号
+            if (!String.IsNullOrEmpty(this.dxetxtAskPriceID.Text))
+            {
+                where += " and B.AskPriceID='" + this.dxetxtAskPriceID.Text.Trim() + "'";
+            }
+
+            //投保编号
+            if (!String.IsNullOrEmpty(this.dxetxtPolicyID.Text))
+            {
+                where += " and B.PolicyID ='" + this.dxetxtPolicyID.Text.Trim() + "'";
+            }
+
+            //投保客户
+            if (!String.IsNullOrEmpty(this.dxetxtCustomer.Text))
+            {
+                where += " and G.CustName like '%" + this.dxetxtCustomer.Text.Trim() + "%'";
+            }
+
+            //部门
+            if (this.dxeddlDeptID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptID.SelectedItem.Value.ToString()))
+            {
+                where += " and B.DeptId='" + this.dxeddlDeptID.SelectedItem.Value.ToString() + "'";
+            }
+
+            //客户经理
+            if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
+            {
+                where += " and B.SalesId='" + this.dxeddlSalesId.SelectedItem.Value.ToString() + "'";
+            }
+
+            //车牌号
+            if (!String.IsNullOrEmpty(this.dxetxtCarNo.Text.Trim()))
+            {
+                where += " and B.CarNo like ('%" + this.dxetxtCarNo.Text.Trim() + "%')";
+            }
+
+            //业务来源
+            if (this.dxeddlSourceTypeID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSourceTypeID.SelectedItem.Value.ToString()))
+            {
+                where += " and B.SourceTypeID='" + this.dxeddlSourceTypeID.SelectedItem.Value.ToString() + "'";
+            }
+
+            //业务性质
+            if (this.dxeddlOperationType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlOperationType.SelectedItem.Value.ToString()))
+            {
+                where += " and B.OperationType='" + this.dxeddlOperationType.SelectedItem.Value.ToString() + "'";
+            }
+
+            //录单人
+            if (!String.IsNullOrEmpty(this.dxetxtCreatePerson.Text.Trim()))
+            {
+                where += " and M.UserNameCn like ('%" + this.dxetxtCreatePerson.Text.Trim() + "%')";
+            }
+
+            //保险公司
+            if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
+            {
+                where += " and A.CarrierID='" + this.dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
+            }
+
+            //分支机构
+            if (this.dxeddlBranchId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranchId.SelectedItem.Value.ToString()))
+            {
+                where += " and A.BranchID='" + this.dxeddlBranchId.SelectedItem.Value.ToString() + "'";
+            }
+
+            //保单编号
+            if (!String.IsNullOrEmpty(this.dxetxtPolicyNo.Text))
+            {
+                where += " and B.PolicyNo like '%" + this.dxetxtPolicyNo.Text.Trim() + "%'";
+            }
+
+            //录单日期
+            if (this.dxeStartDate.Date > DateTime.MinValue && this.dxeStartDate.Date < DateTime.MaxValue)
+            {
+                where += " and B.CreateTime>='" + this.dxeStartDate.Date + "'";
+            }
+
+            if (this.dxeEndDate.Date > DateTime.MinValue && this.dxeEndDate.Date < DateTime.MaxValue)
+            {
+                where += " and B.CreateTime<='" + this.dxeEndDate.Date + "'";
+            }
+
+            
+
+            Parameter pt;
+            pt = this.ds_gridAuditSearchResult.SelectParameters[0];
+
+            pt.DefaultValue = where;
+
+            this.gridAuditSearchResult.DataBind();
+        }
+
 
 
         protected void CarrierBranchIDCallback(object source, 
@@ -188,7 +283,8 @@ namespace BrokerWebApp.vehicleinsurance
             thecb.DataSource = BusinessObjects.SchemaSetting.BO_Branch.FetchListByCarrier(e.Parameter);
             thecb.TextField = "BranchName";
             thecb.ValueField = "BranchID";
-            
+            thecb.DataBind();
+            thecb.Items.Insert(0, new ListEditItem("全部", ""));
 
             if (thecb.Items.Count > 0)
             {
@@ -299,6 +395,7 @@ namespace BrokerWebApp.vehicleinsurance
             thecb.TextField = "UserNameCn";
             thecb.ValueField = "UserID";
             thecb.DataBind();
+            thecb.Items.Insert(0, new ListEditItem("全部", ""));
 
             if (thecb.Items.Count > 0)
             {

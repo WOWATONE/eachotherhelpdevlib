@@ -28,6 +28,8 @@ namespace BrokerWebApp.vehicleinsurance
         private const string inputQueryStringAskPriceidKey = "askpriceid";
         private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
 
+        private const string policyNoExist = "policynoexist";
+
         #endregion Variables
 
 
@@ -324,6 +326,20 @@ namespace BrokerWebApp.vehicleinsurance
 
             BO_Policy theObject;
             theObject = new BO_Policy(obj.PolicyID);
+
+
+            //check policyno exist first
+            bool checkresult;
+
+            //check altno exist first
+            checkresult = BusinessObjects.Policy.BO_Policy.CheckPolicyNoExist(obj.PolicyID, obj.PolicyNo, theObject.PrevPolicyID);
+            if (checkresult) return policyNoExist;
+
+            //check AciPolicyNo exist first
+            checkresult = BusinessObjects.Policy.BO_Policy.CheckAciPolicyNoExist(obj.PolicyID, obj.AciPolicyNo, theObject.PrevPolicyID);
+            if (checkresult) return policyNoExist;
+
+            
 
             theObject.PolicyNo = obj.PolicyNo;
             theObject.AciPolicyNo = obj.AciPolicyNo; 
