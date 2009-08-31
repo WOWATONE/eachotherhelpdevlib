@@ -861,6 +861,7 @@ namespace BusinessObjects.Policy
             if (!String.IsNullOrEmpty(prePolicyID))
             {
                 swhere += " AND B.PrevPolicyID != '" + prePolicyID.Trim() + "'";
+                swhere += " AND B.PolicyID != '" + prePolicyID.Trim() + "'";
             }
 
             if (!String.IsNullOrEmpty(policyNo))
@@ -903,6 +904,7 @@ namespace BusinessObjects.Policy
             if (!String.IsNullOrEmpty(prePolicyID))
             {
                 swhere += " AND B.PrevPolicyID != '" + prePolicyID.Trim() + "'";
+                swhere += " AND B.PolicyID != '" + prePolicyID.Trim() + "'";
             }
 
             if (!String.IsNullOrEmpty(altNO))
@@ -945,6 +947,7 @@ namespace BusinessObjects.Policy
             if (!String.IsNullOrEmpty(prePolicyID))
             {
                 swhere += " AND B.PrevPolicyID != '" + prePolicyID.Trim() + "'";
+                swhere += " AND B.PolicyID != '" + prePolicyID.Trim() + "'";
             }
 
             if (!String.IsNullOrEmpty(aciPolicyNo))
