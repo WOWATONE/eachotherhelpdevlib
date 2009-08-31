@@ -931,8 +931,9 @@ namespace BrokerWebApp.otherinsurance
             BusinessObjects.Policy.BO_Policy obj;
 
             //check policyno exist first
-            bool checkresult = checkPolicyNoExist(theJosn.PolicyID, theJosn.PolicyNo, this.lblSourcePolicyID.Text.Trim());
-            if (checkresult) return policyNoExist;
+            bool checkresult;
+            //checkresult = checkPolicyNoExist(theJosn.PolicyID, theJosn.PolicyNo, this.lblSourcePolicyID.Text.Trim());
+            //if (checkresult) return policyNoExist;
 
             //check altno exist first
             checkresult = BusinessObjects.Policy.BO_Policy.CheckAltNOExist(theJosn.PolicyID, theJosn.AltNo, this.lblSourcePolicyID.Text.Trim());
