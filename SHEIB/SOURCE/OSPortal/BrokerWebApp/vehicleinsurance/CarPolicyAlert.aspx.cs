@@ -749,8 +749,9 @@ namespace BrokerWebApp.vehicleinsurance
             ms.Close();
 
             //check policyno exist first
-            bool checkresult = checkPolicyNoExist(obj.PolicyID, obj.PolicyNo, this.lblSourcePolicyID.Text.Trim());
-            if (checkresult) return policyNoExist;
+            bool checkresult;
+            //checkresult = checkPolicyNoExist(obj.PolicyID, obj.PolicyNo, this.lblSourcePolicyID.Text.Trim());
+            //if (checkresult) return policyNoExist;
 
             //check altno exist first
             checkresult = BusinessObjects.Policy.BO_Policy.CheckAltNOExist(obj.PolicyID, obj.AltNo, this.lblSourcePolicyID.Text.Trim());

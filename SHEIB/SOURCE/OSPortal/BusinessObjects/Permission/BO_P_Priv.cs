@@ -41,6 +41,70 @@ namespace BusinessObjects
         }
 
 
+
+        #region Priv Enum
+
+        public enum PrivListEnum
+        {
+            Customer_List = 101010,
+            Customer_Add = 101011,
+            Customer_Modify = 101012,
+            Customer_Delete = 101013,
+            Contact = 101020,
+            ServiceFollowUp = 101030,
+            PolicyInput = 102010,
+            PolicyInput_Add = 102011,
+            PolicyInput_Modify = 102012,
+            PolicyInput_Delete = 102013,
+            PolicyInput_SendCheck = 102014,
+            PolicyAltInput = 102020,
+            PolicyAudit = 102030,
+            AskPriceInput = 103010,
+            Alt = 103020,
+            Check = 103030,
+            PolicyInfo_Append = 103040,
+            PaymentClaimsRegister = 104010,
+            PaymentClaimsDocManage = 104020,
+            BusinessConsultManage = 105010,
+            FeeNotice = 106010,
+            FeeCustomer = 106020,
+            FeePay = 106030,
+            FeeVoice = 106040,
+            FeeBalance = 106050,
+            AchievementReport = 107010,
+            EmployeeManage = 108010,
+            RoleManage = 108020,
+            OrganSchema = 108030,
+            PolicyCarrier = 108040,
+            PolicyCarrierBranch = 108050,
+            PolicyProductionType = 108060,
+            DataDictionary = 108070,
+            EnterpriseList = 108080,
+            SystemOption = 108090,
+            SystemLog = 108100,
+            SignupBudgetList = 109010,
+            SignupBudgetRunDetail = 109020,
+            SignupBudgetCompleteSummary = 109030,
+            ServiceAlert = 110010,
+            SignupBudgetAnalysisReport = 111010,
+            RealBudgetAnalysisReport = 111020,
+            SubPolicyProductionTypeBrokerBusinessStat = 112010,
+            PremiumProcessStat = 112020,
+            CustomerPremiumProcessStat = 112030,
+            CustomerPremiumStructureStat = 112040,
+            GroupPremiumStructureStat = 112050,
+            ReceivableAccountDetail = 112060,
+            BrokerCompanyBusinessReportOfProductionType = 112070,
+            BrokerCompanyBusinessReportOfPolicy = 112080,
+            CertificateDegreeConditionReport = 112090,
+            InsuranceBrokerCompanyBusinessStatReport = 112100
+        }
+
+
+        #endregion Priv Enum
+
+
+
         #region Property
 
         public string PrivID
