@@ -93,7 +93,7 @@
             var url = "FeeInvoiceAddPrint.aspx?ID=" + getVoucherId() + "&tmpID=" + Math.random();
 
             window.showModalDialog(url, self, myArguments);
-            gridPolicyItem.PerformCallback(getVoucherId);
+            //gridPolicyItem.PerformCallback(getVoucherId);
         }
 
 

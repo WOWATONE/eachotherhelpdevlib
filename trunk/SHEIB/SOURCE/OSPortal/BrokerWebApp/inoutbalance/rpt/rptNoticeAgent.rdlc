@@ -128,6 +128,14 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
           <DataField>FeeBankName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Content">
+          <DataField>Content</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SalesName">
+          <DataField>SalesName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DummyDataSource</DataSourceName>
@@ -493,12 +501,13 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                   </ReportItems>
                 </TableCell>
                 <TableCell>
-                  <ColSpan>7</ColSpan>
+                  <ColSpan>4</ColSpan>
                   <ReportItems>
                     <Textbox Name="textbox132">
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
+                          <Right>None</Right>
                         </BorderStyle>
                         <BorderWidth>
                           <Left>1pt</Left>
@@ -514,6 +523,60 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                       </Style>
                       <CanGrow>true</CanGrow>
                       <Value>=First(Fields!CustomerName.Value, "dsNotice_Notice")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox8">
+                      <rd:DefaultName>textbox8</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                          <Left>Solid</Left>
+                          <Right>None</Right>
+                        </BorderStyle>
+                        <BorderWidth>
+                          <Left>1pt</Left>
+                          <Right>2pt</Right>
+                          <Top>2pt</Top>
+                        </BorderWidth>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>客户经理</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ColSpan>2</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="SalesName">
+                      <rd:DefaultName>SalesName</rd:DefaultName>
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                          <Left>Solid</Left>
+                        </BorderStyle>
+                        <BorderWidth>
+                          <Left>1pt</Left>
+                          <Right>2pt</Right>
+                          <Top>2pt</Top>
+                        </BorderWidth>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!SalesName.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1295,7 +1358,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>分管领导：</Value>
+                      <Value>客户经理：</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1376,7 +1439,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>客户经理：</Value>
+                      <Value>制单人：</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1699,7 +1762,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
               <TableCells>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox80">
+                    <Textbox Name="textbox7">
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -1724,9 +1787,61 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                   </ReportItems>
                 </TableCell>
                 <TableCell>
-                  <ColSpan>6</ColSpan>
+                  <ColSpan>4</ColSpan>
                   <ReportItems>
-                    <Textbox Name="textbox81">
+                    <Textbox Name="textbox13">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                          <Right>None</Right>
+                        </BorderStyle>
+                        <BorderWidth>
+                          <Left>1pt</Left>
+                          <Right>2pt</Right>
+                          <Top>2pt</Top>
+                        </BorderWidth>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!CustomerName.Value, "dsNotice_Notice")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox14">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                          <Left>Solid</Left>
+                          <Right>None</Right>
+                        </BorderStyle>
+                        <BorderWidth>
+                          <Left>1pt</Left>
+                          <Right>2pt</Right>
+                          <Top>2pt</Top>
+                        </BorderWidth>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>客户经理</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox22">
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -1744,7 +1859,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!CustomerName.Value, "dsNotice_Notice")</Value>
+                      <Value>=First(Fields!SalesName.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -2470,7 +2585,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
               <TableCells>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox104">
+                    <Textbox Name="textbox37">
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -2481,13 +2596,13 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>分管领导：</Value>
+                      <Value>客户经理：</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox105">
+                    <Textbox Name="textbox38">
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -2503,7 +2618,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox106">
+                    <Textbox Name="textbox46">
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -2519,7 +2634,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox107">
+                    <Textbox Name="textbox48">
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -2536,7 +2651,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox108">
+                    <Textbox Name="textbox50">
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -2552,7 +2667,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox109">
+                    <Textbox Name="textbox51">
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -2562,7 +2677,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>客户经理：</Value>
+                      <Value>制单人：</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -2896,10 +3011,62 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                   </ReportItems>
                 </TableCell>
                 <TableCell>
-                  <ColSpan>6</ColSpan>
+                  <ColSpan>4</ColSpan>
                   <ReportItems>
-                    <Textbox Name="CustomerName_1">
-                      <rd:DefaultName>CustomerName_1</rd:DefaultName>
+                    <Textbox Name="textbox4">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                          <Right>None</Right>
+                        </BorderStyle>
+                        <BorderWidth>
+                          <Left>1pt</Left>
+                          <Right>2pt</Right>
+                          <Top>2pt</Top>
+                        </BorderWidth>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!CustomerName.Value, "dsNotice_Notice")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox2">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                          <Left>Solid</Left>
+                          <Right>None</Right>
+                        </BorderStyle>
+                        <BorderWidth>
+                          <Left>1pt</Left>
+                          <Right>2pt</Right>
+                          <Top>2pt</Top>
+                        </BorderWidth>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>客户经理</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="SalesName_1">
+                      <rd:DefaultName>SalesName_1</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -2917,7 +3084,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=First(Fields!CustomerName.Value, "dsNotice_Notice")</Value>
+                      <Value>=First(Fields!SalesName.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -3470,7 +3637,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
               <TableCells>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox63">
+                    <Textbox Name="textbox27">
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -3481,13 +3648,13 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>分管领导：</Value>
+                      <Value>客户经理：</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox65">
+                    <Textbox Name="textbox28">
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -3503,7 +3670,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox66">
+                    <Textbox Name="textbox30">
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -3519,7 +3686,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox67">
+                    <Textbox Name="textbox31">
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -3536,7 +3703,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox68">
+                    <Textbox Name="textbox32">
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -3552,7 +3719,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox70">
+                    <Textbox Name="textbox36">
                       <Style>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -3562,7 +3729,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>客户经理：</Value>
+                      <Value>制单人：</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>

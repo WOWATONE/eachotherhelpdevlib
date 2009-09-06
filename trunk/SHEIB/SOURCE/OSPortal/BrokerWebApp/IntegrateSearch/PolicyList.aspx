@@ -373,6 +373,11 @@
                                     <GroupSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInGroupFooterColumn="PolicyID"
                                             DisplayFormat="总计: {0}" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum"  ShowInGroupFooterColumn="PremiumBase" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="ProcessBase" SummaryType="Sum"  ShowInGroupFooterColumn="ProcessBase" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum"   ShowInGroupFooterColumn="CiPremium" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum"   ShowInGroupFooterColumn="AciPremium" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum"  ShowInGroupFooterColumn="CstPremium"  DisplayFormat="c" />
                                     </GroupSummary>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInColumn="Beneficiary"

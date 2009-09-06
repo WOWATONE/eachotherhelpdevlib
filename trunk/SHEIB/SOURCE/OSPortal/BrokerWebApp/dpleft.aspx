@@ -156,7 +156,13 @@
                         <dxnb:NavBarGroup Text="台帐" Expanded="false">
                             <Items>
                                 <dxnb:NavBarItem Text="保险经纪业务台帐" Name="accounting/BrokerAccounting.aspx">
-                                </dxnb:NavBarItem>                                        
+                                </dxnb:NavBarItem>    
+                                <dxnb:NavBarItem Text="应收保费帐期报表" Name="accounting/PremiumReceivablePeriodReport.aspx">
+                                </dxnb:NavBarItem>  
+                                <dxnb:NavBarItem Text="应收佣金帐期报表" Name="accounting/ProcessReceivablePeriodReport.aspx">
+                                </dxnb:NavBarItem>  
+                                <dxnb:NavBarItem Text="实收保费逾期报表" Name="accounting/PremiumActualOverdueReport.aspx">
+                                </dxnb:NavBarItem>                                      
                             </Items>
                         </dxnb:NavBarGroup>                        
                     </Groups>

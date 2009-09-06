@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/ContentMaster.Master"
-    AutoEventWireup="true" Theme="Aqua" CodeBehind="PolicyListByCarrier.aspx.cs" Inherits="BrokerWebApp.IntegrateSearch.PolicyListByCarrier" %>
+    AutoEventWireup="true" Theme="Aqua" CodeBehind="PolicyListByCarrier.aspx.cs"
+    Inherits="BrokerWebApp.IntegrateSearch.PolicyListByCarrier" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
     TagPrefix="dxrp" %>
@@ -233,7 +234,7 @@
                                         <td style="text-align: left;">
                                         </td>
                                         <td style="text-align: right;" colspan="2">
-                                             <table>
+                                            <table>
                                                 <tr>
                                                     <td>
                                                         <dxe:ASPxButton ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click">
@@ -287,17 +288,10 @@
                     <table style="width: 100%">
                         <tr>
                             <td>
-                                <dxwgv:ASPxGridView ID="gridSearchResult" 
-                                    ClientInstanceName="gridSearchResult" 
-                                    runat="server"
-                                    KeyFieldName="GUID" 
-                                    AutoGenerateColumns="False" 
-                                    Settings-ShowFooter="true" 
-                                    Width="100%"
-                                    SettingsPager-AlwaysShowPager="true" 
-                                    OnCustomCallback="gridSearchResult_CustomCallback"
-                                    OnCustomSummaryCalculate="gridSearchResult_CustomSummaryCalculate"                                    
-                                    >
+                                <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
+                                    KeyFieldName="GUID" AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%"
+                                    SettingsPager-AlwaysShowPager="true" OnCustomCallback="gridSearchResult_CustomCallback"
+                                    OnCustomSummaryCalculate="gridSearchResult_CustomSummaryCalculate">
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
@@ -381,15 +375,20 @@
                                     <GroupSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInGroupFooterColumn="PolicyNo"
                                             DisplayFormat="总计: {0}" />
+                                         <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum"  ShowInGroupFooterColumn="PremiumBase" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="ProcessBase" SummaryType="Sum"  ShowInGroupFooterColumn="ProcessBase" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum"   ShowInGroupFooterColumn="CiPremium" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum"   ShowInGroupFooterColumn="AciPremium" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum"  ShowInGroupFooterColumn="CstPremium"  DisplayFormat="c" />
                                     </GroupSummary>
                                     <TotalSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Custom"   ShowInColumn="Beneficiary" DisplayFormat="保单数: {0}" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Custom" ShowInColumn="Beneficiary"
+                                            DisplayFormat="保单数: {0}" />
                                         <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="ProcessBase" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" DisplayFormat="c" />
-                                        
                                     </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>

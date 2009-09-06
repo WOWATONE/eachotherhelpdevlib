@@ -310,6 +310,10 @@ namespace BrokerWebApp.inoutbalance.rpt {
             
             private global::System.Data.DataColumn columnRemark;
             
+            private global::System.Data.DataColumn columnCiPremium;
+            
+            private global::System.Data.DataColumn columnAciPremium;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ProcessDataTable() {
                 this.TableName = "Process";
@@ -397,6 +401,20 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CiPremiumColumn {
+                get {
+                    return this.columnCiPremium;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn AciPremiumColumn {
+                get {
+                    return this.columnAciPremium;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -425,7 +443,7 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public ProcessRow AddProcessRow(string VoucherID, string CarrierName, string BranchName, string Fee, string FeeUpper, string PayProc, string FeeDate, string Remark) {
+            public ProcessRow AddProcessRow(string VoucherID, string CarrierName, string BranchName, string Fee, string FeeUpper, string PayProc, string FeeDate, string Remark, string CiPremium, string AciPremium) {
                 ProcessRow rowProcessRow = ((ProcessRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         VoucherID,
@@ -435,7 +453,9 @@ namespace BrokerWebApp.inoutbalance.rpt {
                         FeeUpper,
                         PayProc,
                         FeeDate,
-                        Remark};
+                        Remark,
+                        CiPremium,
+                        AciPremium};
                 rowProcessRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProcessRow);
                 return rowProcessRow;
@@ -463,6 +483,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 this.columnPayProc = base.Columns["PayProc"];
                 this.columnFeeDate = base.Columns["FeeDate"];
                 this.columnRemark = base.Columns["Remark"];
+                this.columnCiPremium = base.Columns["CiPremium"];
+                this.columnAciPremium = base.Columns["AciPremium"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -483,6 +505,10 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 base.Columns.Add(this.columnFeeDate);
                 this.columnRemark = new global::System.Data.DataColumn("Remark", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRemark);
+                this.columnCiPremium = new global::System.Data.DataColumn("CiPremium", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCiPremium);
+                this.columnAciPremium = new global::System.Data.DataColumn("AciPremium", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAciPremium);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1023,6 +1049,36 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string CiPremium {
+                get {
+                    try {
+                        return ((string)(this[this.tableProcess.CiPremiumColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“Process”中列“CiPremium”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableProcess.CiPremiumColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string AciPremium {
+                get {
+                    try {
+                        return ((string)(this[this.tableProcess.AciPremiumColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“Process”中列“AciPremium”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableProcess.AciPremiumColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsVoucherIDNull() {
                 return this.IsNull(this.tableProcess.VoucherIDColumn);
             }
@@ -1100,6 +1156,26 @@ namespace BrokerWebApp.inoutbalance.rpt {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetRemarkNull() {
                 this[this.tableProcess.RemarkColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCiPremiumNull() {
+                return this.IsNull(this.tableProcess.CiPremiumColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCiPremiumNull() {
+                this[this.tableProcess.CiPremiumColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsAciPremiumNull() {
+                return this.IsNull(this.tableProcess.AciPremiumColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetAciPremiumNull() {
+                this[this.tableProcess.AciPremiumColumn] = global::System.Convert.DBNull;
             }
         }
         
