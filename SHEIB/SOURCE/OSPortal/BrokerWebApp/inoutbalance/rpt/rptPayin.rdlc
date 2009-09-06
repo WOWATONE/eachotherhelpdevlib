@@ -129,6 +129,18 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
           <DataField>Remark</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="AciPremium">
+          <DataField>AciPremium</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CstPremium">
+          <DataField>CstPremium</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CiPremium">
+          <DataField>CiPremium</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DummyDataSource</DataSourceName>
@@ -785,7 +797,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
             <Width>4.77022cm</Width>
           </TableColumn>
         </TableColumns>
-        <Height>8.61904cm</Height>
+        <Height>9.25396cm</Height>
         <Footer>
           <TableRows>
             <TableRow>
@@ -1021,6 +1033,135 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 <TableCell>
                   <ColSpan>2</ColSpan>
                   <ReportItems>
+                    <Textbox Name="textbox95">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                          <Right>None</Right>
+                        </BorderStyle>
+                        <BorderWidth>
+                          <Left>2pt</Left>
+                        </BorderWidth>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>其中商业险</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox96">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!CiPremium.Value, "dsPayin_Payin")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox97">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>交强险￥</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox98">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!AciPremium.Value, "dsPayin_Payin")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox99">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>车船税￥</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox100">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <BorderWidth>
+                          <Right>2pt</Right>
+                        </BorderWidth>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!CstPremium.Value, "dsPayin_Payin")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.63492cm</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>2</ColSpan>
+                  <ReportItems>
                     <Textbox Name="textbox81">
                       <Style>
                         <BorderStyle>
@@ -1213,7 +1354,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox75">
+                    <Textbox Name="textbox63">
                       <Style>
                         <BorderStyle>
                           <Top>Solid</Top>
@@ -1232,32 +1373,34 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox76">
+                    <Textbox Name="textbox64">
                       <Style>
                         <BorderStyle>
                           <Top>Solid</Top>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
+                        <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>副总经理：</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox77">
+                    <Textbox Name="textbox84">
                       <Style>
                         <BorderStyle>
                           <Top>Solid</Top>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
+                        <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1270,7 +1413,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox78">
+                    <Textbox Name="textbox87">
                       <Style>
                         <BorderStyle>
                           <Top>Solid</Top>
@@ -1289,7 +1432,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox79">
+                    <Textbox Name="textbox88">
                       <Style>
                         <BorderStyle>
                           <Top>Solid</Top>
@@ -1931,7 +2074,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
             <Width>4.77022cm</Width>
           </TableColumn>
         </TableColumns>
-        <Height>7.98412cm</Height>
+        <Height>8.61904cm</Height>
         <Footer>
           <TableRows>
             <TableRow>
@@ -2171,6 +2314,135 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 <TableCell>
                   <ColSpan>2</ColSpan>
                   <ReportItems>
+                    <Textbox Name="textbox78">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                          <Right>None</Right>
+                        </BorderStyle>
+                        <BorderWidth>
+                          <Left>2pt</Left>
+                        </BorderWidth>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>其中商业险</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox89">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!CiPremium.Value, "dsPayin_Payin")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox90">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>交强险￥</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox91">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!AciPremium.Value, "dsPayin_Payin")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox92">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>车船税￥</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox93">
+                      <Style>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <BorderWidth>
+                          <Right>2pt</Right>
+                        </BorderWidth>
+                        <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!CstPremium.Value, "dsPayin_Payin")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.63492cm</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>2</ColSpan>
+                  <ReportItems>
                     <Textbox Name="textbox16">
                       <rd:DefaultName>textbox16</rd:DefaultName>
                       <Style>
@@ -2287,13 +2559,14 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
+                        <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>副总经理：</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -2306,6 +2579,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
+                        <TextAlign>Right</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>

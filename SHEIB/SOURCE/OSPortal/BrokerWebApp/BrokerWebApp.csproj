@@ -346,6 +346,27 @@
     <Compile Include="Accounting\BrokerAccounting.aspx.designer.cs">
       <DependentUpon>BrokerAccounting.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Accounting\PremiumReceivablePeriodReport.aspx.cs">
+      <DependentUpon>PremiumReceivablePeriodReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Accounting\PremiumReceivablePeriodReport.aspx.designer.cs">
+      <DependentUpon>PremiumReceivablePeriodReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\ProcessReceivablePeriodReport.aspx.cs">
+      <DependentUpon>ProcessReceivablePeriodReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Accounting\ProcessReceivablePeriodReport.aspx.designer.cs">
+      <DependentUpon>ProcessReceivablePeriodReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\PremiumActualOverdueReport.aspx.cs">
+      <DependentUpon>PremiumActualOverdueReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Accounting\PremiumActualOverdueReport.aspx.designer.cs">
+      <DependentUpon>PremiumActualOverdueReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BaseClass\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -1145,6 +1166,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Accounting\BrokerAccounting.aspx" />
+    <Content Include="Accounting\PremiumReceivablePeriodReport.aspx" />
+    <Content Include="Accounting\ProcessReceivablePeriodReport.aspx" />
+    <Content Include="Accounting\PremiumActualOverdueReport.aspx" />
     <Content Include="App_Themes\Aqua\ASPxTreeList.skin" />
     <Content Include="BudgetManagement\SignPremiumBudget.aspx" />
     <Content Include="BudgetManagement\SignPremiumBudgetList.aspx" />

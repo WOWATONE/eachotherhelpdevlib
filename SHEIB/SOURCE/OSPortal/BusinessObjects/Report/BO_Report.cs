@@ -46,7 +46,29 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand);
         }
 
+        public static DataSet GetPremiumReceivablePeriodReport(string sWhere)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetPremiumReceivablePeriodReport");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            return _db.ExecuteDataSet(dbCommand);
+        }
 
+        public static DataSet GetProcessReceivablePeriodReport(string sWhere)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetProcessReceivablePeriodReport");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+
+
+        public static DataSet GetPremiumActualOverdueReport(string sWhere)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetPremiumActualOverdueReport");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+        
         #endregion Methods
 
 

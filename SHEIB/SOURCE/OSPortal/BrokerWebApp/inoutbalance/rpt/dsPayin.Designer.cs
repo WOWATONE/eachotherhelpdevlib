@@ -318,6 +318,12 @@ namespace BrokerWebApp.inoutbalance.rpt {
             
             private global::System.Data.DataColumn columnRemark;
             
+            private global::System.Data.DataColumn columnAciPremium;
+            
+            private global::System.Data.DataColumn columnCstPremium;
+            
+            private global::System.Data.DataColumn columnCiPremium;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public PayinDataTable() {
                 this.TableName = "Payin";
@@ -433,6 +439,27 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn AciPremiumColumn {
+                get {
+                    return this.columnAciPremium;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CstPremiumColumn {
+                get {
+                    return this.columnCstPremium;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CiPremiumColumn {
+                get {
+                    return this.columnCiPremium;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -461,7 +488,7 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PayinRow AddPayinRow(string VoucherID, string CarrierName, string BranchName, string BankName, string BankAccount, string PayinFee, string PayinFeeUpper, string PayProc, string Customer, string FeeDate, string ProcessFeeTypeName, string Remark) {
+            public PayinRow AddPayinRow(string VoucherID, string CarrierName, string BranchName, string BankName, string BankAccount, string PayinFee, string PayinFeeUpper, string PayProc, string Customer, string FeeDate, string ProcessFeeTypeName, string Remark, string AciPremium, string CstPremium, string CiPremium) {
                 PayinRow rowPayinRow = ((PayinRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         VoucherID,
@@ -475,7 +502,10 @@ namespace BrokerWebApp.inoutbalance.rpt {
                         Customer,
                         FeeDate,
                         ProcessFeeTypeName,
-                        Remark};
+                        Remark,
+                        AciPremium,
+                        CstPremium,
+                        CiPremium};
                 rowPayinRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPayinRow);
                 return rowPayinRow;
@@ -507,6 +537,9 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 this.columnFeeDate = base.Columns["FeeDate"];
                 this.columnProcessFeeTypeName = base.Columns["ProcessFeeTypeName"];
                 this.columnRemark = base.Columns["Remark"];
+                this.columnAciPremium = base.Columns["AciPremium"];
+                this.columnCstPremium = base.Columns["CstPremium"];
+                this.columnCiPremium = base.Columns["CiPremium"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -535,6 +568,12 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 base.Columns.Add(this.columnProcessFeeTypeName);
                 this.columnRemark = new global::System.Data.DataColumn("Remark", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRemark);
+                this.columnAciPremium = new global::System.Data.DataColumn("AciPremium", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAciPremium);
+                this.columnCstPremium = new global::System.Data.DataColumn("CstPremium", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCstPremium);
+                this.columnCiPremium = new global::System.Data.DataColumn("CiPremium", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCiPremium);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1122,6 +1161,51 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string AciPremium {
+                get {
+                    try {
+                        return ((string)(this[this.tablePayin.AciPremiumColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“Payin”中列“AciPremium”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablePayin.AciPremiumColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string CstPremium {
+                get {
+                    try {
+                        return ((string)(this[this.tablePayin.CstPremiumColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“Payin”中列“CstPremium”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablePayin.CstPremiumColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string CiPremium {
+                get {
+                    try {
+                        return ((string)(this[this.tablePayin.CiPremiumColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“Payin”中列“CiPremium”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablePayin.CiPremiumColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsVoucherIDNull() {
                 return this.IsNull(this.tablePayin.VoucherIDColumn);
             }
@@ -1239,6 +1323,36 @@ namespace BrokerWebApp.inoutbalance.rpt {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetRemarkNull() {
                 this[this.tablePayin.RemarkColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsAciPremiumNull() {
+                return this.IsNull(this.tablePayin.AciPremiumColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetAciPremiumNull() {
+                this[this.tablePayin.AciPremiumColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCstPremiumNull() {
+                return this.IsNull(this.tablePayin.CstPremiumColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCstPremiumNull() {
+                this[this.tablePayin.CstPremiumColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCiPremiumNull() {
+                return this.IsNull(this.tablePayin.CiPremiumColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCiPremiumNull() {
+                this[this.tablePayin.CiPremiumColumn] = global::System.Convert.DBNull;
             }
         }
         
