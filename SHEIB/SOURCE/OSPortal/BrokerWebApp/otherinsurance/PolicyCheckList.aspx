@@ -357,7 +357,7 @@
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowPager"  PageSize="20" Summary-Visible="true" />
                                                         <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
-                                                        <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
+                                                        <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" AllowGroup="true" />
                                                         <SettingsText CustomizationWindowCaption="个性化" />
                                                         <GroupSummary >
                                                             <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" ShowInGroupFooterColumn="PolicyNo" DisplayFormat = "总计: {0}" />
