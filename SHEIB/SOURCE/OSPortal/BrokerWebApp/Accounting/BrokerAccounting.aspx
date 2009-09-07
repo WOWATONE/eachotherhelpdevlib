@@ -571,20 +571,19 @@
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" ShowInGroupFooterColumn="PolicyNo" SummaryType="Count"
                                             DisplayFormat="#" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayProcBase" ShowInGroupFooterColumn="PayProcBase"
-                                            SummaryType="Sum" />
+                                            SummaryType="Sum" DisplayFormat="c"/>
                                         <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" ShowInGroupFooterColumn="PayFeeBase"
-                                            SummaryType="Sum" DisplayFormat="{0:c}" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayedFee" ShowInGroupFooterColumn="PayedFee" SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayedFee" ShowInGroupFooterColumn="PayedFee" SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayinedFee" ShowInGroupFooterColumn="PayedFee"
-                                            SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="InvoiceedFee" ShowInGroupFooterColumn="PayedFee"
-                                            SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayProcedFee" ShowInGroupFooterColumn="PayedFee"
-                                            SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum"  ShowInGroupFooterColumn="CiPremium"   />
-                                        <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" ShowInGroupFooterColumn="AciPremium"  />
-                                        <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" ShowInGroupFooterColumn="CstPremium"  />
+                                            SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PayedFee" ShowInGroupFooterColumn="PayedFee" SummaryType="Sum"  DisplayFormat="c"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="PayinedFee" ShowInGroupFooterColumn="PayinedFee"
+                                            SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="InvoiceedFee" ShowInGroupFooterColumn="InvoiceedFee"
+                                            SummaryType="Sum" DisplayFormat="c"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="PayProcedFee" ShowInGroupFooterColumn="PayProcedFee"
+                                            SummaryType="Sum" DisplayFormat="c"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum"  ShowInGroupFooterColumn="CiPremium"   DisplayFormat="c"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" ShowInGroupFooterColumn="AciPremium"  DisplayFormat="c"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" ShowInGroupFooterColumn="CstPremium"  DisplayFormat="c"/>
                                     </GroupSummary>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" DisplayFormat="#" />
