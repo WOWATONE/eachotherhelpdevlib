@@ -166,11 +166,11 @@ namespace BrokerWebApp.inoutbalance
 
             if (this.dxeddlCarrier.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrier.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and a.CarrierID ='" + dxeddlCarrier.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.CarrierID ='" + dxeddlCarrier.SelectedItem.Value.ToString() + "'";
             }
             if (this.dxeddlBranch.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranch.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and a.BranchID ='" + dxeddlBranch.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.BranchID ='" + dxeddlBranch.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlPolicyType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyType.SelectedItem.Value.ToString()))

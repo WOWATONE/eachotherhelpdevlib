@@ -87,6 +87,11 @@ namespace BrokerWebApp.inoutbalance
                 lsWhere = lsWhere + " and (convert(char(10), a.PayinDate,21)) <='" + lsEndDate + "'";
             }
 
+            if (dxetxtCustName.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and exists(select 1 from Customer where CustName like '%" + dxetxtCustName.Text.Trim() + "%' and CustID=c.CustomerID)";
+            }
+            
             this.gridSearchResult.DataSource = Bo_FeeInvoice.GetFeeInvoiceSelectList(lsWhere);
             this.gridSearchResult.DataBind();
 
