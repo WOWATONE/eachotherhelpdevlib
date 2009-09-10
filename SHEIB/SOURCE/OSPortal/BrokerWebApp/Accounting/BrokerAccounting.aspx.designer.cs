@@ -86,24 +86,6 @@ namespace BrokerWebApp.Accounting {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCustomer;
         
         /// <summary>
-        /// dxeddlDeptID 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlDeptID;
-        
-        /// <summary>
-        /// dxeddlSalesId 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesId;
-        
-        /// <summary>
         /// dxeddlProdTypeName 控件。
         /// </summary>
         /// <remarks>
@@ -122,22 +104,22 @@ namespace BrokerWebApp.Accounting {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden ptid;
         
         /// <summary>
-        /// dxeddlCarrierId 控件。
+        /// dxeddlDeptID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCarrierId;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlDeptID;
         
         /// <summary>
-        /// dxeddlBranchId 控件。
+        /// dxeddlSalesId 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlBranchId;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesId;
         
         /// <summary>
         /// dxetxtCarrierSales 控件。
@@ -156,15 +138,6 @@ namespace BrokerWebApp.Accounting {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSourceTypeID;
-        
-        /// <summary>
-        /// dxeddlOperationType 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlOperationType;
         
         /// <summary>
         /// dxeStartPayFeeDate 控件。
@@ -194,6 +167,15 @@ namespace BrokerWebApp.Accounting {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlPayFeeStatus;
         
         /// <summary>
+        /// dxeddlCarrierId 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCarrierId;
+        
+        /// <summary>
         /// dxeStartPayinDate 控件。
         /// </summary>
         /// <remarks>
@@ -219,6 +201,15 @@ namespace BrokerWebApp.Accounting {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlPayinStatus;
+        
+        /// <summary>
+        /// dxeddlBranchId 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlBranchId;
         
         /// <summary>
         /// dxeStartInvoiceDate 控件。
@@ -248,6 +239,15 @@ namespace BrokerWebApp.Accounting {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlInvoiceStatus;
         
         /// <summary>
+        /// dxeddlOperationType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlOperationType;
+        
+        /// <summary>
         /// dxeStartPayProcDate 控件。
         /// </summary>
         /// <remarks>
@@ -273,6 +273,15 @@ namespace BrokerWebApp.Accounting {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlPayProcStatus;
+        
+        /// <summary>
+        /// dxeddlGatheringType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlGatheringType;
         
         /// <summary>
         /// dxeStartDate 控件。

@@ -300,6 +300,9 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PremiumBase" Caption="保费(本)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataDateColumn FieldName="PayDate" Caption="应收日期" CellStyle-Wrap="False"
+                                            PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                                        </dxwgv:GridViewDataDateColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="本期应收保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayedFee" Caption="本期已收保费" CellStyle-Wrap="False">

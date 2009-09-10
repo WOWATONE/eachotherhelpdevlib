@@ -193,6 +193,11 @@ namespace BrokerWebApp.Accounting
                 lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomer.Text + "%' and CustID=b.CustomerID) ";
             }
 
+            if (this.dxeddlGatheringType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlGatheringType.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and a.GatheringType ='" + dxeddlGatheringType.SelectedItem.Value.ToString() + "'";
+            }
+
             string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");
             string lsEndDate = dxeEndDate.Date.ToString("yyyy-MM-dd");
             if ((dxeStartDate.Text.Trim() != "") && (dxeEndDate.Text.Trim() != ""))

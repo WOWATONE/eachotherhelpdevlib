@@ -118,17 +118,17 @@
                                         </td>
                                         <td style="width: 180px;">
                                         </td>
-                                        <td style="width: 20px;">
-                                        </td>
-                                        <td style="width: 50px;">
+                                        <td style="width: 70px;">
                                         </td>
                                         <td style="width: 180px;">
                                         </td>
                                         <td style="width: 70px;">
                                         </td>
-                                        <td style="width: 160px;">
+                                        <td style="width: 180px;">
                                         </td>
-                                        <td>
+                                        <td style="width: 70px;>
+                                        </td>
+                                        <td style="width: 180px;">
                                         </td>
                                     </tr>
                                     <tr>
@@ -140,7 +140,7 @@
                                                 Width="170px">
                                             </dxe:ASPxTextBox>
                                         </td>
-                                        <td style="text-align: right;" colspan="2">
+                                        <td style="text-align: right;">
                                             投保编号：
                                         </td>
                                         <td style="text-align: left;">
@@ -148,7 +148,7 @@
                                                 Width="170px">
                                             </dxe:ASPxTextBox>
                                         </td>
-                                        <td style="text-align: right;">
+                                        <td style="text-align: left;">
                                             投保客户：
                                         </td>
                                         <td style="text-align: left;">
@@ -156,7 +156,14 @@
                                                 Width="155px">
                                             </dxe:ASPxTextBox>
                                         </td>
-                                        <td>
+                                         <td style="text-align: left;">
+                                            保险险种：
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
+                                                runat="server" Width="160px" DropDownStyle="DropDownList">
+                                            </dxe:ASPxComboBox>
+                                            <input type="hidden" id="ptid" runat="server" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -169,7 +176,7 @@
                                                 <ClientSideEvents SelectedIndexChanged="dxeddlDeptID_SelectedIndexChanged" />
                                             </dxe:ASPxComboBox>
                                         </td>
-                                        <td style="text-align: right;" colspan="2">
+                                        <td style="text-align: right;">
                                             客户经理：
                                         </td>
                                         <td style="text-align: left;">
@@ -177,37 +184,7 @@
                                                 Width="170px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
                                             </dxe:ASPxComboBox>
                                         </td>
-                                        <td style="text-align: right;">
-                                            保险险种：
-                                        </td>
-                                        <td style="text-align: left;">
-                                            <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
-                                                runat="server" Width="160px" DropDownStyle="DropDownList">
-                                            </dxe:ASPxComboBox>
-                                            <input type="hidden" id="ptid" runat="server" />
-                                        </td>
-                                        <td style="text-align: left;">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align: right;">
-                                            保险公司：
-                                        </td>
-                                        <td style="text-align: left;">
-                                            <dxe:ASPxComboBox ID="dxeddlCarrierId" ClientInstanceName="dxeddlCarrierId" runat="server"
-                                                Width="170px" DropDownStyle="DropDownList">
-                                                <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlCarrierId_SelectedIndexChanged(s,e);}" />
-                                            </dxe:ASPxComboBox>
-                                        </td>
-                                        <td style="text-align: right;" colspan="2">
-                                            分支机构：
-                                        </td>
-                                        <td style="text-align: left;">
-                                            <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server"
-                                                Width="170px" DropDownStyle="DropDownList" OnCallback="dxeddlBranchId_Callback">
-                                            </dxe:ASPxComboBox>
-                                        </td>
-                                        <td style="text-align: right;">
+                                       <td style="text-align: right;">
                                             业务员：
                                         </td>
                                         <td style="text-align: left;">
@@ -215,11 +192,7 @@
                                                 runat="server" Width="155px">
                                             </dxe:ASPxTextBox>
                                         </td>
-                                        <td>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align: right;">
+                                         <td style="text-align: left;">
                                             业务来源：
                                         </td>
                                         <td style="text-align: left;">
@@ -227,26 +200,13 @@
                                                 runat="server" Width="170px" DropDownStyle="DropDownList">
                                             </dxe:ASPxComboBox>
                                         </td>
-                                        <td style="text-align: right;" colspan="2">
-                                            业务性质：
-                                        </td>
-                                        <td style="text-align: left;">
-                                            <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType"
-                                                runat="server" Width="170px" DropDownStyle="DropDownList">
-                                            </dxe:ASPxComboBox>
-                                        </td>
-                                        <td style="text-align: right;">
-                                        </td>
-                                        <td style="text-align: left;">
-                                        </td>
-                                        <td>
-                                        </td>
                                     </tr>
+
                                     <tr>
                                         <td style="text-align: right;">
                                             收费日期：
                                         </td>
-                                        <td style="text-align: left; white-space: nowrap" nowrap="nowrap" colspan="4">
+                                        <td style="text-align: left; white-space: nowrap" nowrap="nowrap" colspan="3">
                                             <table>
                                                 <tr>
                                                     <td>
@@ -276,12 +236,21 @@
                                                 </Items>
                                             </dxe:ASPxComboBox>
                                         </td>
+                                        <td style="text-align: right;">
+                                            保险公司：
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <dxe:ASPxComboBox ID="dxeddlCarrierId" ClientInstanceName="dxeddlCarrierId" runat="server"
+                                                Width="170px" DropDownStyle="DropDownList">
+                                                <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlCarrierId_SelectedIndexChanged(s,e);}" />
+                                            </dxe:ASPxComboBox>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: right;">
                                             解付日期：
                                         </td>
-                                        <td style="text-align: left; white-space: nowrap" nowrap="nowrap" colspan="4">
+                                        <td style="text-align: left; white-space: nowrap" nowrap="nowrap" colspan="3">
                                             <table>
                                                 <tr>
                                                     <td>
@@ -310,12 +279,20 @@
                                                 </Items>
                                             </dxe:ASPxComboBox>
                                         </td>
+                                        <td style="text-align: right;" >
+                                            分支机构：
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <dxe:ASPxComboBox ID="dxeddlBranchId" ClientInstanceName="dxeddlBranchId" runat="server"
+                                                Width="170px" DropDownStyle="DropDownList" OnCallback="dxeddlBranchId_Callback">
+                                            </dxe:ASPxComboBox>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: right;">
                                             开票日期：
                                         </td>
-                                        <td style="text-align: left; white-space: nowrap" nowrap="nowrap" colspan="4">
+                                        <td style="text-align: left; white-space: nowrap" nowrap="nowrap" colspan="3">
                                             <table>
                                                 <tr>
                                                     <td>
@@ -345,12 +322,19 @@
                                                 </Items>
                                             </dxe:ASPxComboBox>
                                         </td>
+                                        <td style="text-align: right;">
+                                            业务性质：
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <dxe:ASPxComboBox ID="dxeddlOperationType" ClientInstanceName="dxeddlOperationType"
+                                                runat="server" Width="170px" DropDownStyle="DropDownList">
+                                            </dxe:ASPxComboBox>
                                     </tr>
                                     <tr>
                                         <td style="text-align: right;">
                                             结算日期：
                                         </td>
-                                        <td style="text-align: left; white-space: nowrap" nowrap="nowrap" colspan="4">
+                                        <td style="text-align: left; white-space: nowrap" nowrap="nowrap" colspan="3">
                                             <table>
                                                 <tr>
                                                     <td>
@@ -380,12 +364,22 @@
                                                 </Items>
                                             </dxe:ASPxComboBox>
                                         </td>
+                                        <td>收款方式：</td>
+                                        <td>
+                                            <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
+                                                runat="server" Width="155px" DropDownStyle="DropDownList">
+                                                <Items>
+                                                    <dxe:ListEditItem Value="1" Text="代收" />
+                                                    <dxe:ListEditItem Value="2" Text="直付" />
+                                                </Items>
+                                            </dxe:ASPxComboBox>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: right;">
                                             录单日期：
                                         </td>
-                                        <td style="text-align: left;" colspan="4">
+                                        <td style="text-align: left;" colspan="3">
                                             <table>
                                                 <tr>
                                                     <td>

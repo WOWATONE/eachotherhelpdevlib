@@ -42,27 +42,27 @@ namespace BrokerWebApp.inoutbalance
 
             if (dxetxtInvoiceID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and b.InvoiceID ='" + dxetxtInvoiceID.Text + "'";
+                lsWhere = lsWhere + " and a.InvoiceID ='" + dxetxtInvoiceID.Text + "'";
             }
 
 
             if (dxetxtInvoiceNO.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and b.InvoiceNo ='" + dxetxtInvoiceNO.Text + "'";
+                lsWhere = lsWhere + " and a.InvoiceNo like '%" + dxetxtInvoiceNO.Text + "%'";
             }
 
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and c.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and b.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
             }
 
             if (dxeddlDeptId.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and c.DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.DeptId ='" + dxeddlDeptId.SelectedItem.Value.ToString() + "'";
             }
             if (dxeddlSalesId.SelectedItem.Value.ToString().Trim() != "")
             {
-                lsWhere = lsWhere + " and c.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlCarrier.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrier.SelectedItem.Value.ToString()))
@@ -75,7 +75,7 @@ namespace BrokerWebApp.inoutbalance
             }
             if (this.dxeddlPolicyType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyType.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and c.PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlGatheringType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlGatheringType.SelectedItem.Value.ToString()))
@@ -89,7 +89,7 @@ namespace BrokerWebApp.inoutbalance
             }
             if (dxetxtCustName.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustName.Text + "%' and CustID=c.CustomerID) ";
+                lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustName.Text + "%' and CustID=b.CustomerID) ";
             }
             string lsStartDate = dxeGetStartDate.Date.ToString("yyyy-MM-dd");
             string lsEndDate = dxeGetEndDate.Date.ToString("yyyy-MM-dd");
