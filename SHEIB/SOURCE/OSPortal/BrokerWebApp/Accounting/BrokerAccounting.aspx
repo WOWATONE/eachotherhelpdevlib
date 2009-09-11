@@ -126,7 +126,7 @@
                                         </td>
                                         <td style="width: 180px;">
                                         </td>
-                                        <td style="width: 70px;>
+                                        <td style="width: 70px;">
                                         </td>
                                         <td style="width: 180px;">
                                         </td>
@@ -156,7 +156,7 @@
                                                 Width="155px">
                                             </dxe:ASPxTextBox>
                                         </td>
-                                         <td style="text-align: left;">
+                                        <td style="text-align: left;">
                                             保险险种：
                                         </td>
                                         <td style="text-align: left;">
@@ -184,7 +184,7 @@
                                                 Width="170px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
                                             </dxe:ASPxComboBox>
                                         </td>
-                                       <td style="text-align: right;">
+                                        <td style="text-align: right;">
                                             业务员：
                                         </td>
                                         <td style="text-align: left;">
@@ -192,7 +192,7 @@
                                                 runat="server" Width="155px">
                                             </dxe:ASPxTextBox>
                                         </td>
-                                         <td style="text-align: left;">
+                                        <td style="text-align: left;">
                                             业务来源：
                                         </td>
                                         <td style="text-align: left;">
@@ -201,7 +201,6 @@
                                             </dxe:ASPxComboBox>
                                         </td>
                                     </tr>
-
                                     <tr>
                                         <td style="text-align: right;">
                                             收费日期：
@@ -236,7 +235,7 @@
                                                 </Items>
                                             </dxe:ASPxComboBox>
                                         </td>
-                                        <td style="text-align: right;">
+                                        <td style="text-align: left;">
                                             保险公司：
                                         </td>
                                         <td style="text-align: left;">
@@ -279,7 +278,7 @@
                                                 </Items>
                                             </dxe:ASPxComboBox>
                                         </td>
-                                        <td style="text-align: right;" >
+                                        <td style="text-align: left;">
                                             分支机构：
                                         </td>
                                         <td style="text-align: left;">
@@ -322,7 +321,7 @@
                                                 </Items>
                                             </dxe:ASPxComboBox>
                                         </td>
-                                        <td style="text-align: right;">
+                                        <td style="text-align: left;">
                                             业务性质：
                                         </td>
                                         <td style="text-align: left;">
@@ -364,7 +363,9 @@
                                                 </Items>
                                             </dxe:ASPxComboBox>
                                         </td>
-                                        <td>收款方式：</td>
+                                        <td style="text-align: left;">
+                                            收款方式：
+                                        </td>
                                         <td>
                                             <dxe:ASPxComboBox ID="dxeddlGatheringType" ClientInstanceName="dxeddlGatheringType"
                                                 runat="server" Width="155px" DropDownStyle="DropDownList">
@@ -396,6 +397,32 @@
                                                 </tr>
                                             </table>
                                         </td>
+                                       <td style="text-align: right;">
+                                            应收日期：
+                                        </td>
+                                        <td style="text-align: left;" colspan="3">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeStartPayDate" ClientInstanceName="dxeStartPayDate" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                    <td>
+                                                        至
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeEndPayDate" ClientInstanceName="dxeEndPayDate" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                         <td style="text-align: right;" colspan="2">
                                             <table>
                                                 <tr>
@@ -565,19 +592,23 @@
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" ShowInGroupFooterColumn="PolicyNo" SummaryType="Count"
                                             DisplayFormat="#" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayProcBase" ShowInGroupFooterColumn="PayProcBase"
-                                            SummaryType="Sum" DisplayFormat="c"/>
+                                            SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" ShowInGroupFooterColumn="PayFeeBase"
                                             SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayedFee" ShowInGroupFooterColumn="PayedFee" SummaryType="Sum"  DisplayFormat="c"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="PayedFee" ShowInGroupFooterColumn="PayedFee" SummaryType="Sum"
+                                            DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayinedFee" ShowInGroupFooterColumn="PayinedFee"
                                             SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="InvoiceedFee" ShowInGroupFooterColumn="InvoiceedFee"
-                                            SummaryType="Sum" DisplayFormat="c"/>
+                                            SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayProcedFee" ShowInGroupFooterColumn="PayProcedFee"
-                                            SummaryType="Sum" DisplayFormat="c"/>
-                                        <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum"  ShowInGroupFooterColumn="CiPremium"   DisplayFormat="c"/>
-                                        <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" ShowInGroupFooterColumn="AciPremium"  DisplayFormat="c"/>
-                                        <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" ShowInGroupFooterColumn="CstPremium"  DisplayFormat="c"/>
+                                            SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" ShowInGroupFooterColumn="CiPremium"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" ShowInGroupFooterColumn="AciPremium"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" ShowInGroupFooterColumn="CstPremium"
+                                            DisplayFormat="c" />
                                     </GroupSummary>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" DisplayFormat="#" />
