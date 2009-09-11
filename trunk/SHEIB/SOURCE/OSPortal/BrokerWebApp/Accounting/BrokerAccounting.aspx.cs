@@ -289,6 +289,15 @@ namespace BrokerWebApp.Accounting
                 }
             }
 
+
+            string lsStartPayDate = dxeStartPayDate.Date.ToString("yyyy-MM-dd");
+            string lsEndPayDate = dxeEndPayDate.Date.ToString("yyyy-MM-dd");
+            if ((dxeStartPayDate.Text.Trim() != "") && (dxeEndPayDate.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), a.PayDate,21)) >='" + lsStartPayDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), a.PayDate,21)) <='" + lsEndPayDate + "'";
+            }
+
             DataTable dt = BO_Report.GetAccounting(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
