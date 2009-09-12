@@ -383,7 +383,30 @@ namespace BusinessObjects
 
             return _db.ExecuteDataSet(dbCommand);
         }
-        
+
+
+        public bool CheckPermission(BO_P_Priv.PrivListEnum thePrem)
+        {
+            
+            if (Administrators.Contains(this.UserID)) return true;
+            bool checkResult = false;
+
+            foreach (BO_P_Role roleItem in this.Roles)
+            {
+                foreach (BO_P_Priv premItem in roleItem.Privs)
+                {
+                    if (premItem.PrivID == Convert.ToString(Convert.ToInt32(thePrem)))
+                    {
+                        checkResult = true;
+                        break;
+                    }
+                }
+            }
+            
+            return checkResult;
+        }
+
+
         #endregion Methods
 
 

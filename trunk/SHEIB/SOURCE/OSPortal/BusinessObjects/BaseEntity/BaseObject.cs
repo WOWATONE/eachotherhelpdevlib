@@ -20,6 +20,8 @@ namespace BusinessObjects
         protected static Database _db = DataService.DB;
         protected static Int32 IdentityInitialValue = 0;
 
+        protected static List<String> Administrators = new List<string>{"admin"};
+
         #endregion Variable
     }
 
