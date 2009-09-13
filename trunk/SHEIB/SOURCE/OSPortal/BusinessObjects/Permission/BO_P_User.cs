@@ -401,6 +401,10 @@ namespace BusinessObjects
                         break;
                     }
                 }
+                if (checkResult)
+                {
+                    break;
+                }
             }
             
             return checkResult;
