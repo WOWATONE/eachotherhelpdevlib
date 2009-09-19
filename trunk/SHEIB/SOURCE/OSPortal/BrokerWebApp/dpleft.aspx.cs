@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
+using BusinessObjects;
 
 namespace BrokerWebApp
 {
@@ -28,137 +29,753 @@ namespace BrokerWebApp
 
         private void generateMenus()
         {
-            //客户关系
-            //this.ASPxNavBar1.Groups[0].ClientVisible = false;
-            //客户列表
-            //this.ASPxNavBar1.Groups[0].Items[0].ClientVisible = false;            
-            //联系人
-            //this.ASPxNavBar1.Groups[0].Items[1].ClientVisible = false;
-            //业务跟进
-            //this.ASPxNavBar1.Groups[0].Items[2].ClientVisible = false;
+            bool checkResult = false;
+            bool existItemInGroup = false;
 
+
+            //客户关系
+            existItemInGroup = false;
+            //客户列表
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Customer_List_Search_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Customer_List_Search_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Contact_List_Search_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[0].Items[0].ClientVisible = true; 
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[0].Items[0].ClientVisible = false; 
+            }
+            
+
+            
+            //联系人
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Contact_List_Search_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Contact_List_Search_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Contact_List_Search_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[0].Items[1].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[0].Items[1].ClientVisible = false;
+            }
+            
+            //业务跟进
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ServiceFollowUp_List_Search_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ServiceFollowUp_List_Search_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ServiceFollowUp_List_Search_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[0].Items[2].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[0].Items[2].ClientVisible = false;
+            }
+            
+            //group
+            if (existItemInGroup)
+                this.ASPxNavBar1.Groups[0].ClientVisible = true;
+            else
+                this.ASPxNavBar1.Groups[0].ClientVisible = false;
+
+
+
+
+
+            
             //非车险保单管理
-            //this.ASPxNavBar1.Groups[1].ClientVisible = false;
+            existItemInGroup = false;
             //保单录入
-            //this.ASPxNavBar1.Groups[1].Items[0].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyInput_Add);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyInput_Modify);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyInput_Delete);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[1].Items[0].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[1].Items[0].ClientVisible = false;
+            }
+            
+            
             //保单批改
-            //this.ASPxNavBar1.Groups[1].Items[1].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_Add);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_Modify);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_Delete);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[1].Items[1].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[1].Items[1].ClientVisible = false;
+            }
+                        
             //保单审核
-            //this.ASPxNavBar1.Groups[1].Items[2].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAudit_Audit);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAudit_AuditBack);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[1].Items[2].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[1].Items[2].ClientVisible = false;
+            }
+            
+            //group
+            if (existItemInGroup)
+                this.ASPxNavBar1.Groups[1].ClientVisible = true;
+            else
+                this.ASPxNavBar1.Groups[1].ClientVisible = false;
+
+
+
 
 
             //车险保单管理
-            //this.ASPxNavBar1.Groups[2].ClientVisible = false;
+            existItemInGroup = false;
             //询价单录入
-            //this.ASPxNavBar1.Groups[2].Items[0].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.AskPriceInput_Add);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.AskPriceInput_Modify);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.AskPriceInput_Delete);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[2].Items[0].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[2].Items[0].ClientVisible = false;
+            }
+            
             //询价单审核
-            //this.ASPxNavBar1.Groups[2].Items[1].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.AskPriceInput_Audit);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.AskPriceInput_AuditBack);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[2].Items[1].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[2].Items[1].ClientVisible = false;
+            }
+            
             //保单批改
-            //this.ASPxNavBar1.Groups[2].Items[2].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_Add);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_Modify);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_Delete);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[2].Items[2].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[2].Items[2].ClientVisible = false;
+            }
+            
             //批单审核
-            //this.ASPxNavBar1.Groups[2].Items[3].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAudit_Audit);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAudit_AuditBack);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[2].Items[3].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[2].Items[3].ClientVisible = false;
+            }
+            
             //保单信息补录
-            //this.ASPxNavBar1.Groups[2].Items[4].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyInfo_Append);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[2].Items[4].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[2].Items[4].ClientVisible = false;
+            }
+            
+            //group
+            if (existItemInGroup)
+                this.ASPxNavBar1.Groups[2].ClientVisible = true;
+            else
+                this.ASPxNavBar1.Groups[2].ClientVisible = false;
+
 
 
             //客户理赔
-            //this.ASPxNavBar1.Groups[3].ClientVisible = false;
+            existItemInGroup = false;
             //理赔登记
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PaymentClaims_Register);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[3].Items[0].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[3].Items[0].ClientVisible = false;
+            }
+
+            //group
+            if (existItemInGroup)
+                this.ASPxNavBar1.Groups[3].ClientVisible = true;
+            else
+                this.ASPxNavBar1.Groups[3].ClientVisible = false;
 
 
             //业务咨询
-            //this.ASPxNavBar1.Groups[4].ClientVisible = false;
+            existItemInGroup = false;
             //业务咨询
-            //this.ASPxNavBar1.Groups[4].Items[0].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.BusinessConsultList_View_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.BusinessConsultList_View_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.BusinessConsultList_View_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[4].Items[0].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[4].Items[0].ClientVisible = false;
+            }
+
+            //group
+            if (existItemInGroup)
+                this.ASPxNavBar1.Groups[4].ClientVisible = true;
+            else
+                this.ASPxNavBar1.Groups[4].ClientVisible = false;
 
 
             //收付结算
-            //this.ASPxNavBar1.Groups[5].ClientVisible = false;
+            existItemInGroup = false;
             //保费通知书
-            //this.ASPxNavBar1.Groups[5].Items[0].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeNoticeList_Search_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeNoticeList_Search_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeNoticeList_Search_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[5].Items[0].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[5].Items[0].ClientVisible = false;
+            }
+
             //客户收费
-            //this.ASPxNavBar1.Groups[5].Items[1].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeCustomerList_Search_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeCustomerList_Search_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeCustomerList_Search_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[5].Items[1].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[5].Items[1].ClientVisible = false;
+            }
+            
             //解付保费
-            //this.ASPxNavBar1.Groups[5].Items[2].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeePayList_Search_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeePayList_Search_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeePayList_Search_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[5].Items[2].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[5].Items[2].ClientVisible = false;
+            }
+            
             //经纪费开票
-            //this.ASPxNavBar1.Groups[5].Items[3].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeVoiceList_Search_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeVoiceList_Search_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeVoiceList_Search_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[5].Items[3].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[5].Items[3].ClientVisible = false;
+            }
+            
             //经纪费结算
-            //this.ASPxNavBar1.Groups[5].Items[4].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeBalanceList_Search_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeBalanceList_Search_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeBalanceList_Search_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[5].Items[4].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[5].Items[4].ClientVisible = false;
+            }
+            
             //已通知未收费清单
-            //this.ASPxNavBar1.Groups[5].Items[5].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeNotice_NoPay_List);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[5].Items[5].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[5].Items[5].ClientVisible = false;
+            }
+            
             //已收费未解付清单
-            //this.ASPxNavBar1.Groups[5].Items[6].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeCustomer_NoFeePay_List);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[5].Items[6].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[5].Items[6].ClientVisible = false;
+            }
+            
             //已解付未开票清单
-            //this.ASPxNavBar1.Groups[5].Items[7].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeePay_NoFeeVoice_List);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[5].Items[7].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[5].Items[7].ClientVisible = false;
+            }
+            
             //已开票未结算清单
-            //this.ASPxNavBar1.Groups[5].Items[8].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeVoice_NoFeeBalance_List);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[5].Items[8].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[5].Items[8].ClientVisible = false;
+            }
+            
+            //group
+            if (existItemInGroup)
+                this.ASPxNavBar1.Groups[5].ClientVisible = true;
+            else
+                this.ASPxNavBar1.Groups[5].ClientVisible = false;
 
 
             //综合查询
-            //this.ASPxNavBar1.Groups[6].ClientVisible = false;
+            existItemInGroup = false;
             //保单查询
-            //this.ASPxNavBar1.Groups[6].Items[0].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Policy_Search_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Policy_Search_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Policy_Search_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[6].Items[0].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[6].Items[0].ClientVisible = false;
+            }
+            
             //保单查询(保险公司)
-            //this.ASPxNavBar1.Groups[6].Items[1].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Policy_Search_Carrier_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Policy_Search_Carrier_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Policy_Search_Carrier_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[6].Items[1].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[6].Items[1].ClientVisible = false;
+            }
+
+            //group
+            if (existItemInGroup)
+                this.ASPxNavBar1.Groups[6].ClientVisible = true;
+            else
+                this.ASPxNavBar1.Groups[6].ClientVisible = false;
+
+
 
 
             //系统设置
-            //this.ASPxNavBar1.Groups[7].ClientVisible = false;            
+            existItemInGroup = false;
             //员工管理
-            //this.ASPxNavBar1.Groups[7].Items[0].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Employee_Manage);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[7].Items[0].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[7].Items[0].ClientVisible = false;
+            }
+            
             //角色管理
-            //this.ASPxNavBar1.Groups[7].Items[1].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Role_Manage);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[7].Items[1].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[7].Items[1].ClientVisible = false;
+            }
+            
             //组织机构
-            //this.ASPxNavBar1.Groups[7].Items[2].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Organ_Schema);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[7].Items[2].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[7].Items[2].ClientVisible = false;
+            }
+            
             //保险公司
-            //this.ASPxNavBar1.Groups[7].Items[3].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Policy_Carrier);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[7].Items[3].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[7].Items[3].ClientVisible = false;
+            }
+            
             //分支机构
-            //this.ASPxNavBar1.Groups[7].Items[4].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyCarrier_Branch);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[7].Items[4].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[7].Items[4].ClientVisible = false;
+            }
+            
             //险种定义
-            //this.ASPxNavBar1.Groups[7].Items[5].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyProduction_Type);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[7].Items[5].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[7].Items[5].ClientVisible = false;
+            }
+            
             //数据字典
-            //this.ASPxNavBar1.Groups[7].Items[6].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Data_Dictionary);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[7].Items[6].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[7].Items[6].ClientVisible = false;
+            }
+            
             //企业目录
-            //this.ASPxNavBar1.Groups[7].Items[7].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Enterprise_List);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[7].Items[7].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[7].Items[7].ClientVisible = false;
+            }
+            
             //系统选项
-            //this.ASPxNavBar1.Groups[7].Items[8].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.System_Option);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[7].Items[8].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[7].Items[8].ClientVisible = false;
+            }
+            
             //服务提醒
-            //this.ASPxNavBar1.Groups[7].Items[9].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ServiceAlert);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[7].Items[9].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[7].Items[9].ClientVisible = false;
+            }
+            
+            //group
+            if (existItemInGroup)
+                this.ASPxNavBar1.Groups[7].ClientVisible = true;
+            else
+                this.ASPxNavBar1.Groups[7].ClientVisible = false;
 
 
             //统计报表
-            //this.ASPxNavBar1.Groups[8].ClientVisible = false; 
+            existItemInGroup = false;            
             //保监会报表1
-            //this.ASPxNavBar1.Groups[8].Items[0].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[8].Items[0].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[8].Items[0].ClientVisible = false;
+            }
+            
             //保监会报表2
-            //this.ASPxNavBar1.Groups[8].Items[1].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[8].Items[1].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[8].Items[1].ClientVisible = false;
+            }
+            
             //同业公会报表
-            //this.ASPxNavBar1.Groups[8].Items[2].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Trade_Association_Report);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[8].Items[2].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[8].Items[2].ClientVisible = false;
+            }
+
+            //group
+            if (existItemInGroup)
+                this.ASPxNavBar1.Groups[8].ClientVisible = true;
+            else
+                this.ASPxNavBar1.Groups[8].ClientVisible = false;
+
 
 
             //预算管理
-            //this.ASPxNavBar1.Groups[9].ClientVisible = false; 
+            existItemInGroup = false;            
             //签约预算清单
-            //this.ASPxNavBar1.Groups[9].Items[0].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_List);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[9].Items[0].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[9].Items[0].ClientVisible = false;
+            }
+            
             //签约预算完成情况
-            //this.ASPxNavBar1.Groups[9].Items[1].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_RunDetail);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[9].Items[1].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[9].Items[1].ClientVisible = false;
+            }
+            
             //签约预算完成汇总
-            //this.ASPxNavBar1.Groups[9].Items[2].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_CompleteSummary);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[9].Items[2].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[9].Items[2].ClientVisible = false;
+            }
+            
             //预算基础表
-            //this.ASPxNavBar1.Groups[9].Items[3].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Budget_BaseList);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[9].Items[3].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[9].Items[3].ClientVisible = false;
+            }
+            
+            //group
+            if (existItemInGroup)
+                this.ASPxNavBar1.Groups[9].ClientVisible = true;
+            else
+                this.ASPxNavBar1.Groups[9].ClientVisible = false;
+
 
 
             //台帐
-            //this.ASPxNavBar1.Groups[10].ClientVisible = false; 
+            existItemInGroup = false;
             //保险经纪业务台帐
-            //this.ASPxNavBar1.Groups[10].Items[0].ClientVisible = false;
-            //应收保费帐期报表
-            //this.ASPxNavBar1.Groups[10].Items[1].ClientVisible = false;
-            //应收佣金帐期报表
-            //this.ASPxNavBar1.Groups[10].Items[2].ClientVisible = false;
-            //实收保费逾期报表
-            //this.ASPxNavBar1.Groups[10].Items[3].ClientVisible = false;
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[10].Items[0].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[10].Items[0].ClientVisible = false;
+            }
             
+            //应收保费帐期报表
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivablePremiumReport_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivablePremiumReport_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivablePremiumReport_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[10].Items[1].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[10].Items[1].ClientVisible = false;
+            }
+            
+            //应收佣金帐期报表
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivableProcessReport_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivableProcessReport_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivableProcessReport_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[10].Items[2].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[10].Items[2].ClientVisible = false;
+            }
+            
+            //实收保费逾期报表
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[10].Items[3].ClientVisible = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[10].Items[3].ClientVisible = false;
+            }
+
+
+            //group
+            if (existItemInGroup)
+                this.ASPxNavBar1.Groups[10].ClientVisible = true;
+            else
+                this.ASPxNavBar1.Groups[10].ClientVisible = false;
 
         }
 
