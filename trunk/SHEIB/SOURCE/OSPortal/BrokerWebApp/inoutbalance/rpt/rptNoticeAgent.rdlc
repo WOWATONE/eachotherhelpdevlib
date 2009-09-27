@@ -2502,7 +2502,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <BorderStyle>
                           <Default>Solid</Default>
                           <Left>Solid</Left>
-                          <Right>Solid</Right>
+                          <Right>None</Right>
                           <Top>None</Top>
                           <Bottom>Solid</Bottom>
                         </BorderStyle>
@@ -2529,8 +2529,8 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
-                          <Left>Solid</Left>
-                          <Right>Solid</Right>
+                          <Left>None</Left>
+                          <Right>None</Right>
                           <Top>None</Top>
                           <Bottom>Solid</Bottom>
                         </BorderStyle>
@@ -2546,7 +2546,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>经办人</Value>
+                      <Value />
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -2557,7 +2557,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
-                          <Left>Solid</Left>
+                          <Left>None</Left>
                           <Right>Solid</Right>
                           <Top>None</Top>
                           <Bottom>Solid</Bottom>
