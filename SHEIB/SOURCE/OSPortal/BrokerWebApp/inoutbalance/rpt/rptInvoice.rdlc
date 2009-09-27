@@ -830,6 +830,9 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
+                        <BorderWidth>
+                          <Left>2pt</Left>
+                        </BorderWidth>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -1816,6 +1819,9 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
+                        <BorderWidth>
+                          <Left>2pt</Left>
+                        </BorderWidth>
                         <FontFamily>宋体</FontFamily>
                         <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
