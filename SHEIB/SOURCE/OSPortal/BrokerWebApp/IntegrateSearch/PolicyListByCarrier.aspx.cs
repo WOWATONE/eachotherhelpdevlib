@@ -28,6 +28,20 @@ namespace BrokerWebApp.IntegrateSearch
             if (!Page.IsPostBack)
             {
                 bindDropDownLists();
+
+                if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Carrier_Group))
+                {
+                    dxeddlDeptID.Value = this.CurrentUser.DeptID;
+                    dxeddlDeptID.ClientEnabled = false;
+                }
+                if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Carrier_Personal))
+                {
+                    dxeddlDeptID.Value = this.CurrentUser.DeptID;
+                    dxeddlSalesId.Value = this.CurrentUser.UserID;
+
+                    dxeddlDeptID.ClientEnabled = false;
+                    dxeddlSalesId.ClientEnabled = false;
+                }
             }
             if (Page.IsCallback)
             {
@@ -45,10 +59,19 @@ namespace BrokerWebApp.IntegrateSearch
             this.dxeddlDeptID.DataBind();
             this.dxeddlDeptID.Items.Insert(0, new ListEditItem("(全部)", ""));
 
-            this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
+
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Carrier_Group))
+            {
+                dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(this.CurrentUser.DeptID);
+            }
+            else
+            {
+                this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
+            }
             this.dxeddlSalesId.TextField = "UserNameCn";
             this.dxeddlSalesId.ValueField = "UserID";
             this.dxeddlSalesId.DataBind();
+            dxeddlSalesId.Items.Insert(0, new ListEditItem("(全部)", ""));
 
             this.dxeddlOperationType.DataSource = BusinessObjects.BO_P_Code.GetOperationTypeList();
             this.dxeddlOperationType.TextField = "OperationTypeName";
