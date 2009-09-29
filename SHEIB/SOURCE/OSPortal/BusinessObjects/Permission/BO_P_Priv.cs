@@ -23,20 +23,20 @@ namespace BusinessObjects
 
         public enum FieldList
         {
-            PrivID, 
-            PrivName, 
-            MenuID, 
+            PrivID,
+            PrivName,
+            MenuID,
             PrivType
         }
 
 
         public enum RoleFieldList
         {
-            RolePrivID, 
-            RoleID,  
-            PrivID, 
-            PrivName, 
-            MenuID, 
+            RolePrivID,
+            RoleID,
+            PrivID,
+            PrivName,
+            MenuID,
             PrivType
         }
 
@@ -147,7 +147,7 @@ namespace BusinessObjects
             PolicyAlt_AuditList_Search_Group = 103031,
             //批单审核列表查询(个人)
             PolicyAlt_AuditList_Search_Personal = 103032,
-            
+
             //保单信息补录
             //PolicyInfo_Append = 103043,
 
@@ -344,7 +344,7 @@ namespace BusinessObjects
 
             //员工管理
             Employee_Manage = 108010,
-            
+
             //角色管理
             Role_Manage = 108020,
 
@@ -371,14 +371,33 @@ namespace BusinessObjects
 
             //服务提醒
             ServiceAlert = 108100,
+            ServiceAlert_Group = 108101,
+            ServiceAlert_Personal = 108101,
 
-            
 
-            //签约预算清单列表
+
+            //签约预算清单(全部)
             SignupBudget_List = 109010,
+
+            SignupBudget_List_Group = 109011,
+
+            //保单查询(保险公司)(个人)
+            SignupBudget_List_Personal = 109012,
+
+            SignupBudget_List_Add = 109013,
+
+            SignupBudget_List_Modify = 109014,
+
+            SignupBudget_List_Delete = 109015,
+
 
             //签约预算完成情况
             SignupBudget_RunDetail = 109020,
+
+            SignupBudget_RunDetail_Group = 109021,
+
+            SignupBudget_RunDetail_Personal = 109022,
+
 
             //签约预算完成汇总
             SignupBudget_CompleteSummary = 109030,
@@ -386,9 +405,26 @@ namespace BusinessObjects
             //预算基础表
             Budget_BaseList = 109040,
 
+            Budget_BaseList_Group = 109041,
+
+            Budget_BaseList_Personal = 109042,
+
+            //109010	签约预算清单(全部)	10901	109
+            //109011	签约预算清单(团队)	10901	109
+            //109012	签约预算清单(个人)	10901	109
+            //109013	签约预算清单(新建)	10901	109
+            //109014	签约预算清单(编辑)	10901	109
+            //109015	签约预算清单(删除)	10901	109
+            //109020	签约预算完成情况(全部)	10902	109
+            //109021	签约预算完成情况(团队)	10902	109
+            //109022	签约预算完成情况(个人)	10902	109
+            //109040	预算基础表(全部)	10904	109
+            //109041	预算基础表(团队)	10904	109
+            //109042	预算基础表(个人)	10904	109
+
 
             //保险经纪业务台帐(全部)
-            InsuranceBrokerBusinessReport_All  = 111010,
+            InsuranceBrokerBusinessReport_All = 111010,
             //保险经纪业务台帐(团队)
             InsuranceBrokerBusinessReport_Group = 111011,
             //保险经纪业务台帐(个人)
