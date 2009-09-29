@@ -381,7 +381,6 @@ namespace BusinessObjects
 
             SignupBudget_List_Group = 109011,
 
-            //保单查询(保险公司)(个人)
             SignupBudget_List_Personal = 109012,
 
             SignupBudget_List_Add = 109013,
