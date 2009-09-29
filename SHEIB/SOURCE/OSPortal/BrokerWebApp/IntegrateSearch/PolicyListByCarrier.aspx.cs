@@ -29,6 +29,8 @@ namespace BrokerWebApp.IntegrateSearch
             {
                 bindDropDownLists();
 
+                CheckPermission();
+
                 if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Carrier_Group))
                 {
                     dxeddlDeptID.Value = this.CurrentUser.DeptID;
@@ -50,6 +52,33 @@ namespace BrokerWebApp.IntegrateSearch
         }
 
 
+        private void CheckPermission()
+        {
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Carrier_Personal))
+            {
+                dxeddlDeptID.Value = this.CurrentUser.DeptID;
+                dxeddlSalesId.Value = this.CurrentUser.UserID;
+
+                dxeddlDeptID.ClientEnabled = false;
+                dxeddlSalesId.ClientEnabled = false;
+            }
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Carrier_Group))
+            {
+                dxeddlDeptID.Value = this.CurrentUser.DeptID;
+                dxeddlDeptID.ClientEnabled = false;
+
+                dxeddlSalesId.Value = this.CurrentUser.UserID;
+                dxeddlSalesId.ClientEnabled = true;
+            }
+
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Carrier_All))
+            {
+                dxeddlDeptID.ClientEnabled = true;
+                dxeddlSalesId.ClientEnabled = true;
+            }
+        }
+
+
         private void bindDropDownLists()
         {
             DataSet dsList;
@@ -59,10 +88,13 @@ namespace BrokerWebApp.IntegrateSearch
             this.dxeddlDeptID.DataBind();
             this.dxeddlDeptID.Items.Insert(0, new ListEditItem("(全部)", ""));
 
-
             if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Carrier_Group))
             {
                 dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(this.CurrentUser.DeptID);
+            }
+            else if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Carrier_All))
+            {
+                this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
             }
             else
             {
