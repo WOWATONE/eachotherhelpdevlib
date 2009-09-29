@@ -42,6 +42,13 @@ namespace BrokerWebApp.IntegrateSearch
                     dxeddlDeptID.ClientEnabled = false;
                     dxeddlSalesId.ClientEnabled = false;
                 }
+                if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_All))
+                {
+                    dxeddlDeptID.ClientEnabled = true;
+                    dxeddlSalesId.ClientEnabled = true;
+                }
+
+
             }
 
             if (Page.IsCallback)
