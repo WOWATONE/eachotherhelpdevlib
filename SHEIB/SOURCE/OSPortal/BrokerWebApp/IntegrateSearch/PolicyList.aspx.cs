@@ -10,7 +10,7 @@ using DevExpress.Web.ASPxGridView;
 
 namespace BrokerWebApp.IntegrateSearch
 {
- 
+
     public partial class PolicyList : BasePage
     {
 
@@ -18,7 +18,7 @@ namespace BrokerWebApp.IntegrateSearch
 
         private const String gridKeyName = "KeyGUID";
         private string toadd = string.Empty;
-        
+
         #endregion Variables
 
 
@@ -29,11 +29,6 @@ namespace BrokerWebApp.IntegrateSearch
             {
                 bindDropDownLists();
 
-                if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Group))
-                {
-                    dxeddlDeptID.Value = this.CurrentUser.DeptID;                    
-                    dxeddlDeptID.ClientEnabled = false;
-                }
                 if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Personal))
                 {
                     dxeddlDeptID.Value = this.CurrentUser.DeptID;
@@ -42,13 +37,20 @@ namespace BrokerWebApp.IntegrateSearch
                     dxeddlDeptID.ClientEnabled = false;
                     dxeddlSalesId.ClientEnabled = false;
                 }
+                if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Group))
+                {
+                    dxeddlDeptID.Value = this.CurrentUser.DeptID;
+                    dxeddlDeptID.ClientEnabled = false;
+
+                    dxeddlSalesId.Value = this.CurrentUser.UserID;
+                    dxeddlSalesId.ClientEnabled = true;
+                }
+                
                 if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_All))
                 {
                     dxeddlDeptID.ClientEnabled = true;
                     dxeddlSalesId.ClientEnabled = true;
                 }
-
-
             }
 
             if (Page.IsCallback)
@@ -56,7 +58,7 @@ namespace BrokerWebApp.IntegrateSearch
                 BindGrid();
             }
 
-            
+
         }
 
 
@@ -72,6 +74,10 @@ namespace BrokerWebApp.IntegrateSearch
             if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Group))
             {
                 dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(this.CurrentUser.DeptID);
+            }
+            else if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Group))
+            {
+                this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
             }
             else
             {
@@ -237,25 +243,25 @@ namespace BrokerWebApp.IntegrateSearch
 
         protected void gridSearchResult_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
         {
-        //    if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Finalize) {
-        //        ASPxSummaryItem si = (ASPxSummaryItem)e.Item;
-        //        if (si.FieldName == "PolicyID")
-        //        {
+            //    if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Finalize) {
+            //        ASPxSummaryItem si = (ASPxSummaryItem)e.Item;
+            //        if (si.FieldName == "PolicyID")
+            //        {
 
-        //            if (e.IsTotalSummary) {
-        //                if (Session["PolicyCount"] != null)
-        //                {
-        //                    e.TotalValue = int.Parse(Session["PolicyCount"].ToString());
-        //                }
-        //            }
-        //            if (e.IsGroupSummary) {
+            //            if (e.IsTotalSummary) {
+            //                if (Session["PolicyCount"] != null)
+            //                {
+            //                    e.TotalValue = int.Parse(Session["PolicyCount"].ToString());
+            //                }
+            //            }
+            //            if (e.IsGroupSummary) {
 
-        //            }
+            //            }
 
-        //        }
-        //    }
+            //        }
+            //    }
         }
-        
+
 
         protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
         {
