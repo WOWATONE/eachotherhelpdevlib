@@ -38,6 +38,8 @@ namespace BrokerWebApp.vehicleinsurance
             else
             {
                 Initialization();
+
+                CheckPermission();
             }
         }
 
@@ -325,8 +327,21 @@ namespace BrokerWebApp.vehicleinsurance
 
 
             //客户经理
-            dsList = BO_P_User.GetUserByUserID("");
-            this.dxeddlSalesId.DataSource = dsList;
+            List<BusinessObjects.BO_P_User> userList;
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Group))
+            {
+                userList = BusinessObjects.BO_P_User.FetchDeptUserList(this.CurrentUser.DeptID);
+            }
+            else if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_All))
+            {
+                userList = BusinessObjects.BO_P_User.FetchList();
+            }
+            else
+            {
+                userList = BusinessObjects.BO_P_User.FetchList();
+            }
+            //dsList = BO_P_User.GetUserByUserID("");
+            this.dxeddlSalesId.DataSource = userList;
             this.dxeddlSalesId.ValueField = "UserID";
             this.dxeddlSalesId.TextField = "UserNameCn";
             this.dxeddlSalesId.DataBind();
@@ -403,6 +418,37 @@ namespace BrokerWebApp.vehicleinsurance
             }
 
         }
+
+
+
+        private void CheckPermission()
+        {
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Personal))
+            {
+                dxeddlDeptID.Value = this.CurrentUser.DeptID;
+                dxeddlSalesId.Value = this.CurrentUser.UserID;
+
+                dxeddlDeptID.ClientEnabled = false;
+                dxeddlSalesId.ClientEnabled = false;
+            }
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Group))
+            {
+                dxeddlDeptID.Value = this.CurrentUser.DeptID;
+                dxeddlDeptID.ClientEnabled = false;
+
+                dxeddlSalesId.Value = this.CurrentUser.UserID;
+                dxeddlSalesId.ClientEnabled = true;
+            }
+
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_All))
+            {
+                dxeddlDeptID.ClientEnabled = true;
+                dxeddlSalesId.ClientEnabled = true;
+            }
+        }
+
+
+
 
 
     }
