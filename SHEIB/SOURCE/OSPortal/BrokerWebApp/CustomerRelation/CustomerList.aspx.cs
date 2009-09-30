@@ -14,7 +14,7 @@ using BusinessObjects;
 
 namespace BrokerWebApp.CustomerRelation
 {
-    public partial class CustomerList : System.Web.UI.Page
+    public partial class CustomerList : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,6 +23,7 @@ namespace BrokerWebApp.CustomerRelation
                 if (!this.Page.IsPostBack)
                 {
                     this.Initialization();
+                    CheckPermission();
                 }
                 else
                 {
@@ -42,6 +43,35 @@ namespace BrokerWebApp.CustomerRelation
             catch (Exception ex)
             { }
         }
+
+
+        private void CheckPermission()
+        {
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Customer_List_Search_Personal))
+            {
+
+                dxeddlDepartment.Value = this.CurrentUser.DeptID;
+                dxeddlSalesID.Value = this.CurrentUser.UserID;
+
+                dxeddlDepartment.ClientEnabled = false;
+                dxeddlSalesID.ClientEnabled = false;
+            }
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Customer_List_Search_Group))
+            {
+                dxeddlDepartment.Value = this.CurrentUser.DeptID;
+                dxeddlDepartment.ClientEnabled = false;
+
+                dxeddlSalesID.Value = this.CurrentUser.UserID;
+                dxeddlSalesID.ClientEnabled = true;
+            }
+
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Customer_List_Search_All))
+            {
+                dxeddlDepartment.ClientEnabled = true;
+                dxeddlSalesID.ClientEnabled = true;
+            }
+        }
+
 
         /// <summary>
         /// 初始化控件
@@ -83,16 +113,33 @@ namespace BrokerWebApp.CustomerRelation
                 }
             }
 
-            //客户经理
-            this.dxeddlSalesID.Items.Add("(全部)", "");
-            dsList = BO_P_User.GetUserByUserID("");
-            if (dsList.Tables[0] != null)
+            ////客户经理
+            //this.dxeddlSalesID.Items.Add("(全部)", "");
+            //dsList = BO_P_User.GetUserByUserID("");
+            //if (dsList.Tables[0] != null)
+            //{
+            //    foreach (DataRow row in dsList.Tables[0].Rows)
+            //    {
+            //        this.dxeddlSalesID.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
+            //    }
+            //}
+
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Customer_List_Search_Group))
             {
-                foreach (DataRow row in dsList.Tables[0].Rows)
-                {
-                    this.dxeddlSalesID.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
-                }
+                dxeddlSalesID.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(this.CurrentUser.DeptID);
             }
+            else if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Customer_List_Search_All))
+            {
+                this.dxeddlSalesID.DataSource = BusinessObjects.BO_P_User.FetchList();
+            }
+            else
+            {
+                this.dxeddlSalesID.DataSource = BusinessObjects.BO_P_User.FetchList();
+            }
+            this.dxeddlSalesID.TextField = "UserNameCn";
+            this.dxeddlSalesID.ValueField = "UserID";
+            this.dxeddlSalesID.DataBind();
+            dxeddlSalesID.Items.Insert(0, new DevExpress.Web.ASPxEditors.ListEditItem("(全部)", ""));
         }
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
