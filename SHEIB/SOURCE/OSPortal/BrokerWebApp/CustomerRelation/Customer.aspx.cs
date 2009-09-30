@@ -43,6 +43,8 @@ namespace BrokerWebApp.CustomerRelation
                     }
 
                     this.Initialization();
+                    CheckPermission();
+                   
                    
                 }
                 else
@@ -55,6 +57,13 @@ namespace BrokerWebApp.CustomerRelation
             { }
         }
 
+        private void CheckPermission()
+        {
+            if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Customer_List_Modify))
+            {
+                dxebtnBottomSave.Visible = false;
+            }
+        }
 
         /// <summary>
         /// 初始化控件
