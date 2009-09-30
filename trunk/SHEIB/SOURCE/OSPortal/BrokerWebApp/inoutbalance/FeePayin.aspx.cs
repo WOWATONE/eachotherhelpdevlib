@@ -26,11 +26,21 @@ namespace BrokerWebApp.inoutbalance
                 Initialization();
                 dxeddlAuditStatus.SelectedIndex = 0;
                 BindGrid();
+                CheckPermission();
             }
             if (IsCallback)
             {
                 BindGrid();
             }
+        }
+
+        private void CheckPermission()
+        {
+            if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeePay_Add))
+            {
+                debtnCreate.Enabled = false;
+            }
+
         }
 
         private void Initialization()
@@ -201,6 +211,11 @@ namespace BrokerWebApp.inoutbalance
                     {
                         e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");
                     }
+                }
+
+                if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeePay_Delete))
+                {
+                    e.Row.Cells[0].Controls[0].Visible = false;
                 }
             }
         }
