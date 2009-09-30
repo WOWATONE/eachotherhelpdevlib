@@ -46,7 +46,12 @@
             else
                 return false;
         }
-
+        
+        function dxeddlDeptID_SelectedIndexChanged(s, e) {
+            var thejsonstring = dxeddlDepartment.GetSelectedItem().value;
+            dxeddlSalesID.PerformCallback(thejsonstring);
+        }
+        
         function deleteCustomerCallbackComplete(s, e) {
             if (e.result != "" && e.result != "ok") {
                 alert(e.result);
@@ -140,6 +145,7 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlDepartment" ClientInstanceName="dxeddlDepartment" runat="server"
                                     Width="160px" DropDownStyle="DropDownList">
+                                     <ClientSideEvents SelectedIndexChanged="dxeddlDeptID_SelectedIndexChanged" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: left;">
@@ -159,7 +165,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlSalesID" ClientInstanceName="dxeddlSalesID" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
+                                    Width="160px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
@@ -212,8 +218,10 @@
                     <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                         KeyFieldName="CustID" AutoGenerateColumns="False" Settings-ShowFooter="true"
                         Width="100%" SettingsPager-AlwaysShowPager="true"
-                        SettingsBehavior-AllowDragDrop="true" OnRowDeleting="gridSearchResult_RowDeleting"
-                        OnCustomCallback="gridSearchResult_CustomCallBack">
+                        SettingsBehavior-AllowDragDrop="true" 
+                        OnRowDeleting="gridSearchResult_RowDeleting"
+                        OnCustomCallback="gridSearchResult_CustomCallBack"
+                        OnHtmlRowCreated="gridSearchResult_HtmlRowCreated">
                         <Columns>
                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" Width="20px">
                                 <NewButton Visible="False" />

@@ -11,6 +11,9 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
 using BusinessObjects;
+using DevExpress.Web.ASPxGridView.Rendering;
+using DevExpress.Web.ASPxGridView;
+using DevExpress.Web.ASPxEditors;
 
 namespace BrokerWebApp.CustomerRelation
 {
@@ -70,7 +73,27 @@ namespace BrokerWebApp.CustomerRelation
                 dxeddlDepartment.ClientEnabled = true;
                 dxeddlSalesID.ClientEnabled = true;
             }
+
+            if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Customer_List_Add))
+            {
+                debtnCreate.Enabled = false;
+            }           
         }
+
+
+
+        protected void gridSearchResult_HtmlRowCreated(object sender,
+             ASPxGridViewTableRowEventArgs e)
+        {
+            if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Customer_List_Delete))
+            {
+                if (e.RowType == GridViewRowType.Data)
+                {
+                    e.Row.Cells[0].Controls[0].Visible = false;
+                }
+            }        
+        }
+
 
 
         /// <summary>
@@ -171,6 +194,21 @@ namespace BrokerWebApp.CustomerRelation
 
             BO_Customer.Delete(key);
             e.Result = "ok";
+        }
+
+
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            thecb.Items.Insert(0, new ListEditItem("(全部)", ""));
+            //if (thecb.Items.Count > 0)
+            //{
+            //    thecb.SelectedItem = thecb.Items[0];
+            //}
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
