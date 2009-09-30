@@ -38,9 +38,27 @@ namespace BrokerWebApp.inoutbalance
                 init();
                 this.dxetxtVoucherId.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 loadValue(this.dxetxtVoucherId.Text);
-                dxetxtVoucherId.BackColor = Color.LightGray;                
+                dxetxtVoucherId.BackColor = Color.LightGray;
+
+                CheckPermission();
             }            
             BindGrid("");
+        }
+
+
+
+        private void CheckPermission()
+        {
+            if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeeCustomer_Audit))
+            {
+                dxebtnAudit.Enabled = false;
+            }
+
+            if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeeCustomer_Modify))
+            {
+                dxebtnSave.Enabled = false;
+                dxebtnAddPolicy.Enabled = false;
+            }
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
@@ -52,7 +70,6 @@ namespace BrokerWebApp.inoutbalance
         private void init()
         {
             
-
         }
 
 
@@ -66,7 +83,6 @@ namespace BrokerWebApp.inoutbalance
 
         protected void dxeAuditCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-
             int resultSign = 0;
             String resultMSG = "";
             auditVoucher(e.Parameter, ref resultSign, ref resultMSG);
@@ -252,6 +268,12 @@ namespace BrokerWebApp.inoutbalance
                 else
                 {
                     e.Row.Enabled = true;
+                }
+
+                if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeeCustomer_Modify))
+                {
+                    e.Row.Cells[0].Controls[0].Visible = false;
+                    e.Row.Cells[0].Controls[1].Visible = false;
                 }
             }
 

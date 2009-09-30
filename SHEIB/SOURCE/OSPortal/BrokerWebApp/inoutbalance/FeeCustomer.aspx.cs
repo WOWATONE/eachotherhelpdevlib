@@ -35,12 +35,21 @@ namespace BrokerWebApp.inoutbalance
             {
                 Initialization();
                 dxeddlAuditStatus.SelectedIndex = 0;
-
+                CheckPermission();
             }
             if (IsCallback)
             {
                 BindGrid();
             }
+        }
+
+        private void CheckPermission()
+        {
+            if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeeCustomer_Add))
+            {
+                debtnCreate.Enabled = false;
+            }
+
         }
 
         private void Initialization()
@@ -79,7 +88,6 @@ namespace BrokerWebApp.inoutbalance
                     this.dxeddlSalesId.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
                 }
             }
-
 
             //PolicyType
             this.dxeddlPolicyType.Items.Add("(全部)", "");
@@ -167,7 +175,14 @@ namespace BrokerWebApp.inoutbalance
                         e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");
                     }
                 }
+
+                if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeeCustomer_Delete))
+                {
+                    e.Row.Cells[0].Controls[0].Visible = false;
+                }
             }
+
+
         }
 
 
