@@ -17,7 +17,7 @@ using BusinessObjects;
 
 namespace BrokerWebApp.CustomerRelation
 {
-    public partial class Customer : System.Web.UI.Page
+    public partial class Customer : BasePage
     {
         #region 私有变量
         /// <summary>
@@ -43,6 +43,7 @@ namespace BrokerWebApp.CustomerRelation
                     }
 
                     this.Initialization();
+                   
                 }
                 else
                 {
@@ -53,6 +54,7 @@ namespace BrokerWebApp.CustomerRelation
             catch (Exception ex)
             { }
         }
+
 
         /// <summary>
         /// 初始化控件
@@ -77,6 +79,9 @@ namespace BrokerWebApp.CustomerRelation
                 this.SetddlTradeType("");
                 //部门
                 this.SetddlDeprtment("");
+
+
+
                 //客户经理
                 //this.SetddlSalesID("");
             }
