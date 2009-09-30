@@ -29,6 +29,8 @@ namespace BrokerWebApp.otherinsurance
             if (!Page.IsPostBack)
             {
                 bindDropDownLists();
+
+                CheckPermission();
             }
         }
         
@@ -242,7 +244,20 @@ namespace BrokerWebApp.otherinsurance
             this.dxeddlDeptID.DataBind();
             this.dxeddlDeptID.Items.Insert(0, new ListEditItem("全部", ""));
 
-            this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
+            List<BusinessObjects.BO_P_User> userList;
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Group))
+            {
+                userList = BusinessObjects.BO_P_User.FetchDeptUserList(this.CurrentUser.DeptID);
+            }
+            else if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_All))
+            {
+                userList = BusinessObjects.BO_P_User.FetchList();
+            }
+            else
+            {
+                userList = BusinessObjects.BO_P_User.FetchList();
+            }
+            this.dxeddlSalesId.DataSource = userList;
             this.dxeddlSalesId.TextField = "UserNameCn";
             this.dxeddlSalesId.ValueField = "UserID";
             this.dxeddlSalesId.DataBind();
@@ -280,6 +295,7 @@ namespace BrokerWebApp.otherinsurance
                 this.SetProdTypeName(dsList.Tables[0], "0", this.dxeddlProdTypeName);
             }
         }
+
 
         private void SetProdTypeName(DataTable table, string parentid, 
             ASPxComboBox comboBox)
@@ -350,6 +366,37 @@ namespace BrokerWebApp.otherinsurance
             //e.Properties["cpCusJSproperty_IsAlert"] = "1";
             e.Properties["cpCusJSproperty_IsAlert"] = titleID;
         }
+
+
+
+
+        private void CheckPermission()
+        {
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Personal))
+            {
+                dxeddlDeptID.Value = this.CurrentUser.DeptID;
+                dxeddlSalesId.Value = this.CurrentUser.UserID;
+
+                dxeddlDeptID.ClientEnabled = false;
+                dxeddlSalesId.ClientEnabled = false;
+            }
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Group))
+            {
+                dxeddlDeptID.Value = this.CurrentUser.DeptID;
+                dxeddlDeptID.ClientEnabled = false;
+
+                dxeddlSalesId.Value = this.CurrentUser.UserID;
+                dxeddlSalesId.ClientEnabled = true;
+            }
+
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_All))
+            {
+                dxeddlDeptID.ClientEnabled = true;
+                dxeddlSalesId.ClientEnabled = true;
+            }
+        }
+
+
 
 
     }
