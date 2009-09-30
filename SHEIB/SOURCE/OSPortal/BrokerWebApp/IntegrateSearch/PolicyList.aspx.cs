@@ -78,7 +78,7 @@ namespace BrokerWebApp.IntegrateSearch
             {
                 dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(this.CurrentUser.DeptID);
             }
-            else if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Group))
+            else if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_All))
             {
                 this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
             }

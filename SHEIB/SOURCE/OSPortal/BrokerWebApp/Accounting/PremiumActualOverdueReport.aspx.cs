@@ -29,10 +29,38 @@ namespace BrokerWebApp.Accounting
             if (!Page.IsPostBack)
             {
                 bindDropDownLists();
+                CheckPermission();
             }
             if (Page.IsCallback)
             {
                 BindGrid();
+            }
+        }
+
+
+        private void CheckPermission()
+        {
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_Personal))
+            {
+                dxeddlDeptID.Value = this.CurrentUser.DeptID;
+                dxeddlSalesId.Value = this.CurrentUser.UserID;
+
+                dxeddlDeptID.ClientEnabled = false;
+                dxeddlSalesId.ClientEnabled = false;
+            }
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_Group))
+            {
+                dxeddlDeptID.Value = this.CurrentUser.DeptID;
+                dxeddlDeptID.ClientEnabled = false;
+
+                dxeddlSalesId.Value = this.CurrentUser.UserID;
+                dxeddlSalesId.ClientEnabled = true;
+            }
+
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_All))
+            {
+                dxeddlDeptID.ClientEnabled = true;
+                dxeddlSalesId.ClientEnabled = true;
             }
         }
 
@@ -46,10 +74,27 @@ namespace BrokerWebApp.Accounting
             this.dxeddlDeptID.DataBind();
             this.dxeddlDeptID.Items.Insert(0, new ListEditItem("(全部)", ""));
 
-            this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
+            //this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
+            //this.dxeddlSalesId.TextField = "UserNameCn";
+            //this.dxeddlSalesId.ValueField = "UserID";
+            //this.dxeddlSalesId.DataBind();
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_Group))
+            {
+                dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(this.CurrentUser.DeptID);
+            }
+            else if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_All))
+            {
+                this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
+            }
+            else
+            {
+                this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
+            }
             this.dxeddlSalesId.TextField = "UserNameCn";
             this.dxeddlSalesId.ValueField = "UserID";
             this.dxeddlSalesId.DataBind();
+            dxeddlSalesId.Items.Insert(0, new ListEditItem("(全部)", ""));
+
 
             this.dxeddlOperationType.DataSource = BusinessObjects.BO_P_Code.GetOperationTypeList();
             this.dxeddlOperationType.TextField = "OperationTypeName";
