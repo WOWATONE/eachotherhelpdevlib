@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using BusinessObjects;
 using DevExpress.Web.ASPxEditors;
+using DevExpress.Web.ASPxGridView;
 
 namespace BrokerWebApp.inoutbalance
 {
@@ -27,9 +28,18 @@ namespace BrokerWebApp.inoutbalance
             {
                 Initialization();
                 BindGrid();
+                CheckPermission();
             }
 
+        }
 
+
+        private void CheckPermission()
+        {
+            if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeeNotice_Add))
+            {
+                debtnCreate.Enabled = false;
+            }
         }
 
         private void Initialization()
@@ -221,6 +231,21 @@ namespace BrokerWebApp.inoutbalance
             e.Result = "ok";
         }
 
+
+
+        protected void gridSearchResult_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data)
+            {
+                if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeeNotice_Modify))
+                {
+                    e.Row.Cells[0].Controls[0].Visible = false;
+                    //e.Row.Cells[0].Controls[1].Visible = false;
+                }
+            }
+
+        }
 
     }
 }

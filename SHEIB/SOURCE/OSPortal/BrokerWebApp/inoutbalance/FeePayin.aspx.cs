@@ -40,7 +40,6 @@ namespace BrokerWebApp.inoutbalance
             {
                 debtnCreate.Enabled = false;
             }
-
         }
 
         private void Initialization()
