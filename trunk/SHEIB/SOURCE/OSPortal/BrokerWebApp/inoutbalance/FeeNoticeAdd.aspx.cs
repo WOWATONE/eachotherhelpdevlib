@@ -54,6 +54,7 @@ namespace BrokerWebApp.inoutbalance
                 this.dxetxtNoticeNo.Text = Page.Request.QueryString[inputQueryStringIDKey];
                 loadValue(this.dxetxtNoticeNo.Text);
 
+                CheckPermission();
             }
             else
             {
@@ -70,6 +71,21 @@ namespace BrokerWebApp.inoutbalance
             //    crvNotice.PrintMode = CrystalDecisions.Web.PrintMode.ActiveX;
             //}
 
+        }
+
+
+        private void CheckPermission()
+        {
+            if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeeNotice_Audit))
+            {
+                dxebtnAudit.Enabled = false;
+            }
+
+            if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeeNotice_Modify))
+            {
+                dxebtnSave.Enabled = false;
+                btnAddPolicy.Enabled = false;
+            }
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
@@ -221,10 +237,14 @@ namespace BrokerWebApp.inoutbalance
                 {
                     e.Row.Enabled = true;
                 }
+
+                if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeeNotice_Modify))
+                {
+                    e.Row.Cells[0].Controls[0].Visible = false;                    
+                }
             }
 
         }
-
 
 
         private GridViewCommandColumn getCommandColumnLoop(ASPxGridView grid)
