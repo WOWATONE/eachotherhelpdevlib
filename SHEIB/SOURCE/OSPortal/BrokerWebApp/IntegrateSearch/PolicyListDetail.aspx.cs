@@ -147,12 +147,12 @@ namespace BrokerWebApp.IntegrateSearch
             string lsWhere = "";
             if (dxetxtPolicyID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and a.PolicyID ='" + dxetxtPolicyID.Text + "'";
+                lsWhere = lsWhere + " and a.PolicyID like '%" + dxetxtPolicyID.Text + "%'";
             }
 
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and a.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and a.PolicyNo like '%" + dxetxtPolicyNo.Text + "%'";
             }
 
             if (this.dxeddlOperationType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlOperationType.SelectedItem.Value.ToString()))
