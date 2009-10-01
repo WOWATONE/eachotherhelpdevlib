@@ -359,8 +359,8 @@
                         </dxwgv:GridViewDataColumn>
                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
-                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单号" CellStyle-Wrap="False">
-                        </dxwgv:GridViewDataColumn>
+                        <dxwgv:GridViewDataTextColumn FieldName="PolicyNo" Caption="保单号" CellStyle-Wrap="False">
+                        </dxwgv:GridViewDataTextColumn>
                         <dxwgv:GridViewDataColumn FieldName="PayFeeBase" Caption="本次应收保费" CellStyle-Wrap="False">
                         </dxwgv:GridViewDataColumn>
                         <dxwgv:GridViewDataColumn FieldName="PayDate" Caption="应收日期" CellStyle-Wrap="False">
