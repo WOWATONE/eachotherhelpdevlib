@@ -245,11 +245,11 @@ namespace BrokerWebApp.otherinsurance
             this.dxeddlDeptID.Items.Insert(0, new ListEditItem("全部", ""));
 
             List<BusinessObjects.BO_P_User> userList;
-            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Group))
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyAudit_List_Search_Group))
             {
                 userList = BusinessObjects.BO_P_User.FetchDeptUserList(this.CurrentUser.DeptID);
             }
-            else if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_All))
+            else if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyAudit_List_Search_All))
             {
                 userList = BusinessObjects.BO_P_User.FetchList();
             }
@@ -372,7 +372,7 @@ namespace BrokerWebApp.otherinsurance
 
         private void CheckPermission()
         {
-            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Personal))
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyAudit_List_Search_Personal))
             {
                 dxeddlDeptID.Value = this.CurrentUser.DeptID;
                 dxeddlSalesId.Value = this.CurrentUser.UserID;
@@ -380,7 +380,7 @@ namespace BrokerWebApp.otherinsurance
                 dxeddlDeptID.ClientEnabled = false;
                 dxeddlSalesId.ClientEnabled = false;
             }
-            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Group))
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyAudit_List_Search_Group))
             {
                 dxeddlDeptID.Value = this.CurrentUser.DeptID;
                 dxeddlDeptID.ClientEnabled = false;
@@ -389,7 +389,7 @@ namespace BrokerWebApp.otherinsurance
                 dxeddlSalesId.ClientEnabled = true;
             }
 
-            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_All))
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyAudit_List_Search_All))
             {
                 dxeddlDeptID.ClientEnabled = true;
                 dxeddlSalesId.ClientEnabled = true;
