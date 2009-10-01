@@ -9,6 +9,7 @@ using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
 using System.Data;
 using BusinessObjects;
+using DevExpress.Web.ASPxEditors;
 
 namespace BrokerWebApp.BudgetManagement
 {
@@ -56,7 +57,7 @@ namespace BrokerWebApp.BudgetManagement
             if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.SignupBudget_List_All))
             {
                 dxeddlDeptID.ClientEnabled = true;
-                dxeddlSalesId.ClientEnabled = true;
+                dxeddlSalesID.ClientEnabled = true;
             }
         }
 
