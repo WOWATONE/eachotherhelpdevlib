@@ -370,14 +370,14 @@ namespace BusinessObjects
             System_Option = 108090,
 
             //服务提醒
-            ServiceAlert = 108100,
+            ServiceAlert_All = 108100,
             ServiceAlert_Group = 108101,
             ServiceAlert_Personal = 108101,
 
 
 
             //签约预算清单(全部)
-            SignupBudget_List = 109010,
+            SignupBudget_List_All = 109010,
 
             SignupBudget_List_Group = 109011,
 
@@ -391,7 +391,7 @@ namespace BusinessObjects
 
 
             //签约预算完成情况
-            SignupBudget_RunDetail = 109020,
+            SignupBudget_RunDetail_All = 109020,
 
             SignupBudget_RunDetail_Group = 109021,
 
@@ -402,7 +402,7 @@ namespace BusinessObjects
             SignupBudget_CompleteSummary = 109030,
 
             //预算基础表
-            Budget_BaseList = 109040,
+            Budget_BaseList_All = 109040,
 
             Budget_BaseList_Group = 109041,
 

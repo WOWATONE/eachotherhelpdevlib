@@ -12,7 +12,7 @@ using BusinessObjects;
 
 namespace BrokerWebApp.BudgetManagement
 {
-    public partial class SignPremiumBudgetList : System.Web.UI.Page
+    public partial class SignPremiumBudgetList : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,6 +21,7 @@ namespace BrokerWebApp.BudgetManagement
                 if (!this.Page.IsPostBack)
                 {
                     this.Initialization();
+                    CheckPermission();
                 }
 
                 if (this.Page.IsCallback)
@@ -30,6 +31,33 @@ namespace BrokerWebApp.BudgetManagement
             }
             catch (Exception ex)
             { }
+        }
+
+
+        private void CheckPermission()
+        {
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.SignupBudget_List_Personal))
+            {
+                dxeddlDeptID.Value = this.CurrentUser.DeptID;
+                dxeddlSalesID.Value = this.CurrentUser.UserID;
+
+                dxeddlDeptID.ClientEnabled = false;
+                dxeddlSalesID.ClientEnabled = false;
+            }
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.SignupBudget_List_Group))
+            {
+                dxeddlDeptID.Value = this.CurrentUser.DeptID;
+                dxeddlDeptID.ClientEnabled = false;
+
+                dxeddlSalesID.Value = this.CurrentUser.UserID;
+                dxeddlSalesID.ClientEnabled = true;
+            }
+
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.SignupBudget_List_All))
+            {
+                dxeddlDeptID.ClientEnabled = true;
+                dxeddlSalesId.ClientEnabled = true;
+            }
         }
 
         /// <summary>
@@ -108,6 +136,20 @@ namespace BrokerWebApp.BudgetManagement
 
             this.gridSearchResult.DataSource = BusinessObjects.Budget.BO_SignPremiumBudget.GetConsultFeeList(sbWhere.ToString()).Tables[0];
             this.gridSearchResult.DataBind();
+        }
+
+        protected void dxeddlSalesIdCallback(object source, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)
+        {
+            ASPxComboBox thecb = (ASPxComboBox)source;
+            thecb.DataSource = BusinessObjects.BO_P_User.FetchDeptUserList(e.Parameter);
+            thecb.TextField = "UserNameCn";
+            thecb.ValueField = "UserID";
+            thecb.DataBind();
+            thecb.Items.Insert(0, new ListEditItem("(全部)", ""));
+            //if (thecb.Items.Count > 0)
+            //{
+            //    thecb.SelectedItem = thecb.Items[0];
+            //}
         }
     }
 }

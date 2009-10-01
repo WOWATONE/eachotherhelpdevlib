@@ -575,7 +575,7 @@ namespace BrokerWebApp
             
             //服务提醒
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ServiceAlert);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ServiceAlert_All);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -650,7 +650,7 @@ namespace BrokerWebApp
             existItemInGroup = false;            
             //签约预算清单
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_List);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_List_All);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -663,7 +663,7 @@ namespace BrokerWebApp
             
             //签约预算完成情况
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_RunDetail);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_RunDetail_All);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -689,7 +689,7 @@ namespace BrokerWebApp
             
             //预算基础表
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Budget_BaseList);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Budget_BaseList_All);
             if (checkResult)
             {
                 existItemInGroup = true;
