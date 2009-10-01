@@ -10,6 +10,7 @@ using BusinessObjects;
 using BusinessObjects.SchemaSetting;
 using DevExpress.Web.ASPxEditors;
 using DevExpress.Web.ASPxGridView;
+
 using DevExpress.Web.ASPxGridView.Rendering;
 using DevExpress.Web.ASPxClasses.Internal;
 
@@ -67,13 +68,14 @@ namespace BrokerWebApp.vehicleinsurance
                 }
 
                 GridViewCommandColumn objgcc = getCommandColumnLoop();
+
+                GridViewCommandColumnButtonControl thebtn;
+                InternalHyperLink theIHL;
                 if (state == "2")
                 {
-                    GridViewCommandColumnButtonControl thebtn;
-
                     thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
                     //thebtn.Enabled = false;
-                    InternalHyperLink theIHL = (InternalHyperLink)thebtn.Controls[0];
+                    theIHL = (InternalHyperLink)thebtn.Controls[0];
                     theIHL.Text = "反审核";
                 }
                 else
@@ -81,6 +83,13 @@ namespace BrokerWebApp.vehicleinsurance
                     //e.Row.Enabled = true;
                 }
 
+                Boolean checkPerm;
+                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.AskPriceInput_Audit);
+                checkPerm = checkPerm || this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.AskPriceInput_AuditBack);
+                thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
+                thebtn.Enabled = checkPerm;
+                theIHL = (InternalHyperLink)thebtn.Controls[0];
+                theIHL.Enabled = checkPerm;
             }
         }
 

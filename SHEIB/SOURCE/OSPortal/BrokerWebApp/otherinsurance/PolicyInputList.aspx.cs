@@ -8,6 +8,9 @@ using System.Data;
 using DevExpress.Web.ASPxEditors;
 using DevExpress.Web.ASPxGridView;
 
+using DevExpress.Web.ASPxGridView.Rendering;
+using DevExpress.Web.ASPxClasses.Internal;
+
 namespace BrokerWebApp.otherinsurance
 {
  
@@ -31,7 +34,11 @@ namespace BrokerWebApp.otherinsurance
 
                 CheckPermission();
             }
-            
+
+            Boolean checkPerm;
+            checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_Add);
+            this.debtnCreate.Enabled = checkPerm;
+            this.debtnCreate.ClientEnabled = checkPerm;
         }
 
 
@@ -262,6 +269,28 @@ namespace BrokerWebApp.otherinsurance
                         e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");
                     }
                 }
+
+                GridViewCommandColumn objgcc = getCommandColumnLoop();
+                Boolean checkPerm;
+                //checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_Add);
+
+                GridViewCommandColumnButtonControl thebtn;
+                InternalHyperLink theIHL;
+                //delete
+                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_Delete);
+                thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
+                thebtn.Enabled = checkPerm;
+                theIHL = (InternalHyperLink)thebtn.Controls[0];
+                theIHL.Enabled = checkPerm;
+
+                
+                //modify
+                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_Modify);
+                thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[1];
+                thebtn.Enabled = checkPerm;
+                theIHL = (InternalHyperLink)thebtn.Controls[0];
+                theIHL.Enabled = checkPerm;
+                
             }
         }
 
@@ -328,6 +357,22 @@ namespace BrokerWebApp.otherinsurance
             }
         }
 
+
+
+
+        private GridViewCommandColumn getCommandColumnLoop()
+        {
+            GridViewCommandColumn theCommandColumn = null;
+            foreach (GridViewColumn item in gridSearchResult.VisibleColumns)
+            {
+                if (item.GetType() == typeof(GridViewCommandColumn))
+                {
+                    theCommandColumn = (GridViewCommandColumn)item;
+                    break;
+                }
+            }
+            return theCommandColumn;
+        }
 
 
 
