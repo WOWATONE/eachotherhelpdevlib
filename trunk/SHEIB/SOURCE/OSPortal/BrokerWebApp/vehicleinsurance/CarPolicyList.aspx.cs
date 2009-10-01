@@ -10,6 +10,11 @@ using BusinessObjects;
 using BusinessObjects.SchemaSetting;
 using DevExpress.Web.ASPxEditors;
 
+using DevExpress.Web.ASPxGridView;
+using DevExpress.Web.ASPxGridView.Rendering;
+using DevExpress.Web.ASPxClasses.Internal;
+
+
 namespace BrokerWebApp.vehicleinsurance
 {
     public partial class CarPolicyList : BasePage
@@ -318,6 +323,46 @@ namespace BrokerWebApp.vehicleinsurance
         }
 
 
+        protected void gridSearchResult_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data)
+            {
+                DataRow dr = this.gridSearchResult.GetDataRow(e.VisibleIndex);
+
+                if (!String.IsNullOrEmpty(dr["Remark"].ToString()))
+                {
+                    e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");
+                }
+
+                GridViewCommandColumn objgcc = getCommandColumnLoop();
+                Boolean checkPerm;
+                
+                GridViewCommandColumnButtonControl thebtn;
+                InternalHyperLink theIHL;
+                //modify
+                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInfo_Append);
+                thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
+                thebtn.Enabled = checkPerm;
+                theIHL = (InternalHyperLink)thebtn.Controls[0];
+                theIHL.Enabled = checkPerm;
+            }
+
+        }
+
+        private GridViewCommandColumn getCommandColumnLoop()
+        {
+            GridViewCommandColumn theCommandColumn = null;
+            foreach (GridViewColumn item in gridSearchResult.VisibleColumns)
+            {
+                if (item.GetType() == typeof(GridViewCommandColumn))
+                {
+                    theCommandColumn = (GridViewCommandColumn)item;
+                    break;
+                }
+            }
+            return theCommandColumn;
+        }
 
 
 
