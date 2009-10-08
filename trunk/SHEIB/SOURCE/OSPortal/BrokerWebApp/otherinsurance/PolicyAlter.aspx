@@ -269,8 +269,17 @@
             var CustomerID = getCustomerID();
             var DeptId = dxeddlDeptID.GetValue();
             var EndDate = dxeEndDate.GetValue();
-            var FlagReinsure = null;
-            var FlagTogether = null;
+            
+            var FlagReinsure = 0;
+            if (dxechkFlagReinsure.GetChecked()) {
+                FlagReinsure = 1;
+            }
+
+            var FlagTogether = 0;
+            if (dxechkTogether.GetChecked()) {
+                FlagTogether = 1;
+            }
+            
             var GatheringType = dxeddlGatheringType.GetValue();
             var OperationType = dxeddlOperationType.GetValue();
             var PeriodTimes = dxetxtStage.GetValueString();
@@ -288,7 +297,7 @@
             var SalesId = dxeddlSalesId.GetValue();
             var SignDate = null;
             var SourceTypeID = dxeddlSourceTypeID.GetValue();
-            var Special = null;
+            var Special = dxetxtSpecial.GetValueString();
             var StartDate = dxeStartDate.GetValue();
             var AltNo = dxetxtAltNo.GetValueString();
 
@@ -928,10 +937,14 @@
                                                                     <asp:Label runat="server" Width="240px" ID="lblSourcePolicyID"></asp:Label>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:CheckBox runat="server" ID="chkTogether" Text="共保" />
+                                                                    <dxe:ASPxCheckBox runat="server" ID="dxechkTogether" ClientInstanceName="dxechkTogether"
+                                                                        Text="共保">
+                                                                    </dxe:ASPxCheckBox>
                                                                 </td>
                                                                 <td>
-                                                                    <asp:CheckBox runat="server" ID="chkAgain" Text="再保" />
+                                                                    <dxe:ASPxCheckBox runat="server" ID="dxechkFlagReinsure" ClientInstanceName="dxechkFlagReinsure"
+                                                                        Text="再保">
+                                                                    </dxe:ASPxCheckBox>
                                                                 </td>
                                                                 <td>
                                                                     <dxe:ASPxButton AutoPostBack="False" runat="server" ID="dxebtnOldPolicyView" ClientInstanceName="dxebtnOldPolicyView"
@@ -1023,6 +1036,16 @@
                                                             <ClientSideEvents SelectedIndexChanged="function(s, e) {SelectedProdTypeNameIndexChanged(s, e); return false;}" />
                                                         </dxe:ASPxComboBox>
                                                         <input type="hidden" id="ptid" runat="server" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: right;">
+                                                        备注：
+                                                    </td>
+                                                    <td colspan="5" style="text-align: left;">
+                                                        <dxe:ASPxTextBox ID="dxetxtSpecial" ClientInstanceName="dxetxtSpecial" runat="server"
+                                                            Width="793px">
+                                                        </dxe:ASPxTextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
