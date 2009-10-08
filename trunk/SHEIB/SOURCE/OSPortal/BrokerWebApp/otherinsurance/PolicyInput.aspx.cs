@@ -1481,8 +1481,24 @@ namespace BrokerWebApp.otherinsurance
             obj = new BusinessObjects.Policy.BO_Policy(policyID);
 
             this.dxetxtPolicyNo.Text = obj.PolicyNo;
-            //dxechkTogether
-            //dxechkFlagReinsure
+            if (obj.FlagTogether == 1)
+            {
+                dxechkTogether.Checked = true;
+            }
+            else
+            {
+                dxechkTogether.Checked = false;
+            }
+
+            if (obj.FlagReinsure == 1)
+            {
+                dxechkFlagReinsure.Checked = true;
+            }
+            else
+            {
+                dxechkFlagReinsure.Checked = false;
+            }
+            
                         
             this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(obj.ProdTypeID));
             if (this.dxeddlProdTypeName.SelectedIndex >= 0)
@@ -1543,6 +1559,8 @@ namespace BrokerWebApp.otherinsurance
                     dxeddlSourceTypeID.SelectedItem = theselected;
                 }
             }
+
+            this.dxetxtSpecial.Text = obj.Special;
 
             this.dxeStartDate.Date = obj.StartDate;
             this.dxeEndDate.Date = obj.EndDate;
