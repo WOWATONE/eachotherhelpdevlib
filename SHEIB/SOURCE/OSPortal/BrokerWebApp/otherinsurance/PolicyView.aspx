@@ -235,6 +235,16 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="text-align: right;">
+                                                        ±¸×¢£º
+                                                    </td>
+                                                    <td colspan="5" style="text-align: left;">
+                                                        <dxe:ASPxTextBox ID="dxetxtSpecial" ClientInstanceName="dxetxtSpecial" runat="server"
+                                                            Width="718px">
+                                                        </dxe:ASPxTextBox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: right;">
                                                         Â¼µ¥ÈË£º
                                                     </td>
                                                     <td style="text-align: left;">
