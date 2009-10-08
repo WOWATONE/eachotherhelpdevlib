@@ -1481,6 +1481,7 @@ namespace BrokerWebApp.otherinsurance
             obj = new BusinessObjects.Policy.BO_Policy(policyID);
 
             this.dxetxtPolicyNo.Text = obj.PolicyNo;
+            
             if (obj.FlagTogether == 1)
             {
                 dxechkTogether.Checked = true;

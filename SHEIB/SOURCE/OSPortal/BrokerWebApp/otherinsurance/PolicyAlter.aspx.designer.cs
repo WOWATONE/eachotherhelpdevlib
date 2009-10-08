@@ -140,22 +140,22 @@ namespace BrokerWebApp.otherinsurance {
         protected global::System.Web.UI.WebControls.Label lblSourcePolicyID;
         
         /// <summary>
-        /// chkTogether control.
+        /// dxechkTogether control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkTogether;
+        protected global::DevExpress.Web.ASPxEditors.ASPxCheckBox dxechkTogether;
         
         /// <summary>
-        /// chkAgain control.
+        /// dxechkFlagReinsure control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkAgain;
+        protected global::DevExpress.Web.ASPxEditors.ASPxCheckBox dxechkFlagReinsure;
         
         /// <summary>
         /// dxebtnOldPolicyView control.
@@ -255,6 +255,15 @@ namespace BrokerWebApp.otherinsurance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden ptid;
+        
+        /// <summary>
+        /// dxetxtSpecial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtSpecial;
         
         /// <summary>
         /// dxeStartDate control.
