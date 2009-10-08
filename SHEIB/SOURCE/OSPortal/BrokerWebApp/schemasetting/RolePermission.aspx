@@ -39,15 +39,49 @@
 
         function dxebtnSelectAll_Click(s,e) {
             var tabClientID = tabPrivilege.mainElement.id;
+            var currentTabName = tabPrivilege.tabs[tabPrivilege.activeTabIndex].name;
+                        
             //var inputs = $("form :checkbox");
             //var inputs = $("#tabPrivilege :checkbox");
-            $("#" + tabClientID + " INPUT[type='checkbox']").attr('checked', true);
+            //var inputs = $("#" + tabClientID + " INPUT[type='checkbox']").attr('checked', true);
+            var inputs = $("#" + tabClientID + " INPUT[type='checkbox']");
+            var chkitem;
+            for (i=0; i < inputs.length; i++ )
+            {
+                chkitem = inputs[i];
+                var idstr = chkitem.id;
+                var sindex = idstr.lastIndexOf("_");
+                var length = idstr.length;
+                var pid = idstr.substring(sindex + 1, length);
+                var firstPosition = pid.indexOf(currentTabName);
+                //debugger;
+                if (firstPosition == 0) {
+                    chkitem.checked = true;
+                }
+            }
+            
         }
 
         function dxebtnClearAll_Click(s, e) {
             var tabClientID = tabPrivilege.mainElement.id;
-            $("#" + tabClientID + " INPUT[type='checkbox']").attr('checked', false);
-             
+            var currentTabName = tabPrivilege.tabs[tabPrivilege.activeTabIndex].name;
+            
+            //$("#" + tabClientID + " INPUT[type='checkbox']").attr('checked', false);
+            
+            var inputs = $("#" + tabClientID + " INPUT[type='checkbox']");
+            var chkitem;
+            for (i = 0; i < inputs.length; i++) {
+                chkitem = inputs[i];
+                var idstr = chkitem.id;
+                var sindex = idstr.lastIndexOf("_");
+                var length = idstr.length;
+                var pid = idstr.substring(sindex + 1, length);
+                var firstPosition = pid.indexOf(currentTabName);
+                //debugger;
+                if (firstPosition == 0) {
+                    chkitem.checked = false;
+                }
+            } 
         }
 
         function dxebtnSavePermission_Click(s, e) {
