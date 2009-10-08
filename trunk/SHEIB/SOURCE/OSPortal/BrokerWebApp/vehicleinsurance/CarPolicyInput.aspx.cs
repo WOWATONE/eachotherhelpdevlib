@@ -1373,6 +1373,9 @@ namespace BrokerWebApp.vehicleinsurance
             //dxetxtCreatePerson.Text = objCar.CreatePersonName;
             dxeCreateTime.Date = objCar.CreateTime;
 
+            //车主
+            dxetxtCarUser.Text = objCar.CustomerName;
+
         }
 
         private void alwayBasicInfoControlsUnable()
