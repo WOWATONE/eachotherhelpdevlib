@@ -818,7 +818,9 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.Process = obj.TotalProcess;
                 theObject.ProcessBase = obj.TotalProcess;
                 theObject.ProcessRate = 0;
-                
+
+                theObject.Remark = obj.Remark;
+
                 theObject.CreatePerson = this.CurrentUserID;
                 theObject.CreateTime = dxeCreateTime.Date;
                 
@@ -855,6 +857,8 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.Process = obj.TotalProcess;
                 theObject.ProcessBase = obj.TotalProcess;
                 theObject.ProcessRate = 0;
+
+                theObject.Remark = obj.Remark;
 
                 theObject.CreateTime = dxeCreateTime.Date;
                 theObject.ModifyPerson = this.CurrentUserID;
