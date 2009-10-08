@@ -262,8 +262,17 @@
             var CustomerID = getCustomerID();
             var DeptId = dxeddlDeptID.GetValue();
             var EndDate = dxeEndDate.GetValue();
-            var FlagReinsure = null;
-            var FlagTogether = null;
+            
+            var FlagReinsure = 0;
+            if (dxechkFlagReinsure.GetChecked()) {
+                FlagReinsure = 1;
+            }
+
+            var FlagTogether = 0;
+            if (dxechkTogether.GetChecked()) {
+                FlagTogether = 1;
+            }
+            
             var GatheringType = dxeddlGatheringType.GetValue();
             var OperationType = dxeddlOperationType.GetValue();
             var PeriodTimes = dxetxtStage.GetValueString();
@@ -281,7 +290,7 @@
             var SalesId = dxeddlSalesId.GetValue();
             var SignDate = null;
             var SourceTypeID = dxeddlSourceTypeID.GetValue();
-            var Special = null;
+            var Special = dxetxtSpecial.GetValueString();
             var StartDate = dxeStartDate.GetValue();
 
 
@@ -1112,6 +1121,16 @@
                                                                 </td>
                                                             </tr>
                                                         </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: right;">
+                                                        ±¸×¢£º
+                                                    </td>
+                                                    <td colspan="5" style="text-align: left;">
+                                                        <dxe:ASPxTextBox ID="dxetxtSpecial" ClientInstanceName="dxetxtSpecial" runat="server"
+                                                            Width="820px">
+                                                        </dxe:ASPxTextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
