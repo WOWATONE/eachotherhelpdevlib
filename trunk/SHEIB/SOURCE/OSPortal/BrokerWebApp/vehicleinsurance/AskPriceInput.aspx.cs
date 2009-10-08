@@ -793,12 +793,15 @@ namespace BrokerWebApp.vehicleinsurance
 
         #region Privates
 
-        private void loadCarPolicyValue(String carPoliicyID)
+        private void loadCarPolicyValue(String askPriceID)
         {
+
+            if (String.IsNullOrEmpty(askPriceID)) return;
+
             ListEditItem theselected;
             BusinessObjects.Policy.BO_CarPolicy obj;
 
-            obj = new BusinessObjects.Policy.BO_CarPolicy(carPoliicyID);
+            obj = new BusinessObjects.Policy.BO_CarPolicy(askPriceID);
 
             this.dxetxtAskPriceID.Text = obj.AskPriceID ;
             
