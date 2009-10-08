@@ -141,17 +141,22 @@ namespace BrokerWebApp.schemasetting
             this.tabPrivilege.TabPages.Clear();
             DataSet ds = BO_P_Menu.FetchMenuOrPrivilege(roleID);
             DevExpress.Web.ASPxTabControl.TabPage tp;
+
+            
+
             DataRow[] dr;            
             foreach (DataRow item in ds.Tables[0].Rows)
             {
                 tp = new DevExpress.Web.ASPxTabControl.TabPage();
+                
                 tp.TabStyle.HorizontalAlign = HorizontalAlign.Left;
                 tp.TabStyle.VerticalAlign = VerticalAlign.Top;
                                                 
                 tp.Name = item["MenuID"].ToString();
                 tp.Text = item["MenuName"].ToString();
                 this.tabPrivilege.TabPages.Add(tp);
-
+                
+                
                 //add checkbox list;
                 dr = ds.Tables[1].Select("ParentMenuID='" + tp.Name + "'");
                 CheckBox chk;
@@ -165,9 +170,11 @@ namespace BrokerWebApp.schemasetting
                     Boolean checkedState = Convert.ToBoolean(dr[i]["Checked"]);
                     chk.Checked = checkedState;
                     tp.Controls.Add(chk);
+                    
                     Literal ltl = new Literal();
                     ltl.Text = "<br/>";
-                    tp.Controls.Add(ltl);                    
+                    tp.Controls.Add(ltl); 
+                    
                 }             
             }
         }
