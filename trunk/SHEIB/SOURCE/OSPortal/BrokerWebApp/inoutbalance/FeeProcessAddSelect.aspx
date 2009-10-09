@@ -274,8 +274,6 @@
                         <tr>
                             <td style="text-align: right;">
                             </td>
-                            <dxe:ASPxCheckBox Checked="false" ID="ckbSelectAll" Text="全选" runat="server">
-                            </dxe:ASPxCheckBox>
                             <td style="text-align: left;">
                             </td>
                             <td style="text-align: right;">

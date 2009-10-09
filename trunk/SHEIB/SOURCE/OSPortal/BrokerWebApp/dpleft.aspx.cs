@@ -43,11 +43,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[0].Items[0].ClientVisible = true; 
+                this.ASPxNavBar1.Groups[0].Items[0].ClientEnabled = true; 
             }
             else
             {
-                this.ASPxNavBar1.Groups[0].Items[0].ClientVisible = false; 
+                this.ASPxNavBar1.Groups[0].Items[0].ClientEnabled = false; 
             }
             
 
@@ -60,11 +60,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[0].Items[1].ClientVisible = true;
+                this.ASPxNavBar1.Groups[0].Items[1].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[0].Items[1].ClientVisible = false;
+                this.ASPxNavBar1.Groups[0].Items[1].ClientEnabled = false;
             }
             
             //业务跟进
@@ -75,18 +75,18 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[0].Items[2].ClientVisible = true;
+                this.ASPxNavBar1.Groups[0].Items[2].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[0].Items[2].ClientVisible = false;
+                this.ASPxNavBar1.Groups[0].Items[2].ClientEnabled = false;
             }
             
             //group
-            if (existItemInGroup)
-                this.ASPxNavBar1.Groups[0].ClientVisible = true;
-            else
-                this.ASPxNavBar1.Groups[0].ClientVisible = false;
+            //if (existItemInGroup)
+            //    this.ASPxNavBar1.Groups[0].ClientEnabled = true;
+            //else
+            //    this.ASPxNavBar1.Groups[0].ClientEnabled = false;
 
 
 
@@ -103,11 +103,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[1].Items[0].ClientVisible = true;
+                this.ASPxNavBar1.Groups[1].Items[0].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[1].Items[0].ClientVisible = false;
+                this.ASPxNavBar1.Groups[1].Items[0].ClientEnabled = false;
             }
             
             
@@ -119,11 +119,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[1].Items[1].ClientVisible = true;
+                this.ASPxNavBar1.Groups[1].Items[1].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[1].Items[1].ClientVisible = false;
+                this.ASPxNavBar1.Groups[1].Items[1].ClientEnabled = false;
             }
                         
             //保单审核
@@ -133,18 +133,18 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[1].Items[2].ClientVisible = true;
+                this.ASPxNavBar1.Groups[1].Items[2].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[1].Items[2].ClientVisible = false;
+                this.ASPxNavBar1.Groups[1].Items[2].ClientEnabled = false;
             }
             
             //group
-            if (existItemInGroup)
-                this.ASPxNavBar1.Groups[1].ClientVisible = true;
-            else
-                this.ASPxNavBar1.Groups[1].ClientVisible = false;
+            //if (existItemInGroup)
+            //    this.ASPxNavBar1.Groups[1].ClientEnabled = true;
+            //else
+            //    this.ASPxNavBar1.Groups[1].ClientEnabled = false;
 
 
 
@@ -160,11 +160,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[2].Items[0].ClientVisible = true;
+                this.ASPxNavBar1.Groups[2].Items[0].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[2].Items[0].ClientVisible = false;
+                this.ASPxNavBar1.Groups[2].Items[0].ClientEnabled = false;
             }
             
             //询价单审核
@@ -174,11 +174,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[2].Items[1].ClientVisible = true;
+                this.ASPxNavBar1.Groups[2].Items[1].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[2].Items[1].ClientVisible = false;
+                this.ASPxNavBar1.Groups[2].Items[1].ClientEnabled = false;
             }
             
             //保单批改
@@ -189,11 +189,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[2].Items[2].ClientVisible = true;
+                this.ASPxNavBar1.Groups[2].Items[2].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[2].Items[2].ClientVisible = false;
+                this.ASPxNavBar1.Groups[2].Items[2].ClientEnabled = false;
             }
             
             //批单审核
@@ -203,11 +203,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[2].Items[3].ClientVisible = true;
+                this.ASPxNavBar1.Groups[2].Items[3].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[2].Items[3].ClientVisible = false;
+                this.ASPxNavBar1.Groups[2].Items[3].ClientEnabled = false;
             }
             
             //保单信息补录
@@ -216,18 +216,18 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[2].Items[4].ClientVisible = true;
+                this.ASPxNavBar1.Groups[2].Items[4].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[2].Items[4].ClientVisible = false;
+                this.ASPxNavBar1.Groups[2].Items[4].ClientEnabled = false;
             }
             
             //group
-            if (existItemInGroup)
-                this.ASPxNavBar1.Groups[2].ClientVisible = true;
-            else
-                this.ASPxNavBar1.Groups[2].ClientVisible = false;
+            //if (existItemInGroup)
+            //    this.ASPxNavBar1.Groups[2].ClientEnabled = true;
+            //else
+            //    this.ASPxNavBar1.Groups[2].ClientEnabled = false;
 
 
 
@@ -239,18 +239,18 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[3].Items[0].ClientVisible = true;
+                this.ASPxNavBar1.Groups[3].Items[0].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[3].Items[0].ClientVisible = false;
+                this.ASPxNavBar1.Groups[3].Items[0].ClientEnabled = false;
             }
 
             //group
-            if (existItemInGroup)
-                this.ASPxNavBar1.Groups[3].ClientVisible = true;
-            else
-                this.ASPxNavBar1.Groups[3].ClientVisible = false;
+            //if (existItemInGroup)
+            //    this.ASPxNavBar1.Groups[3].ClientEnabled = true;
+            //else
+            //    this.ASPxNavBar1.Groups[3].ClientEnabled = false;
 
 
             //业务咨询
@@ -263,18 +263,18 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[4].Items[0].ClientVisible = true;
+                this.ASPxNavBar1.Groups[4].Items[0].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[4].Items[0].ClientVisible = false;
+                this.ASPxNavBar1.Groups[4].Items[0].ClientEnabled = false;
             }
 
             //group
-            if (existItemInGroup)
-                this.ASPxNavBar1.Groups[4].ClientVisible = true;
-            else
-                this.ASPxNavBar1.Groups[4].ClientVisible = false;
+            //if (existItemInGroup)
+            //    this.ASPxNavBar1.Groups[4].ClientEnabled = true;
+            //else
+            //    this.ASPxNavBar1.Groups[4].ClientEnabled = false;
 
 
             //收付结算
@@ -287,11 +287,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[5].Items[0].ClientVisible = true;
+                this.ASPxNavBar1.Groups[5].Items[0].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[5].Items[0].ClientVisible = false;
+                this.ASPxNavBar1.Groups[5].Items[0].ClientEnabled = false;
             }
 
             //客户收费
@@ -302,11 +302,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[5].Items[1].ClientVisible = true;
+                this.ASPxNavBar1.Groups[5].Items[1].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[5].Items[1].ClientVisible = false;
+                this.ASPxNavBar1.Groups[5].Items[1].ClientEnabled = false;
             }
             
             //解付保费
@@ -317,11 +317,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[5].Items[2].ClientVisible = true;
+                this.ASPxNavBar1.Groups[5].Items[2].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[5].Items[2].ClientVisible = false;
+                this.ASPxNavBar1.Groups[5].Items[2].ClientEnabled = false;
             }
             
             //经纪费开票
@@ -332,11 +332,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[5].Items[3].ClientVisible = true;
+                this.ASPxNavBar1.Groups[5].Items[3].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[5].Items[3].ClientVisible = false;
+                this.ASPxNavBar1.Groups[5].Items[3].ClientEnabled = false;
             }
             
             //经纪费结算
@@ -347,11 +347,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[5].Items[4].ClientVisible = true;
+                this.ASPxNavBar1.Groups[5].Items[4].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[5].Items[4].ClientVisible = false;
+                this.ASPxNavBar1.Groups[5].Items[4].ClientEnabled = false;
             }
             
             //已通知未收费清单
@@ -360,11 +360,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[5].Items[5].ClientVisible = true;
+                this.ASPxNavBar1.Groups[5].Items[5].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[5].Items[5].ClientVisible = false;
+                this.ASPxNavBar1.Groups[5].Items[5].ClientEnabled = false;
             }
             
             //已收费未解付清单
@@ -373,11 +373,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[5].Items[6].ClientVisible = true;
+                this.ASPxNavBar1.Groups[5].Items[6].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[5].Items[6].ClientVisible = false;
+                this.ASPxNavBar1.Groups[5].Items[6].ClientEnabled = false;
             }
             
             //已解付未开票清单
@@ -386,11 +386,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[5].Items[7].ClientVisible = true;
+                this.ASPxNavBar1.Groups[5].Items[7].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[5].Items[7].ClientVisible = false;
+                this.ASPxNavBar1.Groups[5].Items[7].ClientEnabled = false;
             }
             
             //已开票未结算清单
@@ -399,18 +399,18 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[5].Items[8].ClientVisible = true;
+                this.ASPxNavBar1.Groups[5].Items[8].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[5].Items[8].ClientVisible = false;
+                this.ASPxNavBar1.Groups[5].Items[8].ClientEnabled = false;
             }
             
             //group
-            if (existItemInGroup)
-                this.ASPxNavBar1.Groups[5].ClientVisible = true;
-            else
-                this.ASPxNavBar1.Groups[5].ClientVisible = false;
+            //if (existItemInGroup)
+            //    this.ASPxNavBar1.Groups[5].ClientEnabled = true;
+            //else
+            //    this.ASPxNavBar1.Groups[5].ClientEnabled = false;
 
 
             //综合查询
@@ -423,11 +423,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[6].Items[0].ClientVisible = true;
+                this.ASPxNavBar1.Groups[6].Items[0].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[6].Items[0].ClientVisible = false;
+                this.ASPxNavBar1.Groups[6].Items[0].ClientEnabled = false;
             }
             
             //保单查询(保险公司)
@@ -438,18 +438,18 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[6].Items[1].ClientVisible = true;
+                this.ASPxNavBar1.Groups[6].Items[1].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[6].Items[1].ClientVisible = false;
+                this.ASPxNavBar1.Groups[6].Items[1].ClientEnabled = false;
             }
 
             //group
-            if (existItemInGroup)
-                this.ASPxNavBar1.Groups[6].ClientVisible = true;
-            else
-                this.ASPxNavBar1.Groups[6].ClientVisible = false;
+            //if (existItemInGroup)
+            //    this.ASPxNavBar1.Groups[6].ClientEnabled = true;
+            //else
+            //    this.ASPxNavBar1.Groups[6].ClientEnabled = false;
 
 
 
@@ -462,11 +462,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[7].Items[0].ClientVisible = true;
+                this.ASPxNavBar1.Groups[7].Items[0].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[7].Items[0].ClientVisible = false;
+                this.ASPxNavBar1.Groups[7].Items[0].ClientEnabled = false;
             }
             
             //角色管理
@@ -475,11 +475,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[7].Items[1].ClientVisible = true;
+                this.ASPxNavBar1.Groups[7].Items[1].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[7].Items[1].ClientVisible = false;
+                this.ASPxNavBar1.Groups[7].Items[1].ClientEnabled = false;
             }
             
             //组织机构
@@ -488,11 +488,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[7].Items[2].ClientVisible = true;
+                this.ASPxNavBar1.Groups[7].Items[2].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[7].Items[2].ClientVisible = false;
+                this.ASPxNavBar1.Groups[7].Items[2].ClientEnabled = false;
             }
             
             //保险公司
@@ -501,11 +501,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[7].Items[3].ClientVisible = true;
+                this.ASPxNavBar1.Groups[7].Items[3].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[7].Items[3].ClientVisible = false;
+                this.ASPxNavBar1.Groups[7].Items[3].ClientEnabled = false;
             }
             
             //分支机构
@@ -514,11 +514,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[7].Items[4].ClientVisible = true;
+                this.ASPxNavBar1.Groups[7].Items[4].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[7].Items[4].ClientVisible = false;
+                this.ASPxNavBar1.Groups[7].Items[4].ClientEnabled = false;
             }
             
             //险种定义
@@ -527,11 +527,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[7].Items[5].ClientVisible = true;
+                this.ASPxNavBar1.Groups[7].Items[5].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[7].Items[5].ClientVisible = false;
+                this.ASPxNavBar1.Groups[7].Items[5].ClientEnabled = false;
             }
             
             //数据字典
@@ -540,11 +540,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[7].Items[6].ClientVisible = true;
+                this.ASPxNavBar1.Groups[7].Items[6].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[7].Items[6].ClientVisible = false;
+                this.ASPxNavBar1.Groups[7].Items[6].ClientEnabled = false;
             }
             
             //企业目录
@@ -553,11 +553,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[7].Items[7].ClientVisible = true;
+                this.ASPxNavBar1.Groups[7].Items[7].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[7].Items[7].ClientVisible = false;
+                this.ASPxNavBar1.Groups[7].Items[7].ClientEnabled = false;
             }
             
             //系统选项
@@ -566,11 +566,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[7].Items[8].ClientVisible = true;
+                this.ASPxNavBar1.Groups[7].Items[8].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[7].Items[8].ClientVisible = false;
+                this.ASPxNavBar1.Groups[7].Items[8].ClientEnabled = false;
             }
             
             //服务提醒
@@ -579,18 +579,18 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[7].Items[9].ClientVisible = true;
+                this.ASPxNavBar1.Groups[7].Items[9].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[7].Items[9].ClientVisible = false;
+                this.ASPxNavBar1.Groups[7].Items[9].ClientEnabled = false;
             }
             
             //group
-            if (existItemInGroup)
-                this.ASPxNavBar1.Groups[7].ClientVisible = true;
-            else
-                this.ASPxNavBar1.Groups[7].ClientVisible = false;
+            //if (existItemInGroup)
+            //    this.ASPxNavBar1.Groups[7].ClientEnabled = true;
+            //else
+            //    this.ASPxNavBar1.Groups[7].ClientEnabled = false;
 
 
             //统计报表
@@ -603,11 +603,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[8].Items[0].ClientVisible = true;
+                this.ASPxNavBar1.Groups[8].Items[0].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[8].Items[0].ClientVisible = false;
+                this.ASPxNavBar1.Groups[8].Items[0].ClientEnabled = false;
             }
             
             //保监会报表2
@@ -618,11 +618,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[8].Items[1].ClientVisible = true;
+                this.ASPxNavBar1.Groups[8].Items[1].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[8].Items[1].ClientVisible = false;
+                this.ASPxNavBar1.Groups[8].Items[1].ClientEnabled = false;
             }
             
             //同业公会报表
@@ -631,18 +631,18 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[8].Items[2].ClientVisible = true;
+                this.ASPxNavBar1.Groups[8].Items[2].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[8].Items[2].ClientVisible = false;
+                this.ASPxNavBar1.Groups[8].Items[2].ClientEnabled = false;
             }
 
             //group
-            if (existItemInGroup)
-                this.ASPxNavBar1.Groups[8].ClientVisible = true;
-            else
-                this.ASPxNavBar1.Groups[8].ClientVisible = false;
+            //if (existItemInGroup)
+            //    this.ASPxNavBar1.Groups[8].ClientEnabled = true;
+            //else
+            //    this.ASPxNavBar1.Groups[8].ClientEnabled = false;
 
 
 
@@ -654,11 +654,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[9].Items[0].ClientVisible = true;
+                this.ASPxNavBar1.Groups[9].Items[0].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[9].Items[0].ClientVisible = false;
+                this.ASPxNavBar1.Groups[9].Items[0].ClientEnabled = false;
             }
             
             //签约预算完成情况
@@ -667,11 +667,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[9].Items[1].ClientVisible = true;
+                this.ASPxNavBar1.Groups[9].Items[1].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[9].Items[1].ClientVisible = false;
+                this.ASPxNavBar1.Groups[9].Items[1].ClientEnabled = false;
             }
             
             //签约预算完成汇总
@@ -680,11 +680,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[9].Items[2].ClientVisible = true;
+                this.ASPxNavBar1.Groups[9].Items[2].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[9].Items[2].ClientVisible = false;
+                this.ASPxNavBar1.Groups[9].Items[2].ClientEnabled = false;
             }
             
             //预算基础表
@@ -693,18 +693,18 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[9].Items[3].ClientVisible = true;
+                this.ASPxNavBar1.Groups[9].Items[3].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[9].Items[3].ClientVisible = false;
+                this.ASPxNavBar1.Groups[9].Items[3].ClientEnabled = false;
             }
             
             //group
-            if (existItemInGroup)
-                this.ASPxNavBar1.Groups[9].ClientVisible = true;
-            else
-                this.ASPxNavBar1.Groups[9].ClientVisible = false;
+            //if (existItemInGroup)
+            //    this.ASPxNavBar1.Groups[9].ClientEnabled = true;
+            //else
+            //    this.ASPxNavBar1.Groups[9].ClientEnabled = false;
 
 
 
@@ -718,11 +718,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[10].Items[0].ClientVisible = true;
+                this.ASPxNavBar1.Groups[10].Items[0].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[10].Items[0].ClientVisible = false;
+                this.ASPxNavBar1.Groups[10].Items[0].ClientEnabled = false;
             }
             
             //应收保费帐期报表
@@ -733,11 +733,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[10].Items[1].ClientVisible = true;
+                this.ASPxNavBar1.Groups[10].Items[1].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[10].Items[1].ClientVisible = false;
+                this.ASPxNavBar1.Groups[10].Items[1].ClientEnabled = false;
             }
             
             //应收佣金帐期报表
@@ -748,11 +748,11 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[10].Items[2].ClientVisible = true;
+                this.ASPxNavBar1.Groups[10].Items[2].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[10].Items[2].ClientVisible = false;
+                this.ASPxNavBar1.Groups[10].Items[2].ClientEnabled = false;
             }
             
             //实收保费逾期报表
@@ -763,19 +763,19 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[10].Items[3].ClientVisible = true;
+                this.ASPxNavBar1.Groups[10].Items[3].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[10].Items[3].ClientVisible = false;
+                this.ASPxNavBar1.Groups[10].Items[3].ClientEnabled = false;
             }
 
 
             //group
-            if (existItemInGroup)
-                this.ASPxNavBar1.Groups[10].ClientVisible = true;
-            else
-                this.ASPxNavBar1.Groups[10].ClientVisible = false;
+            //if (existItemInGroup)
+            //    this.ASPxNavBar1.Groups[10].ClientEnabled = true;
+            //else
+            //    this.ASPxNavBar1.Groups[10].ClientEnabled = false;
 
         }
 
