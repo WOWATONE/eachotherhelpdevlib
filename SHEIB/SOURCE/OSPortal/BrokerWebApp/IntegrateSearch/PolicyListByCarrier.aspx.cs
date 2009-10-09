@@ -31,19 +31,7 @@ namespace BrokerWebApp.IntegrateSearch
 
                 CheckPermission();
 
-                if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Carrier_Group))
-                {
-                    dxeddlDeptID.Value = this.CurrentUser.DeptID;
-                    dxeddlDeptID.ClientEnabled = false;
-                }
-                if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Carrier_Personal))
-                {
-                    dxeddlDeptID.Value = this.CurrentUser.DeptID;
-                    dxeddlSalesId.Value = this.CurrentUser.UserID;
 
-                    dxeddlDeptID.ClientEnabled = false;
-                    dxeddlSalesId.ClientEnabled = false;
-                }
             }
             if (Page.IsCallback)
             {
@@ -71,8 +59,7 @@ namespace BrokerWebApp.IntegrateSearch
                 dxeddlSalesId.ClientEnabled = true;
             }
 
-            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Carrier_All))
-            {
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.Policy_Search_Carrier_All))            {
                 dxeddlDeptID.ClientEnabled = true;
                 dxeddlSalesId.ClientEnabled = true;
             }
