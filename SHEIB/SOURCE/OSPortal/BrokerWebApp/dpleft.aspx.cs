@@ -88,10 +88,6 @@ namespace BrokerWebApp
             //else
             //    this.ASPxNavBar1.Groups[0].ClientEnabled = false;
 
-
-
-
-
             
             //非车险保单管理
             existItemInGroup = false;
@@ -100,6 +96,9 @@ namespace BrokerWebApp
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyInput_Add);
             checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyInput_Modify);
             checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyInput_Delete);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyInput_List_Search_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyInput_List_Search_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyInput_List_Search_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -116,6 +115,9 @@ namespace BrokerWebApp
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_Add);
             checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_Modify);
             checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_Delete);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_List_Search_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_List_Search_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_List_Search_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -157,6 +159,9 @@ namespace BrokerWebApp
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.AskPriceInput_Add);
             checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.AskPriceInput_Modify);
             checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.AskPriceInput_Delete);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.AskPriceInput_List_Search_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.AskPriceInput_List_Search_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.AskPriceInput_List_Search_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -183,9 +188,12 @@ namespace BrokerWebApp
             
             //保单批改
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_Add);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_Modify);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_Delete);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CarPolicyAlt_Add);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CarPolicyAlt_Modify);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CarPolicyAlt_Delete);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CarPolicyAlt_List_Search_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CarPolicyAlt_List_Search_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CarPolicyAlt_List_Search_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;

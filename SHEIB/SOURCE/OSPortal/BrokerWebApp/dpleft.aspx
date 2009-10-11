@@ -145,12 +145,13 @@
                             <Items>
                                 <dxnb:NavBarItem Text="签约预算清单" Name="BudgetManagement/SignPremiumBudgetList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="签约预算完成情况" Name="BudgetManagement/SignPremiumBudgetRpt.aspx">
+                                <dxnb:NavBarItem Text="预算基础表" Name="BudgetManagement/RptSignBudgetBase.aspx">
+                                </dxnb:NavBarItem>  
+                                <dxnb:NavBarItem Text="签约预算完成汇总表" Name="BudgetManagement/SignPremiumBudgetRpt.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="签约预算完成汇总" Name="BudgetManagement/SignPremiumBudgetSummary.aspx" Visible="false">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="预算基础表" Name="BudgetManagement/RptSignBudgetBase.aspx">
-                                </dxnb:NavBarItem>                                                               
+                                                                                             
                             </Items>
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="台帐" Expanded="false">
