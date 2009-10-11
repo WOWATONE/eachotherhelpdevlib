@@ -96,7 +96,7 @@ namespace BrokerWebApp.otherinsurance
                 theIHL.Enabled = checkPerm;
 
                 //modify
-                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyAlt_Modify);
+                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.CarPolicyAlt_Modify);
                 thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[1];
                 thebtn.Enabled = checkPerm;
 
