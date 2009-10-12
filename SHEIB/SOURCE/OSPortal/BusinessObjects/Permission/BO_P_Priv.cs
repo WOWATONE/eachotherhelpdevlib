@@ -141,46 +141,39 @@ namespace BusinessObjects
             //询价单反审核
             AskPriceInput_AuditBack = 103024,
 
-            //批单审核列表查询(全部)
-            CarPolicyAlt_AuditList_Search_All = 103030,
-            //批单审核列表查询(团队)
-            CarPolicyAlt_AuditList_Search_Group = 103031,
-            //批单审核列表查询(个人)
-            CarPolicyAlt_AuditList_Search_Personal = 103032,
-
-            //保单信息补录
-            //PolicyInfo_Append = 103043,
-
+            //保单批改列表查询(全部)
+            CarPolicyAlt_List_Search_All = 103030,
+            //保单批改列表查询(团队)
+            CarPolicyAlt_List_Search_Group = 103031,
+            //保单批改列表查询(个人)
+            CarPolicyAlt_List_Search_Personal = 103032,
             //保单批改新建
-            //CarPolicyAlt_Add = 103034,
+            CarPolicyAlt_Add = 103033,
             //保单批改编辑
-            //CarPolicyAlt_Modify = 103035,
+            CarPolicyAlt_Modify = 103034,
             //保单批改删除
-            //CarPolicyAlt_Delete = 103036,
+            CarPolicyAlt_Delete = 103035,
+
+
+            //批单审核列表查询(全部)
+            CarPolicyAlt_AuditList_Search_All = 103040,
+            //批单审核列表查询(团队)
+            CarPolicyAlt_AuditList_Search_Group = 103041,
+            //批单审核列表查询(个人)
+            CarPolicyAlt_AuditList_Search_Personal = 103042,
+            //保单批改审核
+            CarPolicyAlt_Audit = 103043,
+            //保单批改反审核
+            CarPolicyAlt_AuditBack = 103044,
 
             //保单信息补录列表查询(全部)
-            PolicyInfo_AppendList_Search_All = 103040,
+            PolicyInfo_AppendList_Search_All = 103050,
             //保单信息补录列表查询(团队)
-            PolicyInfo_AppendList_Search_Group = 103041,
+            PolicyInfo_AppendList_Search_Group = 103051,
             //保单信息补录列表查询(个人)
-            PolicyInfo_AppendList_Search_Personal = 103042,
+            PolicyInfo_AppendList_Search_Personal = 103052,
             //保单信息补录
-            PolicyInfo_Append = 103043,
-
-            //保单批改列表查询(全部)
-            CarPolicyAlt_List_Search_All = 103050,
-            //保单批改列表查询(团队)
-            CarPolicyAlt_List_Search_Group = 103051,
-            //保单批改列表查询(个人)
-            CarPolicyAlt_List_Search_Personal = 103052,
-
-            //保单批改新建
-            CarPolicyAlt_Add = 103053,
-            //保单批改编辑
-            CarPolicyAlt_Modify = 103054,
-            //保单批改删除
-            CarPolicyAlt_Delete = 103055,
-
+            PolicyInfo_Append = 103053,
 
             //赔案登记新建
             PaymentClaims_Register = 104010,
