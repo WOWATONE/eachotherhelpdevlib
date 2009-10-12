@@ -1111,13 +1111,14 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                           <Left>2pt</Left>
                         </BorderWidth>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=First(Fields!Content.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1185,7 +1186,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                           <Default>Solid</Default>
                           <Right>None</Right>
                           <Top>None</Top>
-                          <Bottom>Solid</Bottom>
+                          <Bottom>None</Bottom>
                         </BorderStyle>
                         <BorderWidth>
                           <Left>2pt</Left>
@@ -1266,7 +1267,7 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                         <BorderStyle>
                           <Default>Solid</Default>
                           <Right>None</Right>
-                          <Top>None</Top>
+                          <Top>Solid</Top>
                           <Bottom>Solid</Bottom>
                         </BorderStyle>
                         <BorderWidth>
@@ -2358,13 +2359,14 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                           <Right>2pt</Right>
                         </BorderWidth>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=First(Fields!Content.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -3586,13 +3588,14 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                           <Right>2pt</Right>
                         </BorderWidth>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=First(Fields!Content.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>

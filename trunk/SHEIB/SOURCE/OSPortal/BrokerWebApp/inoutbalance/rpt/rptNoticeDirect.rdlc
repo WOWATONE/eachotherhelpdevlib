@@ -1132,13 +1132,14 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                           <Left>2pt</Left>
                         </BorderWidth>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>备注</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1175,8 +1176,8 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                 <TableCell>
                   <ColSpan>5</ColSpan>
                   <ReportItems>
-                    <Textbox Name="textbox50">
-                      <rd:DefaultName>textbox50</rd:DefaultName>
+                    <Textbox Name="Content_1">
+                      <rd:DefaultName>Content_1</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -1188,13 +1189,14 @@ pwkXUN9jiNIxTSd1kp5ljYczw9dzIXtyfEr14vN2PgapygspjUMz5L92BlbzIdN2Zad2Ya92cF52TPcp
                           <Left>2pt</Left>
                         </BorderWidth>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=First(Fields!Content.Value, "dsNotice_Notice")</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>

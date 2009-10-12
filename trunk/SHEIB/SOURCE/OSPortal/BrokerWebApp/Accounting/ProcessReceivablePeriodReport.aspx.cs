@@ -68,6 +68,7 @@ namespace BrokerWebApp.Accounting
             this.dxeddlDeptID.TextField = "DeptName";
             this.dxeddlDeptID.ValueField = "DeptID";
             this.dxeddlDeptID.DataBind();
+            this.dxeddlDeptID.Items.Insert(0, new ListEditItem("(全部)", ""));
 
             //this.dxeddlSalesId.DataSource = BusinessObjects.BO_P_User.FetchList();
             //this.dxeddlSalesId.TextField = "UserNameCn";
@@ -269,6 +270,7 @@ namespace BrokerWebApp.Accounting
             thecb.TextField = "UserNameCn";
             thecb.ValueField = "UserID";
             thecb.DataBind();
+            thecb.Items.Insert(0, new ListEditItem("(全部)", ""));
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];
