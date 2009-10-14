@@ -229,7 +229,12 @@ namespace BrokerWebApp.Accounting
 
             if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and b.CarrierID ='" + dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and a.CarrierID ='" + dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
+            }
+
+            if (this.dxeddlBranchId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranchId.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and a.BranchID ='" + dxeddlBranchId.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlProdTypeName.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlProdTypeName.SelectedItem.Value.ToString()))
