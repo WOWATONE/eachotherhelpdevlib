@@ -326,8 +326,8 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保编号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataTextColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataTextColumn>
                                         <dxwgv:GridViewDataDateColumn FieldName="PayFeeDate" Caption="收款日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
@@ -356,9 +356,9 @@
                                     <Settings ShowGroupPanel="false" />
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="NoticeNo" SummaryType="Count"  DisplayFormat="记录数:#"/>
-                                        <dxwgv:ASPxSummaryItem FieldName="PayinFee" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayinedFee" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="Fee" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PayProcBase" SummaryType="Sum" DisplayFormat="c" />
                                     </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>

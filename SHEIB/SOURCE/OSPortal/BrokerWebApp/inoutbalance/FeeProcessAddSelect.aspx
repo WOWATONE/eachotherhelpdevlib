@@ -365,8 +365,8 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataTextColumn FieldName="PolicyNo" Caption="保单编号" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataTextColumn>
                                         <dxwgv:GridViewDataDateColumn FieldName="InvoiceDate" Caption="开票日期" CellStyle-Wrap="False"
                                             PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
@@ -380,6 +380,10 @@
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowPager" />
                                     <Settings ShowGroupPanel="false" />
+                                    <TotalSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="InvoiceID" SummaryType="Count"  DisplayFormat="记录数:#"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="InvoiceedFee" SummaryType="Sum" DisplayFormat="c" />
+                                    </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
                                 <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
