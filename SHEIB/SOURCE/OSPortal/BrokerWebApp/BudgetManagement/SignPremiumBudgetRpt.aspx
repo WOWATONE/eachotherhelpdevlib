@@ -138,7 +138,7 @@
                             <dxwgv:GridViewDataTextColumn Caption="客户经理" FieldName="SalesName" CellStyle-Wrap="False"
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="    " FieldName="Type" CellStyle-Wrap="False"
+                            <dxwgv:GridViewDataTextColumn Caption="    " FieldName="Type" CellStyle-Wrap="False" SortOrder="Ascending"
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="保费预算继保" FieldName="PremiumBudgetContinue"
