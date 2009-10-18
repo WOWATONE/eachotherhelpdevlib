@@ -68,7 +68,7 @@
 
         function dxeddlDeptID_SelectedIndexChanged(s, e) {
             var thejsonstring = dxeddlDeptID.GetSelectedItem().value;
-            dxeddlSalesId.PerformCallback(thejsonstring);
+            dxeddlSalesID.PerformCallback(thejsonstring);
         }
 
 
@@ -79,6 +79,9 @@
                 return false;
             }
         }
+
+
+
     </script>
 
 </asp:Content>
