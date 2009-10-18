@@ -19,6 +19,7 @@ namespace BrokerWebApp.BudgetManagement
         /// 预算编号
         /// </summary>
         private int _signPremiumBudgetID;
+        private string toadd = string.Empty;
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace BrokerWebApp.BudgetManagement
                         this._signPremiumBudgetID = Convert.ToInt32(Request.QueryString["SignPremiumBudgetID"]);
                         this.ViewState["SignPremiumBudgetID"] = this._signPremiumBudgetID;
                     }
-
+                    this.BindProdTypeName();
                     this.Initialization();
                 }
                 else
@@ -50,7 +51,7 @@ namespace BrokerWebApp.BudgetManagement
         /// </summary>
         private void Initialization()
         {
-            if (this._signPremiumBudgetID<=0)
+            if (this._signPremiumBudgetID <= 0)
             {
                 //客户经理
                 this.SetddlSalesID("");
@@ -58,12 +59,13 @@ namespace BrokerWebApp.BudgetManagement
                 this.dxeddlOperationType.SelectedIndex = 0;
                 //保单类别
                 this.SetddlPremiumType("");
+
             }
             else
             {
                 this.lblerrmsg.Visible = false;
                 BusinessObjects.Budget.BO_SignPremiumBudget signPremiumBudget = new BusinessObjects.Budget.BO_SignPremiumBudget(this._signPremiumBudgetID);
-                if (signPremiumBudget.SignPremiumBudgetID<=0)
+                if (signPremiumBudget.SignPremiumBudgetID <= 0)
                 {
                     this.lblerrmsg.InnerText = "没有取得该预算管理信息。";
                     this.lblerrmsg.Visible = true;
@@ -73,7 +75,11 @@ namespace BrokerWebApp.BudgetManagement
                 this.dxetxtCustName.Text = signPremiumBudget.CustName;
                 this.hidCustID.Value = signPremiumBudget.CustomerID;
                 this.SetddlSalesID(signPremiumBudget.SalesID);
-                this.dxetxtProdTypeID.Text = signPremiumBudget.ProdTypeName;
+                //this.dxetxtProdTypeID.Text = signPremiumBudget.ProdTypeName;
+
+                this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(signPremiumBudget.ProdTypeID));
+                if (this.dxeddlProdTypeName.SelectedIndex >= 0)
+                    this.dxeddlProdTypeName.Text = this.dxeddlProdTypeName.SelectedItem.Text.Substring(this.dxeddlProdTypeName.SelectedItem.Text.IndexOf("∟") + 1);
                 this.ptid.Value = signPremiumBudget.ProdTypeID;
                 this.dxeddlOperationType.SelectedIndex = this.dxeddlOperationType.Items.IndexOf(this.dxeddlOperationType.Items.FindByValue(signPremiumBudget.OperationType));
                 this.dxetxtNY.Text = signPremiumBudget.NY;
@@ -82,6 +88,7 @@ namespace BrokerWebApp.BudgetManagement
                 this.dextxtProcessBudget.Text = signPremiumBudget.ProcessBudget.ToString();
             }
         }
+
 
         /// <summary>
         /// 设置客户经理
@@ -124,7 +131,7 @@ namespace BrokerWebApp.BudgetManagement
         {
             try
             {
-                if (this._signPremiumBudgetID<=0)
+                if (this._signPremiumBudgetID <= 0)
                 {//新增预算管理
                     this.lblerrmsg.Visible = false;
                     if (!this.IsDoubleValue(this.dxetxtPremiumBudget.Text))
@@ -143,7 +150,8 @@ namespace BrokerWebApp.BudgetManagement
                     BusinessObjects.Budget.BO_SignPremiumBudget signPremiumBudget = new BusinessObjects.Budget.BO_SignPremiumBudget();
                     signPremiumBudget.SalesID = this.dxeddlSalesID.Value.ToString();
                     signPremiumBudget.CustomerID = this.hidCustID.Value;
-                    signPremiumBudget.ProdTypeID = this.ptid.Value;
+                    //signPremiumBudget.ProdTypeID = this.ptid.Value;
+                    signPremiumBudget.ProdTypeID = (string)dxeddlPremiumType.Value;
                     signPremiumBudget.OperationType = this.dxeddlOperationType.Value.ToString();
                     signPremiumBudget.PremiumBudget = Convert.ToDouble(this.dxetxtPremiumBudget.Text);
                     signPremiumBudget.ProcessBudget = Convert.ToDouble(this.dextxtProcessBudget.Text);
@@ -172,7 +180,7 @@ namespace BrokerWebApp.BudgetManagement
                     signPremiumBudget.SignPremiumBudgetID = this._signPremiumBudgetID;
                     signPremiumBudget.SalesID = this.dxeddlSalesID.Value.ToString();
                     signPremiumBudget.CustomerID = this.hidCustID.Value;
-                    signPremiumBudget.ProdTypeID = this.ptid.Value;
+                    signPremiumBudget.ProdTypeID = (string)dxeddlPremiumType.Value;
                     signPremiumBudget.OperationType = this.dxeddlOperationType.Value.ToString();
                     signPremiumBudget.PremiumBudget = Convert.ToDouble(this.dxetxtPremiumBudget.Text);
                     signPremiumBudget.ProcessBudget = Convert.ToDouble(this.dextxtProcessBudget.Text);
@@ -199,5 +207,32 @@ namespace BrokerWebApp.BudgetManagement
             double result = 0;
             return Double.TryParse(value, out result);
         }
+
+
+        private void BindProdTypeName()
+        {
+            DataSet dsList = BusinessObjects.SchemaSetting.BO_ProductType.GetProductTypeList();
+            if (dsList.Tables[0] != null && dsList.Tables[0].Rows.Count > 0)
+            {
+                this.SetProdTypeName(dsList.Tables[0], "0", this.dxeddlProdTypeName);
+            }
+        }
+
+
+        private void SetProdTypeName(DataTable table, string parentid, ASPxComboBox comboBox)
+        {
+            if (parentid == "0")
+                this.toadd = "";
+            else
+                this.toadd += "   ";
+            DataRow[] rows = table.Select("ParentID='" + parentid + "'", "ProdClass");
+            foreach (DataRow row in rows)
+            {
+                comboBox.Items.Add(this.toadd + (parentid == "0" ? "" : "∟") + row["ProdTypeName"].ToString(), row["ProdTypeID"].ToString());
+                this.SetProdTypeName(table, row["ProdTypeID"].ToString(), comboBox);
+                this.toadd = this.toadd.Substring(0, this.toadd.Length - 3);
+            }
+        }
+
     }
 }

@@ -68,6 +68,12 @@ namespace BrokerWebApp.BudgetManagement
         {
             DataSet dsList;
 
+            this.dxeddlDeptID.DataSource = BusinessObjects.BO_P_Department.FetchList();
+            this.dxeddlDeptID.TextField = "DeptName";
+            this.dxeddlDeptID.ValueField = "DeptID";
+            this.dxeddlDeptID.DataBind();
+            this.dxeddlDeptID.Items.Insert(0, new ListEditItem("(全部)", ""));
+
             //客户经理
             this.dxeddlSalesID.Items.Add("(全部)", "");
             dsList = BO_P_User.GetUserByUserID("");
@@ -89,6 +95,8 @@ namespace BrokerWebApp.BudgetManagement
                     this.dxeddlPremiumType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
                 }
             }
+
+            
         }
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
