@@ -150,8 +150,7 @@ namespace BrokerWebApp.BudgetManagement
                     BusinessObjects.Budget.BO_SignPremiumBudget signPremiumBudget = new BusinessObjects.Budget.BO_SignPremiumBudget();
                     signPremiumBudget.SalesID = this.dxeddlSalesID.Value.ToString();
                     signPremiumBudget.CustomerID = this.hidCustID.Value;
-                    //signPremiumBudget.ProdTypeID = this.ptid.Value;
-                    signPremiumBudget.ProdTypeID = (string)dxeddlPremiumType.Value;
+                    signPremiumBudget.ProdTypeID = ptid.Value;
                     signPremiumBudget.OperationType = this.dxeddlOperationType.Value.ToString();
                     signPremiumBudget.PremiumBudget = Convert.ToDouble(this.dxetxtPremiumBudget.Text);
                     signPremiumBudget.ProcessBudget = Convert.ToDouble(this.dextxtProcessBudget.Text);
@@ -180,7 +179,7 @@ namespace BrokerWebApp.BudgetManagement
                     signPremiumBudget.SignPremiumBudgetID = this._signPremiumBudgetID;
                     signPremiumBudget.SalesID = this.dxeddlSalesID.Value.ToString();
                     signPremiumBudget.CustomerID = this.hidCustID.Value;
-                    signPremiumBudget.ProdTypeID = (string)dxeddlPremiumType.Value;
+                    signPremiumBudget.ProdTypeID = ptid.Value;
                     signPremiumBudget.OperationType = this.dxeddlOperationType.Value.ToString();
                     signPremiumBudget.PremiumBudget = Convert.ToDouble(this.dxetxtPremiumBudget.Text);
                     signPremiumBudget.ProcessBudget = Convert.ToDouble(this.dextxtProcessBudget.Text);
