@@ -142,7 +142,7 @@ namespace BusinessObjects.Budget
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select ");
-            sb.Append("S.SignPremiumBudgetID, P.UserNameCn as SalesName, C.CustName, PT.ProdTypeName, (Case OperationType When '1' Then '新增' When '2' Then '续保' End) As OperationTypeName, S.PremiumBudget, S.ProcessBudget, S.NY, isnull(PC.CodeName, '') as PremiumTypeName ");
+            sb.Append("S.SignPremiumBudgetID, P.UserNameCn as SalesName, C.CustName, PT.ProdTypeName, (Case OperationType When '0' Then '新增' When '1' Then '续保' End) As OperationTypeName, S.PremiumBudget, S.ProcessBudget, S.NY, isnull(PC.CodeName, '') as PremiumTypeName ");
             sb.Append("From SignPremiumBudget S (nolock) ");
             sb.Append("Left Join Customer C (nolock) On C.CustID=S.CustomerID ");
             sb.Append("Left Join P_User P (nolock) On P.UserID=S.SalesID ");
