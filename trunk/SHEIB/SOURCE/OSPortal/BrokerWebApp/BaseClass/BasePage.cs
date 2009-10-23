@@ -12,6 +12,8 @@ namespace BrokerWebApp
         public static string TheFiveSF = "{0:0.00000}";
         public static String TheCustomCookieName = "TheCookieName";
 
+        public static String ApplicationRoot = HttpContext.Current.Request.ApplicationPath;
+
         public String CurrentUserID
         {
             get
@@ -63,5 +65,12 @@ namespace BrokerWebApp
                 _currentUser =  null;
         }
 
+
+        public static string URLCombine(string uri1, string uri2) 
+        { 
+            uri1 = uri1.TrimEnd('/'); 
+            uri2 = uri2.TrimStart('/'); 
+            return string.Format("{0}/{1}", uri1, uri2); 
+        }
     }
 }
