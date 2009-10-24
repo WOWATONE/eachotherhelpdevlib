@@ -437,6 +437,36 @@ namespace BusinessObjects
             else
                 return false;
         }
+
+
+        public static DataSet GetSelectPolicyList(string sWhere)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select ");
+            sb.Append("b.PolicyID, b.Beneficiary,  ");
+            sb.Append("(Select CustName from Customer where CustID=b.CustomerID) CustomerName, ");
+            sb.Append("(Select DeptName from P_department where DeptID=b.DeptID) DeptName, ");
+            sb.Append("(Select UserNameCn from p_user where userid=b.SalesID) UserName, ");
+            sb.Append("(Select ProdTypeName from ProductType where ProdTypeID=b.ProdTypeID) ProdTypeName, ");
+            sb.Append("Convert(varchar(10),b.StartDate,120) StartDate, ");
+            sb.Append("Convert(varchar(10),b.EndDate,120) EndDate, ");
+            sb.Append("dbo.GetPolicyCarrier(b.PolicyID) CarrierName, ");
+            sb.Append("b.PolicyNo, ");
+            sb.Append("b.PremiumBase ");
+            sb.Append("from Policy b ");
+            sb.Append("where ");
+            sb.Append(" b.PolicyStatus='2' ");
+            sb.Append(" and isnull(b.PrevPolicyID,'') = '' ");
+            sb.Append(sWhere);
+            sb.Append(" ");
+
+            //DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetFeeNoticeAddSelectList");
+            //_db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            //return _db.ExecuteDataSet(dbCommand);
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            return _db.ExecuteDataSet(dbCommand);
+        }
+        
         #endregion
     }
 }
