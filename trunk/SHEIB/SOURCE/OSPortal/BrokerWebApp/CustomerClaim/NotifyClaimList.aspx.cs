@@ -72,21 +72,21 @@ namespace BrokerWebApp.CustomerClaim
         {
             System.Text.StringBuilder sbWhere = new System.Text.StringBuilder();
             if (this.dxetxtPolicyNo.Text.Trim().Length > 0)
-                sbWhere.Append(" And P.PolicyNo='" + this.dxetxtPolicyNo.Text.Trim() + "' ");
+                sbWhere.Append(" And B.PolicyNo='" + this.dxetxtPolicyNo.Text.Trim() + "' ");
             if (this.dxetxtNotifyNo.Text.Trim().Length > 0)
-                sbWhere.Append(" And NC.NotifyNo='" + this.dxetxtNotifyNo.Text.Trim() + "' ");
+                sbWhere.Append(" And A.NotifyNo='" + this.dxetxtNotifyNo.Text.Trim() + "' ");
             if (this.deStartNotifyTime.Text.Trim().Length>0)
-                sbWhere.Append(" And NC.NotifyTime>='" + this.deStartNotifyTime.Text.Trim() + "' ");
+                sbWhere.Append(" And A.NotifyTime>='" + this.deStartNotifyTime.Text.Trim() + "' ");
             if (this.deEndNotifyTime.Text.Trim().Length>0)
-                sbWhere.Append(" And NC.NotifyTime<='" + this.deEndNotifyTime.Text.Trim() + "' ");
+                sbWhere.Append(" And A.NotifyTime<='" + this.deEndNotifyTime.Text.Trim() + "' ");
             if (this.deStartAccidentTime.Text.Trim().Length>0)
-                sbWhere.Append(" And NC.AccidentTime>='" + this.deStartAccidentTime.Text.Trim() + "' ");
+                sbWhere.Append(" And A.AccidentTime>='" + this.deStartAccidentTime.Text.Trim() + "' ");
             if (this.deEndAccidentTime.Text.Trim().Length>0)
-                sbWhere.Append(" And NC.AccidentTime<='" + this.deEndAccidentTime.Text.Trim() + "' ");
+                sbWhere.Append(" And A.AccidentTime<='" + this.deEndAccidentTime.Text.Trim() + "' ");
             if (this.dxetxtNotifyPerson.Text.Trim().Length>0)
-                sbWhere.Append(" And NC.NotifyPerson like '%" + this.dxetxtNotifyPerson.Text.Trim() + "%' ");
+                sbWhere.Append(" And A.NotifyPerson like '%" + this.dxetxtNotifyPerson.Text.Trim() + "%' ");
             if (this.dxetxtContactPerson.Text.Trim().Length>0)
-                sbWhere.Append(" And NC.ContactPerson like '%" + this.dxetxtContactPerson.Text.Trim() + "%' ");
+                sbWhere.Append(" And A.ContactPerson like '%" + this.dxetxtContactPerson.Text.Trim() + "%' ");
 
             this.gridSearchResult.DataSource = BusinessObjects.BO_NotifyClaim.GetNotifyClaimList(sbWhere.ToString()).Tables[0];
             this.gridSearchResult.DataBind();
