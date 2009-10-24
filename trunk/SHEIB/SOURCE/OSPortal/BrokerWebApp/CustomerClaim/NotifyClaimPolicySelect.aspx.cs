@@ -55,11 +55,11 @@ namespace BrokerWebApp.CustomerClaim
             }
             if (this.dxeddlCarrier.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrier.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and a.CarrierID ='" + dxeddlCarrier.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.PolicyID in (select PolicyID from PolicyCarrier where CarrierID ='" + dxeddlCarrier.SelectedItem.Value.ToString() + "') ";
             }
             if (this.dxeddlBranch.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranch.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and a.BranchID ='" + dxeddlBranch.SelectedItem.Value.ToString() + "'";
+                lsWhere = lsWhere + " and b.PolicyID in (select  PolicyID from PolicyCarrier where BranchID ='" + dxeddlBranch.SelectedItem.Value.ToString() + "') ";
             }
             if (this.dxeddlPolicyType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyType.SelectedItem.Value.ToString()))
             {
@@ -88,7 +88,7 @@ namespace BrokerWebApp.CustomerClaim
                 lsWhere = lsWhere + " and (convert(char(10), b.EndDate,21)) <='" + lsEndDate + "'";
             }
 
-            this.gridSearchResult.DataSource = BO_Notice.GetFeeNoticeAddSelectList(lsWhere);
+            this.gridSearchResult.DataSource = BO_NotifyClaim.GetSelectPolicyList(lsWhere);
             this.gridSearchResult.DataBind();
 
         }
@@ -153,20 +153,6 @@ namespace BrokerWebApp.CustomerClaim
             }
         }
 
-
-        protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
-        {
-            //DataTable dt = ((DataTable)ViewState["PolicyItemGridData"]);
-            //DataRow row = dt.Rows.Find(e.Keys["ID"]);
-            //dt.Rows.Remove(row);
-            e.Cancel = true;
-            this.gridSearchResult.CancelEdit();
-        }
-
-        protected void gridSearchResult_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
-        {
-            this.gridSearchResult.DataBind();
-        }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
