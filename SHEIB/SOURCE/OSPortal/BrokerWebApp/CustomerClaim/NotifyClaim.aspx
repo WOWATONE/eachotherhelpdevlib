@@ -46,6 +46,14 @@
 	        window.close();
 	    }
     </script>
+    <script type="text/javascript">
+        function dxebtnSelectPolicyView_Click(s, e) {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
+            var querystring;
+            querystring = "NotifyClaimPolicySelect.aspx";
+            window.showModalDialog(querystring, self, myArguments);
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
@@ -71,98 +79,95 @@
                 <asp:Panel ID="npBaseInfoDetail" runat="server" CssClass="collapsePanel" Height="0">
                     <table style="width: 100%">
                         <tr>
-                            <td style="width: 5%; text-align: right;">
+                            <td style="width: 15%;"><input type="hidden" id="hidPolicyID" name="hidPolicyID" value="" runat="server" /></td>
+                            <td style="width: 25%;"></td>
+                            <td style="width: 15%;"></td>
+                            <td style="width: 25%;"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                保单号：
                             </td>
-                            <td style="width: 10%; text-align: right;">
-                                保单编号：
+                            <td style="text-align: left;">
+                                <table style="margin-left: -3px; text-align: left;">
+                                    <tr>
+                                        <td>
+                                            <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox> 
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <dxe:ASPxButton AutoPostBack="False" runat="server" ID="dxebtnSelectPolicyView" ClientInstanceName="dxebtnSelectPolicyView"
+                                                Text="选择保单" Style="margin: 0px;" Visible="true" CausesValidation="false">
+                                                <ClientSideEvents Click="function(s, e) {dxebtnSelectPolicyView_Click(s,e);return false;}" />
+                                            </dxe:ASPxButton>
+                                        </td>
+                                    </tr>
+                                </table>
+                                
                             </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlPolicyNo" ClientInstanceName="dxeddlPolicyNo" runat="server" Width="160px" DropDownStyle="DropDownList" onselectedindexchanged="dxeddlPolicyNo_SelectedIndexChanged" AutoPostBack="true">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
-                                    </ValidationSettings>
-                                </dxe:ASPxComboBox> 
-                            </td>
-                            <td style="width: 10%; text-align: right;">
+                            <td style="text-align: right;">
                                 保险公司：
                             </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCarrierNameCn" ClientInstanceName="dxetxtCarrierNameCn" runat="server" Width="160px" Enabled="false"></dxe:ASPxTextBox>
+                            <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtCarrierNameCn" ClientInstanceName="dxetxtCarrierNameCn" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td style="width: 5%; text-align: right;">
-                            </td>
-                            <td style="width: 10%; text-align: right;">
+                            <td style="text-align: right;">
                                 投保人：
                             </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCustName" ClientInstanceName="dxetxtCustName" runat="server" Width="160px" Enabled="false"></dxe:ASPxTextBox>
+                            <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtCustName" ClientInstanceName="dxetxtCustName" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 10%; text-align: right;">
-                                分支机构：
-                            </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtBranchName" ClientInstanceName="dxetxtBranchName" runat="server" Width="160px" Enabled="false"></dxe:ASPxTextBox>
-                            </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 5%; text-align: right;">
-                            </td>
-                            <td style="width: 10%; text-align: right;">
-                                被保险人：
-                            </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtBeneficiary" ClientInstanceName="dxetxtBeneficiary" runat="server" Width="160px" Enabled="false"></dxe:ASPxTextBox>
-                            </td>
-                            <td style="width: 10%; text-align: right;">
+                            <td style="text-align: right;">
                                 险种：
                             </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtProdTypeName" ClientInstanceName="dxetxtProdTypeName" runat="server" Width="160px" Enabled="false"></dxe:ASPxTextBox>
+                            <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtProdTypeName" ClientInstanceName="dxetxtProdTypeName" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td style="width: 5%; text-align: right;">
+                            <td style="text-align: right;">
+                                被保险人：
                             </td>
-                            <td style="width: 10%; text-align: right;">
-                                保险期限：
+                            <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtBeneficiary" ClientInstanceName="dxetxtBeneficiary" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtStartDate" ClientInstanceName="dxetxtStartDate" runat="server" Width="160px" Enabled="false"></dxe:ASPxTextBox>
-                            </td>
-                            <td style="width: 10%; text-align: left;">
-                                至
-                            </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtEndDate" ClientInstanceName="dxetxtEndDate" runat="server" Width="160px" Enabled="false"></dxe:ASPxTextBox>
-                            </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 5%; text-align: right;">
-                            </td>
-                            <td style="width: 10%; text-align: right;">
+                            <td style="text-align: right;">
                                 客户经理：
                             </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtUserNameCn" ClientInstanceName="dxetxtUserNameCn" runat="server" Width="160px" Enabled="false"></dxe:ASPxTextBox>
+                            <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtUserNameCn" ClientInstanceName="dxetxtUserNameCn" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 10%; text-align: right;">
-                                <input type="hidden" id="hidPolicyID" name="hidPolicyID" value="" runat="server" />
-                            </td>
-                            <td style="width: 35%; text-align: left;">
-                            </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
+                            <td></td>
                         </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                保险期限：
+                            </td>
+                            <td style="text-align: left;">
+                                <table style=" padding-left:-3px; margin-left:-3px;">
+                                    <tr>
+                                        <td>
+                                            <dxe:ASPxTextBox ID="dxetxtStartDate" ClientInstanceName="dxetxtStartDate" runat="server" Width="120px" ReadOnly="true"></dxe:ASPxTextBox>
+                                        </td>
+                                        <td>至</td>
+                                        <td>
+                                            <dxe:ASPxTextBox ID="dxetxtEndDate" ClientInstanceName="dxetxtEndDate" runat="server" Width="120px" ReadOnly="true"></dxe:ASPxTextBox>
+                                        </td>
+                                    </tr>
+                                </table>                                
+                            </td>
+                            <td style="text-align: right;">
+                                保费：
+                            </td>
+                            <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtPremiumBase" ClientInstanceName="dxetxtPremiumBase" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
+                            </td>
+                            <td></td>
+                        </tr>                        
                     </table>
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeBaseInfo" runat="Server" TargetControlID="npBaseInfoDetail"

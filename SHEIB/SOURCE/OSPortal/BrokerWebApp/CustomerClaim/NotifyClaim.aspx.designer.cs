@@ -68,13 +68,31 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::System.Web.UI.WebControls.Panel npBaseInfoDetail;
         
         /// <summary>
-        /// dxeddlPolicyNo control.
+        /// hidPolicyID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlPolicyNo;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidPolicyID;
+        
+        /// <summary>
+        /// dxetxtPolicyNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyNo;
+        
+        /// <summary>
+        /// dxebtnSelectPolicyView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnSelectPolicyView;
         
         /// <summary>
         /// dxetxtCarrierNameCn control.
@@ -95,13 +113,13 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCustName;
         
         /// <summary>
-        /// dxetxtBranchName control.
+        /// dxetxtProdTypeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtBranchName;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProdTypeName;
         
         /// <summary>
         /// dxetxtBeneficiary control.
@@ -113,13 +131,13 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtBeneficiary;
         
         /// <summary>
-        /// dxetxtProdTypeName control.
+        /// dxetxtUserNameCn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtProdTypeName;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtUserNameCn;
         
         /// <summary>
         /// dxetxtStartDate control.
@@ -140,22 +158,13 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtEndDate;
         
         /// <summary>
-        /// dxetxtUserNameCn control.
+        /// dxetxtPremiumBase control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtUserNameCn;
-        
-        /// <summary>
-        /// hidPolicyID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidPolicyID;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPremiumBase;
         
         /// <summary>
         /// cpeBaseInfo control.

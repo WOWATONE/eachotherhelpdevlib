@@ -57,7 +57,7 @@ namespace BrokerWebApp.CustomerClaim
             if (string.IsNullOrEmpty(this._notifyID))
             {
                 //保单编号
-                this.SetddlPolicyNo("");
+                
                 //报案方式
                 this.SetddlNotifyType("");
                 //损失性质
@@ -108,27 +108,11 @@ namespace BrokerWebApp.CustomerClaim
                 if (notifyClaim.CreateDate != DateTime.MinValue)
                     this.deCreateDate.Text = notifyClaim.CreateDate.ToString("yyyy-MM-dd");
 
-                this.SetddlPolicyNo(notifyClaim.PolicyNo);
                 this.SetPolicyInfo(notifyClaim.PolicyNo);
             }
         }
 
-        /// <summary>
-        /// 设置保单编号(临时用)
-        /// </summary>
-        private void SetddlPolicyNo(string value)
-        {
-            DataSet dsList = BusinessObjects.BO_NotifyClaim.GetPolicyNoList();
-            if (dsList.Tables[0] != null)
-            {
-                foreach (DataRow row in dsList.Tables[0].Rows)
-                {
-                    this.dxeddlPolicyNo.Items.Add(row["PolicyNo"].ToString().Trim(), row["PolicyNo"].ToString().Trim());
-                }
-                this.dxeddlPolicyNo.SelectedIndex = this.dxeddlPolicyNo.Items.IndexOf(this.dxeddlPolicyNo.Items.FindByValue(value));
-            }
-        }
-
+        
         /// <summary>
         /// 设置报案方式
         /// </summary>
@@ -161,31 +145,7 @@ namespace BrokerWebApp.CustomerClaim
             }
         }
 
-        /// <summary>
-        /// 设置制单人
-        /// </summary>
-        //private void SetddlCreatePerson(string value)
-        //{
-        //    DataSet dsList = BO_P_User.GetUserByUserID("");
-        //    if (dsList.Tables[0] != null)
-        //    {
-        //        foreach (DataRow row in dsList.Tables[0].Rows)
-        //        {
-        //            this.dxeddlCreatePerson.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
-        //        }
-        //        this.dxeddlCreatePerson.SelectedIndex = this.dxeddlCreatePerson.Items.IndexOf(this.dxeddlCreatePerson.Items.FindByValue(value));
-        //    }
-        //}
-
-        protected void dxeddlPolicyNo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.dxeddlPolicyNo.Items.Count > 0 &&
-                this.dxeddlPolicyNo.SelectedItem.Value.ToString().Length > 0)
-            {
-                this.SetPolicyInfo(this.dxeddlPolicyNo.SelectedItem.Value.ToString());
-            }
-        }
-
+        
         /// <summary>
         /// 设置保单信息
         /// </summary>
@@ -193,8 +153,7 @@ namespace BrokerWebApp.CustomerClaim
         private void SetPolicyInfo(string policyNo)
         {
             this.dxetxtCarrierNameCn.Text = "";
-            this.dxetxtCustName.Text = "";
-            this.dxetxtBranchName.Text = "";
+            this.dxetxtCustName.Text = "";            
             this.dxetxtBeneficiary.Text = "";
             this.dxetxtProdTypeName.Text = "";
             this.dxetxtStartDate.Text = "";
@@ -211,8 +170,6 @@ namespace BrokerWebApp.CustomerClaim
                     this.dxetxtCarrierNameCn.Text = dt.Rows[0]["CarrierNameCn"].ToString();
                 if (dt.Rows[0]["CustName"] != DBNull.Value)
                     this.dxetxtCustName.Text = dt.Rows[0]["CustName"].ToString();
-                if (dt.Rows[0]["BranchName"] != DBNull.Value)
-                    this.dxetxtBranchName.Text = dt.Rows[0]["BranchName"].ToString();
                 if (dt.Rows[0]["Beneficiary"] != DBNull.Value)
                     this.dxetxtBeneficiary.Text = dt.Rows[0]["Beneficiary"].ToString();
                 if (dt.Rows[0]["ProdTypeName"] != DBNull.Value)
