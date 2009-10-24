@@ -40,7 +40,7 @@
         }
 
         function btnOk_Click() {
-            gridSearchResult.GetSelectedFieldValues("PolicyID", getTheSelectedRowsValues);            
+            gridSearchResult.GetSelectedFieldValues("PolicyID;Beneficiary;CustomerName;UserName;ProdTypeName;StartDate;EndDate;CarrierName;PolicyNo;PremiumBase;DeptName", getTheSelectedRowsValues);            
         }
 
         function getTheSelectedRowsValues(selectedValues) {
@@ -49,17 +49,17 @@
                 return;
             }
             else {
-                var thevalues="";
-                
-                for (i = 0; i < selectedValues.length; i++) {
-                    if (thevalues == "") {
-                        thevalues = selectedValues[i];
-                    }
-                    else {
-                        thevalues = thevalues + ";" + selectedValues[i];
-                    }
-                }                
-                window.returnValue = thevalues;
+                //var thevalues="";                
+                //for (i = 0; i < selectedValues.length; i++) {
+                //    if (thevalues == "") {
+                //        thevalues = selectedValues[i];
+                //    }
+                //    else {
+                //        thevalues = thevalues + ";-;-;" + selectedValues[i];
+                //    }
+                //}
+
+                window.returnValue = selectedValues;
                 window.close();
             }
         }

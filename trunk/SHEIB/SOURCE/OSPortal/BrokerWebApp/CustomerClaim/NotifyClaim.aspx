@@ -51,7 +51,36 @@
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
             var querystring;
             querystring = "NotifyClaimPolicySelect.aspx";
-            window.showModalDialog(querystring, self, myArguments);
+            var retrunval = window.showModalDialog(querystring, self, myArguments);
+            if (isEmpty(retrunval)) {
+                //do nothing;
+            }
+            else {
+                //debugger;
+                setHidePolicyID(retrunval[0][0]);
+                dxetxtBeneficiary.SetValue(retrunval[0][1]);
+                dxetxtCustName.SetValue(retrunval[0][2]);
+                dxetxtUserNameCn.SetValue(retrunval[0][3]);
+                dxetxtProdTypeName.SetValue(retrunval[0][4]);
+                dxetxtStartDate.SetValue(retrunval[0][5]);
+                dxetxtEndDate.SetValue(retrunval[0][6]);
+                dxetxtCarrierNameCn.SetValue(retrunval[0][7]);
+                dxetxtPolicyNo.SetValue(retrunval[0][8]);
+                dxetxtPremiumBase.SetValue(retrunval[0][9]);               
+            }
+        }
+
+        function setHidePolicyID(thevalue) {
+            var result = $("#<%=hidPolicyID.ClientID %>");
+            result[0].value = thevalue;
+        }
+        
+        function isEmpty(testVar) {
+            if ((testVar == null) || (testVar.length == 0)) {
+                return true;
+            } else {
+                return false;
+            }
         }
     </script>
 </asp:Content>
@@ -80,9 +109,9 @@
                     <table style="width: 100%">
                         <tr>
                             <td style="width: 15%;"><input type="hidden" id="hidPolicyID" name="hidPolicyID" value="" runat="server" /></td>
-                            <td style="width: 25%;"></td>
+                            <td style="width: 35%;"></td>
                             <td style="width: 15%;"></td>
-                            <td style="width: 25%;"></td>
+                            <td style="width: 30%;"></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -93,7 +122,7 @@
                                 <table style="margin-left: -3px; text-align: left;">
                                     <tr>
                                         <td>
-                                            <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox> 
+                                            <dxe:ASPxTextBox ID="dxetxtPolicyNo" ClientInstanceName="dxetxtPolicyNo" runat="server" Width="200px" ReadOnly="true"></dxe:ASPxTextBox> 
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxButton AutoPostBack="False" runat="server" ID="dxebtnSelectPolicyView" ClientInstanceName="dxebtnSelectPolicyView"
@@ -109,7 +138,7 @@
                                 保险公司：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCarrierNameCn" ClientInstanceName="dxetxtCarrierNameCn" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtCarrierNameCn" ClientInstanceName="dxetxtCarrierNameCn" runat="server" Width="250px" ReadOnly="false"></dxe:ASPxTextBox>
                             </td>
                             <td></td>
                         </tr>
@@ -118,13 +147,13 @@
                                 投保人：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCustName" ClientInstanceName="dxetxtCustName" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtCustName" ClientInstanceName="dxetxtCustName" runat="server" Width="250px" ReadOnly="true"></dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
                                 险种：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtProdTypeName" ClientInstanceName="dxetxtProdTypeName" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtProdTypeName" ClientInstanceName="dxetxtProdTypeName" runat="server" Width="250px" ReadOnly="true"></dxe:ASPxTextBox>
                             </td>
                             <td></td>
                         </tr>
@@ -133,13 +162,13 @@
                                 被保险人：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtBeneficiary" ClientInstanceName="dxetxtBeneficiary" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtBeneficiary" ClientInstanceName="dxetxtBeneficiary" runat="server" Width="250px" ReadOnly="true"></dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
                                 客户经理：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtUserNameCn" ClientInstanceName="dxetxtUserNameCn" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtUserNameCn" ClientInstanceName="dxetxtUserNameCn" runat="server" Width="250px" ReadOnly="true"></dxe:ASPxTextBox>
                             </td>
                             <td></td>
                         </tr>
@@ -164,7 +193,7 @@
                                 保费：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtPremiumBase" ClientInstanceName="dxetxtPremiumBase" runat="server" Width="160px" ReadOnly="true"></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox ID="dxetxtPremiumBase" ClientInstanceName="dxetxtPremiumBase" runat="server" Width="250px" ReadOnly="true"></dxe:ASPxTextBox>
                             </td>
                             <td></td>
                         </tr>                        
