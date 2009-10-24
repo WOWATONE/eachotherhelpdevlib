@@ -463,6 +463,54 @@
                     CollapsedImage="~/images/expand_blue.jpg" SuppressPostBack="true" />
             </td>
         </tr>
+        <tr>
+            <td style="width: 100%;">
+                <asp:Panel ID="npTraceInfoHeader" runat="server" CssClass="collapsePanelHeader" Height="25px">
+                    <div style="padding: 5px; cursor: pointer; vertical-align: middle;">
+                        <div style="float: left; vertical-align: middle;">
+                            <asp:ImageButton ID="img_npTraceInfoHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText="" />
+                        </div>
+                        <div style="float: left; margin-left: 5px;">
+                            跟踪信息</div>
+                        <div style="float: left; margin-left: 5px;">
+                            <asp:Label ID="lbl_npTraceInfoHeader" runat="server">(隐藏)</asp:Label>
+                        </div>
+                    </div>
+                </asp:Panel>
+                <asp:Panel ID="npTraceInfoDetail" runat="server" CssClass="collapsePanel" Height="0">
+                    
+                </asp:Panel>
+                <ajaxToolkit:CollapsiblePanelExtender ID="cpeTraceInfo" runat="Server" TargetControlID="npTraceInfoDetail"
+                    ExpandControlID="npTraceInfoHeader" CollapseControlID="npTraceInfoHeader" Collapsed="false"
+                    TextLabelID="lbl_npTraceInfoHeader" ImageControlID="img_npTraceInfoHeader" ExpandedText="(隐藏)"
+                    CollapsedText="(展开)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
+                    SuppressPostBack="true" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 100%;">
+                <asp:Panel ID="npEndCaseHeader" runat="server" CssClass="collapsePanelHeader" Height="25px">
+                    <div style="padding: 5px; cursor: pointer; vertical-align: middle;">
+                        <div style="float: left; vertical-align: middle;">
+                            <asp:ImageButton ID="img_npEndCaseHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText="" />
+                        </div>
+                        <div style="float: left; margin-left: 5px;">
+                            结案信息</div>
+                        <div style="float: left; margin-left: 5px;">
+                            <asp:Label ID="lbl_npEndCaseHeader" runat="server">(隐藏)</asp:Label>
+                        </div>
+                    </div>
+                </asp:Panel>
+                <asp:Panel ID="npEndCaseDetail" runat="server" CssClass="collapsePanel" Height="0">
+                    
+                </asp:Panel>
+                <ajaxToolkit:CollapsiblePanelExtender ID="cpeEndCase" runat="Server" TargetControlID="npEndCaseDetail"
+                    ExpandControlID="npEndCaseHeader" CollapseControlID="npEndCaseHeader" Collapsed="false"
+                    TextLabelID="lbl_npEndCaseHeader" ImageControlID="img_npEndCaseHeader" ExpandedText="(隐藏)"
+                    CollapsedText="(展开)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
+                    SuppressPostBack="true" />
+            </td>
+        </tr>        
     </table>
     <table style="height: 5px; background-color: #E0EDFF; width: 100%; font-size: 2px;">
         <tr>
