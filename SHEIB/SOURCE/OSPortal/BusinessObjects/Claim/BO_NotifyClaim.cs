@@ -292,18 +292,31 @@ namespace BusinessObjects
         public static DataSet GetNotifyClaimList(string sWhere)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("Select ");
-            sb.Append("NC.NotifyID, P.PolicyNo, NC.NotifyNo, NC.NotifyTime, NC.AccidentTime, NC.NotifyPerson, NC.NotifyLossFee, ");
-            sb.Append("NC.ContactPerson, NC.NotifyNo, NC.PerambulateTime, NC.CaseEndTime, NC.LastPayFee, NC.AcquitFee ");
-            sb.Append("From NotifyClaim NC (nolock) ");
-            sb.Append("Inner Join Policy P (nolock) ");
-            sb.Append("On P.PolicyID=NC.PolicyID ");
+            
+            sb.Append("SELECT  A.NotifyID,A.NotifySerialNo, A.PolicyID, A.AccidentReason,  ");
+            sb.Append("A.NotifyTime, A.AccidentTime,A.NotifyCarrierTime, A.AccidentProc,  ");
+            sb.Append("A.NotifyLossFee, A.DocCompleteDate,A.CaseEndTime, A.LastPayDate, ");
+            sb.Append("A.LastPayFee,A.NotifyRemark,A.NotifyNo,A.ContactPerson, ");
+            sb.Append("A.ContactPhone,A.CarrierContactPerson,A.CarrierContactPhone ");
+            sb.Append(",B.Beneficiary,B.PremiumBase ");
+            sb.Append(",D.CustName ");
+            sb.Append(",E.ProdTypeName ");
+            sb.Append(",F.CarrierNameCn ");
+            sb.Append(",G.UserNameCn AS SalesName ");
+            sb.Append("FROM NotifyClaim A ");
+            sb.Append("Left Join Policy B On A.PolicyID = B.PolicyID ");
+            sb.Append("Left Join PolicyCarrier C On B.PolicyID = C.PolicyID ");
+            sb.Append("Left Join Customer D On B.CustomerID = D.CustID ");
+            sb.Append("Left Join ProductType E On B.ProdTypeID = E.ProdTypeID ");
+            sb.Append("Left Join Carrier F On C.CarrierID=F.CarrierID ");
+            sb.Append("Left Join P_User G On B.SalesId = G.UserID ");
+            sb.Append(" ");
             sb.Append("Where 1=1 ");
             if (sWhere != "")
             {
                 sb.Append(sWhere);
             }
-            sb.Append(" Order By NC.NotifyID");
+            sb.Append(" Order By A.NotifyID");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
             return _db.ExecuteDataSet(dbCommand);
