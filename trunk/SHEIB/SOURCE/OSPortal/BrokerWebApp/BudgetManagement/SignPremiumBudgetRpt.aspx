@@ -162,7 +162,7 @@
                             <dxwgv:GridViewDataTextColumn Caption="经纪费预算续保" FieldName="ProcessBudgetContinue"
                                 CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="经纪费预算新增" FieldName="ProcessBudgetSum" CellStyle-Wrap="False"
+                            <dxwgv:GridViewDataTextColumn Caption="经纪费预算新增" FieldName="ProcessBudgetAdd" CellStyle-Wrap="False"
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="经纪费预算合计" FieldName="ProcessBudgetSum" CellStyle-Wrap="False"

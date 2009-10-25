@@ -292,24 +292,32 @@ namespace BusinessObjects
         public static DataSet GetNotifyClaimList(string sWhere)
         {
             StringBuilder sb = new StringBuilder();
+// SELECT  A.NotifyID,A.NotifySerialNo, B.PolicyNo, A.AccidentReason,  A.NotifyTime, A.AccidentTime,A.NotifyCarrierTime, A.AccidentProc,  
+//A.NotifyLossFee, A.DocCompleteDate,A.CaseEndTime, A.LastPayDate, 
+//A.LastPayFee,A.NotifyRemark,A.NotifyNo,A.ContactPerson,
+//A.ContactPhone,A.CarrierContactPerson,A.CarrierContactPhone,
+//B.Beneficiary,B.PremiumBase ,
+//(Select CustName from Customer where CustID = B.CustomerID) CustName,
+//(Select ProdTypeName From ProductType where ProdTypeID = B.ProdTypeID) ProdTypeName ,
+//dbo.GetPolicyCarrier(A.PolicyID) CarrierNameCn ,
+//(Select UserNameCn From P_User where UserID=b.SalesID) SalesName
+//FROM NotifyClaim A 
+//  Left Join Policy B On A.PolicyID = B.PolicyID 
+
+
             
-            sb.Append("SELECT  A.NotifyID,A.NotifySerialNo, A.PolicyID, A.AccidentReason,  ");
-            sb.Append("A.NotifyTime, A.AccidentTime,A.NotifyCarrierTime, A.AccidentProc,  ");
-            sb.Append("A.NotifyLossFee, A.DocCompleteDate,A.CaseEndTime, A.LastPayDate, ");
+            sb.Append("SELECT  A.NotifyID,A.NotifySerialNo, B.PolicyNo, A.AccidentReason,  A.NotifyTime, A.AccidentTime,A.NotifyCarrierTime, A.AccidentProc,   ");
+            sb.Append("A.NotifyLossFee, A.DocCompleteDate,A.CaseEndTime, A.LastPayDate,  ");
+            sb.Append("A.LastPayFee,A.NotifyRemark,A.NotifyNo,A.ContactPerson,");
             sb.Append("A.LastPayFee,A.NotifyRemark,A.NotifyNo,A.ContactPerson, ");
-            sb.Append("A.ContactPhone,A.CarrierContactPerson,A.CarrierContactPhone ");
-            sb.Append(",B.Beneficiary,B.PremiumBase ");
-            sb.Append(",D.CustName ");
-            sb.Append(",E.ProdTypeName ");
-            sb.Append(",F.CarrierNameCn ");
-            sb.Append(",G.UserNameCn AS SalesName ");
-            sb.Append("FROM NotifyClaim A ");
-            sb.Append("Left Join Policy B On A.PolicyID = B.PolicyID ");
-            sb.Append("Left Join PolicyCarrier C On B.PolicyID = C.PolicyID ");
-            sb.Append("Left Join Customer D On B.CustomerID = D.CustID ");
-            sb.Append("Left Join ProductType E On B.ProdTypeID = E.ProdTypeID ");
-            sb.Append("Left Join Carrier F On C.CarrierID=F.CarrierID ");
-            sb.Append("Left Join P_User G On B.SalesId = G.UserID ");
+            sb.Append("A.ContactPhone,A.CarrierContactPerson,A.CarrierContactPhone,");
+            sb.Append("B.Beneficiary,B.PremiumBase ,");
+            sb.Append("(Select CustName from Customer where CustID = B.CustomerID) CustName,");
+            sb.Append("(Select ProdTypeName From ProductType where ProdTypeID = B.ProdTypeID) ProdTypeName , ");
+            sb.Append("dbo.GetPolicyCarrier(A.PolicyID) CarrierNameCn , ");
+            sb.Append("(Select UserNameCn From P_User where UserID=b.SalesID) SalesName");
+            sb.Append(" FROM NotifyClaim A ");
+            sb.Append(" Left Join Policy B On A.PolicyID = B.PolicyID ");
             sb.Append(" ");
             sb.Append("Where 1=1 ");
             if (sWhere != "")
