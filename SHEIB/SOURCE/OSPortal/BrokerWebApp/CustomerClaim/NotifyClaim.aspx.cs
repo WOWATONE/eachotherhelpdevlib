@@ -55,7 +55,7 @@ namespace BrokerWebApp.CustomerClaim
 
                 if (!string.IsNullOrEmpty(this.dxetxtNotifyID.Text.Trim()))
                 {
-                    loadPolicyValue(this.dxetxtNotifyID.Text.Trim());
+                    loadNotifyClaimValue(this.dxetxtNotifyID.Text.Trim());
                 }
             }            
         }
@@ -66,161 +66,30 @@ namespace BrokerWebApp.CustomerClaim
             this.lblerrmsg.Visible = false;
         }
 
-        protected void dxebtnBottomSave_Click(object sender, EventArgs e)
-        {
-            string id = "";
-
-            id = "dfd";
-            //try
-            //{
-            //    if (string.IsNullOrEmpty(""))
-            //    {//新增理赔
-            //        this.lblerrmsg.Visible = false;
-            //        if (this.hidPolicyID.Value.Length <= 0)
-            //        {
-            //            this.lblerrmsg.InnerText = "请选择保单编号。";
-            //            this.lblerrmsg.Visible = true;
-            //            return;
-            //        }
-
-            //        if (BusinessObjects.BO_NotifyClaim.IfExistsNotifyNo(this.dxetxtNotifyNo.Text.Trim()))
-            //        {
-            //            this.lblerrmsg.InnerText = "该报案号已存在。";
-            //            this.lblerrmsg.Visible = true;
-            //            return;
-            //        }
-
-            //        BusinessObjects.BO_NotifyClaim notifyClaim = new BO_NotifyClaim();
-            //        string id = TranUtils.GetCustomerID(); //?//暂用客户编号代替
-            //        notifyClaim.NotifyID = id;
-            //        notifyClaim.PolicyID = this.hidPolicyID.Value;
-            //        notifyClaim.NotifySerialNo = id;
-            //        notifyClaim.NotifyTime = Convert.ToDateTime(this.dxedeNotifyTime.Text);
-            //        notifyClaim.AccidentSpot = this.dxetxtAccidentSpot.Text.Trim();
-            //        notifyClaim.AccidentTime = Convert.ToDateTime(this.dxedeAccidentTime.Text);
-            //        notifyClaim.NotifyPerson = this.dxetxtNotifyPerson.Text.Trim();
-            //        notifyClaim.LossType = this.dxeddlLossType.SelectedItem.Value.ToString();
-            //        notifyClaim.AccidentReason = this.dxeddlAccidentReason.SelectedItem.Value.ToString();
-            //        notifyClaim.NotifyLossFee = this.dxetxtNotifyLossFee.Text.Trim().Length == 0 ? -1 : Convert.ToDouble(this.dxetxtNotifyLossFee.Text);
-            //        notifyClaim.ContactPerson = this.dxetxtContactPerson.Text.Trim();
-            //        notifyClaim.ContactPhone = this.dxetxtContactPhone.Text.Trim();
-            //        //notifyClaim.NotifyType = this.dxeddlNotifyType.SelectedItem.Value.ToString();
-            //        notifyClaim.SpotCode = ""; //?//
-            //        notifyClaim.AccidentProc = this.dxetxtAccidentProc.Text.Trim();
-            //        //notifyClaim.AccidentDeal = this.txtAccidentDeal.Text.Trim();
-            //        notifyClaim.NotifyRemark = "";//?//
-            //        notifyClaim.NotifyCarrierTime = Convert.ToDateTime(this.dxedeNotifyCarrierTime.Text);
-            //        notifyClaim.NotifyNo = this.dxetxtNotifyNo.Text.Trim();
-            //        notifyClaim.CarrierContactPerson = this.dxetxtCarrierContactPerson.Text.Trim();
-            //        notifyClaim.CarrierContactPhone = this.dxetxtCarrierContactPhone.Text.Trim();
-            //        if (this.dxedePerambulateTime.Text.Trim().Length > 0)
-            //            notifyClaim.PerambulateTime = Convert.ToDateTime(this.dxedePerambulateTime.Text);
-            //        else
-            //            notifyClaim.PerambulateTime = DateTime.MinValue;
-            //        //notifyClaim.Requirement = this.txtRequirement.Text.Trim();
-            //        notifyClaim.CaseEndTime = DateTime.Today; //?//
-            //        notifyClaim.LastPayFee = 100; //?//
-            //        notifyClaim.AcquitFee = 100; //?//
-            //        notifyClaim.CaseEndRemark = "";//?//
-            //        //notifyClaim.CreatePerson = this.dxeddlCreatePerson.SelectedItem.Value.ToString();
-            //        notifyClaim.CreatePerson = this.dxetxtCreatePerson.Text.Trim();
-            //        notifyClaim.CreateDate = Convert.ToDateTime(this.dxedeCreateDate.Text);
-            //        notifyClaim.ModifyDate = DateTime.Today;//?//
-            //        notifyClaim.ModifyPerson = "";//?//
-            //        notifyClaim.Save(ModifiedAction.Insert);
-
-            //        this.Response.Redirect("NotifyClaim.aspx");
-            //    }
-            //    else
-            //    {
-            //        this.lblerrmsg.Visible = false;
-            //        if (this.hidPolicyID.Value.Length <= 0)
-            //        {
-            //            this.lblerrmsg.InnerText = "请选择保单编号。";
-            //            this.lblerrmsg.Visible = true;
-            //            return;
-            //        }
-
-            //        BusinessObjects.BO_NotifyClaim notifyClaim = new BO_NotifyClaim();
-            //        //notifyClaim.NotifyID = this._notifyID;
-            //        notifyClaim.PolicyID = this.hidPolicyID.Value;
-            //        //notifyClaim.NotifySerialNo = this._notifyID;//?//
-            //        notifyClaim.NotifyTime = Convert.ToDateTime(this.dxedeNotifyTime.Text);
-            //        notifyClaim.AccidentSpot = this.dxetxtAccidentSpot.Text.Trim();
-            //        notifyClaim.AccidentTime = Convert.ToDateTime(this.dxedeAccidentTime.Text);
-            //        notifyClaim.NotifyPerson = this.dxetxtNotifyPerson.Text.Trim();
-            //        notifyClaim.LossType = this.dxeddlLossType.SelectedItem.Value.ToString();
-            //        notifyClaim.AccidentReason = this.dxeddlAccidentReason.SelectedItem.Value.ToString();
-            //        notifyClaim.NotifyLossFee = this.dxetxtNotifyLossFee.Text.Trim().Length == 0 ? -1 : Convert.ToDouble(this.dxetxtNotifyLossFee.Text);
-            //        notifyClaim.ContactPerson = this.dxetxtContactPerson.Text.Trim();
-            //        notifyClaim.ContactPhone = this.dxetxtContactPhone.Text.Trim();
-            //        //notifyClaim.NotifyType = this.dxeddlNotifyType.SelectedItem.Value.ToString();
-            //        notifyClaim.SpotCode = ""; //?//
-            //        notifyClaim.AccidentProc = this.dxetxtAccidentProc.Text.Trim();
-            //        //notifyClaim.AccidentDeal = this.txtAccidentDeal.Text.Trim();
-            //        notifyClaim.NotifyRemark = "";//?//
-            //        notifyClaim.NotifyCarrierTime = Convert.ToDateTime(this.dxedeNotifyCarrierTime.Text);
-            //        notifyClaim.NotifyNo = this.dxetxtNotifyNo.Text.Trim();
-            //        notifyClaim.CarrierContactPerson = this.dxetxtCarrierContactPerson.Text.Trim();
-            //        notifyClaim.CarrierContactPhone = this.dxetxtCarrierContactPhone.Text.Trim();
-            //        if (this.dxedePerambulateTime.Text.Trim().Length > 0)
-            //            notifyClaim.PerambulateTime = Convert.ToDateTime(this.dxedePerambulateTime.Text);
-            //        else
-            //            notifyClaim.PerambulateTime = DateTime.MinValue;
-            //        //notifyClaim.Requirement = this.txtRequirement.Text.Trim();
-            //        notifyClaim.CaseEndTime = DateTime.Today; //?//
-            //        notifyClaim.LastPayFee = 100; //?//
-            //        notifyClaim.AcquitFee = 100; //?//
-            //        notifyClaim.CaseEndRemark = "";//?//
-            //        //notifyClaim.CreatePerson = this.dxeddlCreatePerson.SelectedItem.Value.ToString();
-            //        notifyClaim.CreatePerson = this.dxetxtCreatePerson.Text.Trim();
-            //        notifyClaim.CreateDate = Convert.ToDateTime(this.dxedeCreateDate.Text);
-            //        notifyClaim.ModifyDate = DateTime.Today;//?//
-            //        notifyClaim.ModifyPerson = "";//?//
-            //        notifyClaim.Save(ModifiedAction.Update);
-
-            //        this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Message", "<script language=\"javascript\">alert(\"修改完成。\");</script>", false);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    this.lblerrmsg.InnerText = ex.Message;
-            //    this.lblerrmsg.Visible = true;
-            //}
-        }
-
 
         protected void dxeNotifyInfoSave_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            int resultSign = 0;
-            String theResult = "";
+            String theResult = saveNotifyClaim("", "");
+
+            if (theResult != notifyNoExist)
+                this.dxetxtNotifyID.Text = theResult;
+
             e.Result = theResult;
         }
 
 
         protected void dxeNotifyInfoSaveEndCase_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            int resultSign = 0;
-            String theResult = "";
-            
+            String theResult = saveNotifyClaim("","");            
             e.Result = theResult;
         }
-
-
-        protected void dxeSaveAndCheckCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
-        {
-            int resultSign = 0;
-            String theResult = "";
-
-            e.Result = theResult;
-        }
-
+        
         #endregion events
 
 
         #region methods
 
-        private void loadPolicyValue(String notifyID)
+        private void loadNotifyClaimValue(String notifyID)
         {
 
             ListEditItem theselected;
@@ -230,7 +99,7 @@ namespace BrokerWebApp.CustomerClaim
                 return;
             }
 
-            dxetxtNotifyPerson.Text = notifyClaim.ModifyPerson;
+            dxetxtNotifyPerson.Text = notifyClaim.NotifyPerson;
             dxetxtAccidentSpot.Text = notifyClaim.AccidentSpot;
             dxedeNotifyTime.Date = notifyClaim.NotifyTime;
             dxetxtNotifyLossFee.Text = String.Format(BasePage.TheTwoSF, notifyClaim.NotifyLossFee);
@@ -354,7 +223,7 @@ namespace BrokerWebApp.CustomerClaim
             }
         }
 
-        private string savePolicy(String parameter, String policyState)
+        private string saveNotifyClaim(String parameter, String policyState)
         {
 
             BusinessObjects.BO_NotifyClaim obj;
@@ -362,19 +231,19 @@ namespace BrokerWebApp.CustomerClaim
             //check NotifyNo exist first
             bool checkresult = BO_NotifyClaim.IfExistsNotifyNo(this.dxetxtNotifyNo.Text.Trim());
 
-            //if (checkresult) return notifyNoExist;
+            if (checkresult) return notifyNoExist;
 
             if (String.IsNullOrEmpty(this.dxetxtNotifyID.Text.Trim()))
             {
                 obj = new BusinessObjects.BO_NotifyClaim();
                 obj.PolicyID = TranUtils.GetPolicyID();
-                
+                setData(obj);
                 obj.Save(ModifiedAction.Insert);
             }
             else
             {
                 obj = BO_NotifyClaim.GetNotifyClaimByNotifyID(this.dxetxtNotifyID.Text.Trim());
-                
+                setData(obj);
                 obj.Save(ModifiedAction.Update);
             }
 
@@ -382,6 +251,58 @@ namespace BrokerWebApp.CustomerClaim
 
         }
 
+        private void setData(BO_NotifyClaim notifyClaim)
+        {
+            ListEditItem theselected;
+
+            notifyClaim.NotifyPerson = dxetxtNotifyPerson.Text;
+            notifyClaim.AccidentSpot = dxetxtAccidentSpot.Text;
+            notifyClaim.NotifyTime = dxedeNotifyTime.Date;
+
+            if (!String.IsNullOrEmpty(dxetxtNotifyLossFee.Text.Trim()))
+                notifyClaim.NotifyLossFee = Convert.ToDouble(dxetxtNotifyLossFee.Text.Trim());
+            
+            notifyClaim.AccidentTime = dxedeAccidentTime.Date;
+
+            theselected = dxeddlLossType.SelectedItem;
+            if (theselected!= null)
+                notifyClaim.LossType = theselected.Value.ToString();
+            
+
+            //
+            theselected = dxeddlAccidentReason.SelectedItem;
+            if (theselected != null)
+                notifyClaim.AccidentReason = theselected.Value.ToString();
+                       
+
+            notifyClaim.ContactPhone = dxetxtContactPhone.Text;
+            notifyClaim.ContactPerson = dxetxtContactPerson.Text;
+            notifyClaim.AccidentProc = dxetxtAccidentProc.Text;
+            notifyClaim.NotifyCarrierTime = dxedeNotifyCarrierTime.Date;
+            notifyClaim.NotifyNo = dxetxtNotifyNo.Text;
+            notifyClaim.CarrierContactPerson=dxetxtCarrierContactPerson.Text;
+            notifyClaim.CarrierContactPhone = dxetxtCarrierContactPhone.Text;
+            notifyClaim.PerambulateTime = dxedePerambulateTime.Date;
+
+            notifyClaim.DocCompleteDate = dxedeDocCompleteDate.Date;
+
+            dxetxtLastPayFee.Text = String.Format(BasePage.TheTwoSF, notifyClaim.LastPayFee);
+            
+            notifyClaim.LastPayDate = dxedeLastPayDate.Date;
+            notifyClaim.CaseEndTime = dxedeCaseEndTime.Date;
+
+            //
+            theselected = dxeddlCaseEndPerson.SelectedItem;
+            if (theselected != null)
+                notifyClaim.CaseEndPerson = theselected.Value.ToString();
+            
+            notifyClaim.CreatePerson = this.CurrentUserID;
+            notifyClaim.CreateDate = dxedeCreateDate.Date;
+
+            notifyClaim.ModifyPerson = this.CurrentUserID;
+            notifyClaim.ModifyDate  = dxedeCreateDate.Date;
+        }
+    
 
         private void bindDropDownLists()
         {
@@ -448,49 +369,49 @@ namespace BrokerWebApp.CustomerClaim
         protected string SavePostedFiles(UploadedFile uploadedFile)
         {
             string ret = "";
-            string policyFolder = "";// this.dxetxtPolicyID.Text.Trim();
-            string policyFolderPath;
-            if (uploadedFile.IsValid)
-            {
-                DirectoryInfo drtInfo = new DirectoryInfo(MapPath(UploadDirectory));
-                if (drtInfo.Exists)
-                {
-                    policyFolderPath = System.IO.Path.Combine(MapPath(UploadDirectory), policyFolder);
-                    drtInfo = new DirectoryInfo(policyFolder);
-                    FileInfo fileInfo;
-                    if (drtInfo.Exists)
-                    {
-                        fileInfo = new FileInfo(uploadedFile.FileName);
-                        string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
-                        uploadedFile.SaveAs(resFileName);
+            //string policyFolder = "";// this.dxetxtPolicyID.Text.Trim();
+            //string policyFolderPath;
+            //if (uploadedFile.IsValid)
+            //{
+            //    DirectoryInfo drtInfo = new DirectoryInfo(MapPath(UploadDirectory));
+            //    if (drtInfo.Exists)
+            //    {
+            //        policyFolderPath = System.IO.Path.Combine(MapPath(UploadDirectory), policyFolder);
+            //        drtInfo = new DirectoryInfo(policyFolder);
+            //        FileInfo fileInfo;
+            //        if (drtInfo.Exists)
+            //        {
+            //            fileInfo = new FileInfo(uploadedFile.FileName);
+            //            string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
+            //            uploadedFile.SaveAs(resFileName);
 
-                        //string fileLabel = fileInfo.Name;
-                        //string fileType = uploadedFile.PostedFile.ContentType.ToString();
-                        //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
-                        //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
-                    }
-                    else
-                    {
-                        //create folder
-                        drtInfo = System.IO.Directory.CreateDirectory(policyFolderPath);
-                        fileInfo = new FileInfo(uploadedFile.FileName);
-                        string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
-                        uploadedFile.SaveAs(resFileName);
-                    }
+            //            //string fileLabel = fileInfo.Name;
+            //            //string fileType = uploadedFile.PostedFile.ContentType.ToString();
+            //            //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
+            //            //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
+            //        }
+            //        else
+            //        {
+            //            //create folder
+            //            drtInfo = System.IO.Directory.CreateDirectory(policyFolderPath);
+            //            fileInfo = new FileInfo(uploadedFile.FileName);
+            //            string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
+            //            uploadedFile.SaveAs(resFileName);
+            //        }
 
-                    //BO_PolicyDoc
-                    BusinessObjects.Policy.BO_PolicyDoc.Delete(this.dxetxtPolicyID.Text.Trim(), fileInfo.Name);
+            //        //BO_PolicyDoc
+            //        BusinessObjects.Policy.BO_PolicyDoc.Delete(this.dxetxtPolicyID.Text.Trim(), fileInfo.Name);
 
-                    BusinessObjects.Policy.BO_PolicyDoc pdoc = new BusinessObjects.Policy.BO_PolicyDoc();
-                    pdoc.PolicyDocID = Guid.NewGuid().ToString();
-                    pdoc.DocName = fileInfo.Name;
-                    //pdoc.PolicyID = this.dxetxtPolicyID.Text.Trim();
-                    //pdoc.DocURL = UploadDirectory.Replace("~", "") + policyFolder + "/" + fileInfo.Name;
-                    pdoc.Save(ModifiedAction.Insert);
-                }
+            //        BusinessObjects.Policy.BO_PolicyDoc pdoc = new BusinessObjects.Policy.BO_PolicyDoc();
+            //        pdoc.PolicyDocID = Guid.NewGuid().ToString();
+            //        pdoc.DocName = fileInfo.Name;
+            //        //pdoc.PolicyID = this.dxetxtPolicyID.Text.Trim();
+            //        //pdoc.DocURL = UploadDirectory.Replace("~", "") + policyFolder + "/" + fileInfo.Name;
+            //        pdoc.Save(ModifiedAction.Insert);
+            //    }
 
 
-            }
+            //}
             return ret;
         }
 

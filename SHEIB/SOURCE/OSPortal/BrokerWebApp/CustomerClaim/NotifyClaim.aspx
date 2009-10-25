@@ -28,20 +28,7 @@
             };
         });
     
-	    function imgPolicyNoClick() {
-	        //var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
-	        //window.showModalDialog("SelectPolicyNo.aspx", self, myArguments);
-	    }
 	    
-	    function CaseEndClick() {
-	        //var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
-	        //window.showModalDialog("CaseEnd.aspx", self, myArguments);
-	    }
-	    
-	    function ClaimMaterialClick() {
-	        //var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=500px;dialogHeight=300px;center=yes;help=no";
-	        //window.showModalDialog("ClaimMaterial.aspx", self, myArguments);
-	    }
 
 	    function NotifyPersonLostFocus(s, e) {
 	        dxetxtContactPerson.SetText(s.GetText());
@@ -78,24 +65,41 @@
 
 
         function dxebtnNotifyInfoSaveEndCase_Click(s, e) {
-            //var thejsonstring = makePolicyJSON();
             if (s.CauseValidation()) {
                 dxeNotifyInfoSaveEndCaseCallback.PerformCallback("");
             }
         }
         function dxeNotifyInfoSaveEndCaseCallbackComplete(s, e) {
-            var retrunval = e.result;         
+            var retrunval = e.result;
+            switch (retrunval) {
+                case "notifynoexist":
+                    alert("报案号不唯一");
+                    break
+                default:
+                    dxebtnBottomEndCase.SetEnabled(false);
+                    dxebtnBottomSave.SetEnabled(false);
+                    alert("保存成功");
+            }         
         }
         
         function dxebtnNotifyInfoSave_Click(s, e) {
-            //
             if (s.CauseValidation()) {
-                //var thejsonstring = makePolicyJSON();
                 dxeNotifyInfoSaveCallback.PerformCallback("");
             }
         }
         function dxeNotifyInfoSaveCallbackComplete(s, e) {
             var retrunval = e.result;
+            switch (retrunval) {
+                case "notifynoexist":
+                    alert("报案号不唯一");
+                    break
+                default:
+                    var pid = dxetxtNotifyID.GetValueString();
+                    if (isEmpty(pid)) {
+                        dxetxtNotifyID.SetValue(e.result);
+                    }
+                    alert("保存成功");
+            }
         }
         
         function setHidePolicyID(thevalue) {
@@ -626,10 +630,11 @@
     <asp:Panel ID="npExecuteAction" runat="server" CssClass="allborderPanel" Height="30px">
         <table style="width: 100%">
             <tr>
+                <td></td>
                 <td style="width: 400px; text-align: left;">
                     &nbsp;
                 </td>
-                <td style="width: 70px; text-align: left;">
+                <td style="width: 50px; text-align: left;">
                         <dxe:ASPxButton runat="server" ID="dxebtnBottomEndCase" ClientInstanceName="dxebtnBottomEndCase"
                             Text="结案" CausesValidation="true" AutoPostBack="false">
                             <ClientSideEvents Click="function(s, e) {dxebtnNotifyInfoSaveEndCase_Click(s,e);}" />
@@ -645,7 +650,8 @@
                     <dxe:ASPxButton runat="server" id="dxebtnClose" Text="关闭" CausesValidation="false" AutoPostBack="false">
                         <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
                     </dxe:ASPxButton>
-                </td>                
+                </td>
+                                
             </tr>
         </table>
     </asp:Panel>
