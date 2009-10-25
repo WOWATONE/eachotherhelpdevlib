@@ -20,10 +20,12 @@ namespace BusinessObjects
 
 
 
-        public static DataSet GetInsuranceCommission1(string sWhere)
+        public static DataSet GetInsuranceCommission1(string sBeginDate, string sEndDate)
         {
 
-            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.rpt_CreateInsuranceCommission1");
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.rpt_InsuranceCommissionByProdType");
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.String, sBeginDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.String, sEndDate);
 
             return _db.ExecuteDataSet(dbCommand);
             
