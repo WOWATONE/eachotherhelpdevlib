@@ -174,7 +174,7 @@ namespace BrokerWebApp.CustomerClaim
             if (string.IsNullOrEmpty(policyNo))
                 return;
 
-            DataTable dt = BusinessObjects.BO_NotifyClaim.GetPolicyByPolicyNo(policyNo);
+            DataTable dt = BusinessObjects.BO_NotifyClaim.GetPolicyByPolicyID(policyNo);
             if (dt != null && dt.Rows.Count > 0)
             {
                 if (dt.Rows[0]["CarrierNameCn"] != DBNull.Value)

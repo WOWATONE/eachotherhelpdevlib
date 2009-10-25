@@ -21,108 +21,157 @@ namespace BusinessObjects
 
         public enum FieldList
         {
-            NotifyID,
-            PolicyID,
-            CaseEndRemark,
-            CreatePerson,
-            CreateDate,
-            ModifyDate,
-            ModifyPerson,
-            NotifySerialNo,
-            NotifyTime,
-            AccidentSpot,
-            AccidentTime,
-            NotifyPerson,
-            LossType,
-            AccidentReason,
-            NotifyLossFee,
+            NotifyID, 
+            PolicyID, 
+            NotifySerialNo, 
+            NotifyTime, 
+            AccidentSpot, 
+            AccidentTime, 
+            NotifyPerson, 
+            LossType, 
+            AccidentReason, 
+            NotifyLossFee, 
             ContactPerson,
-            ContactPhone,
-            NotifyType,
-            SpotCode,
-            AccidentProc,
-            AccidentDeal,
-            NotifyRemark,
-            NotifyCarrierTime,
-            NotifyNo,
+            ContactPhone, 
+            NotifyType, 
+            SpotCode, 
+            AccidentProc, 
+            AccidentDeal, 
+            NotifyRemark, 
+            NotifyCarrierTime, 
+            NotifyNo, 
             CarrierContactPerson,
-            CarrierContactPhone,
-            PerambulateTime,
-            Requirement,
-            CaseEndTime,
-            LastPayFee,
-            AcquitFee,
+            CarrierContactPhone, 
+            PerambulateTime, 
+            Requirement, 
+            CaseEndTime, 
+            LastPayFee, 
+            AcquitFee, 
+            CaseEndRemark, 
+            CreatePerson, 
+            CreateDate, 
+            ModifyDate,
+            ModifyPerson, 
+            DocCompleteDate, 
+            LastPayDate, 
+            CaseEndPerson,
             PolicyNo
         }
 
+
         #region Property
+
         /*理赔编号*/
         public string NotifyID { get; set; }
+
         /*投保编号*/
         public string PolicyID { get; set; }
-        /*报案时间*/
-        public DateTime NotifyTime { get; set; }
-        /*制单人*/
-        public string CreatePerson { get; set; }
-        /*制单日期*/
-        public DateTime CreateDate { get; set; }
-        /*修改人*/
-        public string ModifyPerson { get; set; }
-        /*修改日期*/
-        public DateTime ModifyDate { get; set; }
-        /*出险地点*/
-        public string AccidentSpot { get; set; }
-        /*出险时间*/
-        public DateTime AccidentTime { get; set; }
-        /*报案人*/
-        public string NotifyPerson { get; set; }
+
         /*报案流水号*/
         public string NotifySerialNo { get; set; }
+
+        /*报案时间*/
+        public DateTime NotifyTime { get; set; }
+
+        /*出险地点*/
+        public string AccidentSpot { get; set; }
+
+        /*出险时间*/
+        public DateTime AccidentTime { get; set; }
+
+        /*报案人*/
+        public string NotifyPerson { get; set; }
+
         /*损失性质*/
         public string LossType { get; set; }
+
         /*出险原因*/
         public string AccidentReason { get; set; }
+
         /*报损金额*/
         public Double NotifyLossFee { get; set; }
+
         /*联系人*/
         public string ContactPerson { get; set; }
+
         /*联系电话*/
         public string ContactPhone { get; set; }
+
         /*报案方式*/
         public string NotifyType { get; set; }
+
         /*出险地邮政编码*/
         public string SpotCode { get; set; }
+
         /*事故经过*/
         public string AccidentProc { get; set; }
+
         /*跟踪记录*/
         public string AccidentDeal { get; set; }
+
         /*备注*/
         public string NotifyRemark { get; set; }
+
         /*向保险公司报案时间*/
         public DateTime NotifyCarrierTime { get; set; }
+
         /*报案号*/
         public string NotifyNo { get; set; }
+
         /*保险公司办理人员*/
         public string CarrierContactPerson { get; set; }
+
         /*联系电话*/
         public string CarrierContactPhone { get; set; }
+
         /*查勘时间*/
         public DateTime PerambulateTime { get; set; }
+
         /*保险公司要求*/
         public string Requirement { get; set; }
+
         /*结案时间*/
         public DateTime CaseEndTime { get; set; }
+
         /*最终赔付金额*/
         public Double LastPayFee { get; set; }
+
         /*免赔额*/
         public Double AcquitFee { get; set; }
+
         /*备注*/
         public string CaseEndRemark { get; set; }
+
+        /*制单人*/
+        public string CreatePerson { get; set; }
+
+        /*制单日期*/
+        public DateTime CreateDate { get; set; }
+
+        /*修改人*/
+        public string ModifyPerson { get; set; }
+
+        /*修改日期*/
+        public DateTime ModifyDate { get; set; }
+
+        /*资料齐全日期*/
+        public DateTime DocCompleteDate  { get; set; }
+
+        /*赔款到账日期*/
+        public DateTime LastPayDate { get; set; }
+
+        /*结案人*/
+        public string CaseEndPerson { get; set; }
+                
+
         /*保单编号*/
         public string PolicyNo { get; set; }
+
         #endregion
 
+
         #region Methods
+
         public void Save(ModifiedAction action)
         {
             if (action == ModifiedAction.Insert)
@@ -141,10 +190,29 @@ namespace BusinessObjects
         private void add()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT INTO NotifyClaim(NotifyID,PolicyID,CaseEndRemark,CreatePerson,CreateDate,ModifyDate,ModifyPerson,NotifySerialNo,NotifyTime,AccidentSpot,AccidentTime,NotifyPerson,LossType,AccidentReason,NotifyLossFee,ContactPerson, ");
-            sb.Append("ContactPhone,NotifyType,SpotCode,AccidentProc,AccidentDeal,NotifyRemark,NotifyCarrierTime,NotifyNo,CarrierContactPerson,CarrierContactPhone,PerambulateTime,Requirement,CaseEndTime,LastPayFee,AcquitFee) ");
-            sb.Append(" VALUES(@NotifyID,@PolicyID,@CaseEndRemark,@CreatePerson,@CreateDate,@ModifyDate,@ModifyPerson,@NotifySerialNo,@NotifyTime,@AccidentSpot,@AccidentTime,@NotifyPerson,@LossType,@AccidentReason,@NotifyLossFee,@ContactPerson, ");
-            sb.Append("@ContactPhone,@NotifyType,@SpotCode,@AccidentProc,@AccidentDeal,@NotifyRemark,@NotifyCarrierTime,@NotifyNo,@CarrierContactPerson,@CarrierContactPhone,@PerambulateTime,@Requirement,@CaseEndTime,@LastPayFee,@AcquitFee)");
+            sb.Append("INSERT INTO NotifyClaim(NotifyID,PolicyID, ");
+            sb.Append("NotifySerialNo, NotifyTime, AccidentSpot, AccidentTime, ");
+            sb.Append("NotifyPerson, LossType, AccidentReason, NotifyLossFee, ");
+            sb.Append("ContactPerson, ContactPhone, NotifyType, SpotCode, ");
+            sb.Append("AccidentProc, AccidentDeal, NotifyRemark, NotifyCarrierTime, ");
+            sb.Append("NotifyNo, CarrierContactPerson, CarrierContactPhone, PerambulateTime, ");
+            sb.Append("Requirement, CaseEndTime, LastPayFee, AcquitFee, ");
+            sb.Append("CaseEndRemark, CreatePerson, CreateDate, ModifyDate, ");
+            sb.Append("ModifyPerson, DocCompleteDate, LastPayDate, CaseEndPerson ");
+            sb.Append(" ");
+            sb.Append(") ");
+            sb.Append(" VALUES(");
+            sb.Append("@NotifyID,@PolicyID, ");
+            sb.Append("@NotifySerialNo, @NotifyTime, @AccidentSpot, @AccidentTime, ");
+            sb.Append("@NotifyPerson, @LossType, @AccidentReason, @NotifyLossFee, ");
+            sb.Append("@ContactPerson, @ContactPhone, @NotifyType, @SpotCode, ");
+            sb.Append("@AccidentProc, @AccidentDeal, @NotifyRemark, @NotifyCarrierTime, ");
+            sb.Append("@NotifyNo, @CarrierContactPerson, @CarrierContactPhone, @PerambulateTime, ");
+            sb.Append("@Requirement, @CaseEndTime, @LastPayFee, @AcquitFee, ");
+            sb.Append("@CaseEndRemark, @CreatePerson, @CreateDate, @ModifyDate, ");
+            sb.Append("@ModifyPerson, @DocCompleteDate, @LastPayDate, @CaseEndPerson ");
+            sb.Append(" ");
+            sb.Append(") ");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
@@ -153,39 +221,42 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "NotifySerialNo", DbType.AnsiString, this.NotifySerialNo);
             _db.AddInParameter(dbCommand, "NotifyTime", DbType.DateTime, this.NotifyTime);
             _db.AddInParameter(dbCommand, "AccidentSpot", DbType.AnsiString, this.AccidentSpot);
+            
             _db.AddInParameter(dbCommand, "AccidentTime", DbType.DateTime, this.AccidentTime);
             _db.AddInParameter(dbCommand, "NotifyPerson", DbType.AnsiString, this.NotifyPerson);
             _db.AddInParameter(dbCommand, "LossType", DbType.AnsiString, this.LossType);
-            _db.AddInParameter(dbCommand, "AccidentReason", DbType.AnsiString, this.AccidentReason);
-            if (this.NotifyLossFee == -1)
-                _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, DBNull.Value);
-            else
-                _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, this.NotifyLossFee);
+            _db.AddInParameter(dbCommand, "AccidentReason", DbType.AnsiString, this.AccidentReason);           
+            _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, this.NotifyLossFee);
+            
             _db.AddInParameter(dbCommand, "ContactPerson", DbType.AnsiString, this.ContactPerson);
             _db.AddInParameter(dbCommand, "ContactPhone", DbType.AnsiString, this.ContactPhone);
             _db.AddInParameter(dbCommand, "NotifyType", DbType.AnsiString, this.NotifyType);
             _db.AddInParameter(dbCommand, "SpotCode", DbType.AnsiString, this.SpotCode);
             _db.AddInParameter(dbCommand, "AccidentProc", DbType.AnsiString, this.AccidentProc);
+            
             _db.AddInParameter(dbCommand, "AccidentDeal", DbType.AnsiString, this.AccidentDeal);
             _db.AddInParameter(dbCommand, "NotifyRemark", DbType.AnsiString, this.NotifyRemark);
             _db.AddInParameter(dbCommand, "NotifyCarrierTime", DbType.DateTime, this.NotifyCarrierTime);
             _db.AddInParameter(dbCommand, "NotifyNo", DbType.AnsiString, this.NotifyNo);
             _db.AddInParameter(dbCommand, "CarrierContactPerson", DbType.AnsiString, this.CarrierContactPerson);
+            
             _db.AddInParameter(dbCommand, "CarrierContactPhone", DbType.AnsiString, this.CarrierContactPhone);
-            if (this.PerambulateTime == DateTime.MinValue)
-                _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, DBNull.Value);
-            else
-                _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, this.PerambulateTime);
+            _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, this.PerambulateTime);
             _db.AddInParameter(dbCommand, "Requirement", DbType.AnsiString, this.Requirement);
             _db.AddInParameter(dbCommand, "CaseEndTime", DbType.DateTime, this.CaseEndTime);
             _db.AddInParameter(dbCommand, "LastPayFee", DbType.Double, this.LastPayFee);
+            
             _db.AddInParameter(dbCommand, "AcquitFee", DbType.Double, this.AcquitFee);
             _db.AddInParameter(dbCommand, "CaseEndRemark", DbType.AnsiString, this.CaseEndRemark);
             _db.AddInParameter(dbCommand, "CreatePerson", DbType.AnsiString, this.CreatePerson);
             _db.AddInParameter(dbCommand, "CreateDate", DbType.DateTime, this.CreateDate);
             _db.AddInParameter(dbCommand, "ModifyDate", DbType.DateTime, this.ModifyDate);
+            
             _db.AddInParameter(dbCommand, "ModifyPerson", DbType.AnsiString, this.ModifyPerson);
-
+            _db.AddInParameter(dbCommand, "DocCompleteDate", DbType.DateTime, this.DocCompleteDate);
+            _db.AddInParameter(dbCommand, "LastPayDate", DbType.DateTime, this.LastPayDate);
+            _db.AddInParameter(dbCommand, "CaseEndPerson", DbType.AnsiString, this.CaseEndPerson);
+            
             _db.ExecuteNonQuery(dbCommand);
         }
 
@@ -196,52 +267,65 @@ namespace BusinessObjects
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Update NotifyClaim ");
-            sb.Append("Set PolicyID=@PolicyID,CaseEndRemark=@CaseEndRemark,CreatePerson=@CreatePerson,CreateDate=@CreateDate,ModifyDate=@ModifyDate,ModifyPerson=@ModifyPerson,NotifySerialNo=@NotifySerialNo, ");
-            sb.Append("NotifyTime=@NotifyTime,AccidentSpot=@AccidentSpot,AccidentTime=@AccidentTime,NotifyPerson=@NotifyPerson,LossType=@LossType,AccidentReason=@AccidentReason,NotifyLossFee=@NotifyLossFee,ContactPerson=@ContactPerson, ");
-            sb.Append("ContactPhone=@ContactPhone,NotifyType=@NotifyType,SpotCode=@SpotCode,AccidentProc=@AccidentProc,AccidentDeal=@AccidentDeal,NotifyRemark=@NotifyRemark,NotifyCarrierTime=@NotifyCarrierTime,NotifyNo=@NotifyNo,");
-            sb.Append("CarrierContactPerson=@CarrierContactPerson,CarrierContactPhone=@CarrierContactPhone,PerambulateTime=@PerambulateTime,Requirement=@Requirement,CaseEndTime=@CaseEndTime,LastPayFee=@LastPayFee,AcquitFee=@AcquitFee ");
+            sb.Append("Set ");
+            sb.Append("PolicyID=@PolicyID, ");
+            sb.Append("NotifySerialNo=@NotifySerialNo, NotifyTime=@NotifyTime, AccidentSpot=@AccidentSpot, AccidentTime=@AccidentTime, ");
+            sb.Append("NotifyPerson=@NotifyPerson, LossType=@LossType, AccidentReason=@AccidentReason, NotifyLossFee=@NotifyLossFee, ");
+            sb.Append("ContactPerson=@ContactPerson, ContactPhone=@ContactPhone, NotifyType=@NotifyType, SpotCode=@SpotCode, ");
+            sb.Append("AccidentProc=@AccidentProc, AccidentDeal=@AccidentDeal, NotifyRemark=@NotifyRemark, NotifyCarrierTime=@NotifyCarrierTime, ");
+            sb.Append("NotifyNo=@NotifyNo, CarrierContactPerson=@CarrierContactPerson, CarrierContactPhone=@CarrierContactPhone, PerambulateTime=@PerambulateTime, ");
+            sb.Append("Requirement=@Requirement, CaseEndTime=@CaseEndTime, LastPayFee=@LastPayFee, AcquitFee=@AcquitFee, ");
+            sb.Append("CaseEndRemark=@CaseEndRemark, CreatePerson=@CreatePerson, CreateDate=@CreateDate, ModifyDate=@ModifyDate, ");
+            sb.Append("ModifyPerson=@ModifyPerson, DocCompleteDate=@DocCompleteDate, LastPayDate=@LastPayDate, CaseEndPerson=@CaseEndPerson ");
+            sb.Append(" ");
             sb.Append("Where NotifyID=@NotifyID");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-
+            //if (this.PerambulateTime == DateTime.MinValue)
+            //    _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, DBNull.Value);
+            //else
+            //    _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, this.PerambulateTime);
             _db.AddInParameter(dbCommand, "NotifyID", DbType.AnsiString, this.NotifyID);
             _db.AddInParameter(dbCommand, "PolicyID", DbType.AnsiString, this.PolicyID);
             _db.AddInParameter(dbCommand, "NotifySerialNo", DbType.AnsiString, this.NotifySerialNo);
             _db.AddInParameter(dbCommand, "NotifyTime", DbType.DateTime, this.NotifyTime);
             _db.AddInParameter(dbCommand, "AccidentSpot", DbType.AnsiString, this.AccidentSpot);
+
             _db.AddInParameter(dbCommand, "AccidentTime", DbType.DateTime, this.AccidentTime);
             _db.AddInParameter(dbCommand, "NotifyPerson", DbType.AnsiString, this.NotifyPerson);
             _db.AddInParameter(dbCommand, "LossType", DbType.AnsiString, this.LossType);
             _db.AddInParameter(dbCommand, "AccidentReason", DbType.AnsiString, this.AccidentReason);
-            if (this.NotifyLossFee == -1)
-                _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, DBNull.Value);
-            else
-                _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, this.NotifyLossFee);
+            _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, this.NotifyLossFee);
+
             _db.AddInParameter(dbCommand, "ContactPerson", DbType.AnsiString, this.ContactPerson);
             _db.AddInParameter(dbCommand, "ContactPhone", DbType.AnsiString, this.ContactPhone);
             _db.AddInParameter(dbCommand, "NotifyType", DbType.AnsiString, this.NotifyType);
             _db.AddInParameter(dbCommand, "SpotCode", DbType.AnsiString, this.SpotCode);
             _db.AddInParameter(dbCommand, "AccidentProc", DbType.AnsiString, this.AccidentProc);
+
             _db.AddInParameter(dbCommand, "AccidentDeal", DbType.AnsiString, this.AccidentDeal);
             _db.AddInParameter(dbCommand, "NotifyRemark", DbType.AnsiString, this.NotifyRemark);
             _db.AddInParameter(dbCommand, "NotifyCarrierTime", DbType.DateTime, this.NotifyCarrierTime);
             _db.AddInParameter(dbCommand, "NotifyNo", DbType.AnsiString, this.NotifyNo);
             _db.AddInParameter(dbCommand, "CarrierContactPerson", DbType.AnsiString, this.CarrierContactPerson);
+
             _db.AddInParameter(dbCommand, "CarrierContactPhone", DbType.AnsiString, this.CarrierContactPhone);
-            if (this.PerambulateTime == DateTime.MinValue)
-                _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, DBNull.Value);
-            else
-                _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, this.PerambulateTime);
+            _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, this.PerambulateTime);
             _db.AddInParameter(dbCommand, "Requirement", DbType.AnsiString, this.Requirement);
             _db.AddInParameter(dbCommand, "CaseEndTime", DbType.DateTime, this.CaseEndTime);
             _db.AddInParameter(dbCommand, "LastPayFee", DbType.Double, this.LastPayFee);
+
             _db.AddInParameter(dbCommand, "AcquitFee", DbType.Double, this.AcquitFee);
             _db.AddInParameter(dbCommand, "CaseEndRemark", DbType.AnsiString, this.CaseEndRemark);
             _db.AddInParameter(dbCommand, "CreatePerson", DbType.AnsiString, this.CreatePerson);
             _db.AddInParameter(dbCommand, "CreateDate", DbType.DateTime, this.CreateDate);
             _db.AddInParameter(dbCommand, "ModifyDate", DbType.DateTime, this.ModifyDate);
-            _db.AddInParameter(dbCommand, "ModifyPerson", DbType.AnsiString, this.ModifyPerson);
 
+            _db.AddInParameter(dbCommand, "ModifyPerson", DbType.AnsiString, this.ModifyPerson);
+            _db.AddInParameter(dbCommand, "DocCompleteDate", DbType.DateTime, this.DocCompleteDate);
+            _db.AddInParameter(dbCommand, "LastPayDate", DbType.DateTime, this.LastPayDate);
+            _db.AddInParameter(dbCommand, "CaseEndPerson", DbType.AnsiString, this.CaseEndPerson);
+            
             _db.ExecuteNonQuery(dbCommand);
         }
 
@@ -347,7 +431,7 @@ namespace BusinessObjects
             BO_NotifyClaim notifyClaim = null;
             using (IDataReader reader = _db.ExecuteReader(dbCommand))
             {
-                while (reader.Read())
+                if (reader.Read())
                 {
                     notifyClaim = new BO_NotifyClaim();
 
@@ -356,34 +440,42 @@ namespace BusinessObjects
                     notifyClaim.NotifySerialNo = Utility.GetStringFromReader(reader, FieldList.NotifySerialNo.ToString());
                     notifyClaim.NotifyTime = Utility.GetDatetimeFromReader(reader, FieldList.NotifyTime.ToString());
                     notifyClaim.AccidentSpot = Utility.GetStringFromReader(reader, FieldList.AccidentSpot.ToString());
+                    
                     notifyClaim.AccidentTime = Utility.GetDatetimeFromReader(reader, FieldList.AccidentTime.ToString());
                     notifyClaim.NotifyPerson = Utility.GetStringFromReader(reader, FieldList.NotifyPerson.ToString());
                     notifyClaim.LossType = Utility.GetStringFromReader(reader, FieldList.LossType.ToString());
                     notifyClaim.AccidentReason = Utility.GetStringFromReader(reader, FieldList.AccidentReason.ToString());
                     notifyClaim.NotifyLossFee = reader["NotifyLossFee"] == DBNull.Value ? -1 : Convert.ToDouble(reader["NotifyLossFee"]);
+                    
                     notifyClaim.ContactPerson = Utility.GetStringFromReader(reader, FieldList.ContactPerson.ToString());
                     notifyClaim.ContactPhone = Utility.GetStringFromReader(reader, FieldList.ContactPhone.ToString());
                     notifyClaim.NotifyType = Utility.GetStringFromReader(reader, FieldList.NotifyType.ToString());
                     notifyClaim.SpotCode = Utility.GetStringFromReader(reader, FieldList.SpotCode.ToString());
                     notifyClaim.AccidentProc = Utility.GetStringFromReader(reader, FieldList.AccidentProc.ToString());
+                    
                     notifyClaim.AccidentDeal = Utility.GetStringFromReader(reader, FieldList.AccidentDeal.ToString());
                     notifyClaim.NotifyRemark = Utility.GetStringFromReader(reader, FieldList.NotifyRemark.ToString());
                     notifyClaim.NotifyCarrierTime = Utility.GetDatetimeFromReader(reader, FieldList.NotifyCarrierTime.ToString());
                     notifyClaim.NotifyNo = Utility.GetStringFromReader(reader, FieldList.NotifyNo.ToString());
                     notifyClaim.CarrierContactPerson = Utility.GetStringFromReader(reader, FieldList.CarrierContactPerson.ToString());
+                    
                     notifyClaim.CarrierContactPhone = Utility.GetStringFromReader(reader, FieldList.CarrierContactPhone.ToString());
                     notifyClaim.PerambulateTime = Utility.GetDatetimeFromReader(reader, FieldList.PerambulateTime.ToString());
                     notifyClaim.Requirement = Utility.GetStringFromReader(reader, FieldList.Requirement.ToString());
                     notifyClaim.CaseEndTime = Utility.GetDatetimeFromReader(reader, FieldList.CaseEndTime.ToString());
                     notifyClaim.LastPayFee = Utility.GetDoubleFromReader(reader, FieldList.LastPayFee.ToString());
+                    
                     notifyClaim.AcquitFee = Utility.GetDoubleFromReader(reader, FieldList.AcquitFee.ToString());
                     notifyClaim.CaseEndRemark = Utility.GetStringFromReader(reader, FieldList.CaseEndRemark.ToString());
                     notifyClaim.CreatePerson = Utility.GetStringFromReader(reader, FieldList.CreatePerson.ToString());
                     notifyClaim.CreateDate = Utility.GetDatetimeFromReader(reader, FieldList.CreateDate.ToString());
                     notifyClaim.ModifyDate = Utility.GetDatetimeFromReader(reader, FieldList.ModifyDate.ToString());
+                    
                     notifyClaim.ModifyPerson = Utility.GetStringFromReader(reader, FieldList.ModifyPerson.ToString());
+                    notifyClaim.DocCompleteDate = Utility.GetDatetimeFromReader(reader, FieldList.DocCompleteDate.ToString());
+                    notifyClaim.LastPayDate = Utility.GetDatetimeFromReader(reader, FieldList.LastPayDate.ToString());
+                    notifyClaim.CaseEndPerson = Utility.GetStringFromReader(reader, FieldList.CaseEndPerson.ToString());
                     notifyClaim.PolicyNo = Utility.GetStringFromReader(reader, FieldList.PolicyNo.ToString());	
-                    break;
                 }
             }
 
@@ -407,21 +499,12 @@ namespace BusinessObjects
         /// </summary>
         /// <param name="policyNo"></param>
         /// <returns></returns>
-        public static DataTable GetPolicyByPolicyNo(string policyNo)
+        public static DataTable GetPolicyByPolicyID(string policyID)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("Select P.PolicyID, C.CarrierNameCn, CUST.CustName, B.BranchName, P.Beneficiary, PT.ProdTypeName, P.StartDate, P.EndDate, PU.UserNameCn ");
-            sb.Append("From Policy P (nolock) ");
-            sb.Append("Left Join PolicyCarrier PC (nolock) On PC.PolicyID=P.PolicyID ");
-            sb.Append("Left Join Carrier C (nolock) On C.CarrierID=PC.CarrierID ");
-            sb.Append("Left Join Customer CUST (nolock) On CUST.CustID=P.CustomerID ");
-            sb.Append("Left Join Branch B (nolock) On B.BranchID=PC.BranchId ");
-            sb.Append("Left Join ProductType PT (nolock) On PT.ProdTypeID=P.ProdTypeID ");
-            sb.Append("Left Join P_User PU (nolock) On PU.UserID=P.SalesId ");
-            sb.Append("Where P.PolicyNo=@PolicyNo");
-
-            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
-            _db.AddInParameter(dbCommand, "@PolicyNo", DbType.AnsiString, policyNo);
+            sb.Append("dbo.GetPolicyListByPolicyID");
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.AnsiString, policyID);
             return _db.ExecuteDataSet(dbCommand).Tables[0];
         }
 
@@ -476,5 +559,36 @@ namespace BusinessObjects
         }
         
         #endregion
+
+
+        #region reference list
+
+        public static DataSet GetLossTypeList()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select ");
+            sb.Append("CodeID AccountTypeID,CodeName AccountTypeName,SortNo ");
+            sb.Append(" from p_code where codeType='LossType' ");
+            
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+
+        public static DataSet GetAccidentReasonList()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("select ");
+            sb.Append("CodeID AccountTypeID,CodeName AccountTypeName,SortNo ");
+            sb.Append(" from p_code where codeType='AccidentReason' ");
+            sb.Append(" ");
+            sb.Append(" ");
+            
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        #endregion reference list
+
     }
 }
