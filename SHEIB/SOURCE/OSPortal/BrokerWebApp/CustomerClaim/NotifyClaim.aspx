@@ -26,9 +26,20 @@
                     //do nothing
                 }
             };
+
+
+            var theNotifyID = dxetxtNotifyID.GetValueString();
+            if (isEmpty(theNotifyID)) {
+                setDxeButtonsUnableOrEnable(false);
+            }
+            else {
+                setDxeButtonsUnableOrEnable(true);
+            }
         });
-    
-	    
+
+        function setDxeButtonsUnableOrEnable(val) {
+            gridTraceInfoItem.SetClientVisible(val);
+        }
 
 	    function NotifyPersonLostFocus(s, e) {
 	        dxetxtContactPerson.SetText(s.GetText());
@@ -65,6 +76,11 @@
 
 
         function dxebtnNotifyInfoSaveEndCase_Click(s, e) {
+            var pid = dxetxtPolicyID.GetValueString();
+            if (isEmpty(pid)) {
+                alert("请先选择保单。");
+                return;
+            }
             if (s.CauseValidation()) {
                 dxeNotifyInfoSaveEndCaseCallback.PerformCallback("");
             }
@@ -81,8 +97,14 @@
                     alert("保存成功");
             }         
         }
-        
+
         function dxebtnNotifyInfoSave_Click(s, e) {
+            var pid = dxetxtPolicyID.GetValueString();
+            if (isEmpty(pid)) {
+                alert("请先选择保单。");
+                return;
+            }
+            
             if (s.CauseValidation()) {
                 dxeNotifyInfoSaveCallback.PerformCallback("");
             }
@@ -94,10 +116,11 @@
                     alert("报案号不唯一");
                     break
                 default:
-                    var pid = dxetxtNotifyID.GetValueString();
-                    if (isEmpty(pid)) {
+                    var nid = dxetxtNotifyID.GetValueString();
+                    if (isEmpty(nid)) {
                         dxetxtNotifyID.SetValue(e.result);
                     }
+                    setDxeButtonsUnableOrEnable(true);
                     alert("保存成功");
             }
         }
@@ -118,7 +141,21 @@
                 return false;
             }
         }
+
+        
     </script>
+    
+    <script type="text/javascript">
+        function FileUploadStart(s, e) {
+            //var refplcid = dxetxtPolicyID.GetValueString();
+            //filesUploadControl;
+        }
+        
+        function FileUploaded(s, e) {
+            //gridDocList.PerformCallback();
+        }
+    </script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
@@ -491,13 +528,13 @@
                                             <EditButton Visible="true" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="FollowDate" Caption="跟进日期" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataDateColumn FieldName="FollowDate" Caption="跟进日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                                        </dxwgv:GridViewDataDateColumn>
                                         <dxwgv:GridViewDataColumn FieldName="FollowContent" Caption="跟进工作" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="FollowNextContent" Caption="下一步工作" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="LoseStatus" Caption="赔案状态" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="LoseStatusName" Caption="赔案状态" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="EstimateFeel" Caption="估计金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -516,7 +553,7 @@
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowAllRecords" />
                                     <ClientSideEvents EndCallback="function(s, e) {gridTraceInfoItem_EndCallback();}" />
-                                    <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                    <SettingsBehavior ConfirmDelete="true" AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
                                     <Templates>
                                         <EditForm>
                                             <div style="padding: 4px 4px 3px 4px">
@@ -527,8 +564,10 @@
                                                         </td>
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxDateEdit ID="gridTraceInfoItem_dxedeFollowDate" ClientInstanceName="gridTraceInfoItem_dxedeFollowDate" runat="server"
-                                                                Width="120px">
-                                                                <ClientSideEvents DateChanged="function(s, e) { dxeStartDate_DateChanged(s,e); }" />
+                                                                Width="120px" EditFormatString="yyyy-MM-dd">
+                                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                </ValidationSettings>
                                                             </dxe:ASPxDateEdit>
                                                         </td>
                                                         <td style="white-space: nowrap; text-align: right;">
@@ -538,8 +577,6 @@
                                                             <dxe:ASPxComboBox runat="server" ID="gridTraceInfoItem_dxeddlLoseStatus" AutoPostBack="false"
                                                                 ClientInstanceName="gridTraceInfoItem_dxeddlLoseStatus" DropDownButton-Enabled="true"
                                                                 DropDownStyle="DropDownList" Width="120px">
-                                                                <Items>
-                                                                </Items>
                                                                 <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
                                                                     <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                 </ValidationSettings>
@@ -552,8 +589,9 @@
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxTextBox ID="gridTraceInfoItem_dxetxtEstimateFeel" ClientInstanceName="gridTraceInfoItem_dxetxtEstimateFeel"
                                                                 runat="server" Width="120px">
-                                                                <ValidationSettings>
+                                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
                                                                     <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                 </ValidationSettings>
                                                                 <ClientSideEvents />
                                                             </dxe:ASPxTextBox>
@@ -568,6 +606,9 @@
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxMemo runat="server" ID="gridTraceInfoItem_dxetxtFollowContent" ClientInstanceName="gridTraceInfoItem_dxetxtFollowContent"
                                                                 Rows="10" Columns="40">
+                                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                </ValidationSettings>                                                                
                                                             </dxe:ASPxMemo>
                                                         </td>
                                                         <td style="white-space: nowrap; text-align: right;">
@@ -576,6 +617,9 @@
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxMemo runat="server" ID="gridTraceInfoItem_dxetxtFollowNextContent" ClientInstanceName="gridTraceInfoItem_dxetxtFollowNextContent"
                                                                 Rows="10" Columns="40">
+                                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                </ValidationSettings>
                                                             </dxe:ASPxMemo>
                                                         </td>
                                                         <td style="white-space: nowrap; text-align: right;">
@@ -780,7 +824,7 @@
                         </dxe:ASPxButton>
                     </td>
                 <td style="width:50px; text-align:left;">
-                    <dxe:ASPxButton runat="server" id="dxebtnBottomSave" Text="保存" 
+                    <dxe:ASPxButton runat="server" id="dxebtnBottomSave" ClientInstanceName="dxebtnBottomSave" Text="保存" 
                         CausesValidation="true" AutoPostBack="false">
                         <ClientSideEvents Click="function(s, e) {dxebtnNotifyInfoSave_Click(s,e);}" />
                     </dxe:ASPxButton> 

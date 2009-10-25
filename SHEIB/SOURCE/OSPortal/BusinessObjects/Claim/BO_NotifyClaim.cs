@@ -502,13 +502,14 @@ namespace BusinessObjects
         /// </summary>
         /// <param name="notifyNo"></param>
         /// <returns></returns>
-        public static bool IfExistsNotifyNo(string notifyNo)
+        public static bool IfExistsNotifyNo(String notifyID,string notifyNo)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select NotifyNo From NotifyClaim (nolock) ");
-            sb.Append("Where NotifyNo=@NotifyNo");
+            sb.Append("Where NotifyID != @NotifyID and NotifyNo=@NotifyNo");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@NotifyID", DbType.AnsiString, notifyID);
             _db.AddInParameter(dbCommand, "@NotifyNo", DbType.AnsiString, notifyNo);
             DataTable value = _db.ExecuteDataSet(dbCommand).Tables[0];
 
