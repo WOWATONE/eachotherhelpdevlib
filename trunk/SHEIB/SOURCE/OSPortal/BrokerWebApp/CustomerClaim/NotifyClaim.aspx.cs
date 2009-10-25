@@ -58,7 +58,10 @@ namespace BrokerWebApp.CustomerClaim
                 {
                     loadNotifyClaimValue(this.dxetxtNotifyID.Text.Trim());
                 }
-            }            
+            }
+
+            rebindGridTraceInfoItem();
+
         }
 
 
@@ -230,7 +233,7 @@ namespace BrokerWebApp.CustomerClaim
             BusinessObjects.BO_NotifyClaim obj;
 
             //check NotifyNo exist first
-            bool checkresult = BO_NotifyClaim.IfExistsNotifyNo(this.dxetxtNotifyNo.Text.Trim());
+            bool checkresult = BO_NotifyClaim.IfExistsNotifyNo(this.dxetxtNotifyID.Text.Trim(),this.dxetxtNotifyNo.Text.Trim());
 
             if (checkresult) return notifyNoExist;
 
@@ -376,10 +379,10 @@ namespace BrokerWebApp.CustomerClaim
                     if (theValueList[2] != null)
                         gridTraceInfoItem_dxedeFollowDate.Date  = Convert.ToDateTime(theValueList[2]);
 
-                    if (theValueList[3] == null)
+                    if (theValueList[3] != null)
                         gridTraceInfoItem_dxetxtFollowContent.Text = theValueList[3].ToString();
 
-                    if (theValueList[4] == null)
+                    if (theValueList[4] != null)
                         gridTraceInfoItem_dxetxtFollowNextContent.Text = theValueList[4].ToString();
                                         
                     if (theValueList[5] != null)
@@ -391,7 +394,7 @@ namespace BrokerWebApp.CustomerClaim
                         }
                     }
                     
-                    if (theValueList[6] == null)
+                    if (theValueList[6] != null)
                         gridTraceInfoItem_dxetxtEstimateFeel.Text = String.Format(BasePage.TheTwoSF, theValueList[6]);
 
                 }
@@ -517,8 +520,46 @@ namespace BrokerWebApp.CustomerClaim
 
         protected void gridTraceInfoItem_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
-            
-            if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误。";
+            HtmlTable tblEditorTemplate = this.gridTraceInfoItem.FindEditFormTemplateControl("gridTraceInfoItem_EditorTemplate") as HtmlTable;
+
+            ASPxDateEdit gridTraceInfoItem_dxedeFollowDate = tblEditorTemplate.FindControl("gridTraceInfoItem_dxedeFollowDate") as ASPxDateEdit;
+            ASPxComboBox gridTraceInfoItem_dxeddlLoseStatus = tblEditorTemplate.FindControl("gridTraceInfoItem_dxeddlLoseStatus") as ASPxComboBox;
+            ASPxTextBox gridTraceInfoItem_dxetxtEstimateFeel = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtEstimateFeel") as ASPxTextBox;
+
+            ASPxMemo gridTraceInfoItem_dxetxtFollowContent = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtFollowContent") as ASPxMemo;
+            ASPxMemo gridTraceInfoItem_dxetxtFollowNextContent = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtFollowNextContent") as ASPxMemo;
+
+            if (gridTraceInfoItem_dxedeFollowDate.Date == DateTime.MinValue || gridTraceInfoItem_dxedeFollowDate.Date == DateTime.MaxValue)
+            {
+                e.Errors[this.gridTraceInfoItem.Columns[0]] = "必需项";
+            }
+            if (gridTraceInfoItem_dxetxtFollowContent.Text.Trim() == "")
+            {
+                e.Errors[this.gridTraceInfoItem.Columns[1]] = "必需项";
+            }
+            if (gridTraceInfoItem_dxetxtFollowNextContent.Text.Trim() == "")
+            {
+                e.Errors[this.gridTraceInfoItem.Columns[2]] = "必需项";
+            }
+
+            if (gridTraceInfoItem_dxeddlLoseStatus.SelectedItem == null)
+            {
+                e.Errors[this.gridTraceInfoItem.Columns[3]] = "必需项";
+            }
+
+            if (gridTraceInfoItem_dxetxtEstimateFeel.Text.Trim() == "")
+            {
+                e.Errors[this.gridTraceInfoItem.Columns[4]] = "必需项";
+            }
+
+            String appendDes = "必需项";
+            gridTraceInfoItem_dxedeFollowDate.Validate();
+            gridTraceInfoItem_dxeddlLoseStatus.Validate();
+            gridTraceInfoItem_dxetxtEstimateFeel.Validate();
+            gridTraceInfoItem_dxetxtFollowContent.Validate();
+            gridTraceInfoItem_dxetxtFollowNextContent.Validate();
+
+            if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误(" + appendDes + ")。";
 
         }
 

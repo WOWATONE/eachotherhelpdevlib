@@ -109,16 +109,18 @@ namespace BusinessObjects
             sb.Append(") ");
             sb.Append(" VALUES(");
             sb.Append("@NotifyID, @FollowDate, @FollowContent, ");
-            sb.Append("@FollowNextContent, @LoseStatus, @EstimateFeel "); 
+            sb.Append("@FollowNextContent, @LoseStatus, @EstimateFeel ");
             sb.Append(" ");
-            sb.Append(") ");
+            sb.Append("); ");
+            sb.Append("SELECT CAST(@@IDENTITY AS INT); ");
+            
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
             _db.AddInParameter(dbCommand, "NotifyID", DbType.AnsiString, this.NotifyID);
             _db.AddInParameter(dbCommand, "FollowDate", DbType.DateTime, this.FollowDate);
             _db.AddInParameter(dbCommand, "FollowContent", DbType.AnsiString, this.FollowContent);
-            _db.AddInParameter(dbCommand, "FollowNextContent", DbType.DateTime, this.FollowNextContent);
+            _db.AddInParameter(dbCommand, "FollowNextContent", DbType.AnsiString, this.FollowNextContent);
 
             _db.AddInParameter(dbCommand, "LoseStatus", DbType.AnsiString, this.LoseStatus);
             _db.AddInParameter(dbCommand, "EstimateFeel", DbType.Double, this.EstimateFeel);
@@ -149,7 +151,7 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "NotifyID", DbType.AnsiString, this.NotifyID);
             _db.AddInParameter(dbCommand, "FollowDate", DbType.DateTime, this.FollowDate);
             _db.AddInParameter(dbCommand, "FollowContent", DbType.AnsiString, this.FollowContent);
-            _db.AddInParameter(dbCommand, "FollowNextContent", DbType.DateTime, this.FollowNextContent);
+            _db.AddInParameter(dbCommand, "FollowNextContent", DbType.AnsiString, this.FollowNextContent);
 
             _db.AddInParameter(dbCommand, "LoseStatus", DbType.AnsiString, this.LoseStatus);
             _db.AddInParameter(dbCommand, "EstimateFeel", DbType.Double, this.EstimateFeel);
@@ -179,8 +181,8 @@ namespace BusinessObjects
             
             sb.Append("");
             sb.Append("");
-            sb.Append("FROM NotifyClaimFollow");
-            sb.Append("WHERE NotifyID = @NotifyID");
+            sb.Append("FROM NotifyClaimFollow ");
+            sb.Append(" WHERE NotifyID = @NotifyID");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
             _db.AddInParameter(dbCommand, "@NotifyID", DbType.AnsiString, notifyID);
