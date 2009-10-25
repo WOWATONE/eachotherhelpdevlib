@@ -54,7 +54,9 @@ namespace BrokerWebApp.Report
 
         private void BindGrid()
         {
-            DataTable dt = BO_Report.GetInsuranceCommission1("").Tables[0];
+            string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");
+            string lsEndDate = dxeEndDate.Date.ToString("yyyy-MM-dd");
+            DataTable dt = BO_Report.GetInsuranceCommission1(lsStartDate,lsEndDate).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
         }

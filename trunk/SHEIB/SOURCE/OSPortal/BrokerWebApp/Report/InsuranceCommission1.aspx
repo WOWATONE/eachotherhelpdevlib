@@ -152,14 +152,6 @@
                                         <dxwgv:GridViewDataColumn FieldName="ConsultFee" Caption="咨询费收入(元)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
-                                    <TotalSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="LMMC" SummaryType="Count" DisplayFormat="合计" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PolicyCount" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="Premium" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="NeedPayinPremium" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="Process" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="ConsultFee" SummaryType="Sum" DisplayFormat="c" />
-                                    </TotalSummary>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowAllRecords" />
                                     <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowColumnHeaders="true"
