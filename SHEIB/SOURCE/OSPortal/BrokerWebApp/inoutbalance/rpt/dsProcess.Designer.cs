@@ -314,6 +314,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
             
             private global::System.Data.DataColumn columnAciPremium;
             
+            private global::System.Data.DataColumn columnFeeInDate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ProcessDataTable() {
                 this.TableName = "Process";
@@ -415,6 +417,13 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn FeeInDateColumn {
+                get {
+                    return this.columnFeeInDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -443,7 +452,7 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public ProcessRow AddProcessRow(string VoucherID, string CarrierName, string BranchName, string Fee, string FeeUpper, string PayProc, string FeeDate, string Remark, string CiPremium, string AciPremium) {
+            public ProcessRow AddProcessRow(string VoucherID, string CarrierName, string BranchName, string Fee, string FeeUpper, string PayProc, string FeeDate, string Remark, string CiPremium, string AciPremium, string FeeInDate) {
                 ProcessRow rowProcessRow = ((ProcessRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         VoucherID,
@@ -455,7 +464,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                         FeeDate,
                         Remark,
                         CiPremium,
-                        AciPremium};
+                        AciPremium,
+                        FeeInDate};
                 rowProcessRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProcessRow);
                 return rowProcessRow;
@@ -485,6 +495,7 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 this.columnRemark = base.Columns["Remark"];
                 this.columnCiPremium = base.Columns["CiPremium"];
                 this.columnAciPremium = base.Columns["AciPremium"];
+                this.columnFeeInDate = base.Columns["FeeInDate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -509,6 +520,8 @@ namespace BrokerWebApp.inoutbalance.rpt {
                 base.Columns.Add(this.columnCiPremium);
                 this.columnAciPremium = new global::System.Data.DataColumn("AciPremium", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAciPremium);
+                this.columnFeeInDate = new global::System.Data.DataColumn("FeeInDate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFeeInDate);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1079,6 +1092,21 @@ namespace BrokerWebApp.inoutbalance.rpt {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string FeeInDate {
+                get {
+                    try {
+                        return ((string)(this[this.tableProcess.FeeInDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“Process”中列“FeeInDate”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableProcess.FeeInDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsVoucherIDNull() {
                 return this.IsNull(this.tableProcess.VoucherIDColumn);
             }
@@ -1176,6 +1204,16 @@ namespace BrokerWebApp.inoutbalance.rpt {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetAciPremiumNull() {
                 this[this.tableProcess.AciPremiumColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsFeeInDateNull() {
+                return this.IsNull(this.tableProcess.FeeInDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetFeeInDateNull() {
+                this[this.tableProcess.FeeInDateColumn] = global::System.Convert.DBNull;
             }
         }
         
