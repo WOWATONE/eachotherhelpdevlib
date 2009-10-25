@@ -105,9 +105,9 @@
                 return;
             }
             
-            if (s.CauseValidation()) {
+            //if (s.CauseValidation()) {
                 dxeNotifyInfoSaveCallback.PerformCallback("");
-            }
+            //}
         }
         function dxeNotifyInfoSaveCallbackComplete(s, e) {
             var retrunval = e.result;
@@ -825,7 +825,7 @@
                     </td>
                 <td style="width:50px; text-align:left;">
                     <dxe:ASPxButton runat="server" id="dxebtnBottomSave" ClientInstanceName="dxebtnBottomSave" Text="保存" 
-                        CausesValidation="true" AutoPostBack="false">
+                        CausesValidation="false" AutoPostBack="false">
                         <ClientSideEvents Click="function(s, e) {dxebtnNotifyInfoSave_Click(s,e);}" />
                     </dxe:ASPxButton> 
                 </td>

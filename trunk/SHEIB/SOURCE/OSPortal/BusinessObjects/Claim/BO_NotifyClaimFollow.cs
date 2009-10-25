@@ -118,7 +118,12 @@ namespace BusinessObjects
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
             _db.AddInParameter(dbCommand, "NotifyID", DbType.AnsiString, this.NotifyID);
-            _db.AddInParameter(dbCommand, "FollowDate", DbType.DateTime, this.FollowDate);
+
+            if (this.FollowDate > DateTime.MinValue && this.FollowDate < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "FollowDate", DbType.DateTime, this.FollowDate);
+            else
+                _db.AddInParameter(dbCommand, "FollowDate", DbType.DateTime, null);
+
             _db.AddInParameter(dbCommand, "FollowContent", DbType.AnsiString, this.FollowContent);
             _db.AddInParameter(dbCommand, "FollowNextContent", DbType.AnsiString, this.FollowNextContent);
 
@@ -149,7 +154,12 @@ namespace BusinessObjects
 
             _db.AddInParameter(dbCommand, "FollowID", DbType.Int32, this.FollowID);
             _db.AddInParameter(dbCommand, "NotifyID", DbType.AnsiString, this.NotifyID);
-            _db.AddInParameter(dbCommand, "FollowDate", DbType.DateTime, this.FollowDate);
+
+            if (this.FollowDate > DateTime.MinValue && this.FollowDate < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "FollowDate", DbType.DateTime, this.FollowDate);
+            else
+                _db.AddInParameter(dbCommand, "FollowDate", DbType.DateTime, null);
+
             _db.AddInParameter(dbCommand, "FollowContent", DbType.AnsiString, this.FollowContent);
             _db.AddInParameter(dbCommand, "FollowNextContent", DbType.AnsiString, this.FollowNextContent);
 

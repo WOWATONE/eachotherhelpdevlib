@@ -15,10 +15,21 @@
         }
 
         function gridCustomButtonClick(s, e) {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
-            var notifyID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
-            window.showModalDialog("NotifyClaim.aspx?id=" + notifyID, self, myArguments);
+            s.GetRowValues(e.visibleIndex, "NotifyID", getTheSelectedRowsValues);
         }
+
+        function getTheSelectedRowsValues(selectedValues) {
+            
+            if (selectedValues.length == 0) {
+                //
+            }
+            else {
+                var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
+                var notifyID = selectedValues;
+                window.showModalDialog("NotifyClaim.aspx?id=" + notifyID, self, myArguments);
+            }
+        }
+        
     </script>
 
 </asp:Content>
@@ -176,7 +187,7 @@
                                 <CellStyle Wrap="False">
                                 </CellStyle>
                             </dxwgv:GridViewCommandColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="流水号" FieldName="NotifySerialNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="流水号" FieldName="NotifySerialNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" Visible="false">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="投保人" FieldName="CustName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
@@ -224,6 +235,9 @@
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="保险公司联系方式" FieldName="CarrierContactPhone" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataColumn FieldName="NotifyID" Caption="NotifyID" CellStyle-Wrap="False"
+                                            Visible="false">
+                            </dxwgv:GridViewDataColumn>
                         </Columns>
                         <SettingsPager Mode="ShowPager" />
                         <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways" ShowGroupedColumns="true" ShowFilterRow="false" />
