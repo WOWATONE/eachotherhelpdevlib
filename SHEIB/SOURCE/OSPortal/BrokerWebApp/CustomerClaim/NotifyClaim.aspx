@@ -101,6 +101,10 @@
                     alert("保存成功");
             }
         }
+
+        function gridTraceInfoItem_EndCallback(s, e) {
+            //
+        }
         
         function setHidePolicyID(thevalue) {
             var result = $("#<%=hidPolicyID.ClientID %>");
@@ -463,6 +467,141 @@
                     </div>
                 </asp:Panel>
                 <asp:Panel ID="npTraceInfoDetail" runat="server" CssClass="collapsePanel" Height="0">
+                    
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="text-align: right;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <dxwgv:ASPxGridView ID="gridTraceInfoItem" ClientInstanceName="gridTraceInfoItem" runat="server"
+                                    KeyFieldName="FollowID" Width="100%" AutoGenerateColumns="False" 
+                                    OnRowInserting="gridTraceInfoItem_RowInserting"
+                                    OnRowUpdating="gridTraceInfoItem_RowUpdating" 
+                                    OnRowDeleting="gridTraceInfoItem_RowDeleting"
+                                    OnStartRowEditing="gridTraceInfoItem_StartRowEditing" 
+                                    OnHtmlEditFormCreated="gridTraceInfoItem_HtmlEditFormCreated"
+                                    OnRowValidating="gridTraceInfoItem_RowValidating">
+                                    <%-- BeginRegion Columns --%>
+                                    <Columns>
+                                        <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left"
+                                            Width="81" AllowDragDrop="false">
+                                            <NewButton Visible="True" />
+                                            <EditButton Visible="true" />
+                                            <DeleteButton Visible="true" />
+                                        </dxwgv:GridViewCommandColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="FollowDate" Caption="跟进日期" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="FollowContent" Caption="跟进工作" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="FollowNextContent" Caption="下一步工作" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="LoseStatus" Caption="赔案状态" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="EstimateFeel" Caption="估计金额" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="NotifyID" Caption="NotifyID" CellStyle-Wrap="False"
+                                            Visible="false">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="FollowID" Caption="FollowID" CellStyle-Wrap="False"
+                                            Visible="false">
+                                        </dxwgv:GridViewDataColumn>
+                                    </Columns>
+                                    <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
+                                    <TotalSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="FollowDate" SummaryType="Count" DisplayFormat="数量:#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="EstimateFeel" SummaryType="Sum" DisplayFormat="c" />
+                                    </TotalSummary>
+                                    <%-- EndRegion --%>
+                                    <SettingsPager Mode="ShowAllRecords" />
+                                    <ClientSideEvents EndCallback="function(s, e) {gridTraceInfoItem_EndCallback();}" />
+                                    <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                    <Templates>
+                                        <EditForm>
+                                            <div style="padding: 4px 4px 3px 4px">
+                                                <table style="width: 90%;" runat="server" id="gridTraceInfoItem_EditorTemplate">
+                                                    <tr>
+                                                        <td style="white-space: nowrap; text-align: right;">
+                                                            跟进日期:
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                            <dxe:ASPxDateEdit ID="gridTraceInfoItem_dxedeFollowDate" ClientInstanceName="gridTraceInfoItem_dxedeFollowDate" runat="server"
+                                                                Width="120px">
+                                                                <ClientSideEvents DateChanged="function(s, e) { dxeStartDate_DateChanged(s,e); }" />
+                                                            </dxe:ASPxDateEdit>
+                                                        </td>
+                                                        <td style="white-space: nowrap; text-align: right;">
+                                                            赔案状态:
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                            <dxe:ASPxComboBox runat="server" ID="gridTraceInfoItem_dxeddlLoseStatus" AutoPostBack="false"
+                                                                ClientInstanceName="gridTraceInfoItem_dxeddlLoseStatus" DropDownButton-Enabled="true"
+                                                                DropDownStyle="DropDownList" Width="120px">
+                                                                <Items>
+                                                                </Items>
+                                                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
+                                                                </ValidationSettings>
+                                                                <ClientSideEvents />
+                                                            </dxe:ASPxComboBox>
+                                                        </td>
+                                                        <td style="white-space: nowrap; text-align: right;">
+                                                            估计金额:
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                            <dxe:ASPxTextBox ID="gridTraceInfoItem_dxetxtEstimateFeel" ClientInstanceName="gridTraceInfoItem_dxetxtEstimateFeel"
+                                                                runat="server" Width="120px">
+                                                                <ValidationSettings>
+                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
+                                                                </ValidationSettings>
+                                                                <ClientSideEvents />
+                                                            </dxe:ASPxTextBox>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="white-space: nowrap; text-align: right;">
+                                                            跟进工作:
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                            <dxe:ASPxMemo runat="server" ID="gridTraceInfoItem_dxetxtFollowContent" ClientInstanceName="gridTraceInfoItem_dxetxtFollowContent"
+                                                                Rows="10" Columns="40">
+                                                            </dxe:ASPxMemo>
+                                                        </td>
+                                                        <td style="white-space: nowrap; text-align: right;">
+                                                            下一步工作:
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                            <dxe:ASPxMemo runat="server" ID="gridTraceInfoItem_dxetxtFollowNextContent" ClientInstanceName="gridTraceInfoItem_dxetxtFollowNextContent"
+                                                                Rows="10" Columns="40">
+                                                            </dxe:ASPxMemo>
+                                                        </td>
+                                                        <td style="white-space: nowrap; text-align: right;">
+                                                            
+                                                        </td>
+                                                        <td style="text-align: left;">
+                                                            
+                                                        </td>
+                                                    </tr>                                                    
+                                                </table>
+                                            </div>
+                                            <div style="text-align: right; padding: 2px 2px 2px 2px">
+                                                <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton"
+                                                    runat="server">
+                                                </dxwgv:ASPxGridViewTemplateReplacement>
+                                                <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton"
+                                                    runat="server">
+                                                </dxwgv:ASPxGridViewTemplateReplacement>
+                                            </div>
+                                        </EditForm>
+                                    </Templates>
+                                    <ClientSideEvents />
+                                </dxwgv:ASPxGridView>
+                            </td>
+                        </tr>
+                    </table>
                     
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeTraceInfo" runat="Server" TargetControlID="npTraceInfoDetail"

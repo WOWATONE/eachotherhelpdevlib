@@ -30,7 +30,8 @@ namespace BrokerWebApp.CustomerClaim
 
         private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
 
-        
+        private Boolean gridTraceInfoItemStartEdit = false;
+
         #endregion
 
 
@@ -342,6 +343,193 @@ namespace BrokerWebApp.CustomerClaim
         }
 
         #endregion methods
+
+
+
+        #region gridTraceInfoItem Events
+
+        protected void gridTraceInfoItem_HtmlEditFormCreated(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewEditFormEventArgs e)
+        {
+            HtmlTable tblEditorTemplate = this.gridTraceInfoItem.FindEditFormTemplateControl("gridTraceInfoItem_EditorTemplate") as HtmlTable;
+
+            ASPxDateEdit gridTraceInfoItem_dxedeFollowDate = tblEditorTemplate.FindControl("gridTraceInfoItem_dxedeFollowDate") as ASPxDateEdit;
+            ASPxComboBox gridTraceInfoItem_dxeddlLoseStatus = tblEditorTemplate.FindControl("gridTraceInfoItem_dxeddlLoseStatus") as ASPxComboBox;
+            ASPxTextBox gridTraceInfoItem_dxetxtEstimateFeel = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtEstimateFeel") as ASPxTextBox;
+
+            ASPxMemo gridTraceInfoItem_dxetxtFollowContent = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtFollowContent") as ASPxMemo;
+            ASPxMemo gridTraceInfoItem_dxetxtFollowNextContent = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtFollowNextContent") as ASPxMemo;
+                        
+            gridTraceInfoItem_dxeddlLoseStatus.DataSource = BusinessObjects.BO_NotifyClaimFollow.GetLoseStatusList();
+            gridTraceInfoItem_dxeddlLoseStatus.TextField = "AccountTypeName";
+            gridTraceInfoItem_dxeddlLoseStatus.ValueField = "AccountTypeID";
+            gridTraceInfoItem_dxeddlLoseStatus.DataBind();
+                        
+            Int32 editIndex = this.gridTraceInfoItem.EditingRowVisibleIndex;
+            if (editIndex > -1)
+            {
+                object theValues = this.gridTraceInfoItem.GetRowValues(editIndex, new String[] { "FollowID", "NotifyID", "FollowDate", "FollowContent", "FollowNextContent", "LoseStatus", "EstimateFeel" });
+                object[] theValueList = theValues as object[];
+                                
+                ListEditItem theselected;
+                if (this.gridTraceInfoItemStartEdit)
+                {
+                    if (theValueList[2] != null)
+                        gridTraceInfoItem_dxedeFollowDate.Date  = Convert.ToDateTime(theValueList[2]);
+
+                    if (theValueList[3] == null)
+                        gridTraceInfoItem_dxetxtFollowContent.Text = theValueList[3].ToString();
+
+                    if (theValueList[4] == null)
+                        gridTraceInfoItem_dxetxtFollowNextContent.Text = theValueList[4].ToString();
+                                        
+                    if (theValueList[5] != null)
+                    {
+                        theselected = gridTraceInfoItem_dxeddlLoseStatus.Items.FindByValue(theValueList[5].ToString());
+                        if (theselected != null)
+                        {
+                            gridTraceInfoItem_dxeddlLoseStatus.SelectedItem = theselected;
+                        }
+                    }
+                    
+                    if (theValueList[6] == null)
+                        gridTraceInfoItem_dxetxtEstimateFeel.Text = String.Format(BasePage.TheTwoSF, theValueList[6]);
+
+                }
+
+            }
+
+        }
+
+        protected void gridTraceInfoItem_StartRowEditing(object sender, DevExpress.Web.Data.ASPxStartRowEditingEventArgs e)
+        {
+            this.gridTraceInfoItemStartEdit = true;
+        }
+
+        protected void gridTraceInfoItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            String theKey = e.Keys[0].ToString();
+            HtmlTable tblEditorTemplate = this.gridTraceInfoItem.FindEditFormTemplateControl("gridTraceInfoItem_EditorTemplate") as HtmlTable;
+
+            ASPxDateEdit gridTraceInfoItem_dxedeFollowDate = tblEditorTemplate.FindControl("gridTraceInfoItem_dxedeFollowDate") as ASPxDateEdit;
+            ASPxComboBox gridTraceInfoItem_dxeddlLoseStatus = tblEditorTemplate.FindControl("gridTraceInfoItem_dxeddlLoseStatus") as ASPxComboBox;
+            ASPxTextBox gridTraceInfoItem_dxetxtEstimateFeel = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtEstimateFeel") as ASPxTextBox;
+
+            ASPxMemo gridTraceInfoItem_dxetxtFollowContent = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtFollowContent") as ASPxMemo;
+            ASPxMemo gridTraceInfoItem_dxetxtFollowNextContent = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtFollowNextContent") as ASPxMemo;
+            
+            BusinessObjects.BO_NotifyClaimFollow newobj = new BusinessObjects.BO_NotifyClaimFollow(Convert.ToInt32(theKey));
+
+            newobj.NotifyID = this.dxetxtNotifyID.Text;
+
+            newobj.FollowDate = gridTraceInfoItem_dxedeFollowDate.Date;
+            newobj.LoseStatus = gridTraceInfoItem_dxeddlLoseStatus.SelectedItem.Value.ToString();
+
+            if (gridTraceInfoItem_dxetxtEstimateFeel.Text != String.Empty)
+            {
+                newobj.EstimateFeel = Convert.ToDouble(gridTraceInfoItem_dxetxtEstimateFeel.Text);
+            }
+            
+            newobj.FollowContent = gridTraceInfoItem_dxetxtFollowContent.Text;
+            newobj.FollowNextContent = gridTraceInfoItem_dxetxtFollowNextContent.Text;
+            
+            try
+            {
+                newobj.Save(ModifiedAction.Update);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+            e.Cancel = true;
+            this.gridTraceInfoItem.CancelEdit();
+
+            rebindGridTraceInfoItem();
+
+        }
+
+        protected void gridTraceInfoItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+
+            HtmlTable tblEditorTemplate = this.gridTraceInfoItem.FindEditFormTemplateControl("gridTraceInfoItem_EditorTemplate") as HtmlTable;
+
+            ASPxDateEdit gridTraceInfoItem_dxedeFollowDate = tblEditorTemplate.FindControl("gridTraceInfoItem_dxedeFollowDate") as ASPxDateEdit;
+            ASPxComboBox gridTraceInfoItem_dxeddlLoseStatus = tblEditorTemplate.FindControl("gridTraceInfoItem_dxeddlLoseStatus") as ASPxComboBox;
+            ASPxTextBox gridTraceInfoItem_dxetxtEstimateFeel = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtEstimateFeel") as ASPxTextBox;
+
+            ASPxMemo gridTraceInfoItem_dxetxtFollowContent = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtFollowContent") as ASPxMemo;
+            ASPxMemo gridTraceInfoItem_dxetxtFollowNextContent = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtFollowNextContent") as ASPxMemo;
+
+            BusinessObjects.BO_NotifyClaimFollow newobj = new BusinessObjects.BO_NotifyClaimFollow();
+
+            newobj.NotifyID = this.dxetxtNotifyID.Text;
+
+            newobj.FollowDate = gridTraceInfoItem_dxedeFollowDate.Date;
+            newobj.LoseStatus = gridTraceInfoItem_dxeddlLoseStatus.SelectedItem.Value.ToString();
+
+            if (gridTraceInfoItem_dxetxtEstimateFeel.Text != String.Empty)
+            {
+                newobj.EstimateFeel = Convert.ToDouble(gridTraceInfoItem_dxetxtEstimateFeel.Text);
+            }
+
+            newobj.FollowContent = gridTraceInfoItem_dxetxtFollowContent.Text;
+            newobj.FollowNextContent = gridTraceInfoItem_dxetxtFollowNextContent.Text;
+                        
+            try
+            {
+                newobj.Save(ModifiedAction.Insert);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            e.Cancel = true;
+            this.gridTraceInfoItem.CancelEdit();
+
+            rebindGridTraceInfoItem();
+
+        }
+
+        protected void gridTraceInfoItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            String theKey = e.Keys[0].ToString();
+
+            try
+            {
+                if (BasePage.IsNumeric(theKey))
+                {
+                    BusinessObjects.BO_NotifyClaimFollow.Delete(Convert.ToInt32(theKey));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            e.Cancel = true;
+            this.gridTraceInfoItem.CancelEdit();
+
+            rebindGridTraceInfoItem();
+
+        }
+
+        protected void gridTraceInfoItem_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
+        {
+            
+            if (string.IsNullOrEmpty(e.RowError) && e.Errors.Count > 0) e.RowError = "请修正所有的错误。";
+
+        }
+
+
+        private void rebindGridTraceInfoItem()
+        {
+            this.gridTraceInfoItem.DataSource = BusinessObjects.BO_NotifyClaimFollow.GetNotifyClaimFollowListByNotifyID(this.dxetxtNotifyID.Text.Trim());
+            this.gridTraceInfoItem.DataBind();
+        }
+
+        #endregion gridTraceInfoItem Events
 
 
         #region Upload File Events
