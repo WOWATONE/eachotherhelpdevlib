@@ -6,6 +6,11 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses" TagPrefix="dxw" %>
+
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dxwgv" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl" TagPrefix="dxuc" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>赔案登记</title>
     <script type="text/javascript">
@@ -58,6 +63,7 @@
             else {
                 //debugger;
                 setHidePolicyID(retrunval[0][0]);
+                dxetxtPolicyID.SetValue(retrunval[0][0]);
                 dxetxtBeneficiary.SetValue(retrunval[0][1]);
                 dxetxtCustName.SetValue(retrunval[0][2]);
                 dxetxtUserNameCn.SetValue(retrunval[0][3]);
@@ -112,6 +118,17 @@
                             <td style="width: 35%;"></td>
                             <td style="width: 15%;"></td>
                             <td style="width: 30%;"></td>
+                            <td></td>
+                        </tr>
+                        <tr style=" display:none; ">
+                            <td>
+                                
+                            </td>
+                            <td>
+                                <dxe:ASPxTextBox  ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="200px" ReadOnly="false" ></dxe:ASPxTextBox>
+                            </td>
+                            <td></td>
+                            <td></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -225,269 +242,165 @@
                 <asp:Panel ID="npNotifyInfoDetail" runat="server" CssClass="collapsePanel" Height="0">
                     <table style="width: 100%">
                         <tr>
-                            <td style="width: 5%; text-align: right;">
+                            <td style="width: 15%;"></td>
+                            <td style="width: 35%;"></td>
+                            <td style="width: 15%;"></td>
+                            <td style="width: 30%;"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                客户报案人：
                             </td>
-                            <td style="width: 10%; text-align: right;">
-                                报案人：
-                            </td>
-                            <td style="width: 35%; text-align: left;">
+                            <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtNotifyPerson" ClientInstanceName="dxetxtNotifyPerson" runat="server" Width="160px">
                                     <ClientSideEvents LostFocus="function(s ,e) { NotifyPersonLostFocus(s, e) }" />
                                 </dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 10%; text-align: right;">
-                                报案方式：
+                            <td style="text-align: right;">
+                                出险地点：
                             </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlNotifyType" ClientInstanceName="dxeddlNotifyType" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
-                                    </ValidationSettings>
-                                </dxe:ASPxComboBox>
-                            </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
+                            <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtAccidentSpot" ClientInstanceName="dxetxtAccidentSpot" runat="server" Width="160px"></dxe:ASPxTextBox>
+                            </td>                            
+                            <td></td>
                         </tr>
                         <tr>
-                            <td style="width: 5%; text-align: right;">
-                            </td>
-                            <td style="width: 10%; text-align: right;">
+                            <td style="text-align: right;">
                                 客户向我司<br />
                                 报案时间：
                             </td>
-                            <td style="width: 35%; text-align: left;">
+                            <td style="text-align: left;">
                                 <dxe:ASPxDateEdit ID="deNotifyTime" ClientInstanceName="deNotifyTime" runat="server" Width="160px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
                             </td>
-                            <td style="width: 10%; text-align: right;">
-                                出险地点：
+                            <td style="text-align: right;">
+                                报损金额：
                             </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtAccidentSpot" ClientInstanceName="dxetxtAccidentSpot" runat="server" Width="160px"></dxe:ASPxTextBox>
+                            <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtNotifyLossFee" ClientInstanceName="dxetxtNotifyLossFee" runat="server" Width="160px"></dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td style="width: 5%; text-align: right;">
+                            <td style="text-align: right;">
+                                出险日期：
                             </td>
-                            <td style="width: 10%; text-align: right;">
-                                出险时间：
-                            </td>
-                            <td style="width: 35%; text-align: left;">
+                            <td style="text-align: left;">
                                 <dxe:ASPxDateEdit ID="deAccidentTime" ClientInstanceName="deAccidentTime" runat="server" Width="160px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
                             </td>
-                            <td style="width: 10%; text-align: right;">
+                            <td style="text-align: right;">
                                 损失性质：
                             </td>
-                            <td style="width: 35%; text-align: left;">
+                            <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlLossType" ClientInstanceName="dxeddlLossType" runat="server" Width="160px" DropDownStyle="DropDownList">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxComboBox>
                             </td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td style="width: 5%; text-align: right;">
-                            </td>
-                            <td style="width: 10%; text-align: right;">
+                            <td style="text-align: right;">
                                 出险原因：
                             </td>
-                            <td style="width: 35%; text-align: left;">
+                            <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlAccidentReason" ClientInstanceName="dxeddlAccidentReason" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                    <Items>
-                                        <dxe:ListEditItem Text="意外" Value="意外" />
-                                        <dxe:ListEditItem Text="火灾" Value="火灾" />
-                                        <dxe:ListEditItem Text="盗窃" Value="盗窃" />
-                                        <dxe:ListEditItem Text="台风" Value="台风" />
-                                        <dxe:ListEditItem Text="其他" Value="其他" />
-                                    </Items>
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxComboBox>
                             </td>
-                            <td style="width: 10%; text-align: right;">
-                                报损金额：
-                            </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtNotifyLossFee" ClientInstanceName="dxetxtNotifyLossFee" runat="server" Width="160px"></dxe:ASPxTextBox>
-                            </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 5%; text-align: right;">
-                            </td>
-                            <td style="width: 10%; text-align: right;">
-                                联系人：
-                            </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtContactPerson" ClientInstanceName="dxetxtContactPerson" runat="server" Width="160px"></dxe:ASPxTextBox>
-                            </td>
-                            <td style="width: 10%; text-align: right;">
+                            <td style="text-align: right;">
                                 联系电话：
                             </td>
-                            <td style="width: 35%; text-align: left;">
+                            <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtContactPhone" ClientInstanceName="dxetxtContactPhone" runat="server" Width="160px"></dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td style="width: 5%; text-align: right;">
+                            <td style="text-align: right;">
+                                客户联系人：
                             </td>
-                            <td style="width: 10%; text-align: right;">
-                                状态：
+                            <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtContactPerson" ClientInstanceName="dxetxtContactPerson" runat="server" Width="160px"></dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 35%; text-align: left;">
-                                <input type="button" id="btn1" name="btn1" value="已报案" class="input_2" onclick="javascript:ClaimMaterialClick();"/>&nbsp;&nbsp;
-                                <input type="button" id="btn2" name="btn2" value="资料不全" class="input_2" onclick="javascript:ClaimMaterialClick();"/>&nbsp;&nbsp;
-                                <input type="button" id="btn3" name="btn3" value="资料已齐" class="input_2" onclick="javascript:ClaimMaterialClick();"/>&nbsp;&nbsp;
-                                <input type="button" id="btn4" name="btn4" value="结案" class="input_2" onclick="javascript:CaseEndClick();"/>
-                            </td>
-                            <td style="width: 10%; text-align: right;">
-                            </td>
-                            <td style="width: 35%; text-align: left;">
-                            </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
-                        </tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>                        
                         <tr>
-                            <td style="width: 5%; text-align: right;">
-                            </td>
-                            <td style="width: 10%; text-align: right; vertical-align: top;">
+                            <td style="text-align: right; vertical-align: top;">
                                 事故描述：
                             </td>
-                            <td style="text-align: left;" colspan="3">
-                                <asp:TextBox ID="txtAccidentProc" runat="server" TextMode="MultiLine" Style="width: 400px;"
-                                    Rows="4"></asp:TextBox>
+                            <td style="text-align: left;" colspan="3">                                
+                                <dxe:ASPxMemo runat="server" ID="dxetxtAccidentProc" ClientInstanceName="dxetxtAccidentProc"
+                                    Rows="10" Columns="120">
+                                </dxe:ASPxMemo>
                             </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
-                        </tr>
+                            <td></td>
+                        </tr>                        
                         <tr>
-                            <td style="width: 5%; text-align: right;">
-                            </td>
-                            <td style="width: 10%; text-align: right; vertical-align: top;">
-                                跟踪记录：
-                            </td>
-                            <td style="text-align: left;" colspan="3">
-                                <asp:TextBox ID="txtAccidentDeal" runat="server" TextMode="MultiLine" Style="width: 400px;"
-                                    Rows="4"></asp:TextBox>
-                            </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 5%; text-align: right;">
-                            </td>
-                            <td style="width: 10%; text-align: right;">
+                            <td style="text-align: right;">
                                 向保险公司<br />
-                                报案时间：
+                                报案日期：
                             </td>
-                            <td style="width: 35%; text-align: left;">
+                            <td style="text-align: left;">
                                 <dxe:ASPxDateEdit ID="deNotifyCarrierTime" ClientInstanceName="deNotifyCarrierTime" runat="server" Width="160px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
                             </td>
-                            <td style="width: 10%; text-align: right;">
+                            <td style="text-align: right;">
                                 报案号：
                             </td>
-                            <td style="width: 35%; text-align: left;">
+                            <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtNotifyNo" ClientInstanceName="dxetxtNotifyNo" runat="server" Width="160px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td style="width: 5%; text-align: right;">
-                            </td>
-                            <td style="width: 10%; text-align: right;">
+                            <td style="text-align: right;">
                                 保险公司<br />
-                                办理人员：
+                                办案人员：
                             </td>
-                            <td style="width: 35%; text-align: left;">
+                            <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCarrierContactPerson" ClientInstanceName="dxetxtCarrierContactPerson" runat="server" Width="160px"></dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 10%; text-align: right;">
+                            <td style="text-align: right;">
+                                办案人员<br />
                                 联系电话：
                             </td>
-                            <td style="width: 35%; text-align: left;">
+                            <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCarrierContactPhone" ClientInstanceName="dxetxtCarrierContactPhone" runat="server" Width="160px"></dxe:ASPxTextBox>
                             </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td style="width: 5%; text-align: right;">
+                            <td style="text-align: right;">
+                                查勘日期：
                             </td>
-                            <td style="width: 10%; text-align: right;">
-                                查勘时间：
-                            </td>
-                            <td style="width: 35%; text-align: left;">
+                            <td style="text-align: left;">
                                 <dxe:ASPxDateEdit ID="dePerambulateTime" ClientInstanceName="dePerambulateTime" runat="server" Width="160px"></dxe:ASPxDateEdit>
                             </td>
-                            <td style="width: 10%; text-align: right;">
-                            </td>
-                            <td style="width: 35%; text-align: left;">
-                            </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 5%; text-align: right;">
-                            </td>
-                            <td style="width: 10%; text-align: right; vertical-align: top;">
-                                保险公司要求：
-                            </td>
-                            <td style="text-align: left;" colspan="3">
-                                <asp:TextBox ID="txtRequirement" runat="server" TextMode="MultiLine" Style="width: 400px;"
-                                    Rows="4"></asp:TextBox>
-                            </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 5%; text-align: right;">
-                            </td>
-                            <td style="width: 10%; text-align: right;">
-                                制单人：
-                            </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="160px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
-                                    </ValidationSettings>
-                                </dxe:ASPxTextBox>
-                            </td>
-                            <td style="width: 10%; text-align: right;">
-                                制单日期:
-                            </td>
-                            <td style="width: 35%; text-align: left;">
-                                <dxe:ASPxDateEdit ID="deCreateDate" ClientInstanceName="deCreateDate" runat="server" Width="160px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
-                                    </ValidationSettings>
-                                </dxe:ASPxDateEdit>
-                            </td>
-                            <td style="width: 5%; text-align: left;">
-                            </td>
-                        </tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr> 
                     </table>
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeNotifyInfo" runat="Server" TargetControlID="npNotifyInfoDetail"
@@ -536,7 +449,131 @@
                     </div>
                 </asp:Panel>
                 <asp:Panel ID="npEndCaseDetail" runat="server" CssClass="collapsePanel" Height="0">
-                    
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 10%;"></td>
+                            <td style="width: 25%;"></td>
+                            <td style="width: 10%;"></td>
+                            <td style="width: 25%;"></td>
+                            <td style="width: 10%;"></td>
+                            <td style="width: 25%;"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                资料齐全日期：
+                            </td>
+                            <td style="text-align: left;">
+                                <dxe:ASPxDateEdit ID="ASPxDateEdit2" ClientInstanceName="deCreateDate" runat="server" Width="120px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                    </ValidationSettings>
+                                </dxe:ASPxDateEdit>
+                            </td>
+                            <td style="text-align: right;">
+                                赔付金额：
+                            </td>
+                            <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="ASPxTextBox2" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="120px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                    </ValidationSettings>
+                                </dxe:ASPxTextBox>
+                            </td>
+                            <td style="text-align: right;">
+                                赔款到帐日期：
+                            </td>
+                            <td style="text-align: left;">
+                                <dxe:ASPxDateEdit ID="ASPxDateEdit1" ClientInstanceName="deCreateDate" runat="server" Width="120px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                    </ValidationSettings>
+                                </dxe:ASPxDateEdit>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                结案日期：
+                            </td>
+                            <td style="text-align: left;">
+                                <dxe:ASPxDateEdit ID="ASPxDateEdit3" ClientInstanceName="deCreateDate" runat="server" Width="120px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                    </ValidationSettings>
+                                </dxe:ASPxDateEdit>
+                            </td>
+                            <td style="text-align: right;">
+                                结案人：
+                            </td>
+                            <td style="text-align: left;">
+                                <dxe:ASPxComboBox ID="ASPxComboBox1" ClientInstanceName="dxeddlLossType" runat="server" Width="160px" DropDownStyle="DropDownList">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                    </ValidationSettings>
+                                </dxe:ASPxComboBox>
+                            </td>
+                            <td style="text-align: right;">
+                            </td>
+                            <td style="text-align: left;">
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                资料上传：
+                            </td>
+                            <td colspan="5" style="text-align: left;">
+                                <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl"
+                                            runat="server" ShowAddRemoveButtons="True" Width="400px" ShowUploadButton="True"
+                                            AddUploadButtonsHorizontalPosition="Center" ShowProgressPanel="True" FileInputCount="5"
+                                            RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
+                                            OnPreRender="UploadControl_PreRender" OnFileUploadComplete="UploadControl_FileUploadComplete">
+                                            <ValidationSettings MaxFileSize="4000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
+                                                MaxFileSizeErrorText="文件太大" NotAllowedContentTypeErrorText="不允许上传此类型文件">
+                                            </ValidationSettings>
+                                            <ClientSideEvents FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" FileUploadStart="function(s, e) { FileUploadStart(s, e); }" />
+                                            <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
+                                                ImagePosition="Left">
+                                            </RemoveButton>
+                                            <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
+                                                ImagePosition="Left">
+                                            </AddButton>
+                                            <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
+                                                ImagePosition="Left">
+                                            </UploadButton>
+                                        </dxuc:ASPxUploadControl>
+                            </td>                            
+                            <td style="text-align: left;">
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                制单人：
+                            </td>
+                            <td style="text-align: left;">
+                                <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="120px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                    </ValidationSettings>
+                                </dxe:ASPxTextBox>
+                            </td>
+                            <td style="text-align: right;">
+                                制单日期:
+                            </td>
+                            <td style="text-align: left;">
+                                <dxe:ASPxDateEdit ID="deCreateDate" ClientInstanceName="deCreateDate" runat="server" Width="120px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
+                                    </ValidationSettings>
+                                </dxe:ASPxDateEdit>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeEndCase" runat="Server" TargetControlID="npEndCaseDetail"
                     ExpandControlID="npEndCaseHeader" CollapseControlID="npEndCaseHeader" Collapsed="false"

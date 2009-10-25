@@ -77,6 +77,15 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidPolicyID;
         
         /// <summary>
+        /// dxetxtPolicyID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyID;
+        
+        /// <summary>
         /// dxetxtPolicyNo control.
         /// </summary>
         /// <remarks>
@@ -221,13 +230,13 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtNotifyPerson;
         
         /// <summary>
-        /// dxeddlNotifyType control.
+        /// dxetxtAccidentSpot control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlNotifyType;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtAccidentSpot;
         
         /// <summary>
         /// deNotifyTime control.
@@ -239,13 +248,13 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deNotifyTime;
         
         /// <summary>
-        /// dxetxtAccidentSpot control.
+        /// dxetxtNotifyLossFee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtAccidentSpot;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtNotifyLossFee;
         
         /// <summary>
         /// deAccidentTime control.
@@ -275,13 +284,13 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlAccidentReason;
         
         /// <summary>
-        /// dxetxtNotifyLossFee control.
+        /// dxetxtContactPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtNotifyLossFee;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtContactPhone;
         
         /// <summary>
         /// dxetxtContactPerson control.
@@ -293,31 +302,13 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtContactPerson;
         
         /// <summary>
-        /// dxetxtContactPhone control.
+        /// dxetxtAccidentProc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtContactPhone;
-        
-        /// <summary>
-        /// txtAccidentProc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAccidentProc;
-        
-        /// <summary>
-        /// txtAccidentDeal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAccidentDeal;
+        protected global::DevExpress.Web.ASPxEditors.ASPxMemo dxetxtAccidentProc;
         
         /// <summary>
         /// deNotifyCarrierTime control.
@@ -363,33 +354,6 @@ namespace BrokerWebApp.CustomerClaim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dePerambulateTime;
-        
-        /// <summary>
-        /// txtRequirement control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRequirement;
-        
-        /// <summary>
-        /// dxetxtCreatePerson control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCreatePerson;
-        
-        /// <summary>
-        /// deCreateDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deCreateDate;
         
         /// <summary>
         /// cpeNotifyInfo control.
@@ -480,6 +444,78 @@ namespace BrokerWebApp.CustomerClaim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel npEndCaseDetail;
+        
+        /// <summary>
+        /// ASPxDateEdit2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit ASPxDateEdit2;
+        
+        /// <summary>
+        /// ASPxTextBox2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox ASPxTextBox2;
+        
+        /// <summary>
+        /// ASPxDateEdit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit ASPxDateEdit1;
+        
+        /// <summary>
+        /// ASPxDateEdit3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit ASPxDateEdit3;
+        
+        /// <summary>
+        /// ASPxComboBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox ASPxComboBox1;
+        
+        /// <summary>
+        /// filesUploadControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxUploadControl.ASPxUploadControl filesUploadControl;
+        
+        /// <summary>
+        /// dxetxtCreatePerson control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCreatePerson;
+        
+        /// <summary>
+        /// deCreateDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deCreateDate;
         
         /// <summary>
         /// cpeEndCase control.
