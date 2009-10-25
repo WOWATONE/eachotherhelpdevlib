@@ -437,6 +437,15 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::System.Web.UI.WebControls.Panel npTraceInfoDetail;
         
         /// <summary>
+        /// gridTraceInfoItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridTraceInfoItem;
+        
+        /// <summary>
         /// cpeTraceInfo control.
         /// </summary>
         /// <remarks>

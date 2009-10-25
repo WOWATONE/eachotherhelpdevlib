@@ -75,6 +75,7 @@
     <Compile Include="BaseEntity\Utility.cs" />
     <Compile Include="Budget\BO_SignPremiumBudget.cs" />
     <Compile Include="Claim\BO_NotifyClaim.cs" />
+    <Compile Include="Claim\BO_NotifyClaimFollow.cs" />
     <Compile Include="Consult\BO_ConsultFee.cs" />
     <Compile Include="Consult\BO_ConsultFeeItem.cs" />
     <Compile Include="CustomerRelation\BO_CustContact.cs" />
