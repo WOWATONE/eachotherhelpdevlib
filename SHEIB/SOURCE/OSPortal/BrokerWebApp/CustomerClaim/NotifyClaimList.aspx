@@ -217,7 +217,7 @@
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="保费" FieldName="PremiumBase" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="赔案状态" FieldName="NotifyRemark" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="赔案状态" FieldName="LoseStatusName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="保单号" FieldName="PolicyNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
