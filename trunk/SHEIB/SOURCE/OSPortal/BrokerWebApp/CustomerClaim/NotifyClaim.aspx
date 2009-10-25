@@ -76,6 +76,28 @@
             }
         }
 
+
+        function dxebtnNotifyInfoSaveEndCase_Click(s, e) {
+            //var thejsonstring = makePolicyJSON();
+            if (s.CauseValidation()) {
+                dxeNotifyInfoSaveEndCaseCallback.PerformCallback("");
+            }
+        }
+        function dxeNotifyInfoSaveEndCaseCallbackComplete(s, e) {
+            var retrunval = e.result;         
+        }
+        
+        function dxebtnNotifyInfoSave_Click(s, e) {
+            //
+            if (s.CauseValidation()) {
+                //var thejsonstring = makePolicyJSON();
+                dxeNotifyInfoSaveCallback.PerformCallback("");
+            }
+        }
+        function dxeNotifyInfoSaveCallbackComplete(s, e) {
+            var retrunval = e.result;
+        }
+        
         function setHidePolicyID(thevalue) {
             var result = $("#<%=hidPolicyID.ClientID %>");
             result[0].value = thevalue;
@@ -92,6 +114,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    <input type="hidden" id="pagemode" runat="server" value="" />
+    <dxcb:ASPxCallback ID="dxeNotifyInfoSaveCallback" ClientInstanceName="dxeNotifyInfoSaveCallback" runat="server"
+        OnCallback="dxeNotifyInfoSave_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {dxeNotifyInfoSaveCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    <dxcb:ASPxCallback ID="dxeNotifyInfoSaveEndCaseCallback" ClientInstanceName="dxeNotifyInfoSaveEndCaseCallback"
+        runat="server" OnCallback="dxeNotifyInfoSaveEndCase_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {dxeNotifyInfoSaveEndCaseCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    
     <label id="lblerrmsg" name="lblerrmsg" runat="server" class="red" visible="false"></label>
     <table style="width: 100%">
         <tr style="height: 10px;">
@@ -125,10 +157,12 @@
                                 
                             </td>
                             <td>
-                                <dxe:ASPxTextBox  ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="200px" ReadOnly="false" ></dxe:ASPxTextBox>
+                                <dxe:ASPxTextBox  ID="dxetxtPolicyID" ClientInstanceName="dxetxtPolicyID" runat="server" Width="160px" ReadOnly="false" ClientVisible="false"></dxe:ASPxTextBox>
                             </td>
                             <td></td>
-                            <td></td>
+                            <td>
+                                <dxe:ASPxTextBox  ID="dxetxtNotifyID" ClientInstanceName="dxetxtNotifyID" runat="server" Width="160px" ReadOnly="false" ClientVisible="false"></dxe:ASPxTextBox>
+                            </td>
                             <td></td>
                         </tr>
                         <tr>
@@ -271,8 +305,8 @@
                                 报案时间：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="deNotifyTime" ClientInstanceName="deNotifyTime" runat="server" Width="160px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                <dxe:ASPxDateEdit ID="dxedeNotifyTime" ClientInstanceName="dxedeNotifyTime" runat="server" Width="160px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
@@ -290,8 +324,8 @@
                                 出险日期：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="deAccidentTime" ClientInstanceName="deAccidentTime" runat="server" Width="160px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                <dxe:ASPxDateEdit ID="dxedeAccidentTime" ClientInstanceName="dxedeAccidentTime" runat="server" Width="160px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
@@ -301,7 +335,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlLossType" ClientInstanceName="dxeddlLossType" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxComboBox>
@@ -314,7 +348,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlAccidentReason" ClientInstanceName="dxeddlAccidentReason" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxComboBox>
@@ -355,8 +389,8 @@
                                 报案日期：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="deNotifyCarrierTime" ClientInstanceName="deNotifyCarrierTime" runat="server" Width="160px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                <dxe:ASPxDateEdit ID="dxedeNotifyCarrierTime" ClientInstanceName="dxedeNotifyCarrierTime" runat="server" Width="160px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
@@ -366,7 +400,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtNotifyNo" ClientInstanceName="dxetxtNotifyNo" runat="server" Width="160px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxTextBox>
@@ -395,7 +429,7 @@
                                 查勘日期：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="dePerambulateTime" ClientInstanceName="dePerambulateTime" runat="server" Width="160px"></dxe:ASPxDateEdit>
+                                <dxe:ASPxDateEdit ID="dxedePerambulateTime" ClientInstanceName="dxedePerambulateTime" runat="server" Width="160px"></dxe:ASPxDateEdit>
                             </td>
                             <td></td>
                             <td></td>
@@ -464,8 +498,8 @@
                                 资料齐全日期：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="ASPxDateEdit2" ClientInstanceName="deCreateDate" runat="server" Width="120px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                <dxe:ASPxDateEdit ID="dxedeDocCompleteDate" ClientInstanceName="dxedeDocCompleteDate" runat="server" Width="120px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
@@ -474,8 +508,8 @@
                                 赔付金额：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="ASPxTextBox2" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="120px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                <dxe:ASPxTextBox ID="dxetxtLastPayFee" ClientInstanceName="dxetxtLastPayFee" runat="server" Width="120px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxTextBox>
@@ -484,8 +518,8 @@
                                 赔款到帐日期：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="ASPxDateEdit1" ClientInstanceName="deCreateDate" runat="server" Width="120px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                <dxe:ASPxDateEdit ID="dxedeLastPayDate" ClientInstanceName="dxedeLastPayDate" runat="server" Width="120px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
@@ -497,8 +531,8 @@
                                 结案日期：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="ASPxDateEdit3" ClientInstanceName="deCreateDate" runat="server" Width="120px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                <dxe:ASPxDateEdit ID="dxedeCaseEndTime" ClientInstanceName="dxedeCaseEndTime" runat="server" Width="120px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
@@ -507,8 +541,8 @@
                                 结案人：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="ASPxComboBox1" ClientInstanceName="dxeddlLossType" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                <dxe:ASPxComboBox ID="dxeddlCaseEndPerson" ClientInstanceName="dxeddlCaseEndPerson" runat="server" Width="160px" DropDownStyle="DropDownList">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxComboBox>
@@ -520,13 +554,13 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td style="text-align: right;">
+                            <td style="text-align: right; vertical-align:middle;">
                                 资料上传：
                             </td>
-                            <td colspan="5" style="text-align: left;">
+                            <td colspan="3" style="text-align: left;">
                                 <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl"
-                                            runat="server" ShowAddRemoveButtons="True" Width="400px" ShowUploadButton="True"
-                                            AddUploadButtonsHorizontalPosition="Center" ShowProgressPanel="True" FileInputCount="5"
+                                            runat="server" ShowAddRemoveButtons="false" Width="400px" ShowUploadButton="True"
+                                            AddUploadButtonsHorizontalPosition="Center" ShowProgressPanel="True" FileInputCount="1"
                                             RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
                                             OnPreRender="UploadControl_PreRender" OnFileUploadComplete="UploadControl_FileUploadComplete">
                                             <ValidationSettings MaxFileSize="4000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
@@ -544,7 +578,7 @@
                                             </UploadButton>
                                         </dxuc:ASPxUploadControl>
                             </td>                            
-                            <td style="text-align: left;">
+                            <td colspan="2" style="text-align: left;">
                             </td>
                             <td></td>
                         </tr>
@@ -554,7 +588,7 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="120px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxTextBox>
@@ -563,8 +597,8 @@
                                 制单日期:
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="deCreateDate" ClientInstanceName="deCreateDate" runat="server" Width="120px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                <dxe:ASPxDateEdit ID="dxedeCreateDate" ClientInstanceName="dxedeCreateDate" runat="server" Width="120px">
+                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
 									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
@@ -595,9 +629,16 @@
                 <td style="width: 400px; text-align: left;">
                     &nbsp;
                 </td>
+                <td style="width: 70px; text-align: left;">
+                        <dxe:ASPxButton runat="server" ID="dxebtnBottomEndCase" ClientInstanceName="dxebtnBottomEndCase"
+                            Text="结案" CausesValidation="true" AutoPostBack="false">
+                            <ClientSideEvents Click="function(s, e) {dxebtnNotifyInfoSaveEndCase_Click(s,e);}" />
+                        </dxe:ASPxButton>
+                    </td>
                 <td style="width:50px; text-align:left;">
                     <dxe:ASPxButton runat="server" id="dxebtnBottomSave" Text="保存" 
-                        CausesValidation="true" AutoPostBack="false" onclick="dxebtnBottomSave_Click">
+                        CausesValidation="true" AutoPostBack="false">
+                        <ClientSideEvents Click="function(s, e) {dxebtnNotifyInfoSave_Click(s,e);}" />
                     </dxe:ASPxButton> 
                 </td>
                 <td style="width:50px; text-align:left;">

@@ -17,7 +17,7 @@
         function gridCustomButtonClick(s, e) {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
             var notifyID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
-            window.showModalDialog("NotifyClaim.aspx?NotifyID=" + notifyID, self, myArguments);
+            window.showModalDialog("NotifyClaim.aspx?id=" + notifyID, self, myArguments);
         }
     </script>
 

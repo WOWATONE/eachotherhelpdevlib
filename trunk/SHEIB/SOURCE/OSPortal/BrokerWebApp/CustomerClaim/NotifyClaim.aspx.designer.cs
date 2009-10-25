@@ -23,6 +23,33 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
+        /// pagemode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden pagemode;
+        
+        /// <summary>
+        /// dxeNotifyInfoSaveCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeNotifyInfoSaveCallback;
+        
+        /// <summary>
+        /// dxeNotifyInfoSaveEndCaseCallback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeNotifyInfoSaveEndCaseCallback;
+        
+        /// <summary>
         /// lblerrmsg control.
         /// </summary>
         /// <remarks>
@@ -84,6 +111,15 @@ namespace BrokerWebApp.CustomerClaim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtPolicyID;
+        
+        /// <summary>
+        /// dxetxtNotifyID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtNotifyID;
         
         /// <summary>
         /// dxetxtPolicyNo control.
@@ -239,13 +275,13 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtAccidentSpot;
         
         /// <summary>
-        /// deNotifyTime control.
+        /// dxedeNotifyTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deNotifyTime;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxedeNotifyTime;
         
         /// <summary>
         /// dxetxtNotifyLossFee control.
@@ -257,13 +293,13 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtNotifyLossFee;
         
         /// <summary>
-        /// deAccidentTime control.
+        /// dxedeAccidentTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deAccidentTime;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxedeAccidentTime;
         
         /// <summary>
         /// dxeddlLossType control.
@@ -311,13 +347,13 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::DevExpress.Web.ASPxEditors.ASPxMemo dxetxtAccidentProc;
         
         /// <summary>
-        /// deNotifyCarrierTime control.
+        /// dxedeNotifyCarrierTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deNotifyCarrierTime;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxedeNotifyCarrierTime;
         
         /// <summary>
         /// dxetxtNotifyNo control.
@@ -347,13 +383,13 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCarrierContactPhone;
         
         /// <summary>
-        /// dePerambulateTime control.
+        /// dxedePerambulateTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dePerambulateTime;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxedePerambulateTime;
         
         /// <summary>
         /// cpeNotifyInfo control.
@@ -446,49 +482,49 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::System.Web.UI.WebControls.Panel npEndCaseDetail;
         
         /// <summary>
-        /// ASPxDateEdit2 control.
+        /// dxedeDocCompleteDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit ASPxDateEdit2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxedeDocCompleteDate;
         
         /// <summary>
-        /// ASPxTextBox2 control.
+        /// dxetxtLastPayFee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox ASPxTextBox2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtLastPayFee;
         
         /// <summary>
-        /// ASPxDateEdit1 control.
+        /// dxedeLastPayDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit ASPxDateEdit1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxedeLastPayDate;
         
         /// <summary>
-        /// ASPxDateEdit3 control.
+        /// dxedeCaseEndTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit ASPxDateEdit3;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxedeCaseEndTime;
         
         /// <summary>
-        /// ASPxComboBox1 control.
+        /// dxeddlCaseEndPerson control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox ASPxComboBox1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCaseEndPerson;
         
         /// <summary>
         /// filesUploadControl control.
@@ -509,13 +545,13 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCreatePerson;
         
         /// <summary>
-        /// deCreateDate control.
+        /// dxedeCreateDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit deCreateDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxedeCreateDate;
         
         /// <summary>
         /// cpeEndCase control.
@@ -534,6 +570,15 @@ namespace BrokerWebApp.CustomerClaim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel npExecuteAction;
+        
+        /// <summary>
+        /// dxebtnBottomEndCase control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnBottomEndCase;
         
         /// <summary>
         /// dxebtnBottomSave control.
