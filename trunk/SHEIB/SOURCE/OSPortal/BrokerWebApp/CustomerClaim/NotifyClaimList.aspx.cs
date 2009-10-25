@@ -28,7 +28,7 @@ namespace BrokerWebApp.CustomerClaim
                     this.BindGrid();
                 }
             }
-            catch (Exception ex)
+            catch
             { }
         }
 

@@ -184,7 +184,7 @@
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="险种" FieldName="ProdTypeName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="出险原因" FieldName="AccidentReason" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="出险原因" FieldName="AccidentReasonName" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataDateColumn Caption="客户向我司报案日期" FieldName="NotifyTime" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                             </dxwgv:GridViewDataDateColumn>
