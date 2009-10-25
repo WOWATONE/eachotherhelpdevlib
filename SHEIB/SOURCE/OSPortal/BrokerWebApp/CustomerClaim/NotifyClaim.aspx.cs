@@ -240,7 +240,7 @@ namespace BrokerWebApp.CustomerClaim
             if (String.IsNullOrEmpty(this.dxetxtNotifyID.Text.Trim()))
             {
                 obj = new BusinessObjects.BO_NotifyClaim();
-                obj.PolicyID = TranUtils.GetPolicyID();
+                obj.NotifyID = TranUtils.GetContactID();
                 setData(obj);
                 obj.Save(ModifiedAction.Insert);
             }
@@ -259,6 +259,7 @@ namespace BrokerWebApp.CustomerClaim
         {
             ListEditItem theselected;
 
+            notifyClaim.PolicyID = this.dxetxtPolicyID.Text;                
             notifyClaim.NotifyPerson = dxetxtNotifyPerson.Text;
             notifyClaim.AccidentSpot = dxetxtAccidentSpot.Text;
             notifyClaim.NotifyTime = dxedeNotifyTime.Date;

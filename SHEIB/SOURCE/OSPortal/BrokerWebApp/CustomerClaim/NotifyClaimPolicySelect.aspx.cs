@@ -26,7 +26,7 @@ namespace BrokerWebApp.CustomerClaim
             {
                 Initialization();                
             }
-            BindGrid();
+            //BindGrid();
         }
 
 

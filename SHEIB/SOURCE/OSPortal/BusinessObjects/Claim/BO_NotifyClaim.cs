@@ -219,42 +219,91 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "NotifyID", DbType.AnsiString, this.NotifyID);
             _db.AddInParameter(dbCommand, "PolicyID", DbType.AnsiString, this.PolicyID);
             _db.AddInParameter(dbCommand, "NotifySerialNo", DbType.AnsiString, this.NotifySerialNo);
-            _db.AddInParameter(dbCommand, "NotifyTime", DbType.DateTime, this.NotifyTime);
-            _db.AddInParameter(dbCommand, "AccidentSpot", DbType.AnsiString, this.AccidentSpot);
+
+            //NotifyTime
+            if (this.NotifyTime > DateTime.MinValue && this.NotifyTime < DateTime.MaxValue )
+                _db.AddInParameter(dbCommand, "NotifyTime", DbType.DateTime, this.NotifyTime);
+            else
+                _db.AddInParameter(dbCommand, "NotifyTime", DbType.DateTime, null);
             
-            _db.AddInParameter(dbCommand, "AccidentTime", DbType.DateTime, this.AccidentTime);
+
+            _db.AddInParameter(dbCommand, "AccidentSpot", DbType.AnsiString, this.AccidentSpot);
+
+            //AccidentTime
+            if (this.AccidentTime > DateTime.MinValue && this.AccidentTime < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "AccidentTime", DbType.DateTime, this.AccidentTime);
+            else
+                _db.AddInParameter(dbCommand, "AccidentTime", DbType.DateTime, null);
+            
+            
             _db.AddInParameter(dbCommand, "NotifyPerson", DbType.AnsiString, this.NotifyPerson);
             _db.AddInParameter(dbCommand, "LossType", DbType.AnsiString, this.LossType);
             _db.AddInParameter(dbCommand, "AccidentReason", DbType.AnsiString, this.AccidentReason);           
             _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, this.NotifyLossFee);
-            
             _db.AddInParameter(dbCommand, "ContactPerson", DbType.AnsiString, this.ContactPerson);
             _db.AddInParameter(dbCommand, "ContactPhone", DbType.AnsiString, this.ContactPhone);
             _db.AddInParameter(dbCommand, "NotifyType", DbType.AnsiString, this.NotifyType);
             _db.AddInParameter(dbCommand, "SpotCode", DbType.AnsiString, this.SpotCode);
             _db.AddInParameter(dbCommand, "AccidentProc", DbType.AnsiString, this.AccidentProc);
-            
             _db.AddInParameter(dbCommand, "AccidentDeal", DbType.AnsiString, this.AccidentDeal);
             _db.AddInParameter(dbCommand, "NotifyRemark", DbType.AnsiString, this.NotifyRemark);
-            _db.AddInParameter(dbCommand, "NotifyCarrierTime", DbType.DateTime, this.NotifyCarrierTime);
+
+            //NotifyCarrierTime
+            if (this.NotifyCarrierTime > DateTime.MinValue && this.NotifyCarrierTime < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "NotifyCarrierTime", DbType.DateTime, this.NotifyCarrierTime);
+            else
+                _db.AddInParameter(dbCommand, "NotifyCarrierTime", DbType.DateTime, null);
+
             _db.AddInParameter(dbCommand, "NotifyNo", DbType.AnsiString, this.NotifyNo);
             _db.AddInParameter(dbCommand, "CarrierContactPerson", DbType.AnsiString, this.CarrierContactPerson);
-            
             _db.AddInParameter(dbCommand, "CarrierContactPhone", DbType.AnsiString, this.CarrierContactPhone);
-            _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, this.PerambulateTime);
-            _db.AddInParameter(dbCommand, "Requirement", DbType.AnsiString, this.Requirement);
-            _db.AddInParameter(dbCommand, "CaseEndTime", DbType.DateTime, this.CaseEndTime);
-            _db.AddInParameter(dbCommand, "LastPayFee", DbType.Double, this.LastPayFee);
+
+            //PerambulateTime
+            if (this.PerambulateTime > DateTime.MinValue && this.PerambulateTime < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, this.PerambulateTime);
+            else
+                _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, null);
             
+            _db.AddInParameter(dbCommand, "Requirement", DbType.AnsiString, this.Requirement);
+
+            //CaseEndTime
+            if (this.CaseEndTime > DateTime.MinValue && this.CaseEndTime < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "CaseEndTime", DbType.DateTime, this.CaseEndTime);
+            else
+                _db.AddInParameter(dbCommand, "CaseEndTime", DbType.DateTime, null);
+
+            _db.AddInParameter(dbCommand, "LastPayFee", DbType.Double, this.LastPayFee);
             _db.AddInParameter(dbCommand, "AcquitFee", DbType.Double, this.AcquitFee);
             _db.AddInParameter(dbCommand, "CaseEndRemark", DbType.AnsiString, this.CaseEndRemark);
             _db.AddInParameter(dbCommand, "CreatePerson", DbType.AnsiString, this.CreatePerson);
-            _db.AddInParameter(dbCommand, "CreateDate", DbType.DateTime, this.CreateDate);
-            _db.AddInParameter(dbCommand, "ModifyDate", DbType.DateTime, this.ModifyDate);
+
+            //CreateDate
+            if (this.CreateDate > DateTime.MinValue && this.CreateDate < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "CreateDate", DbType.DateTime, this.CreateDate);
+            else
+                _db.AddInParameter(dbCommand, "CreateDate", DbType.DateTime, null);
+
+            //ModifyDate
+            if (this.ModifyDate > DateTime.MinValue && this.ModifyDate < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "ModifyDate", DbType.DateTime, this.ModifyDate);
+            else
+                _db.AddInParameter(dbCommand, "ModifyDate", DbType.DateTime, null);
             
             _db.AddInParameter(dbCommand, "ModifyPerson", DbType.AnsiString, this.ModifyPerson);
-            _db.AddInParameter(dbCommand, "DocCompleteDate", DbType.DateTime, this.DocCompleteDate);
-            _db.AddInParameter(dbCommand, "LastPayDate", DbType.DateTime, this.LastPayDate);
+
+            //DocCompleteDate
+            if (this.DocCompleteDate > DateTime.MinValue && this.DocCompleteDate < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "DocCompleteDate", DbType.DateTime, this.DocCompleteDate);
+            else
+                _db.AddInParameter(dbCommand, "DocCompleteDate", DbType.DateTime, null);
+
+            //LastPayDate
+            if (this.LastPayDate > DateTime.MinValue && this.LastPayDate < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "LastPayDate", DbType.DateTime, this.LastPayDate);
+            else
+                _db.AddInParameter(dbCommand, "LastPayDate", DbType.DateTime, null);
+
+
             _db.AddInParameter(dbCommand, "CaseEndPerson", DbType.AnsiString, this.CaseEndPerson);
             
             _db.ExecuteNonQuery(dbCommand);
@@ -288,42 +337,99 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "NotifyID", DbType.AnsiString, this.NotifyID);
             _db.AddInParameter(dbCommand, "PolicyID", DbType.AnsiString, this.PolicyID);
             _db.AddInParameter(dbCommand, "NotifySerialNo", DbType.AnsiString, this.NotifySerialNo);
-            _db.AddInParameter(dbCommand, "NotifyTime", DbType.DateTime, this.NotifyTime);
+            
+            //NotifyTime
+            if (this.NotifyTime > DateTime.MinValue && this.NotifyTime < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "NotifyTime", DbType.DateTime, this.NotifyTime);
+            else
+                _db.AddInParameter(dbCommand, "NotifyTime", DbType.DateTime, null);
+            
+
+
             _db.AddInParameter(dbCommand, "AccidentSpot", DbType.AnsiString, this.AccidentSpot);
 
-            _db.AddInParameter(dbCommand, "AccidentTime", DbType.DateTime, this.AccidentTime);
+            
+            //AccidentTime
+            if (this.AccidentTime > DateTime.MinValue && this.AccidentTime < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "AccidentTime", DbType.DateTime, this.AccidentTime);
+            else
+                _db.AddInParameter(dbCommand, "AccidentTime", DbType.DateTime, null);
+            
+            
             _db.AddInParameter(dbCommand, "NotifyPerson", DbType.AnsiString, this.NotifyPerson);
             _db.AddInParameter(dbCommand, "LossType", DbType.AnsiString, this.LossType);
             _db.AddInParameter(dbCommand, "AccidentReason", DbType.AnsiString, this.AccidentReason);
             _db.AddInParameter(dbCommand, "NotifyLossFee", DbType.Double, this.NotifyLossFee);
-
             _db.AddInParameter(dbCommand, "ContactPerson", DbType.AnsiString, this.ContactPerson);
             _db.AddInParameter(dbCommand, "ContactPhone", DbType.AnsiString, this.ContactPhone);
             _db.AddInParameter(dbCommand, "NotifyType", DbType.AnsiString, this.NotifyType);
             _db.AddInParameter(dbCommand, "SpotCode", DbType.AnsiString, this.SpotCode);
             _db.AddInParameter(dbCommand, "AccidentProc", DbType.AnsiString, this.AccidentProc);
-
             _db.AddInParameter(dbCommand, "AccidentDeal", DbType.AnsiString, this.AccidentDeal);
             _db.AddInParameter(dbCommand, "NotifyRemark", DbType.AnsiString, this.NotifyRemark);
-            _db.AddInParameter(dbCommand, "NotifyCarrierTime", DbType.DateTime, this.NotifyCarrierTime);
+            
+            //NotifyCarrierTime
+            if (this.NotifyCarrierTime > DateTime.MinValue && this.NotifyCarrierTime < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "NotifyCarrierTime", DbType.DateTime, this.NotifyCarrierTime);
+            else
+                _db.AddInParameter(dbCommand, "NotifyCarrierTime", DbType.DateTime, null);
+
+            
             _db.AddInParameter(dbCommand, "NotifyNo", DbType.AnsiString, this.NotifyNo);
             _db.AddInParameter(dbCommand, "CarrierContactPerson", DbType.AnsiString, this.CarrierContactPerson);
-
             _db.AddInParameter(dbCommand, "CarrierContactPhone", DbType.AnsiString, this.CarrierContactPhone);
-            _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, this.PerambulateTime);
+            
+            
+            //PerambulateTime
+            if (this.PerambulateTime > DateTime.MinValue && this.PerambulateTime < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, this.PerambulateTime);
+            else
+                _db.AddInParameter(dbCommand, "PerambulateTime", DbType.DateTime, null);
+            
+            
             _db.AddInParameter(dbCommand, "Requirement", DbType.AnsiString, this.Requirement);
-            _db.AddInParameter(dbCommand, "CaseEndTime", DbType.DateTime, this.CaseEndTime);
-            _db.AddInParameter(dbCommand, "LastPayFee", DbType.Double, this.LastPayFee);
+            
+            //CaseEndTime
+            if (this.CaseEndTime > DateTime.MinValue && this.CaseEndTime < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "CaseEndTime", DbType.DateTime, this.CaseEndTime);
+            else
+                _db.AddInParameter(dbCommand, "CaseEndTime", DbType.DateTime, null);
 
+            
+            _db.AddInParameter(dbCommand, "LastPayFee", DbType.Double, this.LastPayFee);
             _db.AddInParameter(dbCommand, "AcquitFee", DbType.Double, this.AcquitFee);
             _db.AddInParameter(dbCommand, "CaseEndRemark", DbType.AnsiString, this.CaseEndRemark);
             _db.AddInParameter(dbCommand, "CreatePerson", DbType.AnsiString, this.CreatePerson);
-            _db.AddInParameter(dbCommand, "CreateDate", DbType.DateTime, this.CreateDate);
-            _db.AddInParameter(dbCommand, "ModifyDate", DbType.DateTime, this.ModifyDate);
+            
+            //CreateDate
+            if (this.CreateDate > DateTime.MinValue && this.CreateDate < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "CreateDate", DbType.DateTime, this.CreateDate);
+            else
+                _db.AddInParameter(dbCommand, "CreateDate", DbType.DateTime, null);
+
+            //ModifyDate
+            if (this.ModifyDate > DateTime.MinValue && this.ModifyDate < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "ModifyDate", DbType.DateTime, this.ModifyDate);
+            else
+                _db.AddInParameter(dbCommand, "ModifyDate", DbType.DateTime, null);
+            
 
             _db.AddInParameter(dbCommand, "ModifyPerson", DbType.AnsiString, this.ModifyPerson);
-            _db.AddInParameter(dbCommand, "DocCompleteDate", DbType.DateTime, this.DocCompleteDate);
-            _db.AddInParameter(dbCommand, "LastPayDate", DbType.DateTime, this.LastPayDate);
+            
+            
+            //DocCompleteDate
+            if (this.DocCompleteDate > DateTime.MinValue && this.DocCompleteDate < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "DocCompleteDate", DbType.DateTime, this.DocCompleteDate);
+            else
+                _db.AddInParameter(dbCommand, "DocCompleteDate", DbType.DateTime, null);
+
+            //LastPayDate
+            if (this.LastPayDate > DateTime.MinValue && this.LastPayDate < DateTime.MaxValue)
+                _db.AddInParameter(dbCommand, "LastPayDate", DbType.DateTime, this.LastPayDate);
+            else
+                _db.AddInParameter(dbCommand, "LastPayDate", DbType.DateTime, null);
+
+
             _db.AddInParameter(dbCommand, "CaseEndPerson", DbType.AnsiString, this.CaseEndPerson);
             
             _db.ExecuteNonQuery(dbCommand);
@@ -397,7 +503,7 @@ namespace BusinessObjects
             {
                 sb.Append(sWhere);
             }
-            sb.Append(" Order By A.NotifyID");
+            sb.Append(" Order By A.CreateDate DESC, A.NotifyID DESC ");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
             return _db.ExecuteDataSet(dbCommand);
