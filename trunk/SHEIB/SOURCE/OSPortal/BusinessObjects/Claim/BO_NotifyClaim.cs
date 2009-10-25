@@ -493,7 +493,7 @@ namespace BusinessObjects
             sb.Append("(Select ProdTypeName From ProductType where ProdTypeID = B.ProdTypeID) ProdTypeName , ");
             sb.Append("dbo.GetPolicyCarrier(A.PolicyID) CarrierNameCn , ");
             sb.Append("(select CodeName from p_code where codeType='AccidentReason' and CodeID=A.AccidentReason) AccidentReasonName, ");
-            
+            sb.Append("(Select LoseStatusName from LoseStatus where LoseStatusID=(select Max(LoseStatus) from NotifyClaimFollow where NotifyID=a.NotifyID)) LoseStatusName, ");
             sb.Append("(Select UserNameCn From P_User where UserID=b.SalesID) SalesName");
             sb.Append(" FROM NotifyClaim A ");
             sb.Append(" Left Join Policy B On A.PolicyID = B.PolicyID ");
