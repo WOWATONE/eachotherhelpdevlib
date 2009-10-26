@@ -1237,6 +1237,10 @@ namespace BrokerWebApp.otherinsurance
 
             this.dxetxtAltNo.Text = obj.AltNO;
 
+            //alt content
+            this.dxeMemo.Text = obj.Remark;
+            this.dxeAppendRemark.Text = obj.Remark;
+
             return prePolicyID;
         }
 

@@ -73,11 +73,14 @@ namespace BrokerWebApp.otherinsurance
             {
                 DataRow dr = this.gridSearchResult.GetDataRow(e.VisibleIndex);
 
-                if (!Convert.IsDBNull(dr["Remark"]))
+                if (dr != null)
                 {
-                    if (!String.IsNullOrEmpty(dr["Remark"].ToString()))
+                    if (!Convert.IsDBNull(dr["Remark"]))
                     {
-                        e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");
+                        if (!String.IsNullOrEmpty(dr["Remark"].ToString()))
+                        {
+                            e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");
+                        }
                     }
                 }
 
