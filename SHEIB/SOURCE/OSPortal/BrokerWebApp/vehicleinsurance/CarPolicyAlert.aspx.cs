@@ -90,7 +90,7 @@ namespace BrokerWebApp.vehicleinsurance
                 this.dxetxtCreatePerson.Text = this.CurrentUserName;
                 this.dxeCreateTime.Date = DateTime.Now;
                 if (String.IsNullOrEmpty(this.dxetxtPolicyID.Text.Trim()))
-                    loadPolicyValue(this.lblSourcePolicyID.Text.Trim());
+                    loadPrePolicyValue(this.lblSourcePolicyID.Text.Trim());
                 else
                     loadPolicyValue(this.dxetxtPolicyID.Text.Trim());
 
@@ -729,10 +729,140 @@ namespace BrokerWebApp.vehicleinsurance
             this.dxeAuditTime.Date = obj.AuditTime;
             this.dxetxtAuditPerson.Text = obj.AuditPersonName;
             this.dxeMemo.Text = obj.Remark;
-            
+
+            dxeAppendRemark.Text = obj.Remark;
+
             dxetxtCreatePerson.Text = obj.CreatePersonName;
             dxeCreateTime.Date = obj.CreateTime;
             
+
+        }
+
+        private void loadPrePolicyValue(String id)
+        {
+            ListEditItem theselected;
+            BusinessObjects.Policy.BO_Policy obj;
+            obj = new BusinessObjects.Policy.BO_Policy(id);
+            if (String.IsNullOrEmpty(obj.PolicyID)) return;
+
+            BusinessObjects.Policy.BO_CarPolicy objCar;
+            objCar = new BusinessObjects.Policy.BO_CarPolicy(obj.AskPriceID);
+
+            if (String.IsNullOrEmpty(this.lblSourcePolicyID.Text))
+            {
+                this.lblSourcePolicyID.Text = obj.PrevPolicyID;
+            }
+
+            dxetxtPolicyNo.Text = obj.PolicyNo;
+            dxetxtAciPolicyNo.Text = obj.AciPolicyNo;
+            this.dxetxtAskPriceID.Text = obj.AskPriceID;
+
+            //dxeddlCarrierId
+            if (!String.IsNullOrEmpty(objCar.CarrierID))
+            {
+                theselected = dxeddlCarrierId.Items.FindByValue(objCar.CarrierID);
+                if (theselected != null)
+                {
+                    dxeddlCarrierId.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlBranchId
+            if (!String.IsNullOrEmpty(objCar.BranchID))
+            {
+                theselected = dxeddlBranchId.Items.FindByValue(objCar.BranchID);
+                if (theselected != null)
+                {
+                    dxeddlBranchId.SelectedItem = theselected;
+                }
+            }
+
+
+            this.dxetxtCarrierSales.Text = obj.CarrierSales;
+
+            this.dxetxtCustomer.Text = obj.CustomerName;
+            this.cusid.Value = obj.CustomerID;
+
+            dxetxtBeneficiary.Text = obj.Beneficiary;
+            if (String.IsNullOrEmpty(dxetxtBeneficiary.Text))
+                dxetxtBeneficiary.Text = objCar.CustomerName;
+
+            //dxeddlSourceTypeID
+            if (!String.IsNullOrEmpty(obj.SourceTypeID))
+            {
+                theselected = dxeddlSourceTypeID.Items.FindByValue(obj.SourceTypeID);
+                if (theselected != null)
+                {
+                    dxeddlSourceTypeID.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlDeptID
+            if (!String.IsNullOrEmpty(obj.DeptId))
+            {
+                theselected = dxeddlDeptID.Items.FindByValue(obj.DeptId);
+                if (theselected != null)
+                {
+                    dxeddlDeptID.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlSalesId
+            if (!String.IsNullOrEmpty(obj.SalesId))
+            {
+                theselected = dxeddlSalesId.Items.FindByValue(obj.SalesId);
+                if (theselected != null)
+                {
+                    dxeddlSalesId.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlOperationType
+            if (!String.IsNullOrEmpty(obj.OperationType))
+            {
+                theselected = dxeddlOperationType.Items.FindByValue(obj.OperationType);
+                if (theselected != null)
+                {
+                    dxeddlOperationType.SelectedItem = theselected;
+                }
+            }
+
+            //dxeddlGatheringType
+            if (!String.IsNullOrEmpty(obj.GatheringType))
+            {
+                theselected = dxeddlGatheringType.Items.FindByValue(obj.GatheringType);
+                if (theselected != null)
+                {
+                    dxeddlGatheringType.SelectedItem = theselected;
+                }
+            }
+
+            //dxeStartDate.Date = obj.StartDate;
+            //dxeEndDate.Date = obj.EndDate;
+            dxetxtSpecial.Text = obj.Special;
+
+            if (!String.IsNullOrEmpty(this.dxetxtPolicyID.Text.Trim()))
+            {
+                dxetxtCiPremium.Text = String.Format(BasePage.TheTwoSF, obj.CiPremium);
+                dxetxtAciPremium.Text = String.Format(BasePage.TheTwoSF, obj.AciPremium);
+                dxetxtCstPremium.Text = String.Format(BasePage.TheTwoSF, obj.CstPremium);
+                dxetxtCiProcessRate.Text = String.Format(BasePage.TheFourSF, obj.CiProcessRate);
+                dxetxtAciProcessRate.Text = String.Format(BasePage.TheFourSF, obj.AciProcessRate);
+                dxetxtCiProcess.Text = String.Format(BasePage.TheTwoSF, obj.CiProcess);
+                dxetxtAciProcess.Text = String.Format(BasePage.TheTwoSF, obj.AciProcess);
+
+                dxetxtTotalPremium.Text = String.Format(BasePage.TheTwoSF, obj.Premium);
+                dxetxtTotalProcess.Text = String.Format(BasePage.TheTwoSF, obj.Process);
+
+            }
+
+            this.dxeAuditTime.Date = obj.AuditTime;
+            this.dxetxtAuditPerson.Text = obj.AuditPersonName;
+            this.dxeMemo.Text = obj.Remark;
+
+            //dxetxtCreatePerson.Text = obj.CreatePersonName;
+            //dxeCreateTime.Date = obj.CreateTime;
+
 
         }
 
