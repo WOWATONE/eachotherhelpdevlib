@@ -39,6 +39,8 @@
 
         function setDxeButtonsUnableOrEnable(val) {
             gridTraceInfoItem.SetClientVisible(val);
+            filesUploadControl.SetClientVisible(val);
+            gridDocList.SetClientVisible(val);
         }
 
 	    function NotifyPersonLostFocus(s, e) {
@@ -147,12 +149,17 @@
     
     <script type="text/javascript">
         function FileUploadStart(s, e) {
-            //var refplcid = dxetxtPolicyID.GetValueString();
-            //filesUploadControl;
+            //
         }
         
         function FileUploaded(s, e) {
-            //gridDocList.PerformCallback();
+            gridDocList.PerformCallback();
+        }
+
+        function hlPolicyItemTogetherClick(params) {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
+            var url = params;
+            window.open(url);
         }
     </script>
     
@@ -302,6 +309,7 @@
                     SuppressPostBack="true" />
             </td>
         </tr>
+        
         <tr>
             <td style="width: 100%;">
                 <asp:Panel ID="npNotifyInfoHeader" runat="server" CssClass="collapsePanelHeader"
@@ -489,6 +497,7 @@
                     CollapsedImage="~/images/expand_blue.jpg" SuppressPostBack="true" />
             </td>
         </tr>
+        
         <tr>
             <td style="width: 100%;">
                 <asp:Panel ID="npTraceInfoHeader" runat="server" CssClass="collapsePanelHeader" Height="25px">
@@ -655,6 +664,97 @@
                     SuppressPostBack="true" />
             </td>
         </tr>
+        
+        <tr>
+            <td style="width: 100%;">
+                <asp:Panel ID="npUploadDocHeader" runat="server" CssClass="collapsePanelHeader" Height="25px">
+                    <div style="padding: 5px; cursor: pointer; vertical-align: middle;">
+                        <div style="float: left; vertical-align: middle;">
+                            <asp:ImageButton ID="img_UploadDocHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText="" />
+                        </div>
+                        <div style="float: left; margin-left: 5px;">
+                            相关资料</div>
+                        <div style="float: left; margin-left: 5px;">
+                            <asp:Label ID="lbl_UploadDocHeader" runat="server">(隐藏)</asp:Label>
+                        </div>
+                    </div>
+                </asp:Panel>
+
+                <asp:Panel ID="npUploadDocDetail" runat="server" CssClass="collapsePanel" Height="0">
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 15%;"></td>
+                            <td style="width: 35%;"></td>
+                            <td style="width: 15%;"></td>
+                            <td style="width: 30%;"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; vertical-align:middle;">
+                                
+                            </td>
+                            <td colspan="3" style="text-align: left;">
+                                <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl"
+                                            runat="server" ShowAddRemoveButtons="true" Width="400px" ShowUploadButton="True"
+                                            AddUploadButtonsHorizontalPosition="Center" ShowProgressPanel="True" FileInputCount="5"
+                                            RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
+                                            OnPreRender="UploadControl_PreRender" OnFileUploadComplete="UploadControl_FileUploadComplete">
+                                            <ValidationSettings MaxFileSize="4000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
+                                                MaxFileSizeErrorText="文件太大" NotAllowedContentTypeErrorText="不允许上传此类型文件">
+                                            </ValidationSettings>
+                                            <ClientSideEvents FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" FileUploadStart="function(s, e) { FileUploadStart(s, e); }" />
+                                            <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
+                                                ImagePosition="Left">
+                                            </RemoveButton>
+                                            <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
+                                                ImagePosition="Left">
+                                            </AddButton>
+                                            <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
+                                                ImagePosition="Left">
+                                            </UploadButton>
+                                        </dxuc:ASPxUploadControl>
+                            </td>                            
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="width: 100%; text-align: left;">
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="4">
+                                <dxwgv:ASPxGridView ID="gridDocList" ClientInstanceName="gridDocList" runat="server"
+                                            KeyFieldName="NotifyClaimDocID" Width="100%" AutoGenerateColumns="False" OnCustomCallback="gridDocList_CustomCallback" OnHtmlRowCreated="gridDocList_HtmlRowCreated">
+                                            <%-- BeginRegion Columns --%>
+                                            <Columns>
+                                                <dxwgv:GridViewDataColumn FieldName="DocName" Caption="文件名" CellStyle-Wrap="False"
+                                                    Width="25" Settings-AllowDragDrop="false">                                                    
+                                                    <DataItemTemplate>
+                                                        <asp:HyperLink runat="server" ID="docitemlnk"></asp:HyperLink>
+                                                    </DataItemTemplate>
+                                                </dxwgv:GridViewDataColumn>
+                                                <dxwgv:GridViewDataColumn FieldName="DocURL" Caption="链接地址" CellStyle-Wrap="False">
+                                                </dxwgv:GridViewDataColumn>
+                                            </Columns>
+                                            <%-- EndRegion --%>
+                                            <SettingsPager Mode="ShowAllRecords" />
+                                            <Settings ShowGroupPanel="false" />
+                                            <ClientSideEvents CustomButtonClick="" />
+                                            <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                        </dxwgv:ASPxGridView>
+                            </td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+                <ajaxToolkit:CollapsiblePanelExtender ID="cpeUploadDoc" runat="Server" TargetControlID="npUploadDocDetail"
+                    ExpandControlID="npUploadDocHeader" CollapseControlID="npUploadDocHeader" Collapsed="false"
+                    TextLabelID="lbl_UploadDocHeader" ImageControlID="img_UploadDocHeader" ExpandedText="(隐藏)"
+                    CollapsedText="(展开)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
+                    SuppressPostBack="true" />
+            </td>
+        </tr>
+        
         <tr>
             <td style="width: 100%;">
                 <asp:Panel ID="npEndCaseHeader" runat="server" CssClass="collapsePanelHeader" Height="25px">
@@ -739,36 +839,7 @@
                             <td style="text-align: left;">
                             </td>
                             <td></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right; vertical-align:middle;">
-                                资料上传：
-                            </td>
-                            <td colspan="3" style="text-align: left;">
-                                <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl"
-                                            runat="server" ShowAddRemoveButtons="false" Width="400px" ShowUploadButton="True"
-                                            AddUploadButtonsHorizontalPosition="Center" ShowProgressPanel="True" FileInputCount="1"
-                                            RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
-                                            OnPreRender="UploadControl_PreRender" OnFileUploadComplete="UploadControl_FileUploadComplete">
-                                            <ValidationSettings MaxFileSize="4000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
-                                                MaxFileSizeErrorText="文件太大" NotAllowedContentTypeErrorText="不允许上传此类型文件">
-                                            </ValidationSettings>
-                                            <ClientSideEvents FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" FileUploadStart="function(s, e) { FileUploadStart(s, e); }" />
-                                            <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
-                                                ImagePosition="Left">
-                                            </RemoveButton>
-                                            <AddButton Text="" Image-Url="../images/file_add.gif" Image-Height="25px" Image-Width="25px"
-                                                ImagePosition="Left">
-                                            </AddButton>
-                                            <UploadButton Text="" Image-Url="../images/file_upload.gif" Image-Height="25px" Image-Width="25px"
-                                                ImagePosition="Left">
-                                            </UploadButton>
-                                        </dxuc:ASPxUploadControl>
-                            </td>                            
-                            <td colspan="2" style="text-align: left;">
-                            </td>
-                            <td></td>
-                        </tr>
+                        </tr>                        
                         <tr>
                             <td style="text-align: right;">
                                 制单人：

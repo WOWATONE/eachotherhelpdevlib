@@ -455,6 +455,69 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeTraceInfo;
         
         /// <summary>
+        /// npUploadDocHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npUploadDocHeader;
+        
+        /// <summary>
+        /// img_UploadDocHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton img_UploadDocHeader;
+        
+        /// <summary>
+        /// lbl_UploadDocHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_UploadDocHeader;
+        
+        /// <summary>
+        /// npUploadDocDetail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel npUploadDocDetail;
+        
+        /// <summary>
+        /// filesUploadControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxUploadControl.ASPxUploadControl filesUploadControl;
+        
+        /// <summary>
+        /// gridDocList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gridDocList;
+        
+        /// <summary>
+        /// cpeUploadDoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender cpeUploadDoc;
+        
+        /// <summary>
         /// npEndCaseHeader control.
         /// </summary>
         /// <remarks>
@@ -534,15 +597,6 @@ namespace BrokerWebApp.CustomerClaim {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCaseEndPerson;
-        
-        /// <summary>
-        /// filesUploadControl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxUploadControl.ASPxUploadControl filesUploadControl;
         
         /// <summary>
         /// dxetxtCreatePerson control.
