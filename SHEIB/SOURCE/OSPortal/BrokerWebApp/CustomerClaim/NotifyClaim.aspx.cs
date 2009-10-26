@@ -17,6 +17,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
+using DevExpress.Web.ASPxGridView;
+
+using DevExpress.Web.ASPxGridView.Rendering;
+using DevExpress.Web.ASPxClasses.Internal;
+
+
 namespace BrokerWebApp.CustomerClaim
 {
     public partial class NotifyClaim : BasePage
@@ -28,7 +34,7 @@ namespace BrokerWebApp.CustomerClaim
 
         private const string inputQueryStringIDKey = "id";
 
-        private const string UploadDirectory = "~/UploadFiles/PolicyUploadFiles/";
+        private const string UploadDirectory = "~/UploadFiles/NotifyClaimUploadFiles/";
 
         private Boolean gridTraceInfoItemStartEdit = false;
 
@@ -61,7 +67,7 @@ namespace BrokerWebApp.CustomerClaim
             }
 
             rebindGridTraceInfoItem();
-
+            rebindGridDocList();
         }
 
 
@@ -599,88 +605,81 @@ namespace BrokerWebApp.CustomerClaim
         protected string SavePostedFiles(UploadedFile uploadedFile)
         {
             string ret = "";
-            //string policyFolder = "";// this.dxetxtPolicyID.Text.Trim();
-            //string policyFolderPath;
-            //if (uploadedFile.IsValid)
-            //{
-            //    DirectoryInfo drtInfo = new DirectoryInfo(MapPath(UploadDirectory));
-            //    if (drtInfo.Exists)
-            //    {
-            //        policyFolderPath = System.IO.Path.Combine(MapPath(UploadDirectory), policyFolder);
-            //        drtInfo = new DirectoryInfo(policyFolder);
-            //        FileInfo fileInfo;
-            //        if (drtInfo.Exists)
-            //        {
-            //            fileInfo = new FileInfo(uploadedFile.FileName);
-            //            string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
-            //            uploadedFile.SaveAs(resFileName);
+            string notifyFolder = this.dxetxtNotifyID.Text.Trim();
+            string notifyFolderPath;
+            if (uploadedFile.IsValid)
+            {
+                DirectoryInfo drtInfo = new DirectoryInfo(MapPath(UploadDirectory));
+                if (drtInfo.Exists)
+                {
+                    notifyFolderPath = System.IO.Path.Combine(MapPath(UploadDirectory), notifyFolder);
+                    drtInfo = new DirectoryInfo(notifyFolder);
+                    FileInfo fileInfo;
+                    if (drtInfo.Exists)
+                    {
+                        fileInfo = new FileInfo(uploadedFile.FileName);
+                        string resFileName = System.IO.Path.Combine(notifyFolderPath, fileInfo.Name);
+                        uploadedFile.SaveAs(resFileName);
+                    }
+                    else
+                    {
+                        //create folder
+                        drtInfo = System.IO.Directory.CreateDirectory(notifyFolderPath);
+                        fileInfo = new FileInfo(uploadedFile.FileName);
+                        string resFileName = System.IO.Path.Combine(notifyFolderPath, fileInfo.Name);
+                        uploadedFile.SaveAs(resFileName);
+                    }
 
-            //            //string fileLabel = fileInfo.Name;
-            //            //string fileType = uploadedFile.PostedFile.ContentType.ToString();
-            //            //string fileLength = uploadedFile.PostedFile.ContentLength / 1024 + "K";
-            //            //ret = string.Format("{0} <i>({1})</i> {2}|{3}", fileLabel, fileType, fileLength, fileInfo.Name);
-            //        }
-            //        else
-            //        {
-            //            //create folder
-            //            drtInfo = System.IO.Directory.CreateDirectory(policyFolderPath);
-            //            fileInfo = new FileInfo(uploadedFile.FileName);
-            //            string resFileName = System.IO.Path.Combine(policyFolderPath, fileInfo.Name);
-            //            uploadedFile.SaveAs(resFileName);
-            //        }
+                    //BO_PolicyDoc
+                    BusinessObjects.BO_NotifyClaimDoc.Delete(this.dxetxtNotifyID.Text.Trim(), fileInfo.Name);
 
-            //        //BO_PolicyDoc
-            //        BusinessObjects.Policy.BO_PolicyDoc.Delete(this.dxetxtPolicyID.Text.Trim(), fileInfo.Name);
-
-            //        BusinessObjects.Policy.BO_PolicyDoc pdoc = new BusinessObjects.Policy.BO_PolicyDoc();
-            //        pdoc.PolicyDocID = Guid.NewGuid().ToString();
-            //        pdoc.DocName = fileInfo.Name;
-            //        //pdoc.PolicyID = this.dxetxtPolicyID.Text.Trim();
-            //        //pdoc.DocURL = UploadDirectory.Replace("~", "") + policyFolder + "/" + fileInfo.Name;
-            //        pdoc.Save(ModifiedAction.Insert);
-            //    }
-
-
-            //}
+                    BusinessObjects.BO_NotifyClaimDoc pdoc = new BusinessObjects.BO_NotifyClaimDoc();
+                    
+                    pdoc.DocName = fileInfo.Name;
+                    pdoc.NotifyID = this.dxetxtNotifyID.Text.Trim();
+                    pdoc.DocURL = UploadDirectory.Replace("~", "") + notifyFolder + "/" + fileInfo.Name;
+                    pdoc.Save(ModifiedAction.Insert);
+                }                
+            }
             return ret;
         }
 
 
-        //protected void gridDocList_HtmlRowCreated(object sender,
-        //    ASPxGridViewTableRowEventArgs e)
-        //{
-        //    if (e.RowType == GridViewRowType.Data)
-        //    {
-        //        Control thectr;
-        //        HyperLink thelnk;
-        //        thectr = gridDocList.FindRowCellTemplateControl(e.VisibleIndex, null, "docitemlnk");
-        //        //thelnk = gridDocList.FindRowTemplateControl(e.VisibleIndex, "docitemlnk");
-        //        if (thectr != null)
-        //        {
-        //            thelnk = (HyperLink)thectr;
-        //            thelnk.ID = "fileurl" + Convert.ToString(e.GetValue("PolicyDocID"));
-        //            thelnk.NavigateUrl = "#";
-        //            thelnk.Text = Convert.ToString(e.GetValue("DocName"));
-        //            String lnkUrl = "";
-        //            lnkUrl = Convert.ToString(e.GetValue("DocURL"));
-        //            lnkUrl = BasePage.URLCombine(BasePage.ApplicationRoot, lnkUrl);
-        //            thelnk.Attributes.Add("onclick", "hlPolicyItemTogetherClick('" + lnkUrl + "');");
-        //        }
+        protected void gridDocList_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data)
+            {
+                Control thectr;
+                HyperLink thelnk;
+                thectr = gridDocList.FindRowCellTemplateControl(e.VisibleIndex, null, "docitemlnk");
+                //thelnk = gridDocList.FindRowTemplateControl(e.VisibleIndex, "docitemlnk");
+                if (thectr != null)
+                {
+                    thelnk = (HyperLink)thectr;
+                    thelnk.ID = "fileurl" + Convert.ToString(e.GetValue("NotifyClaimDocID"));
+                    thelnk.NavigateUrl = "#";
+                    thelnk.Text = Convert.ToString(e.GetValue("DocName"));
+                    String lnkUrl = "";
+                    lnkUrl = Convert.ToString(e.GetValue("DocURL"));
+                    lnkUrl = BasePage.URLCombine(BasePage.ApplicationRoot, lnkUrl);
+                    thelnk.Attributes.Add("onclick", "hlPolicyItemTogetherClick('" + lnkUrl + "');");
+                }
 
-        //    }
-        //}
+            }
+        }
 
 
-        //protected void gridDocList_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
-        //{
-        //    rebindGridDocList();
-        //}
+        protected void gridDocList_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            rebindGridDocList();
+        }
 
-        //private void rebindGridDocList()
-        //{
-        //    this.gridDocList.DataSource = BusinessObjects.Policy.BO_PolicyDoc.FetchListByPolicy(this.dxetxtPolicyID.Text.Trim());
-        //    this.gridDocList.DataBind();
-        //}
+        private void rebindGridDocList()
+        {
+            this.gridDocList.DataSource = BusinessObjects.BO_NotifyClaimDoc.FetchListByNotifyID(this.dxetxtNotifyID.Text.Trim());
+            this.gridDocList.DataBind();
+        }
 
 
         #endregion Upload File  Events
