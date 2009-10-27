@@ -185,9 +185,7 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="EndDate" Caption="终止日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="NoticeDate" Caption="通知日期" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="OutDay" Caption="超期日期" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="OutDay" Caption="天数" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
@@ -198,7 +196,7 @@
                                     <SettingsText CustomizationWindowCaption="个性化" />
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInColumn="Beneficiary"
-                                            DisplayFormat="保单数: {0}" />
+                                            DisplayFormat="{0}" />
                                     </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
