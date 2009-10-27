@@ -165,7 +165,21 @@
                                 <dxnb:NavBarItem Text="实收保费逾期报表" Name="accounting/PremiumActualOverdueReport.aspx">
                                 </dxnb:NavBarItem>                                      
                             </Items>
-                        </dxnb:NavBarGroup>                        
+                        </dxnb:NavBarGroup>    
+                        <dxnb:NavBarGroup Text="服务提醒" Expanded="false">
+                            <Items>
+                                <dxnb:NavBarItem Text="收付提醒列表" Name="MessageRemind/MessageRemindPayInOut.aspx">
+                                </dxnb:NavBarItem>    
+                                <dxnb:NavBarItem Text="续保提醒列表" Name="MessageRemind/MessageRemindPremiumContinue.aspx">
+                                </dxnb:NavBarItem>  
+                                <dxnb:NavBarItem Text="跟进提醒列表" Name="MessageRemind/MessageRemindCustomerPtFollow.aspx">
+                                </dxnb:NavBarItem>  
+                                <dxnb:NavBarItem Text="生日提醒列表" Name="MessageRemind/MessageRemindCustomerBirthday.aspx">
+                                </dxnb:NavBarItem>        
+                                <dxnb:NavBarItem Text="佣金提醒列表" Name="MessageRemind/MessageRemindProcess.aspx">
+                                </dxnb:NavBarItem>                                          
+                            </Items>
+                        </dxnb:NavBarGroup>                      
                     </Groups>
                 </dxnb:ASPxNavBar>
             </td>

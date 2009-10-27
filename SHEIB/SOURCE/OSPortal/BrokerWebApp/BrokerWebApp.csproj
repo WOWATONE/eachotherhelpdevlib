@@ -670,6 +670,41 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MessageRemind\MessageRemindPayInOut.aspx.cs">
+      <DependentUpon>MessageRemindPayInOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MessageRemind\MessageRemindPayInOut.aspx.designer.cs">
+      <DependentUpon>MessageRemindPayInOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MessageRemind\MessageRemindCustomerBirthday.aspx.cs">
+      <DependentUpon>MessageRemindCustomerBirthday.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MessageRemind\MessageRemindCustomerBirthday.aspx.designer.cs">
+      <DependentUpon>MessageRemindCustomerBirthday.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MessageRemind\MessageRemindCustomerPtFollow.aspx.cs">
+      <DependentUpon>MessageRemindCustomerPtFollow.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MessageRemind\MessageRemindCustomerPtFollow.aspx.designer.cs">
+      <DependentUpon>MessageRemindCustomerPtFollow.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MessageRemind\MessageRemindPremiumContinue.aspx.cs">
+      <DependentUpon>MessageRemindPremiumContinue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MessageRemind\MessageRemindPremiumContinue.aspx.designer.cs">
+      <DependentUpon>MessageRemindPremiumContinue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MessageRemind\MessageRemindProcess.aspx.cs">
+      <DependentUpon>MessageRemindProcess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MessageRemind\MessageRemindProcess.aspx.designer.cs">
+      <DependentUpon>MessageRemindProcess.aspx</DependentUpon>
+    </Compile>
     <Compile Include="otherinsurance\PolicyAlter.aspx.cs">
       <DependentUpon>PolicyAlter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1217,6 +1252,11 @@
     <Content Include="IntegrateSearch\PolicyListDetail.aspx" />
     <Content Include="IntegrateSearch\PolicyListByCarrier.aspx" />
     <Content Include="js\pagejs\AskPriceInput.js" />
+    <Content Include="MessageRemind\MessageRemindPayInOut.aspx" />
+    <Content Include="MessageRemind\MessageRemindCustomerBirthday.aspx" />
+    <Content Include="MessageRemind\MessageRemindCustomerPtFollow.aspx" />
+    <Content Include="MessageRemind\MessageRemindPremiumContinue.aspx" />
+    <Content Include="MessageRemind\MessageRemindProcess.aspx" />
     <Content Include="otherinsurance\PolicyAlter.aspx" />
     <Content Include="otherinsurance\PolicyAlterList.aspx" />
     <Content Include="otherinsurance\PolicyCheckList.aspx" />
