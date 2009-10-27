@@ -1306,6 +1306,7 @@ namespace BrokerWebApp.otherinsurance
                 obj.SourceTypeID=theJosn.SourceTypeID; 
                 obj.Special=theJosn.Special;
                 obj.StartDate = this.dxeStartDate.Date; //theJosn.StartDate;
+                obj.AltRemark = theJosn.AltRemark;
 
                 obj.CreatePerson = this.CurrentUserID;
                 //obj.CreateTime = DateTime.Now;
@@ -1350,6 +1351,7 @@ namespace BrokerWebApp.otherinsurance
                 obj.SourceTypeID = theJosn.SourceTypeID;
                 obj.Special = theJosn.Special;
                 obj.StartDate = this.dxeStartDate.Date; //theJosn.StartDate;
+                obj.AltRemark = theJosn.AltRemark;
 
                 obj.ModifyPerson  = this.CurrentUserID;
                 obj.ModifyTime  = DateTime.Now;
@@ -1736,6 +1738,9 @@ namespace BrokerWebApp.otherinsurance
 
             [DataMember]
             public Boolean AuditOrNot { get; set; }
+
+            [DataMember]
+            public string AltRemark { get; set; }
 
         }
 

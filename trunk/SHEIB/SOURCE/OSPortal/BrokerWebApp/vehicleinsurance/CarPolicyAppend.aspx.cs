@@ -585,6 +585,8 @@ namespace BrokerWebApp.vehicleinsurance
             [DataMember]
             public Boolean AuditOrNot { get; set; }
 
+            [DataMember]
+            public string AltRemark { get; set; }
 
         }
 

@@ -730,7 +730,9 @@ namespace BrokerWebApp.vehicleinsurance
             this.dxetxtAuditPerson.Text = obj.AuditPersonName;
             this.dxeMemo.Text = obj.Remark;
 
-            dxeAppendRemark.Text = obj.Remark;
+            //
+            this.dxetxtAltNo.Text = obj.AltNO;
+            dxeAppendRemark.Text = obj.AltRemark;
 
             dxetxtCreatePerson.Text = obj.CreatePersonName;
             dxeCreateTime.Date = obj.CreateTime;
@@ -951,6 +953,8 @@ namespace BrokerWebApp.vehicleinsurance
 
                 theObject.Remark = obj.Remark;
 
+                theObject.AltRemark  = obj.AltRemark;
+
                 theObject.CreatePerson = this.CurrentUserID;
                 theObject.CreateTime = dxeCreateTime.Date;
                 
@@ -989,6 +993,8 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.ProcessRate = 0;
 
                 theObject.Remark = obj.Remark;
+
+                theObject.AltRemark = obj.AltRemark;
 
                 theObject.CreateTime = dxeCreateTime.Date;
                 theObject.ModifyPerson = this.CurrentUserID;
@@ -1349,6 +1355,10 @@ namespace BrokerWebApp.vehicleinsurance
 
             [DataMember]
             public string AltNo { get; set; }
+
+            [DataMember]
+            public string AltRemark { get; set; }
+
         }
 
 

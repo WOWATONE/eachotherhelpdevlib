@@ -123,6 +123,7 @@
             var AciProcess = null; //dxetxtAciProcess.GetValueString();
             var TotalProcess = null; //dxetxtTotalProcess.GetValueString();
 
+            var AltRemark = null;
             var Remark = null;
             var AuditOrNot = null;
 
@@ -134,7 +135,7 @@
             Capacity, RegisterDate, CarValue, CiPremium, AciPremium,
             CstPremium, TotalPremium, CiProcessRate, AciProcessRate,
             CiProcess, AciProcess, TotalProcess,
-            Remark, AuditOrNot);
+            Remark, AuditOrNot, AltRemark);
 
             //deserialize JSON string, make a JSON object
             //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
@@ -180,7 +181,7 @@
             Capacity, RegisterDate, CarValue, CiPremium, AciPremium,
             CstPremium, TotalPremium, CiProcessRate, AciProcessRate,
             CiProcess, AciProcess, TotalProcess,
-            Remark, AuditOrNot) {
+            Remark, AuditOrNot, AltRemark) {
 
             if (!isEmpty(PolicyID))
                 this.PolicyID = PolicyID;
@@ -291,6 +292,9 @@
 
             if (!isEmpty(AuditOrNot))
                 this.AuditOrNot = AuditOrNot;
+
+            if (!isEmpty(AltRemark))
+                this.AltRemark = AltRemark;
 
         }
 
