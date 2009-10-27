@@ -82,5 +82,41 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand).Tables[0];
         }
         #endregion
+
+        public static DataSet MessageRemindCustomerBirthday(string sWhere)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.MessageRemindCustomerBirthday");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet MessageRemindCustomerPtFollow(string sWhere)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.MessageRemindCustomerPtFollow");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet MessageRemindPayInOut(string sWhere)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.MessageRemindPayInOut");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet MessageRemindPremiumContinue(string sWhere)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.MessageRemindPremiumContinue");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet MessageRemindProcess(string sWhere)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.MessageRemindProcess");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
     }
 }
