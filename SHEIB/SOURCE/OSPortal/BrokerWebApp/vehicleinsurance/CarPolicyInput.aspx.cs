@@ -1097,6 +1097,8 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.Process = obj.TotalProcess;
                 theObject.ProcessBase = obj.TotalProcess;
                 theObject.ProcessRate = 0;
+
+                theObject.AltRemark = obj.AltRemark;
                                 
                 theObject.CreatePerson = this.CurrentUserID;
                 theObject.CreateTime = dxeCreateTime.Date;
@@ -1151,6 +1153,8 @@ namespace BrokerWebApp.vehicleinsurance
                 theObject.Process = obj.TotalProcess;
                 theObject.ProcessBase = obj.TotalProcess;
                 theObject.ProcessRate = 0;
+
+                theObject.AltRemark = obj.AltRemark;
 
                 theObject.ModifyPerson = this.CurrentUserID;
                 theObject.ModifyTime = DateTime.Now;
@@ -1520,6 +1524,9 @@ namespace BrokerWebApp.vehicleinsurance
 
             [DataMember]
             public Boolean AuditOrNot { get; set; }
+
+            [DataMember]
+            public string AltRemark { get; set; }
 
 
         }

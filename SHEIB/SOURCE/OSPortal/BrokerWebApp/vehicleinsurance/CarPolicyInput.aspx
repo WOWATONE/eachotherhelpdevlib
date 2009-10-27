@@ -231,6 +231,7 @@
             var AciProcess = dxetxtAciProcess.GetValueString();        
             var TotalProcess = dxetxtTotalProcess.GetValueString();
 
+            var AltRemark = null;
             var Remark = null;
             var AuditOrNot = null;
 
@@ -241,8 +242,8 @@
             Special, CarNo, CarcaseNo, UseCharacter, EngineNo, CarUser,
             Capacity, RegisterDate, CarValue, CiPremium, AciPremium,
             CstPremium, TotalPremium, CiProcessRate, AciProcessRate,
-            CiProcess, AciProcess, TotalProcess, 
-            Remark, AuditOrNot);
+            CiProcess, AciProcess, TotalProcess,
+            Remark, AuditOrNot, AltRemark);
 
             //deserialize JSON string, make a JSON object
             //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
@@ -377,8 +378,8 @@
             Special, CarNo, CarcaseNo, UseCharacter, EngineNo, CarUser,
             Capacity, RegisterDate, CarValue, CiPremium, AciPremium,
             CstPremium, TotalPremium, CiProcessRate, AciProcessRate,
-            CiProcess, AciProcess, TotalProcess, 
-            Remark, AuditOrNot) {
+            CiProcess, AciProcess, TotalProcess,
+            Remark, AuditOrNot, AltRemark) {
 
             if (!isEmpty(PolicyID))
                 this.PolicyID = PolicyID;
@@ -490,6 +491,9 @@
             if (!isEmpty(AuditOrNot))
                 this.AuditOrNot = AuditOrNot;
 
+            if (!isEmpty(AltRemark))
+                this.AltRemark = AltRemark;
+
         }
 
 
@@ -563,6 +567,8 @@
             var CiProcess = null;
             var AciProcess = null;        
             var TotalProcess = null;
+            var AltRemark = null;
+            
             
             var Remark = dxeMemo.GetValueString();
 
@@ -573,8 +579,8 @@
             Special, CarNo, CarcaseNo, UseCharacter, EngineNo, CarUser,
             Capacity, RegisterDate, CarValue, CiPremium, AciPremium,
             CstPremium, TotalPremium, CiProcessRate, AciProcessRate,
-            CiProcess, AciProcess, TotalProcess, 
-            Remark, AuditOrNot);
+            CiProcess, AciProcess, TotalProcess,
+            Remark, AuditOrNot, AltRemark);
 
             var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
 
@@ -648,7 +654,7 @@
             var AciProcess = null;        
             var TotalProcess = null;
 
-
+            var AltRemark = null;
             var Remark = dxeMemo.GetValueString();
 
             var plc = new Policy(PolicyID,PolicyNo,AciPolicyNo,AskPriceID, 
@@ -658,8 +664,8 @@
             Special, CarNo, CarcaseNo, UseCharacter, EngineNo, CarUser,
             Capacity, RegisterDate, CarValue, CiPremium, AciPremium,
             CstPremium, TotalPremium, CiProcessRate, AciProcessRate,
-            CiProcess, AciProcess, TotalProcess, 
-            Remark, AuditOrNot);
+            CiProcess, AciProcess, TotalProcess,
+            Remark, AuditOrNot, AltRemark);
 
             var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
 

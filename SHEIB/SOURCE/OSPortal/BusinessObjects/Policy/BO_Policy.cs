@@ -96,7 +96,8 @@ namespace BusinessObjects.Policy
             UseCharacter, 
             RegisterDate, 
             CarValue, 
-            CarUser
+            CarUser,
+            AltRemark
         }
 
         #endregion Variables
@@ -543,6 +544,14 @@ namespace BusinessObjects.Policy
         }
 
         [DataMember]
+        public string AltRemark
+        {
+            get;
+            set;
+        }
+
+
+        [DataMember]
         public string CreatePersonName
         {
             get {
@@ -630,7 +639,7 @@ namespace BusinessObjects.Policy
             sb.Append(" B.CiProcessRate, B.CiProcess, B.AciPremium, B.AciProcessRate,  ");
             sb.Append(" B.AciProcess, B.CstPremium, B.PeriodTimes, B.CarNo, B.CarcaseNo, ");
             sb.Append(" B.EngineNo, B.Capacity, B.UseCharacter, B.RegisterDate, B.CarValue, B.CarUser, ");
-            sb.Append(" B.AltNO, B.AciPolicyNo, B.IsAntiAudit ");
+            sb.Append(" B.AltNO, B.AciPolicyNo, B.IsAntiAudit, B.AltRemark ");
 
             sb.Append(" FROM Policy B ");
             sb.Append(" LEFT JOIN PolicyCarrier A ON A.PolicyID = B.PolicyID ");
@@ -718,7 +727,7 @@ namespace BusinessObjects.Policy
             sb.Append(" B.CiProcessRate, B.CiProcess, B.AciPremium, B.AciProcessRate,  ");
             sb.Append(" B.AciProcess, B.CstPremium, B.PeriodTimes, B.CarNo, B.CarcaseNo, ");
             sb.Append(" B.EngineNo, B.Capacity, B.UseCharacter, B.RegisterDate, B.CarValue, B.CarUser, ");
-            sb.Append(" B.AltNO, B.AciPolicyNo, B.IsAntiAudit ");
+            sb.Append(" B.AltNO, B.AciPolicyNo, B.IsAntiAudit, B.AltRemark ");
             sb.Append(" FROM Policy B ");
             sb.Append(" LEFT JOIN PolicyCarrier A ON A.PolicyID = B.PolicyID ");
             sb.Append(" LEFT JOIN P_User C ON B.SalesId = C.UserID ");
@@ -996,7 +1005,7 @@ namespace BusinessObjects.Policy
             sb.Append("AskPriceID, BankName, BankAccount, CiPremium, CiProcessRate,  ");
             sb.Append("CiProcess, AciPremium, AciProcessRate, AciProcess, CstPremium,  ");
             sb.Append("PeriodTimes, CarNo, CarcaseNo, EngineNo, Capacity, ");
-            sb.Append("UseCharacter, RegisterDate, CarValue, CarUser ");
+            sb.Append("UseCharacter, RegisterDate, CarValue, CarUser, AltRemark ");
             
             sb.Append(" FROM Policy ");
             sb.Append(" WHERE PolicyID = @PolicyID ");
@@ -1089,6 +1098,7 @@ namespace BusinessObjects.Policy
 
                     this.CarValue = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CarValue));
                     this.CarUser = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.CarUser));
+                    this.AltRemark = Utility.GetStringFromReader(reader, Convert.ToInt32(FieldList.AltRemark));
 
                     
                 }
@@ -1114,7 +1124,7 @@ namespace BusinessObjects.Policy
 			sb.Append("CiProcess, AciPremium, AciProcessRate, AciProcess, ");
 			sb.Append("CstPremium, PeriodTimes,CarNo, CarcaseNo, ");
 			sb.Append("EngineNo, Capacity, UseCharacter,");
-			sb.Append("RegisterDate, CarValue, CarUser");
+            sb.Append("RegisterDate, CarValue, CarUser, AltRemark");
             sb.Append(")");
             sb.Append(" VALUES( ");
             sb.Append("@PolicyID, @PrevPolicyID, @PolicyNo,");
@@ -1132,7 +1142,7 @@ namespace BusinessObjects.Policy
             sb.Append("@CiProcess, @AciPremium, @AciProcessRate, @AciProcess, ");
             sb.Append("@CstPremium, @PeriodTimes,@CarNo, @CarcaseNo, ");
             sb.Append("@EngineNo, @Capacity, @UseCharacter,");
-            sb.Append("@RegisterDate, @CarValue, @CarUser");
+            sb.Append("@RegisterDate, @CarValue, @CarUser, @AltRemark ");
             sb.Append(" )");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
@@ -1236,6 +1246,7 @@ namespace BusinessObjects.Policy
 
             _db.AddInParameter(dbCommand, "@CarValue", DbType.String, this.CarValue);
             _db.AddInParameter(dbCommand, "@CarUser", DbType.String, this.CarUser);
+            _db.AddInParameter(dbCommand, "@AltRemark", DbType.String, this.AltRemark);
 
 
             //ExecuteScalar return the value of first column in first row.
@@ -1264,7 +1275,7 @@ namespace BusinessObjects.Policy
             sb.Append("CiProcess=@CiProcess, AciPremium=@AciPremium, AciProcessRate=@AciProcessRate, AciProcess=@AciProcess, ");
             sb.Append("CstPremium=@CstPremium, PeriodTimes=@PeriodTimes,CarNo=@CarNo, CarcaseNo=@CarcaseNo, ");
             sb.Append("EngineNo=@EngineNo, Capacity=@Capacity, UseCharacter=@UseCharacter,");
-            sb.Append("RegisterDate=@RegisterDate, CarValue=@CarValue, CarUser=@CarUser");
+            sb.Append("RegisterDate=@RegisterDate, CarValue=@CarValue, CarUser=@CarUser, AltRemark=@AltRemark ");
             sb.Append(" Where PolicyID=@PolicyID;");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
@@ -1368,6 +1379,7 @@ namespace BusinessObjects.Policy
             
             _db.AddInParameter(dbCommand, "@CarValue", DbType.String, this.CarValue);
             _db.AddInParameter(dbCommand, "@CarUser", DbType.String, this.CarUser);
+            _db.AddInParameter(dbCommand, "@AltRemark", DbType.String, this.AltRemark);
 
             Boolean needChangePeriod = false;
             BO_Policy theCompare = new BO_Policy(this.PolicyID);

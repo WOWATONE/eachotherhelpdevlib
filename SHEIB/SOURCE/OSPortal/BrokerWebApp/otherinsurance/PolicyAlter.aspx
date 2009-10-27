@@ -293,13 +293,14 @@
             var ProcessBase = dxetxtProcessBase.GetValueString();
             var ProcessRate = dxetxtProcessRate.GetValueString();
             var ProdTypeID = getProductTypeID(); //dxeddlProdTypeName.GetValue();
-            var Remark = dxeAppendRemark.GetValueString();
+            var Remark = null;
             var SalesId = dxeddlSalesId.GetValue();
             var SignDate = null;
             var SourceTypeID = dxeddlSourceTypeID.GetValue();
             var Special = dxetxtSpecial.GetValueString();
             var StartDate = dxeStartDate.GetValue();
             var AltNo = dxetxtAltNo.GetValueString();
+            var AltRemark = dxeAppendRemark.GetValueString();
 
             var plc = new Policy(AuditOrNot,
             Beneficiary, CarrierSales, ConversionRate, Coverage,
@@ -309,7 +310,7 @@
             PolicyStatus, Premium, PremiumBase, PremiumRate,
             Process, ProcessBase, ProcessRate, ProdTypeID,
             Remark, SalesId, SignDate, SourceTypeID, Special,
-            StartDate, AltNo);
+            StartDate, AltNo, AltRemark);
 
             //deserialize JSON string, make a JSON object
             //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
@@ -456,7 +457,7 @@
             PolicyStatus, Premium, PremiumBase, PremiumRate,
             Process, ProcessBase, ProcessRate, ProdTypeID,
             Remark, SalesId, SignDate, SourceTypeID, Special,
-            StartDate, AltNo) {
+            StartDate, AltNo, AltRemark) {
 
 
             if (!isEmpty(AuditOrNot))
@@ -551,6 +552,9 @@
 
             if (!isEmpty(AltNo))
                 this.AltNo = AltNo;
+
+            if (!isEmpty(AltRemark))
+                this.AltRemark = AltRemark;
         }
 
 
@@ -696,6 +700,7 @@
             var Special = null;
             var StartDate = null;
             var AltNo = null;
+            var AltRemark = null;
 
             var plc = new Policy(AuditOrNot,
             Beneficiary, CarrierSales, ConversionRate, Coverage,
@@ -705,7 +710,7 @@
             PolicyStatus, Premium, PremiumBase, PremiumRate,
             Process, ProcessBase, ProcessRate, ProdTypeID,
             Remark, SalesId, SignDate, SourceTypeID, Special,
-            StartDate, AltNo);
+            StartDate, AltNo, AltRemark);
 
             var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
 

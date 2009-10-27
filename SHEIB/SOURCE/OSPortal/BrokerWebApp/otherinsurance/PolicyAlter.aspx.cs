@@ -984,6 +984,7 @@ namespace BrokerWebApp.otherinsurance
                 obj.CreateTime = dxedtCreateTime.Date;
 
                 obj.AltNO = theJosn.AltNo;
+                obj.AltRemark = theJosn.AltRemark;
 
                 obj.Save(ModifiedAction.Insert);
                 copyCarrierFromPrePolicy(obj.PrevPolicyID, obj.PolicyID);
@@ -1030,6 +1031,7 @@ namespace BrokerWebApp.otherinsurance
                 obj.ModifyTime = DateTime.Now;
 
                 obj.AltNO = theJosn.AltNo;
+                obj.AltRemark = theJosn.AltRemark;
 
                 obj.Save(ModifiedAction.Update);
             }
@@ -1237,9 +1239,10 @@ namespace BrokerWebApp.otherinsurance
 
             this.dxetxtAltNo.Text = obj.AltNO;
 
-            //alt content
             this.dxeMemo.Text = obj.Remark;
-            this.dxeAppendRemark.Text = obj.Remark;
+            
+            //alt content
+            this.dxeAppendRemark.Text = obj.AltRemark;
 
             return prePolicyID;
         }
@@ -1600,6 +1603,10 @@ namespace BrokerWebApp.otherinsurance
 
             [DataMember]
             public string AltNo { get; set; }
+
+            [DataMember]
+            public string AltRemark { get; set; }
+
 
         }
 

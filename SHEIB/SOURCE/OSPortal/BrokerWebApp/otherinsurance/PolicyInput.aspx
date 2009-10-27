@@ -292,6 +292,7 @@
             var SourceTypeID = dxeddlSourceTypeID.GetValue();
             var Special = dxetxtSpecial.GetValueString();
             var StartDate = dxeStartDate.GetValue();
+            var AltRemark = null;
 
 
             var plc = new Policy(AuditOrNot,
@@ -302,7 +303,7 @@
             PolicyStatus, Premium, PremiumBase, PremiumRate,
             Process, ProcessBase, ProcessRate, ProdTypeID,
             Remark, SalesId, SignDate, SourceTypeID, Special,
-            StartDate);
+            StartDate, AltRemark);
 
             //deserialize JSON string, make a JSON object
             //var jsonObject = Sys.Serialization.JavaScriptSerializer.deserialize(jsonStringServer)
@@ -474,7 +475,7 @@
             PolicyStatus, Premium, PremiumBase, PremiumRate,
             Process, ProcessBase, ProcessRate, ProdTypeID,
             Remark, SalesId, SignDate, SourceTypeID, Special,
-            StartDate) {
+            StartDate, AltRemark) {
 
 
             if (!isEmpty(AuditOrNot))
@@ -566,6 +567,9 @@
 
             if (!isEmpty(StartDate))
                 this.StartDate = StartDate;
+
+            if (!isEmpty(AltRemark))
+                this.AltRemark = AltRemark;
         }
 
 
@@ -708,6 +712,7 @@
             var SourceTypeID = null;
             var Special = null;
             var StartDate = null;
+            var AltRemark = null;
 
             var plc = new Policy(AuditOrNot,
             Beneficiary, CarrierSales, ConversionRate, Coverage,
@@ -717,7 +722,7 @@
             PolicyStatus, Premium, PremiumBase, PremiumRate,
             Process, ProcessBase, ProcessRate, ProdTypeID,
             Remark, SalesId, SignDate, SourceTypeID, Special,
-            StartDate);
+            StartDate, AltRemark);
 
             var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(plc);
 
