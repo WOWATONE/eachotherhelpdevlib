@@ -407,7 +407,7 @@ namespace BrokerWebApp.vehicleinsurance
                 GridViewCommandColumnButtonControl thebtn;
                 InternalHyperLink theIHL;
                 //delete
-                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyAltInput_Delete);
+                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.CarPolicyAlt_Delete);
                 thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
                 thebtn.Enabled = checkPerm;
                 theIHL = (InternalHyperLink)thebtn.Controls[0];
@@ -415,7 +415,7 @@ namespace BrokerWebApp.vehicleinsurance
 
 
                 //modify
-                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyAltInput_Modify);
+                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.CarPolicyAlt_Modify);
                 thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[1];
                 thebtn.Enabled = checkPerm;
                 theIHL = (InternalHyperLink)thebtn.Controls[0];
