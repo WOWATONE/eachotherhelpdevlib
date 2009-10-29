@@ -136,13 +136,16 @@ namespace BrokerWebApp.BudgetManagement
                 sbWhere.Append(" And S.CustomerID='" + this.hidCustID.Value + "' ");
             if(this.ptid.Value.Length>0)
                 sbWhere.Append(" And S.ProdTypeID='" + this.ptid.Value + "' ");
-            if (this.dxeddlOperationType.SelectedItem.Value.ToString().Length > 0)
-                sbWhere.Append(" And S.OperationType='" + this.dxeddlOperationType.SelectedItem.Value.ToString() + "' ");
+
             if (this.dxetxtNY.Text.Trim().Length > 0)
                 sbWhere.Append(" And S.NY='" + this.dxetxtNY.Text.Trim() + "' ");
             if (this.dxeddlPremiumType.SelectedItem.Value.ToString().Length > 0)
                 sbWhere.Append(" And S.PremiumType='" + this.dxeddlPremiumType.SelectedItem.Value.ToString() + "' ");
 
+            if (this.dxeddlOperationType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlOperationType.SelectedItem.Value.ToString()))
+            {
+                sbWhere.Append(" and S.OperationType ='" + dxeddlOperationType.SelectedItem.Value.ToString() + "'");
+            }
             this.gridSearchResult.DataSource = BusinessObjects.Budget.BO_SignPremiumBudget.GetConsultFeeList(sbWhere.ToString()).Tables[0];
             this.gridSearchResult.DataBind();
         }

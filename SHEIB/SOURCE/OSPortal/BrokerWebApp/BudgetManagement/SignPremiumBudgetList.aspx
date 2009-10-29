@@ -166,8 +166,8 @@
                                     runat="server" DropDownStyle="DropDownList" Width="160px">
                                     <Items>
                                         <dxe:ListEditItem Text="(全部)" Value="" />
-                                        <dxe:ListEditItem Text="新增" Value="1" />
-                                        <dxe:ListEditItem Text="续保" Value="2" />
+                                        <dxe:ListEditItem Text="新增" Value="0" />
+                                        <dxe:ListEditItem Text="续保" Value="1" />
                                     </Items>
                                 </dxe:ASPxComboBox>
                             </td>
