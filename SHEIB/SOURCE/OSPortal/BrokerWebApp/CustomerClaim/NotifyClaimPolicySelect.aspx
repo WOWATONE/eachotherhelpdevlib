@@ -17,7 +17,7 @@
 <%@ Register Assembly="DevExpress.Web.ASPxSpellChecker.v8.3" Namespace="DevExpress.Web.ASPxSpellChecker"
     TagPrefix="dxwsc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>客户收费保单选择</title>
+    <title>理赔保单选择</title>
 
     <script type="text/javascript">
         $(document).ready(function() {

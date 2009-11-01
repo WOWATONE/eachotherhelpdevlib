@@ -14,6 +14,10 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using BusinessObjects;
 
+using DevExpress.Web.ASPxGridView;
+
+using DevExpress.Web.ASPxGridView.Rendering;
+using DevExpress.Web.ASPxClasses.Internal;
 
 namespace BrokerWebApp.otherinsurance
 {
@@ -24,7 +28,8 @@ namespace BrokerWebApp.otherinsurance
 
         private const string inputQueryStringIDKey = "id";
                 
-        private string toadd = string.Empty;    
+        private string toadd = string.Empty;
+        private BO_NotifyClaim m_BO_NotifyClaim;
         
         #endregion Variables
 
@@ -52,12 +57,7 @@ namespace BrokerWebApp.otherinsurance
 
 
             if (!IsPostBack && !IsCallback)
-            {
-                this.gridCarrier.DataBind();
-                this.gridPolicyItem.DataBind();
-                this.gridPeriod.DataBind();
-                this.gridDocList.DataBind();
-
+            { 
                 if (!string.IsNullOrEmpty(this.dxetxtPolicyID.Text.Trim()))
                 {
                     loadPolicyValue(this.dxetxtPolicyID.Text.Trim());
@@ -68,6 +68,9 @@ namespace BrokerWebApp.otherinsurance
             {
                 //
             }
+
+            notifyClaim();
+
 
         }
 
@@ -191,6 +194,28 @@ namespace BrokerWebApp.otherinsurance
 
         #region Upload File Events
 
+        protected void gridDocList_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data)
+            {
+                Control thectr;
+                HyperLink thelnk;
+                thectr = gridDocList.FindRowCellTemplateControl(e.VisibleIndex, null, "docitemlnk");
+                if (thectr != null)
+                {
+                    thelnk = (HyperLink)thectr;
+                    thelnk.ID = "fileurl" + Convert.ToString(e.GetValue("PolicyDocID"));
+                    thelnk.NavigateUrl = "#";
+                    thelnk.Text = Convert.ToString(e.GetValue("DocName"));
+                    String lnkUrl = "";
+                    lnkUrl = Convert.ToString(e.GetValue("DocURL"));
+                    lnkUrl = BasePage.URLCombine(BasePage.ApplicationRoot, lnkUrl);
+                    thelnk.Attributes.Add("onclick", "hlPolicyItemTogetherClick('" + lnkUrl + "');");
+                }
+
+            }
+        }
 
         protected void gridDocList_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
@@ -430,6 +455,238 @@ namespace BrokerWebApp.otherinsurance
 
 
         #endregion Privates
+
+
+        #region NotifyClaim methods
+
+        private void notifyClaim()
+        {
+            //NotifyClaim
+            bindNotifyClaimDropDownLists();
+            if (!IsPostBack && !IsCallback)
+            {
+                if (!string.IsNullOrEmpty(this.dxetxtPolicyID.Text.Trim()))
+                {
+                    m_BO_NotifyClaim = BO_NotifyClaim.GetNotifyClaimByPolicyID(this.dxetxtPolicyID.Text.Trim());
+                }
+            }
+            if (m_BO_NotifyClaim == null)
+            {
+                insuranceDetailTabPage.TabPages[5].Visible = false;
+            }
+            else
+            {
+                rebindGridTraceInfoItem(m_BO_NotifyClaim.NotifyID);
+                rebindNotifyClaimGridDocList(m_BO_NotifyClaim.NotifyID);
+                loadNotifyClaimValue(m_BO_NotifyClaim.NotifyID);
+                insuranceDetailTabPage.TabPages[5].Visible = true;
+            }
+        }
+
+        private void loadNotifyClaimValue(String notifyID)
+        {
+
+            ListEditItem theselected;
+            BusinessObjects.BO_NotifyClaim notifyClaim = BusinessObjects.BO_NotifyClaim.GetNotifyClaimByNotifyID(notifyID);
+            if (notifyClaim == null)
+            {
+                return;
+            }
+
+            dxetxtNotifyPerson.Text = notifyClaim.NotifyPerson;
+            dxetxtAccidentSpot.Text = notifyClaim.AccidentSpot;
+            dxedeNotifyTime.Date = notifyClaim.NotifyTime;
+            dxetxtNotifyLossFee.Text = String.Format(BasePage.TheTwoSF, notifyClaim.NotifyLossFee);
+            dxedeAccidentTime.Date = notifyClaim.AccidentTime;
+
+            if (!String.IsNullOrEmpty(notifyClaim.LossType))
+            {
+                theselected = dxeddlLossType.Items.FindByValue(notifyClaim.LossType);
+                if (theselected != null)
+                {
+                    dxeddlLossType.SelectedItem = theselected;
+                }
+            }
+
+            //
+            if (!String.IsNullOrEmpty(notifyClaim.AccidentReason))
+            {
+                theselected = dxeddlAccidentReason.Items.FindByValue(notifyClaim.AccidentReason);
+                if (theselected != null)
+                {
+                    dxeddlAccidentReason.SelectedItem = theselected;
+                }
+            }
+
+            dxetxtContactPhone.Text = notifyClaim.ContactPhone;
+            dxetxtContactPerson.Text = notifyClaim.ContactPerson;
+            dxetxtAccidentProc.Text = notifyClaim.AccidentProc;
+            dxedeNotifyCarrierTime.Date = notifyClaim.NotifyCarrierTime;
+            dxetxtNotifyNo.Text = notifyClaim.NotifyNo;
+            dxetxtCarrierContactPerson.Text = notifyClaim.CarrierContactPerson;
+            dxetxtCarrierContactPhone.Text = notifyClaim.CarrierContactPhone;
+            dxedePerambulateTime.Date = notifyClaim.PerambulateTime;
+
+            dxedeDocCompleteDate.Date = notifyClaim.DocCompleteDate;
+            dxetxtLastPayFee.Text = String.Format(BasePage.TheTwoSF, notifyClaim.LastPayFee);
+            dxedeLastPayDate.Date = notifyClaim.LastPayDate;
+            dxedeCaseEndTime.Date = notifyClaim.CaseEndTime;
+
+            //
+            if (!String.IsNullOrEmpty(notifyClaim.CaseEndPerson))
+            {
+                theselected = dxeddlCaseEndPerson.Items.FindByValue(notifyClaim.CaseEndPerson);
+                if (theselected != null)
+                {
+                    dxeddlCaseEndPerson.SelectedItem = theselected;
+                }
+            }
+
+            dxetxtCreatePerson.Text = notifyClaim.CreatePerson;
+            dxedeCreateDate.Date = notifyClaim.CreateDate;                    
+
+        }
+
+
+        private void setNotifyClaimData(BO_NotifyClaim notifyClaim)
+        {
+            ListEditItem theselected;
+
+            notifyClaim.PolicyID = this.dxetxtPolicyID.Text;
+            notifyClaim.NotifyPerson = dxetxtNotifyPerson.Text;
+            notifyClaim.AccidentSpot = dxetxtAccidentSpot.Text;
+            notifyClaim.NotifyTime = dxedeNotifyTime.Date;
+
+            if (!String.IsNullOrEmpty(dxetxtNotifyLossFee.Text.Trim()))
+                notifyClaim.NotifyLossFee = Convert.ToDouble(dxetxtNotifyLossFee.Text.Trim());
+
+            notifyClaim.AccidentTime = dxedeAccidentTime.Date;
+
+            theselected = dxeddlLossType.SelectedItem;
+            if (theselected != null)
+                notifyClaim.LossType = theselected.Value.ToString();
+
+
+            //
+            theselected = dxeddlAccidentReason.SelectedItem;
+            if (theselected != null)
+                notifyClaim.AccidentReason = theselected.Value.ToString();
+
+
+            notifyClaim.ContactPhone = dxetxtContactPhone.Text;
+            notifyClaim.ContactPerson = dxetxtContactPerson.Text;
+            notifyClaim.AccidentProc = dxetxtAccidentProc.Text;
+            notifyClaim.NotifyCarrierTime = dxedeNotifyCarrierTime.Date;
+            notifyClaim.NotifyNo = dxetxtNotifyNo.Text;
+            notifyClaim.CarrierContactPerson = dxetxtCarrierContactPerson.Text;
+            notifyClaim.CarrierContactPhone = dxetxtCarrierContactPhone.Text;
+            notifyClaim.PerambulateTime = dxedePerambulateTime.Date;
+
+            notifyClaim.DocCompleteDate = dxedeDocCompleteDate.Date;
+
+            dxetxtLastPayFee.Text = String.Format(BasePage.TheTwoSF, notifyClaim.LastPayFee);
+
+            notifyClaim.LastPayDate = dxedeLastPayDate.Date;
+            notifyClaim.CaseEndTime = dxedeCaseEndTime.Date;
+
+            //
+            theselected = dxeddlCaseEndPerson.SelectedItem;
+            if (theselected != null)
+                notifyClaim.CaseEndPerson = theselected.Value.ToString();
+
+            notifyClaim.CreatePerson = this.CurrentUserID;
+            notifyClaim.CreateDate = dxedeCreateDate.Date;
+
+            notifyClaim.ModifyPerson = this.CurrentUserID;
+            notifyClaim.ModifyDate = dxedeCreateDate.Date;
+        }
+
+
+        private void bindNotifyClaimDropDownLists()
+        {
+
+            List<BusinessObjects.BO_P_User> userList;
+            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_List_Search_Group))
+            {
+                userList = BusinessObjects.BO_P_User.FetchDeptUserList(this.CurrentUser.DeptID);
+            }
+            else if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_List_Search_All))
+            {
+                userList = BusinessObjects.BO_P_User.FetchList();
+            }
+            else
+            {
+                userList = BusinessObjects.BO_P_User.FetchList();
+            }
+            this.dxeddlCaseEndPerson.DataSource = userList;
+            this.dxeddlCaseEndPerson.TextField = "UserNameCn";
+            this.dxeddlCaseEndPerson.ValueField = "UserID";
+            this.dxeddlCaseEndPerson.DataBind();
+            this.dxeddlCaseEndPerson.Items.Insert(0, new ListEditItem("", ""));
+
+            this.dxeddlLossType.DataSource = BusinessObjects.BO_NotifyClaim.GetLossTypeList();
+            this.dxeddlLossType.TextField = "AccountTypeName";
+            this.dxeddlLossType.ValueField = "AccountTypeID";
+            this.dxeddlLossType.DataBind();
+            this.dxeddlLossType.Items.Insert(0, new ListEditItem("", ""));
+
+
+            this.dxeddlAccidentReason.DataSource = BusinessObjects.BO_NotifyClaim.GetAccidentReasonList();
+            this.dxeddlAccidentReason.TextField = "AccountTypeName";
+            this.dxeddlAccidentReason.ValueField = "AccountTypeID";
+            this.dxeddlAccidentReason.DataBind();
+            this.dxeddlAccidentReason.Items.Insert(0, new ListEditItem("", ""));
+
+        }
+
+
+        #region gridTraceInfoItem 
+        
+        private void rebindGridTraceInfoItem(String notifyID)
+        {
+            this.gridTraceInfoItem.DataSource = BusinessObjects.BO_NotifyClaimFollow.GetNotifyClaimFollowListByNotifyID(notifyID);
+            this.gridTraceInfoItem.DataBind();
+        }
+
+        #endregion gridTraceInfoItem 
+
+        #region NotifyClaim Upload File
+
+        protected void gridDocList_NotifyClaim_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data)
+            {
+                Control thectr;
+                HyperLink thelnk;
+                thectr = gridDocList_NotifyClaim.FindRowCellTemplateControl(e.VisibleIndex, null, "docitemlnk");
+                //thelnk = gridDocList.FindRowTemplateControl(e.VisibleIndex, "docitemlnk");
+                if (thectr != null)
+                {
+                    thelnk = (HyperLink)thectr;
+                    thelnk.ID = "fileurl" + Convert.ToString(e.GetValue("NotifyClaimDocID"));
+                    thelnk.NavigateUrl = "#";
+                    thelnk.Text = Convert.ToString(e.GetValue("DocName"));
+                    String lnkUrl = "";
+                    lnkUrl = Convert.ToString(e.GetValue("DocURL"));
+                    lnkUrl = BasePage.URLCombine(BasePage.ApplicationRoot, lnkUrl);
+                    thelnk.Attributes.Add("onclick", "hlPolicyItemTogetherClick('" + lnkUrl + "');");
+                }
+
+            }
+        }
+
+
+        private void rebindNotifyClaimGridDocList(String notifyID)
+        {
+            this.gridDocList_NotifyClaim.DataSource = BusinessObjects.BO_NotifyClaimDoc.FetchListByNotifyID(notifyID);
+            this.gridDocList_NotifyClaim.DataBind();
+        }
+
+        #endregion NotifyClaim Upload File
+
+        #endregion NotifyClaim methods
+
 
 
         [DataContract(Namespace = "http://www.sheib.com")]
