@@ -14,10 +14,10 @@ namespace BusinessObjects
     {
         public BO_NotifyClaim() { }
 
-        public BO_NotifyClaim(String id)
-        {
-            //FetchByID(id);
-        }
+        //public BO_NotifyClaim(String id)
+        //{
+        //    //GetNotifyClaimByNotifyID(id);
+        //}
 
         public enum FieldList
         {
@@ -576,6 +576,72 @@ namespace BusinessObjects
 
             return notifyClaim;
         }
+
+
+        public static BO_NotifyClaim GetNotifyClaimByPolicyID(string policyID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Select top 1 NC.*, P.PolicyNo From NotifyClaim NC (nolock) ");
+            sb.Append("Inner Join Policy P (nolock) On P.PolicyID=NC.PolicyID ");
+            sb.Append("Where NC.PolicyID=@PolicyID ");
+            sb.Append(" Order by NC.CreateDate desc ");
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@PolicyID", DbType.AnsiString, policyID);
+
+            BO_NotifyClaim notifyClaim = null;
+            using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                if (reader.Read())
+                {
+                    notifyClaim = new BO_NotifyClaim();
+
+                    notifyClaim.NotifyID = Utility.GetStringFromReader(reader, FieldList.NotifyID.ToString());
+                    notifyClaim.PolicyID = Utility.GetStringFromReader(reader, FieldList.PolicyID.ToString());
+                    notifyClaim.NotifySerialNo = Utility.GetStringFromReader(reader, FieldList.NotifySerialNo.ToString());
+                    notifyClaim.NotifyTime = Utility.GetDatetimeFromReader(reader, FieldList.NotifyTime.ToString());
+                    notifyClaim.AccidentSpot = Utility.GetStringFromReader(reader, FieldList.AccidentSpot.ToString());
+
+                    notifyClaim.AccidentTime = Utility.GetDatetimeFromReader(reader, FieldList.AccidentTime.ToString());
+                    notifyClaim.NotifyPerson = Utility.GetStringFromReader(reader, FieldList.NotifyPerson.ToString());
+                    notifyClaim.LossType = Utility.GetStringFromReader(reader, FieldList.LossType.ToString());
+                    notifyClaim.AccidentReason = Utility.GetStringFromReader(reader, FieldList.AccidentReason.ToString());
+                    notifyClaim.NotifyLossFee = reader["NotifyLossFee"] == DBNull.Value ? -1 : Convert.ToDouble(reader["NotifyLossFee"]);
+
+                    notifyClaim.ContactPerson = Utility.GetStringFromReader(reader, FieldList.ContactPerson.ToString());
+                    notifyClaim.ContactPhone = Utility.GetStringFromReader(reader, FieldList.ContactPhone.ToString());
+                    notifyClaim.NotifyType = Utility.GetStringFromReader(reader, FieldList.NotifyType.ToString());
+                    notifyClaim.SpotCode = Utility.GetStringFromReader(reader, FieldList.SpotCode.ToString());
+                    notifyClaim.AccidentProc = Utility.GetStringFromReader(reader, FieldList.AccidentProc.ToString());
+
+                    notifyClaim.AccidentDeal = Utility.GetStringFromReader(reader, FieldList.AccidentDeal.ToString());
+                    notifyClaim.NotifyRemark = Utility.GetStringFromReader(reader, FieldList.NotifyRemark.ToString());
+                    notifyClaim.NotifyCarrierTime = Utility.GetDatetimeFromReader(reader, FieldList.NotifyCarrierTime.ToString());
+                    notifyClaim.NotifyNo = Utility.GetStringFromReader(reader, FieldList.NotifyNo.ToString());
+                    notifyClaim.CarrierContactPerson = Utility.GetStringFromReader(reader, FieldList.CarrierContactPerson.ToString());
+
+                    notifyClaim.CarrierContactPhone = Utility.GetStringFromReader(reader, FieldList.CarrierContactPhone.ToString());
+                    notifyClaim.PerambulateTime = Utility.GetDatetimeFromReader(reader, FieldList.PerambulateTime.ToString());
+                    notifyClaim.Requirement = Utility.GetStringFromReader(reader, FieldList.Requirement.ToString());
+                    notifyClaim.CaseEndTime = Utility.GetDatetimeFromReader(reader, FieldList.CaseEndTime.ToString());
+                    notifyClaim.LastPayFee = Utility.GetDoubleFromReader(reader, FieldList.LastPayFee.ToString());
+
+                    notifyClaim.AcquitFee = Utility.GetDoubleFromReader(reader, FieldList.AcquitFee.ToString());
+                    notifyClaim.CaseEndRemark = Utility.GetStringFromReader(reader, FieldList.CaseEndRemark.ToString());
+                    notifyClaim.CreatePerson = Utility.GetStringFromReader(reader, FieldList.CreatePerson.ToString());
+                    notifyClaim.CreateDate = Utility.GetDatetimeFromReader(reader, FieldList.CreateDate.ToString());
+                    notifyClaim.ModifyDate = Utility.GetDatetimeFromReader(reader, FieldList.ModifyDate.ToString());
+
+                    notifyClaim.ModifyPerson = Utility.GetStringFromReader(reader, FieldList.ModifyPerson.ToString());
+                    notifyClaim.DocCompleteDate = Utility.GetDatetimeFromReader(reader, FieldList.DocCompleteDate.ToString());
+                    notifyClaim.LastPayDate = Utility.GetDatetimeFromReader(reader, FieldList.LastPayDate.ToString());
+                    notifyClaim.CaseEndPerson = Utility.GetStringFromReader(reader, FieldList.CaseEndPerson.ToString());
+                    notifyClaim.PolicyNo = Utility.GetStringFromReader(reader, FieldList.PolicyNo.ToString());
+                }
+            }
+
+            return notifyClaim;
+        }
+
 
         /// <summary>
         /// 取得保单编号列表(临时用)
