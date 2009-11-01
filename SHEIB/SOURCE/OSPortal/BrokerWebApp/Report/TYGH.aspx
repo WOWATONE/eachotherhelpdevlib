@@ -74,16 +74,10 @@
                                             报表日期：
                                         </td>
                                         <td style="text-align: left;">
-                                            <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server">
+                                            <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server"  >
                                             </dxe:ASPxDateEdit>
                                         </td>
-                                        <td style="text-align: center;">
-                                            至
-                                        </td>
-                                        <td style="text-align: left;">
-                                            <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server">
-                                            </dxe:ASPxDateEdit>
-                                        </td>
+                                        
                                         <td style="text-align: right;">
                                             <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
                                             <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;

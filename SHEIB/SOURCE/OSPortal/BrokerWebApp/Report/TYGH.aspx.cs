@@ -59,19 +59,12 @@ namespace BrokerWebApp.Report
 
         private void BindGrid()
         {
-            string sSql = "";
-            string conn = ConfigurationManager.ConnectionStrings["broker"].ConnectionString;
-            Report.rpt.dsTYGH dFee = new Report.rpt.dsTYGH();
-
-            sSql = "";
-            sSql = sSql + "select *";
-            sSql = sSql + " from TYGH a";
-            SqlDataAdapter ad = new SqlDataAdapter(sSql, conn);
-            ad.Fill(dFee, "TYGH");
+            string sNy = dxeStartDate.Date.ToString("yyyyMM");
+            DataSet dseInvoice = BusinessObjects.BO_Report.GetInsuranceCommissionTradeReport(sNy);
 
 
             ReportViewer1.Visible = true;
-            ReportDataSource dsFee = new ReportDataSource("dsTYGH_TYGH", dFee.Tables["TYGH"]);
+            ReportDataSource dsFee = new ReportDataSource("dsTYGH_TYGH", dseInvoice.Tables[0]);
             //ReportViewer1.LocalReport.ReportPath = "rptNoticeDirect.rdlc";
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(dsFee);
