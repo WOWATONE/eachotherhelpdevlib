@@ -98,6 +98,78 @@
           <DataField>HJ_ZXF_LJ</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="CPremium">
+          <DataField>CPremium</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CPremiumSum">
+          <DataField>CPremiumSum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CProcess">
+          <DataField>CProcess</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CProcessSum">
+          <DataField>CProcessSum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CConsult">
+          <DataField>CConsult</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CConsultSum">
+          <DataField>CConsultSum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LPremium">
+          <DataField>LPremium</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LPremiumSum">
+          <DataField>LPremiumSum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LProcess">
+          <DataField>LProcess</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LProcessSum">
+          <DataField>LProcessSum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LConsult">
+          <DataField>LConsult</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LConsultSum">
+          <DataField>LConsultSum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SPremium">
+          <DataField>SPremium</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SPremiumSum">
+          <DataField>SPremiumSum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SProcess">
+          <DataField>SProcess</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SProcessSum">
+          <DataField>SProcessSum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SConsult">
+          <DataField>SConsult</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SConsultSum">
+          <DataField>SConsultSum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DummyDataSource</DataSourceName>
@@ -124,343 +196,361 @@
               <TableCells>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="CC_BF_BQ_1">
-                      <rd:DefaultName>CC_BF_BQ_1</rd:DefaultName>
+                    <Textbox Name="CPremium">
+                      <rd:DefaultName>CPremium</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!CC_BF_BQ.Value</Value>
+                      <Value>=Fields!CPremium.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="CC_BF_LJ_1">
-                      <rd:DefaultName>CC_BF_LJ_1</rd:DefaultName>
+                    <Textbox Name="CPremiumSum">
+                      <rd:DefaultName>CPremiumSum</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!CC_BF_LJ.Value</Value>
+                      <Value>=Fields!CPremiumSum.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="CC_JJF_BQ">
-                      <rd:DefaultName>CC_JJF_BQ</rd:DefaultName>
+                    <Textbox Name="CPremiumSum_1">
+                      <rd:DefaultName>CPremiumSum_1</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!CC_JJF_BQ.Value</Value>
+                      <Value>=Fields!CPremiumSum.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="CC_JJF_LJ">
-                      <rd:DefaultName>CC_JJF_LJ</rd:DefaultName>
+                    <Textbox Name="CProcessSum">
+                      <rd:DefaultName>CProcessSum</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!CC_JJF_LJ.Value</Value>
+                      <Value>=Fields!CProcessSum.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="CC_ZXF_BQ">
-                      <rd:DefaultName>CC_ZXF_BQ</rd:DefaultName>
+                    <Textbox Name="CConsult">
+                      <rd:DefaultName>CConsult</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!CC_ZXF_BQ.Value</Value>
+                      <Value>=Fields!CConsult.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="CC_ZXF_LJ">
-                      <rd:DefaultName>CC_ZXF_LJ</rd:DefaultName>
+                    <Textbox Name="CConsultSum">
+                      <rd:DefaultName>CConsultSum</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!CC_ZXF_LJ.Value</Value>
+                      <Value>=Fields!CConsultSum.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="RS_BF_BQ">
-                      <rd:DefaultName>RS_BF_BQ</rd:DefaultName>
+                    <Textbox Name="LPremium">
+                      <rd:DefaultName>LPremium</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!RS_BF_BQ.Value</Value>
+                      <Value>=Fields!LPremium.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="RS_BF_LJ">
-                      <rd:DefaultName>RS_BF_LJ</rd:DefaultName>
+                    <Textbox Name="LPremiumSum">
+                      <rd:DefaultName>LPremiumSum</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!RS_BF_LJ.Value</Value>
+                      <Value>=Fields!LPremiumSum.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="RS_JJF_BQ">
-                      <rd:DefaultName>RS_JJF_BQ</rd:DefaultName>
+                    <Textbox Name="LProcess">
+                      <rd:DefaultName>LProcess</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!RS_JJF_BQ.Value</Value>
+                      <Value>=Fields!LProcess.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="RS_JJF_LJ">
-                      <rd:DefaultName>RS_JJF_LJ</rd:DefaultName>
+                    <Textbox Name="LProcessSum">
+                      <rd:DefaultName>LProcessSum</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!RS_JJF_LJ.Value</Value>
+                      <Value>=Fields!LProcessSum.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="RS_ZXF_BQ">
-                      <rd:DefaultName>RS_ZXF_BQ</rd:DefaultName>
+                    <Textbox Name="LConsult">
+                      <rd:DefaultName>LConsult</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!RS_ZXF_BQ.Value</Value>
+                      <Value>=Fields!LConsult.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="RS_ZXF_LJ">
-                      <rd:DefaultName>RS_ZXF_LJ</rd:DefaultName>
+                    <Textbox Name="LConsultSum">
+                      <rd:DefaultName>LConsultSum</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!RS_ZXF_LJ.Value</Value>
+                      <Value>=Fields!LConsultSum.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="HJ_BF_BQ">
-                      <rd:DefaultName>HJ_BF_BQ</rd:DefaultName>
+                    <Textbox Name="SPremium">
+                      <rd:DefaultName>SPremium</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!HJ_BF_BQ.Value</Value>
+                      <Value>=Fields!SPremium.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="HJ_BF_LJ">
-                      <rd:DefaultName>HJ_BF_LJ</rd:DefaultName>
+                    <Textbox Name="SPremiumSum">
+                      <rd:DefaultName>SPremiumSum</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!HJ_BF_LJ.Value</Value>
+                      <Value>=Fields!SPremiumSum.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="HJ_JJF_BQ">
-                      <rd:DefaultName>HJ_JJF_BQ</rd:DefaultName>
+                    <Textbox Name="SProcess">
+                      <rd:DefaultName>SProcess</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!HJ_JJF_BQ.Value</Value>
+                      <Value>=Fields!SProcess.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="HJ_JJF_LJ">
-                      <rd:DefaultName>HJ_JJF_LJ</rd:DefaultName>
+                    <Textbox Name="SProcessSum">
+                      <rd:DefaultName>SProcessSum</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!HJ_JJF_LJ.Value</Value>
+                      <Value>=Fields!SProcessSum.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="HJ_ZXF_BQ">
-                      <rd:DefaultName>HJ_ZXF_BQ</rd:DefaultName>
+                    <Textbox Name="SConsult">
+                      <rd:DefaultName>SConsult</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!HJ_ZXF_BQ.Value</Value>
+                      <Value>=Fields!SConsult.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="HJ_ZXF_LJ">
-                      <rd:DefaultName>HJ_ZXF_LJ</rd:DefaultName>
+                    <Textbox Name="SConsultSum">
+                      <rd:DefaultName>SConsultSum</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
                         </BorderStyle>
                         <FontFamily>宋体</FontFamily>
+                        <FontSize>9pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!HJ_ZXF_LJ.Value</Value>
+                      <Value>=Fields!SConsultSum.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
