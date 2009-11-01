@@ -1719,12 +1719,13 @@
                                     <dxwgv:ASPxGridView ID="gridDocList" ClientInstanceName="gridDocList" runat="server"
                                         KeyFieldName="PolicyDocID" Width="100%" AutoGenerateColumns="False" 
                                         OnCustomCallback="gridDocList_CustomCallback"
+                                        OnHtmlRowCreated="gridDocList_HtmlRowCreated"                                        
                                         >
                                         <%-- BeginRegion Columns --%>
                                         <Columns>
                                             <dxwgv:GridViewDataColumn FieldName="DocName" Caption="文件名" CellStyle-Wrap="False" Width="25" Settings-AllowDragDrop="false">
                                                 <DataItemTemplate>
-                                                    <a id="fileurl <%# Eval("PolicyDocID") %>" onclick="hlPolicyItemTogetherClick('<%# Eval("DocURL") %>');" href="#"><%# Eval("DocName")%></a>
+                                                    <asp:HyperLink runat="server" ID="docitemlnk"></asp:HyperLink>
                                                 </DataItemTemplate>
                                             </dxwgv:GridViewDataColumn>
                                             <dxwgv:GridViewDataColumn FieldName="DocURL" Caption="链接地址" CellStyle-Wrap="False">
