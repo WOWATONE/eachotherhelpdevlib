@@ -16,6 +16,11 @@ using BusinessObjects;
 using BusinessObjects.SchemaSetting;
 using BusinessObjects.Policy;
 
+using DevExpress.Web.ASPxGridView;
+using DevExpress.Web.ASPxGridView.Rendering;
+using DevExpress.Web.ASPxClasses.Internal;
+
+
 namespace BrokerWebApp.vehicleinsurance
 {
     public partial class CarPolicyAlert : BasePage
@@ -398,6 +403,30 @@ namespace BrokerWebApp.vehicleinsurance
         }
 
 
+
+        protected void gridDocList_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data)
+            {
+                Control thectr;
+                HyperLink thelnk;
+                thectr = gridDocList.FindRowCellTemplateControl(e.VisibleIndex, null, "docitemlnk");
+
+                if (thectr != null)
+                {
+                    thelnk = (HyperLink)thectr;
+                    thelnk.ID = "fileurl" + Convert.ToString(e.GetValue("PolicyDocID"));
+                    thelnk.NavigateUrl = "#";
+                    thelnk.Text = Convert.ToString(e.GetValue("DocName"));
+                    String lnkUrl = "";
+                    lnkUrl = Convert.ToString(e.GetValue("DocURL"));
+                    lnkUrl = BasePage.URLCombine(BasePage.ApplicationRoot, lnkUrl);
+                    thelnk.Attributes.Add("onclick", "hlPolicyItemTogetherClick('" + lnkUrl + "');");
+                }
+
+            }
+        }
 
         protected void gridDocList_CustomCallback(object sender, 
             DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
