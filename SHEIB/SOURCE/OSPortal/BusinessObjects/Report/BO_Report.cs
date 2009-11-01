@@ -70,7 +70,13 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
             return _db.ExecuteDataSet(dbCommand);
         }
-        
+
+        public static DataSet GetInsuranceCommissionTradeReport(string sNy)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.rpt_InsuranceCommissionTrade");
+            _db.AddInParameter(dbCommand, "@ac_NY", DbType.String, sNy);
+            return _db.ExecuteDataSet(dbCommand);
+        }
         #endregion Methods
 
 
