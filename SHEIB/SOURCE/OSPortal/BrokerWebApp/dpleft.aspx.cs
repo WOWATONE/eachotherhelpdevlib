@@ -785,6 +785,72 @@ namespace BrokerWebApp
             //else
             //    this.ASPxNavBar1.Groups[10].ClientEnabled = false;
 
+            //服务提醒
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindPayInOut);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[11].Items[0].ClientEnabled = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[11].Items[0].ClientEnabled = false;
+            }
+
+            //服务提醒
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindPremiumContinue);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[11].Items[1].ClientEnabled = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[11].Items[1].ClientEnabled = false;
+            }
+
+            //服务提醒
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindCustomerPtFollow);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[11].Items[2].ClientEnabled = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[11].Items[2].ClientEnabled = false;
+            }
+
+            //服务提醒
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindCustomerBirthday);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[11].Items[3].ClientEnabled = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[11].Items[3].ClientEnabled = false;
+            }
+
+            //服务提醒
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindProcess);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[11].Items[4].ClientEnabled = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[11].Items[4].ClientEnabled = false;
+            }
+
+
         }
 
 

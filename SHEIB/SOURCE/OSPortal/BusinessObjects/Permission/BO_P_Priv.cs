@@ -449,7 +449,14 @@ namespace BusinessObjects
             CIRC_Report_BySignAdress = 102020,
 
             //同业公会报表
-            Trade_Association_Report = 102030
+            Trade_Association_Report = 102030,
+
+            //
+            MessageRemindPayInOut = 113010,
+            MessageRemindPremiumContinue = 113020,
+            MessageRemindCustomerPtFollow= 113030,
+            MessageRemindCustomerBirthday=113040,
+            MessageRemindProcess = 113050
 
         }
 
