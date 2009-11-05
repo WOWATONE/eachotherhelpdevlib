@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="理赔保单选择" Language="C#" MasterPageFile="~/SiteMastePages/PopupMaster.Master"
-    AutoEventWireup="true" Theme="Aqua" CodeBehind="NotifyClaimPolicySelect.aspx.cs" Inherits="BrokerWebApp.CustomerClaim.NotifyClaimPolicySelect" %>
+    AutoEventWireup="true" Theme="Aqua" CodeBehind="NotifyClaimPolicySelect.aspx.cs"
+    Inherits="BrokerWebApp.CustomerClaim.NotifyClaimPolicySelect" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
     TagPrefix="dxrp" %>
@@ -143,7 +144,8 @@
                                     Width="100px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
                                 </dxe:ASPxComboBox>
                             </td>
-                            <td></td>
+                            <td>
+                            </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
@@ -166,122 +168,42 @@
                             <td style="text-align: right;">
                                 分支机构：
                             </td>
-                            <td style="text-align: left;">                                
+                            <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlBranch" ClientInstanceName="dxeddlBranch" runat="server"
-                                    Width="100px" DropDownStyle="DropDownList"  OnCallback="dxeddlBranch_Callback">
+                                    Width="100px" DropDownStyle="DropDownList" OnCallback="dxeddlBranch_Callback">
                                 </dxe:ASPxComboBox>
                             </td>
-                            <td style="text-align: right;">
-                             
-                            </td>
-                            <td style="text-align: left;">
-                                
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
-                                <asp:CheckBox runat="server" ID="ckbPayDate" />
-                                应收日期：
-                            </td>
-                            <td style="text-align: left;" colspan="3">
-                                <table style="margin-left:-3px;">
-                                    <tr>
-                                        <td style="text-align: left;">
-                                            <dxe:ASPxDateEdit ID="dxeStartPayDate" Width="100" runat="server">
-                                            </dxe:ASPxDateEdit>
-                                        </td>
-                                        <td style="text-align: center; width:20px;">
-                                            至
-                                        </td>
-                                        <td style="text-align: left;">
-                                            <dxe:ASPxDateEdit ID="dxeEndPayDate" Width="100" runat="server">
-                                            </dxe:ASPxDateEdit>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>                            
                             <td style="text-align: right;">
                                 保单类型：
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlPolicyType" ClientInstanceName="dxeddlPolicyType" runat="server"
                                     Width="100px" DropDownStyle="DropDownList">
-                                </dxe:ASPxComboBox>                                
+                                </dxe:ASPxComboBox>
                             </td>
-                            <td style="text-align: right;"></td>
-                            <td style="text-align: left;"></td>
-                            <td></td>
-                        </tr>
+                            <td>
+                            </td>
+                        </tr>                        
                         <tr>
                             <td style="text-align: right;">
-                                <asp:CheckBox runat="server" ID="chkPolicyStartDate" />
-                                起保日期：
                             </td>
-                            <td style="text-align: left;" colspan="3">
-                                <table style="margin-left:-3px;">
-                                    <tr>
-                                        <td style="text-align: left;">
-                                            <dxe:ASPxDateEdit ID="dxePolicyStartDateStart" Width="100" runat="server">
-                                            </dxe:ASPxDateEdit>
-                                        </td>
-                                        <td style="text-align: center; width:20px;">
-                                            至
-                                        </td>
-                                        <td style="text-align: left;">
-                                            <dxe:ASPxDateEdit ID="dxePolicyStartDateEnd" Width="100"  runat="server">
-                                            </dxe:ASPxDateEdit>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>                             
-                            <td style="text-align: right;"></td>
-                            <td style="text-align: left;"></td>
-                            <td style="text-align: right;"></td>
-                            <td style="text-align: left;"></td>
-                            <td></td>                           
-                        </tr>
-                        <tr>
+                            <td style="text-align: left;">
+                            </td>
                             <td style="text-align: right;">
-                                <asp:CheckBox runat="server" ID="chkPolicyEndDate" />
-                                终止日期：
                             </td>
-                            <td style="text-align: left;" colspan="3">
-                                <table style="margin-left:-3px;">
-                                    <tr>
-                                        <td style="text-align: left;">
-                                            <dxe:ASPxDateEdit ID="dxePolicyEndDateStart" Width="100" runat="server">
-                                            </dxe:ASPxDateEdit>
-                                        </td>
-                                        <td style="text-align: center; width:20px;">
-                                            至
-                                        </td>
-                                        <td style="text-align: left;">
-                                            <dxe:ASPxDateEdit ID="dxePolicyEndDateEnd" Width="100" runat="server">
-                                            </dxe:ASPxDateEdit>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>                            
-                            <td style="text-align: right;"></td>
-                            <td style="text-align: left;"></td>
-                            <td style="text-align: right;"></td>
-                            <td style="text-align: left;"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;"></td>
-                            <td style="text-align: left;"></td>
-                            <td style="text-align: right;"></td>
-                            <td style="text-align: left;"></td>
-                            <td style="text-align: right;"></td>
-                            <td style="text-align: left;"></td>
+                            <td style="text-align: left;">
+                            </td>
+                            <td style="text-align: right;">
+                            </td>
+                            <td style="text-align: left;">
+                            </td>
                             <td style="text-align: left;" colspan="2">
                                 <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
-                                <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp; 
+                                <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
                                 <input type="button" value="确定" name="btnOk" id="btnok" class="input_2" onclick="btnOk_Click();" />
                             </td>
-                            <td></td>
+                            <td>
+                            </td>
                         </tr>
                     </table>
                 </asp:Panel>
@@ -313,15 +235,14 @@
                         <tr>
                             <td>
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
-                                    KeyFieldName="PolicyID" AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%"
-                                    SettingsPager-AlwaysShowPager="true">
+                                    KeyFieldName="PolicyID" AutoGenerateColumns="False" Settings-ShowFooter="true"
+                                    Width="100%" SettingsPager-AlwaysShowPager="true">
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
-                                        <dxwgv:GridViewCommandColumn ShowSelectCheckbox="true"  Caption="&nbsp;" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewCommandColumn ShowSelectCheckbox="true" Caption="&nbsp;" CellStyle-Wrap="False">
                                             <SelectButton Visible="false" />
-                                        </dxwgv:GridViewCommandColumn>                                        
-                                        <dxwgv:GridViewDataDateColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False"
-                                            >
+                                        </dxwgv:GridViewCommandColumn>
+                                        <dxwgv:GridViewDataDateColumn FieldName="PolicyID" Caption="投保单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataDateColumn>
                                         <dxwgv:GridViewDataColumn FieldName="Beneficiary" Caption="被保险人" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -333,7 +254,7 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="险种" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="StartDate" Caption="开始日期" CellStyle-Wrap="False" >
+                                        <dxwgv:GridViewDataColumn FieldName="StartDate" Caption="开始日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="EndDate" Caption="结束日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -347,8 +268,7 @@
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" />
                                     <Settings ShowGroupPanel="false" />
-                                    
-                                    <ClientSideEvents RowClick="function(s, e) { OnRowClick(e); }"  CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
+                                    <ClientSideEvents RowClick="function(s, e) { OnRowClick(e); }" CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
                             </td>
                         </tr>

@@ -35,11 +35,11 @@ namespace BrokerWebApp.CustomerClaim
             string lsWhere = "";
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and b.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and b.PolicyNo like '%" + dxetxtPolicyNo.Text + "%'";
             }
             if (dxetxtPolicyID.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and a.PolicyID ='" + dxetxtPolicyID.Text + "'";
+                lsWhere = lsWhere + " and b.PolicyID like '%" + dxetxtPolicyID.Text + "%'";
             }
             if (this.dxeddlDeptId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptId.SelectedItem.Value.ToString()))
             {
@@ -64,28 +64,6 @@ namespace BrokerWebApp.CustomerClaim
             if (this.dxeddlPolicyType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyType.SelectedItem.Value.ToString()))
             {
                 lsWhere = lsWhere + " and  b.PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString().Trim() + "') ";
-            }
-
-            if (ckbPayDate.Checked)
-            {
-                string lsStartDate = dxeStartPayDate.Date.ToString("yyyy-MM-dd");
-                string lsEndDate = dxeEndPayDate.Date.ToString("yyyy-MM-dd");
-                lsWhere = lsWhere + " and (convert(char(10), A.PayDate,21)) >='" + lsStartDate + "'";
-                lsWhere = lsWhere + " and (convert(char(10), A.PayDate,21)) <='" + lsEndDate + "'";
-            }
-            if (chkPolicyStartDate.Checked)
-            {
-                string lsStartDate = dxePolicyStartDateStart.Date.ToString("yyyy-MM-dd");
-                string lsEndDate = dxePolicyStartDateEnd.Date.ToString("yyyy-MM-dd");
-                lsWhere = lsWhere + " and (convert(char(10), b.StartDate,21)) >='" + lsStartDate + "'";
-                lsWhere = lsWhere + " and (convert(char(10), b.StartDate,21)) <='" + lsEndDate + "'";
-            }
-            if (chkPolicyEndDate.Checked)
-            {
-                string lsStartDate = dxePolicyEndDateStart.Date.ToString("yyyy-MM-dd");
-                string lsEndDate = dxePolicyEndDateEnd.Date.ToString("yyyy-MM-dd");
-                lsWhere = lsWhere + " and (convert(char(10), b.EndDate,21)) >='" + lsStartDate + "'";
-                lsWhere = lsWhere + " and (convert(char(10), b.EndDate,21)) <='" + lsEndDate + "'";
             }
 
             this.gridSearchResult.DataSource = BO_NotifyClaim.GetSelectPolicyList(lsWhere);
