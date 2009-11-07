@@ -41,6 +41,14 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand);
         }
 
+        public static DataSet GetFeePayinAddSelectListIncludeUnPayin(string sWhere)
+        {
+
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetFeePayinAddSelectListIncludeUnPayin");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
         public static DataSet GetFeePayinAddPrint(string sVoucherID)
         {
 
