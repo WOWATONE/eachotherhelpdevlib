@@ -509,11 +509,7 @@
             window.close();
         }
 
-        function gridPolicyItem_EndCallback(s, e) {
-            //
-        }
-
-
+        
         function policyTab_Changing(s, e) {
             //debugger;
             if (e.tab.index == 1 || e.tab.index == 2) {
@@ -760,7 +756,7 @@
     </script>
 
     <script type="text/javascript">
-
+        
         function gridPolicyItem_EndCallback(s, e) {
             dxeGetGridPolicyItemTotalSummary.PerformCallback();
         }
@@ -1409,8 +1405,7 @@
                                                                 </dxwgv:GridViewDataColumn>
                                                                 <dxwgv:GridViewDataColumn FieldName="ProdID" Caption="ProdID" CellStyle-Wrap="False" Visible="false">
                                                                 </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="PolicyStatus" Caption="PolicyStatus" CellStyle-Wrap="False" Visible="false">
-                                                                </dxwgv:GridViewDataColumn>
+                                                                
                                                             </Columns>
                                                             <TotalSummary>
                                                                 <dxwgv:ASPxSummaryItem FieldName="ProdName" SummaryType="Count" DisplayFormat="数量:#" />
