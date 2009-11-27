@@ -74,6 +74,21 @@ namespace BrokerWebApp.CustomerClaim
         protected void Page_PreRender(object sender, EventArgs e)
         {
             this.lblerrmsg.Visible = false;
+
+            bool isEndCase = BO_NotifyClaim.IsEnd(this.dxetxtNotifyID.Text);
+
+            if (isEndCase)
+            {
+                this.dxebtnBottomSave.Visible = false;
+                this.dxebtnBottomEndCase.Visible = false;
+                this.filesUploadControl.Visible = false;
+                this.gridTraceInfoItem.Enabled = false;
+            }
+            else
+            {
+                //
+            }
+
         }
 
 
@@ -90,7 +105,7 @@ namespace BrokerWebApp.CustomerClaim
 
         protected void dxeNotifyInfoSaveEndCase_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            String theResult = saveNotifyClaim("","");            
+            String theResult = saveNotifyClaim("","5");            
             e.Result = theResult;
         }
         
@@ -144,19 +159,22 @@ namespace BrokerWebApp.CustomerClaim
             dxedePerambulateTime.Date = notifyClaim.PerambulateTime;
 
             dxedeDocCompleteDate.Date = notifyClaim.DocCompleteDate;
+            
             dxetxtLastPayFee.Text = String.Format(BasePage.TheTwoSF, notifyClaim.LastPayFee);
+            
             dxedeLastPayDate.Date = notifyClaim.LastPayDate;
             dxedeCaseEndTime.Date = notifyClaim.CaseEndTime;
             
             //
-            if (!String.IsNullOrEmpty(notifyClaim.CaseEndPerson))
-            {
-                theselected = dxeddlCaseEndPerson.Items.FindByValue(notifyClaim.CaseEndPerson);
-                if (theselected != null)
-                {
-                    dxeddlCaseEndPerson.SelectedItem = theselected;
-                }
-            }
+            //if (!String.IsNullOrEmpty(notifyClaim.CaseEndPerson))
+            //{
+            //    theselected = dxeddlCaseEndPerson.Items.FindByValue(notifyClaim.CaseEndPerson);
+            //    if (theselected != null)
+            //    {
+            //        dxeddlCaseEndPerson.SelectedItem = theselected;
+            //    }
+            //}
+            dxetxtCaseEndPerson.Text = notifyClaim.CaseEndPerson;
 
             dxetxtCreatePerson.Text = notifyClaim.CreatePerson;
             dxedeCreateDate.Date = notifyClaim.CreateDate;
@@ -255,6 +273,21 @@ namespace BrokerWebApp.CustomerClaim
                 obj = BO_NotifyClaim.GetNotifyClaimByNotifyID(this.dxetxtNotifyID.Text.Trim());
                 setData(obj);
                 obj.Save(ModifiedAction.Update);
+
+                //结案
+                if (policyState == "5")
+                {
+                    bool existEndCase = BO_NotifyClaim.IsEnd(obj.NotifyID);
+                    
+                    if (existEndCase == false)
+                    {
+                        BO_NotifyClaimFollow ncf = new BO_NotifyClaimFollow();
+                        ncf.NotifyID = obj.NotifyID;
+                        ncf.LoseStatus = "5";
+                        ncf.Save(ModifiedAction.Insert);
+                    }
+                }
+
             }
 
             return obj.NotifyID;
@@ -270,7 +303,7 @@ namespace BrokerWebApp.CustomerClaim
             notifyClaim.AccidentSpot = dxetxtAccidentSpot.Text;
             notifyClaim.NotifyTime = dxedeNotifyTime.Date;
 
-            if (!String.IsNullOrEmpty(dxetxtNotifyLossFee.Text.Trim()))
+            if (!String.IsNullOrEmpty(dxetxtNotifyLossFee.Text.Trim()) && BasePage.IsNumeric(dxetxtNotifyLossFee.Text))
                 notifyClaim.NotifyLossFee = Convert.ToDouble(dxetxtNotifyLossFee.Text.Trim());
             
             notifyClaim.AccidentTime = dxedeAccidentTime.Date;
@@ -297,16 +330,18 @@ namespace BrokerWebApp.CustomerClaim
 
             notifyClaim.DocCompleteDate = dxedeDocCompleteDate.Date;
 
-            dxetxtLastPayFee.Text = String.Format(BasePage.TheTwoSF, notifyClaim.LastPayFee);
+            if (!String.IsNullOrEmpty(dxetxtLastPayFee.Text.Trim()) && BasePage.IsNumeric(dxetxtLastPayFee.Text))
+                notifyClaim.LastPayFee = Convert.ToDouble(dxetxtLastPayFee.Text.Trim());
             
             notifyClaim.LastPayDate = dxedeLastPayDate.Date;
             notifyClaim.CaseEndTime = dxedeCaseEndTime.Date;
 
             //
-            theselected = dxeddlCaseEndPerson.SelectedItem;
-            if (theselected != null)
-                notifyClaim.CaseEndPerson = theselected.Value.ToString();
-            
+            //theselected = dxeddlCaseEndPerson.SelectedItem;
+            //if (theselected != null)
+            //    notifyClaim.CaseEndPerson = theselected.Value.ToString();
+            notifyClaim.CaseEndPerson = dxetxtCaseEndPerson.Text;
+
             notifyClaim.CreatePerson = this.CurrentUserID;
             notifyClaim.CreateDate = dxedeCreateDate.Date;
 
@@ -318,24 +353,24 @@ namespace BrokerWebApp.CustomerClaim
         private void bindDropDownLists()
         {
             
-            List<BusinessObjects.BO_P_User> userList;
-            if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_List_Search_Group))
-            {
-                userList = BusinessObjects.BO_P_User.FetchDeptUserList(this.CurrentUser.DeptID);
-            }
-            else if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_List_Search_All))
-            {
-                userList = BusinessObjects.BO_P_User.FetchList();
-            }
-            else
-            {
-                userList = BusinessObjects.BO_P_User.FetchList();
-            }
-            this.dxeddlCaseEndPerson.DataSource = userList;
-            this.dxeddlCaseEndPerson.TextField = "UserNameCn";
-            this.dxeddlCaseEndPerson.ValueField = "UserID";
-            this.dxeddlCaseEndPerson.DataBind();
-            this.dxeddlCaseEndPerson.Items.Insert(0, new ListEditItem("", ""));
+            //List<BusinessObjects.BO_P_User> userList;
+            //if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_List_Search_Group))
+            //{
+            //    userList = BusinessObjects.BO_P_User.FetchDeptUserList(this.CurrentUser.DeptID);
+            //}
+            //else if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_List_Search_All))
+            //{
+            //    userList = BusinessObjects.BO_P_User.FetchList();
+            //}
+            //else
+            //{
+            //    userList = BusinessObjects.BO_P_User.FetchList();
+            //}
+            //this.dxeddlCaseEndPerson.DataSource = userList;
+            //this.dxeddlCaseEndPerson.TextField = "UserNameCn";
+            //this.dxeddlCaseEndPerson.ValueField = "UserID";
+            //this.dxeddlCaseEndPerson.DataBind();
+            //this.dxeddlCaseEndPerson.Items.Insert(0, new ListEditItem("", ""));
 
             this.dxeddlLossType.DataSource = BusinessObjects.BO_NotifyClaim.GetLossTypeList();
             this.dxeddlLossType.TextField = "AccountTypeName";
@@ -540,10 +575,12 @@ namespace BrokerWebApp.CustomerClaim
             {
                 e.Errors[this.gridTraceInfoItem.Columns[0]] = "必需项";
             }
+
             if (gridTraceInfoItem_dxetxtFollowContent.Text.Trim() == "")
             {
                 e.Errors[this.gridTraceInfoItem.Columns[1]] = "必需项";
             }
+
             if (gridTraceInfoItem_dxetxtFollowNextContent.Text.Trim() == "")
             {
                 e.Errors[this.gridTraceInfoItem.Columns[2]] = "必需项";
@@ -554,10 +591,10 @@ namespace BrokerWebApp.CustomerClaim
                 e.Errors[this.gridTraceInfoItem.Columns[3]] = "必需项";
             }
 
-            if (gridTraceInfoItem_dxetxtEstimateFeel.Text.Trim() == "")
-            {
-                e.Errors[this.gridTraceInfoItem.Columns[4]] = "必需项";
-            }
+            //if (gridTraceInfoItem_dxetxtEstimateFeel.Text.Trim() == "")
+            //{
+            //    e.Errors[this.gridTraceInfoItem.Columns[4]] = "必需项";
+            //}
 
             String appendDes = "必需项";
             gridTraceInfoItem_dxedeFollowDate.Validate();
