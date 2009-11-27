@@ -10,9 +10,15 @@ using System.Xml.Linq;
 using System.Data;
 using BusinessObjects;
 
+using DevExpress.Web.ASPxEditors;
+using DevExpress.Web.ASPxGridView;
+using DevExpress.Web.ASPxGridView.Rendering;
+using DevExpress.Web.ASPxClasses.Internal;
+
+
 namespace BrokerWebApp.CustomerClaim
 {
-    public partial class NotifyClaimList : System.Web.UI.Page
+    public partial class NotifyClaimList : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -59,6 +65,61 @@ namespace BrokerWebApp.CustomerClaim
         {
             //
         }
+
+        protected void gridSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            this.gridSearchResult.DataBind();
+        }
+
+
+
+        protected void gridSearchResult_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data)
+            {
+                bool isEnd = false;
+                DataRow dr = this.gridSearchResult.GetDataRow(e.VisibleIndex);
+                if (dr != null)
+                {
+                    if (!String.IsNullOrEmpty(dr["LoseStatusName"].ToString()))
+                    {
+                        if (dr["LoseStatusName"].ToString().Trim() == "结案")
+                        {
+                            isEnd = true;
+                        }
+                    }
+                }
+                GridViewCommandColumn objgcc = getCommandColumnLoop();
+                //Boolean checkPerm = true;
+                GridViewCommandColumnButtonControl thebtn;
+                InternalHyperLink theIHL;
+                
+                //delete
+                //checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.CarPolicyAlt_Add);
+                thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
+                thebtn.Enabled = !isEnd;
+                thebtn.Visible = !isEnd;
+                theIHL = (InternalHyperLink)thebtn.Controls[0];
+                theIHL.Enabled = !isEnd;
+                theIHL.Visible = !isEnd;
+
+
+                //modify
+                //checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_Modify);
+                thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[1];
+                thebtn.Enabled = true;                
+                theIHL = (InternalHyperLink)thebtn.Controls[0];
+                theIHL.Enabled = true;
+                if (isEnd)
+                {
+                    theIHL.Text = "查看";
+                }
+
+            }
+        }
+
+
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
@@ -107,5 +168,24 @@ namespace BrokerWebApp.CustomerClaim
             this.gridSearchResult.DataSource = BusinessObjects.BO_NotifyClaim.GetNotifyClaimList(sbWhere.ToString()).Tables[0];
             this.gridSearchResult.DataBind();
         }
+
+
+        private GridViewCommandColumn getCommandColumnLoop()
+        {
+            GridViewCommandColumn theCommandColumn = null;
+            foreach (GridViewColumn item in gridSearchResult.VisibleColumns)
+            {
+                if (item.GetType() == typeof(GridViewCommandColumn))
+                {
+                    theCommandColumn = (GridViewCommandColumn)item;
+                    break;
+                }
+            }
+            return theCommandColumn;
+        }
+
+
+    
+    
     }
 }

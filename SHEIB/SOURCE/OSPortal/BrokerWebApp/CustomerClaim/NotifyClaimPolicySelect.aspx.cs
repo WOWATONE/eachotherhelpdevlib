@@ -22,11 +22,16 @@ namespace BrokerWebApp.CustomerClaim
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack && !IsCallback)
+            if (!IsPostBack)
             {
-                Initialization();                
+                Initialization();
             }
-            //BindGrid();
+
+            if (IsPostBack && this.Page.IsCallback)
+            {
+                this.BindGrid();
+            }
+
         }
 
 

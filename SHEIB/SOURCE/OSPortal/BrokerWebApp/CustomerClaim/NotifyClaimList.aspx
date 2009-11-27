@@ -174,7 +174,10 @@
                            Width="100%" 
                            SettingsPager-AlwaysShowPager="true" 
                            OnRowDeleting="gridSearchResult_RowDeleting"
-                           OnRowDeleted="gridSearchResult_RowDeleted">
+                           OnRowDeleted="gridSearchResult_RowDeleted"
+                           OnHtmlRowCreated="gridSearchResult_HtmlRowCreated"
+                           OnCustomCallback="gridSearchResult_CustomCallback"
+                           >
                         <Columns>
                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" Width="20px">
                                 <NewButton Visible="False" />
@@ -236,6 +239,9 @@
                             <dxwgv:GridViewDataTextColumn Caption="保险公司联系方式" FieldName="CarrierContactPhone" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataColumn FieldName="NotifyID" Caption="NotifyID" CellStyle-Wrap="False"
+                                            Visible="false">
+                            </dxwgv:GridViewDataColumn>
+                            <dxwgv:GridViewDataColumn FieldName="LoseStatusName" Caption="LoseStatusName" CellStyle-Wrap="False"
                                             Visible="false">
                             </dxwgv:GridViewDataColumn>
                         </Columns>

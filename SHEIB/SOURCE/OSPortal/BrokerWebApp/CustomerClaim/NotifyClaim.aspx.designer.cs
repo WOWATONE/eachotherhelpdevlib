@@ -590,13 +590,13 @@ namespace BrokerWebApp.CustomerClaim {
         protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxedeCaseEndTime;
         
         /// <summary>
-        /// dxeddlCaseEndPerson control.
+        /// dxetxtCaseEndPerson control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlCaseEndPerson;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtCaseEndPerson;
         
         /// <summary>
         /// dxetxtCreatePerson control.

@@ -38,9 +38,12 @@
         });
 
         function setDxeButtonsUnableOrEnable(val) {
-            gridTraceInfoItem.SetClientVisible(val);
-            filesUploadControl.SetClientVisible(val);
-            gridDocList.SetClientVisible(val);
+            if (typeof (gridTraceInfoItem) != 'undefined' && gridTraceInfoItem != null)
+                gridTraceInfoItem.SetClientVisible(val);
+            if (typeof (filesUploadControl) != 'undefined' && filesUploadControl != null)
+                filesUploadControl.SetClientVisible(val);
+            if (typeof (gridDocList) != 'undefined' && gridDocList != null)
+                gridDocList.SetClientVisible(val);
         }
 
 	    function NotifyPersonLostFocus(s, e) {
@@ -600,7 +603,6 @@
                                                                 runat="server" Width="120px">
                                                                 <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
                                                                     <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="格式不对" />
-                                                                    <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                 </ValidationSettings>
                                                                 <ClientSideEvents />
                                                             </dxe:ASPxTextBox>
@@ -828,11 +830,8 @@
                                 结案人：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlCaseEndPerson" ClientInstanceName="dxeddlCaseEndPerson" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
-									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
-                                    </ValidationSettings>
-                                </dxe:ASPxComboBox>
+                                <dxe:ASPxTextBox ID="dxetxtCaseEndPerson" ClientInstanceName="dxetxtCaseEndPerson" runat="server" Width="120px">
+                                </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
                             </td>

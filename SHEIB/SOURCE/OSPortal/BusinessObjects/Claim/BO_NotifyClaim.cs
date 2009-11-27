@@ -486,7 +486,6 @@ namespace BusinessObjects
             sb.Append("SELECT  A.NotifyID,A.NotifySerialNo, B.PolicyNo, A.AccidentReason,  A.NotifyTime, A.AccidentTime,A.NotifyCarrierTime, A.AccidentProc,   ");
             sb.Append("A.NotifyLossFee, A.DocCompleteDate,A.CaseEndTime, A.LastPayDate,  ");
             sb.Append("A.LastPayFee,A.NotifyRemark,A.NotifyNo,A.ContactPerson,");
-            sb.Append("A.LastPayFee,A.NotifyRemark,A.NotifyNo,A.ContactPerson, ");
             sb.Append("A.ContactPhone,A.CarrierContactPerson,A.CarrierContactPhone,");
             sb.Append("B.Beneficiary,B.PremiumBase ,");
             sb.Append("(Select CustName from Customer where CustID = B.CustomerID) CustName,");
@@ -719,7 +718,26 @@ namespace BusinessObjects
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
             return _db.ExecuteDataSet(dbCommand);
         }
-        
+
+
+        public static bool IsEnd(String notifyID)
+        {
+            bool existEndCase = false;
+            DataSet ds = BO_NotifyClaimFollow.GetNotifyClaimFollowListByNotifyID(notifyID);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    if (item["LoseStatus"] != null && item["LoseStatus"].ToString() == "5")
+                    {
+                        existEndCase = true;
+                        break;
+                    }
+                }
+            }
+            return existEndCase;
+        }
+
         #endregion
 
 
