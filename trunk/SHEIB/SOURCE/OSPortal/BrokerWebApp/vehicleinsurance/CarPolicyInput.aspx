@@ -739,6 +739,24 @@
     </script>
 
     <script type="text/javascript">
+
+        function CarrierProductType_SelectedIndexChanged(s, e) {
+            var thejsonstring = dxecbGridPolicyItemProdID.GetSelectedItem().value;
+            if (!isEmpty(thejsonstring)) {
+                if (thejsonstring == "<%=CarDamnificationType %>") {
+                    var carval;
+                    try {
+                        carval = parseFloat(dxetxtCarValue.GetValueString());
+                        if (isNaN(carval))
+                            carval = 0;
+                    }
+                    catch (err) {
+                        carval = 0;
+                    }
+                    dxetxtGridPolicyCoverage.SetValue(carval);
+                }
+            }
+        }
         
         function gridPolicyItem_EndCallback(s, e) {
             dxeGetGridPolicyItemTotalSummary.PerformCallback();
@@ -896,7 +914,7 @@
 
 
         function division_ValueChanged(t1, t2, t3, precision, sign, opt) {
-            debugger;
+            
             var v1;
             try {
                 v1 = parseFloat(t1.GetValueString());
@@ -1414,7 +1432,7 @@
                                                                                         ClientInstanceName="dxecbGridPolicyItemProdID" DropDownButton-Enabled="true"
                                                                                         DropDownStyle="DropDownList" Width="100px">
                                                                                         <Items></Items>
-                                                                                        <ClientSideEvents />
+                                                                                        <ClientSideEvents SelectedIndexChanged="CarrierProductType_SelectedIndexChanged" />
                                                                                         <ValidationSettings ErrorDisplayMode="ImageWithTooltip" >
                                                                                             <RequiredField IsRequired="true" ErrorText="必需项" />
                                                                                         </ValidationSettings>
