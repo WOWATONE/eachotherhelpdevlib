@@ -452,11 +452,25 @@ namespace BusinessObjects
             Trade_Association_Report = 102030,
 
             //
-            MessageRemindPayInOut = 113010,
-            MessageRemindPremiumContinue = 113020,
-            MessageRemindCustomerPtFollow= 113030,
-            MessageRemindCustomerBirthday=113040,
-            MessageRemindProcess = 113050
+            MessageRemindPayInOut_All = 113010,
+            MessageRemindPayInOut_Group = 113011,
+            MessageRemindPayInOut_Personal = 113012,
+
+            MessageRemindPremiumContinue_All = 113020,
+            MessageRemindPremiumContinue_Group = 113021,
+            MessageRemindPremiumContinue_Personal = 113022,
+
+            MessageRemindCustomerPtFollow_All = 113030,
+            MessageRemindCustomerPtFollow_Group = 113031,
+            MessageRemindCustomerPtFollow_Personal = 113032,
+
+            MessageRemindCustomerBirthday_All = 113040,
+            MessageRemindCustomerBirthday_Group = 113041,
+            MessageRemindCustomerBirthday_Personal = 113042,
+
+            MessageRemindProcess_All = 113050,
+            MessageRemindProcess_Group = 113051,
+            MessageRemindProcess_Personal = 113052
 
         }
 
