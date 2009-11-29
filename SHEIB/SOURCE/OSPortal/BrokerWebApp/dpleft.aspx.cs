@@ -787,7 +787,9 @@ namespace BrokerWebApp
 
             //服务提醒
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindPayInOut);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindPayInOut_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindPayInOut_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindPayInOut_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -800,7 +802,9 @@ namespace BrokerWebApp
 
             //服务提醒
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindPremiumContinue);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindPremiumContinue_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindPremiumContinue_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindPremiumContinue_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -813,7 +817,9 @@ namespace BrokerWebApp
 
             //服务提醒
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindCustomerPtFollow);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindCustomerPtFollow_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindCustomerPtFollow_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindCustomerPtFollow_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -826,7 +832,9 @@ namespace BrokerWebApp
 
             //服务提醒
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindCustomerBirthday);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindCustomerBirthday_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindCustomerBirthday_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindCustomerBirthday_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -839,7 +847,9 @@ namespace BrokerWebApp
 
             //服务提醒
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindProcess);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindProcess_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindProcess_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.MessageRemindProcess_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;
