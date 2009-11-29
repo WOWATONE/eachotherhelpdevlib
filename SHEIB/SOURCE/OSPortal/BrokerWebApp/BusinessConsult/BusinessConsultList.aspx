@@ -152,7 +152,7 @@
                                 <CellStyle Wrap="False">
                                 </CellStyle>
                             </dxwgv:GridViewCommandColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="咨询GUID" FieldName="ConsultFeeID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
+                            <dxwgv:GridViewDataTextColumn Caption="咨询单号" FieldName="ConsultFeeID" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="咨询号" FieldName="ConsultFeeNo" CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
