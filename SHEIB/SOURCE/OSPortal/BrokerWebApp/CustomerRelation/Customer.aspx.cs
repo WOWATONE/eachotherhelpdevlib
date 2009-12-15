@@ -14,6 +14,8 @@ using System.Xml.Linq;
 using DevExpress.Web.ASPxUploadControl;
 using DevExpress.Web.ASPxEditors;
 using BusinessObjects;
+using DevExpress.Web.ASPxGridView;
+using BusinessObjects.CustomerRelation;
 
 namespace BrokerWebApp.CustomerRelation
 {
@@ -44,8 +46,8 @@ namespace BrokerWebApp.CustomerRelation
 
                     this.Initialization();
                     CheckPermission();
-                   
-                   
+
+
                 }
                 else
                 {
@@ -315,7 +317,7 @@ namespace BrokerWebApp.CustomerRelation
 
                     Response.Redirect("Customer.aspx?CustID=" + customer.CustID, false);
                     //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Message", "<script language='javascript'>alert('保存成功。'); window.location.replace('Customer.aspx?CustID=" + customer.CustID + "');</script>", false);
-                    
+
                 }
                 else
                 {//修改客户
@@ -500,6 +502,54 @@ namespace BrokerWebApp.CustomerRelation
             this.gridBusDocList.DataSource = BusinessObjects.CustomerRelation.BO_CustomerBusDoc.FetchListByCustomer(this._custID);
             this.gridBusDocList.DataBind();
         }
+
+
+
+        protected void gridBusDocList_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            //if ((e.RowType == GridViewRowType.Data) || (e.RowType == GridViewRowType.Title) || (e.RowType == GridViewRowType.Group)
+            //    || (e.RowType == GridViewRowType.Preview)
+            //    )
+            //{
+            //    e.Row.Cells[1].Attributes.Add("style", "display:none;");
+            //}
+            e.Row.Cells[1].Attributes.Add("style", "display:none;");
+
+
+            if (e.RowType == GridViewRowType.Data)
+            {
+                Control thectr;
+                HyperLink thelnk;
+                thectr = gridBusDocList.FindRowCellTemplateControl(e.VisibleIndex, null, "docitemlnk");
+
+                //Control thectrID;
+                //thectrID = e.Row.Cells[ e.Row.Cells[e.VisibleIndex].Controls[0];
+                //thectrID.Visible = false;
+                //thelnk = gridDocList.FindRowTemplateControl(e.VisibleIndex, "docitemlnk");
+                if (thectr != null)
+                {
+                    thelnk = (HyperLink)thectr;
+                    thelnk.ID = "fileurl" + Convert.ToString(e.GetValue("CustBusDocID"));
+                    thelnk.NavigateUrl = "#";
+                    thelnk.Text = Convert.ToString(e.GetValue("CustBusDocName"));
+                    String lnkUrl = "";
+                    lnkUrl = Convert.ToString(e.GetValue("CustBusDocURL"));
+                    lnkUrl = BasePage.URLCombine(BasePage.ApplicationRoot, lnkUrl);
+                    thelnk.Attributes.Add("onclick", "hlPolicyItemTogetherClick('" + lnkUrl + "');");
+                }
+
+            }
+        }
+
+        protected void dxeDeleteCustomerBusDocCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            string key = e.Parameter;
+            e.Result = "";
+            BO_CustomerBusDoc.Delete(key);
+
+            e.Result = "ok";
+        }
         #endregion
 
         #region 联系人
@@ -519,7 +569,7 @@ namespace BrokerWebApp.CustomerRelation
                 (tblEditorTemplate.FindControl("dxetxtContactName") as ASPxTextBox).Focus();
                 throw new Exception("联系人姓名不能为空。");
             }
-            
+
             BO_CustContact custContact = new BO_CustContact();
             custContact.ContactID = contactID;
             custContact.ContactName = (tblEditorTemplate.FindControl("dxetxtContactName") as ASPxTextBox).Text.Trim();

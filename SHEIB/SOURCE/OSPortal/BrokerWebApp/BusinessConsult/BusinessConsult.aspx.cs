@@ -136,7 +136,6 @@ namespace BrokerWebApp.BusinessConsult
         {
             DataTable dtConsultFeeGrid = new DataTable();
             dtConsultFeeGrid.PrimaryKey = new DataColumn[] { dtConsultFeeGrid.Columns.Add("ConsultFeeItemID", typeof(String)) };
-            dtConsultFeeGrid.Columns.Add("SerialNumber", typeof(Int32));
             dtConsultFeeGrid.Columns.Add("ConsultFeeItem", typeof(String));
             dtConsultFeeGrid.Columns.Add("ConsultFee", typeof(Double));
 
@@ -218,14 +217,12 @@ namespace BrokerWebApp.BusinessConsult
                 BusinessObjects.Consult.BO_ConsultFeeItem.IfExistsConsultFeeItemID(consultFeeItemID))
                 throw new Exception("咨询项目编号已经存在。");
 
-            int serialNumber = Convert.ToInt32((tblEditorTemplate.FindControl("dxetxtSerialNumber") as ASPxTextBox).Text);
             string ConsultFeeItem = (tblEditorTemplate.FindControl("dxetxtConsultFeeItem") as ASPxTextBox).Text.Trim();
             double consultFee = Convert.ToDouble((tblEditorTemplate.FindControl("dxetxtConsultFee") as ASPxTextBox).Text);
 
             DataTable dt = (DataTable)this.Session["ConsultFeeGridData"];
             DataRow row = dt.Rows.Find(e.Keys["ConsultFeeItemID"].ToString());
             row["ConsultFeeItemID"] = consultFeeItemID;
-            row["SerialNumber"] = serialNumber;
             row["ConsultFeeItem"] = ConsultFeeItem;
             row["ConsultFee"] = consultFee;
 
@@ -250,11 +247,10 @@ namespace BrokerWebApp.BusinessConsult
             if (BusinessObjects.Consult.BO_ConsultFeeItem.IfExistsConsultFeeItemID(consultFeeItemID))
                 throw new Exception("咨询项目编号已经存在。");
 
-            int serialNumber = Convert.ToInt32((tblEditorTemplate.FindControl("dxetxtSerialNumber") as ASPxTextBox).Text);
             string ConsultFeeItem = (tblEditorTemplate.FindControl("dxetxtConsultFeeItem") as ASPxTextBox).Text.Trim();
             double consultFee = Convert.ToDouble((tblEditorTemplate.FindControl("dxetxtConsultFee") as ASPxTextBox).Text);
 
-            ((DataTable)this.Session["ConsultFeeGridData"]).Rows.Add(new object[] { consultFeeItemID, serialNumber, ConsultFeeItem, consultFee });
+            ((DataTable)this.Session["ConsultFeeGridData"]).Rows.Add(new object[] { consultFeeItemID, ConsultFeeItem, consultFee });
 
             e.Cancel = true;
             this.gridConsultFeeItem.CancelEdit();
