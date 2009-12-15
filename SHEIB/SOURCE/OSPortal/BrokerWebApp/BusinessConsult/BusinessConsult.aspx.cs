@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using DevExpress.Web.ASPxUploadControl;
 using DevExpress.Web.ASPxEditors;
 using BusinessObjects;
+using DevExpress.Web.ASPxGridView;
 
 namespace BrokerWebApp.BusinessConsult
 {
@@ -48,17 +49,7 @@ namespace BrokerWebApp.BusinessConsult
                         this._consultFeeID = this.ViewState["ConsultFeeID"].ToString();
                 }
 
-                if (String.IsNullOrEmpty(this._consultFeeID))
-                {
-                    if (this.Session["ConsultFeeGridData"] == null)
-                        this.Session["ConsultFeeGridData"] = this.GetConsultFeeDataForGrid();
-                }
-                else
-                {
-                    if (this.Session["ConsultFeeGridData"] == null)
-                        this.Session["ConsultFeeGridData"] = BusinessObjects.Consult.BO_ConsultFeeItem.GetConsultFeeItemByConsultFeeID(this._consultFeeID);
-                }
-                this.gridConsultFeeItem.DataSource = (DataTable)this.Session["ConsultFeeGridData"];
+                this.gridConsultFeeItem.DataSource = BusinessObjects.Consult.BO_ConsultFeeItem.GetConsultFeeItemByConsultFeeID(this._consultFeeID);
                 this.gridConsultFeeItem.DataBind();
             }
             catch (Exception ex)
@@ -132,15 +123,7 @@ namespace BrokerWebApp.BusinessConsult
             }
         }
 
-        private DataTable GetConsultFeeDataForGrid()
-        {
-            DataTable dtConsultFeeGrid = new DataTable();
-            dtConsultFeeGrid.PrimaryKey = new DataColumn[] { dtConsultFeeGrid.Columns.Add("ConsultFeeItemID", typeof(String)) };
-            dtConsultFeeGrid.Columns.Add("ConsultFeeItem", typeof(String));
-            dtConsultFeeGrid.Columns.Add("ConsultFee", typeof(Double));
 
-            return dtConsultFeeGrid;
-        }
 
         /// <summary>
         /// 设置客户经理
@@ -218,18 +201,31 @@ namespace BrokerWebApp.BusinessConsult
                 throw new Exception("咨询项目编号已经存在。");
 
             string ConsultFeeItem = (tblEditorTemplate.FindControl("dxetxtConsultFeeItem") as ASPxTextBox).Text.Trim();
-            double consultFee = Convert.ToDouble((tblEditorTemplate.FindControl("dxetxtConsultFee") as ASPxTextBox).Text);
+            double consultFee = 0;
+            try
+            {
+                consultFee = Convert.ToDouble((tblEditorTemplate.FindControl("dxetxtConsultFee") as ASPxTextBox).Text);
+            }
+            catch (Exception)
+            {
+                throw new Exception("咨询费必须输入数字。");
+            }
+            
 
-            DataTable dt = (DataTable)this.Session["ConsultFeeGridData"];
-            DataRow row = dt.Rows.Find(e.Keys["ConsultFeeItemID"].ToString());
-            row["ConsultFeeItemID"] = consultFeeItemID;
-            row["ConsultFeeItem"] = ConsultFeeItem;
-            row["ConsultFee"] = consultFee;
+            //保存到咨询项目
+            BusinessObjects.Consult.BO_ConsultFeeItem consultFeeItem = new BusinessObjects.Consult.BO_ConsultFeeItem();
+            consultFeeItem.ConsultFeeItemID = consultFeeItemID;
+            consultFeeItem.ConsultFeeID = _consultFeeID;
+            consultFeeItem.ConsultFeeItem = ConsultFeeItem;
+            consultFeeItem.ConsultFee = consultFee;
+            consultFeeItem.Save(ModifiedAction.Update);
+       
 
             e.Cancel = true;
             this.gridConsultFeeItem.CancelEdit();
-            //this.gridConsultFeeItem.DataSource = (DataTable)this.Session["ConsultFeeGridData"];
-            //this.gridConsultFeeItem.DataBind();  
+            this.gridConsultFeeItem.DataSource = BusinessObjects.Consult.BO_ConsultFeeItem.GetConsultFeeItemByConsultFeeID(this._consultFeeID);
+            this.gridConsultFeeItem.DataBind();
+            
         }
 
         protected void gridConsultFeeItem_RowUpdated(object sender, DevExpress.Web.Data.ASPxDataUpdatedEventArgs e)
@@ -240,22 +236,31 @@ namespace BrokerWebApp.BusinessConsult
         protected void gridConsultFeeItem_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             HtmlTable tblEditorTemplate = this.gridConsultFeeItem.FindEditFormTemplateControl("tblgridContactItemEditorTemplate") as HtmlTable;
-            string consultFeeItemID = (tblEditorTemplate.FindControl("dxetxtConsultFeeItemID") as ASPxTextBox).Text.Trim();
-            if (consultFeeItemID.Length <= 0)
-                throw new Exception("咨询项目编号不能为空。");
-
-            if (BusinessObjects.Consult.BO_ConsultFeeItem.IfExistsConsultFeeItemID(consultFeeItemID))
-                throw new Exception("咨询项目编号已经存在。");
 
             string ConsultFeeItem = (tblEditorTemplate.FindControl("dxetxtConsultFeeItem") as ASPxTextBox).Text.Trim();
-            double consultFee = Convert.ToDouble((tblEditorTemplate.FindControl("dxetxtConsultFee") as ASPxTextBox).Text);
+            double consultFee = 0;
+            try
+            {
+                consultFee = Convert.ToDouble((tblEditorTemplate.FindControl("dxetxtConsultFee") as ASPxTextBox).Text);
+            }
+            catch (Exception)
+            {
+                throw new Exception("咨询费必须输入数字。");
+            }
 
-            ((DataTable)this.Session["ConsultFeeGridData"]).Rows.Add(new object[] { consultFeeItemID, ConsultFeeItem, consultFee });
+            //保存到咨询项目
+            BusinessObjects.Consult.BO_ConsultFeeItem consultFeeItem = new BusinessObjects.Consult.BO_ConsultFeeItem();
+            consultFeeItem.ConsultFeeID = _consultFeeID;
+            consultFeeItem.ConsultFeeItem = ConsultFeeItem;
+            consultFeeItem.ConsultFee = consultFee;
+            consultFeeItem.Save(ModifiedAction.Insert);
+       
 
             e.Cancel = true;
             this.gridConsultFeeItem.CancelEdit();
-            //this.gridConsultFeeItem.DataSource = (DataTable)this.Session["ConsultFeeGridData"];
-            //this.gridConsultFeeItem.DataBind();
+
+            this.gridConsultFeeItem.DataSource = BusinessObjects.Consult.BO_ConsultFeeItem.GetConsultFeeItemByConsultFeeID(this._consultFeeID);
+            this.gridConsultFeeItem.DataBind();
         }
 
         protected void gridConsultFeeItem_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
@@ -265,11 +270,12 @@ namespace BrokerWebApp.BusinessConsult
 
         protected void gridConsultFeeItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            DataTable dt = (DataTable)this.Session["ConsultFeeGridData"];
-            DataRow row = dt.Rows.Find(e.Keys["ConsultFeeItemID"].ToString());
-            dt.Rows.Remove(row);
-            e.Cancel = true;
-            this.gridConsultFeeItem.CancelEdit();
+            //ASPxGridView dv = (ASPxGridView)sender;
+            
+            //dv.rows
+            //DataRow row = ((DataTable)Session["GridData"]).Rows.Find(e.Keys["ID"]);
+
+            //dv.GetDataRow(e.Values.
         }
 
         protected void gridConsultFeeItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
@@ -277,12 +283,29 @@ namespace BrokerWebApp.BusinessConsult
             //
         }
 
+        protected void dxeDeleteConsultFeeItemCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            string key = e.Parameter;
+
+            //保存到咨询项目
+            BusinessObjects.Consult.BO_ConsultFeeItem consultFeeItem = new BusinessObjects.Consult.BO_ConsultFeeItem();
+            consultFeeItem.delete(key);
+            e.Result = "ok";
+
+         }
+
+
+        protected void gridConsultFeeItem_CallBack(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
+        {
+            this.gridConsultFeeItem.DataSource = BusinessObjects.Consult.BO_ConsultFeeItem.GetConsultFeeItemByConsultFeeID(this._consultFeeID);
+            this.gridConsultFeeItem.DataBind();
+        }
         /// <summary>
         /// 保存咨询信息
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void dxebtnBottomSave_Click(object sender, EventArgs e)
+        protected void dxeConsultSave_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
             try
             {
@@ -296,23 +319,18 @@ namespace BrokerWebApp.BusinessConsult
                         return;
                     }
 
-                    if (this.Session["ConsultFeeGridData"] == null || ((DataTable)this.Session["ConsultFeeGridData"]).Rows.Count <= 0)
-                    {
-                        this.lblerrmsg.InnerText = "请输入咨询费用。";
-                        this.lblerrmsg.Visible = true;
-                        return;
-                    }
-
                     //保存到咨询费
                     BusinessObjects.Consult.BO_ConsultFee consultFee = new BusinessObjects.Consult.BO_ConsultFee();
                     consultFee.ConsultFeeID = TranUtils.GetConsultFeeID();
+                    _consultFeeID = consultFee.ConsultFeeID;
                     consultFee.ConsultFeeNo = this.dxetxtConsultFeeNo.Text.Trim();
                     consultFee.ConsultDate = Convert.ToDateTime(this.deConsultDate.Text);
                     consultFee.SalesID = this.dxeddlSalesID.SelectedItem.Value.ToString();
                     consultFee.CustID = this.hidCustID.Value;
                     consultFee.Contact = this.dxetxtContact.Text.Trim();
                     consultFee.Tel = this.dxetxtTel.Text.Trim();
-                    consultFee.ConsultFee = Convert.ToDouble(((DataTable)this.Session["ConsultFeeGridData"]).Compute("sum(ConsultFee)", "1=1"));
+                    //consultFee.ConsultFee = Convert.ToDouble(((DataTable)this.Session["ConsultFeeGridData"]).Compute("sum(ConsultFee)", "1=1"));
+                    consultFee.ConsultFee = 0;
                     consultFee.InvoiceNO = this.dxetxtInvoiceNO.Text.Trim();
                     if (this.deAuditTime.Text.Trim().Length > 0)
                         consultFee.AuditTime = Convert.ToDateTime(this.deAuditTime.Text.Trim());
@@ -328,21 +346,8 @@ namespace BrokerWebApp.BusinessConsult
                     if (this.dxeddlFeePersion.SelectedItem.Value.ToString().Length > 0)
                         consultFee.FeePersion = this.dxeddlFeePersion.SelectedItem.Value.ToString();
                     consultFee.Save(ModifiedAction.Insert);
-
-                    //保存到咨询项目
-                    BusinessObjects.Consult.BO_ConsultFeeItem.ClearConsultFeeItemByConsultFeeID(consultFee.ConsultFeeID);
-                    BusinessObjects.Consult.BO_ConsultFeeItem consultFeeItem = new BusinessObjects.Consult.BO_ConsultFeeItem();
-                    foreach (DataRow row in ((DataTable)this.Session["ConsultFeeGridData"]).Rows)
-                    {
-                        consultFeeItem.ConsultFeeItemID = row["ConsultFeeItemID"].ToString();
-                        consultFeeItem.ConsultFeeID = consultFee.ConsultFeeID;
-                        consultFeeItem.SerialNumber = Convert.ToInt32(row["SerialNumber"]);
-                        consultFeeItem.ConsultFeeItem = row["ConsultFeeItem"].ToString();
-                        consultFeeItem.ConsultFee = Convert.ToDouble(row["ConsultFee"]);
-                        consultFeeItem.Save(ModifiedAction.Insert);
-                    }
-
-                    this.Response.Redirect("BusinessConsult.aspx");
+                    e.Result = "ok";
+                    //this.Response.Redirect("BusinessConsult.aspx");
                 }
                 else
                 {
@@ -356,12 +361,6 @@ namespace BrokerWebApp.BusinessConsult
                         return;
                     }
 
-                    if (this.Session["ConsultFeeGridData"] == null || ((DataTable)this.Session["ConsultFeeGridData"]).Rows.Count <= 0)
-                    {
-                        this.lblerrmsg.InnerText = "请输入咨询费用。";
-                        this.lblerrmsg.Visible = true;
-                        return;
-                    }
 
                     //保存到咨询费
                     BusinessObjects.Consult.BO_ConsultFee consultFee = new BusinessObjects.Consult.BO_ConsultFee();
@@ -372,7 +371,7 @@ namespace BrokerWebApp.BusinessConsult
                     consultFee.CustID = this.hidCustID.Value;
                     consultFee.Contact = this.dxetxtContact.Text.Trim();
                     consultFee.Tel = this.dxetxtTel.Text.Trim();
-                    consultFee.ConsultFee = Convert.ToDouble(((DataTable)this.Session["ConsultFeeGridData"]).Compute("sum(ConsultFee)", "1=1"));
+                    consultFee.ConsultFee = 0;
                     consultFee.InvoiceNO = this.dxetxtInvoiceNO.Text.Trim();
                     if (this.deAuditTime.Text.Trim().Length > 0)
                         consultFee.AuditTime = Convert.ToDateTime(this.deAuditTime.Text.Trim());
@@ -388,25 +387,16 @@ namespace BrokerWebApp.BusinessConsult
                     if (this.dxeddlFeePersion.SelectedItem.Value.ToString().Length > 0)
                         consultFee.FeePersion = this.dxeddlFeePersion.SelectedItem.Value.ToString();
                     consultFee.Save(ModifiedAction.Update);
-
-                    //保存到咨询项目
-                    BusinessObjects.Consult.BO_ConsultFeeItem.ClearConsultFeeItemByConsultFeeID(this._consultFeeID);
-                    BusinessObjects.Consult.BO_ConsultFeeItem consultFeeItem = new BusinessObjects.Consult.BO_ConsultFeeItem();
-                    foreach (DataRow row in ((DataTable)this.Session["ConsultFeeGridData"]).Rows)
-                    {
-                        consultFeeItem.ConsultFeeItemID = row["ConsultFeeItemID"].ToString();
-                        consultFeeItem.ConsultFeeID = this._consultFeeID;
-                        consultFeeItem.SerialNumber = Convert.ToInt32(row["SerialNumber"]);
-                        consultFeeItem.ConsultFeeItem = row["ConsultFeeItem"].ToString();
-                        consultFeeItem.ConsultFee = Convert.ToDouble(row["ConsultFee"]);
-                        consultFeeItem.Save(ModifiedAction.Insert);
-                    }
-
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Message", "<script language=\"javascript\">alert(\"修改完成。\");window.close();</script>", false);
+                    e.Result = "ok";
+                    //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Message", "<script language=\"javascript\">alert(\"修改完成。\");window.close();</script>", false);
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                //throw ex.Message;
+                e.Result = ex.Message;                
+
+            }
         }
 
         /// <summary>
