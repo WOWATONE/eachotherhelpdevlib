@@ -6,6 +6,8 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors"
     TagPrefix="dxe" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
+    TagPrefix="dxcb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>咨询录入</title>
 
@@ -22,7 +24,71 @@
                     //do nothing
                 }
             };
-        });
+
+            var theConsultID = dxetxtConsultFeeNo.GetValueString();
+            if (isEmpty(theConsultID)) {
+                setDxeButtonsUnableOrEnable(false);
+            }
+            else {
+                setDxeButtonsUnableOrEnable(true);
+            }
+        })
+
+
+        function gridConsultFeeItemCustomButtonClick(s, e) {
+            if (e.buttonID == "删除") {
+                if (!confirm("确定删除吗?"))
+                    return false;
+                var sID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
+
+                dxeDeletegridConsultFeeItemCallback.PerformCallback(sID);
+
+            }
+            else
+                return false;
+        }
+
+        function deletegridConsultFeeItemCallbackComplete(s, e) {
+            if (e.result != "" && e.result != "ok") {
+                alert(e.result);
+                return false;
+            }
+            gridConsultFeeItem.PerformCallback();
+        }
+
+        function setDxeButtonsUnableOrEnable(val) {
+            if (typeof (gridConsultFeeItem) != 'undefined' && gridConsultFeeItem != null)
+                gridConsultFeeItem.SetClientVisible(val);
+        }
+
+        function dxebtnConsultSave_Click(s, e) {
+            var pid = dxetxtConsultFeeNo.GetValueString();
+            if (isEmpty(pid)) {
+                alert("请输入咨询编号。");
+                return;
+            }
+
+            //if (s.CauseValidation()) {
+            dxeConsultSaveCallback.PerformCallback("");
+            //}
+        }
+
+        function dxeConsultSaveCallbackComplete(s, e) {
+            var retrunval = e.result;
+            switch (retrunval) {
+                case "ok":
+                    var nid = dxetxtConsultFeeNo.GetValueString();
+                    if (isEmpty(nid)) {
+                        dxetxtConsultFeeNo.SetValue(e.result);
+                    }
+                    setDxeButtonsUnableOrEnable(true);
+                    alert("保存成功");
+                    break
+                default:
+                    alert(retrunval);
+
+            }
+        }
 
         function imgSelectCustomerClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
@@ -57,11 +123,20 @@
         function btnCloseClick() {
             window.close();
         }
+
     </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
+    <dxcb:ASPxCallback ID="dxeConsultSaveCallback" ClientInstanceName="dxeConsultSaveCallback"
+        runat="server" OnCallback="dxeConsultSave_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {dxeConsultSaveCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    <dxcb:ASPxCallback ID="dxeDeletegridConsultFeeItemCallback" ClientInstanceName="dxeDeletegridConsultFeeItemCallback"
+        runat="server" OnCallback="dxeDeleteConsultFeeItemCallback_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) { deletegridConsultFeeItemCallbackComplete(s, e); }" />
+    </dxcb:ASPxCallback>
     <label id="lblerrmsg" name="lblerrmsg" runat="server" class="red" visible="false">
     </label>
     <table style="width: 100%">
@@ -194,17 +269,19 @@
                                 <dxwgv:ASPxGridView ID="gridConsultFeeItem" ClientInstanceName="gridConsultFeeItem"
                                     runat="server" KeyFieldName="ConsultFeeItemID" Width="100%" AutoGenerateColumns="False"
                                     SettingsBehavior-AllowSort="false" SettingsBehavior-AllowDragDrop="false" OnRowInserting="gridConsultFeeItem_RowInserting"
-                                    OnRowUpdating="gridConsultFeeItem_RowUpdating" 
-                                    OnRowUpdated="gridConsultFeeItem_RowUpdated"
-                                    OnRowInserted="gridConsultFeeItem_RowInserted" 
-                                    OnRowDeleting="gridConsultFeeItem_RowDeleting"
-                                    OnRowDeleted="gridConsultFeeItem_RowDeleted">
+                                    OnRowUpdating="gridConsultFeeItem_RowUpdating" OnRowUpdated="gridConsultFeeItem_RowUpdated"
+                                    OnRowInserted="gridConsultFeeItem_RowInserted" OnRowDeleting="gridConsultFeeItem_RowDeleting"
+                                    OnRowDeleted="gridConsultFeeItem_RowDeleted" OnCustomCallback="gridConsultFeeItem_CallBack">
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" Width="15px" CellStyle-Wrap="False"
                                             HeaderStyle-HorizontalAlign="Center">
-                                            <NewButton Visible="True" />
+                                            <NewButton Visible="true" />
                                             <EditButton Visible="true" />
-                                            <DeleteButton Visible="true" />
+                                            <DeleteButton Visible="false" />
+                                            <CustomButtons>
+                                                <dxwgv:GridViewCommandColumnCustomButton Text="删除">
+                                                </dxwgv:GridViewCommandColumnCustomButton>
+                                            </CustomButtons>
                                         </dxwgv:GridViewCommandColumn>
                                         <dxwgv:GridViewDataTextColumn Caption="咨询项目编号" FieldName="ConsultFeeItemID" CellStyle-Wrap="False"
                                             HeaderStyle-HorizontalAlign="Center">
@@ -217,6 +294,7 @@
                                         </dxwgv:GridViewDataTextColumn>
                                     </Columns>
                                     <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
+                                    <ClientSideEvents CustomButtonClick="function(s, e) {gridConsultFeeItemCustomButtonClick(s,e);return false;}" />
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="ConsultFee" SummaryType="Sum" ShowInGroupFooterColumn="ConsultFee"
                                             DisplayFormat="咨询费合计: {0}" />
@@ -235,10 +313,8 @@
                                                             </dxe:ASPxTextBox>
                                                         </td>
                                                         <td style="white-space: nowrap; text-align: right;">
-                                                            
                                                         </td>
                                                         <td style="text-align: left;">
-                                                           
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -445,7 +521,8 @@
                 </td>
                 <td style="width: 50px; text-align: left;">
                     <dxe:ASPxButton runat="server" ID="dxebtnBottomSave" Text="保存" CausesValidation="true"
-                        AutoPostBack="false" OnClick="dxebtnBottomSave_Click">
+                        AutoPostBack="false">
+                        <ClientSideEvents Click="function(s, e) {dxebtnConsultSave_Click(s,e);}" />
                     </dxe:ASPxButton>
                 </td>
                 <td style="width: 50px; text-align: left;">

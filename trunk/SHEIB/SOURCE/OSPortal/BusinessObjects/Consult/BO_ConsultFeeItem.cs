@@ -50,7 +50,7 @@ namespace BusinessObjects.Consult
             }
             else if (action == ModifiedAction.Update)
             {
-                //update();
+                update();
             }
         }
 
@@ -60,14 +60,40 @@ namespace BusinessObjects.Consult
         private void add()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT INTO ConsultFeeItem(ConsultFeeItemID, ConsultFeeID, SerialNumber, ConsultFeeItem, ConsultFee) ");
-            sb.Append(" VALUES(@ConsultFeeItemID, @ConsultFeeID, @SerialNumber, @ConsultFeeItem, @ConsultFee)");
+            sb.Append("INSERT INTO ConsultFeeItem(ConsultFeeID, ConsultFeeItem, ConsultFee) ");
+            sb.Append(" VALUES( @ConsultFeeID, @ConsultFeeItem, @ConsultFee)");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
-            _db.AddInParameter(dbCommand, "@ConsultFeeItemID", DbType.AnsiString, this.ConsultFeeItemID);
             _db.AddInParameter(dbCommand, "@ConsultFeeID", DbType.AnsiString, this.ConsultFeeID);
-            _db.AddInParameter(dbCommand, "@SerialNumber", DbType.Int32, this.SerialNumber);
+            _db.AddInParameter(dbCommand, "@ConsultFeeItem", DbType.AnsiString, this.ConsultFeeItem);
+            _db.AddInParameter(dbCommand, "@ConsultFee", DbType.Double, this.ConsultFee);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        public void delete(string consultFeeItemID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Delete from ConsultFeeItem  ");
+            sb.Append("Where  ConsultFeeItemID = @ConsultFeeItemID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ConsultFeeItemID", DbType.Int16, int.Parse(consultFeeItemID));
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+        private void update()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Update ConsultFeeItem set  ConsultFeeItem =@ConsultFeeItem , ConsultFee=@ConsultFee  ");
+            sb.Append("Where ConsultFeeItemID = @ConsultFeeItemID");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+
+            _db.AddInParameter(dbCommand, "@ConsultFeeItemID", DbType.Int16, int.Parse(this.ConsultFeeItemID));
             _db.AddInParameter(dbCommand, "@ConsultFeeItem", DbType.AnsiString, this.ConsultFeeItem);
             _db.AddInParameter(dbCommand, "@ConsultFee", DbType.Double, this.ConsultFee);
 

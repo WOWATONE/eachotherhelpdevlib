@@ -540,7 +540,9 @@
                                     单证列表：
                                 </td>
                                 <td style="text-align: left; vertical-align: top;">
-                                    <dxwgv:ASPxGridView ID="gridBusDocList" ClientInstanceName="gridBusDocList" runat="server"
+                                    <dxwgv:ASPxGridView ID="gridBusDocList" 
+                                        ClientInstanceName="gridBusDocList" 
+                                        runat="server"
                                         SettingsBehavior-AllowSort="false" KeyFieldName="CustBusDocID" Width="80%" AutoGenerateColumns="False"
                                         OnCustomCallback="gridBusDocList_CustomCallback" OnHtmlRowCreated="gridBusDocList_HtmlRowCreated">
                                         <%-- BeginRegion Columns --%>
