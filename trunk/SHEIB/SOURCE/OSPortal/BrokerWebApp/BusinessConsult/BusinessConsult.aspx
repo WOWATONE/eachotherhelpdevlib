@@ -194,8 +194,10 @@
                                 <dxwgv:ASPxGridView ID="gridConsultFeeItem" ClientInstanceName="gridConsultFeeItem"
                                     runat="server" KeyFieldName="ConsultFeeItemID" Width="100%" AutoGenerateColumns="False"
                                     SettingsBehavior-AllowSort="false" SettingsBehavior-AllowDragDrop="false" OnRowInserting="gridConsultFeeItem_RowInserting"
-                                    OnRowUpdating="gridConsultFeeItem_RowUpdating" OnRowUpdated="gridConsultFeeItem_RowUpdated"
-                                    OnRowInserted="gridConsultFeeItem_RowInserted" OnRowDeleting="gridConsultFeeItem_RowDeleting"
+                                    OnRowUpdating="gridConsultFeeItem_RowUpdating" 
+                                    OnRowUpdated="gridConsultFeeItem_RowUpdated"
+                                    OnRowInserted="gridConsultFeeItem_RowInserted" 
+                                    OnRowDeleting="gridConsultFeeItem_RowDeleting"
                                     OnRowDeleted="gridConsultFeeItem_RowDeleted">
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" Width="15px" CellStyle-Wrap="False"
@@ -205,9 +207,6 @@
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
                                         <dxwgv:GridViewDataTextColumn Caption="咨询项目编号" FieldName="ConsultFeeItemID" CellStyle-Wrap="False"
-                                            HeaderStyle-HorizontalAlign="Center">
-                                        </dxwgv:GridViewDataTextColumn>
-                                        <dxwgv:GridViewDataTextColumn Caption="序号" FieldName="SerialNumber" CellStyle-Wrap="False"
                                             HeaderStyle-HorizontalAlign="Center">
                                         </dxwgv:GridViewDataTextColumn>
                                         <dxwgv:GridViewDataTextColumn Caption="咨询项目" FieldName="ConsultFeeItem" CellStyle-Wrap="False"
@@ -236,12 +235,10 @@
                                                             </dxe:ASPxTextBox>
                                                         </td>
                                                         <td style="white-space: nowrap; text-align: right;">
-                                                            序号：
+                                                            
                                                         </td>
                                                         <td style="text-align: left;">
-                                                            <dxe:ASPxTextBox ID="dxetxtSerialNumber" ClientInstanceName="dxetxtSerialNumber"
-                                                                runat="server" Text='<%# Eval("SerialNumber") %>'>
-                                                            </dxe:ASPxTextBox>
+                                                           
                                                         </td>
                                                     </tr>
                                                     <tr>

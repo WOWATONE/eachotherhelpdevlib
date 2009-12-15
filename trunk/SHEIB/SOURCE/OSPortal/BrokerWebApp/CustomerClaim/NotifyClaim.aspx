@@ -698,7 +698,7 @@
                             <td colspan="3" style="text-align: left;">
                                 <dxuc:ASPxUploadControl ID="filesUploadControl" ClientInstanceName="filesUploadControl"
                                             runat="server" ShowAddRemoveButtons="true" Width="400px" ShowUploadButton="True"
-                                            AddUploadButtonsHorizontalPosition="Center" ShowProgressPanel="True" FileInputCount="5"
+                                            AddUploadButtonsHorizontalPosition="Center" ShowProgressPanel="True" FileInputCount="2"
                                             RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
                                             OnPreRender="UploadControl_PreRender" OnFileUploadComplete="UploadControl_FileUploadComplete">
                                             <ValidationSettings MaxFileSize="4000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
