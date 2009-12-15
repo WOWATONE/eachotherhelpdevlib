@@ -206,8 +206,8 @@ namespace BrokerWebApp
             
             //批单审核
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAudit_Audit);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAudit_AuditBack);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CarPolicyAlt_Audit);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CarPolicyAlt_AuditBack);
             if (checkResult)
             {
                 existItemInGroup = true;

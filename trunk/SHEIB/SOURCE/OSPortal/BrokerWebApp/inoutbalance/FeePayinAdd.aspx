@@ -504,7 +504,7 @@
                                                             </dxe:ASPxTextBox>
                                                         </td>
                                                         <td style="white-space: nowrap; text-align: right;">
-                                                            本期实际解付保费:
+                                                            本期经纪费:
                                                         </td>
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxTextBox ID="dxetxtPolicyItemPayProcBase" ClientInstanceName="dxetxtPolicyItemPayProcBase"
