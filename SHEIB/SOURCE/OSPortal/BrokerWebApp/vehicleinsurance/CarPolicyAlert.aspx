@@ -582,6 +582,13 @@
         function auditBackCallbackComplete(s, e) {
             //do nothing;
             setOnlyDxeButtonsUnableOrEnable(false);
+            
+            if (typeof (dxebtnAuditBack) != 'undefined' && dxebtnAuditBack != null)
+                dxebtnAuditBack.SetEnabled(false);
+
+            if (typeof (dxebtnAuditOk) != 'undefined' && dxebtnAuditOk != null)
+                dxebtnAuditOk.SetEnabled(false);
+                
             alert("退回成功");
         }
 
@@ -671,7 +678,13 @@
             switch (theresult) {
                 case "0":
                     setOnlyDxeButtonsUnableOrEnable(false);
-                    dxebtnAuditOk.SetEnabled(false);
+                    
+                    if (typeof (dxebtnAuditBack) != 'undefined' && dxebtnAuditBack != null)
+                        dxebtnAuditBack.SetEnabled(false);
+
+                    if (typeof (dxebtnAuditOk) != 'undefined' && dxebtnAuditOk != null)
+                        dxebtnAuditOk.SetEnabled(false);
+                        
                     alert(titleMSG);
                     break
                 default:
