@@ -1843,9 +1843,18 @@
                                 <tr>
                                     <td style="width: 100%; text-align: left;" runat="server" id="tblcellgridDocList">
                                         <dxwgv:ASPxGridView ID="gridDocList" ClientInstanceName="gridDocList" runat="server"
-                                            KeyFieldName="PolicyDocID" Width="100%" AutoGenerateColumns="False" OnCustomCallback="gridDocList_CustomCallback" OnHtmlRowCreated="gridDocList_HtmlRowCreated">
+                                            KeyFieldName="PolicyDocID" Width="100%" AutoGenerateColumns="False" 
+                                            OnCustomCallback="gridDocList_CustomCallback" 
+                                            OnHtmlRowCreated="gridDocList_HtmlRowCreated"
+                                            OnRowDeleting="gridDocList_RowDeleting"
+                                            >
                                             <%-- BeginRegion Columns --%>
                                             <Columns>
+                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
+                                                    <NewButton Visible="False" />
+                                                    <EditButton Visible="False" />                                                                    
+                                                    <DeleteButton Visible="true" />                                                                                                                      
+                                                </dxwgv:GridViewCommandColumn>
                                                 <dxwgv:GridViewDataColumn FieldName="DocName" Caption="ÎÄ¼þÃû" CellStyle-Wrap="False"
                                                     Width="25" Settings-AllowDragDrop="false">                                                    
                                                     <DataItemTemplate>
