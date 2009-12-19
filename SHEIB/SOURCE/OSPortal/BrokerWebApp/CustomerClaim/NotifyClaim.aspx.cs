@@ -703,7 +703,68 @@ namespace BrokerWebApp.CustomerClaim
                     thelnk.Attributes.Add("onclick", "hlPolicyItemTogetherClick('" + lnkUrl + "');");
                 }
 
+                
+                //GridViewCommandColumn objgcc = getGridDocListCommandColumnLoop();
+
+                //GridViewCommandColumnButtonControl thebtn;
+                //InternalHyperLink theIHL;
+
+                //thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
+                //thebtn.Enabled = false;
+                //theIHL = (InternalHyperLink)thebtn.Controls[0];
+                //theIHL.Enabled = false;
+                
             }
+        }
+
+
+        protected void gridDocList_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            String theID = e.Keys[0].ToString();
+            object theValues = this.gridDocList.GetRowValuesByKeyValue(theID, new String[] { "NotifyClaimDocID", "DocName", "DocURL" });
+            object[] theValueList = theValues as object[];
+            String notifyClaimDocID, docName, docURL;
+            if (theValueList[0] == null)
+                notifyClaimDocID = "";
+            else
+                notifyClaimDocID = theValueList[0].ToString();
+
+            if (theValueList[1] == null)
+                docName = "";
+            else
+                docName = theValueList[1].ToString();
+
+            if (theValueList[2] == null)
+                docURL = "";
+            else
+                docURL = theValueList[2].ToString();
+
+            try
+            {
+                string policyFolderPath;
+                policyFolderPath = System.IO.Path.Combine(MapPath(UploadDirectory), notifyClaimDocID);
+                string filePath = System.IO.Path.Combine(policyFolderPath, docName);
+
+                FileInfo fi = new FileInfo(filePath);
+                if (fi.Exists)
+                {
+                    fi.Delete();
+                }
+            }
+            catch
+            {
+                //do nothing;
+            }
+            if (!String.IsNullOrEmpty(theID))
+            {
+                BusinessObjects.BO_NotifyClaimDoc.Delete(Convert.ToInt32(theID));
+
+            }
+
+            e.Cancel = true;
+            this.gridDocList.CancelEdit();
+
+            rebindGridDocList();
         }
 
 
@@ -718,6 +779,20 @@ namespace BrokerWebApp.CustomerClaim
             this.gridDocList.DataBind();
         }
 
+
+        private GridViewCommandColumn getGridDocListCommandColumnLoop()
+        {
+            GridViewCommandColumn theCommandColumn = null;
+            foreach (GridViewColumn item in gridDocList.VisibleColumns)
+            {
+                if (item.GetType() == typeof(GridViewCommandColumn))
+                {
+                    theCommandColumn = (GridViewCommandColumn)item;
+                    break;
+                }
+            }
+            return theCommandColumn;
+        }
 
         #endregion Upload File  Events
 
