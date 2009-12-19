@@ -1725,10 +1725,16 @@
                                     <dxwgv:ASPxGridView ID="gridDocList" ClientInstanceName="gridDocList" runat="server"
                                         KeyFieldName="PolicyDocID" Width="100%" AutoGenerateColumns="False" 
                                         OnCustomCallback="gridDocList_CustomCallback"
-                                        OnHtmlRowCreated="gridDocList_HtmlRowCreated"                                        
+                                        OnHtmlRowCreated="gridDocList_HtmlRowCreated"
+                                        OnRowDeleting="gridDocList_RowDeleting"                                        
                                         >
                                         <%-- BeginRegion Columns --%>
                                         <Columns>
+                                            <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
+                                                <NewButton Visible="False" />
+                                                <EditButton Visible="False" />                                                                    
+                                                <DeleteButton Visible="true" />                                                                                                                      
+                                            </dxwgv:GridViewCommandColumn>
                                             <dxwgv:GridViewDataColumn FieldName="DocName" Caption="文件名" CellStyle-Wrap="False" Width="25" Settings-AllowDragDrop="false">
                                                 <DataItemTemplate>
                                                     <asp:HyperLink runat="server" ID="docitemlnk"></asp:HyperLink>
