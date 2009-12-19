@@ -35,7 +35,7 @@ namespace BrokerWebApp.inoutbalance
             string lsWhere = "";
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and b.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and b.PolicyNo like ('%" + dxetxtPolicyNo.Text + "%')";
             }
             if (dxetxtPolicyID.Text.Trim() != "")
             {

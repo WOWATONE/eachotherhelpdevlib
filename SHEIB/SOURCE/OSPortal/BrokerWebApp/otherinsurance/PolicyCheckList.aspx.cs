@@ -77,7 +77,7 @@ namespace BrokerWebApp.otherinsurance
             //保单编号
             if (dxetxtPolicyNo.Text.Trim() != "")
             {
-                lsWhere = lsWhere + " and b.PolicyNo ='" + dxetxtPolicyNo.Text + "'";
+                lsWhere = lsWhere + " and b.PolicyNo like ('%" + dxetxtPolicyNo.Text + "%')";
             }
 
             //批单编号
