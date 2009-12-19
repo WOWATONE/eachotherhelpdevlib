@@ -631,6 +631,11 @@
             //resultMsg.style.fontsize = "9px";
             //resultMsg.innerHTML = "退回成功";
             setOnlyDxeButtonsUnableOrEnable(false);
+            if (typeof (dxebtnAuditBack) != 'undefined' && dxebtnAuditBack != null)
+                dxebtnAuditBack.SetEnabled(false);
+
+            if (typeof (dxebtnAuditOk) != 'undefined' && dxebtnAuditOk != null)
+                dxebtnAuditOk.SetEnabled(false);
             alert("退回成功");
         }
 
@@ -671,6 +676,11 @@
                     //resultMsg.style.fontsize = "9px";
                     //resultMsg.innerHTML = titleMSG;
                     setOnlyDxeButtonsUnableOrEnable(false);
+                    if (typeof (dxebtnAuditBack) != 'undefined' && dxebtnAuditBack != null)
+                        dxebtnAuditBack.SetEnabled(false);
+
+                    if (typeof (dxebtnAuditOk) != 'undefined' && dxebtnAuditOk != null)
+                        dxebtnAuditOk.SetEnabled(false);
                     alert(titleMSG);
                     break
                 default:
