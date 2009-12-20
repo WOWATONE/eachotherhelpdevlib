@@ -23,6 +23,24 @@ namespace BrokerWebApp.BusinessConsult {
         protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
+        /// dxeConsultSaveCallback 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeConsultSaveCallback;
+        
+        /// <summary>
+        /// dxeDeletegridConsultFeeItemCallback 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeDeletegridConsultFeeItemCallback;
+        
+        /// <summary>
         /// lblerrmsg 控件。
         /// </summary>
         /// <remarks>
@@ -30,6 +48,15 @@ namespace BrokerWebApp.BusinessConsult {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblerrmsg;
+        
+        /// <summary>
+        /// dxetxtConsultFeeID 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtConsultFeeID;
         
         /// <summary>
         /// npbasicheader 控件。

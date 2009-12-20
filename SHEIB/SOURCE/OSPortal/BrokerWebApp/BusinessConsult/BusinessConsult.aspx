@@ -75,19 +75,12 @@
 
         function dxeConsultSaveCallbackComplete(s, e) {
             var retrunval = e.result;
-            switch (retrunval) {
-                case "ok":
-                    var nid = dxetxtConsultFeeNo.GetValueString();
-                    if (isEmpty(nid)) {
-                        dxetxtConsultFeeNo.SetValue(e.result);
-                    }
-                    setDxeButtonsUnableOrEnable(true);
-                    alert("保存成功");
-                    break
-                default:
-                    alert(retrunval);
-
+            var nid = dxetxtConsultFeeID.GetValueString();
+            if (isEmpty(nid)) {
+                dxetxtConsultFeeID.SetValue(e.result);
             }
+            setDxeButtonsUnableOrEnable(true);
+            alert("保存成功");
         }
 
         function imgSelectCustomerClick() {
@@ -140,6 +133,34 @@
     <label id="lblerrmsg" name="lblerrmsg" runat="server" class="red" visible="false">
     </label>
     <table style="width: 100%">
+        <tr>
+            <td>
+                <table style="width: 100%">
+                    <tr>
+                        <td align="left" style="width: 8%;">
+                            咨询编号：
+                        </td>
+                        <td align="left" style="width: 25%;">
+                            <dxe:ASPxTextBox ID="dxetxtConsultFeeID" ClientInstanceName="dxetxtConsultFeeID"
+                                runat="server" Width="160px" Enabled="true" ReadOnly="true" BackColor="ButtonFace">
+                            </dxe:ASPxTextBox>
+                        </td>
+                        <td align="left" style="width: 8%;">
+                        </td>
+                        <td align="left" style="width: 25%;">
+                        </td>
+                        <td align="left" style="width: 8%;">
+                        </td>
+                        <td align="left" style="width: 25%;">
+                        </td>
+                        <td align="left" style="width: 8%;">
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
         <tr style="height: 10px;">
             <td>
                 &nbsp;
@@ -268,23 +289,21 @@
                             <td colspan="2">
                                 <dxwgv:ASPxGridView ID="gridConsultFeeItem" ClientInstanceName="gridConsultFeeItem"
                                     runat="server" KeyFieldName="ConsultFeeItemID" Width="100%" AutoGenerateColumns="False"
-                                    SettingsBehavior-AllowSort="false" SettingsBehavior-AllowDragDrop="false" OnRowInserting="gridConsultFeeItem_RowInserting"
+                                    SettingsBehavior-AllowSort="false" SettingsBehavior-AllowDragDrop="false" 
+                                    OnRowInserting="gridConsultFeeItem_RowInserting"
                                     OnRowUpdating="gridConsultFeeItem_RowUpdating" OnRowUpdated="gridConsultFeeItem_RowUpdated"
                                     OnRowInserted="gridConsultFeeItem_RowInserted" OnRowDeleting="gridConsultFeeItem_RowDeleting"
-                                    OnRowDeleted="gridConsultFeeItem_RowDeleted" OnCustomCallback="gridConsultFeeItem_CallBack">
+                                    OnRowDeleted="gridConsultFeeItem_RowDeleted" OnCustomCallback="gridConsultFeeItem_CallBack"                                   
+                                    >
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" Width="15px" CellStyle-Wrap="False"
                                             HeaderStyle-HorizontalAlign="Center">
                                             <NewButton Visible="true" />
                                             <EditButton Visible="true" />
-                                            <DeleteButton Visible="false" />
-                                            <CustomButtons>
-                                                <dxwgv:GridViewCommandColumnCustomButton Text="删除">
-                                                </dxwgv:GridViewCommandColumnCustomButton>
-                                            </CustomButtons>
+                                            <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
                                         <dxwgv:GridViewDataTextColumn Caption="咨询项目编号" FieldName="ConsultFeeItemID" CellStyle-Wrap="False"
-                                            HeaderStyle-HorizontalAlign="Center">
+                                            HeaderStyle-HorizontalAlign="Center" Visible="false">
                                         </dxwgv:GridViewDataTextColumn>
                                         <dxwgv:GridViewDataTextColumn Caption="咨询项目" FieldName="ConsultFeeItem" CellStyle-Wrap="False"
                                             HeaderStyle-HorizontalAlign="Center">
@@ -294,7 +313,7 @@
                                         </dxwgv:GridViewDataTextColumn>
                                     </Columns>
                                     <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
-                                    <ClientSideEvents CustomButtonClick="function(s, e) {gridConsultFeeItemCustomButtonClick(s,e);return false;}" />
+                                    <ClientSideEvents CustomButtonClick="" />
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="ConsultFee" SummaryType="Sum" ShowInGroupFooterColumn="ConsultFee"
                                             DisplayFormat="咨询费合计: {0}" />
@@ -303,13 +322,13 @@
                                         <EditForm>
                                             <div style="padding: 4px 4px 3px 4px; text-align: center;">
                                                 <table style="width: 70%;" runat="server" id="tblgridContactItemEditorTemplate">
-                                                    <tr>
+                                                    <tr visible="false">
                                                         <td style="white-space: nowrap; text-align: right;">
                                                             咨询项目编号：
                                                         </td>
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxTextBox ID="dxetxtConsultFeeItemID" ClientInstanceName="dxetxtConsultFeeItemID"
-                                                                runat="server" Text='<%# Eval("ConsultFeeItemID") %>'>
+                                                                runat="server" Text='<%# Eval("ConsultFeeItemID") %>' Visible="false">
                                                             </dxe:ASPxTextBox>
                                                         </td>
                                                         <td style="white-space: nowrap; text-align: right;">
