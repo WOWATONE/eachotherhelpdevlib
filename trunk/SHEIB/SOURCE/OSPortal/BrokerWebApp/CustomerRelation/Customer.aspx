@@ -17,7 +17,8 @@
     TagPrefix="dxp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxUploadControl"
     TagPrefix="dxuc" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>    
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
+    TagPrefix="dxcb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>客户信息</title>
 
@@ -178,10 +179,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
-    <dxcb:ASPxCallback ID="dxeDeleteCustomerBusDocCallback" ClientInstanceName="dxeDeleteCustomerBusDocCallback" runat="server" OnCallback="dxeDeleteCustomerBusDocCallback_Callback">
+    <dxcb:ASPxCallback ID="dxeDeleteCustomerBusDocCallback" ClientInstanceName="dxeDeleteCustomerBusDocCallback"
+        runat="server" OnCallback="dxeDeleteCustomerBusDocCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) { deleteCustomerBusDocCallbackComplete(s, e); }" />
-    </dxcb:ASPxCallback>    
-    
+    </dxcb:ASPxCallback>
     <dxtc:ASPxPageControl ID="customerDetailTabPage" ClientInstanceName="customerDetailTabPage"
         runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%">
         <TabPages>
@@ -540,25 +541,17 @@
                                     单证列表：
                                 </td>
                                 <td style="text-align: left; vertical-align: top;">
-                                    <dxwgv:ASPxGridView ID="gridBusDocList" 
-                                        ClientInstanceName="gridBusDocList" 
-                                        runat="server"
+                                    <dxwgv:ASPxGridView ID="gridBusDocList" ClientInstanceName="gridBusDocList" runat="server"
                                         SettingsBehavior-AllowSort="false" KeyFieldName="CustBusDocID" Width="80%" AutoGenerateColumns="False"
-                                        OnCustomCallback="gridBusDocList_CustomCallback" OnHtmlRowCreated="gridBusDocList_HtmlRowCreated">
+                                        OnCustomCallback="gridBusDocList_CustomCallback" OnHtmlRowCreated="gridBusDocList_HtmlRowCreated"
+                                        OnRowDeleting="gridBusDocList_RowDeleting">
                                         <%-- BeginRegion Columns --%>
                                         <Columns>
                                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" Width="20px">
                                                 <NewButton Visible="False" />
                                                 <EditButton Visible="False" />
-                                                <DeleteButton Visible="False" />
-                                                <CustomButtons>
-                                                    <dxwgv:GridViewCommandColumnCustomButton Text="删除">
-                                                    </dxwgv:GridViewCommandColumnCustomButton>
-                                                </CustomButtons>
-                                            </dxwgv:GridViewCommandColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="CustBusDocID" Caption="&nbsp;"  CellStyle-Wrap="False" 
-                                                Visible="true"  >
-                                            </dxwgv:GridViewDataColumn>
+                                                <DeleteButton Visible="true" />
+                                             </dxwgv:GridViewCommandColumn>
                                             <dxwgv:GridViewDataColumn FieldName="CustBusDocName" Caption="文件名" CellStyle-Wrap="False"
                                                 Width="25" Settings-AllowDragDrop="false">
                                                 <DataItemTemplate>
@@ -567,11 +560,12 @@
                                             </dxwgv:GridViewDataColumn>
                                             <dxwgv:GridViewDataColumn FieldName="CustBusDocURL" Caption="链接地址" CellStyle-Wrap="False">
                                             </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="CustID" Caption="客户编号" CellStyle-Wrap="False" Visible="false">
+                                            </dxwgv:GridViewDataColumn>
                                         </Columns>
                                         <%-- EndRegion --%>
                                         <SettingsPager Mode="ShowAllRecords" />
                                         <Settings ShowGroupPanel="false" />
-                                        <ClientSideEvents CustomButtonClick="function(s, e) {gridBusDocListCustomButtonClick(s,e);return false;}" />
                                         <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
                                     </dxwgv:ASPxGridView>
                                 </td>

@@ -17,7 +17,7 @@ using DevExpress.Web.ASPxGridView;
 
 namespace BrokerWebApp.BusinessConsult
 {
-    public partial class BusinessConsult : System.Web.UI.Page
+    public partial class BusinessConsult : BasePage
     {
         #region 私有变量
         /// <summary>
@@ -56,6 +56,11 @@ namespace BrokerWebApp.BusinessConsult
             { }
         }
 
+        private void RebindgridConsultFeeItem()
+        {
+            this.gridConsultFeeItem.DataSource = BusinessObjects.Consult.BO_ConsultFeeItem.GetConsultFeeItemByConsultFeeID(this.dxetxtConsultFeeID.Text);
+            this.gridConsultFeeItem.DataBind();
+        }
         /// <summary>
         /// 初始化控件
         /// </summary>
@@ -92,6 +97,7 @@ namespace BrokerWebApp.BusinessConsult
                 #region 基本信息
                 this.dxetxtConsultFeeNo.Text = consultFee.ConsultFeeNo;
                 this.deConsultDate.Text = consultFee.ConsultDate.ToString("yyyy-MM-dd");
+                this.dxetxtConsultFeeID.Text = consultFee.ConsultFeeID;
                 this.SetddlSalesID(consultFee.SalesID);
                 BO_Customer customer = BO_Customer.GetCustomerByID(consultFee.CustID);
                 if (customer != null)
@@ -223,8 +229,8 @@ namespace BrokerWebApp.BusinessConsult
 
             e.Cancel = true;
             this.gridConsultFeeItem.CancelEdit();
-            this.gridConsultFeeItem.DataSource = BusinessObjects.Consult.BO_ConsultFeeItem.GetConsultFeeItemByConsultFeeID(this._consultFeeID);
-            this.gridConsultFeeItem.DataBind();
+
+            RebindgridConsultFeeItem();
             
         }
 
@@ -248,9 +254,9 @@ namespace BrokerWebApp.BusinessConsult
                 throw new Exception("咨询费必须输入数字。");
             }
 
-            //保存到咨询项目
+            //保存到咨询项目   
             BusinessObjects.Consult.BO_ConsultFeeItem consultFeeItem = new BusinessObjects.Consult.BO_ConsultFeeItem();
-            consultFeeItem.ConsultFeeID = _consultFeeID;
+            consultFeeItem.ConsultFeeID = dxetxtConsultFeeID.Text;
             consultFeeItem.ConsultFeeItem = ConsultFeeItem;
             consultFeeItem.ConsultFee = consultFee;
             consultFeeItem.Save(ModifiedAction.Insert);
@@ -259,8 +265,8 @@ namespace BrokerWebApp.BusinessConsult
             e.Cancel = true;
             this.gridConsultFeeItem.CancelEdit();
 
-            this.gridConsultFeeItem.DataSource = BusinessObjects.Consult.BO_ConsultFeeItem.GetConsultFeeItemByConsultFeeID(this._consultFeeID);
-            this.gridConsultFeeItem.DataBind();
+
+            RebindgridConsultFeeItem();
         }
 
         protected void gridConsultFeeItem_RowInserted(object sender, DevExpress.Web.Data.ASPxDataInsertedEventArgs e)
@@ -270,12 +276,17 @@ namespace BrokerWebApp.BusinessConsult
 
         protected void gridConsultFeeItem_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-            //ASPxGridView dv = (ASPxGridView)sender;
-            
-            //dv.rows
-            //DataRow row = ((DataTable)Session["GridData"]).Rows.Find(e.Keys["ID"]);
+            string key = e.Keys[0].ToString();
 
-            //dv.GetDataRow(e.Values.
+
+            BusinessObjects.Consult.BO_ConsultFeeItem consultFeeItem = new BusinessObjects.Consult.BO_ConsultFeeItem();
+            consultFeeItem.delete(key);
+            
+
+            e.Cancel = true;
+            this.gridConsultFeeItem.CancelEdit();
+
+            RebindgridConsultFeeItem();
         }
 
         protected void gridConsultFeeItem_RowDeleted(object sender, DevExpress.Web.Data.ASPxDataDeletedEventArgs e)
@@ -297,8 +308,7 @@ namespace BrokerWebApp.BusinessConsult
 
         protected void gridConsultFeeItem_CallBack(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
         {
-            this.gridConsultFeeItem.DataSource = BusinessObjects.Consult.BO_ConsultFeeItem.GetConsultFeeItemByConsultFeeID(this._consultFeeID);
-            this.gridConsultFeeItem.DataBind();
+            RebindgridConsultFeeItem();
         }
         /// <summary>
         /// 保存咨询信息
@@ -309,7 +319,7 @@ namespace BrokerWebApp.BusinessConsult
         {
             try
             {
-                if (string.IsNullOrEmpty(this._consultFeeID))
+                if (string.IsNullOrEmpty(this.dxetxtConsultFeeID.Text))
                 {//新增咨询
                     this.lblerrmsg.Visible = false;
                     if (BusinessObjects.Consult.BO_ConsultFee.IfExistsConsultFeeNo(this.dxetxtConsultFeeNo.Text.Trim()))
@@ -345,8 +355,9 @@ namespace BrokerWebApp.BusinessConsult
                     consultFee.FeeDate = Convert.ToDateTime(this.deFeeDate.Text);
                     if (this.dxeddlFeePersion.SelectedItem.Value.ToString().Length > 0)
                         consultFee.FeePersion = this.dxeddlFeePersion.SelectedItem.Value.ToString();
+                    this.dxetxtConsultFeeID.Text = consultFee.ConsultFeeID;
                     consultFee.Save(ModifiedAction.Insert);
-                    e.Result = "ok";
+                    e.Result = consultFee.ConsultFeeID;
                     //this.Response.Redirect("BusinessConsult.aspx");
                 }
                 else
@@ -387,7 +398,7 @@ namespace BrokerWebApp.BusinessConsult
                     if (this.dxeddlFeePersion.SelectedItem.Value.ToString().Length > 0)
                         consultFee.FeePersion = this.dxeddlFeePersion.SelectedItem.Value.ToString();
                     consultFee.Save(ModifiedAction.Update);
-                    e.Result = "ok";
+                    e.Result = consultFee.ConsultFeeID;
                     //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Message", "<script language=\"javascript\">alert(\"修改完成。\");window.close();</script>", false);
                 }
             }
