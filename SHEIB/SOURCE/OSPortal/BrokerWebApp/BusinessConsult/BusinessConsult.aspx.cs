@@ -32,8 +32,6 @@ namespace BrokerWebApp.BusinessConsult
             {
                 if (!this.IsPostBack)
                 {
-                    if (this.Session["ConsultFeeGridData"] != null)
-                        this.Session.Remove("ConsultFeeGridData");
 
                     if (Request.QueryString["ConsultFeeID"] != null && Request.QueryString["ConsultFeeID"].Trim().Length > 0)
                     {
@@ -75,7 +73,13 @@ namespace BrokerWebApp.BusinessConsult
                 //收费人
                 this.SetddlFeePersion("");
                 //制单人
-                this.SetddlCreatePerson("");
+                this.SetddlCreatePerson(this.CurrentUserID);
+                //ListEditItem theselected = dxeddlCreatePerson.Items.FindByValue(this.CurrentUserID);
+                //if (theselected != null)
+                //{
+                //    dxeddlCreatePerson.SelectedItem = theselected;
+                //}
+
                 //审核人
                 this.SetddlAuditPerson("");
                 //制单时间
@@ -175,6 +179,11 @@ namespace BrokerWebApp.BusinessConsult
                 {
                     this.dxeddlCreatePerson.Items.Add(row["UserNameCn"].ToString().Trim(), row["UserID"].ToString().Trim());
                 }
+                //ListEditItem theselected = dxeddlCreatePerson.Items.FindByValue(value);
+                //if (theselected != null)
+                //{
+                //    dxeddlCreatePerson.SelectedItem = theselected;
+                //} 
                 this.dxeddlCreatePerson.SelectedIndex = this.dxeddlCreatePerson.Items.IndexOf(this.dxeddlCreatePerson.Items.FindByValue(value));
             }
         }

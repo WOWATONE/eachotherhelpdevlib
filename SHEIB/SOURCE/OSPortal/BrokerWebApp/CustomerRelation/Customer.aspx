@@ -449,7 +449,7 @@
                                         AddUploadButtonsHorizontalPosition="Center" ShowProgressPanel="True" FileInputCount="3"
                                         RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
                                         OnFileUploadComplete="UploadControl_AddInfoUploadComplete">
-                                        <ValidationSettings MaxFileSize="4000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
+                                        <ValidationSettings MaxFileSize="100000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
                                             MaxFileSizeErrorText="文件太大" NotAllowedContentTypeErrorText="不允许上传此类型文件">
                                         </ValidationSettings>
                                         <ClientSideEvents FilesUploadComplete="function(s, e) { AddInfoFileUploaded(s, e) }"
@@ -516,7 +516,7 @@
                                         AddUploadButtonsHorizontalPosition="Center" ShowProgressPanel="True" FileInputCount="2"
                                         RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
                                         OnFileUploadComplete="UploadControl_BusDocUploadComplete">
-                                        <ValidationSettings MaxFileSize="4000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
+                                        <ValidationSettings MaxFileSize="100000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
                                             MaxFileSizeErrorText="文件太大" NotAllowedContentTypeErrorText="不允许上传此类型文件">
                                         </ValidationSettings>
                                         <ClientSideEvents FilesUploadComplete="function(s, e) { BusDocFileUploaded(s, e) }"
@@ -902,7 +902,7 @@
                                         AddUploadButtonsHorizontalPosition="Center" ShowProgressPanel="True" FileInputCount="3"
                                         RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
                                         OnFileUploadComplete="UploadControl_CustomerPTUploadControl">
-                                        <ValidationSettings MaxFileSize="4000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
+                                        <ValidationSettings MaxFileSize="100000000" FileDoesNotExistErrorText="文件不存在" GeneralErrorText="上传发生错误"
                                             MaxFileSizeErrorText="文件太大" NotAllowedContentTypeErrorText="不允许上传此类型文件">
                                         </ValidationSettings>
                                         <ClientSideEvents FilesUploadComplete="function(s, e) { CustomerPtFileUploaded(s, e) }"

@@ -11,6 +11,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>咨询录入</title>
 
+    <script src="../js/jquery-1.3.2.js" type="text/javascript"></script>
+
     <script type="text/javascript">
         $(document).ready(function() {
             window.onunload = function() {
@@ -25,7 +27,9 @@
                 }
             };
 
+
             var theConsultID = dxetxtConsultFeeNo.GetValueString();
+
             if (isEmpty(theConsultID)) {
                 setDxeButtonsUnableOrEnable(false);
             }
@@ -68,9 +72,9 @@
                 return;
             }
 
-            //if (s.CauseValidation()) {
-            dxeConsultSaveCallback.PerformCallback("");
-            //}
+            if (s.CauseValidation()) {
+                dxeConsultSaveCallback.PerformCallback("");
+            }
         }
 
         function dxeConsultSaveCallbackComplete(s, e) {
@@ -107,6 +111,7 @@
                 return false;
             }
         }
+
 
         function setCustomerID(thevalue) {
             var result = $("#<%=hidCustID.ClientID %>");
@@ -289,12 +294,10 @@
                             <td colspan="2">
                                 <dxwgv:ASPxGridView ID="gridConsultFeeItem" ClientInstanceName="gridConsultFeeItem"
                                     runat="server" KeyFieldName="ConsultFeeItemID" Width="100%" AutoGenerateColumns="False"
-                                    SettingsBehavior-AllowSort="false" SettingsBehavior-AllowDragDrop="false" 
-                                    OnRowInserting="gridConsultFeeItem_RowInserting"
+                                    SettingsBehavior-AllowSort="false" SettingsBehavior-AllowDragDrop="false" OnRowInserting="gridConsultFeeItem_RowInserting"
                                     OnRowUpdating="gridConsultFeeItem_RowUpdating" OnRowUpdated="gridConsultFeeItem_RowUpdated"
                                     OnRowInserted="gridConsultFeeItem_RowInserted" OnRowDeleting="gridConsultFeeItem_RowDeleting"
-                                    OnRowDeleted="gridConsultFeeItem_RowDeleted" OnCustomCallback="gridConsultFeeItem_CallBack"                                   
-                                    >
+                                    OnRowDeleted="gridConsultFeeItem_RowDeleted" OnCustomCallback="gridConsultFeeItem_CallBack">
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;" Width="15px" CellStyle-Wrap="False"
                                             HeaderStyle-HorizontalAlign="Center">
@@ -545,7 +548,7 @@
                     </dxe:ASPxButton>
                 </td>
                 <td style="width: 50px; text-align: left;">
-                    <dxe:ASPxButton runat="server" ID="dxebtnSubmit" Text="审核" CausesValidation="true"
+                    <dxe:ASPxButton runat="server" ID="dxebtnSubmit" Text="审核" CausesValidation="false"
                         AutoPostBack="false" OnClick="dxebtnSubmit_Click">
                     </dxe:ASPxButton>
                 </td>

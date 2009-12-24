@@ -1015,7 +1015,7 @@
                                                     AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
                                                     OnFileUploadComplete="UploadControl_FileUploadComplete"
                                                     >
-                                                    <ValidationSettings MaxFileSize="4000000" 
+                                                    <ValidationSettings MaxFileSize="100000000" 
                                                     FileDoesNotExistErrorText="文件不存在" 
                                                     GeneralErrorText="上传发生错误" 
                                                     MaxFileSizeErrorText="文件太大" 
