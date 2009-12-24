@@ -38,9 +38,12 @@
         function cusNotCompleteUnable() {
             //debugger;
             if (cusCheckNessary()) {
-                dxebtnSave.SetEnabled(true);
-                dxebtnAudit.SetEnabled(false);
-                dxebtnPrint.SetEnabled(false);
+                if (typeof (dxebtnSave) != 'undefined' && dxebtnSave != null)
+                    dxebtnSave.SetEnabled(true);
+                if (typeof (dxebtnAudit) != 'undefined' && dxebtnAudit != null)
+                    dxebtnAudit.SetEnabled(false);
+                if (typeof (dxebtnPrint) != 'undefined' && dxebtnPrint != null)
+                    dxebtnPrint.SetEnabled(false);
             }
 
 
@@ -48,9 +51,12 @@
 
         function cusCompleteEnable() {
             if (!cusCheckNessary()) {
-                dxebtnSave.SetEnabled(true);
-                dxebtnAudit.SetEnabled(true);
-                dxebtnPrint.SetEnabled(true);
+                if (typeof (dxebtnSave) != 'undefined' && dxebtnSave != null)
+                    dxebtnSave.SetEnabled(true);
+                if (typeof (dxebtnAudit) != 'undefined' && dxebtnAudit != null)
+                    dxebtnAudit.SetEnabled(false);
+                if (typeof (dxebtnPrint) != 'undefined' && dxebtnPrint != null)
+                    dxebtnPrint.SetEnabled(false);
             }
 
 
