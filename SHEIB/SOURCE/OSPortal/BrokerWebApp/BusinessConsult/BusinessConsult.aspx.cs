@@ -14,6 +14,11 @@ using DevExpress.Web.ASPxUploadControl;
 using DevExpress.Web.ASPxEditors;
 using BusinessObjects;
 using DevExpress.Web.ASPxGridView;
+using BusinessObjects.Consult;
+using System.Runtime.Serialization;
+using System.IO;
+using System.Text;
+using System.Runtime.Serialization.Json;
 
 namespace BrokerWebApp.BusinessConsult
 {
@@ -40,6 +45,8 @@ namespace BrokerWebApp.BusinessConsult
                     }
 
                     this.Initialization();
+
+                    CheckPermission();
                 }
                 else
                 {
@@ -47,11 +54,30 @@ namespace BrokerWebApp.BusinessConsult
                         this._consultFeeID = this.ViewState["ConsultFeeID"].ToString();
                 }
 
+                CheckPermission();
+
                 this.gridConsultFeeItem.DataSource = BusinessObjects.Consult.BO_ConsultFeeItem.GetConsultFeeItemByConsultFeeID(this._consultFeeID);
                 this.gridConsultFeeItem.DataBind();
             }
             catch (Exception ex)
-            { }
+            {
+                throw ex;
+            }
+        }
+
+
+        private void CheckPermission()
+        {
+            if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.BusinessConsultList_Audit))
+            {
+                dxebtnConsultCommit.ClientEnabled = false;
+            }
+
+            if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.BusinessConsultList_Modify))
+            {
+                dxebtnBottomSave.ClientEnabled = false;
+                dxebtnConsultCommit.ClientEnabled = false;
+            }
         }
 
         private void RebindgridConsultFeeItem()
@@ -94,7 +120,7 @@ namespace BrokerWebApp.BusinessConsult
                     this.lblerrmsg.InnerText = "没有咨询费信息。";
                     this.lblerrmsg.Visible = true;
                     this.dxebtnBottomSave.Enabled = false;
-                    this.dxebtnSubmit.Enabled = false;
+                    this.dxebtnConsultCommit.Enabled = false;
                     return;
                 }
 
@@ -129,6 +155,13 @@ namespace BrokerWebApp.BusinessConsult
                 this.deCreateTime.Text = consultFee.CreateTime.ToString("yyyy-MM-dd");
                 this.SetddlAuditPerson(consultFee.AuditPerson);
                 this.deAuditTime.Text = consultFee.AuditTime.ToString("yyyy-MM-dd");
+
+
+                if (consultFee.AuditStatus == "1")
+                {                  
+                    dxebtnConsultCommit.Text = "反审核";
+                    dxebtnBottomSave.ClientEnabled = false;
+                }
                 #endregion
             }
         }
@@ -424,9 +457,64 @@ namespace BrokerWebApp.BusinessConsult
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void dxebtnSubmit_Click(object sender, EventArgs e)
+
+        protected void dxeConsultCommit_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
+            String json = e.Parameter;
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ConsultFeeInfo));
+
+            ConsultFeeInfo theJosn;
+            theJosn = (ConsultFeeInfo)serializer.ReadObject(ms);
+            ms.Close();
+            try
+            {
+                BO_ConsultFee.Commit(theJosn.ConsultFeeID, theJosn.AuditPerson, theJosn.AuditTime, theJosn.AuditStatus);
+                switch (theJosn.AuditStatus)
+                {
+                    case "1":
+                        e.Result = "CommitOk";
+                        break;
+                    case "0":
+                        e.Result = "UnCommitOk";
+                        break;
+                    default:
+                        e.Result = "ok";
+                        break;
+                }
+                
+            }
+            catch (Exception)
+            {
+
+                e.Result = "false";
+            }    
+            
+
             
         }
+
+
+
+        [DataContract(Namespace = "http://www.sheib.com")]
+        public class ConsultFeeInfo
+        {
+            public ConsultFeeInfo()
+            { }
+
+            [DataMember]
+            public string AuditStatus { get; set; }
+
+            [DataMember]
+            public string ConsultFeeID { get; set; }
+
+            [DataMember]
+            public string AuditPerson { get; set; }
+
+            [DataMember]
+            public DateTime AuditTime { get; set; }
+
+        }
+
     }
 }

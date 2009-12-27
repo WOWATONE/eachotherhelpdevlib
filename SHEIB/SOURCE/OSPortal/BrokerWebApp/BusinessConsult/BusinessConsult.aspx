@@ -87,6 +87,74 @@
             alert("保存成功");
         }
 
+        function dxebtnConsultCommit_Click(s, e) {
+            var titleMSG = "确定吗？";
+            var buttonID = s.GetText();
+            var AuditOrNot ="0";
+            switch (buttonID) {
+                case "审核":
+                    AuditOrNot = "1";
+                    titleMSG = "确定审核吗？";
+                    break
+                case "反审核":
+                    AuditOrNot = "0";
+                    titleMSG = "确定反审核吗？";
+                    break
+                default:
+                    //do nothing;
+            }
+
+            var jsonStringClient = makeConsultCommitJSON(AuditOrNot);
+
+            var sureOk = window.confirm(titleMSG)
+            if (sureOk) {
+                dxeConsultCommitCallback.PerformCallback(jsonStringClient);
+            }
+
+        }
+
+
+        function makeConsultCommitJSON(AuditOrNot) {
+            var sAuditStatus = AuditOrNot;
+            var sConsultFeeID = dxetxtConsultFeeID.GetValueString();
+            var sAuditPerson = dxeddlAuditPerson.GetValue();
+            var dAuditTime = deAuditTime.GetValue();
+            
+            function ConsultFeeInfo(){};
+            var cfi = new ConsultFeeInfo();
+            cfi.AuditStatus=sAuditStatus;
+            cfi.ConsultFeeID=sConsultFeeID;
+            cfi.AuditPerson=sAuditPerson;
+            cfi.AuditTime = dAuditTime;
+
+
+            var jsonStringClient = Sys.Serialization.JavaScriptSerializer.serialize(cfi);
+            
+
+            return jsonStringClient;
+
+        }
+        
+
+        function dxeConsultCommitCallbackComplete(s, e) {
+            var buttonID = dxebtnConsultCommit.GetText();
+            var titleMSG = buttonID + "成功完成";
+            var theresult = e.result;
+            switch (theresult) {
+                case "CommitOk":
+                    alert("审核成功");
+                    dxebtnConsultCommit.SetText("反审核");
+                    dxebtnBottomSave.SetEnabled(false);
+                    break;
+                case "UnCommitOk":
+                    alert("反审核成功");
+                    dxebtnConsultCommit.SetText("审核");
+                    dxebtnBottomSave.SetEnabled(true);
+                    break;
+            }
+        }
+        
+
         function imgSelectCustomerClick() {
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
             var retrunval = window.showModalDialog("../popupselectrefs/PolicyCustomer.aspx", self, myArguments);
@@ -130,6 +198,10 @@
     <dxcb:ASPxCallback ID="dxeConsultSaveCallback" ClientInstanceName="dxeConsultSaveCallback"
         runat="server" OnCallback="dxeConsultSave_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) {dxeConsultSaveCallbackComplete(s,e);}" />
+    </dxcb:ASPxCallback>
+    <dxcb:ASPxCallback ID="dxeConsultCommitCallback" ClientInstanceName="dxeConsultCommitCallback"
+        runat="server" OnCallback="dxeConsultCommit_Callback">
+        <ClientSideEvents CallbackComplete="function(s, e) {dxeConsultCommitCallbackComplete(s,e);}" />
     </dxcb:ASPxCallback>
     <dxcb:ASPxCallback ID="dxeDeletegridConsultFeeItemCallback" ClientInstanceName="dxeDeletegridConsultFeeItemCallback"
         runat="server" OnCallback="dxeDeleteConsultFeeItemCallback_Callback">
@@ -542,14 +614,15 @@
                     &nbsp;
                 </td>
                 <td style="width: 50px; text-align: left;">
-                    <dxe:ASPxButton runat="server" ID="dxebtnBottomSave" Text="保存" CausesValidation="true"
+                    <dxe:ASPxButton runat="server" ID="dxebtnBottomSave" ClientInstanceName="dxebtnBottomSave" Text="保存" CausesValidation="true"
                         AutoPostBack="false">
                         <ClientSideEvents Click="function(s, e) {dxebtnConsultSave_Click(s,e);}" />
                     </dxe:ASPxButton>
                 </td>
-                <td style="width: 50px; text-align: left;">
-                    <dxe:ASPxButton runat="server" ID="dxebtnSubmit" Text="审核" CausesValidation="false"
-                        AutoPostBack="false" OnClick="dxebtnSubmit_Click">
+                <td style="width: 70px; text-align: left;">
+                    <dxe:ASPxButton runat="server" ID="dxebtnConsultCommit"  ClientInstanceName="dxebtnConsultCommit" Text="审核" CausesValidation="false"
+                        AutoPostBack="false">
+                        <ClientSideEvents Click="function(s, e) {dxebtnConsultCommit_Click(s,e);}" />
                     </dxe:ASPxButton>
                 </td>
                 <td style="width: 50px; text-align: left;">

@@ -59,8 +59,9 @@ namespace BrokerWebApp.Report
 
         private void BindGrid()
         {
-            string sNy = dxeStartDate.Date.ToString("yyyyMM");
-            DataSet dseInvoice = BusinessObjects.BO_Report.GetInsuranceCommissionTradeReport(sNy);
+            string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");
+            string lsEndDate = dxeEndDate.Date.ToString("yyyy-MM-dd");
+            DataSet dseInvoice = BusinessObjects.BO_Report.GetInsuranceCommissionTradeReport(lsStartDate, lsEndDate);
 
 
             ReportViewer1.Visible = true;
