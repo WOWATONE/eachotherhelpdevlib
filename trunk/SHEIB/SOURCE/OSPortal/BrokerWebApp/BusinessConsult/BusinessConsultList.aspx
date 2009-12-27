@@ -139,7 +139,9 @@
                            Width="100%" 
                            SettingsPager-AlwaysShowPager="true"
                            OnRowDeleting="gridSearchResult_RowDeleting"
-                           OnCustomCallback="gridSearchResult_CustomCallBack">
+                           OnCustomCallback="gridSearchResult_CustomCallBack"
+                           OnHtmlRowCreated="gridSearchResult_HtmlRowCreated"
+                           >
                         <Columns>
                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" Width="20px">
                                 <NewButton Visible="False" />

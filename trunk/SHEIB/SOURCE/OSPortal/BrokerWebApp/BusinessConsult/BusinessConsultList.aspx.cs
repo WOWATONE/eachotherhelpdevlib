@@ -9,10 +9,13 @@ using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
 using System.Data;
 using BusinessObjects;
+using DevExpress.Web.ASPxGridView;
+using DevExpress.Web.ASPxGridView.Rendering;
+using DevExpress.Web.ASPxClasses.Internal;
 
 namespace BrokerWebApp.BusinessConsult
 {
-    public partial class BusinessConsultList : System.Web.UI.Page
+    public partial class BusinessConsultList : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,6 +24,7 @@ namespace BrokerWebApp.BusinessConsult
                 if (!this.Page.IsPostBack)
                 {
                     this.Initialization();
+                    CheckPermission();
                 }
 
                 if (this.Page.IsCallback)
@@ -51,6 +55,15 @@ namespace BrokerWebApp.BusinessConsult
             }
         }
 
+        private void CheckPermission()
+        {
+            Boolean checkPerm;
+            checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_Add);
+            this.debtnCreate.Enabled = checkPerm;
+            this.debtnCreate.ClientEnabled = checkPerm;
+
+
+        }
         protected void btnXlsExport_Click(object sender, EventArgs e)
         {
             this.BindGrid();
@@ -70,6 +83,61 @@ namespace BrokerWebApp.BusinessConsult
         {
             //                       
         }
+
+
+        protected void gridSearchResult_HtmlRowCreated(object sender,
+            ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data)
+            {
+                //DataRow dr = this.gridSearchResult.GetDataRow(e.VisibleIndex);
+                //if (dr != null)
+                //{
+                //    if (!String.IsNullOrEmpty(dr["Remark"].ToString()))
+                //    {
+                //        e.Row.Style.Add(HtmlTextWriterStyle.Color, "red");
+                //    }
+                //}
+
+                GridViewCommandColumn objgcc = getCommandColumnLoop();
+                Boolean checkPerm;
+                //checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_Add);
+
+                GridViewCommandColumnButtonControl thebtn;
+                InternalHyperLink theIHL;
+                //delete
+                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.BusinessConsultList_Delete);
+                thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
+                thebtn.Visible = checkPerm;
+                theIHL = (InternalHyperLink)thebtn.Controls[0];
+                theIHL.Visible = checkPerm;
+
+
+                //modify
+                //checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_Modify);
+                //thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[1];
+                //thebtn.Enabled = checkPerm;
+                //theIHL = (InternalHyperLink)thebtn.Controls[0];
+                //theIHL.Enabled = checkPerm;
+
+            }
+        }
+
+
+        private GridViewCommandColumn getCommandColumnLoop()
+        {
+            GridViewCommandColumn theCommandColumn = null;
+            foreach (GridViewColumn item in gridSearchResult.VisibleColumns)
+            {
+                if (item.GetType() == typeof(GridViewCommandColumn))
+                {
+                    theCommandColumn = (GridViewCommandColumn)item;
+                    break;
+                }
+            }
+            return theCommandColumn;
+        }
+
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
