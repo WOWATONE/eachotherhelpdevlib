@@ -71,10 +71,11 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand);
         }
 
-        public static DataSet GetInsuranceCommissionTradeReport(string sNy)
+        public static DataSet GetInsuranceCommissionTradeReport(string lsStartDate,string lsEndDate)
         {
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.rpt_InsuranceCommissionTrade");
-            _db.AddInParameter(dbCommand, "@ac_NY", DbType.String, sNy);
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.String, lsStartDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.String, lsEndDate);
             return _db.ExecuteDataSet(dbCommand);
         }
         #endregion Methods

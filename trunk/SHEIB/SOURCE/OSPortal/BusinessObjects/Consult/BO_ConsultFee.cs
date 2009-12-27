@@ -37,7 +37,10 @@ namespace BusinessObjects.Consult
             ModifyTime,
             ModifyPerson,
             FeeDate,
-            FeePersion
+            FeePersion,
+            AuditStatus,
+            IsAntiAudit,
+            IsAntiAuditDate
         }
 
         #region Property
@@ -75,6 +78,9 @@ namespace BusinessObjects.Consult
         public DateTime FeeDate { get; set; }
         /*收费人*/
         public string FeePersion { get; set; }
+        public string AuditStatus { get; set; }
+        public string IsAntiAudit { get; set; }
+        public DateTime IsAntiAuditDate { get; set; }
         #endregion
 
         #region Methods
@@ -96,8 +102,8 @@ namespace BusinessObjects.Consult
         private void add()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT INTO ConsultFee(ConsultFeeID, ConsultFeeNo, ConsultDate, SalesID, CustID, Contact, Tel, ConsultFee, InvoiceNO, AuditTime, AuditPerson, CreateTime, CreatePerson, ModifyTime, ModifyPerson, FeeDate, FeePersion) ");
-            sb.Append(" VALUES(@ConsultFeeID, @ConsultFeeNo, @ConsultDate, @SalesID, @CustID, @Contact, @Tel, @ConsultFee, @InvoiceNO, @AuditTime, @AuditPerson, @CreateTime, @CreatePerson, @ModifyTime, @ModifyPerson, @FeeDate, @FeePersion)");
+            sb.Append("INSERT INTO ConsultFee(ConsultFeeID, ConsultFeeNo, ConsultDate, SalesID, CustID, Contact, Tel, ConsultFee, InvoiceNO, AuditTime, AuditPerson,AuditStatus,CreateTime, CreatePerson, ModifyTime, ModifyPerson, FeeDate, FeePersion) ");
+            sb.Append(" VALUES(@ConsultFeeID, @ConsultFeeNo, @ConsultDate, @SalesID, @CustID, @Contact, @Tel, @ConsultFee, @InvoiceNO, @AuditTime, @AuditPerson,@AuditStatus, @CreateTime, @CreatePerson, @ModifyTime, @ModifyPerson, @FeeDate, @FeePersion)");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
@@ -121,7 +127,10 @@ namespace BusinessObjects.Consult
             _db.AddInParameter(dbCommand, "@ModifyPerson", DbType.AnsiString, this.ModifyPerson);
             _db.AddInParameter(dbCommand, "@FeeDate", DbType.DateTime, this.FeeDate);
             _db.AddInParameter(dbCommand, "@FeePersion", DbType.AnsiString, this.FeePersion);
+            _db.AddInParameter(dbCommand, "@AuditStatus", DbType.AnsiString, "0");
 
+
+            
             _db.ExecuteNonQuery(dbCommand);
         }
 
@@ -179,6 +188,25 @@ namespace BusinessObjects.Consult
             _db.ExecuteNonQuery(dbCommand);
         }
 
+        public static void Commit(string sConsultFeeID, string sAuditPerson, DateTime dAuditTime, string sAuditStatus)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Update ConsultFee ");
+            sb.Append(" Set AuditPerson=@AuditPerson,");
+            sb.Append("  AuditTime=@AuditTime,");
+            sb.Append("  AuditStatus=@AuditStatus");
+            sb.Append(" WHERE ConsultFeeID = @ConsultFeeID ");
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ConsultFeeID", DbType.AnsiString, sConsultFeeID);
+            _db.AddInParameter(dbCommand, "@AuditPerson", DbType.AnsiString, sAuditPerson);
+            _db.AddInParameter(dbCommand, "@AuditTime", DbType.DateTime, dAuditTime);
+            _db.AddInParameter(dbCommand, "@AuditStatus", DbType.AnsiString, sAuditStatus);
+
+            _db.ExecuteNonQuery(dbCommand);
+        }
+
+
         /// <summary>
         /// 根据查询条件取得咨询费列表
         /// </summary>
@@ -188,10 +216,10 @@ namespace BusinessObjects.Consult
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Select ");
-            sb.Append("CF.ConsultFeeID, CF.ConsultFeeNo, CF.ConsultDate, C.CustName, P.UserNameCn as SalesName, CF.Contact, CF.Tel, CF.ConsultFee, CF.InvoiceNO, '未审核' as AuditStatus "); //?//
+            sb.Append("CF.ConsultFeeID, CF.ConsultFeeNo, CF.ConsultDate, C.CustName, P.UserNameCn as SalesName, CF.Contact, CF.Tel, (Select Sum(ConsultFee) from ConsultFeeItem where ConsultFeeID=CF.ConsultFeeID) ConsultFee, CF.InvoiceNO,(select AuditStatusName from AuditStatus where AuditStatusID=CF.AuditStatus) AuditStatus "); //?//
             sb.Append("From ConsultFee CF (nolock) ");
             sb.Append("Left Join Customer C (nolock) On C.CustID=CF.CustID ");
-            sb.Append("Left Join P_User P (nolock) On P.UserID=C.SalesID ");
+            sb.Append("Left Join P_User P (nolock) On P.UserID=CF.SalesID ");
             sb.Append("Where 1=1 ");
             if (sWhere != "")
             {
@@ -240,6 +268,9 @@ namespace BusinessObjects.Consult
                     consultFee.ModifyPerson = Utility.GetStringFromReader(reader, FieldList.ModifyPerson.ToString());
                     consultFee.FeeDate = Utility.GetDatetimeFromReader(reader, FieldList.FeeDate.ToString());
                     consultFee.FeePersion = Utility.GetStringFromReader(reader, FieldList.FeePersion.ToString());
+                    consultFee.AuditStatus = Utility.GetStringFromReader(reader, FieldList.AuditStatus.ToString());
+                    consultFee.IsAntiAudit = Utility.GetStringFromReader(reader, FieldList.IsAntiAudit.ToString());
+                    consultFee.IsAntiAuditDate = Utility.GetDatetimeFromReader(reader, FieldList.FeeDate.ToString());
 
                     break;
                 }
