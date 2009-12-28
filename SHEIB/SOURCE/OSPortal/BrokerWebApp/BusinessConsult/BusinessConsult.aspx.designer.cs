@@ -32,6 +32,15 @@ namespace BrokerWebApp.BusinessConsult {
         protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeConsultSaveCallback;
         
         /// <summary>
+        /// dxeConsultCommitCallback 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallback.ASPxCallback dxeConsultCommitCallback;
+        
+        /// <summary>
         /// dxeDeletegridConsultFeeItemCallback 控件。
         /// </summary>
         /// <remarks>
@@ -401,7 +410,7 @@ namespace BrokerWebApp.BusinessConsult {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton dxebtnBottomSave;
         
         /// <summary>
-        /// dxebtnSubmit 控件。
+        /// dxebtnConsultCommit 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
