@@ -76,7 +76,6 @@ namespace BrokerWebApp.BusinessConsult
             if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.BusinessConsultList_Modify))
             {
                 dxebtnBottomSave.ClientEnabled = false;
-                dxebtnConsultCommit.ClientEnabled = false;
             }
         }
 
@@ -160,7 +159,7 @@ namespace BrokerWebApp.BusinessConsult
                 if (consultFee.AuditStatus == "1")
                 {                  
                     dxebtnConsultCommit.Text = "反审核";
-                    dxebtnBottomSave.ClientEnabled = false;
+                   //dxebtnBottomSave.ClientEnabled = false;
                 }
                 #endregion
             }
@@ -470,6 +469,10 @@ namespace BrokerWebApp.BusinessConsult
             try
             {
                 BO_ConsultFee.Commit(theJosn.ConsultFeeID, theJosn.AuditPerson, theJosn.AuditTime, theJosn.AuditStatus);
+
+                //BO_ConsultFee.Commit(theJosn.ConsultFeeID, this.CurrentUserID.ToString(), DateTime.Now, theJosn.AuditStatus);
+
+
                 switch (theJosn.AuditStatus)
                 {
                     case "1":
