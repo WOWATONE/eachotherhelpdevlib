@@ -160,8 +160,8 @@ namespace BrokerWebApp.BusinessConsult
                 sbWhere.Append(" And CF.ConsultDate<='" + this.deEndConsultDate.Text.Trim() + "' ");
             if (this.dxetxtContact.Text.Trim().Length > 0)
                 sbWhere.Append(" And CF.Contact like '%" + this.dxetxtContact.Text.Trim() + "%' ");
-            //if (this.ddlAuditStatus.SelectedItem.Value.ToString().Length > 0) //?//
-            //    sbWhere.Append(" And CF.='" + this.ddlAuditStatus.SelectedItem.Value.ToString() + "' ");
+            if (this.ddlAuditStatus.SelectedItem.Value.ToString().Length > 0) //?//
+                sbWhere.Append(" And CF.AuditStatus ='" + this.ddlAuditStatus.SelectedItem.Value.ToString() + "' ");
             this.gridSearchResult.DataSource = BusinessObjects.Consult.BO_ConsultFee.GetConsultFeeList(sbWhere.ToString()).Tables[0];
             this.gridSearchResult.DataBind();
         }
