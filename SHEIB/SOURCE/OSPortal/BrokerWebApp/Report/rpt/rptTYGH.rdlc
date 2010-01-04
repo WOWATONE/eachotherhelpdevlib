@@ -236,8 +236,8 @@
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="CPremiumSum_1">
-                      <rd:DefaultName>CPremiumSum_1</rd:DefaultName>
+                    <Textbox Name="CProcess">
+                      <rd:DefaultName>CProcess</rd:DefaultName>
                       <Style>
                         <BorderStyle>
                           <Default>Solid</Default>
@@ -250,7 +250,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!CPremiumSum.Value</Value>
+                      <Value>=Fields!CProcess.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>

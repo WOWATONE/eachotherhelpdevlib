@@ -581,6 +581,10 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CstPremium" Caption="车船税" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="FlagReinsure" Caption="再保" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="FlagTogether" Caption="共保" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowPager" />
