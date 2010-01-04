@@ -367,6 +367,10 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataTextColumn FieldName="AciPolicyNo" Caption="交强险保单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataTextColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="FlagReinsure" Caption="再保" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="FlagTogether" Caption="共保" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowPager" />

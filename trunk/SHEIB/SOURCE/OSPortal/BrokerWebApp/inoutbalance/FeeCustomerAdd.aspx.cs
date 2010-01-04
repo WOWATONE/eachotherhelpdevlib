@@ -52,6 +52,7 @@ namespace BrokerWebApp.inoutbalance
             if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeeCustomer_Audit))
             {
                 dxebtnAudit.ClientEnabled = false;
+                //dxebtnAudit.Enabled = false;
             }
 
             if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeeCustomer_Modify))
