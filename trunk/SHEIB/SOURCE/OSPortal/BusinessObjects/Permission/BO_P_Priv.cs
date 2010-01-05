@@ -392,7 +392,7 @@ namespace BusinessObjects
 
 
             //签约预算完成汇总
-            SignupBudget_CompleteSummary = 109030,
+            //SignupBudget_CompleteSummary = 109030,
 
             //预算基础表
             Budget_BaseList_All = 109040,
@@ -444,12 +444,12 @@ namespace BusinessObjects
             RealPremiumOverTimeReport_Personal = 111042,
 
             //保监会报表(按险种分类)
-            CIRC_Report_ByAddress = 102010,
+            CIRC_Report_ByProdType = 112010,
             //保监会报表(按签单地分类)
-            CIRC_Report_BySignAdress = 102020,
+            CIRC_Report_BySignAdress = 112020,
 
             //同业公会报表
-            Trade_Association_Report = 102030,
+            Trade_Association_Report = 112030,
 
             //
             MessageRemindPayInOut_All = 113010,

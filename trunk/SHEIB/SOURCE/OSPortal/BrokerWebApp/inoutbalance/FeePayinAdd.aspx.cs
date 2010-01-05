@@ -51,13 +51,13 @@ namespace BrokerWebApp.inoutbalance
         {
             if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeePay_Audit))
             {
-                dxebtnAudit.Enabled = false;
+                dxebtnAudit.ClientEnabled = false;
             }
 
             if (!this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.FeePay_Modify))
             {
-                dxebtnSave.Enabled = false;
-                dxebtnAddPolicy.Enabled = false;
+                dxebtnSave.ClientEnabled = false;
+                dxebtnAddPolicy.ClientEnabled = false;
             }
         }
 

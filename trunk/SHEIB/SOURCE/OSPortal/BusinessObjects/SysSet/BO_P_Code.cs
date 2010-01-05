@@ -269,7 +269,7 @@ namespace BusinessObjects
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT * ");
-            sb.Append(" FROM OperationType ");
+            sb.Append(" FROM OperationType  Order by SortNo");
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 

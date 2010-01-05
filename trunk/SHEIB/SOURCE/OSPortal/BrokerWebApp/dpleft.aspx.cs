@@ -605,9 +605,7 @@ namespace BrokerWebApp
             existItemInGroup = false;            
             //保监会报表1
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_All);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_Group);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_Personal);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CIRC_Report_ByProdType);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -620,9 +618,7 @@ namespace BrokerWebApp
             
             //保监会报表2
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_All);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_Group);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.InsuranceBrokerBusinessReport_Personal);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CIRC_Report_BySignAdress);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -659,6 +655,8 @@ namespace BrokerWebApp
             //签约预算清单
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_List_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_List_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_List_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -671,7 +669,9 @@ namespace BrokerWebApp
             
             //签约预算完成情况
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_RunDetail_All);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_List_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_List_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_List_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -684,7 +684,9 @@ namespace BrokerWebApp
             
             //签约预算完成汇总
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_CompleteSummary);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_RunDetail_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_RunDetail_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_RunDetail_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -698,6 +700,8 @@ namespace BrokerWebApp
             //预算基础表
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Budget_BaseList_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Budget_BaseList_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Budget_BaseList_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;
