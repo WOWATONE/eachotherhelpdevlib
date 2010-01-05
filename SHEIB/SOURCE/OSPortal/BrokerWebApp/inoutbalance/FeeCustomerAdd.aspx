@@ -50,7 +50,6 @@
             dxebtnSave.SetEnabled(true);
             dxebtnAddPolicy.SetEnabled(true);
             dxebtnAudit.SetEnabled(true);
-
         }
 
 

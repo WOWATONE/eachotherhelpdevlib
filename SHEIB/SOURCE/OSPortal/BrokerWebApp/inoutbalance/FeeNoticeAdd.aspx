@@ -56,7 +56,7 @@
                 if (typeof (dxebtnAudit) != 'undefined' && dxebtnAudit != null)
                     dxebtnAudit.SetEnabled(false);
                 if (typeof (dxebtnPrint) != 'undefined' && dxebtnPrint != null)
-                    dxebtnPrint.SetEnabled(false);
+                    dxebtnPrint.SetEnabled(true);
             }
 
 
