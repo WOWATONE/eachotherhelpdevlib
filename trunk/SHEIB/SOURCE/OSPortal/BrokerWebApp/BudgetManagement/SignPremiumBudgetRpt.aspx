@@ -141,7 +141,7 @@
                             <dxwgv:GridViewDataTextColumn Caption="    " FieldName="Type" CellStyle-Wrap="False" SortOrder="Ascending"
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="保费预算继保" FieldName="PremiumBudgetContinue"
+                            <dxwgv:GridViewDataTextColumn Caption="保费预算续保" FieldName="PremiumBudgetContinue"
                                 CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="保费预算新增" FieldName="PremiumBudgetAdd" CellStyle-Wrap="False"
@@ -150,10 +150,13 @@
                             <dxwgv:GridViewDataTextColumn Caption="保费预算合计" FieldName="PremiumBudgetSum" CellStyle-Wrap="False"
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="保费实际继保" FieldName="PremiumActualContinue"
+                            <dxwgv:GridViewDataTextColumn Caption="保费实际续保" FieldName="PremiumActualContinue"
                                 CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="保费实际新增" FieldName="PremiumActualAdd" CellStyle-Wrap="False"
+                            <dxwgv:GridViewDataTextColumn Caption="保费实际新增(预算内)" FieldName="PremiumActualAdd" CellStyle-Wrap="False"
+                                HeaderStyle-HorizontalAlign="Center">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="保费实际新增(预算外)" FieldName="PremiumActualAddOver" CellStyle-Wrap="False"
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="保费实际合计" FieldName="PremiumActualSum" CellStyle-Wrap="False"
@@ -164,35 +167,41 @@
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="经纪费预算新增" FieldName="ProcessBudgetAdd" CellStyle-Wrap="False"
                                 HeaderStyle-HorizontalAlign="Center">
-                            </dxwgv:GridViewDataTextColumn>
+                            </dxwgv:GridViewDataTextColumn>                            
                             <dxwgv:GridViewDataTextColumn Caption="经纪费预算合计" FieldName="ProcessBudgetSum" CellStyle-Wrap="False"
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="经纪费实际续保" FieldName="ProcessActualContinue"
                                 CellStyle-Wrap="False" HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="经纪费实际新增" FieldName="ProcessActualAdd" CellStyle-Wrap="False"
+                            <dxwgv:GridViewDataTextColumn Caption="经纪费实际新增(预算内)" FieldName="ProcessActualAdd" CellStyle-Wrap="False"
+                                HeaderStyle-HorizontalAlign="Center">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="经纪费实际新增(预算外)" FieldName="ProcessActualAddOver" CellStyle-Wrap="False"
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="经纪费实际合计" FieldName="ProcessActualSum" CellStyle-Wrap="False"
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="保费差异续保" FieldName="PremiumDiffContinue" CellStyle-Wrap="False"
-                                HeaderStyle-HorizontalAlign="Center">
+                                HeaderStyle-HorizontalAlign="Center" Visible="false">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="保费差异新增" FieldName="PremiumDiffAdd" CellStyle-Wrap="False"
-                                HeaderStyle-HorizontalAlign="Center">
+                                HeaderStyle-HorizontalAlign="Center" Visible="false">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="保费差异合计" FieldName="PremiumDiffSum" CellStyle-Wrap="False"
-                                HeaderStyle-HorizontalAlign="Center">
+                                HeaderStyle-HorizontalAlign="Center" Visible="false">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="经纪费差异续保" FieldName="ProcessDiffContinue" CellStyle-Wrap="False"
-                                HeaderStyle-HorizontalAlign="Center">
+                                HeaderStyle-HorizontalAlign="Center" Visible="false">
                             </dxwgv:GridViewDataTextColumn>
                             <dxwgv:GridViewDataTextColumn Caption="经纪费差异新增" FieldName="ProcessDiffAdd" CellStyle-Wrap="False"
+                                HeaderStyle-HorizontalAlign="Center" Visible="false">
+                            </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataTextColumn Caption="经纪费差异" FieldName="ProcessDiffSum" CellStyle-Wrap="False"
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
-                            <dxwgv:GridViewDataTextColumn Caption="经纪费差异合计" FieldName="ProcessDiffSum" CellStyle-Wrap="False"
+                            <dxwgv:GridViewDataTextColumn Caption="经纪费完成率(%)" FieldName="ProcessDiffSumBate" CellStyle-Wrap="False"
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                         </Columns>
