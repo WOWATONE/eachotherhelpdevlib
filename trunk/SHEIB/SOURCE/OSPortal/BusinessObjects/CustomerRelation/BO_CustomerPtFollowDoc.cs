@@ -74,8 +74,8 @@ namespace BusinessObjects.CustomerRelation
             List<BO_CustomerPtFollowDoc> list = new List<BO_CustomerPtFollowDoc>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT CustomerPtFollowDocID, FollowID, FollowDocName, FollowDocUrl ");
-            sb.Append(" FROM CustomerPtFollowDoc (nolock) ");
+            sb.Append("SELECT CustomerPtFollowDocID, FollowID, FollowDocName, FollowDocUrl,(Select CustID from CustomerPtFollow Where FollowID=a.FollowID) CustID");
+            sb.Append(" FROM CustomerPtFollowDoc a ");
             sb.Append(" WHERE FollowID = @FollowID");
             sb.Append(" ");
             sb.Append(" ");

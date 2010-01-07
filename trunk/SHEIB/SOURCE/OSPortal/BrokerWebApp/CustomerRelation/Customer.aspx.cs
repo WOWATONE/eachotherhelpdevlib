@@ -893,6 +893,62 @@ namespace BrokerWebApp.CustomerRelation
             }
         }
 
+
+        protected void gridPtFollowDocList_RowDeleting(object sender,
+           ASPxDataDeletingEventArgs e)
+        {
+            String theID = e.Keys[0].ToString();
+            object theValues = this.gridPtFollowDocList.GetRowValuesByKeyValue(theID, new String[] { "CustomerPtFollowDocID", "FollowDocName", "FollowDocUrl", "FollowID" });
+            object[] theValueList = theValues as object[];
+            String CustBusDocID, docName, docURL, CustID;
+            if (theValueList[0] == null)
+                CustBusDocID = "";
+            else
+                CustBusDocID = theValueList[0].ToString();
+
+            if (theValueList[1] == null)
+                docName = "";
+            else
+                docName = theValueList[1].ToString();
+
+            if (theValueList[2] == null)
+                docURL = "";
+            else
+                docURL = theValueList[2].ToString();
+
+            if (theValueList[3] == null)
+                CustID = "";
+            else
+                CustID = theValueList[3].ToString();
+
+            try
+            {
+                string FolderPath;
+                FolderPath = System.IO.Path.Combine(MapPath(UploadFollowDirectory), CustID);
+                string filePath = System.IO.Path.Combine(FolderPath, docName);
+
+                FileInfo fi = new FileInfo(filePath);
+                if (fi.Exists)
+                {
+                    fi.Delete();
+                }
+            }
+            catch
+            {
+                //do nothing;
+            }
+            if (!String.IsNullOrEmpty(theID))
+            {
+                BO_CustomerPtFollowDoc.Delete(theID);
+            }
+
+            e.Cancel = true;
+            this.gridBusDocList.CancelEdit();
+
+            rebindGridPtFollowDocList();
+
+        }
+
         private void rebindGridPtFollowDocList()
         {
             this.gridPtFollowDocList.DataSource = BusinessObjects.CustomerRelation.BO_CustomerPtFollowDoc.FetchListByFollowID(this._custID);//?//
