@@ -161,7 +161,7 @@
                 var sCustBusDocID = s.GetDataRow(e.visibleIndex).cells[1].innerText;
 
                 dxeDeleteCustomerBusDocCallback.PerformCallback(sCustBusDocID);
-                
+
             }
             else
                 return false;
@@ -174,6 +174,8 @@
             }
             gridBusDocList.PerformCallback();
         }
+
+     
     </script>
 
 </asp:Content>
@@ -551,7 +553,7 @@
                                                 <NewButton Visible="False" />
                                                 <EditButton Visible="False" />
                                                 <DeleteButton Visible="true" />
-                                             </dxwgv:GridViewCommandColumn>
+                                            </dxwgv:GridViewCommandColumn>
                                             <dxwgv:GridViewDataColumn FieldName="CustBusDocName" Caption="文件名" CellStyle-Wrap="False"
                                                 Width="25" Settings-AllowDragDrop="false">
                                                 <DataItemTemplate>
@@ -560,7 +562,8 @@
                                             </dxwgv:GridViewDataColumn>
                                             <dxwgv:GridViewDataColumn FieldName="CustBusDocURL" Caption="链接地址" CellStyle-Wrap="False">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="CustID" Caption="客户编号" CellStyle-Wrap="False" Visible="false">
+                                            <dxwgv:GridViewDataColumn FieldName="CustID" Caption="客户编号" CellStyle-Wrap="False"
+                                                Visible="false">
                                             </dxwgv:GridViewDataColumn>
                                         </Columns>
                                         <%-- EndRegion --%>
@@ -927,10 +930,16 @@
                                     <dxwgv:ASPxGridView ID="gridPtFollowDocList" ClientInstanceName="gridPtFollowDocList"
                                         runat="server" SettingsBehavior-AllowSort="false" KeyFieldName="CustomerPtFollowDocID"
                                         Width="80%" AutoGenerateColumns="False" 
+                                        OnRowDeleting ="gridPtFollowDocList_RowDeleting"
                                         OnHtmlRowCreated="gridPtFollowDocList_HtmlRowCreated"
                                         OnCustomCallback="gridPtFollowDocList_CustomCallback">
                                         <%-- BeginRegion Columns --%>
                                         <Columns>
+                                            <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" Width="20px">
+                                                <NewButton Visible="False" />
+                                                <EditButton Visible="False" />
+                                                <DeleteButton Visible="true" />
+                                            </dxwgv:GridViewCommandColumn>
                                             <dxwgv:GridViewDataColumn FieldName="FollowDocName" Caption="文件名" CellStyle-Wrap="False"
                                                 Width="25" Settings-AllowDragDrop="false">
                                                 <DataItemTemplate>
@@ -938,7 +947,9 @@
                                                 </DataItemTemplate>
                                             </dxwgv:GridViewDataColumn>
                                             <dxwgv:GridViewDataColumn FieldName="FollowDocUrl" Caption="链接地址" CellStyle-Wrap="False">
-                                            </dxwgv:GridViewDataColumn>                                            
+                                            </dxwgv:GridViewDataColumn>
+                                            <dxwgv:GridViewDataColumn FieldName="FollowID" Caption="客户编号" CellStyle-Wrap="False" Visible="false">
+                                            </dxwgv:GridViewDataColumn>
                                         </Columns>
                                         <%-- EndRegion --%>
                                         <SettingsPager Mode="ShowAllRecords" />
