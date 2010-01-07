@@ -543,6 +543,8 @@ namespace BrokerWebApp.CustomerRelation
             }
         }
 
+
+
         protected void dxeDeleteCustomerBusDocCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
             string key = e.Parameter;
@@ -605,7 +607,7 @@ namespace BrokerWebApp.CustomerRelation
             this.gridBusDocList.CancelEdit();
 
             rebindGridBusDocList();
-            
+
         }
         #endregion
 
@@ -867,11 +869,38 @@ namespace BrokerWebApp.CustomerRelation
             rebindGridPtFollowDocList();
         }
 
+        protected void gridPtFollowDocList_HtmlRowCreated(object sender,
+    ASPxGridViewTableRowEventArgs e)
+        {
+            if (e.RowType == GridViewRowType.Data)
+            {
+                Control thectr;
+                HyperLink thelnk;
+                thectr = gridPtFollowDocList.FindRowCellTemplateControl(e.VisibleIndex, null, "docitemlnk");
+
+                if (thectr != null)
+                {
+                    thelnk = (HyperLink)thectr;
+                    thelnk.ID = "fileurl" + Convert.ToString(e.GetValue("CustomerPtFollowDocID"));
+                    thelnk.NavigateUrl = "#";
+                    thelnk.Text = Convert.ToString(e.GetValue("FollowDocName"));
+                    String lnkUrl = "";
+                    lnkUrl = Convert.ToString(e.GetValue("FollowDocUrl"));
+                    lnkUrl = BasePage.URLCombine(BasePage.ApplicationRoot, lnkUrl);
+                    thelnk.Attributes.Add("onclick", "hlPolicyItemTogetherClick('" + lnkUrl + "');");
+                }
+
+            }
+        }
+
         private void rebindGridPtFollowDocList()
         {
             this.gridPtFollowDocList.DataSource = BusinessObjects.CustomerRelation.BO_CustomerPtFollowDoc.FetchListByFollowID(this._custID);//?//
             this.gridPtFollowDocList.DataBind();
         }
+
+
+
         #endregion
 
         #region 签单记录

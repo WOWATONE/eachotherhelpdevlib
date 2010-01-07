@@ -926,19 +926,19 @@
                                 <td>
                                     <dxwgv:ASPxGridView ID="gridPtFollowDocList" ClientInstanceName="gridPtFollowDocList"
                                         runat="server" SettingsBehavior-AllowSort="false" KeyFieldName="CustomerPtFollowDocID"
-                                        Width="80%" AutoGenerateColumns="False" OnCustomCallback="gridPtFollowDocList_CustomCallback">
+                                        Width="80%" AutoGenerateColumns="False" 
+                                        OnHtmlRowCreated="gridPtFollowDocList_HtmlRowCreated"
+                                        OnCustomCallback="gridPtFollowDocList_CustomCallback">
                                         <%-- BeginRegion Columns --%>
                                         <Columns>
                                             <dxwgv:GridViewDataColumn FieldName="FollowDocName" Caption="文件名" CellStyle-Wrap="False"
                                                 Width="25" Settings-AllowDragDrop="false">
                                                 <DataItemTemplate>
-                                                    <a id="fileurl <%# Eval("CustomerPtFollowDocID") %>" onclick="hlPolicyItemTogetherClick('<%# Eval("FollowDocUrl") %>');"
-                                                        href="#">
-                                                        <%# Eval("FollowDocName")%></a>
+                                                    <asp:HyperLink runat="server" ID="docitemlnk"></asp:HyperLink>
                                                 </DataItemTemplate>
                                             </dxwgv:GridViewDataColumn>
                                             <dxwgv:GridViewDataColumn FieldName="FollowDocUrl" Caption="链接地址" CellStyle-Wrap="False">
-                                            </dxwgv:GridViewDataColumn>
+                                            </dxwgv:GridViewDataColumn>                                            
                                         </Columns>
                                         <%-- EndRegion --%>
                                         <SettingsPager Mode="ShowAllRecords" />
