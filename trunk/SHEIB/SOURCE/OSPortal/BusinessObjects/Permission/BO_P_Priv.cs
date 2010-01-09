@@ -394,6 +394,9 @@ namespace BusinessObjects
             //签约预算完成汇总
             //SignupBudget_CompleteSummary = 109030,
 
+            //	109030	预算汇总表	10902	109
+            SignupBudget_Summary = 109030,
+
             //预算基础表
             Budget_BaseList_All = 109040,
 
@@ -450,6 +453,17 @@ namespace BusinessObjects
 
             //同业公会报表
             Trade_Association_Report = 112030,
+            //分险种经纪业务统计
+            RptStatisticByProdType = 112040,
+            //分客户经纪业务统计
+            RptStatisticByCustomer = 112050,
+            //分保险公司经纪业务统计
+            RptStatisticByCarrier = 112060,
+            //客户保费结构
+            RptCustomerPremiumStruct = 112040,
+            //客户经纪费结构
+            RptCustomerProcessStruct = 112080,
+
 
             //
             MessageRemindPayInOut_All = 113010,

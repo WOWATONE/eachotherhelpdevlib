@@ -43,15 +43,15 @@ namespace BrokerWebApp
             if (checkResult)
             {
                 existItemInGroup = true;
-                this.ASPxNavBar1.Groups[0].Items[0].ClientEnabled = true; 
+                this.ASPxNavBar1.Groups[0].Items[0].ClientEnabled = true;
             }
             else
             {
-                this.ASPxNavBar1.Groups[0].Items[0].ClientEnabled = false; 
+                this.ASPxNavBar1.Groups[0].Items[0].ClientEnabled = false;
             }
-            
 
-            
+
+
             //联系人
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Contact_List_Search_All);
@@ -66,7 +66,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[0].Items[1].ClientEnabled = false;
             }
-            
+
             //业务跟进
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ServiceFollowUp_List_Search_All);
@@ -81,14 +81,14 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[0].Items[2].ClientEnabled = false;
             }
-            
+
             //group
             //if (existItemInGroup)
             //    this.ASPxNavBar1.Groups[0].ClientEnabled = true;
             //else
             //    this.ASPxNavBar1.Groups[0].ClientEnabled = false;
 
-            
+
             //非车险保单管理
             existItemInGroup = false;
             //保单录入
@@ -108,8 +108,8 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[1].Items[0].ClientEnabled = false;
             }
-            
-            
+
+
             //保单批改
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAltInput_Add);
@@ -127,7 +127,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[1].Items[1].ClientEnabled = false;
             }
-                        
+
             //保单审核
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyAudit_Audit);
@@ -141,7 +141,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[1].Items[2].ClientEnabled = false;
             }
-            
+
             //group
             //if (existItemInGroup)
             //    this.ASPxNavBar1.Groups[1].ClientEnabled = true;
@@ -171,7 +171,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[2].Items[0].ClientEnabled = false;
             }
-            
+
             //询价单审核
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.AskPriceInput_Audit);
@@ -185,7 +185,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[2].Items[1].ClientEnabled = false;
             }
-            
+
             //保单批改
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CarPolicyAlt_Add);
@@ -203,7 +203,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[2].Items[2].ClientEnabled = false;
             }
-            
+
             //批单审核
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CarPolicyAlt_Audit);
@@ -217,7 +217,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[2].Items[3].ClientEnabled = false;
             }
-            
+
             //保单信息补录
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyInfo_Append);
@@ -230,7 +230,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[2].Items[4].ClientEnabled = false;
             }
-            
+
             //group
             //if (existItemInGroup)
             //    this.ASPxNavBar1.Groups[2].ClientEnabled = true;
@@ -316,7 +316,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[5].Items[1].ClientEnabled = false;
             }
-            
+
             //解付保费
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeePayList_Search_All);
@@ -331,7 +331,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[5].Items[2].ClientEnabled = false;
             }
-            
+
             //经纪费开票
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeVoiceList_Search_All);
@@ -346,7 +346,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[5].Items[3].ClientEnabled = false;
             }
-            
+
             //经纪费结算
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeBalanceList_Search_All);
@@ -361,7 +361,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[5].Items[4].ClientEnabled = false;
             }
-            
+
             //已通知未收费清单
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeNotice_NoPay_List);
@@ -374,7 +374,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[5].Items[5].ClientEnabled = false;
             }
-            
+
             //已收费未解付清单
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeCustomer_NoFeePay_List);
@@ -387,7 +387,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[5].Items[6].ClientEnabled = false;
             }
-            
+
             //已解付未开票清单
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeePay_NoFeeVoice_List);
@@ -400,7 +400,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[5].Items[7].ClientEnabled = false;
             }
-            
+
             //已开票未结算清单
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.FeeVoice_NoFeeBalance_List);
@@ -413,7 +413,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[5].Items[8].ClientEnabled = false;
             }
-            
+
             //group
             //if (existItemInGroup)
             //    this.ASPxNavBar1.Groups[5].ClientEnabled = true;
@@ -437,7 +437,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[6].Items[0].ClientEnabled = false;
             }
-            
+
             //保单查询(保险公司)
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Policy_Search_Carrier_All);
@@ -476,7 +476,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[7].Items[0].ClientEnabled = false;
             }
-            
+
             //角色管理
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Role_Manage);
@@ -489,7 +489,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[7].Items[1].ClientEnabled = false;
             }
-            
+
             //组织机构
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Organ_Schema);
@@ -502,7 +502,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[7].Items[2].ClientEnabled = false;
             }
-            
+
             //保险公司
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Policy_Carrier);
@@ -515,7 +515,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[7].Items[3].ClientEnabled = false;
             }
-            
+
             //分支机构
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyCarrier_Branch);
@@ -528,7 +528,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[7].Items[4].ClientEnabled = false;
             }
-            
+
             //险种定义
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.PolicyProduction_Type);
@@ -541,7 +541,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[7].Items[5].ClientEnabled = false;
             }
-            
+
             //数据字典
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Data_Dictionary);
@@ -554,7 +554,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[7].Items[6].ClientEnabled = false;
             }
-            
+
             //企业目录
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Enterprise_List);
@@ -567,7 +567,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[7].Items[7].ClientEnabled = false;
             }
-            
+
             //系统选项
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.System_Option);
@@ -580,7 +580,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[7].Items[8].ClientEnabled = false;
             }
-            
+
             //服务提醒
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ServiceAlert_All);
@@ -593,7 +593,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[7].Items[9].ClientEnabled = false;
             }
-            
+
             //group
             //if (existItemInGroup)
             //    this.ASPxNavBar1.Groups[7].ClientEnabled = true;
@@ -602,7 +602,7 @@ namespace BrokerWebApp
 
 
             //统计报表
-            existItemInGroup = false;            
+            existItemInGroup = false;
             //保监会报表1
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CIRC_Report_ByProdType);
@@ -615,7 +615,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[8].Items[0].ClientEnabled = false;
             }
-            
+
             //保监会报表2
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.CIRC_Report_BySignAdress);
@@ -628,7 +628,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[8].Items[1].ClientEnabled = false;
             }
-            
+
             //同业公会报表
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Trade_Association_Report);
@@ -641,17 +641,75 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[8].Items[2].ClientEnabled = false;
             }
-
-            //group
-            //if (existItemInGroup)
-            //    this.ASPxNavBar1.Groups[8].ClientEnabled = true;
-            //else
-            //    this.ASPxNavBar1.Groups[8].ClientEnabled = false;
+            //分险种经纪业务统计
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RptStatisticByProdType);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[8].Items[3].ClientEnabled = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[8].Items[3].ClientEnabled = false;
+            }
+            ////分客户经纪业务统计
+            //RptStatisticByCustomer = 112050,
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RptStatisticByCustomer);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[8].Items[4].ClientEnabled = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[8].Items[4].ClientEnabled = false;
+            }
+            ////分保险公司经纪业务统计
+            //RptStatisticByCarrier = 112060,
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RptStatisticByCarrier);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[8].Items[5].ClientEnabled = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[8].Items[5].ClientEnabled = false;
+            }
+            ////客户保费结构
+            //RptCustomerPremiumStruct = 112040,
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RptCustomerPremiumStruct);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[8].Items[6].ClientEnabled = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[8].Items[6].ClientEnabled = false;
+            }
+            ////客户经纪费结构
+            //RptCustomerProcessStruct = 112080,
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RptCustomerProcessStruct);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[8].Items[7].ClientEnabled = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[8].Items[7].ClientEnabled = false;
+            }
 
 
 
             //预算管理
-            existItemInGroup = false;            
+            existItemInGroup = false;
             //签约预算清单
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_List_All);
@@ -666,12 +724,13 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[9].Items[0].ClientEnabled = false;
             }
-            
-            //签约预算完成情况
+
+
+            //预算基础表
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_List_All);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_List_Group);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_List_Personal);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Budget_BaseList_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Budget_BaseList_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Budget_BaseList_Personal);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -681,7 +740,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[9].Items[1].ClientEnabled = false;
             }
-            
+
             //签约预算完成汇总
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_RunDetail_All);
@@ -696,12 +755,11 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[9].Items[2].ClientEnabled = false;
             }
-            
-            //预算基础表
+
+
+            //SignupBudget_Summary = 109030,
             checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Budget_BaseList_All);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Budget_BaseList_Group);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.Budget_BaseList_Personal);
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.SignupBudget_Summary);
             if (checkResult)
             {
                 existItemInGroup = true;
@@ -711,7 +769,6 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[9].Items[3].ClientEnabled = false;
             }
-            
             //group
             //if (existItemInGroup)
             //    this.ASPxNavBar1.Groups[9].ClientEnabled = true;
@@ -736,7 +793,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[10].Items[0].ClientEnabled = false;
             }
-            
+
             //应收保费帐期报表
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivablePremiumReport_All);
@@ -751,7 +808,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[10].Items[1].ClientEnabled = false;
             }
-            
+
             //应收佣金帐期报表
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivableProcessReport_All);
@@ -766,7 +823,7 @@ namespace BrokerWebApp
             {
                 this.ASPxNavBar1.Groups[10].Items[2].ClientEnabled = false;
             }
-            
+
             //实收保费逾期报表
             checkResult = false;
             checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_All);
