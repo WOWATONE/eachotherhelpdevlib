@@ -23,7 +23,7 @@ namespace BrokerWebApp.Report
         {
             //
             BindGrid();
-
+            
         }
 
                 

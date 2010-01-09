@@ -15,7 +15,7 @@ using Microsoft.Reporting.WebForms;
 namespace BrokerWebApp.Report
 {
 
-    public partial class TYGH : System.Web.UI.Page
+    public partial class TYGH : BasePage
     {
 
         #region Variables
