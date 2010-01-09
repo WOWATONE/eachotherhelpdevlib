@@ -152,10 +152,7 @@
                                 <dxnb:NavBarItem Text="预算汇总表" Name="BudgetManagement/RptSignBudgetGatherBySales.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="签约预算完成汇总" Name="BudgetManagement/SignPremiumBudgetSummary.aspx" Visible="false">
-                                </dxnb:NavBarItem>
-                                                 
-                                                 
-                                                                                             
+                                </dxnb:NavBarItem>                                                   
                             </Items>
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="台帐" Expanded="false">
@@ -167,7 +164,17 @@
                                 <dxnb:NavBarItem Text="应收佣金帐期报表" Name="accounting/ProcessReceivablePeriodReport.aspx">
                                 </dxnb:NavBarItem>  
                                 <dxnb:NavBarItem Text="实收保费逾期报表" Name="accounting/PremiumActualOverdueReport.aspx">
-                                </dxnb:NavBarItem>                                      
+                                </dxnb:NavBarItem>           
+                                <dxnb:NavBarItem Text="分险种经纪业务统计" Name="Report/RptStatisticByProdType.aspx">
+                                </dxnb:NavBarItem>   
+                                <dxnb:NavBarItem Text="分客户经纪业务统计" Name="Report/RptStatisticByCustomer.aspx">
+                                </dxnb:NavBarItem>   
+                                <dxnb:NavBarItem Text="分保险公司经纪业务统计" Name="Report/RptStatisticByCarrier.aspx">
+                                </dxnb:NavBarItem>   
+                                <dxnb:NavBarItem Text="客户保费结构" Name="Report/RptCustomerPremiumStruct.aspx">
+                                </dxnb:NavBarItem>     
+                                <dxnb:NavBarItem Text="客户经纪费结构" Name="Report/RptCustomerProcessStruct.aspx">
+                                </dxnb:NavBarItem>                                   
                             </Items>
                         </dxnb:NavBarGroup>    
                         <dxnb:NavBarGroup Text="服务提醒" Expanded="false">
