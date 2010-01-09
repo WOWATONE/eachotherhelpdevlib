@@ -67,6 +67,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>ReferenceDLLs\DevExpress.Web.ASPxPivotGrid.v8.3.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Web.ASPxPivotGrid.v8.3.Export, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.Web.ASPxPivotGrid.v8.3.Export.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Web.ASPxSpellChecker.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>ReferenceDLLs\DevExpress.Web.ASPxSpellChecker.v8.3.dll</HintPath>
@@ -78,6 +82,22 @@
     <Reference Include="DevExpress.Web.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>ReferenceDLLs\DevExpress.Web.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.XtraEditors.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v8.3.Design, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.XtraEditors.v8.3.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.XtraPivotGrid.v8.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v8.3.Core, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ReferenceDLLs\DevExpress.XtraPivotGrid.v8.3.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraPrinting.v8.3, Version=8.3.3.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -799,12 +819,47 @@
     </Compile>
     <Compile Include="Report\rpt\dsInsuranceCommissionType.Designer.cs" />
     <Compile Include="Report\rpt\dsTYGH.Designer.cs" />
+    <Compile Include="Report\RptCustomerPremiumStruct.aspx.cs">
+      <DependentUpon>RptCustomerPremiumStruct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\RptCustomerPremiumStruct.aspx.designer.cs">
+      <DependentUpon>RptCustomerPremiumStruct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RptStatisticByProdType.aspx.cs">
+      <DependentUpon>RptStatisticByProdType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\RptStatisticByProdType.aspx.designer.cs">
+      <DependentUpon>RptStatisticByProdType.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Report\TYGH.aspx.cs">
       <DependentUpon>TYGH.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Report\TYGH.aspx.designer.cs">
       <DependentUpon>TYGH.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RptStatisticByCustomer.aspx.cs">
+      <DependentUpon>RptStatisticByCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\RptStatisticByCustomer.aspx.designer.cs">
+      <DependentUpon>RptStatisticByCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RptStatisticByCarrier.aspx.cs">
+      <DependentUpon>RptStatisticByCarrier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\RptStatisticByCarrier.aspx.designer.cs">
+      <DependentUpon>RptStatisticByCarrier.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RptCustomerProcessStruct.aspx.cs">
+      <DependentUpon>RptCustomerProcessStruct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\RptCustomerProcessStruct.aspx.designer.cs">
+      <DependentUpon>RptCustomerProcessStruct.aspx</DependentUpon>
     </Compile>
     <Compile Include="schemasetting\AlertService.aspx.cs">
       <DependentUpon>AlertService.aspx</DependentUpon>
@@ -1277,7 +1332,12 @@
     <Content Include="popupselectrefs\PolicyProdType.aspx" />
     <Content Include="Report\InsuranceCommission1.aspx" />
     <Content Include="Report\InsuranceCommission2.aspx" />
+    <Content Include="Report\RptCustomerPremiumStruct.aspx" />
+    <Content Include="Report\RptStatisticByProdType.aspx" />
     <Content Include="Report\TYGH.aspx" />
+    <Content Include="Report\RptStatisticByCustomer.aspx" />
+    <Content Include="Report\RptStatisticByCarrier.aspx" />
+    <Content Include="Report\RptCustomerProcessStruct.aspx" />
     <Content Include="schemasetting\AlertService.aspx" />
     <Content Include="schemasetting\Branch.aspx" />
     <Content Include="schemasetting\BranchList.aspx" />
@@ -1402,7 +1462,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>10381</DevelopmentServerPort>
+          <DevelopmentServerPort>16222</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/BrokerWebApp</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
