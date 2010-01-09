@@ -22,8 +22,7 @@
         <tr>
             <td valign="top" style="width: 100%;">
                 <dxnb:ASPxNavBar ID="ASPxNavBar1" AutoCollapse="True" runat="server" AllowSelectItem="True"
-                    EnableTheming="True" EnableViewState="False" Width="155px" 
-                    EnableAnimation="True">
+                    EnableTheming="True" EnableViewState="False" Width="155px" EnableAnimation="True">
                     <GroupHeaderStyle HorizontalAlign="Left" VerticalAlign="Top" />
                     <ItemStyle HorizontalAlign="Left" />
                     <ClientSideEvents ItemClick="function(s, e) {SelectedItemChanged(s,e);}" Init="function(s, e) {InitNavBar(s,e);}"
@@ -53,7 +52,7 @@
                         <dxnb:NavBarGroup Text="车险保单管理" Expanded="false">
                             <Items>
                                 <dxnb:NavBarItem Text="询价单录入" Name="vehicleinsurance/AskPriceInputList.aspx">
-                                </dxnb:NavBarItem>                                
+                                </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="询价单审核" Name="vehicleinsurance/AskPriceCheckList.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="保单批改" Name="vehicleinsurance/CarPolicyAlertList.aspx">
@@ -106,7 +105,6 @@
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
-                        
                         <dxnb:NavBarGroup Text="系统设置" Expanded="false">
                             <Items>
                                 <dxnb:NavBarItem Text="员工管理" Name="schemasetting/UserManager.aspx">
@@ -139,6 +137,16 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="同业公会报表" Name="Report/TYGH.aspx">
                                 </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="分险种经纪业务统计" Name="Report/RptStatisticByProdType.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="分客户经纪业务统计" Name="Report/RptStatisticByCustomer.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="分保险公司经纪业务统计" Name="Report/RptStatisticByCarrier.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="客户保费结构" Name="Report/RptCustomerPremiumStruct.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="客户经纪费结构" Name="Report/RptCustomerProcessStruct.aspx">
+                                </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="预算管理" Expanded="false">
@@ -146,51 +154,39 @@
                                 <dxnb:NavBarItem Text="签约预算清单" Name="BudgetManagement/SignPremiumBudgetList.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="预算基础表" Name="BudgetManagement/RptSignBudgetBase.aspx">
-                                </dxnb:NavBarItem>  
+                                </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="签约预算完成汇总表" Name="BudgetManagement/SignPremiumBudgetRpt.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="预算汇总表" Name="BudgetManagement/RptSignBudgetGatherBySales.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="签约预算完成汇总" Name="BudgetManagement/SignPremiumBudgetSummary.aspx" Visible="false">
-                                </dxnb:NavBarItem>                                                   
                             </Items>
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="台帐" Expanded="false">
                             <Items>
                                 <dxnb:NavBarItem Text="保险经纪业务台帐" Name="accounting/BrokerAccounting.aspx">
-                                </dxnb:NavBarItem>    
+                                </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="应收保费帐期报表" Name="accounting/PremiumReceivablePeriodReport.aspx">
-                                </dxnb:NavBarItem>  
+                                </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="应收佣金帐期报表" Name="accounting/ProcessReceivablePeriodReport.aspx">
-                                </dxnb:NavBarItem>  
+                                </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="实收保费逾期报表" Name="accounting/PremiumActualOverdueReport.aspx">
-                                </dxnb:NavBarItem>           
-                                <dxnb:NavBarItem Text="分险种经纪业务统计" Name="Report/RptStatisticByProdType.aspx">
-                                </dxnb:NavBarItem>   
-                                <dxnb:NavBarItem Text="分客户经纪业务统计" Name="Report/RptStatisticByCustomer.aspx">
-                                </dxnb:NavBarItem>   
-                                <dxnb:NavBarItem Text="分保险公司经纪业务统计" Name="Report/RptStatisticByCarrier.aspx">
-                                </dxnb:NavBarItem>   
-                                <dxnb:NavBarItem Text="客户保费结构" Name="Report/RptCustomerPremiumStruct.aspx">
-                                </dxnb:NavBarItem>     
-                                <dxnb:NavBarItem Text="客户经纪费结构" Name="Report/RptCustomerProcessStruct.aspx">
-                                </dxnb:NavBarItem>                                   
+                                </dxnb:NavBarItem>
                             </Items>
-                        </dxnb:NavBarGroup>    
+                        </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="服务提醒" Expanded="false">
                             <Items>
                                 <dxnb:NavBarItem Text="收付提醒列表" Name="MessageRemind/MessageRemindPayInOut.aspx">
-                                </dxnb:NavBarItem>    
+                                </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="续保提醒列表" Name="MessageRemind/MessageRemindPremiumContinue.aspx">
-                                </dxnb:NavBarItem>  
+                                </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="跟进提醒列表" Name="MessageRemind/MessageRemindCustomerPtFollow.aspx">
-                                </dxnb:NavBarItem>  
+                                </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="生日提醒列表" Name="MessageRemind/MessageRemindCustomerBirthday.aspx">
-                                </dxnb:NavBarItem>        
+                                </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="佣金提醒列表" Name="MessageRemind/MessageRemindProcess.aspx">
-                                </dxnb:NavBarItem>                                          
+                                </dxnb:NavBarItem>
                             </Items>
-                        </dxnb:NavBarGroup>                      
+                        </dxnb:NavBarGroup>
                     </Groups>
                 </dxnb:ASPxNavBar>
             </td>
