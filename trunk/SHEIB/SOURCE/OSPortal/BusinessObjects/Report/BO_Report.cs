@@ -78,6 +78,44 @@ namespace BusinessObjects
             _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.String, lsEndDate);
             return _db.ExecuteDataSet(dbCommand);
         }
+
+        public static DataSet RptStatisticByProdType(string sNy)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptStatisticByProdType");
+            _db.AddInParameter(dbCommand, "@ac_Ny", DbType.String, sNy);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet RptStatisticByCustomer(string sNy)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptStatisticByCustomer");
+            _db.AddInParameter(dbCommand, "@ac_Ny", DbType.String, sNy);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet RptStatisticByCarrier(string sNy)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptStatisticByCarrier");
+            _db.AddInParameter(dbCommand, "@ac_Ny", DbType.String, sNy);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet RptCustomerPremiumStruct(string lsStartDate, string lsEndDate)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptCustomerPremiumStruct");
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.String, lsStartDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.String, lsEndDate);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet RptCustomerProcessStruct(string lsStartDate, string lsEndDate)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptCustomerProcessStruct");
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.String, lsStartDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.String, lsEndDate);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+        
         #endregion Methods
 
 
