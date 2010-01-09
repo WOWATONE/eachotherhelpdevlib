@@ -253,6 +253,15 @@ namespace BusinessObjects.Budget
             return _db.ExecuteDataSet(dbCommand);
         }
 
+        public static DataSet RptSignBudgetGatherBySales(string sYear, string sType)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptSignBudgetGatherBySales");
+            _db.AddInParameter(dbCommand, "@ac_Year", DbType.String, sYear);
+            _db.AddInParameter(dbCommand, "@ac_Type", DbType.String, sType);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+
         #endregion Procedure
     }
 }

@@ -370,6 +370,13 @@
     <Compile Include="BaseClass\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="BudgetManagement\RptSignBudgetGatherBySales.aspx.cs">
+      <DependentUpon>RptSignBudgetGatherBySales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BudgetManagement\RptSignBudgetGatherBySales.aspx.designer.cs">
+      <DependentUpon>RptSignBudgetGatherBySales.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BudgetManagement\SignPremiumBudget.aspx.cs">
       <DependentUpon>SignPremiumBudget.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1212,6 +1219,7 @@
     <Content Include="Accounting\ProcessReceivablePeriodReport.aspx" />
     <Content Include="Accounting\PremiumActualOverdueReport.aspx" />
     <Content Include="App_Themes\Aqua\ASPxTreeList.skin" />
+    <Content Include="BudgetManagement\RptSignBudgetGatherBySales.aspx" />
     <Content Include="BudgetManagement\SignPremiumBudget.aspx" />
     <Content Include="BudgetManagement\SignPremiumBudgetList.aspx" />
     <Content Include="BudgetManagement\SignPremiumBudgetRpt.aspx" />
