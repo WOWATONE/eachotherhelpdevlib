@@ -232,8 +232,28 @@
                                             </table>
                                         </td>
                                         <td style="text-align: center;">
+                                            应收日期：
                                         </td>
-                                        <td style="text-align: right;" colspan="3">
+                                        <td style="text-align: center;">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeStartPayDate" ClientInstanceName="dxeStartPayDate" runat="server"
+                                                            Width="95px">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                    <td>
+                                                        至
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeEndPayDate" ClientInstanceName="dxeEndPayDate" runat="server"
+                                                            Width="95px">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="text-align: right;" colspan="2">
                                             <table>
                                                 <tr>
                                                     <td>
@@ -334,7 +354,7 @@
                                         <dxwgv:GridViewDataColumn FieldName="OperationTypeName" Caption="业务性质" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="收款方式" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>                                        
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayFee" Caption="保费（本）" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayProc" Caption="经纪费（本）" CellStyle-Wrap="False">
@@ -351,7 +371,6 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="D90" Caption="＞90天" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-
                                     </Columns>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowPager" />
@@ -362,17 +381,17 @@
                                     <GroupSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInGroupFooterColumn="PolicyID"
                                             DisplayFormat="总计: {0}" />
-                                            <dxwgv:ASPxSummaryItem FieldName="PayFee" SummaryType="Sum" ShowInGroupFooterColumn="PayFee"
+                                        <dxwgv:ASPxSummaryItem FieldName="PayFee" SummaryType="Sum" ShowInGroupFooterColumn="PayFee"
                                             DisplayFormat="c" />
-                                            <dxwgv:ASPxSummaryItem FieldName="PayProc" SummaryType="Sum" ShowInGroupFooterColumn="PayProc"
+                                        <dxwgv:ASPxSummaryItem FieldName="PayProc" SummaryType="Sum" ShowInGroupFooterColumn="PayProc"
                                             DisplayFormat="c" />
-                                            <dxwgv:ASPxSummaryItem FieldName="D0" SummaryType="Sum" ShowInGroupFooterColumn="D0"
+                                        <dxwgv:ASPxSummaryItem FieldName="D0" SummaryType="Sum" ShowInGroupFooterColumn="D0"
                                             DisplayFormat="c" />
-                                            <dxwgv:ASPxSummaryItem FieldName="D30" SummaryType="Sum" ShowInGroupFooterColumn="D30"
+                                        <dxwgv:ASPxSummaryItem FieldName="D30" SummaryType="Sum" ShowInGroupFooterColumn="D30"
                                             DisplayFormat="c" />
-                                            <dxwgv:ASPxSummaryItem FieldName="D60" SummaryType="Sum" ShowInGroupFooterColumn="D60"
+                                        <dxwgv:ASPxSummaryItem FieldName="D60" SummaryType="Sum" ShowInGroupFooterColumn="D60"
                                             DisplayFormat="c" />
-                                            <dxwgv:ASPxSummaryItem FieldName="D90" SummaryType="Sum" ShowInGroupFooterColumn="D90"
+                                        <dxwgv:ASPxSummaryItem FieldName="D90" SummaryType="Sum" ShowInGroupFooterColumn="D90"
                                             DisplayFormat="c" />
                                     </GroupSummary>
                                     <TotalSummary>

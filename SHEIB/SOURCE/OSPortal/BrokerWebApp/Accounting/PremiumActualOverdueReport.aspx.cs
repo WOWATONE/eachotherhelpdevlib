@@ -229,6 +229,16 @@ namespace BrokerWebApp.Accounting
                 lsWhere = lsWhere + " and (convert(char(10), a.CreateTime,21)) <='" + lsEndDate + "'";
             }
 
+            string lsStartPayFeeDate = dxeStartPayFeeDate.Date.ToString("yyyy-MM-dd");
+            string lsEndPayFeeDate = dxeEndPayFeeDate.Date.ToString("yyyy-MM-dd");
+            if ((dxeStartPayFeeDate.Text.Trim() != "") && (dxeEndPayFeeDate.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), b.PayFeeDate,21)) >='" + lsStartPayFeeDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), b.PayFeeDate,21)) <='" + lsEndPayFeeDate + "'";
+            }
+
+            
+
             DataTable dt =  BO_Report.GetPremiumActualOverdueReport(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
 
