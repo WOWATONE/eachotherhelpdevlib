@@ -9,9 +9,9 @@
 //------------------------------------------------------------------------------
 
 namespace BrokerWebApp.Report {
-
-
-    public partial class RptCustomerProcessStruct{
+    
+    
+    public partial class RptCustomerProcessStruct {
         
         /// <summary>
         /// ScriptManager1 控件。
@@ -176,13 +176,13 @@ namespace BrokerWebApp.Report {
         protected global::DevExpress.Web.ASPxPivotGrid.PivotGridField fieldProdTypeName;
         
         /// <summary>
-        /// fieldPremiumBase 控件。
+        /// fieldProcess 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPivotGrid.PivotGridField fieldPremiumBase;
+        protected global::DevExpress.Web.ASPxPivotGrid.PivotGridField fieldProcess;
         
         /// <summary>
         /// gridExport 控件。
