@@ -137,27 +137,27 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="同业公会报表" Name="Report/TYGH.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="分险种经纪业务统计" Name="Report/RptStatisticByProdType.aspx">
+                                <dxnb:NavBarItem Text="按险种统计报表" Name="Report/RptStatisticByProdType.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="分客户经纪业务统计" Name="Report/RptStatisticByCustomer.aspx">
+                                <dxnb:NavBarItem Text="按客户统计报表" Name="Report/RptStatisticByCustomer.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="分保险公司经纪业务统计" Name="Report/RptStatisticByCarrier.aspx">
+                                <dxnb:NavBarItem Text="按保险公司统计报表" Name="Report/RptStatisticByCarrier.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="客户保费结构" Name="Report/RptCustomerPremiumStruct.aspx">
+                                <dxnb:NavBarItem Text="客户保费结构报表" Name="Report/RptCustomerPremiumStruct.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="客户经纪费结构" Name="Report/RptCustomerProcessStruct.aspx">
+                                <dxnb:NavBarItem Text="客户经纪费结构报表" Name="Report/RptCustomerProcessStruct.aspx">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="预算管理" Expanded="false">
                             <Items>
-                                <dxnb:NavBarItem Text="签约预算清单" Name="BudgetManagement/SignPremiumBudgetList.aspx">
+                                <dxnb:NavBarItem Text="签约预算明细表" Name="BudgetManagement/SignPremiumBudgetList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="预算基础表" Name="BudgetManagement/RptSignBudgetBase.aspx">
+                                <dxnb:NavBarItem Text="签约预算完成明细表" Name="BudgetManagement/RptSignBudgetBase.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="签约预算完成汇总表" Name="BudgetManagement/SignPremiumBudgetRpt.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="预算汇总表" Name="BudgetManagement/RptSignBudgetGatherBySales.aspx">
+                                <dxnb:NavBarItem Text="签约预算汇总表" Name="BudgetManagement/RptSignBudgetGatherBySales.aspx">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
