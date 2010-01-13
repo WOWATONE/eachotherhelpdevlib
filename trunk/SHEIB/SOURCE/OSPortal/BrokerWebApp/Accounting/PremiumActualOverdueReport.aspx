@@ -365,13 +365,13 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayFeeDate" Caption="收款日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D0" Caption="＜30天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D0" Caption="<=45天" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D30" Caption="30到60天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D30" Caption="45到90天" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D60" Caption="60到90天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D60" Caption="90到120天" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D90" Caption="＞90天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D90" Caption=">120天" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </columns>
                                     <%-- EndRegion --%>
