@@ -407,13 +407,13 @@
                                         </dxwgv:GridViewDataDateColumn>
                                         <dxwgv:GridViewDataColumn FieldName="InvoiceedFee" Caption="经纪费开票金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D0" Caption="＜30天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D0" Caption="<=45天" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D30" Caption="30到60天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D30" Caption="45到90天" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D60" Caption="60到90天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D60" Caption="90到120天" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D90" Caption="＞90天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D90" Caption=">90天" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
