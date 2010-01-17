@@ -707,6 +707,52 @@ namespace BrokerWebApp
             }
 
 
+            //应收保费帐期报表
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivablePremiumReport_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivablePremiumReport_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivablePremiumReport_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[8].Items[8].ClientEnabled = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[8].Items[8].ClientEnabled = false;
+            }
+
+            //应收佣金帐期报表
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivableProcessReport_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivableProcessReport_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivableProcessReport_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[8].Items[9].ClientEnabled = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[8].Items[9].ClientEnabled = false;
+            }
+
+            //实收保费逾期报表
+            checkResult = false;
+            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_All);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_Group);
+            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_Personal);
+            if (checkResult)
+            {
+                existItemInGroup = true;
+                this.ASPxNavBar1.Groups[8].Items[9].ClientEnabled = true;
+            }
+            else
+            {
+                this.ASPxNavBar1.Groups[8].Items[9].ClientEnabled = false;
+            }
+
+
 
             //预算管理
             existItemInGroup = false;
@@ -792,51 +838,6 @@ namespace BrokerWebApp
             else
             {
                 this.ASPxNavBar1.Groups[10].Items[0].ClientEnabled = false;
-            }
-
-            //应收保费帐期报表
-            checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivablePremiumReport_All);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivablePremiumReport_Group);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivablePremiumReport_Personal);
-            if (checkResult)
-            {
-                existItemInGroup = true;
-                this.ASPxNavBar1.Groups[10].Items[1].ClientEnabled = true;
-            }
-            else
-            {
-                this.ASPxNavBar1.Groups[10].Items[1].ClientEnabled = false;
-            }
-
-            //应收佣金帐期报表
-            checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivableProcessReport_All);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivableProcessReport_Group);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.ReceivableProcessReport_Personal);
-            if (checkResult)
-            {
-                existItemInGroup = true;
-                this.ASPxNavBar1.Groups[10].Items[2].ClientEnabled = true;
-            }
-            else
-            {
-                this.ASPxNavBar1.Groups[10].Items[2].ClientEnabled = false;
-            }
-
-            //实收保费逾期报表
-            checkResult = false;
-            checkResult = this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_All);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_Group);
-            checkResult = checkResult || this.CurrentUser.CheckPermission(BO_P_Priv.PrivListEnum.RealPremiumOverTimeReport_Personal);
-            if (checkResult)
-            {
-                existItemInGroup = true;
-                this.ASPxNavBar1.Groups[10].Items[3].ClientEnabled = true;
-            }
-            else
-            {
-                this.ASPxNavBar1.Groups[10].Items[3].ClientEnabled = false;
             }
 
 

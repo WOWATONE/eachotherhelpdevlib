@@ -498,6 +498,8 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataTextColumn FieldName="PolicyNo" Caption="保单号" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataTextColumn>
+                                        <dxwgv:GridViewDataTextColumn FieldName="AltNo" Caption="批改单号" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataTextColumn>
                                         <dxwgv:GridViewDataColumn FieldName="AreaName" Caption="保险人省份" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CarrierName" Caption="保险公司" CellStyle-Wrap="False">

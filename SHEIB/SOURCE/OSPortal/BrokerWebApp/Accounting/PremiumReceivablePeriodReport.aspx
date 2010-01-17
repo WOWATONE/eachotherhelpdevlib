@@ -363,13 +363,21 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayDate" Caption="保费应收日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D0" Caption="<=45天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D0" Caption="<=45天(保费)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D30" Caption="45到90天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D0Proc" Caption="<=45天(经纪费)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D60" Caption="90到120天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D30" Caption="45到90天(保费)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D90" Caption=">120天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D30Proc" Caption="45到90天(经纪费)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="D60" Caption="90到120天(保费)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="D60Proc" Caption="90到120天(经纪费)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="D90" Caption=">120天(保费)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="D90Proc" Caption=">120天(经纪费)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
@@ -393,6 +401,14 @@
                                             DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="D90" SummaryType="Sum" ShowInGroupFooterColumn="D90"
                                             DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D0Proc" SummaryType="Sum" ShowInGroupFooterColumn="D0Proc"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D30Proc" SummaryType="Sum" ShowInGroupFooterColumn="D30Proc"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D60Proc" SummaryType="Sum" ShowInGroupFooterColumn="D60Proc"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D90Proc" SummaryType="Sum" ShowInGroupFooterColumn="D90Proc"
+                                            DisplayFormat="c" />
                                     </GroupSummary>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInColumn="Beneficiary"
@@ -403,6 +419,10 @@
                                         <dxwgv:ASPxSummaryItem FieldName="D30" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="D60" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="D90" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D0Proc" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D30Proc" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D60Proc" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D90Proc" SummaryType="Sum" DisplayFormat="c" />
                                     </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
