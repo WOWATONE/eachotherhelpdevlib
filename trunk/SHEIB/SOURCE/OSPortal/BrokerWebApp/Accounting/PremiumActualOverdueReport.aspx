@@ -134,7 +134,7 @@
                                         <td style="text-align: left;">
                                             <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server"
                                                 Width="170px" DropDownStyle="DropDownList">
-                                                <clientsideevents selectedindexchanged="dxeddlDeptID_SelectedIndexChanged" />
+                                                <ClientSideEvents SelectedIndexChanged="dxeddlDeptID_SelectedIndexChanged" />
                                             </dxe:ASPxComboBox>
                                         </td>
                                         <td style="text-align: right;">
@@ -162,7 +162,7 @@
                                         <td style="text-align: left;">
                                             <dxe:ASPxComboBox ID="dxeddlCarrierId" ClientInstanceName="dxeddlCarrierId" runat="server"
                                                 Width="170px" DropDownStyle="DropDownList">
-                                                <clientsideevents selectedindexchanged="function(s, e) {dxeddlCarrierId_SelectedIndexChanged(s,e);}" />
+                                                <ClientSideEvents SelectedIndexChanged="function(s, e) {dxeddlCarrierId_SelectedIndexChanged(s,e);}" />
                                             </dxe:ASPxComboBox>
                                         </td>
                                         <td style="text-align: right;">
@@ -262,7 +262,7 @@
                                                     </td>
                                                     <td>
                                                         <dxe:ASPxButton ID="btnReset" runat="server" Text="重置" AutoPostBack="false" class="input_2">
-                                                            <clientsideevents click="btnResetClick" />
+                                                            <ClientSideEvents Click="btnResetClick" />
                                                         </dxe:ASPxButton>
                                                     </td>
                                                     <td>
@@ -313,7 +313,7 @@
                                     SettingsPager-AlwaysShowPager="true" OnCustomCallback="gridSearchResult_CustomCallback"
                                     OnCustomSummaryCalculate="gridSearchResult_CustomSummaryCalculate">
                                     <%-- BeginRegion Columns --%>
-                                    <columns>
+                                    <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">
                                             <NewButton Visible="False" />
                                             <EditButton Visible="False" />
@@ -365,22 +365,30 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PayFeeDate" Caption="收款日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D0" Caption="<=45天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D0" Caption="<=45天(保费)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D30" Caption="45到90天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D0Proc" Caption="<=45天(经纪费)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D60" Caption="90到120天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D30" Caption="45到90天(保费)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D90" Caption=">120天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D30Proc" Caption="45到90天(经纪费)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                    </columns>
+                                        <dxwgv:GridViewDataColumn FieldName="D60" Caption="90到120天(保费)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="D60Proc" Caption="90到120天(经纪费)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="D90" Caption=">120天(保费)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="D90Proc" Caption=">120天(经纪费)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                    </Columns>
                                     <%-- EndRegion --%>
-                                    <settingspager mode="ShowPager" />
-                                    <settings showgrouppanel="true" showverticalscrollbar="false" showgroupfooter="VisibleAlways"
-                                        showgroupedcolumns="true" showfilterrow="false" />
-                                    <settingsbehavior confirmdelete="true" autoexpandallgroups="true" />
-                                    <settingstext customizationwindowcaption="个性化" />
-                                    <groupsummary>
+                                    <SettingsPager Mode="ShowPager" />
+                                    <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways"
+                                        ShowGroupedColumns="true" ShowFilterRow="false" />
+                                    <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
+                                    <SettingsText CustomizationWindowCaption="个性化" />
+                                    <GroupSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInGroupFooterColumn="PolicyID"
                                             DisplayFormat="总计: {0}" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayFee" SummaryType="Sum" ShowInGroupFooterColumn="PayFee"
@@ -395,8 +403,16 @@
                                             DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="D90" SummaryType="Sum" ShowInGroupFooterColumn="D90"
                                             DisplayFormat="c" />
-                                    </groupsummary>
-                                    <totalsummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="D0Proc" SummaryType="Sum" ShowInGroupFooterColumn="D0Proc"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D30Proc" SummaryType="Sum" ShowInGroupFooterColumn="D30Proc"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D60Proc" SummaryType="Sum" ShowInGroupFooterColumn="D60Proc"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D90Proc" SummaryType="Sum" ShowInGroupFooterColumn="D90Proc"
+                                            DisplayFormat="c" />
+                                    </GroupSummary>
+                                    <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInColumn="Beneficiary"
                                             DisplayFormat="保单数: {0}" />
                                         <dxwgv:ASPxSummaryItem FieldName="PayFee" SummaryType="Sum" DisplayFormat="c" />
@@ -405,8 +421,12 @@
                                         <dxwgv:ASPxSummaryItem FieldName="D30" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="D60" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="D90" SummaryType="Sum" DisplayFormat="c" />
-                                    </totalsummary>
-                                    <clientsideevents custombuttonclick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D0Proc" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D30Proc" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D60Proc" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D90Proc" SummaryType="Sum" DisplayFormat="c" />
+                                    </TotalSummary>
+                                    <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
                                 <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
                                 </dxwgv:ASPxGridViewExporter>

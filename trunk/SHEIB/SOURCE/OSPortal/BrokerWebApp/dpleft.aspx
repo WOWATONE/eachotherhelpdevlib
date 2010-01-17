@@ -16,14 +16,14 @@
     <script src="js/dpleftmenu.js" type="text/javascript"></script>
 
 </head>
-<body>
-    <form id="form1" runat="server">
+<body style="overflow-x:hidden; overflow-y:auto;">
+    <form id="form1" runat="server" >
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td valign="top" style="width: 100%;">
-                <dxnb:ASPxNavBar ID="ASPxNavBar1" AutoCollapse="True" runat="server" AllowSelectItem="True"
-                    EnableTheming="True" EnableViewState="False" Width="155px" EnableAnimation="True">
-                    <GroupHeaderStyle HorizontalAlign="Left" VerticalAlign="Top" />
+                <dxnb:ASPxNavBar  ID="ASPxNavBar1" AutoCollapse="True" runat="server" AllowSelectItem="True"
+                    EnableTheming="True" EnableViewState="False" Width="150px" EnableAnimation="True">
+                    <GroupHeaderStyle HorizontalAlign="Left" VerticalAlign="Top"  />
                     <ItemStyle HorizontalAlign="Left" />
                     <ClientSideEvents ItemClick="function(s, e) {SelectedItemChanged(s,e);}" Init="function(s, e) {InitNavBar(s,e);}"
                         ExpandedChanged="function(s, e) {GroupExpandedChanged(s,e);}" ExpandedChanging="function(s, e) {GroupExpandedChanging(s,e);}">
@@ -147,6 +147,12 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="客户经纪费结构报表" Name="Report/RptCustomerProcessStruct.aspx">
                                 </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="应收保费(佣金)账龄明细表" Name="accounting/PremiumReceivablePeriodReport.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="应收账款账龄明细表" Name="accounting/ProcessReceivablePeriodReport.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="实收保费(佣金)完成明细表" Name="accounting/PremiumActualOverdueReport.aspx">
+                                </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="预算管理" Expanded="false">
@@ -164,12 +170,6 @@
                         <dxnb:NavBarGroup Text="台帐" Expanded="false">
                             <Items>
                                 <dxnb:NavBarItem Text="保险经纪业务台帐" Name="accounting/BrokerAccounting.aspx">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="应收保费帐期报表" Name="accounting/PremiumReceivablePeriodReport.aspx">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="应收佣金帐期报表" Name="accounting/ProcessReceivablePeriodReport.aspx">
-                                </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="实收保费逾期报表" Name="accounting/PremiumActualOverdueReport.aspx">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>

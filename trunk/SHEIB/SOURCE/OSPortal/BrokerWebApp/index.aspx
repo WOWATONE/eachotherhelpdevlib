@@ -13,7 +13,7 @@
 		<frame name="head" src="HeaderBroker.aspx" scrolling="no" noresize />
 		<FRAMESET id="frame_down" border="0" frameSpacing="0" rows="*" frameBorder="0">
 			<FRAMESET id="frame_left" border="0" frameSpacing="0" frameBorder="0" cols="176,15,*" >
-				<FRAME name="leftFrame" src="dpleft.aspx" noresize scrolling="no" />
+				<FRAME name="leftFrame" src="dpleft.aspx" noresize  />
 				<FRAME name="middleFrame" src="middle.html" noResize scrolling="no" />
 				<FRAME id="mainFrame" name="mainFrame" src="splash.aspx" runat=server /> 
 			</FRAMESET>
