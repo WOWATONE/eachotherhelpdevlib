@@ -379,7 +379,7 @@
                                                                                     </dxwgv:GridViewDataDateColumn>                                        
                                                                                     <dxwgv:GridViewDataColumn FieldName="SourceTypeName" Caption="业务来源" VisibleIndex="17" CellStyle-Wrap="False">                                                                   
                                                                                     </dxwgv:GridViewDataColumn>          
-                                                                                    <dxwgv:GridViewDataColumn FieldName="FlagReinsureName" Caption="业务性质" VisibleIndex="18" CellStyle-Wrap="False">                                                                   
+                                                                                    <dxwgv:GridViewDataColumn FieldName="OperationTypeName" Caption="业务性质" VisibleIndex="18" CellStyle-Wrap="False">                                                                   
                                                                                     </dxwgv:GridViewDataColumn>   
                                                                                     <dxwgv:GridViewDataColumn FieldName="GatheringTypeName" Caption="收款方式" VisibleIndex="19" CellStyle-Wrap="False">                                                                   
                                                                                     </dxwgv:GridViewDataColumn>                                                        
