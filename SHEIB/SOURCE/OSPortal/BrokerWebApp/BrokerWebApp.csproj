@@ -817,6 +817,20 @@
     <Compile Include="Report\InsuranceCommission2.aspx.designer.cs">
       <DependentUpon>InsuranceCommission2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Report\PremiumReceivablePeriodReportSum.aspx.cs">
+      <DependentUpon>PremiumReceivablePeriodReportSum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\PremiumReceivablePeriodReportSum.aspx.designer.cs">
+      <DependentUpon>PremiumReceivablePeriodReportSum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RptInvoiceProcStruct.aspx.cs">
+      <DependentUpon>RptInvoiceProcStruct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\RptInvoiceProcStruct.aspx.designer.cs">
+      <DependentUpon>RptInvoiceProcStruct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Report\rpt\dsInsuranceCommissionType.Designer.cs" />
     <Compile Include="Report\rpt\dsTYGH.Designer.cs" />
     <Compile Include="Report\RptCustomerPremiumStruct.aspx.cs">
@@ -860,6 +874,20 @@
     </Compile>
     <Compile Include="Report\RptCustomerProcessStruct.aspx.designer.cs">
       <DependentUpon>RptCustomerProcessStruct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\PremiumActualOverdueReportSum.aspx.cs">
+      <DependentUpon>PremiumActualOverdueReportSum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\PremiumActualOverdueReportSum.aspx.designer.cs">
+      <DependentUpon>PremiumActualOverdueReportSum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\RptRealPremiumStruct.aspx.cs">
+      <DependentUpon>RptRealPremiumStruct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\RptRealPremiumStruct.aspx.designer.cs">
+      <DependentUpon>RptRealPremiumStruct.aspx</DependentUpon>
     </Compile>
     <Compile Include="schemasetting\AlertService.aspx.cs">
       <DependentUpon>AlertService.aspx</DependentUpon>
@@ -1332,12 +1360,16 @@
     <Content Include="popupselectrefs\PolicyProdType.aspx" />
     <Content Include="Report\InsuranceCommission1.aspx" />
     <Content Include="Report\InsuranceCommission2.aspx" />
+    <Content Include="Report\PremiumReceivablePeriodReportSum.aspx" />
     <Content Include="Report\RptCustomerPremiumStruct.aspx" />
+    <Content Include="Report\RptInvoiceProcStruct.aspx" />
     <Content Include="Report\RptStatisticByProdType.aspx" />
     <Content Include="Report\TYGH.aspx" />
     <Content Include="Report\RptStatisticByCustomer.aspx" />
     <Content Include="Report\RptStatisticByCarrier.aspx" />
     <Content Include="Report\RptCustomerProcessStruct.aspx" />
+    <Content Include="Report\PremiumActualOverdueReportSum.aspx" />
+    <Content Include="Report\RptRealPremiumStruct.aspx" />
     <Content Include="schemasetting\AlertService.aspx" />
     <Content Include="schemasetting\Branch.aspx" />
     <Content Include="schemasetting\BranchList.aspx" />
