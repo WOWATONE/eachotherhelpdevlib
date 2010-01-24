@@ -55,6 +55,13 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand);
         }
 
+        public static DataSet GetPremiumReceivablePeriodReportSum(string sWhere)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetPremiumReceivablePeriodReportSum");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
         public static DataSet GetProcessReceivablePeriodReport(string sWhere)
         {
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetProcessReceivablePeriodReport");
@@ -67,6 +74,13 @@ namespace BusinessObjects
         public static DataSet GetPremiumActualOverdueReport(string sWhere)
         {
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetPremiumActualOverdueReport");
+            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet GetPremiumActualOverdueReportSum(string sWhere)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetPremiumActualOverdueReportSum");
             _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
             return _db.ExecuteDataSet(dbCommand);
         }
@@ -113,6 +127,21 @@ namespace BusinessObjects
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptCustomerProcessStruct");
             _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.String, lsStartDate);
             _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.String, lsEndDate);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+
+        public static DataSet RptInvoiceProcStruct(string sYear)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptInvoiceProcStruct");
+            _db.AddInParameter(dbCommand, "@ac_Year", DbType.String, sYear);
+            return _db.ExecuteDataSet(dbCommand);
+        }
+
+        public static DataSet RptRealPremiumStruct(string sNy)
+        {
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptRealPremiumStruct");
+            _db.AddInParameter(dbCommand, "@ac_Ny", DbType.String, sNy);
             return _db.ExecuteDataSet(dbCommand);
         }
         
