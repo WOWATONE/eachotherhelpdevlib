@@ -147,11 +147,19 @@
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="客户经纪费结构报表" Name="Report/RptCustomerProcessStruct.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="应收保费(佣金)账龄明细表" Name="accounting/PremiumReceivablePeriodReport.aspx">
+                                <dxnb:NavBarItem Text="应收保费(经纪费)账龄明细表" Name="accounting/PremiumReceivablePeriodReport.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="应收账款账龄明细表" Name="accounting/ProcessReceivablePeriodReport.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="实收保费(佣金)完成明细表" Name="accounting/PremiumActualOverdueReport.aspx">
+                                <dxnb:NavBarItem Text="实收保费(经纪费)完成明细表" Name="accounting/PremiumActualOverdueReport.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="应收保费（经纪费）账龄报表" Name="Report/PremiumReceivablePeriodReportSum.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="实收保费（经纪费）完成报表" Name="Report/PremiumActualOverdueReportSum.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="开票经纪费结构报表" Name="Report/RptInvoiceProcStruct.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="实收保费（经纪费）结构报表" Name="Report/RptRealPremiumStruct.aspx">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
