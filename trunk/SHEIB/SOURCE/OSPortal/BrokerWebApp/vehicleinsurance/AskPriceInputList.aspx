@@ -134,7 +134,7 @@
 								</dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                                车牌数目：
+                                车牌号码：
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCarCount" ClientInstanceName="dxetxtCarCount" runat="server" Width="240px"></dxe:ASPxTextBox>

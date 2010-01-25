@@ -102,8 +102,8 @@ namespace BrokerWebApp.vehicleinsurance
 
                 Boolean checkPerm;
                 //Audit
-                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyAudit_Audit);
-                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyAudit_AuditBack);
+                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.AskPriceInput_Audit);
+                checkPerm = this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.AskPriceInput_AuditBack);
                 thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
                 thebtn.Enabled = checkPerm;
                 theIHL = (InternalHyperLink)thebtn.Controls[0];
