@@ -150,7 +150,7 @@ namespace BrokerWebApp.vehicleinsurance
             //车牌数目
             if (!String.IsNullOrEmpty(this.dxetxtCarCount.Text.Trim()) && Information.IsNumeric(this.dxetxtCarCount.Text.Trim()))
             {
-                where += " and ((Select Count(PolicyId) As CarNumber From Policy Where PolicyType = '1' And AskPriceID = A1.AskPriceID) >=" + this.dxetxtCarCount.Text.Trim() + ")";
+                where += " and A1.CarNo >=" + this.dxetxtCarCount.Text.Trim() + ")";
             }
 
             //业务来源

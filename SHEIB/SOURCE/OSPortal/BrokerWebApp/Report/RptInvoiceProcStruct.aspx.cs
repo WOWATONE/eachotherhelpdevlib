@@ -16,7 +16,6 @@ namespace BrokerWebApp.Report
             {
                 int Year;
                 Year = DateTime.Now.Year;
-                dxeDllType.SelectedIndex = 0;
                 dxeDllYear.Value = Year.ToString();
             }
         }
