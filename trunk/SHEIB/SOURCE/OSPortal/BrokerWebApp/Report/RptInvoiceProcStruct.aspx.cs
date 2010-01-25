@@ -40,7 +40,7 @@ namespace BrokerWebApp.Report
             string sType = "";
 
             sYear = dxeDllYear.Value.ToString();
-            sType = dxeDllType.Value.ToString();
+
 
 
             DataTable dt = BusinessObjects.BO_Report.RptInvoiceProcStruct(sYear).Tables[0];
