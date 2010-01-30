@@ -413,7 +413,7 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="D60" Caption="90到120天" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="D90" Caption=">90天" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="D90" Caption=">120天" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
