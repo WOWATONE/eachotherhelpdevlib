@@ -41,25 +41,24 @@
                     <table style="width: 100%">
                         <tr>
                             <td style="text-align: right;">
-                                年份：
+                                开票日期：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeDllYear" ClientInstanceName="dxeDllYear" runat="server"
-                                    Width="170px" DropDownStyle="DropDownList">
-                                    <Items>
-                                        <dxe:ListEditItem Text="2009" Value="2009" />
-                                        <dxe:ListEditItem Text="2010" Value="2010" />
-                                        <dxe:ListEditItem Text="2011" Value="2011" />
-                                        <dxe:ListEditItem Text="2012" Value="2012" />
-                                        <dxe:ListEditItem Text="2013" Value="2013" />
-                                        <dxe:ListEditItem Text="2014" Value="2014" />
-                                        <dxe:ListEditItem Text="2015" Value="2015" />
-                                        <dxe:ListEditItem Text="2016" Value="2016" />
-                                        <dxe:ListEditItem Text="2017" Value="2017" />
-                                        <dxe:ListEditItem Text="2018" Value="2018" />
-                                        <dxe:ListEditItem Text="2019" Value="2019" />
-                                    </Items>
-                                </dxe:ASPxComboBox>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server">
+                                            </dxe:ASPxDateEdit>
+                                        </td>
+                                        <td>
+                                            至
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server">
+                                            </dxe:ASPxDateEdit>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                             <td style="text-align: right;">
                             </td>

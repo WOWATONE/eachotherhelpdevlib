@@ -16,7 +16,8 @@ namespace BrokerWebApp.Report
             {
                 int Year;
                 Year = DateTime.Now.Year;
-                dxeDllYear.Value = Year.ToString();
+                //dxeDllYear.Value = Year.ToString();
+                
             }
         }
 
@@ -36,14 +37,13 @@ namespace BrokerWebApp.Report
         /// </summary>
         private void BindGrid()
         {
-            string sYear = "";
+            string sStartDate ;
+            string sEndDate;
             string sType = "";
 
-            sYear = dxeDllYear.Value.ToString();
+            //sYear = dxeDllYear.Value.ToString();
 
-
-
-            DataTable dt = BusinessObjects.BO_Report.RptInvoiceProcStruct(sYear).Tables[0];
+            DataTable dt = BusinessObjects.BO_Report.RptInvoiceProcStruct(dxeStartDate.Date,dxeEndDate.Date).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
 

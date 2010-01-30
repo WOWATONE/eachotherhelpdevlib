@@ -129,7 +129,7 @@
                         <tr>
                             <td>
                                 <dxwpg:ASPxPivotGrid ID="pivotGrid" runat="server" 
-                                    ClientInstanceName="pivotGrid" CssClass="">
+                                    ClientInstanceName="pivotGrid">
                                     <Fields>
                                         <dxwpg:PivotGridField Area="RowArea" AreaIndex="0" FieldName="CustName" Caption="客        户"
                                              ID="fieldCustName" GrandTotalText="汇总" MinWidth="200" Width="200">
@@ -138,7 +138,12 @@
                                              ID="fieldProdTypeName">
                                         </dxwpg:PivotGridField>
                                         <dxwpg:PivotGridField Area="DataArea" AreaIndex="0" FieldName="PremiumBase" Caption="保费"
-                                            ID="fieldPremiumBase" ValueFormat-FormatType="Numeric" ValueFormat-FormatString="0.00;(0.00);#">
+                                            ID="fieldPremiumBase"     
+                                            ValueFormat-FormatType="Numeric" 
+                                            ValueFormat-FormatString="0.00;(0.00);#"
+                                            CellFormat-FormatType="Numeric" 
+                                            CellFormat-FormatString="0.00;(0.00);#"
+                                            >
                                         </dxwpg:PivotGridField>
                                     </Fields>
                                     <OptionsView ShowFilterHeaders="false" ShowColumnHeaders="true" ShowRowHeaders="true"
