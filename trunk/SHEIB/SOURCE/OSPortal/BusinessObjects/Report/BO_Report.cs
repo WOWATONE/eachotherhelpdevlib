@@ -78,10 +78,14 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand);
         }
 
-        public static DataSet GetPremiumActualOverdueReportSum(string sWhere)
+        public static DataSet GetPremiumActualOverdueReportSum(string sNy, string sDeptID, string sSalesID,DateTime StartDate,DateTime EndDate)
         {
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetPremiumActualOverdueReportSum");
-            _db.AddInParameter(dbCommand, "@ac_where", DbType.String, sWhere);
+            _db.AddInParameter(dbCommand, "@ac_ny", DbType.String, sNy);
+            _db.AddInParameter(dbCommand, "@ac_DeptID", DbType.String, sDeptID);
+            _db.AddInParameter(dbCommand, "@ac_SalesID", DbType.String, sSalesID);
+            _db.AddInParameter(dbCommand, "@ad_StartCreateTime", DbType.DateTime, StartDate);
+            _db.AddInParameter(dbCommand, "@ad_EndCreateTime", DbType.DateTime, EndDate);
             return _db.ExecuteDataSet(dbCommand);
         }
 
@@ -131,10 +135,11 @@ namespace BusinessObjects
         }
 
 
-        public static DataSet RptInvoiceProcStruct(string sYear)
+        public static DataSet RptInvoiceProcStruct(DateTime StartDate,DateTime EndDate)
         {
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptInvoiceProcStruct");
-            _db.AddInParameter(dbCommand, "@ac_Year", DbType.String, sYear);
+            _db.AddInParameter(dbCommand, "@ad_StartInvoiceDate", DbType.DateTime, StartDate);
+            _db.AddInParameter(dbCommand, "@ad_EndInvoiceDate", DbType.DateTime, EndDate);
             return _db.ExecuteDataSet(dbCommand);
         }
 
