@@ -148,7 +148,21 @@ namespace BrokerWebApp.Report
                 lsWhere = lsWhere + " and a.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
             }
 
+           string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");
+            string lsEndDate = dxeEndDate.Date.ToString("yyyy-MM-dd");
+            if ((dxeStartDate.Text.Trim() != "") && (dxeEndDate.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), a.CreateTime,21)) >='" + lsStartDate + "'";
+                lsWhere = lsWhere + " and (convert(char(10), a.CreateTime,21)) <='" + lsEndDate + "'";
+            }
 
+            //string lsStartPayFeeDate = dxeStartPayFeeDate.Date.ToString("yyyy-MM-dd");
+            //string lsEndPayFeeDate = dxeEndPayFeeDate.Date.ToString("yyyy-MM-dd");
+            //if ((dxeStartPayFeeDate.Text.Trim() != "") && (dxeEndPayFeeDate.Text.Trim() != ""))
+            //{
+            //    lsWhere = lsWhere + " and (convert(char(10), b.PayFeeDate,21)) >='" + lsStartPayFeeDate + "'";
+            //    lsWhere = lsWhere + " and (convert(char(10), b.PayFeeDate,21)) <='" + lsEndPayFeeDate + "'";
+            //}
 
             DataTable dt = BO_Report.GetPremiumActualOverdueReportSum(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;

@@ -105,6 +105,26 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align: right;">
+                                            录单日期：
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                    <td>
+                                                        至
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="text-align: right;">
                                             部门：
                                         </td>
                                         <td style="text-align: left;">
@@ -112,6 +132,28 @@
                                                 Width="170px" DropDownStyle="DropDownList">
                                                 <ClientSideEvents SelectedIndexChanged="dxeddlDeptID_SelectedIndexChanged" />
                                             </dxe:ASPxComboBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right;">
+                                            收费日期：
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeStartPayFeeDate" ClientInstanceName="dxeStartPayFeeDate" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                    <td>
+                                                        至
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxeEndPayFeeDate" ClientInstanceName="dxeEndPayFeeDate" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
                                         <td style="text-align: right;">
                                             客户经理：
@@ -121,27 +163,40 @@
                                                 Width="170px" DropDownStyle="DropDownList" OnCallback="dxeddlSalesIdCallback">
                                             </dxe:ASPxComboBox>
                                         </td>
-                                        <td style="text-align: right;">
-                                            <dxe:ASPxButton ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click">
-                                            </dxe:ASPxButton>
+                                    </tr>
+                                    <tr>
+                                        <td>
                                         </td>
-                                        <td style="text-align: right;">
-                                            <dxe:ASPxButton ID="btnReset" runat="server" Text="重置" AutoPostBack="false" class="input_2">
-                                                <ClientSideEvents Click="btnResetClick" />
-                                            </dxe:ASPxButton>
+                                        <td>
                                         </td>
-                                        <td style="text-align: left;">
-                                            <dxe:ASPxButton ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
-                                                CssClass="input_2" />
-                                            </dxe:ASPxButton>
+                                        <td>
+                                        </td>
+                                        <td style="text-align: right;" rowspan="3">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxButton ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click">
+                                                        </dxe:ASPxButton>
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxButton ID="btnReset" runat="server" Text="重置" AutoPostBack="false" class="input_2">
+                                                            <ClientSideEvents Click="btnResetClick" />
+                                                        </dxe:ASPxButton>
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxButton ID="btnXlsExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
+                                                            CssClass="input_2" />
+                                                        </dxe:ASPxButton>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            
                                         </td>
                                     </tr>
-                                </table>
-                            </td>
-                            <td>
                             </td>
                         </tr>
                     </table>
+                    
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearch" runat="Server" TargetControlID="npSearchDetail"
                     ExpandControlID="npSearchHeader" CollapseControlID="npSearchHeader" Collapsed="false"

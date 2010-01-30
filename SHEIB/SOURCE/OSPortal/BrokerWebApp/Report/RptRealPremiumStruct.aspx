@@ -127,34 +127,7 @@
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
                         </Columns>
-                        <GroupSummary>
-                            <dxwgv:ASPxSummaryItem FieldName="PremiumLSignedPayed" SummaryType="Sum" ShowInGroupFooterColumn="PremiumLSignedPayed"
-                                DisplayFormat=" {0}" />
-                            <dxwgv:ASPxSummaryItem FieldName="PremiumCSignedPayed" SummaryType="Sum" ShowInGroupFooterColumn="PremiumCSignedPayed"
-                                DisplayFormat=" {0}" />
-                            <dxwgv:ASPxSummaryItem FieldName="PremiumSum" SummaryType="Sum" ShowInGroupFooterColumn="PremiumSum"
-                                DisplayFormat=" {0}" />
-                            <dxwgv:ASPxSummaryItem FieldName="ProcessLSignedPayed" SummaryType="Sum" ShowInGroupFooterColumn="ProcessLSignedPayed"
-                                DisplayFormat=" {0}" />
-                            <dxwgv:ASPxSummaryItem FieldName="ProcessCSignedPayed" SummaryType="Sum" ShowInGroupFooterColumn="ProcessCSignedPayed"
-                                DisplayFormat=" {0}" />
-                            <dxwgv:ASPxSummaryItem FieldName="ProcessSum" SummaryType="Sum" ShowInGroupFooterColumn="ProcessSum"
-                                DisplayFormat=" {0}" />
-                        </GroupSummary>
-                        <TotalSummary>
-                            <dxwgv:ASPxSummaryItem FieldName="PremiumLSignedPayed" SummaryType="Sum" ShowInGroupFooterColumn="PremiumLSignedPayed"
-                                DisplayFormat=" {0}" />
-                            <dxwgv:ASPxSummaryItem FieldName="PremiumCSignedPayed" SummaryType="Sum" ShowInGroupFooterColumn="PremiumCSignedPayed"
-                                DisplayFormat=" {0}" />
-                            <dxwgv:ASPxSummaryItem FieldName="PremiumSum" SummaryType="Sum" ShowInGroupFooterColumn="PremiumSum"
-                                DisplayFormat=" {0}" />
-                            <dxwgv:ASPxSummaryItem FieldName="ProcessLSignedPayed" SummaryType="Sum" ShowInGroupFooterColumn="ProcessLSignedPayed"
-                                DisplayFormat=" {0}" />
-                            <dxwgv:ASPxSummaryItem FieldName="ProcessCSignedPayed" SummaryType="Sum" ShowInGroupFooterColumn="ProcessCSignedPayed"
-                                DisplayFormat=" {0}" />
-                            <dxwgv:ASPxSummaryItem FieldName="ProcessSum" SummaryType="Sum" ShowInGroupFooterColumn="ProcessSum"
-                                DisplayFormat=" {0}" />
-                        </TotalSummary>
+                       
                         <SettingsPager Mode="ShowPager" />
                         <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleIfExpanded"
                             ShowGroupedColumns="true" ShowFilterRow="false" />

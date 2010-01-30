@@ -138,7 +138,12 @@
                                              ID="fieldProdTypeName">
                                         </dxwpg:PivotGridField>
                                         <dxwpg:PivotGridField Area="DataArea" AreaIndex="0" FieldName="Process" Caption="佣金"
-                                            ID="fieldProcess" ValueFormat-FormatType="Numeric" ValueFormat-FormatString="0.00;(0.00);#">
+                                            ID="fieldProcess" 
+                                            ValueFormat-FormatType="Numeric" 
+                                            ValueFormat-FormatString="0.00;(0.00);#"
+                                            CellFormat-FormatType="Numeric" 
+                                            CellFormat-FormatString="0.00;(0.00);#"
+                                            >
                                         </dxwpg:PivotGridField>
                                     </Fields>
                                     <OptionsView ShowFilterHeaders="false" ShowColumnHeaders="true" ShowRowHeaders="true"

@@ -58,6 +58,23 @@ namespace BrokerWebApp.Report {
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel npSearchDetail;
         
+        /// <summary>
+        /// dxeStartDate 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeStartDate;
+        
+        /// <summary>
+        /// dxeEndDate 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeEndDate;
         
         /// <summary>
         /// dxeddlDeptID 控件。
@@ -69,6 +86,24 @@ namespace BrokerWebApp.Report {
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlDeptID;
         
         /// <summary>
+        /// dxeStartPayDate 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeStartPayDate;
+        
+        /// <summary>
+        /// dxeEndPayDate 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeEndPayDate;
+        
+        /// <summary>
         /// dxeddlSalesId 控件。
         /// </summary>
         /// <remarks>
@@ -76,7 +111,6 @@ namespace BrokerWebApp.Report {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxComboBox dxeddlSalesId;
-   
         
         /// <summary>
         /// btnSearch 控件。
@@ -97,13 +131,13 @@ namespace BrokerWebApp.Report {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnReset;
         
         /// <summary>
-        /// btnExport 控件。
+        /// btnXlsExport 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnExport;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton btnXlsExport;
         
         /// <summary>
         /// cpeSearch 控件。
