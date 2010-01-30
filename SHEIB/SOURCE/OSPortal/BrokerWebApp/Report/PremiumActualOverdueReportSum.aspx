@@ -112,6 +112,9 @@
                                                 <tr>
                                                     <td>
                                                         <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server">
+                                                            <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                                                <RequiredField ErrorText="必填项" IsRequired="True" />
+                                                            </ValidationSettings>
                                                         </dxe:ASPxDateEdit>
                                                     </td>
                                                     <td>
@@ -119,6 +122,9 @@
                                                     </td>
                                                     <td>
                                                         <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server">
+                                                            <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                                                <RequiredField ErrorText="必填项" IsRequired="True" />
+                                                            </ValidationSettings>
                                                         </dxe:ASPxDateEdit>
                                                     </td>
                                                 </tr>
@@ -136,24 +142,14 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align: right;">
-                                            收费日期：
+                                            收费年月：
                                         </td>
                                         <td style="text-align: left;">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <dxe:ASPxDateEdit ID="dxeStartPayFeeDate" ClientInstanceName="dxeStartPayFeeDate" runat="server">
-                                                        </dxe:ASPxDateEdit>
-                                                    </td>
-                                                    <td>
-                                                        至
-                                                    </td>
-                                                    <td>
-                                                        <dxe:ASPxDateEdit ID="dxeEndPayFeeDate" ClientInstanceName="dxeEndPayFeeDate" runat="server">
-                                                        </dxe:ASPxDateEdit>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                            <dxe:ASPxTextBox ID="dxetxtNY" ClientInstanceName="dxetxtNY" runat="server" Width="160px">
+                                                <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
+                                                    <RequiredField ErrorText="必填项" IsRequired="True" />
+                                                </ValidationSettings>
+                                            </dxe:ASPxTextBox>
                                         </td>
                                         <td style="text-align: right;">
                                             客户经理：
@@ -190,13 +186,11 @@
                                                     </td>
                                                 </tr>
                                             </table>
-                                            
                                         </td>
                                     </tr>
                             </td>
                         </tr>
                     </table>
-                    
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeSearch" runat="Server" TargetControlID="npSearchDetail"
                     ExpandControlID="npSearchHeader" CollapseControlID="npSearchHeader" Collapsed="false"
@@ -235,9 +229,13 @@
                                             <NewButton Visible="False" />
                                             <EditButton Visible="False" />
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="DeptName" Caption="部门" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="DeptName" Caption="部门" CellStyle-Wrap="False"
+                                            GroupIndex="0">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="UserName" Caption="客户经理" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="UserName" Caption="客户经理" CellStyle-Wrap="False"
+                                            GroupIndex="1">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="TypeName" Caption="类别" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="D0" Caption="<=45天(保费)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -266,40 +264,6 @@
                                         ShowGroupedColumns="true" ShowFilterRow="false" />
                                     <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                     <SettingsText CustomizationWindowCaption="个性化" />
-                                    <GroupSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="D0" SummaryType="Sum" ShowInGroupFooterColumn="D0"
-                                            DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D30" SummaryType="Sum" ShowInGroupFooterColumn="D30"
-                                            DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D60" SummaryType="Sum" ShowInGroupFooterColumn="D60"
-                                            DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D90" SummaryType="Sum" ShowInGroupFooterColumn="D90"
-                                            DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D0Proc" SummaryType="Sum" ShowInGroupFooterColumn="D0Proc"
-                                            DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D30Proc" SummaryType="Sum" ShowInGroupFooterColumn="D30Proc"
-                                            DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D60Proc" SummaryType="Sum" ShowInGroupFooterColumn="D60Proc"
-                                            DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D90Proc" SummaryType="Sum" ShowInGroupFooterColumn="D90Proc"
-                                            DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayFee" SummaryType="Sum" ShowInGroupFooterColumn="PayFee"
-                                            DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayProc" SummaryType="Sum" ShowInGroupFooterColumn="PayProc"
-                                            DisplayFormat="c" />
-                                    </GroupSummary>
-                                    <TotalSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="PayFee" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PayProc" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D0" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D30" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D60" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D90" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D0Proc" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D30Proc" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D60Proc" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D90Proc" SummaryType="Sum" DisplayFormat="c" />
-                                    </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
                                 <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">

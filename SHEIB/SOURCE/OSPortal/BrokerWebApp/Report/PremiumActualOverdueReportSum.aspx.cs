@@ -138,23 +138,23 @@ namespace BrokerWebApp.Report
         {
             string lsWhere = "";
             
-            if (this.dxeddlDeptID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptID.SelectedItem.Value.ToString()))
-            {
-                lsWhere = lsWhere + " and a.DeptId ='" + dxeddlDeptID.SelectedItem.Value.ToString() + "'";
-            }
+            //if (this.dxeddlDeptID.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlDeptID.SelectedItem.Value.ToString()))
+            //{
+            //    lsWhere = lsWhere + " and a.DeptId ='" + dxeddlDeptID.SelectedItem.Value.ToString() + "'";
+            //}
 
-            if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
-            {
-                lsWhere = lsWhere + " and a.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
-            }
+            //if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
+            //{
+            //    lsWhere = lsWhere + " and a.SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "'";
+            //}
 
-           string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");
-            string lsEndDate = dxeEndDate.Date.ToString("yyyy-MM-dd");
-            if ((dxeStartDate.Text.Trim() != "") && (dxeEndDate.Text.Trim() != ""))
-            {
-                lsWhere = lsWhere + " and (convert(char(10), a.CreateTime,21)) >='" + lsStartDate + "'";
-                lsWhere = lsWhere + " and (convert(char(10), a.CreateTime,21)) <='" + lsEndDate + "'";
-            }
+           //string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");
+           // string lsEndDate = dxeEndDate.Date.ToString("yyyy-MM-dd");
+           // if ((dxeStartDate.Text.Trim() != "") && (dxeEndDate.Text.Trim() != ""))
+           // {
+           //     lsWhere = lsWhere + " and (convert(char(10), a.CreateTime,21)) >='" + lsStartDate + "'";
+           //     lsWhere = lsWhere + " and (convert(char(10), a.CreateTime,21)) <='" + lsEndDate + "'";
+           // }
 
             //string lsStartPayFeeDate = dxeStartPayFeeDate.Date.ToString("yyyy-MM-dd");
             //string lsEndPayFeeDate = dxeEndPayFeeDate.Date.ToString("yyyy-MM-dd");
@@ -164,7 +164,14 @@ namespace BrokerWebApp.Report
             //    lsWhere = lsWhere + " and (convert(char(10), b.PayFeeDate,21)) <='" + lsEndPayFeeDate + "'";
             //}
 
-            DataTable dt = BO_Report.GetPremiumActualOverdueReportSum(lsWhere).Tables[0];
+            string sDeptID = dxeddlDeptID.SelectedItem.Value.ToString();
+            string sSalesID = dxeddlSalesId.SelectedItem.Value.ToString();
+            string sNy = dxetxtNY.Text.Trim();
+            DateTime StartDate = dxeStartDate.Date;
+            DateTime EndDate = dxeEndDate.Date;
+
+
+            DataTable dt = BO_Report.GetPremiumActualOverdueReportSum(sNy, sDeptID, sSalesID, StartDate,EndDate).Tables[0];
             this.gridSearchResult.DataSource = dt;
 
             //经过DataView筛选name 字段不重复的数据

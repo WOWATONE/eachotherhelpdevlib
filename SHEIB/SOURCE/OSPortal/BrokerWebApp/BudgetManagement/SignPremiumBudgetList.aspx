@@ -60,6 +60,22 @@
                 setProductTypeID(thesplit_array[0]);
             }
         }
+        
+        
+        function SelectedProdTypeNameIndexChanged(s, e) {
+            var thevalue = s.GetValue();
+            setProductTypeID(thevalue);
+            var test = s.GetText();
+            var sValue = s.GetValue();
+
+            if (test.length > 0) {
+                var index = test.lastIndexOf("∟");
+                if (index >= 0) {
+                    var testTmp = test.substr(index + 1);
+                    s.SetText(testTmp);
+                }
+            }
+        }
 
         function setProductTypeID(thevalue) {
             var result = $("#<%=ptid.ClientID %>");
@@ -127,7 +143,7 @@
                                     src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: middle;" />
                             </td>
                             <td style="width: 70px; text-align: right;">
-                            部门：
+                                部门：
                             </td>
                             <td style="width: 170px; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlDeptID" ClientInstanceName="dxeddlDeptID" runat="server"
@@ -149,10 +165,11 @@
                                 保险险种：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtProdTypeID" ClientInstanceName="dxetxtProdTypeID" runat="server"
-                                    Width="160px" ReadOnly="true">
-                                </dxe:ASPxTextBox>
-                                <input type="hidden" id="ptid" name="ptid" runat="server" />
+                                <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
+                                    runat="server" Width="240px" DropDownStyle="DropDownList">
+                                    <ClientSideEvents SelectedIndexChanged="function(s, e) {SelectedProdTypeNameIndexChanged(s, e); return false;}" />
+                                </dxe:ASPxComboBox>
+                                <input type="hidden" id="ptid" runat="server" />
                             </td>
                             <td style="text-align: left;">
                                 <img runat="server" id="imgpeoplesearch" alt="" src="../images/searchicon9.png" style="width: 20px;

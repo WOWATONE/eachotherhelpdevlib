@@ -159,16 +159,8 @@ namespace BrokerWebApp.Report {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeStartDate;
-
-        /// <summary>
-        /// dxeEndDate 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeEndDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxTextBox dxetxtNY;
+      
 
 
 
@@ -179,7 +171,7 @@ namespace BrokerWebApp.Report {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeStartPayDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeStartDate;
 
         /// <summary>
         /// dxeEndPayDate 控件。
@@ -188,7 +180,7 @@ namespace BrokerWebApp.Report {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeEndPayDate;
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxeEndDate;
 
         /// <summary>
         /// gridSearchResult 控件。
