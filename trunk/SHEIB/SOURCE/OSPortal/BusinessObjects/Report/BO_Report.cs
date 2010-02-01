@@ -78,14 +78,14 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand);
         }
 
-        public static DataSet GetPremiumActualOverdueReportSum(string sNy, string sDeptID, string sSalesID,DateTime StartDate,DateTime EndDate)
+        public static DataSet GetPremiumActualOverdueReportSum(string sNy, string sDeptID, string sSalesID, string StartDate, string EndDate)
         {
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.GetPremiumActualOverdueReportSum");
             _db.AddInParameter(dbCommand, "@ac_ny", DbType.String, sNy);
             _db.AddInParameter(dbCommand, "@ac_DeptID", DbType.String, sDeptID);
             _db.AddInParameter(dbCommand, "@ac_SalesID", DbType.String, sSalesID);
-            _db.AddInParameter(dbCommand, "@ad_StartCreateTime", DbType.DateTime, StartDate);
-            _db.AddInParameter(dbCommand, "@ad_EndCreateTime", DbType.DateTime, EndDate);
+            _db.AddInParameter(dbCommand, "@ad_StartCreateTime", DbType.String, StartDate);
+            _db.AddInParameter(dbCommand, "@ad_EndCreateTime", DbType.String, EndDate);
             return _db.ExecuteDataSet(dbCommand);
         }
 

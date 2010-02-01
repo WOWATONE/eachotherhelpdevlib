@@ -112,9 +112,6 @@
                                                 <tr>
                                                     <td>
                                                         <dxe:ASPxDateEdit ID="dxeStartDate" ClientInstanceName="dxeStartDate" runat="server">
-                                                            <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-                                                                <RequiredField ErrorText="必填项" IsRequired="True" />
-                                                            </ValidationSettings>
                                                         </dxe:ASPxDateEdit>
                                                     </td>
                                                     <td>
@@ -122,9 +119,6 @@
                                                     </td>
                                                     <td>
                                                         <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server">
-                                                            <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithText" SetFocusOnError="True">
-                                                                <RequiredField ErrorText="必填项" IsRequired="True" />
-                                                            </ValidationSettings>
                                                         </dxe:ASPxDateEdit>
                                                     </td>
                                                 </tr>
@@ -182,7 +176,7 @@
                                                     <td>
                                                         <dxe:ASPxButton ID="btnXlsExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
                                                             CssClass="input_2" />
-                                                        </dxe:ASPxButton>
+                                                         </dxe:ASPxButton>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -222,7 +216,7 @@
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                                     KeyFieldName="GUID" AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%"
                                     SettingsPager-AlwaysShowPager="true" OnCustomCallback="gridSearchResult_CustomCallback"
-                                    OnCustomSummaryCalculate="gridSearchResult_CustomSummaryCalculate">
+                                    OnCustomSummaryCalculate="gridSearchResult_CustomSummaryCalculate" >
                                     <%-- BeginRegion Columns --%>
                                     <Columns>
                                         <dxwgv:GridViewCommandColumn Caption="&nbsp;&nbsp;" CellStyle-Wrap="False" VisibleIndex="0">

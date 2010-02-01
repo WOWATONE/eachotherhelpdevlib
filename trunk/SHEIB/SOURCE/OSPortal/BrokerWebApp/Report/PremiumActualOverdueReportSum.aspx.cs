@@ -167,8 +167,8 @@ namespace BrokerWebApp.Report
             string sDeptID = dxeddlDeptID.SelectedItem.Value.ToString();
             string sSalesID = dxeddlSalesId.SelectedItem.Value.ToString();
             string sNy = dxetxtNY.Text.Trim();
-            DateTime StartDate = dxeStartDate.Date;
-            DateTime EndDate = dxeEndDate.Date;
+            string StartDate = dxeStartDate.Date.ToString("yyyyMMdd");
+            string EndDate = dxeEndDate.Date.ToString("yyyyMMdd");
 
 
             DataTable dt = BO_Report.GetPremiumActualOverdueReportSum(sNy, sDeptID, sSalesID, StartDate,EndDate).Tables[0];
@@ -181,6 +181,7 @@ namespace BrokerWebApp.Report
             //Session["PolicyCount"] = dtPolicyID.Rows.Count;
 
             this.gridSearchResult.DataBind();
+            gridSearchResult.ExpandAll();
 
 
         }

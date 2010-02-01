@@ -66,6 +66,7 @@ namespace BrokerWebApp.Report
             DataTable dt = BusinessObjects.BO_Report.RptRealPremiumStruct(sNy).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
+            gridSearchResult.ExpandAll();
 
         }
 
