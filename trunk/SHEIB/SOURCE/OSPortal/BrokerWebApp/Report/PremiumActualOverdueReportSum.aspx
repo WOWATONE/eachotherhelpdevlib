@@ -82,7 +82,7 @@
                     </div>
                 </asp:Panel>
                 <asp:Panel ID="npSearchDetail" runat="server" CssClass="collapsePanel" Height="0"
-                    Width="820px">
+                    Width="100%">
                     <table>
                         <tr>
                             <td>
