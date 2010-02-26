@@ -831,6 +831,14 @@ namespace BusinessObjects.Policy
             //return null;
         }
 
+        public static DataSet GetPolicyFeeDetail(string sPolicyID)
+        {
+
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.spGetPolicyFeeDetail");
+            _db.AddInParameter(dbCommand, "@ac_PolicyID", DbType.String, sPolicyID);
+            return _db.ExecuteDataSet(dbCommand);
+            //return null;
+        }
 
         public static void AuditPolicy(String policyID, 
             String auditStatus, String person, String remark, 
