@@ -92,11 +92,11 @@
                                         </td>
                                         <td style="width: 210px">
                                         </td>
-                                        <td style="width: 100px">
+                                        <td style="width: 110px">
                                         </td>
                                         <td style="width: 150px">
                                         </td>
-                                        <td style="width: 100px">
+                                        <td style="width: 110px">
                                         </td>
                                         <td style="width: 150px">
                                         </td>

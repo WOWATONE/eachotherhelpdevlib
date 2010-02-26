@@ -427,10 +427,10 @@
                                             DisplayFormat="#" />
                                         <dxwgv:ASPxSummaryItem FieldName="InvoiceedFee" ShowInGroupFooterColumn="PayedFee"
                                             SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D0" ShowInGroupFooterColumn="D0" SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D30" SummaryType="Sum" ShowInGroupFooterColumn="D30" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D60" SummaryType="Sum" ShowInGroupFooterColumn="D60" />
-                                        <dxwgv:ASPxSummaryItem FieldName="D90" SummaryType="Sum" ShowInGroupFooterColumn="D90" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D0" ShowInGroupFooterColumn="D0" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="D30" SummaryType="Sum" ShowInGroupFooterColumn="D30" DisplayFormat="c"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="D60" SummaryType="Sum" ShowInGroupFooterColumn="D60" DisplayFormat="c"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="D90" SummaryType="Sum" ShowInGroupFooterColumn="D90" DisplayFormat="c" />
                                     </GroupSummary>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" DisplayFormat="#" />
