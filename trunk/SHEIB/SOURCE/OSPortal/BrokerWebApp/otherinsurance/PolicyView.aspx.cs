@@ -77,6 +77,15 @@ namespace BrokerWebApp.otherinsurance
 
             notifyClaim();
 
+            DataSet dsPolicyFeeDetail = BusinessObjects.Policy.BO_Policy.GetPolicyFeeDetail(this.dxetxtPolicyID.Text.Trim());
+            if (dsPolicyFeeDetail != null && dsPolicyFeeDetail.Tables.Count > 0 && dsPolicyFeeDetail.Tables[0].Rows.Count > 0)
+            {
+                DataTable dtFeeDetail = dsPolicyFeeDetail.Tables[0];
+
+                gridInOutBalance.DataSource = dtFeeDetail;
+                gridInOutBalance.DataBind();
+            }
+
 
         }
 
@@ -445,17 +454,22 @@ namespace BrokerWebApp.otherinsurance
             if (dsPolicyFee !=null && dsPolicyFee.Tables.Count > 0 && dsPolicyFee.Tables[0].Rows.Count > 0)
             {
                 DataTable dtFee = dsPolicyFee.Tables[0];
-                DataTable dsFeeDetail = dsPolicyFee.Tables[1];
                 this.dxetxtPayedFee.Text = dtFee.Rows[0]["PayedFee"].ToString();
                 this.dextxtNeededPayFee.Text = dtFee.Rows[0]["NeededPayFee"].ToString();
                 this.dxetxtPayinedFee.Text = dtFee.Rows[0]["PayinedFee"].ToString();
                 this.dxetxtNeededPayinFee.Text = dtFee.Rows[0]["NeededPayinFee"].ToString();
                 this.dxetxtPayedProc.Text = dtFee.Rows[0]["PayedProc"].ToString();
                 this.dxetxtNeededPayProc.Text = dtFee.Rows[0]["NeededPayProc"].ToString();
-
-                gridInOutBalance.DataSource = dsFeeDetail;
-                gridInOutBalance.DataBind();
             }
+
+            //DataSet dsPolicyFeeDetail = BusinessObjects.Policy.BO_Policy.GetPolicyFeeDetail(policyID);
+            //if (dsPolicyFeeDetail != null && dsPolicyFeeDetail.Tables.Count > 0 && dsPolicyFeeDetail.Tables[0].Rows.Count > 0)
+            //{
+            //    DataTable dtFeeDetail = dsPolicyFeeDetail.Tables[0];
+
+            //    gridInOutBalance.DataSource = dtFeeDetail;
+            //    gridInOutBalance.DataBind();
+            //}
             
         }
 

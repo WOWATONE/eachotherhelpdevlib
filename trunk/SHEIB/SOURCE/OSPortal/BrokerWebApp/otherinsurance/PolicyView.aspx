@@ -21,7 +21,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>保单查看</title>
 
-   
     <script type="text/javascript">
 
         function btnCancelClick() {
@@ -35,12 +34,10 @@
 
     </script>
 
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     <input type="hidden" id="pagemode" runat="server" value="" />
-    
     <asp:Panel ID="nppagecontent" runat="server">
         <dxtc:ASPxPageControl ID="insuranceDetailTabPage" ClientInstanceName="insuranceDetailTabPage"
             runat="server" ActiveTabIndex="0" EnableHierarchyRecreation="True" Width="100%"
@@ -141,7 +138,7 @@
                                                                     </dxe:ASPxTextBox>
                                                                     <input type="hidden" id="cusid" runat="server" />
                                                                 </td>
-                                                                <td style="text-align: left; display:none;">
+                                                                <td style="text-align: left; display: none;">
                                                                     <img runat="server" id="imgSelectCustomer" onclick="imgSelectCustomerClick();" alt=""
                                                                         src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: top;" />
                                                                 </td>
@@ -277,7 +274,7 @@
                                                                 </td>
                                                                 <td style="width: 10px; text-align: left;">
                                                                 </td>
-                                                                <td style="text-align: left;">                                                                    
+                                                                <td style="text-align: left;">
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -317,8 +314,7 @@
                                                 <tr>
                                                     <td>
                                                         <dxwgv:ASPxGridView ID="gridPolicyItem" ClientInstanceName="gridPolicyItem" runat="server"
-                                                            KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False" 
-                                                            >
+                                                            KeyFieldName="ItemID" Width="100%" AutoGenerateColumns="False">
                                                             <%-- BeginRegion Columns --%>
                                                             <Columns>
                                                                 <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left"
@@ -360,7 +356,6 @@
                                                             <SettingsPager Mode="ShowAllRecords" />
                                                             <ClientSideEvents EndCallback="function(s, e) {}" />
                                                             <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
-                                                            
                                                         </dxwgv:ASPxGridView>
                                                     </td>
                                                 </tr>
@@ -548,8 +543,7 @@
                                                 <tr>
                                                     <td>
                                                         <dxwgv:ASPxGridView ID="gridCarrier" ClientInstanceName="gridCarrier" runat="server"
-                                                            KeyFieldName="PolicyCarrierID" Width="100%" AutoGenerateColumns="False" 
-                                                            >
+                                                            KeyFieldName="PolicyCarrierID" Width="100%" AutoGenerateColumns="False">
                                                             <%-- BeginRegion Columns --%>
                                                             <Columns>
                                                                 <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left"
@@ -590,7 +584,7 @@
                                                                     Visible="false">
                                                                 </dxwgv:GridViewDataColumn>
                                                             </Columns>
-                                                            <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleAlways" />                                                            
+                                                            <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
                                                             <%-- EndRegion --%>
                                                             <SettingsPager Mode="ShowAllRecords" />
                                                             <TotalSummary>
@@ -601,7 +595,6 @@
                                                             </TotalSummary>
                                                             <ClientSideEvents CustomButtonClick="function(s, e) {return false;}" />
                                                             <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
-                                                            
                                                         </dxwgv:ASPxGridView>
                                                     </td>
                                                 </tr>
@@ -622,7 +615,7 @@
                 <dxtc:TabPage Text="附件">
                     <ContentCollection>
                         <dxw:ContentControl runat="server">
-                            <table style="width: 100%">                                
+                            <table style="width: 100%">
                                 <tr>
                                     <td style="width: 100%; text-align: left;">
                                         文件列表
@@ -631,8 +624,7 @@
                                 <tr>
                                     <td style="width: 100%; text-align: left;" runat="server" id="tblcellgridDocList">
                                         <dxwgv:ASPxGridView ID="gridDocList" ClientInstanceName="gridDocList" runat="server"
-                                            KeyFieldName="PolicyDocID" Width="100%" AutoGenerateColumns="False" 
-                                            OnHtmlRowCreated="gridDocList_HtmlRowCreated" 
+                                            KeyFieldName="PolicyDocID" Width="100%" AutoGenerateColumns="False" OnHtmlRowCreated="gridDocList_HtmlRowCreated"
                                             OnCustomCallback="gridDocList_CustomCallback">
                                             <%-- BeginRegion Columns --%>
                                             <Columns>
@@ -664,8 +656,7 @@
                                 <tr>
                                     <td runat="server" id="tblcellgridPeriod">
                                         <dxwgv:ASPxGridView ID="gridPeriod" ClientInstanceName="gridPeriod" runat="server"
-                                            KeyFieldName="PolPeriodId" Width="100%" 
-                                            >
+                                            KeyFieldName="PolPeriodId" Width="100%">
                                             <%-- BeginRegion Columns --%>
                                             <Columns>
                                                 <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="false">
@@ -697,13 +688,12 @@
                                                 </dxwgv:GridViewDataColumn>
                                             </Columns>
                                             <%-- EndRegion --%>
-                                            
                                             <TotalSummary>
                                                 <dxwgv:ASPxSummaryItem FieldName="PayFeeBase" SummaryType="Sum" DisplayFormat="c" />
                                                 <dxwgv:ASPxSummaryItem FieldName="PayProcBase" SummaryType="Sum" DisplayFormat="c" />
                                             </TotalSummary>
                                             <SettingsEditing Mode="EditForm" />
-                                            <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways"                                                
+                                            <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways"
                                                 ShowGroupedColumns="true" ShowFilterRow="false" ShowFooter="true" />
                                             <SettingsPager Mode="ShowAllRecords">
                                             </SettingsPager>
@@ -716,7 +706,6 @@
                                                 <LoadingPanel>
                                                 </LoadingPanel>
                                             </Styles>
-                                            
                                         </dxwgv:ASPxGridView>
                                     </td>
                                 </tr>
@@ -769,13 +758,10 @@
                                         &nbsp;
                                     </td>
                                     <td>
-                                        
                                     </td>
                                     <td>
-                                        
                                     </td>
                                     <td>
-                                        
                                     </td>
                                     <td>
                                         &nbsp;
@@ -867,10 +853,6 @@
                                                                 <NewButton Visible="False" />
                                                                 <EditButton Visible="False" />
                                                                 <DeleteButton Visible="False" />
-                                                                <CustomButtons>
-                                                                    <dxwgv:GridViewCommandColumnCustomButton Text="查看">
-                                                                    </dxwgv:GridViewCommandColumnCustomButton>
-                                                                </CustomButtons>
                                                                 <CellStyle Wrap="False">
                                                                 </CellStyle>
                                                             </dxwgv:GridViewCommandColumn>
@@ -891,7 +873,8 @@
                                                                 <CellStyle Wrap="False">
                                                                 </CellStyle>
                                                             </dxwgv:GridViewDataColumn>
-                                                            <dxwgv:GridViewDataColumn FieldName="AccounttypeName" Caption="收付类别" CellStyle-Wrap="False">
+                                                            <dxwgv:GridViewDataColumn FieldName="AccounttypeName" Caption="收付类别" CellStyle-Wrap="False"
+                                                                GroupIndex="0">
                                                                 <CellStyle Wrap="False">
                                                                 </CellStyle>
                                                             </dxwgv:GridViewDataColumn>
@@ -910,6 +893,10 @@
                                                         </Columns>
                                                         <%-- EndRegion --%>
                                                         <SettingsPager Mode="ShowPager" PageSize="20" Summary-Visible="true" />
+                                                        <GroupSummary>
+                                                            <dxwgv:ASPxSummaryItem FieldName="Fee" ShowInGroupFooterColumn="Fee" SummaryType="Sum"
+                                                                DisplayFormat="c" />                                                            
+                                                        </GroupSummary>
                                                         <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="VisibleAlways"
                                                             ShowGroupedColumns="true" ShowFilterRow="false" />
                                                         <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
@@ -925,380 +912,422 @@
                         </dxw:ContentControl>
                     </ContentCollection>
                 </dxtc:TabPage>
-                
-                
                 <dxtc:TabPage Text="赔案信息">
                     <ContentCollection>
                         <dxw:ContentControl ID="ContentControl5" runat="server">
-                            <table style="width: 100%"> 
-                                 <tr>
+                            <table style="width: 100%">
+                                <tr>
                                     <td style="width: 100%;">
                                         <div style="float: left; margin-left: 5px;">
-                                                    报案信息</div>
+                                            报案信息</div>
                                     </td>
-                                 </tr>                                
-                                 <tr>
-                                    <td style="width: 100%;">                                        
-                                            <table style="width: 100%">
-                                                <tr>
-                                                    <td style="width: 15%;"></td>
-                                                    <td style="width: 35%;"></td>
-                                                    <td style="width: 15%;"></td>
-                                                    <td style="width: 30%;"></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: right;">
-                                                        客户报案人：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtNotifyPerson" ClientInstanceName="dxetxtNotifyPerson" runat="server" Width="160px">
-                                                            
-                                                        </dxe:ASPxTextBox>
-                                                    </td>
-                                                    <td style="text-align: right;">
-                                                        出险地点：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtAccidentSpot" ClientInstanceName="dxetxtAccidentSpot" runat="server" Width="160px"></dxe:ASPxTextBox>
-                                                    </td>                            
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: right;">
-                                                        客户向我司<br />
-                                                        报案时间：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxDateEdit ID="dxedeNotifyTime" ClientInstanceName="dxedeNotifyTime" runat="server" Width="160px">
-                                                            
-                                                        </dxe:ASPxDateEdit>
-                                                    </td>
-                                                    <td style="text-align: right;">
-                                                        报损金额：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtNotifyLossFee" ClientInstanceName="dxetxtNotifyLossFee" runat="server" Width="160px"></dxe:ASPxTextBox>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: right;">
-                                                        出险日期：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxDateEdit ID="dxedeAccidentTime" ClientInstanceName="dxedeAccidentTime" runat="server" Width="160px">
-                                                            
-                                                        </dxe:ASPxDateEdit>
-                                                    </td>
-                                                    <td style="text-align: right;">
-                                                        损失性质：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxComboBox ID="dxeddlLossType" ClientInstanceName="dxeddlLossType" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                                            
-                                                        </dxe:ASPxComboBox>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: right;">
-                                                        出险原因：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxComboBox ID="dxeddlAccidentReason" ClientInstanceName="dxeddlAccidentReason" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                                            
-                                                        </dxe:ASPxComboBox>
-                                                    </td>
-                                                    <td style="text-align: right;">
-                                                        联系电话：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtContactPhone" ClientInstanceName="dxetxtContactPhone" runat="server" Width="160px"></dxe:ASPxTextBox>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: right;">
-                                                        客户联系人：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtContactPerson" ClientInstanceName="dxetxtContactPerson" runat="server" Width="160px"></dxe:ASPxTextBox>
-                                                    </td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>                        
-                                                <tr>
-                                                    <td style="text-align: right; vertical-align: top;">
-                                                        事故描述：
-                                                    </td>
-                                                    <td style="text-align: left;" colspan="3">                                
-                                                        <dxe:ASPxMemo runat="server" ID="dxetxtAccidentProc" ClientInstanceName="dxetxtAccidentProc"
-                                                            Rows="10" Columns="120">
-                                                        </dxe:ASPxMemo>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>                        
-                                                <tr>
-                                                    <td style="text-align: right;">
-                                                        向保险公司<br />
-                                                        报案日期：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxDateEdit ID="dxedeNotifyCarrierTime" ClientInstanceName="dxedeNotifyCarrierTime" runat="server" Width="160px">
-                                                            
-                                                        </dxe:ASPxDateEdit>
-                                                    </td>
-                                                    <td style="text-align: right;">
-                                                        报案号：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtNotifyNo" ClientInstanceName="dxetxtNotifyNo" runat="server" Width="160px">
-                                                            
-                                                        </dxe:ASPxTextBox>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: right;">
-                                                        保险公司<br />
-                                                        办案人员：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtCarrierContactPerson" ClientInstanceName="dxetxtCarrierContactPerson" runat="server" Width="160px"></dxe:ASPxTextBox>
-                                                    </td>
-                                                    <td style="text-align: right;">
-                                                        办案人员<br />
-                                                        联系电话：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtCarrierContactPhone" ClientInstanceName="dxetxtCarrierContactPhone" runat="server" Width="160px"></dxe:ASPxTextBox>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: right;">
-                                                        查勘日期：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxDateEdit ID="dxedePerambulateTime" ClientInstanceName="dxedePerambulateTime" runat="server" Width="160px"></dxe:ASPxDateEdit>
-                                                    </td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr> 
-                                            </table>                                        
+                                </tr>
+                                <tr>
+                                    <td style="width: 100%;">
+                                        <table style="width: 100%">
+                                            <tr>
+                                                <td style="width: 15%;">
+                                                </td>
+                                                <td style="width: 35%;">
+                                                </td>
+                                                <td style="width: 15%;">
+                                                </td>
+                                                <td style="width: 30%;">
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    客户报案人：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxTextBox ID="dxetxtNotifyPerson" ClientInstanceName="dxetxtNotifyPerson"
+                                                        runat="server" Width="160px">
+                                                    </dxe:ASPxTextBox>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    出险地点：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxTextBox ID="dxetxtAccidentSpot" ClientInstanceName="dxetxtAccidentSpot"
+                                                        runat="server" Width="160px">
+                                                    </dxe:ASPxTextBox>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    客户向我司<br />
+                                                    报案时间：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxDateEdit ID="dxedeNotifyTime" ClientInstanceName="dxedeNotifyTime" runat="server"
+                                                        Width="160px">
+                                                    </dxe:ASPxDateEdit>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    报损金额：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxTextBox ID="dxetxtNotifyLossFee" ClientInstanceName="dxetxtNotifyLossFee"
+                                                        runat="server" Width="160px">
+                                                    </dxe:ASPxTextBox>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    出险日期：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxDateEdit ID="dxedeAccidentTime" ClientInstanceName="dxedeAccidentTime" runat="server"
+                                                        Width="160px">
+                                                    </dxe:ASPxDateEdit>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    损失性质：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxComboBox ID="dxeddlLossType" ClientInstanceName="dxeddlLossType" runat="server"
+                                                        Width="160px" DropDownStyle="DropDownList">
+                                                    </dxe:ASPxComboBox>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    出险原因：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxComboBox ID="dxeddlAccidentReason" ClientInstanceName="dxeddlAccidentReason"
+                                                        runat="server" Width="160px" DropDownStyle="DropDownList">
+                                                    </dxe:ASPxComboBox>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    联系电话：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxTextBox ID="dxetxtContactPhone" ClientInstanceName="dxetxtContactPhone"
+                                                        runat="server" Width="160px">
+                                                    </dxe:ASPxTextBox>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    客户联系人：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxTextBox ID="dxetxtContactPerson" ClientInstanceName="dxetxtContactPerson"
+                                                        runat="server" Width="160px">
+                                                    </dxe:ASPxTextBox>
+                                                </td>
+                                                <td>
+                                                </td>
+                                                <td>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right; vertical-align: top;">
+                                                    事故描述：
+                                                </td>
+                                                <td style="text-align: left;" colspan="3">
+                                                    <dxe:ASPxMemo runat="server" ID="dxetxtAccidentProc" ClientInstanceName="dxetxtAccidentProc"
+                                                        Rows="10" Columns="120">
+                                                    </dxe:ASPxMemo>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    向保险公司<br />
+                                                    报案日期：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxDateEdit ID="dxedeNotifyCarrierTime" ClientInstanceName="dxedeNotifyCarrierTime"
+                                                        runat="server" Width="160px">
+                                                    </dxe:ASPxDateEdit>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    报案号：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxTextBox ID="dxetxtNotifyNo" ClientInstanceName="dxetxtNotifyNo" runat="server"
+                                                        Width="160px">
+                                                    </dxe:ASPxTextBox>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    保险公司<br />
+                                                    办案人员：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxTextBox ID="dxetxtCarrierContactPerson" ClientInstanceName="dxetxtCarrierContactPerson"
+                                                        runat="server" Width="160px">
+                                                    </dxe:ASPxTextBox>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    办案人员<br />
+                                                    联系电话：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxTextBox ID="dxetxtCarrierContactPhone" ClientInstanceName="dxetxtCarrierContactPhone"
+                                                        runat="server" Width="160px">
+                                                    </dxe:ASPxTextBox>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    查勘日期：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxDateEdit ID="dxedePerambulateTime" ClientInstanceName="dxedePerambulateTime"
+                                                        runat="server" Width="160px">
+                                                    </dxe:ASPxDateEdit>
+                                                </td>
+                                                <td>
+                                                </td>
+                                                <td>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width: 100%;">
                                         <div style="float: left; margin-left: 5px;">
-                                                    跟踪信息</div>
-                                    </td>
-                                 </tr> 
-                                <tr>
-                                    <td style="width: 100%;">                                        
-                                        <table style="width: 100%">
-                                                <tr>
-                                                    <td style="text-align: right;">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <dxwgv:ASPxGridView ID="gridTraceInfoItem" ClientInstanceName="gridTraceInfoItem" runat="server"
-                                                            KeyFieldName="FollowID" Width="100%" AutoGenerateColumns="False" 
-                                                            >
-                                                            <%-- BeginRegion Columns --%>
-                                                            <Columns>
-                                                                <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left"
-                                                                    Width="81" AllowDragDrop="false">
-                                                                    <NewButton Visible="false" />
-                                                                    <EditButton Visible="false" />
-                                                                    <DeleteButton Visible="false" />
-                                                                </dxwgv:GridViewCommandColumn>
-                                                                <dxwgv:GridViewDataDateColumn FieldName="FollowDate" Caption="跟进日期" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
-                                                                </dxwgv:GridViewDataDateColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="FollowContent" Caption="跟进工作" CellStyle-Wrap="False">
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="FollowNextContent" Caption="下一步工作" CellStyle-Wrap="False">
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="LoseStatusName" Caption="赔案状态" CellStyle-Wrap="False">
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="EstimateFeel" Caption="估计金额" CellStyle-Wrap="False">
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="NotifyID" Caption="NotifyID" CellStyle-Wrap="False"
-                                                                    Visible="false">
-                                                                </dxwgv:GridViewDataColumn>
-                                                                <dxwgv:GridViewDataColumn FieldName="FollowID" Caption="FollowID" CellStyle-Wrap="False"
-                                                                    Visible="false">
-                                                                </dxwgv:GridViewDataColumn>
-                                                            </Columns>
-                                                            <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
-                                                            <TotalSummary>
-                                                                <dxwgv:ASPxSummaryItem FieldName="FollowDate" SummaryType="Count" DisplayFormat="数量:#" />
-                                                                <dxwgv:ASPxSummaryItem FieldName="EstimateFeel" SummaryType="Sum" DisplayFormat="c" />
-                                                            </TotalSummary>
-                                                            <%-- EndRegion --%>
-                                                            <SettingsPager Mode="ShowAllRecords" />
-                                                            <ClientSideEvents  />
-                                                            <SettingsBehavior ConfirmDelete="true" AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
-                                                            
-                                                        </dxwgv:ASPxGridView>
-                                                    </td>
-                                                </tr>
-                                            </table>                                        
+                                            跟踪信息</div>
                                     </td>
                                 </tr>
-                                
+                                <tr>
+                                    <td style="width: 100%;">
+                                        <table style="width: 100%">
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <dxwgv:ASPxGridView ID="gridTraceInfoItem" ClientInstanceName="gridTraceInfoItem"
+                                                        runat="server" KeyFieldName="FollowID" Width="100%" AutoGenerateColumns="False">
+                                                        <%-- BeginRegion Columns --%>
+                                                        <Columns>
+                                                            <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" CellStyle-HorizontalAlign="Left"
+                                                                Width="81" AllowDragDrop="false">
+                                                                <NewButton Visible="false" />
+                                                                <EditButton Visible="false" />
+                                                                <DeleteButton Visible="false" />
+                                                            </dxwgv:GridViewCommandColumn>
+                                                            <dxwgv:GridViewDataDateColumn FieldName="FollowDate" Caption="跟进日期" CellStyle-Wrap="False"
+                                                                PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                                                            </dxwgv:GridViewDataDateColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="FollowContent" Caption="跟进工作" CellStyle-Wrap="False">
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="FollowNextContent" Caption="下一步工作" CellStyle-Wrap="False">
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="LoseStatusName" Caption="赔案状态" CellStyle-Wrap="False">
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="EstimateFeel" Caption="估计金额" CellStyle-Wrap="False">
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="NotifyID" Caption="NotifyID" CellStyle-Wrap="False"
+                                                                Visible="false">
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="FollowID" Caption="FollowID" CellStyle-Wrap="False"
+                                                                Visible="false">
+                                                            </dxwgv:GridViewDataColumn>
+                                                        </Columns>
+                                                        <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
+                                                        <TotalSummary>
+                                                            <dxwgv:ASPxSummaryItem FieldName="FollowDate" SummaryType="Count" DisplayFormat="数量:#" />
+                                                            <dxwgv:ASPxSummaryItem FieldName="EstimateFeel" SummaryType="Sum" DisplayFormat="c" />
+                                                        </TotalSummary>
+                                                        <%-- EndRegion --%>
+                                                        <SettingsPager Mode="ShowAllRecords" />
+                                                        <ClientSideEvents />
+                                                        <SettingsBehavior ConfirmDelete="true" AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                                    </dxwgv:ASPxGridView>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td style="width: 100%;">
                                         <div style="float: left; margin-left: 5px;">
-                                                    相关资料</div>
+                                            相关资料</div>
                                     </td>
-                                 </tr> 
+                                </tr>
                                 <tr>
                                     <td style="width: 100%;">
                                         <table style="width: 100%">
-                                                <tr>
-                                                    <td style="width: 15%;"></td>
-                                                    <td style="width: 35%;"></td>
-                                                    <td style="width: 15%;"></td>
-                                                    <td style="width: 30%;"></td>
-                                                    <td></td>
-                                                </tr>                                                
-                                                <tr>
-                                                    <td colspan="5" style="width: 100%; text-align: left;">
-                                                        
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td colspan="4">
-                                                        <dxwgv:ASPxGridView ID="gridDocList_NotifyClaim" ClientInstanceName="gridDocList_NotifyClaim" runat="server"
-                                                                    KeyFieldName="NotifyClaimDocID" Width="100%" AutoGenerateColumns="False" OnHtmlRowCreated="gridDocList_NotifyClaim_HtmlRowCreated">
-                                                                    <%-- BeginRegion Columns --%>
-                                                                    <Columns>
-                                                                        <dxwgv:GridViewDataColumn FieldName="DocName" Caption="文件名" CellStyle-Wrap="False"
-                                                                            Width="25" Settings-AllowDragDrop="false">                                                    
-                                                                            <DataItemTemplate>
-                                                                                <asp:HyperLink runat="server" ID="docitemlnk"></asp:HyperLink>
-                                                                            </DataItemTemplate>
-                                                                        </dxwgv:GridViewDataColumn>
-                                                                        <dxwgv:GridViewDataColumn FieldName="DocURL" Caption="链接地址" CellStyle-Wrap="False">
-                                                                        </dxwgv:GridViewDataColumn>
-                                                                    </Columns>
-                                                                    <%-- EndRegion --%>
-                                                                    <SettingsPager Mode="ShowAllRecords" />
-                                                                    <Settings ShowGroupPanel="false" />
-                                                                    <ClientSideEvents CustomButtonClick="" />
-                                                                    <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
-                                                                </dxwgv:ASPxGridView>
-                                                    </td>
-                                                </tr>
-                                            </table>                                        
+                                            <tr>
+                                                <td style="width: 15%;">
+                                                </td>
+                                                <td style="width: 35%;">
+                                                </td>
+                                                <td style="width: 15%;">
+                                                </td>
+                                                <td style="width: 30%;">
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5" style="width: 100%; text-align: left;">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                </td>
+                                                <td colspan="4">
+                                                    <dxwgv:ASPxGridView ID="gridDocList_NotifyClaim" ClientInstanceName="gridDocList_NotifyClaim"
+                                                        runat="server" KeyFieldName="NotifyClaimDocID" Width="100%" AutoGenerateColumns="False"
+                                                        OnHtmlRowCreated="gridDocList_NotifyClaim_HtmlRowCreated">
+                                                        <%-- BeginRegion Columns --%>
+                                                        <Columns>
+                                                            <dxwgv:GridViewDataColumn FieldName="DocName" Caption="文件名" CellStyle-Wrap="False"
+                                                                Width="25" Settings-AllowDragDrop="false">
+                                                                <DataItemTemplate>
+                                                                    <asp:HyperLink runat="server" ID="docitemlnk"></asp:HyperLink>
+                                                                </DataItemTemplate>
+                                                            </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="DocURL" Caption="链接地址" CellStyle-Wrap="False">
+                                                            </dxwgv:GridViewDataColumn>
+                                                        </Columns>
+                                                        <%-- EndRegion --%>
+                                                        <SettingsPager Mode="ShowAllRecords" />
+                                                        <Settings ShowGroupPanel="false" />
+                                                        <ClientSideEvents CustomButtonClick="" />
+                                                        <SettingsBehavior AllowDragDrop="false" AllowGroup="false" AllowMultiSelection="false" />
+                                                    </dxwgv:ASPxGridView>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
-                                
                                 <tr>
                                     <td style="width: 100%;">
                                         <div style="float: left; margin-left: 5px;">
-                                                    结案信息</div>
+                                            结案信息</div>
                                     </td>
-                                 </tr> 
+                                </tr>
                                 <tr>
                                     <td style="width: 100%;">
                                         <table style="width: 100%">
-                                                <tr>
-                                                    <td style="width: 10%;"></td>
-                                                    <td style="width: 25%;"></td>
-                                                    <td style="width: 10%;"></td>
-                                                    <td style="width: 25%;"></td>
-                                                    <td style="width: 10%;"></td>
-                                                    <td style="width: 25%;"></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: right;">
-                                                        资料齐全日期：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxDateEdit ID="dxedeDocCompleteDate" ClientInstanceName="dxedeDocCompleteDate" runat="server" Width="120px">
-                                                            
-                                                        </dxe:ASPxDateEdit>
-                                                    </td>
-                                                    <td style="text-align: right;">
-                                                        赔付金额：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="dxetxtLastPayFee" ClientInstanceName="dxetxtLastPayFee" runat="server" Width="120px">
-                                                            
-                                                        </dxe:ASPxTextBox>
-                                                    </td>
-                                                    <td style="text-align: right;">
-                                                        赔款到帐日期：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxDateEdit ID="dxedeLastPayDate" ClientInstanceName="dxedeLastPayDate" runat="server" Width="120px">
-                                                            
-                                                        </dxe:ASPxDateEdit>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="text-align: right;">
-                                                        结案日期：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxDateEdit ID="dxedeCaseEndTime" ClientInstanceName="dxedeCaseEndTime" runat="server" Width="120px">
-                                                            
-                                                        </dxe:ASPxDateEdit>
-                                                    </td>
-                                                    <td style="text-align: right;">
-                                                        结案人：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxComboBox ID="dxeddlCaseEndPerson" ClientInstanceName="dxeddlCaseEndPerson" runat="server" Width="160px" DropDownStyle="DropDownList">
-                                                            
-                                                        </dxe:ASPxComboBox>
-                                                    </td>
-                                                    <td style="text-align: right;">
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                    </td>
-                                                    <td></td>
-                                                </tr>                        
-                                                <tr>
-                                                    <td style="text-align: right;">
-                                                        制单人：
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxTextBox ID="ASPxTextBox1" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="120px">
-                                                            
-                                                        </dxe:ASPxTextBox>
-                                                    </td>
-                                                    <td style="text-align: right;">
-                                                        制单日期:
-                                                    </td>
-                                                    <td style="text-align: left;">
-                                                        <dxe:ASPxDateEdit ID="dxedeCreateDate" ClientInstanceName="dxedeCreateDate" runat="server" Width="120px">
-                                                            
-                                                        </dxe:ASPxDateEdit>
-                                                    </td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
-                                        
+                                            <tr>
+                                                <td style="width: 10%;">
+                                                </td>
+                                                <td style="width: 25%;">
+                                                </td>
+                                                <td style="width: 10%;">
+                                                </td>
+                                                <td style="width: 25%;">
+                                                </td>
+                                                <td style="width: 10%;">
+                                                </td>
+                                                <td style="width: 25%;">
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    资料齐全日期：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxDateEdit ID="dxedeDocCompleteDate" ClientInstanceName="dxedeDocCompleteDate"
+                                                        runat="server" Width="120px">
+                                                    </dxe:ASPxDateEdit>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    赔付金额：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxTextBox ID="dxetxtLastPayFee" ClientInstanceName="dxetxtLastPayFee" runat="server"
+                                                        Width="120px">
+                                                    </dxe:ASPxTextBox>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    赔款到帐日期：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxDateEdit ID="dxedeLastPayDate" ClientInstanceName="dxedeLastPayDate" runat="server"
+                                                        Width="120px">
+                                                    </dxe:ASPxDateEdit>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    结案日期：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxDateEdit ID="dxedeCaseEndTime" ClientInstanceName="dxedeCaseEndTime" runat="server"
+                                                        Width="120px">
+                                                    </dxe:ASPxDateEdit>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    结案人：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxComboBox ID="dxeddlCaseEndPerson" ClientInstanceName="dxeddlCaseEndPerson"
+                                                        runat="server" Width="160px" DropDownStyle="DropDownList">
+                                                    </dxe:ASPxComboBox>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                </td>
+                                                <td style="text-align: left;">
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right;">
+                                                    制单人：
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxTextBox ID="ASPxTextBox1" ClientInstanceName="dxetxtCreatePerson" runat="server"
+                                                        Width="120px">
+                                                    </dxe:ASPxTextBox>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    制单日期:
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <dxe:ASPxDateEdit ID="dxedeCreateDate" ClientInstanceName="dxedeCreateDate" runat="server"
+                                                        Width="120px">
+                                                    </dxe:ASPxDateEdit>
+                                                </td>
+                                                <td>
+                                                </td>
+                                                <td>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </td>
-                                </tr>  
+                                </tr>
                             </table>
                         </dxw:ContentControl>
                     </ContentCollection>
                 </dxtc:TabPage>
-                
-                
             </TabPages>
         </dxtc:ASPxPageControl>
         <table style="height: 5px; background-color: #E0EDFF; width: 100%; font-size: 2px;">
@@ -1306,7 +1335,7 @@
                 <td>
                 </td>
             </tr>
-        </table> 
+        </table>
         <asp:Panel ID="npNewExecuteAction" runat="server" CssClass="allborderPanel" Height="30px">
             <table style="width: 100%" runat="server" id="tblNewExecuteAction">
                 <tr>
@@ -1314,16 +1343,12 @@
                         &nbsp;
                     </td>
                     <td style="width: 50px; text-align: left;">
-                        
                     </td>
                     <td style="width: 50px; text-align: left;">
-                        
                     </td>
                     <td style="width: 70px; text-align: left;">
-                        
                     </td>
                     <td style="width: 50px; text-align: left;">
-                        
                     </td>
                     <td style="width: 50px; text-align: left;">
                         <dxe:ASPxButton runat="server" ID="dxeClose" ClientInstanceName="dxeClose" Text="关闭"
@@ -1331,8 +1356,8 @@
                             <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
                         </dxe:ASPxButton>
                     </td>
-                </tr>                
+                </tr>
             </table>
-        </asp:Panel>       
+        </asp:Panel>
     </asp:Panel>
 </asp:Content>
