@@ -206,7 +206,7 @@
                             </dxwgv:GridViewDataTextColumn>
                         </Columns>
                         <SettingsPager Mode="ShowPager" />
-                        <Settings ShowGroupPanel="false" ShowVerticalScrollBar="false" ShowGroupFooter="Hidden"
+                        <Settings ShowGroupPanel="true" ShowVerticalScrollBar="false" ShowGroupFooter="Hidden"
                             ShowGroupedColumns="true" ShowFilterRow="false" />
                         <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" AllowGroup="true" />
                         <SettingsText CustomizationWindowCaption="个性化" />
