@@ -425,7 +425,7 @@ namespace BusinessObjects
             //保险经纪业务台帐(个人)
             InsuranceBrokerBusinessReport_Personal = 111012,
 
-            //应收保费帐期报表(全部)
+            //应收保费帐期报表(全部)  应收保费(经纪费)账龄明细表
             ReceivablePremiumReport_All = 111020,
             //应收保费帐期报表(团队)
             ReceivablePremiumReport_Group = 111021,
