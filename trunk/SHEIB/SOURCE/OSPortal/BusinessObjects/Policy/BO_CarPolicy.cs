@@ -647,8 +647,8 @@ namespace BusinessObjects.Policy
             sb.Append("ModifyPerson=@ModifyPerson, VolumnNo=@VolumnNo, CarCount=@CarCount,");
             sb.Append("BankName=@BankName, BankAccount=@BankAccount,CarrierID=@CarrierID,");
             sb.Append("BranchID=@BranchID");
-            
             sb.Append(" Where AskPriceID=@AskPriceID;");
+
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sb.ToString());
 
@@ -713,6 +713,27 @@ namespace BusinessObjects.Policy
                 throw ex;
             }
 
+
+            StringBuilder sb1 = new StringBuilder();
+            sb1.Append("UPDATE Policy SET ");
+            sb1.Append(" CreateTime=@CreateTime");
+            sb1.Append(" Where PolicyID in (Select PolicyID From CarPolicy Where AskPriceID=@AskPriceID)");
+
+            DbCommand dbCommandPolicy = _db.GetSqlStringCommand(sb1.ToString());
+            _db.AddInParameter(dbCommandPolicy, "@AskPriceID", DbType.String, this.AskPriceID);
+            if (this.CreateTime == DateTime.MinValue)
+                _db.AddInParameter(dbCommandPolicy, "@CreateTime", DbType.DateTime, DateTime.Now);
+            else
+                _db.AddInParameter(dbCommandPolicy, "@CreateTime", DbType.DateTime, this.CreateTime);
+
+            try
+            {
+                _db.ExecuteNonQuery(dbCommandPolicy);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
 
         }
