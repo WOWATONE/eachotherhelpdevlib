@@ -257,9 +257,12 @@ namespace BrokerWebApp.CustomerClaim
             BusinessObjects.BO_NotifyClaim obj;
 
             //check NotifyNo exist first
+            /*
             bool checkresult = BO_NotifyClaim.IfExistsNotifyNo(this.dxetxtNotifyID.Text.Trim(),this.dxetxtNotifyNo.Text.Trim());
 
             if (checkresult) return notifyNoExist;
+             * */
+            
 
             if (String.IsNullOrEmpty(this.dxetxtNotifyID.Text.Trim()))
             {

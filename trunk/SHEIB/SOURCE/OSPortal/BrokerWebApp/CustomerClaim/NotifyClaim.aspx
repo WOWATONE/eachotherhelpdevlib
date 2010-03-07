@@ -456,9 +456,6 @@
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtNotifyNo" ClientInstanceName="dxetxtNotifyNo" runat="server" Width="160px">
-                                    <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
-									    <RequiredField ErrorText="不能为空" IsRequired="True" />                                        
-                                    </ValidationSettings>
                                 </dxe:ASPxTextBox>
                             </td>
                             <td></td>
