@@ -135,11 +135,11 @@ namespace BrokerWebApp.CustomerClaim
 
             //保单编号
             if (this.dxetxtPolicyNo.Text.Trim().Length > 0)
-                sbWhere.Append(" And B.PolicyNo='" + this.dxetxtPolicyNo.Text.Trim() + "' ");
+                sbWhere.Append(" And B.PolicyNo  like '%" + this.dxetxtPolicyNo.Text.Trim() + "%' ");
 
             //报案号
             if (this.dxetxtNotifyNo.Text.Trim().Length > 0)
-                sbWhere.Append(" And A.NotifyNo='" + this.dxetxtNotifyNo.Text.Trim() + "' ");
+                sbWhere.Append(" And A.NotifyNo like '%" + this.dxetxtNotifyNo.Text.Trim() + "%' ");
 
             //报案开始日期
             if (this.deStartNotifyTime.Text.Trim().Length>0)
