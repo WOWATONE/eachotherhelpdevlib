@@ -66,6 +66,16 @@ namespace BrokerWebApp.vehicleinsurance
 
             notifyClaim();
 
+            DataSet dsPolicyFeeDetail = BusinessObjects.Policy.BO_Policy.GetPolicyFeeDetail(this.dxetxtPolicyID.Text.Trim());
+            if (dsPolicyFeeDetail != null && dsPolicyFeeDetail.Tables.Count > 0 && dsPolicyFeeDetail.Tables[0].Rows.Count > 0)
+            {
+                DataTable dtFeeDetail = dsPolicyFeeDetail.Tables[0];
+
+                gridInOutBalance.DataSource = dtFeeDetail;
+                gridInOutBalance.DataBind();
+            }
+            insuranceDetailTabPage.TabPages[3].Visible = true;
+            insuranceDetailTabPage.TabPages[4].Visible = true;
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
@@ -386,6 +396,20 @@ namespace BrokerWebApp.vehicleinsurance
 
             dxetxtCreatePerson.Text = obj.CreatePersonName;
             dxeCreateTime.Date = obj.CreateTime;
+
+
+            //取得结算信息            
+            DataSet dsPolicyFee = BusinessObjects.Policy.BO_Policy.GetPolicyFee(obj.PolicyID);
+            if (dsPolicyFee != null && dsPolicyFee.Tables.Count > 0 && dsPolicyFee.Tables[0].Rows.Count > 0)
+            {
+                DataTable dtFee = dsPolicyFee.Tables[0];
+                this.dxetxtPayedFee.Text = dtFee.Rows[0]["PayedFee"].ToString();
+                this.dextxtNeededPayFee.Text = dtFee.Rows[0]["NeededPayFee"].ToString();
+                this.dxetxtPayinedFee.Text = dtFee.Rows[0]["PayinedFee"].ToString();
+                this.dxetxtNeededPayinFee.Text = dtFee.Rows[0]["NeededPayinFee"].ToString();
+                this.dxetxtPayedProc.Text = dtFee.Rows[0]["PayedProc"].ToString();
+                this.dxetxtNeededPayProc.Text = dtFee.Rows[0]["NeededPayProc"].ToString();
+            }
 
         }
 
