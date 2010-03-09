@@ -717,7 +717,7 @@ namespace BusinessObjects.Policy
             StringBuilder sb1 = new StringBuilder();
             sb1.Append("UPDATE Policy SET ");
             sb1.Append(" CreateTime=@CreateTime");
-            sb1.Append(" Where PolicyID in (Select PolicyID From CarPolicy Where AskPriceID=@AskPriceID)");
+            sb1.Append(" Where AskPriceID is not null and AskPriceID=@AskPriceID");
 
             DbCommand dbCommandPolicy = _db.GetSqlStringCommand(sb1.ToString());
             _db.AddInParameter(dbCommandPolicy, "@AskPriceID", DbType.String, this.AskPriceID);
