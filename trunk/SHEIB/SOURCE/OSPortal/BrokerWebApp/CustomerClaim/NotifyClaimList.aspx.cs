@@ -180,7 +180,7 @@ namespace BrokerWebApp.CustomerClaim
 
             //联系人
             if (this.txtCustName.Text.Trim().Length > 0)
-                sbWhere.Append(" And exists (select 1 from Customer where  CustID = B.CustomerID and  CustName like '%" + this.dxetxtContactPerson.Text.Trim() + "%')");
+                sbWhere.Append(" And exists (select 1 from Customer where  CustID = B.CustomerID and  CustName like '%" + this.txtCustName.Text.Trim() + "%')");
 
             this.gridSearchResult.DataSource = BusinessObjects.BO_NotifyClaim.GetNotifyClaimList(sbWhere.ToString()).Tables[0];
             this.gridSearchResult.DataBind();
