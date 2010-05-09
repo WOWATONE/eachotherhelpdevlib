@@ -44,6 +44,11 @@ namespace BrokerWebApp.CustomerClaim
         private void Initialization()
         {
            //
+            this.dxeddlLoseStatus.DataSource = BusinessObjects.BO_NotifyClaimFollow.GetLoseStatusList();
+            this.dxeddlLoseStatus.TextField = "AccountTypeName";
+            this.dxeddlLoseStatus.ValueField = "AccountTypeID";
+            this.dxeddlLoseStatus.DataBind();
+            this.dxeddlLoseStatus.Items.Insert(0, new ListEditItem("(全部)", ""));
         }
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
@@ -164,6 +169,18 @@ namespace BrokerWebApp.CustomerClaim
             //联系人
             if (this.dxetxtContactPerson.Text.Trim().Length>0)
                 sbWhere.Append(" And A.ContactPerson like '%" + this.dxetxtContactPerson.Text.Trim() + "%' ");
+
+            if (this.dxeddlLoseStatus.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlLoseStatus.SelectedItem.Value.ToString()))
+            {
+                sbWhere.Append(" and exists (Select 1 from NotifyClaimFollow where LoseStatus ='" + dxeddlLoseStatus.SelectedItem.Value.ToString() + "' and NotifyID=a.NotifyID)");
+            }
+
+
+            //Select CustName from Customer where CustID = B.CustomerID
+
+            //联系人
+            if (this.txtCustName.Text.Trim().Length > 0)
+                sbWhere.Append(" And exists (select 1 from Customer where  CustID = B.CustomerID and  CustName like '%" + this.dxetxtContactPerson.Text.Trim() + "%')");
 
             this.gridSearchResult.DataSource = BusinessObjects.BO_NotifyClaim.GetNotifyClaimList(sbWhere.ToString()).Tables[0];
             this.gridSearchResult.DataBind();
