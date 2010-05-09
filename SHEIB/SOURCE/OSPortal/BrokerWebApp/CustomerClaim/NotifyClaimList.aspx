@@ -86,12 +86,12 @@
                                     Width="160px">
                                 </dxe:ASPxTextBox>
                             </td>
-                            <td style="text-align: left;">
+                            <td style="width: 100px; text-align: right;">
                                 赔案状态：
                             </td>
-                            <td style="text-align: left;">
+                            <td style="width: 170px; text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlLoseStatus" ClientInstanceName="dxeddlLoseStatus" runat="server"
-                                    Width="170px" DropDownStyle="DropDownList">
+                                    Width="160px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
                         </tr>
@@ -115,10 +115,10 @@
                                     Width="160px">
                                 </dxe:ASPxDateEdit>
                             </td>
-                            <td style="text-align: left;">
+                            <td style="width: 100px; text-align: right;">
                                 投保人：
                             </td>
-                            <td style="text-align: left;">
+                            <td style="width: 170px; text-align: left;">
                                 <dxe:ASPxTextBox ID="txtCustName" ClientInstanceName="txtCustName" runat="server"
                                     Width="160px">
                                 </dxe:ASPxTextBox>
@@ -170,12 +170,12 @@
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: left;">
-                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
+                            </td>
+                            <td style="text-align: left;">
+                             <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
                                 <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
                                 <asp:Button ID="btnXlsExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
                                     CssClass="input_2" />
-                            </td>
-                            <td style="text-align: left;">
                             </td>
                         </tr>
                     </table>
@@ -307,7 +307,7 @@
                         <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                         <SettingsText CustomizationWindowCaption="个性化" />
                         <TotalSummary>
-                            <dxwgv:ASPxSummaryItem FieldName="NotifySerialNo" SummaryType="Count" ShowInGroupFooterColumn="CustName"
+                            <dxwgv:ASPxSummaryItem FieldName="CustName" SummaryType="Count" ShowInGroupFooterColumn="CustName"
                                 DisplayFormat="总计: {0}" />
                         </TotalSummary>
                         <TotalSummary>
