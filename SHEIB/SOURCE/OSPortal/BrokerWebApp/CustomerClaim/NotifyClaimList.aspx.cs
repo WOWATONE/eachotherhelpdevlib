@@ -170,9 +170,10 @@ namespace BrokerWebApp.CustomerClaim
             if (this.dxetxtContactPerson.Text.Trim().Length>0)
                 sbWhere.Append(" And A.ContactPerson like '%" + this.dxetxtContactPerson.Text.Trim() + "%' ");
 
+            //理赔状态
             if (this.dxeddlLoseStatus.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlLoseStatus.SelectedItem.Value.ToString()))
             {
-                sbWhere.Append(" and exists (Select 1 from NotifyClaimFollow where LoseStatus ='" + dxeddlLoseStatus.SelectedItem.Value.ToString() + "' and NotifyID=a.NotifyID)");
+                sbWhere.Append(" and (select max(LoseStatus) from NotifyClaimFollow where NotifyID=a.NotifyID) ='" + dxeddlLoseStatus.SelectedItem.Value.ToString() + "'");
             }
 
 
