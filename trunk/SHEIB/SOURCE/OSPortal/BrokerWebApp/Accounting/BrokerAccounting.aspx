@@ -397,7 +397,7 @@
                                                 </tr>
                                             </table>
                                         </td>
-                                       <td style="text-align: right;">
+                                        <td style="text-align: right;">
                                             应收日期：
                                         </td>
                                         <td style="text-align: left;" colspan="3">
@@ -419,10 +419,14 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                        </td>
                                         <td style="text-align: right;" colspan="2">
                                             <table>
                                                 <tr>
@@ -587,6 +591,16 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="FlagTogether" Caption="共保" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="Currency" Caption="币种" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="CoverageRMB" Caption="保额(人民币)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="CoverageEUR" Caption="保额(欧元)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="CoverageHKD" Caption="保额(港币)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="CoverageUSD" Caption="保额(美元)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowPager" />
@@ -615,6 +629,14 @@
                                             DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" ShowInGroupFooterColumn="CstPremium"
                                             DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageRMB" SummaryType="Sum" ShowInGroupFooterColumn="CoverageRMB"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageEUR" SummaryType="Sum" ShowInGroupFooterColumn="CoverageEUR"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageHKD" SummaryType="Sum" ShowInGroupFooterColumn="CoverageHKD"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageUSD" SummaryType="Sum" ShowInGroupFooterColumn="CoverageUSD"
+                                            DisplayFormat="c" />
                                     </GroupSummary>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyNo" SummaryType="Count" DisplayFormat="#" />
@@ -627,6 +649,10 @@
                                         <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageRMB" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageEUR" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageHKD" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageUSD" SummaryType="Sum" DisplayFormat="c" />
                                     </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
