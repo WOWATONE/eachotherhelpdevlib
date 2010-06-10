@@ -283,6 +283,25 @@ namespace BrokerWebApp.vehicleinsurance
             BusinessObjects.Policy.BO_CarPolicy objCar;
             objCar = new BusinessObjects.Policy.BO_CarPolicy(obj.AskPriceID);
 
+            trAlter.Visible = false;
+
+            if (obj.PrevPolicyID == "")
+            {
+                trAlter.Visible = false;
+                trPolicyItem.Visible = true;
+            }
+            else
+            {
+                trAlter.Visible = true;
+                trPolicyItem.Visible = false;
+
+                tdPolicyStartEndDate.InnerText = "批改期限：";
+                lblSourcePolicyID.Text = obj.PrevPolicyID;
+                dxetxtAltNo.Text = obj.AltNO;
+                dxetxtAltRemark.Text = obj.AltRemark;
+            }
+
+
             dxetxtPolicyID.Text = obj.PolicyID ;
             dxetxtPolicyNo.Text = obj.PolicyNo;
             dxetxtAciPolicyNo.Text = obj.AciPolicyNo ;

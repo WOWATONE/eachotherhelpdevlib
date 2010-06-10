@@ -259,7 +259,7 @@
                                                         </ValidationSettings>
                                                     </dxe:ASPxComboBox>
                                                 </td>
-                                                <td style="text-align: right;">
+                                                <td style="text-align: right;" runat="server" id="tdPolicyStartEndDate">
                                                     保险期限：
                                                 </td>
                                                 <td>
@@ -323,6 +323,81 @@
                                         CollapsedImage="~/images/expand_blue.jpg" SuppressPostBack="true" />
                                 </td>
                             </tr>
+                            
+                            <tr id="trAlter" runat="server">
+                                    <td style="width: 100%;">
+                                        <asp:Panel ID="npbasicheaderAlter" runat="server" CssClass="collapsePanelHeader"
+                                            Height="25px">
+                                            <div style="padding: 5px; cursor: pointer; vertical-align: middle;">
+                                                <div style="float: left; vertical-align: middle;">
+                                                    <asp:ImageButton ID="img_npbasicheaderAlter" runat="server" ImageUrl="~/images/expand_blue.jpg"
+                                                        AlternateText="" />
+                                                </div>
+                                                <div style="float: left; margin-left: 5px;">
+                                                    批单基本数据</div>
+                                                <div style="float: left; margin-left: 5px;">
+                                                    <asp:Label ID="lbl_npbasicheaderAlter" runat="server">(展开)</asp:Label>
+                                                </div>
+                                            </div>
+                                        </asp:Panel>
+                                        <asp:Panel ID="npbasicdetailAlter" runat="server" CssClass="collapsePanel" Height="0">
+                                            <table>
+                                                <tr style="font-size: 1px; height: 2px;">
+                                                    <td style="width: 90px;">
+                                                    </td>
+                                                    <td style="width: 180px;">
+                                                    </td>
+                                                    <td style="width: 90px;">
+                                                    </td>
+                                                    <td style="width: 250px;">
+                                                    </td>
+                                                    <td style="width: 90px;">
+                                                    </td>
+                                                    <td style="width: 220px;">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: right;">
+                                                        原投保单号：
+                                                    </td>
+                                                    <td style="text-align: left;">
+                                                        <asp:Label runat="server" ID="lblSourcePolicyID"></asp:Label>
+                                                    </td>
+                                                    <td style="text-align: right;">
+                                                        批单号：
+                                                    </td>
+                                                    <td style="text-align: left;">
+                                                        <dxe:ASPxTextBox ID="dxetxtAltNo" ClientInstanceName="dxetxtAltNo" runat="server"
+                                                            Width="200px">
+                                                        </dxe:ASPxTextBox>
+                                                    </td>
+                                                    <td>
+                                                    </td>
+                                                    <td>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: left;">
+                                                        批改内容：
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="6" style="text-align: left;">
+                                                         <dxe:ASPxMemo runat="server" ID="dxetxtAltRemark" ClientInstanceName="dxetxtAltRemark"
+                                                            Rows="6" Columns="165">
+                                                        </dxe:ASPxMemo>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </asp:Panel>
+                                        <ajaxToolkit:CollapsiblePanelExtender ID="cpeBasicAlter" runat="Server" TargetControlID="npbasicdetailAlter"
+                                            ExpandControlID="npbasicheaderAlter" CollapseControlID="npbasicheaderAlter" Collapsed="false"
+                                            TextLabelID="lbl_npbasicheaderAlter" ImageControlID="img_npbasicheaderAlter"
+                                            ExpandedText="(展开)" CollapsedText="(隐藏)" ExpandedImage="~/images/collapse_blue.jpg"
+                                            CollapsedImage="~/images/expand_blue.jpg" SuppressPostBack="true" />
+                                    </td>
+                                </tr>
+                            
                             <tr>
                                 <td style="width: 100%;">
                                     <asp:Panel ID="npbasicheader" runat="server" CssClass="collapsePanelHeader" Height="25px">
@@ -435,7 +510,7 @@
                                         SuppressPostBack="true" />
                                 </td>
                             </tr>
-                            <tr>
+                            <tr runat="server" id ="trPolicyItem">
                                 <td style="width: 100%;">
                                     <asp:Panel ID="npGridPolicyItemHeader" runat="server" CssClass="collapsePanelHeader"
                                         Height="25px">

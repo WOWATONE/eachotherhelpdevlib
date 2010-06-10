@@ -86,6 +86,7 @@ namespace BrokerWebApp.otherinsurance
                 gridInOutBalance.DataBind();
             }
 
+          
 
         }
 
@@ -111,6 +112,10 @@ namespace BrokerWebApp.otherinsurance
 
         }
 
+        protected void dxeIsAlterCallback_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
+        {
+            e.Result = "Alter";
+        }
 
         protected void dxeGetGridPolicyItemTotalSummary_Callback(object source, 
             DevExpress.Web.ASPxCallback.CallbackEventArgs e)
@@ -333,6 +338,22 @@ namespace BrokerWebApp.otherinsurance
             BusinessObjects.Policy.BO_Policy obj;
 
             obj = new BusinessObjects.Policy.BO_Policy(policyID);
+
+            if (obj.PrevPolicyID == "")
+            {
+                trAlter.Visible = false;
+                trPolicyItem.Visible = true;
+            }
+            else
+            {
+                trAlter.Visible = true;
+                trPolicyItem.Visible = false;
+
+                tdPolicyStartEndDate.InnerText ="批改期限：";
+                lblSourcePolicyID.Text = obj.PrevPolicyID;
+                dxetxtAltNo.Text = obj.AltNO;
+                dxetxtAltRemark.Text = obj.AltRemark;
+            }
 
             this.dxetxtPolicyNo.Text = obj.PolicyNo;
 

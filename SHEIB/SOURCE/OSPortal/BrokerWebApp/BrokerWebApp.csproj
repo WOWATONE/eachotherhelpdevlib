@@ -1494,7 +1494,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>16222</DevelopmentServerPort>
+          <DevelopmentServerPort>19622</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/BrokerWebApp</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
