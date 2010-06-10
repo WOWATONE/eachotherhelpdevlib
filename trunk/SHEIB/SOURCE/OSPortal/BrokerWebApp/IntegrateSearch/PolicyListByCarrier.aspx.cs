@@ -106,11 +106,13 @@ namespace BrokerWebApp.IntegrateSearch
             this.dxeddlCarrierId.TextField = "CarrierNameCn";
             this.dxeddlCarrierId.ValueField = "CarrierID";
             this.dxeddlCarrierId.DataBind();
+            this.dxeddlCarrierId.Items.Insert(0, new ListEditItem("(全部)", ""));
 
             this.dxeddlBranchId.DataSource = BusinessObjects.SchemaSetting.BO_Branch.GetBranchList("");
             this.dxeddlBranchId.TextField = "BranchName";
             this.dxeddlBranchId.ValueField = "BranchID";
             this.dxeddlBranchId.DataBind();
+            this.dxeddlBranchId.Items.Insert(0, new ListEditItem("(全部)", ""));
 
             this.dxeddlPolicyStatus.DataSource = BusinessObjects.BO_P_Code.GetCodeListByCodeTypeID(BusinessObjects.BO_P_Code.PCodeType.PolicyStatus.ToString());
             this.dxeddlPolicyStatus.TextField = "CodeName";
@@ -195,6 +197,11 @@ namespace BrokerWebApp.IntegrateSearch
             if (this.dxeddlCarrierId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlCarrierId.SelectedItem.Value.ToString()))
             {
                 lsWhere = lsWhere + " and b.CarrierID ='" + dxeddlCarrierId.SelectedItem.Value.ToString() + "'";
+            }
+
+            if (this.dxeddlBranchId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlBranchId.SelectedItem.Value.ToString()))
+            {
+                lsWhere = lsWhere + " and b.BranchId ='" + dxeddlBranchId.SelectedItem.Value.ToString() + "'";
             }
 
             if (this.dxeddlProdTypeName.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlProdTypeName.SelectedItem.Value.ToString()))
@@ -283,6 +290,7 @@ namespace BrokerWebApp.IntegrateSearch
             thecb.TextField = "BranchName";
             thecb.ValueField = "BranchID";
             thecb.DataBind();
+            thecb.Items.Insert(0, new ListEditItem("(全部)", ""));
             if (thecb.Items.Count > 0)
             {
                 thecb.SelectedItem = thecb.Items[0];
