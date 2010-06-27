@@ -84,14 +84,15 @@ namespace BrokerWebApp.vehicleinsurance
                 {
                     state = Convert.ToString(obj);
                 }
-
+                //20100627
                 GridViewCommandColumn objgcc = getCommandColumnLoop();
                 GridViewCommandColumnButtonControl thebtn;
                 InternalHyperLink theIHL;
                 if (state == "2")
-                { 
-                    thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[1];
-                    //thebtn.Enabled = false;
+                {
+                    thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[0];
+                    //thebtn = (GridViewCommandColumnButtonControl)e.Row.Cells[objgcc.VisibleIndex].Controls[1];
+                    ////thebtn.Enabled = false;
                     theIHL = (InternalHyperLink)thebtn.Controls[0];
                     theIHL.Text = "反审核";
                 }
