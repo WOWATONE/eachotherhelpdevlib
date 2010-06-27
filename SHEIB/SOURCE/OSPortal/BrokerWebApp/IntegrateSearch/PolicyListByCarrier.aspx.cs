@@ -219,6 +219,11 @@ namespace BrokerWebApp.IntegrateSearch
                 lsWhere = lsWhere + " and  exists( select 1 from Customer where CustName like '%" + dxetxtCustomer.Text + "%' and CustID=a.CustomerID) ";
             }
 
+            if (dxetxtCarNo.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and a.CarNo like '%" + dxetxtCarNo.Text + "%'";
+            }
+
             string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");
             string lsEndDate = dxeEndDate.Date.ToString("yyyy-MM-dd");
             if ((dxeStartDate.Text.Trim() != "") && (dxeEndDate.Text.Trim() != ""))

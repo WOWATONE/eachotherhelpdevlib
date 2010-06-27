@@ -29,7 +29,7 @@
 
 
         function gridCustomButtonClick(s, e) {
-            
+
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
             var noint = s.GetDataRow(e.visibleIndex).cells[1].innerText;
             var querystring;
@@ -231,8 +231,14 @@
                                             </table>
                                         </td>
                                         <td style="text-align: center;">
+                                            车牌号：
                                         </td>
-                                        <td style="text-align: right;" colspan="3">
+                                        <td style="text-align: center;">
+                                            <dxe:ASPxTextBox ID="dxetxtCarNo" ClientInstanceName="dxetxtCarNo" runat="server"
+                                                Width="155px">
+                                            </dxe:ASPxTextBox>
+                                        </td>
+                                        <td style="text-align: right;" colspan="2">
                                             <table>
                                                 <tr>
                                                     <td>
@@ -381,11 +387,16 @@
                                     <GroupSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInGroupFooterColumn="PolicyID"
                                             DisplayFormat="总计: {0}" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum"  ShowInGroupFooterColumn="PremiumBase" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="ProcessBase" SummaryType="Sum"  ShowInGroupFooterColumn="ProcessBase" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum"   ShowInGroupFooterColumn="CiPremium" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum"   ShowInGroupFooterColumn="AciPremium" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum"  ShowInGroupFooterColumn="CstPremium"  DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PremiumBase" SummaryType="Sum" ShowInGroupFooterColumn="PremiumBase"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="ProcessBase" SummaryType="Sum" ShowInGroupFooterColumn="ProcessBase"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" ShowInGroupFooterColumn="CiPremium"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" ShowInGroupFooterColumn="AciPremium"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" ShowInGroupFooterColumn="CstPremium"
+                                            DisplayFormat="c" />
                                     </GroupSummary>
                                     <TotalSummary>
                                         <dxwgv:ASPxSummaryItem FieldName="PolicyID" SummaryType="Count" ShowInColumn="Beneficiary"
