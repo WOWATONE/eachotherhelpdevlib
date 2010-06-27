@@ -352,6 +352,12 @@ namespace BrokerWebApp.Accounting
                 lsWhere = lsWhere + " and (convert(char(10), a.PayDate,21)) <='" + lsEndPayDate + "'";
             }
 
+            if (dxetxtCarNo.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and b.CarNo like '%" + dxetxtCarNo.Text + "%'";
+            }
+            
+
             DataTable dt = BO_Report.GetAccounting(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
