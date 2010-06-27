@@ -40,7 +40,8 @@
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=700px;center=yes;help=no";
             var noint = s.GetDataRow(e.visibleIndex).cells[1].innerText;
             var querystring;
-            querystring = "../otherinsurance/PolicyInput.aspx?pagemode=Query&id=" + noint;
+            //querystring = "../otherinsurance/PolicyInput.aspx?pagemode=Query&id=" + noint;
+            querystring = "../PolicyViewTransfer.aspx?id=" + noint;
             window.showModalDialog(querystring, self, myArguments);
         }
 
@@ -419,9 +420,13 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td style="text-align: right;">
+                                            ³µÅÆºÅ£º
                                         </td>
-                                        <td>
+                                        <td style="text-align: left;">
+                                            <dxe:ASPxTextBox ID="dxetxtCarNo" ClientInstanceName="dxetxtCarNo" runat="server"
+                                                Width="155px">
+                                            </dxe:ASPxTextBox>
                                         </td>
                                         <td>
                                         </td>
