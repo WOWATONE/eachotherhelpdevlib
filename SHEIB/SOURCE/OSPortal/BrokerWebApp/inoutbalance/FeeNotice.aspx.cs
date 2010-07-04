@@ -134,7 +134,7 @@ namespace BrokerWebApp.inoutbalance
 
             if (this.dxeddlSalesId.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlSalesId.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and  exists( select 1 from PolicyPeriodDetail where SalesId =" + dxeddlSalesId.SelectedItem.Value.ToString() + "' and NoticeNo=a.NoticeNo) ";
+                lsWhere = lsWhere + " and  exists( select 1 from PolicyPeriodDetail where SalesId ='" + dxeddlSalesId.SelectedItem.Value.ToString() + "' and NoticeNo=a.NoticeNo) ";
             }
             if (dxetxtCustomerID.Text.Trim() != "")
             {
