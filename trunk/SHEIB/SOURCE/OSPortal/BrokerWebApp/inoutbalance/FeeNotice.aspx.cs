@@ -27,9 +27,11 @@ namespace BrokerWebApp.inoutbalance
             if (!IsPostBack && !IsCallback)
             {
                 Initialization();
-                BindGrid();
+                //BindGrid();
                 CheckPermission();
             }
+
+            BindGrid();
 
         }
 

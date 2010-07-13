@@ -16,6 +16,20 @@
             var thejsonstring = dxeddlDeptID.GetSelectedItem().value;
             dxeddlSalesID.PerformCallback(thejsonstring);
         }
+        
+        function btnSearchClientClick()
+        {
+           if (dxeStartDate.GetText() == "") {
+                alert("开票开始日期不能为空,请输入");
+                return false;
+            }
+            
+            if (dxeEndDate.GetText() == "") {
+                alert("开票结束日期不能为空,请输入");
+                return false;
+            }
+            
+        }
     </script>
 
 </asp:Content>
@@ -65,10 +79,10 @@
                             <td style="text-align: left;">
                             </td>
                             <td>
-                                <asp:Button ID="Button1" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click"
+                                <asp:Button ID="Button1" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" OnClientClick="return btnSearchClientClick();"
                                     ValidationGroup="BaseGroup" CausesValidation="true" />&nbsp;
                                 <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
-                                <asp:Button ID="btnXlsExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
+                                <asp:Button ID="btnXlsExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click" 
                                     CssClass="input_2" />
                             </td>
                         </tr>
