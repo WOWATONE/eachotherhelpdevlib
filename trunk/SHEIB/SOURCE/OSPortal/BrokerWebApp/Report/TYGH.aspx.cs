@@ -29,6 +29,8 @@ namespace BrokerWebApp.Report
             //
             BindGrid();
 
+
+            //LbUserNameTop.Text = this.CurrentUserName;
         }
 
                 

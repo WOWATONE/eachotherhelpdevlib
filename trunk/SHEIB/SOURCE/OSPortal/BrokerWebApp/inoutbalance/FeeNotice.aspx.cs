@@ -33,6 +33,8 @@ namespace BrokerWebApp.inoutbalance
 
             BindGrid();
 
+            LbUserNameTop.Text = this.CurrentUserName;
+
         }
 
 

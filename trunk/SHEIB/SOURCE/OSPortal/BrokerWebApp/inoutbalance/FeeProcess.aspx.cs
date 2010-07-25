@@ -29,6 +29,8 @@ namespace BrokerWebApp.inoutbalance
                 CheckPermission();
             }
             BindGrid();
+
+            LbUserNameTop.Text = this.CurrentUserName;
         }
 
 
