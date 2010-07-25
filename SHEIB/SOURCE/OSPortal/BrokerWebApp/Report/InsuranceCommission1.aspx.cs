@@ -10,7 +10,7 @@ using BusinessObjects;
 namespace BrokerWebApp.Report
 {
 
-    public partial class InsuranceCommission1 : System.Web.UI.Page
+    public partial class InsuranceCommission1 : BasePage
     {
 
         #region Variables
@@ -23,6 +23,10 @@ namespace BrokerWebApp.Report
         {
             //
             BindGrid();
+
+            LblUserNameTop.Text = this.CurrentUserName;
+
+            //LbUserNameTop.Text = this.CurrentUserName;
 
         }
 

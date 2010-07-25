@@ -18,6 +18,8 @@ namespace BrokerWebApp.Report
         protected void Page_Load(object sender, EventArgs e)
         {
             this.BindGrid();
+
+            LblUserNameTop.Text = this.CurrentUserName;
         }
 
         protected void btnXlsExport_Click(object sender, EventArgs e)

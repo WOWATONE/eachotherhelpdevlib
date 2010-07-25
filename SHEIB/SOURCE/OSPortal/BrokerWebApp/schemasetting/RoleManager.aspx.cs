@@ -26,6 +26,8 @@ namespace BrokerWebApp.schemasetting
             
             //
 
+            LbUserNameTop.Text = this.CurrentUserName;
+
         }
 
 

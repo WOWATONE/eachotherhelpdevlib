@@ -22,6 +22,8 @@ namespace BrokerWebApp.schemasetting
         protected void Page_Load(object sender, EventArgs e)
         {
             //
+
+            LbUserNameTop.Text = this.CurrentUserName;
         }
         
 
