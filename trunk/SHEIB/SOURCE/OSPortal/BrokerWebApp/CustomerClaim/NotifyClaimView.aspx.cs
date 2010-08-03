@@ -81,7 +81,7 @@ namespace BrokerWebApp.CustomerClaim
                 this.deCreateDate.Text = notifyClaim.CreateDate.ToString("yyyy-MM-dd");
 
             this.SetddlPolicyNo(notifyClaim.PolicyNo);
-            this.SetPolicyInfo(notifyClaim.PolicyNo);
+            this.SetPolicyInfo(notifyClaim.PolicyID);
         }
 
         /// <summary>
@@ -177,12 +177,12 @@ namespace BrokerWebApp.CustomerClaim
             DataTable dt = BusinessObjects.BO_NotifyClaim.GetPolicyByPolicyID(policyNo);
             if (dt != null && dt.Rows.Count > 0)
             {
-                if (dt.Rows[0]["CarrierNameCn"] != DBNull.Value)
-                    this.dxetxtCarrierNameCn.Text = dt.Rows[0]["CarrierNameCn"].ToString();
-                if (dt.Rows[0]["CustName"] != DBNull.Value)
-                    this.dxetxtCustName.Text = dt.Rows[0]["CustName"].ToString();
-                if (dt.Rows[0]["BranchName"] != DBNull.Value)
-                    this.dxetxtBranchName.Text = dt.Rows[0]["BranchName"].ToString();
+                if (dt.Rows[0]["CarrierName"] != DBNull.Value)
+                    this.dxetxtCarrierNameCn.Text = dt.Rows[0]["CarrierName"].ToString();
+                if (dt.Rows[0]["CustomerName"] != DBNull.Value)
+                    this.dxetxtCustName.Text = dt.Rows[0]["CustomerName"].ToString();
+                //if (dt.Rows[0]["BranchName"] != DBNull.Value)
+                //    this.dxetxtBranchName.Text = dt.Rows[0]["BranchName"].ToString();
                 if (dt.Rows[0]["Beneficiary"] != DBNull.Value)
                     this.dxetxtBeneficiary.Text = dt.Rows[0]["Beneficiary"].ToString();
                 if (dt.Rows[0]["ProdTypeName"] != DBNull.Value)
@@ -191,8 +191,8 @@ namespace BrokerWebApp.CustomerClaim
                     this.dxetxtStartDate.Text = dt.Rows[0]["StartDate"].ToString();
                 if (dt.Rows[0]["EndDate"] != DBNull.Value)
                     this.dxetxtEndDate.Text = dt.Rows[0]["EndDate"].ToString();
-                if (dt.Rows[0]["UserNameCn"] != DBNull.Value)
-                    this.dxetxtUserNameCn.Text = dt.Rows[0]["UserNameCn"].ToString();
+                if (dt.Rows[0]["UserName"] != DBNull.Value)
+                    this.dxetxtUserNameCn.Text = dt.Rows[0]["UserName"].ToString();
             }
         }
     }
