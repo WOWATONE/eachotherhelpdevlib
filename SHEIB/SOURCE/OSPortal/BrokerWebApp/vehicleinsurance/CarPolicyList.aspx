@@ -299,6 +299,8 @@
                                                             </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="AciProcess" Caption="交强险经纪费" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
+                                                            <dxwgv:GridViewDataColumn FieldName="Beneficiary" Caption="被保险人" CellStyle-Wrap="False">
+                                                            </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="CustName" Caption="投保客户" CellStyle-Wrap="False">
                                                             </dxwgv:GridViewDataColumn>
                                                             <dxwgv:GridViewDataColumn FieldName="CreatePersonName" Caption="录单人" CellStyle-Wrap="False">
