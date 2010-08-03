@@ -323,7 +323,13 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="UserName" Caption="客户经理" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="Coverage" Caption="保额" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CoverageRMB" Caption="保额(人民币)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="CoverageEUR" Caption="保额(欧元)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="CoverageHKD" Caption="保额(港币)" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="CoverageUSD" Caption="保额(美元)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="险种" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
@@ -397,7 +403,13 @@
                                             DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" ShowInGroupFooterColumn="AciPremium"
                                             DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="Coverage" SummaryType="Sum" ShowInGroupFooterColumn="Coverage"
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageRMB" SummaryType="Sum" ShowInGroupFooterColumn="CoverageRMB"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageEUR" SummaryType="Sum" ShowInGroupFooterColumn="CoverageEUR"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageHKD" SummaryType="Sum" ShowInGroupFooterColumn="CoverageHKD"
+                                            DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageUSD" SummaryType="Sum" ShowInGroupFooterColumn="CoverageUSD"
                                             DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" ShowInGroupFooterColumn="CstPremium"
                                             DisplayFormat="c" />
@@ -410,7 +422,10 @@
                                         <dxwgv:ASPxSummaryItem FieldName="CiPremium" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="AciPremium" SummaryType="Sum" DisplayFormat="c" />
                                         <dxwgv:ASPxSummaryItem FieldName="CstPremium" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="Coverage" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageRMB" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageEUR" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageHKD" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="CoverageUSD" SummaryType="Sum" DisplayFormat="c" />
                                     </TotalSummary>
                                     <ClientSideEvents CustomButtonClick="function(s, e) {gridCustomButtonClick(s,e);return false;}" />
                                 </dxwgv:ASPxGridView>
