@@ -169,7 +169,7 @@
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                                客户类型;
+                                客户分类;
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlCustType" ClientInstanceName="dxeddlCustType" runat="server"

@@ -194,7 +194,7 @@
                                             </dxe:ASPxTextBox>
                                         </td>
                                         <td style="text-align: left;">
-                                            业务来源：
+                                            客户分类：
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID"
@@ -525,7 +525,7 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="OperationTypeName" Caption="业务性质" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="SourceTypeName" Caption="业务来源" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="SourceTypeName" Caption="客户分类" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="StartDate" Caption="起保日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
