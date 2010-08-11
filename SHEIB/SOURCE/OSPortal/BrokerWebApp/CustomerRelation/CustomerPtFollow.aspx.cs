@@ -77,6 +77,10 @@ namespace BrokerWebApp.CustomerRelation
                 sbWhere.Append(" And CP.FollowDate<='" + this.deEndFollowDate.Text.Trim() + "' ");
             if (this.dexddlFollowType.SelectedItem.Value.ToString().Length > 0)
                 sbWhere.Append(" And CP.FollowType='" + this.dexddlFollowType.SelectedItem.Value.ToString() + "' ");
+            if (this.dxetxtFollowPerson.Text.Trim() !="")
+                sbWhere.Append(" And CP.FollowPerson like '%" + this.dxetxtFollowPerson.Text.Trim() + "%' ");
+            
+
             this.gridSearchResult.DataSource = BusinessObjects.BO_CustomerPtFollow.GetCustomerPtFollowList(sbWhere.ToString()).Tables[0];
             this.gridSearchResult.DataBind();
         }
