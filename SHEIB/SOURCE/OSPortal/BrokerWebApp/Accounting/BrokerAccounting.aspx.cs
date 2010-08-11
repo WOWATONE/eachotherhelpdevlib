@@ -100,10 +100,10 @@ namespace BrokerWebApp.Accounting
             this.dxeddlOperationType.ValueField = "OperationTypeID";
             this.dxeddlOperationType.DataBind();
 
-            this.dxeddlSourceTypeID.DataSource = BusinessObjects.BO_P_Code.GetSourceTypeList();
-            this.dxeddlSourceTypeID.TextField = "SourceTypeName";
-            this.dxeddlSourceTypeID.ValueField = "SourceTypeID";
-            this.dxeddlSourceTypeID.DataBind();
+            //this.dxeddlSourceTypeID.DataSource = BusinessObjects.BO_P_Code.GetSourceTypeList();
+            //this.dxeddlSourceTypeID.TextField = "SourceTypeName";
+            //this.dxeddlSourceTypeID.ValueField = "SourceTypeID";
+            //this.dxeddlSourceTypeID.DataBind();
 
             this.dxeddlCarrierId.DataSource = BusinessObjects.SchemaSetting.BO_Carrier.GetCarrierList("");
             this.dxeddlCarrierId.TextField = "CarrierNameCn";
@@ -139,8 +139,41 @@ namespace BrokerWebApp.Accounting
             {
                 this.SetProdTypeName(dsList.Tables[0], "0", this.dxeddlProdTypeName);
             }
+
+            this.SetddlCustClassify("");
         }
 
+
+        private void SetddlCustClassify(string value)
+        {
+            DataSet dsList = BusinessObjects.SchemaSetting.BO_Carrier.GetCustClassifyByID("");
+            if (dsList.Tables[0] != null && dsList.Tables[0].Rows.Count > 0)
+            {
+                this.SetCustClassify(dsList.Tables[0], "0", this.dxeddlCustClassify);
+                if (!string.IsNullOrEmpty(value))
+                {
+                    this.dxeddlCustClassify.SelectedIndex = this.dxeddlCustClassify.Items.IndexOf(this.dxeddlCustClassify.Items.FindByValue(value));
+                    if (this.dxeddlCustClassify.SelectedIndex >= 0)
+                        this.dxeddlCustClassify.Text = this.dxeddlCustClassify.SelectedItem.Text.Substring(this.dxeddlCustClassify.SelectedItem.Text.IndexOf("∟") + 1);
+                    this.hidCustClassify.Value = value;
+                }
+            }
+        }
+
+        private void SetCustClassify(DataTable table, string parentid, ASPxComboBox comboBox)
+        {
+            if (parentid == "0")
+                this.toadd = "";
+            else
+                this.toadd += "   ";
+            DataRow[] rows = table.Select("ParentID='" + parentid + "'", "OrderNO");
+            foreach (DataRow row in rows)
+            {
+                comboBox.Items.Add(this.toadd + (parentid == "0" ? "" : "∟") + row["CustClassifyName"].ToString(), row["CustClassifyID"].ToString());
+                this.SetCustClassify(table, row["CustClassifyID"].ToString(), comboBox);
+                this.toadd = this.toadd.Substring(0, this.toadd.Length - 3);
+            }
+        }
 
         private void SetProdTypeName(DataTable table, string parentid, ASPxComboBox comboBox)
         {
@@ -356,7 +389,13 @@ namespace BrokerWebApp.Accounting
             {
                 lsWhere = lsWhere + " and b.CarNo like '%" + dxetxtCarNo.Text + "%'";
             }
-            
+
+
+            string sClassify = string.IsNullOrEmpty(this.hidCustClassify.Value) ? "" : this.hidCustClassify.Value;
+            if (sClassify != "")
+            {
+                lsWhere = lsWhere + " and c.CustClassifyID = '" + sClassify.Trim() + "'";
+            }
 
             DataTable dt = BO_Report.GetAccounting(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
