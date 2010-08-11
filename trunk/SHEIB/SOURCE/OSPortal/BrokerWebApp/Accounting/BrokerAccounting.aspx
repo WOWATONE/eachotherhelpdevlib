@@ -88,6 +88,20 @@
         function btnResetClick() {
             ASPxClientEdit.ClearEditorsInContainer(null);
         }
+
+        function SelectedIndexChanged(s, e) {
+            var hidCustClassify = $("#<%=hidCustClassify.ClientID %>");
+            hidCustClassify[0].value = s.GetValue();
+            var test = s.GetText();
+            if (test.length > 0) {
+                var index = test.lastIndexOf("∟");
+                if (index >= 0) {
+                    var testTmp = test.substr(index + 1);
+                    s.SetText(testTmp);
+                }
+            }
+        }
+        
     </script>
 
 </asp:Content>
@@ -197,9 +211,11 @@
                                             客户分类：
                                         </td>
                                         <td style="text-align: left;">
-                                            <dxe:ASPxComboBox ID="dxeddlSourceTypeID" ClientInstanceName="dxeddlSourceTypeID"
-                                                runat="server" Width="170px" DropDownStyle="DropDownList">
+                                            <dxe:ASPxComboBox ID="dxeddlCustClassify" ClientInstanceName="dxeddlCustClassify"
+                                                runat="server" Width="160px" DropDownStyle="DropDownList">
+                                                <ClientSideEvents SelectedIndexChanged="function(s, e) { SelectedIndexChanged(s, e); return false;}" />
                                             </dxe:ASPxComboBox>
+                                            <input type="hidden" id="hidCustClassify" name="hidCustClassify" runat="server" value="" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -525,7 +541,7 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="OperationTypeName" Caption="业务性质" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="SourceTypeName" Caption="客户分类" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="CustClassifyName" Caption="客户分类" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="StartDate" Caption="起保日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>

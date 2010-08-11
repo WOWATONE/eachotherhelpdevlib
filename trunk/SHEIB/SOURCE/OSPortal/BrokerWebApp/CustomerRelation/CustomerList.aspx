@@ -9,7 +9,8 @@
     TagPrefix="dxwgv" %>
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors"
     TagPrefix="dxe" %>
-<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
+<%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
+    TagPrefix="dxcb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>客户列表</title>
 
@@ -46,12 +47,12 @@
             else
                 return false;
         }
-        
+
         function dxeddlDeptID_SelectedIndexChanged(s, e) {
             var thejsonstring = dxeddlDepartment.GetSelectedItem().value;
             dxeddlSalesID.PerformCallback(thejsonstring);
         }
-        
+
         function deleteCustomerCallbackComplete(s, e) {
             if (e.result != "" && e.result != "ok") {
                 alert(e.result);
@@ -59,13 +60,28 @@
             }
             gridSearchResult.PerformCallback();
         }
+
+
+        function SelectedIndexChanged(s, e) {
+            var hidCustClassify = $("#<%=hidCustClassify.ClientID %>");
+            hidCustClassify[0].value = s.GetValue();
+            var test = s.GetText();
+            if (test.length > 0) {
+                var index = test.lastIndexOf("∟");
+                if (index >= 0) {
+                    var testTmp = test.substr(index + 1);
+                    s.SetText(testTmp);
+                }
+            }
+        }
     -->
     </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
-    <dxcb:ASPxCallback ID="dxeDeleteCustomerCallback" ClientInstanceName="dxeDeleteCustomerCallback" runat="server" OnCallback="dxeDeleteCustomerCallback_Callback">
+    <dxcb:ASPxCallback ID="dxeDeleteCustomerCallback" ClientInstanceName="dxeDeleteCustomerCallback"
+        runat="server" OnCallback="dxeDeleteCustomerCallback_Callback">
         <ClientSideEvents CallbackComplete="function(s, e) { deleteCustomerCallbackComplete(s, e); }" />
     </dxcb:ASPxCallback>
     <table style="width: 100%;">
@@ -145,7 +161,7 @@
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlDepartment" ClientInstanceName="dxeddlDepartment" runat="server"
                                     Width="160px" DropDownStyle="DropDownList">
-                                     <ClientSideEvents SelectedIndexChanged="dxeddlDeptID_SelectedIndexChanged" />
+                                    <ClientSideEvents SelectedIndexChanged="dxeddlDeptID_SelectedIndexChanged" />
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: left;">
@@ -172,15 +188,14 @@
                                 客户分类;
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxComboBox ID="dxeddlCustType" ClientInstanceName="dxeddlCustType" runat="server"
-                                    Width="160px" DropDownStyle="DropDownList">
-                                    <Items>
-                                        <dxe:ListEditItem Text="(全部)" Value="" />
-                                        <dxe:ListEditItem Text="个人" Value="1" />
-                                        <dxe:ListEditItem Text="单位" Value="0" />
-                                    </Items>
-                                    <ClientSideEvents SelectedIndexChanged="function(s, e) { CustTypeSelectedIndexChanged(s, e); return false;}" />
+                                <dxe:ASPxComboBox ID="dxeddlCustClassify" ClientInstanceName="dxeddlCustClassify"
+                                    runat="server" Width="160px" DropDownStyle="DropDownList">
+                                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip" CausesValidation="true" ValidationGroup="BaseGroup">
+                                        <RequiredField IsRequired="true" ErrorText="必需项" />
+                                    </ValidationSettings>
+                                    <ClientSideEvents SelectedIndexChanged="function(s, e) { SelectedIndexChanged(s, e); return false;}" />
                                 </dxe:ASPxComboBox>
+                                <input type="hidden" id="hidCustClassify" name="hidCustClassify" runat="server" value="" />
                             </td>
                             <td style="text-align: left;">
                                 <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
@@ -217,10 +232,8 @@
                 <asp:Panel ID="npSearchResultDetail" runat="server" CssClass="collapsePanel" Height="0">
                     <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                         KeyFieldName="CustID" AutoGenerateColumns="False" Settings-ShowFooter="true"
-                        Width="100%" SettingsPager-AlwaysShowPager="true"
-                        SettingsBehavior-AllowDragDrop="true" 
-                        OnRowDeleting="gridSearchResult_RowDeleting"
-                        OnCustomCallback="gridSearchResult_CustomCallBack"
+                        Width="100%" SettingsPager-AlwaysShowPager="true" SettingsBehavior-AllowDragDrop="true"
+                        OnRowDeleting="gridSearchResult_RowDeleting" OnCustomCallback="gridSearchResult_CustomCallBack"
                         OnHtmlRowCreated="gridSearchResult_HtmlRowCreated">
                         <Columns>
                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" Width="20px">

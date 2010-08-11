@@ -19,6 +19,8 @@ namespace BrokerWebApp.CustomerRelation
 {
     public partial class CustomerList : BasePage
     {
+        private string toadd = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -30,11 +32,11 @@ namespace BrokerWebApp.CustomerRelation
                 }
                 else
                 {
-                    if (this.dxeddlCustType.SelectedItem.Value.ToString() == "1")
-                        this.lblCustType.Text = "身份证号码：";
-                    else if (this.dxeddlCustType.SelectedItem.Value.ToString() == "0")
-                        this.lblCustType.Text = "组织机构号：";
-                    else
+                    //if (this.dxeddlCustType.SelectedItem.Value.ToString() == "1")
+                    //    this.lblCustType.Text = "身份证号码：";
+                    //else if (this.dxeddlCustType.SelectedItem.Value.ToString() == "0")
+                    //    this.lblCustType.Text = "组织机构号：";
+                    //else
                         this.lblCustType.Text = "身份证号码/<br/>组织机构号：";
                 }
 
@@ -45,6 +47,38 @@ namespace BrokerWebApp.CustomerRelation
             }
             catch (Exception ex)
             { }
+        }
+
+
+        private void SetddlCustClassify(string value)
+        {
+            DataSet dsList = BusinessObjects.SchemaSetting.BO_Carrier.GetCustClassifyByID("");
+            if (dsList.Tables[0] != null && dsList.Tables[0].Rows.Count > 0)
+            {
+                this.SetCustClassify(dsList.Tables[0], "0", this.dxeddlCustClassify);
+                if (!string.IsNullOrEmpty(value))
+                {
+                    this.dxeddlCustClassify.SelectedIndex = this.dxeddlCustClassify.Items.IndexOf(this.dxeddlCustClassify.Items.FindByValue(value));
+                    if (this.dxeddlCustClassify.SelectedIndex >= 0)
+                        this.dxeddlCustClassify.Text = this.dxeddlCustClassify.SelectedItem.Text.Substring(this.dxeddlCustClassify.SelectedItem.Text.IndexOf("∟") + 1);
+                    this.hidCustClassify.Value = value;
+                }
+            }
+        }
+
+        private void SetCustClassify(DataTable table, string parentid, ASPxComboBox comboBox)
+        {
+            if (parentid == "0")
+                this.toadd = "";
+            else
+                this.toadd += "   ";
+            DataRow[] rows = table.Select("ParentID='" + parentid + "'", "OrderNO");
+            foreach (DataRow row in rows)
+            {
+                comboBox.Items.Add(this.toadd + (parentid == "0" ? "" : "∟") + row["CustClassifyName"].ToString(), row["CustClassifyID"].ToString());
+                this.SetCustClassify(table, row["CustClassifyID"].ToString(), comboBox);
+                this.toadd = this.toadd.Substring(0, this.toadd.Length - 3);
+            }
         }
 
 
@@ -163,6 +197,9 @@ namespace BrokerWebApp.CustomerRelation
             this.dxeddlSalesID.ValueField = "UserID";
             this.dxeddlSalesID.DataBind();
             dxeddlSalesID.Items.Insert(0, new DevExpress.Web.ASPxEditors.ListEditItem("(全部)", ""));
+
+            //客户分类
+            this.SetddlCustClassify("");
         }
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
@@ -222,8 +259,14 @@ namespace BrokerWebApp.CustomerRelation
         private void BindGrid()
         {
             System.Text.StringBuilder sbWhere = new System.Text.StringBuilder();
-            if (this.dxeddlCustType.SelectedItem.Value.ToString().Length > 0)
-                sbWhere.Append(" And C.CustTypeID=" + this.dxeddlCustType.SelectedItem.Value.ToString() + " ");
+            //if (this.dxeddlCustType.SelectedItem.Value.ToString().Length > 0)
+            //    sbWhere.Append(" And C.CustTypeID=" + this.dxeddlCustType.SelectedItem.Value.ToString() + " ");
+
+            string sClassify = string.IsNullOrEmpty(this.hidCustClassify.Value) ? "" : this.hidCustClassify.Value;
+            if (sClassify != "")
+            {
+                sbWhere.Append(" And C.CustClassifyID='" + sClassify.Trim() + "' ");
+            }
             if (this.dxetxtCustID.Text.Trim().Length > 0)
                 sbWhere.Append(" And C.CustID='" + this.dxetxtCustID.Text.Trim() + "' ");
             if (this.dxeddlArea.SelectedItem.Value.ToString().Length > 0)
