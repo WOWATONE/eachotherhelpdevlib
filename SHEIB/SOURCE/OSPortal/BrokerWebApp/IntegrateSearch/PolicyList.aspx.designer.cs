@@ -239,6 +239,24 @@ namespace BrokerWebApp.IntegrateSearch {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton btnExport;
         
         /// <summary>
+        /// dxePolicyStartDateStart 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxePolicyStartDateStart;
+        
+        /// <summary>
+        /// dxePolicyStartDateEnd 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxDateEdit dxePolicyStartDateEnd;
+        
+        /// <summary>
         /// cpeSearch 控件。
         /// </summary>
         /// <remarks>

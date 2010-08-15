@@ -273,6 +273,14 @@ namespace BrokerWebApp.IntegrateSearch
                 lsWhere = lsWhere + " and (convert(char(10), a.CreateTime,21)) <='" + lsEndDate + "'";
             }
 
+            string lsPolicyStartDateStart = dxePolicyStartDateStart.Date.ToString("yyyy-MM-dd");
+            string lsPolicyStartDateEnd = dxePolicyStartDateEnd.Date.ToString("yyyy-MM-dd");
+            if ((dxePolicyStartDateStart.Text.Trim() != "") && (dxePolicyStartDateEnd.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), a.StartDate,21)) >='" + lsPolicyStartDateStart + "'";
+                lsWhere = lsWhere + " and (convert(char(10), a.StartDate,21)) <='" + lsPolicyStartDateEnd + "'";
+            }
+
             DataTable dt = BusinessObjects.Policy.BO_Policy.GetPolicyList(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
 

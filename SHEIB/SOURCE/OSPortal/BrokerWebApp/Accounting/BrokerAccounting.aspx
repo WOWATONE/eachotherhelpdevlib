@@ -469,6 +469,36 @@
                                             </table>
                                         </td>
                                     </tr>
+                                    
+                                    <tr>
+                                        <td style="text-align: right;">
+                                            保单开始日期：
+                                        </td>
+                                        <td style="text-align: left;" colspan="3">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxePolicyStartDateStart" ClientInstanceName="dxePolicyStartDateStart" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                    <td>
+                                                        至
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxePolicyStartDateEnd" ClientInstanceName="dxePolicyStartDateEnd" runat="server">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="text-align: right;">
+                                           
+                                        </td>
+                                        <td style="text-align: left;" colspan="3">
+                                          
+                                        </td>
+                                    </tr>
+                                    
                                 </table>
                             </td>
                             <td>

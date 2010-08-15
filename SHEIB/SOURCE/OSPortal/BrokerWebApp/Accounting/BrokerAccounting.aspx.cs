@@ -397,6 +397,15 @@ namespace BrokerWebApp.Accounting
                 lsWhere = lsWhere + " and c.CustClassifyID = '" + sClassify.Trim() + "'";
             }
 
+
+            string lsPolicyStartDateStart = dxePolicyStartDateStart.Date.ToString("yyyy-MM-dd");
+            string lsPolicyStartDateEnd = dxePolicyStartDateEnd.Date.ToString("yyyy-MM-dd");
+            if ((dxePolicyStartDateStart.Text.Trim() != "") && (dxePolicyStartDateEnd.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), b.StartDate,21)) >='" + lsPolicyStartDateStart + "'";
+                lsWhere = lsWhere + " and (convert(char(10), b.StartDate,21)) <='" + lsPolicyStartDateEnd + "'";
+            }
+
             DataTable dt = BO_Report.GetAccounting(lsWhere).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();

@@ -100,7 +100,7 @@
                             <td>
                                 <table>
                                     <tr style="font-size: 1px; height: 2px;">
-                                        <td style="width: 110px">
+                                        <td style="width: 120px">
                                         </td>
                                         <td style="width: 210px">
                                         </td>
@@ -274,6 +274,40 @@
                                             </table>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td style="text-align: right;">
+                                            保单开始日期：
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxePolicyStartDateStart" ClientInstanceName="dxePolicyStartDateStart" runat="server"
+                                                            Width="95px">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                    <td>
+                                                        至
+                                                    </td>
+                                                    <td>
+                                                        <dxe:ASPxDateEdit ID="dxePolicyStartDateEnd" ClientInstanceName="dxePolicyStartDateEnd" runat="server"
+                                                            Width="95px">
+                                                        </dxe:ASPxDateEdit>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="text-align: center;">
+                                           
+                                        </td>
+                                        <td style="text-align: center;">
+                                          
+                                        </td>
+                                        <td style="text-align: right;" colspan="2">
+                                           
+                                        </td>
+                                    </tr>
+                                    
                                 </table>
                             </td>
                             <td>

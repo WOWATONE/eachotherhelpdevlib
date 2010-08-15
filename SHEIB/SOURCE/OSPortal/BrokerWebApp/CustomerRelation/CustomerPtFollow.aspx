@@ -86,14 +86,6 @@
                                     Width="160px" DropDownStyle="DropDownList">
                                 </dxe:ASPxComboBox>
                             </td>
-                            <td style="width: 70px; text-align: right;">
-                                跟进人：
-                            </td>
-                            <td style="text-align: left;">
-                                <dxe:ASPxTextBox ID="dxetxtFollowPerson" ClientInstanceName="dxetxtFollowPerson" runat="server"
-                                    Width="160px" >
-                                </dxe:ASPxTextBox>
-                            </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
@@ -130,7 +122,12 @@
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="width: 50px; text-align: center;">
-                                &nbsp;
+                                跟进人：
+                            </td>
+                            <td style="width: 50px; text-align: center;">
+                                 <dxe:ASPxTextBox ID="dxetxtFollowPerson" ClientInstanceName="dxetxtFollowPerson" runat="server"
+                                    Width="160px" >
+                                </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: left;" colspan="2">
                                 <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
