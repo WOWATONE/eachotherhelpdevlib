@@ -260,9 +260,12 @@ namespace BrokerWebApp.IntegrateSearch
             string sClassify = string.IsNullOrEmpty(this.hidCustClassify.Value) ? "" : this.hidCustClassify.Value;
             if (sClassify != "")
             {
-                lsWhere = lsWhere + " and c.CustClassifyID = '" + sClassify.Trim() + "'";
+                if (sClassify.Trim().Length == 1)
+                    lsWhere = lsWhere + " and c.CustClassifyID like '" + sClassify.Trim() + "%'";
+                else
+                    lsWhere = lsWhere + " and c.CustClassifyID = '" + sClassify.Trim() + "'";
             }
-
+            
             
 
             string lsStartDate = dxeStartDate.Date.ToString("yyyy-MM-dd");
