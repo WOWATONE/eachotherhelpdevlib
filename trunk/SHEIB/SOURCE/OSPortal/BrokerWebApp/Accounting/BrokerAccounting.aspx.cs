@@ -11,14 +11,14 @@ using BusinessObjects;
 namespace BrokerWebApp.Accounting
 {
 
-    public partial class BrokerAccounting : BasePage 
+    public partial class BrokerAccounting : BasePage
     {
 
         #region Variables
 
         private const String gridKeyName = "KeyGUID";
         private string toadd = string.Empty;
-        
+
         #endregion Variables
 
 
@@ -202,7 +202,7 @@ namespace BrokerWebApp.Accounting
         }
 
 
-                
+
         protected void gridSearchResult_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             String theID = e.Keys[gridKeyName].ToString();
@@ -223,7 +223,7 @@ namespace BrokerWebApp.Accounting
         }
 
         protected void gridSearchResult_CustomCallback(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewCustomCallbackEventArgs e)
-        {            
+        {
             this.gridSearchResult.DataBind();
         }
 
@@ -394,7 +394,10 @@ namespace BrokerWebApp.Accounting
             string sClassify = string.IsNullOrEmpty(this.hidCustClassify.Value) ? "" : this.hidCustClassify.Value;
             if (sClassify != "")
             {
-                lsWhere = lsWhere + " and c.CustClassifyID = '" + sClassify.Trim() + "'";
+                if (sClassify.Trim().Length == 1)
+                    lsWhere = lsWhere + " and c.CustClassifyID like '" + sClassify.Trim()  + "%'";
+                else
+                    lsWhere = lsWhere + " and c.CustClassifyID = '" + sClassify.Trim() + "'";
             }
 
 

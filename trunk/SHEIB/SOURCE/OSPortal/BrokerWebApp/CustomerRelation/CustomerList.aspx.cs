@@ -265,8 +265,12 @@ namespace BrokerWebApp.CustomerRelation
             string sClassify = string.IsNullOrEmpty(this.hidCustClassify.Value) ? "" : this.hidCustClassify.Value;
             if (sClassify != "")
             {
-                sbWhere.Append(" And C.CustClassifyID='" + sClassify.Trim() + "' ");
+                if (sClassify.Trim().Length == 1)
+                    sbWhere.Append(" And C.CustClassifyID like '" + sClassify.Trim() + "%'");
+                else
+                    sbWhere.Append(" And C.CustClassifyID ='" + sClassify.Trim() + "'");
             }
+
             if (this.dxetxtCustID.Text.Trim().Length > 0)
                 sbWhere.Append(" And C.CustID='" + this.dxetxtCustID.Text.Trim() + "' ");
             if (this.dxeddlArea.SelectedItem.Value.ToString().Length > 0)
