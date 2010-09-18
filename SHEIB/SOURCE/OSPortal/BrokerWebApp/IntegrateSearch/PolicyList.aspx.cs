@@ -256,6 +256,10 @@ namespace BrokerWebApp.IntegrateSearch
                 lsWhere = lsWhere + " and a.CarNo like '%" + dxetxtCarNo.Text + "%'";
             }
 
+            if (dxetxtAciPolicyNo.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and a.AciPolicyNo like '%" + dxetxtAciPolicyNo.Text + "%'";
+            }
 
             string sClassify = string.IsNullOrEmpty(this.hidCustClassify.Value) ? "" : this.hidCustClassify.Value;
             if (sClassify != "")

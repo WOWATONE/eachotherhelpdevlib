@@ -351,9 +351,9 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CreateTime" Caption="录单日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="AuditPerson" Caption="修改人" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="AuditPerson" Caption="审核人" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="AuditTime" Caption="修改日期" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="AuditTime" Caption="审核日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="SourceTypeName" Caption="业务来源" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>

@@ -492,10 +492,15 @@
                                             </table>
                                         </td>
                                         <td style="text-align: right;">
-                                           
+                                           交强险保单号：
                                         </td>
-                                        <td style="text-align: left;" colspan="3">
-                                          
+                                       <td style="text-align: center;">
+                                          <dxe:ASPxTextBox ID="dxetxtAciPolicyNo" ClientInstanceName="dxetxtAciPolicyNo" runat="server"
+                                                Width="155px">
+                                            </dxe:ASPxTextBox>
+                                        </td>
+                                        <td style="text-align: right;" colspan="2">
+                                           
                                         </td>
                                     </tr>
                                     
