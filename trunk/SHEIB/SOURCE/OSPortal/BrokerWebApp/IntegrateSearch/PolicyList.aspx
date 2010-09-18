@@ -298,10 +298,12 @@
                                             </table>
                                         </td>
                                         <td style="text-align: center;">
-                                           
+                                           交强险保单号：
                                         </td>
                                         <td style="text-align: center;">
-                                          
+                                          <dxe:ASPxTextBox ID="dxetxtAciPolicyNo" ClientInstanceName="dxetxtAciPolicyNo" runat="server"
+                                                Width="155px">
+                                            </dxe:ASPxTextBox>
                                         </td>
                                         <td style="text-align: right;" colspan="2">
                                            
@@ -408,9 +410,9 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CreateTime" Caption="录单日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="AuditPerson" Caption="修改人" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="AuditPerson" Caption="审核人" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="AuditTime" Caption="修改日期" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="AuditTime" Caption="审核日期" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="CustClassifyName" Caption="客户分类" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>

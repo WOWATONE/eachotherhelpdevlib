@@ -400,6 +400,11 @@ namespace BrokerWebApp.Accounting
                     lsWhere = lsWhere + " and c.CustClassifyID = '" + sClassify.Trim() + "'";
             }
 
+            if (dxetxtAciPolicyNo.Text.Trim() != "")
+            {
+                lsWhere = lsWhere + " and b.AciPolicyNo like '%" + dxetxtAciPolicyNo.Text + "%'";
+            }
+
 
             string lsPolicyStartDateStart = dxePolicyStartDateStart.Date.ToString("yyyy-MM-dd");
             string lsPolicyStartDateEnd = dxePolicyStartDateEnd.Date.ToString("yyyy-MM-dd");
