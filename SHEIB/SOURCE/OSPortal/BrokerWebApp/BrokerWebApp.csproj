@@ -889,6 +889,20 @@
     <Compile Include="Report\RptRealPremiumStruct.aspx.designer.cs">
       <DependentUpon>RptRealPremiumStruct.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Report\InsuranceCommissionC.aspx.cs">
+      <DependentUpon>InsuranceCommissionC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\InsuranceCommissionC.aspx.designer.cs">
+      <DependentUpon>InsuranceCommissionC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\InsuranceCommissionL.aspx.cs">
+      <DependentUpon>InsuranceCommissionL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\InsuranceCommissionL.aspx.designer.cs">
+      <DependentUpon>InsuranceCommissionL.aspx</DependentUpon>
+    </Compile>
     <Compile Include="schemasetting\AlertService.aspx.cs">
       <DependentUpon>AlertService.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1370,6 +1384,8 @@
     <Content Include="Report\RptCustomerProcessStruct.aspx" />
     <Content Include="Report\PremiumActualOverdueReportSum.aspx" />
     <Content Include="Report\RptRealPremiumStruct.aspx" />
+    <Content Include="Report\InsuranceCommissionC.aspx" />
+    <Content Include="Report\InsuranceCommissionL.aspx" />
     <Content Include="schemasetting\AlertService.aspx" />
     <Content Include="schemasetting\Branch.aspx" />
     <Content Include="schemasetting\BranchList.aspx" />
