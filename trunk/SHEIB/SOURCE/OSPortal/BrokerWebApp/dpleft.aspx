@@ -131,6 +131,10 @@
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="统计报表" Expanded="false">
                             <Items>
+                                 <dxnb:NavBarItem Text="保监会新表(财产险)" Name="Report/InsuranceCommissionC.aspx">
+                                </dxnb:NavBarItem>
+                                 <dxnb:NavBarItem Text="保监会新表(人身险)" Name="Report/InsuranceCommissionL.aspx">
+                                </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="保监会报表1" Name="Report/InsuranceCommission1.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="保监会报表2" Name="Report/InsuranceCommission2.aspx">
