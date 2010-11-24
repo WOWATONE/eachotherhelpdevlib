@@ -31,6 +31,28 @@ namespace BusinessObjects
             
         }
 
+        public static DataSet GetInsuranceCommissionC(string sBeginDate, string sEndDate)
+        {
+
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.rpt_InsuranceCommissionByProdType_C");
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.String, sBeginDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.String, sEndDate);
+
+            return _db.ExecuteDataSet(dbCommand);
+
+        }
+
+        public static DataSet GetInsuranceCommissionL(string sBeginDate, string sEndDate)
+        {
+
+            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.rpt_InsuranceCommissionByProdType_L");
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.String, sBeginDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.String, sEndDate);
+
+            return _db.ExecuteDataSet(dbCommand);
+
+        }
+
         public static DataSet GetInsuranceCommission2(string sBeginDate, string sEndDate)
         {
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.rpt_InsuranceCommissionByArea");
