@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using BusinessObjects;
 
 namespace BrokerWebApp.BudgetManagement
 {
@@ -18,6 +19,18 @@ namespace BrokerWebApp.BudgetManagement
                 Year = DateTime.Now.Year;
                 dxeDllType.SelectedIndex = 0;
                 dxeDllYear.Value = Year.ToString();
+
+                //保单类别
+                //this.dxeddlPremiumType.Items.Add("(全部)", "");
+                DataSet dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.PremiumType.ToString());
+                if (dsList.Tables[0] != null)
+                {
+                    foreach (DataRow row in dsList.Tables[0].Rows)
+                    {
+                        this.dxeddlPremiumType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                    }
+                }
+                dxeddlPremiumType.SelectedIndex = 0;
             }
         }
 
@@ -39,12 +52,18 @@ namespace BrokerWebApp.BudgetManagement
         {
             string sYear = "";
             string sType = "";
+            string sPremiumType = "";
 
             sYear = dxeDllYear.Value.ToString();
             sType = dxeDllType.Value.ToString();
 
+            if (this.dxeddlPremiumType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPremiumType.SelectedItem.Value.ToString()))
+            {
+                sPremiumType = this.dxeddlPremiumType.SelectedItem.Value.ToString();
+            }
 
-            DataTable dt = BusinessObjects.Budget.BO_SignPremiumBudget.RptSignBudgetGatherBySales(sYear, sType).Tables[0];
+
+            DataTable dt = BusinessObjects.Budget.BO_SignPremiumBudget.RptSignBudgetGatherBySales(sYear, sType, sPremiumType).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
 

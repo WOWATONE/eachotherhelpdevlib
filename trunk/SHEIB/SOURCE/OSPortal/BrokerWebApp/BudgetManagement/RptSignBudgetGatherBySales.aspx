@@ -73,6 +73,14 @@
                                     </Items>
                                 </dxe:ASPxComboBox>
                             </td>
+                             <td style="text-align: right;">
+                             保单类别
+                            </td>
+                            <td style="text-align: left;">
+                              <dxe:ASPxComboBox ID="dxeddlPremiumType" ClientInstanceName="dxeddlPremiumType" runat="server"
+                                    DropDownStyle="DropDownList" Width="160px">
+                                </dxe:ASPxComboBox>
+                            </td>
                             <td>
                                 <asp:Button ID="Button1" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click"
                                     ValidationGroup="BaseGroup" CausesValidation="true" />&nbsp;
