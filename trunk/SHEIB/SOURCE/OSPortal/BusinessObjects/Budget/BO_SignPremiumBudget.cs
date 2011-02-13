@@ -235,29 +235,34 @@ namespace BusinessObjects.Budget
         }
 
         //签约预算完成情况表
-        public static DataSet RptSignPremiumBudget(string sNy,string sDeptID,string sSalesID)
+        public static DataSet RptSignPremiumBudget(string sNy, string sDeptID, string sSalesID, string sPremiumType)
         {
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptSignPremiumBudget");
             _db.AddInParameter(dbCommand, "@ac_ny", DbType.String, sNy);
             _db.AddInParameter(dbCommand, "@ac_DeptID", DbType.String, sDeptID);
             _db.AddInParameter(dbCommand, "@ac_SalesID", DbType.String, sSalesID);
+            _db.AddInParameter(dbCommand, "@ac_PremiumType", DbType.String, sPremiumType);
             return _db.ExecuteDataSet(dbCommand);
         }
 
-        public static DataSet RptSignBudgetBase(string sNy, string sDeptID, string sSalesID)
+        public static DataSet RptSignBudgetBase(string sNy, string sDeptID, string sSalesID, string sPremiumType)
         {
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptSignBudgetBase");
             _db.AddInParameter(dbCommand, "@ac_ny", DbType.String, sNy);
             _db.AddInParameter(dbCommand, "@ac_DeptID", DbType.String, sDeptID);
             _db.AddInParameter(dbCommand, "@ac_SalesID", DbType.String, sSalesID);
+            _db.AddInParameter(dbCommand, "@ac_PremiumType", DbType.String, sPremiumType);
+
+            
             return _db.ExecuteDataSet(dbCommand);
         }
 
-        public static DataSet RptSignBudgetGatherBySales(string sYear, string sType)
+        public static DataSet RptSignBudgetGatherBySales(string sYear, string sType, string sPremiumType)
         {
             DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptSignBudgetGatherBySales");
             _db.AddInParameter(dbCommand, "@ac_Year", DbType.String, sYear);
             _db.AddInParameter(dbCommand, "@ac_Type", DbType.String, sType);
+            _db.AddInParameter(dbCommand, "@ac_PremiumType", DbType.String, sPremiumType);
             return _db.ExecuteDataSet(dbCommand);
         }
 
