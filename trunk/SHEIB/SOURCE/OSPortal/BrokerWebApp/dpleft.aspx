@@ -22,7 +22,7 @@
         <tr>
             <td valign="top" style="width: 100%;">
                 <dxnb:ASPxNavBar  ID="ASPxNavBar1" AutoCollapse="True" runat="server" AllowSelectItem="True"
-                    EnableTheming="True" EnableViewState="False" Width="150px" EnableAnimation="True">
+                    EnableTheming="True" EnableViewState="False" Width="150px" EnableAnimation="True" >
                     <GroupHeaderStyle HorizontalAlign="Left" VerticalAlign="Top"  />
                     <ItemStyle HorizontalAlign="Left" />
                     <ClientSideEvents ItemClick="function(s, e) {SelectedItemChanged(s,e);}" Init="function(s, e) {InitNavBar(s,e);}"
@@ -169,13 +169,13 @@
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="预算管理" Expanded="false">
                             <Items>
-                                <dxnb:NavBarItem Text="签约预算明细表" Name="BudgetManagement/SignPremiumBudgetList.aspx">
+                                <dxnb:NavBarItem Text="预算明细表" Name="BudgetManagement/SignPremiumBudgetList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="签约预算完成明细表" Name="BudgetManagement/RptSignBudgetBase.aspx">
+                                <dxnb:NavBarItem Text="预算完成明细表" Name="BudgetManagement/RptSignBudgetBase.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="签约预算完成汇总表" Name="BudgetManagement/SignPremiumBudgetRpt.aspx">
+                                <dxnb:NavBarItem Text="预算完成汇总表" Name="BudgetManagement/SignPremiumBudgetRpt.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="签约预算汇总表" Name="BudgetManagement/RptSignBudgetGatherBySales.aspx">
+                                <dxnb:NavBarItem Text="预算汇总表" Name="BudgetManagement/RptSignBudgetGatherBySales.aspx">
                                 </dxnb:NavBarItem>
                             </Items>
                         </dxnb:NavBarGroup>
