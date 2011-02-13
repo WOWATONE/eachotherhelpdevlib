@@ -44,6 +44,18 @@ namespace BrokerWebApp.BudgetManagement
             this.dxeddlDeptID.DataBind();
             this.dxeddlDeptID.Items.Insert(0, new ListEditItem("(全部)", ""));
 
+            //保单类别
+            //this.dxeddlPremiumType.Items.Add("(全部)", "");
+            DataSet dsList = BO_P_Code.GetListByCodeType(BO_P_Code.PCodeType.PremiumType.ToString());
+            if (dsList.Tables[0] != null)
+            {
+                foreach (DataRow row in dsList.Tables[0].Rows)
+                {
+                    this.dxeddlPremiumType.Items.Add(row["CodeName"].ToString().Trim(), row["CodeID"].ToString().Trim());
+                }
+            }
+            dxeddlPremiumType.SelectedIndex = 0;
+
             //this.dxeddlSalesID.DataSource = BusinessObjects.BO_P_User.FetchList();
             //this.dxeddlSalesID.TextField = "UserNameCn";
             //this.dxeddlSalesID.ValueField = "UserID";
@@ -85,6 +97,7 @@ namespace BrokerWebApp.BudgetManagement
             string sNy = "";
             string sDeptID = "";
             string sSalesID = "";
+            string sPremiumType ="";
 
             if (this.dxetxtNY.Text.Trim().Length > 0)
                 sNy = dxetxtNY.Text.Trim();
@@ -97,8 +110,12 @@ namespace BrokerWebApp.BudgetManagement
                 sSalesID = dxeddlSalesID.SelectedItem.Value.ToString();
             }
 
+            if (this.dxeddlPremiumType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPremiumType.SelectedItem.Value.ToString()))
+            {
+                sPremiumType = this.dxeddlPremiumType.SelectedItem.Value.ToString();
+            }
 
-            DataTable dt = BusinessObjects.Budget.BO_SignPremiumBudget.RptSignBudgetBase(sNy, sDeptID, sSalesID).Tables[0];
+            DataTable dt = BusinessObjects.Budget.BO_SignPremiumBudget.RptSignBudgetBase(sNy, sDeptID, sSalesID, sPremiumType).Tables[0];
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
 
