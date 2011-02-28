@@ -48,6 +48,9 @@ namespace BrokerWebApp.inoutbalance
 
         private void Initialization()
         {
+            dxeNoticeStartDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            dxeNoticeEndDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
             DataSet dsList;
 
 
