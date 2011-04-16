@@ -237,7 +237,12 @@ namespace BusinessObjects.Budget
         //签约预算完成情况表
         public static DataSet RptSignPremiumBudget(string sNy, string sDeptID, string sSalesID, string sPremiumType)
         {
-            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptSignPremiumBudget");
+            string sProcedureName = "";
+            if (sPremiumType == "0")
+            { sProcedureName = "dbo.RptSignPremiumBudget"; }
+            else { sProcedureName = "dbo.RptSignPremiumBudgetPayFee"; }
+
+            DbCommand dbCommand = _db.GetStoredProcCommand(sProcedureName);
             _db.AddInParameter(dbCommand, "@ac_ny", DbType.String, sNy);
             _db.AddInParameter(dbCommand, "@ac_DeptID", DbType.String, sDeptID);
             _db.AddInParameter(dbCommand, "@ac_SalesID", DbType.String, sSalesID);
@@ -247,13 +252,18 @@ namespace BusinessObjects.Budget
 
         public static DataSet RptSignBudgetBase(string sNy, string sDeptID, string sSalesID, string sPremiumType)
         {
-            DbCommand dbCommand = _db.GetStoredProcCommand("dbo.RptSignBudgetBase");
+            string sProcedureName = "";
+            if (sPremiumType == "0")
+            { sProcedureName = "dbo.RptSignBudgetBase"; }
+            else { sProcedureName = "dbo.RptSignBudgetBasePayFee"; }
+
+            DbCommand dbCommand = _db.GetStoredProcCommand(sProcedureName);
             _db.AddInParameter(dbCommand, "@ac_ny", DbType.String, sNy);
             _db.AddInParameter(dbCommand, "@ac_DeptID", DbType.String, sDeptID);
             _db.AddInParameter(dbCommand, "@ac_SalesID", DbType.String, sSalesID);
             _db.AddInParameter(dbCommand, "@ac_PremiumType", DbType.String, sPremiumType);
 
-            
+
             return _db.ExecuteDataSet(dbCommand);
         }
 
