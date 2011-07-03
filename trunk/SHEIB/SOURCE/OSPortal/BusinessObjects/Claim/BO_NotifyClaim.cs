@@ -738,6 +738,87 @@ namespace BusinessObjects
             return existEndCase;
         }
 
+
+
+        public static DataTable GetClaimTrancheAll(string sBeginDate,string sEndDate)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("dbo.rpt_ClaimTrancheAll");
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.AnsiString, sBeginDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.AnsiString, sEndDate);
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+
+        public static DataTable GetClaimTrancheAlreadyPay(string sBeginDate, string sEndDate)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("dbo.rpt_ClaimTrancheAlreadyPay");
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.AnsiString, sBeginDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.AnsiString, sEndDate);
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+
+        public static DataTable GetClaimLossRation()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("dbo.rpt_ClaimLossRation");
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+
+        public static DataTable GetClaimByProdType(string sBeginDate, string sEndDate, string sCustID)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("dbo.rpt_ClaimByProdType");
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.AnsiString, sBeginDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.AnsiString, sEndDate);
+            _db.AddInParameter(dbCommand, "@ac_CustID", DbType.AnsiString, sCustID);
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+
+        public static DataTable GetClaimByAccidentReason(string sBeginDate, string sEndDate)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("dbo.rpt_ClaimByAccidentReason");
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.AnsiString, sBeginDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.AnsiString, sEndDate);
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+
+        public static DataTable GetClaimBySalesId(string sBeginDate, string sEndDate)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("dbo.rpt_ClaimBySalesId");
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.AnsiString, sBeginDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.AnsiString, sEndDate);
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+
+        public static DataTable GetClaimTimelinessAnalysis(string sBeginDate, string sEndDate)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("dbo.rpt_ClaimTimelinessAnalysis");
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.AnsiString, sBeginDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.AnsiString, sEndDate);
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+
+        public static DataTable GetClaimRpt(string sBeginDate, string sEndDate)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("dbo.rpt_ClaimRpt");
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.AnsiString, sBeginDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.AnsiString, sEndDate);
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+
         #endregion
 
 

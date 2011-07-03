@@ -178,7 +178,7 @@ namespace BrokerWebApp.CustomerClaim
 
             dxetxtCreatePerson.Text = notifyClaim.CreatePerson;
             dxedeCreateDate.Date = notifyClaim.CreateDate;
-
+            txtCaseEndRemark.Text = notifyClaim.CaseEndRemark;
             setPolicyInfo(notifyClaim.PolicyID);
                         
         }  
@@ -350,6 +350,8 @@ namespace BrokerWebApp.CustomerClaim
 
             notifyClaim.ModifyPerson = this.CurrentUserID;
             notifyClaim.ModifyDate  = dxedeCreateDate.Date;
+
+            notifyClaim.CaseEndRemark = this.txtCaseEndRemark.Text;
         }
     
 

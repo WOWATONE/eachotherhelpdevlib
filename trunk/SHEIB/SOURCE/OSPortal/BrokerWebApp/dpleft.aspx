@@ -16,14 +16,14 @@
     <script src="js/dpleftmenu.js" type="text/javascript"></script>
 
 </head>
-<body style="overflow-x:hidden; overflow-y:auto;">
-    <form id="form1" runat="server" >
+<body style="overflow-x: hidden; overflow-y: auto;">
+    <form id="form1" runat="server">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td valign="top" style="width: 100%;">
-                <dxnb:ASPxNavBar  ID="ASPxNavBar1" AutoCollapse="True" runat="server" AllowSelectItem="True"
-                    EnableTheming="True" EnableViewState="False" Width="150px" EnableAnimation="True" >
-                    <GroupHeaderStyle HorizontalAlign="Left" VerticalAlign="Top"  />
+                <dxnb:ASPxNavBar ID="ASPxNavBar1" AutoCollapse="True" runat="server" AllowSelectItem="True"
+                    EnableTheming="True" EnableViewState="False" Width="150px" EnableAnimation="True">
+                    <GroupHeaderStyle HorizontalAlign="Left" VerticalAlign="Top" />
                     <ItemStyle HorizontalAlign="Left" />
                     <ClientSideEvents ItemClick="function(s, e) {SelectedItemChanged(s,e);}" Init="function(s, e) {InitNavBar(s,e);}"
                         ExpandedChanged="function(s, e) {GroupExpandedChanged(s,e);}" ExpandedChanging="function(s, e) {GroupExpandedChanging(s,e);}">
@@ -67,7 +67,23 @@
                             <Items>
                                 <dxnb:NavBarItem Text="理赔登记" Name="CustomerClaim/NotifyClaimList.aspx">
                                 </dxnb:NavBarItem>
-                            </Items>
+                                <dxnb:NavBarItem Text="赔款金额分档（全部）" Name="CustomerClaim/ClaimTrancheAll.aspx">
+                                </dxnb:NavBarItem>
+                                <dxnb:NavBarItem Text="赔款金额分档（已赔付）" Name="CustomerClaim/ClaimTrancheAlreadyPay.aspx">
+                                </dxnb:NavBarItem>
+                                 <dxnb:NavBarItem Text="总赔付率计算" Name="CustomerClaim/ClaimLossRation.aspx">
+                                </dxnb:NavBarItem>
+                                 <dxnb:NavBarItem Text="按险种按客户" Name="CustomerClaim/ClaimByProdType.aspx">
+                                </dxnb:NavBarItem>
+                                 <dxnb:NavBarItem Text="出险原因" Name="CustomerClaim/ClaimByAccidentReason.aspx">
+                                </dxnb:NavBarItem>
+                                 <dxnb:NavBarItem Text="按客户经理" Name="CustomerClaim/ClaimBySalesId.aspx">
+                                </dxnb:NavBarItem>
+                                 <dxnb:NavBarItem Text="赔案时效性分析" Name="CustomerClaim/ClaimTimelinessAnalysis.aspx">
+                                </dxnb:NavBarItem>
+                                 <dxnb:NavBarItem Text="财务公司要求格式报表" Name="CustomerClaim/ClaimRpt.aspx">
+                                </dxnb:NavBarItem>
+                            </items>
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="业务咨询" Expanded="false">
                             <Items>
@@ -131,9 +147,9 @@
                         </dxnb:NavBarGroup>
                         <dxnb:NavBarGroup Text="统计报表" Expanded="false">
                             <Items>
-                                 <dxnb:NavBarItem Text="保监会新表(财产险)" Name="Report/InsuranceCommissionC.aspx">
+                                <dxnb:NavBarItem Text="保监会新表(财产险)" Name="Report/InsuranceCommissionC.aspx">
                                 </dxnb:NavBarItem>
-                                 <dxnb:NavBarItem Text="保监会新表(人身险)" Name="Report/InsuranceCommissionL.aspx">
+                                <dxnb:NavBarItem Text="保监会新表(人身险)" Name="Report/InsuranceCommissionL.aspx">
                                 </dxnb:NavBarItem>
                                 <dxnb:NavBarItem Text="保监会报表1" Name="Report/InsuranceCommission1.aspx">
                                 </dxnb:NavBarItem>
