@@ -439,6 +439,13 @@
     <Compile Include="BusinessConsult\BusinessConsultList.aspx.designer.cs">
       <DependentUpon>BusinessConsultList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustomerClaim\RptClaimTrancheAll.aspx.cs">
+      <DependentUpon>RptClaimTrancheAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimTrancheAll.aspx.designer.cs">
+      <DependentUpon>RptClaimTrancheAll.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CustomerClaim\NotifyClaim.aspx.cs">
       <DependentUpon>NotifyClaim.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1323,6 +1330,7 @@
     <Content Include="BudgetManagement\RptSignBudgetBase.aspx" />
     <Content Include="BusinessConsult\BusinessConsult.aspx" />
     <Content Include="BusinessConsult\BusinessConsultList.aspx" />
+    <Content Include="CustomerClaim\RptClaimTrancheAll.aspx" />
     <Content Include="CustomerClaim\NotifyClaim.aspx" />
     <Content Include="CustomerClaim\NotifyClaimList.aspx" />
     <Content Include="CustomerClaim\NotifyClaimPolicySelect.aspx" />

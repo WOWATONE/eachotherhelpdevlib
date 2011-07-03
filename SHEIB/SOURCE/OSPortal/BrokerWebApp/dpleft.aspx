@@ -67,21 +67,21 @@
                             <Items>
                                 <dxnb:NavBarItem Text="理赔登记" Name="CustomerClaim/NotifyClaimList.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="赔款金额分档（全部）" Name="CustomerClaim/ClaimTrancheAll.aspx">
+                                <dxnb:NavBarItem Text="赔款金额分档（全部）" Name="CustomerClaim/RptClaimTrancheAll.aspx">
                                 </dxnb:NavBarItem>
-                                <dxnb:NavBarItem Text="赔款金额分档（已赔付）" Name="CustomerClaim/ClaimTrancheAlreadyPay.aspx">
+                                <dxnb:NavBarItem Text="赔款金额分档（已赔付）" Name="CustomerClaim/RptClaimTrancheAlreadyPay.aspx">
                                 </dxnb:NavBarItem>
-                                 <dxnb:NavBarItem Text="总赔付率计算" Name="CustomerClaim/ClaimLossRation.aspx">
+                                 <dxnb:NavBarItem Text="总赔付率计算" Name="CustomerClaim/RptClaimLossRation.aspx">
                                 </dxnb:NavBarItem>
-                                 <dxnb:NavBarItem Text="按险种按客户" Name="CustomerClaim/ClaimByProdType.aspx">
+                                 <dxnb:NavBarItem Text="按险种按客户" Name="CustomerClaim/RptClaimByProdType.aspx">
                                 </dxnb:NavBarItem>
-                                 <dxnb:NavBarItem Text="出险原因" Name="CustomerClaim/ClaimByAccidentReason.aspx">
+                                 <dxnb:NavBarItem Text="出险原因" Name="CustomerClaim/RptClaimByAccidentReason.aspx">
                                 </dxnb:NavBarItem>
-                                 <dxnb:NavBarItem Text="按客户经理" Name="CustomerClaim/ClaimBySalesId.aspx">
+                                 <dxnb:NavBarItem Text="按客户经理" Name="CustomerClaim/RptClaimBySalesId.aspx">
                                 </dxnb:NavBarItem>
-                                 <dxnb:NavBarItem Text="赔案时效性分析" Name="CustomerClaim/ClaimTimelinessAnalysis.aspx">
+                                 <dxnb:NavBarItem Text="赔案时效性分析" Name="CustomerClaim/RptClaimTimelinessAnalysis.aspx">
                                 </dxnb:NavBarItem>
-                                 <dxnb:NavBarItem Text="财务公司要求格式报表" Name="CustomerClaim/ClaimRpt.aspx">
+                                 <dxnb:NavBarItem Text="财务公司要求格式报表" Name="CustomerClaim/RptClaimRpt.aspx">
                                 </dxnb:NavBarItem>
                             </items>
                         </dxnb:NavBarGroup>
