@@ -1,4 +1,4 @@
-Ôªø<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/PopupUploadMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="NotifyClaim.aspx.cs" Inherits="BrokerWebApp.CustomerClaim.NotifyClaim" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMastePages/PopupUploadMaster.Master" AutoEventWireup="true" Theme="Aqua" CodeBehind="NotifyClaim.aspx.cs" Inherits="BrokerWebApp.CustomerClaim.NotifyClaim" %>
 
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
@@ -12,7 +12,7 @@
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback" TagPrefix="dxcb" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>ËµîÊ°àÁôªËÆ∞</title>
+    <title>≈‚∞∏µ«º«</title>
     <script type="text/javascript">
         $(document).ready(function() {
             window.onunload = function() {
@@ -83,7 +83,7 @@
         function dxebtnNotifyInfoSaveEndCase_Click(s, e) {
             var pid = dxetxtPolicyID.GetValueString();
             if (isEmpty(pid)) {
-                alert("ËØ∑ÂÖàÈÄâÊã©‰øùÂçï„ÄÇ");
+                alert("«Îœ»—°‘Ò±£µ•°£");
                 return;
             }
             if (s.CauseValidation()) {
@@ -94,19 +94,19 @@
             var retrunval = e.result;
             switch (retrunval) {
                 case "notifynoexist":
-                    alert("Êä•Ê°àÂè∑‰∏çÂîØ‰∏Ä");
+                    alert("±®∞∏∫≈≤ªŒ®“ª");
                     break
                 default:
                     dxebtnBottomEndCase.SetEnabled(false);
                     dxebtnBottomSave.SetEnabled(false);
-                    alert("‰øùÂ≠òÊàêÂäü");
+                    alert("±£¥Ê≥…π¶");
             }         
         }
 
         function dxebtnNotifyInfoSave_Click(s, e) {
             var pid = dxetxtPolicyID.GetValueString();
             if (isEmpty(pid)) {
-                alert("ËØ∑ÂÖàÈÄâÊã©‰øùÂçï„ÄÇ");
+                alert("«Îœ»—°‘Ò±£µ•°£");
                 return;
             }
             
@@ -118,7 +118,7 @@
             var retrunval = e.result;
             switch (retrunval) {
                 case "notifynoexist":
-                    alert("Êä•Ê°àÂè∑‰∏çÂîØ‰∏Ä");
+                    alert("±®∞∏∫≈≤ªŒ®“ª");
                     break
                 default:
                     var nid = dxetxtNotifyID.GetValueString();
@@ -126,7 +126,7 @@
                         dxetxtNotifyID.SetValue(e.result);
                     }
                     setDxeButtonsUnableOrEnable(true);
-                    alert("‰øùÂ≠òÊàêÂäü");
+                    alert("±£¥Ê≥…π¶");
             }
         }
 
@@ -192,9 +192,9 @@
                             <asp:ImageButton ID="img_npBaseInfoHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText="" />
                         </div>
                         <div style="float: left; margin-left: 5px;">
-                            Âü∫Êú¨‰ø°ÊÅØ</div>
+                            ª˘±æ–≈œ¢</div>
                         <div style="float: left; margin-left: 5px;">
-                            <asp:Label ID="lbl_npBaseInfoHeader" runat="server">(ÈöêËóè)</asp:Label>
+                            <asp:Label ID="lbl_npBaseInfoHeader" runat="server">(“˛≤ÿ)</asp:Label>
                         </div>
                     </div>
                 </asp:Panel>
@@ -222,7 +222,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                ‰øùÂçïÂè∑Ôºö
+                                ±£µ•∫≈£∫
                             </td>
                             <td style="text-align: left;">
                                 <table style="margin-left: -3px; text-align: left;">
@@ -232,7 +232,7 @@
                                         </td>
                                         <td style="text-align: left;">
                                             <dxe:ASPxButton AutoPostBack="False" runat="server" ID="dxebtnSelectPolicyView" ClientInstanceName="dxebtnSelectPolicyView"
-                                                Text="ÈÄâÊã©‰øùÂçï" Style="margin: 0px;" Visible="true" CausesValidation="false">
+                                                Text="—°‘Ò±£µ•" Style="margin: 0px;" Visible="true" CausesValidation="false">
                                                 <ClientSideEvents Click="function(s, e) {dxebtnSelectPolicyView_Click(s,e);return false;}" />
                                             </dxe:ASPxButton>
                                         </td>
@@ -241,7 +241,7 @@
                                 
                             </td>
                             <td style="text-align: right;">
-                                ‰øùÈô©ÂÖ¨Âè∏Ôºö
+                                ±£œ’π´Àæ£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCarrierNameCn" ClientInstanceName="dxetxtCarrierNameCn" runat="server" Width="250px" ReadOnly="false"></dxe:ASPxTextBox>
@@ -250,13 +250,13 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                Êäï‰øù‰∫∫Ôºö
+                                Õ∂±£»À£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCustName" ClientInstanceName="dxetxtCustName" runat="server" Width="250px" ReadOnly="true"></dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
-                                Èô©ÁßçÔºö
+                                œ’÷÷£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtProdTypeName" ClientInstanceName="dxetxtProdTypeName" runat="server" Width="250px" ReadOnly="true"></dxe:ASPxTextBox>
@@ -265,13 +265,13 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                Ë¢´‰øùÈô©‰∫∫Ôºö
+                                ±ª±£œ’»À£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtBeneficiary" ClientInstanceName="dxetxtBeneficiary" runat="server" Width="250px" ReadOnly="true"></dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
-                                ÂÆ¢Êà∑ÁªèÁêÜÔºö
+                                øÕªßæ≠¿Ì£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtUserNameCn" ClientInstanceName="dxetxtUserNameCn" runat="server" Width="250px" ReadOnly="true"></dxe:ASPxTextBox>
@@ -280,7 +280,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                ‰øùÈô©ÊúüÈôêÔºö
+                                ±£œ’∆⁄œﬁ£∫
                             </td>
                             <td style="text-align: left;">
                                 <table style=" padding-left:-3px; margin-left:-3px;">
@@ -288,7 +288,7 @@
                                         <td>
                                             <dxe:ASPxTextBox ID="dxetxtStartDate" ClientInstanceName="dxetxtStartDate" runat="server" Width="120px" ReadOnly="true"></dxe:ASPxTextBox>
                                         </td>
-                                        <td>Ëá≥</td>
+                                        <td>÷¡</td>
                                         <td>
                                             <dxe:ASPxTextBox ID="dxetxtEndDate" ClientInstanceName="dxetxtEndDate" runat="server" Width="120px" ReadOnly="true"></dxe:ASPxTextBox>
                                         </td>
@@ -296,7 +296,7 @@
                                 </table>                                
                             </td>
                             <td style="text-align: right;">
-                                ‰øùË¥πÔºö
+                                ±£∑—£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtPremiumBase" ClientInstanceName="dxetxtPremiumBase" runat="server" Width="250px" ReadOnly="true"></dxe:ASPxTextBox>
@@ -307,8 +307,8 @@
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeBaseInfo" runat="Server" TargetControlID="npBaseInfoDetail"
                     ExpandControlID="npBaseInfoHeader" CollapseControlID="npBaseInfoHeader" Collapsed="false"
-                    TextLabelID="lbl_npBaseInfoHeader" ImageControlID="img_npBaseInfoHeader" ExpandedText="(ÈöêËóè)"
-                    CollapsedText="(Â±ïÂºÄ)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
+                    TextLabelID="lbl_npBaseInfoHeader" ImageControlID="img_npBaseInfoHeader" ExpandedText="(“˛≤ÿ)"
+                    CollapsedText="(’πø™)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
                     SuppressPostBack="true" />
             </td>
         </tr>
@@ -323,9 +323,9 @@
                                 AlternateText="" />
                         </div>
                         <div style="float: left; margin-left: 5px;">
-                            Êä•Ê°à‰ø°ÊÅØ</div>
+                            ±®∞∏–≈œ¢</div>
                         <div style="float: left; margin-left: 5px;">
-                            <asp:Label ID="lbl_npNotifyInfoHeader" runat="server">(ÈöêËóè)</asp:Label>
+                            <asp:Label ID="lbl_npNotifyInfoHeader" runat="server">(“˛≤ÿ)</asp:Label>
                         </div>
                     </div>
                 </asp:Panel>
@@ -340,7 +340,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                ÂÆ¢Êà∑Êä•Ê°à‰∫∫Ôºö
+                                øÕªß±®∞∏»À£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtNotifyPerson" ClientInstanceName="dxetxtNotifyPerson" runat="server" Width="160px">
@@ -348,7 +348,7 @@
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
-                                Âá∫Èô©Âú∞ÁÇπÔºö
+                                ≥ˆœ’µÿµ„£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtAccidentSpot" ClientInstanceName="dxetxtAccidentSpot" runat="server" Width="160px"></dxe:ASPxTextBox>
@@ -357,18 +357,18 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                ÂÆ¢Êà∑ÂêëÊàëÂè∏<br />
-                                Êä•Ê°àÊó∂Èó¥Ôºö
+                                øÕªßœÚŒ“Àæ<br />
+                                ±®∞∏ ±º‰£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxDateEdit ID="dxedeNotifyTime" ClientInstanceName="dxedeNotifyTime" runat="server" Width="160px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
-									    <RequiredField ErrorText="‰∏çËÉΩ‰∏∫Á©∫" IsRequired="True" />                                        
+									    <RequiredField ErrorText="≤ªƒ‹Œ™ø’" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">
-                                Êä•ÊçüÈáëÈ¢ùÔºö
+                                ±®ÀΩ∂Ó£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtNotifyLossFee" ClientInstanceName="dxetxtNotifyLossFee" runat="server" Width="160px"></dxe:ASPxTextBox>
@@ -377,22 +377,22 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                Âá∫Èô©Êó•ÊúüÔºö
+                                ≥ˆœ’»’∆⁄£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxDateEdit ID="dxedeAccidentTime" ClientInstanceName="dxedeAccidentTime" runat="server" Width="160px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
-									    <RequiredField ErrorText="‰∏çËÉΩ‰∏∫Á©∫" IsRequired="True" />                                        
+									    <RequiredField ErrorText="≤ªƒ‹Œ™ø’" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">
-                                ÊçüÂ§±ÊÄßË¥®Ôºö
+                                À ß–‘÷ £∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlLossType" ClientInstanceName="dxeddlLossType" runat="server" Width="160px" DropDownStyle="DropDownList">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
-									    <RequiredField ErrorText="‰∏çËÉΩ‰∏∫Á©∫" IsRequired="True" />                                        
+									    <RequiredField ErrorText="≤ªƒ‹Œ™ø’" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxComboBox>
                             </td>
@@ -400,17 +400,17 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                Âá∫Èô©ÂéüÂõ†Ôºö
+                                ≥ˆœ’‘≠“Ú£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxComboBox ID="dxeddlAccidentReason" ClientInstanceName="dxeddlAccidentReason" runat="server" Width="160px" DropDownStyle="DropDownList">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
-									    <RequiredField ErrorText="‰∏çËÉΩ‰∏∫Á©∫" IsRequired="True" />                                        
+									    <RequiredField ErrorText="≤ªƒ‹Œ™ø’" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxComboBox>
                             </td>
                             <td style="text-align: right;">
-                                ËÅîÁ≥ªÁîµËØùÔºö
+                                ¡™œµµÁª∞£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtContactPhone" ClientInstanceName="dxetxtContactPhone" runat="server" Width="160px"></dxe:ASPxTextBox>
@@ -419,7 +419,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                ÂÆ¢Êà∑ËÅîÁ≥ª‰∫∫Ôºö
+                                øÕªß¡™œµ»À£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtContactPerson" ClientInstanceName="dxetxtContactPerson" runat="server" Width="160px"></dxe:ASPxTextBox>
@@ -430,29 +430,29 @@
                         </tr>                        
                         <tr>
                             <td style="text-align: right; vertical-align: top;">
-                                ‰∫ãÊïÖÊèèËø∞Ôºö
+                                 ¬π √Ë ˆ£∫
                             </td>
                             <td style="text-align: left;" colspan="3">                                
                                 <dxe:ASPxMemo runat="server" ID="dxetxtAccidentProc" ClientInstanceName="dxetxtAccidentProc"
-                                    Rows="10" Columns="120">
+                                    Rows="5" Columns="135">
                                 </dxe:ASPxMemo>
                             </td>
                             <td></td>
                         </tr>                        
                         <tr>
                             <td style="text-align: right;">
-                                Âêë‰øùÈô©ÂÖ¨Âè∏<br />
-                                Êä•Ê°àÊó•ÊúüÔºö
+                                œÚ±£œ’π´Àæ<br />
+                                ±®∞∏»’∆⁄£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxDateEdit ID="dxedeNotifyCarrierTime" ClientInstanceName="dxedeNotifyCarrierTime" runat="server" Width="160px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
-									    <RequiredField ErrorText="‰∏çËÉΩ‰∏∫Á©∫" IsRequired="True" />                                        
+									    <RequiredField ErrorText="≤ªƒ‹Œ™ø’" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">
-                                Êä•Ê°àÂè∑Ôºö
+                                ±®∞∏∫≈£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtNotifyNo" ClientInstanceName="dxetxtNotifyNo" runat="server" Width="160px">
@@ -462,15 +462,15 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                ‰øùÈô©ÂÖ¨Âè∏<br />
-                                ÂäûÊ°à‰∫∫ÂëòÔºö
+                                ±£œ’π´Àæ<br />
+                                ∞Ï∞∏»À‘±£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCarrierContactPerson" ClientInstanceName="dxetxtCarrierContactPerson" runat="server" Width="160px"></dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
-                                ÂäûÊ°à‰∫∫Âëò<br />
-                                ËÅîÁ≥ªÁîµËØùÔºö
+                                ∞Ï∞∏»À‘±<br />
+                                ¡™œµµÁª∞£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCarrierContactPhone" ClientInstanceName="dxetxtCarrierContactPhone" runat="server" Width="160px"></dxe:ASPxTextBox>
@@ -479,7 +479,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                Êü•ÂãòÊó•ÊúüÔºö
+                                ≤Èø±»’∆⁄£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxDateEdit ID="dxedePerambulateTime" ClientInstanceName="dxedePerambulateTime" runat="server" Width="160px"></dxe:ASPxDateEdit>
@@ -493,7 +493,7 @@
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeNotifyInfo" runat="Server" TargetControlID="npNotifyInfoDetail"
                     ExpandControlID="npNotifyInfoHeader" CollapseControlID="npNotifyInfoHeader" Collapsed="false"
                     TextLabelID="lbl_npNotifyInfoHeader" ImageControlID="img_npNotifyInfoHeader"
-                    ExpandedText="(ÈöêËóè)" CollapsedText="(Â±ïÂºÄ)" ExpandedImage="~/images/collapse_blue.jpg"
+                    ExpandedText="(“˛≤ÿ)" CollapsedText="(’πø™)" ExpandedImage="~/images/collapse_blue.jpg"
                     CollapsedImage="~/images/expand_blue.jpg" SuppressPostBack="true" />
             </td>
         </tr>
@@ -506,9 +506,9 @@
                             <asp:ImageButton ID="img_npTraceInfoHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText="" />
                         </div>
                         <div style="float: left; margin-left: 5px;">
-                            Ë∑üË∏™‰ø°ÊÅØ</div>
+                            ∏˙◊Ÿ–≈œ¢</div>
                         <div style="float: left; margin-left: 5px;">
-                            <asp:Label ID="lbl_npTraceInfoHeader" runat="server">(ÈöêËóè)</asp:Label>
+                            <asp:Label ID="lbl_npTraceInfoHeader" runat="server">(“˛≤ÿ)</asp:Label>
                         </div>
                     </div>
                 </asp:Panel>
@@ -537,15 +537,15 @@
                                             <EditButton Visible="true" />
                                             <DeleteButton Visible="true" />
                                         </dxwgv:GridViewCommandColumn>
-                                        <dxwgv:GridViewDataDateColumn FieldName="FollowDate" Caption="Ë∑üËøõÊó•Êúü" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                                        <dxwgv:GridViewDataDateColumn FieldName="FollowDate" Caption="∏˙Ω¯»’∆⁄" CellStyle-Wrap="False" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                                         </dxwgv:GridViewDataDateColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="FollowContent" Caption="Ë∑üËøõÂ∑•‰Ωú" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="FollowContent" Caption="∏˙Ω¯π§◊˜" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="FollowNextContent" Caption="‰∏ã‰∏ÄÊ≠•Â∑•‰Ωú" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="FollowNextContent" Caption="œ¬“ª≤Ωπ§◊˜" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="LoseStatusName" Caption="ËµîÊ°àÁä∂ÊÄÅ" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="LoseStatusName" Caption="≈‚∞∏◊¥Ã¨" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="EstimateFeel" Caption="‰º∞ËÆ°ÈáëÈ¢ù" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="EstimateFeel" Caption="π¿º∆Ω∂Ó" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="NotifyID" Caption="NotifyID" CellStyle-Wrap="False"
                                             Visible="false">
@@ -556,7 +556,7 @@
                                     </Columns>
                                     <Settings ShowGroupPanel="false" ShowFooter="True" ShowGroupFooter="VisibleAlways" />
                                     <TotalSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="FollowDate" SummaryType="Count" DisplayFormat="Êï∞Èáè:#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="FollowDate" SummaryType="Count" DisplayFormat=" ˝¡ø:#" />
                                         <dxwgv:ASPxSummaryItem FieldName="EstimateFeel" SummaryType="Sum" DisplayFormat="c" />
                                     </TotalSummary>
                                     <%-- EndRegion --%>
@@ -569,37 +569,37 @@
                                                 <table style="width: 90%;" runat="server" id="gridTraceInfoItem_EditorTemplate">
                                                     <tr>
                                                         <td style="white-space: nowrap; text-align: right;">
-                                                            Ë∑üËøõÊó•Êúü:
+                                                            ∏˙Ω¯»’∆⁄:
                                                         </td>
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxDateEdit ID="gridTraceInfoItem_dxedeFollowDate" ClientInstanceName="gridTraceInfoItem_dxedeFollowDate" runat="server"
                                                                 Width="120px" EditFormatString="yyyy-MM-dd">
                                                                 <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
-                                                                    <RequiredField IsRequired="true" ErrorText="ÂøÖÈúÄÈ°π" />
+                                                                    <RequiredField IsRequired="true" ErrorText="±ÿ–ËœÓ" />
                                                                 </ValidationSettings>
                                                             </dxe:ASPxDateEdit>
                                                         </td>
                                                         <td style="white-space: nowrap; text-align: right;">
-                                                            ËµîÊ°àÁä∂ÊÄÅ:
+                                                            ≈‚∞∏◊¥Ã¨:
                                                         </td>
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxComboBox runat="server" ID="gridTraceInfoItem_dxeddlLoseStatus" AutoPostBack="false"
                                                                 ClientInstanceName="gridTraceInfoItem_dxeddlLoseStatus" DropDownButton-Enabled="true"
                                                                 DropDownStyle="DropDownList" Width="120px">
                                                                 <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
-                                                                    <RequiredField IsRequired="true" ErrorText="ÂøÖÈúÄÈ°π" />
+                                                                    <RequiredField IsRequired="true" ErrorText="±ÿ–ËœÓ" />
                                                                 </ValidationSettings>
                                                                 <ClientSideEvents />
                                                             </dxe:ASPxComboBox>
                                                         </td>
                                                         <td style="white-space: nowrap; text-align: right;">
-                                                            ‰º∞ËÆ°ÈáëÈ¢ù:
+                                                            π¿º∆Ω∂Ó:
                                                         </td>
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxTextBox ID="gridTraceInfoItem_dxetxtEstimateFeel" ClientInstanceName="gridTraceInfoItem_dxetxtEstimateFeel"
                                                                 runat="server" Width="120px">
                                                                 <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
-                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="Ê†ºÂºè‰∏çÂØπ" />
+                                                                    <RegularExpression ValidationExpression="^\d+(\.\d+)?" ErrorText="∏Ò Ω≤ª∂‘" />
                                                                 </ValidationSettings>
                                                                 <ClientSideEvents />
                                                             </dxe:ASPxTextBox>
@@ -609,24 +609,24 @@
                                                     </tr>
                                                     <tr>
                                                         <td style="white-space: nowrap; text-align: right;">
-                                                            Ë∑üËøõÂ∑•‰Ωú:
+                                                            ∏˙Ω¯π§◊˜:
                                                         </td>
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxMemo runat="server" ID="gridTraceInfoItem_dxetxtFollowContent" ClientInstanceName="gridTraceInfoItem_dxetxtFollowContent"
                                                                 Rows="10" Columns="40">
                                                                 <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
-                                                                    <RequiredField IsRequired="true" ErrorText="ÂøÖÈúÄÈ°π" />
+                                                                    <RequiredField IsRequired="true" ErrorText="±ÿ–ËœÓ" />
                                                                 </ValidationSettings>                                                                
                                                             </dxe:ASPxMemo>
                                                         </td>
                                                         <td style="white-space: nowrap; text-align: right;">
-                                                            ‰∏ã‰∏ÄÊ≠•Â∑•‰Ωú:
+                                                            œ¬“ª≤Ωπ§◊˜:
                                                         </td>
                                                         <td style="text-align: left;">
                                                             <dxe:ASPxMemo runat="server" ID="gridTraceInfoItem_dxetxtFollowNextContent" ClientInstanceName="gridTraceInfoItem_dxetxtFollowNextContent"
                                                                 Rows="10" Columns="40">
                                                                 <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
-                                                                    <RequiredField IsRequired="true" ErrorText="ÂøÖÈúÄÈ°π" />
+                                                                    <RequiredField IsRequired="true" ErrorText="±ÿ–ËœÓ" />
                                                                 </ValidationSettings>
                                                             </dxe:ASPxMemo>
                                                         </td>
@@ -658,8 +658,8 @@
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeTraceInfo" runat="Server" TargetControlID="npTraceInfoDetail"
                     ExpandControlID="npTraceInfoHeader" CollapseControlID="npTraceInfoHeader" Collapsed="false"
-                    TextLabelID="lbl_npTraceInfoHeader" ImageControlID="img_npTraceInfoHeader" ExpandedText="(ÈöêËóè)"
-                    CollapsedText="(Â±ïÂºÄ)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
+                    TextLabelID="lbl_npTraceInfoHeader" ImageControlID="img_npTraceInfoHeader" ExpandedText="(“˛≤ÿ)"
+                    CollapsedText="(’πø™)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
                     SuppressPostBack="true" />
             </td>
         </tr>
@@ -672,9 +672,9 @@
                             <asp:ImageButton ID="img_UploadDocHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText="" />
                         </div>
                         <div style="float: left; margin-left: 5px;">
-                            Áõ∏ÂÖ≥ËµÑÊñô</div>
+                            œ‡πÿ◊ ¡œ</div>
                         <div style="float: left; margin-left: 5px;">
-                            <asp:Label ID="lbl_UploadDocHeader" runat="server">(ÈöêËóè)</asp:Label>
+                            <asp:Label ID="lbl_UploadDocHeader" runat="server">(“˛≤ÿ)</asp:Label>
                         </div>
                     </div>
                 </asp:Panel>
@@ -698,8 +698,8 @@
                                             AddUploadButtonsHorizontalPosition="Center" ShowProgressPanel="True" FileInputCount="2"
                                             RemoveButtonSpacing="8px" AddUploadButtonsSpacing="10" FileUploadMode="OnPageLoad"
                                             OnPreRender="UploadControl_PreRender" OnFileUploadComplete="UploadControl_FileUploadComplete">
-                                            <ValidationSettings MaxFileSize="100000000" FileDoesNotExistErrorText="Êñá‰ª∂‰∏çÂ≠òÂú®" GeneralErrorText="‰∏ä‰º†ÂèëÁîüÈîôËØØ"
-                                                MaxFileSizeErrorText="Êñá‰ª∂Â§™Â§ß" NotAllowedContentTypeErrorText="‰∏çÂÖÅËÆ∏‰∏ä‰º†Ê≠§Á±ªÂûãÊñá‰ª∂">
+                                            <ValidationSettings MaxFileSize="100000000" FileDoesNotExistErrorText="Œƒº˛≤ª¥Ê‘⁄" GeneralErrorText="…œ¥´∑¢…˙¥ÌŒÛ"
+                                                MaxFileSizeErrorText="Œƒº˛Ã´¥Û" NotAllowedContentTypeErrorText="≤ª‘ –Ì…œ¥´¥À¿‡–ÕŒƒº˛">
                                             </ValidationSettings>
                                             <ClientSideEvents FilesUploadComplete="function(s, e) { FileUploaded(s, e) }" FileUploadStart="function(s, e) { FileUploadStart(s, e); }" />
                                             <RemoveButton Text="" Image-Url="../images/file_remove.gif" Image-Height="25px" Image-Width="25px"
@@ -736,13 +736,13 @@
                                                     <EditButton Visible="False" />                                                                    
                                                     <DeleteButton Visible="true" />                                                                                                                      
                                                 </dxwgv:GridViewCommandColumn>
-                                                <dxwgv:GridViewDataColumn FieldName="DocName" Caption="Êñá‰ª∂Âêç" CellStyle-Wrap="False"
+                                                <dxwgv:GridViewDataColumn FieldName="DocName" Caption="Œƒº˛√˚" CellStyle-Wrap="False"
                                                     Width="25" Settings-AllowDragDrop="false">                                                    
                                                     <DataItemTemplate>
                                                         <asp:HyperLink runat="server" ID="docitemlnk"></asp:HyperLink>
                                                     </DataItemTemplate>
                                                 </dxwgv:GridViewDataColumn>
-                                                <dxwgv:GridViewDataColumn FieldName="DocURL" Caption="ÈìæÊé•Âú∞ÂùÄ" CellStyle-Wrap="False">
+                                                <dxwgv:GridViewDataColumn FieldName="DocURL" Caption="¡¥Ω”µÿ÷∑" CellStyle-Wrap="False">
                                                 </dxwgv:GridViewDataColumn>
                                             </Columns>
                                             <%-- EndRegion --%>
@@ -757,8 +757,8 @@
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeUploadDoc" runat="Server" TargetControlID="npUploadDocDetail"
                     ExpandControlID="npUploadDocHeader" CollapseControlID="npUploadDocHeader" Collapsed="false"
-                    TextLabelID="lbl_UploadDocHeader" ImageControlID="img_UploadDocHeader" ExpandedText="(ÈöêËóè)"
-                    CollapsedText="(Â±ïÂºÄ)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
+                    TextLabelID="lbl_UploadDocHeader" ImageControlID="img_UploadDocHeader" ExpandedText="(“˛≤ÿ)"
+                    CollapsedText="(’πø™)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
                     SuppressPostBack="true" />
             </td>
         </tr>
@@ -771,9 +771,9 @@
                             <asp:ImageButton ID="img_npEndCaseHeader" runat="server" ImageUrl="~/images/expand_blue.jpg" AlternateText="" />
                         </div>
                         <div style="float: left; margin-left: 5px;">
-                            ÁªìÊ°à‰ø°ÊÅØ</div>
+                            Ω·∞∏–≈œ¢</div>
                         <div style="float: left; margin-left: 5px;">
-                            <asp:Label ID="lbl_npEndCaseHeader" runat="server">(ÈöêËóè)</asp:Label>
+                            <asp:Label ID="lbl_npEndCaseHeader" runat="server">(“˛≤ÿ)</asp:Label>
                         </div>
                     </div>
                 </asp:Panel>
@@ -790,32 +790,32 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                ËµÑÊñôÈΩêÂÖ®Êó•ÊúüÔºö
+                                ◊ ¡œ∆Î»´»’∆⁄£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxDateEdit ID="dxedeDocCompleteDate" ClientInstanceName="dxedeDocCompleteDate" runat="server" Width="120px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
-									    <RequiredField ErrorText="‰∏çËÉΩ‰∏∫Á©∫" IsRequired="True" />                                        
+									    <RequiredField ErrorText="≤ªƒ‹Œ™ø’" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">
-                                Ëµî‰ªòÈáëÈ¢ùÔºö
+                                ≈‚∏∂Ω∂Ó£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtLastPayFee" ClientInstanceName="dxetxtLastPayFee" runat="server" Width="120px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
-									    <RequiredField ErrorText="‰∏çËÉΩ‰∏∫Á©∫" IsRequired="True" />                                        
+									    <RequiredField ErrorText="≤ªƒ‹Œ™ø’" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
-                                ËµîÊ¨æÂà∞Â∏êÊó•ÊúüÔºö
+                                ≈‚øÓµΩ’ »’∆⁄£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxDateEdit ID="dxedeLastPayDate" ClientInstanceName="dxedeLastPayDate" runat="server" Width="120px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
-									    <RequiredField ErrorText="‰∏çËÉΩ‰∏∫Á©∫" IsRequired="True" />                                        
+									    <RequiredField ErrorText="≤ªƒ‹Œ™ø’" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
                             </td>
@@ -823,17 +823,17 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                ÁªìÊ°àÊó•ÊúüÔºö
+                                Ω·∞∏»’∆⁄£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxDateEdit ID="dxedeCaseEndTime" ClientInstanceName="dxedeCaseEndTime" runat="server" Width="120px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
-									    <RequiredField ErrorText="‰∏çËÉΩ‰∏∫Á©∫" IsRequired="True" />                                        
+									    <RequiredField ErrorText="≤ªƒ‹Œ™ø’" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">
-                                ÁªìÊ°à‰∫∫Ôºö
+                                Ω·∞∏»À£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCaseEndPerson" ClientInstanceName="dxetxtCaseEndPerson" runat="server" Width="120px">
@@ -847,22 +847,22 @@
                         </tr>                        
                         <tr>
                             <td style="text-align: right;">
-                                Âà∂Âçï‰∫∫Ôºö
+                                ÷∆µ•»À£∫
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxTextBox ID="dxetxtCreatePerson" ClientInstanceName="dxetxtCreatePerson" runat="server" Width="120px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
-									    <RequiredField ErrorText="‰∏çËÉΩ‰∏∫Á©∫" IsRequired="True" />                                        
+									    <RequiredField ErrorText="≤ªƒ‹Œ™ø’" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxTextBox>
                             </td>
                             <td style="text-align: right;">
-                                Âà∂ÂçïÊó•Êúü:
+                                ÷∆µ•»’∆⁄:
                             </td>
                             <td style="text-align: left;">
                                 <dxe:ASPxDateEdit ID="dxedeCreateDate" ClientInstanceName="dxedeCreateDate" runat="server" Width="120px">
                                     <ValidationSettings Display="Dynamic" ErrorDisplayMode="ImageWithTooltip" SetFocusOnError="True">
-									    <RequiredField ErrorText="‰∏çËÉΩ‰∏∫Á©∫" IsRequired="True" />                                        
+									    <RequiredField ErrorText="≤ªƒ‹Œ™ø’" IsRequired="True" />                                        
                                     </ValidationSettings>
                                 </dxe:ASPxDateEdit>
                             </td>
@@ -870,12 +870,23 @@
                             <td></td>
                             <td></td>
                         </tr>
+                         <tr>
+                           <td style="text-align: right; vertical-align: top;">
+                                Ω·∞∏–°Ω·£∫
+                            </td>
+                            <td style="text-align: left;" colspan="5">                                
+                                <dxe:ASPxMemo runat="server" ID="txtCaseEndRemark" ClientInstanceName="txtCaseEndRemark"
+                                    Rows="3" Columns="145">
+                                </dxe:ASPxMemo>
+                            </td>
+                            <td></td>
+                        </tr>
                     </table>
                 </asp:Panel>
                 <ajaxToolkit:CollapsiblePanelExtender ID="cpeEndCase" runat="Server" TargetControlID="npEndCaseDetail"
                     ExpandControlID="npEndCaseHeader" CollapseControlID="npEndCaseHeader" Collapsed="false"
-                    TextLabelID="lbl_npEndCaseHeader" ImageControlID="img_npEndCaseHeader" ExpandedText="(ÈöêËóè)"
-                    CollapsedText="(Â±ïÂºÄ)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
+                    TextLabelID="lbl_npEndCaseHeader" ImageControlID="img_npEndCaseHeader" ExpandedText="(“˛≤ÿ)"
+                    CollapsedText="(’πø™)" ExpandedImage="~/images/collapse_blue.jpg" CollapsedImage="~/images/expand_blue.jpg"
                     SuppressPostBack="true" />
             </td>
         </tr>        
@@ -895,18 +906,18 @@
                 </td>
                 <td style="width: 50px; text-align: left;">
                         <dxe:ASPxButton runat="server" ID="dxebtnBottomEndCase" ClientInstanceName="dxebtnBottomEndCase"
-                            Text="ÁªìÊ°à" CausesValidation="true" AutoPostBack="false">
+                            Text="Ω·∞∏" CausesValidation="true" AutoPostBack="false">
                             <ClientSideEvents Click="function(s, e) {dxebtnNotifyInfoSaveEndCase_Click(s,e);}" />
                         </dxe:ASPxButton>
                     </td>
                 <td style="width:50px; text-align:left;">
-                    <dxe:ASPxButton runat="server" id="dxebtnBottomSave" ClientInstanceName="dxebtnBottomSave" Text="‰øùÂ≠ò" 
+                    <dxe:ASPxButton runat="server" id="dxebtnBottomSave" ClientInstanceName="dxebtnBottomSave" Text="±£¥Ê" 
                         CausesValidation="false" AutoPostBack="false">
                         <ClientSideEvents Click="function(s, e) {dxebtnNotifyInfoSave_Click(s,e);}" />
                     </dxe:ASPxButton> 
                 </td>
                 <td style="width:50px; text-align:left;">
-                    <dxe:ASPxButton runat="server" id="dxebtnClose" Text="ÂÖ≥Èó≠" CausesValidation="false" AutoPostBack="false">
+                    <dxe:ASPxButton runat="server" id="dxebtnClose" Text="πÿ±’" CausesValidation="false" AutoPostBack="false">
                         <ClientSideEvents Click="function(s, e) {btnCloseClick();}" />
                     </dxe:ASPxButton>
                 </td>
