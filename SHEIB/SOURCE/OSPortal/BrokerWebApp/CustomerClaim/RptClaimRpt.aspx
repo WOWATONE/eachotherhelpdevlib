@@ -155,6 +155,17 @@
                                         ShowGroupFooter="Hidden" ShowGroupedColumns="true" ShowFilterRow="false" />
                                     <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                     <SettingsText CustomizationWindowCaption="个性化" />
+                                    <TotalSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="ProdTypeName" SummaryType="Count" DisplayFormat="数量：#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="BAJS" SummaryType="Sum" DisplayFormat="#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="BALJ" SummaryType="Sum" DisplayFormat="#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="NotifyLossFee" SummaryType="Sum" DisplayFormat="#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="NotifyLossFeeSum" SummaryType="Sum" DisplayFormat="#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="LastPayFee" SummaryType="Sum" DisplayFormat="#.00" />
+                                        <dxwgv:ASPxSummaryItem FieldName="LastPayFeeSum" SummaryType="Sum" DisplayFormat="#.00" />
+                                        <dxwgv:ASPxSummaryItem FieldName="WJAS" SummaryType="Sum" DisplayFormat="#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="WJALJ" SummaryType="Sum" DisplayFormat="#" />                                       
+                                    </TotalSummary>
                                 </dxwgv:ASPxGridView>
                                 <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
                                 </dxwgv:ASPxGridViewExporter>
