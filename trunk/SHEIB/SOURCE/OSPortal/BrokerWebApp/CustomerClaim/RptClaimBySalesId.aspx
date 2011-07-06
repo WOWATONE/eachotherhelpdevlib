@@ -2,7 +2,7 @@
     AutoEventWireup="true" CodeBehind="RptClaimBySalesId.aspx.cs" Inherits="BrokerWebApp.CustomerClaim.RptClaimBySalesId" %>
 
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxRoundPanel"
-    TagPrefix="dxrp" RptClaimTrancheAlreadyPay
+    TagPrefix="dxrp" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxTabControl"
     TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses"

@@ -68,7 +68,7 @@
                             <td>
                                 <table>
                                     <tr>
-                                       <td style="text-align: right;">
+                                        <td style="text-align: right;">
                                             报表日期：
                                         </td>
                                         <td style="text-align: left;">
@@ -82,14 +82,19 @@
                                             <dxe:ASPxDateEdit ID="dxeEndDate" ClientInstanceName="dxeEndDate" runat="server">
                                             </dxe:ASPxDateEdit>
                                         </td>
+                                        <td>
+                                            客户编号：
+                                        </td>
+                                        <td>
+                                            <dxe:ASPxTextBox ID="dxetxtCustID" ClientInstanceName="dxetxtCustID" runat="server"
+                                                Width="160px">
+                                            </dxe:ASPxTextBox>
+                                        </td>
                                         <td style="text-align: right;">
                                             <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
                                             <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
                                             <asp:Button ID="btnExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
                                                 CssClass="input_2" />
-                                        </td>
-                                        <td>
-                                            &nbsp;
                                         </td>
                                     </tr>
                                 </table>
@@ -129,7 +134,7 @@
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                                     AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%">
                                     <%-- BeginRegion Columns --%>
-                                    <Columns>                            
+                                    <Columns>
                                         <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="险种" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="PAS" Caption="赔案数" CellStyle-Wrap="False">
@@ -143,7 +148,7 @@
                                         <dxwgv:GridViewDataColumn FieldName="PolicyFee" Caption="保费" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="DE" Caption="赔付率（D/E)" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>                           
+                                        </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowAllRecords" />
