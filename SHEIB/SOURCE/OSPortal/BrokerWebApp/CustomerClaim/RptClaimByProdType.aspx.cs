@@ -60,7 +60,8 @@ namespace BrokerWebApp.CustomerClaim
         {
             string lsStartDate = dxeStartDate.Date.ToString("yyyyMMdd");
             string lsEndDate = dxeEndDate.Date.ToString("yyyyMMdd");
-            DataTable dt = BO_NotifyClaim.GetClaimByProdType(lsStartDate,lsEndDate,"");
+            string sCustID = dxetxtCustID.Text.Trim();
+            DataTable dt = BO_NotifyClaim.GetClaimByProdType(lsStartDate, lsEndDate, sCustID);
             this.gridSearchResult.DataSource = dt;
             this.gridSearchResult.DataBind();
         }
