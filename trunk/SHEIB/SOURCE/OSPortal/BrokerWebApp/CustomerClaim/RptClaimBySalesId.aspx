@@ -129,19 +129,19 @@
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                                     AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%">
                                     <%-- BeginRegion Columns --%>
-                                    <Columns>                            
+                                    <Columns>
                                         <dxwgv:GridViewDataColumn FieldName="SalesName" Caption="客户经理" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="WYZL" Caption="未有资料" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="ZLBQ" Caption="资料不全" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                         <dxwgv:GridViewDataColumn FieldName="ZLSQ" Caption="资料收齐" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="ZLSQ" Caption="资料收齐" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="XYDS" Caption="协商定损" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="YJA" Caption="结案" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>                           
+                                        </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowAllRecords" />
@@ -149,6 +149,13 @@
                                         ShowGroupFooter="Hidden" ShowGroupedColumns="true" ShowFilterRow="false" />
                                     <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                     <SettingsText CustomizationWindowCaption="个性化" />
+                                    <TotalSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="WYZL" SummaryType="Sum" />
+                                        <dxwgv:ASPxSummaryItem FieldName="ZLBQ" SummaryType="Sum" />
+                                        <dxwgv:ASPxSummaryItem FieldName="ZLSQ" SummaryType="Sum" />
+                                        <dxwgv:ASPxSummaryItem FieldName="XYDS" SummaryType="Sum" />
+                                        <dxwgv:ASPxSummaryItem FieldName="YJA" SummaryType="Sum" />
+                                    </TotalSummary>
                                 </dxwgv:ASPxGridView>
                                 <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
                                 </dxwgv:ASPxGridViewExporter>

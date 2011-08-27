@@ -31,6 +31,37 @@
 
         });
 
+        function imgSelectCustomerClick() {
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=800px;dialogHeight=600px;center=yes;help=no";
+            var retrunval = window.showModalDialog("../popupselectrefs/PolicyCustomer.aspx", self, myArguments);
+
+            if (!retrunval || isEmpty(retrunval)) {
+                dxetxtCustName.SetValue("");
+                setCustomerID("");
+            }
+            else {
+                //split the return value;
+                var thesplit_array = retrunval.split(";");
+                dxetxtCustName.SetValue(thesplit_array[1]);
+                setCustomerID(thesplit_array[0]);
+                //
+            }
+        }
+
+        function isEmpty(testVar) {
+            if ((testVar == null) || (testVar.length == 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function setCustomerID(thevalue) {
+            var result = $("#<%=hidCustID.ClientID %>");
+            result[0].value = thevalue;
+        }
+        
+
     </script>
 
 </asp:Content>
@@ -89,6 +120,19 @@
                                             <dxe:ASPxTextBox ID="dxetxtCustID" ClientInstanceName="dxetxtCustID" runat="server"
                                                 Width="160px">
                                             </dxe:ASPxTextBox>
+                                        </td>
+                                        <td style="text-align: right;">
+                                            客户名称：
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <dxe:ASPxTextBox ID="dxetxtCustName" ClientInstanceName="dxetxtCustName" runat="server"
+                                                Width="160px">
+                                            </dxe:ASPxTextBox>
+                                            <input type="hidden" id="hidCustID" name="hidCustID" runat="server" />
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <img runat="server" id="imgSelectCustomer" onclick="imgSelectCustomerClick();" alt=""
+                                                src="../images/searchicon9.png" style="width: 20px; height: 20px; vertical-align: top;" />
                                         </td>
                                         <td style="text-align: right;">
                                             <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
@@ -156,6 +200,11 @@
                                         ShowGroupFooter="Hidden" ShowGroupedColumns="true" ShowFilterRow="false" />
                                     <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                     <SettingsText CustomizationWindowCaption="个性化" />
+                                    <TotalSummary>
+                                        <dxwgv:ASPxSummaryItem FieldName="PAS" SummaryType="Sum" />
+                                        <dxwgv:ASPxSummaryItem FieldName="ClaimFee" SummaryType="Sum" DisplayFormat="c" />
+                                        <dxwgv:ASPxSummaryItem FieldName="PolicyFee" SummaryType="Sum" DisplayFormat="c" />
+                                    </TotalSummary>
                                 </dxwgv:ASPxGridView>
                                 <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
                                 </dxwgv:ASPxGridViewExporter>
