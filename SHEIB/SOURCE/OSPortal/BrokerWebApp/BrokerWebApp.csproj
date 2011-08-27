@@ -439,6 +439,48 @@
     <Compile Include="BusinessConsult\BusinessConsultList.aspx.designer.cs">
       <DependentUpon>BusinessConsultList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustomerClaim\RptClaimByAccidentReason.aspx.cs">
+      <DependentUpon>RptClaimByAccidentReason.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimByAccidentReason.aspx.designer.cs">
+      <DependentUpon>RptClaimByAccidentReason.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimByProdType.aspx.cs">
+      <DependentUpon>RptClaimByProdType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimByProdType.aspx.designer.cs">
+      <DependentUpon>RptClaimByProdType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimBySalesId.aspx.cs">
+      <DependentUpon>RptClaimBySalesId.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimBySalesId.aspx.designer.cs">
+      <DependentUpon>RptClaimBySalesId.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimLossRation.aspx.cs">
+      <DependentUpon>RptClaimLossRation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimLossRation.aspx.designer.cs">
+      <DependentUpon>RptClaimLossRation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimRpt.aspx.cs">
+      <DependentUpon>RptClaimRpt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimRpt.aspx.designer.cs">
+      <DependentUpon>RptClaimRpt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimTimelinessAnalysis.aspx.cs">
+      <DependentUpon>RptClaimTimelinessAnalysis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimTimelinessAnalysis.aspx.designer.cs">
+      <DependentUpon>RptClaimTimelinessAnalysis.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CustomerClaim\RptClaimTrancheAll.aspx.cs">
       <DependentUpon>RptClaimTrancheAll.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -473,6 +515,13 @@
     </Compile>
     <Compile Include="CustomerClaim\NotifyClaimView.aspx.designer.cs">
       <DependentUpon>NotifyClaimView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimTrancheAlreadyPay.aspx.cs">
+      <DependentUpon>RptClaimTrancheAlreadyPay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerClaim\RptClaimTrancheAlreadyPay.aspx.designer.cs">
+      <DependentUpon>RptClaimTrancheAlreadyPay.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustomerRelation\CustContact.aspx.cs">
       <DependentUpon>CustContact.aspx</DependentUpon>
@@ -1330,11 +1379,18 @@
     <Content Include="BudgetManagement\RptSignBudgetBase.aspx" />
     <Content Include="BusinessConsult\BusinessConsult.aspx" />
     <Content Include="BusinessConsult\BusinessConsultList.aspx" />
+    <Content Include="CustomerClaim\RptClaimByAccidentReason.aspx" />
+    <Content Include="CustomerClaim\RptClaimByProdType.aspx" />
+    <Content Include="CustomerClaim\RptClaimBySalesId.aspx" />
+    <Content Include="CustomerClaim\RptClaimLossRation.aspx" />
+    <Content Include="CustomerClaim\RptClaimRpt.aspx" />
+    <Content Include="CustomerClaim\RptClaimTimelinessAnalysis.aspx" />
     <Content Include="CustomerClaim\RptClaimTrancheAll.aspx" />
     <Content Include="CustomerClaim\NotifyClaim.aspx" />
     <Content Include="CustomerClaim\NotifyClaimList.aspx" />
     <Content Include="CustomerClaim\NotifyClaimPolicySelect.aspx" />
     <Content Include="CustomerClaim\NotifyClaimView.aspx" />
+    <Content Include="CustomerClaim\RptClaimTrancheAlreadyPay.aspx" />
     <Content Include="CustomerRelation\CustContact.aspx" />
     <Content Include="CustomerRelation\Customer.aspx" />
     <Content Include="CustomerRelation\CustomerList.aspx" />
