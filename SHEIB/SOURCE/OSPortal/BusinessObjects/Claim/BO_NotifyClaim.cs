@@ -841,7 +841,7 @@ namespace BusinessObjects
             StringBuilder sb = new StringBuilder();
             sb.Append("select ");
             sb.Append("CodeID AccountTypeID,CodeName AccountTypeName,SortNo ");
-            sb.Append(" from p_code where codeType='AccidentReason' ");
+            sb.Append(" from p_code where codeType='AccidentReason' Order by SortNo ");
             sb.Append(" ");
             sb.Append(" ");
             
