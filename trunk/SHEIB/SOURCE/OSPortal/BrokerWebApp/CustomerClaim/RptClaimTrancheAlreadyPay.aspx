@@ -132,11 +132,11 @@
                                     <Columns>                            
                                         <dxwgv:GridViewDataColumn FieldName="Tranche" Caption="赔款分档" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="TrancheCount" Caption="赔案件数" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="TrancheCount" Caption="已赔案件数" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="TrancheRate" Caption="占比" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="ClaimFee" Caption="报损金额(万元)" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="ClaimFee" Caption="已赔付金额(万元)" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="ClaimFeeRate" Caption="占比" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>                           

@@ -140,7 +140,11 @@
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="XYDS" Caption="协商定损" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="YJA" Caption="结案" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="YJA" Caption="已结案" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="WJA" Caption="未结案" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="JASUM" Caption="总计" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
@@ -150,11 +154,13 @@
                                     <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                     <SettingsText CustomizationWindowCaption="个性化" />
                                     <TotalSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="WYZL" SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="ZLBQ" SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="ZLSQ" SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="XYDS" SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="YJA" SummaryType="Sum" />
+                                        <dxwgv:ASPxSummaryItem FieldName="WYZL" SummaryType="Sum"  DisplayFormat="总计: {0}"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="ZLBQ" SummaryType="Sum"  DisplayFormat="{0}" />
+                                        <dxwgv:ASPxSummaryItem FieldName="ZLSQ" SummaryType="Sum"  DisplayFormat="{0}" />
+                                        <dxwgv:ASPxSummaryItem FieldName="XYDS" SummaryType="Sum"  DisplayFormat="{0}"/>
+                                        <dxwgv:ASPxSummaryItem FieldName="YJA" SummaryType="Sum"  DisplayFormat="{0}" />
+                                        <dxwgv:ASPxSummaryItem FieldName="WJA" SummaryType="Sum"  DisplayFormat="{0}" />
+                                        <dxwgv:ASPxSummaryItem FieldName="JASUM" SummaryType="Sum"  DisplayFormat="{0}" />
                                     </TotalSummary>
                                 </dxwgv:ASPxGridView>
                                 <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
