@@ -114,12 +114,10 @@
                                             </dxe:ASPxDateEdit>
                                         </td>
                                         <td>
-                                            客户编号：
+                                            
                                         </td>
                                         <td>
-                                            <dxe:ASPxTextBox ID="dxetxtCustID" ClientInstanceName="dxetxtCustID" runat="server"
-                                                Width="160px">
-                                            </dxe:ASPxTextBox>
+                                            
                                         </td>
                                         <td style="text-align: right;">
                                             客户名称：
@@ -200,11 +198,7 @@
                                         ShowGroupFooter="Hidden" ShowGroupedColumns="true" ShowFilterRow="false" />
                                     <SettingsBehavior ConfirmDelete="true" AutoExpandAllGroups="true" />
                                     <SettingsText CustomizationWindowCaption="个性化" />
-                                    <TotalSummary>
-                                        <dxwgv:ASPxSummaryItem FieldName="PAS" SummaryType="Sum" />
-                                        <dxwgv:ASPxSummaryItem FieldName="ClaimFee" SummaryType="Sum" DisplayFormat="c" />
-                                        <dxwgv:ASPxSummaryItem FieldName="PolicyFee" SummaryType="Sum" DisplayFormat="c" />
-                                    </TotalSummary>
+
                                 </dxwgv:ASPxGridView>
                                 <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
                                 </dxwgv:ASPxGridViewExporter>

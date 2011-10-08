@@ -129,17 +129,27 @@
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                                     AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%">
                                     <%-- BeginRegion Columns --%>
-                                    <Columns>                            
+                                    <Columns>
                                         <dxwgv:GridViewDataColumn FieldName="Tranche" Caption="出险原因" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="TrancheCount" Caption="赔案件数" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>
-                                        <dxwgv:GridViewDataColumn FieldName="TrancheRate" Caption="占比" CellStyle-Wrap="False">
+                                        <dxwgv:GridViewDataColumn FieldName="TrancheCount" Caption="总赔案件数" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="ClaimFee" Caption="赔案金额" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="ClaimFeeRate" Caption="占比" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>                           
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="Tranche_A_Count" Caption="已结赔案件数" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="ClaimFee_A" Caption="已赔付金额" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="ClaimFeeRate_A" Caption="占比" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="Tranche_N_Count" Caption="未结赔案件数" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="ClaimFee_N" Caption="未结赔报损金额" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="ClaimFeeRate_N" Caption="占比" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowAllRecords" />
