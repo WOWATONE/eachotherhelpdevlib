@@ -49,7 +49,9 @@ namespace BrokerWebApp.CustomerClaim
             this.dxeddlLoseStatus.ValueField = "AccountTypeID";
             this.dxeddlLoseStatus.DataBind();
             this.dxeddlLoseStatus.Items.Insert(0, new ListEditItem("(全部)", ""));
+            this.dxeddlLoseStatus.Items.Insert(1, new ListEditItem("未结案", "0"));
         }
+
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
         {
@@ -146,21 +148,27 @@ namespace BrokerWebApp.CustomerClaim
             if (this.dxetxtNotifyNo.Text.Trim().Length > 0)
                 sbWhere.Append(" And A.NotifyNo like '%" + this.dxetxtNotifyNo.Text.Trim() + "%' ");
 
-            //报案开始日期
-            if (this.deStartNotifyTime.Text.Trim().Length>0)
+            //报案日期
+            if ((this.deStartNotifyTime.Text.Trim().Length > 0) && (this.deEndNotifyTime.Text.Trim().Length > 0))
+            {
                 sbWhere.Append(" And A.NotifyTime>='" + this.deStartNotifyTime.Text.Trim() + "' ");
-
-            //报案结束日期
-            if (this.deEndNotifyTime.Text.Trim().Length>0)
                 sbWhere.Append(" And A.NotifyTime<='" + this.deEndNotifyTime.Text.Trim() + "' ");
+            }
 
             //出险开始日期
-            if (this.deStartAccidentTime.Text.Trim().Length>0)
+            if ((this.deStartAccidentTime.Text.Trim().Length>0)&&(this.deEndAccidentTime.Text.Trim().Length>0))
+            {
                 sbWhere.Append(" And A.AccidentTime>='" + this.deStartAccidentTime.Text.Trim() + "' ");
-
-            //出险结束日期
-            if (this.deEndAccidentTime.Text.Trim().Length>0)
                 sbWhere.Append(" And A.AccidentTime<='" + this.deEndAccidentTime.Text.Trim() + "' ");
+            }
+
+            //结案日期
+            if ((this.deStartCaseEndTime.Text.Trim().Length > 0) && (this.deEndCaseEndTime.Text.Trim().Length > 0))
+            {
+                sbWhere.Append(" And A.CaseEndTime>='" + this.deStartCaseEndTime.Text.Trim() + "' ");
+                sbWhere.Append(" And A.CaseEndTime<='" + this.deEndCaseEndTime.Text.Trim() + "' ");
+            }
+
 
             //报案人
             if (this.dxetxtNotifyPerson.Text.Trim().Length>0)
@@ -173,7 +181,15 @@ namespace BrokerWebApp.CustomerClaim
             //理赔状态
             if (this.dxeddlLoseStatus.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlLoseStatus.SelectedItem.Value.ToString()))
             {
-                sbWhere.Append(" and (select max(LoseStatus) from NotifyClaimFollow where NotifyID=a.NotifyID) ='" + dxeddlLoseStatus.SelectedItem.Value.ToString() + "'");
+                string sLoseStatus = this.dxeddlLoseStatus.SelectedItem.Value.ToString();
+                if (sLoseStatus == "0")
+                {
+                    sbWhere.Append(" and CaseEndTime is null ");
+                }
+                else
+                {
+                    sbWhere.Append(" and (select max(LoseStatus) from NotifyClaimFollow where NotifyID=a.NotifyID) ='" + sLoseStatus + "'");
+                }
             }
 
 
