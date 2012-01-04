@@ -79,7 +79,7 @@
                                 </dxnb:NavBarItem>
                                  <dxnb:NavBarItem Text="按客户经理" Name="CustomerClaim/RptClaimBySalesId.aspx">
                                 </dxnb:NavBarItem>
-                                 <dxnb:NavBarItem Text="赔案时效性分析" Name="CustomerClaim/RptClaimTimelinessAnalysis.aspx">
+                                 <dxnb:NavBarItem Text="赔案周期分析" Name="CustomerClaim/RptClaimTimelinessAnalysis.aspx">
                                 </dxnb:NavBarItem>
                                  <dxnb:NavBarItem Text="财务公司要求格式报表" Name="CustomerClaim/RptClaimRpt.aspx">
                                 </dxnb:NavBarItem>
