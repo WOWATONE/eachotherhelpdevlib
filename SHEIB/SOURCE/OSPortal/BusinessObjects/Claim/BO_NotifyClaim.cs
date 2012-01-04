@@ -809,6 +809,16 @@ namespace BusinessObjects
             return _db.ExecuteDataSet(dbCommand).Tables[0];
         }
 
+        public static DataTable rpt_ClaimTimeAgingAnalysis(string sBeginDate, string sEndDate)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("dbo.rpt_ClaimTimeAgingAnalysis");
+            DbCommand dbCommand = _db.GetStoredProcCommand(sb.ToString());
+            _db.AddInParameter(dbCommand, "@ac_BeginDate", DbType.AnsiString, sBeginDate);
+            _db.AddInParameter(dbCommand, "@ac_EndDate", DbType.AnsiString, sEndDate);
+            return _db.ExecuteDataSet(dbCommand).Tables[0];
+        }
+
         public static DataTable GetClaimRpt(string sBeginDate, string sEndDate)
         {
             StringBuilder sb = new StringBuilder();
