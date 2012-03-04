@@ -64,6 +64,15 @@ namespace BrokerWebApp.CustomerClaim
                 {
                     loadNotifyClaimValue(this.dxetxtNotifyID.Text.Trim());
                 }
+
+                string opa = Request.Params["opa"];
+                if (opa == "q")
+                {
+                    dxebtnBottomEndCase.Visible = false;
+                    dxebtnBottomSave.Visible = false;
+                    dxebtnSelectPolicyView.Visible = false;
+                    this.Title = "保单理赔信息查询";
+                }
             }
 
             rebindGridTraceInfoItem();

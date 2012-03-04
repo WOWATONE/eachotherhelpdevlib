@@ -144,9 +144,11 @@
         }
 
         function NotifyClaimView(id) {
-            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=800px;center=yes;help=no";
+           //var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=800px;center=yes;help=no";
+            var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
             var querystring;
-            querystring = "../CustomerClaim/NotifyClaimView.aspx?id=" + id;
+            //querystring = "../CustomerClaim/NotifyClaimView.aspx?id=" + id;
+            querystring = "../CustomerClaim/NotifyClaim.aspx?id=" + id+"&opa=q";
             window.showModalDialog(querystring, self, myArguments);
         }
 
@@ -1000,9 +1002,6 @@
                                                 HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="报损金额" FieldName="NotifyLossFee" CellStyle-Wrap="False"
-                                                HeaderStyle-HorizontalAlign="Center">
-                                            </dxwgv:GridViewDataTextColumn>
-                                            <dxwgv:GridViewDataTextColumn Caption="赔付率" FieldName="LossRation" CellStyle-Wrap="False"
                                                 HeaderStyle-HorizontalAlign="Center">
                                             </dxwgv:GridViewDataTextColumn>
                                             <dxwgv:GridViewDataTextColumn Caption="实赔金额" FieldName="LastPayFee" CellStyle-Wrap="False"
