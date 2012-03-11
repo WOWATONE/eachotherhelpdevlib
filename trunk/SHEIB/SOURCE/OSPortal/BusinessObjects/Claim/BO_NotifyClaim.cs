@@ -458,7 +458,7 @@ namespace BusinessObjects
             sb.Append("NC.NotifyLossFee,'' LossRation, isnull(NC.LastPayFee, 0) as LastPayFee, NC.CaseEndTime ");
             sb.Append("From NotifyClaim NC (nolock) ");
             sb.Append("Inner Join Policy P (nolock) On P.PolicyID=NC.PolicyID ");
-            sb.Append("Left Join PolicyCarrier PC (nolock) On PC.PolicyID=P.PolicyID ");
+            //sb.Append("Left Join PolicyCarrier PC (nolock) On PC.PolicyID=P.PolicyID ");
             //sb.Append("Left Join Carrier C (nolock) On C.CarrierID=PC.CarrierID ");
             sb.Append("Left Join ProductType PT (nolock) On PT.ProdTypeID=P.ProdTypeID ");
             sb.Append("Where P.CustomerID=@CustID ");

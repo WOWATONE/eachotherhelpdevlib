@@ -129,9 +129,9 @@
                                 <dxwgv:ASPxGridView ID="gridSearchResult" ClientInstanceName="gridSearchResult" runat="server"
                                     AutoGenerateColumns="False" Settings-ShowFooter="true" Width="100%">
                                     <%-- BeginRegion Columns --%>
-                                    <Columns>    
-                                       <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="险种" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>                        
+                                    <Columns>
+                                        <dxwgv:GridViewDataColumn FieldName="ProdTypeName" Caption="险种" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="BAJS" Caption="报案数目（当月）" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="BALJ" Caption="报案数目（当年）" CellStyle-Wrap="False">
@@ -141,17 +141,17 @@
                                         <dxwgv:GridViewDataColumn FieldName="NotifyLossFeeSum" Caption="报损金额（当年）" CellStyle-Wrap="False">
                                         </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="JASLDN" Caption="结案数量（当年报案）" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>     
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="JASLLN" Caption="结案数量（历年报案）" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>  
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="LastPayFee" Caption="赔付金额（当年报案）" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>     
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="LastPayFeeSum" Caption="赔付金额（历年报案）" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>    
-                                         <dxwgv:GridViewDataColumn FieldName="WJAS" Caption="未结赔案（当年报案）" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>     
+                                        </dxwgv:GridViewDataColumn>
+                                        <dxwgv:GridViewDataColumn FieldName="WJAS" Caption="未结赔案（当年报案）" CellStyle-Wrap="False">
+                                        </dxwgv:GridViewDataColumn>
                                         <dxwgv:GridViewDataColumn FieldName="WJALJ" Caption="未结赔案（历年报案）" CellStyle-Wrap="False">
-                                        </dxwgv:GridViewDataColumn>                        
+                                        </dxwgv:GridViewDataColumn>
                                     </Columns>
                                     <%-- EndRegion --%>
                                     <SettingsPager Mode="ShowAllRecords" />
@@ -163,12 +163,14 @@
                                         <dxwgv:ASPxSummaryItem FieldName="ProdTypeName" SummaryType="Count" DisplayFormat="数量：#" />
                                         <dxwgv:ASPxSummaryItem FieldName="BAJS" SummaryType="Sum" DisplayFormat="#" />
                                         <dxwgv:ASPxSummaryItem FieldName="BALJ" SummaryType="Sum" DisplayFormat="#" />
-                                        <dxwgv:ASPxSummaryItem FieldName="NotifyLossFee" SummaryType="Sum" DisplayFormat="#" />
-                                        <dxwgv:ASPxSummaryItem FieldName="NotifyLossFeeSum" SummaryType="Sum" DisplayFormat="#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="NotifyLossFee" SummaryType="Sum" DisplayFormat="#.00" />
+                                        <dxwgv:ASPxSummaryItem FieldName="NotifyLossFeeSum" SummaryType="Sum" DisplayFormat="#.00" />
+                                        <dxwgv:ASPxSummaryItem FieldName="JASLDN" SummaryType="Sum" DisplayFormat="#" />
+                                        <dxwgv:ASPxSummaryItem FieldName="JASLLN" SummaryType="Sum" DisplayFormat="#" />
                                         <dxwgv:ASPxSummaryItem FieldName="LastPayFee" SummaryType="Sum" DisplayFormat="#.00" />
                                         <dxwgv:ASPxSummaryItem FieldName="LastPayFeeSum" SummaryType="Sum" DisplayFormat="#.00" />
                                         <dxwgv:ASPxSummaryItem FieldName="WJAS" SummaryType="Sum" DisplayFormat="#" />
-                                        <dxwgv:ASPxSummaryItem FieldName="WJALJ" SummaryType="Sum" DisplayFormat="#" />                                       
+                                        <dxwgv:ASPxSummaryItem FieldName="WJALJ" SummaryType="Sum" DisplayFormat="#" />
                                     </TotalSummary>
                                 </dxwgv:ASPxGridView>
                                 <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridSearchResult">
