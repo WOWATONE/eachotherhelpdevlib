@@ -68,7 +68,7 @@ namespace BrokerWebApp.CustomerClaim
             }
             if (this.dxeddlPolicyType.SelectedItem != null && !String.IsNullOrEmpty(this.dxeddlPolicyType.SelectedItem.Value.ToString()))
             {
-                lsWhere = lsWhere + " and  b.PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString().Trim() + "') ";
+                lsWhere = lsWhere + " and  b.PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString().Trim() + "'";
             }
 
             this.gridSearchResult.DataSource = BO_NotifyClaim.GetSelectPolicyList(lsWhere);
