@@ -7,6 +7,8 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxClasses"
     TagPrefix="dxw" %>
+<%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3.Export" Namespace="DevExpress.Web.ASPxGridView.Export"
+    TagPrefix="dxwgv" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v8.3" Namespace="DevExpress.Web.ASPxGridView"
     TagPrefix="dxwgv" %>
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v8.3" Namespace="DevExpress.Web.ASPxEditors"
@@ -144,11 +146,11 @@
         }
 
         function NotifyClaimView(id) {
-           //var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=800px;center=yes;help=no";
+            //var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=900px;dialogHeight=800px;center=yes;help=no";
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
             var querystring;
             //querystring = "../CustomerClaim/NotifyClaimView.aspx?id=" + id;
-            querystring = "../CustomerClaim/NotifyClaim.aspx?id=" + id+"&opa=q";
+            querystring = "../CustomerClaim/NotifyClaim.aspx?id=" + id + "&opa=q";
             window.showModalDialog(querystring, self, myArguments);
         }
 
@@ -931,10 +933,8 @@
                                 <td>
                                     <dxwgv:ASPxGridView ID="gridPtFollowDocList" ClientInstanceName="gridPtFollowDocList"
                                         runat="server" SettingsBehavior-AllowSort="false" KeyFieldName="CustomerPtFollowDocID"
-                                        Width="80%" AutoGenerateColumns="False" 
-                                        OnRowDeleting ="gridPtFollowDocList_RowDeleting"
-                                        OnHtmlRowCreated="gridPtFollowDocList_HtmlRowCreated"
-                                        OnCustomCallback="gridPtFollowDocList_CustomCallback">
+                                        Width="80%" AutoGenerateColumns="False" OnRowDeleting="gridPtFollowDocList_RowDeleting"
+                                        OnHtmlRowCreated="gridPtFollowDocList_HtmlRowCreated" OnCustomCallback="gridPtFollowDocList_CustomCallback">
                                         <%-- BeginRegion Columns --%>
                                         <Columns>
                                             <dxwgv:GridViewCommandColumn Caption="&nbsp;" CellStyle-Wrap="False" Width="20px">
@@ -950,7 +950,8 @@
                                             </dxwgv:GridViewDataColumn>
                                             <dxwgv:GridViewDataColumn FieldName="FollowDocUrl" Caption="链接地址" CellStyle-Wrap="False">
                                             </dxwgv:GridViewDataColumn>
-                                            <dxwgv:GridViewDataColumn FieldName="FollowID" Caption="客户编号" CellStyle-Wrap="False" Visible="false">
+                                            <dxwgv:GridViewDataColumn FieldName="FollowID" Caption="客户编号" CellStyle-Wrap="False"
+                                                Visible="false">
                                             </dxwgv:GridViewDataColumn>
                                         </Columns>
                                         <%-- EndRegion --%>
@@ -969,6 +970,9 @@
                 <ContentCollection>
                     <dxw:ContentControl ID="ContentControl5" runat="server">
                         <table style="width: 100%">
+                            <tr>
+                                <asp:Button ID="btnXlsExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
+                                    CssClass="input_2" /></tr>
                             <tr>
                                 <td>
                                     <dxwgv:ASPxGridView ID="gridNotifyClaimItem" ClientInstanceName="gridNotifyClaimItem"
@@ -1023,6 +1027,8 @@
                                     </dxwgv:ASPxGridView>
                                 </td>
                             </tr>
+                            <dxwgv:ASPxGridViewExporter ID="gridExport" runat="server" GridViewID="gridNotifyClaimItem">
+                            </dxwgv:ASPxGridViewExporter>
                         </table>
                     </dxw:ContentControl>
                 </ContentCollection>
