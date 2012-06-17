@@ -1020,5 +1020,15 @@ namespace BrokerWebApp.CustomerRelation
             else
                 return Convert.ToDateTime(obj).ToString("yyyy-MM-dd");
         }
+
+        protected void btnXlsExport_Click(object sender, EventArgs e)
+        {
+            //this.BindGrid();
+            #region 理赔记录
+            this.gridNotifyClaimItem.DataSource = BO_NotifyClaim.GetCustContactByCustID(this._custID);
+            this.gridNotifyClaimItem.DataBind();
+            #endregion
+            this.gridExport.WriteXlsToResponse();
+        }
     }
 }

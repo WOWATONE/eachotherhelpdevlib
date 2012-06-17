@@ -86,6 +86,10 @@
                 alert("请先选择保单。");
                 return;
             }
+
+            if (!confirm("确定结案吗?"))
+                return false;
+                
             if (s.CauseValidation()) {
                 dxeNotifyInfoSaveEndCaseCallback.PerformCallback("");
             }
@@ -527,7 +531,8 @@
                                     OnRowUpdating="gridTraceInfoItem_RowUpdating" 
                                     OnRowDeleting="gridTraceInfoItem_RowDeleting"
                                     OnStartRowEditing="gridTraceInfoItem_StartRowEditing" 
-                                    OnHtmlEditFormCreated="gridTraceInfoItem_HtmlEditFormCreated"
+                                    OnHtmlEditFormCreated="gridTraceInfoItem_HtmlEditFormCreated"                                    
+                                    OnHtmlRowCreated="gridTraceInfoItem_HtmlRowCreated"                                    
                                     OnRowValidating="gridTraceInfoItem_RowValidating">
                                     <%-- BeginRegion Columns --%>
                                     <Columns>

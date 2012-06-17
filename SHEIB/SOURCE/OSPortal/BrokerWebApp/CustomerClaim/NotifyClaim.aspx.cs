@@ -114,10 +114,10 @@ namespace BrokerWebApp.CustomerClaim
 
         protected void dxeNotifyInfoSaveEndCase_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e)
         {
-            String theResult = saveNotifyClaim("","5");            
+            String theResult = saveNotifyClaim("", "5");
             e.Result = theResult;
         }
-        
+
         #endregion events
 
 
@@ -138,7 +138,7 @@ namespace BrokerWebApp.CustomerClaim
             dxedeNotifyTime.Date = notifyClaim.NotifyTime;
             dxetxtNotifyLossFee.Text = String.Format(BasePage.TheTwoSF, notifyClaim.NotifyLossFee);
             dxedeAccidentTime.Date = notifyClaim.AccidentTime;
-                        
+
             if (!String.IsNullOrEmpty(notifyClaim.LossType))
             {
                 theselected = dxeddlLossType.Items.FindByValue(notifyClaim.LossType);
@@ -168,12 +168,12 @@ namespace BrokerWebApp.CustomerClaim
             dxedePerambulateTime.Date = notifyClaim.PerambulateTime;
 
             dxedeDocCompleteDate.Date = notifyClaim.DocCompleteDate;
-            
+
             dxetxtLastPayFee.Text = String.Format(BasePage.TheTwoSF, notifyClaim.LastPayFee);
-            
+
             dxedeLastPayDate.Date = notifyClaim.LastPayDate;
             dxedeCaseEndTime.Date = notifyClaim.CaseEndTime;
-            
+
             //
             //if (!String.IsNullOrEmpty(notifyClaim.CaseEndPerson))
             //{
@@ -189,15 +189,15 @@ namespace BrokerWebApp.CustomerClaim
             dxedeCreateDate.Date = notifyClaim.CreateDate;
             txtCaseEndRemark.Text = notifyClaim.CaseEndRemark;
             setPolicyInfo(notifyClaim.PolicyID);
-                        
-        }  
-                
+
+        }
+
         private void setPolicyInfo(string policyID)
         {
             this.hidPolicyID.Value = "";
             this.dxetxtPolicyID.Text = "";
             this.dxetxtPolicyNo.Text = "";
-            this.dxetxtCarrierNameCn.Text = ""; 
+            this.dxetxtCarrierNameCn.Text = "";
             this.dxetxtCustName.Text = "";
             this.dxetxtProdTypeName.Text = "";
             this.dxetxtBeneficiary.Text = "";
@@ -256,7 +256,7 @@ namespace BrokerWebApp.CustomerClaim
                 theValue = dt.Rows[0]["PremiumBase"];
                 if (theValue != DBNull.Value)
                     this.dxetxtPremiumBase.Text = theValue.ToString();
-                             
+
             }
         }
 
@@ -271,7 +271,7 @@ namespace BrokerWebApp.CustomerClaim
 
             if (checkresult) return notifyNoExist;
              * */
-            
+
 
             if (String.IsNullOrEmpty(this.dxetxtNotifyID.Text.Trim()))
             {
@@ -290,7 +290,7 @@ namespace BrokerWebApp.CustomerClaim
                 if (policyState == "5")
                 {
                     bool existEndCase = BO_NotifyClaim.IsEnd(obj.NotifyID);
-                    
+
                     if (existEndCase == false)
                     {
                         BO_NotifyClaimFollow ncf = new BO_NotifyClaimFollow();
@@ -310,33 +310,33 @@ namespace BrokerWebApp.CustomerClaim
         {
             ListEditItem theselected;
 
-            notifyClaim.PolicyID = this.dxetxtPolicyID.Text;                
+            notifyClaim.PolicyID = this.dxetxtPolicyID.Text;
             notifyClaim.NotifyPerson = dxetxtNotifyPerson.Text;
             notifyClaim.AccidentSpot = dxetxtAccidentSpot.Text;
             notifyClaim.NotifyTime = dxedeNotifyTime.Date;
 
             if (!String.IsNullOrEmpty(dxetxtNotifyLossFee.Text.Trim()) && BasePage.IsNumeric(dxetxtNotifyLossFee.Text))
                 notifyClaim.NotifyLossFee = Convert.ToDouble(dxetxtNotifyLossFee.Text.Trim());
-            
+
             notifyClaim.AccidentTime = dxedeAccidentTime.Date;
 
             theselected = dxeddlLossType.SelectedItem;
-            if (theselected!= null)
+            if (theselected != null)
                 notifyClaim.LossType = theselected.Value.ToString();
-            
+
 
             //
             theselected = dxeddlAccidentReason.SelectedItem;
             if (theselected != null)
                 notifyClaim.AccidentReason = theselected.Value.ToString();
-                       
+
 
             notifyClaim.ContactPhone = dxetxtContactPhone.Text;
             notifyClaim.ContactPerson = dxetxtContactPerson.Text;
             notifyClaim.AccidentProc = dxetxtAccidentProc.Text;
             notifyClaim.NotifyCarrierTime = dxedeNotifyCarrierTime.Date;
             notifyClaim.NotifyNo = dxetxtNotifyNo.Text;
-            notifyClaim.CarrierContactPerson=dxetxtCarrierContactPerson.Text;
+            notifyClaim.CarrierContactPerson = dxetxtCarrierContactPerson.Text;
             notifyClaim.CarrierContactPhone = dxetxtCarrierContactPhone.Text;
             notifyClaim.PerambulateTime = dxedePerambulateTime.Date;
 
@@ -344,7 +344,7 @@ namespace BrokerWebApp.CustomerClaim
 
             if (!String.IsNullOrEmpty(dxetxtLastPayFee.Text.Trim()) && BasePage.IsNumeric(dxetxtLastPayFee.Text))
                 notifyClaim.LastPayFee = Convert.ToDouble(dxetxtLastPayFee.Text.Trim());
-            
+
             notifyClaim.LastPayDate = dxedeLastPayDate.Date;
             notifyClaim.CaseEndTime = dxedeCaseEndTime.Date;
 
@@ -358,15 +358,15 @@ namespace BrokerWebApp.CustomerClaim
             notifyClaim.CreateDate = dxedeCreateDate.Date;
 
             notifyClaim.ModifyPerson = this.CurrentUserID;
-            notifyClaim.ModifyDate  = dxedeCreateDate.Date;
+            notifyClaim.ModifyDate = dxedeCreateDate.Date;
 
             notifyClaim.CaseEndRemark = this.txtCaseEndRemark.Text;
         }
-    
+
 
         private void bindDropDownLists()
         {
-            
+
             //List<BusinessObjects.BO_P_User> userList;
             //if (this.CurrentUser.CheckPermission(BusinessObjects.BO_P_Priv.PrivListEnum.PolicyInput_List_Search_Group))
             //{
@@ -417,30 +417,30 @@ namespace BrokerWebApp.CustomerClaim
 
             ASPxMemo gridTraceInfoItem_dxetxtFollowContent = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtFollowContent") as ASPxMemo;
             ASPxMemo gridTraceInfoItem_dxetxtFollowNextContent = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtFollowNextContent") as ASPxMemo;
-                        
+
             gridTraceInfoItem_dxeddlLoseStatus.DataSource = BusinessObjects.BO_NotifyClaimFollow.GetLoseStatusList();
             gridTraceInfoItem_dxeddlLoseStatus.TextField = "AccountTypeName";
             gridTraceInfoItem_dxeddlLoseStatus.ValueField = "AccountTypeID";
             gridTraceInfoItem_dxeddlLoseStatus.DataBind();
-                        
+
             Int32 editIndex = this.gridTraceInfoItem.EditingRowVisibleIndex;
             if (editIndex > -1)
             {
                 object theValues = this.gridTraceInfoItem.GetRowValues(editIndex, new String[] { "FollowID", "NotifyID", "FollowDate", "FollowContent", "FollowNextContent", "LoseStatus", "EstimateFeel" });
                 object[] theValueList = theValues as object[];
-                                
+
                 ListEditItem theselected;
                 if (this.gridTraceInfoItemStartEdit)
                 {
                     if (theValueList[2] != null)
-                        gridTraceInfoItem_dxedeFollowDate.Date  = Convert.ToDateTime(theValueList[2]);
+                        gridTraceInfoItem_dxedeFollowDate.Date = Convert.ToDateTime(theValueList[2]);
 
                     if (theValueList[3] != null)
                         gridTraceInfoItem_dxetxtFollowContent.Text = theValueList[3].ToString();
 
                     if (theValueList[4] != null)
                         gridTraceInfoItem_dxetxtFollowNextContent.Text = theValueList[4].ToString();
-                                        
+
                     if (theValueList[5] != null)
                     {
                         theselected = gridTraceInfoItem_dxeddlLoseStatus.Items.FindByValue(theValueList[5].ToString());
@@ -449,7 +449,7 @@ namespace BrokerWebApp.CustomerClaim
                             gridTraceInfoItem_dxeddlLoseStatus.SelectedItem = theselected;
                         }
                     }
-                    
+
                     if (theValueList[6] != null)
                         gridTraceInfoItem_dxetxtEstimateFeel.Text = String.Format(BasePage.TheTwoSF, theValueList[6]);
 
@@ -464,6 +464,22 @@ namespace BrokerWebApp.CustomerClaim
             this.gridTraceInfoItemStartEdit = true;
         }
 
+        protected void gridTraceInfoItem_HtmlRowCreated(object sender,
+    ASPxGridViewTableRowEventArgs e)
+        {
+            string opa = Request.Params["opa"];
+            if (opa == "q")
+            {
+                if (e.RowType == GridViewRowType.Data)
+                {
+                    e.Row.Cells[0].Controls[0].Visible = false;
+                    e.Row.Cells[0].Controls[1].Visible = false;
+                    e.Row.Cells[0].Controls[2].Visible = false;
+                }
+            }
+        }
+
+
         protected void gridTraceInfoItem_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             String theKey = e.Keys[0].ToString();
@@ -475,7 +491,7 @@ namespace BrokerWebApp.CustomerClaim
 
             ASPxMemo gridTraceInfoItem_dxetxtFollowContent = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtFollowContent") as ASPxMemo;
             ASPxMemo gridTraceInfoItem_dxetxtFollowNextContent = tblEditorTemplate.FindControl("gridTraceInfoItem_dxetxtFollowNextContent") as ASPxMemo;
-            
+
             BusinessObjects.BO_NotifyClaimFollow newobj = new BusinessObjects.BO_NotifyClaimFollow(Convert.ToInt32(theKey));
 
             newobj.NotifyID = this.dxetxtNotifyID.Text;
@@ -487,10 +503,10 @@ namespace BrokerWebApp.CustomerClaim
             {
                 newobj.EstimateFeel = Convert.ToDouble(gridTraceInfoItem_dxetxtEstimateFeel.Text);
             }
-            
+
             newobj.FollowContent = gridTraceInfoItem_dxetxtFollowContent.Text;
             newobj.FollowNextContent = gridTraceInfoItem_dxetxtFollowNextContent.Text;
-            
+
             try
             {
                 newobj.Save(ModifiedAction.Update);
@@ -534,7 +550,7 @@ namespace BrokerWebApp.CustomerClaim
 
             newobj.FollowContent = gridTraceInfoItem_dxetxtFollowContent.Text;
             newobj.FollowNextContent = gridTraceInfoItem_dxetxtFollowNextContent.Text;
-                        
+
             try
             {
                 newobj.Save(ModifiedAction.Insert);
@@ -685,12 +701,12 @@ namespace BrokerWebApp.CustomerClaim
                     BusinessObjects.BO_NotifyClaimDoc.Delete(this.dxetxtNotifyID.Text.Trim(), fileInfo.Name);
 
                     BusinessObjects.BO_NotifyClaimDoc pdoc = new BusinessObjects.BO_NotifyClaimDoc();
-                    
+
                     pdoc.DocName = fileInfo.Name;
                     pdoc.NotifyID = this.dxetxtNotifyID.Text.Trim();
                     pdoc.DocURL = UploadDirectory.Replace("~", "") + notifyFolder + "/" + fileInfo.Name;
                     pdoc.Save(ModifiedAction.Insert);
-                }                
+                }
             }
             return ret;
         }
@@ -699,6 +715,15 @@ namespace BrokerWebApp.CustomerClaim
         protected void gridDocList_HtmlRowCreated(object sender,
             ASPxGridViewTableRowEventArgs e)
         {
+            string opa = Request.Params["opa"];
+            if (opa == "q")
+            {
+                if (e.RowType == GridViewRowType.Data)
+                {
+                    e.Row.Cells[0].Controls[0].Visible = false;
+                }
+            }
+
             if (e.RowType == GridViewRowType.Data)
             {
                 Control thectr;
@@ -717,7 +742,7 @@ namespace BrokerWebApp.CustomerClaim
                     thelnk.Attributes.Add("onclick", "hlPolicyItemTogetherClick('" + lnkUrl + "');");
                 }
 
-                
+
                 //GridViewCommandColumn objgcc = getGridDocListCommandColumnLoop();
 
                 //GridViewCommandColumnButtonControl thebtn;
@@ -727,7 +752,7 @@ namespace BrokerWebApp.CustomerClaim
                 //thebtn.Enabled = false;
                 //theIHL = (InternalHyperLink)thebtn.Controls[0];
                 //theIHL.Enabled = false;
-                
+
             }
         }
 
