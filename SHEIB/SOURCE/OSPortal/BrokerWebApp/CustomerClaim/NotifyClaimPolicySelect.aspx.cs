@@ -70,6 +70,16 @@ namespace BrokerWebApp.CustomerClaim
             {
                 lsWhere = lsWhere + " and  b.PolicyType ='" + dxeddlPolicyType.SelectedItem.Value.ToString().Trim() + "'";
             }
+            
+
+
+            string lsPolicyStartDateStart =this.dxePolicyStartDateStart.Date.ToString("yyyy-MM-dd");
+            string lsPolicyStartDateEnd = this.dxePolicyStartDateEnd.Date.ToString("yyyy-MM-dd");
+            if ((this.dxePolicyStartDateStart.Text.Trim() != "") && (this.dxePolicyStartDateEnd.Text.Trim() != ""))
+            {
+                lsWhere = lsWhere + " and (convert(char(10), b.StartDate,21)) >='" + lsPolicyStartDateStart + "'";
+                lsWhere = lsWhere + " and (convert(char(10), b.StartDate,21)) <='" + lsPolicyStartDateEnd + "'";
+            }
 
             this.gridSearchResult.DataSource = BO_NotifyClaim.GetSelectPolicyList(lsWhere);
             this.gridSearchResult.DataBind();
