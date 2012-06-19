@@ -41,7 +41,7 @@
         }
 
         function btnOk_Click() {
-            gridSearchResult.GetSelectedFieldValues("PolicyID;Beneficiary;CustomerName;UserName;ProdTypeName;StartDate;EndDate;CarrierName;PolicyNo;PremiumBase;DeptName", getTheSelectedRowsValues);            
+            gridSearchResult.GetSelectedFieldValues("PolicyID;Beneficiary;CustomerName;UserName;ProdTypeName;StartDate;EndDate;CarrierName;PolicyNo;PremiumBase;DeptName", getTheSelectedRowsValues);
         }
 
         function getTheSelectedRowsValues(selectedValues) {
@@ -183,15 +183,23 @@
                             </td>
                             <td>
                             </td>
-                        </tr>                        
+                        </tr>
                         <tr>
                             <td style="text-align: right;">
+                                保单开始日期：
                             </td>
                             <td style="text-align: left;">
+                                <dxe:ASPxDateEdit ID="dxePolicyStartDateStart" ClientInstanceName="dxePolicyStartDateStart"
+                                    runat="server">
+                                </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">
+                                保单结束日期：
                             </td>
                             <td style="text-align: left;">
+                                <dxe:ASPxDateEdit ID="dxePolicyStartDateEnd" ClientInstanceName="dxePolicyStartDateEnd"
+                                    runat="server">
+                                </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">
                             </td>
