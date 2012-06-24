@@ -43,6 +43,7 @@ namespace BrokerWebApp.CustomerRelation
                     {
                         this._custID = Request.QueryString["custID"].Trim();
                         this.ViewState["CustID"] = this._custID;
+                        btnxls.Attributes.Add("href", "CustomerClaimToXls.aspx?custID=" + this.ViewState["CustID"]);
                     }
 
                     this.Initialization();
@@ -1025,10 +1026,32 @@ namespace BrokerWebApp.CustomerRelation
         {
             //this.BindGrid();
             #region 理赔记录
-            this.gridNotifyClaimItem.DataSource = BO_NotifyClaim.GetCustContactByCustID(this._custID);
-            this.gridNotifyClaimItem.DataBind();
+            //this.gridNotifyClaimItem.DataSource = BO_NotifyClaim.GetCustContactByCustID(this._custID);
+            //this.gridNotifyClaimItem.DataBind();
+            //this.gridExport.WriteXlsToResponse();
             #endregion
-            this.gridExport.WriteXlsToResponse();
+            Response.Redirect("CustomerClaimToXls.aspx?custID=" + this.ViewState["CustID"]);
+
+            //this.Response.ContentType = "application/vnd.ms-excel ";
+            //this.Response.Charset = " ";
+            //this.EnableViewState = false;
+            //System.IO.StringWriter tw = new System.IO.StringWriter();
+            //System.Web.UI.HtmlTextWriter hw = new System.Web.UI.HtmlTextWriter(tw);
+            //this.gridNotifyClaimItem.RenderControl(hw);
+            //this.Response.Write(tw.ToString());
+            //this.Response.End(); 
+
+            //Response.ClearContent();
+            //Response.Charset = "UTF8";
+            //Response.AddHeader("content-disposition", "attachment; filename=PMPM02.xls[sheel$]");
+            //Response.ContentType = "application/excel";
+            //Response.ContentEncoding = System.Text.Encoding.UTF7;
+            //StringWriter o_sw = new StringWriter();
+            //HtmlTextWriter o_htw = new HtmlTextWriter(o_sw);
+            //gridNotifyClaimItem.RenderControl(o_htw);
+            //Response.Write(o_sw.ToString());
+            //Response.End();
+
         }
     }
 }

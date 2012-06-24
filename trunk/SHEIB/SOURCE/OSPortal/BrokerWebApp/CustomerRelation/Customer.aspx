@@ -21,9 +21,10 @@
     TagPrefix="dxuc" %>
 <%@ Register Assembly="DevExpress.Web.v8.3" Namespace="DevExpress.Web.ASPxCallback"
     TagPrefix="dxcb" %>
+    
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>客户信息</title>
-
+    <title>客户信息</title>   
+<%--    <base target="download"/> --%>
     <script type="text/javascript">
         $(document).ready(function() {
             window.onunload = function() {
@@ -184,6 +185,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     <dxcb:ASPxCallback ID="dxeDeleteCustomerBusDocCallback" ClientInstanceName="dxeDeleteCustomerBusDocCallback"
         runat="server" OnCallback="dxeDeleteCustomerBusDocCallback_Callback">
@@ -971,8 +973,11 @@
                     <dxw:ContentControl ID="ContentControl5" runat="server">
                         <table style="width: 100%">
                             <tr>
-                                <asp:Button ID="btnXlsExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
-                                    CssClass="input_2" /></tr>
+                                <a id="btnxls" runat="server"  target="_blank" title="导出">导出</a>
+                               <%-- <asp:Button ID="btnXlsExport" target="download" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
+                                    CssClass="input_2" />--%>
+                             </tr>
+                               
                             <tr>
                                 <td>
                                     <dxwgv:ASPxGridView ID="gridNotifyClaimItem" ClientInstanceName="gridNotifyClaimItem"
