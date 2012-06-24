@@ -185,7 +185,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+    <iframe id="download" name="download" height="0px" width="0px"></iframe>
     <ajaxToolkit:ToolkitScriptManager runat="Server" ID="ScriptManager1" />
     <dxcb:ASPxCallback ID="dxeDeleteCustomerBusDocCallback" ClientInstanceName="dxeDeleteCustomerBusDocCallback"
         runat="server" OnCallback="dxeDeleteCustomerBusDocCallback_Callback">
@@ -973,7 +973,8 @@
                     <dxw:ContentControl ID="ContentControl5" runat="server">
                         <table style="width: 100%">
                             <tr>
-                                <a id="btnxls" runat="server"  target="_blank" title="导出">导出</a>
+                            <%--    <a id="btnxls" runat="server"  target="download" title="导出" href="#">导出</a>--%>
+                                <asp:HyperLink id="btnClaimxls" runat="server"  target="download" title="导出" >导出</asp:HyperLink> 
                                <%-- <asp:Button ID="btnXlsExport" target="download" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
                                     CssClass="input_2" />--%>
                              </tr>

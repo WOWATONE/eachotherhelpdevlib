@@ -43,7 +43,8 @@ namespace BrokerWebApp.CustomerRelation
                     {
                         this._custID = Request.QueryString["custID"].Trim();
                         this.ViewState["CustID"] = this._custID;
-                        btnxls.Attributes.Add("href", "CustomerClaimToXls.aspx?custID=" + this.ViewState["CustID"]);
+                        btnClaimxls.NavigateUrl = "CustomerClaimToXls.aspx?custID=" + this.ViewState["CustID"];
+                       //btnxls.Attributes.Add("OnClick", "window.open(CustomerClaimToXls.aspx?custID=" + this.ViewState["CustID"] + ", 'newwindow', 'height=100; width=400; top=0; left=0; toolbar=no; menubar=no; scrollbars=no; resizable=no;status=no");
                     }
 
                     this.Initialization();
