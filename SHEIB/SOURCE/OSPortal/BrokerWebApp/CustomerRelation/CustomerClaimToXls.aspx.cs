@@ -63,8 +63,8 @@ namespace BrokerWebApp.CustomerRelation
             dg.DataSource = ds;
             dg.DataBind();
             dg.RenderControl(oHtmlTextWriter);
-            //control.Page.Response.Write(oStringWriter.ToString());
-            control.Page.Response.Write("客户理赔记录");
+            control.Page.Response.Write(oStringWriter.ToString());
+            //control.Page.Response.Write("客户理赔记录");
             control.Page.Response.End();
         }
 
