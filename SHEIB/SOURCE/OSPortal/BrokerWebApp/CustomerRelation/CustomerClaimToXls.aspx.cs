@@ -50,9 +50,11 @@ namespace BrokerWebApp.CustomerRelation
         {
             control.Page.Response.Clear();
             control.Page.Response.Buffer = true;
-            control.Page.Response.ContentType = "application/vnd.ms-excel";
+            //control.Page.Response.ContentType = "application/vnd.ms-excel";
+            control.Page.Response.ContentType = "application/excel";
             control.Page.Response.Charset = "";
             control.Page.EnableViewState = false;
+            control.Page.Response.AddHeader("content-disposition", "attachment; filename=CustomerClaimRecord.xls");
 
 
             System.IO.StringWriter oStringWriter = new System.IO.StringWriter();
