@@ -74,7 +74,7 @@ namespace BusinessObjects.CustomerRelation
             List<BO_CustomerDoc> list = new List<BO_CustomerDoc>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT CustDocID, CustID, CustDocName, CustURL ");
+            sb.Append("SELECT CustDocID, CustID, CustDocName, " + "'/sheib'" + " + CustURL ");
             sb.Append(" FROM CustomerDoc (nolock) ");
             sb.Append(" WHERE CustID = @CustID");
             sb.Append(" ");

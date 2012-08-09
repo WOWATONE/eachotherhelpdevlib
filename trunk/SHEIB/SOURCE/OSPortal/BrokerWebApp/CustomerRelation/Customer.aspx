@@ -98,7 +98,7 @@
             var url = params;
             window.open(url);
         }
-
+        
         function btnValidate(s, e) {
             var idno = dxetxtIDNO.GetText();
             if (idno.length == 0)
@@ -974,7 +974,7 @@
                         <table style="width: 100%">
                             <tr>
                             <%--    <a id="btnxls" runat="server"  target="download" title="导出" href="#">导出</a>--%>
-                                <asp:HyperLink id="btnClaimxls" runat="server"  target="download" title="导出" >导出</asp:HyperLink> 
+                                <asp:HyperLink id="btnClaimxls" runat="server"  target="download" title="导出" >导出Excel</asp:HyperLink> 
                                <%-- <asp:Button ID="btnXlsExport" target="download" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
                                     CssClass="input_2" />--%>
                              </tr>
