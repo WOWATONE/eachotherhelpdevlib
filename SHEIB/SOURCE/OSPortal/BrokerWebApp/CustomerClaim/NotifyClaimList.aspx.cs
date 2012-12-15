@@ -20,6 +20,13 @@ namespace BrokerWebApp.CustomerClaim
 {
     public partial class NotifyClaimList : BasePage
     {
+
+        #region Variables
+
+        private string toadd = string.Empty;
+
+        #endregion Variables
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -50,8 +57,40 @@ namespace BrokerWebApp.CustomerClaim
             this.dxeddlLoseStatus.DataBind();
             this.dxeddlLoseStatus.Items.Insert(0, new ListEditItem("(全部)", ""));
             this.dxeddlLoseStatus.Items.Insert(1, new ListEditItem("未结案", "0"));
+
+            DataSet dsList = BusinessObjects.SchemaSetting.BO_ProductType.GetProductTypeList();
+            if (dsList.Tables[0] != null && dsList.Tables[0].Rows.Count > 0)
+            {
+                this.SetProdTypeName(dsList.Tables[0], "0", this.dxeddlProdTypeName);                
+            }
         }
 
+
+        private void SetProdTypeName(DataTable table, string parentid, ASPxComboBox comboBox)
+        {
+            if (parentid == "0")
+                this.toadd = "";
+            else
+                this.toadd += "   ";
+            DataRow[] rows = table.Select("ParentID='" + parentid + "'", "ProdClass");
+            foreach (DataRow row in rows)
+            {
+                comboBox.Items.Add(this.toadd + (parentid == "0" ? "" : "∟") + row["ProdTypeName"].ToString(), row["ProdTypeID"].ToString());
+                this.SetProdTypeName(table, row["ProdTypeID"].ToString(), comboBox);
+                this.toadd = this.toadd.Substring(0, this.toadd.Length - 3);
+            }
+        }
+
+        private void SetddlProdTypeName(string value)
+        {
+            if (!string.IsNullOrEmpty(value))
+            {
+                this.dxeddlProdTypeName.SelectedIndex = this.dxeddlProdTypeName.Items.IndexOf(this.dxeddlProdTypeName.Items.FindByValue(value));
+                if (this.dxeddlProdTypeName.SelectedIndex >= 0)
+                    this.dxeddlProdTypeName.Text = this.dxeddlProdTypeName.SelectedItem.Text.Substring(this.dxeddlProdTypeName.SelectedItem.Text.IndexOf("∟") + 1);
+
+            }
+        }
 
         protected void btnXlsExport_Click(object sender, EventArgs e)
         {
@@ -198,6 +237,14 @@ namespace BrokerWebApp.CustomerClaim
             //联系人
             if (this.txtCustName.Text.Trim().Length > 0)
                 sbWhere.Append(" And exists (select 1 from Customer where  CustID = B.CustomerID and  CustName like '%" + this.txtCustName.Text.Trim() + "%')");
+            //ProType
+            if (this.ptid.Value != null && !String.IsNullOrEmpty(this.ptid.Value))
+                sbWhere.Append(" And exists (select 1 from Policy where  PolicyID = B.PolicyID and  ProdTypeID like '%" + this.ptid.Value.Trim() + "%')");
+
+            //if (this.ptid.Value != null && !String.IsNullOrEmpty(this.ptid.Value))
+            //{
+            //    lsWhere = lsWhere + " and  b.ProdTypeID like ('%" + this.ptid.Value.Trim() + "%') ";
+            //}
 
             this.gridSearchResult.DataSource = BusinessObjects.BO_NotifyClaim.GetNotifyClaimList(sbWhere.ToString()).Tables[0];
             this.gridSearchResult.DataBind();
