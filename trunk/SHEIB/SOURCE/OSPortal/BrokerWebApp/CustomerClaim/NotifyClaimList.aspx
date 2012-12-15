@@ -17,7 +17,11 @@
             var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
             window.showModalDialog("NotifyClaim.aspx", self, myArguments);
         }
-
+        function setProductTypeID(thevalue) {
+            var result = $("#<%=ptid.ClientID %>");
+            result[0].value = thevalue;
+        }
+        
         function gridCustomButtonClick(s, e) {
             s.GetRowValues(e.visibleIndex, "NotifyID", getTheSelectedRowsValues);
         }
@@ -31,6 +35,21 @@
                 var myArguments = "resizable:yes;scroll:yes;status:no;dialogWidth=1000px;dialogHeight=800px;center=yes;help=no";
                 var notifyID = selectedValues;
                 window.showModalDialog("NotifyClaim.aspx?id=" + notifyID, self, myArguments);
+            }
+        }
+        
+        function SelectedProdTypeNameIndexChanged(s, e) {
+            var thevalue = s.GetValue();
+            setProductTypeID(thevalue);
+            var test = s.GetText();
+            var sValue = s.GetValue();
+
+            if (test.length > 0) {
+                var index = test.lastIndexOf("∟");
+                if (index >= 0) {
+                    var testTmp = test.substr(index + 1);
+                    s.SetText(testTmp);
+                }
             }
         }
         
@@ -145,9 +164,14 @@
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: right;">
-                            
+                                保险险种：
                             </td>
-                            <td style="text-align: left;">
+                            <td style="text-align: left;">                         
+                                <dxe:ASPxComboBox ID="dxeddlProdTypeName" ClientInstanceName="dxeddlProdTypeName"
+                                    runat="server" Width="240px" DropDownStyle="DropDownList">
+                                    <ClientSideEvents SelectedIndexChanged="function(s, e) {SelectedProdTypeNameIndexChanged(s, e); return false;}" />
+                                </dxe:ASPxComboBox>
+                                <input type="hidden" id="ptid" runat="server" />                                 
                             </td>
                         </tr>
                         <tr>
@@ -155,8 +179,8 @@
                                 结案开始日期：
                             </td>
                             <td style="text-align: left;">
-                                <dxe:ASPxDateEdit ID="deStartCaseEndTime" ClientInstanceName="deStartCaseEndTime" runat="server"
-                                    Width="160px">
+                                <dxe:ASPxDateEdit ID="deStartCaseEndTime" ClientInstanceName="deStartCaseEndTime"
+                                    runat="server" Width="160px">
                                 </dxe:ASPxDateEdit>
                             </td>
                             <td style="text-align: center;">
@@ -198,7 +222,8 @@
                             <td style="text-align: left;">
                             </td>
                             <td style="text-align: left;">
-                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />&nbsp;
+                                <asp:Button ID="btnSearch" runat="server" Text="查询" CssClass="input_2" OnClick="btnSearch_Click" />
+                                &nbsp;
                                 <input type="reset" value="重置" name="btnReset" id="btnReset" class="input_2" />&nbsp;
                                 <asp:Button ID="btnXlsExport" runat="server" Text="Excel" OnClick="btnXlsExport_Click"
                                     CssClass="input_2" />
