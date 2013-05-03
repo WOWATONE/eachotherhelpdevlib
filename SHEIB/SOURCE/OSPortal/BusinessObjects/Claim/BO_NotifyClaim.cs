@@ -495,7 +495,7 @@ namespace BusinessObjects
             StringBuilder sb = new StringBuilder();
             
             sb.Append("SELECT  A.NotifyID,A.NotifySerialNo, B.PolicyNo, A.AccidentReason,  A.NotifyTime, A.AccidentTime,A.NotifyCarrierTime, A.AccidentProc,   ");
-            sb.Append("A.NotifyLossFee, A.DocCompleteDate,A.CaseEndTime, A.LastPayDate,  ");
+            sb.Append("A.NotifyLossFee, A.DocCompleteDate,A.CaseEndTime, A.LastPayDate, A.CreateDate, ");
             sb.Append("A.LastPayFee,A.NotifyRemark,A.NotifyNo,A.ContactPerson,");
             sb.Append("A.ContactPhone,A.CarrierContactPerson,A.CarrierContactPhone,");
             sb.Append("B.Beneficiary,B.PremiumBase ,");

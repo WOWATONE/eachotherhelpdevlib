@@ -208,6 +208,11 @@ namespace BrokerWebApp.CustomerClaim
                 sbWhere.Append(" And A.CaseEndTime<='" + this.deEndCaseEndTime.Text.Trim() + "' ");
             }
 
+            if ((this.deStartCreateDate.Text.Trim().Length > 0) && (this.deEndCreateDate.Text.Trim().Length > 0))
+            {
+                sbWhere.Append(" And A.CreateDate>='" + this.deStartCreateDate.Text.Trim() + "' ");
+                sbWhere.Append(" And A.CreateDate<='" + this.deEndCreateDate.Text.Trim() + "' ");
+            }
 
             //报案人
             if (this.dxetxtNotifyPerson.Text.Trim().Length>0)
