@@ -201,6 +201,31 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
+                                制单开始日期：
+                            </td>
+                            <td style="text-align: left;">
+                                <dxe:ASPxDateEdit ID="deStartCreateDate" ClientInstanceName="deStartCreateDate"
+                                    runat="server" Width="160px">
+                                </dxe:ASPxDateEdit>
+                            </td>
+                            <td style="text-align: center;">
+                                至
+                            </td>
+                            <td style="text-align: right;">
+                                制单结束日期：
+                            </td>
+                            <td style="text-align: left;">
+                                <dxe:ASPxDateEdit ID="deEndCreateDate" ClientInstanceName="deEndCreateDate" runat="server"
+                                    Width="160px">
+                                </dxe:ASPxDateEdit>
+                            </td>
+                            <td style="text-align: right;">
+                            </td>
+                            <td style="text-align: left;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
                                 报案人：
                             </td>
                             <td style="text-align: left;">
@@ -287,6 +312,9 @@
                             <dxwgv:GridViewDataTextColumn Caption="出险原因" FieldName="AccidentReasonName" CellStyle-Wrap="False"
                                 HeaderStyle-HorizontalAlign="Center">
                             </dxwgv:GridViewDataTextColumn>
+                            <dxwgv:GridViewDataDateColumn Caption="制单日期" FieldName="CreateDate" CellStyle-Wrap="False"
+                                HeaderStyle-HorizontalAlign="Center" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
+                            </dxwgv:GridViewDataDateColumn>
                             <dxwgv:GridViewDataDateColumn Caption="客户向我司报案日期" FieldName="NotifyTime" CellStyle-Wrap="False"
                                 HeaderStyle-HorizontalAlign="Center" PropertiesDateEdit-DisplayFormatString="yyyy-MM-dd">
                             </dxwgv:GridViewDataDateColumn>
